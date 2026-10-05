@@ -1,0 +1,30 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "previewImagesBlob": 2,
+      "reselection": "PASS",
+      "posts": 0,
+      "externalImageRequests": 0
+    },
+    {
+      "width": 375,
+      "innerWidth": 375,
+      "scrollWidth": 375,
+      "previewImagesBlob": 2,
+      "reselection": "PASS",
+      "posts": 0,
+      "externalImageRequests": 0
+    }
+  ],
+  "checks": {
+    "coreEntryNative": true,
+    "selectedPreviewBlobLocal": true,
+    "removeResetsPreview": true,
+    "reselectWorks": true,
+    "noServerPhotoPost": true,
+    "noExternalImageRequest": true
+  }
+}

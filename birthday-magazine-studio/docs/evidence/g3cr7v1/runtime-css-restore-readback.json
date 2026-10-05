@@ -1,0 +1,17 @@
+{
+  "mount": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\preview-plugin",
+  "restored_exactly": true,
+  "other_mount_files_touched": 0,
+  "files": [
+    {
+      "file": "magazine-preview.css",
+      "sha256_before": "C7CFD022626ADE6B4D117E1FD9773F579C822D19455EC6E1AB251FA6E4D40BAE",
+      "sha256_restored": "C7CFD022626ADE6B4D117E1FD9773F579C822D19455EC6E1AB251FA6E4D40BAE"
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "sha256_before": "F12DA398F8E204FD2C6B4FED0DAEE8CBE290CC816307F373BEA0F2270574B387",
+      "sha256_restored": "F12DA398F8E204FD2C6B4FED0DAEE8CBE290CC816307F373BEA0F2270574B387"
+    }
+  ]
+}

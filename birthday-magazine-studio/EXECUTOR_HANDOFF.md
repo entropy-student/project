@@ -810,3 +810,12 @@ Local runtime is healthy. The prior refusal was the host proxy intercepting loop
 The actual local synthetic guest order-received route showed PAYMENT PENDING and “Your magazine work has not started” at 1440px and 375px. paid=1/status=ready did not change Woo payment truth. The guarded synthetic fixture was deleted and counts returned to baseline. See both screenshots plus JSON read-back and hashes under docs/evidence/g3cr7r1r2/.
 
 No Checkout submission, payment/provider/model call, production deployment, Shared Infra change, G3C frontend-suite rerun, or PR merge occurred. Reviewer should inspect the source cleanup/diff, runtime diagnosis, actual order-received screenshots, forged-query negative, fixture cleanup, and counters. Rollback source anchor is 88f45f5d; accepted baseline is e71f943. No Owner action is required.
+## G3CR7V1 handoff — Premium SaaS visual refinement (2026-10-05)
+
+**Result: `PASS_CANDIDATE_G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT`; `STOP_AT_REVIEWER=YES`.** Continue on the existing PR #64 only; it was freshly read as open/unmerged at baseline `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`. No later Gate is authorized.
+
+Reviewer entry point: [`docs/evidence/g3cr7v1/README.md`](docs/evidence/g3cr7v1/README.md), then [`final-contact-sheet.jpg`](docs/evidence/g3cr7v1/final-contact-sheet.jpg), the before/after screenshots, and `screenshot-manifest.json`.
+
+The Homepage Preview/core-entry was directly redesigned as a contained controls + magazine-stage demo with its CTA integrated. The five-step intake and pending/progress status surfaces received a restrained SaaS visual skin. Only `poc/g3c/preview-plugin/magazine-preview.css` and `frontend-reproduction.css` changed; business behavior and other sources remain frozen. Final screenshots/read-backs confirm 1440 and 375 layouts without horizontal overflow, local-only Preview interaction, intake navigation/photo grid, native Woo handoff, and unpaid pending state. Temporary fixture cleanup and exact runtime CSS restoration both read back PASS.
+
+Rollback: restore those two changed CSS paths from accepted technical baseline `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`; command is in the evidence README. No PR merge or Owner handoff is requested.

@@ -1,0 +1,323 @@
+{
+  "gate": "G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT",
+  "baseline_commit": "c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c",
+  "branch": "codex/birthday-magazine-g3cr7v1-premium-saas-visual-refinement",
+  "target_pr": 64,
+  "desktop_viewport": "1440x1000",
+  "mobile_viewport": "375x812",
+  "screenshot_count": 28,
+  "final_contact_sheet": {
+    "file": "final-contact-sheet.jpg",
+    "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\final-contact-sheet.jpg",
+    "width": 1017,
+    "height": 4519,
+    "bytes": 614818,
+    "sha256": "58822bb3533fcf5818a6e6dab0dc1ad4e97e4be751a954db4d9848f9b6a54df9"
+  },
+  "files": [
+    {
+      "phase": "before",
+      "file": "before/homepage-preview-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\homepage-preview-1440.png",
+      "width": 1440,
+      "height": 1653,
+      "bytes": 164423,
+      "sha256": "471a2cbc9f0e2bc825e1965a805826ad77892e120f58313158f87babd481dafd"
+    },
+    {
+      "phase": "before",
+      "file": "before/homepage-preview-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\homepage-preview-375.png",
+      "width": 375,
+      "height": 1742,
+      "bytes": 101683,
+      "sha256": "85864a8820b18c280f4982ef00ea9187a155fe63ba6e72adfc4f9b41d7396111"
+    },
+    {
+      "phase": "before",
+      "file": "before/homepage-preview-photo-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\homepage-preview-photo-1440.png",
+      "width": 1440,
+      "height": 1660,
+      "bytes": 1569657,
+      "sha256": "a0b18099ffc3a3e6517040c2fd3d32f506c64b50adb8b12225d2b5efdb592a84"
+    },
+    {
+      "phase": "before",
+      "file": "before/homepage-preview-photo-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\homepage-preview-photo-375.png",
+      "width": 375,
+      "height": 1750,
+      "bytes": 430875,
+      "sha256": "0d5765a8ee90ab98df7983709b162ff3f9f5ce807f4c653525ccd1e08d9365b1"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-about-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-about-1440.png",
+      "width": 1440,
+      "height": 1985,
+      "bytes": 128310,
+      "sha256": "5ba1827abe540cf7134b15025563a3e977f7ea13aa638c9850fc4c2f5fcb224f"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-about-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-about-375.png",
+      "width": 375,
+      "height": 2067,
+      "bytes": 82503,
+      "sha256": "2552e935a92d4bfc42121c2dca2e83ab454914ea4cf39d3cccbbc7e08caee399"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-photos-12-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-photos-12-1440.png",
+      "width": 1440,
+      "height": 2443,
+      "bytes": 184867,
+      "sha256": "93908a3cc3b1fd41bd1b3c4ee26d6236de39f382cc0cc36415ee15fb71c570a3"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-photos-12-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-photos-12-375.png",
+      "width": 375,
+      "height": 2839,
+      "bytes": 125906,
+      "sha256": "bce060ae716e882ef77ee85c6b0d514d07992d697a2b605d9d21788170caa763"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-review-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-review-1440.png",
+      "width": 1440,
+      "height": 2215,
+      "bytes": 159053,
+      "sha256": "add925a5ef85168052d3a64e4c8cd82919949e5985d9a8f6c6b201e3cb9a79c2"
+    },
+    {
+      "phase": "before",
+      "file": "before/intake-review-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\intake-review-375.png",
+      "width": 375,
+      "height": 2523,
+      "bytes": 113490,
+      "sha256": "da15ed836283d8f225fc9a1a54f3287f6da2fb97e7ee0787e2742f2b51834b0a"
+    },
+    {
+      "phase": "before",
+      "file": "before/status-generating-ready-fixture-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\status-generating-ready-fixture-1440.png",
+      "width": 1440,
+      "height": 1838,
+      "bytes": 120495,
+      "sha256": "d5f00afbcaf3962d9c7e64cd895c1cacfc72b79381a657be9c2a1bd60ec6020a"
+    },
+    {
+      "phase": "before",
+      "file": "before/status-generating-ready-fixture-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\status-generating-ready-fixture-375.png",
+      "width": 375,
+      "height": 2042,
+      "bytes": 88328,
+      "sha256": "5709f23f5312a957b7eff856a323548f2c10dbdbbe29bc270c12890ec04ad530"
+    },
+    {
+      "phase": "before",
+      "file": "before/woo-order-pending-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\woo-order-pending-1440.png",
+      "width": 1440,
+      "height": 1775,
+      "bytes": 90560,
+      "sha256": "594f2abd47efb81e31a23270ab4ac5bd11123ed0693dc5b353d74cffbe8f4717"
+    },
+    {
+      "phase": "before",
+      "file": "before/woo-order-pending-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before\\woo-order-pending-375.png",
+      "width": 375,
+      "height": 2104,
+      "bytes": 72068,
+      "sha256": "b15671ce41313f1cbca1fe5fa7f2f215936725aa371365995518cde92b24dce9"
+    },
+    {
+      "phase": "after",
+      "file": "after/homepage-preview-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\homepage-preview-1440.png",
+      "width": 1440,
+      "height": 999,
+      "bytes": 275618,
+      "sha256": "5486ee2c01d249a31fe5b4cf27194ae27f0806dacf89b72229b50dbe9eaa6d9b"
+    },
+    {
+      "phase": "after",
+      "file": "after/homepage-preview-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\homepage-preview-375.png",
+      "width": 375,
+      "height": 1394,
+      "bytes": 121794,
+      "sha256": "d3a9b356dd4342e4cce499777e77e5ccfea52f47a9b71f312efd024375bc0a8b"
+    },
+    {
+      "phase": "after",
+      "file": "after/homepage-preview-photo-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\homepage-preview-photo-1440.png",
+      "width": 1440,
+      "height": 999,
+      "bytes": 675011,
+      "sha256": "7a3900902e1a5a1066d43b035fabdfcfe0d3cc5e6ed8d6675af445ce70ebb498"
+    },
+    {
+      "phase": "after",
+      "file": "after/homepage-preview-photo-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\homepage-preview-photo-375.png",
+      "width": 375,
+      "height": 1398,
+      "bytes": 270737,
+      "sha256": "59fd47d35baec1bb93906f8d618730247492559391895e0740360104e1f8a59b"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-about-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-about-1440.png",
+      "width": 1440,
+      "height": 1719,
+      "bytes": 97936,
+      "sha256": "3e121804bdb627042f1ed5bc3119c8141c4dab4fe28e6718a895b9de9db49642"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-about-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-about-375.png",
+      "width": 375,
+      "height": 1942,
+      "bytes": 75537,
+      "sha256": "2481747511313994173b6792230fc23e85e69b3e381f13b6eb2594a11ff17770"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-photos-12-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-photos-12-1440.png",
+      "width": 1440,
+      "height": 2280,
+      "bytes": 165903,
+      "sha256": "898ed2599e0a9f287d7a053e357bc2d4221f85e2cbba59c9aa33eb90b134ed22"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-photos-12-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-photos-12-375.png",
+      "width": 375,
+      "height": 2746,
+      "bytes": 121627,
+      "sha256": "a5f86795c859a7137a2bda75c27f23a46422115ec1c17e320cba7a24389d37d0"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-review-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-review-1440.png",
+      "width": 1440,
+      "height": 1950,
+      "bytes": 126518,
+      "sha256": "635ecd8f6724c2452e355167b3f2f11b7ef807bfb7bad365d14c80382c1c2ef4"
+    },
+    {
+      "phase": "after",
+      "file": "after/intake-review-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\intake-review-375.png",
+      "width": 375,
+      "height": 2432,
+      "bytes": 104859,
+      "sha256": "af108c1b9c60549ecc14f9fbc2a5db9d1e062bda5bf7262380852b986e1f579f"
+    },
+    {
+      "phase": "after",
+      "file": "after/status-generating-ready-fixture-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\status-generating-ready-fixture-1440.png",
+      "width": 1440,
+      "height": 1759,
+      "bytes": 112676,
+      "sha256": "ae7366793202470928bfa16d3d99041571c3fb5d4d787c950a4099079b1484f9"
+    },
+    {
+      "phase": "after",
+      "file": "after/status-generating-ready-fixture-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\status-generating-ready-fixture-375.png",
+      "width": 375,
+      "height": 1849,
+      "bytes": 86976,
+      "sha256": "e74fd3edc997c3ec0401af34c4b7c07b48778b2316c3a3ff1a07f28390c192ba"
+    },
+    {
+      "phase": "after",
+      "file": "after/woo-order-pending-1440.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\woo-order-pending-1440.png",
+      "width": 1440,
+      "height": 1737,
+      "bytes": 89568,
+      "sha256": "3cea72abb2262f8b94ab66b70104f33e396f253f9134f9c15545368640da67fc"
+    },
+    {
+      "phase": "after",
+      "file": "after/woo-order-pending-375.png",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after\\woo-order-pending-375.png",
+      "width": 375,
+      "height": 2001,
+      "bytes": 69394,
+      "sha256": "48b7ce99f3a2806c3429f8d8bd3b1a6b8ad6f77b2ec35212e2d6c75cbd249751"
+    },
+    {
+      "phase": "report",
+      "file": "before-browser-report.json",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\before-browser-report.json",
+      "bytes": 2201,
+      "sha256": "6f75106039ca97b994a3d78e39de9d847405190a1acc23a09159035e8bf57473"
+    },
+    {
+      "phase": "report",
+      "file": "after-browser-report.json",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\after-browser-report.json",
+      "bytes": 2200,
+      "sha256": "d1693f914f19d021fee60b3f5691cf658f8aec6b8b125f8047b7f078ec8989f4"
+    },
+    {
+      "phase": "report",
+      "file": "preview-interaction-smoke.json",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\preview-interaction-smoke.json",
+      "bytes": 627,
+      "sha256": "89b20c37bbba40c67a609eb5fffc75f02c2c123c872b00f071f2de5a1883dd70"
+    },
+    {
+      "phase": "final-contact-sheet",
+      "file": "final-contact-sheet.jpg",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\final-contact-sheet.jpg",
+      "bytes": 614818,
+      "sha256": "58822bb3533fcf5818a6e6dab0dc1ad4e97e4be751a954db4d9848f9b6a54df9",
+      "width": 1017,
+      "height": 4519
+    },
+    {
+      "phase": "readback",
+      "file": "fixture-cleanup-readback.json",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\fixture-cleanup-readback.json",
+      "bytes": 709,
+      "sha256": "44cefbbe245b7109a4dedc4cf8008c86edd53fd3b51a119c6561735c4e695612"
+    },
+    {
+      "phase": "documentation",
+      "file": "README.md",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\README.md",
+      "bytes": 6125,
+      "sha256": "a7a0aced5e79e7d2791dc74da1b235616cb5012ce51d4e0c6d88971f7cc40abc"
+    },
+    {
+      "phase": "readback",
+      "file": "runtime-css-restore-readback.json",
+      "absolute_path": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v1\\runtime-css-restore-readback.json",
+      "bytes": 723,
+      "sha256": "96b46872ad97c376a241201dfcb269eb48f5c0e9972a43a0a07089df8958abdd"
+    }
+  ],
+  "evidence_file_count_excluding_manifest": 35
+}

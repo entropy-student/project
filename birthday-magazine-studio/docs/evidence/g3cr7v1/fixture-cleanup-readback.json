@@ -1,0 +1,19 @@
+{
+  "database_health": "healthy",
+  "wordpress_runtime_http": 200,
+  "order_count_before": 1,
+  "order_count_after": 1,
+  "paid_order_count": 0,
+  "remaining_visual_fixture_count": 0,
+  "gate": "G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT",
+  "capture_status": "PAYMENT PENDING; Your magazine work has not started",
+  "fixture_order": "synthetic guest WooCommerce order, pending/unpaid, USD 39.99; used for order-received visual readback only",
+  "provider_calls": 0,
+  "model_or_generation_calls": 0,
+  "checkout_submission": 0,
+  "screenshots_use_synthetic_data": true,
+  "fixture": "g3cr7v1_local_visual_fixture",
+  "fixture_cleanup": "PASS",
+  "generation_jobs_created": 0,
+  "payment": 0
+}

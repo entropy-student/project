@@ -1,0 +1,97 @@
+{
+  "phase": "after",
+  "viewport": [
+    {
+      "route": "homepage-preview",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "intake-about",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "intake-photos-12",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "intake-review",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "status-fixture-generating-and-ready-visual-rows",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "woo-order-received-pending",
+      "innerWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "route": "homepage-preview",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "intake-about",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "intake-photos-12",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "intake-review",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "status-fixture-generating-and-ready-visual-rows",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "woo-order-received-pending",
+      "innerWidth": 375,
+      "scrollWidth": 375
+    }
+  ],
+  "checks": {
+    "previewNameUpdated": true,
+    "previewPhotoBlobLocal": true,
+    "checkoutHandoffNative": true,
+    "intakeNextBackAndPhotoGrid": true
+  },
+  "network": {
+    "posts": 0,
+    "thirdPartyPosts": 0,
+    "thirdPartyImagePosts": 0,
+    "thirdPartyImageGets": 0,
+    "pageErrors": 0,
+    "requestFailures": 0,
+    "previewPostDelta": 0,
+    "remoteWriteAttemptsBlocked": 0
+  },
+  "screenshots": [
+    "homepage-preview-1440.png",
+    "homepage-preview-photo-1440.png",
+    "intake-about-1440.png",
+    "intake-photos-12-1440.png",
+    "intake-review-1440.png",
+    "status-generating-ready-fixture-1440.png",
+    "woo-order-pending-1440.png",
+    "homepage-preview-375.png",
+    "homepage-preview-photo-375.png",
+    "intake-about-375.png",
+    "intake-photos-12-375.png",
+    "intake-review-375.png",
+    "status-generating-ready-fixture-375.png",
+    "woo-order-pending-375.png"
+  ]
+}

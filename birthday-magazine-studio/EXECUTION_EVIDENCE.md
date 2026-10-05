@@ -1152,3 +1152,16 @@ A synthetic guest pending order was created directly through WooCommerce applica
 Evidence: docs/evidence/g3cr7r1r2/README.md, runtime-diagnostics.json, order-received-readback.json, complete plugin-source-diff.patch and two actual screenshots. The first cleanup invocation safely refused a missing fixture ID without mutation; the subsequent exact-ID guarded delete succeeded.
 
 REAL_PAYMENTS=0; CHECKOUT_SUBMISSIONS=0; PROVIDER_MUTATIONS=0; MODEL_GENERATION_CALLS=0; PRODUCTION_DEPLOYMENTS=0; SHARED_INFRA_MUTATIONS=0; DOCKER_LIFECYCLE_MUTATIONS=0; PR64_MERGE=0; PREVIOUS_FRONTEND_SUITE_RERUN=0. Historical G3CR7R1 text above is preserved and superseded only for source-boundary/runtime/order-received evidence.
+## G3CR7V1 — Premium SaaS visual refinement (2026-10-05)
+
+**Executor result: `PASS_CANDIDATE_G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT`; stop at Reviewer.** Fresh fetch confirmed PR #64 is open/unmerged at baseline `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`; work is scoped to the existing PR. No Reviewer decision was changed.
+
+Only the homepage Free Preview/core-entry stylesheet and shared intake/status presentation stylesheet changed. Home Gutenberg content, form fields/validation/step count, browser-local `blob:` photo behavior, 12–25 photo bounds, must-use limit, six prompts, review semantics, native Woo handoff, unpaid-order truth, PHP/JS, products, account, order, payment, entitlement and generation behavior remain frozen. Runtime CSS was restored byte-for-byte after visual capture.
+
+Evidence is under [`docs/evidence/g3cr7v1/`](docs/evidence/g3cr7v1/): 14 before + 14 after screenshots at 1440×1000 and 375×812, browser/readback reports, interaction smoke, exact CSS restore and fixture cleanup read-backs, plus [`final-contact-sheet.jpg`](docs/evidence/g3cr7v1/final-contact-sheet.jpg). The refreshed manifest records all 28 screenshots and the supporting evidence files with sizes, hashes and local paths.
+
+Both viewports report `scrollWidth == innerWidth`; Preview name/photo update, local blob selection/removal/reselection, intake Next/Back/photo grid, and native Woo checkout handoff passed the minimal smoke. Network counts show zero POSTs, third-party image requests, Preview POST delta, blocked remote writes, page errors or failed requests. The synthetic local order-received state remained payment-pending; the temporary visual fixture was removed and read back absent. Orders remained 1→1, paid orders 0, generation/model calls 0. No checkout submission or payment occurred.
+
+Visual references were inspected for composition only; no Webflow runtime, source, paid library, font or image was copied. The exact rollback is the two CSS files from `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`; evidence README gives the restore command. No Docker lifecycle change or teardown; local runtime retained. No PayPal, real money, checkout submission, provider/model, production deployment, Shared Infra, P1–P12, G4 or merge action.
+
+`STOP_AT_REVIEWER=YES`.
