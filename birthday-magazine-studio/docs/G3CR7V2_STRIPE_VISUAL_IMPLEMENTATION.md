@@ -29,6 +29,22 @@ Supersedes:
 Owner decision:
 - `docs/OWNER_DECISION_G3CR7V2_STRIPE_STYLE_LOCK_2026-10-05.md`
 
+### Canonical DESIGN.md reference
+
+The Owner supplied a concrete Stripe-inspired DESIGN.md. It is now vendored project-locally and is the **primary visual-system authority** for this Gate:
+
+1. `docs/design-references/stripe/PROJECT_ADAPTER.md`
+2. `docs/design-references/stripe/DESIGN.md`
+3. `docs/design-references/stripe/SOURCE.md`
+4. `docs/design-references/stripe/LICENSE-VoltAgent.txt`
+
+Upstream:
+- `VoltAgent/awesome-design-md/design-md/stripe/DESIGN.md`
+- pinned upstream blob: `589bd23baeb1344444f087043c060afd6239371f`
+- MIT licensed.
+
+Where the generic DESIGN.md conflicts with Birthday Magazine product constraints, `PROJECT_ADAPTER.md` wins. Do not replace these references with an Executor-invented Stripe summary.
+
 ## Frozen behavior
 
 Do not change:
@@ -52,6 +68,8 @@ No backend draft persistence or generation wiring in this Gate.
 ## Stripe visual system
 
 ### Global app tokens
+
+Use the exact project-local DESIGN.md + adapter above. The following summary is secondary and must not replace them.
 
 Use a Stripe-like application shell, not Stripe branding:
 
@@ -158,9 +176,10 @@ If any frozen behavior differs materially, RETURN.
 Provide:
 
 1. exact source baseline and changed files;
-2. Stripe-style token sheet;
-3. scoped source diff;
-4. before/after screenshots at 1440 and 375 for:
+2. proof that the vendored DESIGN.md blob is `589bd23baeb1344444f087043c060afd6239371f` and that `PROJECT_ADAPTER.md` was read before visual mutation;
+3. Stripe-style token sheet that maps implementation tokens back to DESIGN.md tokens;
+4. scoped source diff;
+5. before/after screenshots at 1440 and 375 for:
    - homepage Preview/core-entry;
    - intake About;
    - intake Photos with >=12 local photographic/neutral fixtures;
@@ -168,18 +187,18 @@ Provide:
    - Woo pending continuation;
    - status/generating fixture;
    - ready fixture;
-5. final desktop/mobile contact sheet;
-6. no horizontal overflow at 375;
-7. smallest smoke proof:
+6. final desktop/mobile contact sheet;
+7. no horizontal overflow at 375;
+8. smallest smoke proof:
    - Preview name/photo still updates locally;
    - photo remains `blob:`, no upload/model call;
    - intake Next/Back/photo-grid/must-use still works;
    - Woo checkout handoff unchanged;
    - unpaid real Woo fixture still shows PAYMENT PENDING;
-8. local-runtime readback proving the **same visual candidate remains mounted after screenshot capture**;
-9. no SVG/cartoon human placeholders in final screenshots;
-10. counters: real payment/provider/model/deploy/shared infra all 0;
-11. `STOP_AT_REVIEWER=YES`.
+9. local-runtime readback proving the **same visual candidate remains mounted after screenshot capture**;
+10. no SVG/cartoon human placeholders in final screenshots;
+11. counters: real payment/provider/model/deploy/shared infra all 0;
+12. `STOP_AT_REVIEWER=YES`.
 
 ## ACCEPTANCE_CRITERIA
 
@@ -202,7 +221,12 @@ Read only:
 
 1. this Gate;
 2. `docs/OWNER_DECISION_G3CR7V2_STRIPE_STYLE_LOCK_2026-10-05.md`;
-3. current PR target files:
+3. **mandatory design authority**:
+   - `docs/design-references/stripe/PROJECT_ADAPTER.md`
+   - `docs/design-references/stripe/DESIGN.md`
+   - `docs/design-references/stripe/SOURCE.md`;
+4. current PR target files:
+
    - `poc/g3c/preview-plugin/birthday-magazine-poc.php`
    - `poc/g3c/preview-plugin/magazine-preview.css`
    - `poc/g3c/preview-plugin/frontend-reproduction.php`
@@ -210,8 +234,8 @@ Read only:
    - `poc/g3c/preview-plugin/frontend-reproduction.js`
    - `poc/g3c/preview-plugin/studio.css`
    - `poc/g3c/preview-plugin/home.css` only if the actual Preview/core-entry requires it;
-4. current rejected G3CR7V1 screenshots only as before-baseline evidence;
-5. existing approved project-local photographic assets.
+5. current rejected G3CR7V1 screenshots only as before-baseline evidence;
+6. existing approved project-local photographic assets.
 
 Do not reread broad Governance/project history.
 Do not run the superseded three-style audition.
