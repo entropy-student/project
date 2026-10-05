@@ -8285,3 +8285,29 @@ Validation: the updated project validator invoked the production rollback functi
 Scope/safety: only the auth checkpoint, its validator, this append-only Evidence section, and the current Executor Handoff block changed. No Gate or Reviewer Handoff was modified. Real Owner config was not read or deleted; no login, `who`, Baidu executable, Secret/DPAPI, network/provider operation, VPS/SSH, or service/network-setting change occurred. GitHub fetch/push was used only for the explicitly required repository sync. Existing untracked `results/` artifacts were left untouched.
 
 Rollback: revert only this Gate's two script edits and the current Evidence/Handoff update; retain later unrelated canonical-main commits. No runtime or Owner state changed. GitHub fresh read-back and commit identity are reported in the completion packet.
+
+
+## Reviewer reconciliation — G4-B Baidu Pre-existing Empty Rollback Repair R6R2E-R1 — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+REVIEWER_RESULT=PASS_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+SOURCE_COMMIT=9b65fed5b58b7c1f71615cda7b100acbfd1aa9c0
+AUTH_HELPER_BLOB=e67197ee15ad4ce758ed2c624c80d69dfd4bb08a
+AUTH_VALIDATOR_BLOB=f49abcb6073e6b9c048825e1caec777df9e8f530
+FROZEN_RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
+R6R2F_GATE_BLOB=446da501a77ca58b11cf41a4be2b73f44082ca72
+REAL_CONFIG_ACTIONS=0
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+```
+
+Reviewer independently inspected the narrow source diff, production rollback functions, six provenance fixtures, full R6R2E/R6/R6R1 regression, changed-path scope, and frozen reconciliation helper identity.
+
+The blocking defect is repaired: `Remove-NewEmptyBaiduConfigDirectory` now requires explicit `RootCreatedThisRun`. A pre-existing empty root returns `PRESERVED_PREEXISTING_EMPTY`; only an empty root created by this run is eligible for exact non-recursive deletion. The finally path passes the actual `interactiveAuthConfigCreated` provenance flag. Exact newly-created `pcs_config.json` rollback remains provenance-aware: pre-existing root -> remove file only/preserve root; run-created root -> remove exact file then exact empty root. Unknown non-empty state remains preserved.
+
+The required provenance fixtures call the production rollback functions. No content-read or broad recursive-delete path was added. The frozen metadata-only reconciliation helper remains unchanged.
+
+R6R2E-R1 closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F`.
