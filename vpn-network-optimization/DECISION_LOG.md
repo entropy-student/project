@@ -607,3 +607,12 @@ The retained adapter path now uses fail-on-existing creation with the Owner-only
 The earlier generic Owner build failure remains unattributed; it is not retrospectively labeled as an ACL privilege failure.
 
 Next Gate: `G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3`, which retries only the retained build once and stops before authentication.
+
+
+## 2026-10-05 — R6R2I-D3 real Owner retained build passed
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3`.
+
+The reviewed D2 build helper succeeded on the real Owner host. Pinned upstream/toolchain identities matched, the Windows amd64 adapter digest exactly matched the reviewed value, the retained runtime binary was created, Go tests and native failure fixture passed, and temp cleanup passed. Authentication did not start.
+
+Next Gate: `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I_D4`, exactly one Owner-local authentication checkpoint using the existing retained binary, with no rebuild or retry.
