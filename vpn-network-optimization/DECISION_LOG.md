@@ -684,3 +684,16 @@ Because the R6R2J-R1 parser already accepts one canonical identity line plus unr
 The accepted authentication config and authentication/readiness checkpoint remain frozen; no re-authentication is authorized.
 
 Next Gate: `G4B_BAIDU_UID_UTF8_DECODE_RETRY_R6R2J_R3`. Owner first runs the full local validator; only on PASS may exactly one read-only `who` retry occur.
+
+
+## 2026-10-05 — Post-auth Baidu identity confirmed; carry UTF-8 fix into live runner
+
+**Decision:** `PASS_G4B_BAIDU_UID_UTF8_DECODE_RETRY_R6R2J_R3`.
+
+The accepted authenticated config successfully produced one canonical account UID through a real read-only `who`; the numeric value remained Owner-local and runtime cleanup passed.
+
+The old standalone R6R2 readiness rerun is superseded for this post-auth path because feeding the just-discovered UID back into the same config immediately would provide no independent identity evidence. The live runner's own account-match guard remains required before recovery/provider mutation.
+
+Reviewer applied the same explicit UTF-8 stdout/stderr decoding boundary to the live runner's bounded Baidu CLI process path so both `who` and later Chinese-text listing parsing use the same proven decode contract.
+
+Next Gate: `G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K`, offline validator only.
