@@ -9,6 +9,7 @@
 - [runtime-boundary.json](runtime-boundary.json): exact source/mount correlation, eight original backup hashes, frozen business files and Home/theme state.
 - [delivery.json](delivery.json): ordinary-cache Edge loads exact final CSS/assets/font hashes, with no routing, cache clear or bypass.
 - [Image manifest](image-manifest.json), [asset manifest](asset-manifest.json), [asset provenance](ASSET_PROVENANCE.md).
+- [Committed Git read-back](git-readback.json):all156image blobs/six assets/four source files verified. Binary images/fonts are byte-exact; text files are equivalent after repository CRLF/LF normalization. No global Git setting change. The unmodified upstream Manrope license retains its original trailing space; this is the sole staged diff-check warning, not an application whitespace defect.
 
 ## Authority / baseline
 
