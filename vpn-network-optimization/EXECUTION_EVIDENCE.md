@@ -9002,3 +9002,23 @@ Reviewer confirms the R6R2I-D5-R1 Gate is fully satisfied. The compiled candidat
 Therefore D5's console-output repair is formally closed PASS. The already authenticated Owner config remains accepted/frozen and no re-authentication is authorized.
 
 Next Gate `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J` reuses the previously reviewed read-only UID helper to establish the local expected account identity before any recovery-object provider mutation.
+
+
+## Owner result — R6R2J post-auth UID discovery — 2026-10-05
+
+```text
+REVIEWER_RESULT=RETURN_R6R2J_BAIDU_UID_OUTPUT_AMBIGUOUS
+BAIDU_UID_DISCOVERY=FAIL_CLOSED
+BAIDU_UID_FAILURE_CODE=BAIDU_UID_OUTPUT_AMBIGUOUS
+BAIDU_UID_RUNTIME_CLEANUP=PASS
+UID_DISPLAYED_LOCALLY=NO
+AUTHENTICATED_CONFIG_STATE=ACCEPTED_FROZEN
+REAUTH_AUTHORIZED=NO
+R6R2J_R1_GATE_BLOB=33609b9eb0b51b6387e428acbf625a3f21d1441f
+```
+
+The Owner-local read-only UID checkpoint failed closed before exposing a UID. Temporary runtime cleanup passed. The accepted authenticated config remains unchanged and no authentication retry is authorized.
+
+Reviewer source inspection found the discovery parser stricter than both the pinned BaiduPCS-Go v4.0.2 `who` output contract and the already accepted readiness parser: it rejects when generic `uid` mentions exceed one, even when there is exactly one canonical account-identity line. Real provider stdout/stderr was not requested or persisted.
+
+Next Gate `G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1` is offline-only and repairs this parser/validator mismatch before any Owner retry.
