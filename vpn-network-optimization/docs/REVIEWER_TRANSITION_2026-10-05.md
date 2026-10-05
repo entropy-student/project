@@ -275,11 +275,23 @@ Formal result:
 RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
 ```
 
-### R12 — current local ACL owner-drift inventory — READY
+### R12 — current local ACL owner-drift inventory — READY TO EXECUTE
 
 Current Gate:
 
 `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md`
+
+Prepared helper:
+
+`scripts/g4b-baidu-config-acl-owner-drift-r12.ps1`
+
+Locked identities:
+
+```text
+R12_GATE_BLOB=8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f
+R12_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
+```
+
 
 R12 is local metadata-only.
 
