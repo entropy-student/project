@@ -9809,3 +9809,51 @@ R10_VALIDATOR_BLOB=aa8a6db471b83de173c02ae2956719d1ebfdef4b
 ```
 
 All earlier R10 runner/gate/validator identities are superseded for execution. R10 remains offline-only and no live retry is authorized.
+
+
+## Reviewer reconciliation — R10 validator parser-preflight return and rebuild — 2026-10-05
+
+Owner retry reached locked R10 sources and stopped before validator execution:
+
+```text
+CHECKPOINT_STARTED_AT=2026-10-05T15:39:31.9268507+00:00
+HEAD_AFTER=785a6e98be04727191f79236956bddd5b26241a0
+PROJECT_SOURCE_STATUS=PASS
+PREEXISTING_RESULTS_PRESERVED=YES
+GATE_BLOB=86fd201aa368ab1fd45b5e2f83e5c64f993ba3e2
+RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+VALIDATOR_BLOB=aa8a6db471b83de173c02ae2956719d1ebfdef4b
+LOCKED_R10_SOURCE_IDENTITY=PASS
+CURRENT_GATE_ALIGNMENT=PASS
+RESULT=PARSER_PREFLIGHT_FAILED
+FAILED_FILE=g4b-live-runner-fixture-validator.ps1
+R10_VALIDATOR_EXECUTED=NO
+LIVE_G4B_RUNNER_EXECUTED=NO
+BAIDU_LIVE_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Reviewer reconciliation:
+- The runner parser passed; the only failing file was the R10 validator.
+- The first parser error occurred in the newly added `BaiduRealListingParser` static source-contract expression. Later parser messages were cascading syntax errors.
+- To avoid carrying forward hidden syntax damage from iterative edits, the validator was rebuilt from the last parser-validated R9 validator blob `eac0f9684b8f98b71c856e4d297da03f867b2d51`.
+- Only the intended R10 changes were re-applied:
+  1. real-listing parser static contract;
+  2. borderless fake `ls -l` rows;
+  3. real file/directory/exact-basename behavioral fixtures;
+  4. negative pipe-border-only parser regression.
+- Fresh read-back shows the rebuilt validator is 599 lines versus 569 lines for the R9 baseline: exactly +30 lines.
+- The rebuilt validator contains all R10 markers and no old pipe-delimited fake provider rows.
+- No validator body ran and no live/provider/Secret/network action occurred.
+
+Authoritative R10 identities are now:
+
+```text
+R10_GATE_BLOB=362d8b81831b773ca1638e346b236ee77f2e48d0
+R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+R10_VALIDATOR_BLOB=d98e479d3db03a9c4e94e8139a11c23b6d195278
+```
+
+All earlier R10 Gate/validator identities are superseded for execution. R10 remains offline-only.
