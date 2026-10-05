@@ -141,7 +141,7 @@ function Test-RunnerContract {
     $baiduUtf8Decode=($Text.Contains('$utf8NoBom=[Text.UTF8Encoding]::new($false)') -and $Text.Contains('$psi.StandardOutputEncoding=$utf8NoBom') -and $Text.Contains('$psi.StandardErrorEncoding=$utf8NoBom'))
     $baiduEnvironmentRemoveOutputSuppressed=($Text.Contains('[void]$psi.Environment.Remove([string]$key)') -and -not $Text.Contains('{$psi.Environment.Remove([string]$key)}'))
     $baiduStateStart=$Text.IndexOf('function Get-BaiduRemoteObjectState {',[StringComparison]::Ordinal)
-    $baiduStateEnd=$Text.IndexOf('function Read-Hy2Auth {',$baiduStateStart,[StringComparison]::Ordinal)
+    $baiduStateEnd=$Text.IndexOf('function Ensure-BaiduRecoveryDirectory {',$baiduStateStart,[StringComparison]::Ordinal)
     $baiduStateBody=if($baiduStateStart -ge 0 -and $baiduStateEnd -gt $baiduStateStart){$Text.Substring($baiduStateStart,$baiduStateEnd-$baiduStateStart)}else{''}
     $baiduRealListingParser=(
         $baiduStateBody.Contains('$pattern=') -and
