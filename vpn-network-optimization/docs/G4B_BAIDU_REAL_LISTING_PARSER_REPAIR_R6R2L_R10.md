@@ -53,6 +53,13 @@ Upstream v4.0.2 source used for this reconciliation:
 
 The upstream upload implementation also confirms a local file is saved under the supplied target directory using its basename. The pending basename/path design itself is therefore not the identified defect.
 
+## LOCKED SOURCES
+
+```text
+R10_RUNNER_BLOB=9cfac247da85e917e213c28172fb619a62329592
+R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+```
+
 ## REPAIR SCOPE
 
 Only:
