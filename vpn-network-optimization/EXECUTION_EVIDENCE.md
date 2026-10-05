@@ -8726,3 +8726,23 @@ The failure occurred after the adapter Go test passed and before the wrapper inv
 The frozen build helper reports generic `BUILD_VALIDATION_FAILED` for non-symbolic PowerShell/.NET exceptions. A prior offline fixture already demonstrated that this Owner execution context lacks `SeSecurityPrivilege`, so retained-binary ACL application is a plausible fault domain, but it is not accepted as the cause without read-only reconciliation.
 
 Next Gate: `G4B_BAIDU_OWNER_BUILD_FAILURE_DIAGNOSTIC_R6R2I_D1`. No build/auth retry is authorized.
+
+
+## Owner diagnostic — R6R2I-D1 residual runtime state — 2026-10-05
+
+```text
+R6R2I_BUILD_DIAG=PASS
+R6R2I_RUNTIME_ROOT_STATE=PRESENT_SAFE
+R6R2I_RUNTIME_DIR_STATE=PRESENT_SAFE
+R6R2I_ADAPTER_BINARY_STATE=ABSENT
+R6R2I_ADAPTER_BINARY_IDENTITY=NOT_APPLICABLE
+R6R2I_AUTH_CHECKPOINT_STARTED=NO
+R6R2I_PROVIDER_AUTH_ACTIONS=0
+R6R2I_DIAGNOSTIC_MUTATIONS=0
+```
+
+The failed R6R2I attempt left the two runtime directories in their accepted safe state and left no retained adapter binary. Authentication never started. No cleanup action is needed before source repair.
+
+The remaining fault domain is the retained-binary creation/copy/ACL/hash section. The known Owner-token `SeSecurityPrivilege` limitation makes the current post-create `Set-OwnerOnlyAcl` owner rewrite a plausible cause, but exact causality remains unproven.
+
+Next Gate: `G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2`, offline only.
