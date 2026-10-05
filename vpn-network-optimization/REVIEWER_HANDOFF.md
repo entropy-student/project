@@ -63,8 +63,7 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
-- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. The verified local ZIP path is now used after archive SHA-256 validation, production pending local/remote basenames are aligned with a pre-CLI fail-closed guard, R1-R4 regressions and R5R1 fixtures passed, and no live/Baidu/VPS/Secret/network action occurred. This accepts the offline backend source only; G4-B itself remains IN_PROGRESS.
-- R6 Owner-local Baidu auth-readiness checkpoint passed its non-ACL offline boundaries, but formal Reviewer result is RETURN because the production config ACL predicate does not yet validate the full Governance ACL invariant (inheritance, Deny rules, explicit allowlist, and Owner required read rights). Synthetic ACE injection is accepted as the correct fixture technique; R6R1 is the only required repair.
+- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. R6R1 subsequently closed the ACL-validator completeness gap. The first bounded live attempt R5 reached P5 and returned before consequential mutation; R6 excluded local DPAPI/HY2/Mihomo, R7 identified PowerShell success-stream pollution at the Baidu process-result boundary, and R8 formally accepted the one-line `[void]$psi.Environment.Remove(...)` repair with full positive/negative regression coverage. G4-B remains IN_PROGRESS and is now ready only for the bounded R9 live retry.
 
 ### Secret / recovery
 
@@ -123,7 +122,7 @@ REVIEWER_TO_EXECUTOR_RELAY=NONE.
 EXECUTOR_TO_REVIEWER_RELAY=Return sanitized non-secret live output only; no G4-C or closeout.
 ```
 
-G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. R6 returned only on an ACL-validator completeness gap; live G4-B remains blocked until R6R1 is Reviewer PASS and the later Owner-side authenticated config is proven.
+G4-B0 is formally closed PASS. The G4-B offline/live-runner package is accepted through the R8 Baidu pipeline-output repair. The first live R5 attempt failed in P5 with `CONSEQUENTIAL_MUTATION_STARTED=NO`; no persistent REALITY/profile mutation from that attempt is accepted. Owner selected Baidu Netdisk as the second-failure-domain provider and bounded live G4-B authorization remains granted. The only current consequential action is the one-shot R9 live retry locked above.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -318,11 +317,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B Baidu recovery backend R5R1 is formally PASS. R6 auth-readiness checkpoint is Reviewer RETURN only for ACL invariant completeness; persistent REALITY/service/Secret/profile writes remain blocked until R6R1 PASS and later Owner-local authenticated Baidu config proof.
-- Baidu Netdisk is the approved second failure domain; the remaining recovery prerequisite is proving an Owner-local authenticated BaiduPCS-Go config through the reviewed readiness boundary without exposing credentials.
-- Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
-- Persistent three-role Clash profile does not yet exist.
-- G4-C must prove how representative Codex/OpenAI/image-generation traffic actually traverses the selected Clash role; system proxy is tested before any TUN design.
+- G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS; R9 one-shot live retry is READY but has not yet been executed.
+- Baidu Netdisk is the approved second failure domain. R9 must re-enter the bounded live P5 path and prove the required authenticated read/recovery workflow without exposing credentials.
+- Persistent REALITY backup service and the persistent three-role `SELF-VPN-V1` profile are not accepted until R9 reaches PASS_CANDIDATE and Reviewer formally accepts the evidence.
+- Any R9 failure or ambiguity requires reconciliation before retry; no blind replay.
+- G4-C must prove representative Codex/OpenAI/image-generation traffic after G4-B formal acceptance; system proxy is tested before any TUN design.
 - G4-C peak-hour + representative real-workload validation remains pending.
 - Final v1 production default/control posture remains pending G4.
 - Final WireGuard routing / kill-switch policy remains pending v1 sealing.
