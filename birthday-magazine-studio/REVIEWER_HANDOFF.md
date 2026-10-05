@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT
+CURRENT_GATE=G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -139,6 +139,14 @@ G3CR7V2R1_REVIEWER_VISUAL=PASS
 G3CR7V2R1_RUNTIME_VISUAL_ASSETS=PASS
 G3CR7V2R1_RUNTIME_MAIN_PLUGIN=RETURN_IDENTITY_MISMATCH
 G3CR7V2R1_OWNER_VISUAL=BLOCKED_UNTIL_RUNTIME_ALIGNMENT
+G3CR7V2R1R1_GATE=SUPERSEDED_BEFORE_EXECUTION
+G3CR7V2R2_OWNER_PRIMARY=#713F5D
+G3CR7V2R2_OWNER_PRIMARY_DEEP=#5B314B
+G3CR7V2R2_APPLICATION_BACKGROUND=#F7F8FB
+G3CR7V2R2_DECORATIVE_MESH=REMOVE
+G3CR7V2R2_REPLACEMENT_DECORATION=NONE
+G3CR7V2R2_LAYOUT_STRUCTURE=FROZEN
+G3CR7V2R2_CONTENT=FROZEN
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -183,19 +191,25 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT`
+`G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT`
 
-G3CR7V2R1 Stripe visual design is **Reviewer PASS** at candidate `18ab6b0e6d18d973bd4cc9376cec97b6fb89b830`.
+Owner accepted the Stripe-derived SaaS structure but requested one final bounded brand correction before live acceptance:
 
-The only blocker before Owner live review is runtime candidate identity: the retained local runtime has candidate-matching CSS/SVG but a pre-existing dirty `birthday-magazine-poc.php` whose blob differs from the immutable PR candidate.
+- delete the decorative mesh SVG entirely;
+- do not replace it with another visual asset;
+- replace Stripe indigo with Birthday Magazine mulberry `#713F5D`;
+- preserve the accepted layout, content and business behavior.
+
+The previously opened runtime-alignment-only Gate is superseded before execution and folded into this combined Gate, per Governance's preference for one Gate when target/rollback/risk boundaries are compatible.
 
 Current Gate:
-- `docs/G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT.md`
+- `docs/G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT.md`
 
-Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR7V2R1_RETURN_RUNTIME_IDENTITY_2026-10-05.md`
+Owner decision:
+- `docs/OWNER_DECISION_G3CR7V2R2_BRAND_PALETTE_NO_MESH_2026-10-05.md`
 
-No visual redesign or payment/business work is authorized.
+Updated design adapter:
+- `docs/design-references/stripe/PROJECT_ADAPTER.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -260,15 +274,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs `G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT`.
-2. Read-only diff the active runtime main plugin against the approved PR candidate and classify the pre-existing local delta.
-3. If stale/unneeded, align the runtime to the exact candidate files, perform only minimal homepage/intake/status smoke, and leave the exact candidate mounted.
-4. If a material local-only dependency exists, RETURN without overwriting it.
-5. Reviewer checks runtime identity, then Owner opens `127.0.0.1:8189` for final Stripe visual acceptance.
+1. Executor runs `G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT`.
+2. First reconcile the retained runtime PHP identity; if a material local-only dependency exists, RETURN before visual mutation.
+3. If safe, delete the mesh SVG/references and apply only the locked mulberry brand tokens to the already-approved SaaS structure.
+4. Return six bounded 1440/375 screenshots and leave the exact final candidate mounted at `127.0.0.1:8189`.
+5. Reviewer inspects the final bounded diff/runtime identity; then Owner performs live local visual acceptance.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until runtime identity is aligned.** The Stripe visual candidate itself has passed Reviewer visual inspection.
+**NONE.** Owner has already approved the bounded no-mesh + mulberry direction.
 
 ## EVIDENCE_POINTERS
 
