@@ -8105,3 +8105,28 @@ Rollback is source-only: revert the two new scripts and this Evidence/Handoff up
 ### Evidence clarification
 
 The preceding rollback sentence used PRE_GATE_HEAD as a shorthand; the canonical main advanced to 83c698ddd8ede8035aa45cbe5c88d287131aa19e for unrelated birthday-magazine-studio changes before this Gate commit. Rollback means reverting only this Gate's four project-owned paths/commit while preserving that newer main history; do not reset main to PRE_GATE_HEAD or discard unrelated commits. NETWORK_REQUESTS=0 refers to Owner/helper/Baidu/provider/runtime traffic; GitHub fetch/push was performed solely for the explicitly required repository synchronization.
+
+
+## Reviewer reconciliation — G4-B Baidu Owner Interactive Auth Helper R6R2C — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+SOURCE_COMMIT=c7516042c9c2f4a6e373b9a35986c760d1583e89
+IMPLEMENTATION_COMMIT=ac5e9be5113b22b7d62904277fcb6cfe39a99bb8
+INTERACTIVE_AUTH_HELPER_BLOB=cbf8c971567faea3b1735786827611861dafe52a
+INTERACTIVE_AUTH_VALIDATOR_BLOB=4bf30c0629f8136f8a3eb6c4d8710d1c801472e7
+R6R2D_GATE_BLOB=3d31312f26ebe10d43fcf4221cf7365fbe374365
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+```
+
+Reviewer independently inspected the login process construction, environment allowlist, inherited console behavior, config classification/mutation boundaries, post-login ACL validation, single read-only who ordering, UID/raw-output suppression, cleanup/rollback logic, validator fixtures, changed-path scope, and current source identities.
+
+The helper launches only `login` with no credential flags, clears the environment and adds only the reviewed non-secret/config variables, inherits the live Owner console without redirect/capture/transcript, verifies native exit status, revalidates config ACL before one captured read-only `who`, and gates success on unique UID parsing plus runtime cleanup. Unknown non-empty config is rejected before ACL mutation. Newly created config is deleted only if still empty; any non-empty partial state is preserved fail-closed.
+
+The frozen R6R2A validator's DOTSOURCE_ENTRYPOINT_GUARD_MISSING is accepted as a CRLF-sensitive regex false negative: its multiline `$` pattern does not allow the `\r` before Windows `\n`. Direct source inspection confirms the guard remains present; R6R2C independently validates the guards/parser without changing frozen R6R2A files.
+
+R6R2C closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RUN_R6R2D`.
