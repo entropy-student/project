@@ -343,7 +343,8 @@ Fast-forward to current main, verify the R10 parser-repair Gate/runner/validator
 Read only what is needed:
 
 - `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R9 chronology, root-cause repair, authorization, and active live-retry boundary.
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — exact current one-shot live retry Gate.
+- `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — exact current offline parser-repair Gate.
+- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — historical failed live retry Gate; do not execute.
 - `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
 - `EXECUTION_EVIDENCE.md` — append-only execution proof; accepted R2R3/R2R3V2 sections are near the tail.
 - `DECISION_LOG.md` — architecture and authorization rationale, including accepted scanner repair and fresh R3R2 authorization requirement.
