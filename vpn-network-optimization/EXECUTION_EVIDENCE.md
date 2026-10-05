@@ -8047,3 +8047,57 @@ Reviewer reconciled the marker combination against the accepted R6R2A helper sou
 Pinned upstream v4.0.2 source was inspected. Credential-bearing cookie/BDUSS/username/password flag forms are disallowed by project Secret policy. The only candidate that keeps credential values out of CLI args/environment is the no-argument interactive `login`, whose password prompt is no-echo; upstream explicitly marks this flow long-unmaintained, so it requires a bounded Owner-only helper and fail-closed post-login validation before use.
 
 Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C`.
+
+## Executor result — G4-B Baidu Owner Interactive Auth Helper R6R2C — 2026-10-05
+
+GATE_ID=G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+PRE_GATE_HEAD=4cba80d07ef572bf840d32608cbdccce7fcd1409
+GATE_BLOB=5da63ed15d116ad85517b1e757a20f7bdd834341
+R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+R6R2A_HELPER_BLOB=ba8502287989ecc8c9b003e67c729b6d82df378a
+R6R2A_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
+CHANGED_PATHS=scripts/g4b-baidu-owner-interactive-auth-checkpoint.ps1;scripts/g4b-baidu-owner-interactive-auth-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+
+### Offline acceptance
+
+R6R2C_PINNED_ARCHIVE_TRUST_REUSED=PASS
+R6R2C_LOGIN_NO_CREDENTIAL_FLAGS=PASS
+R6R2C_LOGIN_NO_CREDENTIAL_ENV=PASS
+R6R2C_LOGIN_INTERACTIVE_CONSOLE_INHERITED=PASS
+R6R2C_LOGIN_OUTPUT_NOT_CAPTURED_OR_LOGGED=PASS
+R6R2C_VERBOSE_DEBUG_DISABLED=PASS
+R6R2C_EXISTING_UNKNOWN_CONFIG_FAIL_CLOSED=PASS
+R6R2C_EMPTY_CONFIG_INITIALIZATION_BOUNDED=PASS
+R6R2C_R6R1_ACL_POLICY_REUSED=PASS
+R6R2C_NATIVE_LOGIN_EXIT_CHECKED=PASS
+R6R2C_POST_LOGIN_WHO_ONLY=PASS
+R6R2C_UID_NOT_EMITTED=PASS
+R6R2C_PARTIAL_FAILURE_NO_FALSE_PASS=PASS
+R6R2C_TEMP_CLEANUP=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+
+Synthetic coverage used non-secret local fixtures only: absent config directory initialization and exact empty-directory rollback; pre-existing empty directory tightened only at the target and preserved; unknown non-empty directory rejected before ACL mutation and its fixture file retained; newly created non-empty partial config preserved; accepted who parser valid/unauthenticated/ambiguous outcomes; valid runtime cleanup and refusal to delete unexpected runtime content. R6R1's full ACL/config validator passed, including all R6R1 ACL acceptance/rejection fixtures. The R6R2C validator also verified the source-only invocation guards without executing either Owner helper.
+
+### Runtime boundary and anomaly
+
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+SECRET_OR_DPAPI_ACCESSED=NO
+VPS_OR_SSH_ACTIONS=0
+CLASH_ROUTE_PROXY_TUN_SERVICE_ACTIONS=0
+LIVE_G4B_ACTIONS=0
+OWNER_UID_ACCESSED_OR_EMITTED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+OWNER_CHECKPOINT_EXECUTED=NO
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+STOP_AT_REVIEWER=YES
+
+An additional unchanged R6R2A validator invocation returned DOTSOURCE_ENTRYPOINT_GUARD_MISSING. Targeted inspection proved the accepted R6R2A source guard exists; the frozen validator's multiline end-anchor omits optional CR before LF and therefore false-negatives that CRLF source. The R6R2C validator independently checked the exact source-only guard and exercised the accepted UID parser with synthetic fixtures. No frozen source or validator was changed.
+
+Rollback is source-only: revert the two new scripts and this Evidence/Handoff update to PRE_GATE_HEAD. No Owner config, provider, network, VPS, or service state was changed.

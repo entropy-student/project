@@ -4,26 +4,30 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Owner UID Discovery Helper R6R2A
+## Current execution status — G4-B Baidu Owner Interactive Auth Helper R6R2C
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
-EXECUTOR_ROLE=OFFLINE_OWNER_UID_HELPER_BUILD_AND_FIXTURE_VALIDATION
-PREVIOUS_STATE=R6R2_BLOCKED_EXPECTED_UID_UNKNOWN
+GATE_ID=G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+EXECUTOR_ROLE=OFFLINE_INTERACTIVE_AUTH_HELPER_BUILD_AND_FIXTURE_VALIDATION
+PREVIOUS_RESULT=RETURN_OWNER_ACTION_REQUIRED_R6R2B_CONFIG_ABSENT
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=f3ee1374ac3049bf8130a1f6cf35675881b61cc6
-R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
+PRE_GATE_HEAD=4cba80d07ef572bf840d32608cbdccce7fcd1409
+R6R2C_GATE_BLOB=5da63ed15d116ad85517b1e757a20f7bdd834341
 R6R1_RESULT=PASS
 R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
 R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+R6R2A_RESULT=PASS
+R6R2A_HELPER_BLOB=ba8502287989ecc8c9b003e67c729b6d82df378a
+R6R2A_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
 SOURCE_PROVENANCE=PASS
 PRE_GATE_TRACKED_WORKTREE=CLEAN
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
-UID_DISCOVERY_HELPER_READY=YES
-UID_HELPER_OFFLINE_FIXTURES=PASS
+INTERACTIVE_AUTH_HELPER_READY=YES
+R6R2C_OFFLINE_FIXTURES=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
-OWNER_UID_HELPER_EXECUTED=NO
+OWNER_LOGIN_HELPER_EXECUTED=NO
+REAL_LOGIN_ACTIONS=0
 REAL_BAIDU_ACTIONS=0
 OWNER_CONFIG_READ=NO
 OWNER_UID_ACCESSED_OR_EMITTED=NO
@@ -35,13 +39,14 @@ REAL_WHO_INVOKED=NO
 BAIDU_CLI_INVOKED=NO
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+REVIEWER_HANDOFF_MODIFIED=NO
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-R6R2A adds a minimal Owner-local UID discovery checkpoint that reuses the accepted R6R1 archive trust chain, config location/reparse/ACL predicate, and captured `who` process boundary. It accepts no arguments, parses one numeric UID only in memory, suppresses username and raw provider output, prints the UID only on the Owner's local console after successful cleanup, and explicitly warns against sharing it. The offline validator covered unique/ambiguous/unauthenticated parser cases, source-only dot-sourcing, ACL reuse, and exact temporary cleanup using non-secret fixtures. The Owner helper was not executed; no real config, UID, provider, credential, VPS, or network was accessed. Stop at Reviewer.
+R6R2C adds a no-argument Owner-local interactive login checkpoint. It reuses the pinned R6R1 archive and config ACL/reparse/location checks plus the accepted R6R2A captured who parser. Login receives only the login command, a cleared/allowlisted environment, and inherited console streams; after exit, config metadata/ACL is checked before one captured read-only who. UID remains in memory and is never emitted. Only an empty config directory created by this run may be removed on failure; non-empty and pre-existing config data is preserved. Offline synthetic fixtures and R6R1 regression passed. Neither this helper nor real login/who was run, and no Owner config, credentials, VPS, or provider state was accessed. The supplementary frozen R6R2A validator reports its pre-existing CRLF-sensitive entry-guard regex as a false negative; the accepted guard and R6R2C direct parser/source fixtures pass, and no frozen file was changed. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
