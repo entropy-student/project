@@ -1,0 +1,70 @@
+{
+  "container": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00|running|2026-10-04T05:28:03.504710353Z|[map[HostIp:127.0.0.1 HostPort:8189]]",
+  "payments": 0,
+  "sharedInfraMutations": 0,
+  "checkoutReadback": {
+    "requestedUrl": "http://127.0.0.1:8189/checkout/",
+    "finalUrl": "http://127.0.0.1:8189/cart/",
+    "status": 200,
+    "configuredPagePath": "/checkout/",
+    "method": "GET",
+    "submitted": false
+  },
+  "ordersCreated": 0,
+  "checkoutSubmitted": 0,
+  "modelCalls": 0,
+  "gate": "G3CR7V2R1_STRIPE_VISUAL_CONTINUATION",
+  "readbackUtc": "2026-10-05T04:59:11.6889760Z",
+  "productionDeployments": 0,
+  "sameContainerAsPreflight": true,
+  "candidateSourceFrozenBlobs": [
+    {
+      "file": "frontend-reproduction.php",
+      "candidate_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1",
+      "expected_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1"
+    },
+    {
+      "file": "frontend-reproduction.js",
+      "candidate_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a",
+      "expected_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a"
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "candidate_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+      "expected_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf"
+    }
+  ],
+  "activeRuntimePreexistingPluginMainDelta": {
+    "file": "birthday-magazine-poc.php",
+    "activeRuntimeGitBlob": "57b27b433dd764bdbb115809904bb7e426edff55",
+    "modifiedThisRun": false,
+    "action": "left unchanged; visual proof used CSS-only mounted candidate",
+    "activeRuntimeWorktreeStatus": "M birthday-magazine-studio/poc/g3c/preview-plugin/birthday-magazine-poc.php",
+    "candidateExpectedBlob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf"
+  },
+  "dockerRebuildStartOrTeardown": 0,
+  "visualAssets": [
+    {
+      "file": "magazine-preview.css",
+      "same_bytes": true,
+      "source_sha256": "2b9bb4e40780606eb6c7514adb316a7d8820405c584711382821f0ff596b870b",
+      "mounted_sha256": "2b9bb4e40780606eb6c7514adb316a7d8820405c584711382821f0ff596b870b"
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "same_bytes": true,
+      "source_sha256": "bcfc093452fdc15186b51a3dc72015ef3dfef75ff48910d54e525e1985c8d04b",
+      "mounted_sha256": "bcfc093452fdc15186b51a3dc72015ef3dfef75ff48910d54e525e1985c8d04b"
+    },
+    {
+      "file": "assets\\g3cr7v2r1-soft-mesh.svg",
+      "same_bytes": true,
+      "source_sha256": "d78ca1cebe40d20a1d71211cba8547d26d37b3b26a018d381fa790e488057e76",
+      "mounted_sha256": "d78ca1cebe40d20a1d71211cba8547d26d37b3b26a018d381fa790e488057e76"
+    }
+  ],
+  "wordpressCheckoutPermalinkUnchanged": true,
+  "providerMutations": 0,
+  "siteHttpStatus": "200",
+  "sameContainerAndStartTimeAsPreflight": true
+}

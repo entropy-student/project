@@ -1,5 +1,19 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Latest execution — G3CR7V2R1 Stripe Visual Continuation (2026-10-05)
+
+**Result: `PASS_CANDIDATE_G3CR7V2R1_STRIPE_VISUAL_CONTINUATION`; `STOP_AT_REVIEWER=YES`.** Continue PR #64 only, open/unmerged, source branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`. Fresh main read at start: `af53ff7434f22db6408d663111c396dab3c42f39`; final fetch: `0a6c384ba0ea32ad4e3064cff1653ca63b319d4f` (no Birthday Magazine paths changed between them). PR head before this work: `a0be036c94ed4ac01957f6f5fe661812f3523d77`.
+
+- **Review first:** `docs/evidence/g3cr7v2r1/README.md`, `contact-sheet.jpg`, `screenshot-manifest.json`, `design-token-map.md`, `after/browser-smoke.json`, and `runtime-final-readback.json`.
+- **Changes:** two CSS presentation files plus original local mesh SVG. The homepage Preview/core-entry, intake and status continuation now use the Owner-selected Stripe Soft-Tech language. Existing photo/flow/status/payment behavior was left intact.
+- **Validation:** Edge 154 / Playwright at 1440×1000 and 375×812. Preview name/age/local photo update to browser `blob:`; no upload/model/external-image request. Twelve local neutral fixtures, one must-use selection, Next/Back/Review, status fixtures, zero overflow, and Woo checkout page permalink readback passed. Empty-cart GET redirected `/checkout/` to `/cart/` as current Woo behavior; no submit or order. Fourteen new after PNGs plus contact sheet are committed in this evidence package; prior fourteen before shots were reused.
+- **Payment truth:** previous `RETURN_PREFLIGHT_DRIFT` was overruled by Reviewer. Accepted G3CR7R1R2 evidence is reused; order #1131 was not replayed, no test order/payment was created.
+- **Runtime:** exact final CSS/SVG hashes match the mounted plugin; root returns HTTP 200; same container ID/start time; retain `http://127.0.0.1:8189/` for Owner review. Caveat: separate active `g3cr2` worktree had pre-existing modified `birthday-magazine-poc.php`, runtime Git blob `57b27b433dd764bdbb115809904bb7e426edff55` vs clean candidate pinned blob `0aa39e131b7958652bc0cfbd4ada7a4621fb3caf`. This file was not changed; see README/readback.
+- **Rollback:** CSS from `806907177ba48ef2ed11310e36f4cca0e209b421`, delete `assets/g3cr7v2r1-soft-mesh.svg`; byte-exact runtime CSS backups are under `docs/evidence/g3cr7v2r1/rollback/runtime-mounted-before/`. Do not apply before Reviewer/Owner inspection.
+- **Counters:** new orders 0; checkout submits 0; PayPal/payment/provider 0; model 0; production deploy 0; shared infra 0; Docker lifecycle 0; P1–P12 0; merge 0.
+
+The exact order-received route was not screenshot this round because no valid access context was available; use the accepted G3CR7R1R2 evidence for payment truth. Reviewer should assess the visual diff/contact sheet and the pre-existing active-runtime PHP blob caveat before deciding whether to accept the candidate.
+
 ## Latest execution — G3CR6R3D2R4 Motion Polish (2026-10-04)
 
 This supersedes the earlier R2 execution status below; earlier sections are retained history. Static R2 is accepted; this motion candidate is not formal Reviewer/Owner PASS.

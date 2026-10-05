@@ -1,0 +1,56 @@
+{
+  "frozen_source_checks": [
+    {
+      "checkout_sha256": "1ebb906f8e1ab9537c451a8f36e28d60b269ff90c5ea0d11b27fbca49a6ed32e",
+      "expected_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1",
+      "runtime_sha256": "61d7bd79ba0872184785411bfd790eeb79baa96c2c422b027111a9cb8a2b05c9",
+      "file": "frontend-reproduction.php",
+      "checkout_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1"
+    },
+    {
+      "checkout_sha256": "11d80952c47aea4232fa002cfacc48f563668292aba91811da70fcafed3807d1",
+      "expected_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a",
+      "runtime_sha256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "file": "frontend-reproduction.js",
+      "checkout_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a"
+    },
+    {
+      "checkout_sha256": "eb9cdb293569d9d84e978af42806bad2699f094587b2e525c5e12175fac96742",
+      "expected_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+      "runtime_sha256": "9de7b8f9ef1a7f646dcc7d2d2959164949ad310bad4921cea1f6915466d6a480",
+      "file": "birthday-magazine-poc.php",
+      "checkout_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf"
+    }
+  ],
+  "order_created": 0,
+  "site_http_status": "200",
+  "mounted_css_before": [
+    {
+      "rollback_copy_sha256": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae",
+      "file": "magazine-preview.css",
+      "mounted_sha256": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae"
+    },
+    {
+      "rollback_copy_sha256": "f12da398f8e204fd2c6b4fed0daee8cbe290cc816307f373bea0f2270574b387",
+      "file": "frontend-reproduction.css",
+      "mounted_sha256": "f12da398f8e204fd2c6b4fed0daee8cbe290cc816307f373bea0f2270574b387"
+    }
+  ],
+  "observed_utc": "2026-10-05T04:20:42.1306495Z",
+  "payment_truth_reused": "G3CR7R1R2",
+  "gate": "G3CR7V2R1_STRIPE_VISUAL_CONTINUATION",
+  "provider_mutations": 0,
+  "payment_actions": 0,
+  "pr64_head": "a0be036c94ed4ac01957f6f5fe661812f3523d77",
+  "model_calls": 0,
+  "container_readback": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00|running|2026-10-04T05:28:03.504710353Z|[map[HostIp:127.0.0.1 HostPort:8189]]",
+  "latest_main": "af53ff7434f22db6408d663111c396dab3c42f39",
+  "activeRuntimePreMountReadback": {
+    "file": "birthday-magazine-poc.php",
+    "expectedCandidateGitBlob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+    "runtimeGitBlob": "57b27b433dd764bdbb115809904bb7e426edff55",
+    "worktreeStatus": "M",
+    "observedBeforeVisualAssetCopy": true,
+    "changedByThisRun": false
+  }
+}

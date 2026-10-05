@@ -1,0 +1,243 @@
+{
+  "gate": "G3CR7V2R1_STRIPE_VISUAL_CONTINUATION",
+  "site": "http://127.0.0.1:8189",
+  "browserVersion": "154.0.4258.53",
+  "nodeVersion": "v24.19.0",
+  "fixture": "fictional Riley Sample; 12 local geometric PNGs; no customer media",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "home": {
+        "page": "Birthday Magazine Studio – Turn photos and stories into a birthday magazine.",
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "horizontalOverflow": false,
+        "pageName": "home-preview"
+      },
+      "homeLayout": {
+        "shellBackground": "rgb(246, 249, 252)",
+        "previewColumns": "330px 854px",
+        "previewHeadingFont": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "previewInternalOverflow": false
+      },
+      "preview": {
+        "blobImageCount": 2,
+        "selectedLabelVisible": true,
+        "nameVisible": true,
+        "ageVisible": true,
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "previewNonGetRequests": 0,
+      "intakeAbout": {
+        "page": "Make their birthday magazine – Birthday Magazine Studio",
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "horizontalOverflow": false,
+        "pageName": "intake-about"
+      },
+      "intakePhotos": {
+        "selectedPhotos": 12,
+        "mustUseCount": 1,
+        "localPhotoImages": 12,
+        "nonLocalPhotoImages": [],
+        "width": 1440,
+        "scrollWidth": 1440,
+        "photoGridColumns": "219.5px 219.5px 219.5px 219.5px",
+        "photoGridInternalOverflow": false
+      },
+      "intakeReviewContainsStep5": true,
+      "intakeBackForward": {
+        "backReturnedToStep4": true,
+        "forwardReturnedToReview": true
+      },
+      "status": {
+        "page": "Magazine status preview — local fixture – Birthday Magazine Studio",
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "horizontalOverflow": false,
+        "pageName": "status-fixture"
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "home": {
+        "page": "Birthday Magazine Studio – Turn photos and stories into a birthday magazine.",
+        "viewport": 375,
+        "scrollWidth": 375,
+        "horizontalOverflow": false,
+        "pageName": "home-preview"
+      },
+      "homeLayout": {
+        "shellBackground": "rgb(246, 249, 252)",
+        "previewColumns": "343px",
+        "previewHeadingFont": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "previewInternalOverflow": false
+      },
+      "preview": {
+        "blobImageCount": 2,
+        "selectedLabelVisible": true,
+        "nameVisible": true,
+        "ageVisible": true,
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "previewNonGetRequests": 0,
+      "intakeAbout": {
+        "page": "Make their birthday magazine – Birthday Magazine Studio",
+        "viewport": 375,
+        "scrollWidth": 375,
+        "horizontalOverflow": false,
+        "pageName": "intake-about"
+      },
+      "intakePhotos": {
+        "selectedPhotos": 12,
+        "mustUseCount": 1,
+        "localPhotoImages": 12,
+        "nonLocalPhotoImages": [],
+        "width": 375,
+        "scrollWidth": 375,
+        "photoGridColumns": "150.5px 150.5px",
+        "photoGridInternalOverflow": false
+      },
+      "intakeReviewContainsStep5": true,
+      "intakeBackForward": {
+        "backReturnedToStep4": true,
+        "forwardReturnedToReview": true
+      },
+      "status": {
+        "page": "Magazine status preview — local fixture – Birthday Magazine Studio",
+        "viewport": 375,
+        "scrollWidth": 375,
+        "horizontalOverflow": false,
+        "pageName": "status-fixture"
+      }
+    }
+  ],
+  "nonGetRequests": [],
+  "externalRequests": [
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2",
+      "type": "stylesheet"
+    },
+    {
+      "width": 375,
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "type": "font"
+    }
+  ],
+  "externalImageRequests": [],
+  "modelRequests": [],
+  "failedRequests": [],
+  "resourceErrors": [],
+  "brokenImages": [],
+  "pageErrors": [],
+  "checkout": {
+    "requestedUrl": "http://127.0.0.1:8189/checkout/",
+    "finalUrl": "http://127.0.0.1:8189/cart/",
+    "status": 200,
+    "configuredPagePath": "/checkout/",
+    "method": "GET",
+    "submitted": false
+  },
+  "paymentActions": 0,
+  "orderSubmissions": 0,
+  "providerMutations": 0,
+  "modelCalls": 0,
+  "allRequiredPagesNoOverflow": true,
+  "localPreviewPass": true,
+  "intakePass": true,
+  "checkoutUrlUnchanged": true,
+  "noNetworkMutations": true,
+  "noModelRequests": true,
+  "noBrokenImages": true
+}

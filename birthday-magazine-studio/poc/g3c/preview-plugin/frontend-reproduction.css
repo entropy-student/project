@@ -883,3 +883,605 @@ body.bms-g3cr7-app-page .entry-content > .bms-g3cr7:not(.bms-g3cr7-status-fixtur
 		transition: none;
 	}
 }
+
+/* G3CR7V2R1: Stripe Soft-Tech skin for the existing intake and status markup. */
+body.bms-g3cr7-app-page {
+	--g3cr7-primary: #533afd;
+	--g3cr7-primary-deep: #4434d4;
+	--g3cr7-primary-press: #2e2b8c;
+	--g3cr7-primary-soft: #665efd;
+	--g3cr7-primary-subdued: #b9b9f9;
+	--g3cr7-dark: #1c1e54;
+	--g3cr7-ink: #0d253d;
+	--g3cr7-secondary: #273951;
+	--g3cr7-muted: #64748d;
+	--g3cr7-canvas: #fff;
+	--g3cr7-soft: #f6f9fc;
+	--g3cr7-line: #e3e8ee;
+	--g3cr7-input-line: #a8c3de;
+	--g3cr7-shadow-1: 0 1px 3px rgb(0 55 112 / 8%);
+	--g3cr7-shadow-2: 0 8px 24px rgb(0 55 112 / 8%), 0 2px 6px rgb(0 55 112 / 4%);
+	background: var(--g3cr7-soft);
+	color: var(--g3cr7-ink);
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-feature-settings: "ss01";
+}
+
+body.bms-g3cr7-app-page :is(.site-main, .entry-content) {
+	background: var(--g3cr7-soft);
+	color: var(--g3cr7-ink);
+}
+
+body.bms-g3cr7-app-page :is(h1, h2, h3, h4, p, label, button, input, select, textarea) {
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page #header [data-row] {
+	background: var(--g3cr7-canvas);
+	border-bottom: 1px solid var(--g3cr7-line);
+}
+
+body.bms-g3cr7-app-page #header [data-row='middle'] {
+	--height: 64px;
+}
+
+body.bms-g3cr7-app-page #header .site-title {
+	color: var(--g3cr7-ink);
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-size: 17px !important;
+	font-weight: 400;
+	letter-spacing: -.2px;
+}
+
+body.bms-g3cr7-app-page #header :is(.menu a, .ct-header-cta a, .ct-header-trigger) {
+	color: var(--g3cr7-secondary) !important;
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page #header .ct-header-cta a {
+	border: 1px solid var(--g3cr7-primary);
+	border-radius: 9999px;
+	background: var(--g3cr7-primary);
+	color: #fff !important;
+	font-size: 12px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7,
+body.bms-g3cr7-app-page .bms-g3cr7-status-fixture {
+	box-sizing: border-box;
+	width: min(100%, 1120px);
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 40px 24px 56px;
+	color: var(--g3cr7-ink);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro {
+	max-width: 980px;
+	column-gap: 32px;
+	margin-bottom: 24px;
+}
+
+body.bms-g3cr7-app-page :is(.bms-g3cr7-kicker, .bms-g3cr7-step-label) {
+	color: var(--g3cr7-muted);
+	font: 400 10px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: .04em;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro h1 {
+	font: 300 clamp(28px, 3vw, 32px)/1.16 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: -.64px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro > p:last-child {
+	margin-bottom: 2px;
+	color: var(--g3cr7-muted);
+	font: 300 15px/1.45 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress {
+	margin-bottom: 16px;
+	border: 1px solid var(--g3cr7-line);
+	border-radius: 12px;
+	background: var(--g3cr7-canvas);
+	box-shadow: var(--g3cr7-shadow-1);
+	padding: 16px 20px 14px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li {
+	color: var(--g3cr7-muted);
+	font: 400 11px/1.35 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li > span:first-child {
+	width: 28px;
+	height: 28px;
+	border-color: var(--g3cr7-line);
+	background: var(--g3cr7-canvas);
+	color: var(--g3cr7-muted);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li[aria-current="step"] {
+	color: var(--g3cr7-ink);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li[aria-current="step"] > span:first-child {
+	border-color: var(--g3cr7-primary);
+	background: var(--g3cr7-primary);
+	color: #fff;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li.is-complete > span:first-child {
+	border-color: #b7dfca;
+	background: #eaf6ef;
+	color: #28734f;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress-track {
+	background: var(--g3cr7-line);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress-track span {
+	background: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-card {
+	border: 1px solid var(--g3cr7-line);
+	border-radius: 12px;
+	background: var(--g3cr7-canvas);
+	box-shadow: var(--g3cr7-shadow-2);
+	padding: 32px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-step h2,
+body.bms-g3cr7-app-page .bms-g3cr7-status-fixture h1 {
+	color: var(--g3cr7-ink);
+	font: 300 24px/1.2 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: -.3px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-help,
+body.bms-g3cr7-app-page .bms-g3cr7-status-lede {
+	color: var(--g3cr7-muted);
+	font: 300 15px/1.45 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-fields {
+	gap: 16px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field {
+	color: var(--g3cr7-secondary);
+	font: 400 12px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7-field select,
+body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
+	box-sizing: border-box;
+	border: 1px solid var(--g3cr7-input-line);
+	border-radius: 6px;
+	background: var(--g3cr7-canvas);
+	box-shadow: none;
+	color: var(--g3cr7-ink);
+	padding: 8px 12px;
+	font: 300 15px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7-field select {
+	min-height: 42px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field :focus-visible {
+	border-color: var(--g3cr7-primary);
+	outline: 3px solid rgb(83 58 253 / 18%);
+	outline-offset: 1px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-optional,
+body.bms-g3cr7-app-page .bms-g3cr7-fixture-note {
+	color: var(--g3cr7-muted);
+	font: 400 12px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-drop {
+	min-height: 112px;
+	border: 1px dashed var(--g3cr7-input-line);
+	border-radius: 8px;
+	background: var(--g3cr7-soft);
+	color: var(--g3cr7-ink);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-drop:hover {
+	border-color: var(--g3cr7-primary);
+	background: #f0efff;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-drop > span {
+	color: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo-meta {
+	color: var(--g3cr7-muted);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo-meta strong {
+	color: var(--g3cr7-ink);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo-grid {
+	gap: 12px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo {
+	border: 1px solid var(--g3cr7-line);
+	border-radius: 8px;
+	background: var(--g3cr7-canvas);
+	box-shadow: var(--g3cr7-shadow-1);
+	padding: 8px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo img {
+	border-radius: 4px;
+	background: var(--g3cr7-soft);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo input {
+	accent-color: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-remove,
+body.bms-g3cr7-app-page .bms-g3cr7-quick-facts summary {
+	color: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-quick-facts {
+	border-color: var(--g3cr7-line);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-review,
+body.bms-g3cr7-app-page .bms-g3cr7-review div {
+	border-color: var(--g3cr7-line);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-review dd,
+body.bms-g3cr7-app-page .bms-g3cr7-review-answer p {
+	color: var(--g3cr7-secondary);
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-review-answer {
+	border-left-color: var(--g3cr7-primary-subdued);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-boundary {
+	border: 1px solid var(--g3cr7-line);
+	border-left: 3px solid var(--g3cr7-primary);
+	border-radius: 8px;
+	background: var(--g3cr7-soft);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-price span {
+	color: var(--g3cr7-ink);
+	font: 300 22px/1.2 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum";
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-button,
+body.bms-g3cr7-app-page .bms-g3cr7-back {
+	min-height: 44px;
+	border: 1px solid var(--g3cr7-primary);
+	border-radius: 9999px;
+	background: var(--g3cr7-primary);
+	box-shadow: none;
+	color: #fff;
+	padding: 8px 16px;
+	font: 400 14px/1.2 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-button:hover {
+	border-color: var(--g3cr7-primary-deep);
+	background: var(--g3cr7-primary-deep);
+	color: #fff;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-button:active {
+	border-color: var(--g3cr7-primary-press);
+	background: var(--g3cr7-primary-press);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-button:focus-visible,
+body.bms-g3cr7-app-page .bms-g3cr7-back:focus-visible {
+	outline: 3px solid rgb(83 58 253 / 22%);
+	outline-offset: 3px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-back {
+	border-color: var(--g3cr7-line);
+	background: var(--g3cr7-canvas);
+	color: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-back:hover {
+	border-color: var(--g3cr7-primary-subdued);
+	background: #fafaff;
+	color: var(--g3cr7-primary-deep);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-checkout {
+	width: auto;
+	border-color: var(--g3cr7-primary);
+	background: var(--g3cr7-primary);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-nav {
+	border-color: var(--g3cr7-line);
+}
+
+/* The fixture and real Woo notice share this CSS-only status treatment. */
+body.bms-g3cr7-app-page .bms-g3cr7-fixture-banner {
+	width: fit-content;
+	max-width: 100%;
+	border: 0;
+	border-radius: 9999px;
+	background: #f0efff;
+	color: var(--g3cr7-primary-deep);
+	padding: 6px 10px;
+	font: 400 10px/1.3 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: .02em;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-fixture-order-received {
+	max-width: 880px;
+	margin: 16px auto 28px;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	padding: 0;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-fixture-order-received > .bms-g3cr7-fixture-banner {
+	margin-bottom: 10px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-thankyou {
+	width: 100%;
+	margin: 0;
+	border: 1px solid var(--g3cr7-line);
+	border-left: 3px solid var(--g3cr7-primary);
+	border-radius: 12px;
+	background: var(--g3cr7-canvas);
+	box-shadow: var(--g3cr7-shadow-2);
+	padding: 24px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-thankyou .bms-g3cr7-kicker {
+	display: inline-flex;
+	border-radius: 9999px;
+	background: #f0efff;
+	color: var(--g3cr7-primary-deep);
+	padding: 5px 9px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-thankyou h2 {
+	margin: 10px 0 8px;
+	color: var(--g3cr7-ink);
+	font: 300 22px/1.25 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: -.2px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-thankyou > p:last-child {
+	color: var(--g3cr7-muted);
+	font: 300 15px/1.45 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-status-fixture > .bms-g3cr7-kicker {
+	margin: 0 0 12px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-status-fixture h1 {
+	font-size: 32px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-status-lede {
+	max-width: 52ch;
+	margin: 12px 0 24px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline {
+	margin: 0 0 16px;
+	border: 1px solid var(--g3cr7-line);
+	border-radius: 12px;
+	background: var(--g3cr7-canvas);
+	box-shadow: var(--g3cr7-shadow-2);
+	padding: 0 24px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li {
+	grid-template-columns: 36px minmax(0, 1fr) auto;
+	gap: 12px;
+	border-color: var(--g3cr7-line);
+	padding: 16px 0;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li > span {
+	width: 28px;
+	height: 28px;
+	border-color: var(--g3cr7-line);
+	background: var(--g3cr7-soft);
+	color: var(--g3cr7-muted);
+	font: 400 11px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-variant-numeric: tabular-nums;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li.is-current > span,
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li.is-current > b {
+	border-color: var(--g3cr7-primary);
+	background: var(--g3cr7-primary);
+	color: #fff;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li.is-ready > span,
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li.is-ready > b {
+	border-color: #d8d7fb;
+	background: #f0efff;
+	color: var(--g3cr7-primary-deep);
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline strong {
+	color: var(--g3cr7-ink);
+	font: 400 14px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline p,
+body.bms-g3cr7-app-page .bms-g3cr7-footnote {
+	color: var(--g3cr7-muted);
+	font: 300 13px/1.45 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li > b {
+	border: 0;
+	border-radius: 9999px;
+	background: var(--g3cr7-soft);
+	color: var(--g3cr7-muted);
+	padding: 5px 9px;
+	font: 400 10px/1.2 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-timeline li.is-done > span {
+	border-color: #b7dfca;
+	background: #eaf6ef;
+	color: #28734f;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-footer,
+body.bms-g3cr7-app-page .bms-brand-footer,
+body.bms-g3cr7-app-page #footer [data-row] {
+	border-color: var(--g3cr7-line);
+	background: var(--g3cr7-canvas);
+	color: var(--g3cr7-muted);
+}
+
+body.bms-g3cr7-app-page .bms-brand-footer {
+	border-top: 1px solid var(--g3cr7-line);
+	padding: 40px 24px 24px;
+}
+
+body.bms-g3cr7-app-page .bms-brand-footer :is(h2, p, a),
+body.bms-g3cr7-app-page #footer .ct-footer-copyright {
+	color: var(--g3cr7-muted);
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.bms-g3cr7-app-page .bms-brand-footer h2 {
+	font-size: 22px;
+	font-weight: 300;
+	letter-spacing: -.3px;
+}
+
+@media (max-width: 760px) {
+	body.bms-g3cr7-app-page .bms-g3cr7,
+	body.bms-g3cr7-app-page .bms-g3cr7-status-fixture {
+		padding: 28px 16px 40px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-intro {
+		margin-bottom: 20px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-intro h1,
+	body.bms-g3cr7-app-page .bms-g3cr7-status-fixture h1 {
+		font-size: 28px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress {
+		margin-bottom: 12px;
+		padding: 12px 8px 10px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress ol {
+		gap: 4px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress li {
+		gap: 5px;
+		font-size: 9px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress li > span:first-child {
+		width: 24px;
+		height: 24px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-card {
+		padding: 20px 16px 16px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-step h2 {
+		font-size: 22px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-help {
+		margin-bottom: 18px;
+		font-size: 14px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-photo-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-review,
+	body.bms-g3cr7-app-page .bms-g3cr7-review-answers {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-price {
+		align-items: center;
+		flex-direction: row;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-nav {
+		gap: 10px;
+		margin-top: 20px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-nav .bms-g3cr7-button {
+		gap: 8px;
+		padding: 8px 16px;
+		font-size: 13px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-fixture-order-received {
+		margin: 12px auto 20px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-thankyou {
+		padding: 18px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-timeline {
+		padding: 0 14px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-timeline li {
+		grid-template-columns: 32px minmax(0, 1fr);
+		gap: 9px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-timeline li > b {
+		grid-column: 2;
+		justify-self: start;
+	}
+
+	body.bms-g3cr7-app-page .bms-brand-footer {
+		padding: 32px 20px 20px;
+	}
+}
