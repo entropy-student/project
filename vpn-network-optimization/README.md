@@ -92,7 +92,7 @@ G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序调整为：先完成 G2-C，再推进不依赖晚高峰时间窗口的 G3-A/G3-B；G4 放到近最终实现之后、MVP v1 封板之前。这样白天可以继续做确定性工程工作，晚高峰验证也会直接测到接近最终版本，而不是测一个随后还会变化的中间版本。G4 仍是封板前必做项，不因后置而取消。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS，R5 首次 live 在 P5 安全失败且未开始 consequential mutation，R6/R7 完成根因定位，R8 已正式接受 pipeline-output 修复。当前唯一 consequential 下一步是 R9 one-shot live retry；R9 成功后仍需 Reviewer 正式验收 G4-B，再进入独立的 G4-C 晚高峰 + 真实工作负载验证。未来更换 VPS 仍使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
 
 ## 项目真相与 Reviewer 交接
 
@@ -130,7 +130,7 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。G2-C 已完成：私网实现 A/B 与公网 TCP/443 canary 均证明 Mihomo v1.19.31 在当前 VLESS+REALITY+Vision 语义下可互操作；公网 canary 的临时 /32 路由、listener、client/server runtime 均已清理，唯一请求预算已耗尽且不得重放。G3-A 已完成：动态物理出口发现、真实只读健康/readiness 采集、readiness→advisory plan 语义和 H2→H3 实时只读联调均 PASS；当前健康环境建议继续 `WIREGUARD_BASELINE`，HY2 与 REALITY 保持可单独激活候选，未实现或授权自动切换执行器。当前进入 G3-B VPS 迁移/回滚模板；G4 晚高峰 + 真实 Codex/生图工作负载验证仍作为 MVP v1 封板前最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness，R8 修复已正式 PASS，R9 live retry 尚未执行。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
 
 
 ## 当前交互目标
