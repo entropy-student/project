@@ -351,7 +351,7 @@ Run only the prepared R13 metadata-only helper after source identity/state check
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R12 chronology, R10 formal PASS, R11 ACL-owner mismatch return, and current local metadata-only boundary.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R13 chronology, R10 formal PASS, R11/R12 local ACL reconciliation, and current direct-child file-role boundary.
 - `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current metadata-only ACL-owner drift Gate.
 - `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — historical R11 read-only residual-state Gate and return.
 - `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser-repair Gate and history.
