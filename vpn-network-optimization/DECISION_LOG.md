@@ -438,3 +438,10 @@ production local pending basename with the exact remote pending object basename.
 The previous R6 ACL completeness blocker is closed. Production ACL validation now covers exact Owner identity, direct/inherited ACE review, explicit safe Allow principals, Deny rejection, arbitrary/broad principal rejection, and required Owner read/list/traverse rights. Eight synthetic fixtures exercise the exact production predicate and the complete R6 regression remains PASS.
 
 No real Baidu/provider/config/network/VPS/Secret action occurred. Next Gate is `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2`: a single Owner-local read-only readiness run. No login or live G4-B is authorized.
+
+
+## 2026-10-05 — R6R2 paused for Owner-local UID discovery
+
+Owner does not know the expected Baidu numeric UID. R6R2 is therefore paused before execution. No identity value is guessed and no credential-bearing config content is read.
+
+Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A`, an offline-only implementation/validation round for a minimal local UID discovery helper using the already accepted pinned archive, config ACL, and read-only `who` boundaries.
