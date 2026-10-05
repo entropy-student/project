@@ -114,10 +114,10 @@ MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Owner Windows host, %APPDATA%\BaiduPCS-Go metadata/ACL only.
 APPLICABLE_CRITICAL_CONSTRAINTS=No config content read/hash/copy/print; no usernames/paths/SIDs/ACE details in evidence; no Set-Acl/takeown/icacls; no BaiduPCS-Go; no UID prompt; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C.
 PREFLIGHT=R11 formal RETURN at BAIDU_CONFIG_ACL with BAIDU_AUTH_CONFIG_OWNER_MISMATCH before UID/provider action; R10 formal PASS; historical R6R2D/R6R2H-R1 proves privileged child-created pcs_config.json can be Administrators-owned on this host but current mismatch principal/item remains UNKNOWN.
-REQUIRED_EVIDENCE=R12 metadata-only Gate blob e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2; bounded item count; root-owner match; owner-category counts; mismatch file/directory counts; reparse/Deny/unauthorized-Allow/Owner-read-rights counts; sanitized classification; no content/provider/Secret/network action.
+REQUIRED_EVIDENCE=R12 Gate blob 8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f; R12 script blob 3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9; parser preflight; bounded item count; root-owner match; owner-category counts; mismatch file/directory counts; reparse/Deny/unauthorized-Allow/Owner-read-rights counts; sanitized classification; no content/provider/Secret/network action.
 ACCEPTANCE_CRITERIA=Observation only. Narrow known admin-owner single-file shape may permit a later bounded normalization Gate; broader/unknown drift requires separate fail-closed reconciliation. R12 never authorizes mutation.
 ROLLBACK_STATUS_OR_PLAN=No rollback expected because R12 is metadata-only.
-OWNER_ONLY_ACTIONS=Next Reviewer may prepare/run a metadata-only R12 helper under this Gate. Do not normalize ACLs, access provider state, clean remote objects, or run live G4-B.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R12 Gate/script blobs and Handoff state, parser-preflight the R12 helper, run it once, return only sanitized aggregate metadata markers, then stop. Do not normalize ACLs, access provider state, clean remote objects, or run live G4-B.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
 EXECUTOR_TO_REVIEWER_RELAY=Return only sanitized metadata counts/classification; no repair.
 ```
@@ -256,7 +256,8 @@ G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RESULT=PASS
 G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
 G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_RESULT=RETURN_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
-G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
+G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12_GATE_BLOB=8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f
+G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
@@ -341,7 +342,7 @@ Next Reviewer proceeds only under `G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R
 
 ## OWNER_ACTION_REQUIRED
 
-No Owner action is required until the next Reviewer prepares the bounded R12 metadata-only helper. Do not change ACLs, run BaiduPCS-Go, enter UID, clean remote state, or run live G4-B.
+Run only the prepared R12 metadata-only helper after source identity/state checks and parser preflight. Return sanitized aggregate markers only. Do not change ACLs, run BaiduPCS-Go, enter UID, clean remote state, or run live G4-B.
 
 ## EVIDENCE_POINTERS
 
