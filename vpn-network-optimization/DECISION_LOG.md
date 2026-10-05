@@ -708,3 +708,14 @@ The full current G4-B live-runner fixture suite and negative fixtures pass with 
 The project may now enter exactly one live G4-B execution using the locked runner. The existing recorded Owner authorization is limited to the accepted G4-B scope: encrypted recovery publication, project-owned persistent REALITY service, one persistent three-role Clash profile, bounded restart/read-back and rollback. G4-C and automatic switching remain forbidden.
 
 Next Gate: `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L`.
+
+
+## 2026-10-05 — R6R2L stopped at P0; canonical Git path scope repaired
+
+**Decision:** `RETURN_R6R2L_P0_CANONICAL_GIT_QUERY_FAILED`.
+
+The first live G4-B invocation exited during `P0_CANONICAL_SOURCE` with `CONSEQUENTIAL_MUTATION_STARTED=NO`, so no rollback is required and no provider/VPS/Clash/Secret state changed.
+
+Root cause: pathspec-sensitive Git commands used `-C` at the project subdirectory while also supplying repository-root-relative paths containing the project prefix. The repair runs `ls-files` and project-scoped `status` from the discovered repository root.
+
+Next Gate: `G4B_CANONICAL_GIT_PATH_REPAIR_R6R2L_R1`, offline validation only. A new live retry Gate must use the repaired runner blob and may be authorized only after this validation passes.
