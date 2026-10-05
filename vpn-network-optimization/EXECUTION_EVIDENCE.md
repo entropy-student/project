@@ -8707,3 +8707,22 @@ The checkpoint change is exactly the reviewed bounded state repair: initialize `
 Validator coverage proves the three-value state enum, assignment ordering, no post-auth overwrite, exactly one state line, and all eight required bounded output markers. Full R6R2H-R2 and R6R1 regressions remain PASS. No real Owner checkpoint, config, authentication, or provider action occurred.
 
 R6R2H-R3 formally closes PASS. Next Gate: one-shot Owner-local `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I`.
+
+
+## Owner result — R6R2I build stopped before authentication — 2026-10-05
+
+```text
+R6R2I_RESULT=RETURN_R6R2I_BUILD_VALIDATION_FAILED_BEFORE_AUTH
+GO_TEST=PASS
+BUILD_VALIDATION=FAIL_CLOSED
+FAILURE_CODE=BUILD_VALIDATION_FAILED
+TEMP_BUILD_CLEANUP=PASS
+AUTH_CHECKPOINT_STARTED=NO
+PROVIDER_AUTH_ACTIONS=0
+```
+
+The failure occurred after the adapter Go test passed and before the wrapper invoked the Owner authentication checkpoint. No authentication prompt was reached and no real provider action occurred.
+
+The frozen build helper reports generic `BUILD_VALIDATION_FAILED` for non-symbolic PowerShell/.NET exceptions. A prior offline fixture already demonstrated that this Owner execution context lacks `SeSecurityPrivilege`, so retained-binary ACL application is a plausible fault domain, but it is not accepted as the cause without read-only reconciliation.
+
+Next Gate: `G4B_BAIDU_OWNER_BUILD_FAILURE_DIAGNOSTIC_R6R2I_D1`. No build/auth retry is authorized.
