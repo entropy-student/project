@@ -8684,3 +8684,26 @@ The checkpoint initializes `configState` to `NOT_REACHED`, then performs a singl
 The validator compares the Owner checkpoint against accepted R2 source commit `d441ed0bc31285311345ed3b3e847258d7de05a2` after removing exactly the three R3-only lines (initial state, accepted-preauth state expression and final state output), proving the remainder is byte-for-byte source-equivalent after newline normalization. It checks enum and assignment AST, ordering against preauth strict/empty/file preconditions, exactly one output for each required marker, and evaluates the production state expression in absent/existing synthetic boolean fixtures. The full existing R6R2H-R2/R6R1 offline regression completed, including non-secret production filesystem reconciliation fixtures. No Owner checkpoint was run and no real Owner config or authentication material was accessed.
 
 Changed-path scope: `scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1`, `scripts/validate-g4b-baidu-cookie-auth-adapter.ps1`, this Evidence append and the current Executor Handoff block only. Adapter source/tests, build helper, current Gate, Reviewer Handoff, accepted historical sources and unrelated files were unchanged. The pre-existing untracked `results/` directory was preserved and not staged.
+
+
+## Reviewer decision — R6R2H-R3 output contract repair — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+SOURCE_COMMIT=0474fe6b68211ce602beaa55cb9dc9786084e694
+OWNER_CHECKPOINT_BLOB=8d0aded1b49aff58e06f5e7c450b8799737b3b68
+VALIDATOR_BLOB=62c2d6819d26d9a35d1ccbced23058809c0328b6
+R6R2I_GATE_BLOB=00004a88b1edf3a8ca1ba7d3b7135552819a1743
+REAL_OWNER_ACTIONS=0
+REAL_AUTH_ACTIONS=0
+REAL_CONFIG_ACTIONS=0
+```
+
+Reviewer independently rechecked the R3 Gate, exact commit scope, checkpoint delta, validator, and frozen R2 core correlation.
+
+The checkpoint change is exactly the reviewed bounded state repair: initialize `NOT_REACHED`, assign `ABSENT_PREAUTH` or `PREEXISTING_EMPTY` only after accepted pre-run config provenance checks, and emit exactly one `BAIDU_COOKIE_AUTH_CONFIG_STATE` marker. The accepted R2 source is otherwise frozen by exact source comparison.
+
+Validator coverage proves the three-value state enum, assignment ordering, no post-auth overwrite, exactly one state line, and all eight required bounded output markers. Full R6R2H-R2 and R6R1 regressions remain PASS. No real Owner checkpoint, config, authentication, or provider action occurred.
+
+R6R2H-R3 formally closes PASS. Next Gate: one-shot Owner-local `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I`.
