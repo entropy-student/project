@@ -7908,7 +7908,6 @@ STOP_AT_REVIEWER=YES
 
 The full offline validator exercised the production ACL predicate with synthetic Owner-only, Owner+SYSTEM+Administrators, inherited-safe, broad-Allow (Everyone/Authenticated Users/Builtin Users), arbitrary-Allow, Deny, missing-Owner-rights, and Owner-mismatch cases. Existing R6 non-ACL checks remained PASS. The only filesystem fixture content was a non-secret marker in an exact temporary directory, removed and verified absent by the validator. No real configuration content was opened or read.
 
-
 ## Reviewer reconciliation — G4-B Baidu Owner Auth Readiness ACL Repair R6R1 — 2026-10-05
 
 ```text
@@ -7955,3 +7954,52 @@ R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
 ```
 
 Owner cannot supply the expected numeric Baidu UID required by R6R2. Do not guess it, read credential-bearing config contents, or ask Owner to paste raw `who` output. Upstream BaiduPCS-Go exposes the current UID through the read-only `who` command, so the next step is a minimal Owner-local helper that parses only that numeric identifier while suppressing provider raw output and credential material. R6R2 remains pending until that helper is independently reviewed and run locally.
+
+
+## Executor result — G4-B Baidu Owner UID Discovery Helper R6R2A — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL
+SOURCE_PROVENANCE=PASS
+CANONICAL_GIT_ROOT=C:/Users/34707/Documents/ChatGPT/VPS搭建
+BRANCH=main
+PRE_GATE_HEAD=f3ee1374ac3049bf8130a1f6cf35675881b61cc6
+R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
+R6R1_RESULT=PASS
+R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+UNRELATED_WORKTREE_STATE=UNTRACKED vpn-network-optimization/results/ PRESERVED_NOT_STAGED
+CHANGES=scripts/g4b-baidu-uid-discovery-checkpoint.ps1;scripts/g4b-baidu-uid-discovery-validator.ps1
+UID_HELPER_NO_CREDENTIAL_PARAMETERS=PASS
+UID_HELPER_NO_LOGIN_COMMAND=PASS
+UID_HELPER_PINNED_ARCHIVE_TRUST_REUSED=PASS
+UID_HELPER_R6R1_CONFIG_ACL_POLICY_REUSED=PASS
+UID_HELPER_WHO_ONLY_PROVIDER_ACTION=PASS
+UID_HELPER_RAW_PROVIDER_OUTPUT_SUPPRESSED=PASS
+UID_HELPER_USERNAME_NOT_EMITTED=PASS
+UID_HELPER_SINGLE_UID_PARSE=PASS
+UID_HELPER_UNAUTHENTICATED_OWNER_ACTION_REQUIRED=PASS
+UID_HELPER_AMBIGUOUS_OUTPUT_FAIL_CLOSED=PASS
+UID_HELPER_TEMP_CLEANUP=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_BAIDU_ACTIONS=0
+BAIDU_CLI_INVOKED=NO
+REAL_WHO_INVOKED=NO
+OWNER_CONFIG_READ=NO
+OWNER_UID_ACCESSED_OR_EMITTED=NO
+NETWORK_REQUESTS=0
+SECRET_OR_DPAPI_ACCESSED=NO
+VPS_OR_SSH_ACTIONS=0
+CLASH_SERVICE_ROUTE_PROXY_TUN_ACTIONS=0
+LIVE_G4B_ACTIONS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ROLLBACK=Remove only the two new UID helper/validator files and this R6R2A Evidence/Handoff update; no runtime rollback is required.
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+STOP_AT_REVIEWER=YES
+```
+
+The offline validator dot-sourced the accepted R6R1 checkpoint only behind its source-only entrypoint guard and verified the pinned archive digest/order, safe config/ACL predicate, and helper-scope variable reuse. Synthetic fixtures exercised the UID parser and exact cleanup routine with non-secret local files; fixture values and raw output were not emitted. The new Owner helper itself was not executed; no actual UID or configuration content was accessed.

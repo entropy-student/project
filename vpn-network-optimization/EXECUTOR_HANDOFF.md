@@ -4,49 +4,44 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Owner Auth Readiness ACL Repair R6R1
+## Current execution status — G4-B Baidu Owner UID Discovery Helper R6R2A
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
-EXECUTOR_ROLE=OFFLINE_SOURCE_REPAIR_AND_SYNTHETIC_FIXTURE_VALIDATION
-PREVIOUS_RESULT=RETURN_R6_ACL_INVARIANT_INCOMPLETE
+GATE_ID=G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+EXECUTOR_ROLE=OFFLINE_OWNER_UID_HELPER_BUILD_AND_FIXTURE_VALIDATION
+PREVIOUS_STATE=R6R2_BLOCKED_EXPECTED_UID_UNKNOWN
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=596e0e1ea5079f122fbf4d3034d074d682c13d0b
-R6_GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
-R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
-R6_CHECKPOINT_BLOB=18c0cfc397939930b7556b51153f27a63de85ae0
-R6_VALIDATOR_BLOB=b7d5c2162db54ad92bd910035d33a03dc2027546
+PRE_GATE_HEAD=f3ee1374ac3049bf8130a1f6cf35675881b61cc6
+R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
+R6R1_RESULT=PASS
+R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
 SOURCE_PROVENANCE=PASS
 PRE_GATE_TRACKED_WORKTREE=CLEAN
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
-R6R1_ACL_PREDICATE_REPAIRED=YES
-R6R1_SYNTHETIC_ACL_FIXTURES=PASS
-R6_FULL_REGRESSION=PASS
+UID_DISCOVERY_HELPER_READY=YES
+UID_HELPER_OFFLINE_FIXTURES=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
-REAL_OWNER_CHECKPOINT_EXECUTED=NO
+OWNER_UID_HELPER_EXECUTED=NO
 REAL_BAIDU_ACTIONS=0
 OWNER_CONFIG_READ=NO
+OWNER_UID_ACCESSED_OR_EMITTED=NO
 NETWORK_REQUESTS=0
 SECRET_OR_DPAPI_ACCESSED=NO
 VPS_OR_SSH_ACTIONS=0
 LIVE_G4B_ACTIONS=0
-ESTIMATED_EXECUTION_TIME=10-20 minutes
-TIMING_RECORD_REQUIRED=YES
-TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-ROUND_STARTED_AT=2026-10-05T00:14:37Z
-ROUND_FINISHED_AT=2026-10-05T00:27:55Z
-ACTUAL_ELAPSED=13m18s
-TIME_OVERRUN=NO
+REAL_WHO_INVOKED=NO
+BAIDU_CLI_INVOKED=NO
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-R6R1 is a source-only repair of `Assert-BaiduConfigAclMetadata` plus synthetic fixtures in the offline validator. The predicate preserves exact Owner SID and existing location/reparse checks; examines direct and inherited rules; permits only Owner, LocalSystem, and Builtin Administrators Allow ACEs; rejects every Deny/other Allow; and requires applicable Owner read/list/traverse rights on each file or directory. All synthetic and accepted R6 regression checks passed. The checkpoint was not run, and no real config contents, credentials, provider, VPS, or network were accessed. Stop at Reviewer.
+R6R2A adds a minimal Owner-local UID discovery checkpoint that reuses the accepted R6R1 archive trust chain, config location/reparse/ACL predicate, and captured `who` process boundary. It accepts no arguments, parses one numeric UID only in memory, suppresses username and raw provider output, prints the UID only on the Owner's local console after successful cleanup, and explicitly warns against sharing it. The offline validator covered unique/ambiguous/unauthenticated parser cases, source-only dot-sourcing, ACL reuse, and exact temporary cleanup using non-secret fixtures. The Owner helper was not executed; no real config, UID, provider, credential, VPS, or network was accessed. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
