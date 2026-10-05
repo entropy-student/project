@@ -107,6 +107,10 @@ function Test-RunnerContract {
     $canonicalGateEnd=if($canonicalGateStart -ge 0){$Text.IndexOf("if(`$Mode -eq 'Rollback')",$canonicalGateStart,[StringComparison]::Ordinal)}else{-1}
     $canonicalGateBlock=if($canonicalGateStart -ge 0 -and $canonicalGateEnd -gt $canonicalGateStart){$Text.Substring($canonicalGateStart,$canonicalGateEnd-$canonicalGateStart)}else{''}
     $canonicalGateModeBound=($canonicalGateBlock.Contains('LIVE_G4B_GATE_NOT_CURRENT') -and $canonicalGateBlock.Contains('REVIEWER_LIVE_AUTHORIZATION_MISSING') -and $canonicalGateBlock.Contains('REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED') -and $canonicalGateBlock.Contains('SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK'))
+    $canonicalSourceStart=$Text.IndexOf('function Assert-CanonicalSource {',[StringComparison]::Ordinal)
+    $canonicalSourceEnd=$Text.IndexOf('function Get-IntegrityRid {',$canonicalSourceStart,[StringComparison]::Ordinal)
+    $canonicalSourceBody=if($canonicalSourceStart -ge 0 -and $canonicalSourceEnd -gt $canonicalSourceStart){$Text.Substring($canonicalSourceStart,$canonicalSourceEnd-$canonicalSourceStart)}else{''}
+    $canonicalGitRootPathScope=($canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $runnerRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $handoffRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix') -and -not $canonicalSourceBody.Contains("Invoke-GitRead -Arguments @('ls-files'"))
     $journalRetention=($Text.Contains('/var/lib') -and $Text.Contains("'G4B_OWNER_ROLLBACK_R1'") -and $Text.Contains("Write-RollbackJournal -Status 'PASS_CANDIDATE'") -and $Text.Contains('G4B_ROLLBACK_JOURNAL_RETAINED=YES') -and $Text -notmatch "(?m)^\s*if ACTION=='complete':")
     $candidateRetains=($candidateBody.Contains("s['pass_candidate']=True; save_state(s)") -and -not ($candidateBody -match 'shutil\.rmtree|\.unlink\(') -and -not $Text.Contains("Invoke-Remote -Action 'complete'"))
     $successMarkers=@('G4B_RECOVERY_PENDING_VERIFIED=YES','G4B_RECOVERY_FINAL_PROMOTED=YES','G4B_REALITY_RUNTIME_ACCESS=PASS','G4B_REALITY_SERVICE_READY=YES','G4B_PUBLIC_TCP443_READY=YES','G4B_THREE_ROLE_PROFILE_IMPORTED=YES','G4B_THREE_ROLE_PROFILE_RESTART_PERSISTENCE=PASS','G4B_ROLE_ORDER=HY2_PRIMARY_WG_BACKUP1_REALITY_BACKUP2','G4B_AUTO_SWITCHING=OFF','G4B_WIREGUARD_PRESERVED=YES','G4B_HY2_PRESERVED=YES','G4B_SYSTEM_PROXY_FINAL=OFF','G4B_TUN_FINAL=OFF','G4B_ROLLBACK_JOURNAL_RETAINED=YES','SECRET_VALUES_EMITTED=0','STOP_AT_REVIEWER=YES')
@@ -188,6 +192,7 @@ function Test-RunnerContract {
         BaiduUniqueSafeExeEntry=$baiduUniqueSafeExeEntry
         BaiduCommandBoundary=$baiduCommandBoundary
         BaiduUtf8Decode=$baiduUtf8Decode
+        CanonicalGitRootPathScope=$canonicalGitRootPathScope
         BaiduPendingName=$baiduPendingName
         BaiduPendingGuard=$baiduPendingGuard
         BaiduPendingReadback=$uploadReadback
@@ -206,6 +211,19 @@ Assert-Fixture ($validatorParseErrors.Count -eq 0) 'VALIDATOR_AST'
 
 $packageOutput=@(& $packageValidatorPath 2>&1 | ForEach-Object { [string]$_ })
 Assert-Fixture (($packageOutput -contains 'G4B_OFFLINE_PACKAGE_VALIDATION=PASS') -and ($packageOutput -contains 'NETWORK_MUTATION=NO') -and ($packageOutput -contains 'SECRET_ACCESS=NO')) 'EXISTING_PACKAGE_VALIDATOR'
+
+$gitRepoRoot=((& git -C $projectRoot rev-parse --show-toplevel 2>$null) -join [Environment]::NewLine).Trim()
+Assert-Fixture ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace($gitRepoRoot)) 'R6R2L_R1_GIT_ROOT_DISCOVERY'
+$gitProjectPrefix=((& git -C $projectRoot rev-parse --show-prefix 2>$null) -join [Environment]::NewLine).Trim().TrimEnd('/')
+Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitProjectPrefix -match '(^|/)vpn-network-optimization$') 'R6R2L_R1_GIT_PROJECT_PREFIX'
+$gitRunnerRel=($gitProjectPrefix + '/scripts/g4b-persistent-three-role-live-runner.ps1').TrimStart('/')
+$gitHandoffRel=($gitProjectPrefix + '/REVIEWER_HANDOFF.md').TrimStart('/')
+$gitTrackedRunner=((& git -C $gitRepoRoot ls-files --error-unmatch -- $gitRunnerRel 2>$null) -join [Environment]::NewLine).Trim()
+Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitTrackedRunner -ceq $gitRunnerRel) 'R6R2L_R1_GIT_RUNNER_ROOT_PATH_QUERY'
+$gitTrackedHandoff=((& git -C $gitRepoRoot ls-files --error-unmatch -- $gitHandoffRel 2>$null) -join [Environment]::NewLine).Trim()
+Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitTrackedHandoff -ceq $gitHandoffRel) 'R6R2L_R1_GIT_HANDOFF_ROOT_PATH_QUERY'
+[void](& git -C $gitRepoRoot status --porcelain=v1 --untracked-files=all -- $gitProjectPrefix 2>$null)
+Assert-Fixture ($LASTEXITCODE -eq 0) 'R6R2L_R1_GIT_STATUS_ROOT_PATH_QUERY'
 
 $contract=Test-RunnerContract $runner
 Assert-Fixture $contract.PhaseOrder 'PHASES_P0_P12_ORDERED_ONCE'
@@ -245,6 +263,7 @@ Assert-Fixture $contract.BaiduUniqueSafeExeEntry 'R5R1_UNIQUE_SAFE_EXE_ENTRY'
 Assert-Fixture ($contract.BaiduPendingName -and $contract.BaiduPendingGuard) 'R5R1_PENDING_PRODUCTION_BASENAME'
 Assert-Fixture $contract.BaiduCommandBoundary 'R4_BAIDU_AUTH_AND_ARGUMENT_BOUNDARY'
 Assert-Fixture $contract.BaiduUtf8Decode 'R6R2K_BAIDU_CLI_UTF8_DECODE_LOCKED'
+Assert-Fixture $contract.CanonicalGitRootPathScope 'R6R2L_R1_CANONICAL_GIT_ROOT_PATH_SCOPE'
 Assert-Fixture $contract.BaiduPendingReadback 'R4_PENDING_UPLOAD_CIPHERTEXT_READBACK'
 Assert-Fixture $contract.BaiduFinalPromotion 'R4_FINAL_PROMOTION_AFTER_READBACK'
 Assert-Fixture $contract.BaiduRollbackScoped 'R4_ROLLBACK_REMOVES_ONLY_VERIFIED_PENDING'
