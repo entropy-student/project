@@ -1,6 +1,23 @@
 # G4-B Baidu Stale Pending Quarantine Reconciliation R6R2L-R17
 
-Status: PREPARED / OWNER_AUTHORIZED / HELPER_LOCKED / REMOTE_PROVIDER_MUTATION_NOT_YET_EXECUTED
+Status: SUSPENDED_PENDING_R17R1_CODE_VALIDATION / OWNER_AUTHORIZATION_RECORDED / REMOTE_PROVIDER_MUTATION_NOT_YET_EXECUTED
+
+## REVIEW HOLD — R17R1 OFFLINE CODE VALIDATION
+
+A later Reviewer reconciliation identified that executable local usability evidence must be completed before this consequential Gate may consume the recorded Owner authorization.
+
+Current blocking Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1`.
+
+While R17R1 is open:
+
+- the Owner's explicit R17 authorization remains recorded but is **not released for execution**;
+- do **not** run `-Mode Run -OwnerAuthorized`;
+- do not contact Baidu or perform any provider mutation;
+- helper/validator identities recorded below are starting/review identities, not a release-to-run decision;
+- local Codex must complete offline code review, any necessary repair, executable regression validation, final blob capture, and mandatory Reviewer stop;
+- only a later Reviewer PASS/relock may return this R17 Gate to Owner-action-ready state.
+
+This hold narrows execution only; it does not expand R17 consequences or authorize any new action.
 
 ## GATE_ID
 
