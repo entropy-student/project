@@ -243,7 +243,7 @@ try {
     if([int]$who['ExitCode'] -ne 0){
         $classification='AUTH_OR_PROVIDER_READ_FAILED'
         Write-Output 'BAIDU_WHO_PROCESS=FAIL'
-        Write-Output ('BAIDU_REMOTE_ERROR_CLASS='+(Get-SafeRemoteClass -StdOut ([string]$who['StdOut']) -StdErr ([string]$who['StdErr']))
+        Write-Output ('BAIDU_REMOTE_ERROR_CLASS='+(Get-SafeRemoteClass -StdOut ([string]$who['StdOut']) -StdErr ([string]$who['StdErr'])))
         throw 'BAIDU_WHO_READ_FAILED'
     }
 
@@ -273,7 +273,7 @@ try {
     if([int]$ls['ExitCode'] -ne 0){
         $classification='AUTH_OR_PROVIDER_READ_FAILED'
         Write-Output 'BAIDU_LS_PROCESS=FAIL'
-        Write-Output ('BAIDU_REMOTE_ERROR_CLASS='+(Get-SafeRemoteClass -StdOut ([string]$ls['StdOut']) -StdErr ([string]$ls['StdErr']))
+        Write-Output ('BAIDU_REMOTE_ERROR_CLASS='+(Get-SafeRemoteClass -StdOut ([string]$ls['StdOut']) -StdErr ([string]$ls['StdErr'])))
         throw 'BAIDU_LS_READ_FAILED'
     }
 
