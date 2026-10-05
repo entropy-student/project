@@ -21,7 +21,7 @@ Before any new live G4-B retry, read-only provider state must be reconciled usin
 ## LOCKED SOURCE
 
 ```text
-R11_SCRIPT_BLOB=dff7b60e31e0fb28295a3309d5516ae23aee28cf
+R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 ```
 
 ## OBJECTIVE
