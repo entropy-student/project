@@ -532,3 +532,12 @@ The supported Cookie/BDUSS paths cannot be invoked through stock CLI flags becau
 The pinned no-echo Cookie adapter and build chain are accepted. The remaining defect is in the Owner orchestration: it performs strict R6R1 validation before normalizing a child-created config file Owner/ACL, recreating the Windows Owner-mismatch failure already observed in R6R2D. It also lacks provenance-aware rollback for a run-created empty root or exact partial `pcs_config.json` after adapter/post-auth failure.
 
 R6R2H-R1 is limited to repairing the Owner checkpoint and validator using the accepted R6R2E metadata/normalization/reconciliation pattern. No real Cookie action is authorized yet.
+
+
+## 2026-10-05 — R6R2H returned for missing post-save ACL normalization
+
+**Decision:** `RETURN_R6R2H_COOKIE_OWNER_CHECKPOINT_MISSING_POSTSAVE_ACL_NORMALIZATION`.
+
+The credential-safe Cookie adapter and pinned build path are accepted. The Owner checkpoint is not yet safe to run because it applies strict R6R1 config ACL validation immediately after the adapter creates `pcs_config.json`, before normalizing the child-created file Owner/ACL. R6R2D already demonstrated this Windows ownership mismatch on the real Owner host.
+
+R6R2H-R1 is limited to restoring the accepted R6R2E ordering: exact metadata shape -> Owner/ACL normalization -> strict R6R1 validation, plus failure provenance for pre-existing/new empty roots. No real Cookie/auth action is authorized meanwhile.
