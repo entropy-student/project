@@ -9500,3 +9500,37 @@ G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4
 ```
 
 Next Gate: `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8`. Owner runs only the offline fixture validator. No live retry is authorized until Reviewer accepts R8.
+
+
+## Reviewer reconciliation — R6R2L-R7 Baidu read-only diagnostic return — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7
+OWNER_REPORTED_EXPECTED_UID_INPUT=READY
+OWNER_REPORTED_DIAGNOSTIC_STAGE=BAIDU_WHO
+OWNER_REPORTED_DIAGNOSTIC_EXCEPTION_TYPE=System.Management.Automation.PropertyNotFoundException
+OWNER_REPORTED_BAIDU_READONLY_DIAGNOSTIC_CLASSIFICATION=LOCAL_DIAGNOSTIC_EXCEPTION
+OWNER_REPORTED_TEMP_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_BAIDU_MUTATION_ACTION=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_RECOVERY_WRITE=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+REVIEWER_RESULT=RETURN_R6R2L_R7_BAIDU_WHO_PROPERTY_NOT_FOUND
+```
+
+Reviewer interpretation:
+- R7 failed inside the local diagnostic implementation while processing the Baidu `who` boundary.
+- The exception type is a PowerShell `PropertyNotFoundException`, not a bounded Baidu authentication/network classification.
+- Therefore R7 does not prove that Baidu auth, connectivity, or remote state is invalid.
+- The failure is potentially the same PowerShell object-shape class as the original R5 `UNCLASSIFIED` exception, so live replay remains forbidden.
+- Temp runtime cleanup passed; no Baidu mutation, SSH/VPS action, recovery write, network mutation or Secret output occurred.
+- R8 changes only diagnostic result handling from dynamic property access to explicit dictionary-key access and adds bounded substage/line reporting.
+
+```text
+G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8_GATE_BLOB=20ed0bbe8fe7a298bd46ec9ebccbd8ac0421f4f5
+G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8_SCRIPT_BLOB=59c2ab662562d6130fc9215dae810edbfed59ac2
+```
+
+Next Gate: `G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8`.
