@@ -9607,3 +9607,56 @@ Reviewer acceptance:
 - Existing bounded Owner live authorization remains valid: prior R5 attempt had `CONSEQUENTIAL_MUTATION_STARTED=NO`, and the only runner change is a safety-preserving output-suppression repair.
 
 Next: issue a fresh one-shot live retry Gate locked to the repaired runner and validator.
+
+
+## Reviewer reconciliation — R6R2L-R9 live retry P5 listing-parser return — 2026-10-05
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T14:59:57.1170349+00:00
+OWNER_REPORTED_HEAD_AFTER=fda2a8f0fc116d507c9ec9e58e037e60c833cb06
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_GATE_BLOB=b81b39da7468d39b6901a4bc9017d136d7527c24
+OWNER_REPORTED_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+OWNER_REPORTED_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_LIVE_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_OWNER_LIVE_AUTHORIZATION=PASS
+OWNER_REPORTED_RUNNER_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
+OWNER_REPORTED_BAIDU_CLI_VERSION=v4.0.2
+OWNER_REPORTED_FAILURE_CODE=BAIDU_PENDING_UPLOAD_NOT_PRESENT
+OWNER_REPORTED_CONSEQUENTIAL_MUTATION_STARTED=NO
+OWNER_REPORTED_REMOTE_ROLLBACK=PASS
+OWNER_REPORTED_BAIDU_PENDING_ROLLBACK=PASS
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T15:09:45.0334555+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:09:47.9164206
+REVIEWER_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LS_FORMAT_PARSER_DRIFT
+```
+
+Reviewer reconciliation:
+- R9 progressed beyond the R5 success-stream defect and reached the real Baidu pending-upload readback boundary.
+- The upload command returned through the accepted CLI wrapper, but `Get-BaiduRemoteObjectState` classified the expected pending basename as absent.
+- `CONSEQUENTIAL_MUTATION_STARTED=NO`; the runner reported bounded remote rollback PASS and Baidu pending rollback PASS. No blind retry is authorized.
+- `BAIDU_PENDING_ROLLBACK=PASS` does not prove a pending object was deleted: `Remove-BaiduPendingIfOwned` also returns successfully when its listing parser reports ABSENT.
+
+### Root-cause source reconciliation
+
+Upstream BaiduPCS-Go v4.0.2 source proves the production listing formatter is borderless:
+- `pcstable/pcstable.go`: `SetBorder(false)`, `SetHeaderLine(false)`, `SetColumnSeparator("")`.
+- `internal/pcscommand/ls_search.go`: detailed `ls -l` places `file.Filename` in the final column and represents directories as `file.Filename + "/"`.
+- `internal/pcscommand/upload.go`: upload constructs the remote save path from the supplied target directory plus the local basename.
+
+The pre-R10 runner instead matched only pipe-delimited rows beginning with `|`. Therefore a real existing object could be misclassified as ABSENT. The existing fake CLI masked the defect because its synthetic `ls` rows were manually pipe-delimited.
+
+This is an implementation/fixture-drift defect, not evidence that the Baidu account, target directory, or upload API itself failed.
+
+### R10 repair identities
+
+```text
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_GATE_BLOB=20ce50c15c16dce8cf2adb8a952750e2cb28b8b2
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RUNNER_BLOB=2727ed692c2230367c4a2a8db3a55a1a678a9049
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+```
+
+R10 is offline validation only. It does not authorize a live retry.
