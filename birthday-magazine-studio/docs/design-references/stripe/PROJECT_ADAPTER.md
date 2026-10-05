@@ -14,26 +14,34 @@ The vendored DESIGN.md is the primary visual-system reference. This adapter only
 
 ## Canonical tokens to use
 
-Prefer the upstream Stripe-inspired tokens directly:
+The project keeps Stripe's **component geometry, spacing, hierarchy and elevation**, but the Owner has explicitly replaced Stripe's brand palette with Birthday Magazine Studio's own palette.
+
+### Birthday Magazine brand palette — authoritative override
 
 ```text
-primary            #533afd
-primary-deep       #4434d4
-primary-press      #2e2b8c
-primary-soft       #665efd
-brand-dark-900     #1c1e54
+primary            #713F5D
+primary-deep       #5B314B
+primary-press      #472439
+primary-soft       #8E5B78
+primary-bg-subdued #F4EBF0
 
-ink                #0d253d
-ink-secondary      #273951
-ink-mute           #64748d
+ink                #182230
+ink-secondary      #344054
+ink-mute           #667085
 
-canvas             #ffffff
-canvas-soft        #f6f9fc
-hairline           #e3e8ee
-hairline-input     #a8c3de
+canvas             #FFFFFF
+canvas-soft        #F7F8FB
+hairline           #E5E7EB
+hairline-input     #CBD5E1
 ```
 
-Ruby / magenta may appear only as tiny atmospheric gradient-mesh accents. They are not CTA colors.
+Use Stripe DESIGN.md values for structural guidance when this adapter is silent, but do **not** reintroduce Stripe's `#533afd` as the primary product color.
+
+The intent is:
+- Stripe-like SaaS structure;
+- Birthday Magazine brand identity;
+- cool neutral shell;
+- the magazine artifact remains the visual/emotional focal point.
 
 ## Typography
 
@@ -82,27 +90,29 @@ Use upstream Level 1 / Level 2 logic:
 - major preview/product panels: restrained 8–24px soft blue-gray shadow;
 - avoid thick gray drop shadows or paper-like floating-sheet shadows in the SaaS shell.
 
-## Gradient mesh
+## Decorative background / mesh
 
-The upstream design treats a gradient mesh as a marketing signature.
+The Owner has explicitly rejected the decorative mesh for the current MVP frontend.
 
 Project adaptation:
-- allowed and encouraged in the **homepage Preview/core-entry intro/hero band**;
-- keep it atmospheric and behind white product UI panels;
-- do not cover the entire application with gradients;
-- intake and Woo/status pages should remain predominantly `canvas` / `canvas-soft`;
-- do not use Stripe logos or proprietary mesh assets;
-- implement an original local mesh treatment, not copied Stripe artwork.
+- **no SVG mesh asset**;
+- **no replacement decorative illustration**;
+- **no gradient blob background**;
+- leave the surrounding SaaS canvas intentionally quiet and mostly empty;
+- homepage Preview/core-entry uses `canvas-soft` / `canvas` plus the product cards themselves for hierarchy;
+- the magazine artifact is the primary visual focus.
+
+If a later Owner decision reintroduces atmospheric decoration, it requires a new bounded visual decision.
 
 ## Homepage Preview/core-entry
 
 Use the upstream “product UI mockup floating above a soft marketing field” principle:
 
 - one cool `canvas-soft` product-demo shell;
-- optional original Stripe-like mesh in the upper/outer background;
+- no decorative mesh/background artwork;
 - one white control panel;
 - one white product-preview panel;
-- indigo pill CTA;
+- Birthday Magazine mulberry pill CTA using `primary` `#713F5D`;
 - magazine object may retain ivory/serif styling;
 - surrounding UI must remain cool white/blue-gray.
 
@@ -114,7 +124,7 @@ Treat intake as dashboard/product UI, not marketing editorial:
 - white work panel;
 - thin hairlines;
 - compact stepper;
-- indigo progress/focus/CTA;
+- mulberry `primary` progress/focus/CTA;
 - 6px form-field radius;
 - 12px cards;
 - no cream background;
@@ -126,10 +136,10 @@ Treat intake as dashboard/product UI, not marketing editorial:
 Use dashboard/product-state language:
 
 - white status card over `canvas-soft`;
-- compact soft-indigio/info pill;
+- compact soft-mulberry/info pill;
 - order/count values use tabular numerics;
 - progress rows separated with hairlines;
-- one indigo active/current state;
+- one mulberry `primary` active/current state;
 - pending/success colors remain semantic and subdued;
 - Woo payment truth remains unchanged.
 
