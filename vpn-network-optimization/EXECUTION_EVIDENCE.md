@@ -10041,3 +10041,31 @@ R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
 R12 is local metadata-only. It does not authorize ACL normalization, provider access, cleanup or live G4-B retry.
+
+
+## Reviewer preparation — R12 metadata-only ACL owner inventory helper — 2026-10-05
+
+R12 implementation is prepared on canonical main but has not been executed.
+
+```text
+GATE_ID=G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+R12_GATE_BLOB=8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f
+R12_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
+R12_EXECUTED=NO
+```
+
+Static Reviewer inspection confirms:
+- helper is local metadata-only;
+- filesystem access is limited to `Get-Item`, bounded recursive `Get-ChildItem`, and `Get-Acl`;
+- no config content read/copy/hash/print command exists;
+- no `Set-Acl`, `takeown`, `icacls`, file mutation or ownership mutation exists;
+- no process launch, BaiduPCS-Go provider action, UID prompt, network request, DPAPI/Secret, SSH/VPS, Clash/profile/service/route/proxy/TUN or G4-C action exists;
+- output is aggregate counts/classification only and ends with explicit NO/zero-scope safety markers.
+
+The helper reuses the accepted R6R1 ACL semantics for:
+- safe Allow SID set;
+- Deny-ACE detection;
+- Owner effective read/list/traverse-rights calculation;
+- reparse-point rejection.
+
+R12 remains observation only. It does not authorize ACL normalization or provider access.
