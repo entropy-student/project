@@ -4,7 +4,41 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Retained Binary Creation Repair R6R2I-D2
+## Current execution status — G4-B Baidu Owner Console Output Repair R6R2I-D5
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=57f47df93a0a4ff9b76aa236a905b3f9388c1d5c
+GATE_BLOB=5ab5a28d3772b8efbb7a7ac37483f3c8b8585c91
+SOURCE_COMMIT=3cf6fdb7f972314b2bf37250b95a8ca7926b46a7
+R6R2I_D5_AUTH_LOGIC_FROZEN=PASS
+R6R2I_D5_HIDDEN_INPUT_PATH_PRESERVED=PASS
+R6R2I_D5_ADAPTER_STATUS_CONSOLE_LEAK_BLOCKED=PASS
+R6R2I_D5_OWNER_EIGHT_MARKER_CONTRACT_EXACT=PASS
+R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+GO_SOURCE_TESTS=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
+NATIVE_FAILURE_BINARY_FIXTURE=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
+SECRET_SCAN=PASS
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+OWNER_RUNTIME_BINARY_ACCESSED=NO
+PROVIDER_REQUESTS=0
+NETWORK_REQUESTS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+RESULT=RETURN_GO_SOURCE_TESTS_UNAVAILABLE
+STOP_AT_REVIEWER=YES
+```
+
+The source repair removes the adapter's fixed status lines while retaining its hidden-input prompt and native exit behavior. The checkpoint and successful authenticated config/runtime were not executed, read, or modified. The full local PowerShell regression and Secret scan pass; Go tests and the binary-level synthetic fixture remain unrun because no local Go toolchain is available and the Gate forbids downloading one. Reviewer should decide whether the exact source-delta proof is sufficient or whether a Go-enabled offline environment is needed; no Owner action or authentication retry is requested.
+
+The Reviewer Handoff's explicit `CURRENT_GATE` and relay assign D5, while its `NEXT_STEP` still mentions the superseded R3 task. No R3 work was performed; Reviewer reconciliation is requested.
+
+## Historical execution status — G4-B Retained Binary Creation Repair R6R2I-D2
 
 ```text
 GATE_ID=G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
@@ -34,7 +68,7 @@ RESULT=PASS_CANDIDATE_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2I-D2
+### Executor task — historical R6R2I-D2
 
 Only the retained-binary build persistence path and its offline validator were changed. The retained file is opened with `FileMode.CreateNew` using the accepted Owner-only `FileSecurity` descriptor at creation time, then flushed/closed, checked by the frozen `Assert-OwnerOnlyAcl`, and SHA-256 compared with the freshly built candidate. No post-create Owner rewrite is used. Runtime ACL helpers are verified and loaded in RetainBinary script scope before runtime preparation. Expected persistence failures use bounded stage codes; failed runs call a production cleanup helper that deletes/verifies only the exact run-created file and never removes runtime directories. The output no longer includes a local binary path.
 

@@ -8869,3 +8869,41 @@ The real Owner authentication succeeded and produced the accepted authenticated 
 Reviewer found one output-contract defect only: the child adapter's own bounded status lines were inherited by the console in addition to the checkpoint's required eight markers. The extra lines contained no provider output, account identity, UID, config content, or authentication material, but they violate the exact Owner return contract.
 
 The authenticated config is accepted and must not be re-created. Next Gate `G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5` is offline-only and repairs the child/Owner console boundary without touching the real authenticated config.
+
+
+## Executor result — G4B Baidu Owner console output repair R6R2I-D5 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5
+GATE_BLOB=5ab5a28d3772b8efbb7a7ac37483f3c8b8585c91
+PRE_GATE_HEAD=57f47df93a0a4ff9b76aa236a905b3f9388c1d5c
+SOURCE_COMMIT=3cf6fdb7f972314b2bf37250b95a8ca7926b46a7
+R6R2I_D5_AUTH_LOGIC_FROZEN=PASS
+R6R2I_D5_HIDDEN_INPUT_PATH_PRESERVED=PASS
+R6R2I_D5_ADAPTER_STATUS_CONSOLE_LEAK_BLOCKED=PASS
+R6R2I_D5_OWNER_EIGHT_MARKER_CONTRACT_EXACT=PASS
+R6R2I_D5_SUCCESS_PATH_NO_DUPLICATE_MARKERS=PASS_STATIC
+R6R2I_D5_FAILURE_PATH_NO_CHILD_MARKERS=PASS_STATIC
+R6R2I_D5_NATIVE_NONZERO_EXIT_PRESERVED=PASS_STATIC
+R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+GO_SOURCE_STATIC_VALIDATION=PASS
+GO_SOURCE_TESTS=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
+NATIVE_FAILURE_BINARY_FIXTURE=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
+SECRET_SCAN=PASS
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+OWNER_RUNTIME_BINARY_ACCESSED=NO
+PROVIDER_REQUESTS=0
+NETWORK_REQUESTS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+EXECUTOR_RESULT=RETURN_GO_SOURCE_TESTS_UNAVAILABLE
+STOP_AT_REVIEWER=YES
+```
+
+The adapter change removes only its 16 fixed success/failure status writes. The hidden local prompt and `ReadPassword` remain, failure paths still return nonzero, and `main()` still exits with `run()`'s code. The Owner checkpoint and Go test source remain at their accepted blobs; the builder's synthetic invalid-argument fixture now requires nonzero exit and no child status text. The validator compares the adapter against the pre-Gate source with exactly those 16 output statements removed, locks the Owner/test sources, checks the builder's one-line fixture-only delta, and verifies that the checkpoint emits exactly eight final markers.
+
+The full PowerShell offline validator passed, including AST parsing, R6R1 ACL and R6R2H-R3 regression fixtures, D5 boundary checks, Secret scan, and temporary synthetic-fixture cleanup. Go source tests and the compiled native fixture were not run: this execution environment has no `go.exe` in the available Go path, and D5 is strictly offline, so no toolchain or upstream source was downloaded. The completed authentication config and retained Owner runtime were not accessed or changed. `REVIEWER_HANDOFF.md` still has a stale `NEXT_STEP` reference to R3; this execution followed the explicit D5 `CURRENT_GATE` and relay only.
