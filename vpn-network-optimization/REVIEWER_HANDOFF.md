@@ -104,22 +104,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_SECURITY_METADATA_WRITE
+STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_PROVIDER_OBSERVATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
-OBJECTIVE=Normalize only the Owner field of the proven R9-created pcs_uploading.json from Builtin Administrators to the current Owner SID, preserving current access rules and retaining a verified rollback journal.
-MAX_ENDPOINT_THIS_ROUND=Preparation only until explicit Owner authorization. After authorization: one bounded local Owner normalization attempt, strict post-readback, mandatory Reviewer stop.
+PREVIOUS_RESULT=PASS_R6R2L_R15_UPLOAD_DB_OWNER_NORMALIZATION
+OBJECTIVE=With local Baidu config ACL now reconciled, read only the provider recovery directory and classify whether any R9 residual pending/final project object remains.
+MAX_ENDPOINT_THIS_ROUND=One read-only who + ls observation ending in sanitized residual classification + STOP_AT_REVIEWER. No cleanup, no provider mutation, no live runner.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Exact %APPDATA%\BaiduPCS-Go\pcs_uploading.json security metadata only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No config content read/hash/copy/print; no root or pcs_config.json ACL mutation; no broad takeown/icacls; no file deletion/rename/move; no Baidu provider/UID/Secret/SSH/VPS/network/live-G4B/G4-C action.
-PREFLIGHT=R14 formally PASS: root=OWNER, pcs_config.json=OWNER, pcs_uploading.json=ADMIN, history/captcha absent, unknown entry count 0, reparse 0. R12 also proved no Deny/unauthorized-Allow/Owner-read-rights drift.
-REQUIRED_EVIDENCE=R15 Gate blob ba3a574c47d05a31c18ef59a500f13e616ea6a95; R15 script blob 930cae384a3bc1df27c3f93d52d5d8580b15a32e; explicit Owner authorization before Run mode; precheck PASS; Owner-only rollback journal READY; exact target Owner change ADMIN→OWNER; strict R6R1 readback PASS; exact shape readback PASS; rollback journal retained; all no-action markers.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if the exact target Owner becomes OWNER, root/config/upload-db all pass strict R6R1 metadata checks, exact two-file shape remains, rollback journal is retained, and no unrelated action occurs. Reviewer must formally accept before provider readback resumes.
-ROLLBACK_STATUS_OR_PLAN=Before write, persist exact target ACL SDDL in a verified Owner-only local rollback journal. Any post-write failure triggers exact ACL restore and ADMIN-owner readback. Rollback failure stops hard.
-OWNER_ONLY_ACTIONS=Run exactly one R15 bounded Owner-normalization attempt after source/state checks and parser preflight, then stop at Reviewer.
+TARGET_AND_SCOPE=Owner Windows host + approved Baidu recovery directory read-only state only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No mkdir/upload/download-from-Baidu/mv/rm/login/logout/config mutation; no raw UID/stdout/stderr/remote filenames; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C; retain R15 rollback journal.
+PREFLIGHT=R15 formally PASS; pcs_uploading.json Owner normalized ADMIN→OWNER; strict R6R1 ACL readback PASS; local config shape PASS; remote residual state still UNKNOWN because R11 stopped before provider access.
+REQUIRED_EVIDENCE=R16 Gate blob 33649d6c5cf5b16120f4578680071beab9da4592; reused read-only helper blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; parser preflight; config ACL PASS; pinned CLI PASS; hidden UID input; who/UID PASS; ls/header PASS; final/pending/unknown project counts; sanitized residual classification; temp cleanup PASS; all no-mutation markers.
+ACCEPTANCE_CRITERIA=Observation only. CLEAN may permit a new bounded live G4-B retry Gate; any residual/unknown/auth/provider failure returns for separate reconciliation. R16 itself never closes G4-B.
+ROLLBACK_STATUS_OR_PLAN=No provider rollback because R16 is read-only. R15 local rollback journal remains retained and untouched.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R16 Gate/reused helper blob and Handoff state, parser-preflight helper, run once, enter expected Baidu UID only through hidden local prompt, return sanitized markers, stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=After explicit authorization only, return sanitized R15 markers and stop.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R16 markers only; do not cleanup residuals or run live G4-B.
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; its pending rollback observation used the superseded pre-R10 parser and remains non-authoritative for remote cleanliness. R11 then stopped locally at `BAIDU_CONFIG_ACL` with `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` before UID/provider action. R12 proved one ADMIN-owned file within an otherwise clean three-item subtree. R13 narrowed the unknown file role. R14 then proved the exact mismatch is `pcs_uploading.json=ADMIN`, while root/config are OWNER, history/captcha absent, and there are no unknown entries or reparse points. Current work is R15 guarded Owner normalization preparation; execution requires explicit Owner authorization. Remote residual state remains UNKNOWN.
@@ -267,6 +267,9 @@ G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_SCRIPT_BLOB=e2a5f2e9f64e587
 G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_RESULT=PASS_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
 G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
 G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_RESULT=PASS
+G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
+G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
 R15_EXECUTION_AUTHORIZED=YES
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
