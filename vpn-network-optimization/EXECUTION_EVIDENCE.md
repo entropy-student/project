@@ -8784,7 +8784,8 @@ OWNER_RUNTIME_WRITE=NO
 OWNER_CONFIG_READ=NO
 OWNER_CONFIG_WRITE=NO
 RETAINED_BINARY_FIXTURE_ONLY=YES
-RETAINED_FIXTURE_EXECUTED=NO
+TEMP_RETAINED_FIXTURE_EXECUTED=YES
+REAL_RETAINED_BUILD_EXECUTED=NO
 REVIEWER_HANDOFF_MODIFIED=NO
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
 PREVIOUS_GENERIC_FAILURE_ROOT_CAUSE=NOT_PROVEN
@@ -8797,3 +8798,26 @@ STOP_AT_REVIEWER=YES
 The retained-binary writer now constructs the frozen Owner-only file security descriptor before file creation and uses `FileSystemAclExtensions.Create(FileInfo, CreateNew, ..., FileSecurity)`. The temporary non-secret candidate is copied, flushed and closed, then checked with the unchanged `Assert-OwnerOnlyAcl` and SHA-256 readback. Existing destination collision fails closed. The builder emits bounded persistence-stage failures without raw exception text or local paths; its default non-retained build path remains gated from runtime preparation and retained copy. On overall failure, the production cleanup function deletes and verifies only the run-created exact leaf file and does not remove either runtime directory.
 
 The validator executed the production writer and cleanup functions only against a unique temporary fixture containing non-secret bytes. It covered successful create/strict ACL/hash readback; collision leaves the existing fixture byte identity intact; missing-source, synthetic ACL-readback and mismatched-hash failures map to distinct bounded codes; exact cleanup after partial and post-copy failure removes only fixture binaries while preserving fixture runtime directories and marker files. The complete R6R2H-R3/R6R1 offline regression, AST checks and Secret scan passed. The earlier Owner `BUILD_VALIDATION_FAILED` remains unexplained as a historical event; the previously plausible privilege limitation was not reproduced as the unique cause. No actual build, retained executable, Owner checkpoint, real config, authentication, provider request, or remote/network action was run.
+
+
+## Reviewer decision — R6R2I-D2 retained binary repair — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+REVIEWER_RESULT=PASS_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+SOURCE_COMMIT=02ab19b52ff993a4a66827ad283614f38295f292
+BUILD_HELPER_BLOB=62aa2451287cfe7bb5d6e20654a9d371d27d0401
+VALIDATOR_BLOB=6157083757cb48e15f548eb909b0da8ad2c8e5f1
+R6R2I_D3_GATE_BLOB=8ad825a4cbb75b21bc78bcf92f5cbbb6f9b406c7
+REAL_OWNER_BUILD_ACTIONS=0
+REAL_AUTH_ACTIONS=0
+REAL_OWNER_RUNTIME_WRITES=0
+```
+
+Reviewer independently checked the D2 Gate, exact commit scope, production retained-binary creation/copy/ACL/hash/cleanup functions, and validator fixtures. The production writer was executed against temporary non-secret fixtures, including successful strict ACL/hash readback and bounded create/copy/ACL/hash failure paths. The accepted R6R2H-R3 authentication/checkpoint core remains frozen.
+
+One Evidence marker was corrected for internal consistency: the temporary retained-binary fixture did execute, while no real Owner retained build executed.
+
+The historical generic Owner failure root cause remains unproven. D2 is accepted based on the repaired production path and behavioral fixtures, not on retrospective attribution.
+
+Next Gate: `G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3`, build-only one-shot. Authentication remains blocked until this build retry is reviewed.
