@@ -503,3 +503,12 @@ This violates the explicit requirement that a pre-existing empty root be preserv
 The auth helper now preserves any pre-existing empty config root on failure and permits exact empty-root deletion only when root provenance proves it was created by the current run. Exact config-file rollback remains file-only for a pre-existing root and file+root for a run-created root. Six production-function provenance fixtures and full regression passed.
 
 The accepted metadata-only failed-run reconciliation helper remains frozen. Next Gate: `G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F`.
+
+
+## 2026-10-05 — R6R2F exact failed-run residue reconciliation passed
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F`.
+
+The Owner-host metadata-only checkpoint identified the exact R6R2D failed-run residue and removed only the exact `pcs_config.json` plus the verified-empty exact config root. The pre-login absent baseline is restored, and no config content was read.
+
+One new bounded interactive login retry is now authorized through `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G`. Repeated retries and Cookie/BDUSS fallbacks remain unauthorized.
