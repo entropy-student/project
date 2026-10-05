@@ -9951,3 +9951,40 @@ Important post-R9 reconciliation:
 - Before any further live retry, the provider must be reconciled read-only with the now-correct listing semantics.
 
 Next: bounded read-only Baidu residual-state reconciliation. No live G4-B retry is authorized yet.
+
+
+## Reviewer reconciliation — R11 parser-preflight return — 2026-10-05
+
+Owner attempted the R11 read-only residual-state reconciliation and stopped before any diagnostic body execution:
+
+```text
+CHECKPOINT_STARTED_AT=2026-10-05T16:05:17.4936609+00:00
+HEAD_AFTER=318f26611312827adcdd61bca374c068278edf57
+PROJECT_SOURCE_STATUS=PASS
+PREEXISTING_RESULTS_PRESERVED=YES
+GATE_BLOB=fb03dce9b974e93e1126d6ce457e2c86919e4acb
+SCRIPT_BLOB=dff7b60e31e0fb28295a3309d5516ae23aee28cf
+LOCKED_R11_SOURCE_IDENTITY=PASS
+CURRENT_GATE_ALIGNMENT=PASS
+RESULT=PARSER_PREFLIGHT_FAILED
+R11_DIAGNOSTIC_EXECUTED=NO
+BAIDU_PROVIDER_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Reviewer source reconciliation:
+- The parser failure was caused by exactly two missing closing parentheses in sanitized `Write-Output ('BAIDU_REMOTE_ERROR_CLASS=' + ...)` statements.
+- One defect was in the `BAIDU_WHO` failure branch and one in the `BAIDU_LS` failure branch.
+- The R11 control boundary itself did not change: the process helper still permits only `who` and `ls`; no mkdir/upload/download/mv/rm action was introduced.
+- Fresh read-back confirms both statements are now syntactically balanced at source level and the script still emits `STOP_AT_REVIEWER=YES`.
+
+Authoritative R11 identities are now:
+
+```text
+R11_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
+R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+```
+
+All earlier R11 Gate/script identities are superseded for execution. R11 remains read-only only.
