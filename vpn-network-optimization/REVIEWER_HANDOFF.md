@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_CANONICAL_GIT_AND_CRLF_VALIDATION_R6R2L_R2
+STATE=OWNER_ACTION_REQUIRED_VALIDATOR_SYNTAX_VALIDATION_R6R2L_R3
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R1_GIT_RUNNER_ROOT_PATH_QUERY_FAILED
+PREVIOUS_RESULT=RETURN_R6R2L_R2_VALIDATOR_PARSER_ERROR
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline validation of Unicode-safe canonical Git root, accepted results-only source status, and CRLF Handoff repair only; no live runner/provider/VPS/Clash/Secret action.
+MAX_ENDPOINT_THIS_ROUND=Offline validator execution only; prove R2 Unicode-safe canonical Git root, accepted-results-only source status, CRLF Handoff contract and all existing regressions. No live runner/provider/VPS/Clash/Secret action.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
-PREFLIGHT=R5R1 PASS; R6R1 ACL repair PASS; post-auth Baidu identity PASS; R6R2K PASS; R6R2L consequential mutation never started; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Full live-runner fixture validator PASS including Unicode-safe root/path queries, accepted-results-only status classification, CRLF Handoff contract, all existing positive and negative fixtures; no live actions.
-ACCEPTANCE_CRITERIA=All R6R2L-R2 markers PASS plus full existing live-runner and negative fixtures PASS.
-ROLLBACK_STATUS_OR_PLAN=No runtime rollback required. R2 is source-only and can be reverted if validator fails.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main and run R6R2L-R2 offline validator only. Do not rerun the live G4-B runner yet.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2L-R2 is Owner-local offline validation.
+PREFLIGHT=R5R1 PASS; R6R1 ACL repair PASS; post-auth Baidu identity PASS; R6R2K PASS; R6R2L consequential mutation never started; R2 runner repair frozen; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
+REQUIRED_EVIDENCE=Full live-runner fixture validator parse and execution PASS including Unicode-safe root/path queries, accepted-results-only status classification, CRLF Handoff contract, all existing positive and negative fixtures; no live actions.
+ACCEPTANCE_CRITERIA=All R6R2L-R2/R3 markers PASS plus full existing live-runner and negative fixtures PASS.
+ROLLBACK_STATUS_OR_PLAN=No runtime rollback required. R3 is validator-source-only and can be reverted if validation fails.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main and run R6R2L-R3 offline validator only. Do not run the live G4-B runner.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2L-R3 is Owner-local offline validation.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop before any live retry.
 ```
 
@@ -220,6 +220,10 @@ G4B_CANONICAL_GIT_PATH_REPAIR_R6R2L_R1_VALIDATOR_BLOB=baf2fb35e9a3ea8644f9fdbf15
 G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_GATE_BLOB=37a0d1931f3d6fbe1b3fe1a92e664f98f6060bfe
 G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
 G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_VALIDATOR_BLOB=770f70119040993a66e9b3b3cb25f5d5075b0ec0
+G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_RESULT=RETURN_VALIDATOR_PARSER_ERROR
+G4B_VALIDATOR_SYNTAX_REPAIR_R6R2L_R3_GATE_BLOB=74ac032f3ad7df08eea4e69f132def769cf132b8
+G4B_VALIDATOR_SYNTAX_REPAIR_R6R2L_R3_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
+G4B_VALIDATOR_SYNTAX_REPAIR_R6R2L_R3_VALIDATOR_BLOB=753570734f82e75ab0a0ec56c4a8c6f0d3c469cb
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
@@ -300,11 +304,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs `G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2` offline validator. Stop at Reviewer; no live retry yet.
+Owner runs `G4B_VALIDATOR_SYNTAX_REPAIR_R6R2L_R3` offline validator. Stop at Reviewer; no live retry yet.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R6R2L-R2 runner/validator blobs, and run only the live-runner fixture validator. Preserve the pre-existing `results/` artifacts.
+Fast-forward to current main, verify the R6R2L-R3 runner/validator blobs, and run only the live-runner fixture validator. Preserve the pre-existing `results/` artifacts.
 
 ## EVIDENCE_POINTERS
 
