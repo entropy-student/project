@@ -23,9 +23,9 @@ The authorization covers the already-declared R17 maximum endpoint: one bounded 
 ```text
 R17_BASE_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
 R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
-R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
-R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 ```
 
 ## Reviewer source review
@@ -80,3 +80,31 @@ Owner-local one-shot checkpoint:
 7. do not rerun after any mutation-started/ambiguous result without Reviewer reconciliation.
 
 No additional Owner authorization is required for this exact R17 checkpoint because the Owner already authorized the current Gate. Any action beyond R17 still requires its own Gate/authorization.
+
+
+## Reviewer pre-execution repair — 2026-10-06
+
+Fresh Reviewer reconciliation before Owner execution found and repaired two fail-closed gaps:
+
+1. canonical Baidu UID parsing now requires **exactly one** canonical UID line rather than accepting the first match;
+2. quarantine-target absence now rejects a same-name directory as well as a same-name file.
+
+The same repair also narrows Provider command arguments:
+- `who` accepts zero arguments only;
+- `ls` accepts only `-l /vpn-network-optimization-g4b-recovery`;
+- `mv` accepts only the derived source→quarantine pair or its exact quarantine→source rollback reversal.
+
+Listing classification now counts exact files/directories separately and treats project-prefix directories as unknown project state. The offline validator adds matching static guards plus same-name quarantine-directory and project-prefix-directory negative fixtures.
+
+No Owner-local helper execution, Provider command, config read, Secret/DPAPI access, SSH/VPS action, network mutation, or R17 provider mutation occurred during this repair.
+
+```text
+PRE_REPAIR_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+PRE_REPAIR_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
+R17_OWNER_AUTHORIZATION=GRANTED_UNCHANGED_SCOPE
+R17_OWNER_CHECKPOINT_EXECUTED=NO
+R17_PROVIDER_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
