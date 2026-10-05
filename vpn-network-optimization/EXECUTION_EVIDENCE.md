@@ -10480,3 +10480,32 @@ R17_EXECUTION_AUTHORIZED=NO
 ```
 
 R17 is designed as reversible quarantine-by-rename, not permanent deletion. No R17 helper is locked or executable yet; the next Reviewer must prepare/review the helper before any Owner authorization is requested.
+
+
+## Reviewer pre-execution repair — R17 stale-pending quarantine — 2026-10-06
+
+```text
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+PROVENANCE=DIRECT_GITHUB_READBACK
+PRE_REPAIR_GATE_BLOB=14f58d66f0d136ba3869c069cdce554f4c0ebe4c
+PRE_REPAIR_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+PRE_REPAIR_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+REVIEW_FINDING_UID_UNIQUENESS=REPAIRED
+REVIEW_FINDING_QUARANTINE_DIRECTORY_COLLISION=REPAIRED
+REVIEW_FINDING_MV_ARGUMENT_SHAPE=HARDENED
+R17_GATE_BLOB=dccccf92969d37f5f83b7cb4b6f085cc0cdf566c
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
+R17_PREPARATION_EVIDENCE_BLOB=51d29f3e819a516b3ab85d13e036700cab41ff8e
+R17_OWNER_AUTHORIZATION=GRANTED_UNCHANGED_SCOPE
+R17_OWNER_CHECKPOINT_EXECUTED=NO
+R17_PROVIDER_MUTATION=NO
+R17_PERMANENT_DELETE=NO
+OWNER_CONFIG_READ=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer reconciliation found that the pre-repair helper accepted the first matching canonical UID line and treated only a same-name quarantine file as a collision. Before any Owner execution, the helper was narrowed to require exactly one canonical UID line, classify exact source/quarantine files and directories separately, reject a same-name quarantine directory, count project-prefix directories as unknown state, and constrain `mv` to the derived forward pair or its exact rollback reversal. The offline validator was extended with matching source guards and negative fixtures. No real Owner/provider/runtime action occurred.
