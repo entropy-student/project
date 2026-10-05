@@ -9857,3 +9857,38 @@ R10_VALIDATOR_BLOB=d98e479d3db03a9c4e94e8139a11c23b6d195278
 ```
 
 All earlier R10 Gate/validator identities are superseded for execution. R10 remains offline-only.
+
+
+## Reviewer reconciliation — R10 static parser-contract fixture return — 2026-10-05
+
+Owner executed the rebuilt R10 offline validator. Parser preflight passed for both runner and validator, then the validator stopped at the first R10 static contract:
+
+```text
+R10_PARSER_PREFLIGHT=PASS
+G4B_FIXTURE_R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED=PASS
+FAILURE=G4B_FIXTURE_FAILED_R6R2L_R10_BAIDU_REAL_LS_FORMAT_PARSER
+LIVE_G4B_RUNNER_EXECUTED=NO
+BAIDU_LIVE_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Reviewer source reconciliation:
+- The production runner R10 parser is present and structurally correct.
+- The validator attempted to isolate `Get-BaiduRemoteObjectState` by searching for `function Read-Hy2Auth {` after the state-function start.
+- In the actual runner, `Read-Hy2Auth` is defined earlier than `Get-BaiduRemoteObjectState`, so the forward `IndexOf(..., start)` returned `-1`.
+- That forced `$baiduStateBody=''`, causing the static contract to fail even though the runner contains the required R10 parser.
+- This is a validator boundary-selection defect, not a production parser failure.
+- The validator boundary was changed to the actual next function, `function Ensure-BaiduRecoveryDirectory {`.
+- Fresh source simulation against the current runner proves the extracted function body is non-empty and contains all required parser contract substrings.
+
+Authoritative R10 identities are now:
+
+```text
+R10_GATE_BLOB=ef148ca80a630e0e6faab748a8862b5bee0e6ea4
+R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+```
+
+All earlier R10 Gate/validator identities are superseded for execution. R10 remains offline-only.
