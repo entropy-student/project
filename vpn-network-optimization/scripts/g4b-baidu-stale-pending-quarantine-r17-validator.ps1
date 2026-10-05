@@ -21,7 +21,7 @@ Assert-R17Validator ($errors.Count -eq 0) 'R17_VALIDATOR_AST_PARSE_FAILED'
 Write-Output 'R17_VALIDATOR_AST_PARSE=PASS'
 
 $source=[IO.File]::ReadAllText($resolved,[Text.UTF8Encoding]::new($false))
-Assert-R17Validator ($source -match "\[string\]\$Mode='Validate'") 'R17_VALIDATOR_DEFAULT_MODE_INVALID'
+Assert-R17Validator ($source.Contains("[string]`$Mode='Validate'")) 'R17_VALIDATOR_DEFAULT_MODE_INVALID'
 Assert-R17Validator ($source -match "ValidateSet\('who','ls','mv'\)") 'R17_VALIDATOR_COMMAND_ALLOWLIST_INVALID'
 Assert-R17Validator ($source -match 'R17_OWNER_AUTHORIZATION_REQUIRED') 'R17_VALIDATOR_OWNER_GUARD_MISSING'
 Assert-R17Validator ($source -match 'R17_REMOTE_MUTATION=MV_TO_QUARANTINE') 'R17_VALIDATOR_FORWARD_MARKER_MISSING'
