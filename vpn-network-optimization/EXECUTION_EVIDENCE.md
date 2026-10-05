@@ -8489,3 +8489,15 @@ Reviewer accepts and freezes the adapter/build core: Cookie input is live-consol
 Blocking Owner-checkpoint defect: after the child adapter exits, the checkpoint calls strict `Assert-SafeBaiduConfigDirectory` before it checks/normalizes the newly written `pcs_config.json`. The accepted R6R2D real-host evidence already proved that an elevated child can create this file with Builtin Administrators as Owner. Thus a genuinely successful Cookie setup can fail on the same Owner mismatch before normalization. R6R2H claimed reuse of the ACL boundary but omitted the required R6R2E post-child normalization step.
 
 No real Cookie was used, so no Owner state is affected. Next Gate `G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1` freezes the adapter/build source and repairs only the Owner checkpoint/validator. It must metadata-check exact `pcs_config.json`, normalize exact file/root Owner-only ACL, then apply strict R6R1 validation. Failure provenance must preserve pre-existing empty roots and preserve non-empty ambiguous/authenticated state fail-closed.
+
+
+## Reviewer canonicalization — R6R2H-R1 duplicate Gate reconciliation — 2026-10-05
+
+A duplicate R6R2H-R1 Gate file was created during Reviewer work while the shared main already contained a stricter canonical Gate. No Executor/Owner action occurred against the duplicate.
+
+Canonical Gate retained:
+`G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1`
+at `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1.md`
+blob `6f448f7c16a322c240f756121ddbbc0ca97dc516`.
+
+The duplicate `G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1` is marked SUPERSEDED / DO_NOT_EXECUTE. Reviewer Handoff duplicate result/blob lines were removed. This is repository truth reconciliation only; no Cookie, Owner config, provider, network, or runtime action occurred.
