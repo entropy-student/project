@@ -7941,3 +7941,17 @@ The repaired predicate now:
 All eight R6R1 synthetic fixtures call the same production predicate. The complete R6 validator remained PASS, PowerShell AST and Secret scan passed, and no real checkpoint/provider/config/network/VPS/Secret action occurred.
 
 R6R1 closes formal PASS. The next boundary is one Owner-local read-only checkpoint run under `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2`; it does not authorize login or live G4-B.
+
+
+## Reviewer reconciliation — R6R2 blocked because Owner expected UID is unknown — 2026-10-05
+
+```text
+R6R2_STATUS=BLOCKED_EXPECTED_UID_UNKNOWN
+CREDENTIAL_DISCLOSURE=0
+OWNER_UID_DISCLOSED_TO_REVIEWER=NO
+REAL_BAIDU_ACTIONS=0
+NEXT_GATE=G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
+```
+
+Owner cannot supply the expected numeric Baidu UID required by R6R2. Do not guess it, read credential-bearing config contents, or ask Owner to paste raw `who` output. Upstream BaiduPCS-Go exposes the current UID through the read-only `who` command, so the next step is a minimal Owner-local helper that parses only that numeric identifier while suppressing provider raw output and credential material. R6R2 remains pending until that helper is independently reviewed and run locally.
