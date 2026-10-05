@@ -87,12 +87,12 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R16 READ-ONLY RESIDUAL RECONCILIATION
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R17 STALE-PENDING QUARANTINE PREPARATION
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 在 provider action 前因本机 Baidu config Owner mismatch RETURN。R12 随后证明当前 config subtree 是 1 个目录 + 2 个文件，只有 1 个文件由 Builtin Administrators 持有，其余 Owner/ACL/reparse/read-rights 全部正常。R13 进一步证明 `pcs_config.json` 是 OWNER-owned、`pcs_command_history.txt` 不存在，且恰好还有 1 个 direct-child 文件。R14 已证明这个文件正是 `pcs_uploading.json`，其 Owner=Built-in Administrators；root/config Owner 正常，history/captcha 不存在，也没有 unknown/reparse。R15 已完成一次 bounded Owner normalization：仅将 `pcs_uploading.json` Owner 从 ADMIN 改为 OWNER，rollback-before-write、严格 R6R1 readback 与 shape readback 均 PASS，rollback journal 保留。当前进入 R16，只读重新核对 Baidu recovery 目录是否仍有 R9 遗留 pending/final 对象；远端 residual state 仍 UNKNOWN，R16 不授权 cleanup 或 live retry。G4-C 仍在 G4-B 正式 PASS 后独立执行。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 因本机 Baidu config Owner mismatch 在 provider action 前 RETURN；R12-R14 将本地漂移精确定位为 `pcs_uploading.json=ADMIN`；R15 已完成一次 bounded Owner normalization，仅将该文件 Owner 从 ADMIN 改为 OWNER，rollback-before-write、严格 R6R1 readback 与 shape readback 均 PASS，rollback journal 保留。R16 随后成功完成只读 provider 核对：final=0、pending=1、unknown=0，远端 production residual state 已正式变为 `STALE_PENDING_PRESENT`。当前进入 R17 准备阶段：计划对这唯一 stale pending 做可回滚的 rename-to-quarantine，而不是永久删除；R17 helper 尚未锁定、执行未授权，live G4-B 仍被阻塞。G4-C 仍在 G4-B 正式 PASS 后独立执行。
 
 ## 项目真相与 Reviewer 交接
 
@@ -103,8 +103,10 @@ MVP v1 封板                                  ⏳ PENDING
 新 Reviewer 推荐读取顺序：
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R15 完整进展、两次 live return、R10 PASS、R11→R14 本机 ACL/file-role reconciliation 与下一步；
-3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — 当前已获 Owner 授权、等待一次 bounded 执行的极窄 Owner normalization Gate；
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R17 完整进展、R15 正式 PASS、R16 stale-pending 只读结论与当前 R17 可回滚 quarantine 边界；
+3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — 当前已准备但尚未锁 helper / 尚未授权执行的可回滚 stale-pending quarantine Gate；
+4. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — 已完成的 R16 read-only Gate，证明 final=0/pending=1/unknown=0；
+5. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — 已完成并正式 PASS 的 R15 本机 Owner normalization Gate；
 4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — 已完成的 R14 known-role Gate；
 4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — 已完成的 R13 file-role Gate；
 4. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — 已完成的 R12 ACL/Owner inventory Gate；
@@ -135,12 +137,12 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行一次并在真实 Baidu listing readback 处暴露 provider-format fixture drift；R10 parser/fixture 修复现已正式 PASS；R11 因本机 Baidu config Owner metadata 不满足严格 R6R1 invariant 而在 provider action 前 RETURN。当前进入 R12 本机 ACL/Owner metadata-only inventory，先判断是否属于历史已观察过的“单个 child-created pcs_config.json 被 Builtin Administrators 持有”窄形状，还是更广泛漂移。远端 pending/final 残留状态仍 UNKNOWN。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行并暴露真实 provider-format fixture drift；R10 parser/fixture 修复正式 PASS；R11→R15 完成本机 Baidu config Owner 漂移定位与修复；R16 已完成真实 provider read-only 核对并确认 final=0、pending=1、unknown=0。当前唯一未解决的 provider 状态是这 1 个 stale pending。R17 已在 main 准备为“可回滚 rename-to-quarantine、禁止永久 rm”的下一 Gate，但 helper 尚未锁定且执行未授权。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
 
 
 ## 当前交互目标
 
-C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验、**R3R2 真实 HY2-in-Clash bounded canary**、G4-A 与 **G4-B0 Windows 外层绕行验证**均已正式 PASS。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**。G4-B 当前处于持久三角色 readiness：R5 首次 live 在 P5 因 PowerShell success-stream 污染返回 `UNCLASSIFIED`，R6 排除本地 DPAPI/HY2/Mihomo，R7 精确定位 `$psi.Environment.Remove()` 的 Boolean 返回值污染 helper 输出，R8 已以单行 `[void]` 修复并通过完整正负向离线回归。当前唯一下一步是 **R9 one-shot live retry**；R9 尚未执行，成功后仍需 Reviewer 将 `PASS_CANDIDATE` 正式验收。G4-C 晚高峰和真实工作负载仍在 G4-B 正式 PASS 后单独执行。
+C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验、**R3R2 真实 HY2-in-Clash bounded canary**、G4-A 与 **G4-B0 Windows 外层绕行验证**均已正式 PASS。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**。G4-B 当前处于持久三角色 readiness：R5/R9 两次 bounded live 已完成并暴露/推动修复 P5 provider 链问题；R8 与 R10 修复正式 PASS；R11→R15 完成本机 ACL Owner reconciliation；R16 已确认远端仅残留 1 个 stale pending、无 final、无 unknown。当前唯一下一步是由 Reviewer 在 main 上准备并锁定 R17 reversible quarantine helper；在 helper 锁定并获得明确 Owner 授权前，不执行 provider mutation。G4-C 晚高峰和真实工作负载仍在 G4-B 正式 PASS 后单独执行。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
