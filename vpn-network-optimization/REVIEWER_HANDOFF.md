@@ -105,22 +105,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_NETWORK_DIAGNOSTIC
+STATE=OWNER_ACTION_REQUIRED_BAIDU_PIPELINE_REPAIR_VALIDATION_R6R2L_R8
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_R6R2L_R6_LOCAL_DIAGNOSTIC
-OBJECTIVE=Reproduce only the Baidu read-only boundaries used by P5 and classify the remaining R5 unclassified failure without mutating Baidu or replaying live G4-B.
-MAX_ENDPOINT_THIS_ROUND=Owner-local read-only diagnostic using pinned BaiduPCS-Go: who + ls -l only. No mkdir/upload/download-from-Baidu/mv/rm/login/logout, no SSH/VPS, no recovery/profile/service/network mutation.
+PREVIOUS_RESULT=RETURN_R6R2L_R7_ROOT_CAUSE_IDENTIFIED
+OBJECTIVE=Prove the Baidu process-wrapper pipeline-output repair and all prior G4-B runner contracts before any live retry.
+MAX_ENDPOINT_THIS_ROUND=Offline live-runner fixture validator only. No Baidu network/API, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host + Baidu read-only API path only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No Secret/UID/raw stdout/stderr in chat/GitHub; no live runner; no Baidu mutation; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no G4-C.
-PREFLIGHT=R6 formal PASS: cleanup PASS, HY2 DPAPI/frame/certificate PASS, Mihomo version/keypair PASS; therefore remaining bounded failure domain is Baidu read/process/output parsing.
-REQUIRED_EVIDENCE=BAIDU_CONFIG_ACL, pinned CLI hash identity, who process/UID parse/match classifiers, ls process/directory-header classifier, bounded diagnostic classification, temp cleanup, explicit no mutation/no Secret output.
-ACCEPTANCE_CRITERIA=Bounded classification obtained; temp runtime cleanup PASS; BAIDU_MUTATION_ACTION=NO; SSH_OR_VPS_ACTION=NO; SECRET_VALUES_EMITTED=0; STOP_AT_REVIEWER=YES.
-ROLLBACK_STATUS_OR_PLAN=Diagnostic creates only a temporary local runtime directory and deletes it before exit. No remote rollback should be required.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main; verify R7 Gate/script blobs; run only g4b-baidu-readonly-diagnostic.ps1; enter expected Baidu UID through hidden local prompt; return sanitized markers; stop.
+TARGET_AND_SCOPE=Owner Windows host source validation only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No live runner; no Baidu network/API; no SSH/VPS; no Secret output; no profile/service/route/proxy/TUN mutation; no G4-C.
+PREFLIGHT=R6 local P5 diagnostic PASS; R7 isolated System.Management.Automation.PropertyNotFoundException at BAIDU_WHO; root cause identified as uncaptured Environment.Remove Boolean output polluting helper success stream; source repair committed.
+REQUIRED_EVIDENCE=Full positive/negative fixture suite PASS including R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED and NEGATIVE_BAIDU_ENV_REMOVE_STREAM_POLLUTION; explicit zero external requests and zero mutation.
+ACCEPTANCE_CRITERIA=G4B_LIVE_RUNNER_FIXTURES=PASS; NEGATIVE_FIXTURES=PASS; R8 positive and negative regression markers PASS; SSH_OR_VPS_ACTION=NO; DPAPI_OR_REAL_SECRET_ACCESS=NO; EXTERNAL_REQUESTS=0; NETWORK_MUTATION=NO.
+ROLLBACK_STATUS_OR_PLAN=Source-only repair. No runtime rollback required.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main; verify R8 Gate/runner/validator blobs; run only g4b-live-runner-fixture-validator.ps1; return output; stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return diagnostic markers only; no live retry.
+EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
 ```
 
 G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. R6 returned only on an ACL-validator completeness gap; live G4-B remains blocked until R6R1 is Reviewer PASS and the later Owner-side authenticated config is proven.
@@ -238,6 +238,10 @@ G4B_P5_LOCAL_DIAGNOSTIC_R6R2L_R6_SCRIPT_BLOB=1382a7a23885b62be35442d907e4bb9cd05
 G4B_P5_LOCAL_DIAGNOSTIC_R6R2L_R6_RESULT=PASS
 G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_GATE_BLOB=823d21de310c73fcb5f464b8c90694a0a8116b1d
 G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_SCRIPT_BLOB=84e8706449147d8667414e59de22f0ae33b27c4b
+G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_RESULT=RETURN_ROOT_CAUSE_IDENTIFIED
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_GATE_BLOB=7e78a3ff585133c52fdc309947ce79e4a0283a17
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
@@ -318,11 +322,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs only `G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7` and stops at Reviewer. No live retry is authorized.
+Owner runs only `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8` offline validation and stops at Reviewer. No live retry is authorized.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R7 Baidu read-only Gate/script blobs, run only the read-only Baidu diagnostic, enter expected UID locally through the hidden prompt, and return sanitized diagnostic markers. Do not run the live G4-B runner.
+Fast-forward to current main, verify the R8 Gate/runner/validator blobs, run only the offline live-runner fixture validator, and return its markers. Do not run the live G4-B runner.
 
 ## EVIDENCE_POINTERS
 
