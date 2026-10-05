@@ -87,12 +87,12 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R11 READ-ONLY RESIDUAL RECONCILIATION
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R12 LOCAL ACL OWNER-DRIFT INVENTORY
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 已完成 parser/fixture 修复并正式 PASS。由于 R9 的 pending rollback 也依赖旧 parser，当前必须先通过 R11 只读核对 Baidu recovery 目录是否存在残留；R11 不授权清理或 live retry。G4-C 晚高峰 + 真实工作负载仍在 G4-B 正式 PASS 后独立执行。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 原计划只读核对 Baidu recovery 目录残留，但在任何 UID/provider 操作前就因本机 `%APPDATA%\BaiduPCS-Go` 存在 `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` fail-closed，因此远端残留状态仍为 UNKNOWN。当前唯一下一步是 R12 本机 ACL/Owner metadata-only inventory；R12 不授权 ACL 修复、Baidu provider 访问、cleanup 或 live retry。G4-C 晚高峰 + 真实工作负载仍在 G4-B 正式 PASS 后独立执行。
 
 ## 项目真相与 Reviewer 交接
 
@@ -103,9 +103,10 @@ MVP v1 封板                                  ⏳ PENDING
 新 Reviewer 推荐读取顺序：
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R11 完整进展、两次 live return、R10 修复 PASS 与下一步；
-3. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — 当前只读残留状态核对 Gate；
-4. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — 已接受的 R10 parser repair Gate；
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R12 完整进展、两次 live return、R10 PASS、R11 ACL-owner mismatch 与下一步；
+3. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — 当前本机 metadata-only ACL/Owner inventory Gate；
+4. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 历史只读 Gate 与 RETURN；
+5. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — 已接受的 R10 parser repair Gate；
 4. `EXECUTION_EVIDENCE.md` — R5/R6/R7/R8 的脱敏证据与正式 Reviewer 判定；
 5. `DECISION_LOG.md` — 已确认决策与理由；
 6. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 更早阶段的历史 transition，需要时再读。
@@ -131,7 +132,7 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行一次并在真实 Baidu listing readback 处暴露 provider-format fixture drift；R10 parser/fixture 修复现已正式 PASS。当前唯一下一步是 R11 只读残留状态核对，以确认 R9 是否留下 pending/final 项目对象；R11 未完成前禁止 cleanup 和 live replay。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行一次并在真实 Baidu listing readback 处暴露 provider-format fixture drift；R10 parser/fixture 修复现已正式 PASS；R11 因本机 Baidu config Owner metadata 不满足严格 R6R1 invariant 而在 provider action 前 RETURN。当前进入 R12 本机 ACL/Owner metadata-only inventory，先判断是否属于历史已观察过的“单个 child-created pcs_config.json 被 Builtin Administrators 持有”窄形状，还是更广泛漂移。远端 pending/final 残留状态仍 UNKNOWN。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
 
 
 ## 当前交互目标
