@@ -8907,3 +8907,28 @@ STOP_AT_REVIEWER=YES
 The adapter change removes only its 16 fixed success/failure status writes. The hidden local prompt and `ReadPassword` remain, failure paths still return nonzero, and `main()` still exits with `run()`'s code. The Owner checkpoint and Go test source remain at their accepted blobs; the builder's synthetic invalid-argument fixture now requires nonzero exit and no child status text. The validator compares the adapter against the pre-Gate source with exactly those 16 output statements removed, locks the Owner/test sources, checks the builder's one-line fixture-only delta, and verifies that the checkpoint emits exactly eight final markers.
 
 The full PowerShell offline validator passed, including AST parsing, R6R1 ACL and R6R2H-R3 regression fixtures, D5 boundary checks, Secret scan, and temporary synthetic-fixture cleanup. Go source tests and the compiled native fixture were not run: this execution environment has no `go.exe` in the available Go path, and D5 is strictly offline, so no toolchain or upstream source was downloaded. The completed authentication config and retained Owner runtime were not accessed or changed. `REVIEWER_HANDOFF.md` still has a stale `NEXT_STEP` reference to R3; this execution followed the explicit D5 `CURRENT_GATE` and relay only.
+
+
+## Reviewer decision — R6R2I-D5 console output repair — 2026-10-05
+
+```text
+EXECUTOR_RESULT=RETURN_GO_SOURCE_TESTS_UNAVAILABLE
+REVIEWER_RESULT=RETURN_R6R2I_D5_GO_SOURCE_TESTS_UNAVAILABLE
+CANDIDATE_RESULT_HEAD=5ae63600833422e07b2ac3aa1e4918ff50a40056
+CANDIDATE_SOURCE_COMMIT=3cf6fdb7f972314b2bf37250b95a8ca7926b46a7
+ADAPTER_SOURCE_BLOB=1bf6ec1f1ec98e84bd8db965802de2875104cce6
+ADAPTER_TEST_BLOB=a1d65216f061ee2d5ee32aefc046f01379d40ca2
+BUILD_HELPER_BLOB=61f9b283ee073cd00adac42676cc4e90c83fb1e1
+VALIDATOR_BLOB=b0949461460afd9ebe6ca491d45e9aa5d579f465
+D5_R1_GATE_BLOB=f761a6b4eb60966951f0986f62935c8176d36e8a
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+OWNER_RUNTIME_BINARY_ACCESSED=NO
+```
+
+Reviewer independently checked the candidate delta. The adapter change is exactly the removal of the 16 fixed child status writes from the accepted pre-D5 source; hidden input, exact-field parsing, setup/save behavior and native exit semantics remain source-frozen. The build helper changes only the synthetic invalid-argument fixture so it now requires nonzero exit and absence of child `BAIDU_COOKIE_AUTH` status text. The Owner checkpoint remains at its accepted blob and still emits exactly eight final markers.
+
+The PowerShell/AST/static/Secret regression evidence is accepted. D5 cannot yet close PASS because its Gate explicitly requires actual Go source tests and a compiled native failure fixture; both were not run in the Executor environment.
+
+Next Gate `G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1` supplies only the missing compiled evidence using pinned public build inputs. No real authentication, Owner config access or retained runtime binary access is authorized.
