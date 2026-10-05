@@ -8101,3 +8101,7 @@ STOP_AT_REVIEWER=YES
 An additional unchanged R6R2A validator invocation returned DOTSOURCE_ENTRYPOINT_GUARD_MISSING. Targeted inspection proved the accepted R6R2A source guard exists; the frozen validator's multiline end-anchor omits optional CR before LF and therefore false-negatives that CRLF source. The R6R2C validator independently checked the exact source-only guard and exercised the accepted UID parser with synthetic fixtures. No frozen source or validator was changed.
 
 Rollback is source-only: revert the two new scripts and this Evidence/Handoff update to PRE_GATE_HEAD. No Owner config, provider, network, VPS, or service state was changed.
+
+### Evidence clarification
+
+The preceding rollback sentence used PRE_GATE_HEAD as a shorthand; the canonical main advanced to 83c698ddd8ede8035aa45cbe5c88d287131aa19e for unrelated birthday-magazine-studio changes before this Gate commit. Rollback means reverting only this Gate's four project-owned paths/commit while preserving that newer main history; do not reset main to PRE_GATE_HEAD or discard unrelated commits. NETWORK_REQUESTS=0 refers to Owner/helper/Baidu/provider/runtime traffic; GitHub fetch/push was performed solely for the explicitly required repository synchronization.
