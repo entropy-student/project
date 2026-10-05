@@ -9208,3 +9208,44 @@ R6R2L_R1_GATE_BLOB=afbe9f2d89e3dc35447e73425a4e072478837e29
 ```
 
 The validator now performs real read-only Git root/prefix/tracked-path/status queries against the current checkout to prevent recurrence. No live retry is authorized until R6R2L-R1 passes.
+
+
+## Reviewer reconciliation — R6R2L-R1 Owner offline validation return — 2026-10-05
+
+```text
+GATE_ID=G4B_CANONICAL_GIT_PATH_REPAIR_R6R2L_R1
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T13:20:11.7462129+00:00
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_HEAD=e5152337720618ce88657c5ae01e4bdcc66383a2
+OWNER_REPORTED_ORIGIN_MAIN=e5152337720618ce88657c5ae01e4bdcc66383a2
+OWNER_REPORTED_PREEXISTING_UNTRACKED_RESULTS_COUNT=5
+OWNER_REPORTED_RUNNER_BLOB=ad990886a6e0853c5b30828c5afbcc37d2290c71
+OWNER_REPORTED_VALIDATOR_BLOB=baf2fb35e9a3ea8644f9fdbf151a2a560bbef98d
+OWNER_REPORTED_GATE_BLOB=afbe9f2d89e3dc35447e73425a4e072478837e29
+OWNER_REPORTED_VALIDATOR_FAILURE=G4B_FIXTURE_FAILED_R6R2L_R1_GIT_RUNNER_ROOT_PATH_QUERY
+REVIEWER_RESULT=RETURN_R6R2L_R1_GIT_RUNNER_ROOT_PATH_QUERY_FAILED
+CONSEQUENTIAL_MUTATION_STARTED=NO
+VPS_OR_SSH_ACTION=NO
+BAIDU_PROVIDER_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T13:20:17.0052433+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:05.2590304
+MANUALLY_PRINTED_PASS_CANDIDATE_AFTER_ERRORS=INVALID_NOT_ACCEPTED
+```
+
+Reviewer interpretation:
+- Runtime and locked R1 source identities were correct, but the validator failed at the root-relative tracked-runner query.
+- Because the checkpoint was pasted interactively, later commands continued after terminating errors; later PASS-like prints are not accepted evidence.
+- Direct source review confirms the R1 repair remained incomplete: both validator and live runner still consumed native `rev-parse --show-toplevel` output as a Windows path on the non-ASCII `VPS搭建` repository location.
+- Owner-side Handoff checking also exposed CRLF-sensitive exact-line matching.
+- The five untracked `results/` artifacts are pre-existing historical results repeatedly preserved by accepted prior rounds. They remain untouched.
+- No consequential/live action started. Live G4-B remains blocked.
+
+```text
+G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_GATE_BLOB=37a0d1931f3d6fbe1b3fe1a92e664f98f6060bfe
+G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
+G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2_VALIDATOR_BLOB=770f70119040993a66e9b3b3cb25f5d5075b0ec0
+```
+
+Next Gate: `G4B_CANONICAL_GIT_AND_CRLF_REPAIR_R6R2L_R2`. Owner runs the offline fixture validator only after safe fast-forward. No live runner retry is authorized.
