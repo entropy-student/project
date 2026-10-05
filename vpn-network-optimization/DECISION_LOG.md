@@ -560,3 +560,12 @@ A clean Reviewer re-review confirmed the earlier Owner-checkpoint ACL/reconcilia
 No R6R2H-R1 execution occurred. That Gate is superseded, not failed in execution.
 
 Next canonical Gate: `G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2`. It narrowly repairs exact-field handoff plus preflight-before-write, post-write ACL normalization, and provenance-aware rollback. The pinned build helper and accepted historical helpers remain frozen.
+
+
+## 2026-10-05 — R6R2H-R2 returned only for missing Owner config-state marker
+
+**Decision:** `RETURN_R6R2H_R2_OUTPUT_CONTRACT_CONFIG_STATE_MISSING`.
+
+The combined parser, preflight ordering, post-write ACL normalization and provenance-aware rollback repairs are accepted. The remaining blocker is the Owner result contract: the active Gate requires a bounded `BAIDU_COOKIE_AUTH_CONFIG_STATE` marker, but the candidate checkpoint does not emit it and the validator does not enforce the complete eight-marker contract.
+
+R6R2H-R3 is a narrow output/validator repair. The accepted adapter/parser, build chain, ACL normalization and reconciliation core are frozen. No real Owner/provider action is authorized meanwhile.
