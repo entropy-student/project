@@ -105,22 +105,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_CRLF_ASSERTION_VALIDATION_R6R2L_R4
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
+STATE=OWNER_ACTION_REQUIRED_LIVE_G4B_R6R2L_R5
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_LIVE_CONSEQUENTIAL
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R3_CRLF_ASSERTION_FALSE_NEGATIVE
-OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline validator execution only; prove the R2/R3 Unicode-safe canonical Git root, accepted-results-only source status, CRLF Handoff contract and all prior regression fixtures. No live runner/provider/VPS/Clash/Secret action.
+PREVIOUS_RESULT=PASS_R6R2L_R4
+OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without production-wide takeover or entering G4-C.
+MAX_ENDPOINT_THIS_ROUND=Exactly one bounded live G4-B run ending at PASS_CANDIDATE + STOP_AT_REVIEWER; no production-role switch and no G4-C.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are later live targets.
-APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
-PREFLIGHT=R5R1 PASS; R6R1 ACL repair PASS; post-auth Baidu identity PASS; R6R2K PASS; R6R2L consequential mutation never started; R2 runner repair frozen; R3 validator parse repair accepted as source repair; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Full live-runner fixture validator PASS including CRLF contract, canonical Git root/path queries, accepted-results-only status classification, all existing positive and negative fixtures; no live actions.
-ACCEPTANCE_CRITERIA=All R6R2L-R2/R3/R4 markers PASS plus full existing live-runner and negative fixtures PASS.
-ROLLBACK_STATUS_OR_PLAN=No runtime rollback required. R4 is validator-assertion-only and can be reverted if validation fails.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main and run R6R2L-R4 offline validator only. Do not run the live G4-B runner.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2L-R4 is Owner-local offline validation.
-EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop before any live retry.
+TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; create project-owned persistent REALITY service, approved encrypted second-failure-domain recovery, and exactly one persistent SELF-VPN-V1 Clash profile without activation.
+APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains production/rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
+PREFLIGHT=R6R2L-R4 formal PASS; Unicode-safe canonical Git root PASS; CRLF Handoff contract PASS; full positive/negative fixture suite PASS; existing bounded live authorization remains granted because prior authorized attempt failed before consequential mutation.
+REQUIRED_EVIDENCE=Locked runner blob 8b099e4229642bf439eb03c0d1e9cce0f8e698bd; validator blob 5c8763350098f181f41b0b1e0799885da9e5d07d; current R5 live Gate; full sanitized live phase/result markers; rollback journal retained; final proxy/TUN OFF.
+ACCEPTANCE_CRITERIA=All R5 success-contract markers PASS, no unrelated remote drift, WG/HY2 preserved, Secret values emitted=0, PASS_CANDIDATE, STOP_AT_REVIEWER.
+ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback journal. On non-zero/ambiguous result, stop and reconcile; no blind replay. WireGuard remains production rollback.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main; collect local UID, SSH identity path, and hidden recovery passphrase; invoke exactly one R5 live run; perform only the P10 import/visibility acknowledgement if all required conditions are true.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. This is Owner-local consequential execution under the reviewed runner.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized non-secret output only and stop at Reviewer before any G4-C or closeout.
 ```
 
 G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. R6 returned only on an ACL-validator completeness gap; live G4-B remains blocked until R6R1 is Reviewer PASS and the later Owner-side authenticated config is proven.
@@ -228,6 +228,10 @@ G4B_VALIDATOR_SYNTAX_REPAIR_R6R2L_R3_RESULT=RETURN_CRLF_ASSERTION_FALSE_NEGATIVE
 G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4_GATE_BLOB=d53822ed92eebaf196ce7e5270301bf9bba30cca
 G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
 G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4_VALIDATOR_BLOB=5c8763350098f181f41b0b1e0799885da9e5d07d
+G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4_RESULT=PASS
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_R5_GATE_BLOB=bc02a9f76fb76ffdde24302db71d52c03f1c7577
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_R5_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_R5_VALIDATOR_BLOB=5c8763350098f181f41b0b1e0799885da9e5d07d
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
@@ -308,11 +312,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs `G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4` offline validator. Stop at Reviewer; no live retry yet.
+Owner runs exactly one `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_R5` live execution and stops at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R6R2L-R4 runner/validator blobs, and run only the live-runner fixture validator. Preserve the pre-existing `results/` artifacts.
+Fast-forward to current main, verify the R6R2L-R5 Gate and locked runner/validator blobs, collect local-only UID/SSH/passphrase inputs, invoke exactly one live G4-B run, perform only the bounded P10 import/visibility acknowledgement if all conditions hold, then stop at Reviewer.
 
 ## EVIDENCE_POINTERS
 
