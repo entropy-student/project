@@ -485,3 +485,12 @@ The one authorized interactive login received upstream code 50052 (system busy).
 Pinned v4.0.2 source shows the config file is `pcs_config.json` and an error returned by `RunLogin` exits before `SetupUserByBDUSS`. The residue is therefore a bounded failed-login partial state, but it will not be deleted or modified until a metadata-only exact-shape reconciliation passes.
 
 Next: offline `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E` to build a one-shot residue rollback checkpoint and repair post-login Windows Owner/ACL normalization. Login replay remains unauthorized.
+
+
+## 2026-10-05 — R6R2E returned for pre-existing empty-root rollback provenance defect
+
+**Decision:** `RETURN_R6R2E_PREEXISTING_EMPTY_ROOT_DELETION_RISK`.
+
+R6R2E's metadata-only residue reconciliation and post-login ACL normalization design are accepted. However, the auth helper's fallback branch can delete a config root that existed empty before the run: when login starts/fails before a config file or post-login shape proof exists, the helper invokes `Remove-NewEmptyBaiduConfigDirectory` without checking `interactiveAuthConfigCreated`.
+
+This violates the explicit requirement that a pre-existing empty root be preserved. The next Gate, `G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1`, is limited to restoring exact root provenance in rollback and adding production-function regression fixtures. No Owner action or login replay is authorized meanwhile.
