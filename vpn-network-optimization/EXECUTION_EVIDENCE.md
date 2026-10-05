@@ -10159,3 +10159,59 @@ R13 exists only to distinguish:
 - missing/unexpected/reparse shapes.
 
 No normalization or provider readback is authorized by R13.
+
+
+## Reviewer formal reconciliation — R6R2L-R13 config file-role Owner read-only classification — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T16:45:12.6097576+00:00
+OWNER_REPORTED_HEAD_AFTER=e7f990948e1339d39cf72e3de56fe832cacbc3fd
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=281d0a174365369d91fc761509a2eaf9723e0a50
+OWNER_REPORTED_SCRIPT_BLOB=f27148308fbe56517924c686fa99cbb0e28549a3
+OWNER_REPORTED_LOCKED_R13_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R13_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_TOTAL_ITEM_COUNT=3
+OWNER_REPORTED_ROOT_OWNER_ROLE=OWNER
+OWNER_REPORTED_CONFIG_FILE_PRESENT=YES
+OWNER_REPORTED_CONFIG_FILE_OWNER_ROLE=OWNER
+OWNER_REPORTED_HISTORY_FILE_PRESENT=NO
+OWNER_REPORTED_HISTORY_FILE_OWNER_ROLE=NOT_PRESENT
+OWNER_REPORTED_UNEXPECTED_FILE_COUNT=1
+OWNER_REPORTED_UNEXPECTED_DIRECTORY_COUNT=0
+OWNER_REPORTED_REPARSE_POINT_COUNT=0
+OWNER_REPORTED_R13_FILE_ROLE_STATE=UNEXPECTED_ENTRY_PRESENT
+OWNER_REPORTED_CONFIG_CONTENT_READ=NO
+OWNER_REPORTED_ACL_MUTATION=NO
+OWNER_REPORTED_BAIDU_PROVIDER_ACTION=NO
+OWNER_REPORTED_UID_INPUT=NO
+OWNER_REPORTED_SECRET_OR_DPAPI_ACCESS=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T16:45:21.5419581+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:08.9322005
+REVIEWER_RESULT=RETURN_R6R2L_R13_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
+```
+
+Reviewer interpretation:
+- R13 completed within metadata-only scope.
+- `pcs_config.json` exists and is owned by the current Owner SID; it is not the Administrators-owned file observed by R12.
+- `pcs_command_history.txt` is absent.
+- Exactly one additional direct-child file exists; R12 already proved exactly one file in the subtree is Administrators-owned, so the remaining unclassified direct-child file is the only current Owner mismatch.
+- No unexpected directory or reparse point exists.
+- No content/provider/Secret/network action occurred.
+
+Additional upstream v4.0.2 reconciliation:
+- repository-wide `pcsconfig.GetConfigDir()` usage identifies additional config-directory roles beyond config/history:
+  - `internal/pcsfunctions/pcsupload/pcsupload.go` defines `UploadingFileName = "pcs_uploading.json"`;
+  - `internal/pcsfunctions/pcsupload/upload_database.go` opens that file with `O_CREATE|O_RDWR`;
+  - `internal/pcscommand/upload.go` calls `pcsupload.NewUploadingDatabase()` during the upload path;
+  - `internal/pcsfunctions/pcscaptcha/pcscaptcha.go` defines `captcha.png` in the config directory.
+- R9 executed a real Baidu upload before its readback failure. Therefore `pcs_uploading.json` is a strong evidence-based candidate for the one current Administrators-owned file, but R13 did not prove its basename and Reviewer does not accept the inference as fact yet.
+
+Next: R14 local metadata-only known-role classifier for config/history/upload-database/captcha. No normalization or provider action is authorized.
