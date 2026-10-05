@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT
+CURRENT_GATE=OWNER_CHECKPOINT_G3CR7V2R2_FINAL_LOCAL_VISUAL
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
-CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
-POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
+HOMEPAGE_ENTRY_SURFACE=REVIEWER_PASS_OWNER_FINAL_VISUAL_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_PASS_OWNER_FINAL_VISUAL_PENDING
+POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_PASS_OWNER_FINAL_VISUAL_PENDING
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -147,6 +147,13 @@ G3CR7V2R2_DECORATIVE_MESH=REMOVE
 G3CR7V2R2_REPLACEMENT_DECORATION=NONE
 G3CR7V2R2_LAYOUT_STRUCTURE=FROZEN
 G3CR7V2R2_CONTENT=FROZEN
+G3CR7V2R2_EXECUTOR_HEAD=daff4101080d71aa0aa958986096d14975339deb
+G3CR7V2R2_REVIEWER_DECISION=PASS
+G3CR7V2R2_RUNTIME_IDENTITY=PASS
+G3CR7V2R2_MESH_REMOVAL=PASS
+G3CR7V2R2_BRAND_PALETTE=PASS
+G3CR7V2R2_OWNER_FINAL_VISUAL=PENDING
+G3CR7V2R2_LATO_EXTERNAL_FONT_FALLBACK=NON_BLOCKING
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -191,25 +198,25 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT`
+`OWNER_CHECKPOINT_G3CR7V2R2_FINAL_LOCAL_VISUAL`
 
-Owner accepted the Stripe-derived SaaS structure but requested one final bounded brand correction before live acceptance:
+G3CR7V2R2 is **Reviewer PASS** at candidate `daff4101080d71aa0aa958986096d14975339deb`.
 
-- delete the decorative mesh SVG entirely;
-- do not replace it with another visual asset;
-- replace Stripe indigo with Birthday Magazine mulberry `#713F5D`;
-- preserve the accepted layout, content and business behavior.
+Accepted:
+- runtime identity aligned to the reviewed source;
+- decorative mesh removed with no replacement artwork;
+- Birthday Magazine mulberry palette applied;
+- approved SaaS structure/content preserved;
+- 1440/375 smoke and screenshots pass;
+- exact candidate remains mounted at `127.0.0.1:8189`.
 
-The previously opened runtime-alignment-only Gate is superseded before execution and folded into this combined Gate, per Governance's preference for one Gate when target/rollback/risk boundaries are compatible.
+Owner checkpoint:
+- `docs/OWNER_CHECKPOINT_G3CR7V2R2_FINAL_LOCAL_VISUAL_2026-10-05.md`
 
-Current Gate:
-- `docs/G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT.md`
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7V2R2_PASS_BRAND_POLISH_RUNTIME_2026-10-05.md`
 
-Owner decision:
-- `docs/OWNER_DECISION_G3CR7V2R2_BRAND_PALETTE_NO_MESH_2026-10-05.md`
-
-Updated design adapter:
-- `docs/design-references/stripe/PROJECT_ADAPTER.md`
+PR #64 remains open/unmerged and mergeable=false; handle that separately before merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -274,15 +281,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs `G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT`.
-2. First reconcile the retained runtime PHP identity; if a material local-only dependency exists, RETURN before visual mutation.
-3. If safe, delete the mesh SVG/references and apply only the locked mulberry brand tokens to the already-approved SaaS structure.
-4. Return six bounded 1440/375 screenshots and leave the exact final candidate mounted at `127.0.0.1:8189`.
-5. Reviewer inspects the final bounded diff/runtime identity; then Owner performs live local visual acceptance.
+1. Owner opens the retained local runtime and performs final visual acceptance of the three frontend surfaces.
+2. If Owner accepts, freeze these three surfaces for the current MVP stage.
+3. After visual freeze, open the next product Gate. Pre-payment draft persistence / payment-to-generation wiring remains the likely next technical layer before P1-P12.
+4. PR #64 mergeability is handled separately in a bounded pre-merge reconciliation Gate; do not blind-rebase/reset.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has already approved the bounded no-mesh + mulberry direction.
+Open `http://127.0.0.1:8189/` and visually accept the final no-mesh mulberry candidate, or provide bounded visual changes.
 
 ## EVIDENCE_POINTERS
 
