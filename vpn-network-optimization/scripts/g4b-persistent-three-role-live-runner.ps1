@@ -92,10 +92,14 @@ function Assert-CanonicalSource {
     Assert-G4B ($projectPrefix -match '(^|/)vpn-network-optimization$') 'PROJECT_TRACKED_PATH_INVALID'
     $runnerRel = ($projectPrefix + '/scripts/g4b-persistent-three-role-live-runner.ps1').TrimStart('/')
     $handoffRel = ($projectPrefix + '/REVIEWER_HANDOFF.md').TrimStart('/')
-    $trackedRunner = Invoke-GitRead -Arguments @('ls-files','--error-unmatch',$runnerRel)
-    $trackedHandoff = Invoke-GitRead -Arguments @('ls-files','--error-unmatch',$handoffRel)
+    $trackedRunnerRaw = @(& git -C $repoRoot ls-files --error-unmatch -- $runnerRel 2>$null)
+    if ($LASTEXITCODE -ne 0) { throw 'CANONICAL_RUNNER_TRACK_QUERY_FAILED' }
+    $trackedHandoffRaw = @(& git -C $repoRoot ls-files --error-unmatch -- $handoffRel 2>$null)
+    if ($LASTEXITCODE -ne 0) { throw 'CANONICAL_HANDOFF_TRACK_QUERY_FAILED' }
+    $trackedRunner = (($trackedRunnerRaw -join [Environment]::NewLine).Trim())
+    $trackedHandoff = (($trackedHandoffRaw -join [Environment]::NewLine).Trim())
     Assert-G4B ($trackedRunner -ceq $runnerRel -and $trackedHandoff -ceq $handoffRel) 'CANONICAL_TARGET_NOT_TRACKED'
-    $dirty = @(& git -C $script:projectRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix 2>$null)
+    $dirty = @(& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix 2>$null)
     if ($LASTEXITCODE -ne 0) { throw 'CANONICAL_PROJECT_STATUS_FAILED' }
     Assert-G4B ($dirty.Count -eq 0) 'CANONICAL_PROJECT_SCOPE_DIRTY'
     $actualRunnerBlob = Invoke-GitRead -Arguments @('rev-parse',"HEAD:$runnerRel")
