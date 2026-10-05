@@ -105,12 +105,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_PARTIAL_CONFIG_REPAIR_R6R2E
+STATE=EXECUTOR_ASSIGNED_BAIDU_ROLLBACK_PROVENANCE_REPAIR_R6R2E_R1
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_PROVIDER_BUSY_OWNER_MISMATCH
+PREVIOUS_RESULT=RETURN_R6R2E_PREEXISTING_EMPTY_ROOT_DELETION_RISK
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only build/validation of exact failed-run config reconciliation/rollback helper plus narrow interactive-auth owner/ACL repair; no real config/provider/network action.
+MAX_ENDPOINT_THIS_ROUND=Offline-only repair of the interactive-auth rollback provenance bug so pre-existing empty config roots are preserved; no real config/provider/network action.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -118,8 +118,8 @@ PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locke
 REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
 ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
 ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
-OWNER_ONLY_ACTIONS=NONE during R6R2E. Do not retry login, delete/modify the Baidu config, or inspect its contents.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E.md; use accepted R6R1/R6R2A/R6R2C sources only as scoped references.
+OWNER_ONLY_ACTIONS=NONE during R6R2E-R1. Preserve the real Baidu config residue untouched; do not retry login or run cleanup.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1.md; freeze accepted R6R2E reconciliation helper and repair only auth rollback provenance.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -157,6 +157,8 @@ G4B_BAIDU_INTERACTIVE_AUTH_VALIDATOR_BLOB=4bf30c0629f8136f8a3eb6c4d8710d1c801472
 G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_GATE_BLOB=3d31312f26ebe10d43fcf4221cf7365fbe374365
 G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_RESULT=RETURN_PROVIDER_BUSY_OWNER_MISMATCH
 G4B_BAIDU_PARTIAL_CONFIG_REPAIR_R6R2E_GATE_BLOB=d1b3790ae7f670bc660a52dfd13d91d562213eca
+G4B_BAIDU_PARTIAL_CONFIG_REPAIR_R6R2E_RESULT=RETURN_PREEXISTING_EMPTY_ROOT_DELETION_RISK
+G4B_BAIDU_ROLLBACK_PROVENANCE_REPAIR_R6R2E_R1_GATE_BLOB=a0262bdb70a8a72edcd6df32a5011964c236cd83
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -233,11 +235,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E` offline only. Build/validate the exact failed-run residue rollback helper and repair the auth helper owner/ACL normalization; stop at Reviewer.
+Codex executes `G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1` offline only. Preserve pre-existing empty roots on failure while retaining exact rollback for run-created state; stop at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE now. Preserve the current failed-run config residue untouched; do not retry login or inspect/delete config content until R6R2E is reviewed.
+NONE now. Preserve the current failed-run config residue untouched; do not retry login or run cleanup until R6R2E-R1 is reviewed.
 
 ## EVIDENCE_POINTERS
 
