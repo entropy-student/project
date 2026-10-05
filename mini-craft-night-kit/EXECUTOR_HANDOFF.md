@@ -3497,3 +3497,55 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer should inspect the live-reference captures, page/header isolation proposal, empty-Checkout baseline limitation and concrete scoped backup/rollback plan before designing K10B. PASS_CANDIDATE is not formal PASS and does not grant implementation authority.
+
+## K10B — Homepage Visual Skin Implementation — 2026-10-05
+
+Current executor result: `PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION`. Reviewer formal acceptance/Owner visual freeze pending; do not enter any later Gate.
+
+Production: [Mini Craft Home](https://minicraft.spikersun.com/), page 939, strict SSH `ops@srv1970241`. Only page 939 `post_content` and the three authorized durable MU presentation files were changed. Native Kadence header/menu/cart and Woo business paths remain owned by existing code; global footer and non-home content/settings remain unchanged.
+
+Homira H0/H1/H3/H5/H6/H10 translated into an inset native glass header, full-height craft-night hero, large staggered illustrative gallery, four numbered scroll-stacking/static-mobile process cards, photographic brand break and existing Product/Shop closing CTA. Core Gutenberg editable content and existing images were retained; no new images or global font/theme dependency.
+
+Canonical source: [frontend/home-skin](frontend/home-skin/), final implementation commit `c6d7a8ea8d84636e9857504b3115d9f8bd5d7b7c`. Final source hashes and GitHub blob correlation are in [K10B Evidence](EXECUTION_EVIDENCE.md#k10b--homepage-visual-skin-implementation--2026-10-05). Page content was updated once with `wp_update_post`; transactional before/after comparison proved only `post_content` changed. Two exact CSS-only visual QA fixes addressed WordPress core Group wrappers and gallery spacing; no silent zero-write claim.
+
+Verified prewrite recovery: `/srv/backups/mini-craft-night-kit/wp-content/k10b-20261005T084600Z` (four protected project files; no Secrets or full DB dump). Original page content 33146 bytes, SHA-256 `5cdc1f04c13754ad7b91ff3a8965646870a9ad75386858d60d67907f518c6478`. Bounded rollback: disable only the new MU skin, restore only old page 939 content through WP application API, preserve all other/newer state; then recheck original hash and public/non-home runtime guards. No rollback was used.
+
+QA: desktop 1280×800, phone 375×812, tablet 768×1024; six selected roles present, images loaded, no blocking overflow; native menu click/Enter/Escape and focus return, visible keyboard focus and empty native Cart link passed. Twelve non-home computed-header/link/final-route comparisons were exact and homepage asset count was zero. Seven public routes returned HTTP200/TLS0; Checkout remained empty-session redirect to Cart. Backend/global/vendor guards and WP/MariaDB IDs/restart counts unchanged; USD, Product223 shell and Product1224 accepted canary baseline retained.
+
+Practical verification limit: actual reduced-motion emulation and JS-disabled browser run were unavailable in the selected browser API. Static/reduced-motion completeness was assessed from source, served CSSOM/server-rendered content and actual static phone/tablet views, not presented as an emulated session. Reviewer may additionally exercise those preferences manually; no content is hidden pending enhancement.
+
+Review [16 captures + manifest + machine report](evidence/k10b-20261005/) alongside Homira K10A captures and live Home. Ordinary sections/images/copy remain Gutenberg-editable. Directory-bind/DB persistence is verified; no container restart/recreate was performed.
+
+```text
+NONHOME_CONTENT_WRITES=0
+GLOBAL_THEME_MENU_PLUGIN_CUSTOM_CSS_WRITES=0
+VENDOR_FILE_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_RESTARTS_RECREATES=0
+COMPOSE_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+ORDER_CREATION=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_CONTENT_INSPECTION=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+IMAGE_GENERATION=0
+BROAD_PRUNE=NO
+ROLLBACK_USED=NO
+LATER_GATE_ACTIONS=0
+OWNER_VISUAL_FREEZE=PENDING_REVIEW
+STOP_AT_REVIEWER=YES
+```
+
+结果：PASS_CANDIDATE。
+改动：仅首页939内容及三个专属MU呈现文件换成Homira参考皮肤，原生功能与其他页面保留。
+验证：三种视口、七条公开路径、十二项非首页精确对照和保护哈希通过；动效模拟能力限制已明确记录。
+问题：NONE；正式视觉验收待Reviewer。
+回滚：项目专属备份已验证，可仅停用皮肤并恢复旧939内容，不覆盖全数据库。
+请 Reviewer 检查：六个参考角色的视觉质量、源文件/生产字节关联、静态降级证据及无外溢边界。
+Owner 转交：NONE。

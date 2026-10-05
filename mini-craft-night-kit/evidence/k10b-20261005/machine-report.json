@@ -1,0 +1,304 @@
+{
+  "gate": "K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION",
+  "result": "PASS_CANDIDATE",
+  "date": "2026-10-05",
+  "target": "ops@srv1970241",
+  "canonicalSourceCommit": "c6d7a8ea8d84636e9857504b3115d9f8bd5d7b7c",
+  "recoveryPath": "/srv/backups/mini-craft-night-kit/wp-content/k10b-20261005T084600Z",
+  "source": {
+    "page939": {
+      "bytes": 10439,
+      "sha256": "6b0d89f143ca75593d1527e90fda062d9df2e04b72d5e9add503e5c9aa351ea6",
+      "blob": "c1765a412d6715482f69d372cea4c55b861335b2"
+    },
+    "php": {
+      "bytes": 980,
+      "sha256": "f1d38af555bfe7003a808f34b2bfc07abcb14e268f9b68209a33c0affc47a404",
+      "blob": "a8b0472dc1b1167c235b9d30e93062c02581b85b"
+    },
+    "css": {
+      "bytes": 15424,
+      "sha256": "4dc278a22cb8ff95e876c56fea3eadc7d8190b469ce2c60a7bb7a748f9e47bff",
+      "blob": "0ab22e4e94c2b5a9b66709d4aab85f15f543fa33"
+    },
+    "js": {
+      "bytes": 1206,
+      "sha256": "c948abfaaf13abc87b27f08e5a57ed2891d4ec44bd937b30eaf197d11e211ccd",
+      "blob": "22c4f334db7b8c29805c3eeb9001c8cd1a590d22"
+    }
+  },
+  "responsive": [
+    {
+      "viewport": "1280x800",
+      "blockingOverflow": false,
+      "sections": 5,
+      "h1Count": 1,
+      "loadedContentImages": 7,
+      "process": "DESKTOP_PROGRESSIVE_STICKY"
+    },
+    {
+      "viewport": "375x812",
+      "documentClientWidth": 360,
+      "documentScrollWidth": 360,
+      "blockingOverflow": false,
+      "sections": 5,
+      "process": "STATIC_ALL_FOUR_VISIBLE"
+    },
+    {
+      "viewport": "768x1024",
+      "documentClientWidth": 753,
+      "documentScrollWidth": 753,
+      "blockingOverflow": false,
+      "sections": 5,
+      "process": "STATIC_ALL_FOUR_VISIBLE"
+    }
+  ],
+  "nonhomeChecks": [
+    {
+      "path": "/product/mini-craft-night-kit/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "160e26e2d62685163021b6aa85adc65a377231f5b6676c3e9ab2cd8ac7e6287e",
+      "afterDigest": "160e26e2d62685163021b6aa85adc65a377231f5b6676c3e9ab2cd8ac7e6287e"
+    },
+    {
+      "path": "/cart/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "a0069ef3146d4b0df97f63046ad20e890403434e52005f803bcda3c7ad431674",
+      "afterDigest": "a0069ef3146d4b0df97f63046ad20e890403434e52005f803bcda3c7ad431674"
+    },
+    {
+      "path": "/checkout/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "a0069ef3146d4b0df97f63046ad20e890403434e52005f803bcda3c7ad431674",
+      "afterDigest": "a0069ef3146d4b0df97f63046ad20e890403434e52005f803bcda3c7ad431674"
+    },
+    {
+      "path": "/faq/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "5856973b11275eb2fc3b218c6ddc6f03d36b5b8ab2681ce473dc2c816f089b75",
+      "afterDigest": "5856973b11275eb2fc3b218c6ddc6f03d36b5b8ab2681ce473dc2c816f089b75"
+    },
+    {
+      "path": "/shipping-returns/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "26e4286f19f2162fb098db7239f679c00b80197eeb8a5187ec0403a707d232e7",
+      "afterDigest": "26e4286f19f2162fb098db7239f679c00b80197eeb8a5187ec0403a707d232e7"
+    },
+    {
+      "path": "/contact/",
+      "width": 1280,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "744368209df70f869ec71adc1efe15393e87db458bb06e064cca8e975f90914a",
+      "afterDigest": "744368209df70f869ec71adc1efe15393e87db458bb06e064cca8e975f90914a"
+    },
+    {
+      "path": "/product/mini-craft-night-kit/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "5b64cbb3399c72c4cb0f03771394d9b857a8cd6e8612c2807eee06c8f8d522b4",
+      "afterDigest": "5b64cbb3399c72c4cb0f03771394d9b857a8cd6e8612c2807eee06c8f8d522b4"
+    },
+    {
+      "path": "/cart/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "d86afa0c1c2fbcfe1ae9323b99e583085617d29980fb6da0d2ca12b791972346",
+      "afterDigest": "d86afa0c1c2fbcfe1ae9323b99e583085617d29980fb6da0d2ca12b791972346"
+    },
+    {
+      "path": "/checkout/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "d86afa0c1c2fbcfe1ae9323b99e583085617d29980fb6da0d2ca12b791972346",
+      "afterDigest": "d86afa0c1c2fbcfe1ae9323b99e583085617d29980fb6da0d2ca12b791972346"
+    },
+    {
+      "path": "/faq/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "6ff1393ea35758f2f91728ed7c35c20d5d0553f9e33c88940a7c0e44ddb37ecd",
+      "afterDigest": "6ff1393ea35758f2f91728ed7c35c20d5d0553f9e33c88940a7c0e44ddb37ecd"
+    },
+    {
+      "path": "/shipping-returns/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "3979f6b5ede6372cbf59d491b245b5c8631a84ad5edca22346aa0433f00b6858",
+      "afterDigest": "3979f6b5ede6372cbf59d491b245b5c8631a84ad5edca22346aa0433f00b6858"
+    },
+    {
+      "path": "/contact/",
+      "width": 375,
+      "newSkinAssets": 0,
+      "headerExact": true,
+      "linksExact": true,
+      "routeExact": true,
+      "horizontalOverflow": false,
+      "beforeDigest": "f12f6943820963a59199f1d3e99a9a1d2a878344bd1421f62e3ca3e13f9add64",
+      "afterDigest": "f12f6943820963a59199f1d3e99a9a1d2a878344bd1421f62e3ca3e13f9add64"
+    }
+  ],
+  "digestDefinition": "SHA-256 UTF-8 JSON.stringify({header:DOMComputedCriticalProperties,links:NativeHeaderAndMobileDrawerHrefList,url:FinalURL}); before and after compared byte-for-byte prior to hashing.",
+  "publicRoutes": [
+    {
+      "requested": "/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/"
+    },
+    {
+      "requested": "/product/mini-craft-night-kit/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/product/mini-craft-night-kit/"
+    },
+    {
+      "requested": "/cart/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/cart/"
+    },
+    {
+      "requested": "/checkout/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/cart/"
+    },
+    {
+      "requested": "/faq/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/faq/"
+    },
+    {
+      "requested": "/shipping-returns/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/shipping-returns/"
+    },
+    {
+      "requested": "/contact/",
+      "http": 200,
+      "tlsVerify": 0,
+      "final": "/contact/"
+    }
+  ],
+  "motion": {
+    "desktopHoverTransformObserved": "matrix(1.04438,0,0,1.04438,0,0)",
+    "stickyTopObserved": [
+      110,
+      126,
+      142
+    ],
+    "intersectionArrivedCountObserved": 4,
+    "serverRenderedAllSelectedContent": true,
+    "readableWithoutEnhancementBySource": true,
+    "reducedMotionSourceAndServedCSSOM": "PASS",
+    "actualReducedMotionMediaEmulation": "NOT_AVAILABLE_IN_SELECTED_BROWSER_API",
+    "actualJavaScriptDisabledBrowserRun": "NOT_AVAILABLE_IN_SELECTED_BROWSER_API",
+    "scrollHijacking": false
+  },
+  "native": {
+    "keyboardFocusOutlineVisible": true,
+    "mobileMenuKeyboardOpenClose": true,
+    "mobileMenuFocusReturnedTo": "mobile-toggle",
+    "cartLinkReachedEmptyNativeCart": true,
+    "cartCreated": false
+  },
+  "guards": {
+    "page939OtherColumnsAndLayout": "UNCHANGED",
+    "nonhomeContent": "UNCHANGED",
+    "globalThemePluginsCSS1041Menus": "UNCHANGED",
+    "vendorFiles": "UNCHANGED",
+    "product223": "PUBLISH_EMPTY_PRICE_NONPURCHASABLE",
+    "product1224": "ACCEPTED_PUBLISH_HIDDEN_USD1_BASELINE_NO_WRITE",
+    "currency": "USD",
+    "runtimeIDsAndRestarts": "UNCHANGED",
+    "hostContainerAndServedSourceHashes": "MATCH",
+    "durableWPContentDirectoryBind": true
+  },
+  "implementationCorrections": [
+    "Core Group legacy inner wrappers made layout-transparent within home root; photo/heading selectors corrected.",
+    "Gallery heading specificity corrected to retain desktop46px/mobile34px spacing."
+  ],
+  "rollbackUsed": false,
+  "forbiddenCounters": {
+    "dockerMutations": 0,
+    "containerRestartsRecreates": 0,
+    "productMutations": 0,
+    "nonhomeContentWrites": 0,
+    "globalThemeMenuPluginCSSWrites": 0,
+    "cartMutations": 0,
+    "checkoutSubmissions": 0,
+    "ordersCreated": 0,
+    "paymentActions": 0,
+    "providerActions": 0,
+    "refundActions": 0,
+    "sharedInfraMutations": 0,
+    "secretInspection": 0,
+    "secretValuesEmitted": 0,
+    "secretHashActions": 0,
+    "imageGeneration": 0,
+    "broadPrune": 0,
+    "laterGateActions": 0
+  },
+  "authorizedWrites": {
+    "wordpressPageContentUpdates": 1,
+    "changedColumns": [
+      "post_content"
+    ],
+    "presentationFilesCreated": 3,
+    "cssOnlyQAUpdates": 2,
+    "projectRecoveryFilesCreated": 4
+  },
+  "stopAtReviewer": true
+}

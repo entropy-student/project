@@ -7730,3 +7730,157 @@ IMAGE_GENERATION=0
 K10B_ENTERED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+## K10B — Homepage Visual Skin Implementation — 2026-10-05
+
+### CURRENT RESULT / EXACT SCOPE
+
+`PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION` — executor candidate only; formal visual acceptance remains with Reviewer.
+
+Canonical Gate blob: `253321f7633cbac6eb66ccac87d2075ab8464db7`. Latest K10B Reviewer block, accepted K10A evidence/reference captures, Project Storage Manifest and Shared VPS Handoff were read before production action. Canonical Governance active-provisional v0.2.7/VNEXT was used; the local v0.1.6 installation was only a bootstrap and did not override canonical truth. No previous Gate was replayed.
+
+Actual runtime target: `ops@srv1970241` over restored strict SSH. Homepage-only changes: page 939 `post_content` plus the three explicitly approved MU presentation files. No old local WordPress runtime was recreated. Ordinary content remains editable core Gutenberg Group/Heading/Paragraph/Image/Button blocks, not a PHP-rendered page.
+
+Source candidate was committed and freshly read from GitHub before deploying. First source commit: `a9f7c7bbcc01e4b43ee3df72d43cdf6392c2fa1f`; final approved-surface CSS candidate commit: `c6d7a8ea8d84636e9857504b3115d9f8bd5d7b7c`. Review source: [frontend/home-skin](frontend/home-skin/). No Webflow runtime, proprietary Homira code/assets, new fonts or generated imagery were imported.
+
+### RECOVERY BEFORE MUTATION
+
+Exact verified recovery set:
+
+`/srv/backups/mini-craft-night-kit/wp-content/k10b-20261005T084600Z`
+
+The project wp-content recovery parent and dated directory were created within the existing project backup namespace only. Directory mode 0700; four files root:root 0600:
+
+| File | Bytes | Role |
+| --- | ---: | --- |
+| page-939.content.html | 33146 | Exact pre-change public homepage content |
+| page-939.json | 37946 | Page status, dates/title/slug and accepted layout/template metadata plus content |
+| guards.json | 2097 | Non-home content and global front-page/theme/plugin/CSS/menu guards; not blanket restore targets |
+| recovery-manifest.json | 750 | Exact new-file absence and bounded restore method |
+
+Pre-change content SHA-256: `5cdc1f04c13754ad7b91ff3a8965646870a9ad75386858d60d67907f518c6478`. JSON UTF-8 export/read-back and WordPress slash round-trip both PASS. All three approved MU files/the new child namespace were absent before deployment. A full database dump or restore was neither needed nor performed; no Secret was included.
+
+Bounded rollback remains available: disable only the new MU loader/skin, then restore only page 939 pre-change content through `wp_update_post`, preserving every other column/layout/option and newer business state. Recheck original content hash, non-home routes and runtime identities. No rollback was used in the final successful QA path.
+
+### PREFLIGHT AND PRODUCTION WRITE RECORD
+
+Target identity freshly proved `srv1970241`, user `ops`; strict SSH native exit 0. Root filesystem had approximately 91.4 GB available at preflight. WordPress and MariaDB identity/state/restart seals matched K10A.
+
+- WordPress ID: `6477a1fb1d8dae319f93fc54b81e10e29c093686f24972b2735366e11400ae4b`, running, restart 0.
+- MariaDB ID: `42d2c920ea4164cd0a41d416ac673381aeb4985a154fe370f7f873518b134884`, running/healthy, restart 0.
+- Custom CSS 1041: `eba190bc6e2ba3e1ef9f80420693242c86ddb6ca3d98c2f2925ca3f4edf41643`.
+- theme_mods_kadence: `b7d3653e9596c2385364b1bfd7f3d04afbf8cd45af947aa8f1c740aed65817d0`.
+- active_plugins: `d85c0a37b2cae36915ed2893c880a35027cb919b6ba63eb28a875800ef9c29eb`.
+- Kadence header.php/page.php/functions.php guards remained unchanged throughout.
+
+PHP lint, JS syntax check, CSS parser validation, installed WordPress core block parse/serialize round-trip and application-update compatibility checks passed before first deployment. The three presentation files were created root:root 0644, child directory 0755, inside the durable project-owned wp-content directory bind.
+
+Page update was exactly one application-level `wp_update_post` invocation, not direct SQL content mutation. The isolated application process preserved the old non-content columns, suppressed revision callbacks in that process, and enforced a database-query write allowlist for the exact page 939 update. Transactional before/after full-row comparison returned `CHANGED_COLUMNS=["post_content"]`. Page status, title, slug, timestamps and accepted layout/template metadata remained unchanged. No persistent hook/WordPress core change was made.
+
+First production visual read-back exposed a core Group legacy `wp-block-group__inner-container` compatibility problem: a photo became in-flow rather than full-bleed and group layout was not inherited. This was corrected with an exact home-root-only CSS update: layout-transparent inner wrappers and wrapper-aware photo/heading selectors. A second small CSS-only QA correction restored the gallery heading spacing overridden by the generic group reset. Both corrections were source-committed/freshly read before their exact CSS overwrite; no page re-update, loader/JS change, cache purge, restart or broader write was performed. These implementation corrections are recorded, not hidden as zero writes.
+
+Final source/runtime correlation:
+
+| Surface | UTF-8 bytes | SHA-256 | GitHub blob |
+| --- | ---: | --- | --- |
+| page-939.html / page 939 content | 10439 | 6b0d89f143ca75593d1527e90fda062d9df2e04b72d5e9add503e5c9aa351ea6 | c1765a412d6715482f69d372cea4c55b861335b2 |
+| mini-craft-home-skin.php | 980 | f1d38af555bfe7003a808f34b2bfc07abcb14e268f9b68209a33c0affc47a404 | a8b0472dc1b1167c235b9d30e93062c02581b85b |
+| home.css | 15424 | 4dc278a22cb8ff95e876c56fea3eadc7d8190b469ce2c60a7bb7a748f9e47bff | 0ab22e4e94c2b5a9b66709d4aab85f15f543fa33 |
+| home.js | 1206 | c948abfaaf13abc87b27f08e5a57ed2891d4ec44bd937b30eaf197d11e211ccd | 22c4f334db7b8c29805c3eeb9001c8cd1a590d22 |
+
+Host and running WordPress hashes match for all three approved files; anonymous served CSS/JS hashes match the canonical source. Loader only enqueues/styles body class when public `is_front_page()` and queried ID=939; it has no business/admin/provider hooks.
+
+### IMPLEMENTED VISUAL ROLES / CONTENT OWNERSHIP
+
+| Homira role | Mini Craft implementation |
+| --- | --- |
+| H0 | Inset warm/glass skin on the existing native Kadence header; original logo/menu/toggle/cart/CTA markup and destinations retained |
+| H1 | Full-height existing craft-night photograph, large white Mini Craft headline, supporting copy and native Product destination |
+| H3 | Two-column staggered large-image gallery on desktop, single column on mobile, translucent labels and mild image hover; explicit illustrative-experience disclaimer, no invented SKU/price/availability |
+| H5 | Four numbered clay-toned process cards; progressive sticky stacking on normal desktop, all four static/readable on phone/tablet and reduced-motion/no enhancement |
+| H6 | Full-image emotional brand pause with existing Mini Craft making-together message |
+| H10 | Large photographic closing CTA linking only to existing Product/Shop destinations |
+
+Palette/font were selected with frontend-design/impeccable guidance and the accepted Homira captures: warm white/ink/clay/linen and the site's existing Plus Jakarta Sans, rather than adding another global theme or a decorative font dependency. Existing imagery is replaceable Gutenberg image content. Global footer, FAQ, Shipping & Returns and Contact content were not redesigned.
+
+### FINAL VISUAL / MOTION / NATIVE QA
+
+Six selected roles are visible; homepage has five content sections plus native header, one H1, and seven successfully loaded content-image instances.
+
+- Desktop 1280×800: complete photo-led hero, editorial gallery, numbered stacking process, brand break and CTA/footer; no blocking horizontal overflow.
+- Phone 375×812: document scroll/client widths both 360px (viewport reserves scrollbar); no horizontal overflow; four process cards static/visible; native menu opens/closes by click and Enter/Escape with focus returning to `mobile-toggle`.
+- Tablet 768×1024: document scroll/client widths both 753px; two-column gallery, single-column hero composition, static process; no blocking overflow.
+- Desktop hover visibly applies photo scale (observed matrix scale 1.04438 during transition); IntersectionObserver entry classes reached rendered headings/sections; process cards read at sticky top 110/126/142px during scroll.
+- Keyboard Skip-to-content focus displayed a solid outline. Native Shopping Cart link opened the actual Woo empty Cart; no add-to-cart or cart state was created.
+- No console warnings/errors were observed in the bounded final browser log read.
+- No scroll interception/hijacking or content-hidden-until-JS pattern exists.
+
+Verification limit, explicitly carried to Reviewer: selected browser API does not expose media emulation or JavaScript disabling. Reduced-motion and enhancement-unavailable completeness were verified by canonical source plus the actually served CSSOM/server-rendered content, and the physical static phone/tablet layout. No claim is made that an actual browser `prefers-reduced-motion` emulation or JS-disabled session was run. The reduced-motion CSS removes animation/transition/hover transform and makes process cards static; JS exits before enhancement for that preference. All content remains server-rendered and readable without the enhancement class.
+
+Independent read-only finish review found no business/scope leak or additional visual blocker in the candidate; final visual acceptance remains Reviewer/Owner responsibility.
+
+### NEGATIVE / BUSINESS / RUNTIME REGRESSION
+
+Twelve browser comparisons (six non-home pages × desktop/phone) passed exact before/after critical-header properties, original header/mobile navigation href lists and final route comparison. New homepage asset count was 0 on every non-home page. All had no horizontal overflow. [machine-report.json](evidence/k10b-20261005/machine-report.json) records byte-exact comparison conclusions and identical before/after digests.
+
+Fresh strict-SSH read-back at 2026-10-05T09:02:48Z confirmed:
+
+- page 939 content exact; every other exported page column and accepted layout metadata unchanged;
+- non-home content guards for Product 223/1224, Cart 6, Checkout 7, FAQ 1121, Shipping 9, Contact 10 and CSS 1041 unchanged;
+- front-page options/theme_mods/active_plugins/currency/menu guards unchanged;
+- all three vendor theme file hashes unchanged;
+- WordPress/MariaDB exact IDs and restart counts unchanged; MariaDB healthy;
+- USD currency retained, Product 223 empty price/publish/nonpurchasable public shell retained, Product 1224 accepted publish/hidden/USD1 canary baseline not changed or reopened.
+
+All public routes returned final HTTP 200 and TLS verify=0: Home, Product, Cart, Checkout, FAQ, Shipping & Returns, Contact. Checkout remained its accepted empty-session redirect to Cart; a checkout-with-items/order/payment flow was deliberately not tested.
+
+PPCP/PayPal settings/Secrets were not read or hashed; no mutation path touched them. No order/cart/contact-form submission or Provider/payment/refund action occurred.
+
+### PERSISTENCE / REVIEW ARTIFACTS / TOOLING NOTES
+
+The source files reside in `/srv/data/mini-craft-night-kit/wp-content/mu-plugins/...`, confirmed in the running WordPress `/var/www/html/wp-content` directory bind. Page content is persistent WordPress DB state. No container-only artifact or restart-dependent manual attachment is relied upon; no restart/recreate was executed to demonstrate this model.
+
+Review [16 final screenshots](evidence/k10b-20261005/) and [capture-manifest.json](evidence/k10b-20261005/capture-manifest.json); desktop/phone full-page and H0/H1/H3/H5/H6/H10 details, desktop stacked state, native mobile menu and tablet captures are included. Images are normal anonymous public-page screenshots, with no credentials/session UI.
+
+An independent existing executor artifact checkout was used, not the dirty shared cache. Other-project concurrent main commits were safely integrated before the source commit; no forced push or shared Git setting change occurred. A sparse materialization option mismatch affected only this isolated checkout and was corrected without Git reset/restore/checkout/clean or production effect. Browser viewport override applies to its selected tab, not a merely rebound tab: dedicated responsive tabs were used and actual `innerWidth` checked before labeling phone/tablet evidence.
+
+### COUNTERS / STOP
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION
+TARGET_HOST_EXECUTION_PROVEN=PASS
+PRODUCTION_TARGET=VPS_ONLY
+HOMEPAGE_ROLES=H0+H1+H3+H5+H6+H10
+PREWRITE_RECOVERY=PASS
+WORDPRESS_CONTENT_UPDATES=1
+WORDPRESS_CHANGED_COLUMNS=POST_939_POST_CONTENT_ONLY
+PRESENTATION_FILES_CREATED=3
+HOME_CSS_QA_UPDATES=2
+PROJECT_RECOVERY_FILES_CREATED=4
+NONHOME_CONTENT_WRITES=0
+GLOBAL_THEME_MENU_PLUGIN_CUSTOM_CSS_WRITES=0
+VENDOR_FILE_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_RESTARTS_RECREATES=0
+COMPOSE_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+ORDER_CREATION=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_CONTENT_INSPECTION=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+IMAGE_GENERATION=0
+BROAD_PRUNE=NO
+NONHOME_SKIN_ASSET_LOADS=0
+NONHOME_HEADER_LINK_ROUTE_COMPARISONS_PASS=12
+PUBLIC_ROUTES_HTTP_200_TLS_VERIFY_0=7
+ROLLBACK_USED=NO
+OWNER_VISUAL_FREEZE=PENDING_REVIEW
+LATER_GATE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```

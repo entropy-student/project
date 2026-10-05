@@ -1,0 +1,102 @@
+{
+  "gate": "K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION",
+  "sourceCommit": "c6d7a8ea8d84636e9857504b3115d9f8bd5d7b7c",
+  "captures": [
+    {
+      "name": "home-full-desktop.jpg",
+      "bytes": 696371,
+      "sha256": "362f4321f8d77f162feb9276514c6e5ca3a0f806a563fe7eb61a2fb3d145da19",
+      "capturedAt": "2026-10-05T09:03:33.4841292Z"
+    },
+    {
+      "name": "home-full-mobile.jpg",
+      "bytes": 225365,
+      "sha256": "04f620870c1c06bf2379708041717899165f9004428380a19a2a0bd21af1b0e9",
+      "capturedAt": "2026-10-05T09:00:13.9028635Z"
+    },
+    {
+      "name": "home-full-tablet.jpg",
+      "bytes": 468159,
+      "sha256": "fb024bdc5e5ed1fd43c15f6e8dc382361edb5558e763c84237d5637ca4e71917",
+      "capturedAt": "2026-10-05T09:03:59.1280063Z"
+    },
+    {
+      "name": "home-h0-h1-desktop.jpg",
+      "bytes": 129761,
+      "sha256": "f7cf9c1cf47a3f5e40032c1d9f150f5cf240c3ebbd909a7befb5429f759d6294",
+      "capturedAt": "2026-10-05T09:03:30.2950362Z"
+    },
+    {
+      "name": "home-h0-h1-mobile.jpg",
+      "bytes": 45225,
+      "sha256": "9990daf8113c7cac835866e2858b243a6eee4018027bc1a815168f202cc1a8f9",
+      "capturedAt": "2026-10-05T09:00:14.3454582Z"
+    },
+    {
+      "name": "home-h0-h1-tablet.jpg",
+      "bytes": 85577,
+      "sha256": "7fa5bb1dc16d2e092b32a987c12f2cfce9a54463e392aa39989b7db4c00a594e",
+      "capturedAt": "2026-10-05T09:03:57.7907260Z"
+    },
+    {
+      "name": "home-h10-footer-desktop.jpg",
+      "bytes": 89913,
+      "sha256": "e0eefedf854f67841fe7e66813bac4bacc4081323b0e40d077961aee9be541f5",
+      "capturedAt": "2026-10-05T09:06:40.2422583Z"
+    },
+    {
+      "name": "home-h10-footer-mobile.jpg",
+      "bytes": 34081,
+      "sha256": "4264851e677539bddc1cc79ea01478317106a82db7083877b74d0876ac64b19a",
+      "capturedAt": "2026-10-05T09:00:36.7019402Z"
+    },
+    {
+      "name": "home-h3-desktop.jpg",
+      "bytes": 110796,
+      "sha256": "39593f653f6fd46d295a7971feed348a87bf5839a583fd416d97b49a962815c3",
+      "capturedAt": "2026-10-05T09:03:32.0544866Z"
+    },
+    {
+      "name": "home-h3-mobile.jpg",
+      "bytes": 41344,
+      "sha256": "3ec5a2b1c16be58ecf0f066b230cb7d20e054a3ee6f8625a2d83e3c403738094",
+      "capturedAt": "2026-10-05T09:00:14.6759574Z"
+    },
+    {
+      "name": "home-h5-desktop.jpg",
+      "bytes": 61758,
+      "sha256": "d9f91402fc27757af742465d2c3c68d2dd125622f9db1fe0aea83b089f4d78d2",
+      "capturedAt": "2026-10-05T09:06:38.8603087Z"
+    },
+    {
+      "name": "home-h5-mobile.jpg",
+      "bytes": 34593,
+      "sha256": "3c98480aa2293778b98ff6497f51e2de4077e840936d77068089153345ba29b2",
+      "capturedAt": "2026-10-05T09:04:32.4730322Z"
+    },
+    {
+      "name": "home-h5-stack-desktop.jpg",
+      "bytes": 47650,
+      "sha256": "47a76161b8b3f846f1bd67038bea210a232eb4adf26e3fc2a50516113a934c76",
+      "capturedAt": "2026-10-05T09:06:39.1654429Z"
+    },
+    {
+      "name": "home-h6-desktop.jpg",
+      "bytes": 111468,
+      "sha256": "c04e3ff5700f630dc45d9f8faf7cefd08347f14d239c70bf7c09907711c50a41",
+      "capturedAt": "2026-10-05T09:06:39.7120320Z"
+    },
+    {
+      "name": "home-h6-mobile.jpg",
+      "bytes": 38815,
+      "sha256": "8b5c4ed5033cb09a5c508959706a191b3a5640828761453c942e3bb360034b74",
+      "capturedAt": "2026-10-05T09:04:32.0986731Z"
+    },
+    {
+      "name": "home-native-mobile-menu.jpg",
+      "bytes": 12567,
+      "sha256": "af8d719ea37639ae188fa2a5e18f06507fd3c0e38a917b9dd28ab164787465f9",
+      "capturedAt": "2026-10-05T09:06:40.6599679Z"
+    }
+  ]
+}
