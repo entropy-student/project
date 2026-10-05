@@ -616,3 +616,16 @@ Next Gate: `G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3`, which retries only t
 The reviewed D2 build helper succeeded on the real Owner host. Pinned upstream/toolchain identities matched, the Windows amd64 adapter digest exactly matched the reviewed value, the retained runtime binary was created, Go tests and native failure fixture passed, and temp cleanup passed. Authentication did not start.
 
 Next Gate: `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I_D4`, exactly one Owner-local authentication checkpoint using the existing retained binary, with no rebuild or retry.
+
+
+## 2026-10-05 — R6R2I-D4 authentication state accepted; output contract returned
+
+**Decision:** `PASS_AUTH_STATE_RETURN_D4_EXTRA_ADAPTER_MARKERS`.
+
+The one authorized Owner authentication attempt succeeded: checkpoint `SETUP_SAVED`, failure `NONE`, native exit 0, pre-auth state `ABSENT_PREAUTH`, authenticated config preserved, content-read NO, who NOT_RUN, UID emitted NO.
+
+The successful authenticated config is accepted and no authentication retry is authorized.
+
+D4 is not fully closed because the child adapter also emitted two bounded status lines directly to the inherited console, so the end-to-end Owner output exceeded the exact eight-marker contract. This is an output/reviewability defect, not an authentication-state defect.
+
+Next Gate: `G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5`, offline only.
