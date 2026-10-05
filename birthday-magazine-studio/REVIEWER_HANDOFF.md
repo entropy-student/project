@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2R1_STRIPE_VISUAL_CONTINUATION
+CURRENT_GATE=G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
-CORE_FUNCTION_ONBOARDING_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
-POSTPAY_GENERATION_STATUS_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
+HOMEPAGE_ENTRY_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
+POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_STRIPE_VISUAL_PASS_RUNTIME_ALIGNMENT_PENDING
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -134,6 +134,11 @@ G3CR7V2_PREFLIGHT_RETURN=OVERRULED_FALSE_POSITIVE
 G3CR7V2_ORDER_1131_ROUTE=INCONCLUSIVE_ACCESS_CONTEXT
 G3CR7V2_FROZEN_PHP_JS_BLOBS=UNCHANGED_FROM_G3CR7R1R2
 G3CR7V2_PAYMENT_TRUTH_REUSE=G3CR7R1R2_ACCEPTED
+G3CR7V2R1_EXECUTOR_HEAD=18ab6b0e6d18d973bd4cc9376cec97b6fb89b830
+G3CR7V2R1_REVIEWER_VISUAL=PASS
+G3CR7V2R1_RUNTIME_VISUAL_ASSETS=PASS
+G3CR7V2R1_RUNTIME_MAIN_PLUGIN=RETURN_IDENTITY_MISMATCH
+G3CR7V2R1_OWNER_VISUAL=BLOCKED_UNTIL_RUNTIME_ALIGNMENT
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -178,19 +183,19 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2R1_STRIPE_VISUAL_CONTINUATION`
+`G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT`
 
-The latest Executor `RETURN_PREFLIGHT_DRIFT` is Reviewer-overruled as a false positive. Existing order #1131 was not proven to be requested under an equivalent valid Woo order-received access context.
+G3CR7V2R1 Stripe visual design is **Reviewer PASS** at candidate `18ab6b0e6d18d973bd4cc9376cec97b6fb89b830`.
 
-Fresh blob comparison confirms the current PHP/JS business implementation is byte-identical to the already accepted G3CR7R1R2 payment-truth candidate.
+The only blocker before Owner live review is runtime candidate identity: the retained local runtime has candidate-matching CSS/SVG but a pre-existing dirty `birthday-magazine-poc.php` whose blob differs from the immutable PR candidate.
 
 Current Gate:
-- `docs/G3CR7V2R1_STRIPE_VISUAL_CONTINUATION.md`
+- `docs/G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT.md`
 
-Reviewer correction:
-- `docs/REVIEWER_DECISION_G3CR7V2_RETURN_PREFLIGHT_DRIFT_OVERRULED_2026-10-05.md`
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7V2R1_RETURN_RUNTIME_IDENTITY_2026-10-05.md`
 
-Stripe DESIGN.md remains mandatory. Continue visual implementation only; do not replay accepted Woo/payment evidence unless frozen PHP/JS changes.
+No visual redesign or payment/business work is authorized.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -255,15 +260,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor continues the Stripe visual implementation under `G3CR7V2R1_STRIPE_VISUAL_CONTINUATION`.
-2. Verify the three frozen business-source blobs, then modify presentation files only.
-3. Reuse the 14 committed before screenshots; produce Stripe after screenshots/contact sheet and leave the exact candidate mounted at `127.0.0.1:8189`.
-4. Do not replay Woo test orders/payment truth while frozen PHP/JS remains unchanged.
-5. Reviewer inspects the final visual candidate, then Owner performs live local acceptance.
+1. Executor runs `G3CR7V2R1R1_RUNTIME_CANDIDATE_ALIGNMENT`.
+2. Read-only diff the active runtime main plugin against the approved PR candidate and classify the pre-existing local delta.
+3. If stale/unneeded, align the runtime to the exact candidate files, perform only minimal homepage/intake/status smoke, and leave the exact candidate mounted.
+4. If a material local-only dependency exists, RETURN without overwriting it.
+5. Reviewer checks runtime identity, then Owner opens `127.0.0.1:8189` for final Stripe visual acceptance.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until the Stripe candidate is ready.** The preflight RETURN has been reconciled by Reviewer.
+**NONE until runtime identity is aligned.** The Stripe visual candidate itself has passed Reviewer visual inspection.
 
 ## EVIDENCE_POINTERS
 
