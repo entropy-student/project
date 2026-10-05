@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT
+CURRENT_GATE=OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=TECHNICAL_PASS_OWNER_VISUAL_RETURN
-CORE_FUNCTION_ONBOARDING_SURFACE=TECHNICAL_PASS_OWNER_VISUAL_RETURN
-POSTPAY_GENERATION_STATUS_SURFACE=TECHNICAL_PASS_OWNER_VISUAL_RETURN
+HOMEPAGE_ENTRY_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
+POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -91,7 +91,7 @@ G3CR7_ACCEPTED_REPRODUCTION_BASELINE=e71f94377d341a88ba388f2c5da153e7cd6ee8b8
 G3CR7_PAYMENT_TRUTH_REVIEW=INVALIDATED_ROLE_SEPARATION
 G3CR7_PREVIEW_STYLE_HANDOFF=INVALIDATED_ROLE_SEPARATION
 G3CR7_RUNTIME_VISUAL=UNVERIFIED
-G3CR7_OWNER_VISUAL=RETURN_VISUAL_QUALITY
+G3CR7_OWNER_VISUAL=PENDING_REVIEW_OF_G3CR7V1
 G3CR7R1_EXECUTOR_HEAD=88f45f5d712e3c1fe26f4386628703716b8eca3e
 G3CR7R1_REVIEW=RETURN_EVIDENCE_INTEGRATION
 G3CR7R1_CLEAN_SOURCE_DIFF=RETURN
@@ -106,11 +106,16 @@ G3CR7R1R2_SOURCE_CLEANUP=PASS
 G3CR7R1R2_RUNTIME_RECONCILIATION=PASS_PROXY_INTERCEPTION_NO_RUNTIME_MUTATION
 G3CR7R1R2_WOO_ORDER_RECEIVED=PASS
 G3CR7_FORMAL_REVIEWER_DECISION=PASS
-G3CR7_OWNER_VISUAL=RETURN_VISUAL_QUALITY
+G3CR7_OWNER_VISUAL=PENDING_REVIEW_OF_G3CR7V1
 PR64_MERGEABILITY=DIRTY_DEFERRED_TO_PREMERGE_RECONCILIATION
 G3CR7V1_VISUAL_REFINEMENT=AUTHORIZED
 G3CR7V1_HOMEPAGE_TARGET=FREE_PREVIEW_TO_CORE_ENTRY
 G3CR7V1_FUNCTIONAL_BEHAVIOR=FROZEN
+G3CR7V1_EXECUTOR_HEAD=806907177ba48ef2ed11310e36f4cca0e209b421
+G3CR7V1_REVIEWER_VISUAL=PASS
+G3CR7V1_1440=PASS
+G3CR7V1_375=PASS
+G3CR7V1_OWNER_VISUAL=PENDING
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -154,19 +159,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT`
+`OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL`
 
-G3CR7 technical behavior remains **PASS** at `c0a1f2a...`, but Owner visual acceptance is **RETURN**.
+G3CR7V1 presentation refinement is **Reviewer PASS** at candidate `806907177ba48ef2ed11310e36f4cca0e209b421`.
 
-Owner clarified that the homepage core-entry target is the **Free Preview / personalized magazine preview block and its CTA into the core function**, not merely the later dark offer card.
+Owner checkpoint:
+- `docs/OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL_2026-10-05.md`
 
-Current visual Gate:
-- `docs/G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT.md`
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7V1_PASS_VISUAL_CANDIDATE_2026-10-05.md`
 
-Owner decision:
-- `docs/OWNER_DECISION_G3CR7_VISUAL_RETURN_2026-10-05.md`
-
-Functional/business behavior is frozen; only presentation may change.
+Business logic remains frozen; this checkpoint asks only for final Owner visual acceptance.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -231,15 +234,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs `G3CR7V1_PREMIUM_SAAS_VISUAL_REFINEMENT`.
-2. Visually redesign the actual homepage Free Preview/core-entry component first; do not substitute changes to another homepage offer block.
-3. Re-skin the five-step intake and Woo/status surfaces as polished conventional SaaS using mature Flowbase/BRIX layout patterns, without changing frozen behavior.
-4. Return 1440/375 before-after screenshots plus one contact sheet for Reviewer visual review.
-5. Owner reviews the final three surfaces only after Reviewer confirms the visual candidate.
+1. Owner visually reviews the G3CR7V1 candidate: homepage Preview/core-entry, five-step intake, and status/Woo continuation.
+2. If Owner accepts, freeze these three frontend surfaces for the current MVP stage.
+3. Then open a new product Gate for the next implementation layer; pre-payment draft persistence / payment-to-generation wiring remains the likely next technical step before P1-P12.
+4. PR #64 mergeability remains a separate bounded pre-merge reconciliation task and must not be handled by blind rebase/reset.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until the new visual candidate is ready.** Owner has already supplied the required visual rejection and direction.
+Review the final G3CR7V1 visuals and reply PASS or give bounded visual changes. No credential, payment, deployment, or technical action is required.
 
 ## EVIDENCE_POINTERS
 
