@@ -9458,3 +9458,45 @@ Next Gate: `G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7`.
 G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_GATE_BLOB=823d21de310c73fcb5f464b8c90694a0a8116b1d
 G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_SCRIPT_BLOB=84e8706449147d8667414e59de22f0ae33b27c4b
 ```
+
+
+## Reviewer reconciliation — R6R2L-R7 Baidu read-only diagnostic root-cause identification — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7
+OWNER_REPORTED_EXPECTED_UID_INPUT=READY
+OWNER_REPORTED_DIAGNOSTIC_STAGE=BAIDU_WHO
+OWNER_REPORTED_DIAGNOSTIC_FAILED_STAGE=BAIDU_WHO
+OWNER_REPORTED_DIAGNOSTIC_EXCEPTION_TYPE=System.Management.Automation.PropertyNotFoundException
+OWNER_REPORTED_BAIDU_READONLY_DIAGNOSTIC_CLASSIFICATION=LOCAL_DIAGNOSTIC_EXCEPTION
+OWNER_REPORTED_TEMP_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_BAIDU_MUTATION_ACTION=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_RECOVERY_WRITE=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+REVIEWER_RESULT=RETURN_R6R2L_R7_ROOT_CAUSE_IDENTIFIED
+```
+
+Reviewer root-cause analysis:
+- The failure occurs before any UID parse or directory listing logic at the `who` process-result boundary.
+- Both the live runner and R7 diagnostic removed sensitive environment variables with an uncaptured `$psi.Environment.Remove([string]$key)`.
+- `Remove()` returns Boolean values. PowerShell function success-stream semantics therefore emitted those Booleans together with the final process-result object.
+- Under StrictMode, downstream member access on the polluted result stream raised `System.Management.Automation.PropertyNotFoundException`.
+- This exactly explains the R5 outer `UNCLASSIFIED`: the .NET exception message did not match the runner's accepted uppercase failure-code format.
+- This is an implementation defect, not a Baidu login/UID/network/output-format failure.
+- R7 temporary runtime cleanup passed; no Baidu mutation, SSH/VPS action, recovery write, network mutation, or Secret output occurred.
+
+R8 repair:
+- live runner uses `[void]$psi.Environment.Remove([string]$key)`;
+- R7 diagnostic uses the same suppression;
+- live-runner validator requires the suppression and contains a negative regression fixture that restores the unsafe form and must fail.
+
+```text
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_GATE_BLOB=7e78a3ff585133c52fdc309947ce79e4a0283a17
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+```
+
+Next Gate: `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8`. Owner runs only the offline fixture validator. No live retry is authorized until Reviewer accepts R8.
