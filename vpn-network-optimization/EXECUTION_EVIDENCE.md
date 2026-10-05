@@ -8214,3 +8214,28 @@ The auth repair keeps the no-argument `login`, cleared allowlisted environment, 
 Validation provenance: both R6R2E validators ran locally; the auth validator also ran the complete accepted R6/R6R1 validator regression. Owner-only ACL construction and post-login normalization targets were tested with synthetic metadata and the in-memory accepted constructor; no real Owner ACL or config was inspected or changed. During an earlier NTFS-backed non-secret fixture attempt, local `Set-Acl` returned a `SeSecurityPrivilege` error. That temporary fixture was cleaned; the final Gate-approved validation uses synthetic normalization metadata/plan and verifies constructor semantics, not an Owner-host ACL write.
 
 Artifacts created: the two R6R2E checkpoint/validator script pairs. Temporary fixtures contained only non-secret test metadata/content and were cleaned by `finally`/bounded cleanup checks. No production helper, login, `who`, network/provider request, VPS/SSH operation, credential, DPAPI data, or Owner config was accessed. Existing untracked `results/` files from before this round were preserved and not staged. Rollback is limited to these project-scoped source and record edits; no runtime or Owner state changed.
+
+
+## Reviewer reconciliation — G4-B Baidu Partial Config Reconciliation + Auth ACL Repair R6R2E — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
+REVIEWER_RESULT=RETURN_R6R2E_PREEXISTING_EMPTY_ROOT_DELETION_RISK
+SOURCE_COMMIT=9d89b006d38ec20b9d393e93fdab1ba276c010e3
+RECONCILE_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
+AUTH_HELPER_BLOB=a5f6430627a1844c990ccd2712eb1f3ee74823ab
+R6R2E_R1_GATE_BLOB=a0262bdb70a8a72edcd6df32a5011964c236cd83
+REAL_CONFIG_ACTIONS=0
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+```
+
+Reviewer independently inspected both production helpers, validators, changed-path scope, accepted R6R1 regression identity, and the SeSecurityPrivilege fallback.
+
+Accepted/frozen findings from R6R2E: the reconciliation helper is metadata-only; exact residue deletion requires exactly one regular `pcs_config.json`, bounded size, allowed owner provenance, no Deny or unauthorized Allow; extra entries/reparse/unexpected owner fail closed; exact deletion does not touch sibling paths. The auth repair preserves the no-credential interactive login boundary, checks post-login exact shape, normalizes only exact file/root through the accepted Owner-only ACL constructor, applies strict R6R1 ACL validation afterward, prevents nonzero-login `who`, and does not emit UID/raw who output. The local SeSecurityPrivilege limitation does not invalidate those predicates because the final validators exercise the same production shape/normalization-plan functions plus the accepted in-memory ACL constructor and full R6/R6R1 regression.
+
+Blocking defect: failure rollback lost root provenance for the no-file / pre-shape-verification branch. `Initialize-BaiduInteractiveConfigDirectory` allows an existing empty root and records `interactiveAuthConfigCreated=false`. Later, the generic finally branch is gated only on login-started + config-file-absent + !candidateReady; when post-login shape was never verified it calls `Remove-NewEmptyBaiduConfigDirectory`, which deletes any safe empty root and does not accept/check `RootCreatedThisRun`. Thus a pre-existing empty `%APPDATA%\BaiduPCS-Go` can be deleted if login fails before creating `pcs_config.json` (including process-start/early-init failure). This contradicts the Gate and Evidence claim that pre-existing empty roots are preserved.
+
+Next Gate: `G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1`. The accepted reconciliation helper is frozen; only the narrow auth rollback provenance defect is reopened.
