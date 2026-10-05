@@ -104,22 +104,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_REAL_LISTING_PARSER_OFFLINE_VALIDATION_R6R2L_R10
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
+STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_NETWORK_DIAGNOSTIC
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LISTING_PARSER_DEFECT
-OBJECTIVE=Validate the repair for real BaiduPCS-Go v4.0.2 borderless ls -l output and remove the fake pipe-delimited fixture assumption before any further live retry.
-MAX_ENDPOINT_THIS_ROUND=Offline live-runner fixture validator only. No Baidu API/file operation, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation.
+PREVIOUS_RESULT=PASS_R6R2L_R10_BAIDU_REAL_LISTING_PARSER_REPAIR
+OBJECTIVE=Read-only reconcile the Baidu recovery directory after R9, because R9 pending rollback used the now-superseded broken listing parser and cannot prove that no pending object remains.
+MAX_ENDPOINT_THIS_ROUND=One read-only Baidu who + ls -l diagnostic ending at sanitized residual-state classification + STOP_AT_REVIEWER. No cleanup, no live runner, no SSH/VPS, no Secret/recovery read.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Canonical main runner + validator only; source-level parser and provider-fixture repair.
-APPLICABLE_CRITICAL_CONSTRAINTS=No live retry; no Baidu provider action; no Secret access/output; no SSH/VPS; no G4-C.
-PREFLIGHT=R9 failed in P5 after successful upload command with BAIDU_PENDING_UPLOAD_NOT_PRESENT; CONSEQUENTIAL_MUTATION_STARTED=NO; upstream v4.0.2 proves ls table is borderless and filename is final column; old fake fixture used non-provider pipe rows.
-REQUIRED_EVIDENCE=R10 real-listing parser/source marker; real borderless file match PASS; directory match PASS; exact basename PASS; pipe-border-only negative regression PASS; existing pending upload/promotion/rollback fixtures PASS; full positive/negative suites PASS; zero external/network/Secret actions.
-ACCEPTANCE_CRITERIA=All R10 and existing fixture markers PASS; parser preflight PASS; no external/network/Secret action; STOP_AT_REVIEWER.
-ROLLBACK_STATUS_OR_PLAN=Source-only rollback. R9 remote rollback and pending rollback reported PASS; no consequential mutation began. No runtime mutation is authorized by R10.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R10 Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, return markers, stop.
+TARGET_AND_SCOPE=Owner Windows host + approved Baidu recovery directory read-only state only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No mkdir/upload/download-from-Baidu/mv/rm/login/logout/config mutation; no live G4-B; no SSH/VPS; no DPAPI/real recovery Secret access; no profile/service/route/proxy/TUN mutation; no G4-C; no raw UID/provider output/remote filenames in evidence.
+PREFLIGHT=R10 formal PASS; corrected borderless listing semantics accepted; R9 reported CONSEQUENTIAL_MUTATION_STARTED=NO but its pending rollback result is non-authoritative because it used the pre-R10 parser.
+REQUIRED_EVIDENCE=R11 script blob dff7b60e31e0fb28295a3309d5516ae23aee28cf; parser preflight; config ACL PASS; pinned CLI PASS; hidden UID input; who/UID PASS; ls/header PASS; project final/pending/unknown counts; sanitized residual classification; temp cleanup PASS; all mutation/Secret markers NO/0.
+ACCEPTANCE_CRITERIA=State observation only. CLEAN may permit a new live retry Gate; any residual/unknown/auth/provider result returns for separate reconciliation. R11 itself never closes G4-B.
+ROLLBACK_STATUS_OR_PLAN=No remote rollback because R11 is read-only. Temporary local diagnostic runtime must be removed before stop.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R11 Gate/script blobs and Handoff state, parser-preflight the R11 script, run it once, enter expected Baidu UID only through hidden local prompt, return sanitized markers, stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R11 markers only; do not perform cleanup or live retry.
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair is formally PASS. R9 then reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS. Upstream v4.0.2 source reconciliation identified the next defect: the production parser expected pipe-delimited `ls -l` rows even though the provider renders a borderless table. Current work is R10 offline parser/fixture repair validation; no live retry is authorized.
@@ -252,6 +252,9 @@ G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_RESULT=RETURN_BAIDU_REAL_LS_FORMAT
 G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_GATE_BLOB=ef148ca80a630e0e6faab748a8862b5bee0e6ea4
 G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
 G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RESULT=PASS
+G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_GATE_BLOB=fb03dce9b974e93e1126d6ce457e2c86919e4acb
+G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_SCRIPT_BLOB=dff7b60e31e0fb28295a3309d5516ae23aee28cf
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
@@ -332,11 +335,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs only `G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10` offline validation and stops at Reviewer. No live retry is authorized.
+Owner runs only `G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11` and stops at Reviewer. No cleanup or live retry is authorized.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R10 parser-repair Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, and return its markers. Do not run the live G4-B runner.
+Fast-forward to current main, verify the R11 Gate/script blob and current Handoff state, parser-preflight the R11 script, run it once, enter the expected Baidu UID only through the hidden local prompt, and return sanitized markers. Do not perform cleanup or run live G4-B.
 
 ## EVIDENCE_POINTERS
 
