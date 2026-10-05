@@ -697,3 +697,14 @@ The old standalone R6R2 readiness rerun is superseded for this post-auth path be
 Reviewer applied the same explicit UTF-8 stdout/stderr decoding boundary to the live runner's bounded Baidu CLI process path so both `who` and later Chinese-text listing parsing use the same proven decode contract.
 
 Next Gate: `G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K`, offline validator only.
+
+
+## 2026-10-05 — R6R2K offline live-runner validation passed; enter one-shot live G4-B
+
+**Decision:** `PASS_G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K`.
+
+The full current G4-B live-runner fixture suite and negative fixtures pass with explicit UTF-8 decoding for the bounded Baidu CLI path. No live action occurred.
+
+The project may now enter exactly one live G4-B execution using the locked runner. The existing recorded Owner authorization is limited to the accepted G4-B scope: encrypted recovery publication, project-owned persistent REALITY service, one persistent three-role Clash profile, bounded restart/read-back and rollback. G4-C and automatic switching remain forbidden.
+
+Next Gate: `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L`.
