@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_CONSOLE_OUTPUT_REPAIR_R6R2I_D5
+STATE=EXECUTOR_ASSIGNED_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=EXECUTOR_OFFLINE_REPAIR
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_AUTH_STATE_RETURN_D4_EXTRA_ADAPTER_MARKERS
+PREVIOUS_RESULT=RETURN_R6R2I_D5_GO_SOURCE_TESTS_UNAVAILABLE
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only child/Owner console-output contract repair; accepted authenticated config frozen; no re-authentication.
+MAX_ENDPOINT_THIS_ROUND=Pinned public build/test verification of accepted D5 candidate only; run build helper without RetainBinary, then full validator; no real runtime/config/auth/provider action.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Exact eight-marker console contract fixtures for success/failure, unchanged auth/config semantics, zero real Owner config/auth/provider actions, fresh GitHub read-back.
-ACCEPTANCE_CRITERIA=Interactive hidden input remains usable, adapter status does not escape to console, native failure remains nonzero, and only the eight Owner checkpoint markers form the final status contract.
-ROLLBACK_STATUS_OR_PLAN=Source-only Executor round. Accepted authenticated config and retained runtime binary remain untouched.
-OWNER_ONLY_ACTIONS=NONE during R6R2I-D5. Do not re-authenticate, inspect config content, or run provider actions.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5.md; repair only output boundary and validator.
+REQUIRED_EVIDENCE=Actual Go source tests + compiled native invalid-argument fixture with child status output absent, pinned build provenance, temp cleanup, full validator, and zero real Owner/auth/provider actions.
+ACCEPTANCE_CRITERIA=GO_SOURCE_TESTS PASS, compiled native fixture PASS with no child status markers, full D5 validator PASS, and authenticated config/real retained runtime untouched.
+ROLLBACK_STATUS_OR_PLAN=Verification-only round; temp build workspace must self-clean. No real runtime/config state change is authorized.
+OWNER_ONLY_ACTIONS=NONE. Do not re-authenticate or touch the accepted authenticated config/retained runtime binary.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1.md; obtain compiled evidence only, no source edits unless a real compiled defect is found.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -186,6 +186,9 @@ G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_D4_GATE_BLOB=8c94ec957f160ee0c09ad9b4d47c17714
 G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_D4_AUTH_STATE=PASS
 G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_D4_GATE_RESULT=RETURN_OUTPUT_CONTRACT_EXTRA_ADAPTER_MARKERS
 G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5_GATE_BLOB=5ab5a28d3772b8efbb7a7ac37483f3c8b8585c91
+G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5_RESULT=RETURN_GO_SOURCE_TESTS_UNAVAILABLE
+G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5_SOURCE_COMMIT=3cf6fdb7f972314b2bf37250b95a8ca7926b46a7
+G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1_GATE_BLOB=f761a6b4eb60966951f0986f62935c8176d36e8a
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -264,11 +267,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3` offline only. Add the missing bounded config-state marker and validator coverage without redesigning accepted R6R2H-R2 core, then stop at Reviewer.
+Codex executes `G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1`: run the current pinned build helper without `-RetainBinary`, prove Go tests + compiled native fixture + temp cleanup, then run the full validator and stop at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE now. Do not retry authentication. Wait for R6R2I-D5 Reviewer PASS.
+NONE now. Do not retry authentication and do not touch the accepted authenticated config or retained runtime binary.
 
 ## EVIDENCE_POINTERS
 
