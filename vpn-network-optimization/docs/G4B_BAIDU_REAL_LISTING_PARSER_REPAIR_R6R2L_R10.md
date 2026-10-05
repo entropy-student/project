@@ -56,8 +56,8 @@ The upstream upload implementation also confirms a local file is saved under the
 ## LOCKED SOURCES
 
 ```text
-R10_RUNNER_BLOB=9cfac247da85e917e213c28172fb619a62329592
-R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+R10_VALIDATOR_BLOB=aa8a6db471b83de173c02ae2956719d1ebfdef4b
 ```
 
 ## REPAIR SCOPE
