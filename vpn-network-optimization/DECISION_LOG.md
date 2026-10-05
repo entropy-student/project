@@ -629,3 +629,14 @@ The successful authenticated config is accepted and no authentication retry is a
 D4 is not fully closed because the child adapter also emitted two bounded status lines directly to the inherited console, so the end-to-end Owner output exceeded the exact eight-marker contract. This is an output/reviewability defect, not an authentication-state defect.
 
 Next Gate: `G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5`, offline only.
+
+
+## 2026-10-05 — R6R2I-D5 source repair accepted, compiled evidence missing
+
+**Decision:** `RETURN_R6R2I_D5_GO_SOURCE_TESTS_UNAVAILABLE`.
+
+The D5 source delta is narrowly accepted: only the adapter's 16 fixed child status writes were removed, while hidden input, authentication parsing/setup/save logic and native exit behavior remain source-frozen. The Owner checkpoint remains unchanged with its exact eight-marker output contract.
+
+The Gate nevertheless requires actual `GO_SOURCE_TESTS=PASS` and a compiled native failure fixture. These were not executed because the Executor environment lacked Go and D5 prohibited fetching it. Static evidence is not sufficient to waive an explicit Gate requirement.
+
+Next Gate: `G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1`. It permits only pinned public build/toolchain/module retrieval, runs the build helper without `-RetainBinary`, then the full validator. The accepted authenticated config and real Owner runtime remain frozen.
