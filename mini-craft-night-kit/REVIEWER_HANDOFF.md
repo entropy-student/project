@@ -1,5 +1,62 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K10A HOMEPAGE VISUAL SKIN DISCOVERY OPEN — 2026-10-05
+
+```text
+PROJECT_STAGE=PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE
+PUBLIC_PLATFORM_STATUS=ONLINE
+K9_CLOSEOUT=PASS
+
+CURRENT_GATE=K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_DISCOVERY
+
+HOMEPAGE_REDESIGN_TYPE=VISUAL_SKIN_ONLY
+HOMIRA_SELECTED_SECTIONS=H0+H1+H3+H5+H6+H10
+PRODUCTION_TARGET=VPS_ONLY
+LOCAL_ORDINARY_PROJECT_RUNTIME=DECOMMISSIONED
+
+BUSINESS_LOGIC_CHANGE_AUTHORIZED=NO
+WOOCOMMERCE_CHANGE_AUTHORIZED=NO
+PAYMENT_OR_PROVIDER_CHANGE_AUTHORIZED=NO
+DATABASE_MUTATION_AUTHORIZED=NO
+SHARED_INFRA_CHANGE_AUTHORIZED=NO
+PRODUCTION_HOMEPAGE_WRITE_AUTHORIZED=NO
+IMAGE_GENERATION_AUTHORIZED=NO
+
+REAL_COMMERCE_ENABLED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+```
+
+Owner selected a homepage-only Homira-inspired visual skin while keeping Mini Craft's existing WordPress/WooCommerce functionality and all non-home pages unchanged.
+
+K10A is deliberately read-only because the ordinary local runtime/workspace was decommissioned at K9. Executor must first prove the actual production homepage implementation surface, homepage/global header boundary, deployment method and rollback boundary on the VPS before Reviewer authorizes any visual write.
+
+Stable Homira section vocabulary for this redesign:
+- H0 = Header / Navigation
+- H1 = opening Hero
+- H3 = Selected Projects
+- H5 = Design Process
+- H6 = large visual brand break beginning “LUXURY LIVES HERE”
+- H10 = closing CTA beginning “Got a project in mind let’s connect”
+
+Executor must inspect the live Homira demo directly for visual/motion intent. The Gate intentionally does not prescribe per-element animation parameters or implementation technique; implementation choice belongs to Executor within the later reviewed write boundary.
+
+Execution pack:
+`review-packets/K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN.md`
+
+### Accepted current state
+
+- K9 closeout remains accepted and is not replayed.
+- Public Mini Craft is online; real commerce and Soft Launch remain disabled.
+- Production is on VPS `srv1970241`; strict SSH remains the normal management path.
+- Mini Craft project/data/backup namespaces remain `/srv/apps/mini-craft-night-kit`, `/srv/data/mini-craft-night-kit`, and `/srv/backups/mini-craft-night-kit`.
+- Existing Product / Shop / Cart / Checkout / FAQ / Shipping & Returns / Contact behavior is frozen for this redesign.
+- Placeholder images are acceptable for the future visual implementation; final image generation/replacement is a later scoped action.
+
+### Next step
+
+Run K10A read-only discovery and return to Reviewer with the production implementation map, Homira section verification, regression baseline, and proposed K10B change/rollback surface.
+
 ## CURRENT REVIEWER UPDATE — K9C PASS / K9 CLOSED / GOVERNANCE REV1 PROMOTED — 2026-09-29
 
 ```text
