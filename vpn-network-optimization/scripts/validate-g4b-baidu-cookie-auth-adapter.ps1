@@ -101,11 +101,76 @@ try {
     $aclTokens = $null
     $aclParseErrors = $null
     $aclAst = [Management.Automation.Language.Parser]::ParseFile($aclPath, [ref]$aclTokens, [ref]$aclParseErrors)
+    $buildTokens = $null
+    $buildParseErrors = $null
+    $buildAst = [Management.Automation.Language.Parser]::ParseFile($buildPath, [ref]$buildTokens, [ref]$buildParseErrors)
     Assert-Validation ($aclParseErrors.Count -eq 0) 'R6R1_ACL_SOURCE_AST'
 
     $expectedBuildBlob = '7f369604de3cf0cce46bf0cf7328313c03ed61d5'
-    $buildBlob = (& git rev-parse 'HEAD:vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1').Trim()
-    Assert-Validation ($LASTEXITCODE -eq 0 -and $buildBlob -ceq $expectedBuildBlob -and $build.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $build.Contains('go1.27.1')) 'R6R2H_R2_PINNED_BUILD_CHAIN_FROZEN'
+    $acceptedBuildCommit = '789331082710711c2855cff839ef768bd26c841c'
+    $acceptedBuildBlob = (& git rev-parse ($acceptedBuildCommit + ':vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1')).Trim()
+    $acceptedBuild = (& git show ($acceptedBuildCommit + ':vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1') | Out-String)
+    Assert-Validation ($LASTEXITCODE -eq 0 -and $acceptedBuildBlob -ceq $expectedBuildBlob -and $acceptedBuild.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $acceptedBuild.Contains('go1.27.1') -and $build.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $build.Contains('go1.27.1')) 'R6R2H_R2_PINNED_BUILD_CHAIN_FROZEN'
+
+    $frozenBlobExpectations = @{
+        'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1' = '8d0aded1b49aff58e06f5e7c450b8799737b3b68'
+        'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-adapter/main.go' = '6b12287e0744bd9b95e487656b8b048c394965c9'
+        'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-adapter/main_test.go' = 'a1d65216f061ee2d5ee32aefc046f01379d40ca2'
+    }
+    $authCoreFrozen = $true
+    foreach ($path in $frozenBlobExpectations.Keys) {
+        $actualBlob = (& git rev-parse ('HEAD:' + $path)).Trim()
+        if ($LASTEXITCODE -ne 0 -or $actualBlob -cne $frozenBlobExpectations[$path]) { $authCoreFrozen = $false }
+    }
+    Assert-Validation $authCoreFrozen 'R6R2I_D2_R3_AUTH_CORE_FROZEN'
+
+    $runtimeInitializerNode = Get-FunctionNode -Ast $buildAst -Name 'Initialize-OwnerBinaryRuntime'
+    $aclHelperLoadAt = $build.IndexOf('. $aclHelper', [StringComparison]::Ordinal)
+    $runtimeInitializerCallAt = $build.IndexOf('$runtimeBinaryPath = Initialize-OwnerBinaryRuntime', [StringComparison]::Ordinal)
+    Assert-Validation ($aclHelperLoadAt -ge 0 -and $runtimeInitializerCallAt -gt $aclHelperLoadAt -and -not $runtimeInitializerNode.Extent.Text.Contains('. $aclHelper')) 'R6R2I_D2_ACL_HELPER_SCRIPT_SCOPE'
+
+    $retainedCopyNode = Get-FunctionNode -Ast $buildAst -Name 'Copy-OwnerOnlyRetainedBinary'
+    $retainedCleanupNode = Get-FunctionNode -Ast $buildAst -Name 'Remove-RunCreatedRetainedBinary'
+    $retainedCopyText = $retainedCopyNode.Extent.Text
+    $retainedCleanupText = $retainedCleanupNode.Extent.Text
+    $ownerAclAtCreate = $retainedCopyText.IndexOf('New-OwnerOnlyAcl -OwnerSid $OwnerSid', [StringComparison]::Ordinal)
+    $fileCreateAt = $retainedCopyText.IndexOf('[System.IO.FileSystemAclExtensions]::Create(', [StringComparison]::Ordinal)
+    $strictAclAt = $retainedCopyText.IndexOf('Assert-OwnerOnlyAcl -Path $DestinationPath', [StringComparison]::Ordinal)
+    $hashAt = $retainedCopyText.IndexOf('Get-FileHash -LiteralPath $DestinationPath', [StringComparison]::Ordinal)
+    Assert-Validation ($build.Contains('[switch]$RetainBinary') -and $retainedCopyText.Contains('[IO.FileMode]::CreateNew') -and $ownerAclAtCreate -ge 0 -and $fileCreateAt -gt $ownerAclAtCreate -and $retainedCopyText.Contains('$fileSecurity') -and $strictAclAt -gt $fileCreateAt -and $hashAt -gt $strictAclAt -and $retainedCopyText -notmatch 'Set-OwnerOnlyAcl') 'R6R2I_D2_RETAINED_CREATE_NEW_STATIC'
+    Write-Output 'R6R2I_D2_RETAINED_OWNER_ONLY_ACL_AT_OR_BEFORE_FINALIZATION=PASS'
+    Write-Output 'R6R2I_D2_NO_POSTCREATE_OWNER_REWRITE_DEPENDENCY=PASS'
+
+    $requiredRetainedStages = @(
+        'OWNER_RUNTIME_PREPARE_FAILED',
+        'RETAINED_BINARY_CREATE_FAILED',
+        'RETAINED_BINARY_COPY_FAILED',
+        'RETAINED_BINARY_ACL_VERIFY_FAILED',
+        'RETAINED_BINARY_HASH_VERIFY_FAILED'
+    )
+    $allRetainedStagesPresent = $true
+    foreach ($stage in $requiredRetainedStages) { if (-not $build.Contains($stage)) { $allRetainedStagesPresent = $false } }
+    $retainedCallNodes = @($buildAst.FindAll({ param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -ceq 'Copy-OwnerOnlyRetainedBinary' }, $true))
+    $runtimePrepareCallNodes = @($buildAst.FindAll({ param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -ceq 'Initialize-OwnerBinaryRuntime' }, $true))
+    $retainedCallsGuarded = $true
+    foreach ($node in @($retainedCallNodes + $runtimePrepareCallNodes)) {
+        $ancestor = $node.Parent
+        $guardFound = $false
+        while ($null -ne $ancestor) {
+            if ($ancestor -is [Management.Automation.Language.IfStatementAst] -and $ancestor.Clauses[0].Item1.Extent.Text.Trim() -ceq '$RetainBinary') { $guardFound = $true; break }
+            $ancestor = $ancestor.Parent
+        }
+        if (-not $guardFound) { $retainedCallsGuarded = $false }
+    }
+    Assert-Validation ($allRetainedStagesPresent -and $build.Contains("throw 'OWNER_RUNTIME_PREPARE_FAILED'") -and $build.Contains('$_.Exception.Message -in $safeFailureCodes') -and $build.Contains("Write-Output 'FAILURE_CODE=BUILD_VALIDATION_FAILED'") -and $retainedCallsGuarded -and $retainedCallNodes.Count -eq 1 -and $runtimePrepareCallNodes.Count -eq 1) 'R6R2I_D2_FAILURE_STAGE_CODES_BOUNDED'
+
+    $cleanupIsExact = $retainedCleanupText.Contains('[IO.File]::Delete($Path)') -and $retainedCleanupText.Contains('$WasCreated') -and $retainedCleanupText -notmatch '(?i)-Recurse|Remove-Item|Directory\]::Delete'
+    Assert-Validation $cleanupIsExact 'R6R2I_D2_FAILED_RUN_EXACT_BINARY_CLEANUP_SCOPE_STATIC'
+    Assert-Validation ($build.Contains("Write-Output 'OWNER_RUNTIME_BINARY=CREATED'") -and -not $build.Contains("'OWNER_RUNTIME_BINARY=' + `$runtimeBinaryPath")) 'R6R2I_D2_BOUNDED_RUNTIME_OUTPUT'
+
+    $buildInvocationNodes = @($buildAst.FindAll({ param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -ceq 'Invoke-CheckedNative' }, $true))
+    $buildDefaultRegression = $acceptedBuild.Contains("'git' -ArgumentList @('clone', '--quiet', '--depth', '1', '--branch', 'v4.0.2'") -and $build.Contains("'git' -ArgumentList @('clone', '--quiet', '--depth', '1', '--branch', 'v4.0.2'") -and $build.Contains("-ArgumentList @('test', './cmd/vpn-network-optimization-cookie-auth')") -and $build.Contains("'-buildvcs=false'") -and $build.Contains('$fixtureInfo.FileName = $binary') -and -not $build.Contains('$fixtureInfo.FileName = $runtimeBinaryPath') -and $buildInvocationNodes.Count -ge 3
+    Assert-Validation $buildDefaultRegression 'R6R2I_D2_BUILD_DEFAULT_PATH_REGRESSION'
 
     $acceptedR2OwnerSpec = 'd441ed0bc31285311345ed3b3e847258d7de05a2:vpn-network-optimization/scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1'
     $acceptedR2Owner = (& git show $acceptedR2OwnerSpec | Out-String)
@@ -218,6 +283,8 @@ try {
     foreach ($name in $requiredAclFunctions) { Invoke-Expression (Get-FunctionNode -Ast $aclAst -Name $name).Extent.Text }
     $productionFunctionNames = @('Assert-R2', 'Test-R2PathWithin', 'Get-R2IntegrityRid', 'Assert-R2OwnerRuntime', 'Test-R2PathComponentsNoReparse', 'Assert-R2AdapterBinaryPreflight', 'Assert-R2PreNormalizeAclMetadata', 'Get-R2ConfigMetadata', 'Assert-R2ExactPostAuthShape', 'Complete-R2PostAuthNormalization', 'Invoke-R2FailureReconciliation')
     foreach ($name in $productionFunctionNames) { Invoke-Expression (Get-FunctionNode -Ast $ownerAst -Name $name).Extent.Text }
+    Invoke-Expression $retainedCopyNode.Extent.Text
+    Invoke-Expression $retainedCleanupNode.Extent.Text
 
     $ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
     $ownerRule = New-SyntheticAclRule -Sid $ownerSid.Value -Rights ([Security.AccessControl.FileSystemRights]::FullControl)
@@ -250,6 +317,64 @@ try {
     $fixtureRootAcl = New-OwnerOnlyAcl -OwnerSid $ownerSid -Directory
     [void][System.IO.FileSystemAclExtensions]::CreateDirectory($fixtureRootAcl, $fixtureRoot)
     try {
+        $d2RuntimeRoot = Join-Path $fixtureRoot 'd2-runtime-root'
+        $d2RuntimeDirectory = Join-Path $d2RuntimeRoot 'runtime'
+        New-FixtureRoot -Path $d2RuntimeRoot -OwnerSid $ownerSid
+        New-FixtureRoot -Path $d2RuntimeDirectory -OwnerSid $ownerSid
+        $d2RootMarker = Join-Path $d2RuntimeRoot 'preserve-root.fixture'
+        $d2DirectoryMarker = Join-Path $d2RuntimeDirectory 'preserve-directory.fixture'
+        [IO.File]::WriteAllText($d2RootMarker, 'NON_SECRET_ROOT_FIXTURE')
+        [IO.File]::WriteAllText($d2DirectoryMarker, 'NON_SECRET_RUNTIME_FIXTURE')
+
+        $candidateFixture = Join-Path $fixtureRoot 'candidate.fixture'
+        [IO.File]::WriteAllText($candidateFixture, 'R6R2I-D2-NON-SECRET-FIXTURE')
+        $candidateFixtureHash = (Get-FileHash -LiteralPath $candidateFixture -Algorithm SHA256).Hash.ToLowerInvariant()
+        $retainedFixture = Join-Path $d2RuntimeDirectory 'retained.fixture'
+        $successCreated = $false
+        Copy-OwnerOnlyRetainedBinary -SourcePath $candidateFixture -DestinationPath $retainedFixture -OwnerSid $ownerSid -ExpectedSha256 $candidateFixtureHash -Created ([ref]$successCreated)
+        Assert-Validation ($successCreated -and (Test-Path -LiteralPath $retainedFixture -PathType Leaf)) 'R6R2I_D2_RETAINED_CREATE_NEW_ONLY'
+        Assert-OwnerOnlyAcl -Path $retainedFixture -OwnerSid $ownerSid
+        Write-Output 'R6R2I_D2_FROZEN_ASSERT_OWNER_ONLY_ACL_PASS=PASS'
+        $retainedFixtureHash = (Get-FileHash -LiteralPath $retainedFixture -Algorithm SHA256).Hash.ToLowerInvariant()
+        Assert-Validation ($retainedFixtureHash -ceq $candidateFixtureHash) 'R6R2I_D2_RETAINED_HASH_READBACK_PASS'
+
+        $collisionCreated = $false
+        Assert-Validation (Test-ThrowsCode { Copy-OwnerOnlyRetainedBinary -SourcePath $candidateFixture -DestinationPath $retainedFixture -OwnerSid $ownerSid -ExpectedSha256 $candidateFixtureHash -Created ([ref]$collisionCreated) } 'RETAINED_BINARY_CREATE_FAILED') 'R6R2I_D2_EXISTING_BINARY_COLLISION_FAILS_CLOSED'
+        $collisionCleanup = Remove-RunCreatedRetainedBinary -Path $retainedFixture -WasCreated $collisionCreated
+        Assert-Validation (-not $collisionCreated -and $collisionCleanup -and (Test-Path -LiteralPath $retainedFixture -PathType Leaf) -and (Get-FileHash -LiteralPath $retainedFixture -Algorithm SHA256).Hash.ToLowerInvariant() -ceq $candidateFixtureHash) 'R6R2I_D2_COLLISION_PRESERVES_EXISTING_FILE'
+
+        $copyFailurePath = Join-Path $d2RuntimeDirectory 'copy-failure.fixture'
+        $copyFailureCreated = $false
+        Assert-Validation (Test-ThrowsCode { Copy-OwnerOnlyRetainedBinary -SourcePath (Join-Path $fixtureRoot 'absent-source.fixture') -DestinationPath $copyFailurePath -OwnerSid $ownerSid -ExpectedSha256 $candidateFixtureHash -Created ([ref]$copyFailureCreated) } 'RETAINED_BINARY_COPY_FAILED') 'R6R2I_D2_COPY_FAILURE_STAGE_FIXTURE'
+        $copyFailureCleanup = Remove-RunCreatedRetainedBinary -Path $copyFailurePath -WasCreated $copyFailureCreated
+
+        $frozenAssertFunction = (Get-Item Function:\Assert-OwnerOnlyAcl).ScriptBlock
+        $aclFailurePath = Join-Path $d2RuntimeDirectory 'acl-failure.fixture'
+        $aclFailureCreated = $false
+        try {
+            Set-Item -Path Function:\Assert-OwnerOnlyAcl -Value {
+                param([string]$Path, [Security.Principal.SecurityIdentifier]$OwnerSid)
+                throw 'SYNTHETIC_ACL_READBACK_FAILURE'
+            }
+            Assert-Validation (Test-ThrowsCode { Copy-OwnerOnlyRetainedBinary -SourcePath $candidateFixture -DestinationPath $aclFailurePath -OwnerSid $ownerSid -ExpectedSha256 $candidateFixtureHash -Created ([ref]$aclFailureCreated) } 'RETAINED_BINARY_ACL_VERIFY_FAILED') 'R6R2I_D2_ACL_FAILURE_STAGE_FIXTURE'
+        } finally {
+            Set-Item -Path Function:\Assert-OwnerOnlyAcl -Value $frozenAssertFunction
+        }
+        $aclFailureCleanup = Remove-RunCreatedRetainedBinary -Path $aclFailurePath -WasCreated $aclFailureCreated
+
+        $hashFailurePath = Join-Path $d2RuntimeDirectory 'hash-failure.fixture'
+        $hashFailureCreated = $false
+        Assert-Validation (Test-ThrowsCode { Copy-OwnerOnlyRetainedBinary -SourcePath $candidateFixture -DestinationPath $hashFailurePath -OwnerSid $ownerSid -ExpectedSha256 ('0' * 64) -Created ([ref]$hashFailureCreated) } 'RETAINED_BINARY_HASH_VERIFY_FAILED') 'R6R2I_D2_HASH_FAILURE_STAGE_FIXTURE'
+        $hashFailureCleanup = Remove-RunCreatedRetainedBinary -Path $hashFailurePath -WasCreated $hashFailureCreated
+
+        Assert-Validation ($copyFailureCleanup -and $aclFailureCleanup -and $hashFailureCleanup -and -not (Test-Path -LiteralPath $copyFailurePath) -and -not (Test-Path -LiteralPath $aclFailurePath) -and -not (Test-Path -LiteralPath $hashFailurePath) -and (Test-Path -LiteralPath $retainedFixture -PathType Leaf)) 'R6R2I_D2_FAILED_RUN_EXACT_BINARY_CLEANUP'
+        Assert-Validation ((Test-Path -LiteralPath $d2RuntimeRoot -PathType Container) -and (Test-Path -LiteralPath $d2RuntimeDirectory -PathType Container) -and (Test-Path -LiteralPath $d2RootMarker -PathType Leaf) -and (Test-Path -LiteralPath $d2DirectoryMarker -PathType Leaf)) 'R6R2I_D2_RUNTIME_DIRECTORIES_PRESERVED'
+        Assert-Validation ($cleanupIsExact -and $retainedCleanupText -notmatch '(?i)-Recurse|Remove-Item|Directory\]::Delete') 'R6R2I_D2_NO_BROAD_RUNTIME_DELETE'
+        Assert-Validation ((Remove-RunCreatedRetainedBinary -Path $retainedFixture -WasCreated $successCreated) -and -not (Test-Path -LiteralPath $retainedFixture)) 'R6R2I_D2_POSTCOPY_VALIDATION_FAILURE_CLEANUP_FIXTURE'
+        $fixtureTempParent = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd([char]'\', [char]'/')
+        $fixtureTempRelative = [IO.Path]::GetRelativePath($fixtureTempParent, [IO.Path]::GetFullPath($fixtureRoot))
+        Assert-Validation (-not [IO.Path]::IsPathRooted($fixtureTempRelative) -and $fixtureTempRelative -notmatch '^\.\.(?:[\\/]|$)' -and $fixtureRoot -notmatch '(?i)vpn-network-optimization[\\/]runtime') 'R6R2I_D2_NO_REAL_OWNER_RUNTIME_WRITE'
+
         $emptyExisting = Join-Path $fixtureRoot 'preexisting-empty'
         New-FixtureRoot -Path $emptyExisting -OwnerSid $ownerSid
         $result = Invoke-R2FailureReconciliation -ConfigPath $emptyExisting -OwnerSid $ownerSid -RootExistedBefore $true -RootCreatedThisRun $false -ConfigFileExistedBefore $false -ChildProcessStarted $false
@@ -343,6 +468,7 @@ try {
     Assert-Validation $secretScan 'SECRET_SCAN'
     Write-Output 'GO_SOURCE_STATIC_VALIDATION=PASS'
     Write-Output 'R6R2H_R2_FULL_R6R2H_REGRESSION=PASS'
+    Write-Output 'R6R2I_D2_FULL_R6R2H_R3_REGRESSION=PASS'
     Write-Output 'R6R2H_R3_ABSENT_STATE_ASSIGNED_AFTER_PRECONDITION=PASS'
     Write-Output 'R6R2H_R3_PREEXISTING_EMPTY_ASSIGNED_AFTER_STRICT_CHECK=PASS'
     Write-Output 'R6R2H_R3_STATE_NOT_OVERWRITTEN_POSTAUTH=PASS'
@@ -353,10 +479,13 @@ try {
     Write-Output 'R6R2H_R3_R2_CORE_FROZEN=PASS'
     Write-Output 'R6R2H_R3_FULL_R6R2H_R2_REGRESSION=PASS'
     Write-Output 'REAL_COOKIE_VALUES_USED=0'
+    Write-Output 'REAL_AUTH_ACTIONS=0'
     Write-Output 'REAL_BAIDU_AUTH_ACTIONS=0'
+    Write-Output 'OWNER_REAL_CONFIG_ACTIONS=0'
     Write-Output 'OWNER_CONFIG_READ=NO'
     Write-Output 'OWNER_CONFIG_WRITE=NO'
     Write-Output 'NETWORK_REQUESTS_TO_PROVIDER=0'
+    Write-Output 'PROVIDER_REQUESTS=0'
     Write-Output 'STOP_AT_REVIEWER=YES'
 } catch {
     Write-Output 'VALIDATION=RETURN'

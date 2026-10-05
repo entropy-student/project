@@ -8746,3 +8746,54 @@ The failed R6R2I attempt left the two runtime directories in their accepted safe
 The remaining fault domain is the retained-binary creation/copy/ACL/hash section. The known Owner-token `SeSecurityPrivilege` limitation makes the current post-create `Set-OwnerOnlyAcl` owner rewrite a plausible cause, but exact causality remains unproven.
 
 Next Gate: `G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2`, offline only.
+
+
+## Executor Evidence — G4-B Retained Binary Creation Repair R6R2I-D2 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+GATE_BLOB=af0c0ae529c370d1f1a5e7b48256f440bc67ab23
+PRE_GATE_HEAD=789331082710711c2855cff839ef768bd26c841c
+ACCEPTED_BUILD_HELPER_BASE_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
+R6R2H_R3_OWNER_CHECKPOINT_BLOB=8d0aded1b49aff58e06f5e7c450b8799737b3b68
+R6R2H_R3_ADAPTER_SOURCE_BLOB=6b12287e0744bd9b95e487656b8b048c394965c9
+R6R2H_R3_ADAPTER_TEST_BLOB=a1d65216f061ee2d5ee32aefc046f01379d40ca2
+
+R6R2I_D2_R3_AUTH_CORE_FROZEN=PASS
+R6R2I_D2_BUILD_DEFAULT_PATH_REGRESSION=PASS
+R6R2I_D2_RETAINED_CREATE_NEW_ONLY=PASS
+R6R2I_D2_RETAINED_OWNER_ONLY_ACL_AT_OR_BEFORE_FINALIZATION=PASS
+R6R2I_D2_NO_POSTCREATE_OWNER_REWRITE_DEPENDENCY=PASS
+R6R2I_D2_FROZEN_ASSERT_OWNER_ONLY_ACL_PASS=PASS
+R6R2I_D2_RETAINED_HASH_READBACK_PASS=PASS
+R6R2I_D2_EXISTING_BINARY_COLLISION_FAILS_CLOSED=PASS
+R6R2I_D2_FAILURE_STAGE_CODES_BOUNDED=PASS
+R6R2I_D2_FAILED_RUN_EXACT_BINARY_CLEANUP=PASS
+R6R2I_D2_RUNTIME_DIRECTORIES_PRESERVED=PASS
+R6R2I_D2_NO_REAL_OWNER_RUNTIME_WRITE=PASS
+R6R2I_D2_FULL_R6R2H_R3_REGRESSION=PASS
+R6R1_ACL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+
+REAL_BUILD_EXECUTED=NO
+REAL_AUTH_ACTIONS=0
+OWNER_REAL_CONFIG_ACTIONS=0
+PROVIDER_REQUESTS=0
+OWNER_RUNTIME_WRITE=NO
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+RETAINED_BINARY_FIXTURE_ONLY=YES
+RETAINED_FIXTURE_EXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
+PREVIOUS_GENERIC_FAILURE_ROOT_CAUSE=NOT_PROVEN
+PRIVILEGE_NOT_HELD_AS_SOLE_ROOT_CAUSE=NOT_ASSERTED
+ROLLBACK=Revert only the R6R2I-D2 builder, validator and Executor-record changes to PRE_GATE_HEAD; no Owner/runtime/provider/network state was changed.
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+STOP_AT_REVIEWER=YES
+```
+
+The retained-binary writer now constructs the frozen Owner-only file security descriptor before file creation and uses `FileSystemAclExtensions.Create(FileInfo, CreateNew, ..., FileSecurity)`. The temporary non-secret candidate is copied, flushed and closed, then checked with the unchanged `Assert-OwnerOnlyAcl` and SHA-256 readback. Existing destination collision fails closed. The builder emits bounded persistence-stage failures without raw exception text or local paths; its default non-retained build path remains gated from runtime preparation and retained copy. On overall failure, the production cleanup function deletes and verifies only the run-created exact leaf file and does not remove either runtime directory.
+
+The validator executed the production writer and cleanup functions only against a unique temporary fixture containing non-secret bytes. It covered successful create/strict ACL/hash readback; collision leaves the existing fixture byte identity intact; missing-source, synthetic ACL-readback and mismatched-hash failures map to distinct bounded codes; exact cleanup after partial and post-copy failure removes only fixture binaries while preserving fixture runtime directories and marker files. The complete R6R2H-R3/R6R1 offline regression, AST checks and Secret scan passed. The earlier Owner `BUILD_VALIDATION_FAILED` remains unexplained as a historical event; the previously plausible privilege limitation was not reproduced as the unique cause. No actual build, retained executable, Owner checkpoint, real config, authentication, provider request, or remote/network action was run.

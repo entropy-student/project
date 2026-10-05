@@ -4,43 +4,41 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Owner Output Contract Repair R6R2H-R3
+## Current execution status — G4-B Retained Binary Creation Repair R6R2I-D2
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
-EXECUTOR_ROLE=OFFLINE_OUTPUT_CONTRACT_REPAIR_AND_VALIDATION
-PREVIOUS_RESULT=RETURN_R6R2H_R2_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
+GATE_ID=G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+EXECUTOR_ROLE=OFFLINE_RETAINED_BINARY_PERSISTENCE_REPAIR
+PREVIOUS_RESULT=PASS_R6R2I_D1_RUNTIME_RESIDUE_DIAGNOSTIC
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=2915d834bc1362e99a60ba989466bdb4195b99f5
-GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
-R2_ACCEPTED_SOURCE_COMMIT=d441ed0bc31285311345ed3b3e847258d7de05a2
-R2_CORE_FROZEN=PASS
-CONFIG_STATE_ENUM=NOT_REACHED|ABSENT_PREAUTH|PREEXISTING_EMPTY
-CONFIG_STATE_ASSIGNMENT=AFTER_ACCEPTED_PREAUTH_PROVENANCE
-CONFIG_STATE_OUTPUT_COUNT=1
-OUTPUT_CONTRACT_EIGHT_MARKERS=PASS
-R6R2H_R2_FULL_REGRESSION=PASS
+PRE_GATE_HEAD=789331082710711c2855cff839ef768bd26c841c
+GATE_BLOB=af0c0ae529c370d1f1a5e7b48256f440bc67ab23
+R6R2H_R3_AUTH_CORE_FROZEN=PASS
+RETAINED_BINARY_CREATE_NEW=PASS
+OWNER_ONLY_ACL_AT_CREATION_AND_STRICT_READBACK=PASS
+POSTCREATE_OWNER_REWRITE_DEPENDENCY=NO
+RETAINED_SHA256_READBACK=PASS
+BOUNDED_FAILURE_STAGES=PASS
+EXACT_RUN_CREATED_BINARY_CLEANUP=PASS
+R6R2H_R3_FULL_OFFLINE_REGRESSION=PASS
 R6R1_ACL_REGRESSION=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
-OWNER_CHECKPOINT_EXECUTED=NO
-REAL_COOKIE_VALUES_USED=0
-OWNER_CONFIG_READ=NO
-OWNER_CONFIG_WRITE=NO
-REAL_BAIDU_AUTH_ACTIONS=0
-NETWORK_REQUESTS_TO_PROVIDER=0
-SECRET_VALUES_EMITTED=0
-SECRET_VALUES_COMMITTED=0
+REAL_BUILD_OR_AUTH_EXECUTED=NO
+OWNER_RUNTIME_WRITE=NO
+OWNER_CONFIG_ACTIONS=0
+PROVIDER_REQUESTS=0
+NETWORK_OR_VPS_ACTIONS=0
 REVIEWER_HANDOFF_MODIFIED=NO
-RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+RESULT=PASS_CANDIDATE_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2H-R3
+### Executor task — current R6R2I-D2
 
-The sole Owner-checkpoint behavior addition is a bounded pre-run config provenance state. It remains `NOT_REACHED` before accepted classification, becomes `ABSENT_PREAUTH` only after the absent-root/exact-file precondition, or `PREEXISTING_EMPTY` only after the existing root is proven real, non-reparse, empty and accepted by the strict config predicate. The final checkpoint emits the config-state marker exactly once; post-auth success and reconciliation do not assign it. Validator normalization against the accepted R2 source commit proves all other checkpoint source is unchanged.
+Only the retained-binary build persistence path and its offline validator were changed. The retained file is opened with `FileMode.CreateNew` using the accepted Owner-only `FileSecurity` descriptor at creation time, then flushed/closed, checked by the frozen `Assert-OwnerOnlyAcl`, and SHA-256 compared with the freshly built candidate. No post-create Owner rewrite is used. Runtime ACL helpers are verified and loaded in RetainBinary script scope before runtime preparation. Expected persistence failures use bounded stage codes; failed runs call a production cleanup helper that deletes/verifies only the exact run-created file and never removes runtime directories. The output no longer includes a local binary path.
 
-The complete offline R6R2H-R2 regression plus R3 output/state checks passed, including the production state expression fixtures, eight-marker AST count, PowerShell AST and Secret scan. No Owner checkpoint, real Cookie/auth, Owner config read/write, provider request, DPAPI, VPS/SSH, or live G4-B action occurred. The existing untracked `results/` directory was preserved and excluded. This is a candidate only; wait for Reviewer before any Owner action.
+The full offline R6R2H-R3/R6R1 regression passed. Non-secret temporary fixtures exercised successful create/ACL/hash readback, CreateNew collision preservation, copy/ACL/hash stage failures, post-copy failure cleanup, and runtime-directory preservation. The validator did not execute the actual builder, retained executable, Owner checkpoint, authentication, provider, network or VPS actions. The prior generic Owner failure's precise root cause remains unproven; this candidate does not attribute it solely to the previously plausible privilege limitation. Existing untracked `results/` remains preserved and unstaged. Wait for Reviewer; no Owner retry is authorized by this handoff.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

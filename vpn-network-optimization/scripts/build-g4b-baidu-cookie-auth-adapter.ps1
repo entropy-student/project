@@ -37,11 +37,6 @@ function Initialize-OwnerBinaryRuntime {
     if ([string]::IsNullOrWhiteSpace($localAppData) -or -not (Test-Path -LiteralPath $localAppData -PathType Container)) {
         throw 'OWNER_RUNTIME_ROOT_UNAVAILABLE'
     }
-    $aclHelper = Join-Path $PSScriptRoot 'g4b-baidu-auth-readiness-checkpoint.ps1'
-    if ((Get-FileHash -LiteralPath $aclHelper -Algorithm SHA256).Hash -cne 'AA28611D5C540F208A0DB40C0ED7D19E18B12180DE8437CCB54EA5A755D7F08F') {
-        throw 'R6R1_ACL_HELPER_DRIFT'
-    }
-    . $aclHelper
     $ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
     $projectRuntimeRoot = Join-Path $localAppData 'vpn-network-optimization'
     $runtime = Join-Path $projectRuntimeRoot 'runtime'
@@ -61,11 +56,102 @@ function Initialize-OwnerBinaryRuntime {
     return (Join-Path $runtime 'BaiduPCS-Go-cookie-auth-adapter.exe')
 }
 
+function Copy-OwnerOnlyRetainedBinary {
+    param(
+        [string]$SourcePath,
+        [string]$DestinationPath,
+        [Security.Principal.SecurityIdentifier]$OwnerSid,
+        [string]$ExpectedSha256,
+        [ref]$Created
+    )
+    $Created.Value = $false
+    $destinationStream = $null
+    $sourceStream = $null
+    try {
+        try {
+            if (Test-Path -LiteralPath $DestinationPath) { throw 'RETAINED_BINARY_CREATE_FAILED' }
+            $fileSecurity = New-OwnerOnlyAcl -OwnerSid $OwnerSid
+            $destinationStream = [System.IO.FileSystemAclExtensions]::Create(
+                [IO.FileInfo]::new($DestinationPath),
+                [IO.FileMode]::CreateNew,
+                [IO.FileAccess]::Write,
+                [IO.FileShare]::None,
+                65536,
+                [IO.FileOptions]::None,
+                $fileSecurity
+            )
+        } catch {
+            throw 'RETAINED_BINARY_CREATE_FAILED'
+        }
+        $Created.Value = $true
+
+        $copyFailed = $false
+        try {
+            $sourceStream = [IO.File]::OpenRead($SourcePath)
+            $sourceStream.CopyTo($destinationStream)
+            $destinationStream.Flush($true)
+        } catch {
+            $copyFailed = $true
+        } finally {
+            if ($null -ne $sourceStream) {
+                try { $sourceStream.Dispose() } catch { $copyFailed = $true }
+            }
+            if ($null -ne $destinationStream) {
+                try { $destinationStream.Dispose() } catch { $copyFailed = $true }
+            }
+        }
+        if ($copyFailed) { throw 'RETAINED_BINARY_COPY_FAILED' }
+
+        try {
+            Assert-OwnerOnlyAcl -Path $DestinationPath -OwnerSid $OwnerSid
+        } catch {
+            throw 'RETAINED_BINARY_ACL_VERIFY_FAILED'
+        }
+
+        try {
+            $actualSha256 = (Get-FileHash -LiteralPath $DestinationPath -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actualSha256 -cne $ExpectedSha256.ToLowerInvariant()) { throw 'RETAINED_BINARY_HASH_MISMATCH' }
+        } catch {
+            throw 'RETAINED_BINARY_HASH_VERIFY_FAILED'
+        }
+    } finally {
+        if ($null -ne $sourceStream) { try { $sourceStream.Dispose() } catch {} }
+        if ($null -ne $destinationStream) { try { $destinationStream.Dispose() } catch {} }
+    }
+}
+
+function Remove-RunCreatedRetainedBinary {
+    param([string]$Path, [bool]$WasCreated)
+    if (-not $WasCreated) { return $true }
+    if ([string]::IsNullOrWhiteSpace($Path)) { return $false }
+    try {
+        if (Test-Path -LiteralPath $Path) {
+            $item = Get-Item -LiteralPath $Path -Force -ErrorAction Stop
+            if ($item.PSIsContainer -or (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)) { return $false }
+            [IO.File]::Delete($Path)
+        }
+        return (-not (Test-Path -LiteralPath $Path))
+    } catch {
+        return $false
+    }
+}
+
 try {
     if ($RetainBinary) {
-        $runtimeBinaryPath = Initialize-OwnerBinaryRuntime
-        if (Test-Path -LiteralPath $runtimeBinaryPath) {
-            throw 'ADAPTER_BINARY_ALREADY_EXISTS'
+        try {
+            $aclHelper = Join-Path $PSScriptRoot 'g4b-baidu-auth-readiness-checkpoint.ps1'
+            if ((Get-FileHash -LiteralPath $aclHelper -Algorithm SHA256).Hash -cne 'AA28611D5C540F208A0DB40C0ED7D19E18B12180DE8437CCB54EA5A755D7F08F') {
+                throw 'R6R1_ACL_HELPER_DRIFT'
+            }
+            . $aclHelper
+            $runtimeBinaryPath = Initialize-OwnerBinaryRuntime
+        } catch {
+            throw 'OWNER_RUNTIME_PREPARE_FAILED'
+        }
+        try {
+            if (Test-Path -LiteralPath $runtimeBinaryPath) { throw 'RETAINED_BINARY_CREATE_FAILED' }
+        } catch {
+            throw 'RETAINED_BINARY_CREATE_FAILED'
         }
     }
     if (Test-Path -LiteralPath $tempRoot) {
@@ -126,22 +212,8 @@ try {
         $binarySha = (Get-FileHash -LiteralPath $binary -Algorithm SHA256).Hash.ToLowerInvariant()
 
         if ($RetainBinary) {
-            $sourceStream = [IO.File]::OpenRead($binary)
-            $destinationStream = $null
-            try {
-                $destinationStream = [IO.File]::Open($runtimeBinaryPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::None)
-                $sourceStream.CopyTo($destinationStream)
-                $destinationStream.Flush($true)
-                $runtimeBinaryCreated = $true
-            } finally {
-                if ($null -ne $destinationStream) { $destinationStream.Dispose() }
-                $sourceStream.Dispose()
-            }
-            Set-OwnerOnlyAcl -Path $runtimeBinaryPath -OwnerSid ([Security.Principal.WindowsIdentity]::GetCurrent().User)
-            Assert-OwnerOnlyAcl -Path $runtimeBinaryPath -OwnerSid ([Security.Principal.WindowsIdentity]::GetCurrent().User)
-            if ((Get-FileHash -LiteralPath $runtimeBinaryPath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $binarySha) {
-                throw 'RETAINED_BINARY_READBACK_MISMATCH'
-            }
+            $ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
+            Copy-OwnerOnlyRetainedBinary -SourcePath $binary -DestinationPath $runtimeBinaryPath -OwnerSid $ownerSid -ExpectedSha256 $binarySha -Created ([ref]$runtimeBinaryCreated)
         }
 
         $fixtureInfo = [Diagnostics.ProcessStartInfo]::new()
@@ -176,7 +248,7 @@ try {
         Write-Output ('GO_TOOLCHAIN_SHA256=' + $actualGoSha)
         Write-Output ('BUILD_TARGET=windows/amd64')
         Write-Output ('ADAPTER_BINARY_SHA256=' + $binarySha)
-        if ($RetainBinary) { Write-Output ('OWNER_RUNTIME_BINARY=' + $runtimeBinaryPath) }
+        if ($RetainBinary) { Write-Output 'OWNER_RUNTIME_BINARY=CREATED' }
         Write-Output 'GO_SOURCE_TESTS=PASS'
         Write-Output 'NATIVE_FAILURE_EXIT_FIXTURE=PASS'
     } finally {
@@ -185,39 +257,73 @@ try {
     $completed = $true
 } catch {
     Write-Output 'BUILD_VALIDATION=FAIL_CLOSED'
-    if ($_.Exception.Message -match '^[A-Z0-9_]+$') {
+    $safeFailureCodes = @(
+        'OWNER_RUNTIME_PREPARE_FAILED',
+        'RETAINED_BINARY_CREATE_FAILED',
+        'RETAINED_BINARY_COPY_FAILED',
+        'RETAINED_BINARY_ACL_VERIFY_FAILED',
+        'RETAINED_BINARY_HASH_VERIFY_FAILED',
+        'TEMP_ROOT_COLLISION',
+        'UPSTREAM_FETCH_FAILED',
+        'UPSTREAM_COMMIT_MISMATCH',
+        'UPSTREAM_SOURCE_BLOB_MISMATCH',
+        'GO_TOOLCHAIN_DIGEST_MISMATCH',
+        'GO_TOOLCHAIN_MISSING',
+        'GO_TEST_FAILED',
+        'GO_BUILD_FAILED',
+        'NATIVE_EXIT_FIXTURE_START_FAILED',
+        'NATIVE_EXIT_FIXTURE_FAILED'
+    )
+    if ($_.Exception.Message -in $safeFailureCodes) {
         Write-Output ('FAILURE_CODE=' + $_.Exception.Message)
     } else {
         Write-Output 'FAILURE_CODE=BUILD_VALIDATION_FAILED'
     }
 } finally {
     if ($environmentCaptured) {
-        foreach ($name in $environmentNames) {
-            $oldValue = $savedEnvironment[$name]
-            if ($null -eq $oldValue) {
-                [Environment]::SetEnvironmentVariable($name, $null, [EnvironmentVariableTarget]::Process)
-            } else {
-                [Environment]::SetEnvironmentVariable($name, $oldValue, [EnvironmentVariableTarget]::Process)
+        try {
+            foreach ($name in $environmentNames) {
+                $oldValue = $savedEnvironment[$name]
+                if ($null -eq $oldValue) {
+                    [Environment]::SetEnvironmentVariable($name, $null, [EnvironmentVariableTarget]::Process)
+                } else {
+                    [Environment]::SetEnvironmentVariable($name, $oldValue, [EnvironmentVariableTarget]::Process)
+                }
             }
+        } catch {
+            Write-Output 'BUILD_ENVIRONMENT_CLEANUP=FAIL'
+            $completed = $false
         }
     }
-    if (Test-Path -LiteralPath $tempRoot) {
-        $resolvedTempRoot = [IO.Path]::GetFullPath($tempRoot)
-        $resolvedParent = [IO.Path]::GetFullPath([IO.Path]::GetDirectoryName($resolvedTempRoot)).TrimEnd([char]'\', [char]'/')
-        if ($resolvedParent -cne $tempParent -or [IO.Path]::GetFileName($resolvedTempRoot) -notmatch '^g4b-cookie-adapter-[0-9a-f]{32}$') {
-            throw 'TEMP_CLEANUP_SCOPE_INVALID'
+    $tempCleanupPass = $true
+    try {
+        if (Test-Path -LiteralPath $tempRoot) {
+            $resolvedTempRoot = [IO.Path]::GetFullPath($tempRoot)
+            $resolvedParent = [IO.Path]::GetFullPath([IO.Path]::GetDirectoryName($resolvedTempRoot)).TrimEnd([char]'\', [char]'/')
+            if ($resolvedParent -cne $tempParent -or [IO.Path]::GetFileName($resolvedTempRoot) -notmatch '^g4b-cookie-adapter-[0-9a-f]{32}$') {
+                throw 'TEMP_CLEANUP_SCOPE_INVALID'
+            }
+            Remove-Item -LiteralPath $resolvedTempRoot -Recurse -Force -ErrorAction Stop
         }
-        Remove-Item -LiteralPath $resolvedTempRoot -Recurse -Force -ErrorAction Stop
+        $tempCleanupPass = -not (Test-Path -LiteralPath $tempRoot)
+    } catch {
+        $tempCleanupPass = $false
     }
-    if (Test-Path -LiteralPath $tempRoot) {
+    if (-not $tempCleanupPass) {
         Write-Output 'TEMP_BUILD_CLEANUP=FAIL'
         $completed = $false
     } else {
         Write-Output 'TEMP_BUILD_CLEANUP=PASS'
     }
-    if (-not $completed -and $runtimeBinaryCreated -and $null -ne $runtimeBinaryPath -and (Test-Path -LiteralPath $runtimeBinaryPath -PathType Leaf)) {
-        Remove-Item -LiteralPath $runtimeBinaryPath -Force -ErrorAction Stop
-        $runtimeBinaryCreated = $false
+    if (-not $completed -and $runtimeBinaryCreated -and $null -ne $runtimeBinaryPath) {
+        if (Remove-RunCreatedRetainedBinary -Path $runtimeBinaryPath -WasCreated $runtimeBinaryCreated) {
+            $runtimeBinaryCreated = $false
+            Write-Output 'RETAINED_BINARY_CLEANUP=PASS'
+        } else {
+            Write-Output 'RETAINED_BINARY_CLEANUP=FAIL'
+        }
+    } elseif (-not $completed -and $RetainBinary -and -not $runtimeBinaryCreated) {
+        Write-Output 'RETAINED_BINARY_CLEANUP=NOT_REQUIRED'
     }
 }
 if (-not $completed) {
