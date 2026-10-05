@@ -26,6 +26,9 @@ Assert-R17Validator ($source -match "ValidateSet\('who','ls','mv'\)") 'R17_VALID
 Assert-R17Validator ($source -match 'R17_OWNER_AUTHORIZATION_REQUIRED') 'R17_VALIDATOR_OWNER_GUARD_MISSING'
 Assert-R17Validator ($source -match 'R17_REMOTE_MUTATION=MV_TO_QUARANTINE') 'R17_VALIDATOR_FORWARD_MARKER_MISSING'
 Assert-R17Validator ($source -match 'R17_ROLLBACK_PRECHECK=PASS') 'R17_VALIDATOR_ROLLBACK_GUARD_MISSING'
+Assert-R17Validator ($source -match 'BAIDU_UID_OUTPUT_AMBIGUOUS') 'R17_VALIDATOR_UID_UNIQUENESS_GUARD_MISSING'
+Assert-R17Validator ($source -match 'R17_MV_ARGUMENT_SHAPE_INVALID') 'R17_VALIDATOR_MV_SHAPE_GUARD_MISSING'
+Assert-R17Validator ($source -match 'QuarantineObjectCount') 'R17_VALIDATOR_QUARANTINE_OBJECT_GUARD_MISSING'
 Assert-R17Validator ($source -match 'BAIDU_PERMANENT_DELETE=NO') 'R17_VALIDATOR_DELETE_GUARD_MISSING'
 Assert-R17Validator ($source -match 'BAIDU_AUTH_CONFIG_DENY_ACE') 'R17_VALIDATOR_STRICT_ACL_DENY_MISSING'
 Assert-R17Validator ($source -match 'BAIDU_AUTH_CONFIG_UNAUTHORIZED_ALLOW') 'R17_VALIDATOR_STRICT_ACL_ALLOWLIST_MISSING'
@@ -48,6 +51,8 @@ Assert-R17Validator ([int]$pre['PendingCount'] -eq 1) 'R17_FIXTURE_PENDING_COUNT
 Assert-R17Validator ([int]$pre['UnknownCount'] -eq 0) 'R17_FIXTURE_PENDING_UNKNOWN_COUNT'
 Assert-R17Validator ([int]$pre['SourceCount'] -eq 1) 'R17_FIXTURE_PENDING_SOURCE_COUNT'
 Assert-R17Validator ([int]$pre['QuarantineCount'] -eq 0) 'R17_FIXTURE_PENDING_QUARANTINE_COUNT'
+Assert-R17Validator ([int]$pre['QuarantineObjectCount'] -eq 0) 'R17_FIXTURE_PENDING_QUARANTINE_OBJECT_COUNT'
+Assert-R17Validator ([int]$pre['QuarantineDirectoryCount'] -eq 0) 'R17_FIXTURE_PENDING_QUARANTINE_DIRECTORY_COUNT'
 Assert-R17Validator ([string]$pre['SingleRunId'] -ceq $run) 'R17_FIXTURE_RUN_ID'
 Write-Output 'R17_FIXTURE_ONE_PENDING=PASS'
 
@@ -59,7 +64,22 @@ Assert-R17Validator ([int]$post['PendingCount'] -eq 0) 'R17_FIXTURE_FORWARD_PEND
 Assert-R17Validator ([int]$post['UnknownCount'] -eq 0) 'R17_FIXTURE_FORWARD_UNKNOWN_COUNT'
 Assert-R17Validator ([int]$post['SourceCount'] -eq 0) 'R17_FIXTURE_FORWARD_SOURCE_COUNT'
 Assert-R17Validator ([int]$post['QuarantineCount'] -eq 1) 'R17_FIXTURE_FORWARD_QUARANTINE_COUNT'
+Assert-R17Validator ([int]$post['QuarantineObjectCount'] -eq 1) 'R17_FIXTURE_FORWARD_QUARANTINE_OBJECT_COUNT'
+Assert-R17Validator ([int]$post['QuarantineDirectoryCount'] -eq 0) 'R17_FIXTURE_FORWARD_QUARANTINE_DIRECTORY_COUNT'
 Write-Output 'R17_FIXTURE_QUARANTINE_STATE=PASS'
+
+$quarantineDirectory="当前目录: $remote\n1 2 3 $quarantine/\n"
+$quarantineDirectoryState=Get-R17ListingState -Listing $quarantineDirectory -SourceName $pending -QuarantineName $quarantine
+Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineCount'] -eq 0) 'R17_FIXTURE_QUARANTINE_DIRECTORY_FILE_COUNT'
+Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineObjectCount'] -eq 1) 'R17_FIXTURE_QUARANTINE_DIRECTORY_OBJECT_COUNT'
+Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineDirectoryCount'] -eq 1) 'R17_FIXTURE_QUARANTINE_DIRECTORY_NOT_DETECTED'
+Write-Output 'R17_FIXTURE_QUARANTINE_DIRECTORY_COLLISION=PASS'
+
+$pendingDirectory="当前目录: $remote\n1 2 3 $pending/\n"
+$pendingDirectoryState=Get-R17ListingState -Listing $pendingDirectory
+Assert-R17Validator ([int]$pendingDirectoryState['PendingCount'] -eq 0) 'R17_FIXTURE_PENDING_DIRECTORY_PENDING_COUNT'
+Assert-R17Validator ([int]$pendingDirectoryState['UnknownCount'] -eq 1) 'R17_FIXTURE_PENDING_DIRECTORY_UNKNOWN_COUNT'
+Write-Output 'R17_FIXTURE_PROJECT_DIRECTORY_UNKNOWN=PASS'
 
 $unknown="当前目录: $remote\n1 2 3 vpn-network-optimization-g4b-unexpected.vpr1\n"
 $unknownState=Get-R17ListingState -Listing $unknown
