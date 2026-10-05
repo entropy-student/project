@@ -72,11 +72,10 @@ function Invoke-UidReadOnlyBaiduWho {
     $stdout = $null
     $stderr = $null
     try {
-        $startInfo = New-ReadOnlyWhoStartInfo -ExecutablePath $ExecutablePath -ConfigDirectory $ConfigDirectory
+        $process.StartInfo = New-ReadOnlyWhoStartInfo -ExecutablePath $ExecutablePath -ConfigDirectory $ConfigDirectory
         $utf8NoBom = [Text.UTF8Encoding]::new($false)
-        $startInfo.StandardOutputEncoding = $utf8NoBom
-        $startInfo.StandardErrorEncoding = $utf8NoBom
-        $process.StartInfo = $startInfo
+        $process.StartInfo.StandardOutputEncoding = $utf8NoBom
+        $process.StartInfo.StandardErrorEncoding = $utf8NoBom
         if (-not $process.Start()) { throw 'BAIDU_WHO_START_FAILED' }
         $stdoutTask = $process.StandardOutput.ReadToEndAsync()
         $stderrTask = $process.StandardError.ReadToEndAsync()
