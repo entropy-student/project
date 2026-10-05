@@ -8026,3 +8026,24 @@ Reviewer independently inspected the helper, validator, changed-path scope, curr
 Unrelated birthday-magazine commits between the prior VPN head and this commit were separately scoped and do not constitute vpn-network-optimization drift.
 
 R6R2A closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B`.
+
+
+## Owner result — G4-B Baidu UID Discovery Run R6R2B — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B
+RESULT=RETURN_OWNER_ACTION_REQUIRED_R6R2B_CONFIG_ABSENT
+BAIDU_UID_DISCOVERY=OWNER_ACTION_REQUIRED
+BAIDU_UID_FAILURE_CODE=RETURN_OWNER_ACTION_REQUIRED
+BAIDU_UID_RUNTIME_CLEANUP=NOT_REQUIRED
+UID_DISPLAYED_LOCALLY=NO
+UID_DISCLOSED_TO_REVIEWER=NO
+LOGIN_ACTIONS=0
+PROVIDER_MUTATIONS=0
+```
+
+Reviewer reconciled the marker combination against the accepted R6R2A helper source. `OWNER_ACTION_REQUIRED + RUNTIME_CLEANUP=NOT_REQUIRED` occurs before temporary-runtime creation and therefore identifies the missing/unavailable config-presence boundary. It is not evidence of a failed read-only `who`, account mismatch, or credential failure.
+
+Pinned upstream v4.0.2 source was inspected. Credential-bearing cookie/BDUSS/username/password flag forms are disallowed by project Secret policy. The only candidate that keeps credential values out of CLI args/environment is the no-argument interactive `login`, whose password prompt is no-echo; upstream explicitly marks this flow long-unmaintained, so it requires a bounded Owner-only helper and fail-closed post-login validation before use.
+
+Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C`.
