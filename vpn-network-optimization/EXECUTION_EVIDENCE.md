@@ -7805,11 +7805,11 @@ Only the two R6 scripts plus this Evidence and the current Executor Handoff stat
 
 ```text
 ROUND_STARTED_AT=2026-10-04T23:35:22Z
-ROUND_FINISHED_AT=PENDING_GITHUB_FRESH_READBACK
-ACTUAL_ELAPSED=PENDING_GITHUB_FRESH_READBACK
-TIME_OVERRUN=PENDING
+ROUND_FINISHED_AT=2026-10-05T00:05:21Z
+ACTUAL_ELAPSED=29m59s
+TIME_OVERRUN=YES
 TIME_OVERRUN_REASON=The local ACL fixture could not write a broad ACE without SeSecurityPrivilege; a synthetic ACL-rule fixture was substituted and the complete offline validator rerun. This bounded fixture adjustment and subsequent source/static review exceeded the 25-minute estimate.
-TIMING_BOUNDARY=FINISH_CAPTURED_AFTER_GITHUB_FRESH_READBACK_OF_SOURCE_EVIDENCE_HANDOFF; timing-only persistence follows
+TIMING_BOUNDARY=FINISH_CAPTURED_AFTER_GITHUB_FRESH_READBACK_OF_SOURCE_EVIDENCE_HANDOFF; this timing-only persistence commit is separately fresh-read afterward.
 BAIDU_CLI_INVOKED=NO
 REAL_BAIDU_ACTIONS=0
 NETWORK_REQUESTS=0
