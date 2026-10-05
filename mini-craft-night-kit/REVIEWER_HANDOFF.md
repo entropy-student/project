@@ -1,5 +1,58 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K10A PASS / K10B HOMEPAGE VISUAL SKIN IMPLEMENTATION OPEN — 2026-10-05
+
+```text
+K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN=PASS
+
+CURRENT_GATE=K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION
+CURRENT_GATE_STATUS=AUTHORIZED_PRODUCTION_VISUAL_CHANGE
+
+PRODUCTION_TARGET=VPS_ONLY
+HOMEPAGE_PAGE_ID=939
+HOMIRA_SELECTED_SECTIONS=H0+H1+H3+H5+H6+H10
+
+APPROVED_WORDPRESS_RECORD=PAGE_939_POST_CONTENT_ONLY
+APPROVED_NEW_PRESENTATION_FILES=3
+GLOBAL_HEADER_REPLACEMENT_AUTHORIZED=NO
+GLOBAL_CUSTOM_CSS_1041_CHANGE_AUTHORIZED=NO
+THEME_MODS_CHANGE_AUTHORIZED=NO
+VENDOR_THEME_PLUGIN_CHANGE_AUTHORIZED=NO
+NONHOME_PAGE_CHANGE_AUTHORIZED=NO
+PRODUCT_OR_COMMERCE_CHANGE_AUTHORIZED=NO
+PAYMENT_OR_PROVIDER_CHANGE_AUTHORIZED=NO
+DOCKER_RECREATE_AUTHORIZED=NO
+SHARED_INFRA_CHANGE_AUTHORIZED=NO
+IMAGE_GENERATION_AUTHORIZED=NO
+
+REAL_COMMERCE_ENABLED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+```
+
+Reviewer formally accepted K10A Evidence commit `ed8be9ab68e3d0403397117e47332e1f6d115ec9`.
+
+Accepted implementation truth:
+- Home is WordPress page 939 with Gutenberg/Kadence content.
+- Kadence Header is global; H0 must reuse native Header behavior and receive homepage-only styling.
+- Custom CSS record 1041 is mixed global/Home and remains frozen.
+- K10B minimum write surface is page 939 plus a new homepage-only MU loader/CSS/JS under durable project wp-content.
+- H0/H1/H3/H5/H6/H10 visual references and desktop/mobile captures are accepted from K10A.
+- Product/Cart/Checkout/FAQ/Shipping & Returns/Contact remain frozen and form the negative-regression baseline.
+- Empty Checkout -> Cart is the accepted anonymous empty-session baseline; no populated cart/checkout test is required or authorized here.
+- Existing Mini Craft images may be used as replaceable placeholders; no new image generation is authorized in K10B.
+
+Before the first production write K10B must create and verify the exact page/file recovery set inside the project backup namespace. The currently absent affected-code backup subdirectory may be created as part of this Gate.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K10A_PASS_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION.md`
+
+Execution pack:
+`review-packets/K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION.md`
+
+### Next step
+
+Executor performs the bounded K10B backup -> canonical source -> VPS deployment -> page 939 update -> visual/motion QA -> non-home regression sequence, persists Evidence, and stops at Reviewer.
+
 ## CURRENT REVIEWER UPDATE — K10A HOMEPAGE VISUAL SKIN DISCOVERY OPEN — 2026-10-05
 
 ```text
