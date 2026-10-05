@@ -43,9 +43,9 @@ MVP v1 seal                                 PENDING
 STATE=OWNER_ACTION_REQUIRED_R17_AUTHORIZED_LOCKED_READY_FOR_ONE_SHOT
 GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
 PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
-R17_GATE_BLOB=14f58d66f0d136ba3869c069cdce554f4c0ebe4c
-R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
-R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+R17_GATE_BLOB=dccccf92969d37f5f83b7cb4b6f085cc0cdf566c
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 R17_EXECUTION_AUTHORIZED=YES
 ```
 
@@ -55,7 +55,7 @@ Current truth:
 - R15 local ACL normalization is formally PASS and its local rollback journal remains retained.
 - R16 read-only provider observation is complete: final=0, pending=1, unknown=0.
 - Remote production residual state is formally `STALE_PENDING_PRESENT`.
-- R17 Gate/helper/validator are locked; Owner explicitly authorized the exact current Gate; provider mutation has not yet executed.
+- R17 Gate/helper/validator are locked after a pre-execution fail-closed repair for unique UID parsing, typed quarantine collision detection and exact mv argument shape; Owner explicitly authorized the exact current Gate; provider mutation has not yet executed.
 
 ## 4. R4 → R17 chronology
 
@@ -511,9 +511,9 @@ Current Gate:
 Locked Gate identity:
 
 ```text
-R17_GATE_BLOB=14f58d66f0d136ba3869c069cdce554f4c0ebe4c
-R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
-R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+R17_GATE_BLOB=dccccf92969d37f5f83b7cb4b6f085cc0cdf566c
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 R17_EXECUTION_AUTHORIZED=YES
 ```
 
@@ -528,7 +528,7 @@ Planned future behavior after helper preparation, review and explicit Owner auth
 - on failed post-readback, rename quarantine back to the exact source and prove final=0/pending=1/unknown=0;
 - never permanently `rm` ciphertext in R17.
 
-R17 preparation/review is complete. Owner authorization is already granted. The next action is the single Owner-local checkpoint: safe-sync/lock/AST/offline-validator, then one Run attempt and mandatory Reviewer stop.
+R17 preparation/review is complete after the pre-execution Reviewer repair. Owner authorization is already granted. The next action is the single Owner-local checkpoint: safe-sync/lock/AST/offline-validator, then one Run attempt and mandatory Reviewer stop.
 
 ## 5. Current unresolved truth
 
@@ -553,8 +553,7 @@ Unknown / unresolved:
 
 ## 6. Current safety boundary
 
-Current R17 preparation does **not** authorize:
-- any provider mutation;
+Outside the exact locked R17 one-shot checkpoint, the current authorization does **not** authorize:
 - permanent `rm`;
 - upload/download-from-Baidu;
 - mkdir;
