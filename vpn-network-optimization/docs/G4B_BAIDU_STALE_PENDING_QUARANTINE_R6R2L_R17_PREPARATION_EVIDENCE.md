@@ -108,3 +108,25 @@ R17_OWNER_CHECKPOINT_EXECUTED=NO
 R17_PROVIDER_MUTATION=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Subsequent Reviewer hold — R17R1
+
+A later Reviewer reconciliation intentionally suspended release of the prepared R17 Owner checkpoint pending local executable code-usability validation.
+
+```text
+R17_OWNER_AUTHORIZATION=GRANTED_RECORDED
+R17_EXECUTION_RELEASED=NO
+R17_PROVIDER_MUTATION=NO
+R17R1_GATE=docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md
+R17R1_GATE_BLOB=05efff190c10e4649e10acb9814f5f0d7d705b95
+SUSPENDED_PARENT_R17_GATE_BLOB=09fd5086dc6f6121fdbd3006553560b19019b211
+STARTING_R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+STARTING_R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
+OWNER_ACTION_REQUIRED=NONE
+EXECUTOR_ACTION_REQUIRED=LOCAL_OFFLINE_CODE_VALIDATION
+```
+
+Reason: the project now requires executable local evidence that the complete helper/validator are reliably usable before any consequential provider action. The known stale-`$LASTEXITCODE` validator risk must be regression-tested, and forward/rollback behavior must receive offline executable evidence or return PARTIAL/RETURN. Earlier preparation evidence remains historical evidence of what was reviewed at that time; it is not a current release-to-run decision.
+
+No Provider action, Owner config read, Secret/DPAPI access, SSH/VPS action, network mutation, or R17 Run-mode execution occurred as part of this hold.
