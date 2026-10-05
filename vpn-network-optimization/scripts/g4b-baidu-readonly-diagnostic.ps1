@@ -100,7 +100,7 @@ function Get-SafeProcessResult {
         }
         $stdout=$outTask.GetAwaiter().GetResult()
         $stderr=$errTask.GetAwaiter().GetResult()
-        return [pscustomobject]@{
+        return @{
             ExitCode=[int]$p.ExitCode
             StdOut=[string]$stdout
             StdErr=[string]$stderr
@@ -190,17 +190,21 @@ try {
     Assert-Diagnostic ($expectedUid -match '^[1-9][0-9]{0,19}$') 'BAIDU_EXPECTED_ACCOUNT_ID_INVALID'
     Write-Output 'EXPECTED_UID_INPUT=READY'
 
-    Write-Stage 'BAIDU_WHO'
+    Write-Stage 'BAIDU_WHO_PROCESS'
     $who=Get-SafeProcessResult -Action 'who'
-    if($who.ExitCode -ne 0){
+    Write-Stage 'BAIDU_WHO_RESULT'
+    Assert-Diagnostic ($who -is [System.Collections.IDictionary]) 'BAIDU_WHO_RESULT_SHAPE_INVALID'
+    Assert-Diagnostic ($who.Contains('ExitCode') -and $who.Contains('StdOut') -and $who.Contains('StdErr')) 'BAIDU_WHO_RESULT_KEYS_MISSING'
+    if([int]$who['ExitCode'] -ne 0){
         Write-Output 'BAIDU_WHO_PROCESS=FAIL'
         Write-Output 'BAIDU_WHO_UID_PARSE=NOT_AVAILABLE'
         Write-Output 'BAIDU_WHO_UID_MATCH=NOT_AVAILABLE'
-        $classification='WHO_'+(Get-SafeErrorClass -StdOut $who.StdOut -StdErr $who.StdErr)
+        $classification='WHO_'+(Get-SafeErrorClass -StdOut ([string]$who['StdOut']) -StdErr ([string]$who['StdErr']))
         throw 'BAIDU_WHO_READONLY_FAILED'
     }
     Write-Output 'BAIDU_WHO_PROCESS=PASS'
-    $uidMatch=[regex]::Match($who.StdOut,'(?m)^当前帐号 uid:\s*([0-9]+),')
+    Write-Stage 'BAIDU_WHO_UID_PARSE'
+    $uidMatch=[regex]::Match([string]$who['StdOut'],'(?m)^当前帐号 uid:\s*([0-9]+),')
     if(-not $uidMatch.Success){
         Write-Output 'BAIDU_WHO_UID_PARSE=FAIL'
         Write-Output 'BAIDU_WHO_UID_MATCH=NOT_AVAILABLE'
@@ -215,16 +219,65 @@ try {
     }
     Write-Output 'BAIDU_WHO_UID_MATCH=PASS'
 
-    Write-Stage 'BAIDU_LS'
+    Write-Stage 'BAIDU_LS_PROCESS'
     $ls=Get-SafeProcessResult -Action 'ls' -Arguments @('-l',$remoteDir)
-    if($ls.ExitCode -ne 0){
+    Write-Stage 'BAIDU_LS_RESULT'
+    Assert-Diagnostic ($ls -is [System.Collections.IDictionary]) 'BAIDU_LS_RESULT_SHAPE_INVALID'
+    Assert-Diagnostic ($ls.Contains('ExitCode') -and $ls.Contains('StdOut') -and $ls.Contains('StdErr')) 'BAIDU_LS_RESULT_KEYS_MISSING'
+    if([int]$ls['ExitCode'] -ne 0){
         Write-Output 'BAIDU_LS_PROCESS=FAIL'
         Write-Output 'BAIDU_LS_DIRECTORY_HEADER=NOT_AVAILABLE'
-        $classification='LS_'+(Get-SafeErrorClass -StdOut $ls.StdOut -StdErr $ls.StdErr)
+        $classification='LS_'+(Get-SafeErrorClass -StdOut ([string]$ls['StdOut']) -StdErr ([string]$ls['StdErr']))
         throw 'BAIDU_LS_READONLY_FAILED'
     }
     Write-Output 'BAIDU_LS_PROCESS=PASS'
-    $headerOk=[regex]::IsMatch($ls.StdOut,'(?m)^当前目录:\s*'+[regex]::Escape($remoteDir)+'\s*$')
+    Write-Stage 'BAIDU_LS_HEADER_PARSE'
+    $headerOk=[regex]::IsMatch([string]$ls['StdOut'],'(?m)^当前目录:\s*'+[regex]::Escape($remoteDir)+'\s*
+    if($headerOk){
+        Write-Output 'BAIDU_LS_DIRECTORY_HEADER=PASS'
+        $classification='READONLY_BAIDU_PATH_PASS'
+    } else {
+        Write-Output 'BAIDU_LS_DIRECTORY_HEADER=FAIL'
+        $classification='LS_DIRECTORY_HEADER_PARSE_FAILED'
+        throw 'BAIDU_LS_HEADER_PARSE_FAILED'
+    }
+
+    Write-Output ('BAIDU_READONLY_DIAGNOSTIC_CLASSIFICATION='+$classification)
+}
+catch {
+    if($classification -eq 'UNKNOWN'){
+        $message=[string]$_.Exception.Message
+        if($message -match '^[A-Z][A-Z0-9_]{1,95}$'){$classification=$message}else{$classification='LOCAL_DIAGNOSTIC_EXCEPTION'}
+    }
+    Write-Output ('DIAGNOSTIC_FAILED_STAGE='+$script:stage)
+    Write-Output ('DIAGNOSTIC_EXCEPTION_TYPE='+$_.Exception.GetType().FullName)
+    Write-Output ('DIAGNOSTIC_ERROR_LINE='+[string]$_.InvocationInfo.ScriptLineNumber)
+    Write-Output ('BAIDU_READONLY_DIAGNOSTIC_CLASSIFICATION='+$classification)
+}
+finally {
+    $expectedUid=$null
+    $who=$null
+    $ls=$null
+    if(Test-Path -LiteralPath $diagRoot -PathType Container){
+        try {
+            Assert-OwnerAcl -Path $diagRoot
+            Remove-Item -LiteralPath $diagRoot -Recurse -Force -ErrorAction Stop
+            $cleanupPass=(-not (Test-Path -LiteralPath $diagRoot))
+        } catch {
+            $cleanupPass=$false
+        }
+    } else {
+        $cleanupPass=$true
+    }
+    Write-Output ('TEMP_RUNTIME_CLEANUP='+$(if($cleanupPass){'PASS'}else{'FAIL'}))
+    Write-Output 'BAIDU_MUTATION_ACTION=NO'
+    Write-Output 'SSH_OR_VPS_ACTION=NO'
+    Write-Output 'RECOVERY_WRITE=NO'
+    Write-Output 'NETWORK_MUTATION=NO'
+    Write-Output 'SECRET_VALUES_EMITTED=0'
+    Write-Output 'STOP_AT_REVIEWER=YES'
+}
+)
     if($headerOk){
         Write-Output 'BAIDU_LS_DIRECTORY_HEADER=PASS'
         $classification='READONLY_BAIDU_PATH_PASS'
