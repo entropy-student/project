@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT
+CURRENT_GATE=OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,8 +81,8 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=OWNER_RETURN_LIVE_STYLE_DELIVERY
-CORE_FUNCTION_ONBOARDING_SURFACE=OWNER_RETURN_SCALE_DENSITY
+HOMEPAGE_ENTRY_SURFACE=REVIEWER_PASS_OWNER_FINAL_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_PASS_OWNER_FINAL_PENDING
 POSTPAY_GENERATION_STATUS_SURFACE=PRODUCT_COMPONENT_STATUS_QA_PAGE_DEMOTED
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
@@ -161,6 +161,12 @@ G3CR7V2R3_STATUS_STANDALONE_PAGE=QA_ONLY_NOT_PRODUCT_SURFACE
 G3CR7V2R3_STATUS_PRODUCT_ROLE=ORDER_WORKSPACE_COMPONENT
 G3CR7V2R3_SAAS_STRUCTURE=KEEP
 G3CR7V2R3_MULBERRY_PALETTE=KEEP
+G3CR7V2R3_EXECUTOR_HEAD=43ebf7bb732e9e3be8d547364ca7b018f7f505f8
+G3CR7V2R3_REVIEWER_DECISION=PASS
+G3CR7V2R3_STYLE_DELIVERY=PASS_FILEMTIME_CACHE_BUST
+G3CR7V2R3_INTAKE_SCALE=PASS
+G3CR7V2R3_STATUS_STANDALONE_PAGE=QA_ONLY_NOT_PRODUCT_SURFACE
+G3CR7V2R3_OWNER_HOME_INTAKE_VISUAL=PENDING
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -205,21 +211,23 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT`
+`OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL`
 
-Owner live review RETURNed the prior visual checkpoint:
+G3CR7V2R3 is **Reviewer PASS** at candidate `43ebf7bb732e9e3be8d547364ca7b018f7f505f8`.
 
-- homepage normal Edge view still shows the old Preview style despite source/runtime identity evidence;
-- intake has the right SaaS direction but is too small and sparse;
-- the standalone status preview is not a product surface and is now QA-only; real status belongs in Woo/order/private-workspace continuation.
+Accepted:
+- homepage stale-style root cause proven as fixed-version browser CSS cache;
+- visual CSS versioning changed to source-derived `filemtime()`;
+- normal cache-enabled Edge now loads Git/runtime candidate CSS;
+- intake scale/density materially improved;
+- standalone status preview is QA-only, not a product surface;
+- Woo/order status component logic remains frozen.
 
-Current Gate:
-- `docs/G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT.md`
+Owner checkpoint:
+- `docs/OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL_2026-10-05.md`
 
-Owner decision:
-- `docs/OWNER_DECISION_G3CR7V2R3_VISUAL_RETURN_SCALE_STATUS_ROLE_2026-10-05.md`
-
-The Gate must diagnose actual browser CSS delivery before changing homepage design. Stripe-derived structure and mulberry palette remain accepted.
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7V2R3_PASS_LIVE_STYLE_SCALE_2026-10-05.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -284,15 +292,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor diagnoses the actual homepage stylesheet delivered to a normal cache-enabled Edge session and compares it with bypass-cache delivery.
-2. If stale caching is proven, fix only visual asset versioning/cache-busting; if the CSS bytes are already current, diagnose the exact cascade/selector mismatch before changing styles.
-3. Keep the existing design language, enlarge/strengthen the intake UI and reduce excessive empty space.
-4. Reclassify the standalone status preview as QA-only; preserve real Woo/order status component logic.
-5. Return homepage + intake 1440/375 evidence and leave the exact candidate mounted for Owner live review.
+1. Owner refreshes the retained local runtime in normal Edge and reviews only the homepage Preview/core-entry and core intake page.
+2. If both are accepted, freeze these product-facing frontend surfaces for the current MVP stage.
+3. The standalone status preview remains QA-only; future real status UI belongs in the Woo/order/private-workspace flow.
+4. After visual freeze, proceed to the next product Gate: pre-payment server draft persistence / payment-to-generation wiring before P1-P12.
+5. Handle PR #64 mergeability separately before merge.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has already supplied the live screenshots and visual direction for this repair.
+Refresh `http://127.0.0.1:8189/` normally in Edge and review the homepage plus `/make-your-magazine/`. No cache clear should be required.
 
 ## EVIDENCE_POINTERS
 
