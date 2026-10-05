@@ -9892,3 +9892,62 @@ R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
 ```
 
 All earlier R10 Gate/validator identities are superseded for execution. R10 remains offline-only.
+
+
+## Reviewer formal decision — R6R2L-R10 Baidu real-listing parser repair offline validation — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T15:50:27.8593581+00:00
+OWNER_REPORTED_HEAD_AFTER=c4dfbcf4db7c9d4e9cb1b9ace56f124e90fece0d
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=ef148ca80a630e0e6faab748a8862b5bee0e6ea4
+OWNER_REPORTED_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+OWNER_REPORTED_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+OWNER_REPORTED_LOCKED_R10_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R10_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_R10_REAL_LS_FORMAT_PARSER=PASS
+OWNER_REPORTED_R10_REAL_LS_FILE_MATCH=PASS
+OWNER_REPORTED_R10_REAL_LS_DIRECTORY_MATCH=PASS
+OWNER_REPORTED_R10_REAL_LS_EXACT_BASENAME=PASS
+OWNER_REPORTED_NEGATIVE_BAIDU_PIPE_BORDER_ONLY_PARSER=PASS
+OWNER_REPORTED_R4_PENDING_UPLOAD_READBACK_PASS=PASS
+OWNER_REPORTED_R4_PENDING_TO_FINAL_PROMOTION_PASS=PASS
+OWNER_REPORTED_R4_ROLLBACK_REMOVES_PENDING_ONLY=PASS
+OWNER_REPORTED_G4B_LIVE_RUNNER_FIXTURES=PASS
+OWNER_REPORTED_NEGATIVE_FIXTURES=PASS
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_DPAPI_OR_REAL_SECRET_ACCESS=NO
+OWNER_REPORTED_EXTERNAL_REQUESTS=0
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_CLASH_PROFILE_MUTATION=NO
+OWNER_REPORTED_SYSTEM_PROXY_CHANGE=NO
+OWNER_REPORTED_TUN_CHANGE=NO
+OWNER_REPORTED_SERVICE_MUTATION=NO
+OWNER_REPORTED_ROUTE_MUTATION=NO
+OWNER_REPORTED_REALITY_LIVE_DEPLOYMENT=NO
+OWNER_REPORTED_G4C_EXECUTION=NO
+OWNER_REPORTED_RESULT=PASS_CANDIDATE
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T15:50:51.3677842+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:23.5084261
+REVIEWER_DECISION=PASS_R6R2L_R10_BAIDU_REAL_LISTING_PARSER_REPAIR
+```
+
+Reviewer acceptance:
+- Both runner and validator parser preflights passed.
+- The repaired production parser recognizes BaiduPCS-Go v4.0.2 borderless detailed listings.
+- Real-format file, directory and exact-basename fixtures passed.
+- The negative pipe-border-only regression passed, proving the old parser assumption cannot silently return.
+- Existing pending upload/readback, promotion and rollback ownership fixtures remained PASS.
+- Full positive and negative suites remained PASS.
+- No live runner, Baidu provider action, SSH/VPS action, real Secret/DPAPI access, network/profile/service/route/proxy/TUN mutation or G4-C action occurred.
+
+Important post-R9 reconciliation:
+- R9's `BAIDU_PENDING_ROLLBACK=PASS` was emitted while the old real-provider parser was defective.
+- Therefore it cannot be treated as authoritative proof that no R9 pending object remains in the Baidu recovery directory.
+- Before any further live retry, the provider must be reconciled read-only with the now-correct listing semantics.
+
+Next: bounded read-only Baidu residual-state reconciliation. No live G4-B retry is authorized yet.
