@@ -9146,3 +9146,39 @@ Reviewer propagated the proven UID-path decoding fix into the real G4-B runner: 
 The historical standalone R6R2 auth-readiness rerun is superseded on this post-auth path as redundant: R6R2J-R3 already performed a successful real post-auth `who` against the accepted config and produced the local UID. The live runner's pre-mutation account guard remains mandatory.
 
 Next Gate `G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K` requires only the existing offline live-runner fixture validator before live G4-B.
+
+
+## Owner result — R6R2K live-runner Baidu UTF-8 validation — 2026-10-05
+
+```text
+REVIEWER_RESULT=PASS_G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K
+R6R2K_BAIDU_CLI_UTF8_DECODE_LOCKED=PASS
+G4B_LIVE_RUNNER_FIXTURES=PASS
+NEGATIVE_FIXTURES=PASS
+R2_REGRESSIONS=PASS
+R1_REGRESSIONS=PASS
+R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS
+R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS
+R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS
+R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS
+R3_PROFILE_CONTENT_INTEGRITY=PASS
+R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS
+R3_STRICTMODE_RECOVERY_CLEANUP=PASS
+R3_FAILURE_CODE_NOT_MASKED=PASS
+SSH_OR_VPS_ACTION=NO
+DPAPI_OR_REAL_SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+REALITY_LIVE_DEPLOYMENT=NO
+G4C_EXECUTION=NO
+R6R2L_GATE_BLOB=e787311742f5bae97b3bfb8745dcb7c3920ca8af
+```
+
+Owner-local execution of the current live-runner fixture validator passed every positive and negative contract, including the new explicit Baidu CLI UTF-8 decode assertion. The run performed no live network/provider/VPS/Secret/Clash/service/route action.
+
+R6R2K is formally PASS. The next boundary is the single consequential G4-B live run under `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L`. Existing current Handoff authorization already records both `OWNER_LIVE_G4B_AUTHORIZATION=GRANTED` and `LIVE_G4B_EXECUTION_AUTHORIZED=YES`; no broader authorization is inferred.
