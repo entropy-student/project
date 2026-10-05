@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_AUTH_READINESS_ACL_REPAIR_R6R1
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=10-20 minutes
+STATE=OWNER_ACTION_REQUIRED_BAIDU_AUTH_READINESS_R6R2
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6_ACL_INVARIANT_INCOMPLETE
+PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only R6R1 repair of the Baidu config ACL predicate and synthetic ACL fixtures; preserve all accepted R6 non-ACL behavior and perform zero live actions.
+MAX_ENDPOINT_THIS_ROUND=One Owner-local read-only Baidu authentication-readiness checkpoint run only; no login, provider mutation, VPS/SSH, Secret access, persistent service/profile write, or live G4-B.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
-PREFLIGHT=R5R1 PASS; R6 candidate source identities locked; R6 non-ACL boundaries accepted; no vpn-network-optimization source drift after R6 final timing commit; exact R6R1 Gate blob required.
-REQUIRED_EVIDENCE=Production ACL predicate proves exact Owner, explicit safe Allow principals, direct/inherited ACE review, Deny rejection, Owner required read rights, broad/arbitrary principal rejection, plus complete R6 regression, AST, Secret scan, and zero live actions.
-ACCEPTANCE_CRITERIA=R6R1_FULL_ACL_INVARIANT_PASS + R6_FULL_REGRESSION_PASS + POWERSHELL_AST_PASS + SECRET_SCAN_PASS + REAL_BAIDU_ACTIONS_0 + OWNER_CONFIG_READ_0 + LIVE_G4B_ACTIONS_0.
-ROLLBACK_STATUS_OR_PLAN=R6R1 is source/docs only; revert only the two R6 scripts plus R6R1 Evidence/Executor-Handoff changes. No runtime rollback is required.
-OWNER_ONLY_ACTIONS=NONE during R6R1. Do not run the Owner checkpoint. Credentials/cookies/tokens remain Owner-local and must never enter chat, GitHub, logs, environment values, or process arguments.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1.md + the two locked R6 script blobs only. Do not reread broad history or redesign accepted R6 behavior.
+PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
+REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
+ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
+ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
+OWNER_ONLY_ACTIONS=Run exactly the reviewed R6R2 Owner-local checkpoint once. Expected numeric UID stays local; no credentials/cookies/tokens are provided to chat/GitHub/logs/process arguments. If RETURN_OWNER_ACTION_REQUIRED, stop and return to Reviewer.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2 is an Owner-local checkpoint, not an Executor/Codex round.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -137,6 +137,11 @@ G4B_BAIDU_AUTH_R6_CHECKPOINT_BLOB=18c0cfc397939930b7556b51153f27a63de85ae0
 G4B_BAIDU_AUTH_R6_VALIDATOR_BLOB=b7d5c2162db54ad92bd910035d33a03dc2027546
 G4B_BAIDU_AUTH_R6_FINAL_TIMING_COMMIT=34f0bd2c3a6b5452aa91578176fb17278a796689
 G4B_BAIDU_AUTH_R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
+G4B_BAIDU_AUTH_R6R1_RESULT=PASS
+G4B_BAIDU_AUTH_R6R1_FINAL_COMMIT=a13c0c76e9a3a5051848db78615fadbf12506d9b
+G4B_BAIDU_AUTH_R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+G4B_BAIDU_AUTH_R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+G4B_BAIDU_AUTH_R6R2_GATE_BLOB=75272436cab8bf88297aa0486d68808fd064b6d0
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -213,11 +218,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1` only. It narrowly repairs the production Baidu config ACL predicate to cover inheritance, explicit safe principals, Deny rules, and Owner required read rights; it uses synthetic ACE fixtures through the exact production predicate, reruns the complete R6 validator, and stops at Reviewer.
+Owner executes `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2` exactly once on the real Windows host and returns only the eight bounded sanitized checkpoint markers. No Codex/Executor action is needed for this Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE during R6R1 offline ACL repair.
+Run the R6R2 Owner-local checkpoint once and paste back only its eight bounded markers. If the checkpoint returns `RETURN_OWNER_ACTION_REQUIRED` or `FAIL_CLOSED`, stop; do not improvise login or repair.
 
 ## EVIDENCE_POINTERS
 
