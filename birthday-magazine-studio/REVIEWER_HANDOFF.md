@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR
+CURRENT_GATE=G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -96,6 +96,11 @@ G3CR7R1_EXECUTOR_HEAD=88f45f5d712e3c1fe26f4386628703716b8eca3e
 G3CR7R1_REVIEW=RETURN_EVIDENCE_INTEGRATION
 G3CR7R1_CLEAN_SOURCE_DIFF=RETURN
 G3CR7R1_WOO_ORDER_RECEIVED_POSITIVE=RETURN
+G3CR7R1R1_EXECUTOR_RETURN=STALE_LOCAL_REF_RUNTIME_UNAVAILABLE
+G3CR7R1R1_AUTHORITATIVE_PR_DRIFT=NO
+G3CR7R1R1_EXECUTOR_STALE_REF=97aceb4a1a9990f2e203e90de8bd5965202d63b8
+G3CR7R1R1_RECONCILED_PR_HEAD=c01843de4fb8bc139030930ad12caeb9ebbcd2b3
+G3CR7R1R1_RUNTIME_WEB=UNAVAILABLE_EXECUTOR_REPORTED
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -139,15 +144,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR`
+`G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION`
 
-G3CR7R1 independent reproduction at `88f45f5d712e3c1fe26f4386628703716b8eca3e` passed baseline, frontend runtime, Preview privacy, checkout handoff, and payment-query negative review, but formal PASS is RETURNed on two narrow evidence/source-boundary issues.
+Fresh Reviewer reconciliation proves the Executor's latest RETURN was caused by a stale local/pre-execution Git ref, not authoritative PR drift. Current GitHub PR source still contains the accepted independent `88f45f5d...` implementation; only Reviewer docs were added afterward.
 
-Current repair Gate:
-- `docs/G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR.md`
+The second blocker is now explicit local runtime unavailability: containers were reported running while host HTTP `127.0.0.1:8189` refused connections.
+
+Current Gate:
+- `docs/G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION.md`
 
 Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR7R1_RETURN_EVIDENCE_INTEGRATION.md`
+- `docs/REVIEWER_DECISION_G3CR7R1R1_RETURN_STALE_LOCAL_REF_RUNTIME.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -212,14 +219,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs `G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR`; do not redesign or replay already-passed intake/Preview checks.
-2. Remove the six unused Reviewer-reference prototype files from the final plugin tree and regenerate a complete diff from `e71f943...`.
-3. Use a local non-consequential Woo order fixture to capture the **actual order-received route** with the BMS pending continuation at 1440px and 375px; no payment/provider action.
-4. Reviewer rechecks only these repaired boundaries, then decides formal G3CR7 PASS / RETURN and hands visual acceptance to Owner.
+1. Executor fetches current remote PR source and works from the authoritative independent candidate, not stale `97aceb4a...`.
+2. Delete the six unreferenced Reviewer prototype files and regenerate the complete `e71f943...` baseline diff.
+3. Diagnose local G3C runtime by layer; only an exact WordPress-container start/restart is authorized if sufficient. No recreate/pull/build/down/volume deletion.
+4. When `127.0.0.1:8189` is healthy, create a synthetic unpaid guest Woo order fixture, capture actual order-received 1440/375 pending continuation, clean the fixture, and stop for Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** This is an Executor evidence/source-boundary repair; no Owner credential, payment, or manual action is needed.
+**NONE.** Reviewer has resolved the source identity; Executor can perform the bounded local-runtime reconciliation without Owner credentials or payment.
 
 ## EVIDENCE_POINTERS
 
