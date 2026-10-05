@@ -92,7 +92,7 @@ G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 因本机 Baidu config Owner mismatch 在 provider action 前 RETURN；R12-R14 将本地漂移精确定位为 `pcs_uploading.json=ADMIN`；R15 已完成一次 bounded Owner normalization，仅将该文件 Owner 从 ADMIN 改为 OWNER，rollback-before-write、严格 R6R1 readback 与 shape readback 均 PASS，rollback journal 保留。R16 随后成功完成只读 provider 核对：final=0、pending=1、unknown=0，远端 production residual state 已正式变为 `STALE_PENDING_PRESENT`。当前进入 R17 执行前最后边界：唯一 stale pending 的可回滚 rename-to-quarantine helper/validator 已锁定，Owner 已明确授权当前 R17 Gate，但 one-shot checkpoint 尚未执行；永久删除仍禁止，live G4-B 仍被阻塞。G4-C 仍在 G4-B 正式 PASS 后独立执行。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 因本机 Baidu config Owner mismatch 在 provider action 前 RETURN；R12-R14 将本地漂移精确定位为 `pcs_uploading.json=ADMIN`；R15 已完成一次 bounded Owner normalization，仅将该文件 Owner 从 ADMIN 改为 OWNER，rollback-before-write、严格 R6R1 readback 与 shape readback 均 PASS，rollback journal 保留。R16 随后成功完成只读 provider 核对：final=0、pending=1、unknown=0，远端 production residual state 已正式变为 `STALE_PENDING_PRESENT`。当前进入 R17 执行前最后边界：唯一 stale pending 的可回滚 rename-to-quarantine helper/validator 已在 Reviewer 执行前修复后重新锁定，Owner 已明确授权当前 R17 Gate，但 one-shot checkpoint 尚未执行；永久删除仍禁止，live G4-B 仍被阻塞。G4-C 仍在 G4-B 正式 PASS 后独立执行。
 
 ## 项目真相与 Reviewer 交接
 
@@ -104,7 +104,7 @@ MVP v1 封板                                  ⏳ PENDING
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
 2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R17 完整进展、R15 正式 PASS、R16 stale-pending 只读结论与当前 R17 可回滚 quarantine 边界；
-3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — 当前已准备但尚未锁 helper / 尚未授权执行的可回滚 stale-pending quarantine Gate；
+3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — 当前 helper/validator 已锁定、Owner 已授权但尚未执行的可回滚 stale-pending quarantine Gate；
 4. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — 已完成的 R16 read-only Gate，证明 final=0/pending=1/unknown=0；
 5. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — 已完成并正式 PASS 的 R15 本机 Owner normalization Gate；
 4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — 已完成的 R14 known-role Gate；
