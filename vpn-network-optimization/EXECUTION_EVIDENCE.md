@@ -7823,3 +7823,32 @@ ROLLBACK=Revert only the two R6 scripts and R6 Evidence/Executor-Handoff changes
 EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer reconciliation — G4-B Baidu Owner Auth Readiness R6 — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
+REVIEWER_RESULT=RETURN_R6_ACL_INVARIANT_INCOMPLETE
+R6_FINAL_TIMING_COMMIT=34f0bd2c3a6b5452aa91578176fb17278a796689
+R6_CHECKPOINT_BLOB=18c0cfc397939930b7556b51153f27a63de85ae0
+R6_VALIDATOR_BLOB=b7d5c2162db54ad92bd910035d33a03dc2027546
+R6_GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
+R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
+ACTUAL_ELAPSED=29m59s
+TIME_OVERRUN=YES
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+LIVE_G4B_ACTIONS=0
+```
+
+Reviewer independently inspected the R6 checkpoint, validator, Evidence, commit chain, and current GitHub `main`. The R6 final timing commit remains the authoritative VPN candidate; later `main` advances reviewed during reconciliation affect only the birthday-magazine project and do not change the VPN R6 files.
+
+Accepted R6 boundaries: no credential parameters, no login command, pinned archive hash validation before ZIP open, dot-source safety, `who`-only future provider action, raw output/UID suppression, account mismatch and unauthenticated fail-closed behavior, bounded runtime cleanup, synthetic-only fixtures, and zero real Owner/provider/network/VPS/Secret action.
+
+The ACL fixture fallback itself is accepted: injecting synthetic ACE metadata into the exact production predicate is a valid way to test negative ACL invariants without manufacturing an unsafe real filesystem ACL.
+
+Formal PASS is blocked by the production ACL predicate, not by the fixture technique. `Assert-BaiduConfigAclMetadata` currently proves only exact Owner identity and rejects Allow ACEs for Everyone, Authenticated Users, and Builtin Users. Under Governance v0.2.7 target-host/ACL rules, the protected credential-config boundary must also validate inheritance, Deny rules, the complete allowed-principal set, and effective required Owner rights. These are not currently proven.
+
+Next Gate: `G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1`. It is a narrow offline source/fixture repair; no Owner action or live checkpoint execution is authorized.
