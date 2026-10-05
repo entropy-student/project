@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_SECURE_AUTH_R6R2I
+STATE=OWNER_ACTION_REQUIRED_BAIDU_BUILD_DIAGNOSTIC_R6R2I_D1
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+PREVIOUS_RESULT=RETURN_R6R2I_BUILD_VALIDATION_FAILED_BEFORE_AUTH
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=One Owner-local retained-adapter build/preflight plus exactly one reviewed secure-auth checkpoint; no retry, no who, no provider file mutation.
+MAX_ENDPOINT_THIS_ROUND=One read-only Owner-local diagnostic of runtime-root/runtime-dir/retained-binary metadata; no build replay and no authentication.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Frozen build provenance + temp cleanup PASS, then exactly eight bounded Owner checkpoint markers; no provider raw output, account identity, UID, config content, or authentication material.
-ACCEPTANCE_CRITERIA=Reviewed adapter binary identity proven; checkpoint returns SETUP_SAVED/NONE/native 0, accepted pre-auth config state, authenticated-config preserved, content-read NO, who NOT_RUN, UID emitted NO.
-ROLLBACK_STATUS_OR_PLAN=Checkpoint performs provenance-aware rollback on non-success. No retry is authorized until Reviewer reconciliation. Retained adapter runtime binary remains untouched pending later reviewed cleanup.
-OWNER_ONLY_ACTIONS=Run R6R2I exactly once on the accepted Owner host. Enter authentication material only into the hidden local prompt; return only the eight bounded checkpoint markers.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2I is an Owner-local one-shot authentication checkpoint.
+REQUIRED_EVIDENCE=Eight bounded diagnostic markers only; no local paths, SID/ACL detail, provider output, config content, or authentication material.
+ACCEPTANCE_CRITERIA=Classify residual runtime/binary state and binary identity without mutation; prove authentication checkpoint did not start and provider auth actions remain zero.
+ROLLBACK_STATUS_OR_PLAN=Read-only diagnostic; no rollback action in this Gate. Any residue is preserved until Reviewer classifies it.
+OWNER_ONLY_ACTIONS=Run R6R2I-D1 read-only diagnostic exactly once and return only the eight bounded markers.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. This is an Owner-local read-only diagnostic.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -258,7 +258,7 @@ Codex executes `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3` offline only. A
 
 ## OWNER_ACTION_REQUIRED
 
-Run R6R2I exactly once. Return only the eight bounded checkpoint markers; do not share provider output or authentication material and do not retry on failure.
+Run R6R2I-D1 read-only diagnostic exactly once. Do not rerun build or authentication.
 
 ## EVIDENCE_POINTERS
 
