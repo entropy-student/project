@@ -1,6 +1,6 @@
 # Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R15 chronology, current safety boundary and exact next unresolved question.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R16 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
@@ -40,9 +40,9 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
-GATE_ID=G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
-PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
+GATE_ID=G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
+PREVIOUS_RESULT=PASS_R6R2L_R15_UPLOAD_DB_OWNER_NORMALIZATION
 R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
@@ -413,40 +413,67 @@ R12-R14 together now prove:
 
 Upstream v4.0.2 upload path creates `pcs_uploading.json`, and R9 executed a real upload. This closes the local object-identity question.
 
-### R15 — upload DB Owner normalization — AUTHORIZED / READY FOR ONE BOUNDED RUN
+### R15 — upload DB Owner normalization — PASS
+
+R15 executed exactly once under explicit Owner authorization.
+
+```text
+R15_PRECHECK=PASS
+R15_TARGET_OWNER_BEFORE=ADMIN
+R15_ROLLBACK_JOURNAL=READY
+R15_OWNER_MUTATION=PASS
+R15_TARGET_OWNER_AFTER=OWNER
+R15_R6R1_STRICT_ACL_READBACK=PASS
+R15_SHAPE_READBACK=PASS
+R15_RESULT=PASS_CANDIDATE
+ROLLBACK_JOURNAL_RETAINED=YES
+CONFIG_CONTENT_READ=NO
+BAIDU_PROVIDER_ACTION=NO
+UID_INPUT=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Formal result:
+
+```text
+PASS_R6R2L_R15_UPLOAD_DB_OWNER_NORMALIZATION
+```
+
+Interpretation:
+- exact `pcs_uploading.json` Owner normalized ADMIN -> current Owner;
+- pre-write rollback journal was created and verified;
+- strict R6R1 ACL metadata readback PASSed after mutation;
+- exact local shape remained correct;
+- no provider/network/Secret/VPS/live-G4B action occurred;
+- rollback journal remains retained and must not be deleted yet.
+
+### R16 — current remote residual-state read-only reconciliation — READY TO EXECUTE
 
 Current Gate:
 
-`docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md`
+`docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md`
 
-Prepared helper:
+R16 intentionally reuses the reviewed R11 helper unchanged:
 
-`scripts/g4b-baidu-upload-db-owner-normalize-r15.ps1`
+`scripts/g4b-baidu-residual-readonly-r11.ps1`
 
 Locked identities:
 
 ```text
-R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
-R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
-OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
-R15_EXECUTION_AUTHORIZED=YES
+R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
+R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 ```
 
-R15 is consequential local security-metadata write.
+R16 is read-only with respect to provider state. It may execute only:
+- BaiduPCS-Go who
+- BaiduPCS-Go ls -l /vpn-network-optimization-g4b-recovery
 
-Its intended mutation is deliberately narrower than historical full ACL normalization:
-- exact target only: `pcs_uploading.json`;
-- change only Owner ADMIN -> current Owner;
-- preserve current access rules already proven clean by R12;
-- do not change root/config ACLs;
-- create an Owner-only durable rollback journal before mutation;
-- retain rollback journal through Reviewer stop;
-- immediately re-run strict R6R1 metadata validation and exact shape readback;
-- restore the exact pre-mutation ACL from the journal on any post-write failure.
+It may not upload, delete, rename, move, mkdir, login/logout, mutate config, read recovery Secret/DPAPI data, touch VPS/network/Clash, or run live G4-B.
 
-The helper defaults to non-mutating `Mode=Validate`; mutation path additionally requires `-Mode Run -OwnerAuthorized`.
-
-One R15 Run command may now be issued under the exact locked Gate/script. No second attempt is authorized without Reviewer reconciliation.
+A CLEAN result may permit Reviewer to design a new bounded live retry Gate. Any residual object or auth/provider failure stops at Reviewer.
 
 ## 5. Current unresolved truth
 
@@ -472,7 +499,7 @@ Unknown / unresolved:
 
 R15 is prepared and explicitly authorized for one bounded local normalization attempt. Provider readback/live G4-B remain blocked.
 
-Even after this authorization, R15 does **not** authorize:
+R16 does **not** authorize:
 - config file content read/hash/copy/print;
 - username/path/SID/ACE-detail output;
 - `Set-Acl`, `takeown`, `icacls` or ownership mutation;
@@ -485,15 +512,16 @@ Even after this authorization, R15 does **not** authorize:
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-R15 now has explicit Owner authorization for one bounded normalization attempt. Remote residual-state readback remains blocked until R15 is formally reviewed.
+R15 is formally PASS. R16 is the active read-only residual-state observation; live G4-B remains blocked until R16 is formally reviewed.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R15 chronology.
-3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — exact current authorized Gate.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R16 chronology.
+3. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — exact current read-only Gate.
+4. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 normalization Gate.
 4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — completed R14 Gate.
 4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 Gate.
 4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
@@ -525,6 +553,6 @@ Do not repeat without new Reviewer authorization/evidence:
 
 ## 9. Repository durability
 
-This transition snapshot, R15/R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
+This transition snapshot, R16/R15/R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
