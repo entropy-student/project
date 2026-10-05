@@ -8501,3 +8501,26 @@ at `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1.md`
 blob `6f448f7c16a322c240f756121ddbbc0ca97dc516`.
 
 The duplicate `G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1` is marked SUPERSEDED / DO_NOT_EXECUTE. Reviewer Handoff duplicate result/blob lines were removed. This is repository truth reconciliation only; no Cookie, Owner config, provider, network, or runtime action occurred.
+
+
+## Reviewer fresh re-review — R6R2H candidate and unexecuted R6R2H-R1 — 2026-10-05
+
+```text
+REREVIEW_RESULT=RETURN_R6R2H_REREVIEW_ADAPTER_PARSE_AND_PREFLIGHT_ORDER_GAP
+R6R2H_SOURCE_COMMIT=8265ade045c8df3aaaa449280b75dc79afc4cf02
+R6R2H_R1_STATUS=SUPERSEDED_UNEXECUTED
+R6R2H_R2_GATE_BLOB=d648f5f44824349aff1824dd4fb5d405a01a5c4d
+REAL_OWNER_ACTIONS=0
+REAL_AUTH_ACTIONS=0
+REAL_CONFIG_ACTIONS=0
+```
+
+Fresh Reviewer re-read Governance universal rules plus triggered Secret/Target-Host and Automation/Auth rules, current Handoff, R6R2H Gate, Owner checkpoint, validator, relevant Evidence, and the candidate commit.
+
+The original R6R2H RETURN remains correct: post-write ACL normalization is missing before strict R6R1 validation, and failure/partial-write reconciliation is incomplete.
+
+The fresh re-review found two additional blockers before any real authentication:
+1. adapter exact-field validation is followed by upstream whole-string secondary extraction because the adapter passes an empty explicit session value; a synthetic earlier substring can therefore be selected by the upstream unanchored search instead of the exact validated field. Repair: parse the exact field once and pass that parsed value explicitly into upstream setup;
+2. the Owner checkpoint can create the config root before proving adapter binary path/ACL/hash and runtime execution identity. Governance requires candidate/runtime preflight before host-local mutation.
+
+The unexecuted R6R2H-R1 Gate is superseded by R6R2H-R2, which combines the parser handoff repair, preflight-before-write ordering, accepted post-write ACL normalization pattern, and provenance-aware failure reconciliation. No real authentication material or Owner/provider state was accessed.
