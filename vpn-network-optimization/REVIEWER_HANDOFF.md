@@ -105,12 +105,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_PARTIAL_CONFIG_RECONCILIATION_R6R2F
+STATE=OWNER_ACTION_REQUIRED_BAIDU_INTERACTIVE_AUTH_RETRY_R6R2G
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=One Owner-local metadata-only exact failed-run residue reconciliation; exact delete only if all accepted shape/ACL predicates pass; no login/provider/network action.
+MAX_ENDPOINT_THIS_ROUND=Exactly one Owner-local no-argument interactive Baidu login retry using the repaired helper; no repeated retries, no Cookie/BDUSS fallback, no Baidu file mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -118,8 +118,8 @@ PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locke
 REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
 ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
 ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
-OWNER_ONLY_ACTIONS=Run R6R2F exactly once. Return only the five bounded BAIDU_PARTIAL_CONFIG_* markers. If FAIL_CLOSED, stop; do not manually clean or retry login.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2F is an Owner-local bounded reconciliation checkpoint.
+OWNER_ONLY_ACTIONS=Run R6R2G exactly once. Enter auth factors only into the local console. Return only bounded BAIDU_INTERACTIVE_* markers; if provider/helper fails, do not retry.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2G is an Owner-local single-attempt authentication checkpoint.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -163,6 +163,8 @@ G4B_BAIDU_ROLLBACK_PROVENANCE_REPAIR_R6R2E_R1_RESULT=PASS
 G4B_BAIDU_RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
 G4B_BAIDU_AUTH_HELPER_BLOB=e67197ee15ad4ce758ed2c624c80d69dfd4bb08a
 G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_R6R2F_GATE_BLOB=446da501a77ca58b11cf41a4be2b73f44082ca72
+G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_R6R2F_RESULT=PASS
+G4B_BAIDU_INTERACTIVE_AUTH_RETRY_R6R2G_GATE_BLOB=2da9a6271c48ad437067d4a5bfa46833d452d5d6
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -239,11 +241,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs `G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F` exactly once and returns only the five bounded checkpoint markers. No Codex/Executor action is needed.
+Owner runs `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G` exactly once and returns only the bounded auth markers. No Codex/Executor action is needed.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the R6R2F Owner-local reconciliation checkpoint once. Do not inspect config content or retry login before Reviewer checks the result.
+Run the R6R2G Owner-local interactive-auth checkpoint once. If it fails or provider returns 50052 again, stop and return only bounded markers; do not retry.
 
 ## EVIDENCE_POINTERS
 
