@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION
+CURRENT_GATE=G3CR7V2R1_STRIPE_VISUAL_CONTINUATION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -130,6 +130,10 @@ G3CR7V2_DESIGN_MD=MANDATORY
 G3CR7V2_DESIGN_MD_SOURCE_BLOB=589bd23baeb1344444f087043c060afd6239371f
 G3CR7V2_DESIGN_MD_PROJECT_COPY=docs/design-references/stripe/DESIGN.md
 G3CR7V2_DESIGN_ADAPTER=docs/design-references/stripe/PROJECT_ADAPTER.md
+G3CR7V2_PREFLIGHT_RETURN=OVERRULED_FALSE_POSITIVE
+G3CR7V2_ORDER_1131_ROUTE=INCONCLUSIVE_ACCESS_CONTEXT
+G3CR7V2_FROZEN_PHP_JS_BLOBS=UNCHANGED_FROM_G3CR7R1R2
+G3CR7V2_PAYMENT_TRUTH_REUSE=G3CR7R1R2_ACCEPTED
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -174,22 +178,19 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION`
+`G3CR7V2R1_STRIPE_VISUAL_CONTINUATION`
 
-Owner has directly selected **Stripe Soft-Tech**. Linear/Attio auditions and the three-way audition Gate are superseded.
+The latest Executor `RETURN_PREFLIGHT_DRIFT` is Reviewer-overruled as a false positive. Existing order #1131 was not proven to be requested under an equivalent valid Woo order-received access context.
+
+Fresh blob comparison confirms the current PHP/JS business implementation is byte-identical to the already accepted G3CR7R1R2 payment-truth candidate.
 
 Current Gate:
-- `docs/G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION.md`
+- `docs/G3CR7V2R1_STRIPE_VISUAL_CONTINUATION.md`
 
-Mandatory design authority:
-- `docs/design-references/stripe/PROJECT_ADAPTER.md`
-- `docs/design-references/stripe/DESIGN.md`
-- pinned upstream blob `589bd23baeb1344444f087043c060afd6239371f`
+Reviewer correction:
+- `docs/REVIEWER_DECISION_G3CR7V2_RETURN_PREFLIGHT_DRIFT_OVERRULED_2026-10-05.md`
 
-Owner style lock:
-- `docs/OWNER_DECISION_G3CR7V2_STRIPE_STYLE_LOCK_2026-10-05.md`
-
-Technical/business behavior remains frozen. This Gate applies the chosen visual system to the real three surfaces and must leave the exact candidate mounted in the local Owner-review runtime.
+Stripe DESIGN.md remains mandatory. Continue visual implementation only; do not replay accepted Woo/payment evidence unless frozen PHP/JS changes.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -254,15 +255,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs `G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION`; do not create Linear/Attio auditions.
-2. Apply one coherent Stripe Soft-Tech system to the actual homepage Preview/core-entry, five-step intake and status/Woo continuation.
-3. Replace SVG/cartoon human QA fixtures with approved local photography or neutral non-human local assets.
-4. Capture 1440/375 evidence and leave the exact candidate mounted at `127.0.0.1:8189`.
-5. Reviewer checks visual fidelity and frozen behavior; then Owner performs live local visual acceptance.
+1. Executor continues the Stripe visual implementation under `G3CR7V2R1_STRIPE_VISUAL_CONTINUATION`.
+2. Verify the three frozen business-source blobs, then modify presentation files only.
+3. Reuse the 14 committed before screenshots; produce Stripe after screenshots/contact sheet and leave the exact candidate mounted at `127.0.0.1:8189`.
+4. Do not replay Woo test orders/payment truth while frozen PHP/JS remains unchanged.
+5. Reviewer inspects the final visual candidate, then Owner performs live local acceptance.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until the Stripe candidate is ready.** Owner has already locked the visual direction.
+**NONE until the Stripe candidate is ready.** The preflight RETURN has been reconciled by Reviewer.
 
 ## EVIDENCE_POINTERS
 
