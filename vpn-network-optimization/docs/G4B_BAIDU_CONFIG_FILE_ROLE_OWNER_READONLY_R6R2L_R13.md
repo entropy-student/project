@@ -57,6 +57,13 @@ Source:
 
 Therefore the R12 root + two-file shape may be normal. The unresolved question is which expected file has the Administrators Owner.
 
+## LOCKED SOURCE
+
+```text
+R13_SCRIPT=scripts/g4b-baidu-config-file-role-owner-r13.ps1
+R13_SCRIPT_BLOB=f27148308fbe56517924c686fa99cbb0e28549a3
+```
+
 ## OBJECTIVE
 
 Use local metadata only to prove:
