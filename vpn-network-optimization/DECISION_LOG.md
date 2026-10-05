@@ -569,3 +569,12 @@ Next canonical Gate: `G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2`. It 
 The combined parser, preflight ordering, post-write ACL normalization and provenance-aware rollback repairs are accepted. The remaining blocker is the Owner result contract: the active Gate requires a bounded `BAIDU_COOKIE_AUTH_CONFIG_STATE` marker, but the candidate checkpoint does not emit it and the validator does not enforce the complete eight-marker contract.
 
 R6R2H-R3 is a narrow output/validator repair. The accepted adapter/parser, build chain, ACL normalization and reconciliation core are frozen. No real Owner/provider action is authorized meanwhile.
+
+
+## 2026-10-05 — R6R2H-R3 output contract repair formally accepted
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3`.
+
+The Owner checkpoint now emits the missing bounded pre-auth config-state marker using only `NOT_REACHED`, `ABSENT_PREAUTH`, or `PREEXISTING_EMPTY`. Assignment occurs only after the accepted pre-run provenance checks and is not overwritten after authentication. The complete eight-marker output contract is validator-enforced, while the accepted R6R2H-R2 core remains frozen.
+
+Next Gate: `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I`, an Owner-local one-shot secure authentication checkpoint.
