@@ -474,3 +474,14 @@ The reviewed helper provides a bounded Owner-local authentication path using onl
 The frozen R6R2A validator CRLF guard false negative is a validator text-pattern defect only and does not invalidate the accepted R6R2A helper or R6R2C source.
 
 Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RUN_R6R2D`.
+
+
+## 2026-10-05 — R6R2D returned on provider busy + config owner mismatch
+
+**Decision:** `RETURN_G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_PROVIDER_BUSY_OWNER_MISMATCH`.
+
+The one authorized interactive login received upstream code 50052 (system busy). The helper-created config directory became non-empty, then strict metadata validation failed because a config item Owner was not the exact current Owner SID. No `who` was run and no UID was emitted.
+
+Pinned v4.0.2 source shows the config file is `pcs_config.json` and an error returned by `RunLogin` exits before `SetupUserByBDUSS`. The residue is therefore a bounded failed-login partial state, but it will not be deleted or modified until a metadata-only exact-shape reconciliation passes.
+
+Next: offline `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E` to build a one-shot residue rollback checkpoint and repair post-login Windows Owner/ACL normalization. Login replay remains unauthorized.
