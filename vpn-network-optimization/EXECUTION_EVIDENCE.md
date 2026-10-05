@@ -8612,3 +8612,31 @@ ROLLBACK=Revert only the R6R2H-R2 source and Executor documentation changes to P
 EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer decision — R6R2H-R2 combined repair — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
+REVIEWER_RESULT=RETURN_R6R2H_R2_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
+SOURCE_COMMIT=d441ed0bc31285311345ed3b3e847258d7de05a2
+R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
+REAL_OWNER_ACTIONS=0
+REAL_AUTH_ACTIONS=0
+REAL_CONFIG_ACTIONS=0
+```
+
+Reviewer independently rechecked the R6R2H-R2 Gate, candidate commit scope, adapter parser/tests, Owner checkpoint production functions, validator, Evidence and Handoff.
+
+Accepted/frozen from R6R2H-R2:
+- exact semicolon-delimited field parse and explicit upstream handoff close the earlier secondary-parse ambiguity;
+- runtime/admin/high-integrity and adapter path/ACL/hash checks precede canonical config mutation;
+- post-auth exact metadata shape is checked before file/root Owner/ACL normalization, followed by strict R6R1 validation;
+- provenance-aware failure reconciliation uses production filesystem functions for pre-existing/new roots and exact run-created files, preserves unexpected/reparse/extra-entry state, and uses no broad recursive deletion;
+- binary digest/build evidence is correlated and the frozen build helper identity is unchanged;
+- the allowed synthetic ACL-constructor fallback is acceptable for the reported SeSecurityPrivilege limitation because filesystem provenance/delete semantics were still exercised with production functions;
+- no real Owner checkpoint, credential, provider authentication, who, config or network runtime action occurred.
+
+Blocking defect: the Gate's minimum Owner return contract requires `BAIDU_COOKIE_AUTH_CONFIG_STATE=...`, but the candidate checkpoint emits the other bounded fields without this state marker. The validator also failed to assert completeness of the eight-field output contract. Without the pre-run state marker, a later Reviewer cannot distinguish accepted config provenance from final disposition using only the bounded Owner result.
+
+Next Gate: `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3`. It freezes the accepted R6R2H-R2 core and repairs only the missing config-state classification/output plus validator coverage.
