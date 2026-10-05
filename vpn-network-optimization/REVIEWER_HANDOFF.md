@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_BUILD_DIAGNOSTIC_R6R2I_D1
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
+STATE=EXECUTOR_ASSIGNED_BAIDU_RETAINED_BINARY_REPAIR_R6R2I_D2
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=EXECUTOR_OFFLINE_REPAIR
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2I_BUILD_VALIDATION_FAILED_BEFORE_AUTH
+PREVIOUS_RESULT=PASS_R6R2I_D1_RUNTIME_RESIDUE_DIAGNOSTIC
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=One read-only Owner-local diagnostic of runtime-root/runtime-dir/retained-binary metadata; no build replay and no authentication.
+MAX_ENDPOINT_THIS_ROUND=Offline repair of retained-binary creation/ACL/readback and bounded failure-stage diagnostics only; authentication/checkpoint core frozen.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Eight bounded diagnostic markers only; no local paths, SID/ACL detail, provider output, config content, or authentication material.
-ACCEPTANCE_CRITERIA=Classify residual runtime/binary state and binary identity without mutation; prove authentication checkpoint did not start and provider auth actions remain zero.
-ROLLBACK_STATUS_OR_PLAN=Read-only diagnostic; no rollback action in this Gate. Any residue is preserved until Reviewer classifies it.
-OWNER_ONLY_ACTIONS=Run R6R2I-D1 read-only diagnostic exactly once and return only the eight bounded markers.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. This is an Owner-local read-only diagnostic.
+REQUIRED_EVIDENCE=R6R2I-D2 fixture/regression markers, exact changed-path scope, no real Owner runtime/config/provider action, and fresh GitHub read-back.
+ACCEPTANCE_CRITERIA=Retained binary is created fail-on-existing with Owner-only ACL without unnecessary post-create Owner rewrite, strict ACL/hash readback passes, expected failure stages are bounded, failed-run exact-binary cleanup is proven, and R6R2H-R3 regression remains PASS.
+ROLLBACK_STATUS_OR_PLAN=Source-only Executor round; revert only R6R2I-D2 project changes. Real Owner runtime directories remain untouched.
+OWNER_ONLY_ACTIONS=NONE during R6R2I-D2. Do not rerun build or authentication.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2.md; repair only retained-binary build path + validator.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -176,6 +176,8 @@ G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_GATE_BLOB=d648f5f44824349aff1824d
 G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3_RESULT=PASS
 G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3_SOURCE_COMMIT=0474fe6b68211ce602beaa55cb9dc9786084e694
 G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_GATE_BLOB=00004a88b1edf3a8ca1ba7d3b7135552819a1743
+G4B_BAIDU_OWNER_BUILD_DIAGNOSTIC_R6R2I_D1_RESULT=PASS
+G4B_BAIDU_RETAINED_BINARY_REPAIR_R6R2I_D2_GATE_BLOB=af0c0ae529c370d1f1a5e7b48256f440bc67ab23
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -258,7 +260,7 @@ Codex executes `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3` offline only. A
 
 ## OWNER_ACTION_REQUIRED
 
-Run R6R2I-D1 read-only diagnostic exactly once. Do not rerun build or authentication.
+NONE now. Do not rerun build or authentication until R6R2I-D2 Reviewer PASS.
 
 ## EVIDENCE_POINTERS
 
