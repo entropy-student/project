@@ -6,7 +6,8 @@ from PIL import Image, ImageDraw, ImageFont
 project = Path(__file__).resolve().parents[3]
 evidence = project / "docs/evidence/g3cr7v2r4-preview-gift"
 reference = Path("C:/Users/34707/AppData/Local/Temp/codex-clipboard-99766e2c-9a13-4fc1-af3d-26427d502667.png")
-shutil.copyfile(reference, evidence / "owner-reference.png")
+if reference.exists(): shutil.copyfile(reference, evidence / "owner-reference.png")
+assert (evidence / "owner-reference.png").exists(), "Committed Owner reference required"
 font = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", 28)
 small = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", 24)
 canvas = Image.new("RGB", (2200, 4500), "#f8f4f2")
