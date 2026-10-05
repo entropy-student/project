@@ -8821,3 +8821,26 @@ One Evidence marker was corrected for internal consistency: the temporary retain
 The historical generic Owner failure root cause remains unproven. D2 is accepted based on the repaired production path and behavioral fixtures, not on retrospective attribution.
 
 Next Gate: `G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3`, build-only one-shot. Authentication remains blocked until this build retry is reviewed.
+
+
+## Owner result — R6R2I-D3 retained build retry — 2026-10-05
+
+```text
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3
+UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+GO_VERSION=go1.27.1
+GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+BUILD_TARGET=windows/amd64
+ADAPTER_BINARY_SHA256=9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367
+OWNER_RUNTIME_BINARY=CREATED
+GO_SOURCE_TESTS=PASS
+NATIVE_FAILURE_EXIT_FIXTURE=PASS
+TEMP_BUILD_CLEANUP=PASS
+AUTH_CHECKPOINT_STARTED=NO
+PROVIDER_AUTH_ACTIONS=0
+R6R2I_D4_GATE_BLOB=8c94ec957f160ee0c09ad9b4d47c177145817251
+```
+
+The D2 retained-binary repair is proven on the real Owner host: the pinned adapter rebuilt successfully, the reviewed binary digest matched, the Owner runtime binary was created, the native negative fixture passed, and temporary build cleanup passed. Authentication was not run in D3.
+
+Next Gate: one-shot Owner-local secure authentication `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I_D4`. The retained binary must not be rebuilt or manually modified before this checkpoint.
