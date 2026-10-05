@@ -8932,3 +8932,42 @@ Reviewer independently checked the candidate delta. The adapter change is exactl
 The PowerShell/AST/static/Secret regression evidence is accepted. D5 cannot yet close PASS because its Gate explicitly requires actual Go source tests and a compiled native failure fixture; both were not run in the Executor environment.
 
 Next Gate `G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1` supplies only the missing compiled evidence using pinned public build inputs. No real authentication, Owner config access or retained runtime binary access is authorized.
+
+
+## Executor result — G4B Baidu console output compiled verification R6R2I-D5-R1 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
+GATE_BLOB=f761a6b4eb60966951f0986f62935c8176d36e8a
+PRE_GATE_HEAD=32c4d440b72229100ead7087861238e046742176
+R6R2I_D5_R1_SOURCE_IDENTITIES=PASS
+ADAPTER_SOURCE_BLOB=1bf6ec1f1ec98e84bd8db965802de2875104cce6
+ADAPTER_TEST_BLOB=a1d65216f061ee2d5ee32aefc046f01379d40ca2
+BUILD_HELPER_BLOB=61f9b283ee073cd00adac42676cc4e90c83fb1e1
+VALIDATOR_BLOB=b0949461460afd9ebe6ca491d45e9aa5d579f465
+BUILD_HELPER_RETAIN_BINARY_SWITCH=OMITTED
+UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+GO_VERSION=go1.27.1
+GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+BUILD_TARGET=windows/amd64
+ADAPTER_BINARY_SHA256=80e3f3f922a79a6e48944e33ad2a28afa11ff65bd55197eb2a33af15c57bca92
+GO_SOURCE_TESTS=PASS
+NATIVE_FAILURE_EXIT_FIXTURE=PASS
+R6R2I_D5_R1_CHILD_STATUS_OUTPUT_ABSENT=PASS
+TEMP_BUILD_CLEANUP=PASS
+R6R2I_D5_R1_FULL_VALIDATOR=PASS
+SECRET_SCAN=PASS
+BUILD_RUN_STARTED_AT_UTC=2026-10-05 11:12:01 UTC
+BUILD_RUN_FINISHED_AT_UTC=2026-10-05 11:26:53 UTC
+BUILD_RUN_ELAPSED=00:14:52
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+OWNER_RUNTIME_BINARY_ACCESSED=NO
+PROVIDER_REQUESTS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
+STOP_AT_REVIEWER=YES
+```
+
+The existing builder ran once with no parameters, so its retained-binary branch was not entered. It verified the pinned upstream commit/source blobs and official Go archive digest, passed Go tests, built the Windows/amd64 adapter, and ran its compiled invalid-argument process fixture. That fixture passed only when native exit was nonzero and captured stdout plus stderr contained no `BAIDU_COOKIE_AUTH` marker. The helper reported temporary build cleanup PASS. The full current PowerShell validator then exited 0 with `R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS`, `SECRET_SCAN=PASS`, and the Owner-config/runtime access markers unchanged. Public network use was limited to the authorized pinned source/toolchain/module build inputs; no Provider request occurred. No source files or real Owner artifacts were modified.

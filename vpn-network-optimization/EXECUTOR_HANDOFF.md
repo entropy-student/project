@@ -4,39 +4,43 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Owner Console Output Repair R6R2I-D5
+## Current execution status — G4-B Baidu Console Output Compiled Verification R6R2I-D5-R1
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5
+GATE_ID=G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=57f47df93a0a4ff9b76aa236a905b3f9388c1d5c
-GATE_BLOB=5ab5a28d3772b8efbb7a7ac37483f3c8b8585c91
-SOURCE_COMMIT=3cf6fdb7f972314b2bf37250b95a8ca7926b46a7
-R6R2I_D5_AUTH_LOGIC_FROZEN=PASS
-R6R2I_D5_HIDDEN_INPUT_PATH_PRESERVED=PASS
-R6R2I_D5_ADAPTER_STATUS_CONSOLE_LEAK_BLOCKED=PASS
-R6R2I_D5_OWNER_EIGHT_MARKER_CONTRACT_EXACT=PASS
-R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS
+PRE_GATE_HEAD=32c4d440b72229100ead7087861238e046742176
+GATE_BLOB=f761a6b4eb60966951f0986f62935c8176d36e8a
+R6R2I_D5_R1_SOURCE_IDENTITIES=PASS
+BUILD_HELPER_RETAIN_BINARY_SWITCH=OMITTED
+UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+GO_VERSION=go1.27.1
+GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+BUILD_TARGET=windows/amd64
+ADAPTER_BINARY_SHA256=80e3f3f922a79a6e48944e33ad2a28afa11ff65bd55197eb2a33af15c57bca92
+GO_SOURCE_TESTS=PASS
+NATIVE_FAILURE_EXIT_FIXTURE=PASS
+R6R2I_D5_R1_CHILD_STATUS_OUTPUT_ABSENT=PASS
+TEMP_BUILD_CLEANUP=PASS
+R6R2I_D5_R1_FULL_VALIDATOR=PASS
 POWERSHELL_AST_PARSE=PASS
-GO_SOURCE_TESTS=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
-NATIVE_FAILURE_BINARY_FIXTURE=NOT_RUN_GO_TOOLCHAIN_UNAVAILABLE
 SECRET_SCAN=PASS
-SECRET_VALUES_EMITTED=0
-SECRET_VALUES_COMMITTED=0
 REAL_AUTH_ACTIONS=0
 OWNER_CONFIG_READ=NO
 OWNER_CONFIG_WRITE=NO
 OWNER_RUNTIME_BINARY_ACCESSED=NO
 PROVIDER_REQUESTS=0
-NETWORK_REQUESTS=0
 REVIEWER_HANDOFF_MODIFIED=NO
-RESULT=RETURN_GO_SOURCE_TESTS_UNAVAILABLE
+BUILD_RUN_ELAPSED=00:14:52
+RESULT=PASS_CANDIDATE_G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
 STOP_AT_REVIEWER=YES
 ```
 
-The source repair removes the adapter's fixed status lines while retaining its hidden-input prompt and native exit behavior. The checkpoint and successful authenticated config/runtime were not executed, read, or modified. The full local PowerShell regression and Secret scan pass; Go tests and the binary-level synthetic fixture remain unrun because no local Go toolchain is available and the Gate forbids downloading one. Reviewer should decide whether the exact source-delta proof is sufficient or whether a Go-enabled offline environment is needed; no Owner action or authentication retry is requested.
+The pinned public build helper was run once without `-RetainBinary`; Go tests, Windows/amd64 compilation, and the compiled invalid-argument fixture all passed. The fixture required nonzero native exit and absence of every `BAIDU_COOKIE_AUTH` marker in captured child stdout/stderr. The helper reported temp cleanup PASS, and the full D5 validator passed afterward. Only Gate-authorized public build inputs used the network. No source edit, authentication action, Provider request, Owner config/runtime access, or retained binary operation occurred.
 
-The Reviewer Handoff's explicit `CURRENT_GATE` and relay assign D5, while its `NEXT_STEP` still mentions the superseded R3 task. No R3 work was performed; Reviewer reconciliation is requested.
+Wait for Reviewer; no Owner action or follow-on Gate is authorized here.
+
+## Historical execution status — G4-B Baidu Owner Console Output Repair R6R2I-D5
 
 ## Historical execution status — G4-B Retained Binary Creation Repair R6R2I-D2
 
