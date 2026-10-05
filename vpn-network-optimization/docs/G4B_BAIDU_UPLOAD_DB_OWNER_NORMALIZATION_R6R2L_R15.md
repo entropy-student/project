@@ -32,6 +32,13 @@ Upstream BaiduPCS-Go v4.0.2 proves the upload path creates `pcs_uploading.json` 
 
 The only currently proven ACL defect is therefore the Owner principal of the exact `pcs_uploading.json` object.
 
+## LOCKED SOURCE
+
+```text
+R15_SCRIPT=scripts/g4b-baidu-upload-db-owner-normalize-r15.ps1
+R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+```
+
 ## OBJECTIVE
 
 Normalize **only the Owner field** of the exact `pcs_uploading.json` file from Builtin Administrators to the current Owner SID while preserving its existing DACL/SACL representation as far as `Set-Acl` permits.
