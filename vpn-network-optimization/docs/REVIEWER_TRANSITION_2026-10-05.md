@@ -1,6 +1,6 @@
 # Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R13 chronology, current safety boundary and exact next unresolved question.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R14 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
@@ -40,9 +40,9 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
-GATE_ID=G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
-PREVIOUS_RESULT=PASS_R6R2L_R12_METADATA_OBSERVATION_ADMIN_OWNER_ONE_FILE
+STATE=OWNER_ACTION_REQUIRED_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
+GATE_ID=G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
+PREVIOUS_RESULT=RETURN_R6R2L_R13_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
 R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
@@ -324,40 +324,85 @@ Additional upstream v4.0.2 source reconciliation proved the config directory leg
 
 Therefore root + two-file shape is potentially normal and requires one more metadata-only role classification before any normalization is considered.
 
-### R13 — current config file-role Owner classification — READY TO EXECUTE
+### R13 — config file-role Owner classification — RETURN
+
+R13 completed within metadata-only scope:
+
+```text
+TOTAL_ITEM_COUNT=3
+ROOT_OWNER_ROLE=OWNER
+CONFIG_FILE_PRESENT=YES
+CONFIG_FILE_OWNER_ROLE=OWNER
+HISTORY_FILE_PRESENT=NO
+HISTORY_FILE_OWNER_ROLE=NOT_PRESENT
+UNEXPECTED_FILE_COUNT=1
+UNEXPECTED_DIRECTORY_COUNT=0
+REPARSE_POINT_COUNT=0
+R13_FILE_ROLE_STATE=UNEXPECTED_ENTRY_PRESENT
+CONFIG_CONTENT_READ=NO
+ACL_MUTATION=NO
+BAIDU_PROVIDER_ACTION=NO
+UID_INPUT=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Formal result:
+
+```text
+RETURN_R6R2L_R13_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
+```
+
+Interpretation:
+- `pcs_config.json` is present and Owner-owned;
+- `pcs_command_history.txt` is absent;
+- exactly one other direct-child file exists;
+- R12 already proved exactly one file in the subtree is Administrators-owned, so this unclassified direct-child file is the current Owner-mismatch file.
+
+Upstream v4.0.2 reconciliation then identified two additional known config-directory roles:
+- `pcs_uploading.json`, created by the upload path through `NewUploadingDatabase()`;
+- `captcha.png`, used by captcha handling.
+
+R9 executed a real upload, so `pcs_uploading.json` is the strongest candidate, but that remains unaccepted until R14 proves it from metadata.
+
+### R14 — current known config-role Owner classification — READY TO EXECUTE
 
 Current Gate:
 
-`docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md`
+`docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md`
 
 Prepared helper:
 
-`scripts/g4b-baidu-config-file-role-owner-r13.ps1`
+`scripts/g4b-baidu-known-config-role-owner-r14.ps1`
 
 Locked identities:
 
 ```text
-R13_GATE_BLOB=281d0a174365369d91fc761509a2eaf9723e0a50
-R13_SCRIPT_BLOB=f27148308fbe56517924c686fa99cbb0e28549a3
+R14_GATE_BLOB=4a12130337fc79366ce2dceea3fb7ae5f5fe759e
+R14_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
 ```
 
-R13 is local direct-child metadata-only. It internally compares only the two upstream-expected basenames and emits only sanitized presence/Owner-role/count classifications.
+R14 is local direct-child metadata-only. It classifies only the four upstream-known config-directory roles: config, command history, upload database and captcha.
 
 Desired narrow observation:
 
 ```text
 ROOT_OWNER_ROLE=OWNER
-CONFIG_FILE_PRESENT=YES
-CONFIG_FILE_OWNER_ROLE=ADMIN
-HISTORY_FILE_PRESENT=YES
-HISTORY_FILE_OWNER_ROLE=OWNER
-UNEXPECTED_FILE_COUNT=0
-UNEXPECTED_DIRECTORY_COUNT=0
+CONFIG_PRESENT=YES
+CONFIG_OWNER_ROLE=OWNER
+HISTORY_PRESENT=NO
+UPLOAD_DB_PRESENT=YES
+UPLOAD_DB_OWNER_ROLE=ADMIN
+CAPTCHA_PRESENT=NO
+UNKNOWN_FILE_COUNT=0
+UNKNOWN_DIRECTORY_COUNT=0
 REPARSE_POINT_COUNT=0
-R13_FILE_ROLE_STATE=EXPECTED_V4_0_2_SHAPE_CONFIG_ADMIN_HISTORY_OWNER
+R14_KNOWN_ROLE_STATE=EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
 ```
 
-R13 does not authorize ACL normalization, provider access or live retry.
+R14 does not authorize ACL normalization, provider access or live retry.
 
 ## 5. Current unresolved truth
 
@@ -381,9 +426,9 @@ Unknown / unresolved:
 
 ## 6. Current safety boundary
 
-R13 allows only local direct-child file-role/Owner metadata observation.
+R14 allows only local direct-child known-role/Owner metadata observation.
 
-R13 does **not** authorize:
+R14 does **not** authorize:
 - config file content read/hash/copy/print;
 - username/path/SID/ACE-detail output;
 - `Set-Acl`, `takeown`, `icacls` or ownership mutation;
@@ -396,15 +441,16 @@ R13 does **not** authorize:
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-Only after R13 is reviewed may Reviewer decide whether a separate narrow ACL-normalization Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
+Only after R14 is reviewed may Reviewer decide whether a separate narrow ACL-normalization/reconciliation Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R13 chronology.
-3. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — exact current Gate.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R14 chronology.
+3. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — exact current Gate.
+4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 Gate.
 4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
 5. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — completed R12 metadata inventory Gate.
 6. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 read-only Gate and failure boundary.
@@ -434,6 +480,6 @@ Do not repeat without new Reviewer authorization/evidence:
 
 ## 9. Repository durability
 
-This transition snapshot, R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
+This transition snapshot, R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
