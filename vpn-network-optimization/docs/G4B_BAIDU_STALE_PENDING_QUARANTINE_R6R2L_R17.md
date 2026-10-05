@@ -94,16 +94,27 @@ The authorization is valid only for the already-declared R17 maximum endpoint an
 
 ```text
 R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
-R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
-R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
+R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 R17_PREPARATION_EVIDENCE=docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md
-R17_PREPARATION_EVIDENCE_BLOB=34ab0d30c75853d04e38fa897a227d5d583d8816
+R17_PREPARATION_EVIDENCE_BLOB=51d29f3e819a516b3ab85d13e036700cab41ff8e
 ```
 
 The helper defaults to a non-mutating validation mode. The Run path additionally requires `-OwnerAuthorized`. Provider command scope is restricted to `who`, `ls` and `mv`; no permanent-delete command exists.
 
 Before the one-shot Run path, the Owner checkpoint must safe-sync canonical `main`, lock the Gate/helper/validator blobs, AST-parse both scripts, and require the offline validator to PASS.
+
+### PRE-EXECUTION REVIEWER REPAIR
+
+Fresh Reviewer reconciliation before Owner execution found and repaired two fail-closed gaps:
+
+- canonical Baidu UID parsing now requires **exactly one** canonical UID line;
+- quarantine-target absence now rejects a same-name directory as well as a same-name file.
+
+The Provider wrapper also validates exact argument shapes: `who` has zero arguments, `ls` is limited to the fixed recovery directory, and `mv` is limited to the derived source→quarantine pair or its exact rollback reversal.
+
+The offline validator now includes same-name quarantine-directory and project-prefix-directory negative fixtures. Owner authorization remains valid because these changes only narrow safety checks inside the already-authorized R17 maximum endpoint and do not expand consequences.
 
 ## REQUIRED PRE-MUTATION RECHECK
 
