@@ -11,6 +11,7 @@ $script:result = 'FAIL_CLOSED'
 $script:failureCode = 'CHECKPOINT_FAILED'
 $script:childExitCode = -1
 $script:configDisposition = 'NOT_REQUIRED'
+$script:configState = 'NOT_REACHED'
 $script:adapterSha256 = '9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367'
 $script:configPath = $null
 $script:ownerSid = $null
@@ -266,6 +267,7 @@ try {
     }
     $script:configFileExistedBefore = Test-Path -LiteralPath (Join-Path $script:configPath 'pcs_config.json')
     Assert-R2 (-not $script:configFileExistedBefore) 'BAIDU_CONFIG_FILE_PREEXISTS'
+    $script:configState = if ($script:configRootExistedBefore) { 'PREEXISTING_EMPTY' } else { 'ABSENT_PREAUTH' }
     $script:configStateCaptured = $true
     $script:configMutationEligible = $true
 
@@ -328,6 +330,7 @@ try {
 Write-Output ('BAIDU_COOKIE_AUTH_CHECKPOINT=' + $script:result)
 Write-Output ('BAIDU_COOKIE_AUTH_FAILURE_CODE=' + $script:failureCode)
 Write-Output ('BAIDU_COOKIE_AUTH_NATIVE_EXIT=' + $script:childExitCode)
+Write-Output ('BAIDU_COOKIE_AUTH_CONFIG_STATE=' + $script:configState)
 Write-Output ('BAIDU_COOKIE_AUTH_CONFIG_DISPOSITION=' + $script:configDisposition)
 Write-Output 'BAIDU_COOKIE_AUTH_CONTENT_READ=NO'
 Write-Output 'BAIDU_COOKIE_AUTH_WHO=NOT_RUN'

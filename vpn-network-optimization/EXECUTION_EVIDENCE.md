@@ -8640,3 +8640,47 @@ Accepted/frozen from R6R2H-R2:
 Blocking defect: the Gate's minimum Owner return contract requires `BAIDU_COOKIE_AUTH_CONFIG_STATE=...`, but the candidate checkpoint emits the other bounded fields without this state marker. The validator also failed to assert completeness of the eight-field output contract. Without the pre-run state marker, a later Reviewer cannot distinguish accepted config provenance from final disposition using only the bounded Owner result.
 
 Next Gate: `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3`. It freezes the accepted R6R2H-R2 core and repairs only the missing config-state classification/output plus validator coverage.
+
+
+## Executor Evidence — G4-B Owner Output Contract Repair R6R2H-R3 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
+PRE_GATE_HEAD=2915d834bc1362e99a60ba989466bdb4195b99f5
+PRECOMMIT_MAIN_FETCH=ed8be9ab68e3d0403397117e47332e1f6d115ec9
+PRECOMMIT_MAIN_ADVANCE_SCOPE=ONLY mini-craft-night-kit paths; no vpn-network-optimization paths
+PRECOMMIT_MAIN_FAST_FORWARD=PASS
+R2_ACCEPTED_SOURCE_COMMIT=d441ed0bc31285311345ed3b3e847258d7de05a2
+SOURCE_PROVENANCE=PASS
+
+R6R2H_R3_R2_CORE_FROZEN=PASS
+R6R2H_R3_CONFIG_STATE_OUTPUT_PRESENT=PASS
+R6R2H_R3_CONFIG_STATE_ENUM_BOUNDED=PASS
+R6R2H_R3_ABSENT_STATE_ASSIGNED_AFTER_PRECONDITION=PASS
+R6R2H_R3_PREEXISTING_EMPTY_ASSIGNED_AFTER_STRICT_CHECK=PASS
+R6R2H_R3_STATE_NOT_OVERWRITTEN_POSTAUTH=PASS
+R6R2H_R3_OUTPUT_CONTRACT_COMPLETE=PASS
+R6R2H_R3_CONFIG_STATE_PRODUCTION_EXPRESSION_FIXTURES=PASS
+R6R2H_R3_FULL_R6R2H_R2_REGRESSION=PASS
+R6R1_ACL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_COOKIE_VALUES_USED=0
+REAL_BAIDU_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+NETWORK_REQUESTS_TO_PROVIDER=0
+OWNER_CHECKPOINT_EXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
+ROLLBACK=Revert only the R6R2H-R3 checkpoint, validator and Executor-record changes to PRE_GATE_HEAD; no Owner/provider/runtime state changed.
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+STOP_AT_REVIEWER=YES
+```
+
+The checkpoint initializes `configState` to `NOT_REACHED`, then performs a single bounded assignment only after the common exact-config-file absence precondition succeeds. The existing-root branch has already proven real directory/non-reparse, empty enumeration, and strict R6R1 config safety; the absent-root branch has already proven the root absent. The final output contains each of the eight required marker classes exactly once, including one `BAIDU_COOKIE_AUTH_CONFIG_STATE` line. The state assignment is not repeated in post-auth, failure handling or reconciliation; final outcome remains separately represented by `BAIDU_COOKIE_AUTH_CONFIG_DISPOSITION`.
+
+The validator compares the Owner checkpoint against accepted R2 source commit `d441ed0bc31285311345ed3b3e847258d7de05a2` after removing exactly the three R3-only lines (initial state, accepted-preauth state expression and final state output), proving the remainder is byte-for-byte source-equivalent after newline normalization. It checks enum and assignment AST, ordering against preauth strict/empty/file preconditions, exactly one output for each required marker, and evaluates the production state expression in absent/existing synthetic boolean fixtures. The full existing R6R2H-R2/R6R1 offline regression completed, including non-secret production filesystem reconciliation fixtures. No Owner checkpoint was run and no real Owner config or authentication material was accessed.
+
+Changed-path scope: `scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1`, `scripts/validate-g4b-baidu-cookie-auth-adapter.ps1`, this Evidence append and the current Executor Handoff block only. Adapter source/tests, build helper, current Gate, Reviewer Handoff, accepted historical sources and unrelated files were unchanged. The pre-existing untracked `results/` directory was preserved and not staged.

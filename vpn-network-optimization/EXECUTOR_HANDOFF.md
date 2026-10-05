@@ -4,65 +4,43 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Secure Auth Combined Repair R6R2H-R2
+## Current execution status — G4-B Owner Output Contract Repair R6R2H-R3
 
 ```text
-GATE_ID=G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
-EXECUTOR_ROLE=OFFLINE_SOURCE_REPAIR_AND_VALIDATION
-PREVIOUS_RESULT=RETURN_R6R2H_REREVIEW_ADAPTER_PARSE_AND_PREFLIGHT_ORDER_GAP
+GATE_ID=G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
+EXECUTOR_ROLE=OFFLINE_OUTPUT_CONTRACT_REPAIR_AND_VALIDATION
+PREVIOUS_RESULT=RETURN_R6R2H_R2_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=07bdc6cf47dc6499de44dfa8b262ad1a6b7899d3
-GATE_BLOB=d648f5f44824349aff1824dd4fb5d405a01a5c4d
-SOURCE_PROVENANCE=PASS
-UPSTREAM_REPO=qjfoidnh/BaiduPCS-Go
-UPSTREAM_TAG=v4.0.2
-UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
-UPSTREAM_REVIEWED_SOURCE_BLOBS=5_OF_5_MATCH_FROZEN
-ADAPTER_EXACT_FIELD_PARSE=PASS
-UPSTREAM_SECOND_PARSE_BYPASSED=PASS
-AMBIGUITY_FIXTURE=PASS
-BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
-OWNER_CHECKPOINT_PREFLIGHT_BEFORE_CONFIG_WRITE=PASS
-POSTAUTH_SHAPE_NORMALIZE_THEN_R6R1=PASS
-FAILURE_RECONCILIATION_FIXTURES=PASS
-GO_VERSION=go1.27.1
-GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
-BUILD_TARGET=windows/amd64
-ADAPTER_BINARY_SHA256=9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367
-GO_SOURCE_TESTS=PASS
-NATIVE_FAILURE_EXIT_FIXTURE=PASS
+PRE_GATE_HEAD=2915d834bc1362e99a60ba989466bdb4195b99f5
+GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
+R2_ACCEPTED_SOURCE_COMMIT=d441ed0bc31285311345ed3b3e847258d7de05a2
+R2_CORE_FROZEN=PASS
+CONFIG_STATE_ENUM=NOT_REACHED|ABSENT_PREAUTH|PREEXISTING_EMPTY
+CONFIG_STATE_ASSIGNMENT=AFTER_ACCEPTED_PREAUTH_PROVENANCE
+CONFIG_STATE_OUTPUT_COUNT=1
+OUTPUT_CONTRACT_EIGHT_MARKERS=PASS
+R6R2H_R2_FULL_REGRESSION=PASS
+R6R1_ACL_REGRESSION=PASS
 POWERSHELL_AST_PARSE=PASS
-GO_SOURCE_STATIC_VALIDATION=PASS
 SECRET_SCAN=PASS
-R6R1_ACL_BOUNDARY_REUSED=PASS
-R6R1_ACL_HELPER_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
-ACL_NORMALIZATION_FIXTURE=SYNTHETIC_CONSTRUCTOR_PRIVILEGE_LIMIT
-FILESYSTEM_RECONCILIATION_FIXTURES=PRODUCTION_FUNCTIONS_PASS
-OWNER_CHECKPOINT_SOURCE_UPDATED=YES_NOT_EXECUTED
-OWNER_RUNTIME_BINARY_RETAINED=NO
-TEMP_BUILD_WORKSPACE_CLEANED=YES
-UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
-OWNER_HELPERS_EXECUTED=NO
+OWNER_CHECKPOINT_EXECUTED=NO
 REAL_COOKIE_VALUES_USED=0
-REAL_BAIDU_ACTIONS=0
 OWNER_CONFIG_READ=NO
 OWNER_CONFIG_WRITE=NO
-SECRET_OR_DPAPI_ACCESSED=NO
-VPS_OR_SSH_ACTIONS=0
-LIVE_G4B_ACTIONS=0
+REAL_BAIDU_AUTH_ACTIONS=0
 NETWORK_REQUESTS_TO_PROVIDER=0
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 REVIEWER_HANDOFF_MODIFIED=NO
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
+RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2H-R2
+### Executor task — current R6R2H-R3
 
-Fresh `origin/main` source was repaired only within the R6R2 allowlist. The adapter now parses the exact semicolon-delimited `BDUSS` field once and passes that parsed value as the explicit first `SetupUserByBDUSS` argument, with a synthetic earlier-substring ambiguity regression. The Owner checkpoint completes PowerShell 7.6.6 / Administrator / High-integrity, Owner SID, canonical path, external adapter path, Owner-only ACL and exact binary-digest preflight before any config-root classification or write. After native success it proves exact metadata shape and bounded size, validates pre-normalization Owner/ACE provenance, normalizes file and root, then applies strict R6R1 checks. Every failure after state capture runs provenance-aware, exact, non-recursive reconciliation; unknown states are preserved.
+The sole Owner-checkpoint behavior addition is a bounded pre-run config provenance state. It remains `NOT_REACHED` before accepted classification, becomes `ABSENT_PREAUTH` only after the absent-root/exact-file precondition, or `PREEXISTING_EMPTY` only after the existing root is proven real, non-reparse, empty and accepted by the strict config predicate. The final checkpoint emits the config-state marker exactly once; post-auth success and reconciliation do not assign it. Validator normalization against the accepted R2 source commit proves all other checkpoint source is unchanged.
 
-The frozen public build helper passed Go tests and the `windows/amd64` build; the updated binary digest is pinned in the checkpoint. PowerShell AST, static checks, R6R1 ACL regression, and production reconciliation functions over non-secret temporary filesystem fixtures passed. NTFS ACL normalization writes were blocked in this validation process by missing `SeSecurityPrivilege`; the accepted synthetic ACL constructor check passed, while filesystem provenance/deletion branches were exercised against actual temporary directories/files. The helper was not run against Owner config. No Cookie, provider auth/`who`, DPAPI, VPS/SSH, or live G4-B action occurred. Do not execute the Owner checkpoint until Reviewer accepts this candidate.
+The complete offline R6R2H-R2 regression plus R3 output/state checks passed, including the production state expression fixtures, eight-marker AST count, PowerShell AST and Secret scan. No Owner checkpoint, real Cookie/auth, Owner config read/write, provider request, DPAPI, VPS/SSH, or live G4-B action occurred. The existing untracked `results/` directory was preserved and excluded. This is a candidate only; wait for Reviewer before any Owner action.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

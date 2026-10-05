@@ -107,6 +107,23 @@ try {
     $buildBlob = (& git rev-parse 'HEAD:vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1').Trim()
     Assert-Validation ($LASTEXITCODE -eq 0 -and $buildBlob -ceq $expectedBuildBlob -and $build.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $build.Contains('go1.27.1')) 'R6R2H_R2_PINNED_BUILD_CHAIN_FROZEN'
 
+    $acceptedR2OwnerSpec = 'd441ed0bc31285311345ed3b3e847258d7de05a2:vpn-network-optimization/scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1'
+    $acceptedR2Owner = (& git show $acceptedR2OwnerSpec | Out-String)
+    Assert-Validation ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace($acceptedR2Owner)) 'R6R2H_R3_ACCEPTED_R2_SOURCE_AVAILABLE'
+    $normalizedOwner = $ownerText.Replace("`r`n", "`n")
+    $acceptedR2Owner = $acceptedR2Owner.Replace("`r`n", "`n")
+    $r3OnlyLines = @(
+        ('$script:configState = ''NOT_REACHED''' + "`n"),
+        ('    $script:configState = if ($script:configRootExistedBefore) { ''PREEXISTING_EMPTY'' } else { ''ABSENT_PREAUTH'' }' + "`n"),
+        ('Write-Output (''BAIDU_COOKIE_AUTH_CONFIG_STATE='' + $script:configState)' + "`n")
+    )
+    $r3SourceDeltaExact = $true
+    foreach ($line in $r3OnlyLines) {
+        if ($normalizedOwner.IndexOf($line, [StringComparison]::Ordinal) -lt 0 -or $normalizedOwner.IndexOf($line, [StringComparison]::Ordinal) -ne $normalizedOwner.LastIndexOf($line, [StringComparison]::Ordinal)) { $r3SourceDeltaExact = $false; break }
+        $normalizedOwner = $normalizedOwner.Replace($line, '')
+    }
+    Assert-Validation ($r3SourceDeltaExact -and $normalizedOwner -ceq $acceptedR2Owner) 'R6R2H_R3_R2_CORE_FROZEN'
+
     Assert-Validation ($source.Contains('func parseExactBDUSS(cookie []byte) (string, bool)') -and $source.Contains('SetupUserByBDUSS(bduss, "", "", cookie)') -and -not $source.Contains('SetupUserByBDUSS("", "", "", cookie)')) 'R6R2H_R2_EXACT_FIELD_VALUE_PARSED'
     Assert-Validation ($source.Contains('parts := bytes.Split(cookie, []byte(";"))') -and $source.Contains('i == len(parts)-1') -and $source.Contains('count != 1')) 'R6R2H_R2_UPSTREAM_SECOND_PARSE_BYPASSED'
     Assert-Validation ($testSource.Contains('OTHER=prefixBDUSS=fixture-wrong; BDUSS=fixture-right;') -and $testSource.Contains('parsed != "fixture-right"')) 'R6R2H_R2_AMBIGUOUS_SUBSTRING_FIXTURE'
@@ -128,6 +145,51 @@ try {
     Assert-Validation ($runtimeAt -ge 0 -and $sidAt -ge 0 -and $configPathAt -gt $sidAt -and $adapterAt -gt $configPathAt -and $configClassifyAt -gt $adapterAt -and $configCreateAt -gt $adapterAt) 'R6R2H_R2_RUNTIME_PREFLIGHT_BEFORE_CONFIG_WRITE'
     Assert-Validation ($ownerText.Contains('Assert-R2AdapterBinaryPreflight') -and $ownerText.Contains('Assert-OwnerOnlyAcl -Path $fullPath') -and $ownerText.Contains('Get-FileHash -LiteralPath $fullPath') -and $ownerText.Contains("`$script:adapterSha256 = '9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367'")) 'R6R2H_R2_BINARY_IDENTITY_BEFORE_CONFIG_WRITE'
     Assert-Validation ($ownerText.Contains('$entries.Count -eq 0') -and $ownerText.Contains('Assert-SafeBaiduConfigDirectory') -and $ownerText.Contains('$script:configFileExistedBefore')) 'R6R2H_R2_PREAUTH_EMPTY_ONLY'
+
+    $stateAssignments = @($ownerAst.FindAll({ param($node) $node -is [Management.Automation.Language.AssignmentStatementAst] -and $node.Left.Extent.Text -ceq '$script:configState' }, $true))
+    $stateExpression = "if (`$script:configRootExistedBefore) { 'PREEXISTING_EMPTY' } else { 'ABSENT_PREAUTH' }"
+    Assert-Validation ($stateAssignments.Count -eq 2 -and $stateAssignments[0].Right.Extent.Text -ceq "'NOT_REACHED'" -and $stateAssignments[1].Right.Extent.Text -ceq $stateExpression) 'R6R2H_R3_CONFIG_STATE_ENUM_BOUNDED'
+    $strictPreauthAt = $flow.IndexOf('Assert-SafeBaiduConfigDirectory -ConfigDirectory $script:configPath', [StringComparison]::Ordinal)
+    $commonConfigAbsenceAt = $flow.IndexOf('Assert-R2 (-not $script:configFileExistedBefore) ''BAIDU_CONFIG_FILE_PREEXISTS''', [StringComparison]::Ordinal)
+    $stateAssignmentAt = $flow.IndexOf('$script:configState = if ($script:configRootExistedBefore)', [StringComparison]::Ordinal)
+    Assert-Validation ($stateAssignmentAt -gt $commonConfigAbsenceAt -and $flow.IndexOf('$script:configRootExistedBefore = Test-Path', [StringComparison]::Ordinal) -ge 0) 'R6R2H_R3_ABSENT_STATE_ASSIGNED_AFTER_PRECONDITION'
+    Assert-Validation ($strictPreauthAt -ge 0 -and $strictPreauthAt -lt $stateAssignmentAt -and $flow.IndexOf('$entries.Count -eq 0', [StringComparison]::Ordinal) -lt $stateAssignmentAt) 'R6R2H_R3_PREEXISTING_EMPTY_ASSIGNED_AFTER_STRICT_CHECK'
+    $processStartAt = $flow.IndexOf('$process = [Diagnostics.Process]::new()', [StringComparison]::Ordinal)
+    $postAuthCallAt = $flow.IndexOf('Complete-R2PostAuthNormalization -ConfigPath', [StringComparison]::Ordinal)
+    Assert-Validation ($stateAssignments[1].Extent.StartOffset -lt ($flowStart + $processStartAt) -and $stateAssignments[1].Extent.StartOffset -lt ($flowStart + $postAuthCallAt)) 'R6R2H_R3_STATE_NOT_OVERWRITTEN_POSTAUTH'
+
+    $writeOutputNodes = @($ownerAst.FindAll({ param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -ceq 'Write-Output' }, $true))
+    $requiredOutputMarkers = @(
+        'BAIDU_COOKIE_AUTH_CHECKPOINT=',
+        'BAIDU_COOKIE_AUTH_FAILURE_CODE=',
+        'BAIDU_COOKIE_AUTH_NATIVE_EXIT=',
+        'BAIDU_COOKIE_AUTH_CONFIG_STATE=',
+        'BAIDU_COOKIE_AUTH_CONFIG_DISPOSITION=',
+        'BAIDU_COOKIE_AUTH_CONTENT_READ=NO',
+        'BAIDU_COOKIE_AUTH_WHO=NOT_RUN',
+        'BAIDU_COOKIE_AUTH_UID_EMITTED=NO'
+    )
+    $outputContractComplete = $true
+    foreach ($marker in $requiredOutputMarkers) {
+        if (@($writeOutputNodes | Where-Object { $_.Extent.Text.Contains($marker) }).Count -ne 1) { $outputContractComplete = $false }
+    }
+    Assert-Validation $outputContractComplete 'R6R2H_R3_OUTPUT_CONTRACT_COMPLETE'
+    Assert-Validation (@($writeOutputNodes | Where-Object { $_.Extent.Text.Contains('BAIDU_COOKIE_AUTH_CONFIG_STATE=') }).Count -eq 1) 'R6R2H_R3_CONFIG_STATE_OUTPUT_PRESENT'
+
+    $probeVariable = Get-Variable -Name configRootExistedBefore -Scope Script -ErrorAction SilentlyContinue
+    $probeVariableExisted = $null -ne $probeVariable
+    $probeVariableValue = if ($probeVariableExisted) { $probeVariable.Value } else { $null }
+    try {
+        $stateFixtureBlock = [scriptblock]::Create($stateAssignments[1].Right.Extent.Text)
+        $script:configRootExistedBefore = $false
+        $absentStateFixture = & $stateFixtureBlock
+        $script:configRootExistedBefore = $true
+        $existingStateFixture = & $stateFixtureBlock
+        Assert-Validation ($absentStateFixture -ceq 'ABSENT_PREAUTH' -and $existingStateFixture -ceq 'PREEXISTING_EMPTY') 'R6R2H_R3_CONFIG_STATE_PRODUCTION_EXPRESSION_FIXTURES'
+    } finally {
+        if ($probeVariableExisted) { Set-Variable -Name configRootExistedBefore -Scope Script -Value $probeVariableValue }
+        else { Remove-Variable -Name configRootExistedBefore -Scope Script -ErrorAction SilentlyContinue }
+    }
 
     $postAuthNode = Get-FunctionNode -Ast $ownerAst -Name 'Complete-R2PostAuthNormalization'
     $postAuthText = $postAuthNode.Extent.Text
@@ -281,6 +343,15 @@ try {
     Assert-Validation $secretScan 'SECRET_SCAN'
     Write-Output 'GO_SOURCE_STATIC_VALIDATION=PASS'
     Write-Output 'R6R2H_R2_FULL_R6R2H_REGRESSION=PASS'
+    Write-Output 'R6R2H_R3_ABSENT_STATE_ASSIGNED_AFTER_PRECONDITION=PASS'
+    Write-Output 'R6R2H_R3_PREEXISTING_EMPTY_ASSIGNED_AFTER_STRICT_CHECK=PASS'
+    Write-Output 'R6R2H_R3_STATE_NOT_OVERWRITTEN_POSTAUTH=PASS'
+    Write-Output 'R6R2H_R3_CONFIG_STATE_ENUM_BOUNDED=PASS'
+    Write-Output 'R6R2H_R3_CONFIG_STATE_OUTPUT_PRESENT=PASS'
+    Write-Output 'R6R2H_R3_OUTPUT_CONTRACT_COMPLETE=PASS'
+    Write-Output 'R6R2H_R3_CONFIG_STATE_PRODUCTION_EXPRESSION_FIXTURES=PASS'
+    Write-Output 'R6R2H_R3_R2_CORE_FROZEN=PASS'
+    Write-Output 'R6R2H_R3_FULL_R6R2H_R2_REGRESSION=PASS'
     Write-Output 'REAL_COOKIE_VALUES_USED=0'
     Write-Output 'REAL_BAIDU_AUTH_ACTIONS=0'
     Write-Output 'OWNER_CONFIG_READ=NO'
