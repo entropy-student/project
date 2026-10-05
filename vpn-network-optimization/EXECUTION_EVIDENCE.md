@@ -8438,3 +8438,30 @@ The first full build reached Go tests/build but returned a false cleanup-scope e
 Public network access was limited to GitHub `main` fetch, pinned public upstream source, the official Go toolchain archive, and public Go modules with `go.sum` checksums. No Baidu endpoint was contacted. The pre-existing untracked `results/` directory was preserved and excluded from staging. Only the R6R2H scripts plus this Evidence and the current Executor Handoff are in scope; the Reviewer-owned handoff is unchanged.
 
 `EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H`. This is a candidate only; no real Cookie auth or subsequent `who` was executed. Stop for Reviewer inspection.
+
+
+## Reviewer reconciliation — G4-B Secure Cookie Auth Adapter R6R2H — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+REVIEWER_RESULT=RETURN_R6R2H_OWNER_CHECKPOINT_POSTAUTH_ACL_AND_FAILURE_RECONCILIATION_GAP
+SOURCE_COMMIT=8265ade045c8df3aaaa449280b75dc79afc4cf02
+ADAPTER_SOURCE_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
+ADAPTER_TEST_BLOB=b02bf9bbfff5e1ad99523b568d202d1e63d5c9ae
+BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
+OWNER_CHECKPOINT_CANDIDATE_BLOB=ab43037ef793d8a3c9cce69e14c7e64b33239957
+VALIDATOR_CANDIDATE_BLOB=07d1f24f2cc934852b456ac2e293c8d74a88d71d
+R6R2H_R1_GATE_BLOB=6f448f7c16a322c240f756121ddbbc0ca97dc516
+REAL_COOKIE_VALUES_USED=0
+REAL_BAIDU_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+```
+
+Reviewer accepts and freezes the Go adapter core and build provenance. It uses live-console no-echo input, forbids argument values, uses a cleared/allowlisted environment, does not use shell history, suppresses setup/provider output, validates Cookie shape, calls the direct pinned `SetupUserByBDUSS` path, saves only after setup success, and returns native nonzero on failure. No real credentials or Owner config were touched.
+
+Blocking defect 1: the Owner checkpoint calls strict `Assert-SafeBaiduConfigDirectory` immediately after adapter exit and before normalizing the newly created `pcs_config.json`. R6R2D already proved an elevated Windows child process can create the file with Builtin Administrators as Owner. Therefore a valid Cookie setup can be falsely rejected on the same Owner mismatch that R6R2E specifically repaired. The accepted order is exact metadata/shape proof -> exact file/root Owner/ACL normalization -> strict R6R1 validation.
+
+Blocking defect 2: the Owner checkpoint creates or accepts an empty config root before adapter execution but has no provenance-aware reconciliation on adapter nonzero exit or later post-auth validation failure. Although `Save()` is reached only after setup success, upstream `lazyOpenConfigFile` can create `pcs_config.json` before a later truncate/seek/write error. A nonzero adapter or failed post-auth check can therefore leave run-created partial state. Even an empty root created by this run is currently left behind. Governance requires bounded partial-state reconciliation before retry.
+
+Next Gate: `G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1`. Adapter source/test/build helper are frozen; only Owner checkpoint/validator are reopened.
