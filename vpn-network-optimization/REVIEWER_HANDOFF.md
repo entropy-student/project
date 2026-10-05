@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_RETAINED_BUILD_R6R2I_D3
+STATE=OWNER_ACTION_REQUIRED_BAIDU_SECURE_AUTH_R6R2I_D4
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2
+PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_RETAINED_BUILD_RETRY_R6R2I_D3
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Exactly one Owner-local retained build retry using the D2 helper; stop before authentication.
+MAX_ENDPOINT_THIS_ROUND=Exactly one Owner-local secure-auth checkpoint using the already-retained reviewed adapter; no rebuild, no retry, no who/provider file mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Bounded build provenance/result markers only, including exact binary digest and temp cleanup; no local path, config content, provider output, or authentication material.
-ACCEPTANCE_CRITERIA=Pinned source/toolchain/build target proven; adapter digest equals reviewed value; retained runtime binary created; Go/native fixture PASS; temp cleanup PASS; authentication not started.
-ROLLBACK_STATUS_OR_PLAN=On build failure, D2 exact run-created-binary cleanup must reconcile state. No manual retry or repair. On success, retained binary remains for later reviewed auth Gate.
-OWNER_ONLY_ACTIONS=Run R6R2I-D3 build-only checkpoint exactly once; do not run authentication.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2I-D3 is Owner-local build-only.
+REQUIRED_EVIDENCE=Exactly eight bounded Owner authentication checkpoint markers; no provider raw output, account identity, UID, local path, config content, or authentication material.
+ACCEPTANCE_CRITERIA=Retained adapter preflight remains valid; checkpoint returns SETUP_SAVED/NONE/native 0, accepted pre-auth config state, authenticated-config preserved, content-read NO, who NOT_RUN, UID emitted NO.
+ROLLBACK_STATUS_OR_PLAN=Checkpoint performs provenance-aware config rollback on non-success. No retry or manual config/runtime repair is authorized before Reviewer reconciliation.
+OWNER_ONLY_ACTIONS=Run R6R2I-D4 exactly once using the existing retained adapter; enter authentication material only in the hidden local prompt; return only the eight bounded markers.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2I-D4 is Owner-local one-shot authentication.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -181,6 +181,8 @@ G4B_BAIDU_RETAINED_BINARY_REPAIR_R6R2I_D2_GATE_BLOB=af0c0ae529c370d1f1a5e7b48256
 G4B_BAIDU_RETAINED_BINARY_REPAIR_R6R2I_D2_RESULT=PASS
 G4B_BAIDU_RETAINED_BINARY_REPAIR_R6R2I_D2_SOURCE_COMMIT=02ab19b52ff993a4a66827ad283614f38295f292
 G4B_BAIDU_OWNER_RETAINED_BUILD_R6R2I_D3_GATE_BLOB=8ad825a4cbb75b21bc78bcf92f5cbbb6f9b406c7
+G4B_BAIDU_OWNER_RETAINED_BUILD_R6R2I_D3_RESULT=PASS
+G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_D4_GATE_BLOB=8c94ec957f160ee0c09ad9b4d47c177145817251
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -263,7 +265,7 @@ Codex executes `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3` offline only. A
 
 ## OWNER_ACTION_REQUIRED
 
-Run R6R2I-D3 build-only once. Do not run authentication regardless of build outcome.
+Run R6R2I-D4 exactly once. Return only the eight bounded checkpoint markers; do not retry.
 
 ## EVIDENCE_POINTERS
 
