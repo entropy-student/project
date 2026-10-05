@@ -104,7 +104,7 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_AUTHORIZATION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+STATE=OWNER_ACTION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_SECURITY_METADATA_WRITE
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
 PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
@@ -117,7 +117,7 @@ PREFLIGHT=R14 formally PASS: root=OWNER, pcs_config.json=OWNER, pcs_uploading.js
 REQUIRED_EVIDENCE=R15 Gate blob ba3a574c47d05a31c18ef59a500f13e616ea6a95; R15 script blob 930cae384a3bc1df27c3f93d52d5d8580b15a32e; explicit Owner authorization before Run mode; precheck PASS; Owner-only rollback journal READY; exact target Owner change ADMIN→OWNER; strict R6R1 readback PASS; exact shape readback PASS; rollback journal retained; all no-action markers.
 ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if the exact target Owner becomes OWNER, root/config/upload-db all pass strict R6R1 metadata checks, exact two-file shape remains, rollback journal is retained, and no unrelated action occurs. Reviewer must formally accept before provider readback resumes.
 ROLLBACK_STATUS_OR_PLAN=Before write, persist exact target ACL SDDL in a verified Owner-only local rollback journal. Any post-write failure triggers exact ACL restore and ADMIN-owner readback. Rollback failure stops hard.
-OWNER_ONLY_ACTIONS=Explicitly authorize R15 before any Run mode. Until then, do not execute the mutation path.
+OWNER_ONLY_ACTIONS=Run exactly one R15 bounded Owner-normalization attempt after source/state checks and parser preflight, then stop at Reviewer.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
 EXECUTOR_TO_REVIEWER_RELAY=After explicit authorization only, return sanitized R15 markers and stop.
 ```
@@ -267,8 +267,8 @@ G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_SCRIPT_BLOB=e2a5f2e9f64e587
 G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_RESULT=PASS_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
 G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
 G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
-OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=REQUIRED
-R15_EXECUTION_AUTHORIZED=NO
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
+R15_EXECUTION_AUTHORIZED=YES
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
