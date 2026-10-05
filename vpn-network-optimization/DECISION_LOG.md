@@ -445,3 +445,12 @@ No real Baidu/provider/config/network/VPS/Secret action occurred. Next Gate is `
 Owner does not know the expected Baidu numeric UID. R6R2 is therefore paused before execution. No identity value is guessed and no credential-bearing config content is read.
 
 Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A`, an offline-only implementation/validation round for a minimal local UID discovery helper using the already accepted pinned archive, config ACL, and read-only `who` boundaries.
+
+
+## 2026-10-05 — R6R2A UID discovery helper formally accepted
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A`.
+
+The helper is bounded to the accepted R6R1 trust/config/ACL/read-only who path. It does not accept credentials or login, suppresses provider raw output/username, parses a single numeric UID, and only displays that UID locally after successful cleanup. Offline fixtures, AST, Secret scan, and zero-live-action evidence are accepted.
+
+Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B`. The numeric UID remains Owner-local and must not be pasted into chat/GitHub.
