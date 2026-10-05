@@ -10327,3 +10327,19 @@ Reviewer static inspection:
 - no config content read/hash/copy/print, no provider/UID/Secret/SSH/VPS/network/live-G4B/G4-C action exists.
 
 R15 is a consequential local security-metadata write. This preparation is not authorization to run it.
+
+
+## Owner authorization — R15 upload-db Owner normalization — 2026-10-06
+
+Owner explicitly authorized execution of the prepared R15 consequential local security-metadata write in chat.
+
+```text
+GATE_ID=G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
+R15_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_SCOPE=Exact pcs_uploading.json Owner normalization only
+R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
+R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+```
+
+Authorization does not expand scope beyond the prepared Gate. No provider access, UID input, Secret/DPAPI, SSH/VPS, network, live G4-B or G4-C action is authorized.
