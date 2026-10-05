@@ -73,14 +73,41 @@ function Assert-OwnerOnlyAcl {
 }
 
 function Assert-BaiduConfigAclMetadata {
-    param([string]$ActualOwnerSid, [Security.Principal.SecurityIdentifier]$ExpectedOwnerSid, [object[]]$Rules)
+    param([string]$ActualOwnerSid, [Security.Principal.SecurityIdentifier]$ExpectedOwnerSid, [object[]]$Rules, [bool]$IsDirectory)
     Assert-R6 ($ActualOwnerSid -ceq $ExpectedOwnerSid.Value) 'BAIDU_AUTH_CONFIG_OWNER_MISMATCH'
-    $unsafeSids = @('S-1-1-0', 'S-1-5-11', 'S-1-5-32-545')
+    $allowedSids = @($ExpectedOwnerSid.Value, 'S-1-5-18', 'S-1-5-32-544')
+    $ownerDirectRights = [long]0
+    $ownerInheritedRights = [long]0
     foreach ($rule in $Rules) {
-        if ($rule.AccessControlType -eq [Security.AccessControl.AccessControlType]::Allow) {
-            Assert-R6 ($rule.IdentityReference.Value -notin $unsafeSids) 'BAIDU_AUTH_CONFIG_BROAD_ACCESS'
+        Assert-R6 ($null -ne $rule) 'BAIDU_AUTH_CONFIG_ACE_SHAPE_INVALID'
+        $identityProperty = $rule.PSObject.Properties['IdentityReference']
+        $typeProperty = $rule.PSObject.Properties['AccessControlType']
+        $inheritedProperty = $rule.PSObject.Properties['IsInherited']
+        $rightsProperty = $rule.PSObject.Properties['FileSystemRights']
+        $propagationProperty = $rule.PSObject.Properties['PropagationFlags']
+        Assert-R6 ($null -ne $identityProperty -and $null -ne $identityProperty.Value -and $null -ne $typeProperty -and $null -ne $inheritedProperty -and $null -ne $rightsProperty -and $null -ne $propagationProperty) 'BAIDU_AUTH_CONFIG_ACE_SHAPE_INVALID'
+        $sidProperty = $identityProperty.Value.PSObject.Properties['Value']
+        Assert-R6 ($identityProperty.Value -is [Security.Principal.SecurityIdentifier] -and $null -ne $sidProperty -and -not [string]::IsNullOrWhiteSpace([string]$sidProperty.Value) -and $inheritedProperty.Value -is [bool] -and $typeProperty.Value -is [Security.AccessControl.AccessControlType] -and $rightsProperty.Value -is [Security.AccessControl.FileSystemRights] -and $propagationProperty.Value -is [Security.AccessControl.PropagationFlags]) 'BAIDU_AUTH_CONFIG_ACE_SHAPE_INVALID'
+        $ruleSid = [string]$sidProperty.Value
+        $isInherited = [bool]$inheritedProperty.Value
+        if ($typeProperty.Value -eq [Security.AccessControl.AccessControlType]::Deny) { throw 'BAIDU_AUTH_CONFIG_DENY_ACE' }
+        Assert-R6 ($typeProperty.Value -eq [Security.AccessControl.AccessControlType]::Allow) 'BAIDU_AUTH_CONFIG_ACE_SHAPE_INVALID'
+        Assert-R6 ($ruleSid -in $allowedSids) 'BAIDU_AUTH_CONFIG_UNAUTHORIZED_ALLOW'
+        if ($ruleSid -ceq $ExpectedOwnerSid.Value -and (([long]$propagationProperty.Value -band [long][Security.AccessControl.PropagationFlags]::InheritOnly) -eq 0)) {
+            if ($isInherited) {
+                $ownerInheritedRights = $ownerInheritedRights -bor [long]$rightsProperty.Value
+            } else {
+                $ownerDirectRights = $ownerDirectRights -bor [long]$rightsProperty.Value
+            }
         }
     }
+    if ($IsDirectory) {
+        $requiredReadRights = [long]([Security.AccessControl.FileSystemRights]::ListDirectory -bor [Security.AccessControl.FileSystemRights]::ExecuteFile -bor [Security.AccessControl.FileSystemRights]::ReadAttributes -bor [Security.AccessControl.FileSystemRights]::ReadExtendedAttributes -bor [Security.AccessControl.FileSystemRights]::ReadPermissions)
+    } else {
+        $requiredReadRights = [long]([Security.AccessControl.FileSystemRights]::ReadData -bor [Security.AccessControl.FileSystemRights]::ReadAttributes -bor [Security.AccessControl.FileSystemRights]::ReadExtendedAttributes -bor [Security.AccessControl.FileSystemRights]::ReadPermissions)
+    }
+    $effectiveOwnerRights = $ownerDirectRights -bor $ownerInheritedRights
+    Assert-R6 (($effectiveOwnerRights -band $requiredReadRights) -eq $requiredReadRights) 'BAIDU_AUTH_CONFIG_OWNER_READ_RIGHTS_MISSING'
 }
 
 function Resolve-SafeBaiduConfigPath {
@@ -113,7 +140,7 @@ function Assert-SafeBaiduConfigDirectory {
         $acl = Get-Acl -LiteralPath $item.FullName -ErrorAction Stop
         $actualOwnerSid = $acl.GetOwner([Security.Principal.SecurityIdentifier]).Value
         $rules = @($acl.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier]))
-        Assert-BaiduConfigAclMetadata -ActualOwnerSid $actualOwnerSid -ExpectedOwnerSid $OwnerSid -Rules $rules
+        Assert-BaiduConfigAclMetadata -ActualOwnerSid $actualOwnerSid -ExpectedOwnerSid $OwnerSid -Rules $rules -IsDirectory ([bool]$item.PSIsContainer)
     }
 }
 

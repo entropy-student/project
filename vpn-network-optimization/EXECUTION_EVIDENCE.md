@@ -7852,3 +7852,57 @@ The ACL fixture fallback itself is accepted: injecting synthetic ACE metadata in
 Formal PASS is blocked by the production ACL predicate, not by the fixture technique. `Assert-BaiduConfigAclMetadata` currently proves only exact Owner identity and rejects Allow ACEs for Everyone, Authenticated Users, and Builtin Users. Under Governance v0.2.7 target-host/ACL rules, the protected credential-config boundary must also validate inheritance, Deny rules, the complete allowed-principal set, and effective required Owner rights. These are not currently proven.
 
 Next Gate: `G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1`. It is a narrow offline source/fixture repair; no Owner action or live checkpoint execution is authorized.
+
+## Executor result — G4-B Baidu Owner Auth Readiness ACL Repair R6R1 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL
+SOURCE_PROVENANCE=PASS
+CANONICAL_GIT_ROOT=C:/Users/34707/Documents/ChatGPT/VPS搭建
+BRANCH=main
+PRE_GATE_HEAD=596e0e1ea5079f122fbf4d3034d074d682c13d0b
+PRE_GATE_REMOTE_MAIN=596e0e1ea5079f122fbf4d3034d074d682c13d0b
+R6_FINAL_TIMING_COMMIT=34f0bd2c3a6b5452aa91578176fb17278a796689
+R6_GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
+R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
+R6_CHECKPOINT_BLOB=18c0cfc397939930b7556b51153f27a63de85ae0
+R6_VALIDATOR_BLOB=b7d5c2162db54ad92bd910035d33a03dc2027546
+UNRELATED_WORKTREE_STATE=UNTRACKED vpn-network-optimization/results/ PRESERVED_NOT_STAGED
+ACTUAL_CHANGES=production ACL predicate now validates Owner SID, direct/inherited ACE shape and policy, allowlist, Deny rejection, and applicable Owner read/list/traverse rights; validator adds eight synthetic ACL fixtures through the same predicate.
+CONFIG_CONTENT_READ=NO
+CONFIG_CONTENT_COPIED=NO
+REAL_OWNER_CHECKPOINT_EXECUTED=NO
+REAL_BAIDU_ACTIONS=0
+BAIDU_CLI_INVOKED=NO
+SECRET_OR_DPAPI_ACCESSED=NO
+NETWORK_REQUESTS=0
+VPS_OR_SSH_ACTIONS=0
+CLASH_SERVICE_ROUTE_PROXY_TUN_ACTIONS=0
+LIVE_G4B_ACTIONS=0
+R6R1_ACL_SAFE_OWNER_ONLY=PASS
+R6R1_ACL_SAFE_OWNER_SYSTEM_ADMINS=PASS
+R6R1_ACL_INHERITED_SAFE_RULES_REVIEWED=PASS
+R6R1_ACL_BROAD_ALLOW_REJECTED=PASS
+R6R1_ACL_ARBITRARY_ALLOW_REJECTED=PASS
+R6R1_ACL_DENY_REJECTED=PASS
+R6R1_ACL_OWNER_RIGHTS_MISSING_REJECTED=PASS
+R6R1_ACL_OWNER_MISMATCH_REJECTED=PASS
+R6_FULL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+CHANGED_PATHS=scripts/g4b-baidu-auth-readiness-checkpoint.ps1;scripts/g4b-baidu-auth-readiness-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+ROLLBACK=Revert only this round's two script changes and its appended Evidence/current Executor Handoff update; no runtime rollback is needed.
+ROUND_STARTED_AT=2026-10-05T00:14:37Z
+ROUND_FINISHED_AT=PENDING_FINAL_GITHUB_READBACK
+ACTUAL_ELAPSED=PENDING_FINAL_GITHUB_READBACK
+TIME_OVERRUN=PENDING_FINAL_GITHUB_READBACK
+TIME_OVERRUN_REASON=NONE_IF_WITHIN_20_MINUTES; otherwise record the verified blocking step.
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+STOP_AT_REVIEWER=YES
+```
+
+The full offline validator exercised the production ACL predicate with synthetic Owner-only, Owner+SYSTEM+Administrators, inherited-safe, broad-Allow (Everyone/Authenticated Users/Builtin Users), arbitrary-Allow, Deny, missing-Owner-rights, and Owner-mismatch cases. Existing R6 non-ACL checks remained PASS. The only filesystem fixture content was a non-secret marker in an exact temporary directory, removed and verified absent by the validator. No real configuration content was opened or read.

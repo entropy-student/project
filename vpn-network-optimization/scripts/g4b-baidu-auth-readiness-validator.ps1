@@ -23,6 +23,23 @@ function Test-ThrowsCode {
     return [bool]($actualCode -ceq $ExpectedCode)
 }
 
+function New-SyntheticAclRule {
+    param(
+        [string]$Sid,
+        [Security.AccessControl.AccessControlType]$AccessType = [Security.AccessControl.AccessControlType]::Allow,
+        [Security.AccessControl.FileSystemRights]$Rights = [Security.AccessControl.FileSystemRights]::ReadAndExecute,
+        [bool]$Inherited = $false,
+        [Security.AccessControl.PropagationFlags]$Propagation = [Security.AccessControl.PropagationFlags]::None
+    )
+    return [pscustomobject]@{
+        AccessControlType = $AccessType
+        IdentityReference = [Security.Principal.SecurityIdentifier]::new($Sid)
+        IsInherited = $Inherited
+        FileSystemRights = $Rights
+        PropagationFlags = $Propagation
+    }
+}
+
 $runnerPath = Join-Path $PSScriptRoot 'g4b-baidu-auth-readiness-checkpoint.ps1'
 $runnerText = [IO.File]::ReadAllText($runnerPath, [Text.Encoding]::UTF8)
 $validatorText = [IO.File]::ReadAllText($PSCommandPath, [Text.Encoding]::UTF8)
@@ -30,6 +47,10 @@ $tokens = $null
 $parseErrors = $null
 $runnerAst = [System.Management.Automation.Language.Parser]::ParseFile($runnerPath, [ref]$tokens, [ref]$parseErrors)
 Assert-Fixture ($parseErrors.Count -eq 0) 'RUNNER_AST_PARSE_FAILED'
+$validatorTokens = $null
+$validatorParseErrors = $null
+$validatorAst = [System.Management.Automation.Language.Parser]::ParseFile($PSCommandPath, [ref]$validatorTokens, [ref]$validatorParseErrors)
+Assert-Fixture ($validatorParseErrors.Count -eq 0) 'VALIDATOR_AST_PARSE_FAILED'
 . $runnerPath
 
 $params = @($runnerAst.ParamBlock.Parameters | ForEach-Object { $_.Name.VariablePath.UserPath })
@@ -64,7 +85,7 @@ Assert-Fixture ($configText.Contains('Get-Item') -and $configText.Contains('Get-
 Assert-Fixture ($configText -notmatch '(?i)Get-Content|ReadAllText|ReadAllBytes|ReadAllLines|Copy-Item|Move-Item') 'CONFIG_CONTENT_ACCESS_PRESENT'
 Assert-Fixture ($configText.Contains('Assert-BaiduConfigAclMetadata')) 'CONFIG_ACL_VALIDATOR_NOT_USED'
 $configAclText = Get-FunctionText -Ast $runnerAst -Name 'Assert-BaiduConfigAclMetadata'
-Assert-Fixture ($configAclText.Contains('BAIDU_AUTH_CONFIG_OWNER_MISMATCH') -and $configAclText.Contains('BAIDU_AUTH_CONFIG_BROAD_ACCESS')) 'CONFIG_ACL_POLICY_INCOMPLETE'
+Assert-Fixture ($configAclText.Contains('BAIDU_AUTH_CONFIG_OWNER_MISMATCH') -and $configAclText.Contains('IsInherited') -and $configAclText.Contains('BAIDU_AUTH_CONFIG_DENY_ACE') -and $configAclText.Contains('S-1-5-18') -and $configAclText.Contains('S-1-5-32-544') -and $configAclText.Contains('BAIDU_AUTH_CONFIG_OWNER_READ_RIGHTS_MISSING')) 'CONFIG_ACL_POLICY_INCOMPLETE'
 $configPresence = Resolve-BaiduConfigPresence -PathExists $false -IsDirectory $false
 Assert-Fixture ($configPresence.State -ceq 'OWNER_ACTION_REQUIRED' -and $configPresence.Code -ceq 'RETURN_OWNER_ACTION_REQUIRED') 'CONFIG_ABSENT_FIXTURE_CODE_INVALID'
 $configFileShape = Resolve-BaiduConfigPresence -PathExists $true -IsDirectory $false
@@ -132,11 +153,43 @@ try {
     Write-Output 'R6_CONFIG_ACL_FIXTURE=PASS'
 
     $fileAcl = Get-Acl -LiteralPath $fixtureFile
-    $fixtureRules = @($fileAcl.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier]))
-    $broadRule = [pscustomobject]@{ AccessControlType = [Security.AccessControl.AccessControlType]::Allow; IdentityReference = [pscustomobject]@{ Value = 'S-1-1-0' } }
-    $fixtureRules += $broadRule
     $actualOwnerSid = $fileAcl.GetOwner([Security.Principal.SecurityIdentifier]).Value
-    Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid $actualOwnerSid -ExpectedOwnerSid $ownerSid -Rules $fixtureRules } 'BAIDU_AUTH_CONFIG_BROAD_ACCESS') 'BROAD_CONFIG_ACL_FIXTURE_ACCEPTED'
+    $ownerFull = New-SyntheticAclRule -Sid $ownerSid.Value -Rights ([Security.AccessControl.FileSystemRights]::FullControl)
+    Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerFull) -IsDirectory $false
+    Write-Output 'R6R1_ACL_SAFE_OWNER_ONLY=PASS'
+
+    $ownerRead = New-SyntheticAclRule -Sid $ownerSid.Value
+    $systemRead = New-SyntheticAclRule -Sid 'S-1-5-18' -Rights ([Security.AccessControl.FileSystemRights]::FullControl)
+    $adminsRead = New-SyntheticAclRule -Sid 'S-1-5-32-544'
+    Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerRead, $systemRead, $adminsRead) -IsDirectory $false
+    Write-Output 'R6R1_ACL_SAFE_OWNER_SYSTEM_ADMINS=PASS'
+
+    $inheritedOwner = New-SyntheticAclRule -Sid $ownerSid.Value -Inherited $true
+    $inheritedSystem = New-SyntheticAclRule -Sid 'S-1-5-18' -Inherited $true
+    $inheritedAdmins = New-SyntheticAclRule -Sid 'S-1-5-32-544' -Inherited $true
+    Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($inheritedOwner, $inheritedSystem, $inheritedAdmins) -IsDirectory $true
+    Write-Output 'R6R1_ACL_INHERITED_SAFE_RULES_REVIEWED=PASS'
+
+    foreach ($broadSid in @('S-1-1-0', 'S-1-5-11', 'S-1-5-32-545')) {
+        $broadRule = New-SyntheticAclRule -Sid $broadSid
+        Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerFull, $broadRule) -IsDirectory $false } 'BAIDU_AUTH_CONFIG_UNAUTHORIZED_ALLOW') 'BROAD_CONFIG_ACL_FIXTURE_ACCEPTED'
+    }
+    Write-Output 'R6R1_ACL_BROAD_ALLOW_REJECTED=PASS'
+
+    $arbitraryRule = New-SyntheticAclRule -Sid 'S-1-5-21-101-202-303-4040'
+    Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerFull, $arbitraryRule) -IsDirectory $false } 'BAIDU_AUTH_CONFIG_UNAUTHORIZED_ALLOW') 'ARBITRARY_CONFIG_ACL_FIXTURE_ACCEPTED'
+    Write-Output 'R6R1_ACL_ARBITRARY_ALLOW_REJECTED=PASS'
+
+    $denyRule = New-SyntheticAclRule -Sid 'S-1-5-18' -AccessType ([Security.AccessControl.AccessControlType]::Deny)
+    Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerFull, $denyRule) -IsDirectory $false } 'BAIDU_AUTH_CONFIG_DENY_ACE') 'DENY_CONFIG_ACL_FIXTURE_ACCEPTED'
+    Write-Output 'R6R1_ACL_DENY_REJECTED=PASS'
+
+    $ownerWriteOnly = New-SyntheticAclRule -Sid $ownerSid.Value -Rights ([Security.AccessControl.FileSystemRights]::WriteData)
+    Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid $ownerSid.Value -ExpectedOwnerSid $ownerSid -Rules @($ownerWriteOnly) -IsDirectory $false } 'BAIDU_AUTH_CONFIG_OWNER_READ_RIGHTS_MISSING') 'OWNER_READ_RIGHTS_MISSING_FIXTURE_ACCEPTED'
+    Write-Output 'R6R1_ACL_OWNER_RIGHTS_MISSING_REJECTED=PASS'
+
+    Assert-Fixture (Test-ThrowsCode { Assert-BaiduConfigAclMetadata -ActualOwnerSid 'S-1-5-20' -ExpectedOwnerSid $ownerSid -Rules @($ownerFull) -IsDirectory $false } 'BAIDU_AUTH_CONFIG_OWNER_MISMATCH') 'OWNER_MISMATCH_CONFIG_ACL_FIXTURE_ACCEPTED'
+    Write-Output 'R6R1_ACL_OWNER_MISMATCH_REJECTED=PASS'
     Write-Output 'R6_CONFIG_ACL_FAIL_CLOSED=PASS'
 
     Assert-Fixture (Test-ThrowsCode { Assert-SafeBaiduConfigDirectory -ConfigDirectory $fixtureConfig -ProjectRoot $fixtureRoot -OwnerSid $ownerSid } 'BAIDU_CONFIG_INSIDE_REPOSITORY') 'CONFIG_INSIDE_REPOSITORY_FIXTURE_ACCEPTED'

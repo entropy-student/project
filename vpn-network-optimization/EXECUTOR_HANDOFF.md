@@ -4,46 +4,49 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Owner Auth Readiness Checkpoint R6
+## Current execution status — G4-B Baidu Owner Auth Readiness ACL Repair R6R1
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
-EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_CHECKPOINT_DESIGN_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=PASS_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+GATE_ID=G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+EXECUTOR_ROLE=OFFLINE_SOURCE_REPAIR_AND_SYNTHETIC_FIXTURE_VALIDATION
+PREVIOUS_RESULT=RETURN_R6_ACL_INVARIANT_INCOMPLETE
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=f5be4bd5df51fd0ab107389bb32d4fe4bf2c7fbd
+PRE_GATE_HEAD=596e0e1ea5079f122fbf4d3034d074d682c13d0b
 R6_GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
-R5R1_RUNNER_BLOB=f9729791b36b042a305207be24f5ced87113820c
-R5R1_FIXTURE_VALIDATOR_BLOB=2bbc5c61c51fd381063fceebcaa5114b23daa36b
-R5R1_IMPLEMENTATION_PACKAGE_BLOB=305b0b2d8fa14917b7057c6dfeb52a28e0a52f08
-R6_CHECKPOINT_OFFLINE_READY=YES
-R6_SYNTHETIC_FIXTURES=PASS
+R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
+R6_CHECKPOINT_BLOB=18c0cfc397939930b7556b51153f27a63de85ae0
+R6_VALIDATOR_BLOB=b7d5c2162db54ad92bd910035d33a03dc2027546
+SOURCE_PROVENANCE=PASS
+PRE_GATE_TRACKED_WORKTREE=CLEAN
+UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
+R6R1_ACL_PREDICATE_REPAIRED=YES
+R6R1_SYNTHETIC_ACL_FIXTURES=PASS
+R6_FULL_REGRESSION=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
-OWNER_AUTH_READINESS_CHECKPOINT_OFFLINE_READY=YES
-CREDENTIAL_VALUES_ACCEPTED_OR_EMITTED=0
-LIVE_ACTIONS=0
+REAL_OWNER_CHECKPOINT_EXECUTED=NO
 REAL_BAIDU_ACTIONS=0
-BAIDU_CLI_INVOKED=NO
 OWNER_CONFIG_READ=NO
 NETWORK_REQUESTS=0
+SECRET_OR_DPAPI_ACCESSED=NO
 VPS_OR_SSH_ACTIONS=0
-ESTIMATED_EXECUTION_TIME=15-25 minutes
+LIVE_G4B_ACTIONS=0
+ESTIMATED_EXECUTION_TIME=10-20 minutes
 TIMING_RECORD_REQUIRED=YES
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-ROUND_STARTED_AT=2026-10-04T23:35:22Z
-ROUND_FINISHED_AT=2026-10-05T00:05:21Z
-ACTUAL_ELAPSED=29m59s
-TIME_OVERRUN=YES
-TIME_OVERRUN_REASON=Offline ACL fixture required a synthetic-rule fallback after the local token lacked SeSecurityPrivilege for writing the negative ACE; full validator was rerun and passed.
-REAL_BAIDU_LOGIN_OR_FILE_OPERATION=NO
-LIVE_G4B_EXECUTION=NO
+ROUND_STARTED_AT=2026-10-05T00:14:37Z
+ROUND_FINISHED_AT=PENDING_FINAL_GITHUB_READBACK
+ACTUAL_ELAPSED=PENDING_FINAL_GITHUB_READBACK
+TIME_OVERRUN=PENDING_FINAL_GITHUB_READBACK
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-R6 prepares one Owner-local readiness checkpoint and offline validator only. The checkpoint pins the accepted BaiduPCS-Go v4.0.2 archive digest, extracts only the bounded executable entry, inspects the selected config tree using metadata/ACL/reparse/location checks, and permits exactly one read-only `who` command on a future Owner run. Provider output and UID remain internal; only bounded status markers are emitted. Synthetic fixtures validate account match/mismatch, unauthenticated action-required behavior, ACL/location failures, fixed digest order and cleanup. The checkpoint itself was not run; no real config, credential, provider, VPS or network was accessed. Stop at Reviewer.
+R6R1 is a source-only repair of `Assert-BaiduConfigAclMetadata` plus synthetic fixtures in the offline validator. The predicate preserves exact Owner SID and existing location/reparse checks; examines direct and inherited rules; permits only Owner, LocalSystem, and Builtin Administrators Allow ACEs; rejects every Deny/other Allow; and requires applicable Owner read/list/traverse rights on each file or directory. All synthetic and accepted R6 regression checks passed. The checkpoint was not run, and no real config contents, credentials, provider, VPS, or network were accessed. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
