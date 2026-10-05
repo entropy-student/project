@@ -1,0 +1,66 @@
+{
+  "browser": "154.0.4258.53",
+  "ordinaryCache": true,
+  "routing": false,
+  "cacheCleared": false,
+  "bypass": false,
+  "cssURL": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791215210",
+  "status": 200,
+  "sourceSHA256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+  "deliveredSHA256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+  "tokens": {
+    "field": "rgb(248, 238, 235)",
+    "backgroundImage": "url(\"http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/preview-gift-20261005/gift-backdrop.png\")",
+    "headingFont": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+    "headingWeight": "600",
+    "emphasis": "rgb(113, 63, 93)",
+    "fontLoaded": true,
+    "scrollWidth": 2048,
+    "viewport": 2048
+  },
+  "assets": [
+    {
+      "file": "gift-backdrop.png",
+      "status": 200,
+      "bytes": 1784374,
+      "sha256": "1e72fdb1c22fad5ccf56cf86339e070a66e3e69ba7ee9492c9968e2da5f7f26d"
+    },
+    {
+      "file": "PlayfairDisplay.ttf",
+      "status": 200,
+      "bytes": 300724,
+      "sha256": "c40f2293766a503bc70cce9e512ef844a4ccb7cbcde792fe2ea31d191917d8d6"
+    }
+  ],
+  "focusVisible": true,
+  "hoverFeedback": true,
+  "routes": [
+    {
+      "requested": "/make-your-magazine/",
+      "status": 200,
+      "finalPath": "/make-your-magazine/"
+    },
+    {
+      "requested": "/product/birthday-magazine/",
+      "status": 200,
+      "finalPath": "/product/birthday-magazine/"
+    },
+    {
+      "requested": "/cart/",
+      "status": 200,
+      "finalPath": "/cart/"
+    },
+    {
+      "requested": "/checkout/",
+      "status": 200,
+      "finalPath": "/cart/"
+    },
+    {
+      "requested": "/my-account/",
+      "status": 200,
+      "finalPath": "/my-account/"
+    }
+  ],
+  "addToCart": 0,
+  "checkoutSubmissions": 0
+}

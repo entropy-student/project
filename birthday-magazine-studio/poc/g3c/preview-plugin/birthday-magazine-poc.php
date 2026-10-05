@@ -71,11 +71,12 @@ add_shortcode('bms_preview', function ($atts) {
     <div class="bms-field"><label for="bms-style">The mood</label><select id="bms-style" data-bms-input="style"><option value="romantic">Soft &amp; warm</option><option value="editorial">Bold editorial</option><option value="retro">Retro &amp; playful</option></select></div>
    </div>
    <div class="bms-preview-upload">
-    <label class="bms-upload" for="bms-photo"><span aria-hidden="true">+</span><div><strong data-bms-upload-label>Choose their photo</strong><small>JPG, PNG or WebP · from your device</small></div><input id="bms-photo" data-bms-file type="file" accept="image/jpeg,image/png,image/webp"></label>
+    <label class="bms-upload" for="bms-photo"><span aria-hidden="true"><?php if (is_front_page()) : ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><circle cx="8" cy="8" r="1.3"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg><?php else : ?>+<?php endif; ?></span><div><strong data-bms-upload-label>Choose their photo</strong><small>JPG, PNG or WebP · from your device</small></div><input id="bms-photo" data-bms-file type="file" accept="image/jpeg,image/png,image/webp"></label>
+    <?php if (is_front_page()) : ?><a class="bms-preview-local-cta" href="#bms-preview-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m12 3 2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2Z"/></svg><span>Preview their magazine free &rarr;</span></a><?php endif; ?>
     <div class="bms-photo-actions"><p data-bms-status role="status" aria-live="polite">Your preview works without a photo.</p><button type="button" data-bms-remove hidden>Remove photo</button></div>
    </div>
   </div>
-  <div class="bms-preview-stage">
+  <div class="bms-preview-stage"<?php if (is_front_page()) : ?> id="bms-preview-result"<?php endif; ?>>
    <div class="bms-preview-cover" data-bms-cover>
     <div class="bms-cover-masthead">GOOD ISSUE<small>THE BIRTHDAY EDITION</small></div>
     <div class="bms-cover-photo-frame"><img data-bms-image alt="Your browser-local cover photo" hidden><div class="bms-cover-art" data-bms-art></div></div>
@@ -87,7 +88,7 @@ add_shortcode('bms_preview', function ($atts) {
    </div>
    <p class="bms-preview-annotation">Their name.<br>Their face.<br>Their very own issue.</p>
   </div>
-  <div class="bms-preview-bottom"><p>Illustrative cover + sample spread, not the finished magazine.</p><div class="bms-preview-action"><p>12-page digital PDF · US$39.99</p><a class="bms-coral-link" href="<?php echo esc_url(home_url('/make-your-magazine/')); ?>">Personalize your magazine &rarr;</a></div></div>
+  <div class="bms-preview-bottom"><p><?php if (is_front_page()) : ?><strong>Your photo stays in your browser. No account needed for this free preview.</strong><?php endif; ?>Illustrative cover + sample spread, not the finished magazine.</p><div class="bms-preview-action"><p>12-page digital PDF · US$39.99</p><a class="bms-coral-link" href="<?php echo esc_url(home_url('/make-your-magazine/')); ?>">Personalize your magazine &rarr;</a></div></div>
  </div>
  <?php return ob_get_clean();
 });

@@ -1,0 +1,129 @@
+{
+  "baseline": "f84470a70137d1bd77b58567a9be608b82e1b750",
+  "container": "birthday-magazine-g3c-wordpress-1",
+  "before": {
+    "homeSHA256": "6d15fe64e152e3fce87bbab067eb04f2ab8828ea60954bb2898cf8b8bee28917",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0
+  },
+  "after": {
+    "homeSHA256": "6d15fe64e152e3fce87bbab067eb04f2ab8828ea60954bb2898cf8b8bee28917",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0
+  },
+  "identities": [
+    {
+      "file": "magazine-preview.css",
+      "sourceSHA256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+      "runtimeSHA256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+      "exact": true
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "sourceSHA256": "6d03ccd1641b3be993374d8e66370c84286a1f3ed6416c1e45897c96ecf56fc0",
+      "runtimeSHA256": "6d03ccd1641b3be993374d8e66370c84286a1f3ed6416c1e45897c96ecf56fc0",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-gift-20261005/gift-backdrop.png",
+      "sourceSHA256": "1e72fdb1c22fad5ccf56cf86339e070a66e3e69ba7ee9492c9968e2da5f7f26d",
+      "runtimeSHA256": "1e72fdb1c22fad5ccf56cf86339e070a66e3e69ba7ee9492c9968e2da5f7f26d",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-gift-20261005/OFL.txt",
+      "sourceSHA256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e",
+      "runtimeSHA256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-gift-20261005/PlayfairDisplay.ttf",
+      "sourceSHA256": "c40f2293766a503bc70cce9e512ef844a4ccb7cbcde792fe2ea31d191917d8d6",
+      "runtimeSHA256": "c40f2293766a503bc70cce9e512ef844a4ccb7cbcde792fe2ea31d191917d8d6",
+      "exact": true
+    }
+  ],
+  "frozen": [
+    {
+      "file": "preview.js",
+      "normalizedSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.js",
+      "normalizedSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.php",
+      "normalizedSHA256": "c6a3a0c95870df17bbde1899d3908d50b4ba435db9912e922edfcb783447c33a",
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "normalizedSHA256": "d2f96617d59584b066f9c542b426d83aaab617ee4e769296f0781c7320d13485",
+      "unchanged": true
+    },
+    {
+      "file": "home.css",
+      "normalizedSHA256": "4715b7924de378ca31efbbd8d3ad1cc28b1b346e80cd2022f9e633a9c6578fa1",
+      "unchanged": true
+    },
+    {
+      "file": "home-motion.js",
+      "normalizedSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "unchanged": true
+    },
+    {
+      "file": "studio.css",
+      "normalizedSHA256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+      "unchanged": true
+    }
+  ],
+  "verifiedBackups": [
+    {
+      "role": "source",
+      "file": "magazine-preview.css",
+      "sha256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+      "mtime": 1791199589951.526,
+      "verified": true
+    },
+    {
+      "role": "runtime",
+      "file": "magazine-preview.css",
+      "sha256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+      "mtime": 1791199589952,
+      "verified": true
+    },
+    {
+      "role": "source",
+      "file": "birthday-magazine-poc.php",
+      "sha256": "b487cc54087080e456424ca59cdb46c305a6f119bfa3777b425b4c21f4c53dad",
+      "mtime": 1791199756091.7,
+      "verified": true
+    },
+    {
+      "role": "runtime",
+      "file": "birthday-magazine-poc.php",
+      "sha256": "b487cc54087080e456424ca59cdb46c305a6f119bfa3777b425b4c21f4c53dad",
+      "mtime": 1791199756092,
+      "verified": true
+    }
+  ],
+  "homeAndThemeUnchanged": true,
+  "businessPHPOutsideShortcodeUnchanged": true,
+  "cssBeforeHomeGiftOverrideUnchanged": true,
+  "runtimeRetained": true,
+  "backupPath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\poc\\g3c\\.tmp\\preview-gift-20261005",
+  "paymentActions": 0,
+  "checkoutSubmissions": 0,
+  "productModelCalls": 0
+}

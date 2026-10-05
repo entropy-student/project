@@ -1,0 +1,22 @@
+{
+  "fontNameVersion": [
+    "Version 1.203"
+  ],
+  "assets": [
+    {
+      "file": "gift-backdrop.png",
+      "bytes": 1784374,
+      "sha256": "1e72fdb1c22fad5ccf56cf86339e070a66e3e69ba7ee9492c9968e2da5f7f26d"
+    },
+    {
+      "file": "OFL.txt",
+      "bytes": 4449,
+      "sha256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e"
+    },
+    {
+      "file": "PlayfairDisplay.ttf",
+      "bytes": 300724,
+      "sha256": "c40f2293766a503bc70cce9e512ef844a4ccb7cbcde792fe2ea31d191917d8d6"
+    }
+  ]
+}
