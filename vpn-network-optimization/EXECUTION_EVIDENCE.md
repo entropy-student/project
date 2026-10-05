@@ -10069,3 +10069,64 @@ The helper reuses the accepted R6R1 ACL semantics for:
 - reparse-point rejection.
 
 R12 remains observation only. It does not authorize ACL normalization or provider access.
+
+
+## Reviewer formal reconciliation — R6R2L-R12 local ACL owner-drift metadata inventory — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T16:27:47.9525155+00:00
+OWNER_REPORTED_HEAD_AFTER=3791487e5583a096945dfcef4877a75195a88baa
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f
+OWNER_REPORTED_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
+OWNER_REPORTED_LOCKED_R12_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R12_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_ITEM_COUNT=3
+OWNER_REPORTED_FILE_COUNT=2
+OWNER_REPORTED_DIRECTORY_COUNT=1
+OWNER_REPORTED_ROOT_OWNER_MATCH=YES
+OWNER_REPORTED_EXACT_OWNER_ITEM_COUNT=2
+OWNER_REPORTED_ADMIN_OWNER_ITEM_COUNT=1
+OWNER_REPORTED_SYSTEM_OWNER_ITEM_COUNT=0
+OWNER_REPORTED_OTHER_OWNER_ITEM_COUNT=0
+OWNER_REPORTED_OWNER_MISMATCH_FILE_COUNT=1
+OWNER_REPORTED_OWNER_MISMATCH_DIRECTORY_COUNT=0
+OWNER_REPORTED_REPARSE_POINT_COUNT=0
+OWNER_REPORTED_DENY_ACE_ITEM_COUNT=0
+OWNER_REPORTED_UNAUTHORIZED_ALLOW_ITEM_COUNT=0
+OWNER_REPORTED_OWNER_READ_RIGHTS_MISSING_ITEM_COUNT=0
+OWNER_REPORTED_R12_ACL_STATE=ADMIN_OWNER_MULTI_ITEM_DRIFT
+OWNER_REPORTED_CONFIG_CONTENT_READ=NO
+OWNER_REPORTED_ACL_MUTATION=NO
+OWNER_REPORTED_BAIDU_PROVIDER_ACTION=NO
+OWNER_REPORTED_UID_INPUT=NO
+OWNER_REPORTED_SECRET_OR_DPAPI_ACCESS=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T16:28:04.5603911+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:16.6078756
+REVIEWER_RESULT=PASS_R6R2L_R12_METADATA_OBSERVATION_ADMIN_OWNER_ONE_FILE
+```
+
+Reviewer interpretation:
+- R12 completed exactly within metadata-only scope.
+- Local Baidu config subtree currently contains one directory and two files.
+- Root Owner is the current Owner SID.
+- Exactly one file is owned by Builtin Administrators; the other two items are owned by the current Owner SID.
+- No item is owned by LocalSystem or another principal.
+- No reparse point, Deny ACE, unauthorized Allow ACE, or Owner required-read-rights gap exists.
+- Therefore the only observed ACL deviation is one file's Owner principal.
+- R12's `ADMIN_OWNER_MULTI_ITEM_DRIFT` classification is caused by the original narrow-shape predicate requiring exactly one file in the directory; it does not mean multiple items have mismatched Owners.
+
+Additional upstream v4.0.2 source reconciliation:
+- `internal/pcsconfig/pcsconfig.go` defines `ConfigName = "pcs_config.json"` under `pcsconfig.GetConfigDir()`.
+- `main.go` defines `historyFilePath = filepath.Join(pcsconfig.GetConfigDir(), "pcs_command_history.txt")`.
+- Therefore a root + two-file config-directory shape can be legitimate for BaiduPCS-Go v4.0.2.
+- Current sanitized R12 evidence does not identify which of the two files is the Administrators-owned file. No filename inference is accepted yet.
+
+Next: R13 local metadata-only basename-role classification to prove the exact two expected v4.0.2 files and their Owner roles without reading file contents or emitting filenames/paths/SIDs.
