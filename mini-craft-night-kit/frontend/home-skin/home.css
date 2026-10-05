@@ -52,6 +52,8 @@ body.home.page-id-939.mc-homira-home #post-939 .mc-home p {
     margin: 0; letter-spacing: normal !important;
 }
 body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-group { margin-block: 0; }
+/* Core Group's legacy inner wrapper is layout-transparent, not a new section. */
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-group__inner-container { display: contents; }
 body.home.page-id-939.mc-homira-home #post-939 .mc-home figure { margin: 0; }
 body.home.page-id-939.mc-homira-home #post-939 .mc-home img { display: block; width: 100%; }
 body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-buttons {
@@ -72,10 +74,10 @@ body.home.page-id-939.mc-homira-home #post-939 .mc-hero {
     position: relative; isolation: isolate; min-height: 800px; min-height: 100svh;
     display: flex; align-items: flex-end; padding: 160px 6vw 72px; overflow: hidden;
 }
-body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure {
+body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > .wp-block-group__inner-container > figure {
     position: absolute; inset: 0; z-index: -2; height: 100%; width: 100%;
 }
-body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure img {
+body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > .wp-block-group__inner-container > figure img {
     height: 100%; object-fit: cover; object-position: 65% center;
 }
 body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field::after {
@@ -119,7 +121,7 @@ body.home.page-id-939.mc-homira-home #post-939 .mc-experience h3 { font-size: 25
 body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-experience p { font-size: 13px !important; max-width: 14ch !important; text-align: right; line-height: 1.45 !important; }
 body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-gallery-note { font-size: 14px !important; color: #5c4939; margin-top: 28px; }
 body.home.page-id-939.mc-homira-home #post-939 .mc-process { background: var(--mc-linen); padding: 104px 6vw 120px; }
-body.home.page-id-939.mc-homira-home #post-939 .mc-process > h2 {
+body.home.page-id-939.mc-homira-home #post-939 .mc-process > .wp-block-group__inner-container > h2 {
     text-align: center; font-size: clamp(42px,5vw,70px); line-height: 1.1; margin-bottom: 64px;
 }
 body.home.page-id-939.mc-homira-home #post-939 .mc-process-stack { max-width: 1000px; margin-inline: auto; display: grid; gap: 28px; }
@@ -175,7 +177,7 @@ body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-arrived { animatio
     body.home.page-id-939.mc-homira-home #masthead .brand img { width: 135px; }
     body.home.page-id-939.mc-homira-home #masthead .menu-toggle-open { min-width: 44px; min-height: 44px; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-hero { min-height: 780px; min-height: 100svh; padding: 140px 24px 48px; }
-    body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure img { object-position: 61% center; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > .wp-block-group__inner-container > figure img { object-position: 61% center; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-home h2 { font-size: 38px !important; line-height: 1.12 !important; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-home h3 { font-size: 26px !important; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-home p { font-size: 16px !important; line-height: 1.65 !important; }
@@ -186,7 +188,7 @@ body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-arrived { animatio
     body.home.page-id-939.mc-homira-home #post-939 .mc-experience:nth-child(even) { margin-top: 0; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-experience p { font-size: 13px !important; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-process { padding: 76px 24px; }
-    body.home.page-id-939.mc-homira-home #post-939 .mc-process > h2 { margin-bottom: 36px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-process > .wp-block-group__inner-container > h2 { margin-bottom: 36px; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-step { padding: 28px; grid-template-columns: 1fr; gap: 28px; min-height: 0; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-step-number { font-size: 32px !important; }
     body.home.page-id-939.mc-homira-home #post-939 .mc-step-copy { gap: 16px; }
