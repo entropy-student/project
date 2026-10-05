@@ -8361,3 +8361,80 @@ More importantly, upstream documentation marks the username/password path long-u
 Upstream recommends Cookie login, but the stock `-cookies` / `-bduss` flags expose credential material in process arguments and remain incompatible with the project Secret boundary.
 
 Next Gate: `G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H`, to build a pinned local no-echo Cookie adapter with no real credential/provider action.
+
+
+## Executor Evidence — G4-B Secure Cookie Auth Adapter R6R2H — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_SOURCE_SYNC_HEAD=0a6c384ba0ea32ad4e3064cff1653ca63b319d4f
+FRESH_MAIN_SYNC_BASE=6ce420bda5caa0c73c847bc70d4c7e952d6eeb4b
+R6R2H_GATE_BLOB=b687d5c3ccd71cfcf869cfe01f3147a59a459f26
+UPSTREAM_REPO=qjfoidnh/BaiduPCS-Go
+UPSTREAM_TAG=v4.0.2
+UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+UPSTREAM_README_BLOB=0d07b9b27b989319a65c3c8979d896e02cabc340
+UPSTREAM_MAIN_GO_BLOB=ac5ace05fc860bc3f47fdaf9ddec126d06890630
+UPSTREAM_LOGIN_GO_BLOB=8865962ac126053632beee750310b099e6b89e1d
+UPSTREAM_PCSCONFIG_GO_BLOB=2ab8f56647d70a903786db351c57308ee8bee69d
+UPSTREAM_MANIPER_GO_BLOB=edefc8e422dc15938668935de06c4da34c377cbe
+PINNED_UPSTREAM_SOURCE_BLOBS=5_OF_5_MATCH
+GO_VERSION=go1.27.1
+GO_ARCHIVE_URL=https://go.dev/dl/go1.27.1.windows-amd64.zip
+GO_ARCHIVE_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+GO_MODULE_SOURCE=UPSTREAM_GO_MOD_AND_GO_SUM_UNCHANGED
+GO_MODULE_MODE=-mod=readonly
+BUILD_TARGET=windows/amd64
+BUILD_COMMAND=GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags '-s -w -buildid=' -o <temporary-adapter.exe> ./cmd/vpn-network-optimization-cookie-auth
+ADAPTER_SOURCE_GIT_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
+ADAPTER_TEST_GIT_BLOB=b02bf9bbfff5e1ad99523b568d202d1e63d5c9ae
+ADAPTER_BINARY_SHA256=5c6ad2fdbcb9bee1b3b2fdc789b07e061bd89cc64350c750298b682b717e7955
+R6R2H_PINNED_UPSTREAM_SOURCE=PASS
+R6R2H_USERNAME_PASSWORD_ROUTE_RETIRED=PASS
+R6R2H_STOCK_COOKIE_CLI_ARGS_FORBIDDEN=PASS
+R6R2H_SECRET_NOT_IN_ARGS=PASS
+R6R2H_SECRET_NOT_IN_ENV=PASS
+R6R2H_SECRET_NOT_IN_COMMAND_HISTORY=PASS
+R6R2H_SECRET_INPUT_NO_ECHO=PASS
+R6R2H_SECRET_NOT_LOGGED_OR_PRINTED=PASS
+R6R2H_SECRET_NOT_HASHED_FOR_EVIDENCE=PASS
+R6R2H_COOKIE_EMPTY_REJECTED=PASS
+R6R2H_COOKIE_CRLF_REJECTED=PASS
+R6R2H_COOKIE_BDUSS_SHAPE_VALIDATED=PASS
+R6R2H_SETUPUSERBYBDUSS_DIRECT_PATH=PASS
+R6R2H_ACCOUNT_NAME_UID_NOT_EMITTED=PASS
+R6R2H_FAILURE_NATIVE_EXIT_NONZERO=PASS
+R6R2H_CONFIG_SAVE_ONLY_AFTER_SETUP_SUCCESS=PASS
+R6R2H_TEMP_BUILD_CLEANUP=PASS
+R6R2H_EXISTING_R6R1_ACL_BOUNDARY_REUSED=PASS
+POWERSHELL_AST_PARSE=PASS
+GO_SOURCE_STATIC_VALIDATION=PASS
+SECRET_SCAN=PASS
+REAL_COOKIE_VALUES_USED=0
+REAL_BAIDU_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+DPAPI_OR_SECRET_READ=NO
+VPS_OR_SSH_ACTIONS=0
+CLASH_OR_NETWORK_RUNTIME_ACTIONS=0
+BAIDU_PROVIDER_AUTH_REQUESTS=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+OWNER_CHECKPOINT_EXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+UNRELATED_RESULTS_DIRECTORY_STAGED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Changes and verification
+
+Added a minimal Go `main` inside the pinned upstream module path so it can import the upstream `internal/pcsconfig`. It reads the complete Cookie only via `golang.org/x/crypto/ssh/terminal.ReadPassword`, first requires a real console, rejects empty, CR/LF, over-limit, missing/duplicate/empty/non-terminated `BDUSS` fields, and never consumes argument values. It calls `pcsconfig.Config.SetupUserByBDUSS("", "", "", cookie)` directly. It intentionally avoids `pcsconfig.Config.Init()` because the pinned implementation opens/creates the config file there; only in-memory defaults are initialized before setup, and `Save()` is reached only after setup succeeds. Mutable input bytes are cleared; remaining strings and upstream in-memory state die with process exit. Setup/save error text and common upstream output channels (`os.Stdout`, `os.Stderr`, Go logger, and `pcsverbose`) are suppressed; the program emits only fixed status markers and native nonzero failure.
+
+Added a build helper which fetches tag v4.0.2, checks the exact commit and five reviewed source blobs, downloads the official Go 1.27.1 Windows amd64 archive and checks its SHA-256, uses upstream `go.mod`/`go.sum` read-only, runs synthetic Go tests, builds Windows amd64, and runs a non-secret invalid-argument native-exit fixture. Default behavior deletes the temporary upstream/toolchain/module/build workspace; an optional local-runtime retention branch is source/static reviewed but was not invoked. The Owner checkpoint is source-only: it pins the accepted R6R1 helper file SHA-256, uses its safe path and Owner-only ACL predicates before/after, passes only an allowlist of non-secret OS/config-path environment values, clears the inherited environment, launches with no arguments and unredirected console streams, performs metadata/ACL-only post-readback, and does not run `who`.
+
+The first full build reached Go tests/build but returned a false cleanup-scope error because the Temp parent comparison differed only by a trailing directory separator. The exact generated temporary workspace was separately path-validated and removed. The cleanup comparison was normalized without broadening its parent/name constraints; a fresh complete build then passed, returned the same adapter SHA-256, and reported the workspace absent. This caused the extended elapsed time. The R6R2H-created build root, containing its upstream clone, module cache, toolchain, and binary, is absent; no such artifact is in the repository. A pre-existing public upstream checkout under a separate prior temp root was left untouched. The current Owner runtime binary was not retained.
+
+Public network access was limited to GitHub `main` fetch, pinned public upstream source, the official Go toolchain archive, and public Go modules with `go.sum` checksums. No Baidu endpoint was contacted. The pre-existing untracked `results/` directory was preserved and excluded from staging. Only the R6R2H scripts plus this Evidence and the current Executor Handoff are in scope; the Reviewer-owned handoff is unchanged.
+
+`EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H`. This is a candidate only; no real Cookie auth or subsequent `who` was executed. Stop for Reviewer inspection.

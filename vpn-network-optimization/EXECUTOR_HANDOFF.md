@@ -4,48 +4,59 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Pre-existing Empty Rollback Repair R6R2E-R1
+## Current execution status — G4-B Baidu Secure Cookie Auth Adapter R6R2H
 
 ```text
-GATE_ID=G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
-EXECUTOR_ROLE=OFFLINE_AUTH_ROLLBACK_PROVENANCE_REPAIR
-PREVIOUS_RESULT=RETURN_R6R2E_PREEXISTING_EMPTY_ROOT_DELETION_RISK
+GATE_ID=G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+EXECUTOR_ROLE=PINNED_OFFLINE_COOKIE_ADAPTER_BUILD_AND_VALIDATION
+PREVIOUS_RESULT=RETURN_R6R2G_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=af53ff7434f22db6408d663111c396dab3c42f39
-R6R2E_R1_GATE_BLOB=a0262bdb70a8a72edcd6df32a5011964c236cd83
-ACCEPTED_AUTH_HELPER_BASE_BLOB=a5f6430627a1844c990ccd2712eb1f3ee74823ab
-FROZEN_RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
+PRE_SOURCE_SYNC_HEAD=0a6c384ba0ea32ad4e3064cff1653ca63b319d4f
+FRESH_MAIN_SYNC_BASE=6ce420bda5caa0c73c847bc70d4c7e952d6eeb4b
+R6R2H_GATE_BLOB=b687d5c3ccd71cfcf869cfe01f3147a59a459f26
 SOURCE_PROVENANCE=PASS
-PRE_GATE_TRACKED_WORKTREE=CLEAN
-UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
-PREEXISTING_EMPTY_ROOT_PRESERVED=YES
-NEW_EMPTY_ROOT_ROLLBACK=EXACT_ONLY
-EXACT_NEW_FILE_ROLLBACK=FILE_ONLY_IF_ROOT_PREEXISTED
-R6R2E_R1_PRODUCTION_ROLLBACK_FIXTURES=PASS
-R6R2E_FULL_REGRESSION=PASS
-R6R1_ACL_REGRESSION=PASS
+UPSTREAM_REPO=qjfoidnh/BaiduPCS-Go
+UPSTREAM_TAG=v4.0.2
+UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+UPSTREAM_REVIEWED_SOURCE_BLOBS=5_OF_5_MATCH
+ADAPTER_SOURCE_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
+ADAPTER_TEST_BLOB=b02bf9bbfff5e1ad99523b568d202d1e63d5c9ae
+BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
+OWNER_CHECKPOINT_BLOB=ab43037ef793d8a3c9cce69e14c7e64b33239957
+VALIDATOR_BLOB=07d1f24f2cc934852b456ac2e293c8d74a88d71d
+GO_VERSION=go1.27.1
+GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+BUILD_TARGET=windows/amd64
+ADAPTER_BINARY_SHA256=5c6ad2fdbcb9bee1b3b2fdc789b07e061bd89cc64350c750298b682b717e7955
+GO_TEST_FIXTURES=PASS
+NATIVE_FAILURE_EXIT_FIXTURE=PASS
 POWERSHELL_AST_PARSE=PASS
+GO_SOURCE_STATIC_VALIDATION=PASS
 SECRET_SCAN=PASS
+R6R1_ACL_BOUNDARY_REUSED=PASS
+R6R1_ACL_HELPER_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+OWNER_CHECKPOINT_SOURCE_CREATED=YES_NOT_EXECUTED
+OWNER_RUNTIME_BINARY_RETAINED=NO
+TEMP_BUILD_WORKSPACE_CLEANED=YES
+UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
 OWNER_HELPERS_EXECUTED=NO
-REAL_LOGIN_ACTIONS=0
+REAL_COOKIE_VALUES_USED=0
 REAL_BAIDU_ACTIONS=0
 OWNER_CONFIG_READ=NO
-OWNER_UID_ACCESSED=NO
-NETWORK_REQUESTS=0
+OWNER_CONFIG_WRITE=NO
 SECRET_OR_DPAPI_ACCESSED=NO
 VPS_OR_SSH_ACTIONS=0
 LIVE_G4B_ACTIONS=0
-REAL_WHO_INVOKED=NO
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 REVIEWER_HANDOFF_MODIFIED=NO
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2E-R1
+### Executor task — current R6R2H
 
-R6R2E-R1 fixes only empty-root rollback provenance. `Remove-NewEmptyBaiduConfigDirectory` now requires `RootCreatedThisRun`: it preserves a pre-existing empty root with `PRESERVED_PREEXISTING_EMPTY`, while a verified empty root created by this run remains eligible for exact non-recursive deletion. The finally path passes the recorded creation flag. Exact newly-created `pcs_config.json` rollback behavior remains unchanged. Production rollback functions passed synthetic filesystem fixtures; complete R6/R6R1 regression, AST, and Secret scan passed. No real Owner config, login, `who`, credential, DPAPI, provider, VPS, or network state was accessed. Stop at Reviewer.
+Created a dedicated Go adapter under the exact pinned BaiduPCS-Go v4.0.2 source lineage. It reads Cookie only through no-echo terminal input, validates nonempty/CRLF-free input and one terminated `BDUSS=` field, calls `pcsconfig.Config.SetupUserByBDUSS("", "", "", cookie)`, and saves only after setup succeeds. The adapter suppresses stdout/stderr, standard logger, and upstream `pcsverbose` output during provider setup; it emits only bounded status markers and uses `os.Exit` with nonzero failure. The Owner checkpoint reuses the pinned R6R1 safe-path/Owner-only ACL functions before and after authentication and inherits live console streams without capturing them. The checkpoint was not executed. A public-only Go build and synthetic parser/native-exit fixtures passed; build workspace was removed. No Owner config, real Cookie, DPAPI, Baidu auth/`who`, VPS, or network runtime was accessed.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
