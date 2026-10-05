@@ -7907,3 +7907,37 @@ STOP_AT_REVIEWER=YES
 ```
 
 The full offline validator exercised the production ACL predicate with synthetic Owner-only, Owner+SYSTEM+Administrators, inherited-safe, broad-Allow (Everyone/Authenticated Users/Builtin Users), arbitrary-Allow, Deny, missing-Owner-rights, and Owner-mismatch cases. Existing R6 non-ACL checks remained PASS. The only filesystem fixture content was a non-secret marker in an exact temporary directory, removed and verified absent by the validator. No real configuration content was opened or read.
+
+
+## Reviewer reconciliation — G4-B Baidu Owner Auth Readiness ACL Repair R6R1 — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+FINAL_MAIN_HEAD=a13c0c76e9a3a5051848db78615fadbf12506d9b
+SOURCE_COMMIT=4e21a3eb30d23dbfedd7bef02a64c04890a3bfbd
+CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+R6R1_GATE_BLOB=3cdfec9d1a82d84da8f0384d0eeb7ff1fdfe62d0
+R6R2_GATE_BLOB=75272436cab8bf88297aa0486d68808fd064b6d0
+ACTUAL_ELAPSED=13m18s
+TIME_OVERRUN=NO
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+LIVE_G4B_ACTIONS=0
+```
+
+Reviewer independently inspected the production ACL predicate, eight synthetic ACL fixtures, complete R6 regression evidence, changed-path scope, timing closure, and current GitHub `main`.
+
+The repaired predicate now:
+- preserves exact Owner SID verification;
+- processes direct and inherited ACEs explicitly;
+- permits Allow ACEs only for current Owner, LocalSystem, and Builtin Administrators;
+- rejects every Deny ACE and every other Allow principal;
+- requires the Owner to hold the applicable read/list/traverse metadata rights on each inspected file/directory;
+- retains reparse/location and metadata-only config checks.
+
+All eight R6R1 synthetic fixtures call the same production predicate. The complete R6 validator remained PASS, PowerShell AST and Secret scan passed, and no real checkpoint/provider/config/network/VPS/Secret action occurred.
+
+R6R1 closes formal PASS. The next boundary is one Owner-local read-only checkpoint run under `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2`; it does not authorize login or live G4-B.
