@@ -583,13 +583,13 @@ function Get-BaiduRemoteObjectState {
     param([Parameter(Mandatory=$true)][string]$Directory,[Parameter(Mandatory=$true)][string]$Name)
     $listing=Get-BaiduDirectoryListing -Directory $Directory
     $escaped=[regex]::Escape($Name)
-    $pattern='(?m)^(?:[^\r\n]*[ \t])?'+$escaped+'(?<directory>/)?[ \t]*
+    $pattern='(?m)^(?:[^\r\n]*[ \t])?'+$escaped+'(?<directory>/)?[ \t]*$'
+    $matches=[regex]::Matches($listing,$pattern)
     Assert-G4B ($matches.Count -le 1) 'BAIDU_REMOTE_OBJECT_LISTING_AMBIGUOUS'
     if($matches.Count -eq 0){return 'ABSENT'}
     if($matches[0].Groups['directory'].Success){return 'DIRECTORY'}
     return 'FILE'
 }
-
 function Ensure-BaiduRecoveryDirectory {
     [void](Invoke-BaiduCli -Action 'mkdir' -Arguments @($script:baiduRecoveryDirectory))
     $listing=Get-BaiduDirectoryListing -Directory $script:baiduRecoveryDirectory
