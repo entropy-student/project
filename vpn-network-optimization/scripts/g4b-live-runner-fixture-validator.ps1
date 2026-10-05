@@ -110,7 +110,7 @@ function Test-RunnerContract {
     $canonicalSourceStart=$Text.IndexOf('function Assert-CanonicalSource {',[StringComparison]::Ordinal)
     $canonicalSourceEnd=$Text.IndexOf('function Get-IntegrityRid {',$canonicalSourceStart,[StringComparison]::Ordinal)
     $canonicalSourceBody=if($canonicalSourceStart -ge 0 -and $canonicalSourceEnd -gt $canonicalSourceStart){$Text.Substring($canonicalSourceStart,$canonicalSourceEnd-$canonicalSourceStart)}else{''}
-    $canonicalGitRootPathScope=($canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $runnerRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $handoffRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix') -and -not $canonicalSourceBody.Contains("Invoke-GitRead -Arguments @('ls-files'"))
+    $canonicalGitRootPathScope=($canonicalSourceBody.Contains('$repoParent = [IO.Directory]::GetParent($script:projectRoot)') -and $canonicalSourceBody.Contains('& git -C $repoRoot rev-parse --show-prefix') -and -not $canonicalSourceBody.Contains("Invoke-GitRead -Arguments @('rev-parse','--show-toplevel')") -and $canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $runnerRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot ls-files --error-unmatch -- $handoffRel') -and $canonicalSourceBody.Contains('& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix') -and $canonicalSourceBody.Contains("$acceptedResultsPrefix = '?? ' + $projectPrefix + '/results/'") -and -not $canonicalSourceBody.Contains("Invoke-GitRead -Arguments @('ls-files'")))
     $journalRetention=($Text.Contains('/var/lib') -and $Text.Contains("'G4B_OWNER_ROLLBACK_R1'") -and $Text.Contains("Write-RollbackJournal -Status 'PASS_CANDIDATE'") -and $Text.Contains('G4B_ROLLBACK_JOURNAL_RETAINED=YES') -and $Text -notmatch "(?m)^\s*if ACTION=='complete':")
     $candidateRetains=($candidateBody.Contains("s['pass_candidate']=True; save_state(s)") -and -not ($candidateBody -match 'shutil\.rmtree|\.unlink\(') -and -not $Text.Contains("Invoke-Remote -Action 'complete'"))
     $successMarkers=@('G4B_RECOVERY_PENDING_VERIFIED=YES','G4B_RECOVERY_FINAL_PROMOTED=YES','G4B_REALITY_RUNTIME_ACCESS=PASS','G4B_REALITY_SERVICE_READY=YES','G4B_PUBLIC_TCP443_READY=YES','G4B_THREE_ROLE_PROFILE_IMPORTED=YES','G4B_THREE_ROLE_PROFILE_RESTART_PERSISTENCE=PASS','G4B_ROLE_ORDER=HY2_PRIMARY_WG_BACKUP1_REALITY_BACKUP2','G4B_AUTO_SWITCHING=OFF','G4B_WIREGUARD_PRESERVED=YES','G4B_HY2_PRESERVED=YES','G4B_SYSTEM_PROXY_FINAL=OFF','G4B_TUN_FINAL=OFF','G4B_ROLLBACK_JOURNAL_RETAINED=YES','SECRET_VALUES_EMITTED=0','STOP_AT_REVIEWER=YES')
@@ -212,18 +212,29 @@ Assert-Fixture ($validatorParseErrors.Count -eq 0) 'VALIDATOR_AST'
 $packageOutput=@(& $packageValidatorPath 2>&1 | ForEach-Object { [string]$_ })
 Assert-Fixture (($packageOutput -contains 'G4B_OFFLINE_PACKAGE_VALIDATION=PASS') -and ($packageOutput -contains 'NETWORK_MUTATION=NO') -and ($packageOutput -contains 'SECRET_ACCESS=NO')) 'EXISTING_PACKAGE_VALIDATOR'
 
-$gitRepoRoot=((& git -C $projectRoot rev-parse --show-toplevel 2>$null) -join [Environment]::NewLine).Trim()
-Assert-Fixture ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace($gitRepoRoot)) 'R6R2L_R1_GIT_ROOT_DISCOVERY'
 $gitProjectPrefix=((& git -C $projectRoot rev-parse --show-prefix 2>$null) -join [Environment]::NewLine).Trim().TrimEnd('/')
 Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitProjectPrefix -match '(^|/)vpn-network-optimization$') 'R6R2L_R1_GIT_PROJECT_PREFIX'
+$gitRepoParent=[IO.Directory]::GetParent($projectRoot)
+Assert-Fixture ($null -ne $gitRepoParent) 'R6R2L_R2_DOTNET_REPO_PARENT'
+$gitRepoRoot=$gitRepoParent.FullName
+$gitRootPrefix=((& git -C $gitRepoRoot rev-parse --show-prefix 2>$null) -join [Environment]::NewLine).Trim()
+Assert-Fixture ($LASTEXITCODE -eq 0 -and [string]::IsNullOrEmpty($gitRootPrefix)) 'R6R2L_R1_GIT_ROOT_DISCOVERY'
+Assert-Fixture (-not [string]::IsNullOrWhiteSpace($gitRepoRoot)) 'R6R2L_R2_UNICODE_SAFE_GIT_ROOT'
 $gitRunnerRel=($gitProjectPrefix + '/scripts/g4b-persistent-three-role-live-runner.ps1').TrimStart('/')
 $gitHandoffRel=($gitProjectPrefix + '/REVIEWER_HANDOFF.md').TrimStart('/')
 $gitTrackedRunner=((& git -C $gitRepoRoot ls-files --error-unmatch -- $gitRunnerRel 2>$null) -join [Environment]::NewLine).Trim()
 Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitTrackedRunner -ceq $gitRunnerRel) 'R6R2L_R1_GIT_RUNNER_ROOT_PATH_QUERY'
 $gitTrackedHandoff=((& git -C $gitRepoRoot ls-files --error-unmatch -- $gitHandoffRel 2>$null) -join [Environment]::NewLine).Trim()
 Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitTrackedHandoff -ceq $gitHandoffRel) 'R6R2L_R1_GIT_HANDOFF_ROOT_PATH_QUERY'
-[void](& git -C $gitRepoRoot status --porcelain=v1 --untracked-files=all -- $gitProjectPrefix 2>$null)
+$gitStatus=@(& git -C $gitRepoRoot status --porcelain=v1 --untracked-files=all -- $gitProjectPrefix 2>$null)
 Assert-Fixture ($LASTEXITCODE -eq 0) 'R6R2L_R1_GIT_STATUS_ROOT_PATH_QUERY'
+$gitAcceptedResultsPrefix='?? ' + $gitProjectPrefix + '/results/'
+$gitUnexpectedStatus=@($gitStatus | Where-Object { -not ([string]$_).StartsWith($gitAcceptedResultsPrefix,[StringComparison]::Ordinal) })
+Assert-Fixture ($gitUnexpectedStatus.Count -eq 0) 'R6R2L_R2_PROJECT_STATUS_ACCEPTED_RESULTS_ONLY'
+$crlfHandoff="GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS`r`nLIVE_G4B_EXECUTION_AUTHORIZED=YES`r`nSECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK`r`n"
+$crlfSource=($runner.Contains("(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\\r?$") -and $runner.Contains("(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\\r?$") -and $runner.Contains("(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\\r?$"))
+$crlfBehavior=(($crlfHandoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\r?$') -and ($crlfHandoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') -and ($crlfHandoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$'))
+Assert-Fixture ($crlfSource -and $crlfBehavior) 'R6R2L_R2_CRLF_HANDOFF_CONTRACT'
 
 $contract=Test-RunnerContract $runner
 Assert-Fixture $contract.PhaseOrder 'PHASES_P0_P12_ORDERED_ONCE'
