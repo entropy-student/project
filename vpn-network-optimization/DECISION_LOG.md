@@ -662,3 +662,14 @@ The one authorized post-auth read-only UID-discovery attempt failed closed with 
 Reviewer inspection found an offline parser defect: the discovery helper counts generic `uid` mentions across provider stdout/stderr, while the pinned v4.0.2 `who` identity contract and accepted readiness parser derive identity from the unique canonical `当前帐号 uid: <numeric>, ...` line. Generic extra `uid` text can therefore create a false ambiguity.
 
 The authenticated config remains accepted/frozen. No re-authentication or immediate `who` retry is authorized. Next Gate: `G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1`.
+
+
+## 2026-10-05 — R6R2J-R1 UID parser repair passed
+
+**Decision:** `PASS_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1`.
+
+The repaired discovery parser now matches the intended pinned `who` identity contract: one canonical account-identity line is the sole UID source; unrelated generic `uid` text no longer creates a false ambiguity; duplicate canonical identity lines still fail closed. All required offline fixtures, AST parsing, cleanup regression and Secret scan passed.
+
+No real authentication, Owner config access or provider action occurred. The authenticated config remains accepted/frozen.
+
+Next Gate: `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2`, exactly one Owner-local read-only retry.
