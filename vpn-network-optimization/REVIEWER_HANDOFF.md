@@ -63,7 +63,7 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
-- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. R6R1 subsequently closed the ACL-validator completeness gap. The first bounded live attempt R5 reached P5 and returned before consequential mutation; R6 excluded local DPAPI/HY2/Mihomo, R7 identified PowerShell success-stream pollution at the Baidu process-result boundary, and R8 formally accepted the one-line `[void]$psi.Environment.Remove(...)` repair with full positive/negative regression coverage. G4-B remains IN_PROGRESS. R17 is now the only authorized next boundary: the helper/validator are locked after the pre-execution fail-closed repair, and the one-shot Owner checkpoint is pending.
+- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. R6R1 subsequently closed the ACL-validator completeness gap. The first bounded live attempt R5 reached P5 and returned before consequential mutation; R6 excluded local DPAPI/HY2/Mihomo, R7 identified PowerShell success-stream pollution at the Baidu process-result boundary, and R8 formally accepted the one-line `[void]$psi.Environment.Remove(...)` repair with full positive/negative regression coverage. G4-B remains IN_PROGRESS. R17 consequential execution is currently suspended: the next boundary is R17R1 local Codex offline code validation/reconciliation, after which Reviewer may relock and release the already-recorded R17 authorization.
 
 ### Secret / recovery
 
@@ -103,27 +103,27 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
-STATE=OWNER_ACTION_REQUIRED_R17_AUTHORIZED_LOCKED_READY_FOR_ONE_SHOT
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1
+STATE=EXECUTOR_ACTION_REQUIRED_R17R1_OFFLINE_CODE_VALIDATION
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=LOCAL_CODE_REVIEW_AND_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
-OBJECTIVE=Execute the locked bounded reversible quarantine helper against the exact single stale project pending object proven by R16. Do not permanently delete ciphertext.
-MAX_ENDPOINT_THIS_ROUND=One Owner-local checkpoint: safe-sync/lock/AST/offline-validator, then at most one source-to-quarantine mv with immediate readback and at most one exact quarantine-to-source rollback if required. Mandatory Reviewer stop.
+PREVIOUS_RESULT=R17_PREPARED_BUT_EXECUTION_SUSPENDED_FOR_CODE_USABILITY_CONFIRMATION
+OBJECTIVE=Local Codex reviews the complete current R17 helper/validator, repairs any source defects required for reliable usability, and produces executable offline evidence. No provider action.
+MAX_ENDPOINT_THIS_ROUND=Offline PASS_CANDIDATE with final helper/validator blobs and evidence, then mandatory Reviewer stop. No R17 Run mode, no Baidu access, no Owner config/Secret/DPAPI, no SSH/VPS/Clash/network action.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Approved Baidu recovery directory; exact single strict project pending object only. Mutation is rename-to-quarantine with rename-back rollback.
-APPLICABLE_CRITICAL_CONSTRAINTS=No permanent rm; no upload/download-from-Baidu/mkdir/login/logout/config mutation; no raw UID/stdout/stderr/remote filename output; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C; retain R15 rollback journal.
-PREFLIGHT=R15 PASS; R16 final=0/pending=1/unknown=0; Owner R17 authorization GRANTED; current Gate blob dccccf92969d37f5f83b7cb4b6f085cc0cdf566c; helper blob 3d7797a21c31fb805993530b28d674db4cdf288c; validator blob 359cddf73075c090396a49d106022efd3f078029; Owner checkpoint must safe-fast-forward main, lock all three blobs, AST-parse both scripts and require offline validator PASS before Run.
-REQUIRED_EVIDENCE=Sanitized Owner checkpoint markers; exact source pending precheck; quarantine target absence; source→quarantine readback; final=0/pending=0/unknown=0 on PASS_CANDIDATE; rollback readback if invoked; permanent delete NO; mutation-started marker; temp cleanup; no-action markers for SSH/VPS/recovery/network.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE requires source absent, exact quarantine present, final=0, pending=0, unknown=0, no permanent delete, cleanup PASS and mandatory Reviewer stop. Any failure/ambiguity returns to Reviewer; no rerun after mutation start without reconciliation.
-ROLLBACK_STATUS_OR_PLAN=R15 local rollback journal remains retained and untouched. R17 provider rollback is exact quarantine→source rename only after a fresh read-only rollback-shape precheck, then restored final=0/pending=1/unknown=0 readback.
-OWNER_ONLY_ACTIONS=The exact R17 one-shot checkpoint is already explicitly authorized by Owner. No additional authorization is required for this Gate; any action outside R17 remains unauthorized.
-REVIEWER_TO_EXECUTOR_RELAY=No implementation work remains after the pre-execution Reviewer repair. Owner runs only the repaired locked one-shot checkpoint and returns sanitized markers. Do not run live G4-B or G4-C.
-EXECUTOR_TO_REVIEWER_RELAY=NONE.
+TARGET_AND_SCOPE=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1; scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1; bounded Executor evidence only.
+APPLICABLE_CRITICAL_CONSTRAINTS=R16 accepted state remains final=0/pending=1/unknown=0 and must not be remotely re-observed in R17R1; R15 rollback journal untouched; R17 Owner authorization recorded but execution not released; provider scope/consequences must not expand; permanent delete/live G4-B/G4-C forbidden.
+PREFLIGHT=Safe-sync canonical main; starting helper blob 3d7797a21c31fb805993530b28d674db4cdf288c; starting validator blob 359cddf73075c090396a49d106022efd3f078029; suspended parent R17 Gate blob 09fd5086dc6f6121fdbd3006553560b19019b211; R17R1 Gate blob 05efff190c10e4649e10acb9814f5f0d7d705b95.
+REQUIRED_EVIDENCE=AST both scripts; executable offline validator; default non-mutating path; stale-LASTEXITCODE regression; positive/negative listing fixtures; source/target file-vs-directory/cardinality guards; forward/rollback offline usability evidence; forbidden provider action scan; Secret scan; final blobs; exact changed files; all no-action markers.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only with executable offline evidence sufficient to confirm helper/validator usability and no unresolved ambiguity. Static-only proof of unexercised forward/rollback branches is PARTIAL, not PASS.
+ROLLBACK_STATUS_OR_PLAN=Source-only Git changes must remain revertible. R15 local rollback journal and R17 provider rollback plan remain untouched/unexercised.
+OWNER_ONLY_ACTIONS=NONE. Owner must not run the R17 one-shot checkpoint while R17R1 is open.
+REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md exactly. Work locally/offline. Review the full source, fix the known stale-LASTEXITCODE validator risk plus any other bounded defect, run required executable offline evidence, push final code/evidence to main, fresh-read final blobs, and stop. Do not access Baidu or run R17 Mode Run.
+EXECUTOR_TO_REVIEWER_RELAY=Return result/change/validation/problems/rollback/reviewer-check/Owner-transfer; Owner transfer must be NONE.
 ```
 
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. Current work is the already-authorized R17 one-shot checkpoint for reversible quarantine of that exact single pending object; the helper/validator are locked after Reviewer repair, but no R17 provider mutation has executed yet.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. Current work is R17R1 local offline code validation of the R17 helper/validator before any consequential checkpoint is released. No R17 provider mutation has executed.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -272,11 +272,14 @@ G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_RESULT=PASS
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_RESULT=RETURN_STALE_PENDING_PRESENT
-G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_GATE_BLOB=dccccf92969d37f5f83b7cb4b6f085cc0cdf566c
+G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_GATE_BLOB=09fd5086dc6f6121fdbd3006553560b19019b211
 R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
 R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 R17_PREPARATION_EVIDENCE_BLOB=51d29f3e819a516b3ab85d13e036700cab41ff8e
 R17_EXECUTION_AUTHORIZED=YES
+R17_EXECUTION_RELEASED=NO
+R17_EXECUTION_BLOCKED_BY_R17R1=YES
+R17R1_GATE_BLOB=05efff190c10e4649e10acb9814f5f0d7d705b95
 OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
 R15_EXECUTION_AUTHORIZED=YES
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
@@ -348,9 +351,9 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B is IN_PROGRESS. R17 helper/validator are now locked and the Owner has explicitly authorized the exact current R17 one-shot quarantine checkpoint. Earlier R8/R10 repairs remain PASS; R15 is PASS; R16 proves final=0/pending=1/unknown=0.
+- G4-B is IN_PROGRESS. R17 Owner authorization remains recorded, but execution is suspended until R17R1 completes local Codex offline code validation and Reviewer relocks the final blobs. Earlier R8/R10 repairs remain PASS; R15 is PASS; R16 proves final=0/pending=1/unknown=0.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 identified the local mismatch as exact `pcs_uploading.json` Owner=ADMIN. R15 formally PASSed after bounded ADMIN→OWNER normalization with strict post-readback and retained rollback journal. R16 then completed read-only provider reconciliation and proved final=0, pending=1, unknown=0: remote production residual state is STALE_PENDING_PRESENT. R17 is now locked and Owner-authorized. The only remaining action is the one-shot Owner-local checkpoint using the locked helper/validator; no live G4-B retry is authorized.
+- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 identified the local mismatch as exact `pcs_uploading.json` Owner=ADMIN. R15 formally PASSed after bounded ADMIN→OWNER normalization with strict post-readback and retained rollback journal. R16 then completed read-only provider reconciliation and proved final=0, pending=1, unknown=0: remote production residual state is STALE_PENDING_PRESENT. The prepared R17 one-shot remains unexecuted and is now held behind R17R1 offline code usability validation; no live G4-B retry is authorized.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -359,17 +362,18 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs the single repaired R17 checkpoint from canonical `main`: safe-sync and lock Gate/helper/validator blobs, AST-parse both scripts, require the offline validator to PASS, then execute the helper once with `-Mode Run -OwnerAuthorized`. Return only sanitized markers and stop for Reviewer. Do not permanently delete ciphertext and do not run live G4-B.
+Local Codex executes `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md`: review/repair the full R17 helper and validator, run the required offline executable evidence, push final blobs/evidence to `main`, and stop for Reviewer. Do not access Baidu and do not run R17 `-Mode Run`.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the exact locked R17 one-shot checkpoint. Authorization is already granted; do not grant or run anything outside this Gate.
+NONE. The recorded R17 authorization remains valid but is not released while R17R1 is open. Do not run the R17 checkpoint.
 
 ## EVIDENCE_POINTERS
 
 Read only what is needed:
 
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — current locked and Owner-authorized R17 Gate; execution not yet performed.
+- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — current local Codex offline code-validation Gate; no provider action.
+- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — parent consequential R17 Gate; Owner authorization recorded but execution suspended pending R17R1.
 - `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md` — Reviewer preparation evidence with locked helper/validator identities and source-boundary review.
 - `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 read-only Gate proving final=0/pending=1/unknown=0.
 - `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 local Owner normalization Gate.
