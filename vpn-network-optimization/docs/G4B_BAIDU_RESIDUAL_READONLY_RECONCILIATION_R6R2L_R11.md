@@ -18,6 +18,12 @@ Therefore R9 rollback output cannot establish that the remote recovery directory
 
 Before any new live G4-B retry, read-only provider state must be reconciled using the corrected borderless-listing semantics.
 
+## LOCKED SOURCE
+
+```text
+R11_SCRIPT_BLOB=dff7b60e31e0fb28295a3309d5516ae23aee28cf
+```
+
 ## OBJECTIVE
 
 Read only the approved Baidu recovery directory and classify whether any project-owned residual object is visible.
