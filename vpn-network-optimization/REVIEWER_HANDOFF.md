@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_METADATA_ONLY
+STATE=OWNER_AUTHORIZATION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_SECURITY_METADATA_WRITE
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R13_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
-OBJECTIVE=Use local metadata only to classify the one R13 unrecognized file against all four upstream-known BaiduPCS-Go v4.0.2 config-directory roles, especially pcs_uploading.json.
-MAX_ENDPOINT_THIS_ROUND=One direct-child local metadata-only known-role classification ending in sanitized role/count output + STOP_AT_REVIEWER. No normalization, provider action, cleanup or live runner.
+PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+OBJECTIVE=Normalize only the proven pcs_uploading.json Owner from Builtin Administrators to the current Owner SID while preserving its existing access rules, with durable rollback prepared before mutation and strict R6R1 readback after mutation.
+MAX_ENDPOINT_THIS_ROUND=PREPARATION_ONLY until explicit Owner authorization. No ACL mutation may run under the current state.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host, exact %APPDATA%\BaiduPCS-Go root and direct children metadata only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No file content read/hash/copy/print; no raw filename/path/username/SID/ACE output; no recursion below direct children; no Set-Acl/takeown/icacls; no file mutation; no BaiduPCS-Go/provider; no UID; no DPAPI/Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C.
-PREFLIGHT=R12 proved one ADMIN-owned file in an otherwise clean subtree. R13 proved pcs_config.json is OWNER-owned, pcs_command_history.txt is absent, and exactly one other file remains. Upstream v4.0.2 upload path creates pcs_uploading.json via NewUploadingDatabase(); R9 executed a real upload, so pcs_uploading.json is the strongest candidate but is not yet accepted as fact.
-REQUIRED_EVIDENCE=R14 Gate blob 4a12130337fc79366ce2dceea3fb7ae5f5fe759e; R14 script blob e2a5f2e9f64e5878b66575f50f772131b7dacb0f; parser preflight; root/config/history/upload-db/captcha presence+owner-role markers; unknown-entry counts; reparse count; sanitized R14 classification; all no-action markers.
-ACCEPTANCE_CRITERIA=Observation only. EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN may permit a separate narrow normalization/reconciliation Gate. Any other combination remains fail-closed. R14 never authorizes mutation/provider readback.
-ROLLBACK_STATUS_OR_PLAN=No rollback expected because R14 is metadata-only.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R14 Gate/script blobs and Handoff state, parser-preflight the helper, run it once, return only sanitized markers, stop.
+TARGET_AND_SCOPE=Exact %APPDATA%\BaiduPCS-Go\pcs_uploading.json Owner metadata only after explicit authorization.
+APPLICABLE_CRITICAL_CONSTRAINTS=No config content read/hash/copy/print; no root/config ACL mutation; no file delete/rename/move; no recursive takeown/icacls; no Baidu provider/UID/Secret/SSH/VPS/network/profile/service/route/proxy/TUN/live-G4B/G4-C action.
+PREFLIGHT=R12/R13/R14 prove exact root + pcs_config.json + pcs_uploading.json shape; config/root Owner=OWNER; upload DB Owner=ADMIN; no unknown entries/reparse; prior ACL policy checks clean. Upstream v4.0.2 and R9 upload path explain upload DB creation.
+REQUIRED_EVIDENCE=R15 Gate blob ba3a574c47d05a31c18ef59a500f13e616ea6a95; R15 script blob 930cae384a3bc1df27c3f93d52d5d8580b15a32e; explicit Owner authorization before Run; exact precheck; durable rollback journal READY; one target Owner mutation; strict post-readback; rollback on failure; all no-provider/no-content markers.
+ACCEPTANCE_CRITERIA=After explicit authorization only: exact target Owner changes ADMIN->OWNER; strict R6R1 metadata readback PASS; exact shape PASS; rollback journal retained; no other action. PASS_CANDIDATE still requires Reviewer acceptance.
+ROLLBACK_STATUS_OR_PLAN=Before target mutation, persist original target ACL SDDL in Owner-only local rollback journal. On post-write failure restore exact original ACL and verify ADMIN Owner. No retry after rollback failure.
+OWNER_ONLY_ACTIONS=Current action is authorization only. Do not run R15 Run mode until Owner explicitly authorizes this exact Gate. Validate mode is non-mutating but not required unless Reviewer asks.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return only sanitized R14 metadata classification; no repair.
+EXECUTOR_TO_REVIEWER_RELAY=If/when authorized, return only sanitized R15 markers and stop; no provider readback or live retry.
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; its pending rollback observation used the superseded pre-R10 parser and remains non-authoritative for remote cleanliness. R11 then stopped locally at `BAIDU_CONFIG_ACL` with `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` before UID/provider action. R12 proved one ADMIN-owned file within an otherwise clean three-item subtree. R13 proved `pcs_config.json` is OWNER-owned, `pcs_command_history.txt` is absent, and exactly one other direct-child file remains. Upstream v4.0.2 upload code creates `pcs_uploading.json`, and R9 executed a real upload, making that the strongest candidate. Current work is R14 known-role Owner classification only; remote residual state remains UNKNOWN, and no ACL normalization, cleanup or live retry is authorized.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; its pending rollback observation used the superseded pre-R10 parser and remains non-authoritative for remote cleanliness. R11 then stopped locally at `BAIDU_CONFIG_ACL` with `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` before UID/provider action. R12 proved one ADMIN-owned file within an otherwise clean three-item subtree. R13 narrowed the unknown file role. R14 then proved the exact mismatch is `pcs_uploading.json=ADMIN`, while root/config are OWNER, history/captcha absent, and there are no unknown entries or reparse points. Current work is R15 guarded Owner normalization preparation; execution requires explicit Owner authorization. Remote residual state remains UNKNOWN.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -264,6 +264,11 @@ G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13_SCRIPT_BLOB=f27148308fbe5651
 G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13_RESULT=RETURN_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
 G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_GATE_BLOB=4a12130337fc79366ce2dceea3fb7ae5f5fe759e
 G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
+G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14_RESULT=PASS_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
+G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=REQUIRED
+R15_EXECUTION_AUTHORIZED=NO
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
@@ -335,7 +340,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - G4-B0 is formally PASS and closed.
 - G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS. R9 executed once and returned in P5 with `BAIDU_PENDING_UPLOAD_NOT_PRESENT`, `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12 proved exactly one ADMIN-owned file with otherwise clean ACL metadata. R13 then proved the core config is OWNER-owned, history is absent, and one other file remains. R14 is current and metadata-only to classify that file against upstream-known config roles, especially the upload database created by the R9 upload path. Remote residual state remains UNKNOWN.
+- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 now fully identify the local mismatch as exact `pcs_uploading.json` Owner=ADMIN with otherwise clean known-role shape. R15 is prepared but not authorized: it would change only that target Owner, with rollback journal and strict post-readback. Remote residual state remains UNKNOWN.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -344,11 +349,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Proceed only under `G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14`: direct-child metadata-only known-role/Owner classification, then stop at Reviewer. No ACL normalization, provider access, cleanup or live retry is authorized.
+Current step is Owner authorization for `G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15`. Do not execute the mutation path until the Owner explicitly authorizes this exact Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-Run only the prepared R14 metadata-only helper after source identity/state checks and parser preflight. Return sanitized role/count markers only. Do not change ACLs, run BaiduPCS-Go, enter UID, clean remote state, or run live G4-B.
+No command is required yet. Owner must explicitly authorize R15 before any ACL mutation command is issued.
 
 ## EVIDENCE_POINTERS
 
