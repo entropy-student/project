@@ -40,13 +40,15 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_R17_AUTHORIZED_LOCKED_READY_FOR_ONE_SHOT
-GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+STATE=EXECUTOR_ACTION_REQUIRED_R17R1_OFFLINE_CODE_VALIDATION
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1
 PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
-R17_GATE_BLOB=dccccf92969d37f5f83b7cb4b6f085cc0cdf566c
+R17_GATE_BLOB=09fd5086dc6f6121fdbd3006553560b19019b211
 R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
 R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
 R17_EXECUTION_AUTHORIZED=YES
+R17_EXECUTION_RELEASED=NO
+R17R1_GATE_BLOB=05efff190c10e4649e10acb9814f5f0d7d705b95
 ```
 
 Historical bounded live authorization remains recorded for the earlier G4-B live work, but it does **not** authorize R17 or any new live retry.
@@ -502,7 +504,7 @@ Interpretation:
 
 The one pending object is consistent with the R9 pending-upload chronology and is the only production-namespace project residual. R16 does not itself authorize mutation.
 
-### R17 — current stale-pending quarantine reconciliation — LOCKED / OWNER AUTHORIZED / NOT YET EXECUTED
+### R17 / R17R1 — quarantine execution SUSPENDED / LOCAL CODE VALIDATION CURRENT
 
 Current Gate:
 
@@ -528,7 +530,7 @@ Planned future behavior after helper preparation, review and explicit Owner auth
 - on failed post-readback, rename quarantine back to the exact source and prove final=0/pending=1/unknown=0;
 - never permanently `rm` ciphertext in R17.
 
-R17 preparation/review is complete after the pre-execution Reviewer repair. Owner authorization is already granted. The next action is the single Owner-local checkpoint: safe-sync/lock/AST/offline-validator, then one Run attempt and mandatory Reviewer stop.
+R17 Owner authorization remains recorded, but execution is suspended. The current action is R17R1: local Codex must review/repair the complete helper/validator and produce executable offline usability evidence, then stop for Reviewer. No Provider action is allowed in R17R1.
 
 ## 5. Current unresolved truth
 
@@ -566,7 +568,7 @@ Outside the exact locked R17 one-shot checkpoint, the current authorization does
 - live G4-B;
 - G4-C.
 
-R17 helper/validator are already locked and Owner authorization is already granted. Only the exact one-shot Owner checkpoint may run next; live G4-B/G4-C remain blocked.
+R17 helper/validator identities are starting review identities only. The Owner checkpoint must not run while R17R1 is open. Local Codex offline validation is next; live G4-B/G4-C remain blocked.
 
 ## 7. What the next Reviewer must read
 
@@ -574,7 +576,8 @@ Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
 2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R17 chronology.
-3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current locked and Owner-authorized Gate; execution not yet performed.
+3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — current local Codex offline code-validation Gate.
+4. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current locked and Owner-authorized Gate; execution not yet performed.
 4. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md` — locked helper/validator review evidence.
 4. `EXECUTION_EVIDENCE.md` — append-only execution proof through R16.
 5. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 Gate.
