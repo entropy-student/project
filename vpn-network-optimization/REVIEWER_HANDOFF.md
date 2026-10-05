@@ -104,19 +104,19 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_REAL_LS_PARSER_OFFLINE_VALIDATION_R6R2L_R10
+STATE=OWNER_ACTION_REQUIRED_BAIDU_REAL_LISTING_PARSER_OFFLINE_VALIDATION_R6R2L_R10
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LS_FORMAT_PARSER_DRIFT
-OBJECTIVE=Validate the R10 repair that makes Baidu remote-object readback compatible with the real v4.0.2 borderless ls -l output and makes the fake CLI fixture model that provider format.
-MAX_ENDPOINT_THIS_ROUND=Offline fixture validation only. No Baidu API/file operation, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation, no G4-C.
+PREVIOUS_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LISTING_PARSER_DEFECT
+OBJECTIVE=Validate the repair for real BaiduPCS-Go v4.0.2 borderless ls -l output and remove the fake pipe-delimited fixture assumption before any further live retry.
+MAX_ENDPOINT_THIS_ROUND=Offline live-runner fixture validator only. No Baidu API/file operation, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Canonical main runner + fixture validator only.
-APPLICABLE_CRITICAL_CONSTRAINTS=Do not replay R9; no live Baidu/VPS action; no Secret access/output; preserve all prior R1-R8 contracts.
-PREFLIGHT=R9 failed in P5 with BAIDU_PENDING_UPLOAD_NOT_PRESENT and CONSEQUENTIAL_MUTATION_STARTED=NO. Upstream BaiduPCS-Go v4.0.2 source proves real ls -l has no border/column separator and filename is the final column; pre-R10 parser required pipe-delimited rows.
-REQUIRED_EVIDENCE=R10 parser source contract PASS; real-format FILE/DIRECTORY/exact-basename behavioral fixtures PASS; negative pipe-only parser regression PASS; pending upload/readback/promotion/rollback fixtures PASS; full positive and negative suites PASS; zero external/network/Secret action.
-ACCEPTANCE_CRITERIA=All required R10 and prior fixtures PASS; validator parser PASS; no external action; STOP_AT_REVIEWER.
-ROLLBACK_STATUS_OR_PLAN=Source-only rollback if R10 fails. R9 already stopped and reported bounded rollback PASS; no new runtime mutation is authorized in R10.
+TARGET_AND_SCOPE=Canonical main runner + validator only; source-level parser and provider-fixture repair.
+APPLICABLE_CRITICAL_CONSTRAINTS=No live retry; no Baidu provider action; no Secret access/output; no SSH/VPS; no G4-C.
+PREFLIGHT=R9 failed in P5 after successful upload command with BAIDU_PENDING_UPLOAD_NOT_PRESENT; CONSEQUENTIAL_MUTATION_STARTED=NO; upstream v4.0.2 proves ls table is borderless and filename is final column; old fake fixture used non-provider pipe rows.
+REQUIRED_EVIDENCE=R10 real-listing parser/source marker; real borderless file match PASS; directory match PASS; exact basename PASS; pipe-border-only negative regression PASS; existing pending upload/promotion/rollback fixtures PASS; full positive/negative suites PASS; zero external/network/Secret actions.
+ACCEPTANCE_CRITERIA=All R10 and existing fixture markers PASS; parser preflight PASS; no external/network/Secret action; STOP_AT_REVIEWER.
+ROLLBACK_STATUS_OR_PLAN=Source-only rollback. R9 remote rollback and pending rollback reported PASS; no consequential mutation began. No runtime mutation is authorized by R10.
 OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R10 Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, return markers, stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
 EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
