@@ -57,7 +57,7 @@ The upstream upload implementation also confirms a local file is saved under the
 
 ```text
 R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
-R10_VALIDATOR_BLOB=aa8a6db471b83de173c02ae2956719d1ebfdef4b
+R10_VALIDATOR_BLOB=d98e479d3db03a9c4e94e8139a11c23b6d195278
 ```
 
 ## REPAIR SCOPE
