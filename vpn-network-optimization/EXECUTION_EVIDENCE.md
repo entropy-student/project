@@ -10300,3 +10300,30 @@ Causal reconciliation:
 - This closes the local identity question. It does not yet prove remote Baidu residual state.
 
 Next: prepare a separate narrow consequential ACL-normalization Gate. No mutation is authorized by this R14 acceptance itself.
+
+
+## Reviewer preparation — R15 guarded upload-db Owner normalization — 2026-10-05
+
+R15 is prepared on canonical main but is not authorized for execution.
+
+```text
+GATE_ID=G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
+R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=REQUIRED
+R15_EXECUTION_AUTHORIZED=NO
+```
+
+Reviewer static inspection:
+- script defaults to `Mode=Validate`;
+- mutation path additionally requires explicit `-OwnerAuthorized`;
+- precheck re-proves exact config + upload-db direct-child shape and R6R1 ACL policy;
+- only intended production mutation is the Owner field of exact `pcs_uploading.json`;
+- existing access rules are preserved rather than replaced;
+- a durable Owner-only rollback journal containing only ACL SDDL metadata is created and verified before target mutation;
+- failure after mutation attempts exact ACL restore from the journal and verifies ADMIN Owner restoration;
+- success immediately re-validates root/config/upload-db through the strict R6R1 metadata policy and exact shape;
+- rollback journal is retained through Reviewer stop;
+- no config content read/hash/copy/print, no provider/UID/Secret/SSH/VPS/network/live-G4B/G4-C action exists.
+
+R15 is a consequential local security-metadata write. This preparation is not authorization to run it.
