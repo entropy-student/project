@@ -463,3 +463,14 @@ Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B`. The numeric UID remains Ow
 The UID helper stopped before temporary runtime creation, so no `who` was attempted and no UID was displayed. The selected BaiduPCS-Go config is not currently available for read-only identity discovery.
 
 Pinned BaiduPCS-Go v4.0.2 source confirms cookie/BDUSS/username/password flag-based login would expose credential material in process arguments and is forbidden. A no-argument interactive `login` prompts locally with password no-echo, but upstream marks it long-unmaintained. Therefore the next step is the offline-only `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C` Gate; no manual login is authorized yet.
+
+
+## 2026-10-05 — R6R2C interactive-auth helper formally accepted
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C`.
+
+The reviewed helper provides a bounded Owner-local authentication path using only no-argument interactive `login`; credential-bearing CLI flags/environment are prohibited. Login console streams remain local and uncaptured; config state is classified before mutation; unknown non-empty config fails closed; post-login ACL is validated before one read-only `who`; UID and raw who output are not emitted; success requires verified cleanup.
+
+The frozen R6R2A validator CRLF guard false negative is a validator text-pattern defect only and does not invalidate the accepted R6R2A helper or R6R2C source.
+
+Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RUN_R6R2D`.
