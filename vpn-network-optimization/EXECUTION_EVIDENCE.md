@@ -9061,3 +9061,28 @@ STOP_AT_REVIEWER=YES
 ```
 
 The offline validator executed the production `Resolve-BaiduUidDiscoveryOutcome` function against synthetic data. Exactly one canonical `当前帐号 uid:` stdout line yields a candidate even when generic `uid` diagnostics also appear in stdout/stderr. Duplicate canonical lines remain fail-closed; with zero canonical lines, identity-like text is ambiguous and no identity-like text returns bounded Owner action required. Nonzero native exit never returns READY. The numeric regex bound remains the pre-existing 1–20 digit, nonzero decimal contract. Validator-only repair made the existing source entrypoint check tolerate CRLF line endings; full fixtures, R6R1 policy fixture, AST and Secret scan passed. The validator's temporary ACL/config/runtime fixtures were non-secret and cleaned. No real provider output, Owner config, credentials, network, VPS or service was accessed or changed.
+
+
+## Reviewer decision — R6R2J-R1 UID parser repair — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+REVIEWER_RESULT=PASS_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+RESULT_COMMIT=e70eb9168771df38eb2e5989e7f0a1551e895b05
+UID_HELPER_BLOB=ebba88863d55d74956d3b745eab8f0f18a7d1dee
+UID_VALIDATOR_BLOB=59a6bd86cf021986b7e8066fa08108e9435852c5
+FULL_UID_VALIDATOR=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+PROVIDER_REQUESTS=0
+R6R2J_R2_GATE_BLOB=ba7df8f44132fb8ff8f55c3f95f5b790a2f0a417
+```
+
+Reviewer independently verified the source delta and Gate fixtures. The discovery parser now derives identity only from the unique canonical pinned `who` stdout line. One canonical identity remains READY even when unrelated generic `uid` text is present; duplicate canonical identity lines remain fail-closed; zero canonical lines preserve bounded ambiguous/Owner-action behavior; nonzero native exit cannot return READY. Numeric bounds and raw-output/username suppression remain intact.
+
+The validator's CRLF-tolerant entrypoint assertion is a validator-only compatibility fix and does not alter runtime semantics. No real Owner/provider/network state was accessed.
+
+R6R2J-R1 is formally PASS. Next Gate `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2` authorizes exactly one Owner-local read-only `who` retry with the repaired helper.
