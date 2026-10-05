@@ -523,3 +523,12 @@ The single authorized retry again displayed provider error 50052. The helper the
 Public upstream guidance now makes the larger conclusion decisive: username/password interactive login is long-unmaintained, and the maintainer explicitly says not to use it. No further retry is authorized.
 
 The supported Cookie/BDUSS paths cannot be invoked through stock CLI flags because Secret values would appear in process arguments. Next Gate `G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H` builds a credential-safe local no-echo Cookie adapter against the exact pinned v4.0.2 source.
+
+
+## 2026-10-05 — R6R2H Cookie adapter core accepted; Owner checkpoint returned for ACL/reconciliation gap
+
+**Decision:** `RETURN_R6R2H_OWNER_CHECKPOINT_POSTAUTH_ACL_AND_FAILURE_RECONCILIATION_GAP`.
+
+The pinned no-echo Cookie adapter and build chain are accepted. The remaining defect is in the Owner orchestration: it performs strict R6R1 validation before normalizing a child-created config file Owner/ACL, recreating the Windows Owner-mismatch failure already observed in R6R2D. It also lacks provenance-aware rollback for a run-created empty root or exact partial `pcs_config.json` after adapter/post-auth failure.
+
+R6R2H-R1 is limited to repairing the Owner checkpoint and validator using the accepted R6R2E metadata/normalization/reconciliation pattern. No real Cookie action is authorized yet.
