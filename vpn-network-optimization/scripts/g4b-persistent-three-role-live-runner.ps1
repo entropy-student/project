@@ -84,12 +84,23 @@ function Invoke-GitRead {
 }
 
 function Assert-CanonicalSource {
-    $repoRoot = Invoke-GitRead -Arguments @('rev-parse','--show-toplevel')
     $origin = Invoke-GitRead -Arguments @('remote','get-url','origin')
     Assert-G4B ($origin -match '(?i)(?:github\.com[:/]entropy-student/project(?:\.git)?)$') 'CANONICAL_ORIGIN_INVALID'
     $projectPrefix = Invoke-GitRead -Arguments @('rev-parse','--show-prefix')
     $projectPrefix = $projectPrefix.TrimEnd('/')
     Assert-G4B ($projectPrefix -match '(^|/)vpn-network-optimization$') 'PROJECT_TRACKED_PATH_INVALID'
+
+    # Native Git path text is not reused as a Windows filesystem locator.
+    # Once Git proves the prefix is exactly vpn-network-optimization, the
+    # parent of the already-resolved .NET Unicode project path is the repo root.
+    $repoParent = [IO.Directory]::GetParent($script:projectRoot)
+    Assert-G4B ($null -ne $repoParent) 'CANONICAL_ROOT_UNAVAILABLE'
+    $repoRoot = $repoParent.FullName
+    $rootPrefixRaw = @(& git -C $repoRoot rev-parse --show-prefix 2>$null)
+    if ($LASTEXITCODE -ne 0) { throw 'CANONICAL_GIT_ROOT_QUERY_FAILED' }
+    $rootPrefix = (($rootPrefixRaw -join [Environment]::NewLine).Trim())
+    Assert-G4B ([string]::IsNullOrEmpty($rootPrefix)) 'CANONICAL_ROOT_SCOPE_INVALID'
+
     $runnerRel = ($projectPrefix + '/scripts/g4b-persistent-three-role-live-runner.ps1').TrimStart('/')
     $handoffRel = ($projectPrefix + '/REVIEWER_HANDOFF.md').TrimStart('/')
     $trackedRunnerRaw = @(& git -C $repoRoot ls-files --error-unmatch -- $runnerRel 2>$null)
@@ -99,9 +110,13 @@ function Assert-CanonicalSource {
     $trackedRunner = (($trackedRunnerRaw -join [Environment]::NewLine).Trim())
     $trackedHandoff = (($trackedHandoffRaw -join [Environment]::NewLine).Trim())
     Assert-G4B ($trackedRunner -ceq $runnerRel -and $trackedHandoff -ceq $handoffRel) 'CANONICAL_TARGET_NOT_TRACKED'
-    $dirty = @(& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix 2>$null)
+
+    $dirtyRaw = @(& git -C $repoRoot status --porcelain=v1 --untracked-files=all -- $projectPrefix 2>$null)
     if ($LASTEXITCODE -ne 0) { throw 'CANONICAL_PROJECT_STATUS_FAILED' }
+    $acceptedResultsPrefix = '?? ' + $projectPrefix + '/results/'
+    $dirty = @($dirtyRaw | Where-Object { -not ([string]$_).StartsWith($acceptedResultsPrefix,[StringComparison]::Ordinal) })
     Assert-G4B ($dirty.Count -eq 0) 'CANONICAL_PROJECT_SCOPE_DIRTY'
+
     $actualRunnerBlob = Invoke-GitRead -Arguments @('rev-parse',"HEAD:$runnerRel")
     Assert-G4B ($ExpectedRunnerBlob -match '^[0-9a-f]{40}$' -and $actualRunnerBlob -ceq $ExpectedRunnerBlob) 'RUNNER_BLOB_MISMATCH'
     & git -C $script:projectRoot fetch origin main 2>$null | Out-Null
@@ -112,11 +127,10 @@ function Assert-CanonicalSource {
     $handoffPath = Join-Path $script:projectRoot 'REVIEWER_HANDOFF.md'
     $handoff = [IO.File]::ReadAllText($handoffPath,[Text.Encoding]::UTF8)
     if ($Mode -eq 'Run') {
-        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS$') 'LIVE_G4B_GATE_NOT_CURRENT'
-        Assert-G4B ($handoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
-        Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
+        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
+        Assert-G4B ($handoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
+        Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
     }
-    Assert-G4B ($repoRoot.Length -gt 0) 'CANONICAL_ROOT_UNAVAILABLE'
 }
 
 function Get-IntegrityRid {
