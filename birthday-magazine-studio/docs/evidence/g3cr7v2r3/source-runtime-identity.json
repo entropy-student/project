@@ -1,0 +1,87 @@
+{
+  "gate": "G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT",
+  "sourceBaseline": "daff4101080d71aa0aa958986096d14975339deb",
+  "runtime": {
+    "container": "birthday-magazine-g3c-wordpress-1",
+    "containerId": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+    "status": "running",
+    "site": "http://127.0.0.1:8189/",
+    "bindMount": "C:/Users/34707/Documents/ChatGPT/VPS\u57fa\u5efa/workspaces/birthday-magazine-g3cr2/birthday-magazine-studio/poc/g3c/preview-plugin -> /var/www/html/wp-content/plugins/bms-g3c-preview",
+    "containerRestarted": false
+  },
+  "files": {
+    "birthday-magazine-poc.php": {
+      "candidateSha256": "1210388b1c7b07048f196307390b98e4ae9e56ba20d4f41bb5a6f7f872f0df85",
+      "candidateBytes": 6720,
+      "runtimeSha256": "1210388b1c7b07048f196307390b98e4ae9e56ba20d4f41bb5a6f7f872f0df85",
+      "runtimeBytes": 6720,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791185666,
+      "candidateMtimeUtc": "2026-10-05T07:34:26.030275Z"
+    },
+    "frontend-reproduction.php": {
+      "candidateSha256": "93291d73ff5794464fa95153e1b530ebfad3193ba441406735ff8b89941fd080",
+      "candidateBytes": 12297,
+      "runtimeSha256": "91f4bdf1b14aecde4318f671b171eebd9eb41b87bb0a954868aee0d2017a1a62",
+      "runtimeBytes": 12179,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791185666,
+      "candidateMtimeUtc": "2026-10-05T07:34:26.031285Z"
+    },
+    "frontend-reproduction.css": {
+      "candidateSha256": "49c17879230eefd1d628719878d2a0afdcb081da49e73b82456ae78ec053769f",
+      "candidateBytes": 34868,
+      "runtimeSha256": "49c17879230eefd1d628719878d2a0afdcb081da49e73b82456ae78ec053769f",
+      "runtimeBytes": 34868,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791185666,
+      "candidateMtimeUtc": "2026-10-05T07:34:26.033283Z"
+    },
+    "magazine-preview.css": {
+      "candidateSha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5",
+      "candidateBytes": 19555,
+      "runtimeSha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5",
+      "runtimeBytes": 19555,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791179220,
+      "candidateMtimeUtc": "2026-10-05T05:47:00.075871Z"
+    },
+    "preview.js": {
+      "candidateSha256": "c21af03fb83e21e788189751bf92ea10ef1a330a8406de7fb43a2ebf12442ff9",
+      "candidateBytes": 3038,
+      "runtimeSha256": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+      "runtimeBytes": 2978,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791157284,
+      "candidateMtimeUtc": "2026-10-04T23:41:24.668734Z"
+    },
+    "frontend-reproduction.js": {
+      "candidateSha256": "11d80952c47aea4232fa002cfacc48f563668292aba91811da70fcafed3807d1",
+      "candidateBytes": 9133,
+      "runtimeSha256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "runtimeBytes": 8927,
+      "normalizedRuntimeEqualsCandidate": true,
+      "candidateMtimeUnix": 1791157284,
+      "candidateMtimeUtc": "2026-10-04T23:41:24.665733Z"
+    }
+  },
+  "phpScopeProof": {
+    "birthday-magazine-poc.php": {
+      "baselineBlobEqualsCurrentAfterRevertingOnlyCssVersionArg": true,
+      "changedVersionExpression": "filemtime(__DIR__ . '/magazine-preview.css')",
+      "noOtherNormalizedPhpContentChanges": true
+    },
+    "frontend-reproduction.php": {
+      "baselineBlobEqualsCurrentAfterRevertingOnlyCssVersionArg": true,
+      "changedVersionExpression": "filemtime(__DIR__ . '/frontend-reproduction.css')",
+      "noOtherNormalizedPhpContentChanges": true
+    },
+    "woocommerceOrderStatus": {
+      "functionPresentBaselineAndCurrent": true,
+      "functionSha256Baseline": "4ed120a9da57edb8753ccf3c00eb7e68281d4e38df83db21d1a1cfb938c5293e",
+      "functionSha256Current": "4ed120a9da57edb8753ccf3c00eb7e68281d4e38df83db21d1a1cfb938c5293e",
+      "functionByteEquivalent": true,
+      "thankyouHookUnchanged": true
+    }
+  }
+}

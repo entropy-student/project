@@ -1,0 +1,129 @@
+{
+  "gate": "G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT",
+  "capturedAt": "2026-10-05T07:59:38.732898Z",
+  "cacheMode": "Existing Owner Edge profile normal reload, no cache disable; follow-up Playwright Edge normal cache-enabled contexts; separate origin no-store fetch used only for comparison.",
+  "before": {
+    "normalEdge": {
+      "stylesheetUrl": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=0.3.0",
+      "version": "0.3.0",
+      "cssomRules": 52,
+      "cssomSerializedBytes": 6954,
+      "cssomSha256": "991d1d6624dbfeee603a3d934f1f79e0b6b46bdf91f4c8e14e55c3c6caba6124",
+      "contentMarkers": {
+        "oldMaxWidth1120Present": true,
+        "currentMinmax250pxGridPresent": false
+      },
+      "computed": {
+        "bodyBackground": "rgb(228, 227, 220)",
+        "previewWidth": 1120,
+        "previewControlsBackground": "rgba(255, 249, 242, 0.5)",
+        "previewGridColumns": "2 \u00d7 509.3px"
+      }
+    },
+    "sameUrlBypassCache": {
+      "method": "GET with no-store fetch semantics",
+      "status": 200,
+      "contentType": "text/css",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=0.3.0",
+      "bytes": 19555,
+      "sha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5",
+      "candidateAndRuntimeCssMatch": true,
+      "contentMarkers": {
+        "oldMaxWidth1120Present": false,
+        "currentMinmax250pxGridPresent": true
+      },
+      "cacheHeaders": {
+        "cacheControl": null,
+        "age": null,
+        "etag": "\"4c63-65d116924455e-gzip\"",
+        "lastModified": "Mon, 05 Oct 2026 05:47:00 GMT",
+        "server": "Apache/2.4.68 (Debian)"
+      },
+      "finding": "Same fixed version URL produced divergent browser CSSOM vs current no-store source bytes; stale normal Edge response is confirmed. Cache telemetry/fromDiskCache flag is unavailable in page inspection; no cache-clear or DevTools bypass was used in normal Edge."
+    }
+  },
+  "repair": {
+    "enqueueVersioning": "filemtime(__DIR__ . \"/<css asset>\")",
+    "files": [
+      "birthday-magazine-poc.php: magazine-preview.css",
+      "frontend-reproduction.php: frontend-reproduction.css"
+    ],
+    "magazinePreviewCssMtimeUnix": 1791179220,
+    "frontendReproductionCssMtimeUnix": 1791185666,
+    "designOrBehaviorChangesForHomepage": false
+  },
+  "after": {
+    "normalOwnerEdge": {
+      "previewCssUrl": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791179220",
+      "intakeCssUrl": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666",
+      "previewCssomRules": 98,
+      "previewCssomSerializedBytes": 19434,
+      "contentMarkers": {
+        "oldMaxWidth1120Present": false,
+        "currentMinmax250pxGridPresent": true
+      },
+      "computedHomepage": {
+        "bodyBackground": "rgb(228, 227, 220)",
+        "previewSectionBackground": "rgb(247, 248, 251)",
+        "previewSectionWidth": 1646,
+        "brandPrimary": "#713f5d",
+        "brandSoft": "#f7f8fb",
+        "previewPaper": "#f2efe9",
+        "previewWhite": "#fffdf9",
+        "previewInk": "#1b2024",
+        "previewControlsBackground": "rgb(255, 255, 255)",
+        "previewWidth": 1200,
+        "controlsWidth": 330,
+        "stageWidth": 854
+      },
+      "computedIntake": {
+        "cssUrl": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666",
+        "brandPrimary": "#713f5d",
+        "brandSoft": "#f7f8fb",
+        "headlineFont": "42px",
+        "stepTitleFont": "30px",
+        "inputFont": "16px",
+        "inputHeight": "50px",
+        "cardWidth": 1072,
+        "outerTopGap": 64,
+        "documentWidth": 1646,
+        "innerWidth": 1661
+      }
+    },
+    "normalBrowserRawResponses": {
+      "previewCss": {
+        "page": "home-desktop",
+        "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791179220",
+        "status": 200,
+        "bytes": 19555,
+        "sha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5",
+        "cacheControl": null,
+        "age": null,
+        "etag": "\"4c63-65d116924455e-gzip\"",
+        "lastModified": "Mon, 05 Oct 2026 05:47:00 GMT"
+      },
+      "intakeCss": {
+        "page": "intake-about-desktop",
+        "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666",
+        "status": 200,
+        "bytes": 34868,
+        "sha256": "49c17879230eefd1d628719878d2a0afdcb081da49e73b82456ae78ec053769f",
+        "cacheControl": null,
+        "age": null,
+        "etag": "\"8834-65d12e959c683-gzip\"",
+        "lastModified": "Mon, 05 Oct 2026 07:34:26 GMT"
+      },
+      "normalCacheEnabled": true,
+      "serviceWorker": false
+    },
+    "conclusion": "Existing Edge reload received a new filemtime URL and its live CSSOM contains current source markers; ordinary browser response bodies in the enabled-cache Edge contexts are byte-identical to the candidate/runtime files."
+  },
+  "nonChanges": {
+    "previewInteraction": "unchanged",
+    "statusRoute": "QA_ONLY_NOT_PRODUCT_SURFACE",
+    "woocommerceOrderStatus": "unchanged",
+    "paymentOrOrderRequests": 0,
+    "checkoutSubmission": 0,
+    "modelCalls": 0
+  }
+}

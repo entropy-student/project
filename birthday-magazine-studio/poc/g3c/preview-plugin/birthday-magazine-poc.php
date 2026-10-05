@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', function () {
  }
  $post = get_post();
  if (is_singular() && $post && has_shortcode($post->post_content, 'bms_preview')) {
-  wp_enqueue_style('bms-magazine-preview', plugins_url('magazine-preview.css', __FILE__), ['bms-studio'], '0.3.0');
+  wp_enqueue_style('bms-magazine-preview', plugins_url('magazine-preview.css', __FILE__), ['bms-studio'], filemtime(__DIR__ . '/magazine-preview.css'));
   wp_enqueue_script('bms-preview', plugins_url('preview.js', __FILE__), [], '0.3.0', true);
  }
 }, 120);

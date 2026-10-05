@@ -1,0 +1,90 @@
+{
+  "gate": "G3CR7V2R3_LIVE_STYLE_DELIVERY_AND_SCALE_REFINEMENT",
+  "sourceBaseline": "daff4101080d71aa0aa958986096d14975339deb",
+  "beforeReport": "before-geometry.json",
+  "afterReport": "runtime-scale-readback.json",
+  "measurements": {
+    "desktop1440": {
+      "viewport": 1440,
+      "mainAppWidth": [
+        1120,
+        1120
+      ],
+      "primaryCardWidth": [
+        980,
+        1072
+      ],
+      "outerTopGapAfterHeader": [
+        100,
+        64
+      ],
+      "pageHeadlineFontPx": [
+        32,
+        42
+      ],
+      "stepTitleFontPx": [
+        24,
+        30
+      ],
+      "supportFontPx": [
+        15,
+        17
+      ],
+      "fieldLabelFontPx": [
+        12,
+        14
+      ],
+      "inputFontPx": [
+        15,
+        16
+      ],
+      "controlHeightPx": [
+        46,
+        50
+      ],
+      "horizontalOverflowAfter": false
+    },
+    "mobile375": {
+      "viewport": 375,
+      "mainAppWidth": [
+        375,
+        375
+      ],
+      "primaryCardWidth": [
+        343,
+        343
+      ],
+      "outerTopGapAfterHeader": [
+        90,
+        56
+      ],
+      "pageHeadlineFontPx": [
+        28,
+        32
+      ],
+      "stepTitleFontPx": [
+        22,
+        26
+      ],
+      "supportFontPx": [
+        14,
+        16
+      ],
+      "fieldLabelFontPx": [
+        12,
+        14
+      ],
+      "inputFontPx": [
+        15,
+        16
+      ],
+      "controlHeightPx": [
+        46,
+        48
+      ],
+      "documentScrollWidthAfter": 375,
+      "horizontalOverflowAfter": false
+    }
+  },
+  "notes": "Arrays are [before, after]. Layout/markup stayed unchanged; card max width and intake type/control spacing changed only by the appended scoped CSS override."
+}

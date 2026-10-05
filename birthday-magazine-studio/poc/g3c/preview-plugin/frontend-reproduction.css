@@ -1485,3 +1485,168 @@ body.bms-g3cr7-app-page .bms-brand-footer h2 {
 		padding: 32px 20px 20px;
 	}
 }
+
+
+/* G3CR7V2R3: bounded intake scale and density; status fixture remains QA-only. */
+body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) {
+	padding-block: 24px 32px !important;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7:not(.bms-g3cr7-status-fixture) {
+	padding: 28px 24px 40px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro,
+body.bms-g3cr7-app-page .bms-g3cr7-progress,
+body.bms-g3cr7-app-page .bms-g3cr7-card {
+	max-width: none;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro h1 {
+	font-size: 42px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-intro > p:last-child {
+	font-size: 17px;
+	line-height: 1.5;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress {
+	padding: 18px 24px 16px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li {
+	font-size: 13px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-progress li > span:first-child {
+	width: 32px;
+	height: 32px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-card {
+	width: 100%;
+	padding: 40px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-step h2 {
+	font-size: 30px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-help {
+	font-size: 17px;
+	line-height: 1.5;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field {
+	font-size: 14px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7-field select,
+body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
+	padding: 11px 14px;
+	font-size: 16px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7-field select {
+	min-height: 50px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
+	min-height: 128px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-drop {
+	min-height: 136px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-photo-meta {
+	font-size: 14px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-fixture-note {
+	font-size: 13px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-nav .bms-g3cr7-button,
+body.bms-g3cr7-app-page .bms-g3cr7-back {
+	min-height: 48px;
+	font-size: 14px;
+}
+
+body.bms-g3cr7-app-page .bms-g3cr7-footnote {
+	margin-top: 18px;
+	font-size: 13px;
+}
+
+@media (max-width: 760px) {
+	body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) {
+		padding-block: 16px 24px !important;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7:not(.bms-g3cr7-status-fixture) {
+		padding: 20px 16px 28px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-intro {
+		max-width: none;
+		margin-bottom: 16px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-intro h1 {
+		font-size: 32px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-intro > p:last-child,
+	body.bms-g3cr7-app-page .bms-g3cr7-help {
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress {
+		padding: 12px 10px 10px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-progress li {
+		font-size: 9px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-card {
+		padding: 24px 18px 18px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-step h2 {
+		font-size: 26px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-field {
+		font-size: 14px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-field input,
+	body.bms-g3cr7-app-page .bms-g3cr7-field select,
+	body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
+		font-size: 16px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-field input,
+	body.bms-g3cr7-app-page .bms-g3cr7-field select {
+		min-height: 48px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-drop {
+		min-height: 124px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-photo-meta {
+		font-size: 12px;
+	}
+
+	body.bms-g3cr7-app-page .bms-g3cr7-nav .bms-g3cr7-button,
+	body.bms-g3cr7-app-page .bms-g3cr7-back {
+		min-height: 48px;
+		font-size: 13px;
+	}
+}

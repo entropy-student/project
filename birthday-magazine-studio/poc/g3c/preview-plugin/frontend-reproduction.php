@@ -25,7 +25,7 @@ add_action('wp_enqueue_scripts', function () {
  $has_app = $post && (has_shortcode($post->post_content, 'bms_g3cr7_intake') || has_shortcode($post->post_content, 'bms_g3cr7_status_fixture'));
  $is_order_received = function_exists('is_order_received_page') && is_order_received_page();
  if (!$has_app && !$is_order_received) { return; }
- wp_enqueue_style('bms-g3cr7-reproduction', plugins_url('frontend-reproduction.css', __FILE__), ['bms-studio'], '0.1.0');
+ wp_enqueue_style('bms-g3cr7-reproduction', plugins_url('frontend-reproduction.css', __FILE__), ['bms-studio'], filemtime(__DIR__ . '/frontend-reproduction.css'));
  if ($has_app && has_shortcode($post->post_content, 'bms_g3cr7_intake')) {
   wp_enqueue_script('bms-g3cr7-reproduction', plugins_url('frontend-reproduction.js', __FILE__), [], '0.1.0', true);
  }
