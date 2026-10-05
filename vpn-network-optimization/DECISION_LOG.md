@@ -416,3 +416,16 @@ production local pending basename with the exact remote pending object basename.
 **Boundary:** This is an offline source PASS only. No real Baidu/VPS/Secret/network action occurred and `G4B_PERSISTENT_THREE_ROLE_READINESS` remains IN_PROGRESS.
 
 **Next:** `G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6` prepares one offline-reviewed Owner-local readiness verifier. R6 itself performs no real login or provider action. Owner credentials remain local and are never relayed through chat, GitHub, logs, environment variables, or process arguments.
+
+
+## 2026-10-05 — R6 returned only for incomplete ACL invariant
+
+**Decision:** `G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6` is Reviewer RETURN with reason `RETURN_R6_ACL_INVARIANT_INCOMPLETE`.
+
+**Accepted:** all non-ACL R6 boundaries, including no credential input, no login action, pinned archive verification, read-only future `who`, raw-output/UID suppression, fail-closed account handling, bounded cleanup, synthetic fixtures, and zero live actions.
+
+**Fixture judgment:** the fallback from a real dangerous DACL mutation to synthetic ACE objects is acceptable because the synthetic rules are passed into the exact production ACL predicate. The local privilege limitation is not the blocker.
+
+**Blocking gap:** the production config ACL predicate checks Owner identity and three broad Allow SIDs but does not yet prove inheritance handling, Deny-rule safety, a complete safe-principal allowlist, or the Owner's required read rights as required by Governance v0.2.7.
+
+**Next:** `G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1` performs only that ACL predicate/fixture repair and reruns the complete R6 regression. No Owner/live action is needed.
