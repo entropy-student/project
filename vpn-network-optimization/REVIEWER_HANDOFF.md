@@ -105,12 +105,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+STATE=EXECUTOR_ASSIGNED_BAIDU_SECURE_COOKIE_OWNER_REPAIR_R6R2H_R1
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2G_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO
+PREVIOUS_RESULT=RETURN_R6R2H_OWNER_CHECKPOINT_POSTAUTH_ACL_AND_FAILURE_RECONCILIATION_GAP
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Build and offline-validate a pinned credential-safe Cookie auth adapter; no real Cookie, Owner config, Baidu auth, or provider file action.
+MAX_ENDPOINT_THIS_ROUND=Offline-only repair of the Cookie Owner checkpoint post-auth ACL normalization and failure reconciliation; adapter core/build remain frozen.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -118,8 +118,8 @@ PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locke
 REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
 ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
 ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
-OWNER_ONLY_ACTIONS=NONE during R6R2H. Do not retry username/password login and do not paste/provide Cookie/BDUSS/STOKEN yet.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H.md; retire username/password login and build only the credential-safe Cookie path.
+OWNER_ONLY_ACTIONS=NONE during R6R2H-R1. Do not obtain/paste/provide Cookie/BDUSS/STOKEN yet and do not run any auth checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1.md; freeze adapter/build core and repair only Owner checkpoint + validator.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -167,6 +167,10 @@ G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_R6R2F_RESULT=PASS
 G4B_BAIDU_INTERACTIVE_AUTH_RETRY_R6R2G_GATE_BLOB=2da9a6271c48ad437067d4a5bfa46833d452d5d6
 G4B_BAIDU_INTERACTIVE_AUTH_RETRY_R6R2G_RESULT=RETURN_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO
 G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H_GATE_BLOB=b687d5c3ccd71cfcf869cfe01f3147a59a459f26
+G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H_RESULT=RETURN_OWNER_CHECKPOINT_POSTAUTH_ACL_AND_FAILURE_RECONCILIATION_GAP
+G4B_BAIDU_COOKIE_ADAPTER_SOURCE_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
+G4B_BAIDU_COOKIE_BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
+G4B_BAIDU_SECURE_COOKIE_OWNER_REPAIR_R6R2H_R1_GATE_BLOB=6f448f7c16a322c240f756121ddbbc0ca97dc516
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -243,11 +247,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H`. Build/validate the pinned no-echo Cookie adapter without any real credentials or Baidu auth, then stop at Reviewer.
+Codex executes `G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1` offline only. Repair post-auth Owner/ACL normalization and failure reconciliation, then stop at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE now. Do not retry username/password login or use stock `-cookies`/`-bduss` CLI flags. Wait for R6R2H Reviewer result.
+NONE now. Do not obtain or enter Cookie yet. Wait for R6R2H-R1 Reviewer PASS before any Owner-side Cookie action.
 
 ## EVIDENCE_POINTERS
 
