@@ -673,3 +673,14 @@ The repaired discovery parser now matches the intended pinned `who` identity con
 No real authentication, Owner config access or provider action occurred. The authenticated config remains accepted/frozen.
 
 Next Gate: `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2`, exactly one Owner-local read-only retry.
+
+
+## 2026-10-05 — R6R2J-R2 remained ambiguous; lock `who` decoding to UTF-8
+
+**Decision:** `RETURN_R6R2J_R2_BAIDU_UID_OUTPUT_AMBIGUOUS`.
+
+Because the R6R2J-R1 parser already accepts one canonical identity line plus unrelated generic `uid` text, the repeated ambiguity narrowed the remaining boundary to canonical-line visibility. The inherited redirected child process did not explicitly define stdout/stderr decoding. The pinned Go CLI's Chinese `who` line is UTF-8, so the UID-only read path now sets both redirected decoders to UTF-8 while preserving the frozen one-`who`, no-login StartInfo contract.
+
+The accepted authentication config and authentication/readiness checkpoint remain frozen; no re-authentication is authorized.
+
+Next Gate: `G4B_BAIDU_UID_UTF8_DECODE_RETRY_R6R2J_R3`. Owner first runs the full local validator; only on PASS may exactly one read-only `who` retry occur.
