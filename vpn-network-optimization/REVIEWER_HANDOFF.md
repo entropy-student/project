@@ -113,7 +113,7 @@ MAX_ENDPOINT_THIS_ROUND=One Owner-local checkpoint: safe-sync/lock/AST/offline-v
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Approved Baidu recovery directory; exact single strict project pending object only. Mutation is rename-to-quarantine with rename-back rollback.
 APPLICABLE_CRITICAL_CONSTRAINTS=No permanent rm; no upload/download-from-Baidu/mkdir/login/logout/config mutation; no raw UID/stdout/stderr/remote filename output; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C; retain R15 rollback journal.
-PREFLIGHT=R15 PASS; R16 final=0/pending=1/unknown=0; Owner R17 authorization GRANTED; current Gate blob a2eb3f342b142c2e6009cf54adfda8542ab8bae8; helper blob dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0; validator blob 4911ea2c2b573ab016e0600e33742842a89ee4fa; Owner checkpoint must safe-fast-forward main, lock all three blobs, AST-parse both scripts and require offline validator PASS before Run.
+PREFLIGHT=R15 PASS; R16 final=0/pending=1/unknown=0; Owner R17 authorization GRANTED; current Gate blob 14f58d66f0d136ba3869c069cdce554f4c0ebe4c; helper blob dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0; validator blob 45b660a1faf6ace3be5bff840c7daa2ff519aea3; Owner checkpoint must safe-fast-forward main, lock all three blobs, AST-parse both scripts and require offline validator PASS before Run.
 REQUIRED_EVIDENCE=Sanitized Owner checkpoint markers; exact source pending precheck; quarantine target absence; source→quarantine readback; final=0/pending=0/unknown=0 on PASS_CANDIDATE; rollback readback if invoked; permanent delete NO; mutation-started marker; temp cleanup; no-action markers for SSH/VPS/recovery/network.
 ACCEPTANCE_CRITERIA=PASS_CANDIDATE requires source absent, exact quarantine present, final=0, pending=0, unknown=0, no permanent delete, cleanup PASS and mandatory Reviewer stop. Any failure/ambiguity returns to Reviewer; no rerun after mutation start without reconciliation.
 ROLLBACK_STATUS_OR_PLAN=R15 local rollback journal remains retained and untouched. R17 provider rollback is exact quarantine→source rename only after a fresh read-only rollback-shape precheck, then restored final=0/pending=1/unknown=0 readback.
@@ -272,7 +272,7 @@ G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_RESULT=PASS
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_RESULT=RETURN_STALE_PENDING_PRESENT
-G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_GATE_BLOB=14f58d66f0d136ba3869c069cdce554f4c0ebe4c
 R17_EXECUTION_AUTHORIZED=NO
 OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
 R15_EXECUTION_AUTHORIZED=YES
