@@ -9716,3 +9716,22 @@ G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=e4b08b0df3289af089
 
 Next Gate: `G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10`.
 Owner runs only the offline fixture validator. No live retry is authorized until Reviewer accepts R10.
+
+
+## Reviewer correction — R10 locked runner identity — 2026-10-05
+
+The first R10 runner source persistence was subsequently found incomplete during fresh read-back: the intended regex line had been truncated before its end anchor and the following `[regex]::Matches($listing,$pattern)` line was absent.
+
+A concurrent main repair restored exactly the intended parser body. Targeted comparison showed the corrected runner differs from the incomplete R10 blob only by restoring the complete pattern line and the missing matches assignment; no other runner behavior changed.
+
+Correct authoritative R10 identities:
+
+```text
+R10_GATE_BLOB=1b502116ed51c77f2798d92e11d9423599ea3bed
+R10_RUNNER_BLOB=9cfac247da85e917e213c28172fb619a62329592
+R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+```
+
+The earlier Evidence line recording R10 runner blob `2727ed692c2230367c4a2a8db3a55a1a678a9049` is superseded and must not be used for execution.
+
+R10 remains offline validation only.
