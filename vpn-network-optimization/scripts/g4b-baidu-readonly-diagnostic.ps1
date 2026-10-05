@@ -80,7 +80,7 @@ function Get-SafeProcessResult {
     $keys=@($psi.Environment.Keys)
     foreach($key in $keys){
         if([string]$key -match '(?i)bduss|stoken|ptoken|cookie|password|credential|auth|secret|token'){
-            $psi.Environment.Remove([string]$key)
+            [void]$psi.Environment.Remove([string]$key)
         }
     }
     $psi.Environment['BAIDUPCS_GO_CONFIG_DIR']=$configDir
