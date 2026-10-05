@@ -12,6 +12,8 @@ $ErrorActionPreference='Stop'
 $script:stage='BOOT'
 $script:ownerSid=[Security.Principal.WindowsIdentity]::GetCurrent().User
 $script:mutationStarted=$false
+$script:forwardSourceRemote=''
+$script:forwardTargetRemote=''
 
 $runtimeRoot=Join-Path $env:LOCALAPPDATA 'vpn-network-optimization\runtime'
 $configDir=Join-Path $env:APPDATA 'BaiduPCS-Go'
@@ -191,6 +193,34 @@ function Get-SafeProcessResult {
         [string[]]$Arguments=@()
     )
 
+    switch($Action){
+        'who' { Assert-R17 ($Arguments.Count -eq 0) 'R17_WHO_ARGUMENT_SHAPE_INVALID' }
+        'ls' {
+            Assert-R17 (
+                $Arguments.Count -eq 2 -and
+                $Arguments[0] -ceq '-l' -and
+                $Arguments[1] -ceq $remoteDir
+            ) 'R17_LS_ARGUMENT_SHAPE_INVALID'
+        }
+        'mv' {
+            Assert-R17 (
+                -not [string]::IsNullOrEmpty($script:forwardSourceRemote) -and
+                -not [string]::IsNullOrEmpty($script:forwardTargetRemote)
+            ) 'R17_MV_BOUNDARY_NOT_INITIALIZED'
+            $forwardShape=(
+                $Arguments.Count -eq 2 -and
+                $Arguments[0] -ceq $script:forwardSourceRemote -and
+                $Arguments[1] -ceq $script:forwardTargetRemote
+            )
+            $rollbackShape=(
+                $Arguments.Count -eq 2 -and
+                $Arguments[0] -ceq $script:forwardTargetRemote -and
+                $Arguments[1] -ceq $script:forwardSourceRemote
+            )
+            Assert-R17 ($forwardShape -or $rollbackShape) 'R17_MV_ARGUMENT_SHAPE_INVALID'
+        }
+    }
+
     $psi=[Diagnostics.ProcessStartInfo]::new()
     $psi.FileName=$exe
     $psi.UseShellExecute=$false
@@ -268,7 +298,7 @@ function Get-R17ListingState {
 
     $finalPattern='(?m)^(?:[^\r\n]*[ \t])?vpn-network-optimization-g4b\.vpr1[ \t]*(?=\r?\n|\z)'
     $pendingPattern='(?m)^(?:[^\r\n]*[ \t])?(?<name>vpn-network-optimization-g4b-(?<run>[0-9a-f]{32})\.vpr1\.pending)[ \t]*(?=\r?\n|\z)'
-    $projectPattern='(?m)^(?:[^\r\n]*[ \t])?(?<name>vpn-network-optimization-g4b[^\s/]*)[ \t]*(?=\r?\n|\z)'
+    $projectPattern='(?m)^(?:[^\r\n]*[ \t])?(?<name>vpn-network-optimization-g4b[^\s/]*)(?<projectDirectory>/)?[ \t]*(?=\r?\n|\z)'
 
     $finalCount=[regex]::Matches($Listing,$finalPattern).Count
     $pendingMatches=[regex]::Matches($Listing,$pendingPattern)
@@ -283,16 +313,28 @@ function Get-R17ListingState {
         $singleRunId=$pendingMatches[0].Groups['run'].Value
     }
 
-    $sourceCount=0
+    $sourceObjectCount=0
+    $sourceFileCount=0
+    $sourceDirectoryCount=0
     if(-not [string]::IsNullOrEmpty($SourceName)){
-        $sourcePattern='(?m)^(?:[^\r\n]*[ \t])?'+[regex]::Escape($SourceName)+'[ \t]*(?=\r?\n|\z)'
-        $sourceCount=[regex]::Matches($Listing,$sourcePattern).Count
+        $sourcePattern='(?m)^(?:[^\r\n]*[ \t])?'+[regex]::Escape($SourceName)+'(?<directory>/)?[ \t]*(?=\r?\n|\z)'
+        $sourceMatches=[regex]::Matches($Listing,$sourcePattern)
+        $sourceObjectCount=$sourceMatches.Count
+        foreach($match in $sourceMatches){
+            if($match.Groups['directory'].Success){$sourceDirectoryCount++}else{$sourceFileCount++}
+        }
     }
 
-    $quarantineCount=0
+    $quarantineObjectCount=0
+    $quarantineFileCount=0
+    $quarantineDirectoryCount=0
     if(-not [string]::IsNullOrEmpty($QuarantineName)){
-        $quarantinePattern='(?m)^(?:[^\r\n]*[ \t])?'+[regex]::Escape($QuarantineName)+'[ \t]*(?=\r?\n|\z)'
-        $quarantineCount=[regex]::Matches($Listing,$quarantinePattern).Count
+        $quarantinePattern='(?m)^(?:[^\r\n]*[ \t])?'+[regex]::Escape($QuarantineName)+'(?<directory>/)?[ \t]*(?=\r?\n|\z)'
+        $quarantineMatches=[regex]::Matches($Listing,$quarantinePattern)
+        $quarantineObjectCount=$quarantineMatches.Count
+        foreach($match in $quarantineMatches){
+            if($match.Groups['directory'].Success){$quarantineDirectoryCount++}else{$quarantineFileCount++}
+        }
     }
 
     return @{
@@ -301,8 +343,12 @@ function Get-R17ListingState {
         UnknownCount=$unknownCount
         SinglePendingName=$singlePendingName
         SingleRunId=$singleRunId
-        SourceCount=$sourceCount
-        QuarantineCount=$quarantineCount
+        SourceCount=$sourceFileCount
+        SourceObjectCount=$sourceObjectCount
+        SourceDirectoryCount=$sourceDirectoryCount
+        QuarantineCount=$quarantineFileCount
+        QuarantineObjectCount=$quarantineObjectCount
+        QuarantineDirectoryCount=$quarantineDirectoryCount
     }
 }
 
@@ -343,7 +389,9 @@ function Invoke-R17Rollback {
         [int]$before['PendingCount'] -eq 1 -and
         [int]$before['UnknownCount'] -eq 0 -and
         [int]$before['SourceCount'] -eq 1 -and
-        [int]$before['QuarantineCount'] -eq 0
+        [int]$before['SourceObjectCount'] -eq 1 -and
+        [int]$before['SourceDirectoryCount'] -eq 0 -and
+        [int]$before['QuarantineObjectCount'] -eq 0
     )
 
     if($baselineAlreadyPresent){
@@ -356,8 +404,10 @@ function Invoke-R17Rollback {
         [int]$before['FinalCount'] -eq 0 -and
         [int]$before['PendingCount'] -eq 0 -and
         [int]$before['UnknownCount'] -eq 0 -and
-        [int]$before['SourceCount'] -eq 0 -and
-        [int]$before['QuarantineCount'] -eq 1
+        [int]$before['SourceObjectCount'] -eq 0 -and
+        [int]$before['QuarantineCount'] -eq 1 -and
+        [int]$before['QuarantineObjectCount'] -eq 1 -and
+        [int]$before['QuarantineDirectoryCount'] -eq 0
     )
 
     if(-not $rollbackShape){
@@ -384,7 +434,9 @@ function Invoke-R17Rollback {
         [int]$after['PendingCount'] -eq 1 -and
         [int]$after['UnknownCount'] -eq 0 -and
         [int]$after['SourceCount'] -eq 1 -and
-        [int]$after['QuarantineCount'] -eq 0
+        [int]$after['SourceObjectCount'] -eq 1 -and
+        [int]$after['SourceDirectoryCount'] -eq 0 -and
+        [int]$after['QuarantineObjectCount'] -eq 0
     )
 
     if($restored){
@@ -500,10 +552,10 @@ function Invoke-R17Run {
         }
         Write-Output 'BAIDU_WHO_PROCESS=PASS'
 
-        $uidMatch=[regex]::Match([string]$who['StdOut'],'(?m)^当前帐号 uid:\s*([0-9]+),')
-        Assert-R17 $uidMatch.Success 'BAIDU_UID_PARSE_FAILED'
+        $uidMatches=[regex]::Matches([string]$who['StdOut'],'(?m)^当前帐号 uid:\s*([0-9]+),')
+        Assert-R17 ($uidMatches.Count -eq 1) 'BAIDU_UID_OUTPUT_AMBIGUOUS'
         Write-Output 'BAIDU_UID_PARSE=PASS'
-        Assert-R17 ($uidMatch.Groups[1].Value -ceq $expectedUid) 'BAIDU_UID_MISMATCH'
+        Assert-R17 ($uidMatches[0].Groups[1].Value -ceq $expectedUid) 'BAIDU_UID_MISMATCH'
         Write-Output 'BAIDU_UID_MATCH=PASS'
 
         Write-Stage 'R17_PRECHECK'
@@ -526,11 +578,17 @@ function Invoke-R17Run {
         Assert-R17 (-not $quarantineName.StartsWith('vpn-network-optimization-g4b')) 'R17_QUARANTINE_NAMESPACE_INVALID'
 
         $preExact=Get-R17ListingState -Listing $listing -SourceName $sourceName -QuarantineName $quarantineName
-        Assert-R17 ([int]$preExact['SourceCount'] -eq 1) 'R17_SOURCE_CARDINALITY_INVALID'
-        Assert-R17 ([int]$preExact['QuarantineCount'] -eq 0) 'R17_QUARANTINE_TARGET_COLLISION'
+        Assert-R17 (
+            [int]$preExact['SourceCount'] -eq 1 -and
+            [int]$preExact['SourceObjectCount'] -eq 1 -and
+            [int]$preExact['SourceDirectoryCount'] -eq 0
+        ) 'R17_SOURCE_CARDINALITY_INVALID'
+        Assert-R17 ([int]$preExact['QuarantineObjectCount'] -eq 0) 'R17_QUARANTINE_TARGET_COLLISION'
 
         $sourceRemote=$remoteDir+'/'+$sourceName
         $targetRemote=$remoteDir+'/'+$quarantineName
+        $script:forwardSourceRemote=$sourceRemote
+        $script:forwardTargetRemote=$targetRemote
         $forwardBaselineKnown=$true
 
         Write-Output 'R17_PRECHECK=PASS'
@@ -558,8 +616,10 @@ function Invoke-R17Run {
                 [int]$post['FinalCount'] -eq 0 -and
                 [int]$post['PendingCount'] -eq 0 -and
                 [int]$post['UnknownCount'] -eq 0 -and
-                [int]$post['SourceCount'] -eq 0 -and
-                [int]$post['QuarantineCount'] -eq 1
+                [int]$post['SourceObjectCount'] -eq 0 -and
+                [int]$post['QuarantineCount'] -eq 1 -and
+                [int]$post['QuarantineObjectCount'] -eq 1 -and
+                [int]$post['QuarantineDirectoryCount'] -eq 0
             )
 
             if($success){
@@ -577,7 +637,9 @@ function Invoke-R17Run {
                     [int]$post['PendingCount'] -eq 1 -and
                     [int]$post['UnknownCount'] -eq 0 -and
                     [int]$post['SourceCount'] -eq 1 -and
-                    [int]$post['QuarantineCount'] -eq 0
+                    [int]$post['SourceObjectCount'] -eq 1 -and
+                    [int]$post['SourceDirectoryCount'] -eq 0 -and
+                    [int]$post['QuarantineObjectCount'] -eq 0
                 )
 
                 if($baselineStillPresent){
@@ -639,6 +701,9 @@ function Invoke-R17Run {
     finally {
         $expectedUid=$null
         $who=$null
+        $uidMatches=$null
+        $script:forwardSourceRemote=''
+        $script:forwardTargetRemote=''
         $sourceName=''
         $runId=''
         $quarantineName=''
