@@ -8130,3 +8130,34 @@ The helper launches only `login` with no credential flags, clears the environmen
 The frozen R6R2A validator's DOTSOURCE_ENTRYPOINT_GUARD_MISSING is accepted as a CRLF-sensitive regex false negative: its multiline `$` pattern does not allow the `\r` before Windows `\n`. Direct source inspection confirms the guard remains present; R6R2C independently validates the guards/parser without changing frozen R6R2A files.
 
 R6R2C closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RUN_R6R2D`.
+
+
+## Owner result / Reviewer reconciliation — G4-B Baidu Interactive Auth Run R6R2D — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RUN_R6R2D
+RESULT=RETURN_G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_PROVIDER_BUSY_OWNER_MISMATCH
+UPSTREAM_LOGIN_ERROR_CODE=50052
+UPSTREAM_LOGIN_ERROR_CLASS=SYSTEM_BUSY
+BAIDU_INTERACTIVE_AUTH=FAIL_CLOSED
+BAIDU_INTERACTIVE_AUTH_FAILURE_CODE=BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+BAIDU_INTERACTIVE_AUTH_CONFIG_STATE=NEW_INITIALIZED
+BAIDU_INTERACTIVE_AUTH_CONFIG_DISPOSITION=PRESERVED_NONEMPTY
+BAIDU_INTERACTIVE_AUTH_RUNTIME_CLEANUP=PASS
+BAIDU_INTERACTIVE_LOGIN_OUTPUT_CAPTURED=NO
+BAIDU_WHO_RAW_OUTPUT_EMITTED=NO
+BAIDU_UID_EMITTED=NO
+WHO_ATTEMPTED=NO
+LOGIN_RETRY_AUTHORIZED=NO
+```
+
+The provider's interactive login returned code 50052 / system busy. The reviewed helper had created the canonical config directory from an absent state; the pinned executable then left it non-empty. Strict post-login metadata validation failed on exact Owner SID before any read-only who.
+
+Pinned v4.0.2 source reconciliation:
+- `internal/pcsconfig/pcsconfig.go` fixes the config filename to `pcs_config.json`;
+- initialization can create/save this config before login;
+- on `RunLogin` error, `main.go` returns before `SetupUserByBDUSS`, so this failed 50052 path did not reach authenticated-user setup.
+
+The owner mismatch is therefore classified as a technical Windows ACL/ownership compatibility defect in the R6R2C helper design, not evidence of an account mismatch. The current non-empty residue remains preserved until an exact metadata-only reconciliation proves it matches the bounded failed-run shape. No blind retry or manual cleanup is authorized.
+
+Next Gate: `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E`.
