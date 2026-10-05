@@ -47,4 +47,3 @@ For an authorized rollback, first require the current source/runtime hashes and 
 Application helpers: `preview-brand-focus.cjs` (one-off guarded backup/apply/verify), `readback-preview-brand-focus.cjs` (scoped interaction/captures), `verify-preview-focus-boundary.cjs` (read-only boundary/delivery). Dependencies reused: Node24.19.0, Playwright1.62.1, Edge154.0.4258.53 and bundled Pillow for contact sheet; no packages installed.
 
 Add-to-Cart, checkout submission, order mutation, PayPal, real money, product model/provider calls, image generation, deployment, Shared Infra mutation, G4, PR merge: **0**. Owner visual freeze pending.
-

@@ -880,3 +880,18 @@ Final 2048/1440/375 checks pass: no overflow/broken rendered image/photo-copy ov
 The ordinary-cache delivery proof is separate from the fail-closed routed interaction harness: Edge without request routing, cache clear/disable or bypass loads mtime-versioned CSS responses matching the source and mounted file SHA256. The exact final candidate remains in the unchanged running container at `http://127.0.0.1:8189/`, intake `/make-your-magazine/`, admin `/wp-admin/`. Source/runtime backups have all eight original hashes verified under ignored `poc/g3c/.tmp/g3cr7v2r4-rollback/`; no teardown or rollback was applied.
 
 Forbidden actions: Add-to-Cart/Checkout submission, order mutation, PayPal, real money, product model/provider calls, image generation, deployment, shared infrastructure, Docker lifecycle/global prune, G4 and PR merge all **0**. The final independent screenshot audit found no P1/P2 issue; it is advisory and not formal Reviewer acceptance. `OWNER_VISUAL_FREEZE=PENDING`. Owner transfer: `NONE`.
+
+
+## Current handoff — Owner-approved Preview emphasis only (2026-10-05)
+
+**Executor candidate: PASS_CANDIDATE; STOP_AT_REVIEWER=YES.** Owner authorized this narrow continuation to make the whole homepage Preview module the primary feature. Formal Reviewer decision and Owner visual freeze remain pending. No new Gate is claimed; prior R4 behavior/composition continues outside #preview.
+
+Fresh main: `32c4d440b72229100ead7087861238e046742176`. Baseline/rollback: `1bb5dedde256ad84fec02d7350430f051492ed0f`. Implementation and complete evidence: `01f3651f1e1d53a3174c947203d54a4f7bb7bf7b`. This handoff is reconciled in a following documentation commit; final submission SHA is the PR head. Remote branch: `codex/birthday-magazine-g3c-blocksy-wedding-productization`; existing [PR #64](https://github.com/entropy-student/project/pull/64), open/unmerged, no merge.
+
+Reviewer entry: [README](docs/evidence/g3cr7v2r4-preview-focus/README.md) → [final contact sheet](docs/evidence/g3cr7v2r4-preview-focus/final-contact-sheet.jpg) → full-resolution `confirm/` → `scope-runtime-readback.json` and `delivery-and-boundary.json`. The current candidate uses bold650/700 headline hierarchy, deep-mulberry emphasis and pale-mulberry field, white controls/warm-white result, selective label emphasis, with normal Gutenberg text editing. No substitute artwork in empty slots.
+
+2048/1440/375 and no-JS checks pass; browser-local photo selection/reselection/removal, styles, unchanged CTA and zero image uploads/model calls are recorded. Separate normal-cache Edge response/computed-token proof matches exact source/mounted CSS. Home outside Preview/theme hashes, Owner edit access and Gutenberg remain unchanged; seven protected source/runtime files and all prior business logic remain frozen. Orders1, jobs0, product model calls0. Existing payment/Woo evidence reused without replay.
+
+Rollback files and Home snapshot are under ignored `poc/g3c/.tmp/preview-focus-20261005/`, with four backup hashes verified. Durable before/after Group HTML and guarded helpers are included. No rollback/teardown; exact candidate retained at http://127.0.0.1:8189/#preview and admin http://127.0.0.1:8189/wp-admin/.
+
+Forbidden actions all0: commerce submission, payment/order mutation, PayPal, product model/provider, image generation, deployment, Shared Infra, Docker lifecycle/global prune, G4, PR merge. The independent visual audit is advisory only. `OWNER_VISUAL_FREEZE=PENDING`. Owner transfer:NONE.

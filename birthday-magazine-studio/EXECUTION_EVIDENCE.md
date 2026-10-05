@@ -1234,3 +1234,22 @@ Final 2048/1440/375 checks pass: no overflow/broken rendered image/photo-copy ov
 The ordinary-cache delivery proof is separate from the fail-closed routed interaction harness: Edge without request routing, cache clear/disable or bypass loads mtime-versioned CSS responses matching the source and mounted file SHA256. The exact final candidate remains in the unchanged running container at `http://127.0.0.1:8189/`, intake `/make-your-magazine/`, admin `/wp-admin/`. Source/runtime backups have all eight original hashes verified under ignored `poc/g3c/.tmp/g3cr7v2r4-rollback/`; no teardown or rollback was applied.
 
 Forbidden actions: Add-to-Cart/Checkout submission, order mutation, PayPal, real money, product model/provider calls, image generation, deployment, shared infrastructure, Docker lifecycle/global prune, G4 and PR merge all **0**. The final independent screenshot audit found no P1/P2 issue; it is advisory and not formal Reviewer acceptance. `OWNER_VISUAL_FREEZE=PENDING`. Owner transfer: `NONE`.
+
+
+## Owner-approved Preview emphasis continuation — 2026-10-05
+
+**Executor: PASS_CANDIDATE; formal Reviewer decision / Owner visual freeze PENDING. STOP_AT_REVIEWER=YES.** The latest Owner approval restricts this continuation to the homepage Preview module. It is not a new formally opened Gate. This supersedes the prior R4 neutral/low-weight marketing header only inside #preview; the rest of R4 remains intact.
+
+Fresh main: `32c4d440b72229100ead7087861238e046742176`. Baseline/rollback: `1bb5dedde256ad84fec02d7350430f051492ed0f`. Implementation + durable evidence commit: `01f3651f1e1d53a3174c947203d54a4f7bb7bf7b`. Existing remote branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, [PR #64](https://github.com/entropy-student/project/pull/64), open/unmerged. A following handoff documentation commit is the final PR submission head.
+
+See [Preview emphasis evidence](docs/evidence/g3cr7v2r4-preview-focus/README.md), [before/final contact sheet](docs/evidence/g3cr7v2r4-preview-focus/final-contact-sheet.jpg), `confirm/`, and `screenshot-manifest.json`. There are25 captures:7before,9first inspection,9final confirmation. The2200×3370 JPG is557017bytes. All PNG dimensions/sizes/SHA256 are recorded.
+
+Changes: full-width bold two-line headline with #713F5D emphasis; pale #F4EBF0 feature field; white controls / warm-white stage; stronger free/instant/privacy, form and CTA labels; homepage-only controls heading. Only scoped `magazine-preview.css`, one conditional presentation line in `birthday-magazine-poc.php`, and three Preview Gutenberg text blocks changed. No new images, decorative graphics or model-generated assets.
+
+Verification:2048/1440/375 empty/local-photo states, no-JS1440/375, all three styles, select/reselect/remove, no horizontal overflow/broken visible image/photo-copy collision and same /make-your-magazine/ CTA. The request-routed harness records0non-GET attempts and external images. Ordinary-cache Edge is separately verified without routing/clearing/bypass: mtime-versioned CSS bytes match source/mount; computed field #F4EBF0, emphasis #713F5D and650/700 weights. Dependencies reused: Node24.19.0, Playwright1.62.1, Edge154.0.4258.53, bundled Pillow; no install.
+
+Outside-Preview Home content and theme-mods hashes exactly match pre-write; other homepage Group widths/heights/styles unchanged. Owner Home editing and Gutenberg remain true. Seven protected source/runtime files are baseline-equivalent after newline normalization; removing the single homepage-conditional heading reproduces prior PHP. Orders1→1, jobs0→0, product model calls0→0. No intake/payment/Woo test replay; accepted prior business evidence reused.
+
+Pre-write local rollback: ignored `poc/g3c/.tmp/preview-focus-20261005/`; source/runtime two-file backups, original mtimes, Home snapshot and manifest. All four file hashes verified. Durable before/after Preview Group HTML supports scoped rollback; stop on drift and restore only that Group / two files. No rollback applied. The exact final candidate remains in the unchanged running container at http://127.0.0.1:8189/#preview; no teardown.
+
+Add-to-Cart, checkout submit, order mutation, PayPal, real money, product model/provider, image generation, production deployment, Shared Infra, Docker lifecycle/global prune, G4, PR merge:0. Independent advisory screenshot inspection found no P1/P2 issue; it is not formal Reviewer acceptance. Owner transfer:NONE.
