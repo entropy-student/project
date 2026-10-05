@@ -8003,3 +8003,26 @@ STOP_AT_REVIEWER=YES
 ```
 
 The offline validator dot-sourced the accepted R6R1 checkpoint only behind its source-only entrypoint guard and verified the pinned archive digest/order, safe config/ACL predicate, and helper-scope variable reuse. Synthetic fixtures exercised the UID parser and exact cleanup routine with non-secret local files; fixture values and raw output were not emitted. The new Owner helper itself was not executed; no actual UID or configuration content was accessed.
+
+
+## Reviewer reconciliation — G4-B Baidu Owner UID Discovery Helper R6R2A — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+SOURCE_COMMIT=2383211efed12988ebf2742e5ab1150d76ea14c3
+UID_HELPER_BLOB=ba8502287989ecc8c9b003e67c729b6d82df378a
+UID_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
+R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
+R6R2B_GATE_BLOB=7842ab6c3ce77a5c7011777079ed71510d66a161
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+```
+
+Reviewer independently inspected the helper, validator, changed-path scope, current main, and the locked R6R1 source identities. The helper accepts no credential parameters, has no login path, reuses the accepted pinned archive and R6R1 config/ACL predicates, invokes exactly one accepted read-only who path, suppresses provider raw output and username, parses one numeric UID, and emits that UID only to the Owner-local console after successful temporary-runtime cleanup. Ambiguous/unauthenticated cases fail closed or return Owner action required. Offline fixtures, AST, and Secret scan are accepted.
+
+Unrelated birthday-magazine commits between the prior VPN head and this commit were separately scoped and do not constitute vpn-network-optimization drift.
+
+R6R2A closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B`.
