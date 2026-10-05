@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL
+CURRENT_GATE=G3CR7V2A_SAAS_STYLE_AUDITION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
-CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
-POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_VISUAL_PASS_OWNER_PENDING
+HOMEPAGE_ENTRY_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
+CORE_FUNCTION_ONBOARDING_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
+POSTPAY_GENERATION_STATUS_SURFACE=TECHNICAL_PASS_VISUAL_RETURN_V2
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -112,10 +112,16 @@ G3CR7V1_VISUAL_REFINEMENT=AUTHORIZED
 G3CR7V1_HOMEPAGE_TARGET=FREE_PREVIEW_TO_CORE_ENTRY
 G3CR7V1_FUNCTIONAL_BEHAVIOR=FROZEN
 G3CR7V1_EXECUTOR_HEAD=806907177ba48ef2ed11310e36f4cca0e209b421
-G3CR7V1_REVIEWER_VISUAL=PASS
+G3CR7V1_REVIEWER_VISUAL=SUPERSEDED_BY_OWNER_RETURN_V2
 G3CR7V1_1440=PASS
 G3CR7V1_375=PASS
-G3CR7V1_OWNER_VISUAL=PENDING
+G3CR7V2A_STYLE_AUDITION=AUTHORIZED
+G3CR7V2A_STYLE_A=LINEAR_PRECISION
+G3CR7V2A_STYLE_B=ATTIO_CLEAN_DATA_SAAS
+G3CR7V2A_STYLE_C=STRIPE_SOFT_TECH
+G3CR7V2A_RUNTIME_MUTATION=0
+G3CR7V2A_SVG_HUMAN_PLACEHOLDERS=FORBIDDEN
+G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -159,17 +165,22 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL`
+`G3CR7V2A_SAAS_STYLE_AUDITION`
 
-G3CR7V1 presentation refinement is **Reviewer PASS** at candidate `806907177ba48ef2ed11310e36f4cca0e209b421`.
+Owner formally RETURNed the G3CR7V1 visuals. Technical behavior remains accepted/frozen.
 
-Owner checkpoint:
-- `docs/OWNER_CHECKPOINT_G3CR7V1_PREMIUM_SAAS_VISUAL_2026-10-05.md`
+The next step is **not another full reskin**. Executor must first produce three isolated SaaS style auditions:
+- Linear Precision;
+- Attio Clean Data-SaaS;
+- Stripe Soft-Tech.
 
-Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR7V1_PASS_VISUAL_CANDIDATE_2026-10-05.md`
+Gate:
+- `docs/G3CR7V2A_SAAS_STYLE_AUDITION.md`
 
-Business logic remains frozen; this checkpoint asks only for final Owner visual acceptance.
+Owner return:
+- `docs/OWNER_DECISION_G3CR7V1_VISUAL_RETURN_V2_2026-10-05.md`
+
+The existing retained local runtime must remain untouched in this audition Gate.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -234,14 +245,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner visually reviews the G3CR7V1 candidate: homepage Preview/core-entry, five-step intake, and status/Woo continuation.
-2. If Owner accepts, freeze these three frontend surfaces for the current MVP stage.
-3. Then open a new product Gate for the next implementation layer; pre-payment draft persistence / payment-to-generation wiring remains the likely next technical step before P1-P12.
-4. PR #64 mergeability remains a separate bounded pre-merge reconciliation task and must not be handled by blind rebase/reset.
+1. Executor creates the three isolated style auditions required by `G3CR7V2A_SAAS_STYLE_AUDITION`.
+2. Reviewer checks that A/B/C are materially distinct, complete, non-paper SaaS systems and that no human/cartoon/SVG-face placeholders remain.
+3. Owner chooses one style direction.
+4. Only after Owner selection will a separate implementation Gate apply that exact style to the three real surfaces.
+5. That implementation Gate must leave the selected candidate mounted in the local `127.0.0.1:8189` runtime until Owner review; it must not restore old CSS immediately after screenshots.
 
 ## OWNER_ACTION_REQUIRED
 
-Review the final G3CR7V1 visuals and reply PASS or give bounded visual changes. No credential, payment, deployment, or technical action is required.
+**NONE until the A/B/C style auditions are ready.** Owner will choose one of the three visual directions after Reviewer inspection.
 
 ## EVIDENCE_POINTERS
 
