@@ -2,7 +2,7 @@
 
 Status: K6 VPS PASS / K7 payment infrastructure readiness PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY / real-money E2E deferred
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: K10A — homepage visual skin discovery/read-only change planning
+Current Gate: K10B — homepage visual skin implementation on VPS production
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
