@@ -143,7 +143,12 @@ function Test-RunnerContract {
     $baiduStateStart=$Text.IndexOf('function Get-BaiduRemoteObjectState {',[StringComparison]::Ordinal)
     $baiduStateEnd=$Text.IndexOf('function Read-Hy2Auth {',$baiduStateStart,[StringComparison]::Ordinal)
     $baiduStateBody=if($baiduStateStart -ge 0 -and $baiduStateEnd -gt $baiduStateStart){$Text.Substring($baiduStateStart,$baiduStateEnd-$baiduStateStart)}else{''}
-    $baiduRealListingParser=($baiduStateBody.Contains("$pattern='(?m)^(?:[^\r\n]*[ \t])?'+$escaped+'(?<directory>/)?[ \t]*
+    $baiduRealListingParser=(
+        $baiduStateBody.Contains('$pattern=') -and
+        $baiduStateBody.Contains('(?<directory>/)?[ \t]*$') -and
+        $baiduStateBody.Contains('[regex]::Matches($listing,$pattern)') -and
+        -not $baiduStateBody.Contains("'(?m)^\|")
+    )
     $baiduPendingName=($Text.Contains('$script:baiduPendingName = ''vpn-network-optimization-g4b-'' + $script:runId + ''.vpr1.pending''') -and $Text.Contains('$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + ''/'' + $script:baiduPendingName') -and $Text.Contains('$script:recoveryPendingCloudLocal = Join-Path (Split-Path -Parent $script:secretRecoveryPath) $script:baiduPendingName'))
     $uploadStart=$Text.IndexOf('function Upload-BaiduPendingRecovery {',[StringComparison]::Ordinal);$uploadEnd=$Text.IndexOf('function Promote-BaiduPendingRecovery {',$uploadStart,[StringComparison]::Ordinal)
     $uploadBody=if($uploadStart -ge 0 -and $uploadEnd -gt $uploadStart){$Text.Substring($uploadStart,$uploadEnd-$uploadStart)}else{''}
