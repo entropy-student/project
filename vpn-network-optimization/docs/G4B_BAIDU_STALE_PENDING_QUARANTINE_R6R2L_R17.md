@@ -98,7 +98,7 @@ R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
 R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
 R17_PREPARATION_EVIDENCE=docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md
-R17_PREPARATION_EVIDENCE_BLOB=09461abae8abaf1b9d3e3e48b9552337acf4616e
+R17_PREPARATION_EVIDENCE_BLOB=34ab0d30c75853d04e38fa897a227d5d583d8816
 ```
 
 The helper defaults to a non-mutating validation mode. The Run path additionally requires `-OwnerAuthorized`. Provider command scope is restricted to `who`, `ls` and `mv`; no permanent-delete command exists.
