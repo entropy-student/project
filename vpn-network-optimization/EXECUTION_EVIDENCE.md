@@ -8311,3 +8311,23 @@ The blocking defect is repaired: `Remove-NewEmptyBaiduConfigDirectory` now requi
 The required provenance fixtures call the production rollback functions. No content-read or broad recursive-delete path was added. The frozen metadata-only reconciliation helper remains unchanged.
 
 R6R2E-R1 closes formal PASS. Next Gate is Owner-local `G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F`.
+
+
+## Owner result / Reviewer reconciliation — G4-B Baidu Partial Config Reconciliation Run R6R2F — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F
+REVIEWER_RESULT=PASS_G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F
+BAIDU_PARTIAL_CONFIG_RECONCILIATION=PASS
+BAIDU_PARTIAL_CONFIG_SHAPE=EXACT_FAILED_RUN_RESIDUE
+BAIDU_PARTIAL_CONFIG_CONTENT_READ=NO
+BAIDU_PARTIAL_CONFIG_ROLLBACK=REMOVED_EXACT_RESIDUE
+BAIDU_PARTIAL_CONFIG_BASELINE_RESTORED=RESTORED
+RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
+```
+
+The real Owner-host one-shot reconciliation matched the exact accepted failed-run residue shape. The checkpoint removed only the exact `pcs_config.json`, verified the root empty, removed the exact root, and verified the canonical BaiduPCS-Go config path absent. The checkpoint reports no config-content read.
+
+The prior R6R2D partial state is now fully reconciled. A new authentication attempt may therefore start from the accepted absent baseline using the repaired auth helper. Only one retry is authorized.
+
+Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G`.
