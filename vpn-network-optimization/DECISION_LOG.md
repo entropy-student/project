@@ -549,3 +549,14 @@ A concurrently present, stricter R6R2H-R1 Gate already covered both post-auth AC
 `G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1`.
 
 The narrower duplicate Gate is superseded and must not be executed. No runtime or Secret state changed.
+
+
+## 2026-10-05 — Fresh re-review supersedes unexecuted R6R2H-R1
+
+**Decision:** `RETURN_R6R2H_REREVIEW_ADAPTER_PARSE_AND_PREFLIGHT_ORDER_GAP`.
+
+A clean Reviewer re-review confirmed the earlier Owner-checkpoint ACL/reconciliation RETURN and found two additional pre-real-run defects: the adapter validates an exact session field but then leaves the pinned upstream to re-extract from the whole Cookie string with an unanchored search; and the Owner checkpoint can create the canonical config root before proving the adapter binary/runtime candidate identity.
+
+No R6R2H-R1 execution occurred. That Gate is superseded, not failed in execution.
+
+Next canonical Gate: `G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2`. It narrowly repairs exact-field handoff plus preflight-before-write, post-write ACL normalization, and provenance-aware rollback. The pinned build helper and accepted historical helpers remain frozen.
