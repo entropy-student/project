@@ -9562,3 +9562,48 @@ Reviewer reconciliation:
 - Fresh canonical Evidence already contains the stronger R7 root-cause determination: uncaptured `$psi.Environment.Remove([string]$key)` Boolean output polluted the PowerShell success stream and caused the same `PropertyNotFoundException` class that explains R5 `UNCLASSIFIED`.
 - Canonical runner and validator already contain the direct `[void]$psi.Environment.Remove(...)` repair under `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8`.
 - Therefore the broken read-only diagnostic branch is superseded and will not be repaired or rerun. The authoritative next Gate is the existing pipeline-output repair offline validation.
+
+
+## Reviewer formal decision — R6R2L-R8 Baidu pipeline-output repair offline validation — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T14:49:36.1687860+00:00
+OWNER_REPORTED_HEAD_AFTER=99ae63103ccc72286f86fc0947e74fdfb553f34a
+OWNER_REPORTED_GATE_BLOB=7e78a3ff585133c52fdc309947ce79e4a0283a17
+OWNER_REPORTED_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+OWNER_REPORTED_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_VALIDATOR_PARSE_PREFLIGHT=PASS
+OWNER_REPORTED_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED=PASS
+OWNER_REPORTED_NEGATIVE_BAIDU_ENV_REMOVE_STREAM_POLLUTION=PASS
+OWNER_REPORTED_G4B_LIVE_RUNNER_FIXTURES=PASS
+OWNER_REPORTED_NEGATIVE_FIXTURES=PASS
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_DPAPI_OR_REAL_SECRET_ACCESS=NO
+OWNER_REPORTED_EXTERNAL_REQUESTS=0
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_CLASH_PROFILE_MUTATION=NO
+OWNER_REPORTED_SYSTEM_PROXY_CHANGE=NO
+OWNER_REPORTED_TUN_CHANGE=NO
+OWNER_REPORTED_SERVICE_MUTATION=NO
+OWNER_REPORTED_ROUTE_MUTATION=NO
+OWNER_REPORTED_REALITY_LIVE_DEPLOYMENT=NO
+OWNER_REPORTED_G4C_EXECUTION=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T14:49:50.8501957+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:14.6814097
+REVIEWER_DECISION=PASS_R6R2L_R8_BAIDU_PIPELINE_OUTPUT_REPAIR
+```
+
+Reviewer acceptance:
+- The repaired live runner differs from the previously authorized R5 runner by exactly one line: the return value of `$psi.Environment.Remove([string]$key)` is explicitly suppressed with `[void]`.
+- No other live-runner behavior changed.
+- The positive source contract proving suppression passed.
+- The negative regression fixture that restores the unsafe unsuppressed call also passed by correctly detecting the defect.
+- Full existing positive and negative fixture suites passed.
+- No external request, SSH/VPS action, Secret/DPAPI access, network mutation, Clash/profile/service/route/proxy/TUN mutation or G4-C action occurred.
+- R5/R7 root cause is reconciled as PowerShell success-stream pollution, not a Baidu account/network failure.
+- Existing bounded Owner live authorization remains valid: prior R5 attempt had `CONSEQUENTIAL_MUTATION_STARTED=NO`, and the only runner change is a safety-preserving output-suppression repair.
+
+Next: issue a fresh one-shot live retry Gate locked to the repaired runner and validator.
