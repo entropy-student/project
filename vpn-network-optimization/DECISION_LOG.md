@@ -640,3 +640,14 @@ The D5 source delta is narrowly accepted: only the adapter's 16 fixed child stat
 The Gate nevertheless requires actual `GO_SOURCE_TESTS=PASS` and a compiled native failure fixture. These were not executed because the Executor environment lacked Go and D5 prohibited fetching it. Static evidence is not sufficient to waive an explicit Gate requirement.
 
 Next Gate: `G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1`. It permits only pinned public build/toolchain/module retrieval, runs the build helper without `-RetainBinary`, then the full validator. The accepted authenticated config and real Owner runtime remain frozen.
+
+
+## 2026-10-05 — D5 output repair and D5-R1 compiled verification passed
+
+**Decision:** `PASS_G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1`; parent repair `PASS_G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5`.
+
+The missing compiled evidence is now complete: pinned provenance, Go source tests, Windows/amd64 build, native invalid-argument fixture, absence of child status markers, temp cleanup, full validator and Secret scan all passed. The verification run did not access the real Owner config/runtime binary and made no provider request.
+
+The real authenticated config remains accepted and frozen. No authentication retry is authorized.
+
+Next Gate: `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J`, a single Owner-local read-only identity check using the already reviewed UID helper. It must not perform any provider file operation.
