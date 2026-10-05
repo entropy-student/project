@@ -1,0 +1,77 @@
+{
+  "gate": "G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION",
+  "result": "RETURN_PREFLIGHT_DRIFT",
+  "capturedAt": "2026-10-05",
+  "git": {
+    "latestMain": "b9ed4db61babe9fb4f47106b2205c9df34964330",
+    "pr64Head": "806907177ba48ef2ed11310e36f4cca0e209b421",
+    "rollbackBaseline": "806907177ba48ef2ed11310e36f4cca0e209b421",
+    "worktreeBranch": "codex/birthday-magazine-g3cr7v1-premium-saas-visual-refinement",
+    "sourceChangesThisGate": 0,
+    "currentMainTargetSourceDrift": 0
+  },
+  "runtime": {
+    "site": "http://127.0.0.1:8189/",
+    "httpStatus": 200,
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "blocksy": "2.1.57",
+    "currency": "USD",
+    "product": {
+      "id": 1113,
+      "price": "39.99",
+      "virtual": true
+    },
+    "container": {
+      "id": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+      "status": "running",
+      "lifecycleActions": 0
+    }
+  },
+  "unpaidOrder": {
+    "id": 1131,
+    "status": "on-hold",
+    "paid": false,
+    "total": "39.99",
+    "currency": "USD",
+    "ordersAtInitialReadback": 1,
+    "ordersAtFreshReadback": 1,
+    "orderReceivedHttpStatus": 200,
+    "woocommerceOrderReceivedBody": true,
+    "statusNoticePresent": false,
+    "paymentPendingTextPresent": false,
+    "handlerRegistered": true,
+    "handlerState": "awaiting_payment",
+    "directReadOnlyHandlerOutputContainsPending": true,
+    "directHandlerOutputBytes": 240,
+    "rawOrderKeyRecorded": false
+  },
+  "screenshots": {
+    "beforeCount": 14,
+    "afterCount": 0,
+    "finalContactSheet": "NOT_CREATED",
+    "actualOrderReceivedScreenshot": "NOT_CAPTURED_PENDING_NOTICE_ABSENT",
+    "fixture": "synthetic only"
+  },
+  "actions": {
+    "checkoutSubmissions": 0,
+    "orderMutations": 0,
+    "payments": 0,
+    "paypal": 0,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "productionDeployments": 0,
+    "sharedInfrastructureMutations": 0,
+    "prMerge": 0,
+    "g4": 0
+  },
+  "freeze": {
+    "businessLogicChanged": false,
+    "phpChanged": false,
+    "jsChanged": false,
+    "cssChanged": false,
+    "databaseChanged": false,
+    "runtimeModifiedByThisGate": false
+  },
+  "gateStop": "NO_VISUAL_IMPLEMENTATION_AFTER_FROZEN_ORDER_RECEIVED_BEHAVIOR_MISMATCH"
+}

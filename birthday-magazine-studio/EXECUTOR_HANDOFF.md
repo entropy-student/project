@@ -819,3 +819,11 @@ Reviewer entry point: [`docs/evidence/g3cr7v1/README.md`](docs/evidence/g3cr7v1/
 The Homepage Preview/core-entry was directly redesigned as a contained controls + magazine-stage demo with its CTA integrated. The five-step intake and pending/progress status surfaces received a restrained SaaS visual skin. Only `poc/g3c/preview-plugin/magazine-preview.css` and `frontend-reproduction.css` changed; business behavior and other sources remain frozen. Final screenshots/read-backs confirm 1440 and 375 layouts without horizontal overflow, local-only Preview interaction, intake navigation/photo grid, native Woo handoff, and unpaid pending state. Temporary fixture cleanup and exact runtime CSS restoration both read back PASS.
 
 Rollback: restore those two changed CSS paths from accepted technical baseline `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`; command is in the evidence README. No PR merge or Owner handoff is requested.
+
+## G3CR7V2 — Stripe Soft-Tech preflight RETURN (2026-10-05)
+
+**Result: `RETURN_PREFLIGHT_DRIFT`; `STOP_AT_REVIEWER=YES`.** The current Gate stopped before frontend mutation. Fresh read-back found the existing unpaid Woo order-received route returns HTTP 200 but omits the registered pending-status notice (`.bms-g3cr7-thankyou` / `PAYMENT PENDING`). The handler itself is registered and its read-only state is `awaiting_payment`; see [`docs/evidence/g3cr7v2/README.md`](docs/evidence/g3cr7v2/README.md) and `preflight-readback.json`.
+
+PR #64 remains the only PR; fetched head/visual rollback baseline was `806907177ba48ef2ed11310e36f4cca0e209b421`. The 8189 runtime is still running on the prior candidate. No visual or business code, WordPress content, database, order, or runtime file was changed. Fourteen before captures are recorded under `docs/evidence/g3cr7v2/before/`; no after captures, Stripe contact sheet, or token sheet exist because the frozen-behavior preflight returned.
+
+Reviewer: reconcile whether the real order-received continuation behavior must be repaired or whether this fresh read-back is an environment mismatch, then issue the next bounded instruction. Do not interpret this as a visual PASS_CANDIDATE.

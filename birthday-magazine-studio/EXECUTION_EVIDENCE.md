@@ -1165,3 +1165,15 @@ Both viewports report `scrollWidth == innerWidth`; Preview name/photo update, lo
 Visual references were inspected for composition only; no Webflow runtime, source, paid library, font or image was copied. The exact rollback is the two CSS files from `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`; evidence README gives the restore command. No Docker lifecycle change or teardown; local runtime retained. No PayPal, real money, checkout submission, provider/model, production deployment, Shared Infra, P1–P12, G4 or merge action.
 
 `STOP_AT_REVIEWER=YES`.
+
+## G3CR7V2 Stripe visual implementation — preflight RETURN (2026-10-05)
+
+`RESULT=RETURN_PREFLIGHT_DRIFT`. PR #64 was freshly fetched at head/rollback baseline `806907177ba48ef2ed11310e36f4cca0e209b421`; latest `main` was `b9ed4db61babe9fb4f47106b2205c9df34964330`. The 8189 runtime returned HTTP 200 and remained running. WordPress/WooCommerce/Blocksy were 7.1.1/11.1.2/2.1.57; product 1113 remained virtual USD 39.99.
+
+Order 1131 remained the single on-hold, unpaid USD 39.99 order. Fresh GET of its actual order-received route returned HTTP 200 and Woo’s order-received body class, but the response contained neither `.bms-g3cr7-thankyou` nor `PAYMENT PENDING`. The handler/action are registered, and read-only invocation of the handler returns `awaiting_payment` and pending markup. This route/output mismatch violates the Gate’s frozen-order continuation preflight, so visual code changes stopped before implementation.
+
+Fourteen current pre-change captures are in `docs/evidence/g3cr7v2/before/`; metadata/hashes are in `docs/evidence/g3cr7v2/screenshot-manifest.json`. The actual order-received page was not captured because the expected notice was missing and the rest of the page contains order details. No Stripe after screenshots, contact sheet or token mapping are claimed. The full sanitized read-back is in `docs/evidence/g3cr7v2/preflight-readback.json` and README.
+
+No CSS/PHP/JS, Gutenberg, DB, order, or runtime changes were made; no checkout submission, payment, PayPal, provider/model, production, Shared Infra, G4 or merge action occurred. The local runtime retains the prior candidate, not a Stripe candidate. Rollback point remains `806907177ba48ef2ed11310e36f4cca0e209b421`.
+
+Latest re-fetch before evidence submission: `main=b9ed4db61babe9fb4f47106b2205c9df34964330`. The intervening `main` commits changed no paths under `birthday-magazine-studio/`; project-scoped Gate/source freshness remains unchanged.

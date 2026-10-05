@@ -1,0 +1,134 @@
+{
+  "gate": "G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION",
+  "phase": "preflight-before",
+  "capture": "Chrome Playwright, deviceScaleFactor=1, JPEG quality=91",
+  "screenshotCount": 14,
+  "screenshots": [
+    {
+      "file": "docs/evidence/g3cr7v2/before/home-preview-default-1440.jpg",
+      "role": "home-preview-default",
+      "viewport": "1440x1000",
+      "width": 1440,
+      "height": 1653,
+      "bytes": 288635,
+      "sha256": "6D9182FBF1DA1F7592435799F62226623C79931E2F08FCDA5B7CAC345BAE51E0"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/home-preview-default-375.jpg",
+      "role": "home-preview-default",
+      "viewport": "375x812",
+      "width": 375,
+      "height": 1742,
+      "bytes": 82481,
+      "sha256": "B8F126CBA607BAC91C7CA0B3910E4C3BA10B4B5A5FA25A1D884D537331CF7382"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/home-preview-photo-1440.jpg",
+      "role": "home-preview-photo",
+      "viewport": "1440x1000",
+      "width": 1440,
+      "height": 1660,
+      "bytes": 326278,
+      "sha256": "4EA90B17B771EA977BEDE897C973E7EACF26E81A1BD1F335A3B3FD15DB4F2811"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/home-preview-photo-375.jpg",
+      "role": "home-preview-photo",
+      "viewport": "375x812",
+      "width": 375,
+      "height": 1750,
+      "bytes": 137313,
+      "sha256": "A163B8BBBE7E0CC2FCE2405827AAD6D104136780B234DDEEB4F616A271631B9D"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-about-1440.jpg",
+      "role": "intake-about",
+      "viewport": "1440x1000",
+      "width": 1040,
+      "height": 1308,
+      "bytes": 121347,
+      "sha256": "00DCEF20B5759AFB33AE5F0744E51BC6BCDE047392E563D3195301B8A82061FD"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-about-375.jpg",
+      "role": "intake-about",
+      "viewport": "375x812",
+      "width": 375,
+      "height": 1337,
+      "bytes": 82166,
+      "sha256": "0888784B5FE9C5D0167FBB254FDB52181FBFE38A7A0D7E3CEE31DE007B718616"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-photos-12-1440.jpg",
+      "role": "intake-photos-12",
+      "viewport": "1440x1000",
+      "width": 1040,
+      "height": 1766,
+      "bytes": 206593,
+      "sha256": "759C0E9F38CC2C24651443E28523EC60B870C494839B51CB97B789BBFE628A59"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-photos-12-375.jpg",
+      "role": "intake-photos-12",
+      "viewport": "375x812",
+      "width": 375,
+      "height": 2109,
+      "bytes": 144574,
+      "sha256": "9849609C048FEA568C8E3E8514BB6E7F4327A78457A4D47F29BAC33E905FC32C"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-review-1440.jpg",
+      "role": "intake-review",
+      "viewport": "1440x1000",
+      "width": 1040,
+      "height": 1556,
+      "bytes": 176305,
+      "sha256": "C5C7FC216FEE0A204920E49241CF419FD1D85ED506552A4BFBD00F7A3F56C6AB"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/intake-review-375.jpg",
+      "role": "intake-review",
+      "viewport": "375x812",
+      "width": 375,
+      "height": 1914,
+      "bytes": 138001,
+      "sha256": "D5F708C7EDC2A404450918ED6202139944B600771DB0B331438B5CD4469284F5"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/status-generating-1440.jpg",
+      "role": "status-generating",
+      "viewport": "1440x1000",
+      "width": 900,
+      "height": 1160,
+      "bytes": 113701,
+      "sha256": "E862E344480F5A8F7BCFC7B41E8AC5F1A9D8822EF0790D2F6CD8A2F08B8588A8"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/status-generating-375.jpg",
+      "role": "status-generating",
+      "viewport": "375x812",
+      "width": 331,
+      "height": 1312,
+      "bytes": 91480,
+      "sha256": "9A225CAAC4A82FB6AFABE0ED896669487E300F6DA3437EBF9E5C212CC46E8B6D"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/status-ready-1440.jpg",
+      "role": "status-ready",
+      "viewport": "1440x1000",
+      "width": 844,
+      "height": 90,
+      "bytes": 9731,
+      "sha256": "009237F24F2E8953C6817895B3119BDDEAC12EB5376DCAAF1B76C002146829EB"
+    },
+    {
+      "file": "docs/evidence/g3cr7v2/before/status-ready-375.jpg",
+      "role": "status-ready",
+      "viewport": "375x812",
+      "width": 303,
+      "height": 134,
+      "bytes": 8263,
+      "sha256": "2E099F43FD33AD00FAD2AE4C14A44901A40E6232A5E4E7B9BE5642E36AC5F388"
+    }
+  ]
+}
