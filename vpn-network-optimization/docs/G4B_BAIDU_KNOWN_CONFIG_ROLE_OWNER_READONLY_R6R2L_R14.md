@@ -61,6 +61,13 @@ Relevant source facts:
 
 R9 executed a real upload before its readback failure, so `pcs_uploading.json` is a strong candidate for the ADMIN-owned file, but R14 must prove the role from metadata rather than assume it.
 
+## LOCKED SOURCE
+
+```text
+R14_SCRIPT=scripts/g4b-baidu-known-config-role-owner-r14.ps1
+R14_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
+```
+
 ## OBJECTIVE
 
 Use local metadata only to classify presence and Owner role for all four upstream-known direct-child roles and count any truly unknown direct child.
