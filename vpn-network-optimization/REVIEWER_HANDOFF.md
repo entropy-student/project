@@ -105,22 +105,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_NETWORK_DIAGNOSTIC
+STATE=OWNER_ACTION_REQUIRED_BAIDU_PIPELINE_OUTPUT_REPAIR_OFFLINE_VALIDATION_R6R2L_R8
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R7_BAIDU_WHO_PROPERTY_NOT_FOUND
-OBJECTIVE=Repair only the R7 diagnostic result-object handling and re-run the same Baidu who/ls read-only boundary with bounded substage and line classification.
-MAX_ENDPOINT_THIS_ROUND=Owner-local read-only Baidu diagnostic only. who + ls -l only; no mutation command, no live runner, no SSH/VPS, no recovery/profile/service/network mutation.
+PREVIOUS_RESULT=RETURN_R6R2L_R7_ROOT_CAUSE_IDENTIFIED
+OBJECTIVE=Prove the Baidu process-output pipeline repair that suppresses Environment.Remove Boolean success-stream pollution in the live runner and validator regression suite.
+MAX_ENDPOINT_THIS_ROUND=Offline live-runner fixture validator only. No Baidu network/API command, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host + Baidu read-only API path only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No Secret/UID/raw stdout/stderr in chat/GitHub; no live runner; no Baidu mutation; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no G4-C.
-PREFLIGHT=R6 formal PASS; R7 returned PropertyNotFoundException at BAIDU_WHO while temp cleanup PASS and all mutation counters NO.
-REQUIRED_EVIDENCE=BAIDU_CONFIG_ACL; pinned CLI identity; who process/result/UID parse/match classifiers; ls process/result/header classifier if reachable; bounded exception line/substage; temp cleanup PASS; no mutation/no Secret output.
-ACCEPTANCE_CRITERIA=Bounded classification obtained without dynamic property failure; TEMP_RUNTIME_CLEANUP=PASS; BAIDU_MUTATION_ACTION=NO; SSH_OR_VPS_ACTION=NO; SECRET_VALUES_EMITTED=0; STOP_AT_REVIEWER=YES.
-ROLLBACK_STATUS_OR_PLAN=Diagnostic creates only a temporary local runtime directory and deletes it before exit. No remote rollback should be required.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R8 Gate/script blobs, run only g4b-baidu-readonly-diagnostic.ps1, enter expected Baidu UID through hidden local prompt, return sanitized markers, stop.
+TARGET_AND_SCOPE=Owner Windows host, canonical main, repaired live runner + fixture validator only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No live retry; no Baidu mutation or read action; no Secret access/output; no SSH/VPS; no G4-C.
+PREFLIGHT=R7 root cause identified in canonical Evidence; runner uses [void] Environment.Remove suppression; validator includes positive suppression contract and negative stream-pollution regression fixture.
+REQUIRED_EVIDENCE=G4B_FIXTURE_R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED=PASS; G4B_FIXTURE_NEGATIVE_BAIDU_ENV_REMOVE_STREAM_POLLUTION=PASS; G4B_LIVE_RUNNER_FIXTURES=PASS; NEGATIVE_FIXTURES=PASS; SSH_OR_VPS_ACTION=NO; DPAPI_OR_REAL_SECRET_ACCESS=NO; EXTERNAL_REQUESTS=0; NETWORK_MUTATION=NO.
+ACCEPTANCE_CRITERIA=All required R8 and existing fixture markers PASS; validator parser PASS; no external/network/Secret action; STOP_AT_REVIEWER.
+ROLLBACK_STATUS_OR_PLAN=No runtime rollback required. This Gate is offline validation only.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R8 pipeline Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, return markers, stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return diagnostic markers only; no live retry.
+EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
 ```
 
 G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. R6 returned only on an ACL-validator completeness gap; live G4-B remains blocked until R6R1 is Reviewer PASS and the later Owner-side authenticated config is proven.
