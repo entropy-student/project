@@ -103,8 +103,8 @@ MVP v1 封板                                  ⏳ PENDING
 新 Reviewer 推荐读取顺序：
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R9 完整进展、根因修复、授权与下一步；
-3. `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — 当前 one-shot live retry Gate；
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R10 完整进展、两次 live return、根因修复与下一步；
+3. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — 当前离线 parser repair Gate；
 4. `EXECUTION_EVIDENCE.md` — R5/R6/R7/R8 的脱敏证据与正式 Reviewer 判定；
 5. `DECISION_LOG.md` — 已确认决策与理由；
 6. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 更早阶段的历史 transition，需要时再读。
