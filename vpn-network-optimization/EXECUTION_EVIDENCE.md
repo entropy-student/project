@@ -9660,3 +9660,59 @@ G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=e4b08b0df3289af089
 ```
 
 R10 is offline validation only. It does not authorize a live retry.
+
+
+## Reviewer reconciliation — R6R2L-R9 live retry return — 2026-10-05
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T14:59:57.1170349+00:00
+OWNER_REPORTED_HEAD_AFTER=fda2a8f0fc116d507c9ec9e58e037e60c833cb06
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_GATE_BLOB=b81b39da7468d39b6901a4bc9017d136d7527c24
+OWNER_REPORTED_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+OWNER_REPORTED_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_LIVE_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_OWNER_LIVE_AUTHORIZATION=PASS
+OWNER_REPORTED_RUNNER_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
+OWNER_REPORTED_BAIDU_CLI_VERSION=v4.0.2
+OWNER_REPORTED_FAILURE_CODE=BAIDU_PENDING_UPLOAD_NOT_PRESENT
+OWNER_REPORTED_CONSEQUENTIAL_MUTATION_STARTED=NO
+OWNER_REPORTED_REMOTE_ROLLBACK=PASS
+OWNER_REPORTED_BAIDU_PENDING_ROLLBACK=PASS
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T15:09:45.0334555+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:09:47.9164206
+REVIEWER_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LISTING_PARSER_DEFECT
+```
+
+Reviewer root-cause analysis:
+- R9 passed the prior R8 success-stream repair and reached the real Baidu pending-upload verification boundary.
+- The upload command returned successfully, then `Get-BaiduRemoteObjectState()` classified the expected pending object as ABSENT and raised `BAIDU_PENDING_UPLOAD_NOT_PRESENT`.
+- Upstream BaiduPCS-Go v4.0.2 source proves detailed `ls -l` is rendered by `pcstable.NewTable()` with `SetBorder(false)`, `SetHeaderLine(false)`, and `SetColumnSeparator("")`.
+- The production runner instead required pipe-delimited rows beginning with `|`, so a real provider listing could never satisfy the parser even when the object existed.
+- The old fake CLI fixture masked this defect by synthesizing pipe-delimited rows that do not model v4.0.2 provider output.
+- Upstream v4.0.2 `RunUpload` constructs each remote save path under the supplied target directory using the local file basename, so the pending basename/target-directory design is not the identified defect.
+- `BAIDU_PENDING_ROLLBACK=PASS` does not prove a remote pending object was deleted; the rollback helper also reports PASS when the same parser classifies the object as ABSENT.
+- No persistent REALITY/service/profile mutation began because `CONSEQUENTIAL_MUTATION_STARTED=NO`. R9 must not be replayed.
+
+Upstream source provenance used by Reviewer:
+- qjfoidnh/BaiduPCS-Go tag v4.0.2, `pcstable/pcstable.go`
+- qjfoidnh/BaiduPCS-Go tag v4.0.2, `internal/pcscommand/ls_search.go`
+- qjfoidnh/BaiduPCS-Go tag v4.0.2, `internal/pcscommand/upload.go`
+
+R10 repair:
+- production parser no longer requires pipe borders and matches the exact basename in the final field;
+- directory trailing slash remains a separate DIRECTORY classification;
+- fake provider fixture now emits borderless rows;
+- positive exact-file/directory/basename fixtures and a negative pipe-only-parser regression are required.
+
+```text
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_GATE_BLOB=20ce50c15c16dce8cf2adb8a952750e2cb28b8b2
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RUNNER_BLOB=9cfac247da85e917e213c28172fb619a62329592
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+```
+
+Next Gate: `G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10`.
+Owner runs only the offline fixture validator. No live retry is authorized until Reviewer accepts R10.
