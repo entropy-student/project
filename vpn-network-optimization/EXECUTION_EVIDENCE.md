@@ -9182,3 +9182,29 @@ R6R2L_GATE_BLOB=e787311742f5bae97b3bfb8745dcb7c3920ca8af
 Owner-local execution of the current live-runner fixture validator passed every positive and negative contract, including the new explicit Baidu CLI UTF-8 decode assertion. The run performed no live network/provider/VPS/Secret/Clash/service/route action.
 
 R6R2K is formally PASS. The next boundary is the single consequential G4-B live run under `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L`. Existing current Handoff authorization already records both `OWNER_LIVE_G4B_AUTHORIZATION=GRANTED` and `LIVE_G4B_EXECUTION_AUTHORIZED=YES`; no broader authorization is inferred.
+
+
+## Owner live result — R6R2L P0 canonical-source failure — 2026-10-05
+
+```text
+REVIEWER_RESULT=RETURN_R6R2L_P0_CANONICAL_GIT_QUERY_FAILED
+RUNNER_FAILED_PHASE=P0_CANONICAL_SOURCE
+FAILURE_CODE=CANONICAL_GIT_QUERY_FAILED
+CONSEQUENTIAL_MUTATION_STARTED=NO
+ROLLBACK_REQUIRED=NO
+BAIDU_UID_RUNTIME_VALUE_CLEARED_AFTER_RUN=YES
+```
+
+The live runner stopped in P0 before any consequential mutation. No provider upload, VPS/SSH mutation, Clash/profile change, Secret generation, recovery artifact creation or rollback occurred.
+
+Reviewer reproduced the failure class offline: invoking Git with `-C` set to a repository subdirectory while passing a repository-root-relative pathspec causes `ls-files --error-unmatch` to fail because the prefix is applied relative to that subdirectory.
+
+The runner's canonical-source pathspec-sensitive queries were repaired to execute from the discovered repository root. Blob checks and all later live semantics are unchanged.
+
+```text
+REPAIRED_RUNNER_BLOB=ad990886a6e0853c5b30828c5afbcc37d2290c71
+REPAIRED_VALIDATOR_BLOB=baf2fb35e9a3ea8644f9fdbf151a2a560bbef98d
+R6R2L_R1_GATE_BLOB=afbe9f2d89e3dc35447e73425a4e072478837e29
+```
+
+The validator now performs real read-only Git root/prefix/tracked-path/status queries against the current checkout to prevent recurrence. No live retry is authorized until R6R2L-R1 passes.
