@@ -145,7 +145,7 @@ function Test-RunnerContract {
     $baiduStateBody=if($baiduStateStart -ge 0 -and $baiduStateEnd -gt $baiduStateStart){$Text.Substring($baiduStateStart,$baiduStateEnd-$baiduStateStart)}else{''}
     $baiduRealListingParser=(
         $baiduStateBody.Contains('$pattern=') -and
-        $baiduStateBody.Contains('(?<directory>/)?[ \t]*$') -and
+        $baiduStateBody.Contains('(?<directory>/)?[ \t]*(?=\r?\n|\z)') -and
         $baiduStateBody.Contains('[regex]::Matches($listing,$pattern)') -and
         -not $baiduStateBody.Contains("'(?m)^\|")
     )
