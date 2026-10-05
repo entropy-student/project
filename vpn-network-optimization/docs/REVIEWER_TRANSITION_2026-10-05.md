@@ -1,12 +1,12 @@
-# Reviewer Transition — 2026-10-05 — G4-B R11 Residual-State Reconciliation
+# Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority; this file explains how the project reached that state and what must happen next.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R12 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
 Project: `vpn-network-optimization`
 
-Goal: establish a portable, verifiable, rollbackable self-built VPN optimization standard for Codex/OpenAI/image-generation workloads, prioritizing stability and tail performance.
+Goal: establish a portable, verifiable and rollbackable self-built VPN optimization standard for Codex/OpenAI/image-generation workloads, prioritizing stability and tail performance.
 
 Owner-frozen v1 role order:
 
@@ -40,19 +40,13 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11
-GATE_ID=G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11
-PREVIOUS_RESULT=PASS_R6R2L_R10_BAIDU_REAL_LISTING_PARSER_REPAIR
+STATE=OWNER_ACTION_REQUIRED_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+GATE_ID=G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+PREVIOUS_RESULT=RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
-Current R11 identities:
-
-```text
-R11_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
-R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
-```
-
-Existing bounded live authorization remains recorded:
+Existing bounded live authorization is still recorded historically:
 
 ```text
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
@@ -60,28 +54,24 @@ LIVE_G4B_EXECUTION_AUTHORIZED=YES
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 ```
 
-However, **no live retry is currently authorized**. R11 is read-only state reconciliation only.
+That does **not** authorize a live retry now. Current R12 is local metadata-only.
 
-## 4. R4 → R11 chronology
+## 4. R4 → R12 chronology
 
 ### R4 — offline repair validation — PASS
 
 R4 closed the earlier canonical Git-root, Unicode-safe path, CRLF and validator-repair chain.
 
-Accepted source identities at that point:
+Accepted identities:
 
 ```text
 RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
 VALIDATOR_BLOB=5c8763350098f181f41b0b1e0799885da9e5d07d
 ```
 
-This enabled the first bounded G4-B live attempt.
+### R5 — first bounded live G4-B attempt — RETURN
 
-### R5 — first live G4-B attempt — RETURN
-
-R5 was executed exactly once.
-
-It reached:
+R5 executed exactly once and reached P5:
 
 ```text
 RUNNER_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
@@ -95,7 +85,7 @@ No accepted persistent REALITY/service/profile mutation began.
 
 ### R6 — local P5 diagnostic — PASS
 
-R6 proved the local non-provider P5 chain:
+R6 excluded the local non-provider chain as the R5 cause:
 
 ```text
 POST_FAILURE_LOCAL_CLEANUP=PASS
@@ -111,9 +101,7 @@ NETWORK_MUTATION=NO
 SECRET_VALUES_EMITTED=0
 ```
 
-This excluded local DPAPI/HY2/Mihomo as the R5 root cause.
-
-### R7 — Baidu boundary diagnosis — root cause identified
+### R7 — provider boundary diagnosis — root cause identified
 
 A bounded Baidu read-only diagnostic reproduced:
 
@@ -128,40 +116,27 @@ NETWORK_MUTATION=NO
 SECRET_VALUES_EMITTED=0
 ```
 
-Source inspection found the same defect in the live process helper:
+Source reconciliation identified PowerShell success-stream pollution:
 
 ```powershell
 $psi.Environment.Remove([string]$key)
 ```
 
-`Remove()` returns a Boolean. Without suppression, those values polluted the PowerShell success stream ahead of the process-result object. Under StrictMode, later member access could hit a Boolean and throw `PropertyNotFoundException`.
+The Boolean return values polluted the helper output before the process-result object. Under StrictMode, later member access could hit a Boolean and raise `PropertyNotFoundException`.
 
-This reconciled the R5 `UNCLASSIFIED` failure.
-
-A separate diagnostic-edit branch later hit parser errors before execution; it was superseded and is not an active path.
+This explains the R5 outer `UNCLASSIFIED`.
 
 ### R8 — process-output repair — PASS
 
-Accepted production repair:
+Accepted repair:
 
 ```powershell
 [void]$psi.Environment.Remove([string]$key)
 ```
 
-Reviewer verified the live runner differed from the previously authorized R5 runner by exactly this one safety-preserving line.
+Reviewer confirmed the live runner differed from the previously authorized R5 runner by exactly this one safety-preserving line.
 
-Offline validation passed both the positive suppression contract and negative reintroduction regression:
-
-```text
-G4B_FIXTURE_R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED=PASS
-G4B_FIXTURE_NEGATIVE_BAIDU_ENV_REMOVE_STREAM_POLLUTION=PASS
-G4B_LIVE_RUNNER_FIXTURES=PASS
-NEGATIVE_FIXTURES=PASS
-EXTERNAL_REQUESTS=0
-SSH_OR_VPS_ACTION=NO
-DPAPI_OR_REAL_SECRET_ACCESS=NO
-NETWORK_MUTATION=NO
-```
+Required positive and negative regressions passed, with zero live/provider/network action.
 
 Formal result:
 
@@ -169,11 +144,11 @@ Formal result:
 PASS_R6R2L_R8_BAIDU_PIPELINE_OUTPUT_REPAIR
 ```
 
-### R9 — second live attempt — RETURN
+### R9 — second bounded live attempt — RETURN
 
-R9 was executed exactly once and passed the R8-fixed provider process boundary.
+R9 executed exactly once and passed the R8-fixed process boundary.
 
-It reached the real pending-upload readback check:
+It reached the real pending-upload readback:
 
 ```text
 RUNNER_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
@@ -185,38 +160,36 @@ BAIDU_PENDING_ROLLBACK=PASS
 STOP_AT_REVIEWER=YES
 ```
 
-Reviewer did not authorize replay.
+Upstream BaiduPCS-Go v4.0.2 source reconciliation proved a second defect:
 
-Upstream BaiduPCS-Go v4.0.2 source reconciliation then proved a second implementation defect:
+- detailed `ls -l` is rendered as a borderless table;
+- filename is the final field and directories append `/`;
+- the pre-R10 runner expected ASCII pipe-delimited rows;
+- the fake provider fixture also synthesized pipe rows, masking the drift;
+- upstream upload code still confirms target directory + local basename semantics.
 
-- `pcstable.NewTable()` uses no border and no column separator;
-- detailed `ls -l` renders filename as the final field, with directories as `filename/`;
-- the pre-R10 production parser required pipe-delimited rows beginning with ASCII `|`;
-- the fake provider fixture also synthesized pipe-delimited rows, masking the provider-format drift;
-- upstream upload code still confirms a local file is saved under the supplied target directory using its basename.
+Therefore R9 was reconciled as a **real-listing parser / fixture-drift defect**, not proof that auth or upload itself failed.
 
-Therefore `BAIDU_PENDING_UPLOAD_NOT_PRESENT` was reconciled as a **real listing parser / fixture-drift defect**, not proof that account auth or upload itself failed.
+R9 must not be replayed.
 
 ### R10 — real-listing parser / fixture repair — PASS
 
-Production parser was rebuilt from the last parser-valid R9 runner and changed only at the real-listing matcher.
+Production parser was rebuilt from the last parser-valid R9 runner and changed only at the listing matcher.
 
-Accepted parser behavior:
-- exact basename in the final `ls -l` field;
-- no pipe-border dependency;
-- trailing `/` classified as DIRECTORY;
+Accepted behavior:
+- exact basename in final `ls -l` field;
+- no pipe dependency;
+- trailing `/` means DIRECTORY;
 - exact file/directory/basename matching;
-- line-end handling via `(?=\r?\n|\z)` to avoid a prior persistence truncation boundary.
+- safe line-end lookahead `(?=\r?\n|\z)`.
 
 Validator was rebuilt from the last parser-valid R9 validator and re-applied only the intended R10 fixtures.
 
-There were several **pre-execution / fixture-only** R10 returns while repairing:
+Several R10 attempts returned safely before live/provider action while fixing source persistence/parser/static-fixture defects:
 - stale whole-repository HEAD guard;
-- malformed persisted runner tail / parser preflight;
-- malformed validator source / parser preflight;
-- wrong validator function-boundary selection.
-
-All of those stopped before live/provider/Secret/network action.
+- malformed persisted runner duplicate tail;
+- validator parser error;
+- wrong validator function-boundary lookup.
 
 Final R10 validation passed:
 
@@ -251,7 +224,7 @@ Formal result:
 PASS_R6R2L_R10_BAIDU_REAL_LISTING_PARSER_REPAIR
 ```
 
-Accepted R10 identities:
+Accepted identities:
 
 ```text
 R10_GATE_BLOB=ef148ca80a630e0e6faab748a8862b5bee0e6ea4
@@ -259,98 +232,130 @@ R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
 R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
 ```
 
-### R11 — current read-only residual-state reconciliation — READY
+### R11 — Baidu residual-state read-only reconciliation — RETURN
 
-R9 reported `BAIDU_PENDING_ROLLBACK=PASS`, but that observation depended on the pre-R10 broken real-listing parser. Therefore it cannot prove the remote recovery directory is clean.
+R11 existed because R9's `BAIDU_PENDING_ROLLBACK=PASS` depended on the now-superseded pre-R10 listing parser and therefore could not prove remote cleanliness.
 
-R11 exists only to observe provider state using corrected semantics.
+An initial R11 attempt stopped at parser preflight because two sanitized error-reporting `Write-Output (...)` statements were missing their outer closing parenthesis. That attempt executed no diagnostic/provider action. The script was repaired and relocked.
+
+Final R11 source identities used by Owner:
+
+```text
+R11_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
+R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+```
+
+The final R11 attempt passed source and parser preflight, then stopped locally:
+
+```text
+OWNER_RUNTIME=PASS
+DIAGNOSTIC_STAGE=BAIDU_CONFIG_ACL
+DIAGNOSTIC_FAILED_STAGE=BAIDU_CONFIG_ACL
+DIAGNOSTIC_EXCEPTION_TYPE=System.Management.Automation.RuntimeException
+BAIDU_RESIDUAL_STATE=BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+TEMP_RUNTIME_CLEANUP=PASS
+BAIDU_MUTATION_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+RECOVERY_READ_OR_WRITE=NO
+NETWORK_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+Important interpretation:
+- R11 stopped **before hidden UID input**;
+- R11 did not execute Baidu `who`;
+- R11 did not execute remote `ls`;
+- remote pending/final residual state therefore remains **UNKNOWN**;
+- the only new observed fact is that at least one local Baidu config subtree object is not owned by the exact current Owner SID required by the strict R6R1 invariant.
+
+Formal result:
+
+```text
+RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+```
+
+### R12 — current local ACL owner-drift inventory — READY
 
 Current Gate:
 
-`docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md`
+`docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md`
 
-Current script:
+R12 is local metadata-only.
 
-`scripts/g4b-baidu-residual-readonly-r11.ps1`
+It exists to determine whether the R11 mismatch is:
+- the narrow historical shape already observed on this Windows host, where a privileged child-created `pcs_config.json` is owned by Builtin Administrators;
+- or a broader/unknown owner/ACL drift.
 
-Allowed provider commands are only:
+Relevant accepted R6R1 invariant:
+- exact current Owner SID for every inspected item;
+- no reparse points;
+- inspect direct and inherited ACEs;
+- safe Allow principals only: current Owner, LocalSystem, Builtin Administrators;
+- no Deny ACE;
+- current Owner has required read/list/traverse rights;
+- metadata only; no config content read/copy/print.
 
-```text
-BaiduPCS-Go who
-BaiduPCS-Go ls -l /vpn-network-optimization-g4b-recovery
-```
+Historical R6R2D/R6R2H-R1 evidence proved the child-created Administrators-owner shape can occur on this exact host, but current R11 did **not** identify which item or owner principal is mismatched.
 
-R11 does **not** authorize:
-- mkdir/upload/download-from-Baidu/mv/rm;
-- login/logout/config mutation;
-- cleanup of any remote object;
-- live G4-B runner;
-- SSH/VPS;
+R12 must therefore report only sanitized aggregate metadata and one classification. It does not authorize mutation.
+
+## 5. Current unresolved truth
+
+Known:
+- WireGuard remains production/rollback baseline.
+- Existing HY2 remains accepted.
+- R8 is formally PASS.
+- R10 is formally PASS.
+- R5 and R9 both stopped before accepted consequential mutation.
+- Persistent REALITY service is not accepted.
+- Persistent `SELF-VPN-V1` profile is not accepted.
+- G4-C has not started.
+- system proxy/TUN remain outside current work.
+
+Unknown / unresolved:
+- exact local Baidu config item(s) whose Owner mismatches current Owner SID;
+- whether mismatch is only the known Administrators-owned child-created config file shape;
+- whether any other ACL policy drift exists;
+- whether R9 left a remote pending or final recovery object in Baidu;
+- whether a later bounded ACL normalization will be safe;
+- whether a new live G4-B retry can be issued.
+
+## 6. Current safety boundary
+
+R12 allows only local metadata/ACL observation.
+
+R12 does **not** authorize:
+- config file content read/hash/copy/print;
+- username/path/SID/ACE-detail output;
+- `Set-Acl`, `takeown`, `icacls` or ownership mutation;
+- BaiduPCS-Go/provider access;
+- UID input;
+- remote cleanup;
 - DPAPI/recovery Secret access;
+- SSH/VPS;
+- live G4-B;
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-R11 returns only sanitized object counts and one classification:
-
-```text
-CLEAN
-STALE_PENDING_PRESENT
-FINAL_PRESENT_REQUIRES_RECONCILIATION
-MULTIPLE_OR_UNKNOWN_PROJECT_OBJECTS
-AUTH_OR_PROVIDER_READ_FAILED
-LOCAL_DIAGNOSTIC_EXCEPTION
-```
-
-A CLEAN result may permit Reviewer to design a new bounded live retry Gate. Any residual state requires a separate reconciliation Gate.
-
-## 5. Owner environment and Secret rules
-
-Known Owner environment:
-
-```text
-PowerShell=7.6.6
-Administrator=YES
-HighIntegrity=YES
-RepoRoot=C:\Users\34707\Documents\ChatGPT\VPS搭建
-SSH key path=C:\Users\34707\.ssh\digitalocean_ed25519
-```
-
-Never persist or paste into GitHub/chat:
-- numeric Baidu UID;
-- portable recovery passphrase;
-- SSH private-key contents;
-- Baidu cookies/tokens/credentials;
-- HY2 auth;
-- REALITY private key material.
-
-R11 asks only for the expected Baidu UID through a hidden local prompt. It does not read recovery Secret/DPAPI data.
-
-## 6. Current rollback / network truth
-
-- WireGuard remains the active production/rollback baseline.
-- Existing HY2 remains accepted and must be preserved.
-- No automatic switching is accepted.
-- System proxy and TUN must remain OFF outside bounded tests.
-- R5 failed before consequential mutation.
-- R9 also reported `CONSEQUENTIAL_MUTATION_STARTED=NO`.
-- R10 was fully offline.
-- Persistent REALITY service and persistent `SELF-VPN-V1` are not yet accepted.
-- R9 pending rollback is non-authoritative for remote cleanliness because it used the pre-R10 parser.
-- No live retry is authorized until R11 is reviewed.
+Only after R12 is reviewed may Reviewer decide whether a separate ACL-normalization Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this R4→R11 chronology.
-3. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — exact current Gate.
-4. `EXECUTION_EVIDENCE.md` — append-only R5→R10 evidence and formal decisions.
-5. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair boundary/history.
-6. `DECISION_LOG.md` — durable architecture/Owner decisions.
-7. Older transition/package docs only when earlier context is actually needed.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R12 chronology.
+3. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current Gate.
+4. `EXECUTION_EVIDENCE.md` — append-only R5→R11 evidence and formal Reviewer decisions.
+5. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 read-only Gate and failure boundary.
+6. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair.
+7. `docs/G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1.md` — accepted ACL invariant definition.
+8. `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1.md` — historical child-created Administrators-owner evidence/boundary; note that this specific duplicate Gate is marked superseded, so use it only as historical rationale, not an executable Gate.
+9. `DECISION_LOG.md` — durable architecture/Owner decisions.
+10. Older transition/package docs only if earlier context is actually needed.
 
-Historical `EXECUTOR_HANDOFF.md` cannot override current Reviewer state.
+Historical `EXECUTOR_HANDOFF.md` never overrides current Reviewer state.
 
 ## 8. What must not be repeated
 
@@ -358,19 +363,17 @@ Do not repeat without new Reviewer authorization/evidence:
 - R4 repair validation;
 - R5 live attempt;
 - R6 local P5 diagnostic;
-- R7 root-cause diagnostic;
-- superseded parser-error diagnostic branches;
+- R7 provider-boundary diagnosis;
 - R8 pipeline-output repair validation;
 - R9 live retry;
 - R10 parser/fixture validation;
+- R11 provider residual-state run as-is while ACL mismatch remains;
 - HY2 credential recovery/rotation;
 - G4-B0 bypass canary;
 - earlier HY2/REALITY compatibility/canary work.
 
-Current unresolved action is **R11 read-only residual-state reconciliation**. G4-C remains separate and pending until G4-B is formally PASS.
-
 ## 9. Repository durability
 
-This transition snapshot, R11 Gate/script, accepted R10 runner/validator, Evidence, Handoff and README are on `main`.
+This transition snapshot, R12 Gate, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
