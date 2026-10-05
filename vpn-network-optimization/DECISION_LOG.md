@@ -429,3 +429,12 @@ production local pending basename with the exact remote pending object basename.
 **Blocking gap:** the production config ACL predicate checks Owner identity and three broad Allow SIDs but does not yet prove inheritance handling, Deny-rule safety, a complete safe-principal allowlist, or the Owner's required read rights as required by Governance v0.2.7.
 
 **Next:** `G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1` performs only that ACL predicate/fixture repair and reruns the complete R6 regression. No Owner/live action is needed.
+
+
+## 2026-10-05 — R6R1 ACL repair formally accepted
+
+**Decision:** `PASS_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1`.
+
+The previous R6 ACL completeness blocker is closed. Production ACL validation now covers exact Owner identity, direct/inherited ACE review, explicit safe Allow principals, Deny rejection, arbitrary/broad principal rejection, and required Owner read/list/traverse rights. Eight synthetic fixtures exercise the exact production predicate and the complete R6 regression remains PASS.
+
+No real Baidu/provider/config/network/VPS/Secret action occurred. Next Gate is `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2`: a single Owner-local read-only readiness run. No login or live G4-B is authorized.
