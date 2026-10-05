@@ -105,12 +105,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_AUTH_READINESS_R6R2
+STATE=EXECUTOR_ASSIGNED_BAIDU_UID_DISCOVERY_HELPER_R6R2A
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1
+PREVIOUS_RESULT=R6R2_BLOCKED_EXPECTED_UID_UNKNOWN
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=One Owner-local read-only Baidu authentication-readiness checkpoint run only; no login, provider mutation, VPS/SSH, Secret access, persistent service/profile write, or live G4-B.
+MAX_ENDPOINT_THIS_ROUND=Offline-only implementation/validation of a minimal Owner-local UID discovery helper; no real who, config read, network/provider action, login, VPS/SSH, Secret access, or live G4-B.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -118,8 +118,8 @@ PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locke
 REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
 ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
 ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
-OWNER_ONLY_ACTIONS=Run exactly the reviewed R6R2 Owner-local checkpoint once. Expected numeric UID stays local; no credentials/cookies/tokens are provided to chat/GitHub/logs/process arguments. If RETURN_OWNER_ACTION_REQUIRED, stop and return to Reviewer.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2 is an Owner-local checkpoint, not an Executor/Codex round.
+OWNER_ONLY_ACTIONS=NONE during R6R2A. Owner does not run R6R2 until the UID discovery helper is Reviewer PASS.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A.md + accepted R6R1 checkpoint/validator as reuse reference only.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -142,6 +142,7 @@ G4B_BAIDU_AUTH_R6R1_FINAL_COMMIT=a13c0c76e9a3a5051848db78615fadbf12506d9b
 G4B_BAIDU_AUTH_R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
 G4B_BAIDU_AUTH_R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
 G4B_BAIDU_AUTH_R6R2_GATE_BLOB=75272436cab8bf88297aa0486d68808fd064b6d0
+G4B_BAIDU_UID_DISCOVERY_R6R2A_GATE_BLOB=c5e3fee84339e5511c0ea67b798751409998bb7a
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -218,11 +219,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner executes `G4B_BAIDU_OWNER_AUTH_READINESS_RUN_R6R2` exactly once on the real Windows host and returns only the eight bounded sanitized checkpoint markers. No Codex/Executor action is needed for this Gate.
+Codex executes `G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A` only, building and offline-validating a minimal Owner-local UID discovery helper. Stop at Reviewer; do not execute real `who`.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the R6R2 Owner-local checkpoint once and paste back only its eight bounded markers. If the checkpoint returns `RETURN_OWNER_ACTION_REQUIRED` or `FAIL_CLOSED`, stop; do not improvise login or repair.
+NONE now. Wait for R6R2A helper review; do not run the old R6R2 checkpoint without a known expected UID.
 
 ## EVIDENCE_POINTERS
 
