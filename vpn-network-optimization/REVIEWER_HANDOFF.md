@@ -249,6 +249,7 @@ G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RESULT=PASS
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_GATE_BLOB=b81b39da7468d39b6901a4bc9017d136d7527c24
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
@@ -333,13 +334,15 @@ Owner runs exactly one `G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9` live retr
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R8 Gate/runner/validator blobs, run only the offline live-runner fixture validator, and return its markers. Do not run the live G4-B runner.
+Fast-forward to current main, verify the R9 live-retry Gate/runner/validator blobs, collect local-only UID/SSH/passphrase inputs, invoke exactly one R9 live retry, perform only the bounded P10 import/visibility acknowledgement if all conditions hold, then stop at Reviewer. Do not replay R9 after any failure or ambiguity.
 
 ## EVIDENCE_POINTERS
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-04.md` — complete transition chronology and accepted boundaries.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R9 chronology, root-cause repair, authorization, and active live-retry boundary.
+- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — exact current one-shot live retry Gate.
+- `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
 - `EXECUTION_EVIDENCE.md` — append-only execution proof; accepted R2R3/R2R3V2 sections are near the tail.
 - `DECISION_LOG.md` — architecture and authorization rationale, including accepted scanner repair and fresh R3R2 authorization requirement.
 - `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md` — accepted real canary package contract.
