@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_LIVE_RETRY_R6R2L_R9
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_LIVE_CONSEQUENTIAL
+STATE=OWNER_ACTION_REQUIRED_BAIDU_REAL_LS_PARSER_OFFLINE_VALIDATION_R6R2L_R10
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_R6R2L_R8_BAIDU_PIPELINE_OUTPUT_REPAIR
-OBJECTIVE=Retry the bounded G4-B persistent three-role readiness run after formal acceptance of the Baidu success-stream pollution repair.
-MAX_ENDPOINT_THIS_ROUND=Exactly one live retry ending at PASS_CANDIDATE or bounded failure + STOP_AT_REVIEWER. No production-role activation, no auto switching, no G4-C.
+PREVIOUS_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LS_FORMAT_PARSER_DRIFT
+OBJECTIVE=Validate the R10 repair that makes Baidu remote-object readback compatible with the real v4.0.2 borderless ls -l output and makes the fake CLI fixture model that provider format.
+MAX_ENDPOINT_THIS_ROUND=Offline fixture validation only. No Baidu API/file operation, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation, no G4-C.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Current accepted SFO3 VPS + Owner Windows host; persistent REALITY service, encrypted recovery, and exactly one SELF-VPN-V1 profile without activation.
-APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains production/rollback; HY2 preserved; final system proxy OFF; final TUN OFF; no Secret values in GitHub/chat/logs; no broad service/firewall/route/profile cleanup; no blind replay.
-PREFLIGHT=R8 formal PASS; repaired runner differs from R5 by exactly one [void] Environment.Remove suppression line; positive and negative regression fixtures PASS; prior R5 consequential mutation never started; existing bounded live authorization remains granted.
-REQUIRED_EVIDENCE=Locked R9 Gate; runner blob 388714218a7a6f1671777488b0c581812f6cc9eb; validator blob eac0f9684b8f98b71c856e4d297da03f867b2d51; sanitized live phase/result markers; rollback journal retained if PASS_CANDIDATE; final proxy/TUN OFF.
-ACCEPTANCE_CRITERIA=R9 success contract PASS_CANDIDATE with all required preservation/final-state markers, or bounded failure fully reconciled.
-ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback journal; WireGuard remains production rollback. On failure or ambiguity, stop and reconcile before any retry.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R9 Gate/runner/validator identities, collect local-only UID/SSH/passphrase inputs, invoke exactly one live retry, perform only the bounded P10 import/visibility acknowledgement if all conditions hold, then stop at Reviewer.
+TARGET_AND_SCOPE=Canonical main runner + fixture validator only.
+APPLICABLE_CRITICAL_CONSTRAINTS=Do not replay R9; no live Baidu/VPS action; no Secret access/output; preserve all prior R1-R8 contracts.
+PREFLIGHT=R9 failed in P5 with BAIDU_PENDING_UPLOAD_NOT_PRESENT and CONSEQUENTIAL_MUTATION_STARTED=NO. Upstream BaiduPCS-Go v4.0.2 source proves real ls -l has no border/column separator and filename is the final column; pre-R10 parser required pipe-delimited rows.
+REQUIRED_EVIDENCE=R10 parser source contract PASS; real-format FILE/DIRECTORY/exact-basename behavioral fixtures PASS; negative pipe-only parser regression PASS; pending upload/readback/promotion/rollback fixtures PASS; full positive and negative suites PASS; zero external/network/Secret action.
+ACCEPTANCE_CRITERIA=All required R10 and prior fixtures PASS; validator parser PASS; no external action; STOP_AT_REVIEWER.
+ROLLBACK_STATUS_OR_PLAN=Source-only rollback if R10 fails. R9 already stopped and reported bounded rollback PASS; no new runtime mutation is authorized in R10.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R10 Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, return markers, stop.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized non-secret live output only; no G4-C or closeout.
+EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
 ```
 
-G4-B0 is formally closed PASS. The G4-B offline/live-runner package is accepted through the R8 Baidu pipeline-output repair. The first live R5 attempt failed in P5 with `CONSEQUENTIAL_MUTATION_STARTED=NO`; no persistent REALITY/profile mutation from that attempt is accepted. Owner selected Baidu Netdisk as the second-failure-domain provider and bounded live G4-B authorization remains granted. The only current consequential action is the one-shot R9 live retry locked above.
+G4-B0 is formally closed PASS. R8 pipeline-output repair is formally PASS. R9 then reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS. Upstream v4.0.2 source reconciliation identified the next defect: the production parser expected pipe-delimited `ls -l` rows even though the provider renders a borderless table. Current work is R10 offline parser/fixture repair validation; no live retry is authorized.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -248,6 +248,10 @@ G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RESULT=PASS
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_GATE_BLOB=b81b39da7468d39b6901a4bc9017d136d7527c24
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
 G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_RESULT=RETURN_BAIDU_REAL_LS_FORMAT_PARSER_DRIFT
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_GATE_BLOB=20ce50c15c16dce8cf2adb8a952750e2cb28b8b2
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RUNNER_BLOB=2727ed692c2230367c4a2a8db3a55a1a678a9049
+G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
@@ -317,23 +321,22 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS; R9 one-shot live retry is READY but has not yet been executed.
-- Baidu Netdisk is the approved second failure domain. R9 must re-enter the bounded live P5 path and prove the required authenticated read/recovery workflow without exposing credentials.
-- Persistent REALITY backup service and the persistent three-role `SELF-VPN-V1` profile are not accepted until R9 reaches PASS_CANDIDATE and Reviewer formally accepts the evidence.
-- Any R9 failure or ambiguity requires reconciliation before retry; no blind replay.
-- G4-C must prove representative Codex/OpenAI/image-generation traffic after G4-B formal acceptance; system proxy is tested before any TUN design.
-- G4-C peak-hour + representative real-workload validation remains pending.
+- G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS. R9 executed once and returned in P5 with `BAIDU_PENDING_UPLOAD_NOT_PRESENT`, `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS.
+- R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
+- R10 parser/fixture repair is current and offline-only; no R9 replay or other live retry is authorized until R10 is formally accepted and a new live Gate is issued.
+- Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
+- G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
 - Final WireGuard routing / kill-switch policy remains pending v1 sealing.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Owner runs exactly one `G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9` live retry and stops at Reviewer.
+Owner runs only `G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10` offline validation and stops at Reviewer. No live retry is authorized.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R9 live-retry Gate/runner/validator blobs, collect local-only UID/SSH/passphrase inputs, invoke exactly one R9 live retry, perform only the bounded P10 import/visibility acknowledgement if all conditions hold, then stop at Reviewer. Do not replay R9 after any failure or ambiguity.
+Fast-forward to current main, verify the R10 parser-repair Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, and return its markers. Do not run the live G4-B runner.
 
 ## EVIDENCE_POINTERS
 
