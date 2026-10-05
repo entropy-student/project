@@ -10215,3 +10215,26 @@ Additional upstream v4.0.2 reconciliation:
 - R9 executed a real Baidu upload before its readback failure. Therefore `pcs_uploading.json` is a strong evidence-based candidate for the one current Administrators-owned file, but R13 did not prove its basename and Reviewer does not accept the inference as fact yet.
 
 Next: R14 local metadata-only known-role classifier for config/history/upload-database/captcha. No normalization or provider action is authorized.
+
+
+## Reviewer preparation — R14 known config-role Owner metadata classifier — 2026-10-05
+
+R14 implementation is prepared on canonical main but has not been executed.
+
+```text
+GATE_ID=G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
+R14_GATE_BLOB=4a12130337fc79366ce2dceea3fb7ae5f5fe759e
+R14_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
+R14_EXECUTED=NO
+```
+
+Reviewer static inspection confirms:
+- helper is local direct-child metadata-only;
+- it classifies only four upstream-known config-directory roles internally: config, command history, upload database and captcha;
+- no config content read/copy/hash/print operation exists;
+- no ACL/owner mutation exists;
+- no file mutation exists;
+- no Baidu provider/process/network, UID input, Secret/DPAPI, SSH/VPS, Clash/profile/service/route/proxy/TUN or G4-C action exists;
+- output is sanitized role/presence/count classification only.
+
+No normalization or provider readback is authorized by R14.
