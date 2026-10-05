@@ -139,6 +139,7 @@ function Test-RunnerContract {
     $baiduUniqueSafeExeEntry=($installBody.Contains('$entries=@($zip.Entries | Where-Object { [IO.Path]::GetFileName($_.FullName) -ceq ''BaiduPCS-Go.exe'' })') -and $installBody.Contains('$entries.Count -eq 1') -and $installBody.Contains('$entries[0].Length -gt 0') -and $installBody.Contains('$entries[0].Length -le 64MB') -and $installBody.Contains('$entries[0].FullName -notmatch ''(^|/)\.\.(/|$)'''))
     $baiduCommandBoundary=($Text.Contains("[ValidateSet('who','ls','mkdir','upload','download','mv','rm')]" ) -and $Text.Contains('$psi.ArgumentList.Add($Action)') -and $Text.Contains('BAIDUPCS_GO_CONFIG_DIR') -and $Text.Contains('Assert-BaiduAccountReady -ExpectedUid $ExpectedBaiduUid') -and $Text.Contains('$script:baiduRecoveryDirectory = ''/vpn-network-optimization-g4b-recovery''') -and $Text -notmatch '(?im)ArgumentList\.Add\([^\r\n]*(?:bduss|stoken|ptoken|cookie|password)=')
     $baiduUtf8Decode=($Text.Contains('$utf8NoBom=[Text.UTF8Encoding]::new($false)') -and $Text.Contains('$psi.StandardOutputEncoding=$utf8NoBom') -and $Text.Contains('$psi.StandardErrorEncoding=$utf8NoBom'))
+    $baiduEnvironmentRemoveOutputSuppressed=($Text.Contains('[void]$psi.Environment.Remove([string]$key)') -and -not $Text.Contains('{$psi.Environment.Remove([string]$key)}'))
     $baiduPendingName=($Text.Contains('$script:baiduPendingName = ''vpn-network-optimization-g4b-'' + $script:runId + ''.vpr1.pending''') -and $Text.Contains('$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + ''/'' + $script:baiduPendingName') -and $Text.Contains('$script:recoveryPendingCloudLocal = Join-Path (Split-Path -Parent $script:secretRecoveryPath) $script:baiduPendingName'))
     $uploadStart=$Text.IndexOf('function Upload-BaiduPendingRecovery {',[StringComparison]::Ordinal);$uploadEnd=$Text.IndexOf('function Promote-BaiduPendingRecovery {',$uploadStart,[StringComparison]::Ordinal)
     $uploadBody=if($uploadStart -ge 0 -and $uploadEnd -gt $uploadStart){$Text.Substring($uploadStart,$uploadEnd-$uploadStart)}else{''}
@@ -200,6 +201,7 @@ function Test-RunnerContract {
         BaiduUniqueSafeExeEntry=$baiduUniqueSafeExeEntry
         BaiduCommandBoundary=$baiduCommandBoundary
         BaiduUtf8Decode=$baiduUtf8Decode
+        BaiduEnvironmentRemoveOutputSuppressed=$baiduEnvironmentRemoveOutputSuppressed
         CanonicalGitRootPathScope=$canonicalGitRootPathScope
         BaiduPendingName=$baiduPendingName
         BaiduPendingGuard=$baiduPendingGuard
@@ -282,6 +284,7 @@ Assert-Fixture $contract.BaiduUniqueSafeExeEntry 'R5R1_UNIQUE_SAFE_EXE_ENTRY'
 Assert-Fixture ($contract.BaiduPendingName -and $contract.BaiduPendingGuard) 'R5R1_PENDING_PRODUCTION_BASENAME'
 Assert-Fixture $contract.BaiduCommandBoundary 'R4_BAIDU_AUTH_AND_ARGUMENT_BOUNDARY'
 Assert-Fixture $contract.BaiduUtf8Decode 'R6R2K_BAIDU_CLI_UTF8_DECODE_LOCKED'
+Assert-Fixture $contract.BaiduEnvironmentRemoveOutputSuppressed 'R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED'
 Assert-Fixture $contract.CanonicalGitRootPathScope 'R6R2L_R1_CANONICAL_GIT_ROOT_PATH_SCOPE'
 Assert-Fixture $contract.BaiduPendingReadback 'R4_PENDING_UPLOAD_CIPHERTEXT_READBACK'
 Assert-Fixture $contract.BaiduFinalPromotion 'R4_FINAL_PROMOTION_AFTER_READBACK'
@@ -518,6 +521,7 @@ $negative=@(
     @{Name='FINAL_PROXY_TUN_GUARD_REMOVED'; Source=$runner.Replace('SYSTEM_PROXY_NOT_OFF','SYSTEM_PROXY_GUARD_REMOVED').Replace('TUN_NOT_OFF','TUN_GUARD_REMOVED'); Check='ProxyTunGuards'},
     @{Name='DPAPI_AS_PORTABLE_COPY'; Source=$runner.Replace('Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $portable -RecoveryArtifact','Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $dpapi -RecoveryArtifact'); Check='PortableRecovery'},
     @{Name='PARSER_SUCCESS_STREAM_POLLUTION'; Source=$runner.Replace('$added=$seen.Add($property.Name)','$seen.Add($property.Name)'); Check='PortableRecovery'},
+    @{Name='BAIDU_ENV_REMOVE_STREAM_POLLUTION'; Source=$runner.Replace('[void]$psi.Environment.Remove([string]$key)','$psi.Environment.Remove([string]$key)'); Check='BaiduEnvironmentRemoveOutputSuppressed'},
     @{Name='RECOVERY_AFTER_MUTATION'; Source=$runner.Replace('Write-EncryptedRecovery -PayloadBytes $recoveryBytes -Passphrase $script:portablePassphrase','# pending recovery omitted'); Check='PortableRecovery'},
     @{Name='PROMOTION_BEFORE_FINAL_READBACK'; Source=$runner.Replace('$remoteFinal=Invoke-Remote -Action ''status''','# final remote readback omitted'); Check='PortableRecovery'},
     @{Name='RUNTIME_ACCESS_NOT_PROVEN'; Source=$runner.Replace('access_as(USER,RUNTIME,os.W_OK|os.X_OK)','True'); Check='RuntimeFilesystem'},
