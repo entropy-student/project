@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2A_SAAS_STYLE_AUDITION
+CURRENT_GATE=G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -115,14 +115,17 @@ G3CR7V1_EXECUTOR_HEAD=806907177ba48ef2ed11310e36f4cca0e209b421
 G3CR7V1_REVIEWER_VISUAL=SUPERSEDED_BY_OWNER_RETURN_V2
 G3CR7V1_1440=PASS
 G3CR7V1_375=PASS
-G3CR7V2A_STYLE_AUDITION=AUTHORIZED
-G3CR7V2A_STYLE_A=LINEAR_PRECISION
-G3CR7V2A_STYLE_B=ATTIO_CLEAN_DATA_SAAS
-G3CR7V2A_STYLE_C=STRIPE_SOFT_TECH
+G3CR7V2A_STYLE_AUDITION=SUPERSEDED_BY_OWNER_DIRECT_SELECTION
+G3CR7V2A_STYLE_A=NOT_REQUIRED
+G3CR7V2A_STYLE_B=NOT_REQUIRED
+G3CR7V2A_STYLE_C=OWNER_SELECTED_STRIPE_SOFT_TECH
 G3CR7V2A_OWNER_CURRENT_PREFERENCE=STRIPE_SOFT_TECH
-G3CR7V2A_FINAL_STYLE_LOCK=PENDING_ADDITIONAL_REFERENCE_REVIEW
+G3CR7V2A_FINAL_STYLE_LOCK=STRIPE_SOFT_TECH
 G3CR7V2A_RUNTIME_MUTATION=0
 G3CR7V2A_SVG_HUMAN_PLACEHOLDERS=FORBIDDEN
+G3CR7V2_IMPLEMENTATION=AUTHORIZED
+G3CR7V2_STYLE=STRIPE_SOFT_TECH
+G3CR7V2_LOCAL_RUNTIME_CANDIDATE_MUST_REMAIN_MOUNTED=YES
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -167,22 +170,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2A_SAAS_STYLE_AUDITION`
+`G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION`
 
-Owner formally RETURNed the G3CR7V1 visuals. Technical behavior remains accepted/frozen.
+Owner has directly selected **Stripe Soft-Tech**. Linear/Attio auditions and the three-way audition Gate are superseded.
 
-The next step is **not another full reskin**. Executor must first produce three isolated SaaS style auditions:
-- Linear Precision;
-- Attio Clean Data-SaaS;
-- Stripe Soft-Tech.
+Current Gate:
+- `docs/G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION.md`
 
-Gate:
-- `docs/G3CR7V2A_SAAS_STYLE_AUDITION.md`
+Owner style lock:
+- `docs/OWNER_DECISION_G3CR7V2_STRIPE_STYLE_LOCK_2026-10-05.md`
 
-Owner return:
-- `docs/OWNER_DECISION_G3CR7V1_VISUAL_RETURN_V2_2026-10-05.md`
-
-The existing retained local runtime must remain untouched in this audition Gate.
+Technical/business behavior remains frozen. This Gate applies the chosen visual system to the real three surfaces and must leave the exact candidate mounted in the local Owner-review runtime.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -247,15 +245,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor creates the three isolated style auditions required by `G3CR7V2A_SAAS_STYLE_AUDITION`.
-2. Reviewer checks that A/B/C are materially distinct, complete, non-paper SaaS systems and that no human/cartoon/SVG-face placeholders remain.
-3. Owner chooses one style direction.
-4. Only after Owner selection will a separate implementation Gate apply that exact style to the three real surfaces.
-5. That implementation Gate must leave the selected candidate mounted in the local `127.0.0.1:8189` runtime until Owner review; it must not restore old CSS immediately after screenshots.
+1. Executor runs `G3CR7V2_STRIPE_VISUAL_IMPLEMENTATION`; do not create Linear/Attio auditions.
+2. Apply one coherent Stripe Soft-Tech system to the actual homepage Preview/core-entry, five-step intake and status/Woo continuation.
+3. Replace SVG/cartoon human QA fixtures with approved local photography or neutral non-human local assets.
+4. Capture 1440/375 evidence and leave the exact candidate mounted at `127.0.0.1:8189`.
+5. Reviewer checks visual fidelity and frozen behavior; then Owner performs live local visual acceptance.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until the A/B/C style auditions are ready.** Owner will choose one of the three visual directions after Reviewer inspection.
+**NONE until the Stripe candidate is ready.** Owner has already locked the visual direction.
 
 ## EVIDENCE_POINTERS
 
