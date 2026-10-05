@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION
+CURRENT_GATE=OWNER_CHECKPOINT_G3CR7_THREE_FRONTEND_SURFACES_VISUAL
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=EXECUTOR_CANDIDATE_RUNTIME_PASS_OWNER_PENDING
-CORE_FUNCTION_ONBOARDING_SURFACE=EXECUTOR_CANDIDATE_RUNTIME_PASS
-POSTPAY_GENERATION_STATUS_SURFACE=PARTIAL_FIXTURE_ONLY_ORDER_RECEIVED_PENDING
+HOMEPAGE_ENTRY_SURFACE=REVIEWER_PASS_OWNER_VISUAL_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_PASS_OWNER_VISUAL_PENDING
+POSTPAY_GENERATION_STATUS_SURFACE=REVIEWER_PASS_OWNER_VISUAL_PENDING
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -101,6 +101,13 @@ G3CR7R1R1_AUTHORITATIVE_PR_DRIFT=NO
 G3CR7R1R1_EXECUTOR_STALE_REF=97aceb4a1a9990f2e203e90de8bd5965202d63b8
 G3CR7R1R1_RECONCILED_PR_HEAD=c01843de4fb8bc139030930ad12caeb9ebbcd2b3
 G3CR7R1R1_RUNTIME_WEB=UNAVAILABLE_EXECUTOR_REPORTED
+G3CR7R1R2_EXECUTOR_HEAD=c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c
+G3CR7R1R2_SOURCE_CLEANUP=PASS
+G3CR7R1R2_RUNTIME_RECONCILIATION=PASS_PROXY_INTERCEPTION_NO_RUNTIME_MUTATION
+G3CR7R1R2_WOO_ORDER_RECEIVED=PASS
+G3CR7_FORMAL_REVIEWER_DECISION=PASS
+G3CR7_OWNER_VISUAL=PENDING
+PR64_MERGEABILITY=DIRTY_DEFERRED_TO_PREMERGE_RECONCILIATION
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -144,17 +151,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION`
+`OWNER_CHECKPOINT_G3CR7_THREE_FRONTEND_SURFACES_VISUAL`
 
-Fresh Reviewer reconciliation proves the Executor's latest RETURN was caused by a stale local/pre-execution Git ref, not authoritative PR drift. Current GitHub PR source still contains the accepted independent `88f45f5d...` implementation; only Reviewer docs were added afterward.
+G3CR7 technical implementation and runtime validation are formally **PASS** at candidate `c0a1f2aab3913c96df7d2382f17ebfeabbdfae1c`.
 
-The second blocker is now explicit local runtime unavailability: containers were reported running while host HTTP `127.0.0.1:8189` refused connections.
+Owner visual checkpoint:
+- `docs/OWNER_CHECKPOINT_G3CR7_THREE_FRONTEND_SURFACES_VISUAL_2026-10-05.md`
 
-Current Gate:
-- `docs/G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION.md`
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7_PASS_THREE_FRONTEND_SURFACES_2026-10-05.md`
 
-Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR7R1R1_RETURN_STALE_LOCAL_REF_RUNTIME.md`
+PR #64 remains open/unmerged and currently reports `mergeable=false`. That is deferred to a separate pre-merge reconciliation Gate and does not invalidate this technical PASS.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -219,14 +226,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor fetches current remote PR source and works from the authoritative independent candidate, not stale `97aceb4a...`.
-2. Delete the six unreferenced Reviewer prototype files and regenerate the complete `e71f943...` baseline diff.
-3. Diagnose local G3C runtime by layer; only an exact WordPress-container start/restart is authorized if sufficient. No recreate/pull/build/down/volume deletion.
-4. When `127.0.0.1:8189` is healthy, create a synthetic unpaid guest Woo order fixture, capture actual order-received 1440/375 pending continuation, clean the fixture, and stop for Reviewer.
+1. Owner visually reviews the three G3CR7 surfaces only: homepage entry, five-step core-function page, and Woo/status continuation.
+2. If Owner accepts them, freeze these three surfaces for the current MVP stage.
+3. Before any future PR merge, run a separate bounded PR #64 reconciliation because GitHub currently reports `mergeable=false`; do not blindly rebase/reset the long-lived branch.
+4. After visual acceptance, plan the next product Gate. Pre-payment draft persistence / payment-to-generation wiring comes before P1-P12 unless Owner changes priority.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Reviewer has resolved the source identity; Executor can perform the bounded local-runtime reconciliation without Owner credentials or payment.
+Visually accept the three frontend surfaces or give bounded changes. No credential, payment, or deployment action is required.
 
 ## EVIDENCE_POINTERS
 
