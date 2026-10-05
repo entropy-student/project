@@ -16,28 +16,34 @@ import (
 
 const maxCookieBytes = 65536
 
-func validCookieShape(cookie []byte) bool {
+func parseExactBDUSS(cookie []byte) (string, bool) {
 	if len(cookie) == 0 || len(cookie) > maxCookieBytes || bytes.ContainsAny(cookie, "\r\n") {
-		return false
+		return "", false
+	}
+
+	if bytes.IndexFunc(cookie, func(r rune) bool { return r < 0x20 || r == 0x7f }) >= 0 {
+		return "", false
 	}
 
 	parts := bytes.Split(cookie, []byte(";"))
-	if len(parts) < 2 {
-		return false
-	}
+	var parsed []byte
 	count := 0
-	for _, part := range parts[:len(parts)-1] {
+	for i, part := range parts {
 		field := bytes.TrimSpace(part)
 		if !bytes.HasPrefix(field, []byte("BDUSS=")) {
 			continue
 		}
 		count++
 		value := bytes.TrimSpace(field[len("BDUSS="):])
-		if len(value) == 0 || bytes.IndexFunc(value, func(r rune) bool { return r <= 0x20 || r == 0x7f }) >= 0 {
-			return false
+		if i == len(parts)-1 || len(value) == 0 {
+			return "", false
 		}
+		parsed = value
 	}
-	return count == 1
+	if count != 1 {
+		return "", false
+	}
+	return string(parsed), true
 }
 
 func validConfigPath() bool {
@@ -59,7 +65,7 @@ func clearBytes(value []byte) {
 	}
 }
 
-func setupAndSave(cookie string) (ok bool) {
+func setupAndSave(bduss, cookie string) (ok bool) {
 	stdout, stderr := os.Stdout, os.Stderr
 	logWriter := log.Writer()
 	verboseOutputs := pcsverbose.Outputs
@@ -86,7 +92,7 @@ func setupAndSave(cookie string) (ok bool) {
 
 	// Initialize in memory only; upstream Init would open/create the config before auth.
 	pcsconfig.Config.InitDefaultConfig()
-	if _, err := pcsconfig.Config.SetupUserByBDUSS("", "", "", cookie); err != nil {
+	if _, err := pcsconfig.Config.SetupUserByBDUSS(bduss, "", "", cookie); err != nil {
 		return false
 	}
 	if err := pcsconfig.Config.Save(); err != nil {
@@ -130,7 +136,8 @@ func run() int {
 		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=COOKIE_EMPTY")
 		return 2
 	}
-	if !validCookieShape(cookieBytes) {
+	bduss, valid := parseExactBDUSS(cookieBytes)
+	if !valid {
 		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
 		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=COOKIE_FORMAT_INVALID")
 		return 2
@@ -138,12 +145,14 @@ func run() int {
 
 	cookie := string(cookieBytes)
 	clearBytes(cookieBytes)
-	if !setupAndSave(cookie) {
+	if !setupAndSave(bduss, cookie) {
+		bduss = ""
 		cookie = ""
 		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
 		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=AUTH_SETUP_FAILED")
 		return 2
 	}
+	bduss = ""
 	cookie = ""
 	fmt.Fprintln(os.Stdout, "BAIDU_COOKIE_AUTH=SETUP_SAVED")
 	fmt.Fprintln(os.Stdout, "BAIDU_COOKIE_AUTH_UID_EMITTED=NO")

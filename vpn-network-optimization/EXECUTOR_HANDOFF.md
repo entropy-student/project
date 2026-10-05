@@ -4,38 +4,41 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Secure Cookie Auth Adapter R6R2H
+## Current execution status — G4-B Secure Auth Combined Repair R6R2H-R2
 
 ```text
-GATE_ID=G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
-EXECUTOR_ROLE=PINNED_OFFLINE_COOKIE_ADAPTER_BUILD_AND_VALIDATION
-PREVIOUS_RESULT=RETURN_R6R2G_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO
+GATE_ID=G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
+EXECUTOR_ROLE=OFFLINE_SOURCE_REPAIR_AND_VALIDATION
+PREVIOUS_RESULT=RETURN_R6R2H_REREVIEW_ADAPTER_PARSE_AND_PREFLIGHT_ORDER_GAP
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_SOURCE_SYNC_HEAD=0a6c384ba0ea32ad4e3064cff1653ca63b319d4f
-FRESH_MAIN_SYNC_BASE=6ce420bda5caa0c73c847bc70d4c7e952d6eeb4b
-R6R2H_GATE_BLOB=b687d5c3ccd71cfcf869cfe01f3147a59a459f26
+PRE_GATE_HEAD=07bdc6cf47dc6499de44dfa8b262ad1a6b7899d3
+GATE_BLOB=d648f5f44824349aff1824dd4fb5d405a01a5c4d
 SOURCE_PROVENANCE=PASS
 UPSTREAM_REPO=qjfoidnh/BaiduPCS-Go
 UPSTREAM_TAG=v4.0.2
 UPSTREAM_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
-UPSTREAM_REVIEWED_SOURCE_BLOBS=5_OF_5_MATCH
-ADAPTER_SOURCE_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
-ADAPTER_TEST_BLOB=b02bf9bbfff5e1ad99523b568d202d1e63d5c9ae
+UPSTREAM_REVIEWED_SOURCE_BLOBS=5_OF_5_MATCH_FROZEN
+ADAPTER_EXACT_FIELD_PARSE=PASS
+UPSTREAM_SECOND_PARSE_BYPASSED=PASS
+AMBIGUITY_FIXTURE=PASS
 BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
-OWNER_CHECKPOINT_BLOB=ab43037ef793d8a3c9cce69e14c7e64b33239957
-VALIDATOR_BLOB=07d1f24f2cc934852b456ac2e293c8d74a88d71d
+OWNER_CHECKPOINT_PREFLIGHT_BEFORE_CONFIG_WRITE=PASS
+POSTAUTH_SHAPE_NORMALIZE_THEN_R6R1=PASS
+FAILURE_RECONCILIATION_FIXTURES=PASS
 GO_VERSION=go1.27.1
 GO_TOOLCHAIN_SHA256=a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
 BUILD_TARGET=windows/amd64
-ADAPTER_BINARY_SHA256=5c6ad2fdbcb9bee1b3b2fdc789b07e061bd89cc64350c750298b682b717e7955
-GO_TEST_FIXTURES=PASS
+ADAPTER_BINARY_SHA256=9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367
+GO_SOURCE_TESTS=PASS
 NATIVE_FAILURE_EXIT_FIXTURE=PASS
 POWERSHELL_AST_PARSE=PASS
 GO_SOURCE_STATIC_VALIDATION=PASS
 SECRET_SCAN=PASS
 R6R1_ACL_BOUNDARY_REUSED=PASS
 R6R1_ACL_HELPER_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
-OWNER_CHECKPOINT_SOURCE_CREATED=YES_NOT_EXECUTED
+ACL_NORMALIZATION_FIXTURE=SYNTHETIC_CONSTRUCTOR_PRIVILEGE_LIMIT
+FILESYSTEM_RECONCILIATION_FIXTURES=PRODUCTION_FUNCTIONS_PASS
+OWNER_CHECKPOINT_SOURCE_UPDATED=YES_NOT_EXECUTED
 OWNER_RUNTIME_BINARY_RETAINED=NO
 TEMP_BUILD_WORKSPACE_CLEANED=YES
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
@@ -47,16 +50,19 @@ OWNER_CONFIG_WRITE=NO
 SECRET_OR_DPAPI_ACCESSED=NO
 VPS_OR_SSH_ACTIONS=0
 LIVE_G4B_ACTIONS=0
+NETWORK_REQUESTS_TO_PROVIDER=0
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 REVIEWER_HANDOFF_MODIFIED=NO
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2H
+### Executor task — current R6R2H-R2
 
-Created a dedicated Go adapter under the exact pinned BaiduPCS-Go v4.0.2 source lineage. It reads Cookie only through no-echo terminal input, validates nonempty/CRLF-free input and one terminated `BDUSS=` field, calls `pcsconfig.Config.SetupUserByBDUSS("", "", "", cookie)`, and saves only after setup succeeds. The adapter suppresses stdout/stderr, standard logger, and upstream `pcsverbose` output during provider setup; it emits only bounded status markers and uses `os.Exit` with nonzero failure. The Owner checkpoint reuses the pinned R6R1 safe-path/Owner-only ACL functions before and after authentication and inherits live console streams without capturing them. The checkpoint was not executed. A public-only Go build and synthetic parser/native-exit fixtures passed; build workspace was removed. No Owner config, real Cookie, DPAPI, Baidu auth/`who`, VPS, or network runtime was accessed.
+Fresh `origin/main` source was repaired only within the R6R2 allowlist. The adapter now parses the exact semicolon-delimited `BDUSS` field once and passes that parsed value as the explicit first `SetupUserByBDUSS` argument, with a synthetic earlier-substring ambiguity regression. The Owner checkpoint completes PowerShell 7.6.6 / Administrator / High-integrity, Owner SID, canonical path, external adapter path, Owner-only ACL and exact binary-digest preflight before any config-root classification or write. After native success it proves exact metadata shape and bounded size, validates pre-normalization Owner/ACE provenance, normalizes file and root, then applies strict R6R1 checks. Every failure after state capture runs provenance-aware, exact, non-recursive reconciliation; unknown states are preserved.
+
+The frozen public build helper passed Go tests and the `windows/amd64` build; the updated binary digest is pinned in the checkpoint. PowerShell AST, static checks, R6R1 ACL regression, and production reconciliation functions over non-secret temporary filesystem fixtures passed. NTFS ACL normalization writes were blocked in this validation process by missing `SeSecurityPrivilege`; the accepted synthetic ACL constructor check passed, while filesystem provenance/deletion branches were exercised against actual temporary directories/files. The helper was not run against Owner config. No Cookie, provider auth/`who`, DPAPI, VPS/SSH, or live G4-B action occurred. Do not execute the Owner checkpoint until Reviewer accepts this candidate.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

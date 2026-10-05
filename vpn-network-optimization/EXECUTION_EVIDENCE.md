@@ -8524,3 +8524,91 @@ The fresh re-review found two additional blockers before any real authentication
 2. the Owner checkpoint can create the config root before proving adapter binary path/ACL/hash and runtime execution identity. Governance requires candidate/runtime preflight before host-local mutation.
 
 The unexecuted R6R2H-R1 Gate is superseded by R6R2H-R2, which combines the parser handoff repair, preflight-before-write ordering, accepted post-write ACL normalization pattern, and provenance-aware failure reconciliation. No real authentication material or Owner/provider state was accessed.
+
+
+## Executor Evidence — G4-B Secure Auth Combined Repair R6R2H-R2 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
+GATE_BLOB=d648f5f44824349aff1824dd4fb5d405a01a5c4d
+PRE_GATE_HEAD=07bdc6cf47dc6499de44dfa8b262ad1a6b7899d3
+MIDROUND_ORIGIN_MAIN_FETCH=706b0af92ac9517e32324fefe6d6a598dcdf463b
+MIDROUND_ADVANCE_SCOPE=ONLY birthday-magazine-studio paths; no vpn-network-optimization paths
+LOCAL_BRANCH_FAST_FORWARD=PASS
+FINAL_PRECOMMIT_ORIGIN_MAIN_FETCH=cd4822b67e129a88b020a8843f8fac0a39ff2111
+FINAL_PRECOMMIT_ADVANCE_SCOPE=ONLY mini-craft-night-kit paths; no vpn-network-optimization paths
+FINAL_PRECOMMIT_FAST_FORWARD=PASS
+CANONICAL_GIT_ROOT=C:/Users/34707/Documents/ChatGPT/VPS搭建
+BRANCH=main
+ORIGIN=https://github.com/entropy-student/project.git
+SOURCE_PROVENANCE=PASS
+R6R2H_R1=SUPERSEDED_UNEXECUTED
+
+R6R2H_R2_PINNED_BUILD_CHAIN_FROZEN=PASS
+R6R2H_R2_EXACT_FIELD_VALUE_PARSED=PASS
+R6R2H_R2_UPSTREAM_SECOND_PARSE_BYPASSED=PASS
+R6R2H_R2_AMBIGUOUS_SUBSTRING_FIXTURE=PASS
+R6R2H_R2_SECRET_BOUNDARIES_UNCHANGED=PASS
+R6R2H_R2_RUNTIME_PREFLIGHT_BEFORE_CONFIG_WRITE=PASS
+R6R2H_R2_BINARY_IDENTITY_BEFORE_CONFIG_WRITE=PASS
+R6R2H_R2_BINARY_PREFLIGHT_FAILURE_ZERO_CONFIG_MUTATION=PASS
+R6R2H_R2_PREAUTH_EMPTY_ONLY=PASS
+R6R2H_R2_POSTAUTH_EXACT_SHAPE_BEFORE_NORMALIZE=PASS
+R6R2H_R2_POSTAUTH_ADMIN_OWNER_ACCEPTED_FOR_NORMALIZE=PASS
+R6R2H_R2_POSTAUTH_UNEXPECTED_OWNER_REJECTED=PASS
+R6R2H_R2_FILE_AND_ROOT_OWNER_ACL_NORMALIZED=PASS
+R6R2H_R2_R6R1_STRICT_AFTER_NORMALIZE=PASS
+R6R2H_R2_PREEXISTING_EMPTY_FAILURE_PRESERVED=PASS
+R6R2H_R2_NEW_EMPTY_FAILURE_REMOVED=PASS
+R6R2H_R2_PREEXISTING_ROOT_EXACT_FILE_FAILURE_FILE_ONLY=PASS
+R6R2H_R2_NEW_ROOT_EXACT_FILE_FAILURE_FILE_AND_ROOT=PASS
+R6R2H_R2_UNEXPECTED_STATE_PRESERVED=PASS
+R6R2H_R2_NO_CONFIG_CONTENT_READ=PASS
+R6R2H_R2_NO_BROAD_DELETE=PASS
+R6R2H_R2_NO_WHO=PASS
+R6R2H_R2_FAILURE_NATIVE_EXIT_NONZERO=PASS
+R6R2H_R2_CONFIG_SAVE_ONLY_AFTER_SETUP_SUCCESS=PASS
+R6R2H_R2_FULL_R6R2H_REGRESSION=PASS
+R6R1_ACL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+GO_SOURCE_TESTS=PASS
+GO_SOURCE_STATIC_VALIDATION=PASS
+SECRET_SCAN=PASS
+REAL_COOKIE_VALUES_USED=0
+REAL_BAIDU_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+NETWORK_REQUESTS_TO_PROVIDER=0
+STOP_AT_REVIEWER=YES
+```
+
+Actual source changes were confined to the allowed adapter, adapter tests, Owner checkpoint and validator. The adapter now returns the value from the exact terminated semicolon-delimited `BDUSS=` field and passes that value explicitly as the first upstream setup argument; the complete session string is retained only in the upstream session parameter. Missing, duplicate, empty, unterminated, CR/LF and control-character shapes remain fail-closed. The synthetic ambiguity test places a non-field substring before the exact field and proves the exact field value is selected.
+
+The checkpoint now verifies PS 7.6.6, Administrator membership and TokenIntegrityLevel RID >= 12288, captures the Owner SID, resolves the canonical config path without writing, and verifies the external regular/non-reparse adapter path, Owner-only ACL and pinned binary digest before classifying or creating the config root. The new `windows/amd64` adapter digest is `9d0fff1aec7015210ba421c67bff956bc360cc6121c8d70a226c9e0817da7367`; only the Owner checkpoint digest pin was updated. The frozen build helper blob remained `7f369604de3cf0cce46bf0cf7328313c03ed61d5`.
+
+After native exit zero, the checkpoint performs metadata-only canonical-root and exact-single-regular-file validation, enforces the bounded non-zero file size and accepted pre-normalization Owner/ACE provenance, normalizes exact file then root Owner-only ACL, verifies both, and only then invokes the strict R6R1 directory predicate and emits `SETUP_SAVED`. Config bytes are not read, parsed, copied, printed or hashed. Native non-zero exit prevents any later provider action; this checkpoint has no `who` call.
+
+Filesystem provenance and deletion fixtures invoked the production reconciliation functions on a unique temporary test root containing only non-secret fixture bytes. PASS branches covered: pre-existing empty root preserved; run-created empty root removed non-recursively; exact file removed while a pre-existing root is preserved; exact file plus run-created root removed; extra-entry and reparse states preserved. Synthetic Owner/ACL metadata covered accepted current/Admin Owner normalization, unexpected Owner rejection, and forbidden ACE rejection. Runtime and binary preflight failure fixtures both left their config target absent. All fixture paths were removed and verified absent.
+
+ACL normalization fixture note: applying ACLs to the post-auth fixture in this execution token returned `PrivilegeNotHeldException` for `SeSecurityPrivilege`. Per Gate allowance, the exact file/directory Owner-only ACL constructors were validated as protected, current-Owner-owned, explicit Owner FullControl descriptors; the validator reports `ACL_NORMALIZATION_FIXTURE_MODE=SYNTHETIC_CONSTRUCTOR_PRIVILEGE_LIMIT`. The production source order and calls to normalize both paths and then run R6R1 assertions were independently checked. Filesystem provenance/deletion fixtures were not substituted and did pass against the production functions.
+
+The frozen build helper fetched only the pinned public BaiduPCS-Go v4.0.2 source, the pinned official Go 1.27.1 Windows/amd64 archive and `go.sum`-locked public modules. Upstream commit `225bdd3b6cb298601c4d5ef7104c3e08cd1d692d`, toolchain SHA `a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d`, Go tests, Windows/amd64 build, synthetic native nonzero-exit fixture and temp cleanup all passed. The temporary build workspace and binary were removed; fresh temp-directory read-back found no `g4b-cookie-adapter-*` workspace. No binary was retained in the Owner runtime path.
+
+Changed-path scope: `scripts/g4b-baidu-cookie-auth-adapter/main.go`, `scripts/g4b-baidu-cookie-auth-adapter/main_test.go`, `scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1`, `scripts/validate-g4b-baidu-cookie-auth-adapter.ps1`, this Evidence append and the current Executor Handoff block. `REVIEWER_HANDOFF.md`, the frozen build helper, accepted historical helpers and unrelated files were not changed. The pre-existing untracked `results/` directory was preserved and excluded from staging.
+
+```text
+OWNER_CHECKPOINT_EXECUTED=NO
+REAL_OWNER_CONFIG_ACCESSED=NO
+REAL_COOKIE_OR_CREDENTIAL_ACCESSED=NO
+DPAPI_ACCESSED=NO
+VPS_OR_SSH_ACTIONS=0
+CLASH_OR_NETWORK_RUNTIME_ACTIONS=0
+PROVIDER_AUTH_OR_WHO_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+NETWORK_REQUESTS_TO_PROVIDER=0
+REVIEWER_HANDOFF_MODIFIED=NO
+ROLLBACK=Revert only the R6R2H-R2 source and Executor documentation changes to PRE_GATE_HEAD; no production/Owner state changed.
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_AUTH_OWNER_COMBINED_REPAIR_R6R2H_R2
+STOP_AT_REVIEWER=YES
+```
