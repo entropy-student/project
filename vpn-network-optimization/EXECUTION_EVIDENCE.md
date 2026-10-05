@@ -8161,3 +8161,56 @@ Pinned v4.0.2 source reconciliation:
 The owner mismatch is therefore classified as a technical Windows ACL/ownership compatibility defect in the R6R2C helper design, not evidence of an account mismatch. The current non-empty residue remains preserved until an exact metadata-only reconciliation proves it matches the bounded failed-run shape. No blind retry or manual cleanup is authorized.
 
 Next Gate: `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E`.
+
+
+## Executor Evidence — G4-B Baidu Partial Config Reconciliation + Auth ACL Repair R6R2E — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
+PRE_GATE_HEAD=b9ed4db61babe9fb4f47106b2205c9df34964330
+LATEST_CANONICAL_SYNC=53e92dd7e4765f291948a6e91679a308dfd858e8
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+R6R2E_GATE_BLOB=d1b3790ae7f670bc660a52dfd13d91d562213eca
+ALLOWED_CHANGED_FILES=scripts/g4b-baidu-partial-config-reconcile-checkpoint.ps1;scripts/g4b-baidu-partial-config-reconcile-validator.ps1;scripts/g4b-baidu-owner-interactive-auth-checkpoint.ps1;scripts/g4b-baidu-owner-interactive-auth-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+R6R2E_UPSTREAM_SINGLE_CONFIG_FILE_PROVEN=PASS
+R6R2E_RECONCILE_METADATA_ONLY=PASS
+R6R2E_RECONCILE_EXACT_PCS_CONFIG_ONLY=PASS
+R6R2E_RECONCILE_EXTRA_ENTRY_REJECTED=PASS
+R6R2E_RECONCILE_REPARSE_REJECTED=PASS
+R6R2E_RECONCILE_UNEXPECTED_OWNER_REJECTED=PASS
+R6R2E_RECONCILE_FORBIDDEN_ACE_REJECTED=PASS
+R6R2E_RECONCILE_DELETE_EXACT_ONLY=PASS
+R6R2E_AUTH_SINGLE_LOGIN_PRESERVED=PASS
+R6R2E_AUTH_NO_CREDENTIAL_FLAGS_OR_ENV=PASS
+R6R2E_AUTH_CONSOLE_UNCAPTURED=PASS
+R6R2E_AUTH_POST_LOGIN_EXACT_SHAPE_CHECKED=PASS
+R6R2E_AUTH_POST_LOGIN_OWNER_ACL_NORMALIZED=PASS
+R6R2E_AUTH_R6R1_STRICT_ACL_AFTER_NORMALIZE=PASS
+R6R2E_AUTH_NONZERO_LOGIN_NO_WHO=PASS
+R6R2E_AUTH_UID_NOT_EMITTED=PASS
+R6R2E_AUTH_PARTIAL_FAILURE_NO_FALSE_PASS=PASS
+R6R2E_R6R1_ACL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_CONFIG_ACTIONS=0
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+VPS_OR_SSH_ACTIONS=0
+DPAPI_OR_CREDENTIAL_ACCESS=NO
+OWNER_HELPERS_EXECUTED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Source/provenance: the fresh GitHub `main` fast-forwarded from the pre-gate local `c7516042c9c2f4a6e373b9a35986c760d1583e89` to the Gate-start `b9ed4db61babe9fb4f47106b2205c9df34964330`. A later precommit fetch found only unrelated `birthday-magazine-studio` changes; a safe fast-forward preserved them and the project changes are based on `53e92dd7e4765f291948a6e91679a308dfd858e8`. The canonical R6R2E Gate supplies the pinned BaiduPCS-Go v4.0.2 tag commit and `main.go` / login / config implementation blob identities, and accepts `pcs_config.json` as the only config filename. This round reused that Reviewer-accepted source reconciliation; it did not fetch upstream source or access Owner configuration.
+
+The reconciliation checkpoint reuses the accepted R6R1 safe-path predicate and collects only directory-entry, file-type/reparse, bounded-size, owner-SID, and DACL metadata. Its shared production predicate requires exactly one regular `pcs_config.json`, rejects any other entry/reparse/owner/Deny/unauthorized Allow, and only then deletes that exact file and a verified-empty exact root. A non-secret temporary fixture exercised the exact-delete path and verified an unrelated sibling sentinel remained. Synthetic fixtures exercised accepted Owner/Admin ownership, safe direct/inherited allow rules, extra file/subdirectory, reparse, unexpected owner, inherited forbidden Allow, and Deny; all negative cases fail before deletion.
+
+The auth repair keeps the no-argument `login`, cleared allowlisted environment, inherited uncaptured console, pinned archive trust, single captured `who` only after exit zero, and UID non-emission unchanged. After login, the same production metadata/shape function accepts only the exact root plus regular `pcs_config.json`; a shared normalization-plan function validates shape/Owner provenance and orders the exact file then root for the accepted Owner-only ACL constructor. Strict R6R1 ACL validation follows both normalizations. Failure rollback is gated by a pre-login empty/absent config state and post-login exact-shape proof; an existing empty root is preserved while only the newly-created file may be removed. Unknown initial non-empty config remains rejected before login.
+
+Validation provenance: both R6R2E validators ran locally; the auth validator also ran the complete accepted R6/R6R1 validator regression. Owner-only ACL construction and post-login normalization targets were tested with synthetic metadata and the in-memory accepted constructor; no real Owner ACL or config was inspected or changed. During an earlier NTFS-backed non-secret fixture attempt, local `Set-Acl` returned a `SeSecurityPrivilege` error. That temporary fixture was cleaned; the final Gate-approved validation uses synthetic normalization metadata/plan and verifies constructor semantics, not an Owner-host ACL write.
+
+Artifacts created: the two R6R2E checkpoint/validator script pairs. Temporary fixtures contained only non-secret test metadata/content and were cleaned by `finally`/bounded cleanup checks. No production helper, login, `who`, network/provider request, VPS/SSH operation, credential, DPAPI data, or Owner config was accessed. Existing untracked `results/` files from before this round were preserved and not staged. Rollback is limited to these project-scoped source and record edits; no runtime or Owner state changed.

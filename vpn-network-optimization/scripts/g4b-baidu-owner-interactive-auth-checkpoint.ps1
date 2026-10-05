@@ -14,6 +14,9 @@ $script:interactiveAuthBytes = $null
 $script:interactiveAuthWho = $null
 $script:interactiveAuthConfigPath = $null
 $script:interactiveAuthConfigCreated = $false
+$script:interactiveAuthConfigFileAbsentBeforeLogin = $false
+$script:interactiveAuthPostLoginShapeVerified = $false
+$script:interactiveAuthLoginStarted = $false
 $script:interactiveAuthConfigSafe = $false
 $script:interactiveAuthConfigState = 'NOT_CHECKED'
 $script:interactiveAuthConfigDisposition = 'NOT_REQUIRED'
@@ -94,6 +97,7 @@ function Initialize-BaiduInteractiveConfigDirectory {
     $state = Resolve-InteractiveConfigState -Exists $exists -IsDirectory $isDirectory -IsReparsePoint $isReparse -EntryCount $entryCount
     $script:interactiveAuthConfigState = $state.State
     if ($state.State -ceq 'UNKNOWN_NONEMPTY' -or $state.State -ceq 'FAIL_CLOSED') { throw $state.Code }
+    $script:interactiveAuthConfigFileAbsentBeforeLogin = $true
 
     if ($state.State -ceq 'ABSENT_INITIALIZABLE') {
         try { [void][IO.Directory]::CreateDirectory($configFull) } catch { throw 'BAIDU_AUTH_CONFIG_CREATE_FAILED' }
@@ -183,6 +187,52 @@ function Remove-NewEmptyBaiduConfigDirectory {
     return 'REMOVED_EMPTY_NEW'
 }
 
+function Get-BaiduInteractivePostLoginNormalizationPlan {
+    param([object]$Snapshot, [string]$ProjectRoot, [Security.Principal.SecurityIdentifier]$OwnerSid)
+    Assert-BaiduPartialConfigStructure -Snapshot $Snapshot -ProjectRoot $ProjectRoot
+    Assert-InteractiveAuth ($OwnerSid.Value -ceq [Security.Principal.WindowsIdentity]::GetCurrent().User.Value) 'BAIDU_AUTH_CONFIG_OWNER_MISMATCH'
+    $configFile = Join-Path $Snapshot.Path 'pcs_config.json'
+    return [object[]]@(
+        [pscustomobject]@{ Path = $configFile; IsDirectory = $false }
+        [pscustomobject]@{ Path = [string]$Snapshot.Path; IsDirectory = $true }
+    )
+}
+
+function Complete-BaiduInteractivePostLoginConfig {
+    param([string]$ConfigDirectory, [string]$ProjectRoot, [Security.Principal.SecurityIdentifier]$OwnerSid)
+    $snapshot = Get-BaiduPartialConfigMetadata -ConfigDirectory $ConfigDirectory -ProjectRoot $ProjectRoot
+    $normalizationPlan = @(Get-BaiduInteractivePostLoginNormalizationPlan -Snapshot $snapshot -ProjectRoot $ProjectRoot -OwnerSid $OwnerSid)
+    $script:interactiveAuthPostLoginShapeVerified = $true
+    foreach ($target in $normalizationPlan) { Set-OwnerOnlyAcl -Path $target.Path -OwnerSid $OwnerSid -Directory:$target.IsDirectory }
+    Assert-OwnerOnlyAcl -Path $snapshot.Path -OwnerSid $OwnerSid
+    Assert-OwnerOnlyAcl -Path $normalizationPlan[0].Path -OwnerSid $OwnerSid
+    Assert-SafeBaiduConfigDirectory -ConfigDirectory $snapshot.Path -ProjectRoot $ProjectRoot -OwnerSid $OwnerSid
+}
+
+function Remove-NewBaiduInteractiveConfigResidue {
+    param(
+        [string]$ConfigDirectory,
+        [string]$ProjectRoot,
+        [Security.Principal.SecurityIdentifier]$OwnerSid,
+        [bool]$RootCreatedThisRun
+    )
+    Assert-InteractiveAuth ($OwnerSid.Value -ceq [Security.Principal.WindowsIdentity]::GetCurrent().User.Value) 'BAIDU_AUTH_CONFIG_OWNER_MISMATCH'
+    if (-not $script:interactiveAuthConfigFileAbsentBeforeLogin -or -not $script:interactiveAuthPostLoginShapeVerified) { return 'PRESERVED_UNPROVEN' }
+    $snapshot = Get-BaiduPartialConfigMetadata -ConfigDirectory $ConfigDirectory -ProjectRoot $ProjectRoot
+    if (-not $snapshot.Exists) { return 'ALREADY_ABSENT' }
+    Assert-BaiduPartialConfigMetadata -Snapshot $snapshot -ProjectRoot $ProjectRoot
+    $configFile = Join-Path $snapshot.Path 'pcs_config.json'
+    [IO.File]::Delete($configFile)
+    Assert-InteractiveAuth ($null -eq (Get-OptionalBaiduPartialItem -Path $configFile)) 'BAIDU_AUTH_CONFIG_ROLLBACK_UNVERIFIED'
+    if ($RootCreatedThisRun) {
+        Assert-InteractiveAuth (-not (Test-DirectoryHasEntry -Path $snapshot.Path)) 'BAIDU_AUTH_CONFIG_ROLLBACK_NOT_EMPTY'
+        [IO.Directory]::Delete($snapshot.Path, $false)
+        Assert-InteractiveAuth ($null -eq (Get-OptionalBaiduPartialItem -Path $snapshot.Path)) 'BAIDU_AUTH_CONFIG_ROLLBACK_UNVERIFIED'
+        return 'REMOVED_NEW_FILE_AND_DIRECTORY'
+    }
+    return 'REMOVED_NEW_FILE_PRESERVED_DIRECTORY'
+}
+
 function Test-BaiduInteractiveAuthReady {
     param(
         [int]$LoginExitCode,
@@ -203,10 +253,13 @@ function Invoke-BaiduOwnerInteractiveAuthCheckpoint {
     try {
         $acceptedCheckpoint = Join-Path $PSScriptRoot 'g4b-baidu-auth-readiness-checkpoint.ps1'
         $acceptedUidHelper = Join-Path $PSScriptRoot 'g4b-baidu-uid-discovery-checkpoint.ps1'
+        $acceptedReconcileHelper = Join-Path $PSScriptRoot 'g4b-baidu-partial-config-reconcile-checkpoint.ps1'
         Assert-InteractiveAuth (Test-Path -LiteralPath $acceptedCheckpoint -PathType Leaf) 'BAIDU_AUTH_ACCEPTED_R6R1_SOURCE_MISSING'
         Assert-InteractiveAuth (Test-Path -LiteralPath $acceptedUidHelper -PathType Leaf) 'BAIDU_AUTH_ACCEPTED_R6R2A_SOURCE_MISSING'
+        Assert-InteractiveAuth (Test-Path -LiteralPath $acceptedReconcileHelper -PathType Leaf) 'BAIDU_AUTH_ACCEPTED_R6R2E_SOURCE_MISSING'
         . $acceptedCheckpoint
         . $acceptedUidHelper
+        . $acceptedReconcileHelper
 
         $ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
         $appData = $env:APPDATA
@@ -240,11 +293,12 @@ function Invoke-BaiduOwnerInteractiveAuthCheckpoint {
         [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:interactiveAuthBytes)
         $script:interactiveAuthBytes = $null
 
+        $script:interactiveAuthLoginStarted = $true
         $loginOutcome = Invoke-BaiduInteractiveLogin -ExecutablePath $script:interactiveAuthBinary -ConfigDirectory $configInfo.Path
         $script:interactiveAuthLoginExitCode = [int]$loginOutcome.ExitCode
         $loginOutcome = $null
         $loginSucceeded = $script:interactiveAuthLoginExitCode -eq 0
-        Assert-SafeBaiduConfigDirectory -ConfigDirectory $configInfo.Path -ProjectRoot $script:projectRoot -OwnerSid $ownerSid
+        Complete-BaiduInteractivePostLoginConfig -ConfigDirectory $configInfo.Path -ProjectRoot $script:projectRoot -OwnerSid $ownerSid
         $script:interactiveAuthConfigSafe = $true
         if (-not $loginSucceeded) { throw 'BAIDU_AUTH_LOGIN_EXIT_NONZERO' }
 
@@ -291,9 +345,13 @@ function Invoke-BaiduOwnerInteractiveAuthCheckpoint {
                 $candidateReady = $false
             }
         }
-        if ($script:interactiveAuthConfigCreated -and -not $candidateReady) {
+        if ($script:interactiveAuthLoginStarted -and $script:interactiveAuthConfigFileAbsentBeforeLogin -and -not $candidateReady) {
             try {
-                $script:interactiveAuthConfigDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $script:interactiveAuthConfigPath -OwnerSid $ownerSid
+                if ($script:interactiveAuthPostLoginShapeVerified) {
+                    $script:interactiveAuthConfigDisposition = Remove-NewBaiduInteractiveConfigResidue -ConfigDirectory $script:interactiveAuthConfigPath -ProjectRoot $script:projectRoot -OwnerSid $ownerSid -RootCreatedThisRun $script:interactiveAuthConfigCreated
+                } else {
+                    $script:interactiveAuthConfigDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $script:interactiveAuthConfigPath -OwnerSid $ownerSid
+                }
             } catch {
                 $script:interactiveAuthConfigDisposition = 'ROLLBACK_FAILED'
                 $script:interactiveAuthResult = 'FAIL_CLOSED'

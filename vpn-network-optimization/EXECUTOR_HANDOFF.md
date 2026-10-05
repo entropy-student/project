@@ -4,15 +4,18 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Owner Interactive Auth Helper R6R2C
+## Current execution status — G4-B Baidu Partial Config Reconciliation + Auth ACL Repair R6R2E
 
 ```text
-GATE_ID=G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
-EXECUTOR_ROLE=OFFLINE_INTERACTIVE_AUTH_HELPER_BUILD_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=RETURN_OWNER_ACTION_REQUIRED_R6R2B_CONFIG_ABSENT
+GATE_ID=G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
+EXECUTOR_ROLE=OFFLINE_PARTIAL_CONFIG_RECONCILIATION_AND_AUTH_ACL_REPAIR
+PREVIOUS_RESULT=RETURN_G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_PROVIDER_BUSY_OWNER_MISMATCH
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=4cba80d07ef572bf840d32608cbdccce7fcd1409
-R6R2C_GATE_BLOB=5da63ed15d116ad85517b1e757a20f7bdd834341
+PRE_GATE_HEAD=b9ed4db61babe9fb4f47106b2205c9df34964330
+LATEST_CANONICAL_SYNC=53e92dd7e4765f291948a6e91679a308dfd858e8
+R6R2E_GATE_BLOB=d1b3790ae7f670bc660a52dfd13d91d562213eca
+R6R2D_RESULT=RETURN_PROVIDER_BUSY_OWNER_MISMATCH
+PINNED_UPSTREAM_CONFIG=pcs_config.json
 R6R1_RESULT=PASS
 R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
 R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
@@ -22,10 +25,14 @@ R6R2A_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
 SOURCE_PROVENANCE=PASS
 PRE_GATE_TRACKED_WORKTREE=CLEAN
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
+PARTIAL_CONFIG_RECONCILIATION_HELPER_READY=YES
 INTERACTIVE_AUTH_HELPER_READY=YES
-R6R2C_OFFLINE_FIXTURES=PASS
+R6R2E_RECONCILIATION_FIXTURES=PASS
+R6R2E_AUTH_REPAIR_FIXTURES=PASS
+R6R1_ACL_REGRESSION=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
+OWNER_RECONCILIATION_HELPER_EXECUTED=NO
 OWNER_LOGIN_HELPER_EXECUTED=NO
 REAL_LOGIN_ACTIONS=0
 REAL_BAIDU_ACTIONS=0
@@ -40,13 +47,13 @@ BAIDU_CLI_INVOKED=NO
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 REVIEWER_HANDOFF_MODIFIED=NO
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task
+### Executor task — current R6R2E
 
-R6R2C adds a no-argument Owner-local interactive login checkpoint. It reuses the pinned R6R1 archive and config ACL/reparse/location checks plus the accepted R6R2A captured who parser. Login receives only the login command, a cleared/allowlisted environment, and inherited console streams; after exit, config metadata/ACL is checked before one captured read-only who. UID remains in memory and is never emitted. Only an empty config directory created by this run may be removed on failure; non-empty and pre-existing config data is preserved. Offline synthetic fixtures and R6R1 regression passed. Neither this helper nor real login/who was run, and no Owner config, credentials, VPS, or provider state was accessed. The supplementary frozen R6R2A validator reports its pre-existing CRLF-sensitive entry-guard regex as a false negative; the accepted guard and R6R2C direct parser/source fixtures pass, and no frozen file was changed. Stop at Reviewer.
+R6R2E adds a metadata-only exact-residue rollback checkpoint and updates the existing no-argument auth helper to inspect the pinned v4.0.2 config shape before normalizing the exact file/root with the accepted Owner-only ACL constructor, then applying the strict R6R1 predicate. Unknown non-empty config remains rejected before login; nonzero login never reaches `who`; only a newly-created exact config may be rolled back, and a pre-existing empty root is preserved. Offline reconciliation/auth fixtures and full R6/R6R1 regression passed. No real Owner config, login, `who`, credential, network, VPS, or provider action was accessed. An NTFS-backed auth fixture ACL-write attempt returned a local `SeSecurityPrivilege` error; its temporary fixture was cleaned. Normalization is therefore validated by the shared synthetic shape/target plan and in-memory accepted ACL constructor, not by mutating a real Owner ACL. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
