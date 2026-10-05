@@ -719,3 +719,14 @@ The first live G4-B invocation exited during `P0_CANONICAL_SOURCE` with `CONSEQU
 Root cause: pathspec-sensitive Git commands used `-C` at the project subdirectory while also supplying repository-root-relative paths containing the project prefix. The repair runs `ls-files` and project-scoped `status` from the discovered repository root.
 
 Next Gate: `G4B_CANONICAL_GIT_PATH_REPAIR_R6R2L_R1`, offline validation only. A new live retry Gate must use the repaired runner blob and may be authorized only after this validation passes.
+
+
+## 2026-10-06 — R17R1 local code validation required before R17 release
+
+**Decision:** `HOLD_R17_PENDING_R17R1_OFFLINE_CODE_VALIDATION`.
+
+The prepared R17 consequential quarantine Gate remains unexecuted. Owner authorization is recorded, but execution is not released. Reviewer reconciliation determined that source usability must be confirmed locally before any Provider mutation: the complete helper/validator require executable offline evidence, including a regression for stale inherited `$LASTEXITCODE`, negative parser/cardinality/directory fixtures, and forward/rollback usability evidence.
+
+Code modification and executable verification are delegated to local Codex under `G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1`. R17R1 is offline-only: no Baidu access, Owner config read, Secret/DPAPI access, SSH/VPS/Clash/network mutation, live G4-B, G4-C, or R17 Run mode.
+
+Only after Codex returns final blobs and PASS_CANDIDATE evidence may Reviewer re-review/relock the implementation and decide whether the previously recorded R17 authorization can be released for the bounded one-shot checkpoint.
