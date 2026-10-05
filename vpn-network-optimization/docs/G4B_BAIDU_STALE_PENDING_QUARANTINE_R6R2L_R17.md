@@ -1,6 +1,6 @@
 # G4-B Baidu Stale Pending Quarantine Reconciliation R6R2L-R17
 
-Status: PREPARED / OWNER_AUTHORIZATION_REQUIRED / REMOTE_PROVIDER_MUTATION
+Status: PREPARED / OWNER_AUTHORIZED / HELPER_LOCKED / REMOTE_PROVIDER_MUTATION_NOT_YET_EXECUTED
 
 ## GATE_ID
 
@@ -76,12 +76,34 @@ The exact remote names must never be printed in chat/GitHub/evidence.
 
 R17 changes remote provider state and is consequential.
 
+Owner explicitly authorized the current R17 Gate in chat on 2026-10-06.
+
 ```text
-OWNER_R17_STALE_PENDING_QUARANTINE_AUTHORIZATION=REQUIRED
-R17_EXECUTION_AUTHORIZED=NO
+OWNER_R17_STALE_PENDING_QUARANTINE_AUTHORIZATION=GRANTED
+R17_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_SCOPE=CURRENT_R17_GATE_ONLY
+PERMANENT_DELETE_AUTHORIZED=NO
+LIVE_G4B_AUTHORIZED_BY_THIS_GRANT=NO
+G4C_AUTHORIZED_BY_THIS_GRANT=NO
 ```
 
-This Gate preparation does not authorize execution.
+The authorization is valid only for the already-declared R17 maximum endpoint and only after the locked helper/validator identities below match and offline preflight passes.
+
+
+## LOCKED IMPLEMENTATION
+
+```text
+R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
+R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
+R17_VALIDATOR_BLOB=4911ea2c2b573ab016e0600e33742842a89ee4fa
+R17_PREPARATION_EVIDENCE=docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md
+R17_PREPARATION_EVIDENCE_BLOB=e04df3471b1d3665a2ffb4a6b6824499c94e044d
+```
+
+The helper defaults to a non-mutating validation mode. The Run path additionally requires `-OwnerAuthorized`. Provider command scope is restricted to `who`, `ls` and `mv`; no permanent-delete command exists.
+
+Before the one-shot Run path, the Owner checkpoint must safe-sync canonical `main`, lock the Gate/helper/validator blobs, AST-parse both scripts, and require the offline validator to PASS.
 
 ## REQUIRED PRE-MUTATION RECHECK
 
@@ -185,7 +207,7 @@ and stop hard.
 
 ## MAX ENDPOINT
 
-After explicit Owner authorization: one bounded reversible remote quarantine move with immediate readback and mandatory Reviewer stop.
+Owner authorization is already granted for this Gate. The maximum endpoint remains exactly one bounded reversible remote quarantine move with immediate readback and mandatory Reviewer stop.
 
 ## NEXT AFTER FORMAL PASS
 
