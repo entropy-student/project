@@ -651,3 +651,14 @@ The missing compiled evidence is now complete: pinned provenance, Go source test
 The real authenticated config remains accepted and frozen. No authentication retry is authorized.
 
 Next Gate: `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J`, a single Owner-local read-only identity check using the already reviewed UID helper. It must not perform any provider file operation.
+
+
+## 2026-10-05 — R6R2J UID discovery returned ambiguous; parser repair required
+
+**Decision:** `RETURN_R6R2J_BAIDU_UID_OUTPUT_AMBIGUOUS`.
+
+The one authorized post-auth read-only UID-discovery attempt failed closed with `BAIDU_UID_OUTPUT_AMBIGUOUS`; temporary runtime cleanup passed and no UID was accepted for downstream use.
+
+Reviewer inspection found an offline parser defect: the discovery helper counts generic `uid` mentions across provider stdout/stderr, while the pinned v4.0.2 `who` identity contract and accepted readiness parser derive identity from the unique canonical `当前帐号 uid: <numeric>, ...` line. Generic extra `uid` text can therefore create a false ambiguity.
+
+The authenticated config remains accepted/frozen. No re-authentication or immediate `who` retry is authorized. Next Gate: `G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1`.
