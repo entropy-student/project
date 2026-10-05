@@ -122,7 +122,7 @@ REVIEWER_TO_EXECUTOR_RELAY=NONE.
 EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R11 markers only; do not perform cleanup or live retry.
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair is formally PASS. R9 then reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS. Upstream v4.0.2 source reconciliation identified the next defect: the production parser expected pipe-delimited `ls -l` rows even though the provider renders a borderless table. Current work is R10 offline parser/fixture repair validation; no live retry is authorized.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; however its pending rollback observation used the now-superseded pre-R10 parser and cannot prove the Baidu recovery directory is clean. Current work is R11 read-only residual-state reconciliation; no cleanup or live retry is authorized.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -326,7 +326,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - G4-B0 is formally PASS and closed.
 - G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS. R9 executed once and returned in P5 with `BAIDU_PENDING_UPLOAD_NOT_PRESENT`, `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is current and offline-only; no R9 replay or other live retry is authorized until R10 is formally accepted and a new live Gate is issued.
+- R10 parser/fixture repair is formally PASS. R11 is current and read-only-only because R9's pending rollback result used the superseded parser; no cleanup or live retry is authorized until R11 is reconciled.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -345,8 +345,9 @@ Fast-forward to current main, verify the R11 Gate/script blob and current Handof
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R10 chronology, R9 return reconciliation, provider-format root cause, and current offline parser-repair boundary.
-- `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — exact current offline parser-repair Gate.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R11 chronology, R9 return reconciliation, R10 formal PASS, and current residual-state boundary.
+- `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — exact current read-only reconciliation Gate.
+- `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser-repair Gate and history.
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — historical failed live retry Gate; do not execute.
 - `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
 - `EXECUTION_EVIDENCE.md` — append-only execution proof; accepted R2R3/R2R3V2 sections are near the tail.
