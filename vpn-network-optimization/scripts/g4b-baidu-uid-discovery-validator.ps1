@@ -56,8 +56,11 @@ Assert-UidFixture ($helperText.Contains('. $acceptedCheckpoint') -and $helperTex
 Write-Output 'UID_HELPER_R6R1_CONFIG_ACL_POLICY_REUSED=PASS'
 
 $whoArgumentAdds = [regex]::Matches($acceptedWhoStart, '\.ArgumentList\.Add\(''who''\)')
-$helperWhoCalls = [regex]::Matches($helperText, '\bInvoke-ReadOnlyBaiduWho\s+-ExecutablePath')
-Assert-UidFixture ($whoArgumentAdds.Count -eq 1 -and $acceptedWhoStart -notmatch '\.ArgumentList\.Add\((?!''who'')' -and $acceptedWhoStart.Contains('$psi.Environment.Clear()') -and $helperWhoCalls.Count -eq 1 -and $acceptedWhoInvoke.Contains('ReadToEndAsync') -and $acceptedWhoInvoke.Contains('StandardError')) 'UID_PROVIDER_ACTION_NOT_WHO_ONLY'
+$uidWhoInvoke = Get-UidFunctionText -Ast $helperAst -Name 'Invoke-UidReadOnlyBaiduWho'
+$helperWhoCalls = [regex]::Matches($helperText, '\bInvoke-UidReadOnlyBaiduWho\s+-ExecutablePath')
+Assert-UidFixture ($uidWhoInvoke.Contains('New-ReadOnlyWhoStartInfo -ExecutablePath') -and $uidWhoInvoke.Contains('[Text.UTF8Encoding]::new($false)') -and $uidWhoInvoke.Contains('StandardOutputEncoding = $utf8NoBom') -and $uidWhoInvoke.Contains('StandardErrorEncoding = $utf8NoBom')) 'UID_WHO_UTF8_DECODER_NOT_LOCKED'
+Write-Output 'UID_WHO_UTF8_DECODE_LOCKED=PASS'
+Assert-UidFixture ($whoArgumentAdds.Count -eq 1 -and $acceptedWhoStart -notmatch '\.ArgumentList\.Add\((?!''who'')' -and $acceptedWhoStart.Contains('$psi.Environment.Clear()') -and $helperWhoCalls.Count -eq 1 -and $uidWhoInvoke.Contains('ReadToEndAsync') -and $uidWhoInvoke.Contains('StandardError')) 'UID_PROVIDER_ACTION_NOT_WHO_ONLY'
 Assert-UidFixture ($helperText -notmatch '(?i)\.ArgumentList\.Add\(\s*''login''\s*\)|\b(?:Invoke-)?Baidu\w*\s+login\b') 'UID_LOGIN_COMMAND_PRESENT'
 Write-Output 'UID_HELPER_NO_LOGIN_COMMAND=PASS'
 Write-Output 'UID_HELPER_WHO_ONLY_PROVIDER_ACTION=PASS'
