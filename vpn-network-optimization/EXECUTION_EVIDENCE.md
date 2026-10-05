@@ -10412,3 +10412,71 @@ ROLLBACK_JOURNAL_RETAINED=YES
 ```
 
 Next: a fresh read-only provider residual-state reconciliation Gate may now be issued. It must not mutate provider state and must stop at Reviewer.
+
+
+## Reviewer formal reconciliation — R6R2L-R16 Baidu residual read-only observation after ACL repair — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T17:23:47.1793161+00:00
+OWNER_REPORTED_HEAD_AFTER=877f52a81b0f1bafde3f1697ea7adf5313a8eace
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
+OWNER_REPORTED_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+OWNER_REPORTED_LOCKED_R16_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R16_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_BAIDU_CONFIG_ACL=PASS
+OWNER_REPORTED_BAIDU_PINNED_CLI=PASS
+OWNER_REPORTED_EXPECTED_UID_INPUT=READY
+OWNER_REPORTED_BAIDU_WHO_PROCESS=PASS
+OWNER_REPORTED_BAIDU_UID_PARSE=PASS
+OWNER_REPORTED_BAIDU_UID_MATCH=PASS
+OWNER_REPORTED_BAIDU_LS_PROCESS=PASS
+OWNER_REPORTED_BAIDU_DIRECTORY_HEADER=PASS
+OWNER_REPORTED_PROJECT_FINAL_COUNT=0
+OWNER_REPORTED_PROJECT_PENDING_COUNT=1
+OWNER_REPORTED_PROJECT_UNKNOWN_COUNT=0
+OWNER_REPORTED_BAIDU_RESIDUAL_STATE=STALE_PENDING_PRESENT
+OWNER_REPORTED_TEMP_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_BAIDU_MUTATION_ACTION=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_RECOVERY_READ_OR_WRITE=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_R15_ROLLBACK_JOURNAL_ACTION=NONE
+OWNER_REPORTED_LIVE_G4B_RUNNER_EXECUTED=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T17:25:52.2101706+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:02:05.0308545
+REVIEWER_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
+```
+
+Reviewer interpretation:
+- R16 completed the intended read-only provider observation after R15 local ACL normalization.
+- Local Baidu config ACL now passes the strict readiness check.
+- Pinned BaiduPCS-Go v4.0.2 preparation passed.
+- Hidden local UID input parsed and matched the current provider account.
+- Recovery-directory header parsing passed under the corrected R10 listing semantics.
+- Provider production namespace contains exactly:
+  - final project object count = 0;
+  - pending project object count = 1;
+  - unknown project object count = 0.
+- The production residual state is therefore no longer UNKNOWN; it is formally `STALE_PENDING_PRESENT`.
+- R16 performed no provider mutation, no recovery read/write, no SSH/VPS, no network mutation, no Secret output and no live G4-B execution.
+- R15 rollback journal remained retained and untouched.
+
+Chronology note:
+- The single project pending object is consistent with the R9 pending-upload attempt and is the only project residual object visible under the strict production namespace.
+- R16 itself does not permanently attribute the object's provenance beyond that accepted namespace/count evidence; any mutation still requires its own bounded Gate and authorization.
+
+Next prepared Gate:
+```text
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+R17_EXECUTION_AUTHORIZED=NO
+```
+
+R17 is designed as reversible quarantine-by-rename, not permanent deletion. No R17 helper is locked or executable yet; the next Reviewer must prepare/review the helper before any Owner authorization is requested.
