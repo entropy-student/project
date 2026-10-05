@@ -105,12 +105,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_UID_DISCOVERY_R6R2B
+STATE=EXECUTOR_ASSIGNED_BAIDU_INTERACTIVE_AUTH_HELPER_R6R2C
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A
+PREVIOUS_RESULT=RETURN_OWNER_ACTION_REQUIRED_R6R2B_CONFIG_ABSENT
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Run the reviewed UID discovery helper exactly once on the real Owner Windows host; UID remains local; no login or provider mutation.
+MAX_ENDPOINT_THIS_ROUND=Offline-only build/validation of a bounded Owner-local no-argument interactive Baidu login helper; no real login, who, config access, network/provider mutation, VPS/SSH, Secret access, or live G4-B.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -118,8 +118,8 @@ PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locke
 REQUIRED_EVIDENCE=Only the eight bounded R6R2 checkpoint markers from the real Owner host; no UID, raw provider output, config content, credential values, or identity-bearing private paths.
 ACCEPTANCE_CRITERIA=BAIDU_AUTH_READINESS_READY + FAILURE_CODE_NONE + LOGIN_READY_YES + ACCOUNT_MATCH_YES + PROVIDER_MUTATION_NO + RAW_PROVIDER_OUTPUT_EMITTED_NO + UID_EMITTED_NO + TEMP_RUNTIME_CLEANUP_PASS.
 ROLLBACK_STATUS_OR_PLAN=R6R2 is read-only readiness plus temporary runtime cleanup. No persistent runtime change is authorized; cleanup must PASS or the Gate returns fail-closed.
-OWNER_ONLY_ACTIONS=Run R6R2B UID discovery helper exactly once; keep numeric UID local and return only sanitized markers plus UID_DISPLAYED_LOCALLY=YES|NO.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2B is an Owner-local checkpoint.
+OWNER_ONLY_ACTIONS=NONE during R6R2C. Do not manually run BaiduPCS-Go login/cookie/BDUSS flows before Reviewer accepts the helper.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C.md + accepted R6R1/R6R2A sources as reuse references only.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -148,6 +148,8 @@ G4B_BAIDU_UID_DISCOVERY_R6R2A_SOURCE_COMMIT=2383211efed12988ebf2742e5ab1150d76ea
 G4B_BAIDU_UID_DISCOVERY_HELPER_BLOB=ba8502287989ecc8c9b003e67c729b6d82df378a
 G4B_BAIDU_UID_DISCOVERY_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
 G4B_BAIDU_UID_DISCOVERY_R6R2B_GATE_BLOB=7842ab6c3ce77a5c7011777079ed71510d66a161
+G4B_BAIDU_UID_DISCOVERY_R6R2B_RESULT=RETURN_OWNER_ACTION_REQUIRED
+G4B_BAIDU_INTERACTIVE_AUTH_R6R2C_GATE_BLOB=5da63ed15d116ad85517b1e757a20f7bdd834341
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -224,11 +226,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B` once and returns only sanitized markers; numeric UID stays local.
+Codex executes `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C` offline only. Build/validate the no-argument interactive login helper and stop at Reviewer; no real authentication.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the R6R2B Owner-local helper once. Keep the displayed numeric UID local; do not paste it into chat/GitHub.
+NONE now. Wait for R6R2C Reviewer PASS; do not manually run login or provide cookies/BDUSS/password to chat/CLI flags.
 
 ## EVIDENCE_POINTERS
 
