@@ -8465,3 +8465,27 @@ Blocking defect 1: the Owner checkpoint calls strict `Assert-SafeBaiduConfigDire
 Blocking defect 2: the Owner checkpoint creates or accepts an empty config root before adapter execution but has no provenance-aware reconciliation on adapter nonzero exit or later post-auth validation failure. Although `Save()` is reached only after setup success, upstream `lazyOpenConfigFile` can create `pcs_config.json` before a later truncate/seek/write error. A nonzero adapter or failed post-auth check can therefore leave run-created partial state. Even an empty root created by this run is currently left behind. Governance requires bounded partial-state reconciliation before retry.
 
 Next Gate: `G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1`. Adapter source/test/build helper are frozen; only Owner checkpoint/validator are reopened.
+
+
+## Reviewer reconciliation — G4-B Secure Cookie Auth Adapter R6R2H — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H
+REVIEWER_RESULT=RETURN_R6R2H_COOKIE_OWNER_CHECKPOINT_MISSING_POSTSAVE_ACL_NORMALIZATION
+SOURCE_COMMIT=8265ade045c8df3aaaa449280b75dc79afc4cf02
+ADAPTER_SOURCE_BLOB=9298b477ccbaae6439ae33ddf098e343dfac4dc0
+BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
+OWNER_CHECKPOINT_BLOB=ab43037ef793d8a3c9cce69e14c7e64b33239957
+VALIDATOR_BLOB=07d1f24f2cc934852b456ac2e293c8d74a88d71d
+R6R2H_R1_GATE_BLOB=63053dc8279052b6c3fea89f24b805bb9dab6296
+REAL_COOKIE_VALUES_USED=0
+REAL_BAIDU_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+```
+
+Reviewer accepts and freezes the adapter/build core: Cookie input is live-console no-echo; no Secret CLI args/env/history/clipboard path exists; Cookie structure is bounded and BDUSS-validated; setup calls pinned `SetupUserByBDUSS` directly; Save occurs only after setup success; bounded output and native nonzero failure are implemented; the public-only pinned build passed and temporary build state was cleaned.
+
+Blocking Owner-checkpoint defect: after the child adapter exits, the checkpoint calls strict `Assert-SafeBaiduConfigDirectory` before it checks/normalizes the newly written `pcs_config.json`. The accepted R6R2D real-host evidence already proved that an elevated child can create this file with Builtin Administrators as Owner. Thus a genuinely successful Cookie setup can fail on the same Owner mismatch before normalization. R6R2H claimed reuse of the ACL boundary but omitted the required R6R2E post-child normalization step.
+
+No real Cookie was used, so no Owner state is affected. Next Gate `G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1` freezes the adapter/build source and repairs only the Owner checkpoint/validator. It must metadata-check exact `pcs_config.json`, normalize exact file/root Owner-only ACL, then apply strict R6R1 validation. Failure provenance must preserve pre-existing empty roots and preserve non-empty ambiguous/authenticated state fail-closed.
