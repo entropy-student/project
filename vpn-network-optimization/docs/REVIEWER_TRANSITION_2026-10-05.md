@@ -275,42 +275,89 @@ Formal result:
 RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
 ```
 
-### R12 — current local ACL owner-drift inventory — READY TO EXECUTE
+### R12 — local ACL owner-drift inventory — PASS as metadata observation
+
+R12 completed within metadata-only scope.
+
+```text
+ITEM_COUNT=3
+FILE_COUNT=2
+DIRECTORY_COUNT=1
+ROOT_OWNER_MATCH=YES
+EXACT_OWNER_ITEM_COUNT=2
+ADMIN_OWNER_ITEM_COUNT=1
+SYSTEM_OWNER_ITEM_COUNT=0
+OTHER_OWNER_ITEM_COUNT=0
+OWNER_MISMATCH_FILE_COUNT=1
+OWNER_MISMATCH_DIRECTORY_COUNT=0
+REPARSE_POINT_COUNT=0
+DENY_ACE_ITEM_COUNT=0
+UNAUTHORIZED_ALLOW_ITEM_COUNT=0
+OWNER_READ_RIGHTS_MISSING_ITEM_COUNT=0
+R12_ACL_STATE=ADMIN_OWNER_MULTI_ITEM_DRIFT
+CONFIG_CONTENT_READ=NO
+ACL_MUTATION=NO
+BAIDU_PROVIDER_ACTION=NO
+UID_INPUT=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Formal Reviewer interpretation:
+
+```text
+PASS_R6R2L_R12_METADATA_OBSERVATION_ADMIN_OWNER_ONE_FILE
+```
+
+R12 does not mean multiple items have Owner drift. It means:
+- config root is Owner-owned;
+- exactly one of two files is Administrators-owned;
+- the other file is Owner-owned;
+- no SYSTEM/OTHER Owner exists;
+- ACL policy, reparse and Owner-read-rights checks are clean.
+
+Additional upstream v4.0.2 source reconciliation proved the config directory legitimately uses both:
+- `pcs_config.json`;
+- `pcs_command_history.txt`.
+
+Therefore root + two-file shape is potentially normal and requires one more metadata-only role classification before any normalization is considered.
+
+### R13 — current config file-role Owner classification — READY TO EXECUTE
 
 Current Gate:
 
-`docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md`
+`docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md`
 
 Prepared helper:
 
-`scripts/g4b-baidu-config-acl-owner-drift-r12.ps1`
+`scripts/g4b-baidu-config-file-role-owner-r13.ps1`
 
 Locked identities:
 
 ```text
-R12_GATE_BLOB=8e9c8c8fa493eaefc8644a6bacbeec3c8eb1857f
-R12_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
+R13_GATE_BLOB=281d0a174365369d91fc761509a2eaf9723e0a50
+R13_SCRIPT_BLOB=f27148308fbe56517924c686fa99cbb0e28549a3
 ```
 
+R13 is local direct-child metadata-only. It internally compares only the two upstream-expected basenames and emits only sanitized presence/Owner-role/count classifications.
 
-R12 is local metadata-only.
+Desired narrow observation:
 
-It exists to determine whether the R11 mismatch is:
-- the narrow historical shape already observed on this Windows host, where a privileged child-created `pcs_config.json` is owned by Builtin Administrators;
-- or a broader/unknown owner/ACL drift.
+```text
+ROOT_OWNER_ROLE=OWNER
+CONFIG_FILE_PRESENT=YES
+CONFIG_FILE_OWNER_ROLE=ADMIN
+HISTORY_FILE_PRESENT=YES
+HISTORY_FILE_OWNER_ROLE=OWNER
+UNEXPECTED_FILE_COUNT=0
+UNEXPECTED_DIRECTORY_COUNT=0
+REPARSE_POINT_COUNT=0
+R13_FILE_ROLE_STATE=EXPECTED_V4_0_2_SHAPE_CONFIG_ADMIN_HISTORY_OWNER
+```
 
-Relevant accepted R6R1 invariant:
-- exact current Owner SID for every inspected item;
-- no reparse points;
-- inspect direct and inherited ACEs;
-- safe Allow principals only: current Owner, LocalSystem, Builtin Administrators;
-- no Deny ACE;
-- current Owner has required read/list/traverse rights;
-- metadata only; no config content read/copy/print.
-
-Historical R6R2D/R6R2H-R1 evidence proved the child-created Administrators-owner shape can occur on this exact host, but current R11 did **not** identify which item or owner principal is mismatched.
-
-R12 must therefore report only sanitized aggregate metadata and one classification. It does not authorize mutation.
+R13 does not authorize ACL normalization, provider access or live retry.
 
 ## 5. Current unresolved truth
 
@@ -326,18 +373,17 @@ Known:
 - system proxy/TUN remain outside current work.
 
 Unknown / unresolved:
-- exact local Baidu config item(s) whose Owner mismatches current Owner SID;
-- whether mismatch is only the known Administrators-owned child-created config file shape;
-- whether any other ACL policy drift exists;
+- whether the single Administrators-owned file is exactly the expected `pcs_config.json`;
+- whether the Owner-owned second file is exactly the expected `pcs_command_history.txt`;
 - whether R9 left a remote pending or final recovery object in Baidu;
 - whether a later bounded ACL normalization will be safe;
 - whether a new live G4-B retry can be issued.
 
 ## 6. Current safety boundary
 
-R12 allows only local metadata/ACL observation.
+R13 allows only local direct-child file-role/Owner metadata observation.
 
-R12 does **not** authorize:
+R13 does **not** authorize:
 - config file content read/hash/copy/print;
 - username/path/SID/ACE-detail output;
 - `Set-Acl`, `takeown`, `icacls` or ownership mutation;
@@ -350,22 +396,23 @@ R12 does **not** authorize:
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-Only after R12 is reviewed may Reviewer decide whether a separate ACL-normalization Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
+Only after R13 is reviewed may Reviewer decide whether a separate narrow ACL-normalization Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R12 chronology.
-3. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current Gate.
-4. `EXECUTION_EVIDENCE.md` — append-only R5→R11 evidence and formal Reviewer decisions.
-5. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 read-only Gate and failure boundary.
-6. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair.
-7. `docs/G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1.md` — accepted ACL invariant definition.
-8. `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1.md` — historical child-created Administrators-owner evidence/boundary; note that this specific duplicate Gate is marked superseded, so use it only as historical rationale, not an executable Gate.
-9. `DECISION_LOG.md` — durable architecture/Owner decisions.
-10. Older transition/package docs only if earlier context is actually needed.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R13 chronology.
+3. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — exact current Gate.
+4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
+5. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — completed R12 metadata inventory Gate.
+6. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 read-only Gate and failure boundary.
+7. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair.
+8. `docs/G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1.md` — accepted ACL invariant definition.
+9. `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1.md` — historical child-created Administrators-owner evidence/boundary; note that this specific duplicate Gate is marked superseded, so use it only as historical rationale, not an executable Gate.
+10. `DECISION_LOG.md` — durable architecture/Owner decisions.
+11. Older transition/package docs only if earlier context is actually needed.
 
 Historical `EXECUTOR_HANDOFF.md` never overrides current Reviewer state.
 
@@ -380,12 +427,13 @@ Do not repeat without new Reviewer authorization/evidence:
 - R9 live retry;
 - R10 parser/fixture validation;
 - R11 provider residual-state run as-is while ACL mismatch remains;
+- R12 metadata inventory;
 - HY2 credential recovery/rotation;
 - G4-B0 bypass canary;
 - earlier HY2/REALITY compatibility/canary work.
 
 ## 9. Repository durability
 
-This transition snapshot, R12 Gate, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
+This transition snapshot, R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
