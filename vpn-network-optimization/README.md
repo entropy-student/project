@@ -87,12 +87,12 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R9 LIVE RETRY READY
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R10 OFFLINE PARSER REPAIR
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS，R5 首次 live 在 P5 安全失败且未开始 consequential mutation，R6/R7 完成根因定位，R8 已正式接受 pipeline-output 修复。当前唯一 consequential 下一步是 R9 one-shot live retry；R9 成功后仍需 Reviewer 正式验收 G4-B，再进入独立的 G4-C 晚高峰 + 真实工作负载验证。未来更换 VPS 仍使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，但因生产 `ls -l` parser 错误假设 pipe 边框而 RETURN，且 `CONSEQUENTIAL_MUTATION_STARTED=NO`。当前是 R10 离线 parser/fixture repair validation；只有 R10 正式 PASS 后才能签发新的 live retry Gate。G4-C 晚高峰 + 真实工作负载仍在 G4-B 正式 PASS 后独立执行。
 
 ## 项目真相与 Reviewer 交接
 
@@ -130,7 +130,7 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness，R8 修复已正式 PASS，R9 live retry 尚未执行。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行一次并在真实 Baidu listing readback 处暴露 provider-format fixture drift；当前 R10 仅做离线 parser/fixture 修复验证，禁止 live replay。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
 
 
 ## 当前交互目标
