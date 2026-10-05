@@ -87,12 +87,12 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R14 KNOWN CONFIG-ROLE OWNER CLASSIFICATION
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R15 OWNER NORMALIZATION AUTHORIZATION REQUIRED
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 在 provider action 前因本机 Baidu config Owner mismatch RETURN。R12 随后证明当前 config subtree 是 1 个目录 + 2 个文件，只有 1 个文件由 Builtin Administrators 持有，其余 Owner/ACL/reparse/read-rights 全部正常。R13 进一步证明 `pcs_config.json` 是 OWNER-owned、`pcs_command_history.txt` 不存在，且恰好还有 1 个 direct-child 文件。上游 v4.0.2 upload 路径会在同一 config 目录创建 `pcs_uploading.json`，而 R9 确实执行过真实 upload，因此当前唯一下一步是 R14 只读确认这个剩余文件是否为 upload DB，以及其 Owner role；远端 residual state 仍 UNKNOWN。R14 不授权 ACL 修复、provider access、cleanup 或 live retry。G4-C 仍在 G4-B 正式 PASS 后独立执行。
+当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 在 provider action 前因本机 Baidu config Owner mismatch RETURN。R12 随后证明当前 config subtree 是 1 个目录 + 2 个文件，只有 1 个文件由 Builtin Administrators 持有，其余 Owner/ACL/reparse/read-rights 全部正常。R13 进一步证明 `pcs_config.json` 是 OWNER-owned、`pcs_command_history.txt` 不存在，且恰好还有 1 个 direct-child 文件。R14 已证明这个文件正是 `pcs_uploading.json`，其 Owner=Built-in Administrators；root/config Owner 正常，history/captcha 不存在，也没有 unknown/reparse。当前 R15 已准备为只修改该 upload DB Owner 的极窄 normalization Gate，保留现有 DACL并预置本机 rollback journal，但由于这是 consequential security-metadata write，当前仍需 Owner 明确授权后才能执行。远端 residual state 仍 UNKNOWN。G4-C 仍在 G4-B 正式 PASS 后独立执行。
 
 ## 项目真相与 Reviewer 交接
 
@@ -103,8 +103,9 @@ MVP v1 封板                                  ⏳ PENDING
 新 Reviewer 推荐读取顺序：
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R14 完整进展、两次 live return、R10 PASS、R11→R13 本机 ACL/file-role reconciliation 与下一步；
-3. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — 当前本机 known-role/Owner metadata-only Gate；
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R15 完整进展、两次 live return、R10 PASS、R11→R14 本机 ACL/file-role reconciliation 与下一步；
+3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — 当前已准备但待 Owner 授权的极窄 Owner normalization Gate；
+4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — 已完成的 R14 known-role Gate；
 4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — 已完成的 R13 file-role Gate；
 4. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — 已完成的 R12 ACL/Owner inventory Gate；
 4. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 历史只读 Gate 与 RETURN；
