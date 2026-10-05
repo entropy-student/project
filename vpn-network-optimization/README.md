@@ -86,8 +86,8 @@ G3-C Secret Prepare 真实 Owner 主机复验       ✅ PASS
 G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
-G4-B0 Windows 外层绕行验证                   🔐 AUTH_REQUIRED
-G4-B 长期三节点可用性                        ⏳ PENDING
+G4-B0 Windows 外层绕行验证                   ✅ PASS
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R9 LIVE RETRY READY
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -103,10 +103,11 @@ MVP v1 封板                                  ⏳ PENDING
 新 Reviewer 推荐读取顺序：
 
 1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 本次长对话收口后的完整已接受脉络；
-3. `DECISION_LOG.md` — 已确认决策与理由；
-4. `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md` — 当前真实 C2C canary 合同；
-5. `EXECUTION_EVIDENCE.md` — 仅在需要证明具体事实时读取相关 Evidence。
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R9 完整进展、根因修复、授权与下一步；
+3. `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — 当前 one-shot live retry Gate；
+4. `EXECUTION_EVIDENCE.md` — R5/R6/R7/R8 的脱敏证据与正式 Reviewer 判定；
+5. `DECISION_LOG.md` — 已确认决策与理由；
+6. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 更早阶段的历史 transition，需要时再读。
 
 `EXECUTOR_HANDOFF.md` 与 `EXECUTION_EVIDENCE.md` 记录执行事实与脱敏证据，不与 Reviewer Handoff 竞争。历史 Executor 中出现的旧 `Current` 标题不代表当前项目状态。
 
@@ -134,7 +135,7 @@ G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 
 
 ## 当前交互目标
 
-C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**，G4-A 计划和离线模板已 PASS。继续复核发现，在真正进入 G4-B 前还必须先完成 **G4-B0 Windows 外层绕行验证**：R3R2 的 HY2 成功依赖临时 `/32` 路由，而长期模板中的 `interface-name` 在 Windows 上尚未被正式证明可独立绕过 WireGuard。G4-B0 只验证这一件事；PASS 后才进入 REALITY 持久服务、Secret/recovery 与 Clash 三节点 profile。G4-C 晚高峰和真实工作负载仍在 G4-B PASS 后另行执行。
+C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验、**R3R2 真实 HY2-in-Clash bounded canary**、G4-A 与 **G4-B0 Windows 外层绕行验证**均已正式 PASS。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**。G4-B 当前处于持久三角色 readiness：R5 首次 live 在 P5 因 PowerShell success-stream 污染返回 `UNCLASSIFIED`，R6 排除本地 DPAPI/HY2/Mihomo，R7 精确定位 `$psi.Environment.Remove()` 的 Boolean 返回值污染 helper 输出，R8 已以单行 `[void]` 修复并通过完整正负向离线回归。当前唯一下一步是 **R9 one-shot live retry**；R9 尚未执行，成功后仍需 Reviewer 将 `PASS_CANDIDATE` 正式验收。G4-C 晚高峰和真实工作负载仍在 G4-B 正式 PASS 后单独执行。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
