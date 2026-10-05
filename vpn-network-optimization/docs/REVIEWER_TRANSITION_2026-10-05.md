@@ -1,6 +1,6 @@
-# Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
+# Reviewer Transition — 2026-10-05 — G4-B R17 Stale-Pending Quarantine Preparation
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R16 chronology, current safety boundary and exact next unresolved question.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R17 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
@@ -40,23 +40,23 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
-GATE_ID=G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
-PREVIOUS_RESULT=PASS_R6R2L_R15_UPLOAD_DB_OWNER_NORMALIZATION
-R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
+STATE=REVIEWER_ACTION_REQUIRED_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
+R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+R17_HELPER_BLOB=NOT_PREPARED
+R17_EXECUTION_AUTHORIZED=NO
 ```
 
-Existing bounded live authorization is still recorded historically:
+Historical bounded live authorization remains recorded for the earlier G4-B live work, but it does **not** authorize R17 or any new live retry.
 
-```text
-OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
-LIVE_G4B_EXECUTION_AUTHORIZED=YES
-SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
-```
+Current truth:
+- R15 local ACL normalization is formally PASS and its local rollback journal remains retained.
+- R16 read-only provider observation is complete: final=0, pending=1, unknown=0.
+- Remote production residual state is formally `STALE_PENDING_PRESENT`.
+- R17 Gate is prepared as reversible rename-to-quarantine, but no helper is locked and no provider mutation is authorized.
 
-That does **not** authorize a live retry now. Current R12 is local metadata-only.
-
-## 4. R4 → R12 chronology
+## 4. R4 → R17 chronology
 
 ### R4 — offline repair validation — PASS
 
@@ -450,15 +450,9 @@ Interpretation:
 - no provider/network/Secret/VPS/live-G4B action occurred;
 - rollback journal remains retained and must not be deleted yet.
 
-### R16 — current remote residual-state read-only reconciliation — READY TO EXECUTE
+### R16 — remote residual-state read-only reconciliation — RETURN / observation complete
 
-Current Gate:
-
-`docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md`
-
-R16 intentionally reuses the reviewed R11 helper unchanged:
-
-`scripts/g4b-baidu-residual-readonly-r11.ps1`
+R16 reused the reviewed R11 read-only helper unchanged and completed the provider observation after R15 repaired the local ACL boundary.
 
 Locked identities:
 
@@ -467,13 +461,72 @@ R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
 R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 ```
 
-R16 is read-only with respect to provider state. It may execute only:
-- BaiduPCS-Go who
-- BaiduPCS-Go ls -l /vpn-network-optimization-g4b-recovery
+Observed result:
 
-It may not upload, delete, rename, move, mkdir, login/logout, mutate config, read recovery Secret/DPAPI data, touch VPS/network/Clash, or run live G4-B.
+```text
+BAIDU_CONFIG_ACL=PASS
+BAIDU_PINNED_CLI=PASS
+BAIDU_WHO_PROCESS=PASS
+BAIDU_UID_PARSE=PASS
+BAIDU_UID_MATCH=PASS
+BAIDU_LS_PROCESS=PASS
+BAIDU_DIRECTORY_HEADER=PASS
+PROJECT_FINAL_COUNT=0
+PROJECT_PENDING_COUNT=1
+PROJECT_UNKNOWN_COUNT=0
+BAIDU_RESIDUAL_STATE=STALE_PENDING_PRESENT
+TEMP_RUNTIME_CLEANUP=PASS
+BAIDU_MUTATION_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+RECOVERY_READ_OR_WRITE=NO
+NETWORK_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+LIVE_G4B_RUNNER_EXECUTED=NO
+STOP_AT_REVIEWER=YES
+```
 
-A CLEAN result may permit Reviewer to design a new bounded live retry Gate. Any residual object or auth/provider failure stops at Reviewer.
+Formal Reviewer result:
+
+```text
+RETURN_R6R2L_R16_STALE_PENDING_PRESENT
+```
+
+Interpretation:
+- local ACL readiness is now reconciled;
+- provider account/UID/header checks pass;
+- production namespace contains no final object and no unknown project object;
+- exactly one strict project pending object remains;
+- R16 performed no provider mutation;
+- remote residual state is no longer UNKNOWN.
+
+The one pending object is consistent with the R9 pending-upload chronology and is the only production-namespace project residual. R16 does not itself authorize mutation.
+
+### R17 — current stale-pending quarantine reconciliation — PREPARED / HELPER NOT YET LOCKED
+
+Current Gate:
+
+`docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md`
+
+Locked Gate identity:
+
+```text
+R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+R17_HELPER_BLOB=NOT_PREPARED
+R17_EXECUTION_AUTHORIZED=NO
+```
+
+R17 deliberately uses reversible quarantine rather than permanent delete.
+
+Planned future behavior after helper preparation, review and explicit Owner authorization:
+- re-prove final=0/pending=1/unknown=0;
+- prove the exact single source matches the strict pending basename regex;
+- prove quarantine target absent;
+- rename source pending to a non-production quarantine basename;
+- verify source absent, quarantine present, final=0/pending=0/unknown=0;
+- on failed post-readback, rename quarantine back to the exact source and prove final=0/pending=1/unknown=0;
+- never permanently `rm` ciphertext in R17.
+
+R17 currently authorizes **preparation/review only**. The next Reviewer must prepare and lock the helper on `main` before asking the Owner for mutation authorization.
 
 ## 5. Current unresolved truth
 
@@ -482,62 +535,61 @@ Known:
 - Existing HY2 remains accepted.
 - R8 is formally PASS.
 - R10 is formally PASS.
-- R5 and R9 both stopped before accepted consequential mutation.
+- R15 is formally PASS and its rollback journal remains retained.
+- R16 is complete and proves provider production namespace final=0, pending=1, unknown=0.
 - Persistent REALITY service is not accepted.
 - Persistent `SELF-VPN-V1` profile is not accepted.
 - G4-C has not started.
 - system proxy/TUN remain outside current work.
 
 Unknown / unresolved:
-- whether the single Administrators-owned file is exactly the expected `pcs_config.json`;
-- whether the Owner-owned second file is exactly the expected `pcs_command_history.txt`;
-- whether R9 left a remote pending or final recovery object in Baidu;
-- whether a later bounded ACL normalization will be safe;
-- whether a new live G4-B retry can be issued.
+- R17 helper implementation has not yet been prepared/locked.
+- The stale pending has not been quarantined or deleted.
+- The provider production namespace is therefore not yet CLEAN.
+- No new live G4-B retry Gate may be issued yet.
+- Permanent disposition of quarantined ciphertext, if later desired, remains a separate decision.
 
 ## 6. Current safety boundary
 
-R15 is prepared and explicitly authorized for one bounded local normalization attempt. Provider readback/live G4-B remain blocked.
-
-R16 does **not** authorize:
-- config file content read/hash/copy/print;
-- username/path/SID/ACE-detail output;
-- `Set-Acl`, `takeown`, `icacls` or ownership mutation;
-- BaiduPCS-Go/provider access;
-- UID input;
-- remote cleanup;
+Current R17 preparation does **not** authorize:
+- any provider mutation;
+- permanent `rm`;
+- upload/download-from-Baidu;
+- mkdir;
+- login/logout/config mutation;
+- raw UID/stdout/stderr/remote filename output;
+- deleting or modifying the retained R15 rollback journal;
 - DPAPI/recovery Secret access;
 - SSH/VPS;
-- live G4-B;
 - Clash/profile/service/route/proxy/TUN mutation;
+- live G4-B;
 - G4-C.
 
-R15 is formally PASS. R16 is the active read-only residual-state observation; live G4-B remains blocked until R16 is formally reviewed.
+Next Reviewer may only prepare/review/lock the R17 helper on `main`. Owner authorization must be requested only after the helper is locked and reviewed.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R16 chronology.
-3. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — exact current read-only Gate.
-4. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 normalization Gate.
-4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — completed R14 Gate.
-4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 Gate.
-4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
-5. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — completed R12 metadata inventory Gate.
-6. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 read-only Gate and failure boundary.
-7. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair.
-8. `docs/G4B_BAIDU_OWNER_AUTH_READINESS_ACL_REPAIR_R6R1.md` — accepted ACL invariant definition.
-9. `docs/G4B_BAIDU_SECURE_COOKIE_OWNER_ACL_NORMALIZATION_REPAIR_R6R2H_R1.md` — historical child-created Administrators-owner evidence/boundary; note that this specific duplicate Gate is marked superseded, so use it only as historical rationale, not an executable Gate.
-10. `DECISION_LOG.md` — durable architecture/Owner decisions.
-11. Older transition/package docs only if earlier context is actually needed.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R17 chronology.
+3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current prepared Gate; helper not yet locked.
+4. `EXECUTION_EVIDENCE.md` — append-only execution proof through R16.
+5. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 Gate.
+6. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 Gate.
+7. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — completed R14 role proof.
+8. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 role narrowing.
+9. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — completed R12 ACL inventory.
+10. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — historical R11 blocked read-only Gate.
+11. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser repair.
+12. `DECISION_LOG.md` — durable architecture/authorization rationale.
+13. Older transition/package docs only if earlier context is needed.
 
 Historical `EXECUTOR_HANDOFF.md` never overrides current Reviewer state.
 
 ## 8. What must not be repeated
 
-Do not repeat without new Reviewer authorization/evidence:
+Do not repeat without a new current Gate / new authorization:
 - R4 repair validation;
 - R5 live attempt;
 - R6 local P5 diagnostic;
@@ -545,14 +597,19 @@ Do not repeat without new Reviewer authorization/evidence:
 - R8 pipeline-output repair validation;
 - R9 live retry;
 - R10 parser/fixture validation;
-- R11 provider residual-state run as-is while ACL mismatch remains;
-- R12 metadata inventory;
+- R11 blocked provider readback;
+- R12 ACL inventory;
+- R13 file-role classifier;
+- R14 known-role classifier;
+- R15 Owner normalization;
+- R16 read-only provider observation;
 - HY2 credential recovery/rotation;
 - G4-B0 bypass canary;
 - earlier HY2/REALITY compatibility/canary work.
 
 ## 9. Repository durability
 
-This transition snapshot, R16/R15/R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
+This transition snapshot, R17 Gate, R16/R15/R14/R13/R12 history, reusable reviewed helpers, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
+
