@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=EXECUTOR_OFFLINE_REPAIR
+STATE=OWNER_ACTION_REQUIRED_BAIDU_SECURE_AUTH_R6R2I
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2H_R2_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
+PREVIOUS_RESULT=PASS_G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only bounded output-contract repair: add pre-run config-state marker and validator coverage; R6R2H-R2 core remains frozen.
+MAX_ENDPOINT_THIS_ROUND=One Owner-local retained-adapter build/preflight plus exactly one reviewed secure-auth checkpoint; no retry, no who, no provider file mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=R6R2H-R3 output-contract PASS markers, unchanged accepted R6R2H-R2 core identities, zero real Owner/provider actions, exact changed-path scope, and fresh GitHub read-back.
-ACCEPTANCE_CRITERIA=Owner checkpoint emits all eight bounded markers including config-state with the reviewed enum/provenance semantics; R6R2H-R2 full regression remains PASS; real authentication/config/provider actions remain zero.
-ROLLBACK_STATUS_OR_PLAN=Source-only Executor round. Revert only R6R2H-R2 project files if needed; no Owner/provider/runtime state may change.
-OWNER_ONLY_ACTIONS=NONE during R6R2H-R3. Do not obtain or enter real authentication material and do not run any auth checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3.md; freeze accepted R6R2H-R2 core and repair only Owner config-state output + validator.
+REQUIRED_EVIDENCE=Frozen build provenance + temp cleanup PASS, then exactly eight bounded Owner checkpoint markers; no provider raw output, account identity, UID, config content, or authentication material.
+ACCEPTANCE_CRITERIA=Reviewed adapter binary identity proven; checkpoint returns SETUP_SAVED/NONE/native 0, accepted pre-auth config state, authenticated-config preserved, content-read NO, who NOT_RUN, UID emitted NO.
+ROLLBACK_STATUS_OR_PLAN=Checkpoint performs provenance-aware rollback on non-success. No retry is authorized until Reviewer reconciliation. Retained adapter runtime binary remains untouched pending later reviewed cleanup.
+OWNER_ONLY_ACTIONS=Run R6R2I exactly once on the accepted Owner host. Enter authentication material only into the hidden local prompt; return only the eight bounded checkpoint markers.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2I is an Owner-local one-shot authentication checkpoint.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -173,6 +173,9 @@ G4B_BAIDU_COOKIE_BUILD_HELPER_BLOB=7f369604de3cf0cce46bf0cf7328313c03ed61d5
 G4B_BAIDU_SECURE_COOKIE_OWNER_REPAIR_R6R2H_R1_GATE_BLOB=6f448f7c16a322c240f756121ddbbc0ca97dc516
 G4B_BAIDU_SECURE_COOKIE_OWNER_REPAIR_R6R2H_R1_STATUS=SUPERSEDED_UNEXECUTED
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_GATE_BLOB=d648f5f44824349aff1824dd4fb5d405a01a5c4d
+G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3_RESULT=PASS
+G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3_SOURCE_COMMIT=0474fe6b68211ce602beaa55cb9dc9786084e694
+G4B_BAIDU_OWNER_SECURE_AUTH_R6R2I_GATE_BLOB=00004a88b1edf3a8ca1ba7d3b7135552819a1743
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -255,7 +258,7 @@ Codex executes `G4B_BAIDU_OWNER_OUTPUT_CONTRACT_REPAIR_R6R2H_R3` offline only. A
 
 ## OWNER_ACTION_REQUIRED
 
-NONE now. Do not obtain or enter real authentication material. Wait for R6R2H-R3 Reviewer PASS before any Owner-side authentication action.
+Run R6R2I exactly once. Return only the eight bounded checkpoint markers; do not share provider output or authentication material and do not retry on failure.
 
 ## EVIDENCE_POINTERS
 
