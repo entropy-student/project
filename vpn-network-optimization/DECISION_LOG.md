@@ -512,3 +512,14 @@ The accepted metadata-only failed-run reconciliation helper remains frozen. Next
 The Owner-host metadata-only checkpoint identified the exact R6R2D failed-run residue and removed only the exact `pcs_config.json` plus the verified-empty exact config root. The pre-login absent baseline is restored, and no config content was read.
 
 One new bounded interactive login retry is now authorized through `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G`. Repeated retries and Cookie/BDUSS fallbacks remain unauthorized.
+
+
+## 2026-10-05 — R6R2G retires deprecated username/password Baidu login
+
+**Decision:** `RETURN_R6R2G_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO`.
+
+The single authorized retry again displayed provider error 50052. The helper then returned `BAIDU_AUTH_WHO_OUTPUT_AMBIGUOUS` because stock BaiduPCS-Go v4.0.2 does not reliably propagate login action errors to the native process exit: `app.Run(os.Args)` is called without using its returned error. The repaired rollback removed all config state created by the failed attempt.
+
+Public upstream guidance now makes the larger conclusion decisive: username/password interactive login is long-unmaintained, and the maintainer explicitly says not to use it. No further retry is authorized.
+
+The supported Cookie/BDUSS paths cannot be invoked through stock CLI flags because Secret values would appear in process arguments. Next Gate `G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H` builds a credential-safe local no-echo Cookie adapter against the exact pinned v4.0.2 source.
