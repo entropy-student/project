@@ -8844,3 +8844,28 @@ R6R2I_D4_GATE_BLOB=8c94ec957f160ee0c09ad9b4d47c177145817251
 The D2 retained-binary repair is proven on the real Owner host: the pinned adapter rebuilt successfully, the reviewed binary digest matched, the Owner runtime binary was created, the native negative fixture passed, and temporary build cleanup passed. Authentication was not run in D3.
 
 Next Gate: one-shot Owner-local secure authentication `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I_D4`. The retained binary must not be rebuilt or manually modified before this checkpoint.
+
+
+## Owner result — R6R2I-D4 secure authentication — 2026-10-05
+
+```text
+AUTH_STATE=PASS
+D4_GATE_RESULT=RETURN_OUTPUT_CONTRACT_EXTRA_ADAPTER_MARKERS
+BAIDU_COOKIE_AUTH_CHECKPOINT=SETUP_SAVED
+BAIDU_COOKIE_AUTH_FAILURE_CODE=NONE
+BAIDU_COOKIE_AUTH_NATIVE_EXIT=0
+BAIDU_COOKIE_AUTH_CONFIG_STATE=ABSENT_PREAUTH
+BAIDU_COOKIE_AUTH_CONFIG_DISPOSITION=PRESERVED_AUTHENTICATED_CONFIG
+BAIDU_COOKIE_AUTH_CONTENT_READ=NO
+BAIDU_COOKIE_AUTH_WHO=NOT_RUN
+BAIDU_COOKIE_AUTH_UID_EMITTED=NO
+REAL_AUTH_ATTEMPTS=1
+REAUTH_AUTHORIZED=NO
+R6R2I_D5_GATE_BLOB=5ab5a28d3772b8efbb7a7ac37483f3c8b8585c91
+```
+
+The real Owner authentication succeeded and produced the accepted authenticated config from an absent pre-auth baseline. Native exit was zero; the checkpoint reported no failure; config was preserved; no config content was read; no provider who/UID action occurred.
+
+Reviewer found one output-contract defect only: the child adapter's own bounded status lines were inherited by the console in addition to the checkpoint's required eight markers. The extra lines contained no provider output, account identity, UID, config content, or authentication material, but they violate the exact Owner return contract.
+
+The authenticated config is accepted and must not be re-created. Next Gate `G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5` is offline-only and repairs the child/Owner console boundary without touching the real authenticated config.
