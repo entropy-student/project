@@ -541,3 +541,11 @@ R6R2H-R1 is limited to repairing the Owner checkpoint and validator using the ac
 The credential-safe Cookie adapter and pinned build path are accepted. The Owner checkpoint is not yet safe to run because it applies strict R6R1 config ACL validation immediately after the adapter creates `pcs_config.json`, before normalizing the child-created file Owner/ACL. R6R2D already demonstrated this Windows ownership mismatch on the real Owner host.
 
 R6R2H-R1 is limited to restoring the accepted R6R2E ordering: exact metadata shape -> Owner/ACL normalization -> strict R6R1 validation, plus failure provenance for pre-existing/new empty roots. No real Cookie/auth action is authorized meanwhile.
+
+
+## 2026-10-05 — Canonicalize R6R2H-R1 Gate
+
+A concurrently present, stricter R6R2H-R1 Gate already covered both post-auth ACL normalization and failure/partial-write reconciliation. It is the canonical Gate:
+`G4B_BAIDU_SECURE_COOKIE_OWNER_CHECKPOINT_REPAIR_R6R2H_R1`.
+
+The narrower duplicate Gate is superseded and must not be executed. No runtime or Secret state changed.
