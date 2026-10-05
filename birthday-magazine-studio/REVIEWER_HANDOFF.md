@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL
+CURRENT_GATE=G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,8 +81,8 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=REVIEWER_PASS_OWNER_FINAL_PENDING
-CORE_FUNCTION_ONBOARDING_SURFACE=REVIEWER_PASS_OWNER_FINAL_PENDING
+HOMEPAGE_ENTRY_SURFACE=OWNER_RETURN_WIDESCREEN_COMPOSITION
+CORE_FUNCTION_ONBOARDING_SURFACE=OWNER_RETURN_WIDESCREEN_SCALE
 POSTPAY_GENERATION_STATUS_SURFACE=PRODUCT_COMPONENT_STATUS_QA_PAGE_DEMOTED
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
@@ -166,7 +166,16 @@ G3CR7V2R3_REVIEWER_DECISION=PASS
 G3CR7V2R3_STYLE_DELIVERY=PASS_FILEMTIME_CACHE_BUST
 G3CR7V2R3_INTAKE_SCALE=PASS
 G3CR7V2R3_STATUS_STANDALONE_PAGE=QA_ONLY_NOT_PRODUCT_SURFACE
-G3CR7V2R3_OWNER_HOME_INTAKE_VISUAL=PENDING
+G3CR7V2R3_OWNER_HOME_INTAKE_VISUAL=RETURN
+G3CR7V2R4_OWNER_VISUAL=RETURN
+G3CR7V2R4_PRIMARY_DESKTOP_WIDTH=2048
+G3CR7V2R4_PLACEHOLDER_ART=REMOVE_ALL_FAKE_PHOTO_ART
+G3CR7V2R4_PLACEHOLDER_EMPTY_FRAME=YES
+G3CR7V2R4_FEATURE_BG=#F3EEF1
+G3CR7V2R4_CTA_ACTION_ONLY=YES
+G3CR7V2R4_CTA_PRICE_META_SEPARATE=YES
+G3CR7V2R4_INTAKE_WIDESCREEN=SCALE_UP
+G3CR7V2R4_STATUS=QA_ONLY_NOT_PRODUCT_SURFACE
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -211,23 +220,25 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL`
+`G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP`
 
-G3CR7V2R3 is **Reviewer PASS** at candidate `43ebf7bb732e9e3be8d547364ca7b018f7f505f8`.
+Owner live review RETURNed the 2048px desktop composition.
 
-Accepted:
-- homepage stale-style root cause proven as fixed-version browser CSS cache;
-- visual CSS versioning changed to source-derived `filemtime()`;
-- normal cache-enabled Edge now loads Git/runtime candidate CSS;
-- intake scale/density materially improved;
-- standalone status preview is QA-only, not a product surface;
-- Woo/order status component logic remains frozen.
+New facts:
+- previous 1440-centric review hid widescreen scale weakness;
+- Owner's actual live captures are 2048px wide and become the primary desktop quality viewport;
+- current fake no-photo artwork is CSS gradient art, not the already-removed mesh SVG, and is now explicitly rejected;
+- homepage CTA hierarchy is overloaded;
+- homepage and intake both still feel too small/sparse at 2048px;
+- standalone status remains QA-only.
 
-Owner checkpoint:
-- `docs/OWNER_CHECKPOINT_G3CR7V2R3_HOME_INTAKE_FINAL_2026-10-05.md`
+Current Gate:
+- `docs/G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP.md`
 
-Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR7V2R3_PASS_LIVE_STYLE_SCALE_2026-10-05.md`
+Owner decision:
+- `docs/OWNER_DECISION_G3CR7V2R4_WIDESCREEN_COMPOSITION_RETURN_2026-10-05.md`
+
+Stripe-derived component language, mulberry palette, cache-safe CSS delivery and all business behavior remain accepted.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -292,15 +303,16 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner refreshes the retained local runtime in normal Edge and reviews only the homepage Preview/core-entry and core intake page.
-2. If both are accepted, freeze these product-facing frontend surfaces for the current MVP stage.
-3. The standalone status preview remains QA-only; future real status UI belongs in the Woo/order/private-workspace flow.
-4. After visual freeze, proceed to the next product Gate: pre-payment server draft persistence / payment-to-generation wiring before P1-P12.
-5. Handle PR #64 mergeability separately before merge.
+1. Executor runs the G3CR7V2R4 widescreen composition Gate.
+2. Remove CSS-generated fake photo art entirely; no-photo state becomes neutral empty frames with no replacement asset.
+3. Recompose homepage Preview/core-entry around a light mulberry feature field and a simplified CTA hierarchy.
+4. Scale homepage and intake for 2048px first, then verify 1440 and 375.
+5. Return nine viewport screenshots plus geometry readback and leave the exact candidate mounted for Owner.
+6. Do not touch Status QA page, backend, payment or P1-P12.
 
 ## OWNER_ACTION_REQUIRED
 
-Refresh `http://127.0.0.1:8189/` normally in Edge and review the homepage plus `/make-your-magazine/`. No cache clear should be required.
+**NONE.** Owner's 2048px screenshots and explicit visual RETURN are sufficient for the next bounded Gate.
 
 ## EVIDENCE_POINTERS
 
