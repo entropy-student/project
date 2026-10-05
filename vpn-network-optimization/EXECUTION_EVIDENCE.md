@@ -9113,3 +9113,36 @@ Reviewer inspection found a remaining decoding boundary: the inherited redirecte
 Validator coverage now requires the UTF-8 decoder lock and the same one-`who`/no-login boundary.
 
 During Reviewer repository write, an initial string-substitution method interpreted a PowerShell `$'` sequence as JavaScript replacement syntax and temporarily produced a malformed intermediate helper on `main`. Reviewer fresh read-back caught it before any Owner instruction or execution. The helper was rebuilt from the accepted R6R2J-R1 blob using function-style replacement, and final fresh read-back confirms the complete function and bounded call site. No Owner/provider/runtime action used the transient intermediate commits.
+
+
+## Owner result — R6R2J-R3 post-auth UID discovery — 2026-10-05
+
+```text
+REVIEWER_RESULT=PASS_G4B_BAIDU_UID_UTF8_DECODE_RETRY_R6R2J_R3
+BAIDU_UID_DISCOVERY=READY
+UID_DISPLAYED_LOCALLY=YES
+BAIDU_UID_NOT_FOR_CHAT_OR_GITHUB=YES
+BAIDU_UID_FAILURE_CODE=NONE
+BAIDU_UID_RUNTIME_CLEANUP=PASS
+AUTHENTICATED_CONFIG_STATE=ACCEPTED_FROZEN
+UID_VALUE_RECORDED_EXTERNALLY=NO
+```
+
+The Owner-local post-auth read-only `who` succeeded after the UTF-8 decode repair. A unique numeric UID was displayed only on the local console; the UID value itself is not recorded in GitHub/Evidence/chat. Temporary runtime cleanup passed. No provider file mutation or re-authentication occurred.
+
+This closes the post-auth identity-discovery prerequisite.
+
+## Reviewer source carry-forward — live runner Baidu UTF-8 boundary — 2026-10-05
+
+```text
+LIVE_RUNNER_PRE_REPAIR_BLOB=f9729791b36b042a305207be24f5ced87113820c
+LIVE_RUNNER_POST_REPAIR_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
+LIVE_RUNNER_VALIDATOR_POST_REPAIR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
+R6R2K_GATE_BLOB=eee401fde4e9cdb1713166737731ace3e9c7e836
+```
+
+Reviewer propagated the proven UID-path decoding fix into the real G4-B runner: redirected Baidu CLI stdout/stderr is now explicitly decoded as UTF-8 before any parsing. This applies to `who` and the later Chinese-text directory/listing paths. No action arguments, provider mutation semantics, recovery semantics, Secret handling or rollback logic changed.
+
+The historical standalone R6R2 auth-readiness rerun is superseded on this post-auth path as redundant: R6R2J-R3 already performed a successful real post-auth `who` against the accepted config and produced the local UID. The live runner's pre-mutation account guard remains mandatory.
+
+Next Gate `G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K` requires only the existing offline live-runner fixture validator before live G4-B.
