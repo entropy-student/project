@@ -9382,3 +9382,42 @@ Reviewer acceptance:
 - The stale original R6R2L live Gate must not be reused because its runner/validator blob locks predate the accepted R1-R4 repairs.
 
 Next: issue a fresh live Gate locked to current accepted runner/validator identities.
+
+
+## Reviewer reconciliation — R6R2L-R5 live P5 unclassified return — 2026-10-05
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_R5
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T13:53:39.1091147+00:00
+OWNER_REPORTED_HEAD_AFTER=71e24f7155e085fa51edc192c2fea0da21ce3789
+OWNER_REPORTED_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
+OWNER_REPORTED_GATE_BLOB=bc02a9f76fb76ffdde24302db71d52c03f1c7577
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_LIVE_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_OWNER_LIVE_AUTHORIZATION=PASS
+OWNER_REPORTED_RUNNER_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
+OWNER_REPORTED_BAIDU_CLI_VERSION=v4.0.2
+OWNER_REPORTED_BAIDU_CLI_RELEASE_ARCHIVE_SHA256=ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30
+OWNER_REPORTED_BAIDU_CLI_BINARY_SHA256=e44769b49156fa3f094431da87231021e6874b6519ea82da4b8af0637662576d
+OWNER_REPORTED_FAILURE_CODE=UNCLASSIFIED
+OWNER_REPORTED_CONSEQUENTIAL_MUTATION_STARTED=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T14:02:27.7100685+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:08:48.6009538
+REVIEWER_RESULT=RETURN_R6R2L_R5_P5_UNCLASSIFIED
+```
+
+Reviewer interpretation:
+- The one-shot live attempt passed canonical source, Owner-host/network preflight, strict target identity, WG/HY2/TCP443 baseline, and REALITY target-path preflight.
+- The failure occurred in P5 before `remoteMutationStarted` was set. Therefore no persistent VPS REALITY/service mutation began.
+- The Baidu CLI package download/extraction and pinned source/hash markers completed successfully before the failure.
+- The runner emitted only `UNCLASSIFIED`, so blind replay is forbidden.
+- The remaining likely local unclassified boundaries are DPAPI/HY2 recovery parsing or local Mihomo Reality credential generation; Baidu CLI command failures are normally normalized to explicit `BAIDU_*` codes.
+- R6 is a bounded local diagnostic only. It does not authorize a live retry.
+
+```text
+G4B_P5_LOCAL_DIAGNOSTIC_R6R2L_R6_GATE_BLOB=958e62f57189e39ce33d57b524abc6280aa481c4
+G4B_P5_LOCAL_DIAGNOSTIC_R6R2L_R6_SCRIPT_BLOB=1382a7a23885b62be35442d907e4bb9cd0523f70
+```
+
+Next Gate: `G4B_P5_LOCAL_DIAGNOSTIC_R6R2L_R6`.
