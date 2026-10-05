@@ -9735,3 +9735,34 @@ R10_VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
 The earlier Evidence line recording R10 runner blob `2727ed692c2230367c4a2a8db3a55a1a678a9049` is superseded and must not be used for execution.
 
 R10 remains offline validation only.
+
+
+## Owner preflight reconciliation — R6R2L-R10 stale whole-HEAD lock — 2026-10-05
+
+```text
+ATTEMPTED_GATE=G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T15:24:33.5551200+00:00
+OWNER_REPORTED_HEAD_BEFORE=fda2a8f0fc116d507c9ec9e58e037e60c833cb06
+OWNER_REPORTED_ORIGIN_MAIN=a278443e5899870c78aa1b1c0ebd9fb9f7f937e5
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_HEAD_AFTER=a278443e5899870c78aa1b1c0ebd9fb9f7f937e5
+OWNER_REPORTED_STOP=UNEXPECTED_WHOLE_REPOSITORY_HEAD
+R10_VALIDATOR_EXECUTED=NO
+LIVE_G4B_RUNNER_EXECUTED=NO
+BAIDU_LIVE_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Reviewer reconciliation:
+- `0d2ea718... -> a278443e...` is exactly one commit.
+- That commit changes only one line in `REVIEWER_HANDOFF.md`: the transition description was refreshed from R4→R9 to R4→R10 wording.
+- R10 Gate, runner, and validator blobs are unchanged and remain authoritative:
+  - Gate `1b502116ed51c77f2798d92e11d9423599ea3bed`
+  - Runner `9cfac247da85e917e213c28172fb619a62329592`
+  - Validator `e4b08b0df3289af089fe5c191ddcc63bde76808b`
+- Current Handoff state remains `STATE=OWNER_ACTION_REQUIRED_BAIDU_REAL_LISTING_PARSER_OFFLINE_VALIDATION_R6R2L_R10`.
+- The stale wrapper's whole-repository HEAD equality guard was stricter than needed for this offline Gate and caused a harmless false stop after an unrelated Reviewer wording commit.
+- Future R10 Owner wrapper should safe-fast-forward canonical main and lock the Gate/runner/validator blobs plus current Handoff state, rather than requiring an exact whole-repository HEAD.
+- No R10 validator body ran and no live/provider/Secret/network action occurred.
