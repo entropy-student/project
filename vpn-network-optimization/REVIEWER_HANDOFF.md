@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=EXECUTOR_OFFLINE_REPAIR
+STATE=OWNER_ACTION_REQUIRED_BAIDU_POSTAUTH_UID_DISCOVERY_RETRY_R6R2J_R2
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_ONE_SHOT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2J_BAIDU_UID_OUTPUT_AMBIGUOUS
+PREVIOUS_RESULT=PASS_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only UID discovery parser/validator repair; no real who, auth, config access, provider mutation, or deployment.
+MAX_ENDPOINT_THIS_ROUND=Exactly one Owner-local read-only UID discovery retry with repaired helper; no auth, provider file mutation, deployment, or G4-C.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Canonical-line parser fixtures including one canonical plus generic uid text, duplicate canonical rejection, zero-canonical ambiguity handling, native nonzero behavior, cleanup regression, AST and Secret scan.
-ACCEPTANCE_CRITERIA=Exactly one canonical pinned who identity line is sufficient for a bounded local UID candidate; duplicate canonical identities still fail closed; raw provider output/username never emitted.
-ROLLBACK_STATUS_OR_PLAN=Source-only parser repair. Accepted authenticated config and all real Owner/provider/runtime state remain untouched.
-OWNER_ONLY_ACTIONS=NONE during R6R2J-R1. Do not retry UID discovery until Reviewer PASS.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1.md; repair only discovery parser and validator offline.
+REQUIRED_EVIDENCE=Sanitized UID-discovery markers only; numeric UID remains Owner-local; exactly one read-only who; temp runtime cleanup PASS; no provider file mutation.
+ACCEPTANCE_CRITERIA=BAIDU_UID_DISCOVERY READY, UID displayed locally only, failure NONE, runtime cleanup PASS, and no UID/provider raw output disclosure.
+ROLLBACK_STATUS_OR_PLAN=Read-only one-shot identity check with temporary runtime cleanup only; authenticated config remains untouched.
+OWNER_ONLY_ACTIONS=Run R6R2J-R2 exactly once. Keep numeric UID local; return only sanitized markers; do not retry on failure.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2J-R2 is Owner-local read-only one-shot.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -194,6 +194,11 @@ G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5_FINAL_RESULT=PASS
 G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J_GATE_BLOB=fed3c0060b56f758fad48b612421e9f7b0ae4cf6
 G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J_RESULT=RETURN_BAIDU_UID_OUTPUT_AMBIGUOUS
 G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1_GATE_BLOB=33609b9eb0b51b6387e428acbf625a3f21d1441f
+G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1_RESULT=PASS
+G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1_SOURCE_COMMIT=e70eb9168771df38eb2e5989e7f0a1551e895b05
+G4B_BAIDU_UID_DISCOVERY_HELPER_CURRENT_BLOB=ebba88863d55d74956d3b745eab8f0f18a7d1dee
+G4B_BAIDU_UID_DISCOVERY_VALIDATOR_CURRENT_BLOB=59a6bd86cf021986b7e8066fa08108e9435852c5
+G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2_GATE_BLOB=ba7df8f44132fb8ff8f55c3f95f5b790a2f0a417
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -272,11 +277,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1` offline only, then stops at Reviewer. Do not perform a real `who` or any Owner/provider action.
+Owner runs `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2` exactly once with the repaired helper. Stop after the sanitized result; do not begin recovery upload automatically.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE now. Do not retry UID discovery, authentication, or touch the accepted authenticated config.
+Run R6R2J-R2 once on the accepted Owner Windows host. Keep the numeric UID local and return only the sanitized Gate markers.
 
 ## EVIDENCE_POINTERS
 
