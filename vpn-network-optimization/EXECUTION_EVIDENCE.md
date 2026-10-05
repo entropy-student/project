@@ -9988,3 +9988,56 @@ R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
 ```
 
 All earlier R11 Gate/script identities are superseded for execution. R11 remains read-only only.
+
+
+## Reviewer formal reconciliation — R6R2L-R11 Baidu residual read-only reconciliation — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T16:10:06.0457661+00:00
+OWNER_REPORTED_HEAD_AFTER=836ec97669d6b0f33241e79e0a4945043f237550
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
+OWNER_REPORTED_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+OWNER_REPORTED_LOCKED_R11_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R11_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_DIAGNOSTIC_FAILED_STAGE=BAIDU_CONFIG_ACL
+OWNER_REPORTED_DIAGNOSTIC_EXCEPTION_TYPE=System.Management.Automation.RuntimeException
+OWNER_REPORTED_DIAGNOSTIC_ERROR_LINE=36
+OWNER_REPORTED_BAIDU_RESIDUAL_STATE=BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+OWNER_REPORTED_TEMP_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_BAIDU_MUTATION_ACTION=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_RECOVERY_READ_OR_WRITE=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T16:10:25.2497899+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:19.2040238
+REVIEWER_RESULT=RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+```
+
+Reviewer interpretation:
+- R11 source identity and parser preflight passed.
+- The diagnostic stopped during local `BAIDU_CONFIG_ACL` metadata validation before the hidden UID prompt and before any Baidu provider command.
+- Therefore R11 did not execute `who` or remote `ls`, and it did not establish whether the Baidu recovery directory is CLEAN or contains a stale pending/final object.
+- The observed fact is only that at least one inspected object under the local Baidu config subtree is not owned by the exact current Owner SID expected by the strict R6R1 invariant.
+- No config contents were read or emitted; no Baidu mutation, SSH/VPS, recovery read/write, network mutation or Secret output occurred.
+- Temporary local runtime cleanup passed.
+
+Relevant accepted history:
+- R6R1 requires exact current Owner SID ownership on every inspected config item, safe Allow principals only, no Deny ACE, no reparse point, and Owner read/list/traverse rights.
+- Earlier R6R2D / R6R2H-R1 project evidence already proved that on this Windows host a privileged child-created `pcs_config.json` can be owned by Builtin Administrators rather than the exact Owner SID.
+- That historical fact makes the current failure class plausible, but R11 does not identify the current mismatching item or principal. No such inference is accepted without metadata inspection.
+
+Next Gate:
+
+```text
+GATE_ID=G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
+```
+
+R12 is local metadata-only. It does not authorize ACL normalization, provider access, cleanup or live G4-B retry.
