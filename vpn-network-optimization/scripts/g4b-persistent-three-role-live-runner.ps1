@@ -480,7 +480,7 @@ function Invoke-BaiduCli {
     [void]$psi.ArgumentList.Add($Action)
     foreach($argument in $Arguments){[void]$psi.ArgumentList.Add([string]$argument)}
     $environmentKeys=@($psi.Environment.Keys)
-    foreach($key in $environmentKeys){if([string]$key -match '(?i)bduss|stoken|ptoken|cookie|password|credential|auth|secret|token'){$psi.Environment.Remove([string]$key)}}
+    foreach($key in $environmentKeys){if([string]$key -match '(?i)bduss|stoken|ptoken|cookie|password|credential|auth|secret|token'){[void]$psi.Environment.Remove([string]$key)}}
     $psi.Environment['BAIDUPCS_GO_CONFIG_DIR']=$BaiduConfigDirectory
     $psi.Environment['BAIDUPCS_GO_VERBOSE']='0'
     $process=[Diagnostics.Process]::new(); $stdout=$null; $stderr=$null
