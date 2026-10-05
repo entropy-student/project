@@ -699,18 +699,20 @@ body.home .bms-preview-surface {
 	}
 }
 
-/* G3CR7V2R1: Stripe Soft-Tech skin for the existing browser-local Preview. */
+/* G3CR7V2R2: Birthday Magazine brand skin for the existing browser-local Preview. */
 body.home #preview.bms-preview-chapter {
-	--bms-ui-primary: #533afd;
-	--bms-ui-primary-deep: #4434d4;
-	--bms-ui-primary-press: #2e2b8c;
-	--bms-ui-ink: #0d253d;
-	--bms-ui-secondary: #273951;
-	--bms-ui-muted: #64748d;
-	--bms-ui-canvas: #fff;
-	--bms-ui-soft: #f6f9fc;
-	--bms-ui-hairline: #e3e8ee;
-	--bms-ui-input: #a8c3de;
+	--bms-ui-primary: #713f5d;
+	--bms-ui-primary-deep: #5b314b;
+	--bms-ui-primary-press: #472439;
+	--bms-ui-primary-soft: #8e5b78;
+	--bms-ui-primary-subdued: #f4ebf0;
+	--bms-ui-ink: #182230;
+	--bms-ui-secondary: #344054;
+	--bms-ui-muted: #667085;
+	--bms-ui-canvas: #ffffff;
+	--bms-ui-soft: #f7f8fb;
+	--bms-ui-hairline: #e5e7eb;
+	--bms-ui-input: #cbd5e1;
 	position: relative;
 	isolation: isolate;
 	box-sizing: border-box;
@@ -720,17 +722,6 @@ body.home #preview.bms-preview-chapter {
 	padding: 0 clamp(16px, 4vw, 56px) 64px;
 	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 	font-feature-settings: "ss01";
-}
-
-body.home #preview.bms-preview-chapter::before {
-	position: absolute;
-	z-index: 0;
-	inset: 0 0 auto;
-	height: min(580px, 55vw);
-	min-height: 320px;
-	background: url("assets/g3cr7v2r1-soft-mesh.svg") center top / cover no-repeat;
-	content: "";
-	pointer-events: none;
 }
 
 body.home #preview .bms-focus-photo-panel,
@@ -846,7 +837,7 @@ body.home #preview .bms-field select {
 body.home #preview .bms-field input:focus-visible,
 body.home #preview .bms-field select:focus-visible {
 	border-color: var(--bms-ui-primary);
-	outline: 3px solid rgb(83 58 253 / 18%);
+	outline: 3px solid rgb(113 63 93 / 18%);
 	outline-offset: 1px;
 }
 
@@ -859,7 +850,7 @@ body.home #preview .bms-upload {
 
 body.home #preview .bms-upload:hover {
 	border-color: var(--bms-ui-primary);
-	background: #fafaff;
+	background: var(--bms-ui-primary-subdued);
 }
 
 body.home #preview .bms-upload > span {
@@ -940,19 +931,13 @@ body.home #preview .bms-coral-link:active {
 }
 
 body.home #preview .bms-coral-link:focus-visible {
-	outline: 3px solid rgb(83 58 253 / 22%);
+	outline: 3px solid rgb(113 63 93 / 22%);
 	outline-offset: 3px;
 }
 
 @media (max-width: 700px) {
 	body.home #preview.bms-preview-chapter {
 		padding: 0 16px 40px;
-	}
-
-	body.home #preview.bms-preview-chapter::before {
-		height: 420px;
-		min-height: 260px;
-		background-position: 58% top;
 	}
 
 	body.home #preview .bms-focus-photo-panel {

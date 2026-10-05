@@ -1,0 +1,188 @@
+{
+  "gate": "G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT",
+  "readback_utc": "2026-10-05T06:26:04Z",
+  "repository": "entropy-student/project",
+  "pull_request": {
+    "number": 64,
+    "state_before_submission": "open",
+    "merged": false,
+    "pre_execution_head": "18ab6b0e6d18d973bd4cc9376cec97b6fb89b830",
+    "target_ref": "codex/birthday-magazine-g3c-blocksy-wedding-productization"
+  },
+  "git": {
+    "latest_main_fetched": "07bdc6cf47dc6499de44dfa8b262ad1a6b7899d3",
+    "frozen_candidate_anchor": "18ab6b0e6d18d973bd4cc9376cec97b6fb89b830",
+    "local_checkout_branch_alias": "codex/birthday-magazine-g3cr7v1-premium-saas-visual-refinement",
+    "only_intended_tracked_paths": [
+      "birthday-magazine-studio/poc/g3c/preview-plugin/magazine-preview.css",
+      "birthday-magazine-studio/poc/g3c/preview-plugin/frontend-reproduction.css",
+      "birthday-magazine-studio/poc/g3c/preview-plugin/assets/g3cr7v2r1-soft-mesh.svg (deleted)",
+      "birthday-magazine-studio/docs/evidence/g3cr7v2r2/",
+      "birthday-magazine-studio/EXECUTION_EVIDENCE.md",
+      "birthday-magazine-studio/EXECUTOR_HANDOFF.md"
+    ],
+    "unrelated_preexisting_untracked_zip_excluded": "birthday-magazine-studio/docs/evidence/g3cr7v2r1.zip"
+  },
+  "runtime": {
+    "container_name": "birthday-magazine-g3c-wordpress-1",
+    "container_id": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+    "state": "running",
+    "started_at": "2026-10-04T05:28:03.504710353Z",
+    "restart_count": 0,
+    "published_endpoint": "127.0.0.1:8189",
+    "site_url": "http://127.0.0.1:8189/",
+    "active_plugin_bind_source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\preview-plugin",
+    "active_plugin_bind_destination": "/var/www/html/wp-content/plugins/bms-g3c-preview",
+    "active_plugin_bind_read_only": true,
+    "direct_no_proxy_get_http_status": 200,
+    "host_proxy_note": "One initial shell HTTP request attempted the configured loopback proxy at 127.0.0.1:10808 and failed; explicit no-proxy requests then returned 200 for all three routes. No proxy configuration was modified and no container restart was needed.",
+    "browser_route_http_statuses": {
+      "homepage": 200,
+      "intake": 200,
+      "status_visual_fixture": 200
+    },
+    "runtime_retained": true
+  },
+  "capture_tools": {
+    "browser": "Microsoft Edge",
+    "edge_version": "154.0.4258.53",
+    "playwright_version": "1.62.1",
+    "node_version": "v24.19.0"
+  },
+  "identity_reconciliation": {
+    "pre_alignment_classification": "STALE_OR_UNNEEDED_RUNTIME_DELTA",
+    "material_local_only_dependency": false,
+    "difference_found": "The dirty active main PHP had a different raw byte/newline representation; its normalized Git blob matched the frozen candidate and structural review found no additional dependency or behavior.",
+    "pre_alignment_main_php": {
+      "bytes": 6679,
+      "raw_sha256": "9de7b8f9ef1a7f646dcc7d2d2959164949ad310bad4921cea1f6915466d6a480"
+    },
+    "rollback_backup": {
+      "path": "birthday-magazine-studio/poc/g3c/.tmp/g3cr7v2r2-runtime-rollback/birthday-magazine-poc.php",
+      "bytes": 6679,
+      "sha256": "9de7b8f9ef1a7f646dcc7d2d2959164949ad310bad4921cea1f6915466d6a480",
+      "project_gitignored": true,
+      "committed": false,
+      "byte_exact_backup_verified": true
+    },
+    "candidate_files": [
+      {
+        "path": "poc/g3c/preview-plugin/birthday-magazine-poc.php",
+        "canonical_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+        "source_raw_sha256": "eb9cdb293569d9d84e978af42806bad2699f094587b2e525c5e12175fac96742",
+        "runtime_raw_sha256": "eb9cdb293569d9d84e978af42806bad2699f094587b2e525c5e12175fac96742",
+        "runtime_bytes": 6683,
+        "runtime_normalized_git_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+        "matches_candidate": true
+      },
+      {
+        "path": "poc/g3c/preview-plugin/frontend-reproduction.php",
+        "canonical_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1",
+        "source_raw_sha256": "1ebb906f8e1ab9537c451a8f36e28d60b269ff90c5ea0d11b27fbca49a6ed32e",
+        "runtime_raw_sha256": "61d7bd79ba0872184785411bfd790eeb79baa96c2c422b027111a9cb8a2b05c9",
+        "runtime_normalized_git_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1",
+        "matches_candidate": true,
+        "raw_line_endings_differ": true
+      },
+      {
+        "path": "poc/g3c/preview-plugin/frontend-reproduction.js",
+        "canonical_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a",
+        "source_raw_sha256": "11d80952c47aea4232fa002cfacc48f563668292aba91811da70fcafed3807d1",
+        "runtime_raw_sha256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+        "runtime_normalized_git_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a",
+        "matches_candidate": true,
+        "raw_line_endings_differ": true
+      }
+    ]
+  },
+  "brand_polish": {
+    "source_files": [
+      {
+        "path": "poc/g3c/preview-plugin/magazine-preview.css",
+        "baseline_git_blob": "784391f21ebfd05978f497a55f85b9c1a1f3b490",
+        "final_git_blob": "f6fd8bb0cfcec0e6510d0a69f4e8426c46092e55",
+        "source_and_runtime_sha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5"
+      },
+      {
+        "path": "poc/g3c/preview-plugin/frontend-reproduction.css",
+        "baseline_git_blob": "3d186811600d6cef364acb56aceafd1db1b738ff",
+        "final_git_blob": "6c48fe35711248bad8b19a9d93b9c2a0fb4e29d9",
+        "source_and_runtime_sha256": "cb1e7c3e80170f0419a16a58e29f898569da350babcf58ecc4f2be40c888c7de"
+      }
+    ],
+    "computed_preview_tokens": {
+      "primary": "#713f5d",
+      "primary-deep": "#5b314b",
+      "primary-press": "#472439",
+      "primary-soft": "#8e5b78",
+      "primary-subdued": "#f4ebf0",
+      "ink": "#182230",
+      "secondary": "#344054",
+      "muted": "#667085",
+      "canvas": "#ffffff",
+      "soft": "#f7f8fb",
+      "hairline": "#e5e7eb",
+      "input": "#cbd5e1"
+    },
+    "computed_intake_and_status_tokens": {
+      "primary": "#713f5d",
+      "primary-deep": "#5b314b",
+      "primary-press": "#472439",
+      "primary-soft": "#8e5b78",
+      "primary-subdued": "#f4ebf0",
+      "ink": "#182230",
+      "secondary": "#344054",
+      "muted": "#667085",
+      "canvas": "#ffffff",
+      "soft": "#f7f8fb",
+      "hairline": "#e5e7eb",
+      "input": "#cbd5e1"
+    },
+    "old_stripe_primary_in_scoped_css": false,
+    "mesh_svg_source_exists": false,
+    "mesh_svg_runtime_exists": false,
+    "mesh_css_or_runtime_references": 0,
+    "mesh_replacement_asset": "NONE",
+    "magazine_artifact_palette_recolored": false
+  },
+  "browser_smoke": {
+    "browser": "Microsoft Edge via Playwright",
+    "viewport_sizes": [
+      "1440x1000",
+      "375x812"
+    ],
+    "screenshots": 6,
+    "route_http_statuses_all_200": true,
+    "horizontal_overflow": false,
+    "visible_surface_broken_images": 0,
+    "preview_blob_image_count": 2,
+    "intake_synthetic_photo_count": 12,
+    "intake_must_use_count": 1,
+    "intake_next_back_both_widths": true,
+    "native_checkout_handoff_url": "http://127.0.0.1:8189/checkout/",
+    "status_fixture_not_order": true,
+    "network_requests": 189,
+    "non_get_requests": 0,
+    "model_provider_requests": 0,
+    "external_image_requests": 0,
+    "mesh_requests": 0,
+    "page_errors": 0,
+    "critical_request_failures": 0,
+    "noncritical_existing_lato_font_fallbacks": 2
+  },
+  "forbidden_actions": {
+    "checkout_submission": 0,
+    "order_mutation": 0,
+    "payment_or_provider_mutation": 0,
+    "paypal_actions": 0,
+    "model_or_ai_calls": 0,
+    "image_generation_calls": 0,
+    "production_deployments": 0,
+    "shared_infrastructure_mutations": 0,
+    "docker_restart_recreate_build_pull_down_or_volume_mutation": 0,
+    "pr_merge": 0,
+    "g4_actions": 0
+  },
+  "final_candidate_remains_mounted": true,
+  "stop_at_reviewer": true
+}

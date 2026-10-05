@@ -1,0 +1,55 @@
+{
+  "gate": "G3CR7V2R2_BRAND_POLISH_RUNTIME_ALIGNMENT",
+  "browser": "Microsoft Edge via Playwright",
+  "capture_mode": "full visible application section; viewport-specific; synthetic fixture only",
+  "screenshots": [
+    {
+      "file": "after/01-home-preview-core-1440.png",
+      "surface": "homepage Preview/core-entry with one selected synthetic photo",
+      "viewport": "1440x1000",
+      "image_dimensions": "1440x858",
+      "bytes": 114710,
+      "sha256": "164410c17f6b8e1d7f1c2e9e484dd1e8b71b3e6fa9dfbb9d983480555f517bb0"
+    },
+    {
+      "file": "after/02-home-preview-core-375.png",
+      "surface": "homepage Preview/core-entry with one selected synthetic photo",
+      "viewport": "375x812",
+      "image_dimensions": "375x1331",
+      "bytes": 72158,
+      "sha256": "1894a557d46ffd84cd5e8c5d1b3f22cddb1ad4e0fbf2832cad59c48552d07686"
+    },
+    {
+      "file": "after/03-intake-photos-1440.png",
+      "surface": "intake Photos step with 12 synthetic photos and one must-use selection",
+      "viewport": "1440x1000",
+      "image_dimensions": "1120x1576",
+      "bytes": 87877,
+      "sha256": "dba37f3e6eb4b99363e8e6e6065dfc30e424b69889c5494604f596a0f817b795"
+    },
+    {
+      "file": "after/04-intake-photos-375.png",
+      "surface": "intake Photos step with 12 synthetic photos and one must-use selection",
+      "viewport": "375x812",
+      "image_dimensions": "375x1962",
+      "bytes": 76907,
+      "sha256": "f2a9fbeb1803981ff33540b94188982f5163a9289bd45680d65224f32180e1ce"
+    },
+    {
+      "file": "after/05-status-1440.png",
+      "surface": "local visual status fixture, explicitly marked NOT AN ORDER",
+      "viewport": "1440x1000",
+      "image_dimensions": "1120x944",
+      "bytes": 64550,
+      "sha256": "9f790f31166495b2db143f787a14fb22b831690cde6c2f4476ad77cf42365f55"
+    },
+    {
+      "file": "after/06-status-375.png",
+      "surface": "local visual status fixture, explicitly marked NOT AN ORDER",
+      "viewport": "375x812",
+      "image_dimensions": "375x1147",
+      "bytes": 59227,
+      "sha256": "38eb95b8471269bff62ec544f1cd985ceb21c06f95846c492cf632ccbed99747"
+    }
+  ]
+}
