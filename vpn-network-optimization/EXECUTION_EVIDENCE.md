@@ -7750,3 +7750,76 @@ Reviewer independently inspected the final `main` source and accepted Evidence. 
 R1-R4 regression markers, all required R5R1 markers, PowerShell AST parsing, Secret scan, changed-path scope, timing persistence, and GitHub fresh read-back are accepted. The final two commits after the source change contain only Evidence/Executor-Handoff persistence and timing correction. No live runner, Baidu provider operation, VPS/SSH, real Secret access, network request, Clash/profile, service, route, proxy, TUN, or G4-C action occurred.
 
 R5R1 closes as formal PASS. This does not PASS G4-B. The next boundary is offline preparation of the Owner-local Baidu authentication-readiness checkpoint; real account authentication remains Owner-only and credentials must never enter chat/GitHub/logs/process arguments.
+
+
+## Executor result — G4-B Baidu Owner Auth Readiness Checkpoint R6 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=f5be4bd5df51fd0ab107389bb32d4fe4bf2c7fbd
+GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
+R5R1_RUNNER_BLOB=f9729791b36b042a305207be24f5ced87113820c
+R5R1_FIXTURE_VALIDATOR_BLOB=2bbc5c61c51fd381063fceebcaa5114b23daa36b
+R5R1_IMPLEMENTATION_PACKAGE_BLOB=305b0b2d8fa14917b7057c6dfeb52a28e0a52f08
+R5R1_LOCKED_IDENTITIES=PASS
+OWNER_AUTH_READINESS_CHECKPOINT_OFFLINE_READY=YES
+```
+
+### Changes and validation
+
+- Added `scripts/g4b-baidu-auth-readiness-checkpoint.ps1` as a single future Owner-local checkpoint. It has no credential parameters; it accepts only a non-secret expected numeric account UID, optional pinned release archive path, and config-directory path. It never invokes a login command.
+- Reused the accepted BaiduPCS-Go v4.0.2 archive URL and fixed SHA-256 trust anchor `ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30`. Archive digest validation precedes ZIP opening; extraction is restricted to one bounded, traversal-safe `BaiduPCS-Go.exe` entry.
+- Config validation is limited to path location, existence/type, ownership/ACL, reparse metadata, and bounded directory-entry metadata. No config file content is opened, copied, or emitted. The future CLI child process uses a cleared/minimal environment, redirected stdout/stderr, and exactly the fixed read-only `who` argument; output is parsed only in memory and only bounded status/error codes are emitted.
+- Added `scripts/g4b-baidu-auth-readiness-validator.ps1`. It dot-sources definitions without invoking the checkpoint, tests only synthetic account/output/config/ACL fixtures, and creates/removes one uniquely named non-secret local fixture tree.
+- The first attempt to alter the temporary fixture DACL for a broad-access negative case was blocked by the local token's missing `SeSecurityPrivilege`; no Owner config was accessed. The validator was narrowed to inject a synthetic broad-ACE metadata object into the exact production ACL predicate, then the full suite passed. Fixture cleanup passed.
+
+```text
+R6_NO_CREDENTIAL_PARAMETERS=PASS
+R6_NO_LOGIN_COMMAND=PASS
+R6_PINNED_ARCHIVE_TRUST_REUSED=PASS
+R6_CONFIG_METADATA_ONLY=PASS
+R6_CONFIG_ABSENT_OWNER_ACTION_REQUIRED=PASS
+R6_CONFIG_ACL_FIXTURE=PASS
+R6_CONFIG_ACL_FAIL_CLOSED=PASS
+R6_CONFIG_LOCATION_FAIL_CLOSED=PASS
+R6_WHO_ONLY_RUNTIME_ACTION=PASS
+R6_RAW_PROVIDER_OUTPUT_SUPPRESSED=PASS
+R6_UID_NOT_EMITTED=PASS
+R6_EXPECTED_ACCOUNT_MATCH_FAIL_CLOSED=PASS
+R6_UNAUTHENTICATED_RETURNS_OWNER_ACTION_REQUIRED=PASS
+R6_NO_PROVIDER_MUTATION_COMMANDS=PASS
+R6_ATOMIC_RUNTIME_CLEANUP=PASS
+R6_SYNTHETIC_FIXTURE_CLEANUP=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+LIVE_ACTIONS=0
+CREDENTIAL_VALUES_ACCEPTED_OR_EMITTED=0
+```
+
+### Scope, provenance, and timing
+
+Canonical root was `C:\Users\34707\Documents\ChatGPT\VPS搭建`, branch `main`, origin `https://github.com/entropy-student/project.git`. The initial local HEAD was `8f8153b1f4f2d54de6721aaf6d77245a0e33f628`; after fetching, `origin/main` was `f5be4bd5df51fd0ab107389bb32d4fe4bf2c7fbd`. A safe fast-forward was possible; the pre-existing untracked `vpn-network-optimization/results/` directory was preserved, not read or staged. The three accepted R5R1 blobs and current R6 Gate blob matched Reviewer Handoff.
+
+Only the two R6 scripts plus this Evidence and the current Executor Handoff status block are in scope. `REVIEWER_HANDOFF.md` is unchanged. No checkpoint execution, Baidu CLI invocation, config read, real credential/Secret/DPAPI access, network request, VPS/SSH, Clash, route, proxy, TUN, service, or G4-C action occurred. No Owner authentication or provider operation is requested in this Gate.
+
+```text
+ROUND_STARTED_AT=2026-10-04T23:35:22Z
+ROUND_FINISHED_AT=PENDING_GITHUB_FRESH_READBACK
+ACTUAL_ELAPSED=PENDING_GITHUB_FRESH_READBACK
+TIME_OVERRUN=PENDING
+TIME_OVERRUN_REASON=The local ACL fixture could not write a broad ACE without SeSecurityPrivilege; a synthetic ACL-rule fixture was substituted and the complete offline validator rerun. This bounded fixture adjustment and subsequent source/static review exceeded the 25-minute estimate.
+TIMING_BOUNDARY=FINISH_CAPTURED_AFTER_GITHUB_FRESH_READBACK_OF_SOURCE_EVIDENCE_HANDOFF; timing-only persistence follows
+BAIDU_CLI_INVOKED=NO
+REAL_BAIDU_ACTIONS=0
+NETWORK_REQUESTS=0
+VPS_OR_SSH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+SECRET_OR_DPAPI_ACCESSED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ROLLBACK=Revert only the two R6 scripts and R6 Evidence/Executor-Handoff changes; no runtime rollback is required.
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
+STOP_AT_REVIEWER=YES
+```

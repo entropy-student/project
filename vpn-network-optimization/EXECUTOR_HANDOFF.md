@@ -4,31 +4,38 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Netdisk recovery backend repair R5R1
+## Current execution status — G4-B Baidu Owner Auth Readiness Checkpoint R6
 
 ```text
-GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1
-EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_REPAIR_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
-R5R1_GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
-GOVERNANCE_VERSION_CURRENT=v0.2.7
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
-PRE_GATE_HEAD=1ade5e981591bcc07e7a347c11949092b257c2da
-SOURCE_COMMIT=f1c1b1abdd713089edc4fa677322b96aadcc7e3d
-SOURCE_GITHUB_FRESH_READBACK=PASS
-R1_R2_R3_R4_REGRESSIONS=PASS
-R5R1_FIXTURES=PASS
+GATE_ID=G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_CHECKPOINT_DESIGN_AND_FIXTURE_VALIDATION
+PREVIOUS_RESULT=PASS_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=f5be4bd5df51fd0ab107389bb32d4fe4bf2c7fbd
+R6_GATE_BLOB=9b4822bbf293e055831f7cc911f98e404695e0ac
+R5R1_RUNNER_BLOB=f9729791b36b042a305207be24f5ced87113820c
+R5R1_FIXTURE_VALIDATOR_BLOB=2bbc5c61c51fd381063fceebcaa5114b23daa36b
+R5R1_IMPLEMENTATION_PACKAGE_BLOB=305b0b2d8fa14917b7057c6dfeb52a28e0a52f08
+R6_CHECKPOINT_OFFLINE_READY=YES
+R6_SYNTHETIC_FIXTURES=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
+OWNER_AUTH_READINESS_CHECKPOINT_OFFLINE_READY=YES
+CREDENTIAL_VALUES_ACCEPTED_OR_EMITTED=0
 LIVE_ACTIONS=0
 REAL_BAIDU_ACTIONS=0
-ESTIMATED_EXECUTION_TIME=15-30 minutes
+BAIDU_CLI_INVOKED=NO
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+VPS_OR_SSH_ACTIONS=0
+ESTIMATED_EXECUTION_TIME=15-25 minutes
 TIMING_RECORD_REQUIRED=YES
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-ROUND_STARTED_AT=2026-10-05T00:51:27+08:00
-ROUND_FINISHED_AT=2026-10-05T01:13:29+08:00
-ACTUAL_ELAPSED=22m02s
-TIME_OVERRUN=NO
+ROUND_STARTED_AT=2026-10-04T23:35:22Z
+ROUND_FINISHED_AT=PENDING_GITHUB_FRESH_READBACK
+ACTUAL_ELAPSED=PENDING_GITHUB_FRESH_READBACK
+TIME_OVERRUN=PENDING
+TIME_OVERRUN_REASON=Offline ACL fixture required a synthetic-rule fallback after the local token lacked SeSecurityPrivilege for writing the negative ACE; full validator was rerun and passed.
 REAL_BAIDU_LOGIN_OR_FILE_OPERATION=NO
 LIVE_G4B_EXECUTION=NO
 STOP_AT_REVIEWER=YES
@@ -36,7 +43,7 @@ STOP_AT_REVIEWER=YES
 
 ### Executor task
 
-Completed: fixed only the downloaded-local ZIP path and production pending basename/guard, retained the archive SHA-256 trust model, passed R1–R4 regressions and R5R1 offline fixtures, and freshly read back the source commit from GitHub `main`. Evidence and this handoff record the execution; no live runner, Baidu, VPS, Secret, or network action occurred. Stop at Reviewer.
+R6 prepares one Owner-local readiness checkpoint and offline validator only. The checkpoint pins the accepted BaiduPCS-Go v4.0.2 archive digest, extracts only the bounded executable entry, inspects the selected config tree using metadata/ACL/reparse/location checks, and permits exactly one read-only `who` command on a future Owner run. Provider output and UID remain internal; only bounded status markers are emitted. Synthetic fixtures validate account match/mismatch, unauthenticated action-required behavior, ACL/location failures, fixed digest order and cleanup. The checkpoint itself was not run; no real config, credential, provider, VPS or network was accessed. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
