@@ -16,6 +16,9 @@ Parent consequential Gate:
 Parent Gate blob at R17R1 preparation:
 `dccccf92969d37f5f83b7cb4b6f085cc0cdf566c`
 
+Current suspended parent Gate blob:
+`09fd5086dc6f6121fdbd3006553560b19019b211`
+
 Starting implementation identities:
 `R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c`
 `R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029`
