@@ -9338,3 +9338,47 @@ G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4_VALIDATOR_BLOB=5c8763350098f181f41b
 ```
 
 Next Gate: `G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4`. Owner reruns only the offline validator after safe fast-forward. Live G4-B remains blocked.
+
+
+## Reviewer formal decision — R6R2L-R4 offline validation — 2026-10-05
+
+```text
+GATE_ID=G4B_CRLF_VALIDATOR_ASSERTION_REPAIR_R6R2L_R4
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T13:46:01.6070261+00:00
+OWNER_REPORTED_HEAD_AFTER=034e7c714dabe4c794e2cf16b5d80b7568cf9303
+OWNER_REPORTED_RUNNER_BLOB=8b099e4229642bf439eb03c0d1e9cce0f8e698bd
+OWNER_REPORTED_VALIDATOR_BLOB=5c8763350098f181f41b0b1e0799885da9e5d07d
+OWNER_REPORTED_GATE_BLOB=d53822ed92eebaf196ce7e5270301bf9bba30cca
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_VALIDATOR_PARSE_PREFLIGHT=PASS
+OWNER_REPORTED_CRLF_HANDOFF_CONTRACT=PASS
+OWNER_REPORTED_CANONICAL_GIT_ROOT_PATH_SCOPE=PASS
+OWNER_REPORTED_G4B_LIVE_RUNNER_FIXTURES=PASS
+OWNER_REPORTED_NEGATIVE_FIXTURES=PASS
+OWNER_REPORTED_DPAPI_OR_REAL_SECRET_ACCESS=NO
+OWNER_REPORTED_EXTERNAL_REQUESTS=0
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_CLASH_PROFILE_MUTATION=NO
+OWNER_REPORTED_SYSTEM_PROXY_CHANGE=NO
+OWNER_REPORTED_TUN_CHANGE=NO
+OWNER_REPORTED_SERVICE_MUTATION=NO
+OWNER_REPORTED_ROUTE_MUTATION=NO
+OWNER_REPORTED_REALITY_LIVE_DEPLOYMENT=NO
+OWNER_REPORTED_G4C_EXECUTION=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T13:46:18.8763219+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:17.2692958
+REVIEWER_DECISION=PASS_R6R2L_R4
+```
+
+Reviewer acceptance:
+- Full positive fixture suite passed.
+- Full negative fixture suite passed.
+- The real Owner Windows checkout proved Unicode-safe Git-root handling, CRLF-compatible Handoff matching, root-relative tracked-file/status queries, and preservation of the accepted untracked `results/` artifacts.
+- The live runner remained uninvoked; no VPS/SSH/Baidu/Secret/DPAPI/Clash/service/route/proxy/TUN mutation occurred.
+- R6R2L P0 failure and R1-R4 repair chain are reconciled.
+- Existing live authorization remains valid for the bounded G4-B live Gate because the prior authorized attempt failed before consequential mutation. Current Handoff already records `OWNER_LIVE_G4B_AUTHORIZATION=GRANTED` and `LIVE_G4B_EXECUTION_AUTHORIZED=YES`.
+- The stale original R6R2L live Gate must not be reused because its runner/validator blob locks predate the accepted R1-R4 repairs.
+
+Next: issue a fresh live Gate locked to current accepted runner/validator identities.
