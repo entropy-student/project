@@ -64,6 +64,7 @@ add_shortcode('bms_preview', function ($atts) {
  ob_start(); ?>
  <div class="bms-preview" data-bms-preview data-has-photo="false">
   <div class="bms-preview-controls">
+   <?php if (is_front_page()) : ?><h3 class="bms-preview-controls-title">Try it for free</h3><?php endif; ?>
    <div class="bms-preview-details">
     <div class="bms-field"><label for="bms-name">Their name</label><input id="bms-name" data-bms-input="name" maxlength="32" value="Taylor" autocomplete="off"></div>
     <div class="bms-field"><label for="bms-age">Age</label><input id="bms-age" data-bms-input="age" type="number" min="1" max="120" value="30" inputmode="numeric"></div>

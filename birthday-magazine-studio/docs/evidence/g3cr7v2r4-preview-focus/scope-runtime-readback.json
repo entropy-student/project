@@ -1,0 +1,46 @@
+{
+  "baseline": "1bb5dedde256ad84fec02d7350430f051492ed0f",
+  "homeId": 858,
+  "before": {
+    "homeSHA256": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a",
+    "outsidePreviewSHA256": "3ea0354016935a2918bd638fd14f8baa872b54876fb5ac9863b3f27e0ce72e61",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0,
+    "groups": 8
+  },
+  "after": {
+    "homeSHA256": "6d15fe64e152e3fce87bbab067eb04f2ab8828ea60954bb2898cf8b8bee28917",
+    "outsidePreviewSHA256": "3ea0354016935a2918bd638fd14f8baa872b54876fb5ac9863b3f27e0ce72e61",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0,
+    "groups": 8
+  },
+  "identities": [
+    {
+      "file": "magazine-preview.css",
+      "sourceSHA256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+      "runtimeSHA256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+      "exact": true
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "sourceSHA256": "b487cc54087080e456424ca59cdb46c305a6f119bfa3777b425b4c21f4c53dad",
+      "runtimeSHA256": "b487cc54087080e456424ca59cdb46c305a6f119bfa3777b425b4c21f4c53dad",
+      "exact": true
+    }
+  ],
+  "runtimeRetained": true,
+  "backupPath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\poc\\g3c\\.tmp\\preview-focus-20261005",
+  "otherHomeSectionsUnchanged": true,
+  "checkoutSubmissions": 0,
+  "paymentActions": 0,
+  "imageGeneration": 0
+}

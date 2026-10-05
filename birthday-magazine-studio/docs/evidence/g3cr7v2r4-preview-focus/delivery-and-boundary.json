@@ -1,0 +1,107 @@
+{
+  "baseline": "1bb5dedde256ad84fec02d7350430f051492ed0f",
+  "backups": [
+    {
+      "role": "source",
+      "file": "magazine-preview.css",
+      "sha256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "verified": true
+    },
+    {
+      "role": "runtime",
+      "file": "magazine-preview.css",
+      "sha256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "verified": true
+    },
+    {
+      "role": "source",
+      "file": "birthday-magazine-poc.php",
+      "sha256": "c05e0de0f85889b61abfd68c2bef85aa23cffde1b745631ee23414bb0db83517",
+      "verified": true
+    },
+    {
+      "role": "runtime",
+      "file": "birthday-magazine-poc.php",
+      "sha256": "c05e0de0f85889b61abfd68c2bef85aa23cffde1b745631ee23414bb0db83517",
+      "verified": true
+    }
+  ],
+  "frozen": [
+    {
+      "file": "preview.js",
+      "baselineSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "sourceSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "runtimeSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.js",
+      "baselineSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "sourceSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "runtimeSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.php",
+      "baselineSHA256": "c6a3a0c95870df17bbde1899d3908d50b4ba435db9912e922edfcb783447c33a",
+      "sourceSHA256": "c6a3a0c95870df17bbde1899d3908d50b4ba435db9912e922edfcb783447c33a",
+      "runtimeSHA256": "c6a3a0c95870df17bbde1899d3908d50b4ba435db9912e922edfcb783447c33a",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "baselineSHA256": "d2f96617d59584b066f9c542b426d83aaab617ee4e769296f0781c7320d13485",
+      "sourceSHA256": "d2f96617d59584b066f9c542b426d83aaab617ee4e769296f0781c7320d13485",
+      "runtimeSHA256": "d2f96617d59584b066f9c542b426d83aaab617ee4e769296f0781c7320d13485",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "home.css",
+      "baselineSHA256": "4715b7924de378ca31efbbd8d3ad1cc28b1b346e80cd2022f9e633a9c6578fa1",
+      "sourceSHA256": "4715b7924de378ca31efbbd8d3ad1cc28b1b346e80cd2022f9e633a9c6578fa1",
+      "runtimeSHA256": "4715b7924de378ca31efbbd8d3ad1cc28b1b346e80cd2022f9e633a9c6578fa1",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "home-motion.js",
+      "baselineSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "sourceSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "runtimeSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    },
+    {
+      "file": "studio.css",
+      "baselineSHA256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+      "sourceSHA256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+      "runtimeSHA256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+      "normalizedNewlinesOnly": true,
+      "unchanged": true
+    }
+  ],
+  "phpDifferenceOnlyHomeConditionalHeading": true,
+  "delivery": {
+    "browser": "154.0.4258.53",
+    "ordinaryCache": true,
+    "routing": false,
+    "cacheCleared": false,
+    "bypass": false,
+    "cssURL": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791199589",
+    "status": 200,
+    "deliveredSHA256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+    "sourceSHA256": "f0aee5892cc0848ec994d047b754e0b542f895df6bfdf4a662d8bd22d8764d53",
+    "tokens": {
+      "field": "rgb(244, 235, 240)",
+      "headingWeight": "650",
+      "emphasis": "rgb(113, 63, 93)",
+      "emphasisWeight": "700",
+      "scrollWidth": 2048,
+      "viewport": 2048
+    }
+  }
+}

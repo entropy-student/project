@@ -1,0 +1,238 @@
+{
+  "finalPhase": "confirm",
+  "screenshots": [
+    {
+      "file": "before/home-context-1440.png",
+      "phase": "before",
+      "width": 1440,
+      "height": 9328,
+      "bytes": 5604362,
+      "sha256": "b9715f05d918708fc233dd83d20fbab31223de81202e4fe25833ff0d500f868d",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\home-context-1440.png"
+    },
+    {
+      "file": "before/preview-empty-1440.png",
+      "phase": "before",
+      "width": 1440,
+      "height": 840,
+      "bytes": 112359,
+      "sha256": "4f45e1eeb203176b9d3d73c62421ba2bdd7c5d5ff86c0aa4649d1245d9c41a15",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-empty-1440.png"
+    },
+    {
+      "file": "before/preview-empty-2048.png",
+      "phase": "before",
+      "width": 2048,
+      "height": 846,
+      "bytes": 127043,
+      "sha256": "ca516f536d2b7348675eba2747c4f2a21d892045451283771cc099ed31006263",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-empty-2048.png"
+    },
+    {
+      "file": "before/preview-empty-375.png",
+      "phase": "before",
+      "width": 375,
+      "height": 1557,
+      "bytes": 70277,
+      "sha256": "49a2b1fe533ad47a67c5cb940164b5f913bd3e42b18fcbb52530fd9704b26429",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-empty-375.png"
+    },
+    {
+      "file": "before/preview-photo-1440.png",
+      "phase": "before",
+      "width": 1440,
+      "height": 860,
+      "bytes": 340448,
+      "sha256": "adcab468b8208fd2ac5034a8f3e45b13e1d800efa2a49b0dc12542320f22bedd",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-photo-1440.png"
+    },
+    {
+      "file": "before/preview-photo-2048.png",
+      "phase": "before",
+      "width": 2048,
+      "height": 866,
+      "bytes": 449420,
+      "sha256": "69f10495b8d1ca1135742529b15592eebcbe55e04c8db776d0153f5c45f7c88e",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-photo-2048.png"
+    },
+    {
+      "file": "before/preview-photo-375.png",
+      "phase": "before",
+      "width": 375,
+      "height": 1577,
+      "bytes": 191432,
+      "sha256": "e29574fca7651a9e11c31d503b85974750e477a32b7273b40567ac8f0645b35b",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\before\\preview-photo-375.png"
+    },
+    {
+      "file": "after/home-context-1440.png",
+      "phase": "after",
+      "width": 1440,
+      "height": 9371,
+      "bytes": 5620632,
+      "sha256": "21b9ce2b7ca9cf1bc91f1e52e2464cee03d5b3d1ab1a38566b1a2b6cc4707403",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\home-context-1440.png"
+    },
+    {
+      "file": "after/preview-empty-1440.png",
+      "phase": "after",
+      "width": 1440,
+      "height": 883,
+      "bytes": 127259,
+      "sha256": "b787d4672abb62a9de929c8b0359cd324922e562b27949307e71d1422080e153",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-empty-1440.png"
+    },
+    {
+      "file": "after/preview-empty-2048.png",
+      "phase": "after",
+      "width": 2048,
+      "height": 952,
+      "bytes": 149702,
+      "sha256": "316a9456490e9a6036a65de0596c1012fc379a9e2eba11ecb22224dc579b560b",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-empty-2048.png"
+    },
+    {
+      "file": "after/preview-empty-375.png",
+      "phase": "after",
+      "width": 375,
+      "height": 1712,
+      "bytes": 84569,
+      "sha256": "988d52a1ba5facecbc6d9c646d0943e12c37d4b5bb38fee7dd3ff7a35e578e61",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-empty-375.png"
+    },
+    {
+      "file": "after/preview-no-js-1440.png",
+      "phase": "after",
+      "width": 1440,
+      "height": 883,
+      "bytes": 117244,
+      "sha256": "4776a81cb6400ab772f86ac97dbbe237aa26b7b5e286a89a0acbb7cf5d67f03a",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-no-js-1440.png"
+    },
+    {
+      "file": "after/preview-no-js-375.png",
+      "phase": "after",
+      "width": 375,
+      "height": 1712,
+      "bytes": 81189,
+      "sha256": "c0bbb0a8d391ba143aa79e7f794e892c9d29a191c52633e45210b0a2314735d1",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-no-js-375.png"
+    },
+    {
+      "file": "after/preview-photo-1440.png",
+      "phase": "after",
+      "width": 1440,
+      "height": 883,
+      "bytes": 356629,
+      "sha256": "edf23939cbbbbe23d1cd7415c78d7ec4b984728698cb9a4be47ea3f46bdb0d38",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-photo-1440.png"
+    },
+    {
+      "file": "after/preview-photo-2048.png",
+      "phase": "after",
+      "width": 2048,
+      "height": 952,
+      "bytes": 471435,
+      "sha256": "5e6899f694283daca4bf79f57ab3c8053610911c0e5911f185d1560b9e48f797",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-photo-2048.png"
+    },
+    {
+      "file": "after/preview-photo-375.png",
+      "phase": "after",
+      "width": 375,
+      "height": 1732,
+      "bytes": 205593,
+      "sha256": "9445908adede291db3a10f026edcc81e6aa26e92adab7e06ffb934d6a7935bc5",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\after\\preview-photo-375.png"
+    },
+    {
+      "file": "confirm/home-context-1440.png",
+      "phase": "confirm",
+      "width": 1440,
+      "height": 9371,
+      "bytes": 5620632,
+      "sha256": "21b9ce2b7ca9cf1bc91f1e52e2464cee03d5b3d1ab1a38566b1a2b6cc4707403",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\home-context-1440.png"
+    },
+    {
+      "file": "confirm/preview-empty-1440.png",
+      "phase": "confirm",
+      "width": 1440,
+      "height": 883,
+      "bytes": 127259,
+      "sha256": "b787d4672abb62a9de929c8b0359cd324922e562b27949307e71d1422080e153",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-empty-1440.png"
+    },
+    {
+      "file": "confirm/preview-empty-2048.png",
+      "phase": "confirm",
+      "width": 2048,
+      "height": 952,
+      "bytes": 149793,
+      "sha256": "4705db6b984c488f814f5ede3638cb63a7a3d06b0cc6f26836bc5b9836b750e9",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-empty-2048.png"
+    },
+    {
+      "file": "confirm/preview-empty-375.png",
+      "phase": "confirm",
+      "width": 375,
+      "height": 1712,
+      "bytes": 84569,
+      "sha256": "988d52a1ba5facecbc6d9c646d0943e12c37d4b5bb38fee7dd3ff7a35e578e61",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-empty-375.png"
+    },
+    {
+      "file": "confirm/preview-no-js-1440.png",
+      "phase": "confirm",
+      "width": 1440,
+      "height": 883,
+      "bytes": 117244,
+      "sha256": "4776a81cb6400ab772f86ac97dbbe237aa26b7b5e286a89a0acbb7cf5d67f03a",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-no-js-1440.png"
+    },
+    {
+      "file": "confirm/preview-no-js-375.png",
+      "phase": "confirm",
+      "width": 375,
+      "height": 1712,
+      "bytes": 81189,
+      "sha256": "c0bbb0a8d391ba143aa79e7f794e892c9d29a191c52633e45210b0a2314735d1",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-no-js-375.png"
+    },
+    {
+      "file": "confirm/preview-photo-1440.png",
+      "phase": "confirm",
+      "width": 1440,
+      "height": 883,
+      "bytes": 356629,
+      "sha256": "edf23939cbbbbe23d1cd7415c78d7ec4b984728698cb9a4be47ea3f46bdb0d38",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-photo-1440.png"
+    },
+    {
+      "file": "confirm/preview-photo-2048.png",
+      "phase": "confirm",
+      "width": 2048,
+      "height": 952,
+      "bytes": 471435,
+      "sha256": "5e6899f694283daca4bf79f57ab3c8053610911c0e5911f185d1560b9e48f797",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-photo-2048.png"
+    },
+    {
+      "file": "confirm/preview-photo-375.png",
+      "phase": "confirm",
+      "width": 375,
+      "height": 1732,
+      "bytes": 205593,
+      "sha256": "9445908adede291db3a10f026edcc81e6aa26e92adab7e06ffb934d6a7935bc5",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\confirm\\preview-photo-375.png"
+    }
+  ],
+  "contactSheet": {
+    "file": "final-contact-sheet.jpg",
+    "width": 2200,
+    "height": 3370,
+    "bytes": 557017,
+    "sha256": "44440408bdf7ee1a8f160931c6bb14115b4fe5054fc6d170476d8b5da22ee3fd",
+    "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4-preview-focus\\final-contact-sheet.jpg"
+  }
+}

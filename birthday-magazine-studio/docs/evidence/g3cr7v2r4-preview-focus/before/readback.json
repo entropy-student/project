@@ -1,0 +1,978 @@
+{
+  "phase": "before",
+  "states": [
+    {
+      "name": "preview-empty",
+      "viewport": 2048,
+      "scrollWidth": 2048,
+      "sectionHeight": 845.1875,
+      "background": "rgb(247, 248, 251)",
+      "grid": "360px 1176px",
+      "heading": {
+        "width": 360,
+        "height": 107.5,
+        "x": 240,
+        "font": "48px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 360,
+        "height": 379.1875,
+        "x": 240,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 1176,
+        "height": 640.1875,
+        "x": 632,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "378px 700px"
+      },
+      "cover": {
+        "width": 365.284912109375,
+        "height": 509.1511535644531,
+        "x": 671.3575439453125,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 683.5703125,
+        "height": 418.0277099609375,
+        "x": 1073.21484375,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "339px 339px"
+      },
+      "input": {
+        "width": 222,
+        "height": 52,
+        "x": 265,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "x": 1552.28125,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "preview-photo",
+      "viewport": 2048,
+      "scrollWidth": 2048,
+      "sectionHeight": 865.1875,
+      "background": "rgb(247, 248, 251)",
+      "grid": "360px 1176px",
+      "heading": {
+        "width": 360,
+        "height": 107.5,
+        "x": 240,
+        "font": "48px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 360,
+        "height": 399.1875,
+        "x": 240,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 1176,
+        "height": 660.1875,
+        "x": 632,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "378px 700px"
+      },
+      "cover": {
+        "width": 365.284912109375,
+        "height": 509.1511535644531,
+        "x": 671.3575439453125,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 683.5703125,
+        "height": 418.0277099609375,
+        "x": 1073.21484375,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "339px 339px"
+      },
+      "input": {
+        "width": 222,
+        "height": 52,
+        "x": 265,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "x": 1552.28125,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "preview-empty",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "sectionHeight": 839.3125,
+      "background": "rgb(247, 248, 251)",
+      "grid": "300px 948px",
+      "heading": {
+        "width": 300,
+        "height": 80.625,
+        "x": 80,
+        "font": "36px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 300,
+        "height": 379.1875,
+        "x": 80,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 948,
+        "height": 634.3125,
+        "x": 412,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "298.047px 551.953px"
+      },
+      "cover": {
+        "width": 320.2115478515625,
+        "height": 446.3199462890625,
+        "x": 433.91766357421875,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 555.07373046875,
+        "height": 364.8029479980469,
+        "x": 773.486572265625,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "274.969px 274.984px"
+      },
+      "input": {
+        "width": 162,
+        "height": 52,
+        "x": 105,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "x": 1104.28125,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "home-context",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "sectionHeight": 839.3125,
+      "background": "rgb(247, 248, 251)",
+      "grid": "300px 948px",
+      "heading": {
+        "width": 300,
+        "height": 80.625,
+        "x": 80,
+        "font": "36px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 300,
+        "height": 379.1875,
+        "x": 80,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 948,
+        "height": 634.3125,
+        "x": 412,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "298.047px 551.953px"
+      },
+      "cover": {
+        "width": 320.2115478515625,
+        "height": 446.3199462890625,
+        "x": 433.91766357421875,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 555.07373046875,
+        "height": 364.8029479980469,
+        "x": 773.486572265625,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "274.969px 274.984px"
+      },
+      "input": {
+        "width": 162,
+        "height": 52,
+        "x": 105,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "x": 1104.28125,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "preview-photo",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "sectionHeight": 859.3125,
+      "background": "rgb(247, 248, 251)",
+      "grid": "300px 948px",
+      "heading": {
+        "width": 300,
+        "height": 80.625,
+        "x": 80,
+        "font": "36px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 300,
+        "height": 399.1875,
+        "x": 80,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 948,
+        "height": 654.3125,
+        "x": 412,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "298.047px 551.953px"
+      },
+      "cover": {
+        "width": 320.2115478515625,
+        "height": 446.3199462890625,
+        "x": 433.91766357421875,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 555.07373046875,
+        "height": 364.8029479980469,
+        "x": 773.486572265625,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "274.969px 274.984px"
+      },
+      "input": {
+        "width": 162,
+        "height": 52,
+        "x": 105,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "x": 1104.28125,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "preview-empty",
+      "viewport": 375,
+      "scrollWidth": 375,
+      "sectionHeight": 1555.6875,
+      "background": "rgb(247, 248, 251)",
+      "grid": "300px minmax(0px, 1fr)",
+      "heading": {
+        "width": 343,
+        "height": 71.65625,
+        "x": 16,
+        "font": "32px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 343,
+        "height": 359.1875,
+        "x": 16,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 343,
+        "height": 714.84375,
+        "x": 16,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "313px"
+      },
+      "cover": {
+        "width": 251.97483825683594,
+        "height": 355.476806640625,
+        "x": 61.5125846862793,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 313,
+        "height": 281.53125,
+        "x": 31,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "155.5px 155.5px"
+      },
+      "input": {
+        "width": 213,
+        "height": 48,
+        "x": 37,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 343,
+        "height": 50,
+        "x": 16,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    },
+    {
+      "name": "preview-photo",
+      "viewport": 375,
+      "scrollWidth": 375,
+      "sectionHeight": 1575.6875,
+      "background": "rgb(247, 248, 251)",
+      "grid": "300px minmax(0px, 1fr)",
+      "heading": {
+        "width": 343,
+        "height": 71.65625,
+        "x": 16,
+        "font": "32px",
+        "weight": "300",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "grid": "none"
+      },
+      "emphasis": null,
+      "controls": {
+        "width": 343,
+        "height": 379.1875,
+        "x": 16,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 343,
+        "height": 714.84375,
+        "x": 16,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 255, 255)",
+        "display": "grid",
+        "grid": "313px"
+      },
+      "cover": {
+        "width": 251.97483825683594,
+        "height": 355.476806640625,
+        "x": 61.5125846862793,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 249, 237)",
+        "display": "block",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 313,
+        "height": 281.53125,
+        "x": 31,
+        "font": "18px",
+        "weight": "400",
+        "color": "rgb(27, 32, 36)",
+        "background": "rgb(255, 253, 248)",
+        "display": "grid",
+        "grid": "155.5px 155.5px"
+      },
+      "input": {
+        "width": 213,
+        "height": 48,
+        "x": 37,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(24, 34, 48)",
+        "background": "rgb(255, 255, 255)",
+        "display": "inline-block",
+        "grid": "none"
+      },
+      "cta": {
+        "width": 343,
+        "height": 50,
+        "x": 16,
+        "font": "16px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(113, 63, 93)",
+        "display": "flex",
+        "grid": "none"
+      },
+      "blank": [
+        {
+          "text": "",
+          "backgroundImage": "none"
+        },
+        {
+          "text": "",
+          "backgroundImage": "none"
+        }
+      ],
+      "broken": 0
+    }
+  ],
+  "network": [
+    {
+      "width": 2048,
+      "nonGET": 0,
+      "externalImages": 0,
+      "pageErrors": [],
+      "outside": [
+        {
+          "id": "",
+          "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 1152,
+          "padding": "0px",
+          "background": "rgb(12, 14, 15)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "what-you-get",
+          "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 718,
+          "padding": "48px 32px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "how-it-works",
+          "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 686,
+          "padding": "48px 32px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "offer",
+          "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 754,
+          "padding": "70px 143.36px",
+          "background": "rgb(78, 70, 59)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "faq",
+          "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 502.75,
+          "padding": "80px 143.36px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "samples",
+          "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 3214.140625,
+          "padding": "64px 24px 120px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "",
+          "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+          "width": 2048,
+          "height": 1050,
+          "padding": "150px 32px",
+          "background": "rgb(8, 10, 11)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        }
+      ],
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/"
+      },
+      "blob": true,
+      "replaceRemove": true,
+      "textOverlap": false,
+      "moodPreserved": true
+    },
+    {
+      "width": 1440,
+      "nonGET": 0,
+      "externalImages": 0,
+      "pageErrors": [],
+      "outside": [
+        {
+          "id": "",
+          "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 1152,
+          "padding": "0px",
+          "background": "rgb(12, 14, 15)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "what-you-get",
+          "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 718,
+          "padding": "48px 32px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "how-it-works",
+          "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 686,
+          "padding": "48px 32px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "offer",
+          "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 754,
+          "padding": "70px 100.8px",
+          "background": "rgb(78, 70, 59)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "faq",
+          "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 518.625,
+          "padding": "80px 100.8px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "samples",
+          "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 3214.140625,
+          "padding": "64px 24px 120px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "",
+          "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+          "width": 1440,
+          "height": 1050,
+          "padding": "150px 32px",
+          "background": "rgb(8, 10, 11)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        }
+      ],
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/"
+      },
+      "blob": true,
+      "replaceRemove": true,
+      "textOverlap": false,
+      "moodPreserved": true
+    },
+    {
+      "width": 375,
+      "nonGET": 0,
+      "externalImages": 0,
+      "pageErrors": [],
+      "outside": [
+        {
+          "id": "",
+          "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 812,
+          "padding": "0px",
+          "background": "rgb(12, 14, 15)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "what-you-get",
+          "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 759.578125,
+          "padding": "28px 24px 36px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "how-it-works",
+          "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 986.484375,
+          "padding": "28px 24px 36px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "offer",
+          "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 650,
+          "padding": "32px 24px",
+          "background": "rgb(78, 70, 59)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "faq",
+          "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 863.75,
+          "padding": "36px 24px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "samples",
+          "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 974.171875,
+          "padding": "20px 16px 44px",
+          "background": "rgb(228, 227, 220)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "id": "",
+          "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+          "width": 375,
+          "height": 560,
+          "padding": "65px 24px",
+          "background": "rgb(8, 10, 11)",
+          "font": "\"Segoe UI\", Arial, sans-serif"
+        }
+      ],
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/"
+      },
+      "blob": true,
+      "replaceRemove": true,
+      "textOverlap": false,
+      "moodPreserved": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "preview-empty-2048.png",
+      "bytes": 127043,
+      "sha256": "ca516f536d2b7348675eba2747c4f2a21d892045451283771cc099ed31006263",
+      "viewport": 2048,
+      "fullPage": false
+    },
+    {
+      "file": "preview-photo-2048.png",
+      "bytes": 449420,
+      "sha256": "69f10495b8d1ca1135742529b15592eebcbe55e04c8db776d0153f5c45f7c88e",
+      "viewport": 2048,
+      "fullPage": false
+    },
+    {
+      "file": "preview-empty-1440.png",
+      "bytes": 112359,
+      "sha256": "4f45e1eeb203176b9d3d73c62421ba2bdd7c5d5ff86c0aa4649d1245d9c41a15",
+      "viewport": 1440,
+      "fullPage": false
+    },
+    {
+      "file": "home-context-1440.png",
+      "bytes": 5604362,
+      "sha256": "b9715f05d918708fc233dd83d20fbab31223de81202e4fe25833ff0d500f868d",
+      "viewport": 1440,
+      "fullPage": true
+    },
+    {
+      "file": "preview-photo-1440.png",
+      "bytes": 340448,
+      "sha256": "adcab468b8208fd2ac5034a8f3e45b13e1d800efa2a49b0dc12542320f22bedd",
+      "viewport": 1440,
+      "fullPage": false
+    },
+    {
+      "file": "preview-empty-375.png",
+      "bytes": 70277,
+      "sha256": "49a2b1fe533ad47a67c5cb940164b5f913bd3e42b18fcbb52530fd9704b26429",
+      "viewport": 375,
+      "fullPage": false
+    },
+    {
+      "file": "preview-photo-375.png",
+      "bytes": 191432,
+      "sha256": "e29574fca7651a9e11c31d503b85974750e477a32b7273b40567ac8f0645b35b",
+      "viewport": 375,
+      "fullPage": false
+    }
+  ],
+  "checkoutSubmissions": 0,
+  "modelCalls": 0,
+  "paymentActions": 0,
+  "photoUploads": 0
+}
