@@ -1,20 +1,34 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — 3x-ui Fast Path P0
+## Current execution status — 3x-ui Existing VPS Discovery P0
 
 ```text
-GATE_ID=3XUI_FASTPATH_P0_INSTALL
-STATE=READY_FOR_OWNER_FRESH_VPS
-ACTIVE_PLAN=docs/3X_UI_THREE_NODE_FASTPATH.md
-LEGACY_MATERIAL=REFERENCE_ONLY
-EXECUTOR_AUTOMATION_REQUIRED=NO
-OWNER_ACTION_REQUIRED=YES
+GATE_ID=3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY
+STATE=READY_FOR_EXECUTOR
+TARGET=24.199.118.137
+TARGET_HOSTNAME_EXPECTED=ubuntu-s-1vcpu-512mb-10gb-sfo3
+TARGET_OS_EXPECTED=Ubuntu_24.04
+EXECUTION_MODE=STRICT_SSH_READONLY
+TARGET_MUTATION_ALLOWED=NO
+SECRET_OUTPUT_ALLOWED=NO
+STOP_AT_REVIEWER=YES
 ```
 
-No Codex/Executor implementation work is required before P0.
+## REVIEWER_TO_EXECUTOR_RELAY
 
-The Owner performs a bounded fresh-VPS preflight and official 3x-ui installation. Do not reuse historical custom WireGuard/HY2/REALITY runners, recovery code or Baidu Gates.
+Start only from:
 
-After P0 returns, Reviewer will issue P1 for the three inbound definitions.
+1. `docs/3X_UI_P0_EXISTING_VPS_DISCOVERY.md`
+2. current `REVIEWER_HANDOFF.md`
 
-Secret values must not be committed, logged or pasted into chat.
+Do not reconstruct the old VPN project.
+
+Use the existing local SSH identity/known-host metadata if available. Do not auto-accept a host-key change.
+
+Run only the bounded read-only target discovery defined by the Gate, append sanitized proof to `EXECUTION_EVIDENCE.md`, and return the standard completion packet.
+
+Do not install 3x-ui, stop old VPN services, change ports, change firewall, or enter P1.
+
+## Owner relay
+
+NONE unless strict SSH itself cannot proceed safely.
