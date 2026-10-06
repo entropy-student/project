@@ -122,7 +122,7 @@ REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
 EXECUTOR_TO_REVIEWER_RELAY=Return result/change/validation/problems/rollback/reviewer-check/Owner-transfer. Never print raw UID, remote basenames, stdout/stderr, cookies or credentials.
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. Current work is R17R1 local offline code validation of the R17 helper/validator before any consequential checkpoint is released. No R17 provider mutation has executed.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 local offline code validation is formally PASS. Final helper/validator identities are relocked, the exact previously recorded R17 authorization is released, and no R17 provider mutation has executed yet. Current work is the single bounded Owner R17 quarantine checkpoint.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -360,6 +360,23 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - Final WireGuard routing / kill-switch policy remains pending v1 sealing.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
+## POST-INTERRUPTION REVIEW — 2026-10-06
+
+```text
+POST_INTERRUPTION_REVIEW=PASS
+CANONICAL_BRANCH=main
+R17R1_RESULT=PASS_R17R1_OFFLINE_CODE_VALIDATION
+R17_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
+R17_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+R17_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+R17_EXECUTION_AUTHORIZED=YES
+R17_EXECUTION_RELEASED=YES
+R17_PROVIDER_MUTATION_EXECUTED=NO
+NEXT_ACTION=OWNER_R17_ONE_SHOT_QUARANTINE
+```
+
+Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and final source blobs after the interrupted turn. Canonical state is consistent. Historical stale wording in this Handoff was reconciled; no source/provider/runtime action occurred during this documentation review.
+
 ## NEXT_STEP
 
 Owner executes the exact relocked R17 one-shot quarantine checkpoint from `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md`: safe-sync canonical main, prove Gate/helper/validator identities and offline validator PASS, then run exactly one bounded `-Mode Run -OwnerAuthorized` attempt and stop for Reviewer.
@@ -372,8 +389,8 @@ Run the exact R17 Owner checkpoint under the already-recorded and now-released a
 
 Read only what is needed:
 
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — current local Codex offline code-validation Gate; no provider action.
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — parent consequential R17 Gate; Owner authorization recorded but execution suspended pending R17R1.
+- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — completed and formally PASSed offline code-validation Gate; no provider action occurred.
+- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — current relocked consequential R17 Gate; R17R1 formally PASS, Owner authorization released, provider mutation not yet executed.
 - `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md` — Reviewer preparation evidence with locked helper/validator identities and source-boundary review.
 - `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 read-only Gate proving final=0/pending=1/unknown=0.
 - `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 local Owner normalization Gate.
