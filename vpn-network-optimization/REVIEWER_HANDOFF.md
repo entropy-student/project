@@ -104,30 +104,31 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R22_EXACT_TRANSACTION_RESIDUE_CLEANUP_R6R2L_R22R4
-STATE=OWNER_BOUNDED_TRANSACTION_CLEANUP_REQUIRED
-PREVIOUS_RESULT=PASS_R22R3_COUNTER_ONLY_TELEMETRY
-OBJECTIVE=Delete only the ownership-proven R22 transaction residue after exact pre-clean verification.
-MAX_ENDPOINT_THIS_ROUND=One strict SSH bounded transaction cleanup; no provider/recovery/Clash/network mutation.
+GATE_ID=G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5
+STATE=OWNER_BOUNDED_RECOVERY_PENDING_CLEANUP_REQUIRED
+PREVIOUS_RESULT=PASS_R22R4_TRANSACTION_RESIDUE_CLEAN
+OBJECTIVE=Remove only the exact R22 recovery pending set after local ownership and remote ciphertext identity proof.
+MAX_ENDPOINT_THIS_ROUND=Exact Baidu pending delete + exact local pending pair delete; no SSH/VPS/Clash/network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R22 transaction directory derived from the unique retained local rollback journal; only staged unit + state.json + empty transaction directory.
-APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; REALITY runtime surface absent; WG/HY2 healthy; route/service baseline exact; firewall semantic baseline restored after counter normalization; recovery pending artifacts frozen.
-PREFLIGHT=Canonical R22R4 Gate current; PowerShell 7.6.6; SSH identity/known_hosts available; unique R22 journal; exact transaction ownership/shape/readback.
-REQUIRED_EVIDENCE=Preflight ownership PASS, transaction cleanup PASS, post-clean remote baseline PASS, WG/HY2 healthy, local rollback journal retained, recovery artifacts untouched.
-ACCEPTANCE_CRITERIA=Transaction absent after exact scoped deletion; no other project/system state changed.
-ROLLBACK_STATUS_OR_PLAN=No rollback of this cleanup. Any failed/ambiguous consequential write stops for fresh read-only reconciliation; no blind retry.
-OWNER_ONLY_ACTIONS=Run exactly one R22R4 bounded transaction cleanup checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Delete only exact owned transaction files and now-empty directory; no service/firewall/route/provider/recovery mutation.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R4 markers only and stop.
+TARGET_AND_SCOPE=Unique retained R22 rollback journal, local DPAPI pending, local portable pending, exact Baidu remote pending; recovery finals and rollback journal preserved.
+APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; remote transaction residue clean; REALITY runtime surface absent; WG/HY2 healthy; firewall semantic baseline restored; no recovery decrypt.
+PREFLIGHT=Canonical R22R5 Gate current; PowerShell 7.6.6; unique R22 journal; owner-only recovery files; Baidu account locally confirmed; exact remote ciphertext hash match.
+REQUIRED_EVIDENCE=Owner Baidu confirmation, remote ciphertext match, remote pending removal, local pending removal, finals absent, temp runtime cleanup, rollback journal retained.
+ACCEPTANCE_CRITERIA=Exact R22 recovery pending set clean with no final mutation and no unrelated provider/object mutation.
+ROLLBACK_STATUS_OR_PLAN=No blind retry after consequential delete starts; any failure requires fresh read-only reconciliation.
+OWNER_ONLY_ACTIONS=Run exactly one R22R5 exact recovery pending cleanup checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Reuse the accepted R20 exact-pending cleanup logic with only R22 window/marker relabeling; delete only exact run-owned pending objects.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R5 markers only and stop.
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22R3_RESULT=PASS_COUNTER_ONLY_TELEMETRY
-R22R4_REVIEW_DOC=docs/G4B_R22R3_REVIEW_COUNTER_ONLY_R6R2L_R22R3.md
-R22R4_GATE_DOC=docs/G4B_R22_EXACT_TRANSACTION_RESIDUE_CLEANUP_R6R2L_R22R4.md
-RECOVERY_PENDING_CLEANUP_ALLOWED=NO
+R22R4_RESULT=PASS
+R22R5_REVIEW_DOC=docs/G4B_R22R4_REVIEW_TRANSACTION_CLEAN_R6R2L_R22R4.md
+R22R5_GATE_DOC=docs/G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5.md
+ROLLBACK_JOURNAL_DELETE_ALLOWED=NO
+RECOVERY_FINAL_MUTATION_ALLOWED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-R20, R21 and R22 are consumed and must never be replayed. R22R3 proved firewall semantic baseline restoration. Current work is the exact R22 transaction-residue cleanup only; recovery pending artifacts remain frozen.
+R20, R21 and R22 are consumed and must never be replayed. R22 transaction residue is clean. Current work is exact R22 recovery-pending cleanup only; recovery finals and rollback journal remain preserved.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
