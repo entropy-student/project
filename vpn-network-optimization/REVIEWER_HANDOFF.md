@@ -104,32 +104,32 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1
-STATE=OWNER_READONLY_RECONCILIATION_REQUIRED
-PREVIOUS_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-OBJECTIVE=Read-only reconcile the consumed R22 P7 rollback-unknown state before any cleanup or further live action.
-MAX_ENDPOINT_THIS_ROUND=One bounded local metadata read plus one strict SSH read-only diagnostic; no mutation.
+GATE_ID=G4B_R22_FIREWALL_COMPONENT_READONLY_R6R2L_R22R2
+STATE=OWNER_READONLY_FIREWALL_RECONCILIATION_REQUIRED
+PREVIOUS_RESULT=RETURN_R22R1_AMBIGUOUS_BASELINE_FIREWALL_ONLY
+OBJECTIVE=Identify which normalized firewall component differs from the retained R22 pre-mutation baseline using hashes/counts only.
+MAX_ENDPOINT_THIS_ROUND=One bounded local journal read plus one strict SSH read-only firewall query; no mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R22 retained rollback journal, local recovery/runtime presence, remote REALITY service/listener/project residue, WG/HY2, route/firewall/service baseline.
-APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; consequential mutation started; automatic rollback UNKNOWN; no manual rollback; retained journal/pending artifacts untouched.
-PREFLIGHT=Canonical main; R22R1 Gate current; helper tracked; PowerShell 7.6.6; SSH identity/known_hosts available.
-REQUIRED_EVIDENCE=R22R1 helper bounded markers ending in RECONCILIATION_STATE and STOP_AT_REVIEWER=YES.
-ACCEPTANCE_CRITERIA=This Gate never passes G4-B; it only classifies CLEAN, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE for the next Reviewer Gate.
+TARGET_AND_SCOPE=UFW/nft/iptables4/iptables6 normalized component presence, hashes and bounded counts only; raw firewall rules forbidden.
+APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; REALITY runtime surface currently absent; WG/HY2 healthy; route/service baselines matched in R22R1; retained transaction and recovery pending untouched.
+PREFLIGHT=Canonical R22R2 Gate current; PowerShell 7.6.6; SSH identity/known_hosts available; unique retained R22 rollback journal.
+REQUIRED_EVIDENCE=Per-component baseline/current presence, SHA-256 equality, bounded counts, overall classification, zero mutation markers.
+ACCEPTANCE_CRITERIA=All hashes equal => prior mismatch transient; exactly one component differs => component-specific read-only diff Gate; multiple/presence drift => remain ambiguous.
 ROLLBACK_STATUS_OR_PLAN=Not applicable; read-only only.
-OWNER_ONLY_ACTIONS=Run exactly one R22R1 read-only checkpoint; do not run R22 or rollback.
-REVIEWER_TO_EXECUTOR_RELAY=Use only scripts/g4b-r22-readonly-reconciliation.ps1; do not read Secret contents or mutate remote/local/provider state.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R1 markers only.
+OWNER_ONLY_ACTIONS=Run exactly one R22R2 read-only firewall component checkpoint; do not run R22, rollback, cleanup or firewall commands that mutate state.
+REVIEWER_TO_EXECUTOR_RELAY=Do not output raw firewall rules; hashes/counts only.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R2 markers only.
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22_LIVE_INVOCATIONS_CONSUMED=1
-SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
-CONSEQUENTIAL_MUTATION_STARTED=YES
-REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
-CURRENT_HELPER=scripts/g4b-r22-readonly-reconciliation.ps1
-R22R1_HELPER_BLOB=5ecb62fe2a1d544db4ea198a7cb3c4df3c5e00f9
+R22R1_RESULT=RETURN_AMBIGUOUS_BASELINE_FIREWALL_ONLY
+R22R1_FIREWALL_BASELINE_MATCH=NO
+R22R1_ROUTE_BASELINE_MATCH=YES
+R22R1_SERVICE_BASELINE_CLASS=EXACT
+R22R2_REVIEW_DOC=docs/G4B_R22R1_REVIEW_AMBIGUOUS_FIREWALL_R6R2L_R22R1.md
+R22R2_GATE_DOC=docs/G4B_R22_FIREWALL_COMPONENT_READONLY_R6R2L_R22R2.md
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-R20, R21 and R22 are consumed and must never be replayed. Current work is the read-only R22R1 reconciliation shown above.
+R20, R21 and R22 are consumed and must never be replayed. R22R1 proved the REALITY runtime surface is absent and isolated the remaining ambiguity to the firewall baseline. Current work is the read-only R22R2 component reconciliation shown above.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
