@@ -106,28 +106,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
-STATE=OWNER_ATOMIC_EPHEMERAL_TOOL_PLUS_READONLY_CHECKPOINT_RELEASED
-PREVIOUS_RESULT=PASS_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
+GATE_ID=OWNER_PAUSE_SEAL_2026_10_06
+STATE=PAUSED_BY_OWNER
+PREVIOUS_ACTIVE_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+CURRENT_REALITY=UNKNOWN_NOT_RECHECKED_AFTER_TAKEOVER
 TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
-OBJECTIVE=Run one bounded Owner-local reality checkpoint using an ephemeral verified BaiduPCS-Go v4.0.2 tool and the persistent existing Baidu config.
-MAX_ENDPOINT_THIS_ROUND=Temporary public tool reacquire/hash/extract -> R1 read-only checkpoint -> temporary tool cleanup -> STOP_AT_REVIEWER.
-MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Read-only Windows health/local metadata + strict-SSH VPS state + read-only Baidu identity/listing counts; temporary public tool exists only for this execution.
-APPLICABLE_CRITICAL_CONSTRAINTS=No live runner; no rollback/cleanup of project state; no route/service/profile/provider mutation; no Secret/DPAPI content readout; R20+ state claims remain reference-only.
-REQUIRED_EVIDENCE=Exact sanitized R1 marker block plus confirmation temporary tool cleanup completed.
-ACCEPTANCE_CRITERIA=Reviewer classifies CLEAN_BASELINE, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE from Owner checkpoint output.
-ROLLBACK_STATUS_OR_PLAN=Not applicable to target state; temporary tool directory is deleted in finally.
-OWNER_ONLY_ACTIONS=Run one atomic ephemeral-tool + R1 read-only checkpoint from Administrator PowerShell 7.6.x; return sanitized markers only.
-R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES
+R1R1_PASS_COMMIT=903267dbb531ae56a68f742b12905eec9842d714
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
 FRESH_LIVE_GATE_RELEASED=NO
+OWNER_ACTION_REQUIRED=NONE
+RESUME_REQUIRES_FRESH_REVIEWER_GATE=YES
 ```
 
-Canonical parent Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
+Canonical seal decision: `docs/OWNER_PAUSE_SEAL_2026-10-06.md`.
 
-Active lifecycle correction: `docs/REVIEWER_CORRECTION_G4B_R1_BAIDUPCS_EPHEMERAL_MODEL.md`.
-
-BaiduPCS-Go executable/archive are ephemeral execution dependencies. Persistent login/config state remains under `%APPDATA%\BaiduPCS-Go`. The previous long-lived local tools restore detour is superseded.
+The previously released R1 checkpoint is revoked by Owner pause. No Windows/VPS/Baidu/Clash/WireGuard/live-runner action is currently authorized.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -190,15 +183,15 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Owner runs exactly one atomic Administrator PowerShell 7.6.x procedure: temporarily reacquire and verify the pinned BaiduPCS-Go v4.0.2 archive outside the project/runtime/recovery trees, invoke the already-reviewed R1 helper with those temporary paths, then delete the temporary tool directory in `finally`.
+None while paused.
 
-Reviewer then classifies the returned `CURRENT_REALITY`. Do not run historical R20-R22 helpers, live runner, rollback, or manual project-state cleanup.
+When Owner resumes the project, Reviewer must first fresh-read `main`, reconcile current local/runtime reality, and issue a new Gate. Do not reuse the previously released R1 checkpoint automatically.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the single released ephemeral-tool + R1 read-only checkpoint procedure supplied by Reviewer.
+**NONE.**
 
-Do not permanently install BaiduPCS-Go. Do not modify `%APPDATA%\BaiduPCS-Go` login/config state. Do not manually change Clash, WireGuard, routes, services, VPS files, or Baidu contents.
+Project is intentionally paused/sealed. Before deleting a local Codex worktree, inspect any untracked local `results/` and keep non-repository runtime/config state intact.
 
 ## EVIDENCE_POINTERS
 
