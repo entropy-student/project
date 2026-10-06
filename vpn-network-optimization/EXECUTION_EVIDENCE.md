@@ -11116,3 +11116,26 @@ R20R2_LOCAL_MUTATION=NO
 The only remote R20 residue is the exact root-owned transaction directory containing exactly the state JSON and staged project systemd unit. No unknown child or unknown created-parent path exists; all created parent directories tracked by this run are already absent. R20R3 is released for exact non-recursive cleanup of those two files and the resulting empty transaction directory only.
 
 Next Gate: `G4B_R20_TRANSACTION_RESIDUAL_CLEANUP_R6R2L_R20R3` at `4b3cc6aeb18155c118646a04e28de7cf422826ca`; helper `11bfbd0cf4c4d6e990348fadccfd3d85be64e06b`.
+
+
+## 2026-10-06 — R20R3 exact remote transaction cleanup accepted
+
+```text
+R20R3_RESULT=PASS_R20R3_REMOTE_TRANSACTION_CLEANUP
+R20R3_PREFLIGHT_OWNERSHIP=PASS
+R20R3_STAGED_UNIT_RUN_ID_MARKER=PASS
+R20R3_PRE_CLEAN_CONSEQUENTIAL_SURFACE=CLEAN
+R20R3_REMOTE_TRANSACTION_CLEANUP=PASS
+R20R3_POST_CLEAN_REMOTE_BASELINE=PASS
+R20R3_WG_HEALTHY=YES
+R20R3_HY2_HEALTHY=YES
+R20R3_LOCAL_ROLLBACK_JOURNAL_RETAINED=YES
+R20R3_RECOVERY_ARTIFACTS_TOUCHED=NO
+R20R3_BAIDU_ACTION=NO
+R20R3_CLASH_MUTATION=NO
+R20R3_LOCAL_NETWORK_MUTATION=NO
+```
+
+Reviewer accepts the exact non-recursive cleanup. The R20 transaction directory is gone; the consequential REALITY surface remains absent; WG/HY2 remain healthy. The VPS-side R20 residue chain is closed.
+
+Next Gate: `G4B_R20_RECOVERY_PENDING_READONLY_R6R2L_R20R4` at `468e4e7d0fac84b1d1ef2cc9cb4809f9b0dfbcf9`, helper `f697ac18a16b7aa6e9e612779efadd6dfb75fd62`. It observes recovery pending/final presence only and does not read recovery contents.
