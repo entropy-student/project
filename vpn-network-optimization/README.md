@@ -190,3 +190,7 @@ R20R2 proved the only remote residue is the R20 transaction directory with exact
 
 ### 2026-10-06 R20R3 PASS / R20R4 recovery reconciliation
 R20R3 closed the remaining VPS-side R20 transaction residue while preserving the clean REALITY baseline and healthy WG/HY2. Current R20R4 is read-only and reconciles only the retained local/Baidu recovery pending/final artifact presence before any cleanup.
+
+
+### 2026-10-06 R20R4 safe UID mismatch / R20R4R1 local identity confirmation
+R20R4 stopped safely because the manually entered expected Baidu UID differed from the current parsed account UID. Historical accepted UIDs were intentionally not persisted. R20R4R1 avoids memory-based UID entry: the current UID is shown only in a local Windows dialog for Owner identity confirmation, then the helper continues read-only recovery pending/final reconciliation without printing the UID.
