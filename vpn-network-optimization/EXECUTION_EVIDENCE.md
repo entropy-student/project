@@ -10679,3 +10679,43 @@ SOURCE_WRITE_REACHED=NO
 ```
 
 Reviewer reconciliation: the R2 harness correctly found all three production rollback assignment call sites, then replaced them only in memory. Its next assertion was inverted: it required the obsolete `$rollbackOk=Invoke-R17Rollback ...` string to remain three times after normalization, although successful normalization should reduce that exact obsolete form to zero. The harness stopped before `WriteAllText`; no helper source mutation occurred. R17R1R4 remains active.
+
+
+## 2026-10-06 — R17R1R4 rollback normalization local PASS_CANDIDATE
+
+Result: `PASS_CANDIDATE_R17R1R4_ROLLBACK_OUTPUT_REPAIR_LOCAL_ONLY`.
+
+Sanitized Owner-local evidence:
+```text
+R17R1R4_PREFLIGHT=PASS
+R17R1R4_ROLLBACK_CALL_COUNT=3
+R17R1R4_OBSOLETE_CALLS_AFTER=0
+R17R1R4_NORMALIZED_CALLS_AFTER=3
+R17R1R4_TYPE_GUARDS_AFTER=3
+R17R1R4_ROLLBACK_NORMALIZATION_REPAIR=PASS
+R17R1R4_AST_HELPER=PASS
+R17R1R4_CHANGE_SCOPE=HELPER_ONLY
+R17R1R4_OFFLINE_VALIDATOR=PASS
+R17R1R4_LASTEXITCODE_REGRESSION=PASS
+R17R1R4_FORWARD_EXECUTABLE=PASS
+R17R1R4_FORWARD_MV_COUNT=1
+R17R1R4_ROLLBACK_EXECUTABLE=PASS
+R17R1R4_ROLLBACK_MV_COUNT=2
+R17R1R4_ROLLBACK_MARKERS=PASS
+R17R1R4_HARNESS_CLEANUP=PASS
+FINAL_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+FINAL_VALIDATOR_BLOB=4d490bdbe8f686053cccae8310c72ff74117600b
+R17R1R4_PROVIDER_ACTION=NO
+R17R1R4_OWNER_CONFIG_READ=NO
+R17R1R4_SECRET_OR_DPAPI_ACCESS=NO
+R17R1R4_SSH_OR_VPS_ACTION=NO
+R17R1R4_NETWORK_MUTATION=NO
+R17R1R4_REAL_R17_RUN_PROCESS=NO
+```
+
+Reviewer interpretation:
+- the production rollback-output/Boolean defect is behaviorally repaired in the Owner worktree;
+- all three rollback call sites now normalize the emitted sequence, re-emit sanitized markers, assert a Boolean final item, and use that Boolean for success/failure;
+- forward and rollback production state-machine branches both pass the isolated executable offline harness;
+- the validator and inherited-LASTEXITCODE regression remain passing;
+- helper blob `9c910628932c22c448c822437fd53e0b71804a9c` is not yet durable on canonical main, so parent R17R1 remains blocked pending a scoped commit/push/fresh readback.
