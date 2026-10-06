@@ -651,3 +651,19 @@ SECOND_LIVE_INVOCATION_AUTHORIZED=NO
 ```
 
 R18 is formally PASS and the production recovery namespace is CLEAN. The historical live one-shot is not replayed. R19 is released for exactly one Owner Administrator PowerShell 7.6.6 live checkpoint. Local-only UID/SSH-key/passphrase inputs and the P10 Clash import remain Owner actions; the profile must not be activated.
+
+
+### R19 RETURN / R19R1 current boundary — 2026-10-06
+
+```text
+R19_RESULT=RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED
+R19_LIVE_INVOCATION_COUNT=1
+CONSEQUENTIAL_MUTATION_STARTED=NO
+REMOTE_ROLLBACK=PASS
+BAIDU_PENDING_ROLLBACK=PASS
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+R19R1_GATE_BLOB=7e9e7bf4f69645a695d418bd934c04d79625707c
+R19R1_STATE=LOCAL_CODEX_OFFLINE_DIAGNOSTIC
+```
+
+R19 failed safely at the local generated profile Mihomo parse check before persistent remote mutation. The one-shot live release is consumed and cannot be replayed. R19R1 uses synthetic values and the actual installed Mihomo parser to reproduce and repair the local parse incompatibility; no Administrator PowerShell, provider, SSH/VPS or network mutation is authorized.
