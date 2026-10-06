@@ -62,14 +62,14 @@ APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE
-STATE=WAITING_OWNER_PHASE_B_READONLY_RECONCILIATION
-PHASE=B_OWNER_HOST_MATERIALIZATION
-REMOTE_STAGE=/root/3xui-owner-transfer
-EXECUTOR_MAY_WRITE_OWNER_APPDATA=NO
+GATE_ID=3XUI_FASTPATH_P2R2C_REMOTE_STAGE_CLEANUP
+STATE=REVIEWER_RELEASED_EXECUTOR_P2R2C_CLEANUP
+TARGET=143.198.159.233
+OWNER_LOCAL_MATERIALIZATION=PASS_BY_RECONCILIATION
+REMOTE_STAGE_CLEANUP=PENDING
+EXECUTOR_RELEASED=YES
 P3_RELEASED=NO
-EXECUTOR_RELEASED=NO
-OWNER_ACTION_REQUIRED=RUN_READONLY_FINALIZE_RECONCILIATION_CHECKPOINT
+OWNER_ACTION_REQUIRED=NONE
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -93,11 +93,11 @@ Supersede decision:
 
 ## NEXT_STEP
 
-Phase A is formally PASS. The first Owner materialization checkpoint returned during `FINALIZE_LOCAL`. Current local file state is ambiguous because one rename may have committed before a later finalization substep failed. Owner must now run one exact read-only reconciliation checkpoint before any retry.
+Phase A is formally PASS. Fresh Owner-host read-back proved both final local files exist, are non-empty, have owner-only ACLs, and the final YAML parses successfully. Local materialization is accepted and must not be replayed. Only remote transfer staging cleanup remains.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the exact read-only reconciliation PowerShell checkpoint supplied by Reviewer. Do not edit its paths or manually move/delete any file.
+NONE. Executor performs remote staging cleanup only.
 
 ## EVIDENCE_POINTERS
 
@@ -107,4 +107,6 @@ Run the exact read-only reconciliation PowerShell checkpoint supplied by Reviewe
 - Active Gate: `docs/3X_UI_P2R2_SERVER_STAGE_OWNER_MATERIALIZE.md`
 - Phase A PASS: `docs/REVIEWER_DECISION_P2R2_PHASE_A_SERVER_STAGE_PASS.md`
 - Phase B RETURN reconciliation: `docs/REVIEWER_RECONCILIATION_P2R2_PHASE_B_FINALIZE_LOCAL_RETURN.md`
+- Local materialization accepted: `docs/REVIEWER_RECONCILIATION_P2R2_LOCAL_MATERIALIZATION_ACCEPTED.md`
+- Active cleanup Gate: `docs/3X_UI_P2R2C_REMOTE_STAGE_CLEANUP.md`
 - P2R2 Phase A Evidence: `results/3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE_2026-10-07_EXECUTOR_R1.md`
