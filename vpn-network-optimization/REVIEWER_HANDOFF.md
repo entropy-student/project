@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R20_RECOVERY_PENDING_READONLY_R6R2L_R20R4
-STATE=OWNER_ACTION_REQUIRED_READONLY
-PREVIOUS_RESULT=PASS_R20R3_REMOTE_TRANSACTION_CLEANUP
-OBJECTIVE=Read-only reconcile exact R20 local/Baidu recovery pending and final artifact presence before any recovery cleanup.
-MAX_ENDPOINT_THIS_ROUND=Local metadata/ACL/size checks plus Baidu who/ls only; no recovery content read/decrypt or mutation.
+GATE_ID=G4B_R20_RECOVERY_PENDING_OWNER_CONFIRM_READONLY_R6R2L_R20R4R1
+STATE=OWNER_ACTION_REQUIRED_LOCAL_IDENTITY_CONFIRM_READONLY
+PREVIOUS_RESULT=RETURN_R20R4_BAIDU_UID_MISMATCH_SAFE
+OBJECTIVE=Show current Baidu UID only in a local Owner dialog, obtain Owner identity confirmation, then read-only reconcile exact R20 recovery pending/final states.
+MAX_ENDPOINT_THIS_ROUND=Local recovery metadata checks + Baidu who/ls only; no UID terminal emission, recovery content read/decrypt, provider write, VPS, Clash or network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R20R4 Gate 468e4e7d0fac84b1d1ef2cc9cb4809f9b0dfbcf9; helper f697ac18a16b7aa6e9e612779efadd6dfb75fd62.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; VPS-side R20 residue closed; WG/HY2 healthy; retained rollback journal preserved; recovery content must not be read; provider write actions forbidden.
-PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; hidden expected Baidu UID input.
-REQUIRED_EVIDENCE=Exact local pending/final states, exact remote pending/final states, UID match, expected failed-run pending classification, temp cleanup PASS, all mutation markers NO.
-ACCEPTANCE_CRITERIA=Observation only. Exact cleanup Gate only if pending set is fully ownership-proven and finals are absent.
-ROLLBACK_STATUS_OR_PLAN=Remote service/transaction state is clean. Recovery pending reconciliation remains.
-OWNER_ONLY_ACTIONS=Execute one R20R4 read-only checkpoint and enter expected Baidu UID locally.
-REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-recovery-pending-readonly.ps1 at blob f697ac18a16b7aa6e9e612779efadd6dfb75fd62 exactly once after source/AST checks.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R20R4 markers only and stop.
+TARGET_AND_SCOPE=R20R4R1 Gate d13d5fbb22735c50a492396ff1c8fe44b6cb5613; helper 2b3c418229ad2e340ad4284833bc29aa45f0719c.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; VPS residue closed; WG/HY2 healthy; historical numeric UID intentionally not persisted; no guessing; recovery and provider writes forbidden.
+PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; Owner confirms current locally displayed Baidu UID is the intended project account.
+REQUIRED_EVIDENCE=Owner account confirmation PASS; exact local/remote pending/final states; expected failed-run pending classification; UID not emitted; temp cleanup PASS; all mutation markers NO.
+ACCEPTANCE_CRITERIA=Observation only. Cleanup Gate only if Owner confirms identity and exact pending set is proven with finals absent.
+ROLLBACK_STATUS_OR_PLAN=Remote VPS state clean. Recovery pending reconciliation remains.
+OWNER_ONLY_ACTIONS=Execute one R20R4R1 read-only checkpoint and answer the local Windows account-confirmation dialog.
+REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-recovery-pending-readonly-owner-confirm.ps1 at blob 2b3c418229ad2e340ad4284833bc29aa45f0719c exactly once after source/AST checks.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R20R4R1 markers only; never copy the UID from the local dialog into chat.
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-R20R4_GATE_BLOB=468e4e7d0fac84b1d1ef2cc9cb4809f9b0dfbcf9
-R20R4_HELPER_BLOB=f697ac18a16b7aa6e9e612779efadd6dfb75fd62
+R20R4R1_GATE_BLOB=d13d5fbb22735c50a492396ff1c8fe44b6cb5613
+R20R4R1_HELPER_BLOB=2b3c418229ad2e340ad4284833bc29aa45f0719c
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
