@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Live After R21R2 — R6R2L-R22
 
-Status: RELEASED / OWNER_ONE_SHOT_LIVE / REVIEWER_STOP
+Status: CONSUMED / RETURN_P7_REALITY_LISTENER_READBACK_INVALID / ROLLBACK_UNKNOWN / NO_RETRY
 
 ## GATE_ID
 `G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22`
@@ -54,16 +54,16 @@ R22 is a new Gate. It is not a replay or retry of R20 or R21.
 
 ## ONE-SHOT CONTRACT
 ```text
-R22_LIVE_INVOCATIONS_CONSUMED=0
-R22_LIVE_INVOCATIONS_AUTHORIZED=1
+R22_LIVE_INVOCATIONS_CONSUMED=1
+R22_LIVE_INVOCATIONS_AUTHORIZED=0
 SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 ```
 
-If R22 returns failure, ambiguity, rollback UNKNOWN, or any unexpected state:
+R22 returned at P7 with `REALITY_LISTENER_READBACK_INVALID`, consequential mutation started, and automatic rollback returned `UNKNOWN_REQUIRES_RECONCILIATION`.
 - do not invoke R22 a second time;
 - do not manually run rollback;
-- return to Reviewer with sanitized output.
+- continue only through the read-only R22R1 reconciliation Gate.
 
 ## P10 OWNER CHECKPOINT
 At `P10_OWNER_UI_IMPORT_AND_VISIBILITY`:
@@ -115,7 +115,25 @@ Stop at Reviewer. Only after formal R22 PASS:
 4. final smoke and MVP v1 seal.
 
 ## AUTHORIZATION
-Standing Owner authorization covers this documented R22 one-shot live Gate. No additional authorization prompt is required.
+Standing Owner authorization covered the consumed R22 one-shot. R22 is closed RETURN; subsequent work proceeds only through the documented R22R1 read-only reconciliation and any later Reviewer-released cleanup/recovery Gate.
 
 ## STOP
 `STOP_AT_REVIEWER=YES`
+
+
+## R22 FINAL RESULT
+
+```text
+R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
+R22_LIVE_INVOCATIONS_CONSUMED=1
+SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
+CONSEQUENTIAL_MUTATION_STARTED=YES
+REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
+RECOVERY_ARTIFACT_CLEANUP=RETAINED_ROLLBACK_UNVERIFIED
+ROLLBACK_JOURNAL=RETAINED_REQUIRES_RECONCILIATION
+R22_REPLAY_AUTHORIZED=NO
+MANUAL_ROLLBACK_AUTHORIZED=NO
+NEXT_GATE=G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1
+```
+
+Reviewer record: `docs/G4B_R22_P7_RETURN_REVIEW_R6R2L_R22.md`
