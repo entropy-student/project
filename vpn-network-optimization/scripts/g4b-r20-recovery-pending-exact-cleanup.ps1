@@ -48,6 +48,10 @@ function Assert-LocalRecoveryFile {
     $item=Get-Item -LiteralPath $Path -Force -ErrorAction Stop
     Assert-R20R5 (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0) 'LOCAL_RECOVERY_REPARSE_POINT'
     Assert-R20R5 ($item.Length -gt 0 -and $item.Length -le 1048576) 'LOCAL_RECOVERY_SIZE_INVALID'
+    Assert-R20R5 (
+        $item.LastWriteTimeUtc -ge $windowStart.UtcDateTime -and
+        $item.LastWriteTimeUtc -le $windowEnd.UtcDateTime
+    ) 'LOCAL_RECOVERY_TIMESTAMP_OUTSIDE_R20_WINDOW'
     Assert-OwnerAcl -Path $Path
 }
 
@@ -268,7 +272,7 @@ finally{
         try{
             Assert-OwnerAcl -Path $diagRoot
             Remove-Item -LiteralPath $diagRoot -Recurse -Force -ErrorAction Stop
-            $cleanupPass=(-not(Test-Path -LiteralPath $diagRoot))
+            $cleanupPass=(-not (Test-Path -LiteralPath $diagRoot))
         }
         catch{$cleanupPass=$false}
     }
