@@ -229,8 +229,58 @@ $validatorTokens=$null; $validatorParseErrors=$null
 $validatorAst=[System.Management.Automation.Language.Parser]::ParseFile($PSCommandPath,[ref]$validatorTokens,[ref]$validatorParseErrors)
 Assert-Fixture ($validatorParseErrors.Count -eq 0) 'VALIDATOR_AST'
 
+$remoteHelperNames=@('Get-RemoteErrorCodeAllowlist','Get-LocalRemoteFailureCodeAllowlist','Get-SafeRemoteFailureCode','Resolve-RemoteResponse','Get-RemoteRollbackFailureMarkers')
+$remoteHelperAsts=@($runnerAst.FindAll({param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $remoteHelperNames -ccontains $node.Name},$true))
+Assert-Fixture ($remoteHelperAsts.Count -eq $remoteHelperNames.Count) 'R20R6_PRODUCTION_HELPER_IDENTITY'
+$remoteHelperText=@(foreach($name in $remoteHelperNames){($remoteHelperAsts | Where-Object { $_.Name -ceq $name } | Select-Object -First 1).Extent.Text}) -join "`r`n"
+. ([ScriptBlock]::Create($remoteHelperText))
+$script:remoteErrorCodeAllowlist=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach($code in @(Get-RemoteErrorCodeAllowlist)){[void]$script:remoteErrorCodeAllowlist.Add($code)}
+$script:localRemoteFailureCodeAllowlist=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach($code in @(Get-LocalRemoteFailureCodeAllowlist)){[void]$script:localRemoteFailureCodeAllowlist.Add($code)}
+
+function Test-RemoteFailureCodeFixture {
+    param([string]$Stdout,[int]$ExitCode,[string]$Expected)
+    try { [void](Resolve-RemoteResponse -Stdout $Stdout -Stderr '' -ExitCode $ExitCode); return $false }
+    catch { return ([string]$_.Exception.Message -ceq $Expected) }
+}
+
+$invokeRemoteStart=$runner.IndexOf('function Invoke-Remote {',[StringComparison]::Ordinal)
+$invokeRemoteEnd=$runner.IndexOf('function Get-RemoteSupervisor {',$invokeRemoteStart,[StringComparison]::Ordinal)
+$invokeRemoteBody=if($invokeRemoteStart -ge 0 -and $invokeRemoteEnd -gt $invokeRemoteStart){$runner.Substring($invokeRemoteStart,$invokeRemoteEnd-$invokeRemoteStart)}else{''}
+Assert-Fixture ($invokeRemoteBody.IndexOf('Resolve-RemoteResponse -Stdout $out -Stderr $err -ExitCode $process.ExitCode',[StringComparison]::Ordinal) -gt 0 -and -not $invokeRemoteBody.Contains('if($process.ExitCode -ne 0){ throw ''SSH_REMOTE_ACTION_FAILED'' }')) 'R20R6_INVOKE_REMOTE_STRUCTURED_ERROR_PROPAGATION'
+
+$gateErrorFixture=Test-RemoteFailureCodeFixture -Stdout '{"ok":false,"error_code":"REALITY_LISTENER_READBACK_INVALID"}' -ExitCode 2 -Expected 'REALITY_LISTENER_READBACK_INVALID'
+Assert-Fixture $gateErrorFixture 'R20R6_REMOTE_GATEERROR_FIXTURE'
+$nativeFailureFixture=Test-RemoteFailureCodeFixture -Stdout '{"ok":false,"error_code":"REMOTE_NATIVE_COMMAND_FAILED"}' -ExitCode 2 -Expected 'REMOTE_NATIVE_COMMAND_FAILED'
+Assert-Fixture $nativeFailureFixture 'R20R6_REMOTE_NATIVE_COMMAND_FIXTURE'
+$unclassifiedFixture=Test-RemoteFailureCodeFixture -Stdout '{"ok":false,"error_code":"REMOTE_UNCLASSIFIED"}' -ExitCode 3 -Expected 'REMOTE_UNCLASSIFIED'
+Assert-Fixture $unclassifiedFixture 'R20R6_REMOTE_UNCLASSIFIED_FIXTURE'
+$transportFallbackFixture=Test-RemoteFailureCodeFixture -Stdout 'ssh: connection refused' -ExitCode 255 -Expected 'SSH_REMOTE_ACTION_FAILED'
+Assert-Fixture $transportFallbackFixture 'R20R6_SSH_TRANSPORT_FALLBACK_FIXTURE'
+$malformedResponseFixture=Test-RemoteFailureCodeFixture -Stdout '{not-json' -ExitCode 0 -Expected 'REMOTE_RESPONSE_INVALID'
+$duplicateResponseFixture=Test-RemoteFailureCodeFixture -Stdout '{"ok":true,"OK":false,"hostname":"fixture-host"}' -ExitCode 0 -Expected 'REMOTE_RESPONSE_INVALID'
+$unlistedErrorCodeFixture=Test-RemoteFailureCodeFixture -Stdout '{"ok":false,"error_code":"UNTRUSTED_REMOTE_TEXT"}' -ExitCode 255 -Expected 'SSH_REMOTE_ACTION_FAILED'
+$oversizedResponseFixture=Test-RemoteFailureCodeFixture -Stdout ('x' * 65537) -ExitCode 0 -Expected 'REMOTE_RESPONSE_INVALID'
+Assert-Fixture ($malformedResponseFixture -and $duplicateResponseFixture -and $unlistedErrorCodeFixture -and $oversizedResponseFixture) 'R20R6_MALFORMED_RESPONSE_FAIL_CLOSED'
+$rollbackMarkers=@(Get-RemoteRollbackFailureMarkers -Code 'REALITY_LISTENER_READBACK_INVALID')
+$rollbackMarkerFixture=($rollbackMarkers.Count -eq 2 -and $rollbackMarkers[0] -ceq 'REMOTE_ROLLBACK_FAILURE_CODE=REALITY_LISTENER_READBACK_INVALID' -and $rollbackMarkers[1] -ceq 'REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION')
+$rollbackMarkersUntrusted=@(Get-RemoteRollbackFailureMarkers -Code 'ARBITRARY_RAW_EXCEPTION_TEXT')
+$rollbackSourceFixture=($runner.Contains("Get-RemoteRollbackFailureMarkers -Code ([string]`$_.Exception.Message)") -and $runner.Contains("Get-RemoteRollbackFailureMarkers -Code 'REMOTE_ROLLBACK_NOT_VERIFIED'") -and $runner.Contains('REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION'))
+Assert-Fixture ($rollbackMarkerFixture -and $rollbackMarkersUntrusted[0] -ceq 'REMOTE_ROLLBACK_FAILURE_CODE=REMOTE_UNCLASSIFIED' -and $rollbackMarkersUntrusted[1] -ceq 'REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION' -and $rollbackSourceFixture) 'R20R6_ROLLBACK_FAILURE_CODE_FIXTURE'
+$successResponse=Resolve-RemoteResponse -Stdout '{"ok":true,"hostname":"fixture-host","tcp443_listener":"absent"}' -Stderr '' -ExitCode 0
+Assert-Fixture ($successResponse -is [System.Collections.IDictionary] -and $successResponse['ok'] -eq $true -and $successResponse['hostname'] -ceq 'fixture-host') 'R20R6_SUCCESS_REGRESSION'
+$supervisorStart=$runner.IndexOf('function Get-RemoteSupervisor {',[StringComparison]::Ordinal)
+$supervisorEnd=$runner.IndexOf("'@",$supervisorStart,[StringComparison]::Ordinal)
+$supervisorBody=if($supervisorStart -ge 0 -and $supervisorEnd -gt $supervisorStart){$runner.Substring($supervisorStart,$supervisorEnd-$supervisorStart)}else{''}
+Assert-Fixture ($supervisorBody.Contains('except Exception:') -and $supervisorBody.Contains("'error_code':'REMOTE_UNCLASSIFIED'") -and -not $supervisorBody.Contains('str(exc)')) 'R20R6_REMOTE_GENERIC_EXCEPTION_SANITIZED'
+$supervisorErrorCodes=@([regex]::Matches($supervisorBody,"'(?<code>(?:REMOTE|REALITY|ROLLBACK|CLOSEOUT|CANDIDATE|CONFIG|MIHOMO|PERSISTENT|PROJECT|RUN|STAGE|TCP|ACCESS|RUNTIME)_[A-Z0-9_]+)'") | ForEach-Object { $_.Groups['code'].Value } | Sort-Object -Unique)
+$missingRemoteErrorCodes=@($supervisorErrorCodes | Where-Object { -not $script:remoteErrorCodeAllowlist.Contains($_) })
+Assert-Fixture ($missingRemoteErrorCodes.Count -eq 0) 'R20R6_REMOTE_ERROR_ALLOWLIST_COMPLETE'
+
 $packageOutput=@(& $packageValidatorPath 2>&1 | ForEach-Object { [string]$_ })
 Assert-Fixture (($packageOutput -contains 'G4B_OFFLINE_PACKAGE_VALIDATION=PASS') -and ($packageOutput -contains 'NETWORK_MUTATION=NO') -and ($packageOutput -contains 'SECRET_ACCESS=NO')) 'EXISTING_PACKAGE_VALIDATOR'
+Assert-Fixture ($packageOutput -contains 'R19R1_SYNTHETIC_RENDERED_PROFILE_MIHOMO_PARSE=PASS') 'R20R6_R19R1_FINGERPRINT_REGRESSION'
 
 $gitProjectPrefix=((& git -C $projectRoot rev-parse --show-prefix 2>$null) -join [Environment]::NewLine).Trim().TrimEnd('/')
 Assert-Fixture ($LASTEXITCODE -eq 0 -and $gitProjectPrefix -match '(^|/)vpn-network-optimization$') 'R6R2L_R1_GIT_PROJECT_PREFIX'
@@ -583,6 +633,21 @@ Write-Output 'R3_PROFILE_CONTENT_INTEGRITY=PASS'
 Write-Output 'R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS'
 Write-Output 'R3_STRICTMODE_RECOVERY_CLEANUP=PASS'
 Write-Output 'R3_FAILURE_CODE_NOT_MASKED=PASS'
+Write-Output 'R20R6_INVOKE_REMOTE_STRUCTURED_ERROR_PROPAGATION=PASS'
+Write-Output 'R20R6_REMOTE_GATEERROR_FIXTURE=PASS'
+Write-Output 'R20R6_REMOTE_NATIVE_COMMAND_FIXTURE=PASS'
+Write-Output 'R20R6_REMOTE_UNCLASSIFIED_FIXTURE=PASS'
+Write-Output 'R20R6_SSH_TRANSPORT_FALLBACK_FIXTURE=PASS'
+Write-Output 'R20R6_MALFORMED_RESPONSE_FAIL_CLOSED=PASS'
+Write-Output 'R20R6_ROLLBACK_FAILURE_CODE_FIXTURE=PASS'
+Write-Output 'R20R6_SUCCESS_REGRESSION=PASS'
+Write-Output 'R20R6_R19R1_FINGERPRINT_REGRESSION=PASS'
+Write-Output 'POWERSHELL_AST=PASS'
+Write-Output 'REAL_SECRET_OR_DPAPI_ACCESS=NO'
+Write-Output 'SSH_OR_VPS_ACTION=NO'
+Write-Output 'PROVIDER_ACTION=NO'
+Write-Output 'CLASH_PROFILE_MUTATION=NO'
+Write-Output 'NETWORK_MUTATION=NO'
 Write-Output 'G4B_LIVE_RUNNER_FIXTURES=PASS'
 Write-Output 'NEGATIVE_FIXTURES=PASS'
 Write-Output 'SSH_OR_VPS_ACTION=NO'

@@ -908,6 +908,88 @@ function Resolve-SshExecutable {
     return $cmd.Source
 }
 
+function Get-RemoteErrorCodeAllowlist {
+    @(
+        'ACCESS_IDENTITY_PROBE_FAILED','CANDIDATE_OWNERSHIP_MISMATCH','CANDIDATE_SERVICE_READBACK_FAILED','CANDIDATE_TRANSACTION_MISSING',
+        'CLOSEOUT_OWNERSHIP_MISMATCH','CLOSEOUT_PASS_CANDIDATE_NOT_RECORDED','CLOSEOUT_REVIEWER_PASS_REQUIRED','CLOSEOUT_SERVICE_READBACK_FAILED','CLOSEOUT_TEMP_OWNERSHIP_UNPROVEN','CLOSEOUT_TRANSACTION_MISSING',
+        'CONFIG_NOT_STAGED','MIHOMO_ASSET_HASH_MISMATCH','MIHOMO_ASSET_SIZE_LIMIT','MIHOMO_VERSION_MISMATCH','PERSISTENT_TARGET_COLLISION',
+        'PROJECT_DIRECTORY_CONTRACT_INVALID','PROJECT_DIRECTORY_PARENT_INVALID','REALITY_FILESYSTEM_METADATA_INVALID','REALITY_LISTENER_READBACK_INVALID','REALITY_RUNTIME_ACCESS_INVALID','REALITY_SECRET_UNRELATED_READ_ACCESS',
+        'REMOTE_ACTION_INVALID','REMOTE_DRIFT_BASELINE_INVALID','REMOTE_FIREWALL_BASELINE_UNAVAILABLE','REMOTE_FIREWALL_DRIFT','REMOTE_IPTABLES4_BASELINE_FAILED','REMOTE_IPTABLES6_BASELINE_FAILED',
+        'REMOTE_IPV4_ROUTE_BASELINE_FAILED','REMOTE_IPV4_RULE_BASELINE_FAILED','REMOTE_IPV6_ROUTE_BASELINE_FAILED','REMOTE_IPV6_RULE_BASELINE_FAILED','REMOTE_NATIVE_COMMAND_FAILED','REMOTE_NFT_BASELINE_FAILED','REMOTE_NFT_BASELINE_INVALID',
+        'REMOTE_REALITY_SERVICE_PREEXISTED','REMOTE_ROOT_REQUIRED','REMOTE_ROUTE_BASELINE_SHAPE_INVALID','REMOTE_ROUTE_DRIFT','REMOTE_SERVICE_BASELINE_FAILED','REMOTE_SERVICE_BASELINE_SHAPE_INVALID','REMOTE_SERVICE_DRIFT',
+        'REMOTE_SOCKET_QUERY_FAILED','REMOTE_TRANSACTION_STATE_MISSING','REMOTE_UFW_BASELINE_FAILED','REMOTE_UNCLASSIFIED',
+        'ROLLBACK_BINARY_OWNERSHIP_UNPROVEN','ROLLBACK_BINARY_REMOVE_UNVERIFIED','ROLLBACK_CONFIG_OWNERSHIP_UNPROVEN','ROLLBACK_CONFIG_REMOVE_UNVERIFIED','ROLLBACK_GROUP_REMOVE_UNVERIFIED',
+        'ROLLBACK_NO_TRANSACTION_READBACK_FAILED','ROLLBACK_OWNERSHIP_MISMATCH','ROLLBACK_PARENT_OWNERSHIP_UNPROVEN','ROLLBACK_PARENT_REMOVE_UNVERIFIED','ROLLBACK_PARENT_SCOPE_INVALID',
+        'ROLLBACK_POSTREMOVE_READBACK_FAILED','ROLLBACK_RUNTIME_OWNERSHIP_UNPROVEN','ROLLBACK_RUNTIME_REMOVE_UNVERIFIED','ROLLBACK_SECRETS_DIRECTORY_OWNERSHIP_UNPROVEN',
+        'ROLLBACK_SECRETS_DIRECTORY_REMOVE_UNVERIFIED','ROLLBACK_SERVICE_STOP_UNVERIFIED','ROLLBACK_TEMP_OWNERSHIP_UNPROVEN','ROLLBACK_UNIT_OWNERSHIP_UNPROVEN',
+        'ROLLBACK_UNIT_REMOVE_UNVERIFIED','ROLLBACK_USER_REMOVE_UNVERIFIED','RUN_OWNERSHIP_MARKER_INVALID','RUNTIME_CONFIG_CHECK_IDENTITY_UNAVAILABLE',
+        'RUNTIME_GROUP_COLLISION','RUNTIME_USER_COLLISION','STAGE_TEMP_OWNERSHIP_UNPROVEN','STAGE_TEMP_REMOVE_UNVERIFIED','STAGED_BINARY_MISSING','TCP443_LISTENER_QUERY_FAILED'
+    )
+}
+
+function Get-LocalRemoteFailureCodeAllowlist {
+    @('SSH_PROCESS_START_FAILED','SSH_OPERATION_TIMEOUT','SSH_REMOTE_ACTION_FAILED','SSH_ACTION_FAILED','REMOTE_RESPONSE_INVALID','REMOTE_ROLLBACK_NOT_VERIFIED')
+}
+
+$script:remoteErrorCodeAllowlist=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach($code in @(Get-RemoteErrorCodeAllowlist)){[void]$script:remoteErrorCodeAllowlist.Add($code)}
+$script:localRemoteFailureCodeAllowlist=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach($code in @(Get-LocalRemoteFailureCodeAllowlist)){[void]$script:localRemoteFailureCodeAllowlist.Add($code)}
+
+function Get-SafeRemoteFailureCode {
+    param([AllowEmptyString()][string]$Candidate,[string]$Fallback='REMOTE_UNCLASSIFIED')
+    if($script:remoteErrorCodeAllowlist.Contains($Candidate) -or $script:localRemoteFailureCodeAllowlist.Contains($Candidate)){return $Candidate}
+    if(-not $script:remoteErrorCodeAllowlist.Contains($Fallback) -and -not $script:localRemoteFailureCodeAllowlist.Contains($Fallback)){$Fallback='REMOTE_UNCLASSIFIED'}
+    return $Fallback
+}
+
+function Resolve-RemoteResponse {
+    param([AllowEmptyString()][string]$Stdout,[AllowEmptyString()][string]$Stderr,[int]$ExitCode)
+    $responseLimit=65536
+    if($Stdout.Length -gt $responseLimit -or $Stderr.Length -gt $responseLimit){
+        if($ExitCode -ne 0){throw 'SSH_REMOTE_ACTION_FAILED'}
+        throw 'REMOTE_RESPONSE_INVALID'
+    }
+    $document=$null; $parseFailed=$false; $remoteCode=$null
+    try {
+        if([string]::IsNullOrWhiteSpace($Stdout)){throw 'REMOTE_RESPONSE_INVALID'}
+        $document=[System.Text.Json.JsonDocument]::Parse($Stdout)
+        $root=$document.RootElement
+        if($root.ValueKind -ne [System.Text.Json.JsonValueKind]::Object){throw 'REMOTE_RESPONSE_INVALID'}
+        $properties=[Collections.Generic.Dictionary[string,System.Text.Json.JsonElement]]::new([StringComparer]::OrdinalIgnoreCase)
+        foreach($property in $root.EnumerateObject()){
+            if($properties.ContainsKey($property.Name)){throw 'REMOTE_RESPONSE_INVALID'}
+            $properties.Add($property.Name,$property.Value)
+        }
+        if(-not $properties.ContainsKey('ok')){throw 'REMOTE_RESPONSE_INVALID'}
+        $ok=$properties['ok']
+        if($ok.ValueKind -eq [System.Text.Json.JsonValueKind]::False){
+            if($properties.Count -ne 2 -or -not $properties.ContainsKey('error_code')){throw 'REMOTE_RESPONSE_INVALID'}
+            $errorCodeElement=$properties['error_code']
+            if($errorCodeElement.ValueKind -ne [System.Text.Json.JsonValueKind]::String){throw 'REMOTE_RESPONSE_INVALID'}
+            $candidate=$errorCodeElement.GetString()
+            if(-not $script:remoteErrorCodeAllowlist.Contains($candidate)){throw 'REMOTE_RESPONSE_INVALID'}
+            $remoteCode=$candidate
+        } elseif($ok.ValueKind -ne [System.Text.Json.JsonValueKind]::True){throw 'REMOTE_RESPONSE_INVALID'}
+    } catch { $parseFailed=$true }
+    finally { if($null -ne $document){$document.Dispose()} }
+    if($null -ne $remoteCode){throw $remoteCode}
+    if($parseFailed){
+        if($ExitCode -ne 0){throw 'SSH_REMOTE_ACTION_FAILED'}
+        throw 'REMOTE_RESPONSE_INVALID'
+    }
+    if($ExitCode -ne 0){throw 'SSH_REMOTE_ACTION_FAILED'}
+    try { return (ConvertFrom-Json -InputObject $Stdout -AsHashtable -Depth 32 -ErrorAction Stop) }
+    catch { throw 'REMOTE_RESPONSE_INVALID' }
+}
+
+function Get-RemoteRollbackFailureMarkers {
+    param([AllowEmptyString()][string]$Code)
+    $safeCode=Get-SafeRemoteFailureCode -Candidate $Code -Fallback 'REMOTE_UNCLASSIFIED'
+    'REMOTE_ROLLBACK_FAILURE_CODE='+$safeCode
+    'REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION'
+}
+
 function Invoke-Remote {
     param([string]$Action,[hashtable]$Payload=@{})
     $request=@{ action=$Action; run_id=$script:runId; payload=$Payload }
@@ -925,13 +1007,10 @@ function Invoke-Remote {
         $outTask=$process.StandardOutput.ReadToEndAsync(); $errTask=$process.StandardError.ReadToEndAsync()
         $process.StandardInput.Write($program); $process.StandardInput.Close()
         if(-not $process.WaitForExit(180000)){ try{$process.Kill($true)}catch{}; throw 'SSH_OPERATION_TIMEOUT' }
-        $out=$outTask.GetAwaiter().GetResult(); [void]$errTask.GetAwaiter().GetResult()
-        if($process.ExitCode -ne 0){ throw 'SSH_REMOTE_ACTION_FAILED' }
-        $response=ConvertFrom-Json -InputObject $out -AsHashtable -ErrorAction Stop
-        Assert-G4B ($response['ok'] -eq $true) 'REMOTE_ACTION_REJECTED'
-        return $response
+        $out=$outTask.GetAwaiter().GetResult(); $err=$errTask.GetAwaiter().GetResult()
+        return (Resolve-RemoteResponse -Stdout $out -Stderr $err -ExitCode $process.ExitCode)
     }
-    catch { throw (if ($_.Exception.Message -match '^[A-Z][A-Z0-9_]{1,95}$') { $_.Exception.Message } else { 'SSH_ACTION_FAILED' }) }
+    catch { throw (Get-SafeRemoteFailureCode -Candidate ([string]$_.Exception.Message) -Fallback 'SSH_ACTION_FAILED') }
     finally { $process.Dispose(); [Security.Cryptography.CryptographicOperations]::ZeroMemory([Text.Encoding]::UTF8.GetBytes($requestJson)); [Security.Cryptography.CryptographicOperations]::ZeroMemory([Text.Encoding]::UTF8.GetBytes($program)) }
 }
 
@@ -1525,9 +1604,9 @@ finally {
             try {
                 $rollback=Invoke-Remote -Action 'rollback' -Payload @{drift_baseline=$script:remoteDriftBaseline}
                 if($rollback['rollback'] -ceq 'PASS' -and $rollback['route_firewall_service_restored'] -ceq 'PASS') { $script:remoteRollbackVerified=$true; Write-Output 'REMOTE_ROLLBACK=PASS' }
-                else { Write-Output 'REMOTE_ROLLBACK=FAIL' }
+                else { Get-RemoteRollbackFailureMarkers -Code 'REMOTE_ROLLBACK_NOT_VERIFIED' | ForEach-Object { Write-Output $_ } }
             }
-            catch { Write-Output 'REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION' }
+            catch { Get-RemoteRollbackFailureMarkers -Code ([string]$_.Exception.Message) | ForEach-Object { Write-Output $_ } }
         }
         $localCleanupVerified=$true
         if($script:remoteRollbackVerified -and $script:profileCreatedPaths.Count -gt 0){
