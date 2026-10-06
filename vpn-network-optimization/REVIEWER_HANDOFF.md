@@ -6,137 +6,126 @@
 
 ## PROJECT_GOAL
 
-Deploy three 3x-ui-managed nodes on fresh DigitalOcean VPS `143.198.159.233` — Hysteria2, WireGuard, and VLESS + REALITY + XTLS Vision — then consume them through one Mihomo subscription in Clash Verge so the Owner can switch among all three locally.
+Deploy three 3x-ui-managed nodes on fresh DigitalOcean VPS `143.198.159.233` — Hysteria2, WireGuard, and VLESS + REALITY + XTLS Vision — then consume them through one Mihomo-compatible delivery in Clash Verge so the Owner can switch among all three locally.
 
 ## PROJECT_STAGE
 
 ```text
 P0 Fresh VPS trust bootstrap + 3x-ui install      PASS
-P1 Contain subscription + create 3 inbounds       IN_PROGRESS
-P2 HTTPS Mihomo subscription + Clash import       PENDING
-P3 Three-node ChatGPT/OpenAI smoke                PENDING
+P1 Contain subscription + create 3 inbounds       PASS
+P2 Secure Mihomo delivery + Clash-ready staging   IN_PROGRESS
+P3 Clash import + three-node smoke                PENDING
 P4 Minimal backup + seal                          PENDING
-```
-
-## SYSTEM_MAP
-
-```text
-Owner Windows host
-├─ current live Internet/VPN -> OLD VPS 24.199.118.137 (DO NOT MUTATE)
-└─ Clash Verge / Mihomo
-   └─ future one 3x-ui Mihomo subscription
-      ├─ HY2                    intended PRIMARY
-      ├─ WireGuard              intended BACKUP_1
-      └─ VLESS+REALITY+Vision   intended BACKUP_2
-
-Fresh target 143.198.159.233 / SFO3
-├─ Ubuntu 24.04 x64
-├─ 1 vCPU / 512 MB / 10 GB
-├─ 3x-ui v3.9.0 / SQLite
-├─ admin panel 127.0.0.1:54912 only
-├─ default subscription server currently *:2096
-└─ no VPN inbounds yet
 ```
 
 ## CURRENT_ACCEPTED_STATE
 
-### P0 formally accepted
-
-P0 `3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL` is formally **PASS**.
-
-Accepted facts:
+### P0 PASS
 
 - strict SSH trust and target identity proven;
-- pinned 3x-ui v3.9.0 installed;
-- SQLite active;
-- install-result remains root:root 0600 and its contents were not surfaced;
-- admin panel is loopback-only at `127.0.0.1:54912`;
-- reserved ports 443/TCP, 8443/UDP and 51820/UDP remained free;
-- x-ui service active;
-- 458 MB RAM total / 210 MB available / 0 swap / 6276 MB root free;
-- x-ui RSS about 90 MB;
-- OOM kill counter zero;
-- Secret output zero;
+- 3x-ui v3.9.0 / SQLite installed;
+- admin panel loopback-only at `127.0.0.1:54912`;
 - old VPS untouched.
 
 Formal decision:
 `docs/REVIEWER_DECISION_3XUI_P0_FRESH_VPS_BOOTSTRAP_INSTALL_PASS.md`
 
-### Subscription listener classification
+### P1 PASS
 
-Executor surfaced `*:2096`.
+Accepted live server state:
 
-Reviewer verified against official 3x-ui v3.9.0:
+```text
+TARGET=143.198.159.233
+SWAP_TOTAL_MB=1023
+SUB_ENABLE=NO
+SUB_2096=CLOSED
+HY2=SELF-HY2-SFO3 / UDP 8443 / enabled
+WG=SELF-WG-SFO3 / UDP 51820 / enabled
+REALITY=SELF-REALITY-SFO3 / TCP 443 / enabled
+SHARED_CLIENT=owner-main
+SHARED_CLIENT_ATTACHMENTS=3
+SHARED_CLIENT_SUBID_PRESENT=YES
+XRAY_RUNTIME_HEALTHY=YES
+ADMIN_LOOPBACK_ONLY=YES
+OOM_KILL_COUNTER=0
+SECRET_VALUES_EMITTED=0
+OLD_VPS_MUTATION=NO
+```
 
-- it is the separate subscription server, not the admin panel;
-- default `subEnable=true`, `subPort=2096`, `subListen=all`;
-- no client/Sub ID exists yet.
+HY2 has a pinned self-signed certificate with insecure verification disabled.
+REALITY target was selected by the v3.9.0 feasibility scanner.
+WireGuard server/client credentials were generated and retained only in protected target state.
 
-P1 must disable the subscription server **before** creating any client, so no future subscription credential/content becomes available over default HTTP. P2 owns secure HTTPS/Mihomo exposure.
+Formal decision:
+`docs/REVIEWER_DECISION_3XUI_P1_THREE_INBOUNDS_SHARED_CLIENT_PASS.md`
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P1_THREE_INBOUNDS_SHARED_CLIENT
-STATE=REVIEWER_RELEASED_EXECUTOR_P1
-TARGET=DigitalOcean_143.198.159.233_SFO3
-TARGET_OLD_VPS=24.199.118.137_OUT_OF_SCOPE
-PINNED_3XUI_VERSION=v3.9.0
+GATE_ID=3XUI_FASTPATH_P2_SECURE_MIHOMO_DELIVERY
+STATE=REVIEWER_RELEASED_EXECUTOR_P2
+TARGET=143.198.159.233
 P0_FORMAL_PASS=YES
-MAX_ENDPOINT=SUB_CONTAINMENT_SWAP_THREE_INBOUNDS_SHARED_CLIENT_ENABLE_READBACK
-MANDATORY_REVIEW_STOP=YES
+P1_FORMAL_PASS=YES
+PREFERRED_DELIVERY=VALID_HTTPS_IP_SUBSCRIPTION
+BOUNDED_FALLBACK=OWNER_LOCAL_STATIC_MIHOMO_SNAPSHOT
+ACTIVE_CLASH_PROFILE_MUTATION_ALLOWED=NO
+LIVE_TRAFFIC_SWITCH_ALLOWED=NO
 EXECUTOR_RELEASED=YES
 OWNER_ACTION_REQUIRED=NONE
+MANDATORY_REVIEW_STOP=YES
 ```
 
 Canonical Gate:
-`docs/3X_UI_P1_THREE_INBOUNDS_SHARED_CLIENT.md`
+`docs/3X_UI_P2_SECURE_MIHOMO_DELIVERY.md`
+
+## P2 INTENT
+
+Preferred fast path:
+
+1. use 3x-ui v3.9.0's official bare-IP Let's Encrypt short-lived certificate capability;
+2. securely re-enable the Mihomo subscription server on HTTPS/2096;
+3. fetch the shared client's three-node Mihomo profile without exposing Sub ID or credentials;
+4. store the URL/profile under Owner-only local ACL outside Git;
+5. parse the profile with the installed Clash Verge Mihomo binary;
+6. do not activate or switch traffic yet.
+
+If the single bounded IP-certificate attempt is unavailable, P2 may keep public subscription disabled and deliver one Owner-only static Mihomo snapshot instead.
 
 ## CRITICAL_CONSTRAINTS
 
-- Never mutate old VPS `24.199.118.137`.
-- Before any client creation, contain default public subscription listener by setting `subEnable=false` through the local panel API and verify TCP/2096 closed.
-- Admin panel remains loopback-only.
-- Panel API token and all generated protocol Secrets stay in target process memory / protected target storage only.
-- No Secret in command arguments, env vars, stdout/stderr, GitHub, Evidence or chat.
-- Use only official 3x-ui v3.9.0 API/application paths; no direct SQLite edits.
-- Create exactly three intended inbounds and one shared client.
-- P1 leaves subscription server disabled.
-- No Clash import or real traffic smoke until later Gates.
+- old VPS `24.199.118.137` is out of scope and must not be contacted;
+- no Secret in Git/chat/Evidence/ordinary logs;
+- admin panel remains loopback-only;
+- no plaintext public subscription;
+- no TLS verification bypass;
+- no active Clash profile/selector/system-proxy/TUN/WireGuard/route mutation in P2;
+- exactly three proxies must exist in the staged Mihomo profile;
+- proxy order: HY2 -> WG -> REALITY -> DIRECT;
+- P2 stops before import/activation.
 
-## DEFAULT_EXECUTION_CHANNEL
+## DEFAULT EXECUTION CHANNEL
 
-Local Codex/Executor -> strict SSH -> `143.198.159.233`.
+Local Codex/Executor -> strict SSH -> fresh VPS, plus non-admin local Windows staging/read-only Clash baseline checks.
 
-Accepted identity:
-`C:\Users\34707\.ssh\digitalocean_ed25519`
-
-Accepted explicit known-host trust from P0 remains valid.
+Owner-only local artifacts:
+`%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath\`
 
 ## CURRENT_ROLLBACK_STATUS
 
-P0 installation is accepted baseline.
+P0 + P1 server state is accepted baseline.
 
-P1-created objects are new and exact:
-- subscription setting change;
-- optional project-owned 1 GiB swapfile;
-- three new inbounds;
-- one new shared client;
-- one HY2 project-owned certificate/key.
-
-If P1 partially fails, reconcile exact created IDs/paths before rollback or retry. Do not replay blindly. Old VPS is not part of rollback.
+If P2 HTTPS subscription setup fails acceptance, restore subscription disabled/TCP2096 closed while preserving the three inbounds/client/swap. If only Windows staging fails after valid server setup, leave the valid HTTPS server setup intact and return the local failure.
 
 ## UNRESOLVED
 
-- P1 three inbound payload/runtime compatibility on this exact v3.9.0 install.
-- REALITY scanner-selected target.
-- HY2 self-signed certificate pin behavior through generated Mihomo config.
-- WireGuard server/client key allocation on the fresh panel.
-- final RAM headroom with all three listeners active.
+- whether Let's Encrypt IP short-lived issuance succeeds from this droplet/port-80 environment;
+- generated Mihomo YAML exact compatibility with the Owner's installed Clash Verge Mihomo;
+- final Clash import/activation and per-node real traffic are P3, not yet proven.
 
 ## NEXT_STEP
 
-Executor runs only P1. If PASS_CANDIDATE, Reviewer inspects three listeners, shared-client attachments, resource read-back, subscription containment and Secret boundary. Then P2 will securely expose a Mihomo subscription over HTTPS and import it into Clash Verge.
+Executor runs only P2 and returns a sanitized completion packet. Reviewer then decides P2 PASS/RETURN and releases P3.
 
 ## OWNER_ACTION_REQUIRED
 
@@ -144,8 +133,7 @@ Executor runs only P1. If PASS_CANDIDATE, Reviewer inspects three listeners, sha
 
 ## EVIDENCE_POINTERS
 
-- P0 Evidence: `results/3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL_2026-10-06_EXECUTOR_R1.md`
-- P0 formal PASS: `docs/REVIEWER_DECISION_3XUI_P0_FRESH_VPS_BOOTSTRAP_INSTALL_PASS.md`
-- Active Gate: `docs/3X_UI_P1_THREE_INBOUNDS_SHARED_CLIENT.md`
-- Active plan: `docs/3X_UI_THREE_NODE_FASTPATH.md`
+- P1 Evidence: `results/3XUI_FASTPATH_P1_THREE_INBOUNDS_SHARED_CLIENT_2026-10-06_EXECUTOR_R1.md`
+- P1 PASS: `docs/REVIEWER_DECISION_3XUI_P1_THREE_INBOUNDS_SHARED_CLIENT_PASS.md`
+- Active Gate: `docs/3X_UI_P2_SECURE_MIHOMO_DELIVERY.md`
 - Legacy archive: `docs/archive/LEGACY_PROJECT_INDEX_2026-10-06.md`
