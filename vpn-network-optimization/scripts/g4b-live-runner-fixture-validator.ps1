@@ -301,9 +301,9 @@ Assert-Fixture ($LASTEXITCODE -eq 0) 'R6R2L_R1_GIT_STATUS_ROOT_PATH_QUERY'
 $gitAcceptedResultsPrefix='?? ' + $gitProjectPrefix + '/results/'
 $gitUnexpectedStatus=@($gitStatus | Where-Object { -not ([string]$_).StartsWith($gitAcceptedResultsPrefix,[StringComparison]::Ordinal) })
 Assert-Fixture ($gitUnexpectedStatus.Count -eq 0) 'R6R2L_R2_PROJECT_STATUS_ACCEPTED_RESULTS_ONLY'
-$crlfHandoff="GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS`r`nLIVE_G4B_EXECUTION_AUTHORIZED=YES`r`nSECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK`r`n"
-$crlfSource=($runner.Contains("(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\r?$") -and $runner.Contains("(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$") -and $runner.Contains("(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$"))
-$crlfBehavior=(($crlfHandoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\r?$') -and ($crlfHandoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') -and ($crlfHandoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$'))
+$crlfHandoff="GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21`r`nLIVE_G4B_EXECUTION_AUTHORIZED=YES`r`nSECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK`r`n"
+$crlfSource=($runner.Contains("(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21\r?$") -and $runner.Contains("(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$") -and $runner.Contains("(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$"))
+$crlfBehavior=(($crlfHandoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21\r?$') -and ($crlfHandoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') -and ($crlfHandoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$'))
 Assert-Fixture ($crlfSource -and $crlfBehavior) 'R6R2L_R2_CRLF_HANDOFF_CONTRACT'
 
 $contract=Test-RunnerContract $runner
