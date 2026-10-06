@@ -815,3 +815,8 @@ Applies to R20, the lightweight G4-C three-role ChatGPT smoke, G4-D WireGuard-in
 Decision: `RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN`.
 
 Because consequential remote mutation had started and automatic rollback is unverified, neither R20 nor its rollback path may be blindly replayed. First action is R20R1 read-only reconciliation of the exact project-owned service/listener/paths/transaction state. No Secret content, provider action, Clash mutation, or network mutation is authorized.
+
+
+## 2026-10-06 — R20R1: consequential surface clean, transaction residue remains
+
+R20R1 proves the REALITY service/listener/process/binary/runtime/config/unit and runtime identity were removed, while WireGuard and HY2 remain healthy. Only the R20 transaction directory/state is known to remain. Do not delete it yet; R20R2 must classify its exact allowlisted contents and created-parent metadata first.
