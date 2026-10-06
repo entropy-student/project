@@ -879,3 +879,15 @@ Decision: `PASS_R20R6_ERROR_PROPAGATION_REPAIR`.
 Reviewer independently verified the source commit and fixture design. Production remote-response helpers are extracted from the runner AST for offline testing; the new logic preserves bounded allowlisted remote error codes, fails closed on malformed/oversized/untrusted responses, keeps SSH fallback behavior, and surfaces a bounded rollback failure code without changing fail-closed reconciliation semantics.
 
 R20 remains consumed and must never be replayed. R21 is a fresh one-shot live Gate using runner blob `4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b`. Standing Owner authorization applies to the documented route.
+
+
+## 2026-10-06 — 3x-ui fast path target replaced with fresh droplet
+
+- **Owner decision:** use newly created DigitalOcean droplet `143.198.159.233` (SFO3, Ubuntu 24.04 LTS x64, 1 vCPU / 512 MB / 10 GB) as the 3x-ui target.
+- **Old VPS:** `24.199.118.137` remains untouched and continues to provide the Owner's current working VPN path during migration.
+- **Superseded Gate:** `3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY` -> `SUPERSEDED_NOT_EXECUTED`.
+- **New Gate:** `3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL`.
+- **Software pin:** 3x-ui stable `v3.9.0`; SQLite default.
+- **Security:** first SSH trust requires an independently Owner-observed ED25519 SHA256 fingerprint; installer Secret output is suppressed; admin panel is rebound to loopback before P0 acceptance.
+- **Execution model:** Reviewer designs/accepts Gates; Codex Executor performs strict-SSH server work; Owner only supplies the one-time non-secret host-key fingerprint or resolves an unavailable private-key checkpoint.
+- **Next:** after fingerprint relay and Reviewer release, Executor installs 3x-ui on the fresh target; later Gates create HY2 / WireGuard / VLESS+REALITY and import one Mihomo subscription into Clash Verge.
