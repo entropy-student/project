@@ -104,25 +104,24 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R20_RECOVERY_PENDING_EXACT_CLEANUP_R6R2L_R20R5
-STATE=OWNER_ACTION_REQUIRED_EXACT_CLEANUP
-PREVIOUS_RESULT=PASS_R20R4R2_EXPECTED_FAILED_RUN_PENDING_SET
-OBJECTIVE=Delete only the exact R20 failed-run local/Baidu pending recovery set after ciphertext ownership proof.
-MAX_ENDPOINT_THIS_ROUND=Exact Baidu pending rm + exact two local pending deletes + owner-only temp cleanup; no final recovery mutation, decrypt, VPS, Clash or network mutation.
+GATE_ID=G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
+STATE=EXECUTOR_ACTION_REQUIRED_OFFLINE
+PREVIOUS_RESULT=PASS_R20R5_EXACT_PENDING_SET_CLEAN
+OBJECTIVE=Offline-only repair of structured remote error propagation and rollback failure diagnostics before any fresh live Gate.
+MAX_ENDPOINT_THIS_ROUND=Source + fixtures + documentation only; no Secret/DPAPI/provider/SSH/VPS/Clash/network action.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R20R5 Gate 9bc95184691025533df40653c30fa5801452bb9d; helper 500096ce2bf12c3a8a36aa109d6995ae8352d48e.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; VPS-side residue closed; WG/HY2 healthy; exact failed-run pending set proven; remote ciphertext must match local portable pending; local pending timestamps must fall inside R20 execution window; rollback journal retained.
-PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; Owner locally confirms current Baidu account; exact pending/final states re-proven.
-REQUIRED_EVIDENCE=Remote pending ciphertext match PASS; exact remote pending removed; exact local pendings removed; finals untouched; temp cleanup PASS; rollback journal retained; unrelated mutation markers NO.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if exact pending set is absent afterward and no final/unrelated state changed.
-ROLLBACK_STATUS_OR_PLAN=R20 VPS state clean. This Gate closes failed-run recovery pending artifacts only.
-OWNER_ONLY_ACTIONS=Execute one R20R5 exact cleanup helper checkpoint and confirm the local Baidu account dialog.
-REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-recovery-pending-exact-cleanup.ps1 at blob 500096ce2bf12c3a8a36aa109d6995ae8352d48e exactly once after source/AST checks.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R20R5 markers only; never copy UID into chat.
+TARGET_AND_SCOPE=R20R6 Gate 2549ba44475a113c5e66ef101ee3ced7d43984ea; current live runner and live fixture validator.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; no replay; failed-run VPS and recovery pending residues clean; rollback journal retained; exact historical P7 low-level cause is UNKNOWN because old runner discarded structured remote errors.
+PREFLIGHT=Safe-sync main; clean tracked worktree; exact Gate identity; no live authorization required.
+REQUIRED_EVIDENCE=Structured remote GateError propagation fixtures; transport fallback; malformed-response fail-closed; rollback failure-code fixture; success/fingerprint regressions; AST; full fixtures; zero consequential actions.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only after minimal offline repair proves bounded sanitized error preservation without changing live semantics.
+ROLLBACK_STATUS_OR_PLAN=Source/docs-only changes; revert commit if needed. No runtime rollback action.
+OWNER_ONLY_ACTIONS=NONE for this offline Gate.
+REVIEWER_TO_EXECUTOR_RELAY=Implement only docs/G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6.md and stop at Reviewer.
+EXECUTOR_TO_REVIEWER_RELAY=Return source commit, final blobs, fixture markers and zero-action evidence.
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-R20R5_GATE_BLOB=9bc95184691025533df40653c30fa5801452bb9d
-R20R5_HELPER_BLOB=500096ce2bf12c3a8a36aa109d6995ae8352d48e
+R20R6_GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
@@ -400,11 +399,11 @@ Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and fina
 
 ## NEXT_STEP
 
-Execute exactly one R20R5 local PowerShell checkpoint. Do not run R20 or any rollback mode. Stop after sanitized R20R5 output for Reviewer.
+Local Codex/Executor performs R20R6 offline source repair and fixtures only. No PowerShell live/provider checkpoint is required from Owner in this Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the R20R5 exact pending cleanup helper once. Confirm the local Baidu account dialog only if it is the intended project account. Do not expose the UID in chat.
+NONE. Wait for the offline Executor PASS_CANDIDATE; do not run R20 or any rollback/live command.
 
 ## EVIDENCE_POINTERS
 
