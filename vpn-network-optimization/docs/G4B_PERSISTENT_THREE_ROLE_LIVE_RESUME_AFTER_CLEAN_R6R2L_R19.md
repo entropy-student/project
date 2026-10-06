@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Live Resume After CLEAN R6R2L-R19
 
-Status: PREPARED / FRESH_OWNER_AUTHORIZATION_REQUIRED / LIVE_EXECUTION_NOT_RELEASED
+Status: READY_FOR_OWNER_EXECUTION / FRESH_OWNER_AUTHORIZATION_GRANTED / ONE_SHOT_LIVE_RELEASED
 
 ## GATE_ID
 `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19`
@@ -43,19 +43,18 @@ This Gate crosses fresh consequential boundaries:
 - new persistent Clash profile import;
 - encrypted recovery upload/promote on Baidu.
 
-Historical live authorization is not reused automatically. A fresh explicit Owner authorization is required after this Gate is prepared.
+Historical live authorization is not reused automatically. The Owner explicitly granted fresh R19 authorization in chat on 2026-10-06 after this Gate was prepared.
 
-Before authorization:
+Authorization state:
 ```text
-LIVE_G4B_EXECUTION_AUTHORIZED=NO
-```
-
-After explicit Owner approval, Reviewer may change canonical Handoff to:
-```text
+OWNER_R19_LIVE_AUTHORIZATION=GRANTED
 LIVE_G4B_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_SCOPE=CURRENT_R19_GATE_ONLY
+SECOND_R19_LIVE_INVOCATION_AUTHORIZED=NO
+G4C_AUTHORIZED_BY_THIS_GRANT=NO
 ```
 
-and release exactly one R19 live run.
+Exactly one R19 live run is released. Any failure or ambiguity stops for Reviewer.
 
 ## REQUIRED PRE-FLIGHT AFTER AUTHORIZATION
 - Owner PowerShell 7.6.6 Administrator / High integrity;
@@ -117,7 +116,22 @@ Use only the runner's bounded rollback behavior and returned rollback journal. A
 - G4-C workloads/benchmarks.
 
 ## OWNER ACTION
-Fresh explicit authorization is required before any live execution. Until then, no runner invocation is released.
+Fresh explicit authorization is recorded and released for exactly one R19 live invocation under this Gate. No second live invocation is authorized.
 
 ## STOP
 `STOP_AT_REVIEWER=YES`
+
+
+## AUTHORIZATION RECORD — 2026-10-06
+
+```text
+OWNER_R19_LIVE_AUTHORIZATION=GRANTED
+R19_GATE_BLOB_AT_AUTHORIZATION=11cb06d6b1be7ac372181517bb65cd847a10e81c
+LIVE_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+LIVE_RUNNER_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+LIVE_G4B_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_SCOPE=R19_ONE_SHOT_ONLY
+G4C_AUTHORIZED_BY_THIS_GRANT=NO
+```
+
+The Owner approved proceeding with the R19 plan after being told the remaining interactive boundary: one Administrator PowerShell 7.6.6 live checkpoint, local-only UID/SSH-key/passphrase inputs, and one Clash profile import without activation.
