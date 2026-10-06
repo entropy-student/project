@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R20_TRANSACTION_RESIDUAL_READONLY_R6R2L_R20R2
-STATE=OWNER_ACTION_REQUIRED_READONLY
-PREVIOUS_RESULT=PASS_R20R1_OBSERVATION_PROJECT_RESIDUAL_PRESENT
-OBJECTIVE=Classify the exact remaining R20 transaction residue and created-parent metadata before any cleanup.
-MAX_ENDPOINT_THIS_ROUND=One read-only SSH metadata/state observation using locked helper; no mutation.
+GATE_ID=G4B_R20_TRANSACTION_RESIDUAL_CLEANUP_R6R2L_R20R3
+STATE=OWNER_ACTION_REQUIRED_EXACT_CLEANUP
+PREVIOUS_RESULT=PASS_R20R2_TRANSACTION_RESIDUAL_CLASSIFIED
+OBJECTIVE=Remove only the two fully ownership-proven R20 transaction files and the resulting empty exact transaction directory.
+MAX_ENDPOINT_THIS_ROUND=One exact remote transaction cleanup; no recursive delete; no service/provider/recovery/Clash/network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R20R2 Gate 92150b47085a770556290dadfca4fdd045c951e0; helper dcabd46abc7d2736369e1f0f0a0072f6dfe78398.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; no second R20; no blind rollback/delete; REALITY consequential surface is absent; WG/HY2 healthy; retained rollback/recovery artifacts untouched.
-PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS.
-REQUIRED_EVIDENCE=State booleans, symbolic created-parent status, transaction metadata and allowlisted child classification, unknown counts zero, all mutation markers NO.
-ACCEPTANCE_CRITERIA=Observation only. Exact cleanup Gate only if residue is fully ownership-proven and allowlisted.
-ROLLBACK_STATUS_OR_PLAN=Consequential REALITY surface reconciled clean; transaction residue pending classification.
-OWNER_ONLY_ACTIONS=Execute one R20R2 read-only helper checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-transaction-residual-readonly.ps1 at blob dcabd46abc7d2736369e1f0f0a0072f6dfe78398 exactly once.
+TARGET_AND_SCOPE=R20R3 Gate 4b3cc6aeb18155c118646a04e28de7cf422826ca; helper 11bfbd0cf4c4d6e990348fadccfd3d85be64e06b.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; REALITY consequential surface absent; WG/HY2 healthy; exact transaction residue classified; recovery and Baidu excluded; retained local rollback journal must remain.
+PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; re-prove exact transaction children/metadata/run marker and clean consequential surface immediately before write.
+REQUIRED_EVIDENCE=Exact ownership proof; exact transaction cleanup PASS; post-clean baseline PASS; WG/HY2 healthy; journal retained; recovery/Baidu/Clash/local-network actions NO.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if exact transaction path is absent afterward and all unrelated accepted baselines remain.
+ROLLBACK_STATUS_OR_PLAN=Consequential REALITY surface already reconciled clean. This Gate removes only inert R20 transaction metadata.
+OWNER_ONLY_ACTIONS=Execute one R20R3 exact cleanup helper checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-transaction-residual-cleanup.ps1 at blob 11bfbd0cf4c4d6e990348fadccfd3d85be64e06b exactly once after source/AST checks.
 EXECUTOR_TO_REVIEWER_RELAY=Return only sanitized helper markers and stop.
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-R20R2_GATE_BLOB=92150b47085a770556290dadfca4fdd045c951e0
-R20R2_HELPER_BLOB=dcabd46abc7d2736369e1f0f0a0072f6dfe78398
+R20R3_GATE_BLOB=4b3cc6aeb18155c118646a04e28de7cf422826ca
+R20R3_HELPER_BLOB=11bfbd0cf4c4d6e990348fadccfd3d85be64e06b
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
