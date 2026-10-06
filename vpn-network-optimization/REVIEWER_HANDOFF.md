@@ -106,20 +106,28 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_LOCAL_BAIDUPCS_TOOL_RESTORE_R1
-STATE=OWNER_LOCAL_PREREQUISITE_REQUIRED
-PARENT_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
-PARENT_GATE_STATE=PAUSED_PENDING_LOCAL_TOOL_RESTORE
-OBJECTIVE=Restore and verify the exact pinned public BaiduPCS-Go v4.0.2 Windows x64 ZIP + EXE locally, then resume the parent read-only checkpoint.
-EXPECTED_ARCHIVE_SHA256=ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30
-R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+STATE=OWNER_ATOMIC_EPHEMERAL_TOOL_PLUS_READONLY_CHECKPOINT_RELEASED
+PREVIOUS_RESULT=PASS_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
+TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+OBJECTIVE=Run one bounded Owner-local reality checkpoint using an ephemeral verified BaiduPCS-Go v4.0.2 tool and the persistent existing Baidu config.
+MAX_ENDPOINT_THIS_ROUND=Temporary public tool reacquire/hash/extract -> R1 read-only checkpoint -> temporary tool cleanup -> STOP_AT_REVIEWER.
+MANDATORY_REVIEW_STOP=YES
+TARGET_AND_SCOPE=Read-only Windows health/local metadata + strict-SSH VPS state + read-only Baidu identity/listing counts; temporary public tool exists only for this execution.
+APPLICABLE_CRITICAL_CONSTRAINTS=No live runner; no rollback/cleanup of project state; no route/service/profile/provider mutation; no Secret/DPAPI content readout; R20+ state claims remain reference-only.
+REQUIRED_EVIDENCE=Exact sanitized R1 marker block plus confirmation temporary tool cleanup completed.
+ACCEPTANCE_CRITERIA=Reviewer classifies CLEAN_BASELINE, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE from Owner checkpoint output.
+ROLLBACK_STATUS_OR_PLAN=Not applicable to target state; temporary tool directory is deleted in finally.
+OWNER_ONLY_ACTIONS=Run one atomic ephemeral-tool + R1 read-only checkpoint from Administrator PowerShell 7.6.x; return sanitized markers only.
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES
 FRESH_LIVE_GATE_RELEASED=NO
-OWNER_ONLY_ACTIONS=Local public tool download/extract/hash verification only.
 ```
 
-Canonical Gate: `docs/G4B_LOCAL_BAIDUPCS_TOOL_RESTORE_R1.md`.
+Canonical parent Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
 
-The parent R1 read-only checkpoint was interrupted before execution because the previously verified local BaiduPCS-Go binary/archive are no longer present. No target reality classification has been made.
+Active lifecycle correction: `docs/REVIEWER_CORRECTION_G4B_R1_BAIDUPCS_EPHEMERAL_MODEL.md`.
+
+BaiduPCS-Go executable/archive are ephemeral execution dependencies. Persistent login/config state remains under `%APPDATA%\BaiduPCS-Go`. The previous long-lived local tools restore detour is superseded.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -182,15 +190,15 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Owner restores and verifies the exact pinned BaiduPCS-Go v4.0.2 Windows x64 tool locally under the bounded prerequisite Gate, then returns only the success markers and exact local ZIP/EXE paths.
+Owner runs exactly one atomic Administrator PowerShell 7.6.x procedure: temporarily reacquire and verify the pinned BaiduPCS-Go v4.0.2 archive outside the project/runtime/recovery trees, invoke the already-reviewed R1 helper with those temporary paths, then delete the temporary tool directory in `finally`.
 
-Reviewer will then resume `G4B_TAKEOVER_REALITY_REBASE_READONLY_R1` and re-release the one read-only checkpoint. No provider login/read, SSH/VPS, Clash/WireGuard, live runner, rollback, or cleanup is authorized during this prerequisite.
+Reviewer then classifies the returned `CURRENT_REALITY`. Do not run historical R20-R22 helpers, live runner, rollback, or manual project-state cleanup.
 
 ## OWNER_ACTION_REQUIRED
 
-Restore and verify the exact pinned public BaiduPCS-Go v4.0.2 Windows x64 ZIP + EXE locally. Do not run BaiduPCS-Go itself yet.
+Run the single released ephemeral-tool + R1 read-only checkpoint procedure supplied by Reviewer.
 
-Return only the verification markers and exact ZIP/EXE paths. The parent read-only checkpoint remains paused until Reviewer resumes it.
+Do not permanently install BaiduPCS-Go. Do not modify `%APPDATA%\BaiduPCS-Go` login/config state. Do not manually change Clash, WireGuard, routes, services, VPS files, or Baidu contents.
 
 ## EVIDENCE_POINTERS
 
