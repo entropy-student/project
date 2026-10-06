@@ -103,31 +103,26 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-SUBGATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19
-STATE=OWNER_ACTION_REQUIRED_G4B_LIVE_RESUME_R19
-PREVIOUS_RESULT=PASS_R6R2L_R18_RESIDUAL_CLEAN
-OBJECTIVE=Run one fresh bounded live G4-B attempt using the current R10-repaired runner/validator to establish persistent HY2/WG/REALITY three-role readiness.
-MAX_ENDPOINT_THIS_ROUND=Fresh Owner authorization recorded and released: exactly one live run and mandatory Reviewer stop.
+GATE_ID=G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1
+STATE=EXECUTOR_ACTION_REQUIRED_LOCAL_CODEX_OFFLINE
+PREVIOUS_RESULT=RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED
+OBJECTIVE=Reproduce the generated SELF-VPN-V1 local Mihomo parse failure with synthetic values, prove one bounded root cause, apply the smallest repair, and executable-parse validate it.
+MAX_ENDPOINT_THIS_ROUND=Local source/template/validator repair and offline tests only; no live runner, provider, SSH/VPS, network, profile, service or route mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=runner 2faf59ec5a1653a275b11504fe567d0fc871f94e; validator 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3; R19 Gate 13ebc71547c975aa7f99434887e07646bb495a00.
-APPLICABLE_CRITICAL_CONSTRAINTS=R18 production recovery namespace CLEAN; R17 quarantine retained/untouched; WG and HY2 preserved; AUTO_SWITCHING=OFF; system proxy/TUN final OFF; G4-C excluded; Secrets never emitted.
-PREFLIGHT=Fresh R19 Owner authorization recorded; safe-sync main; exact parent Gate line; exact authorization line; current runner/validator blobs; fixture validator PASS; local UID/SSH key/passphrase only.
-REQUIRED_EVIDENCE=Runner success/rollback contract from R19; persistent REALITY service readiness; TCP443 readiness; profile import visibility without activation; role order; WG/HY2 preserved; proxy/TUN OFF; recovery promotion only on overall success; cleanup/rollback markers; zero Secret emission.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only under exact R19 contract; any failure/ambiguity stops without second attempt.
-ROLLBACK_STATUS_OR_PLAN=Use runner bounded rollback + retained journal. No second R19 live invocation.
-OWNER_ONLY_ACTIONS=Run exactly one R19 live checkpoint in Administrator PowerShell 7.6.6; handle local-only UID/SSH-key/passphrase inputs and P10 Clash profile import without activation; then stop for Reviewer.
-REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19.md at blob 13ebc71547c975aa7f99434887e07646bb495a00. Historical live Gate is not execution authority. Current runner/validator blobs are 2faf59ec5a1653a275b11504fe567d0fc871f94e / 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3.
-EXECUTOR_TO_REVIEWER_RELAY=After authorization and exactly one run, return bounded non-secret markers and stop.
-LIVE_G4B_EXECUTION_AUTHORIZED=YES
+TARGET_AND_SCOPE=R19R1 Gate 7e9e7bf4f69645a695d418bd934c04d79625707c; current runner 2faf59ec5a1653a275b11504fe567d0fc871f94e; validator 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3; template 21c9a73f965e55da0c5d161b3c051e0d3bab1aa0; package validator a4c5b3bd7875b16eb56cafc1f45ac3035f9a3b69.
+APPLICABLE_CRITICAL_CONSTRAINTS=R18 CLEAN remains accepted; R17 quarantine untouched; one-shot R19 authorization consumed; no retry; no Secret reads; use synthetic credentials only; real installed local Mihomo parser may be invoked in test mode only.
+PREFLIGHT=Safe-sync main; prove locked identities; no admin requirement expected; do not run -Live.
+REQUIRED_EVIDENCE=Current failure reproduced; sanitized parse error class; bounded root cause; minimal repair; synthetic rendered profile real Mihomo parse PASS; package validator PASS; live fixture validator PASS; exact final blobs; all action markers NO.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only on executable local FAIL→PASS proof with smallest repair and full offline regression PASS.
+ROLLBACK_STATUS_OR_PLAN=No consequential state remains from R19. Source repair can be reverted in Git. R17 quarantine retained; production recovery namespace remains CLEAN.
+OWNER_ONLY_ACTIONS=None expected.
+REVIEWER_TO_EXECUTOR_RELAY=Execute docs/G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1.md exactly. Leading hypothesis is missing VLESS encryption field; prove or reject it with the actual local Mihomo parser before editing.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized cause, exact changed files, all required evidence markers and final blobs; stop.
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
-OWNER_R19_LIVE_AUTHORIZATION=GRANTED
-R19_GATE_BLOB=13ebc71547c975aa7f99434887e07646bb495a00
-R19_LIVE_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
-R19_LIVE_RUNNER_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 independent read-only CLEAN verification is formally PASS. Current work is the authorized one-shot R19 persistent three-role live checkpoint.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 consumed its single live invocation and safely RETURNed at P5 local Mihomo config parsing before remote consequential mutation. Current work is R19R1 local Codex offline diagnosis/repair.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -384,11 +379,11 @@ Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and fina
 
 ## NEXT_STEP
 
-Owner executes exactly one R19 live checkpoint using the relocked current runner/validator. Codex/local automation may handle offline preparation and post-run evidence organization, but the consequential Administrator PowerShell execution and P10 Clash import remain Owner steps. Stop immediately after the runner returns.
+Local Codex executes R19R1 offline: reproduce the parse failure with synthetic values using the actual installed Mihomo parser, prove the bounded root cause, apply the smallest template/validator repair, run all regressions, and stop for Reviewer. No Administrator PowerShell or Owner UI step is expected.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one Administrator PowerShell 7.6.6 R19 checkpoint. Keep Baidu UID, SSH private-key path and recovery passphrase local; at P10 import only the generated SELF-VPN-V1 profile and do not activate it. Return bounded non-secret output to Reviewer. No second R19 run is authorized.
+None for R19R1 unless local Codex cannot access the installed Mihomo binary without elevation. Do not rerun R19.
 
 ## EVIDENCE_POINTERS
 
