@@ -210,7 +210,7 @@ R20R4R2 proved the exact failed-run recovery set: two local pending artifacts pl
 
 ```text
 CURRENT_GATE=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
-CURRENT_STATE=OFFLINE_REPAIR_AUDIT_REQUIRED
+CURRENT_STATE=OWNER_OFFLINE_REPAIR_VALIDATION_REQUIRED
 
 R20=CONSUMED_NO_REPLAY
 R21=CONSUMED_NO_REPLAY
@@ -240,6 +240,11 @@ R22R4=PASS_TRANSACTION_RESIDUE_CLEAN
 R22R5=PASS_RECOVERY_PENDING_SET_CLEAN
 
 R22R6_REQUIRED_REPAIRS=P7_READINESS,ROLLBACK_SYSTEMD_DIAGNOSTICS,FIREWALL_COUNTER_NORMALIZATION,FUTURE_ONE_SHOT_GATE_BINDING
+R22R6_SOURCE_REPAIR_COMMIT=1034d52a7eeb449759b6e87557ad2545d339b5ec
+R22R6_RUNNER_BLOB=2f62064c4057803c3116fa428370fa1ad48bbb76
+R22R6_LIVE_VALIDATOR_BLOB=8aaecac4c873e8a3e112fd5f8da0fa587ed443da
+R22R6_AUDIT_VALIDATOR_BLOB=1e02c0605bc783c142826822b4deaef2f0e5d11c
+R22R6_OFFLINE_VALIDATION=PENDING
 FRESH_LIVE_GATE_RELEASED=NO
 
 G4C_STATE=PENDING_AFTER_G4B
@@ -251,7 +256,7 @@ FINAL_CONTROL_PLANE=CLASH_VERGE
 
 R22 failed at P7 after consequential mutation began. The failed-run residue is now fully reconciled and clean: persistent REALITY surface absent, transaction residue removed, recovery pending set removed, recovery finals absent, route/firewall/service baseline restored, WG/HY2 healthy, and the rollback journal retained only as historical evidence.
 
-No fresh live Gate is released. R22R6 is an offline repair audit covering every defect class exposed by R21/R22 that should have been caught before live execution: bounded P7 readiness polling, specific rollback/systemd postconditions and diagnostics, complete iptables counter normalization, and an atomic future one-shot Gate-binding contract. A future live Gate may be created only after formal R22R6 PASS.
+No fresh live Gate is released. The R22R6 source repair is now on main and locked by blob; it covers bounded P7 readiness polling, specific rollback/systemd postconditions and diagnostics, complete iptables counter normalization, and an atomic future one-shot Gate-binding contract. One owner-local offline validation remains required before formal R22R6 PASS. A future live Gate may be created only after that PASS.
 
 After a later fresh G4-B live Gate formally PASSes, the remaining v1 route is:
 
