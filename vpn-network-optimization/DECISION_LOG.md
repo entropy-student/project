@@ -820,3 +820,10 @@ Because consequential remote mutation had started and automatic rollback is unve
 ## 2026-10-06 — R20R1: consequential surface clean, transaction residue remains
 
 R20R1 proves the REALITY service/listener/process/binary/runtime/config/unit and runtime identity were removed, while WireGuard and HY2 remain healthy. Only the R20 transaction directory/state is known to remain. Do not delete it yet; R20R2 must classify its exact allowlisted contents and created-parent metadata first.
+
+
+## 2026-10-06 — R20R2 PASS; exact R20 transaction cleanup released
+
+Decision: `PASS_R20R2_TRANSACTION_RESIDUAL_CLASSIFIED`.
+
+R20R2 proves the residual transaction directory is project-owned, has the expected metadata, contains exactly two allowlisted files, has no unknown child, and references no still-present created parent directories. R20R3 may therefore remove exactly the staged unit, state JSON, and resulting empty transaction directory after repeating ownership and clean-baseline checks. Recovery artifacts and Baidu remain out of scope.
