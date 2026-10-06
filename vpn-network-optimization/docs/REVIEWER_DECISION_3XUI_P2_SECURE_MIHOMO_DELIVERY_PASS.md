@@ -1,0 +1,68 @@
+# Reviewer Decision — 3x-ui P2 Secure Mihomo Delivery PASS
+
+Status: PASS
+
+Date: 2026-10-06
+
+## Gate
+
+`3XUI_FASTPATH_P2_SECURE_MIHOMO_DELIVERY`
+
+Executor candidate commit:
+
+`4a293e346f13cc6a44921b4ff868b099f1035f55`
+
+## Accepted result
+
+```text
+P2_RESULT=PASS
+DELIVERY_MODE=VALID_HTTPS_IP_SUBSCRIPTION
+ACME_IP_ATTEMPT=PASS
+HTTPS_CERT_NORMAL_VALIDATION=PASS
+HTTPS_CERT_IP_SAN=PASS
+CERT_AUTO_RENEW=PASS
+TCP_2096_TLS_NOT_PLAINTEXT=PASS
+PUBLIC_REAL_MIHOMO_STATUS=200
+PUBLIC_RANDOM_SUB_NEGATIVE=PASS
+SUB_ENABLE=YES
+SUB_2096=TLS
+SUB_CLASH_ENABLE=YES
+PROXY_COUNT=3
+PROXY_NAMES=SELF-HY2-SFO3,SELF-WG-SFO3,SELF-REALITY-SFO3
+HY2_PROFILE_SHAPE=PASS
+HY2_CERT_PIN_PRESENT=YES
+HY2_SKIP_CERT_VERIFY=NO
+WG_PROFILE_SHAPE=PASS
+REALITY_PROFILE_SHAPE=PASS
+PROXY_GROUP_ORDER=PASS
+FINAL_RULE_MATCH_PROXY=PASS
+WINDOWS_OWNER_ONLY_PROFILE=PASS
+WINDOWS_OWNER_ONLY_SUB_URL=PASS
+MIHOMO_PROFILE_PARSE=PASS
+ACTIVE_CLASH_PROFILE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+WIREGUARD_BASELINE_CHANGED=NO
+ROUTE_SNAPSHOT_CHANGED=NO
+ADMIN_LOOPBACK_ONLY=YES
+XRAY_RUNTIME_HEALTHY=YES
+SECRET_VALUES_EMITTED=0
+OLD_VPS_MUTATION=NO
+```
+
+## Accepted artifacts
+
+Owner-only Windows staging exists outside Git:
+
+- `%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath\subscription.url`
+- `%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath\self-vpn-3xui.yaml`
+
+Both have inheritance disabled and only the current Owner SID.
+
+The real subscription URL/Sub ID and all protocol credentials remain Secret and are not recorded in GitHub Evidence.
+
+## Next
+
+Release P3 for Clash Verge remote subscription import and one bounded real canary per node.
+
+No performance benchmark is required.
