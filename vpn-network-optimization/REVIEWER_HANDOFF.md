@@ -125,6 +125,7 @@ SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
 CONSEQUENTIAL_MUTATION_STARTED=YES
 REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
 CURRENT_HELPER=scripts/g4b-r22-readonly-reconciliation.ps1
+R22R1_HELPER_BLOB=eba466b8ff07efe7074acc9a390deeee4659215e
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
@@ -164,47 +165,47 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 ## DEFAULT_EXECUTION_CHANNEL
 
 - Reviewer may directly perform normal repository/document/source reconciliation inside the accepted project boundary.
-- Current consequential execution channel is Owner-local Windows PowerShell 7.6.6, Administrator + High integrity, using the R22 runner locked by blob.
-- R22 is one-shot. Owner must not improvise a fallback, second invocation, or manual rollback after a RETURN/ambiguity.
+- Current execution channel is Owner-local Windows PowerShell 7.6.6, Administrator + High integrity, running only the R22R1 read-only reconciliation helper.
+- R22 is consumed. Owner must not rerun R22, invoke rollback mode, or perform manual remote cleanup before Reviewer classifies R22R1.
 - Local paths are never source authority; each consequential run safe-syncs to GitHub `main` and verifies the exact Gate/runner/validator blobs before mutation.
 
 ## CURRENT_ROLLBACK_STATUS
 
-- Standalone Windows WireGuard remains the active production/rollback baseline and must stay enabled through R22 and G4-C.
+- Standalone Windows WireGuard remains the active production/rollback baseline and must stay enabled through R22R1 and G4-C.
 - Accepted pre-R21 state has WG and HY2 healthy; system proxy OFF and Clash TUN OFF.
 - The consumed R20 attempt is closed: remote consequential residue, transaction residue, and failed-run recovery pending artifacts are clean; recovery finals are absent.
 - The retained R20 rollback journal is historical evidence only and is out of scope for R21; it must not be reused or deleted by R21.
-- R21 is consumed at P0 with no consequential mutation and no rollback required. R22 has not yet executed, so no R22 rollback journal or persistent REALITY/profile state is accepted yet.
-- On R22 failure after mutation, runner-owned bounded rollback may execute; any failure/ambiguity/UNKNOWN returns to Reviewer with no second invocation and no manual rollback.
+- R21 is consumed at P0 with no consequential mutation. R22 is consumed at P7 after consequential mutation; its rollback journal and recovery pending artifacts are retained because automatic rollback could not be verified. Persistent REALITY/profile state is not accepted.
+- R22 already returned rollback UNKNOWN. Only R22R1 read-only reconciliation is allowed now; no second live invocation and no manual rollback/cleanup.
 
 ## UNRESOLVED
 
-- G4-B remains **IN_PROGRESS** solely because R21 has not yet been executed and formally reviewed.
-- R21R2 is formally PASS. R22 is released for exactly one fresh live invocation; consumed count is 0 and a second R22 invocation is forbidden.
-- Persistent REALITY backup service and persistent `SELF-VPN-V1` are still unaccepted until formal R22 PASS.
-- G4-C remains pending after formal R21 PASS and is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
+- G4-B remains **IN_PROGRESS** because R22 ended at P7 with rollback UNKNOWN and R22R1 reconciliation is pending.
+- R22 is consumed at P7. Automatic rollback is UNKNOWN, so all mutation remains frozen until R22R1 classifies actual residue/baseline state.
+- Persistent REALITY backup service and persistent `SELF-VPN-V1` remain unaccepted. P10 was never reached, so no accepted three-role profile import exists.
+- G4-C remains pending until G4-B is recovered and formally PASS; it is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
 - G4-D remains pending after G4-C: migrate WG-BASELINE into native Clash/Mihomo WireGuard; standalone Windows WireGuard may be disabled only after formal G4-D PASS.
 - Final v1 production default/control posture, final WireGuard routing/kill-switch policy, and MVP v1 seal remain pending.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Owner executes exactly one R22 Administrator PowerShell 7.6.6 live checkpoint using runner blob `3b02e6753fabea74ef53ce4b2f85778954bdf42b`. At P10 import only the exact generated profile without activation. Return sanitized output to Reviewer; do not run a second R22 attempt.
+Owner runs the single R22R1 read-only reconciliation helper. Reviewer then classifies the state as CLEAN, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE and designs the next bounded Gate. No rollback, cleanup, provider mutation, or new live Gate occurs inside R22R1.
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one R22 live checkpoint under the standing documented authorization. Keep Baidu identity, SSH key path and recovery passphrase local. Keep standalone Windows WireGuard enabled. At P10 import only the generated profile and do not activate/switch it. If the run returns failure or ambiguity, do not retry and do not manually invoke rollback.
+Run the exact R22R1 helper once in Administrator PowerShell 7.6.6 using the existing DigitalOcean SSH private key. Do not enter Baidu UID or recovery passphrase; the helper must not request either. Return only its sanitized output to Reviewer.
 
 ## EVIDENCE_POINTERS
 
-Read only what is needed for the current R22 decision:
+Read only what is needed for the current R22R1 decision:
 
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22.md` — current fresh one-shot live Gate.
-- `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2_REVIEW.md` — formal R21R2 PASS and locked repaired source identities.
-- `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2.md` — historical bounded offline repair Gate.
-- `docs/G4B_R21_P0_RETURN_REVIEW_R6R2L_R21.md` — formal consumed R21 P0 RETURN with no consequential mutation.
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — consumed historical R21 Gate; never replay.
-- `EXECUTION_EVIDENCE.md` — append-only historical execution proof through R20R6; later R21/R21R2 proof uses dedicated Reviewer records to avoid large-file rewrites.
+- `docs/G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1.md` — current read-only reconciliation Gate.
+- `scripts/g4b-r22-readonly-reconciliation.ps1` — current read-only helper, blob `eba466b8ff07efe7074acc9a390deeee4659215e`.
+- `docs/G4B_R22_P7_RETURN_REVIEW_R6R2L_R22.md` — formal consumed R22 P7 rollback-unknown return.
+- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22.md` — consumed historical R22 Gate; never replay.
+- `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2_REVIEW.md` — historical R21R2 PASS.
+- `EXECUTION_EVIDENCE.md` — append-only historical proof through R20R6; later R21/R22 proof uses dedicated Reviewer records to avoid large-file rewrites.
 - `README.md -> Canonical current state` — compact snapshot after synchronization.
-- `DECISION_LOG.md` — architecture and Owner-authorized role/final-validation decisions when rationale is needed.
+- `DECISION_LOG.md` — architecture and Owner-approved final validation scope.
 - Older Gates and `EXECUTOR_HANDOFF.md` are historical/supporting material only; do not let them override `CURRENT_GATE`.
