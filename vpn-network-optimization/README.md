@@ -87,8 +87,8 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R20 AUTHORIZATION REQUIRED
-G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R21 ONE-SHOT READY
+G4-C 三角色 ChatGPT 手动切换 smoke            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
@@ -204,7 +204,7 @@ R20R4R1 stopped safely before account confirmation because the Baidu UID line co
 R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
 
 
-## 2026-10-06 Canonical current state — R20R6 PASS / R21 released
+## 2026-10-06 Canonical current state — R21R1 PASS / R21 re-released
 
 > This section is the current project snapshot. Earlier sections that say “current”, “next”, or “waiting” are historical audit records and must not override this section or `REVIEWER_HANDOFF.md -> CURRENT_GATE`.
 
@@ -225,12 +225,17 @@ R20R6_GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
 R20R6_SOURCE_REPAIR_COMMIT=6344fc4625383fbf25883ffb546cceee62a5b010
 R20R6_FINAL_EVIDENCE_COMMIT=d3bd12d6320abd8c0f7c44ba19dc832cea41392d
 
-R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
-R21_RUNNER_BLOB=4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b
-R21_LIVE_FIXTURE_VALIDATOR_BLOB=e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06
+R21R1_RESULT=PASS_R21R1_GATE_BINDING_OFFLINE
+R21R1_GATE_BLOB=0ae43846afeff808dcf7084a8cabb90284f33797
+R21R1_REVIEW_EVIDENCE=docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_REVIEW.md
+
+R21_GATE_BLOB=78aff88a93d95ee1753a51d1d4fbf6cd0bfea404
+R21_RUNNER_BLOB=2b9a6e5f361905500b00c71548118e9046cd89de
+R21_LIVE_FIXTURE_VALIDATOR_BLOB=b44fe52a560694dcb49ef0dfece0db253b7aa7a7
 R21_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
 R21_THREE_ROLE_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
 R21_LIVE_EXECUTION_AUTHORIZED=YES
+R21_LIVE_INVOCATIONS_CONSUMED=0
 R21_AUTHORIZED_LIVE_INVOCATIONS=1
 SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 
@@ -239,9 +244,9 @@ AUTO_SWITCHING=OFF
 WINDOWS_WIREGUARD=KEEP_ENABLED_THROUGH_R21_AND_G4C
 ```
 
-R20R6 repaired bounded structured remote error propagation and rollback failure diagnostics offline. The historical R20 low-level P7 cause remains intentionally UNKNOWN because the old runner discarded the remote structured error before the repair; do not retrospectively guess it.
+R21R1 repaired the stale canonical Gate-id binding and is formally PASS after Owner-local PowerShell 7.6.6 AST/fixture/package validation plus Reviewer diff inspection. It performed no live, SSH/VPS, provider, Secret/DPAPI, Clash, or network action, so the R21 live invocation count remains zero.
 
-R21 is a fresh one-shot Gate, not a replay of R20. At P10 the Owner imports only the exact generated `SELF-VPN-V1` profile without activation. Any R21 failure/ambiguity stops at Reviewer; there is no second R21 invocation and no manual rollback retry.
+R21 is now re-released as the single current live Gate with the repaired runner and validator identities. It is a fresh one-shot Gate, not a replay of R20. At P10 the Owner imports only the exact generated `SELF-VPN-V1` profile without activation. Any R21 failure/ambiguity stops at Reviewer; there is no second R21 invocation and no manual rollback retry.
 
 After formal R21 PASS, the remaining v1 route is:
 
