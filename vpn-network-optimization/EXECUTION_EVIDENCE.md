@@ -10571,3 +10571,35 @@ R17R1R1_R17_RUN_MODE_EXECUTED=NO
 ```
 
 Reviewer decision: the fixture-newline repair is behaviorally supported by the normal offline validator PASS. The remaining failure is independent and narrow: the validator asserts inherited `$LASTEXITCODE` after a PowerShell-script invocation that does not necessarily reset it. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_LASTEXITCODE_REPAIR_R6R2L_R17R1R2`. Helper and all real/provider state remain frozen.
+
+
+## 2026-10-06 — R17R1R2 LASTEXITCODE repair PASS_CANDIDATE
+
+Owner-local result: `PASS_CANDIDATE_R17R1R2_LASTEXITCODE_REPAIR`.
+
+Sanitized evidence:
+```text
+R17R1R2_PREFLIGHT=PASS
+R17R1R2_LASTEXITCODE_ASSERTION_REMOVED=PASS
+R17R1R2_CHANGE_SCOPE=PASS
+HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17R1R2_AST_VALIDATOR=PASS
+R17R1R2_OFFLINE_VALIDATOR=PASS
+R17R1R2_LASTEXITCODE_REGRESSION=PASS
+FINAL_VALIDATOR_BLOB=4d490bdbe8f686053cccae8310c72ff74117600b
+R17R1R2_PROVIDER_ACTION=NO
+R17R1R2_OWNER_CONFIG_READ=NO
+R17R1R2_SECRET_OR_DPAPI_ACCESS=NO
+R17R1R2_SSH_OR_VPS_ACTION=NO
+R17R1R2_NETWORK_MUTATION=NO
+R17R1R2_R17_RUN_MODE_EXECUTED=NO
+```
+
+Interpretation:
+- the accepted fixture-newline repair remains effective;
+- the obsolete inherited-`$LASTEXITCODE` assertion was removed;
+- both normal and deliberately stale-`$LASTEXITCODE=37` offline runs pass;
+- helper source remains frozen;
+- no real/provider/runtime action occurred.
+
+Durability is still pending because validator blob `4d490bdbe8f686053cccae8310c72ff74117600b` currently exists only in the Owner worktree until a scoped commit/push/readback is completed.
