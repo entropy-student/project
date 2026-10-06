@@ -105,7 +105,7 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1
-STATE=EXECUTOR_ACTION_REQUIRED_OFFLINE
+STATE=OWNER_OFFLINE_VALIDATION_REQUIRED
 PREVIOUS_RESULT=R21_RELEASED_UNEXECUTED_PREFLIGHT_DEFECT_FOUND
 OBJECTIVE=Repair the stale canonical Handoff Gate-id assertion in the R21 runner and matching fixture only.
 MAX_ENDPOINT_THIS_ROUND=Offline source repair plus PowerShell AST/live-fixture/package validation; no live invocation.
@@ -113,12 +113,12 @@ MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Runner Gate-id binding plus matching fixture expectation only.
 APPLICABLE_CRITICAL_CONSTRAINTS=R21 remains unexecuted; live invocation count remains zero; R20 consumed/no replay; WG/HY2/runtime/provider state untouched.
 PREFLIGHT=Canonical main and locked pre-repair runner/validator blobs must match the R21R1 Gate.
-REQUIRED_EVIDENCE=Exact two-file diff; runner/validator AST PASS; live runner fixtures PASS; package validator PASS; no live/SSH/VPS/provider/Secret/Clash/network action.
+REQUIRED_EVIDENCE=Source repair read-back PASS; runner/validator AST PASS; live runner fixtures PASS; package validator PASS; no live/SSH/VPS/provider/Secret/Clash/network action.
 ACCEPTANCE_CRITERIA=Formal PASS only after executable offline validation; then relock and re-release the original unexecuted R21 live Gate with repaired source identities.
 ROLLBACK_STATUS_OR_PLAN=Source-only rollback to the locked pre-repair blobs if validation fails.
 OWNER_ONLY_ACTIONS=NONE for source repair; Owner-local PowerShell validation may be used because the current Reviewer environment has no pwsh runtime.
 REVIEWER_TO_EXECUTOR_RELAY=Read only R21R1 Gate plus the two named scripts; do not read project history.
-EXECUTOR_TO_REVIEWER_RELAY=Return AST/fixture/package results and exact post-repair blobs; no live action.
+EXECUTOR_TO_REVIEWER_RELAY=Post-repair blobs are runner 2b9a6e5f361905500b00c71548118e9046cd89de and validator b44fe52a560694dcb49ef0dfece0db253b7aa7a7; return AST/fixture/package results only; no live action.
 R21_LIVE_INVOCATIONS_CONSUMED=0
 SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
@@ -377,14 +377,16 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Owner executes exactly one R21 Administrator PowerShell 7.6.6 live checkpoint. At P10 import the exact generated profile without activation. Return sanitized output to Reviewer; do not run a second R21 attempt.
+Run one **offline-only** PowerShell 7.6.6 validation checkpoint for the R21R1 source repair: parse the patched runner and validator with the PowerShell AST parser, execute `g4b-live-runner-fixture-validator.ps1`, and execute `g4b-three-role-package-validator.ps1`. Do not invoke the live runner.
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one R21 live checkpoint under the standing documented authorization. Keep Baidu identity, SSH path and recovery passphrase local. Keep standalone Windows WireGuard enabled. At P10 import only the generated profile and do not activate/switch it.
+Run the single offline R21R1 validation checkpoint provided by Reviewer. This does not access SSH/VPS/Baidu/Secret/Clash/network state and does not consume the R21 live invocation.
 
 ## EVIDENCE_POINTERS
 
+- `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1.md` — current offline repair Gate; R21 live remains unexecuted.
+- `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_EVIDENCE.md` — post-repair source identities and pending executable validation.
 Read only what is needed for the current R21 decision:
 
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — current one-shot live Gate and exact Owner checkpoint boundary.
