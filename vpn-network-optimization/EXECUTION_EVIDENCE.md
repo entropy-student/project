@@ -10789,3 +10789,46 @@ Reviewer interpretation:
 - validator candidate is `7a555224720ce65b724012c425b58d6aad2c9026`;
 - no provider/runtime consequence occurred;
 - parent R17R1 is technically evidence-complete subject only to validator durability on canonical main and final Reviewer readback.
+
+
+## 2026-10-06 — Reviewer formal PASS: R17R1 offline code validation
+
+```text
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1
+REVIEWER_RESULT=PASS_R17R1_OFFLINE_CODE_VALIDATION
+FINAL_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+FINAL_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+RELOCKED_PARENT_R17_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
+R17_EXECUTION_AUTHORIZED=YES
+R17_EXECUTION_RELEASED=YES
+R17_PROVIDER_MUTATION_EXECUTED=NO
+```
+
+Acceptance mapping:
+- `R17R1_AST_HELPER=PASS`: R17R1R4 Owner-local PowerShell 7.6.6 parse PASS.
+- `R17R1_AST_VALIDATOR=PASS`: R17R1R5 Owner-local parse PASS.
+- `R17R1_DEFAULT_NONMUTATING=PASS`: default helper execution marker PASS.
+- `R17R1_STATIC_PROVIDER_ALLOWLIST=PASS`: final Reviewer direct source readback confirms `ValidateSet('who','ls','mv')`.
+- `R17R1_FORBIDDEN_PROVIDER_ACTION_SCAN=PASS`: final Reviewer direct source readback finds no production `rm/upload/download/mkdir/login/logout/config` action invocation; permanent delete marker remains NO.
+- `R17R1_LASTEXITCODE_REGRESSION=PASS`: deliberate inherited `$LASTEXITCODE=37` execution PASS.
+- `R17R1_ONE_PENDING_FIXTURE=PASS`: executable validator fixture PASS.
+- `R17R1_QUARANTINE_FILE_FIXTURE=PASS`: executable validator fixture PASS.
+- `R17R1_QUARANTINE_DIRECTORY_COLLISION=PASS`: executable validator fixture PASS.
+- `R17R1_PENDING_DIRECTORY_REJECT=PASS`: executable validator fixture PASS.
+- `R17R1_UNKNOWN_PROJECT_OBJECT_REJECT=PASS`: executable validator fixture PASS.
+- `R17R1_MULTIPLE_PENDING_REJECT=PASS`: executable R17R1R5 fixture PASS.
+- `R17R1_FINAL_PRESENT_REJECT=PASS`: executable R17R1R5 fixture PASS.
+- `R17R1_SOURCE_TARGET_SHAPE_GUARDS=PASS`: executable/static guard marker PASS.
+- `R17R1_FORWARD_ROLLBACK_REVIEW=PASS`: isolated executable production state-machine forward and rollback fixtures PASS; counts 1 and 2 respectively.
+- `R17R1_TEMP_CLEANUP_REVIEW=PASS`: executable harness/runtime cleanup PASS.
+- `R17R1_OFFLINE_VALIDATOR=PASS`: final validator execution PASS.
+- `R17R1_SECRET_SCAN=PASS`: bounded source-diff scan PASS; no Secret/DPAPI access occurred.
+- all R17R1 Provider/config/Secret/DPAPI/SSH/VPS/network/real-Run action markers remained NO.
+
+Source changes accepted:
+1. validator synthetic listing fixtures use real PowerShell newlines;
+2. obsolete inherited-`$LASTEXITCODE` assertion removed from validator;
+3. helper rollback return sequence normalized at all three call sites so markers are re-emitted and only a strict final Boolean controls success;
+4. validator adds multiple-pending/final-present rejection fixtures and explicit source/target shape evidence.
+
+No consequential Provider action occurred in R17R1. The previously granted exact R17 authorization is now released against parent Gate blob `7d850014c1845a21664f26e503f9da63f4446e6d`, with final helper/validator identities above. Scope remains reversible quarantine rename only; permanent delete remains forbidden.
