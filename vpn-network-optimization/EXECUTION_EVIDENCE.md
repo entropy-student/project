@@ -11186,3 +11186,31 @@ Reviewer source comparison found a narrow regression: the R20R4/R20R4R1 Baidu pr
 R20R4R2 restores only the proven UTF-8 process-decoding seam. No provider/recovery/VPS/network write is introduced.
 
 Next Gate: `G4B_R20_RECOVERY_PENDING_UTF8_REPAIR_READONLY_R6R2L_R20R4R2` at `d46d01f4bebbd9f660d1bc975f42258c99120acb`; helper `1b515b88a14599bd7bc55d837f96ecd38420f547`.
+
+
+## 2026-10-06 — R20R4R2 recovery pending reconciliation PASS
+
+```text
+R20R4R2_RESULT=PASS_R20R4R2_EXPECTED_FAILED_RUN_PENDING_SET
+R20R4R2_BAIDU_PROCESS_ENCODING=UTF8
+R20R4R2_OWNER_BAIDU_ACCOUNT_CONFIRMATION=PASS
+R20R4R2_LOCAL_JOURNAL_IDENTITY=PASS
+R20R4R2_LOCAL_DPAPI_PENDING=FILE
+R20R4R2_LOCAL_PORTABLE_PENDING=FILE
+R20R4R2_LOCAL_FINAL=ABSENT
+R20R4R2_LOCAL_BAIDU_RUNTIME=ABSENT
+R20R4R2_REMOTE_PENDING=FILE
+R20R4R2_REMOTE_FINAL=ABSENT
+R20R4R2_RECOVERY_STATE=EXPECTED_FAILED_RUN_PENDING_SET
+R20R4R2_TEMP_RUNTIME_CLEANUP=PASS
+R20R4R2_UID_EMITTED_TO_TERMINAL=NO
+R20R4R2_RECOVERY_CONTENT_READ=NO
+R20R4R2_RECOVERY_MUTATION=NO
+R20R4R2_BAIDU_MUTATION=NO
+R20R4R2_SSH_OR_VPS_ACTION=NO
+R20R4R2_NETWORK_MUTATION=NO
+```
+
+Reviewer accepts R20R4R2. The expected failed-run recovery set is now exactly known: local DPAPI pending + local portable pending + exact run-scoped Baidu pending, with both local and remote final artifacts absent. The UTF-8 process decoding repair restored the same provider-output contract used by earlier accepted Baidu checkpoints.
+
+Next Gate: `G4B_R20_RECOVERY_PENDING_EXACT_CLEANUP_R6R2L_R20R5` at `9bc95184691025533df40653c30fa5801452bb9d`, helper `500096ce2bf12c3a8a36aa109d6995ae8352d48e`. R20R5 performs exact ownership-proven pending cleanup only.
