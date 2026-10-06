@@ -700,3 +700,16 @@ LIVE_G4B_EXECUTION_AUTHORIZED=NO
 ```
 
 Reviewer accepted the executable diagnosis: the HY2 fingerprint sentinel was left unrendered; `encryption: ""` did not repair parsing; using the already pin-verified certificate fingerprint produced a real local Mihomo parse PASS. The historical R19 one-shot authorization is consumed. R20 is a fresh consequential boundary and requires new explicit Owner authorization.
+
+
+### Standing Owner authorization — 2026-10-06
+
+```text
+OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
+OWNER_STANDING_AUTH_SCOPE=R20,G4C_CHATGPT_THREE_ROLE_SMOKE,G4D_WIREGUARD_IN_CLASH,MVP_V1_SEAL
+R20_LIVE_G4B_EXECUTION_AUTHORIZED=YES
+R20_AUTHORIZED_LIVE_INVOCATIONS=1
+NEW_MATERIAL_SCOPE_REQUIRES_REVIEWER_STOP=YES
+```
+
+Do not repeatedly ask the Owner for authorization inside the documented closeout roadmap. Preserve one-shot execution limits and mandatory Reviewer stops.
