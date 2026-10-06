@@ -87,7 +87,7 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R22R1 READONLY RECONCILIATION
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R22R5 RECOVERY-PENDING CLEANUP
 G4-C 三角色 ChatGPT 手动切换 smoke            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -204,13 +204,13 @@ R20R4R1 stopped safely before account confirmation because the Baidu UID line co
 R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
 
 
-## 2026-10-06 Canonical current state — R22 consumed / R22R1 read-only reconciliation
+## 2026-10-06 Canonical current state — R22 recovery cleanup / R22R5 current
 
 > This section is the current project snapshot. Earlier sections that say “current”, “next”, or “waiting” are historical audit records and must not override this section or `REVIEWER_HANDOFF.md -> CURRENT_GATE`.
 
 ```text
-CURRENT_GATE=G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1
-CURRENT_STATE=OWNER_READONLY_RECONCILIATION_REQUIRED
+CURRENT_GATE=G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5
+CURRENT_STATE=OWNER_BOUNDED_RECOVERY_PENDING_CLEANUP_REQUIRED
 
 R20_RESULT=RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN
 R20_SECOND_ATTEMPT=FORBIDDEN
@@ -218,53 +218,67 @@ R20_REMOTE_CONSEQUENTIAL_SURFACE=CLEAN
 R20_REMOTE_TRANSACTION_RESIDUE=CLEAN
 R20_FAILED_RUN_RECOVERY_PENDING_SET=CLEAN
 R20_RECOVERY_FINAL_ARTIFACTS=ABSENT
-R20_ROLLBACK_JOURNAL=RETAINED_OUT_OF_SCOPE
 
 R21_RESULT=RETURN_R21_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING_NO_MUTATION
 R21_LIVE_INVOCATIONS_CONSUMED=1
 SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 R21_CONSEQUENTIAL_MUTATION_STARTED=NO
-R21_ROLLBACK_REQUIRED=NO
 
 R21R2_RESULT=PASS_R21R2_AUTH_BINDING_REPAIR
-R21R2_SOURCE_COMMIT=54b22c5a88530ba4defd9deea4ce3b153cef42ff
 
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
 R22_LIVE_INVOCATIONS_CONSUMED=1
 SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
 R22_CONSEQUENTIAL_MUTATION_STARTED=YES
-R22_REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
-R22_RECOVERY_ARTIFACT_CLEANUP=RETAINED_ROLLBACK_UNVERIFIED
-R22_ROLLBACK_JOURNAL=RETAINED_REQUIRES_RECONCILIATION
-R22_REPLAY_AUTHORIZED=NO
-R22_MANUAL_ROLLBACK_AUTHORIZED=NO
 
-R22R1_GATE=docs/G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1.md
-R22R1_HELPER=scripts/g4b-r22-readonly-reconciliation.ps1
-R22R1_HELPER_BLOB=5ecb62fe2a1d544db4ea198a7cb3c4df3c5e00f9
+R22R1_RESULT=RETURN_AMBIGUOUS_BASELINE_FIREWALL_ONLY
+R22R2_RESULT=RETURN_SINGLE_COMPONENT_DRIFT_IPTABLES4
+R22R3_RESULT=PASS_COUNTER_ONLY_TELEMETRY
+R22R4_RESULT=PASS_TRANSACTION_RESIDUE_CLEAN
+R22R5_STATE=CURRENT
 
-ROLE_ORDER=HY2-SFO3_PRIMARY,WG-BASELINE_BACKUP_1,REALITY-SFO3_BACKUP_2
-AUTO_SWITCHING=OFF
-WINDOWS_WIREGUARD=KEEP_ENABLED
+R22_REMOTE_REALITY_SERVICE=ABSENT
+R22_TCP443_LISTENER=ABSENT
+R22_MIHOMO_PROCESS=ABSENT
+R22_BINARY_RUNTIME_SECRET_UNIT=ABSENT
+R22_RUNTIME_USER_GROUP=ABSENT
+R22_ROUTE_BASELINE=RESTORED
+R22_FIREWALL_SEMANTIC_BASELINE=RESTORED
+R22_WG_HEALTHY=YES
+R22_HY2_HEALTHY=YES
+R22_REMOTE_TRANSACTION_RESIDUE=CLEAN
+
+R22_RECOVERY_PENDING_LOCAL=RETAINED
+R22_RECOVERY_PENDING_PORTABLE=RETAINED
+R22_RECOVERY_PENDING_REMOTE=TO_BE_EXACTLY_RECONCILED_IN_R22R5
+R22_RECOVERY_FINAL=ABSENT
+R22_ROLLBACK_JOURNAL=RETAINED
+R22_PROFILE_CREATED_COUNT=0
+
+G4C_STATE=PENDING_AFTER_G4B
+G4C_SCOPE=CHATGPT_THREE_ROLE_SMOKE_ONLY
+G4D_STATE=PENDING_AFTER_G4C
+G4D_OBJECTIVE=MIGRATE_WIREGUARD_TO_CLASH_MIHOMO
+WINDOWS_WIREGUARD_DISABLE_BEFORE_G4D_PASS=NO
+FINAL_CONTROL_PLANE=CLASH_VERGE
 ```
 
-R22 progressed through P6 and failed at P7 after the REALITY service enable attempt because listener read-back was invalid. Consequential mutation had started. The runner then attempted its bounded rollback, but the rollback itself returned a native-command failure and therefore could not be verified. The retained rollback journal and recovery pending artifacts are intentionally preserved.
+R22 failed at P7 because the REALITY listener read-back was invalid after consequential mutation began. Automatic rollback could not be verified at that moment, so R22 was permanently consumed and all subsequent work moved into reconciliation instead of retrying the live Gate.
 
-R22 must never be replayed, and no manual rollback or cleanup is authorized. The current R22R1 Gate is read-only: it identifies the unique R22 retained journal and compares the actual remote REALITY service/listener/project residue plus WG/HY2, route/firewall/service baseline and local recovery/runtime presence. It reads no Secret content and performs no mutation.
+R22R1 proved the persistent REALITY runtime surface had already been removed and WG/HY2 remained healthy. R22R2 isolated the only apparent firewall difference to IPv4 iptables. R22R3 proved that difference was packet/byte counter telemetry only, so the semantic route/firewall/service baseline is restored. R22R4 then removed the exact ownership-proven R22 transaction residue and passed fresh post-clean read-back.
 
-After R22R1, Reviewer will classify the actual state as:
+The only remaining failed-run residue is the R22 recovery-pending set. R22R5 is the current bounded Gate: prove local ownership and exact Baidu remote ciphertext identity, remove only the exact R22 pending objects, keep recovery finals absent, and retain the rollback journal as historical evidence. No R22 replay, manual rollback, service/firewall/route mutation, or unrelated Baidu object mutation is allowed.
+
+After R22R5 formal PASS, the project must still repair and offline-validate the original P7 REALITY listener-readback failure before any fresh live Gate can be considered. Only after a later fresh G4-B live Gate formally PASSes does the remaining v1 route continue:
 
 ```text
-CLEAN
-→ separate read-only recovery-pending reconciliation
-
-PROJECT_RESIDUAL_PRESENT
-→ ownership-proven exact cleanup Gate
-
-AMBIGUOUS_BASELINE
-→ additional read-only reconciliation
+fresh G4-B persistent three-role PASS
+→ G4-C: manually select HY2 / WG / REALITY in Clash and confirm normal ChatGPT conversation on each
+→ G4-D: migrate WG-BASELINE into native Clash/Mihomo WireGuard
+→ formal G4-D PASS
+→ disable standalone Windows WireGuard
+→ final smoke
+→ MVP v1 seal
 ```
 
-Only after G4-B is safely recovered and formally PASS may the project continue to G4-C manual Clash switching, then G4-D WireGuard-in-Clash migration and MVP v1 seal.
-
-The Owner's standing authorization covers this documented recovery/closeout route. A materially new risk boundary still requires a fresh Reviewer stop.
+The Owner's standing authorization covers this documented closeout route. A materially new risk boundary still requires a fresh Reviewer stop.
