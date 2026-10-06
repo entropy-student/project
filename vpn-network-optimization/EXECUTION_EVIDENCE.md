@@ -10625,3 +10625,25 @@ R17_RUN_MODE_EXECUTED=NO
 ```
 
 Reviewer interpretation: R17R1R2 is durable on canonical main. The remaining parent R17R1 requirement is executable offline forward/rollback state-machine evidence. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_OFFLINE_STATE_MACHINE_R6R2L_R17R1R3`.
+
+
+## 2026-10-06 — R17R1R3 forward PASS; rollback output-capture defect found
+
+Result: `RETURN_R17R1R3_ROLLBACK_OUTPUT_CAPTURE_DEFECT`.
+
+Sanitized Owner-local evidence:
+```text
+R17R1R3_SOURCE_IDENTITY=PASS
+HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+VALIDATOR_BLOB=4d490bdbe8f686053cccae8310c72ff74117600b
+R17R1R3_FORWARD_EXECUTABLE=PASS
+R17R1R3_FORWARD_MV_COUNT=1
+OFFLINE_FIXTURE_ROOT_CLEANUP=PASS
+ROLLBACK_FIXTURE=FAIL
+ROLLBACK_FAILURE=OFFLINE_ROLLBACK_NOT_ATTEMPTED_MARKER_NOT_VISIBLE
+R17R1R3_PROVIDER_ACTION=NO
+```
+
+Reviewer source reconciliation found a production helper defect: `Invoke-R17Rollback` emits sanitized markers plus a final Boolean on the success stream, while callers assign the complete stream to `$rollbackOk`. This captures the markers and can turn `$rollbackOk` into an Object[] whose truthiness is not the intended strict Boolean rollback result.
+
+Forward-success behavior is executable-offline proven. Parent R17R1 remains blocked. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_ROLLBACK_OUTPUT_REPAIR_R6R2L_R17R1R4`.
