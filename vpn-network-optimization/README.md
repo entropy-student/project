@@ -87,7 +87,7 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R19R1 LOCAL MIHOMO PARSE REPAIR
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R20 AUTHORIZATION REQUIRED
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -170,3 +170,7 @@ R19R1 修复三节点配置解析
 ```
 
 G4-C 不再要求 60/60、P95/P99、Codex 长任务、OpenAI API 矩阵或生图矩阵。Windows WireGuard 在 G4-D 正式 PASS 前继续作为生产/回退基线，不提前关闭。
+
+
+### 2026-10-06 R19R1 Reviewer PASS
+R19R1 is formally accepted. The R19 P5 parser failure was caused by the HY2 certificate fingerprint placeholder not being rendered into the generated three-role profile. The repaired renderer now carries forward the already pin-verified SHA-256 fingerprint, and the actual installed Mihomo parser proves legacy FAIL → repaired PASS with synthetic values. A fresh R20 live Gate is prepared; R19 authorization is not reusable.
