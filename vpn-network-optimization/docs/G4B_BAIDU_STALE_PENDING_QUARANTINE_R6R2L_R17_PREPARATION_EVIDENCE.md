@@ -130,3 +130,20 @@ EXECUTOR_ACTION_REQUIRED=LOCAL_OFFLINE_CODE_VALIDATION
 Reason: the project now requires executable local evidence that the complete helper/validator are reliably usable before any consequential provider action. The known stale-`$LASTEXITCODE` validator risk must be regression-tested, and forward/rollback behavior must receive offline executable evidence or return PARTIAL/RETURN. Earlier preparation evidence remains historical evidence of what was reviewed at that time; it is not a current release-to-run decision.
 
 No Provider action, Owner config read, Secret/DPAPI access, SSH/VPS action, network mutation, or R17 Run-mode execution occurred as part of this hold.
+
+
+## Final Reviewer release after R17R1 — 2026-10-06
+
+```text
+R17R1_RESULT=PASS_R17R1_OFFLINE_CODE_VALIDATION
+R17_FINAL_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
+R17_FINAL_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+R17_FINAL_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+R17_OWNER_AUTHORIZATION=GRANTED_UNCHANGED_SCOPE
+R17_EXECUTION_RELEASED=YES
+R17_PROVIDER_MUTATION_EXECUTED=NO
+```
+
+R17R1 produced executable offline evidence for default non-mutating behavior, listing positive/negative fixtures, stale-LASTEXITCODE handling, source/target shape guards, forward success, rollback success, rollback marker propagation/type safety and cleanup. Final Reviewer direct source readback confirms the production Provider allowlist remains exactly who/ls/mv and permanent delete remains absent.
+
+This release does not authorize any action outside the original R17 quarantine Gate.
