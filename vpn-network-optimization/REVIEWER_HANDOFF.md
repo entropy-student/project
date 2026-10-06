@@ -106,29 +106,20 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
-STATE=OWNER_READONLY_CHECKPOINT_RELEASED
-PREVIOUS_RESULT=PASS_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
-R1R1_PASS_COMMIT=903267dbb531ae56a68f742b12905eec9842d714
-TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
-OBJECTIVE=Run one bounded Owner-local read-only Windows/VPS/Baidu reality checkpoint and classify current state.
-MAX_ENDPOINT_THIS_ROUND=One Owner read-only checkpoint; STOP_AT_REVIEWER immediately after markers are returned.
-MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Read-only Windows health/local metadata + strict-SSH VPS state + read-only Baidu identity/listing counts.
-APPLICABLE_CRITICAL_CONSTRAINTS=No live runner; no rollback/cleanup; no route/service/profile/provider mutation; no Secret/DPAPI content readout; R20+ state claims remain reference-only.
-REQUIRED_EVIDENCE=Exact sanitized marker block emitted by the R1 helper, including CURRENT_REALITY and mutation=NO markers.
-ACCEPTANCE_CRITERIA=Reviewer classifies CLEAN_BASELINE, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE from Owner checkpoint output.
-ROLLBACK_STATUS_OR_PLAN=Not applicable; checkpoint is read-only.
-OWNER_ONLY_ACTIONS=Run the released R1 helper from Administrator PowerShell 7.6.x with the required local SSH/Baidu paths; return only its emitted marker block.
-R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES
+GATE_ID=G4B_LOCAL_BAIDUPCS_TOOL_RESTORE_R1
+STATE=OWNER_LOCAL_PREREQUISITE_REQUIRED
+PARENT_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+PARENT_GATE_STATE=PAUSED_PENDING_LOCAL_TOOL_RESTORE
+OBJECTIVE=Restore and verify the exact pinned public BaiduPCS-Go v4.0.2 Windows x64 ZIP + EXE locally, then resume the parent read-only checkpoint.
+EXPECTED_ARCHIVE_SHA256=ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
 FRESH_LIVE_GATE_RELEASED=NO
+OWNER_ONLY_ACTIONS=Local public tool download/extract/hash verification only.
 ```
 
-Canonical parent Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
+Canonical Gate: `docs/G4B_LOCAL_BAIDUPCS_TOOL_RESTORE_R1.md`.
 
-R1R1 release-contract repair formally passed. Reviewer decision: `docs/REVIEWER_DECISION_G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1_PASS.md`.
-
-This release is strictly for one read-only Owner checkpoint. It is not a live G4-B implementation release.
+The parent R1 read-only checkpoint was interrupted before execution because the previously verified local BaiduPCS-Go binary/archive are no longer present. No target reality classification has been made.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -191,21 +182,15 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Owner runs the released R1 helper exactly once from the local Administrator PowerShell 7.6.x environment and returns the sanitized emitted marker block.
+Owner restores and verifies the exact pinned BaiduPCS-Go v4.0.2 Windows x64 tool locally under the bounded prerequisite Gate, then returns only the success markers and exact local ZIP/EXE paths.
 
-Reviewer then classifies the current reality as one of:
-
-- `CLEAN_BASELINE` -> prepare one clean G4-B live Gate;
-- `PROJECT_RESIDUAL_PRESENT` -> prepare one bounded cleanup/reconciliation Gate;
-- `AMBIGUOUS_BASELINE` -> prepare one narrow diagnostic Gate.
-
-Do not run any historical R20-R22 helper, live runner, rollback, or manual cleanup before Reviewer classification.
+Reviewer will then resume `G4B_TAKEOVER_REALITY_REBASE_READONLY_R1` and re-release the one read-only checkpoint. No provider login/read, SSH/VPS, Clash/WireGuard, live runner, rollback, or cleanup is authorized during this prerequisite.
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one released read-only R1 checkpoint from Administrator PowerShell 7.6.x and return only the sanitized output marker block.
+Restore and verify the exact pinned public BaiduPCS-Go v4.0.2 Windows x64 ZIP + EXE locally. Do not run BaiduPCS-Go itself yet.
 
-Do not run any historical R20-R22 helper/live/rollback/cleanup command. Do not manually change Clash, WireGuard, routes, services, VPS files, or Baidu contents for this checkpoint.
+Return only the verification markers and exact ZIP/EXE paths. The parent read-only checkpoint remains paused until Reviewer resumes it.
 
 ## EVIDENCE_POINTERS
 
