@@ -10748,3 +10748,44 @@ Reviewer inspection confirms existing validator coverage for:
 However parent R17R1 explicitly requires executable negative evidence for multiple pending and final-present states. The current validator does not create those two fixtures. Therefore parent R17R1 cannot yet be formally PASS even though no new production helper defect was found.
 
 Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_NEGATIVE_FIXTURES_R6R2L_R17R1R5`. Helper is frozen; no provider action is authorized.
+
+
+## 2026-10-06 — R17R1R5 negative fixtures local PASS_CANDIDATE
+
+Result: `PASS_CANDIDATE_R17R1R5_NEGATIVE_FIXTURES_LOCAL_ONLY`.
+
+Sanitized Owner-local evidence:
+```text
+R17R1R5_PREFLIGHT=PASS
+R17R1R5_FIXTURE_EDIT=PASS
+R17R1R5_CHANGE_SCOPE=VALIDATOR_ONLY
+R17R1R5_HELPER_FROZEN=PASS
+R17R1R5_AST_VALIDATOR=PASS
+R17R1R5_ONE_PENDING_FIXTURE=PASS
+R17R1R5_QUARANTINE_FILE_FIXTURE=PASS
+R17R1R5_QUARANTINE_DIRECTORY_COLLISION=PASS
+R17R1R5_PENDING_DIRECTORY_REJECT=PASS
+R17R1R5_UNKNOWN_PROJECT_OBJECT_REJECT=PASS
+R17R1R5_MULTIPLE_PENDING_REJECT=PASS
+R17R1R5_FINAL_PRESENT_REJECT=PASS
+R17R1R5_SOURCE_TARGET_SHAPE_GUARDS=PASS
+R17R1R5_DEFAULT_NONMUTATING=PASS
+R17R1R5_OFFLINE_VALIDATOR=PASS
+R17R1R5_LASTEXITCODE_REGRESSION=PASS
+R17R1_SECRET_SCAN=PASS
+FINAL_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+FINAL_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+R17R1R5_PROVIDER_ACTION=NO
+R17R1R5_OWNER_CONFIG_READ=NO
+R17R1R5_SECRET_OR_DPAPI_ACCESS=NO
+R17R1R5_SSH_OR_VPS_ACTION=NO
+R17R1R5_NETWORK_MUTATION=NO
+R17R1R5_R17_RUN_MODE_EXECUTED=NO
+```
+
+Reviewer interpretation:
+- the final two parent-Gate evidence gaps are now executable-offline proven;
+- helper remains frozen at `9c910628932c22c448c822437fd53e0b71804a9c`;
+- validator candidate is `7a555224720ce65b724012c425b58d6aad2c9026`;
+- no provider/runtime consequence occurred;
+- parent R17R1 is technically evidence-complete subject only to validator durability on canonical main and final Reviewer readback.
