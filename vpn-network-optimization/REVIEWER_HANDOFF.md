@@ -103,13 +103,13 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_LASTEXITCODE_REPAIR_R6R2L_R17R1R2
-STATE=OWNER_ACTION_REQUIRED_R17R1R2_DURABILITY
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_OFFLINE_STATE_MACHINE_R6R2L_R17R1R3
+STATE=OWNER_ACTION_REQUIRED_R17R1R3_OFFLINE_STATE_MACHINE
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=LOCAL_CODE_REVIEW_AND_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_CANDIDATE_R17R1R2_LASTEXITCODE_REPAIR_LOCAL_ONLY
-OBJECTIVE=Persist the already-validated local R17 validator repairs to canonical main with exact blob 4d490bdbe8f686053cccae8310c72ff74117600b, then fresh-read that identity before any further R17R1 testing.
-MAX_ENDPOINT_THIS_ROUND=One scoped validator commit/push and canonical readback only. No helper change, no provider action, no R17 Run mode.
+PREVIOUS_RESULT=PASS_CANDIDATE_R17R1R2_DURABLE
+OBJECTIVE=Execute the production R17 forward-success and rollback-success state-machine branches entirely offline using DefinitionOnly plus isolated test doubles; no production source edit or Provider action.
+MAX_ENDPOINT_THIS_ROUND=Temporary local offline harness only; two production state-machine fixture executions, cleanup, evidence, and mandatory Reviewer stop. No tracked source change or Provider action.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1; scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1; bounded Executor evidence only.
 APPLICABLE_CRITICAL_CONSTRAINTS=R16 accepted state remains final=0/pending=1/unknown=0 and must not be remotely re-observed in R17R1; R15 rollback journal untouched; R17 Owner authorization recorded but execution not released; provider scope/consequences must not expand; permanent delete/live G4-B/G4-C forbidden.
@@ -117,8 +117,8 @@ PREFLIGHT=Safe-sync canonical main; starting helper blob 3d7797a21c31fb805993530
 REQUIRED_EVIDENCE=AST both scripts; executable offline validator; default non-mutating path; stale-LASTEXITCODE regression; positive/negative listing fixtures; source/target file-vs-directory/cardinality guards; forward/rollback offline usability evidence; forbidden provider action scan; Secret scan; final blobs; exact changed files; all no-action markers.
 ACCEPTANCE_CRITERIA=PASS_CANDIDATE only with executable offline evidence sufficient to confirm helper/validator usability and no unresolved ambiguity. Static-only proof of unexercised forward/rollback branches is PARTIAL, not PASS.
 ROLLBACK_STATUS_OR_PLAN=Source-only Git changes must remain revertible. R15 local rollback journal and R17 provider rollback plan remain untouched/unexercised.
-OWNER_ONLY_ACTIONS=Commit and push the already-validated local validator file only; do not run the R17 one-shot checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Persist only local validator blob 4d490bdbe8f686053cccae8310c72ff74117600b to main. Verify helper remains 3d7797a21c31fb805993530b28d674db4cdf288c, changed-file scope is validator only, push, then fresh-read canonical validator blob and stop.
+OWNER_ONLY_ACTIONS=Run the bounded R17R1R3 local offline harness only; do not run the real R17 one-shot checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_OFFLINE_STATE_MACHINE_R6R2L_R17R1R3.md exactly. Do not edit source. Use DefinitionOnly plus isolated test doubles to invoke production Invoke-R17Run for forward-success and rollback-success fixtures, verify counts/results/cleanup/source identities, and stop.
 EXECUTOR_TO_REVIEWER_RELAY=Return result/change/validation/problems/rollback/reviewer-check/Owner-transfer; Owner transfer must be NONE.
 ```
 
