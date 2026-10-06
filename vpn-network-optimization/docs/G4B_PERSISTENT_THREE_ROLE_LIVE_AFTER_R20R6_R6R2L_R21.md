@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Live After R20R6 — R6R2L-R21
 
-Status: RELEASED / OWNER_ONE_SHOT_LIVE / REVIEWER_STOP
+Status: CONSUMED / RETURN_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING / NO_RETRY
 
 ## GATE_ID
 `G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21`
@@ -73,12 +73,12 @@ At `P10_OWNER_UI_IMPORT_AND_VISIBILITY`:
 - enter only the exact acknowledgement printed/required by the runner.
 
 ## ONE-SHOT RULE
-Exactly one R21 live invocation is authorized.
+The single R21 live invocation was consumed at P0 and returned before consequential mutation.
 
-If R21 returns failure, ambiguity, rollback UNKNOWN, or any unexpected state:
-- do not invoke R21 a second time;
-- do not manually run rollback;
-- return to Reviewer with sanitized output.
+R21 returned at P0 with `REVIEWER_LIVE_AUTHORIZATION_MISSING` and `CONSEQUENTIAL_MUTATION_STARTED=NO`.
+- R21 must not be invoked a second time;
+- no live rollback is required;
+- continue only through the bounded offline R21R2 repair Gate.
 
 ## REQUIRED LIVE INVOCATION
 ```text
@@ -99,7 +99,20 @@ Existing runner PASS_CANDIDATE markers plus:
 - AUTO_SWITCHING=OFF;
 - system proxy OFF;
 - TUN OFF;
-- `STOP_AT_REVIEWER=YES`.
+- `STOP_AT_REVIEWER=YES`
+
+## R21 FINAL RESULT
+
+```text
+R21_RESULT=RETURN_R21_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING_NO_MUTATION
+R21_LIVE_INVOCATIONS_CONSUMED=1
+SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
+CONSEQUENTIAL_MUTATION_STARTED=NO
+ROLLBACK_REQUIRED=NO
+NEXT_GATE=G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2
+```
+
+Reviewer record: `docs/G4B_R21_P0_RETURN_REVIEW_R6R2L_R21.md`.
 
 ## FORBIDDEN
 - any second R21 invocation;
@@ -119,7 +132,7 @@ Stop at Reviewer. Only after formal R21 PASS:
 4. final smoke and MVP v1 seal.
 
 ## AUTHORIZATION
-Standing Owner authorization covers this documented R21 one-shot live Gate. No additional authorization prompt is required.
+Standing Owner authorization covered the consumed R21 one-shot. R21 is closed RETURN; subsequent work proceeds only through the new documented repair/release Gate.
 
 ## STOP
 `STOP_AT_REVIEWER=YES`
