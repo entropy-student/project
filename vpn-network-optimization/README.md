@@ -87,7 +87,7 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R22R5 RECOVERY-PENDING CLEANUP
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R22R6 COMPLETE OFFLINE AUDIT
 G4-C 三角色 ChatGPT 手动切换 smoke            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -204,72 +204,56 @@ R20R4R1 stopped safely before account confirmation because the Baidu UID line co
 R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
 
 
-## 2026-10-06 Canonical current state — R22 recovery cleanup / R22R5 current
+## 2026-10-06 Canonical current state — R22 cleaned / R22R6 offline audit
 
 > This section is the current project snapshot. Earlier sections that say “current”, “next”, or “waiting” are historical audit records and must not override this section or `REVIEWER_HANDOFF.md -> CURRENT_GATE`.
 
 ```text
-CURRENT_GATE=G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5
-CURRENT_STATE=OWNER_BOUNDED_RECOVERY_PENDING_CLEANUP_REQUIRED
+CURRENT_GATE=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
+CURRENT_STATE=OFFLINE_REPAIR_AUDIT_REQUIRED
 
-R20_RESULT=RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN
-R20_SECOND_ATTEMPT=FORBIDDEN
-R20_REMOTE_CONSEQUENTIAL_SURFACE=CLEAN
-R20_REMOTE_TRANSACTION_RESIDUE=CLEAN
-R20_FAILED_RUN_RECOVERY_PENDING_SET=CLEAN
-R20_RECOVERY_FINAL_ARTIFACTS=ABSENT
-
-R21_RESULT=RETURN_R21_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING_NO_MUTATION
-R21_LIVE_INVOCATIONS_CONSUMED=1
-SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
-R21_CONSEQUENTIAL_MUTATION_STARTED=NO
-
-R21R2_RESULT=PASS_R21R2_AUTH_BINDING_REPAIR
+R20=CONSUMED_NO_REPLAY
+R21=CONSUMED_NO_REPLAY
+R22=CONSUMED_NO_REPLAY
 
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22_LIVE_INVOCATIONS_CONSUMED=1
-SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
-R22_CONSEQUENTIAL_MUTATION_STARTED=YES
-
-R22R1_RESULT=RETURN_AMBIGUOUS_BASELINE_FIREWALL_ONLY
-R22R2_RESULT=RETURN_SINGLE_COMPONENT_DRIFT_IPTABLES4
-R22R3_RESULT=PASS_COUNTER_ONLY_TELEMETRY
-R22R4_RESULT=PASS_TRANSACTION_RESIDUE_CLEAN
-R22R5_STATE=CURRENT
-
+R22_FAILED_RUN_RESIDUE=CLEAN
 R22_REMOTE_REALITY_SERVICE=ABSENT
 R22_TCP443_LISTENER=ABSENT
 R22_MIHOMO_PROCESS=ABSENT
 R22_BINARY_RUNTIME_SECRET_UNIT=ABSENT
 R22_RUNTIME_USER_GROUP=ABSENT
+R22_REMOTE_TRANSACTION_RESIDUE=CLEAN
+R22_RECOVERY_PENDING_SET=CLEAN
+R22_RECOVERY_FINAL=ABSENT
+R22_ROLLBACK_JOURNAL=RETAINED_HISTORICAL_EVIDENCE
+R22_PROFILE_CREATED_COUNT=0
 R22_ROUTE_BASELINE=RESTORED
 R22_FIREWALL_SEMANTIC_BASELINE=RESTORED
 R22_WG_HEALTHY=YES
 R22_HY2_HEALTHY=YES
-R22_REMOTE_TRANSACTION_RESIDUE=CLEAN
 
-R22_RECOVERY_PENDING_LOCAL=RETAINED
-R22_RECOVERY_PENDING_PORTABLE=RETAINED
-R22_RECOVERY_PENDING_REMOTE=TO_BE_EXACTLY_RECONCILED_IN_R22R5
-R22_RECOVERY_FINAL=ABSENT
-R22_ROLLBACK_JOURNAL=RETAINED
-R22_PROFILE_CREATED_COUNT=0
+R22R1=REALITY_SURFACE_CLEAN_FIREWALL_AMBIGUITY
+R22R2=IPTABLES4_ONLY_MISMATCH
+R22R3=PASS_COUNTER_ONLY_TELEMETRY
+R22R4=PASS_TRANSACTION_RESIDUE_CLEAN
+R22R5=PASS_RECOVERY_PENDING_SET_CLEAN
+
+R22R6_REQUIRED_REPAIRS=P7_READINESS,ROLLBACK_SYSTEMD_DIAGNOSTICS,FIREWALL_COUNTER_NORMALIZATION,FUTURE_ONE_SHOT_GATE_BINDING
+FRESH_LIVE_GATE_RELEASED=NO
 
 G4C_STATE=PENDING_AFTER_G4B
 G4C_SCOPE=CHATGPT_THREE_ROLE_SMOKE_ONLY
 G4D_STATE=PENDING_AFTER_G4C
-G4D_OBJECTIVE=MIGRATE_WIREGUARD_TO_CLASH_MIHOMO
 WINDOWS_WIREGUARD_DISABLE_BEFORE_G4D_PASS=NO
 FINAL_CONTROL_PLANE=CLASH_VERGE
 ```
 
-R22 failed at P7 because the REALITY listener read-back was invalid after consequential mutation began. Automatic rollback could not be verified at that moment, so R22 was permanently consumed and all subsequent work moved into reconciliation instead of retrying the live Gate.
+R22 failed at P7 after consequential mutation began. The failed-run residue is now fully reconciled and clean: persistent REALITY surface absent, transaction residue removed, recovery pending set removed, recovery finals absent, route/firewall/service baseline restored, WG/HY2 healthy, and the rollback journal retained only as historical evidence.
 
-R22R1 proved the persistent REALITY runtime surface had already been removed and WG/HY2 remained healthy. R22R2 isolated the only apparent firewall difference to IPv4 iptables. R22R3 proved that difference was packet/byte counter telemetry only, so the semantic route/firewall/service baseline is restored. R22R4 then removed the exact ownership-proven R22 transaction residue and passed fresh post-clean read-back.
+No fresh live Gate is released. R22R6 is an offline repair audit covering every defect class exposed by R21/R22 that should have been caught before live execution: bounded P7 readiness polling, specific rollback/systemd postconditions and diagnostics, complete iptables counter normalization, and an atomic future one-shot Gate-binding contract. A future live Gate may be created only after formal R22R6 PASS.
 
-The only remaining failed-run residue is the R22 recovery-pending set. R22R5 is the current bounded Gate: prove local ownership and exact Baidu remote ciphertext identity, remove only the exact R22 pending objects, keep recovery finals absent, and retain the rollback journal as historical evidence. No R22 replay, manual rollback, service/firewall/route mutation, or unrelated Baidu object mutation is allowed.
-
-After R22R5 formal PASS, the project must still repair and offline-validate the original P7 REALITY listener-readback failure before any fresh live Gate can be considered. Only after a later fresh G4-B live Gate formally PASSes does the remaining v1 route continue:
+After a later fresh G4-B live Gate formally PASSes, the remaining v1 route is:
 
 ```text
 fresh G4-B persistent three-role PASS
