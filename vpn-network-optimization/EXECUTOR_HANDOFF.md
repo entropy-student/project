@@ -1,15 +1,13 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — Fresh VPS P0 R1
+## Current execution status — 3x-ui P1
 
 ```text
-GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
-STATE=READY_FOR_EXECUTOR_R1
+GATE_ID=3XUI_FASTPATH_P1_THREE_INBOUNDS_SHARED_CLIENT
+STATE=READY_FOR_EXECUTOR
 TARGET=143.198.159.233
-EXPECTED_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
 PINNED_3XUI_VERSION=v3.9.0
-HOSTKEY_REPAIR_R1=PASS
-SSH_KEYSCAN_REQUIRED=NO
+P0_FORMAL_PASS=YES
 EXECUTOR_RELEASED=YES
 STOP_AT_REVIEWER=YES
 ```
@@ -18,29 +16,25 @@ STOP_AT_REVIEWER=YES
 
 Read only:
 
-1. `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`
-2. current `REVIEWER_HANDOFF.md`
-3. exact target/install source required by the Gate.
+1. `vpn-network-optimization/docs/3X_UI_P1_THREE_INBOUNDS_SHARED_CLIENT.md`
+2. current `vpn-network-optimization/REVIEWER_HANDOFF.md`
+3. `vpn-network-optimization/docs/REVIEWER_DECISION_3XUI_P0_FRESH_VPS_BOOTSTRAP_INSTALL_PASS.md`
+4. only the explicitly allowlisted official 3x-ui v3.9.0 source files named by the P1 Gate if payload details are needed.
 
-Do not read legacy G1-G4/R19-R22/Baidu history.
+Do not reread legacy G1-G4/R19-R22/Baidu material.
 
-Accepted trust metadata:
+## Accepted facts
 
-```text
-TARGET=143.198.159.233
-ED25519_FINGERPRINT=SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ
-ED25519_PUBLIC_KEY=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmszzdtG44DFZcNx46xPGLZDicACewKnOz3GJ6oPuSP root@ubuntu-s-1vcpu-512mb-10gb-sfo3
-```
+- P0 is formal PASS.
+- Fresh target is `143.198.159.233`.
+- Old VPS `24.199.118.137` is forbidden.
+- Admin panel is loopback-only.
+- `*:2096` is the expected default subscription server and must be disabled before any client is created.
+- P1 may create one exact 1 GiB swapfile only under the Gate's preconditions.
+- P1 creates exactly HY2/8443, WireGuard/51820, REALITY/443 and one shared client.
+- Secrets remain target-local and must never be emitted.
 
-The public key was independently fingerprint-verified by Reviewer after Owner relay from DigitalOcean Web Console.
-
-Do **not** retry `ssh-keyscan`.
-
-Use the exact verified public key to add/update only the `143.198.159.233` ED25519 entry in the explicit known-host file, preserving unrelated entries. Then proceed with strict SSH and the remainder of parent P0.
-
-Old VPS `24.199.118.137` remains strictly out of mutation scope.
-
-Complete only P0. Do not create HY2/WireGuard/REALITY inbounds or enter P1.
+Complete P1 only. Do not expose/import a subscription and do not enter P2.
 
 ## Owner relay
 
