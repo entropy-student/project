@@ -104,31 +104,29 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5
-STATE=OWNER_BOUNDED_RECOVERY_PENDING_CLEANUP_REQUIRED
-PREVIOUS_RESULT=PASS_R22R4_TRANSACTION_RESIDUE_CLEAN
-OBJECTIVE=Remove only the exact R22 recovery pending set after local ownership and remote ciphertext identity proof.
-MAX_ENDPOINT_THIS_ROUND=Exact Baidu pending delete + exact local pending pair delete; no SSH/VPS/Clash/network mutation.
+GATE_ID=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
+STATE=OFFLINE_REPAIR_AUDIT_REQUIRED
+PREVIOUS_RESULT=PASS_R22R5_FAILED_RUN_RESIDUE_CLEAN
+OBJECTIVE=Repair and regression-test every offline-detectable defect class exposed by R21/R22 before any fresh live Gate.
+MAX_ENDPOINT_THIS_ROUND=Runner/validator/package offline source repair and fixtures only; no live/external action.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Unique retained R22 rollback journal, local DPAPI pending, local portable pending, exact Baidu remote pending; recovery finals and rollback journal preserved.
-APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; remote transaction residue clean; REALITY runtime surface absent; WG/HY2 healthy; firewall semantic baseline restored; no recovery decrypt.
-PREFLIGHT=Canonical R22R5 Gate current; PowerShell 7.6.6; unique R22 journal; owner-only recovery files; Baidu account locally confirmed; exact remote ciphertext hash match.
-REQUIRED_EVIDENCE=Owner Baidu confirmation, remote ciphertext match, remote pending removal, local pending removal, finals absent, temp runtime cleanup, rollback journal retained.
-ACCEPTANCE_CRITERIA=Exact R22 recovery pending set clean with no final mutation and no unrelated provider/object mutation.
-ROLLBACK_STATUS_OR_PLAN=No blind retry after consequential delete starts; any failure requires fresh read-only reconciliation.
-OWNER_ONLY_ACTIONS=Run exactly one R22R5 exact recovery pending cleanup checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Reuse the accepted R20 exact-pending cleanup logic with only R22 window/marker relabeling; delete only exact run-owned pending objects.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R5 markers only and stop.
+TARGET_AND_SCOPE=P7 readiness polling; rollback systemd diagnostics/postconditions; firewall counter normalization; future one-shot Gate binding contract.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20/R21/R22 consumed/no replay; R22 failed-run residue clean; REALITY runtime absent; WG/HY2 healthy; rollback journal retained historical evidence; no fresh live Gate until R22R6 formal PASS.
+PREFLIGHT=Canonical main; current runner and validator source; R22R6 Gate current; offline-only temporary worktree recommended.
+REQUIRED_EVIDENCE=AST runner/validator; delayed-readiness positive; readiness timeout negative; service-inactive negative; listener ownership negative; restart-readiness reuse; rollback systemd postcondition fixtures; iptables counter-only positive and semantic-drift negative; package validator; R19R1 parser regression; zero external action.
+ACCEPTANCE_CRITERIA=Formal PASS only when all required offline regressions pass and Reviewer verifies the diff is bounded to the audited defect classes.
+ROLLBACK_STATUS_OR_PLAN=Source-only rollback to locked pre-repair blobs if offline validation fails.
+OWNER_ONLY_ACTIONS=Run the bounded local offline repair/validation checkpoint supplied by Reviewer when released; no SSH/VPS/provider/Secret/DPAPI/Clash/network action.
+REVIEWER_TO_EXECUTOR_RELAY=Do not release or invoke a fresh live Gate inside R22R6.
+EXECUTOR_TO_REVIEWER_RELAY=Return repaired blobs, minimal diff, full offline fixture/package markers, and proof of zero external action.
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22R4_RESULT=PASS
-R22R5_REVIEW_DOC=docs/G4B_R22R4_REVIEW_TRANSACTION_CLEAN_R6R2L_R22R4.md
-R22R5_GATE_DOC=docs/G4B_R22_EXACT_RECOVERY_PENDING_CLEANUP_R6R2L_R22R5.md
-ROLLBACK_JOURNAL_DELETE_ALLOWED=NO
-RECOVERY_FINAL_MUTATION_ALLOWED=NO
+R22R5_RESULT=PASS
+R22_FAILED_RUN_RESIDUE=CLEAN
+FRESH_LIVE_GATE_RELEASED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-R20, R21 and R22 are consumed and must never be replayed. R22 transaction residue is clean. Current work is exact R22 recovery-pending cleanup only; recovery finals and rollback journal remain preserved.
+R20, R21 and R22 are consumed and must never be replayed. R22 failed-run residue is clean. Current work is the complete offline repair audit above; no fresh live Gate exists yet.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
