@@ -55,15 +55,15 @@ Fresh DigitalOcean target
 
 ```text
 GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
-STATE=WAITING_OWNER_HOSTKEY_FINGERPRINT
+STATE=REVIEWER_RELEASED_EXECUTOR_P0
 TARGET=DigitalOcean_143.198.159.233_SFO3
 TARGET_FRESH=YES_OWNER_REPORTED
 TARGET_OLD_VPS=24.199.118.137_OUT_OF_SCOPE
 PINNED_3XUI_VERSION=v3.9.0
 MAX_ENDPOINT=HOSTKEY_TRUST_BOOTSTRAP_THEN_INSTALL_AND_LOOPBACK_BIND
 MANDATORY_REVIEW_STOP=YES
-EXECUTOR_RELEASED=NO
-OWNER_ACTION_REQUIRED=RETURN_NEW_VPS_ED25519_HOSTKEY_FINGERPRINT
+EXECUTOR_RELEASED=YES
+OWNER_ACTION_REQUIRED=NONE
 ```
 
 Canonical Gate: `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`.
@@ -100,23 +100,19 @@ Fresh target contains no accepted project/business data. A failed P0 may be repa
 
 ## UNRESOLVED
 
-- New VPS ED25519 SSH host-key fingerprint has not yet been independently relayed by Owner.
+- New VPS ED25519 SSH host-key fingerprint was independently relayed by Owner and recorded as `SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`.
 - Whether the previously used DigitalOcean private key was attached to this new droplet is not yet proven.
 - Actual fresh-target RAM/swap/runtime facts remain to be read after strict SSH.
 
 ## NEXT_STEP
 
-Owner returns one non-secret ED25519 host-key fingerprint line from DigitalOcean Web Console. Reviewer records it and flips `EXECUTOR_RELEASED=YES`. Executor then runs the complete P0 Gate without further Owner work unless SSH private-key access itself is unavailable.
+Executor now runs the complete released P0 Gate. It must verify the fetched ED25519 key against `SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`, establish explicit known-host trust, then install and verify pinned 3x-ui v3.9.0. No further Owner work unless SSH private-key access itself is unavailable.
 
 ## OWNER_ACTION_REQUIRED
 
-Open **Web Console** on new droplet `143.198.159.233` and run:
+**NONE.**
 
-```bash
-ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E sha256
-```
-
-Return only that single output line.
+The one-time host-key fingerprint relay is complete. Wait for Executor P0 completion unless it returns a precise Owner-only SSH-key availability issue.
 
 ## EVIDENCE_POINTERS
 
