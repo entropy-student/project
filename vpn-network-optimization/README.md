@@ -198,3 +198,7 @@ R20R4 stopped safely because the manually entered expected Baidu UID differed fr
 
 ### 2026-10-06 R20R4R1 safe RETURN / R20R4R2 UTF-8 repair
 R20R4R1 stopped safely before account confirmation because the Baidu UID line could not be uniquely parsed. Reviewer found the new recovery helpers had omitted explicit UTF-8 stdout/stderr decoding that was present in the previously accepted Baidu helpers. R20R4R2 restores only that decoding seam and repeats the same read-only account-confirmation/recovery-presence check.
+
+
+### 2026-10-06 R20R4R2 PASS / R20R5 exact recovery pending cleanup
+R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
