@@ -1,14 +1,18 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — P2R2C remote cleanup
+## Current execution status — P3
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2R2C_REMOTE_STAGE_CLEANUP
-STATE=READY_FOR_EXECUTOR
+GATE_ID=3XUI_FASTPATH_P3_CLASH_IMPORT_THREE_NODE_SMOKE
+STATE=READY_FOR_EXECUTOR_INTERACTIVE
 TARGET=143.198.159.233
-OWNER_LOCAL_MATERIALIZATION=PASS_BY_RECONCILIATION
+P0_FORMAL_PASS=YES
+P1_FORMAL_PASS=YES
+P2_FORMAL_PASS=YES
+REMOTE_TRANSFER_CLEANUP=DEFERRED_TO_P4
 EXECUTOR_RELEASED=YES
-P3_RELEASED=NO
+OWNER_UI_INTERACTION_REQUIRED=YES_BOUNDED
+SERVER_MUTATION_ALLOWED=NO
 STOP_AT_REVIEWER=YES
 ```
 
@@ -16,20 +20,17 @@ STOP_AT_REVIEWER=YES
 
 Read only:
 
-1. `vpn-network-optimization/docs/3X_UI_P2R2C_REMOTE_STAGE_CLEANUP.md`
+1. `vpn-network-optimization/docs/3X_UI_P3_CLASH_IMPORT_THREE_NODE_SMOKE.md`
 2. current `vpn-network-optimization/REVIEWER_HANDOFF.md`
-3. `vpn-network-optimization/docs/REVIEWER_RECONCILIATION_P2R2_LOCAL_MATERIALIZATION_ACCEPTED.md`
+3. `vpn-network-optimization/docs/REVIEWER_DECISION_P2_PASS_REMOTE_CLEANUP_DEFERRED.md`
+4. current Clash Verge runtime/profile metadata needed for P3.
 
-Perform only exact remote cleanup of:
+The Owner-local `subscription.url` and `self-vpn-3xui.yaml` have been independently verified on the real Owner Windows host and must not be regenerated or relocated.
 
-```text
-/root/3xui-owner-transfer/subscription.url
-/root/3xui-owner-transfer/self-vpn-3xui.yaml
-/root/3xui-owner-transfer
-```
+Do not clean the remote transfer staging in P3; that is deferred to P4.
 
-Do not inspect or modify Owner AppData. Do not execute P3.
+Do not execute P4.
 
 ## Owner relay
 
-NONE.
+Only the exact bounded Clash Verge GUI import/selector steps requested during P3.
