@@ -124,7 +124,7 @@ SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, and R20R6 error-propagation repair are all historical accepted work. R20 is consumed and must never be replayed. Current work is the fresh R21 one-shot live Gate shown in CURRENT_GATE above.
+G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, and R20R6 error-propagation repair are all historical accepted work. R20 is consumed and must never be replayed. R21 remains released but unexecuted; current work is the bounded R21R1 offline Gate-binding repair shown in CURRENT_GATE above.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -368,7 +368,7 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 ## UNRESOLVED
 
 - G4-B remains **IN_PROGRESS** solely because R21 has not yet been executed and formally reviewed.
-- Exactly one fresh R21 live invocation is authorized; a second R21 invocation is forbidden.
+- R21 retains one standing authorized live invocation, but it is temporarily blocked and must not be executed until R21R1 receives formal PASS; a second R21 invocation remains forbidden.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still unaccepted.
 - G4-C remains pending after formal R21 PASS and is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
 - G4-D remains pending after G4-C: migrate WG-BASELINE into native Clash/Mihomo WireGuard; standalone Windows WireGuard may be disabled only after formal G4-D PASS.
@@ -387,7 +387,7 @@ Run the single offline R21R1 validation checkpoint provided by Reviewer. This do
 
 - `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1.md` — current offline repair Gate; R21 live remains unexecuted.
 - `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_EVIDENCE.md` — post-repair source identities and pending executable validation.
-Read only what is needed for the current R21 decision:
+Read only what is needed for the current R21R1 repair decision:
 
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — current one-shot live Gate and exact Owner checkpoint boundary.
 - `docs/G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6.md` — formally accepted offline repair that produced the current R21 runner.
