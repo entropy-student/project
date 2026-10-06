@@ -40,8 +40,8 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_R17_ONE_SHOT_QUARANTINE
-GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+STATE=OWNER_ACTION_REQUIRED_R18_READONLY_CLEAN_CHECK
+GATE_ID=G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18
 PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
 R17_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
 R17_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
@@ -619,3 +619,20 @@ This transition snapshot, R17 Gate, R16/R15/R14/R13/R12 history, reusable review
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
 
+
+
+### R17 formal PASS / R18 current boundary — 2026-10-06
+
+```text
+R17_RESULT=PASS_R6R2L_R17_STALE_PENDING_QUARANTINE
+R17_FORWARD_MV_COUNT=1
+R17_ROLLBACK_REQUIRED=NO
+R17_POST_FINAL_COUNT=0
+R17_POST_PENDING_COUNT=0
+R17_POST_UNKNOWN_COUNT=0
+R17_PERMANENT_DELETE=NO
+R18_GATE_BLOB=f42237242503405c11f652240b4baedec8e71e22
+R18_STATE=OWNER_ACTION_REQUIRED_READONLY_CLEAN_CHECK
+```
+
+R17 moved the exact stale pending out of the production namespace into the non-production quarantine namespace with one reversible rename. No rollback or permanent deletion was required. R18 now independently verifies CLEAN using the reviewed read-only helper; no Provider mutation is authorized in R18.
