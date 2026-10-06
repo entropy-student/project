@@ -186,3 +186,7 @@ R20 is consumed and formally RETURNed at P7 after consequential remote mutation 
 
 ### 2026-10-06 R20R2 classified / R20R3 exact cleanup
 R20R2 proved the only remote residue is the R20 transaction directory with exactly two allowlisted project files. R20R3 is released to remove only those two files and the resulting empty transaction directory after repeating ownership and clean-baseline checks. Recovery artifacts remain a separate later reconciliation.
+
+
+### 2026-10-06 R20R3 PASS / R20R4 recovery reconciliation
+R20R3 closed the remaining VPS-side R20 transaction residue while preserving the clean REALITY baseline and healthy WG/HY2. Current R20R4 is read-only and reconciles only the retained local/Baidu recovery pending/final artifact presence before any cleanup.
