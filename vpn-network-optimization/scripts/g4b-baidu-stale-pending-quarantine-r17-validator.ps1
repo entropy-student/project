@@ -85,6 +85,97 @@ $unknown="当前目录: $remote`n1 2 3 vpn-network-optimization-g4b-unexpected.v
 $unknownState=Get-R17ListingState -Listing $unknown
 Assert-R17Validator ([int]$unknownState['UnknownCount'] -eq 1) 'R17_FIXTURE_UNKNOWN_NOT_REJECTED'
 Write-Output 'R17_FIXTURE_UNKNOWN_DETECTION=PASS'
+# Multiple canonical pending objects must fail the production precondition.
+$run2=[string]::new('b',32)
+$pending2='vpn-network-optimization-g4b-'+$run2+'.vpr1.pending'
+
+$multiplePending=(
+    "当前目录: $remote`n"+
+    "1 2 3 $pending`n"+
+    "1 2 3 $pending2`n"
+)
+
+$multipleState=Get-R17ListingState -Listing $multiplePending
+
+Assert-R17Validator (
+    [int]$multipleState['FinalCount'] -eq 0
+) 'R17_FIXTURE_MULTIPLE_PENDING_FINAL_COUNT'
+
+Assert-R17Validator (
+    [int]$multipleState['PendingCount'] -eq 2
+) 'R17_FIXTURE_MULTIPLE_PENDING_COUNT'
+
+Assert-R17Validator (
+    [int]$multipleState['UnknownCount'] -eq 0
+) 'R17_FIXTURE_MULTIPLE_PENDING_UNKNOWN_COUNT'
+
+Assert-R17Validator (
+    [string]::IsNullOrEmpty(
+        [string]$multipleState['SinglePendingName']
+    )
+) 'R17_FIXTURE_MULTIPLE_PENDING_SINGLE_NAME_NOT_EMPTY'
+
+$multipleAccepted=(
+    [int]$multipleState['FinalCount'] -eq 0 -and
+    [int]$multipleState['PendingCount'] -eq 1 -and
+    [int]$multipleState['UnknownCount'] -eq 0
+)
+
+Assert-R17Validator (
+    -not $multipleAccepted
+) 'R17_FIXTURE_MULTIPLE_PENDING_NOT_REJECTED'
+
+Write-Output 'R17_FIXTURE_MULTIPLE_PENDING_REJECT=PASS'
+
+# A production final object must fail the production precondition.
+$finalName='vpn-network-optimization-g4b.vpr1'
+
+$finalPresent=(
+    "当前目录: $remote`n"+
+    "1 2 3 $finalName`n"+
+    "1 2 3 $pending`n"
+)
+
+$finalState=Get-R17ListingState -Listing $finalPresent
+
+Assert-R17Validator (
+    [int]$finalState['FinalCount'] -eq 1
+) 'R17_FIXTURE_FINAL_PRESENT_FINAL_COUNT'
+
+Assert-R17Validator (
+    [int]$finalState['PendingCount'] -eq 1
+) 'R17_FIXTURE_FINAL_PRESENT_PENDING_COUNT'
+
+Assert-R17Validator (
+    [int]$finalState['UnknownCount'] -eq 0
+) 'R17_FIXTURE_FINAL_PRESENT_UNKNOWN_COUNT'
+
+$finalAccepted=(
+    [int]$finalState['FinalCount'] -eq 0 -and
+    [int]$finalState['PendingCount'] -eq 1 -and
+    [int]$finalState['UnknownCount'] -eq 0
+)
+
+Assert-R17Validator (
+    -not $finalAccepted
+) 'R17_FIXTURE_FINAL_PRESENT_NOT_REJECTED'
+
+Write-Output 'R17_FIXTURE_FINAL_PRESENT_REJECT=PASS'
+
+# Explicit parent-Gate shape guards.
+Assert-R17Validator (
+    $source -match 'R17_SOURCE_CARDINALITY_INVALID'
+) 'R17_VALIDATOR_SOURCE_CARDINALITY_GUARD_MISSING'
+
+Assert-R17Validator (
+    $source -match 'R17_QUARANTINE_TARGET_COLLISION'
+) 'R17_VALIDATOR_QUARANTINE_COLLISION_GUARD_MISSING'
+
+Assert-R17Validator (
+    $source -match 'R17_MV_ARGUMENT_SHAPE_INVALID'
+) 'R17_VALIDATOR_MV_SHAPE_GUARD_MISSING_FINAL'
+
+Write-Output 'R17_SOURCE_TARGET_SHAPE_GUARDS=PASS'
 
 $defaultOutput=@(& $resolved)
 Assert-R17Validator ($defaultOutput -contains 'R17_VALIDATION=PASS') 'R17_VALIDATOR_DEFAULT_VALIDATION_MISSING'
