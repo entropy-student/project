@@ -667,3 +667,18 @@ R19R1_STATE=LOCAL_CODEX_OFFLINE_DIAGNOSTIC
 ```
 
 R19 failed safely at the local generated profile Mihomo parse check before persistent remote mutation. The one-shot live release is consumed and cannot be replayed. R19R1 uses synthetic values and the actual installed Mihomo parser to reproduce and repair the local parse incompatibility; no Administrator PowerShell, provider, SSH/VPS or network mutation is authorized.
+
+
+### Owner final validation scope update — 2026-10-06
+
+```text
+OWNER_FINAL_G4_VALIDATION_SCOPE=CHATGPT_THREE_ROLE_SMOKE_ONLY
+G4C_REQUIRED_ROLES=HY2_SFO3,WG_BASELINE,REALITY_SFO3
+G4C_HEAVY_PERFORMANCE_MATRIX=REMOVED_FROM_V1_ACCEPTANCE
+G4D_ADDED=YES
+G4D_OBJECTIVE=WIREGUARD_IN_CLASH_MIHOMO
+WINDOWS_WIREGUARD_DISABLE_AFTER_G4D_PASS=YES
+FINAL_CONTROL_PLANE=CLASH_VERGE
+```
+
+Owner does not require another complex real-workload benchmark. After G4-B, G4-C only needs manual switching among all three Clash roles with successful normal ChatGPT conversation on each. G4-D then migrates WireGuard into Clash/Mihomo; the standalone Windows WireGuard client remains active until G4-D formal PASS and may then be disabled. Current R19R1 diagnostic scope is unchanged.
