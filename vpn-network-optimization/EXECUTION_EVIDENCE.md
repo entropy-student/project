@@ -11055,3 +11055,32 @@ G4D_EXECUTED=NO
 P0-P6 passed, including repaired local Mihomo parse and remote server-config/unit parse. At P7 the remote enable path had already entered consequential mutation; the enable/status call returned an unclassified failure and the automatic rollback could not be verified. R20 is therefore consumed and must not be rerun.
 
 Next Gate: `G4B_R20_P7_REMOTE_READONLY_RECONCILIATION_R6R2L_R20R1` at `7fdbc077a82e6bbd262d7c5060cd78e0e1a4e2f2`; helper `50bc1911d9ae5493cc715e0fb7cfdac8d9266d9c`. It performs read-only state reconciliation only.
+
+
+## 2026-10-06 — R20R1 read-only reconciliation complete
+
+```text
+R20R1_RESULT=PASS_R20R1_OBSERVATION_PROJECT_RESIDUAL_PRESENT
+R20R1_REALITY_SERVICE=ABSENT
+R20R1_TCP443_COUNT=0
+R20R1_MIHOMO_PROCESS_COUNT=0
+R20R1_WG_HEALTHY=YES
+R20R1_HY2_HEALTHY=YES
+R20R1_BINARY_PRESENT=NO
+R20R1_RUNTIME_PRESENT=NO
+R20R1_SECRET_CONFIG_PRESENT=NO
+R20R1_UNIT_PRESENT=NO
+R20R1_RUNTIME_USER_PRESENT=NO
+R20R1_RUNTIME_GROUP_PRESENT=NO
+R20R1_TRANSACTION_PRESENT=YES
+R20R1_TRANSACTION_STATE_PRESENT=YES
+R20R1_TRANSACTION_RUN_ID_MATCH=YES
+R20R1_TEMP_PRESENT=NO
+R20R1_REMOTE_MUTATION=NO
+R20R1_SECRET_CONTENT_READ=NO
+R20R1_LOCAL_MUTATION=NO
+```
+
+Interpretation: rollback removed the consequential REALITY service/runtime surface and preserved WG/HY2, but the R20 transaction directory remains. R20R2 classifies that residue before any cleanup.
+
+Next Gate: `G4B_R20_TRANSACTION_RESIDUAL_READONLY_R6R2L_R20R2` at `92150b47085a770556290dadfca4fdd045c951e0`, helper `dcabd46abc7d2736369e1f0f0a0072f6dfe78398`.
