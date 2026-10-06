@@ -13,10 +13,11 @@ Deploy three 3x-ui-managed nodes on fresh DigitalOcean VPS `143.198.159.233`, co
 ```text
 P0 Fresh VPS trust bootstrap + 3x-ui install      PASS
 P1 Three inbounds + shared client                 PASS
-P2 Secure Mihomo delivery                         RETURN_LOCAL_ARTIFACT_REPAIR
+P2 Secure Mihomo delivery                         PASS
 P2R1 Direct Executor AppData repair               SUPERSEDED_NOT_EXECUTED
-P2R2 Server stage + Owner-host materialization    IN_PROGRESS
-P3 Clash import + three-node smoke                REVOKED_NOT_EXECUTED
+P2R2 Server stage + Owner-host materialization    PASS
+P2R2C Remote transfer cleanup                     DEFERRED_TO_P4
+P3 Clash import + three-node smoke                IN_PROGRESS
 P4 Final cutover + backup + seal                  PENDING
 ```
 
@@ -62,14 +63,17 @@ APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2R2C_REMOTE_STAGE_CLEANUP
-STATE=REVIEWER_RELEASED_EXECUTOR_P2R2C_CLEANUP
+GATE_ID=3XUI_FASTPATH_P3_CLASH_IMPORT_THREE_NODE_SMOKE
+STATE=REVIEWER_RELEASED_EXECUTOR_P3_INTERACTIVE
 TARGET=143.198.159.233
-OWNER_LOCAL_MATERIALIZATION=PASS_BY_RECONCILIATION
-REMOTE_STAGE_CLEANUP=PENDING
+P0_FORMAL_PASS=YES
+P1_FORMAL_PASS=YES
+P2_FORMAL_PASS=YES
+REMOTE_TRANSFER_CLEANUP=DEFERRED_TO_P4
+OWNER_UI_INTERACTION_REQUIRED=YES_BOUNDED
+LIVE_SERVER_MUTATION_ALLOWED=NO
+OLD_VPS_MUTATION_ALLOWED=NO
 EXECUTOR_RELEASED=YES
-P3_RELEASED=NO
-OWNER_ACTION_REQUIRED=NONE
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -93,11 +97,11 @@ Supersede decision:
 
 ## NEXT_STEP
 
-Phase A is formally PASS. Fresh Owner-host read-back proved both final local files exist, are non-empty, have owner-only ACLs, and the final YAML parses successfully. Local materialization is accepted and must not be replayed. Only remote transfer staging cleanup remains.
+Phase A and Owner-host materialization are accepted. Remote transfer cleanup is explicitly deferred to P4 and does not block P3. P3 is now re-released for Clash import and three-node functional smoke.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE. Executor performs remote staging cleanup only.
+During P3 only: perform the exact bounded Clash Verge GUI import/selector steps requested by Executor.
 
 ## EVIDENCE_POINTERS
 
@@ -108,5 +112,7 @@ NONE. Executor performs remote staging cleanup only.
 - Phase A PASS: `docs/REVIEWER_DECISION_P2R2_PHASE_A_SERVER_STAGE_PASS.md`
 - Phase B RETURN reconciliation: `docs/REVIEWER_RECONCILIATION_P2R2_PHASE_B_FINALIZE_LOCAL_RETURN.md`
 - Local materialization accepted: `docs/REVIEWER_RECONCILIATION_P2R2_LOCAL_MATERIALIZATION_ACCEPTED.md`
-- Active cleanup Gate: `docs/3X_UI_P2R2C_REMOTE_STAGE_CLEANUP.md`
+- Deferred cleanup Gate: `docs/3X_UI_P2R2C_REMOTE_STAGE_CLEANUP.md`
+- P2 PASS with deferred cleanup: `docs/REVIEWER_DECISION_P2_PASS_REMOTE_CLEANUP_DEFERRED.md`
+- Active P3 Gate: `docs/3X_UI_P3_CLASH_IMPORT_THREE_NODE_SMOKE.md`
 - P2R2 Phase A Evidence: `results/3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE_2026-10-07_EXECUTOR_R1.md`
