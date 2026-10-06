@@ -646,7 +646,16 @@ function Invoke-R17Run {
                     $resultCode='RETURN_FORWARD_NOT_COMMITTED'
                 }
                 else {
-                    $rollbackOk=Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName
+                    $rollbackSequence=@(Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName)
+                    Assert-R17 ($rollbackSequence.Count -ge 1) 'R17_ROLLBACK_RESULT_MISSING'
+                    $rollbackTail=$rollbackSequence[$rollbackSequence.Count-1]
+                    Assert-R17 ($rollbackTail -is [bool]) 'R17_ROLLBACK_RESULT_TYPE_INVALID'
+                    if($rollbackSequence.Count -gt 1){
+                        for($rollbackIndex=0; $rollbackIndex -lt ($rollbackSequence.Count-1); $rollbackIndex++){
+                            Write-Output ([string]$rollbackSequence[$rollbackIndex])
+                        }
+                    }
+                    $rollbackOk=[bool]$rollbackTail
                     if($rollbackOk){
                         $resultCode='RETURN_FORWARD_FAILED_ROLLED_BACK'
                     }
@@ -657,7 +666,16 @@ function Invoke-R17Run {
             }
         }
         else {
-            $rollbackOk=Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName
+            $rollbackSequence=@(Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName)
+            Assert-R17 ($rollbackSequence.Count -ge 1) 'R17_ROLLBACK_RESULT_MISSING'
+            $rollbackTail=$rollbackSequence[$rollbackSequence.Count-1]
+            Assert-R17 ($rollbackTail -is [bool]) 'R17_ROLLBACK_RESULT_TYPE_INVALID'
+            if($rollbackSequence.Count -gt 1){
+                for($rollbackIndex=0; $rollbackIndex -lt ($rollbackSequence.Count-1); $rollbackIndex++){
+                    Write-Output ([string]$rollbackSequence[$rollbackIndex])
+                }
+            }
+            $rollbackOk=[bool]$rollbackTail
             if($rollbackOk){
                 $resultCode='RETURN_POSTREAD_FAILED_ROLLED_BACK'
             }
@@ -671,7 +689,16 @@ function Invoke-R17Run {
     catch {
         if($script:mutationStarted -and $forwardBaselineKnown -and $resultCode -eq 'RETURN_R17_UNCLASSIFIED'){
             try {
-                $rollbackOk=Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName
+                $rollbackSequence=@(Invoke-R17Rollback -SourceRemote $sourceRemote -TargetRemote $targetRemote -SourceName $sourceName -QuarantineName $quarantineName)
+                Assert-R17 ($rollbackSequence.Count -ge 1) 'R17_ROLLBACK_RESULT_MISSING'
+                $rollbackTail=$rollbackSequence[$rollbackSequence.Count-1]
+                Assert-R17 ($rollbackTail -is [bool]) 'R17_ROLLBACK_RESULT_TYPE_INVALID'
+                if($rollbackSequence.Count -gt 1){
+                    for($rollbackIndex=0; $rollbackIndex -lt ($rollbackSequence.Count-1); $rollbackIndex++){
+                        Write-Output ([string]$rollbackSequence[$rollbackIndex])
+                    }
+                }
+                $rollbackOk=[bool]$rollbackTail
                 if($rollbackOk){
                     $resultCode='RETURN_EXCEPTION_ROLLED_BACK'
                 }
