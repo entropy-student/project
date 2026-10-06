@@ -128,8 +128,10 @@ function Assert-CanonicalSource {
     $handoffPath = Join-Path $script:projectRoot 'REVIEWER_HANDOFF.md'
     $handoff = [IO.File]::ReadAllText($handoffPath,[Text.Encoding]::UTF8)
     if ($Mode -eq 'Run') {
-        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
-        Assert-G4B ($handoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
+        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
+        Assert-G4B ($handoff -match '(?m)^R22_LIVE_INVOCATIONS_CONSUMED=0\r?$') 'REVIEWER_LIVE_INVOCATION_ALREADY_CONSUMED'
+        Assert-G4B ($handoff -match '(?m)^R22_LIVE_INVOCATIONS_AUTHORIZED=1\r?$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
+        Assert-G4B ($handoff -match '(?m)^SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO\r?$') 'REVIEWER_SECOND_LIVE_INVOCATION_POLICY_INVALID'
         Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
     }
 }
