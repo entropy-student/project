@@ -1,6 +1,6 @@
 # 3x-ui Fast Path P0 — Fresh VPS Trust Bootstrap + Stable Install
 
-Status: WAITING_OWNER_HOSTKEY_FINGERPRINT
+Status: REVIEWER_RELEASED / EXECUTOR_P0
 
 ## GATE_ID
 
@@ -56,15 +56,25 @@ ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E sha256
 
 Owner returns only the single ED25519 fingerprint line. This is public trust metadata, not a Secret.
 
-Until Reviewer records that fingerprint and releases the Gate:
+Owner-relayed ED25519 host-key fingerprint:
 
 ```text
-EXECUTOR_RELEASED=NO
+SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ
+```
+
+Reviewer recorded the fingerprint and released the Gate:
+
+```text
+EXECUTOR_RELEASED=YES
 ```
 
 ## REVIEWER RELEASE CONDITION
 
-Reviewer records the exact Owner-relayed ED25519 SHA256 fingerprint in the current Handoff and flips:
+Reviewer has recorded the exact Owner-relayed ED25519 SHA256 fingerprint:
+
+`SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`
+
+and released:
 
 `EXECUTOR_RELEASED=YES`
 
