@@ -11034,3 +11034,24 @@ NEW_MATERIAL_SCOPE_REQUIRES_REVIEWER_STOP=YES
 ```
 
 Owner approved all remaining authorization checkpoints in the already documented closeout roadmap. R20 is released for exactly one live invocation. Existing one-shot limits and mandatory Reviewer stops remain in force.
+
+
+## 2026-10-06 — R20 live result: RETURN at P7, reconciliation required
+
+```text
+R20_RESULT=RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN
+R20_FAILED_PHASE=P7_SERVICE_ENABLE_AND_LISTENER_READBACK
+R20_FAILURE_CODE=UNCLASSIFIED
+R20_CONSEQUENTIAL_MUTATION_STARTED=YES
+R20_REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
+R20_RECOVERY_ARTIFACT_CLEANUP=RETAINED_ROLLBACK_UNVERIFIED
+R20_ROLLBACK_JOURNAL=RETAINED_REQUIRES_RECONCILIATION
+R20_LIVE_INVOCATION_COUNT=1
+NO_SECOND_R20_ATTEMPT=YES
+G4C_EXECUTED=NO
+G4D_EXECUTED=NO
+```
+
+P0-P6 passed, including repaired local Mihomo parse and remote server-config/unit parse. At P7 the remote enable path had already entered consequential mutation; the enable/status call returned an unclassified failure and the automatic rollback could not be verified. R20 is therefore consumed and must not be rerun.
+
+Next Gate: `G4B_R20_P7_REMOTE_READONLY_RECONCILIATION_R6R2L_R20R1` at `7fdbc077a82e6bbd262d7c5060cd78e0e1a4e2f2`; helper `50bc1911d9ae5493cc715e0fb7cfdac8d9266d9c`. It performs read-only state reconciliation only.
