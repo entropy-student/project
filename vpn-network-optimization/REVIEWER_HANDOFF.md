@@ -17,7 +17,7 @@ P2 Secure Mihomo delivery                         PASS
 P2R1 Direct Executor AppData repair               SUPERSEDED_NOT_EXECUTED
 P2R2 Server stage + Owner-host materialization    PASS
 P2R2C Remote transfer cleanup                     DEFERRED_TO_P4
-P3 Clash import + three-node smoke                RETURN_BASELINE_NETWORK
+P3 ChatGPT three-node functional smoke             IN_PROGRESS
 P4 Final cutover + backup + seal                  PENDING
 ```
 
@@ -63,16 +63,17 @@ APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P3_BASELINE_NETWORK_RECONCILIATION
-STATE=WAITING_OWNER_READONLY_BASELINE_DIAGNOSTIC
+GATE_ID=3XUI_FASTPATH_P3R1_CHATGPT_THREE_NODE_SMOKE
+STATE=REVIEWER_RELEASED_OWNER_INTERACTIVE
 P2_FORMAL_PASS=YES
 NEW_3XUI_SUBSCRIPTION_IMPORTED=YES
 HY2_SMOKE=UNVERIFIED
 WG_SMOKE=NOT_TESTED
 REALITY_SMOKE=NOT_TESTED
+API_OPENAI_401_PROBE=EXCLUDED_BASELINE_RESET
+OWNER_INTERACTION_REQUIRED=YES
 SERVER_MUTATION_ALLOWED=NO
-P3_RETRY_AUTHORIZED=NO
-OWNER_ACTION_REQUIRED=RESTORE_BASELINE_PROFILE_AND_RUN_READONLY_DIAGNOSTIC
+P4_RELEASED=NO
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -100,7 +101,7 @@ Phase A and Owner-host materialization are accepted. Remote transfer cleanup is 
 
 ## OWNER_ACTION_REQUIRED
 
-Restore the exact pre-P3 Clash profile, keep the new 3x-ui subscription imported, then run the Reviewer-supplied read-only baseline network diagnostic.
+Reviewer directly guides Owner through HY2 -> WG -> REALITY: verify new-VPS egress via explicit Clash SOCKS, then briefly enable system proxy and refresh/send one normal ChatGPT message per node. No Codex required.
 
 ## EVIDENCE_POINTERS
 
@@ -117,3 +118,6 @@ Restore the exact pre-P3 Clash profile, keep the new 3x-ui subscription imported
 - P2R2 Phase A Evidence: `results/3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE_2026-10-07_EXECUTOR_R1.md`
 
 - P3 baseline reconciliation: `docs/REVIEWER_RECONCILIATION_P3_BASELINE_HTTPS_RESET.md`
+
+- P3 probe-contract reconciliation: `docs/REVIEWER_RECONCILIATION_P3_API401_PROBE_REPLACED.md`
+- Active P3R1 Gate: `docs/3X_UI_P3R1_CHATGPT_THREE_NODE_SMOKE.md`
