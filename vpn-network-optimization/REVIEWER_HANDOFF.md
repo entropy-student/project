@@ -104,26 +104,24 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21
-STATE=OWNER_ACTION_REQUIRED_R21_ONE_SHOT_LIVE
-PREVIOUS_RESULT=PASS_R20R6_ERROR_PROPAGATION_REPAIR
-OBJECTIVE=Execute one fresh bounded three-role live run with repaired structured error propagation and rollback diagnostics.
-MAX_ENDPOINT_THIS_ROUND=One R21 live invocation; P10 import-without-activation; no G4-C/G4-D.
+GATE_ID=G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1
+STATE=EXECUTOR_ACTION_REQUIRED_OFFLINE
+PREVIOUS_RESULT=R21_RELEASED_UNEXECUTED_PREFLIGHT_DEFECT_FOUND
+OBJECTIVE=Repair the stale canonical Handoff Gate-id assertion in the R21 runner and matching fixture only.
+MAX_ENDPOINT_THIS_ROUND=Offline source repair plus PowerShell AST/live-fixture/package validation; no live invocation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R21 Gate ae20c33f37d9234cd85f6e08f058993d8ef7fd78; runner 4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b; live fixture validator e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06; package validator 59e18226dff66adcaac978b4b7eeb540a14514c9.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed/no replay; R20 VPS and recovery residues clean; R20 rollback journal retained out-of-scope; standalone Windows WG remains enabled; HY2/WG preserved; AUTO_SWITCHING=OFF.
-PREFLIGHT=Safe-sync main; exact Gate/runner/validator blobs; PowerShell 7.6.6 Administrator; tracked worktree clean; package and live fixtures PASS before live invocation.
-REQUIRED_EVIDENCE=Runner sanitized output including phases, structured failure markers if any, one-shot invocation count, rollback status, role order/default, WG/HY2 preserved, system proxy OFF, TUN OFF, STOP_AT_REVIEWER.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if the new R21 run completes all required phases and retains its new rollback journal for Reviewer; any failure/ambiguity returns without second attempt.
-ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback only on failure. Owner must not manually retry or invoke rollback after R21 returns.
-OWNER_ONLY_ACTIONS=Run exactly one R21 live checkpoint in Administrator PowerShell 7.6.6; at P10 import exact generated profile without activation.
-REVIEWER_TO_EXECUTOR_RELAY=Use runner blob 4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b with documented fixed live arguments exactly once.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R21 output only and stop.
-LIVE_G4B_EXECUTION_AUTHORIZED=YES
-R21_LIVE_INVOCATIONS_AUTHORIZED=1
+TARGET_AND_SCOPE=Runner Gate-id binding plus matching fixture expectation only.
+APPLICABLE_CRITICAL_CONSTRAINTS=R21 remains unexecuted; live invocation count remains zero; R20 consumed/no replay; WG/HY2/runtime/provider state untouched.
+PREFLIGHT=Canonical main and locked pre-repair runner/validator blobs must match the R21R1 Gate.
+REQUIRED_EVIDENCE=Exact two-file diff; runner/validator AST PASS; live runner fixtures PASS; package validator PASS; no live/SSH/VPS/provider/Secret/Clash/network action.
+ACCEPTANCE_CRITERIA=Formal PASS only after executable offline validation; then relock and re-release the original unexecuted R21 live Gate with repaired source identities.
+ROLLBACK_STATUS_OR_PLAN=Source-only rollback to the locked pre-repair blobs if validation fails.
+OWNER_ONLY_ACTIONS=NONE for source repair; Owner-local PowerShell validation may be used because the current Reviewer environment has no pwsh runtime.
+REVIEWER_TO_EXECUTOR_RELAY=Read only R21R1 Gate plus the two named scripts; do not read project history.
+EXECUTOR_TO_REVIEWER_RELAY=Return AST/fixture/package results and exact post-repair blobs; no live action.
+R21_LIVE_INVOCATIONS_CONSUMED=0
 SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
 ```
 
 G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, and R20R6 error-propagation repair are all historical accepted work. R20 is consumed and must never be replayed. Current work is the fresh R21 one-shot live Gate shown in CURRENT_GATE above.
