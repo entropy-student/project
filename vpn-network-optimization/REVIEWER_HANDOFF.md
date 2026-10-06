@@ -103,13 +103,13 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1
-STATE=EXECUTOR_ACTION_REQUIRED_R17R1_OFFLINE_CODE_VALIDATION
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_FIXTURE_REPAIR_R6R2L_R17R1R1
+STATE=LOCAL_CODE_REPAIR_REQUIRED_R17R1R1_VALIDATOR_FIXTURE
 CURRENT_GATE_ESTIMATED_EXECUTION_TIME=LOCAL_CODE_REVIEW_AND_OFFLINE_VALIDATION
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=R17_PREPARED_BUT_EXECUTION_SUSPENDED_FOR_CODE_USABILITY_CONFIRMATION
-OBJECTIVE=Local Codex reviews the complete current R17 helper/validator, repairs any source defects required for reliable usability, and produces executable offline evidence. No provider action.
-MAX_ENDPOINT_THIS_ROUND=Offline PASS_CANDIDATE with final helper/validator blobs and evidence, then mandatory Reviewer stop. No R17 Run mode, no Baidu access, no Owner config/Secret/DPAPI, no SSH/VPS/Clash/network action.
+PREVIOUS_RESULT=RETURN_R17R1_OFFLINE_VALIDATOR_DIRECTORY_HEADER_INVALID
+OBJECTIVE=Repair only the R17 validator synthetic-listing newline fixtures that currently fail with BAIDU_DIRECTORY_HEADER_INVALID, then rerun the normal offline validator and stale-LASTEXITCODE regression. No provider action.
+MAX_ENDPOINT_THIS_ROUND=One-file local validator fixture repair plus offline rerun and final validator blob, then mandatory Reviewer stop. Helper source and all real/provider/runtime state remain frozen.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1; scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1; bounded Executor evidence only.
 APPLICABLE_CRITICAL_CONSTRAINTS=R16 accepted state remains final=0/pending=1/unknown=0 and must not be remotely re-observed in R17R1; R15 rollback journal untouched; R17 Owner authorization recorded but execution not released; provider scope/consequences must not expand; permanent delete/live G4-B/G4-C forbidden.
@@ -117,8 +117,8 @@ PREFLIGHT=Safe-sync canonical main; starting helper blob 3d7797a21c31fb805993530
 REQUIRED_EVIDENCE=AST both scripts; executable offline validator; default non-mutating path; stale-LASTEXITCODE regression; positive/negative listing fixtures; source/target file-vs-directory/cardinality guards; forward/rollback offline usability evidence; forbidden provider action scan; Secret scan; final blobs; exact changed files; all no-action markers.
 ACCEPTANCE_CRITERIA=PASS_CANDIDATE only with executable offline evidence sufficient to confirm helper/validator usability and no unresolved ambiguity. Static-only proof of unexercised forward/rollback branches is PARTIAL, not PASS.
 ROLLBACK_STATUS_OR_PLAN=Source-only Git changes must remain revertible. R15 local rollback journal and R17 provider rollback plan remain untouched/unexercised.
-OWNER_ONLY_ACTIONS=NONE. Owner must not run the R17 one-shot checkpoint while R17R1 is open.
-REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md exactly. Work locally/offline. Review the full source, fix the known stale-LASTEXITCODE validator risk plus any other bounded defect, run required executable offline evidence, push final code/evidence to main, fresh-read final blobs, and stop. Do not access Baidu or run R17 Mode Run.
+OWNER_ONLY_ACTIONS=NONE consequential. Owner may perform the local file edit/test if needed, but must not run the R17 one-shot checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_FIXTURE_REPAIR_R6R2L_R17R1R1.md exactly. Replace only literal \\n separators in synthetic listing fixtures with real PowerShell newlines; do not modify helper. Rerun normal offline validator, then stale-LASTEXITCODE regression, report final validator blob, and stop.
 EXECUTOR_TO_REVIEWER_RELAY=Return result/change/validation/problems/rollback/reviewer-check/Owner-transfer; Owner transfer must be NONE.
 ```
 
@@ -362,7 +362,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Local Codex executes `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md`: review/repair the full R17 helper and validator, run the required offline executable evidence, push final blobs/evidence to `main`, and stop for Reviewer. Do not access Baidu and do not run R17 `-Mode Run`.
+Repair the validator fixture newline bug under `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_FIXTURE_REPAIR_R6R2L_R17R1R1.md`, rerun the offline validator and stale-LASTEXITCODE regression, and stop for Reviewer. Do not access Baidu and do not run R17 `-Mode Run`.
 
 ## OWNER_ACTION_REQUIRED
 
