@@ -790,3 +790,14 @@ Owner decision:
 - after G4-D PASS, the standalone Windows WireGuard client may be disabled and Clash Verge becomes the single control plane.
 
 This decision changes future validation scope only. The current R19R1 local Mihomo parse diagnostic remains unchanged.
+
+
+## 2026-10-06 — PASS R19R1; prepare fresh R20 live Gate
+
+Decision: `PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR`.
+
+Accepted cause: the production renderer left the HY2 certificate fingerprint sentinel unrendered. The alternative `encryption: ""` hypothesis was rejected by executable single-variable testing. The repair reuses the certificate SHA-256 fingerprint already verified against the accepted pin, passes it explicitly to the renderer, validates its exact format, and writes it into the HY2 proxy.
+
+Executable proof is accepted: the legacy sentinel profile is rejected by the installed Mihomo parser while the repaired synthetic production-renderer output parses successfully. Package and full live-runner fixture regressions passed with no consequential actions.
+
+A new live Gate R20 is prepared at `a35f1c4c62091338a1ef71c19f1af0ac94a60a46`. R19 authorization remains consumed. R20 requires fresh Owner authorization before exactly one live invocation can be released.
