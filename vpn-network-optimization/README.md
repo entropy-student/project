@@ -174,3 +174,7 @@ G4-C 不再要求 60/60、P95/P99、Codex 长任务、OpenAI API 矩阵或生图
 
 ### 2026-10-06 R19R1 Reviewer PASS
 R19R1 is formally accepted. The R19 P5 parser failure was caused by the HY2 certificate fingerprint placeholder not being rendered into the generated three-role profile. The repaired renderer now carries forward the already pin-verified SHA-256 fingerprint, and the actual installed Mihomo parser proves legacy FAIL → repaired PASS with synthetic values. A fresh R20 live Gate is prepared; R19 authorization is not reusable.
+
+
+### 2026-10-06 Standing Owner authorization
+Owner granted standing authorization for the already documented closeout roadmap: R20, lightweight G4-C, G4-D WireGuard-in-Clash migration, and MVP v1 seal. Repetitive authorization prompts are no longer required inside that accepted scope. R20 is released for one live invocation; one-shot execution and Reviewer-stop rules remain unchanged.
