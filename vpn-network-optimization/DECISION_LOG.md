@@ -870,3 +870,12 @@ Decision: `PASS_R20R5_EXACT_PENDING_SET_CLEAN`.
 R20 failed-run state is now reconciled: consequential VPS surface clean, transaction residue removed, exact local/Baidu pending recovery artifacts removed, finals absent, WG/HY2 preserved, and rollback journal retained.
 
 Reviewer source inspection found the runner discards remote supervisor structured error codes whenever the SSH process exits nonzero, and automatic rollback hides its own bounded failure code. Consequently the exact historical P7 cause cannot be reconstructed safely. R20R6 is an offline-only repair Gate for error propagation and rollback diagnostics. No fresh live Gate is released until R20R6 formally passes.
+
+
+## 2026-10-06 — PASS R20R6; release fresh R21 live Gate
+
+Decision: `PASS_R20R6_ERROR_PROPAGATION_REPAIR`.
+
+Reviewer independently verified the source commit and fixture design. Production remote-response helpers are extracted from the runner AST for offline testing; the new logic preserves bounded allowlisted remote error codes, fails closed on malformed/oversized/untrusted responses, keeps SSH fallback behavior, and surfaces a bounded rollback failure code without changing fail-closed reconciliation semantics.
+
+R20 remains consumed and must never be replayed. R21 is a fresh one-shot live Gate using runner blob `4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b`. Standing Owner authorization applies to the documented route.
