@@ -769,3 +769,12 @@ Decision: `AUTHORIZE_R19_ONE_SHOT_LIVE_RESUME`.
 Fresh Owner authorization is recorded for Gate `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19` only. The released execution identity is runner `2faf59ec5a1653a275b11504fe567d0fc871f94e` and validator `26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3`. Exactly one live invocation is authorized.
 
 Scope includes persistent project-owned REALITY service/credentials, project TCP/443 listener, one SELF-VPN-V1 profile import without activation, and encrypted Baidu recovery pending→final promotion. G4-C, automatic switching, second live invocation, removal of WG/HY2, and permanent deletion of the retained R17 quarantine object remain outside authorization.
+
+
+## 2026-10-06 — R19 RETURN; revoke live release pending local parse repair
+
+Decision: `RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED`.
+
+R19 stopped at P5 after the encrypted Baidu pending recovery artifact was verified but before any persistent remote mutation. The real installed Mihomo parser rejected the rendered local three-role profile. Remote rollback and owned Baidu pending rollback both reported PASS.
+
+The one-shot R19 authorization is consumed and is not reusable. Canonical live authorization is revoked. R19R1 is a local Codex offline diagnostic/repair Gate; it cannot authorize any live retry.
