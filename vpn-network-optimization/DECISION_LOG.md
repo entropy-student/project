@@ -730,3 +730,24 @@ The prepared R17 consequential quarantine Gate remains unexecuted. Owner authori
 Code modification and executable verification are delegated to local Codex under `G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1`. R17R1 is offline-only: no Baidu access, Owner config read, Secret/DPAPI access, SSH/VPS/Clash/network mutation, live G4-B, G4-C, or R17 Run mode.
 
 Only after Codex returns final blobs and PASS_CANDIDATE evidence may Reviewer re-review/relock the implementation and decide whether the previously recorded R17 authorization can be released for the bounded one-shot checkpoint.
+
+
+## 2026-10-06 — R17R1 formal PASS and R17 release
+
+Decision: `PASS_R17R1_OFFLINE_CODE_VALIDATION_AND_RELEASE_R17`.
+
+Canonical final source identities:
+- helper: `9c910628932c22c448c822437fd53e0b71804a9c`
+- validator: `7a555224720ce65b724012c425b58d6aad2c9026`
+
+R17R1 repaired and proved:
+- synthetic listing newline fixtures;
+- inherited `$LASTEXITCODE` false-failure handling;
+- rollback success-stream/Boolean normalization at all three production call sites;
+- executable forward-success and rollback-success state-machine behavior;
+- multiple-pending and final-present negative rejection fixtures;
+- source/target shape, directory collision, unknown-object and default-nonmutating boundaries.
+
+Final Reviewer direct readback confirms the helper still defaults to `Validate`, requires `OwnerAuthorized` for Run, limits Provider actions to `who / ls / mv`, contains no permanent-delete action, and preserves one-forward/one-rollback limits.
+
+The Owner's previously recorded authorization for the exact bounded R17 quarantine Gate is released without scope expansion. Permanent deletion, live G4-B and G4-C remain unauthorized by this decision. Provider mutation has not yet executed.
