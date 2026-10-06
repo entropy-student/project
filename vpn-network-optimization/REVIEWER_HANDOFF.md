@@ -106,29 +106,27 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
-STATE=EXECUTOR_IMPLEMENTATION_REQUIRED
-PREVIOUS_TRUSTED_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
-TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
-POST_R20_TRUST=REFERENCE_ONLY_UNTIL_INDEPENDENTLY_REPROVEN
-OBJECTIVE=Build and review one bounded read-only Owner checkpoint that independently classifies current Windows/VPS/Baidu G4-B reality.
-MAX_ENDPOINT_THIS_ROUND=New small helper + offline fixtures + Reviewer source inspection only; mandatory stop before Owner execution.
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1
+STATE=EXECUTOR_OFFLINE_REPAIR_REQUIRED
+PREVIOUS_RESULT=RETURN_R1_RELEASE_MARKER_CONFLICT
+PARENT_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+R1_CANDIDATE_COMMIT=812f18980f9f10d22e2c8399e7022bcfe347c387
+OBJECTIVE=Repair only the read-only Owner checkpoint release contract.
+MAX_ENDPOINT_THIS_ROUND=R1 helper/validator release-contract repair + offline fixtures; mandatory stop before Owner execution.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Windows production baseline metadata; SFO3 WG/HY2/REALITY/service/path metadata; Baidu production recovery namespace counts/identity classification; zero mutation.
-APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard retained; HY2 untouched; proxy/TUN OFF; no route/firewall/service/profile/provider/recovery mutation; no Secret value/hash output; R20+ never replayed.
-PREFLIGHT=Canonical main; exact Gate fresh-read; trusted R19R1 constants/contracts only when needed; existing post-R20 helpers are reference patterns only.
-REQUIRED_EVIDENCE=AST; read-only command allowlist; mutation-negative fixtures; Secret-output negative checks; strict SSH contract; provider mutation negative; bounded sanitized output contract.
-ACCEPTANCE_CRITERIA=Helper is independently Reviewer-inspected and proves zero mutation; only then may Owner run exactly one read-only checkpoint.
-ROLLBACK_STATUS_OR_PLAN=Source-only revert for R1-owned files; no target rollback because execution is read-only.
-OWNER_ONLY_ACTIONS=NONE until Reviewer releases the prepared checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Implement a NEW small helper; do not patch/release the live runner and do not inherit R22 run-id/time-window/journal assumptions.
-EXECUTOR_TO_REVIEWER_RELAY=Return helper identity + AST/fixtures/negative mutation/Secret-output evidence; stop before Owner run.
+TARGET_AND_SCOPE=Dedicated R1_OWNER_READONLY_CHECKPOINT_RELEASED marker; FRESH_LIVE_GATE_RELEASED must remain NO.
+APPLICABLE_CRITICAL_CONSTRAINTS=No Owner checkpoint; no SSH/VPS/Provider/Secret/DPAPI/Clash/network target action; no live runner changes; R20+ reference-only.
+REQUIRED_EVIDENCE=AST; positive dedicated release fixture; unreleased/missing/live-release-conflict/Gate-mismatch negatives; all existing R1 fixtures; zero external target action.
+ACCEPTANCE_CRITERIA=Formal Reviewer PASS only after exact helper/validator diff inspection and offline evidence.
+ROLLBACK_STATUS_OR_PLAN=Source-only revert of R1R1-owned source changes.
+OWNER_ONLY_ACTIONS=NONE.
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
 FRESH_LIVE_GATE_RELEASED=NO
 ```
 
-Canonical Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
+Canonical repair Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1.md`.
 
-This is a deliberate **rebase Gate**, not “R23”. It breaks the accidental post-R20 chain and rebuilds current truth from fresh read-only evidence.
+Reviewer finding: the R1 candidate is not safe to release because its source preflight incorrectly uses `FRESH_LIVE_GATE_RELEASED=YES` as the read-only checkpoint release condition. That would falsely release a future consequential live Gate. R1R1 repairs only this contract.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -191,15 +189,15 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Executor implements the single new helper required by `G4B_TAKEOVER_REALITY_REBASE_READONLY_R1` and validates it offline. Reviewer then inspects the exact source/fixtures. Only after formal release does Owner run one atomic read-only checkpoint.
+Executor performs only `G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1`: replace the incorrect live-release dependency with the dedicated read-only checkpoint release marker and extend the validator with direct positive/negative production-contract fixtures.
 
-The checkpoint will independently classify current reality as `CLEAN_BASELINE`, `PROJECT_RESIDUAL_PRESENT`, or `AMBIGUOUS_BASELINE`. No cleanup and no new live G4-B Gate occurs before that classification.
+After PASS_CANDIDATE, Reviewer inspects the exact two-file diff. Only then may `R1_OWNER_READONLY_CHECKPOINT_RELEASED` be changed to YES for one Owner-local read-only checkpoint. `FRESH_LIVE_GATE_RELEASED` remains NO.
 
 ## OWNER_ACTION_REQUIRED
 
 **NONE.**
 
-Do not run R22R1, R22R6, the historical live runner, rollback mode, or manual cleanup. Wait for the new takeover read-only helper to be implemented and Reviewer-released.
+Do not run the new R1 helper yet. No historical R20-R22 helper/live/rollback/cleanup action is authorized.
 
 ## EVIDENCE_POINTERS
 
