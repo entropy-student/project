@@ -4,7 +4,42 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B R20 P7/Rollback Error Propagation Offline Repair R6R2L-R20R6
+## Current execution status — G4-B Takeover Reality Rebase Read-only R1
+
+```text
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+GATE_BLOB=aa241f1023a8ce97ac275c27120616858d2329c7
+TRUSTED_ANCHOR=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+PRE_GATE_HEAD=46a51b1344fe6e34d652f40d18866556330489c8
+HELPER_PATH=scripts/g4b-takeover-reality-rebase-readonly-r1.ps1
+HELPER_BLOB=2b3e9ab3386b0732c5cba6ec5f3f32aa9bba1cf9
+OFFLINE_VALIDATOR_PATH=scripts/validate-g4b-takeover-reality-rebase-readonly-r1.ps1
+OFFLINE_VALIDATOR_BLOB=78b2638875069a5a3db54e2b8f4ca2dcea67c1b5
+READONLY_COMMAND_ALLOWLIST=PASS
+WRITE_COMMAND_NEGATIVE_SCAN=PASS
+SSH_STRICT_TRUST_CONTRACT=PASS
+LOCAL_SECRET_OUTPUT_NEGATIVE=PASS
+PROVIDER_MUTATION_NEGATIVE=PASS
+REMOTE_MUTATION_NEGATIVE=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+OWNER_CHECKPOINT_EXECUTED=NO
+SECRET_OR_DPAPI_ACCESSED=NO
+SSH_VPS_PROVIDER_ACTIONS=0
+NETWORK_OR_CLASH_MUTATION=NO
+TARGET_REALITY_CLASSIFIED=NO_OWNER_CHECKPOINT_NOT_RUN
+FRESH_LIVE_GATE_RELEASED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+RESULT=PASS_CANDIDATE_G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+STOP_AT_REVIEWER=YES
+```
+
+Prepared a new, separate read-only takeover checkpoint and an offline validator. The helper requires a later explicit Reviewer release before any external read; that release is currently `NO`. The current target reality remains unknown because this round did not run the Owner checkpoint. Its source derives only from accepted R19R1 contracts; R20+ execution/acceptance claims were not treated as current facts. The full offline fixture suite, AST parsing, allowlist/negative mutation checks, and bounded-output checks passed. No live runner, Owner checkpoint, SSH/VPS/Provider action, Secret/DPAPI access, Clash change, or network mutation occurred.
+
+Wait for Reviewer source inspection. Do not execute this helper or any historical helper until the Reviewer explicitly releases a checkpoint.
+
+## Historical execution status — G4-B R20 P7/Rollback Error Propagation Offline Repair R6R2L-R20R6
 
 ```text
 GATE_ID=G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
@@ -29,10 +64,6 @@ REVIEWER_HANDOFF_MODIFIED=NO
 RESULT=PASS_CANDIDATE_G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
 STOP_AT_REVIEWER=YES
 ```
-
-The runner now validates bounded supervisor JSON before interpreting SSH exit status, preserving only allowlisted structured remote codes. Invalid or oversized responses fail closed; transport failures without trustworthy JSON retain the SSH fallback. Automatic rollback failures emit a bounded failure-code marker and keep the state `UNKNOWN_REQUIRES_RECONCILIATION`. Production helpers were exercised with synthetic responses, and the full offline runner/package validator—including the R19R1 Mihomo fingerprint-render regression—passed. No live runner, SSH, provider, Secret, profile, or network action was run.
-
-Wait for Reviewer; no live retry or follow-on Gate is authorized here.
 
 ## Historical execution status — G4-B R19 Local Mihomo Parse Diagnostic R6R2L-R19R1
 

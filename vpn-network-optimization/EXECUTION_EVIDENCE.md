@@ -11312,3 +11312,41 @@ NETWORK_MUTATION=NO
 Independent Reviewer diff inspection confirms the production helper functions are AST-extracted and exercised by fixtures. The repair preserves allowlisted remote GateError codes from bounded JSON even when SSH exits nonzero, fails closed on malformed/oversized/untrusted responses, keeps sanitized transport fallbacks, and emits bounded rollback failure codes while retaining UNKNOWN reconciliation semantics. The source change is limited to the live runner and offline live fixture validator; package/template semantics and three-role behavior are unchanged.
 
 Fresh live Gate released: `G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21` at `ae20c33f37d9234cd85f6e08f058993d8ef7fd78`.
+
+## 2026-10-06 — G4-B takeover reality rebase read-only R1 (offline implementation candidate)
+
+```text
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=46a51b1344fe6e34d652f40d18866556330489c8
+TRUSTED_ANCHOR=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+SOURCE_PROVENANCE=PASS
+HELPER_PATH=scripts/g4b-takeover-reality-rebase-readonly-r1.ps1
+HELPER_BLOB=2b3e9ab3386b0732c5cba6ec5f3f32aa9bba1cf9
+VALIDATOR_PATH=scripts/validate-g4b-takeover-reality-rebase-readonly-r1.ps1
+VALIDATOR_BLOB=78b2638875069a5a3db54e2b8f4ca2dcea67c1b5
+POWERSHELL_RUNTIME=7.6.5
+POWERSHELL_AST=PASS
+OFFLINE_FIXTURES=PASS
+READONLY_COMMAND_ALLOWLIST=PASS
+WRITE_COMMAND_NEGATIVE_SCAN=PASS
+SSH_STRICT_TRUST_CONTRACT=PASS
+LOCAL_SECRET_OUTPUT_NEGATIVE=PASS
+PROVIDER_MUTATION_NEGATIVE=PASS
+REMOTE_MUTATION_NEGATIVE=PASS
+FIXTURE_CLEAN=PASS
+OWNER_CHECKPOINT_EXECUTED=NO
+TARGET_REALITY_CLASSIFIED=NO_OWNER_CHECKPOINT_NOT_RUN
+SECRET_OR_DPAPI_ACCESSED=NO
+SSH_VPS_PROVIDER_ACTIONS=0
+EXTERNAL_TARGET_REQUESTS=0
+CLASH_OR_NETWORK_MUTATION=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+UNRELATED_RESULTS_PRESERVED_UNSTAGED=YES
+RESULT=PASS_CANDIDATE_G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+STOP_AT_REVIEWER=YES
+```
+
+The implementation is a new helper, separate from all live runners. It is gated on the current Reviewer release marker and canonical Git/source identity before any future external read. Its Windows, VPS and Provider probes are bounded and read-only; raw SSH/Provider output is captured and reduced to allowlisted status/count fields. The Provider branch requires an explicitly supplied local executable/archive pair whose public archive and binary identities match the accepted pin; absent that pair, Provider identity remains `UNKNOWN` rather than downloading or guessing. The offline validator dot-sourced only library definitions and exercised metadata/classification, ACL, route-selection, strict SSH arguments, provider-action allowlist, remote mutation rejection, command allowlist, output rejection and fixture cleanup. It did not invoke the checkpoint. `origin/main` was fetched for repository synchronization; no VPS, SSH, Provider, Secret, DPAPI, Clash, or target-network request/action occurred. Existing untracked `results/` files were preserved and excluded from this Gate.
+
+No current target state was inferred from R20+ material. Reviewer must inspect the exact helper/validator source and decide whether to release one Owner read-only checkpoint. No Owner action is requested in this handoff.
