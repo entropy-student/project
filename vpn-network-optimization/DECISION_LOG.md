@@ -836,3 +836,12 @@ Decision: `PASS_R20R3_REMOTE_TRANSACTION_CLEANUP`.
 The only classified R20 transaction residue was deleted under exact ownership checks, and post-clean readback preserved the clean REALITY baseline and healthy WG/HY2. No recovery, Baidu, Clash, or local network state was changed.
 
 R20R4 now reconciles the retained recovery pending set read-only before any deletion.
+
+
+## 2026-10-06 — R20R4 safe RETURN; replace remembered UID input with local Owner confirmation
+
+Decision: `RETURN_R20R4_BAIDU_UID_MISMATCH_SAFE`.
+
+The current Baidu account UID parsed successfully but differed from the manually entered expected UID. No mutation occurred. Because the accepted prior UID was intentionally never persisted, Reviewer will not guess or reconstruct it.
+
+R20R4R1 replaces memory-based numeric input with a local-only identity attestation: the pinned CLI reads the current UID, a Windows dialog displays it only on the Owner machine, and the Owner confirms whether it is the intended project account. The UID is not emitted to terminal or GitHub.
