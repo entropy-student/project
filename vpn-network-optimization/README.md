@@ -87,39 +87,30 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R22R6 COMPLETE OFFLINE AUDIT
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / TAKEOVER READ-ONLY REBASE
 G4-C 三角色 ChatGPT 手动切换 smoke            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-当前顺序已经推进到 G4-B：G4-B0 已 PASS；R5 首次 live 在 P5 安全失败，R6/R7 定位并由 R8 修复 PowerShell success-stream 污染；R9 随后真实推进到 Baidu pending-upload readback，并暴露真实 `ls -l` 无边框格式与旧 parser/fake fixture 不一致的问题；R10 parser/fixture 修复已正式 PASS。R11 因本机 Baidu config Owner mismatch 在 provider action 前 RETURN；R12-R14 将本地漂移精确定位为 `pcs_uploading.json=ADMIN`；R15 已完成一次 bounded Owner normalization，仅将该文件 Owner 从 ADMIN 改为 OWNER，rollback-before-write、严格 R6R1 readback 与 shape readback 均 PASS，rollback journal 保留。R16 随后成功完成只读 provider 核对：final=0、pending=1、unknown=0，远端 production residual state 已正式变为 `STALE_PENDING_PRESENT`。R17R1 执行前代码可用性核验现已正式 PASS：最终 helper/validator 已重新锁定，validator 正/负向 fixture、LASTEXITCODE 回归、forward/rollback 可执行离线证据均通过，已记录的 exact R17 Owner 授权现已释放。R17 已正式 PASS：唯一 stale pending 已通过一次可回滚 rename 移入非 production quarantine，post-readback 为 final=0、pending=0、unknown=0，未 rollback、未永久删除。当前下一步是 R18 独立只读 CLEAN 复核；live G4-B 仍在 R18 正式 PASS 前阻塞。G4-C 仍在 G4-B 正式 PASS 后独立执行。
-
+当前顺序已经推进到 G4-B，但新的 Reviewer 接管后已重新划定可信边界：**R19R1 formal PASS（commit `85a33288…`）是当前主要工程锚点；R20 及以后执行状态/清理结论仅供参考，必须经 fresh read-only 证据重新证明。** 当前先完成一次统一的 Windows / SFO3 VPS / Baidu recovery namespace 只读现实重建，再决定是否直接进入新的 G4-B live Gate；不再沿 R20→R22 的碎片化补救链继续编号。
 ## 项目真相与 Reviewer 交接
 
 唯一 Reviewer 当前真相：
 
 - `REVIEWER_HANDOFF.md`
 
-新 Reviewer 推荐读取顺序：
+当前推荐读取顺序：
 
-1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — 当前 G4-B R4→R17 完整进展、R15 正式 PASS、R16 stale-pending 只读结论与当前 R17 可回滚 quarantine 边界；
-3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — 当前 relocked 可回滚 stale-pending quarantine Gate；R17R1 已 PASS，Owner 授权已释放；
-4. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — 已完成并正式 PASS 的执行前离线代码可用性 Gate；
-4. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — 已完成的 R16 read-only Gate，证明 final=0/pending=1/unknown=0；
-5. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — 已完成并正式 PASS 的 R15 本机 Owner normalization Gate；
-4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — 已完成的 R14 known-role Gate；
-4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — 已完成的 R13 file-role Gate；
-4. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — 已完成的 R12 ACL/Owner inventory Gate；
-4. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — R11 历史只读 Gate 与 RETURN；
-5. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — 已接受的 R10 parser repair Gate；
-4. `EXECUTION_EVIDENCE.md` — R5/R6/R7/R8 的脱敏证据与正式 Reviewer 判定；
-5. `DECISION_LOG.md` — 已确认决策与理由；
-6. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 更早阶段的历史 transition，需要时再读。
+1. `REVIEWER_HANDOFF.md` — 当前状态、可信边界、当前 Gate、下一步；
+2. `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md` — 当前唯一 Gate；
+3. trusted anchor commit `85a33288c23e794d200ddf5e48d5bb7ae0d839c0` — R19R1 formal PASS 前后状态；
+4. `docs/G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1.md` — R19R1 已接受修复；
+5. `docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md` — G4-B 父级验收合同；
+6. `docs/G4_FINAL_THREE_ROLE_VALIDATION_PLAN.md` — Owner 已确认的 G4-C / G4-D 收口路线；
+7. `docs/REVIEWER_TRANSITION_2026-10-04.md` / `2026-10-05.md` — R20 前历史脉络；
+8. R20+ 文档、脚本和 Evidence — **仅作参考素材，不作为当前状态权威**，需要复用时逐项重新证明。
 
-`EXECUTOR_HANDOFF.md` 与 `EXECUTION_EVIDENCE.md` 记录执行事实与脱敏证据，不与 Reviewer Handoff 竞争。历史 Executor 中出现的旧 `Current` 标题不代表当前项目状态。
-
-执行效率与超时复盘单独维护在 `docs/ROUND_TIMING_RETROSPECTIVE.md`，用于记录每轮预计/实际耗时、超时原因和流程优化，不改变项目真相层级。
+不要批量重读 `EXECUTION_EVIDENCE.md` 或 `EXECUTOR_HANDOFF.md`；只在需要证明某个具体事实时读取对应小段。
 
 ## Secret 规则
 
@@ -204,48 +195,29 @@ R20R4R1 stopped safely before account confirmation because the Baidu UID line co
 R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
 
 
-## 2026-10-06 Canonical current state — R22 cleaned / R22R6 offline audit
+## 2026-10-06 Canonical current state — takeover rebase
 
-> This section is the current project snapshot. Earlier sections that say “current”, “next”, or “waiting” are historical audit records and must not override this section or `REVIEWER_HANDOFF.md -> CURRENT_GATE`.
+> 当前状态以 `REVIEWER_HANDOFF.md` 为唯一 Reviewer dashboard。以下为紧凑入口；R20+ 历史章节仅作审计记录。
 
 ```text
-CURRENT_GATE=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
-CURRENT_STATE=OWNER_OFFLINE_REPAIR_VALIDATION_REQUIRED
+CURRENT_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+CURRENT_STATE=EXECUTOR_IMPLEMENTATION_REQUIRED
 
-R20=CONSUMED_NO_REPLAY
-R21=CONSUMED_NO_REPLAY
-R22=CONSUMED_NO_REPLAY
+TRUSTED_ANCHOR=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
+TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+POST_R20_TRUST=REFERENCE_ONLY_UNTIL_INDEPENDENTLY_REPROVEN
 
-R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22_FAILED_RUN_RESIDUE=CLEAN
-R22_REMOTE_REALITY_SERVICE=ABSENT
-R22_TCP443_LISTENER=ABSENT
-R22_MIHOMO_PROCESS=ABSENT
-R22_BINARY_RUNTIME_SECRET_UNIT=ABSENT
-R22_RUNTIME_USER_GROUP=ABSENT
-R22_REMOTE_TRANSACTION_RESIDUE=CLEAN
-R22_RECOVERY_PENDING_SET=CLEAN
-R22_RECOVERY_FINAL=ABSENT
-R22_ROLLBACK_JOURNAL=RETAINED_HISTORICAL_EVIDENCE
-R22_PROFILE_CREATED_COUNT=0
-R22_ROUTE_BASELINE=RESTORED
-R22_FIREWALL_SEMANTIC_BASELINE=RESTORED
-R22_WG_HEALTHY=YES
-R22_HY2_HEALTHY=YES
+WIREGUARD=PRODUCTION_ROLLBACK_BASELINE
+HY2=VALIDATED_TARGET_PRIMARY
+REALITY_PROTOCOL_INTEROP=VALIDATED_PRE_R20
+PERSISTENT_REALITY=UNACCEPTED
+SELF_VPN_V1_PROFILE=UNACCEPTED
 
-R22R1=REALITY_SURFACE_CLEAN_FIREWALL_AMBIGUITY
-R22R2=IPTABLES4_ONLY_MISMATCH
-R22R3=PASS_COUNTER_ONLY_TELEMETRY
-R22R4=PASS_TRANSACTION_RESIDUE_CLEAN
-R22R5=PASS_RECOVERY_PENDING_SET_CLEAN
-
-R22R6_REQUIRED_REPAIRS=P7_READINESS,ROLLBACK_SYSTEMD_DIAGNOSTICS,FIREWALL_COUNTER_NORMALIZATION,FUTURE_ONE_SHOT_GATE_BINDING
-R22R6_SOURCE_REPAIR_COMMIT=1034d52a7eeb449759b6e87557ad2545d339b5ec
-R22R6_RUNNER_BLOB=2f62064c4057803c3116fa428370fa1ad48bbb76
-R22R6_LIVE_VALIDATOR_BLOB=8aaecac4c873e8a3e112fd5f8da0fa587ed443da
-R22R6_AUDIT_VALIDATOR_BLOB=1e02c0605bc783c142826822b4deaef2f0e5d11c
-R22R6_OFFLINE_VALIDATION=PENDING
+CURRENT_POST_R20_REALITY=UNKNOWN_PENDING_READONLY_REBASE
 FRESH_LIVE_GATE_RELEASED=NO
+OWNER_ACTION_REQUIRED=NONE
+
+NEXT=IMPLEMENT_AND_REVIEW_ONE_UNIFIED_READONLY_WINDOWS_VPS_BAIDU_CHECKPOINT
 
 G4C_STATE=PENDING_AFTER_G4B
 G4C_SCOPE=CHATGPT_THREE_ROLE_SMOKE_ONLY
@@ -254,20 +226,6 @@ WINDOWS_WIREGUARD_DISABLE_BEFORE_G4D_PASS=NO
 FINAL_CONTROL_PLANE=CLASH_VERGE
 ```
 
-R22 failed at P7 after consequential mutation began. The failed-run residue is now fully reconciled and clean: persistent REALITY surface absent, transaction residue removed, recovery pending set removed, recovery finals absent, route/firewall/service baseline restored, WG/HY2 healthy, and the rollback journal retained only as historical evidence.
+新 Reviewer 已确认 post-R20 live runner 中存在可取的修复思路，例如 structured remote error propagation、P7 readiness polling、rollback systemd diagnostics 和 iptables counter normalization；但这些代码不会因为历史 PASS 标记而自动成为新 live 基线。它们必须在 fresh reality 分类后逐项重新审计/行为验证，再决定是否吸收到一个干净的新 G4-B candidate。
 
-No fresh live Gate is released. The R22R6 source repair is now on main and locked by blob; it covers bounded P7 readiness polling, specific rollback/systemd postconditions and diagnostics, complete iptables counter normalization, and an atomic future one-shot Gate-binding contract. One owner-local offline validation remains required before formal R22R6 PASS. A future live Gate may be created only after that PASS.
-
-After a later fresh G4-B live Gate formally PASSes, the remaining v1 route is:
-
-```text
-fresh G4-B persistent three-role PASS
-→ G4-C: manually select HY2 / WG / REALITY in Clash and confirm normal ChatGPT conversation on each
-→ G4-D: migrate WG-BASELINE into native Clash/Mihomo WireGuard
-→ formal G4-D PASS
-→ disable standalone Windows WireGuard
-→ final smoke
-→ MVP v1 seal
-```
-
-The Owner's standing authorization covers this documented closeout route. A materially new risk boundary still requires a fresh Reviewer stop.
+当前不执行 R22R1、R22R6、历史 live runner、rollback 或人工 cleanup。先完成统一 read-only reality rebase；如果状态为 `CLEAN_BASELINE`，再直接设计一次新的 bounded G4-B live Gate，随后进入 G4-C → G4-D → MVP v1 seal。
