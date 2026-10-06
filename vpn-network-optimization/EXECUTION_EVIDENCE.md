@@ -10509,3 +10509,39 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer reconciliation found that the pre-repair helper accepted the first matching canonical UID line and treated only a same-name quarantine file as a collision. Before any Owner execution, the helper was narrowed to require exactly one canonical UID line, classify exact source/quarantine files and directories separately, reject a same-name quarantine directory, count project-prefix directories as unknown state, and constrain `mv` to the derived forward pair or its exact rollback reversal. The offline validator was extended with matching source guards and negative fixtures. No real Owner/provider/runtime action occurred.
+
+
+## 2026-10-06 — R17R1 Owner-local offline validation RETURN
+
+Result: `RETURN_R17R1_OFFLINE_VALIDATOR_DIRECTORY_HEADER_INVALID`.
+
+Sanitized evidence:
+```text
+PS_VERSION=7.6.6
+ADMINISTRATOR=True
+CANONICAL_REPO_ROOT=PASS
+BRANCH=main
+TRACKED_WORKTREE=CLEAN
+FAST_FORWARD=PASS
+HEAD_AFTER=62dbb97b0768857f40b7bd7e16b300475a4ea9e5
+HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
+R17R1_SOURCE_IDENTITY=PASS
+R17R1_AST_HELPER=PASS
+R17R1_AST_VALIDATOR=PASS
+R17R1_STATIC_PROVIDER_ALLOWLIST=PASS
+R17R1_FORBIDDEN_PROVIDER_ACTION_SCAN=PASS
+R17R1_VALIDATOR_EXCEPTION=BAIDU_DIRECTORY_HEADER_INVALID
+R17R1_OFFLINE_VALIDATOR=FAIL
+R17R1_LASTEXITCODE_REGRESSION=FAIL_NOT_INDEPENDENTLY_REACHED
+R17R1_PROVIDER_ACTION=NO
+R17R1_OWNER_CONFIG_READ=NO
+R17R1_SECRET_OR_DPAPI_ACCESS=NO
+R17R1_SSH_OR_VPS_ACTION=NO
+R17R1_NETWORK_MUTATION=NO
+R17R1_R17_RUN_MODE_EXECUTED=NO
+```
+
+Reviewer source inspection: synthetic validator listings use literal `\n` inside PowerShell double-quoted strings. PowerShell requires backtick newline escapes, so the directory-header parser receives no actual line break. This explains the immediate `BAIDU_DIRECTORY_HEADER_INVALID` fixture failure. The reported LASTEXITCODE failure is not independent evidence because the validator fails earlier.
+
+Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_FIXTURE_REPAIR_R6R2L_R17R1R1`. Helper source and all provider/runtime state remain frozen.
