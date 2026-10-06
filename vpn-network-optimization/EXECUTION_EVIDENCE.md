@@ -10603,3 +10603,25 @@ Interpretation:
 - no real/provider/runtime action occurred.
 
 Durability is still pending because validator blob `4d490bdbe8f686053cccae8310c72ff74117600b` currently exists only in the Owner worktree until a scoped commit/push/readback is completed.
+
+
+## 2026-10-06 — R17R1R2 durability PASS
+
+Owner-local durability evidence:
+```text
+LOCAL_CHANGE_SCOPE=PASS
+BASE_BEFORE_COMMIT=62dbb97b0768857f40b7bd7e16b300475a4ea9e5
+SAFE_REBASE=PASS
+POST_REBASE_SOURCE_IDENTITY=PASS
+TRACKED_WORKTREE=CLEAN
+PUSH_MAIN=PASS
+HEAD_AFTER=573a15091b9d084ed1d1e4eb20c9d712a051eaf7
+ORIGIN_MAIN_AFTER=573a15091b9d084ed1d1e4eb20c9d712a051eaf7
+REMOTE_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+REMOTE_VALIDATOR_BLOB=4d490bdbe8f686053cccae8310c72ff74117600b
+R17R1R2_DURABILITY=PASS
+R17_PROVIDER_ACTION=NO
+R17_RUN_MODE_EXECUTED=NO
+```
+
+Reviewer interpretation: R17R1R2 is durable on canonical main. The remaining parent R17R1 requirement is executable offline forward/rollback state-machine evidence. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_OFFLINE_STATE_MACHINE_R6R2L_R17R1R3`.
