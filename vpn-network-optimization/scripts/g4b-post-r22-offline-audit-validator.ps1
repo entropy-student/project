@@ -98,9 +98,9 @@ function Normalize-IptablesFixture {
     $result=[Collections.Generic.List[string]]::new()
     foreach($raw in $Lines){
         if([string]::IsNullOrWhiteSpace($raw) -or $raw.StartsWith('#',[StringComparison]::Ordinal)){continue}
-        $line=[regex]::Replace($raw.Trim(),'^[d+:d+](?=s)','')
+        $line=[regex]::Replace($raw.Trim(),'^\[\d+:\d+\](?=\s)','')
         if($line.StartsWith(':',[StringComparison]::Ordinal)){
-            $line=[regex]::Replace($line,'s+[d+:d+]s*$','')
+            $line=[regex]::Replace($line,'\s+\[\d+:\d+\]\s*$','')
         }
         $result.Add($line)
     }
