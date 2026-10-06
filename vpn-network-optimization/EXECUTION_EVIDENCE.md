@@ -10911,3 +10911,20 @@ G4C_EXECUTED=NO
 R18 independently proves the production recovery namespace is CLEAN after R17. The Baidu residual cleanup chain is closed. The R17 quarantine object remains retained outside the production prefix.
 
 The historical G4-B live one-shot Gate is not replayable and locks stale source identities. New Gate `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19` at blob `11cb06d6b1be7ac372181517bb65cd847a10e81c` is prepared against current R10-repaired runner `2faf59ec5a1653a275b11504fe567d0fc871f94e` and validator `26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3`. Fresh Owner authorization is required before live execution.
+
+
+## 2026-10-06 — Fresh Owner authorization: R19 one-shot live resume
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19
+OWNER_R19_LIVE_AUTHORIZATION=GRANTED
+R19_GATE_BLOB=13ebc71547c975aa7f99434887e07646bb495a00
+LIVE_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+LIVE_RUNNER_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+LIVE_G4B_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_LIVE_INVOCATIONS=1
+SECOND_LIVE_INVOCATION_AUTHORIZED=NO
+G4C_AUTHORIZED_BY_THIS_GRANT=NO
+```
+
+Owner approved the previously described R19 scope: persistent project-owned REALITY credentials/service and TCP/443 listener, one persistent SELF-VPN-V1 profile import without activation, and encrypted Baidu recovery pending→final promotion as part of one bounded live run. Local-only inputs remain local. Historical live Gate/authorization is not used as execution authority.
