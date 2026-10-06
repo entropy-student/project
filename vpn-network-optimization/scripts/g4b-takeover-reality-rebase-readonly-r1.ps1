@@ -473,11 +473,22 @@ function Invoke-GitRead {
     return [string]$result.StdOut
 }
 
+function Test-R1ReadOnlyReleaseContract {
+    param([Parameter(Mandatory=$true)][string]$HandoffText, [Parameter(Mandatory=$true)][string]$GateText)
+    $gateIds = [regex]::Matches($HandoffText,'(?m)^GATE_ID=([A-Z0-9_]+)\s*$')
+    $readOnlyReleases = [regex]::Matches($HandoffText,'(?m)^R1_OWNER_READONLY_CHECKPOINT_RELEASED=(YES|NO)\s*$')
+    $liveReleases = [regex]::Matches($HandoffText,'(?m)^FRESH_LIVE_GATE_RELEASED=(YES|NO)\s*$')
+    return ($gateIds.Count -eq 1 -and $gateIds[0].Groups[1].Value -ceq 'G4B_TAKEOVER_REALITY_REBASE_READONLY_R1' -and
+        $readOnlyReleases.Count -eq 1 -and $readOnlyReleases[0].Groups[1].Value -ceq 'YES' -and
+        $liveReleases.Count -eq 1 -and $liveReleases[0].Groups[1].Value -ceq 'NO' -and
+        $GateText.Contains('`G4B_TAKEOVER_REALITY_REBASE_READONLY_R1`',[StringComparison]::Ordinal))
+}
+
 function Get-SourceIdentity {
     $project = (Resolve-Path -LiteralPath $script:projectRoot -ErrorAction Stop).Path
     $handoff = [IO.File]::ReadAllText((Join-Path $project 'REVIEWER_HANDOFF.md'),[Text.Encoding]::UTF8)
     $gate = [IO.File]::ReadAllText((Join-Path $project 'docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md'),[Text.Encoding]::UTF8)
-    $released = ($handoff -match '(?m)^GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1\s*$' -and $handoff -match '(?m)^FRESH_LIVE_GATE_RELEASED=YES\s*$' -and $gate -match 'G4B_TAKEOVER_REALITY_REBASE_READONLY_R1')
+    $released = Test-R1ReadOnlyReleaseContract -HandoffText $handoff -GateText $gate
     if (-not $released) { return [pscustomobject]@{ Known=$true; Pass=$false; Head='UNKNOWN'; Project=$project; Released=$false } }
     $root = (Invoke-GitRead -Arguments @('rev-parse','--show-toplevel') -WorkingDirectory $project).Trim()
     $prefix = (Invoke-GitRead -Arguments @('rev-parse','--show-prefix') -WorkingDirectory $project).Trim().TrimEnd([char]'/')

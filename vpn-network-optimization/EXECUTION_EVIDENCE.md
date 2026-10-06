@@ -11350,3 +11350,42 @@ STOP_AT_REVIEWER=YES
 The implementation is a new helper, separate from all live runners. It is gated on the current Reviewer release marker and canonical Git/source identity before any future external read. Its Windows, VPS and Provider probes are bounded and read-only; raw SSH/Provider output is captured and reduced to allowlisted status/count fields. The Provider branch requires an explicitly supplied local executable/archive pair whose public archive and binary identities match the accepted pin; absent that pair, Provider identity remains `UNKNOWN` rather than downloading or guessing. The offline validator dot-sourced only library definitions and exercised metadata/classification, ACL, route-selection, strict SSH arguments, provider-action allowlist, remote mutation rejection, command allowlist, output rejection and fixture cleanup. It did not invoke the checkpoint. `origin/main` was fetched for repository synchronization; no VPS, SSH, Provider, Secret, DPAPI, Clash, or target-network request/action occurred. Existing untracked `results/` files were preserved and excluded from this Gate.
 
 No current target state was inferred from R20+ material. Reviewer must inspect the exact helper/validator source and decide whether to release one Owner read-only checkpoint. No Owner action is requested in this handoff.
+
+## 2026-10-06 — G4B read-only checkpoint release-contract repair R1R1
+
+```text
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1
+GATE_BLOB=6cde375fdf97de8809388b758ed484f24c231230
+PRE_GATE_HEAD=3b56194b5ee480d88f4fdb33556c0f0d094213fc
+PARENT_R1_CANDIDATE_COMMIT=812f18980f9f10d22e2c8399e7022bcfe347c387
+HELPER_PATH=scripts/g4b-takeover-reality-rebase-readonly-r1.ps1
+HELPER_BLOB=76456d1453909c2cf3e20848e10b89e57b7f821e
+VALIDATOR_PATH=scripts/validate-g4b-takeover-reality-rebase-readonly-r1.ps1
+VALIDATOR_BLOB=2228c83c66947956206a1b54281adcbee11d3deb
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
+FRESH_LIVE_GATE_RELEASED=NO
+READONLY_RELEASE_POSITIVE=PASS
+READONLY_RELEASE_NOT_RELEASED_NEGATIVE=PASS
+READONLY_RELEASE_MISSING_NEGATIVE=PASS
+LIVE_GATE_RELEASE_CONFLICT_NEGATIVE=PASS
+GATE_ID_MISMATCH_NEGATIVE=PASS
+READONLY_RELEASE_GUARD_BEFORE_SOURCE_READ=PASS
+POWERSHELL_AST=PASS
+ALL_EXISTING_R1_OFFLINE_FIXTURES=PASS
+READONLY_COMMAND_ALLOWLIST=PASS
+WRITE_COMMAND_NEGATIVE_SCAN=PASS
+SSH_STRICT_TRUST_CONTRACT=PASS
+LOCAL_SECRET_OUTPUT_NEGATIVE=PASS
+PROVIDER_MUTATION_NEGATIVE=PASS
+REMOTE_MUTATION_NEGATIVE=PASS
+FIXTURE_CLEAN=PASS
+OWNER_CHECKPOINT_EXECUTED=NO
+SSH_VPS_PROVIDER_ACTIONS=0
+SECRET_OR_DPAPI_ACCESSED=NO
+NETWORK_OR_CLASH_MUTATION=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+RESULT=PASS_CANDIDATE_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
+STOP_AT_REVIEWER=YES
+```
+
+The previous preflight incorrectly accepted `FRESH_LIVE_GATE_RELEASED=YES` as the release switch. The production `Test-R1ReadOnlyReleaseContract` now requires exactly one parent R1 Gate ID, exactly one dedicated read-only release marker set to YES, exactly one live-release marker set to NO, and the canonical parent Gate identity. `Get-SourceIdentity` calls this predicate before any Git command; a failed predicate returns immediately. Validator fixtures call that same production predicate for positive release and the not-released, missing-marker, live-release-conflict, and Gate-ID-mismatch cases, and statically verify the preflight call order. Validation dot-sourced library definitions only; it did not call the Owner checkpoint or any SSH/Provider path. Existing untracked `results/` was preserved and excluded from this Gate.

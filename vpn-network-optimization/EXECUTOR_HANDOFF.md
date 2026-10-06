@@ -4,18 +4,24 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Takeover Reality Rebase Read-only R1
+## Current execution status — G4-B Takeover Reality Rebase Read-only Release Repair R1R1
 
 ```text
-GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-GATE_BLOB=aa241f1023a8ce97ac275c27120616858d2329c7
-TRUSTED_ANCHOR=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
-PRE_GATE_HEAD=46a51b1344fe6e34d652f40d18866556330489c8
+GATE_BLOB=6cde375fdf97de8809388b758ed484f24c231230
+PRE_GATE_HEAD=3b56194b5ee480d88f4fdb33556c0f0d094213fc
+PARENT_R1_CANDIDATE_COMMIT=812f18980f9f10d22e2c8399e7022bcfe347c387
 HELPER_PATH=scripts/g4b-takeover-reality-rebase-readonly-r1.ps1
-HELPER_BLOB=2b3e9ab3386b0732c5cba6ec5f3f32aa9bba1cf9
+HELPER_BLOB=76456d1453909c2cf3e20848e10b89e57b7f821e
 OFFLINE_VALIDATOR_PATH=scripts/validate-g4b-takeover-reality-rebase-readonly-r1.ps1
-OFFLINE_VALIDATOR_BLOB=78b2638875069a5a3db54e2b8f4ca2dcea67c1b5
+OFFLINE_VALIDATOR_BLOB=2228c83c66947956206a1b54281adcbee11d3deb
+READONLY_RELEASE_POSITIVE=PASS
+READONLY_RELEASE_NOT_RELEASED_NEGATIVE=PASS
+READONLY_RELEASE_MISSING_NEGATIVE=PASS
+LIVE_GATE_RELEASE_CONFLICT_NEGATIVE=PASS
+GATE_ID_MISMATCH_NEGATIVE=PASS
+READONLY_RELEASE_GUARD_BEFORE_SOURCE_READ=PASS
 READONLY_COMMAND_ALLOWLIST=PASS
 WRITE_COMMAND_NEGATIVE_SCAN=PASS
 SSH_STRICT_TRUST_CONTRACT=PASS
@@ -29,15 +35,16 @@ SECRET_OR_DPAPI_ACCESSED=NO
 SSH_VPS_PROVIDER_ACTIONS=0
 NETWORK_OR_CLASH_MUTATION=NO
 TARGET_REALITY_CLASSIFIED=NO_OWNER_CHECKPOINT_NOT_RUN
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
 FRESH_LIVE_GATE_RELEASED=NO
 REVIEWER_HANDOFF_MODIFIED=NO
-RESULT=PASS_CANDIDATE_G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+RESULT=PASS_CANDIDATE_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
 STOP_AT_REVIEWER=YES
 ```
 
-Prepared a new, separate read-only takeover checkpoint and an offline validator. The helper requires a later explicit Reviewer release before any external read; that release is currently `NO`. The current target reality remains unknown because this round did not run the Owner checkpoint. Its source derives only from accepted R19R1 contracts; R20+ execution/acceptance claims were not treated as current facts. The full offline fixture suite, AST parsing, allowlist/negative mutation checks, and bounded-output checks passed. No live runner, Owner checkpoint, SSH/VPS/Provider action, Secret/DPAPI access, Clash change, or network mutation occurred.
+Repaired only the release contract of the existing R1 helper and validator. The production preflight now requires the parent R1 Gate ID, `R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES`, and `FRESH_LIVE_GATE_RELEASED=NO` before source identity proceeds to Git readback and before any later SSH/Provider path. The current R1R1 handoff remains unreleased (`R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO`, `FRESH_LIVE_GATE_RELEASED=NO`). The offline validator directly exercises the production release predicate and its order before Git reads; the prior R1 fixtures also pass. No Owner checkpoint, SSH/VPS/Provider action, Secret/DPAPI access, Clash change, or network mutation occurred.
 
-Wait for Reviewer source inspection. Do not execute this helper or any historical helper until the Reviewer explicitly releases a checkpoint.
+Wait for Reviewer source inspection. Do not execute the R1 helper or any historical helper in this round.
 
 ## Historical execution status — G4-B R20 P7/Rollback Error Propagation Offline Repair R6R2L-R20R6
 

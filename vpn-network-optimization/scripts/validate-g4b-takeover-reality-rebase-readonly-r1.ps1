@@ -34,6 +34,19 @@ function Test-ProviderSourceContract {
     return ($body -match "ValidateSet\('who','ls'\)" -and $adds.Count -eq 3 -and $body -match 'ArgumentList\.Add\(\$Action\)' -and $body -match "ArgumentList\.Add\('-l'\)" -and $body -match 'ArgumentList\.Add\(\$script:recoveryDirectory\)')
 }
 
+function Test-ReleaseGuardOrder {
+    param([string]$Text)
+    $tokens = $null; $errors = $null
+    $ast = [System.Management.Automation.Language.Parser]::ParseInput($Text,[ref]$tokens,[ref]$errors)
+    if (@($errors).Count -gt 0) { return $false }
+    $function = @($ast.FindAll({ param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -ceq 'Get-SourceIdentity' },$true))
+    if ($function.Count -ne 1) { return $false }
+    $body = $function[0].Extent.Text
+    $releaseCall = $body.IndexOf('Test-R1ReadOnlyReleaseContract',[StringComparison]::Ordinal)
+    $gitRead = $body.IndexOf('Invoke-GitRead',[StringComparison]::Ordinal)
+    return ($releaseCall -ge 0 -and $gitRead -gt $releaseCall)
+}
+
 function Get-RemoteProbeSha256 {
     param([string]$Text)
     $sha = [Security.Cryptography.SHA256]::Create()
@@ -48,7 +61,7 @@ function Test-StaticBoundaries {
     if (@($errors).Count -gt 0) { return $false }
     $forbidden = @('New-NetRoute','Remove-NetRoute','Set-NetRoute','New-NetFirewallRule','Set-NetFirewallRule','Start-Service','Stop-Service','Restart-Service','Set-Service','Set-Acl','Remove-Item','New-Item','Set-Content','Add-Content','Out-File','Clear-Content','Copy-Item','Move-Item','Invoke-WebRequest','Invoke-RestMethod','curl.exe')
     $commands = @($ast.FindAll({ param($node) $node -is [System.Management.Automation.Language.CommandAst] },$true))
-    $allowed = @('Assert-BaiduConfigAclMetadata','Assert-R1','Assert-SafeBaiduConfigDirectory','Find-VerifiedBaiduCli','ForEach-Object','Format-R1MarkerLine','Get-Acl','Get-BaiduListingCounts','Get-BaiduRealityState','Get-BoundedLocalArtifactCounts','Get-ChildItem','Get-Command','Get-DirectMetadataItems','Get-FileHash','Get-IPv4PrefixLength','Get-Item','Get-ItemProperty','Get-LocalArtifactSnapshot','Get-NetAdapter','Get-NetIPInterface','Get-NetRoute','Get-OptionalPropertyValue','Get-PinnedBaiduExecutableHashFromArchive','Get-RealityClassification','Get-RemoteRealityState','Get-RemoteSnapshot','Get-RouteFingerprint','Get-RouteState','Get-SelectedRouteForIPv4','Get-Service','Get-SourceIdentity','Get-TunAdapterCount','Get-UnknownRemoteState','Get-VerifiedBaiduCli','Get-WindowsBaseline','Invoke-BaiduReadOnlyAction','Invoke-GitRead','Invoke-R1Checkpoint','Invoke-ReadOnlyNative','Join-Path','Measure-Object','Read-Host','Resolve-Path','Resolve-ProfileStoreSnapshot','Set-StrictMode','Sort-Object','Split-Path','Test-IPv4PrefixContains','Test-Path','Test-PathWithin','Test-RemoteReadOnlyOutput','Test-RemoteReadOnlyProbe','Test-StrictSshArguments','Where-Object','Write-R1Marker')
+    $allowed = @('Assert-BaiduConfigAclMetadata','Assert-R1','Assert-SafeBaiduConfigDirectory','Find-VerifiedBaiduCli','ForEach-Object','Format-R1MarkerLine','Get-Acl','Get-BaiduListingCounts','Get-BaiduRealityState','Get-BoundedLocalArtifactCounts','Get-ChildItem','Get-Command','Get-DirectMetadataItems','Get-FileHash','Get-IPv4PrefixLength','Get-Item','Get-ItemProperty','Get-LocalArtifactSnapshot','Get-NetAdapter','Get-NetIPInterface','Get-NetRoute','Get-OptionalPropertyValue','Get-PinnedBaiduExecutableHashFromArchive','Get-RealityClassification','Get-RemoteRealityState','Get-RemoteSnapshot','Get-RouteFingerprint','Get-RouteState','Get-SelectedRouteForIPv4','Get-Service','Get-SourceIdentity','Get-TunAdapterCount','Get-UnknownRemoteState','Get-VerifiedBaiduCli','Get-WindowsBaseline','Invoke-BaiduReadOnlyAction','Invoke-GitRead','Invoke-R1Checkpoint','Invoke-ReadOnlyNative','Join-Path','Measure-Object','Read-Host','Resolve-Path','Resolve-ProfileStoreSnapshot','Set-StrictMode','Sort-Object','Split-Path','Test-IPv4PrefixContains','Test-Path','Test-PathWithin','Test-RemoteReadOnlyOutput','Test-RemoteReadOnlyProbe','Test-R1ReadOnlyReleaseContract','Test-StrictSshArguments','Where-Object','Write-R1Marker')
     if (@($commands | Where-Object { $_.GetCommandName() -cnotin $allowed }).Count -gt 0) { return $false }
     if (@($commands | Where-Object { $_.GetCommandName() -cin $forbidden }).Count -gt 0) { return $false }
     $outputWriters = @('Write-Output','Write-Host','Write-Information','Write-Warning','Write-Error','Write-Verbose','Write-Debug')
@@ -91,6 +104,20 @@ try {
     Assert-Fixture ($helperParse.Errors.Count -eq 0 -and $validatorParse.Errors.Count -eq 0) 'POWERSHELL_AST_PARSE'
 
     . $helperPath -LibraryOnly
+
+    $releaseGateText = '`G4B_TAKEOVER_REALITY_REBASE_READONLY_R1`'
+    $releaseHandoffLines = @('GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1','R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES','FRESH_LIVE_GATE_RELEASED=NO')
+    $releaseHandoff = $releaseHandoffLines -join "`n"
+    Assert-Fixture (Test-R1ReadOnlyReleaseContract -HandoffText $releaseHandoff -GateText $releaseGateText) 'READONLY_RELEASE_POSITIVE'
+    $notReleased = ($releaseHandoff -replace '(?m)^R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES$','R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO')
+    Assert-Fixture (-not (Test-R1ReadOnlyReleaseContract -HandoffText $notReleased -GateText $releaseGateText)) 'READONLY_RELEASE_NOT_RELEASED_NEGATIVE'
+    $missingRelease = @('GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1','FRESH_LIVE_GATE_RELEASED=NO') -join "`n"
+    Assert-Fixture (-not (Test-R1ReadOnlyReleaseContract -HandoffText $missingRelease -GateText $releaseGateText)) 'READONLY_RELEASE_MISSING_NEGATIVE'
+    $liveReleaseConflict = ($releaseHandoff -replace '(?m)^FRESH_LIVE_GATE_RELEASED=NO$','FRESH_LIVE_GATE_RELEASED=YES')
+    Assert-Fixture (-not (Test-R1ReadOnlyReleaseContract -HandoffText $liveReleaseConflict -GateText $releaseGateText)) 'LIVE_GATE_RELEASE_CONFLICT_NEGATIVE'
+    $gateMismatch = ($releaseHandoff -replace '(?m)^GATE_ID=.*$','GATE_ID=G4B_OTHER_GATE')
+    Assert-Fixture (-not (Test-R1ReadOnlyReleaseContract -HandoffText $gateMismatch -GateText $releaseGateText)) 'GATE_ID_MISMATCH_NEGATIVE'
+    Assert-Fixture (Test-ReleaseGuardOrder -Text ([IO.File]::ReadAllText($helperPath,[Text.Encoding]::UTF8))) 'READONLY_RELEASE_GUARD_BEFORE_SOURCE_READ'
 
     $empty = Get-BoundedLocalArtifactCounts -RuntimeNames @() -RuntimeKinds @() -RecoveryNames @() -ProfileNames @()
     Assert-Fixture ($empty.RuntimeCount -eq 0 -and $empty.JournalCount -eq 0 -and $empty.PendingCount -eq 0 -and $empty.ProfileCount -eq 0 -and -not $empty.RecoveryFinal) 'EMPTY_METADATA_FIXTURE'
@@ -198,6 +225,11 @@ Assert-Fixture $fixtureClean 'FIXTURE_CLEAN'
 if ($failed.Count -eq 0) {
     [Console]::Out.WriteLine('G4B_TAKEOVER_R1_OFFLINE_VALIDATOR=PASS')
     [Console]::Out.WriteLine('POWERSHELL_AST=PASS')
+    [Console]::Out.WriteLine('READONLY_RELEASE_POSITIVE=PASS')
+    [Console]::Out.WriteLine('READONLY_RELEASE_NOT_RELEASED_NEGATIVE=PASS')
+    [Console]::Out.WriteLine('READONLY_RELEASE_MISSING_NEGATIVE=PASS')
+    [Console]::Out.WriteLine('LIVE_GATE_RELEASE_CONFLICT_NEGATIVE=PASS')
+    [Console]::Out.WriteLine('GATE_ID_MISMATCH_NEGATIVE=PASS')
     [Console]::Out.WriteLine('READONLY_COMMAND_ALLOWLIST=PASS')
     [Console]::Out.WriteLine('WRITE_COMMAND_NEGATIVE_SCAN=PASS')
     [Console]::Out.WriteLine('SSH_STRICT_TRUST_CONTRACT=PASS')
