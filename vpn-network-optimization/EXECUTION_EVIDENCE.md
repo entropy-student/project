@@ -10994,3 +10994,29 @@ STOP_AT_REVIEWER=YES
 ```
 
 The exact production renderer was extracted from the locked runner AST and exercised only with synthetic values. The pre-repair renderer's output failed the installed `C:\Program Files\Clash Verge\verge-mihomo.exe -t` parser; adding only `encryption: ""` still failed. Replacing only the HY2 fingerprint sentinel with a syntactically valid synthetic SHA-256 fingerprint changed the parser result to success. `Read-Hy2Auth` already computes the certificate SHA-256 fingerprint and verifies it against the accepted pin, but previously discarded it. The repair retains that verified non-secret value, passes it explicitly to the renderer, validates its shape, and writes it into the rendered HY2 proxy. The package validator now executes both a negative sentinel fixture and the exact repaired production renderer output with Mihomo in parse-only mode; stdout/stderr are captured in memory and reduced to a bounded error class. No live runner, real profile, Secret, DPAPI, provider, SSH/VPS, or network action was invoked. The pre-existing untracked `results/` content was preserved and excluded from commits.
+
+
+## 2026-10-06 — Reviewer formal acceptance of R19R1
+
+```text
+R19R1_REVIEWER_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
+R19R1_GATE_BLOB=7e9e7bf4f69645a695d418bd934c04d79625707c
+R19R1_SOURCE_COMMIT=dcbc609c329198e49f87191247570ce0e35ff1a6
+FINAL_RUNNER_BLOB=3a5e7c93bb96a4b485283f6590df18c5fac2690f
+FINAL_LIVE_FIXTURE_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+FINAL_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
+FINAL_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
+ROOT_CAUSE=HY2_FINGERPRINT_SENTINEL_NOT_RENDERED
+ENCRYPTION_EMPTY_HYPOTHESIS=REJECTED_BY_EXECUTABLE_TEST
+REAL_MIHOMO_FAIL_TO_PASS_PROOF=ACCEPTED
+R19R1_SECRET_ACCESS=NO
+R19R1_PROVIDER_ACTION=NO
+R19R1_SSH_OR_VPS_ACTION=NO
+R19R1_NETWORK_MUTATION=NO
+R19R1_CLASH_PROFILE_MUTATION=NO
+R19R1_LIVE_RUN_EXECUTED=NO
+```
+
+Reviewer independently read back the final runner and validators. The real certificate fingerprint path and the new renderer shape match: `Read-Hy2Auth` derives an uppercase colon-delimited SHA-256 certificate fingerprint, verifies it against the accepted pin, stores it, and `Get-ProfileRenderedText` requires the same exact 32-byte format before replacing the HY2 fingerprint field. The package validator AST-extracts the production renderer, reproduces the legacy sentinel rejection with the installed Mihomo parser, and proves the repaired synthetic production rendering parses successfully. The live fixture validator executes that package validator before its remaining regressions. No material Reviewer gap remains.
+
+Next Gate: `G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R19R1_R6R2L_R20` at blob `a35f1c4c62091338a1ef71c19f1af0ac94a60a46`. Fresh Owner authorization is required; R19 authorization is consumed and not reusable.
