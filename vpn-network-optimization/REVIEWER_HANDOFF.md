@@ -110,12 +110,12 @@ OBJECTIVE=Independently verify production namespace final=0/pending=0/unknown=0 
 MAX_ENDPOINT_THIS_ROUND=Exactly one read-only provider observation using who + ls; no mutation; mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Baidu recovery production project namespace only; R17 quarantine object must remain untouched.
-PREFLIGHT=Owner PowerShell 7.6.6 Administrator; safe-sync main; R18 Gate blob undefined; reused read-only helper blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; AST helper PASS.
+PREFLIGHT=Owner PowerShell 7.6.6 Administrator; safe-sync main; R18 Gate blob f42237242503405c11f652240b4baedec8e71e22; reused read-only helper blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; AST helper PASS.
 REQUIRED_EVIDENCE=UID match; directory header; project counts 0/0/0; BAIDU_RESIDUAL_STATE=CLEAN; cleanup PASS; all mutation/network/Secret markers NO.
 ACCEPTANCE_CRITERIA=PASS only on fresh exact 0/0/0 CLEAN. Any other state returns without mutation or retry.
 ROLLBACK_STATUS_OR_PLAN=None because R18 is read-only. R17 quarantine object and retained R15 rollback journal remain untouched.
 OWNER_ONLY_ACTIONS=Run the exact R18 read-only checkpoint once and return sanitized markers.
-REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18.md at blob undefined and scripts/g4b-baidu-residual-readonly-r11.ps1 at blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662. Do not mutate provider state.
+REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18.md at blob f42237242503405c11f652240b4baedec8e71e22 and scripts/g4b-baidu-residual-readonly-r11.ps1 at blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662. Do not mutate provider state.
 EXECUTOR_TO_REVIEWER_RELAY=Return sanitized result and stop; never print raw UID, filenames, stdout/stderr or credentials.
 ```
 
