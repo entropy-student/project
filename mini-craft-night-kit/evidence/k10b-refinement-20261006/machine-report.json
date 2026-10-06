@@ -1,0 +1,243 @@
+{
+  "gate": "K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION",
+  "scope": "Owner-authorized visual/motion refinement, 2026-10-06",
+  "result": "PASS_CANDIDATE",
+  "target": "ops@srv1970241",
+  "canonicalGovernance": "v0.2.7 ACTIVE_PROVISIONAL/VNEXT",
+  "sourceCommit": "66d8e37938978a4335ccb07469e8f6be1af8aa3e",
+  "recoveryPath": "/srv/backups/mini-craft-night-kit/wp-content/k10b-refinement-20261006T050000Z",
+  "originalRecoveryRetained": "/srv/backups/mini-craft-night-kit/wp-content/k10b-20261005T084600Z",
+  "source": {
+    "page939": {
+      "bytes": 10578,
+      "sha256": "a02069dc3c754b746389fa8b515d11a4bb9c3848cd329b1b920607c9d736c14b",
+      "blob": "e48753635961d31c0aaf170ebf048a0acb396985"
+    },
+    "css": {
+      "bytes": 17063,
+      "sha256": "d880c39b87451d63a3407ca449597d96dac3e8031a12ba2e908e3b1cadecdd74",
+      "blob": "8d5a0ceaec7cf23a7f32c07d4e2a975c01367ba8"
+    },
+    "js": {
+      "bytes": 3779,
+      "sha256": "b9b6606814dc778ed08c9400c7e1d8ed756419970cd087302e525b27446651c7",
+      "blob": "f78c3fa0bcb811eb4f1b1c9af584b148c20225ca"
+    },
+    "loader": {
+      "changed": false,
+      "bytes": 980,
+      "sha256": "f1d38af555bfe7003a808f34b2bfc07abcb14e268f9b68209a33c0affc47a404"
+    }
+  },
+  "responsive": [
+    {
+      "viewport": [
+        1280,
+        800
+      ],
+      "overflow": false,
+      "galleryWidth": 543.541687,
+      "galleryHeight": 597.895874,
+      "sameRowTopDeltas": [
+        0,
+        0
+      ],
+      "galleryGap": 24,
+      "process": "CENTER_DECK_NATIVE_SCROLL_UNFOLD",
+      "stepHeight": 430
+    },
+    {
+      "viewport": [
+        375,
+        812
+      ],
+      "overflow": false,
+      "galleryHeight": 360.0625,
+      "stepHeight": 259.197937,
+      "process": "STATIC_ONE_COLUMN"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": false,
+      "galleryHeight": 350.083343,
+      "stepHeight": 340,
+      "process": "STATIC_TWO_COLUMNS"
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": false,
+      "galleryHeight": 907.645874,
+      "sameRowTopDeltas": [
+        0,
+        0
+      ]
+    }
+  ],
+  "motion": {
+    "actualNativeScroll": {
+      "initialX": [
+        424,
+        141.333,
+        -141.333,
+        -424
+      ],
+      "intermediateX": [
+        319.805,
+        106.602,
+        -106.602,
+        -319.805
+      ],
+      "endX": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reverse": "PASS",
+      "resizeToPhoneClearsTransforms": "PASS"
+    },
+    "galleryActualHoverScale": 1.0493,
+    "keyboardMenuEnterEscapeFocus": "PASS_AFTER_NATIVE_CLOSE_ANIMATION",
+    "focusOutline": "solid 2.66667px",
+    "syntheticVMTests": 10,
+    "syntheticVMTestsPassed": 10,
+    "reducedMotionRealBrowser": "UNVERIFIED_API_NOT_EXPOSED",
+    "javascriptDisabledRealBrowser": "UNVERIFIED_API_NOT_EXPOSED",
+    "continuousScreenRecording": "NOT_CAPTURED_NATIVE_SCROLL_KEYFRAMES_ONLY",
+    "frameTimingLongTasksCLS": "UNVERIFIED_READONLY_BROWSER_SCOPE_DOES_NOT_EXPOSE_PERFORMANCE",
+    "staticFallback": "SOURCE_SERVER_RENDER_AND_PHYSICAL_PHONE_TABLET"
+  },
+  "nonhomeChecks": [
+    {
+      "path": "/product/mini-craft-night-kit/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/product/mini-craft-night-kit/",
+      "productDesktopFreshPrewriteHeaderExact": true
+    },
+    {
+      "path": "/cart/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/cart/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/checkout/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/cart/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/faq/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/faq/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/shipping-returns/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/shipping-returns/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/contact/",
+      "width": 1280,
+      "skinAssetCount": 0,
+      "finalPath": "/contact/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/product/mini-craft-night-kit/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/product/mini-craft-night-kit/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/cart/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/cart/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/checkout/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/cart/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/faq/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/faq/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/shipping-returns/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/shipping-returns/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    },
+    {
+      "path": "/contact/",
+      "width": 375,
+      "skinAssetCount": 0,
+      "finalPath": "/contact/",
+      "productDesktopFreshPrewriteHeaderExact": null
+    }
+  ],
+  "nonhomeProofNote": "Only Product desktop was compared byte-exact to a new same-turn prewrite computed-property snapshot. Other current header values/links were inspected; protected source/global/content guards and asset isolation remained unchanged. Do not relabel all 12 as new before/after exact comparisons.",
+  "publicRoutes": "7 final HTTP200 TLS0; empty Checkout redirected to Cart",
+  "persistence": {
+    "hostContainerFilesMatch": true,
+    "pageReadbackMatches": true,
+    "nextStart": "DURABLE_DIRECTORY_BIND_PLUS_DATABASE",
+    "restarts": 0
+  },
+  "cacheNote": "Bare unversioned asset URLs still served historical cached K10B bytes. Actual homepage emitted content-hash query URLs; both versioned responses matched new canonical/host/container bytes. No purge performed.",
+  "authorizedWrites": {
+    "page939PostContent": 1,
+    "presentationFilesUpdated": 2,
+    "presentationWriteOperations": 3,
+    "projectRecoveryFilesCreated": 7,
+    "projectRecoveryDirectoriesCreated": 1
+  },
+  "forbiddenCounters": {
+    "NONHOME_CONTENT_WRITES": 0,
+    "GLOBAL_THEME_MENU_PLUGIN_CUSTOM_CSS_WRITES": 0,
+    "VENDOR_FILE_WRITES": 0,
+    "DOCKER_MUTATIONS": 0,
+    "CONTAINER_RESTARTS_RECREATES": 0,
+    "COMPOSE_MUTATIONS": 0,
+    "PRODUCT_MUTATIONS": 0,
+    "CART_MUTATIONS": 0,
+    "CHECKOUT_SUBMISSIONS": 0,
+    "ORDER_CREATION": 0,
+    "PAYMENT_ACTIONS": 0,
+    "PROVIDER_ACTIONS": 0,
+    "REFUND_ACTIONS": 0,
+    "SHARED_INFRA_MUTATIONS": 0,
+    "SECRET_CONTENT_INSPECTION": 0,
+    "SECRET_VALUES_EMITTED": 0,
+    "SECRET_HASH_ACTIONS": 0,
+    "IMAGE_GENERATION": 0,
+    "BROAD_PRUNE": "NO",
+    "ROLLBACK_USED": "NO",
+    "LATER_GATE_ACTIONS": 0
+  },
+  "ownerVisualFreeze": "PENDING_REVIEW",
+  "stopAtReviewer": true
+}

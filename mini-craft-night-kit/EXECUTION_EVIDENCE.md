@@ -7884,3 +7884,86 @@ OWNER_VISUAL_FREEZE=PENDING_REVIEW
 LATER_GATE_ACTIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+## K10B — Owner-authorized Visual and Motion Refinement — 2026-10-06
+
+Result: `PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION`. This is a scoped refinement of the open K10B, authorized by Owner's request to implement the reviewed video/screenshot comparison plan. It is not Reviewer formal PASS, a new Gate, or authority to modify any other page/business surface.
+
+### Inputs, identity and rollback barrier
+
+Canonical Governance v0.2.7 ACTIVE_PROVISIONAL/VNEXT and triggered references, current Reviewer Handoff, K10B packet and storage manifest were read completely. Local v0.1.6 was bootstrap only. VPS Governance, frontend-design and Impeccable guided scope, readable static defaults, restrained motion and bounded visual QA. No image generation was needed.
+
+Windows Owner host/user and existing SSH trust metadata were validated before strict SSH: `ops@srv1970241`, UID1000, passwordless bounded sudo; native SSH results checked. Private key/Secrets were not read or printed. Target WP container remained `6477a1fb1d8dae319f93fc54b81e10e29c093686f24972b2735366e11400ae4b`; MariaDB remained `42d2c920ea4164cd0a41d416ac673381aeb4985a154fe370f7f873518b134884`. Both running/restart0; MariaDB healthy.
+
+Before production writes, new project recovery was created at `/srv/backups/mini-craft-night-kit/wp-content/k10b-refinement-20261006T050000Z` (directory0700; seven root:root0600 files). It contains guards.json, all three current MU presentation files, page-939.content.html, page-939.json and recovery-manifest.json. Saved page content:10439 bytes, SHA256 `6b0d89f143ca75593d1527e90fda062d9df2e04b72d5e9add503e5c9aa351ea6`. File byte/hash equality, JSON export readback and WP slash roundtrip were verified. Prior `k10b-20261005T084600Z` recovery was untouched.
+
+Rollback for this refinement: restore the three backed-up presentation file bytes/metadata and only page939 post_content through WordPress application API; verify backup hashes/guards/public routes. Do not default to full DB restore or disable the original K10B skin. No rollback used.
+
+### Actual implementation and write boundary
+
+Only canonical [home.css](frontend/home-skin/home.css), [home.js](frontend/home-skin/home.js) and [page-939.html](frontend/home-skin/page-939.html) changed. Production writes were page939 post_content once, CSS twice (initial candidate plus one mobile numeral confirmation fix), JS once. MU loader remained unchanged. WP application update used transactional guarded before/after row comparison; changed-column list was exactly post_content. No other page939 columns/meta, page, global theme/menu/plugin/custom-CSS1041 record, vendor file or business setting changed.
+
+- H0 retains native Kadence menu/cart/keyboard behavior; only homepage inset glass presentation softened.
+- H1 reduces excessive headline weight/scale, improves column balance and adds nonblocking segmented reveal/photo settling. Decoration ignores pointer input; content is visible before enhancement.
+- H3 removes the unintended60px alternating offset: same row tops/bottoms align, four identical aspect-ratio images,24px gaps, compact cream labels and restrained hover zoom. Existing disclaimer and links retained.
+- H5 adds one editable core Group stage around existing four steps. Desktop native-scroll motion unfolds a centered deck into four vertical columns; reverse scroll works. Mobile is one-column static and tablet two-column static; no scroll hijacking or animation dependency.
+- H6 reduces oversized typography and tightens copy hierarchy.
+- H10 adds a warm-white breathing gap and stronger closing hierarchy without changing Product/Shop destinations.
+
+No new image/font library, copied Webflow runtime, global theme change or generated imagery. Existing image loading remains auto; no claim that lazy-loading optimization was implemented.
+
+Source commits pushed and fresh-readback before deployment: `6f854939442c7d7d85fdc17c6eab24d17b289b8e`; final mobile confirmation `66d8e37938978a4335ccb07469e8f6be1af8aa3e`. An initial local commit lacked author identity and remote had advanced; no presentation writes occurred until resolved by scoped remote readback, fast-forward integration of unrelated changes and invocation-only author flags. No Git settings/reset/force push/shared dirty-cache workaround.
+
+| Final surface | Bytes | SHA256 | GitHub blob |
+| --- | ---: | --- | --- |
+| page939 post_content |10578|`a02069dc3c754b746389fa8b515d11a4bb9c3848cd329b1b920607c9d736c14b`|`e48753635961d31c0aaf170ebf048a0acb396985`|
+| home.css |17063|`d880c39b87451d63a3407ca449597d96dac3e8031a12ba2e908e3b1cadecdd74`|`8d5a0ceaec7cf23a7f32c07d4e2a975c01367ba8`|
+| home.js |3779|`b9b6606814dc778ed08c9400c7e1d8ed756419970cd087302e525b27446651c7`|`f78c3fa0bcb811eb4f1b1c9af584b148c20225ca`|
+| unchanged MU loader |980|`f1d38af555bfe7003a808f34b2bfc07abcb14e268f9b68209a33c0affc47a404`|unchanged|
+
+### Fresh verification and honest limits
+
+[17 captures and capture manifest](evidence/k10b-refinement-20261006/capture-manifest.json), [machine report](evidence/k10b-refinement-20261006/machine-report.json) and [10 reproducible synthetic motion tests](evidence/k10b-refinement-20261006/motion-regression.test.cjs) are archived. Test command: `node --test mini-craft-night-kit/evidence/k10b-refinement-20261006/motion-regression.test.cjs`;10 pass/0 fail. Tests are Node VM simulations, not browser preference emulation.
+
+Actual viewport checks:1280×800,375×812,768×1024,1920×1080; no blocking horizontal overflow. Gallery desktop images543.541687×597.895874px and both same-row top deltas0; wide same-row top deltas0. Native-scroll X transforms were [424,141.333,-141.333,-424] → [319.805,106.602,-106.602,-319.805] → [0,0,0,0], with reverse and resize-to-phone cleanup verified. Mobile/tablet cards remain readable/static. All seven image instances loaded; actual gallery hover scale1.0493. Mobile Enter/Escape/focus return and visible CTA focus outline passed after native close animation. Browser parsed111 CSS selector rules; all scoped to body.home, no unscoped selectors.
+
+Seven public routes (Home, Product, Cart, Checkout, FAQ, Shipping & Returns, Contact) HTTP200/TLS verify0. Empty Checkout continues native redirect to Cart, not a populated checkout assertion. Twelve desktop/phone non-home inspections loaded0 skin assets. Only Product desktop was newly compared byte-exact against a same-turn prewrite computed header snapshot; other current headers/native links were inspected and source/global/content guards unchanged. Do not label all12 as new exact before/after comparisons; prior accepted12 exact checks remain historical.
+
+Fresh backend guards: page939 noncontent/layout unchanged; customCSS1041 `eba190bc6e2ba3e1ef9f80420693242c86ddb6ca3d98c2f2925ca3f4edf41643`; theme_mods `b7d3653e9596c2385364b1bfd7f3d04afbf8cd45af947aa8f1c740aed65817d0`; active_plugins `d85c0a37b2cae36915ed2893c880a35027cb919b6ba63eb28a875800ef9c29eb`; vendor header/page/functions unchanged. CurrencyUSD, Product223 public nonpurchasable shell and Product1224 accepted published/hidden USD1 baseline preserved, not modified or reopened.
+
+Host/container presentation hashes and public content-hash-versioned responses match canonical final bytes. Fresh Home HTML emits CSS `?ver=d880c39b87451d63` and JS `?ver=b9b6606814dc778e`. Bare unversioned URLs still serve historical cached bytes; this does not describe the actual enqueued assets. No cache purge/shared-infra change. Durable wp-content directory bind plus stored page content proves next-start persistence; no restart performed.
+
+Limits explicitly retained: actual reduced-motion browser emulation and JS-disabled session not exposed by selected API; Performance/long-task/CLS timing unavailable; no continuous screen recording captured (native-scroll keyframes archived). Static fallback assessed through source/server-rendered content and actual phone/tablet views, plus synthetic tests. Read-only inspection failures did not mutate runtime. No fabricated frame-rate/CLS/reduced-motion-pass claim. Reviewer visual freeze remains pending.
+
+### Counters and handoff
+
+```text
+PAGE_939_POST_CONTENT_WRITES=1
+PRESENTATION_FILES_UPDATED=2
+PRESENTATION_WRITE_OPERATIONS=3
+PROJECT_RECOVERY_FILES_CREATED=7
+PROJECT_RECOVERY_DIRECTORIES_CREATED=1
+NONHOME_CONTENT_WRITES=0
+GLOBAL_THEME_MENU_PLUGIN_CUSTOM_CSS_WRITES=0
+VENDOR_FILE_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_RESTARTS_RECREATES=0
+COMPOSE_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+ORDER_CREATION=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_CONTENT_INSPECTION=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+IMAGE_GENERATION=0
+BROAD_PRUNE=NO
+ROLLBACK_USED=NO
+LATER_GATE_ACTIONS=0
+OWNER_VISUAL_FREEZE=PENDING_REVIEW
+STOP_AT_REVIEWER=YES
+```

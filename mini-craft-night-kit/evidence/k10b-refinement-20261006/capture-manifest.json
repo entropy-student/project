@@ -1,0 +1,128 @@
+{
+  "gate": "K10B",
+  "scope": "2026-10-06 homepage refinement",
+  "count": 17,
+  "totalBytes": 2407301,
+  "note": "Dimensions are decoded capture pixels, not assumed viewport dimensions; browser screenshot output includes backend scaling/scrollbar effects. Responsive viewport assertions are recorded independently in machine-report.json. Native scroll keyframes, not a continuous recording. Existing images reused; no generation.",
+  "captures": [
+    {
+      "file": "01-desktop-hero.png",
+      "bytes": 125752,
+      "width": 1265,
+      "height": 791,
+      "sha256": "7fda5492edbb177c336de7bda7487a74758e5f9a970d068f542f34d79d756d65"
+    },
+    {
+      "file": "02-desktop-gallery.png",
+      "bytes": 114941,
+      "width": 1265,
+      "height": 791,
+      "sha256": "4539a0863bd3656bd3d0ab7556b4950e4fa758e7d39e57fea0604fdec2d29e35"
+    },
+    {
+      "file": "03-desktop-process-stacked.png",
+      "bytes": 57020,
+      "width": 1265,
+      "height": 791,
+      "sha256": "98e42ef19597db669141021d35cf6f7ee9bd3c1ef2490e0d7eacec7c2915f33e"
+    },
+    {
+      "file": "04-desktop-process-mid.png",
+      "bytes": 24737,
+      "width": 1265,
+      "height": 791,
+      "sha256": "a0d3b907d6e63ef96ccedcdcdaa11c3708e2117d41fd60a0e1a201bbee337097"
+    },
+    {
+      "file": "05-desktop-process-open.png",
+      "bytes": 54359,
+      "width": 1265,
+      "height": 791,
+      "sha256": "094a689ee226db8b0f065af9fbac1d93d9ac13d2fb81ec20ff21673f3bbb94e9"
+    },
+    {
+      "file": "06-desktop-brand.png",
+      "bytes": 105078,
+      "width": 1265,
+      "height": 791,
+      "sha256": "6f74e7b735b0c588a0d2351075c1a3333a50c3f5e09143ac543f4bdc171e376f"
+    },
+    {
+      "file": "07-desktop-close.png",
+      "bytes": 91401,
+      "width": 1265,
+      "height": 791,
+      "sha256": "3be9dbd728ebb1137542be760f095bc074e98bd91e806de90287fc9dd3a1ba85"
+    },
+    {
+      "file": "08-desktop-full.png",
+      "bytes": 641470,
+      "width": 1264,
+      "height": 5455,
+      "sha256": "75eca74550234a405621319b25d5a7fb80edad52428a9589202de87be8451bac"
+    },
+    {
+      "file": "09-mobile-hero.png",
+      "bytes": 43453,
+      "width": 360,
+      "height": 779,
+      "sha256": "15ae1d0a32b6f263c319916f9d76ec007a3acb381f903a68c9abe3a1d940e927"
+    },
+    {
+      "file": "10-mobile-gallery.png",
+      "bytes": 42220,
+      "width": 360,
+      "height": 779,
+      "sha256": "4082a5d3bf4c309e7dab5f9d6a8d14cdf5e460cb29cce56fc892610a26c2cbb6"
+    },
+    {
+      "file": "11-mobile-process.png",
+      "bytes": 36862,
+      "width": 360,
+      "height": 779,
+      "sha256": "3ffcfaa7ddd078217793f0d242f56ed1d7dcadf1b5c11701a150534564dee943"
+    },
+    {
+      "file": "12-mobile-close.png",
+      "bytes": 39725,
+      "width": 360,
+      "height": 779,
+      "sha256": "720fcce10fc5727f347e52160d83d61e78007a9d11eaf4e5dd9583ceb328d7ce"
+    },
+    {
+      "file": "13-mobile-full.png",
+      "bytes": 295940,
+      "width": 360,
+      "height": 5571,
+      "sha256": "291373004e6bbc7c4ff8ce5247fb054a58d9de27e8debe0d1c68285d0880b9c5"
+    },
+    {
+      "file": "14-mobile-native-menu.png",
+      "bytes": 12171,
+      "width": 375,
+      "height": 811,
+      "sha256": "e2cd6988105d3975887139630d7bbfd64658d51a0d83e53a6747dbf64d5e053f"
+    },
+    {
+      "file": "15-tablet-process.png",
+      "bytes": 78286,
+      "width": 753,
+      "height": 935,
+      "sha256": "526848a91047c25600fac2bb9af000a662589449585b4ac2e3caebf3b5aab85b"
+    },
+    {
+      "file": "16-tablet-full.png",
+      "bytes": 417699,
+      "width": 752,
+      "height": 4746,
+      "sha256": "98f7c4e7db2b978e3ac22aca557b024805c7c9850198ce48672d6529f5ee9e56"
+    },
+    {
+      "file": "17-wide-gallery.png",
+      "bytes": 226187,
+      "width": 1871,
+      "height": 1072,
+      "sha256": "ebf53eda61013b0cb056dfb96254c93de9c0e3372f9c33edfebb58251cb1cbb3"
+    }
+  ]
+}

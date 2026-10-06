@@ -1,3 +1,7 @@
+## Current — K10B homepage refinement — 2026-10-06
+
+`PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION`; Reviewer/Owner visual acceptance pending. Latest facts are in [the current refinement record](#k10b--owner-authorized-visual-and-motion-refinement--2026-10-06). Earlier Gates below are preserved history, not current runtime instructions. `STOP_AT_REVIEWER=YES`.
+
 # Executor Handoff — K0 Kadence Single Product Local PoC
 
 ## Status
@@ -3548,4 +3552,54 @@ STOP_AT_REVIEWER=YES
 问题：NONE；正式视觉验收待Reviewer。
 回滚：项目专属备份已验证，可仅停用皮肤并恢复旧939内容，不覆盖全数据库。
 请 Reviewer 检查：六个参考角色的视觉质量、源文件/生产字节关联、静态降级证据及无外溢边界。
+Owner 转交：NONE。
+
+## K10B — Owner-authorized Visual and Motion Refinement — 2026-10-06
+
+Current result: `PASS_CANDIDATE_K10B_HOMEPAGE_VISUAL_SKIN_IMPLEMENTATION`; formal Reviewer acceptance and Owner visual freeze pending. This continues K10B only, not a later Gate.
+
+Production [Home](https://minicraft.spikersun.com/) remains page939 under strict SSH ops@srv1970241. H0 native glass header softened; H1 type/columns and nonblocking reveal refined; H3 four-image geometry and row alignment corrected; H5 changed from offset cards into native-scroll center-deck→four-column composition; H6 typography reduced; H10 closing spacing improved. Existing pictures, copy, disclaimers/native links and Gutenberg-editable sections retained. Phone/tablet process is static readable content. Loader/vendor/global/business code unchanged.
+
+Final source commit `66d8e37938978a4335ccb07469e8f6be1af8aa3e`, preceded by `6f854939442c7d7d85fdc17c6eab24d17b289b8e`. Only home.css, home.js and page-939.html canonical sources changed. Production page939 post_content updated once; CSS initial+one mobile numeral QA correction, JS once. No other column/meta/global settings changed.
+
+New verified recovery: `/srv/backups/mini-craft-night-kit/wp-content/k10b-refinement-20261006T050000Z` (0700 directory, seven0600 files). Existing `k10b-20261005T084600Z` untouched. Refinement rollback restores backed-up file bytes plus only prior page939 post_content via WP API, not full DB restore/blanket skin removal. Rollback unused.
+
+Fresh public Home/Product/Cart/Checkout/FAQ/Shipping/Contact:7 HTTP200/TLS0; empty Checkout still redirects Cart. Four viewport checks pass overflow/alignment, actual native scroll reverse and phone-resize cleanup pass.12 non-home desktop/phone asset-isolation inspections:0 home skin assets; Product desktop exact same-turn prewrite header match. Other guards/native links unchanged, not claimed as12 new exact property comparisons.111 browser-parsed CSS selector rules all body.home-scoped. WP/MariaDB IDs/restarts and backend/global/vendor guards unchanged; USD/products accepted baselines retained.
+
+Review [17 captures](evidence/k10b-refinement-20261006/capture-manifest.json), [machine report](evidence/k10b-refinement-20261006/machine-report.json), [reproducible10/10 synthetic motion tests](evidence/k10b-refinement-20261006/motion-regression.test.cjs) and [detailed Evidence](EXECUTION_EVIDENCE.md#k10b--owner-authorized-visual-and-motion-refinement--2026-10-06). Host/container bytes and public versioned asset URLs match final canonical source. Bare unversioned cached assets are old; actual enqueue uses new content hashes. No purge/restart.
+
+Reviewer limitations: real reduced-motion emulation/JS-disabled browser unavailable; frame timing/CLS unavailable; no continuous recording, native-scroll keyframes only. Source/server-rendered fallback, actual static phone/tablet and synthetic tests supplement but do not replace those unperformed measurements. Initial Git author/remote-advance issue resolved before presentation writes without Git configuration change/force push/shared-cache cleanup.
+
+```text
+NONHOME_CONTENT_WRITES=0
+GLOBAL_THEME_MENU_PLUGIN_CUSTOM_CSS_WRITES=0
+VENDOR_FILE_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_RESTARTS_RECREATES=0
+COMPOSE_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+ORDER_CREATION=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_CONTENT_INSPECTION=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+IMAGE_GENERATION=0
+BROAD_PRUNE=NO
+ROLLBACK_USED=NO
+LATER_GATE_ACTIONS=0
+OWNER_VISUAL_FREEZE=PENDING_REVIEW
+STOP_AT_REVIEWER=YES
+```
+
+结果：PASS_CANDIDATE；不是正式PASS。
+改动：仅首页939内容及首页CSS/JS，修正图2错位、模块比例与原生滚动动效；MU loader未改。
+验证：四视口、七公开路径、非首页资产隔离、保护哈希和10项合成测试通过；无法实测的动效偏好/性能项如实列出。
+问题：正式视觉freeze待Reviewer；无新增业务问题，未生成新图。
+回滚：新refinement备份已校验；恢复首页呈现文件和原939内容，保留原K10B恢复集。
+请 Reviewer 检查：参考视频下的动效/版式质量、截图、实测与模拟区别、首页隔离和版本化缓存证据。
 Owner 转交：NONE。
