@@ -751,3 +751,12 @@ R17R1 repaired and proved:
 Final Reviewer direct readback confirms the helper still defaults to `Validate`, requires `OwnerAuthorized` for Run, limits Provider actions to `who / ls / mv`, contains no permanent-delete action, and preserves one-forward/one-rollback limits.
 
 The Owner's previously recorded authorization for the exact bounded R17 quarantine Gate is released without scope expansion. Permanent deletion, live G4-B and G4-C remain unauthorized by this decision. Provider mutation has not yet executed.
+
+
+## 2026-10-06 — R17 formal PASS; R18 independent CLEAN readback required
+
+Decision: `PASS_R6R2L_R17_STALE_PENDING_QUARANTINE`.
+
+R17 executed exactly once under the previously authorized/relocked Gate. Fresh precheck proved one pending source and absent quarantine target. Exactly one source→quarantine rename succeeded. Post-readback proved production namespace final=0/pending=0/unknown=0, source absent and quarantine present. Rollback was not required; permanent delete did not occur.
+
+R17 post-readback is not treated as the final durable CLEAN proof. A separate read-only Gate `G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18` at blob `f42237242503405c11f652240b4baedec8e71e22` must independently report CLEAN before live G4-B resumes. The quarantine object remains retained and outside the production project prefix.
