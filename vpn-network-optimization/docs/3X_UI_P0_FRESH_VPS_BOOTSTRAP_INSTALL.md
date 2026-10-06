@@ -1,6 +1,6 @@
 # 3x-ui Fast Path P0 — Fresh VPS Trust Bootstrap + Stable Install
 
-Status: REVIEWER_RELEASED / EXECUTOR_P0
+Status: REVIEWER_RELEASED / EXECUTOR_P0_R1
 
 ## GATE_ID
 
@@ -80,6 +80,27 @@ and released:
 
 No other Owner action should be needed unless the selected SSH private key is encrypted/locked or was not attached to the new droplet.
 
+
+## ACCEPTED DIRECT HOST-KEY BOOTSTRAP R1
+
+The original `ssh-keyscan` path returned `RETURN_SSH_HOSTKEY_SCAN_UNAVAILABLE` without mutation.
+
+Reviewer repair `3XUI_FASTPATH_P0_SSH_HOSTKEY_PUBLICKEY_RELAY_R1` is formally PASS.
+
+Accepted exact ED25519 public host key for `143.198.159.233`:
+
+```text
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmszzdtG44DFZcNx46xPGLZDicACewKnOz3GJ6oPuSP root@ubuntu-s-1vcpu-512mb-10gb-sfo3
+```
+
+Independently verified fingerprint:
+
+```text
+SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ
+```
+
+Executor must **not** retry `ssh-keyscan`. Instead, write only this exact verified key for host `143.198.159.233` into the explicit known-host file, preserving unrelated entries, then perform strict SSH with host-key checking enabled.
+
 ## SSH TRUST BOOTSTRAP AFTER RELEASE
 
 Executor uses:
@@ -94,13 +115,13 @@ unless fresh local discovery proves a different already-recorded project-owned r
 
 For the new IP only:
 
-1. fetch the ED25519 public host key with `ssh-keyscan -t ed25519 143.198.159.233`;
-2. compute the fetched key fingerprint locally;
-3. require exact match to the Owner-relayed fingerprint;
-4. only after exact match, add/update the exact new-IP ED25519 entry in the explicit known-host file;
-5. all subsequent SSH uses `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, explicit identity file and explicit known-host file.
+1. use the exact Reviewer-accepted ED25519 public key in **ACCEPTED DIRECT HOST-KEY BOOTSTRAP R1**;
+2. preserve unrelated `known_hosts` entries;
+3. add/update only the exact `143.198.159.233` ED25519 entry;
+4. all subsequent SSH uses `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, explicit identity file and explicit known-host file;
+5. after trust insertion, verify strict SSH succeeds and the remote hostname/OS match the Gate.
 
-Any mismatch -> `RETURN_SSH_TRUST_DRIFT`. Never auto-accept mismatch.
+Any mismatch or unexpected host-key behavior -> `RETURN_SSH_TRUST_DRIFT`. Never auto-accept mismatch.
 
 ## FRESH-TARGET PREFLIGHT
 
