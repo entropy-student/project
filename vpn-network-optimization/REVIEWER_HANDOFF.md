@@ -1,116 +1,126 @@
 # VPN Network Optimization — REVIEWER HANDOFF
 
-> Canonical branch: `main`  
-> Architecture cutover: 2026-10-06  
-> Active implementation: 3x-ui fast path  
+> Canonical branch: `main`
+> Architecture cutover: 2026-10-06
+> Active implementation: 3x-ui fast path
 > Legacy archive: `docs/archive/LEGACY_PROJECT_INDEX_2026-10-06.md`
 
 ## PROJECT_GOAL
 
-On the Owner-selected DigitalOcean VPS, deploy three 3x-ui-managed nodes — Hysteria2, WireGuard, and VLESS + REALITY + XTLS Vision — then expose them through a Mihomo subscription for Clash Verge so the Owner can switch among the three paths locally.
+Deploy three 3x-ui-managed nodes on the Owner-selected fresh DigitalOcean VPS — Hysteria2, WireGuard, and VLESS + REALITY + XTLS Vision — then consume them through one Mihomo subscription in Clash Verge so the Owner can switch among all three locally.
 
 ## PROJECT_STAGE
 
 ```text
-P0 Existing VPS read-only discovery              IN_PROGRESS
-P1 3x-ui v3.9.0 unattended install              PENDING
-P2 Create HY2 / WireGuard / REALITY inbounds     PENDING
-P3 Generate/import Mihomo subscription           PENDING
-P4 Three-node ChatGPT/OpenAI smoke               PENDING
-P5 Minimal backup + seal                         PENDING
+P0 Fresh VPS trust bootstrap + 3x-ui install      IN_PROGRESS
+P1 Create HY2 / WireGuard / REALITY inbounds      PENDING
+P2 Generate/import Mihomo subscription             PENDING
+P3 Three-node ChatGPT/OpenAI smoke                 PENDING
+P4 Minimal backup + seal                           PENDING
 ```
 
 ## SYSTEM_MAP
 
 ```text
 Owner Windows host
+├─ current live Internet/VPN path -> OLD VPS 24.199.118.137 (DO NOT MUTATE)
 └─ Clash Verge / Mihomo
-   └─ one 3x-ui Mihomo subscription
-      ├─ HY2          intended PRIMARY
-      ├─ WireGuard    intended BACKUP_1
-      └─ VLESS+REALITY+Vision intended BACKUP_2
+   └─ future one 3x-ui Mihomo subscription
+      ├─ HY2                    intended PRIMARY
+      ├─ WireGuard              intended BACKUP_1
+      └─ VLESS+REALITY+Vision   intended BACKUP_2
 
-DigitalOcean target
+Fresh DigitalOcean target
 ├─ hostname: ubuntu-s-1vcpu-512mb-10gb-sfo3
 ├─ region: SFO3
-├─ public IPv4: 24.199.118.137
-├─ private IPv4: 10.124.0.3
+├─ public IPv4: 143.198.159.233
+├─ private IPv4: 10.124.0.2
 ├─ Owner screenshot: Ubuntu 24.04 LTS x64
-└─ historical host: may still contain old WG/HY2/REALITY runtime; current reality must be freshly read
+├─ plan: 1 vCPU / 512 MB / 10 GB
+└─ created as new 3x-ui target
 ```
 
 ## CURRENT_ACCEPTED_STATE
 
-- Owner has selected the existing DigitalOcean droplet shown in the 2026-10-06 screenshot as the target.
-- This target is the same historical VPS used by the legacy project, so it is **not fresh**.
-- The legacy custom deployment chain is `LEGACY_REFERENCE_ONLY`; its runtime claims are not accepted as present truth.
-- Current preferred implementation is 3x-ui stable release **v3.9.0**.
-- Official 3x-ui supports VLESS+REALITY, WireGuard and Hysteria2, and provides a Mihomo subscription endpoint.
-- Fastest intended execution after discovery is unattended 3x-ui installation plus API-driven inbound creation; GUI is fallback, not the default.
-- Existing working VPN services must remain untouched until a replacement path has been proven.
+- Owner replaced the prior existing-host target with fresh droplet `143.198.159.233`.
+- The prior Gate `3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY` is `SUPERSEDED_NOT_EXECUTED`.
+- Old VPS `24.199.118.137` remains the Owner's current working VPN path and is outside mutation scope.
+- Current stable 3x-ui target version is pinned to `v3.9.0`.
+- SQLite is the default DB.
+- Admin panel must be loopback-only after install; management is through strict SSH / tunnel / protected API.
+- Target node set is HY2 / WireGuard / VLESS+REALITY+Vision.
+- Legacy custom VPN implementation remains `LEGACY_REFERENCE_ONLY`.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY
-STATE=REVIEWER_RELEASED_EXECUTOR_READONLY
-TARGET=DigitalOcean_24.199.118.137_SFO3
-MAX_ENDPOINT=READONLY_DISCOVERY_AND_EVIDENCE_ONLY
+GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
+STATE=WAITING_OWNER_HOSTKEY_FINGERPRINT
+TARGET=DigitalOcean_143.198.159.233_SFO3
+TARGET_FRESH=YES_OWNER_REPORTED
+TARGET_OLD_VPS=24.199.118.137_OUT_OF_SCOPE
+PINNED_3XUI_VERSION=v3.9.0
+MAX_ENDPOINT=HOSTKEY_TRUST_BOOTSTRAP_THEN_INSTALL_AND_LOOPBACK_BIND
 MANDATORY_REVIEW_STOP=YES
-TARGET_MUTATION_ALLOWED=NO
-SECRET_OUTPUT_ALLOWED=NO
-OWNER_ACTION_REQUIRED=NONE_UNLESS_STRICT_SSH_UNAVAILABLE
-NEXT_IF_PASS=P1_3XUI_STABLE_UNATTENDED_INSTALL
+EXECUTOR_RELEASED=NO
+OWNER_ACTION_REQUIRED=RETURN_NEW_VPS_ED25519_HOSTKEY_FINGERPRINT
 ```
 
-Canonical Gate: `docs/3X_UI_P0_EXISTING_VPS_DISCOVERY.md`.
+Canonical Gate: `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`.
+
+Target replacement decision: `docs/REVIEWER_DECISION_3XUI_TARGET_REPLACED_WITH_FRESH_DROPLET_2026-10-06.md`.
 
 ## CRITICAL_CONSTRAINTS
 
-- Do not stop/restart/edit existing VPN/network services in P0.
-- Do not auto-accept SSH host-key drift.
-- Do not read Secret-bearing config contents.
-- Do not install/update packages in P0.
-- No private keys/passwords/UUIDs/tokens/subscription IDs in chat, GitHub or ordinary logs.
-- Preserve at least one working Owner network path throughout later migration.
-- 512 MB RAM is treated as a resource fact to verify, not assumed sufficient; if needed, swap planning belongs to P1.
+- Do not mutate old VPS `24.199.118.137`.
+- First SSH trust on the new VPS must match an independently Owner-observed ED25519 SHA256 fingerprint.
+- Do not auto-accept a host-key mismatch.
+- Never emit panel username/password, API token, UUIDs, private keys or subscription IDs.
+- Official installer output must be suppressed from automation capture because it prints generated credentials.
+- `/etc/x-ui/install-result.env` remains root:root 0600 and its contents are not surfaced.
+- Admin panel must not remain publicly bound.
+- P0 creates no VPN inbounds.
+- 512 MB is verified after install; no automatic swap/resource tuning in P0.
 
 ## DEFAULT_EXECUTION_CHANNEL
 
-Local Codex/Executor using strict SSH to the selected VPS.
+After host-key trust is released:
 
-Expected Owner-local identity reference if present:
+Local Codex/Executor -> strict SSH -> fresh VPS `143.198.159.233`.
+
+Expected identity file:
 `C:\Users\34707\.ssh\digitalocean_ed25519`
 
 Expected known-host file:
 `C:\Users\34707\.ssh\known_hosts`
 
-No private-key value may be copied into project artifacts.
-
 ## CURRENT_ROLLBACK_STATUS
 
-P0 is read-only, so rollback is not applicable. Legacy services remain untouched.
+Fresh target contains no accepted project/business data. A failed P0 may be repaired exactly or the fresh droplet may be destroyed/recreated after Reviewer decision. Old VPS remains the live fallback and is not part of rollback mutation.
 
 ## UNRESOLVED
 
-- Actual current listeners/services on 443/TCP, 8443/UDP and 51820/UDP.
-- Current RAM/swap headroom for 3x-ui + Xray and three inbounds.
-- Whether existing old services should be preserved on their current ports while 3x-ui canaries use remapped ports.
-- Whether public strict SSH trust already works from the Codex host.
+- New VPS ED25519 SSH host-key fingerprint has not yet been independently relayed by Owner.
+- Whether the previously used DigitalOcean private key was attached to this new droplet is not yet proven.
+- Actual fresh-target RAM/swap/runtime facts remain to be read after strict SSH.
 
 ## NEXT_STEP
 
-Executor runs P0 only and returns sanitized Evidence. Reviewer then chooses the fastest safe P1 architecture:
-- no-conflict direct install;
-- install with alternate ports while old VPN stays live;
-- or a narrow migration step if a real conflict exists.
+Owner returns one non-secret ED25519 host-key fingerprint line from DigitalOcean Web Console. Reviewer records it and flips `EXECUTOR_RELEASED=YES`. Executor then runs the complete P0 Gate without further Owner work unless SSH private-key access itself is unavailable.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE** for P0 unless the existing SSH identity is locked/unavailable or strict trust fails and requires Owner intervention.
+Open **Web Console** on new droplet `143.198.159.233` and run:
+
+```bash
+ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E sha256
+```
+
+Return only that single output line.
 
 ## EVIDENCE_POINTERS
 
-- Active Gate: `docs/3X_UI_P0_EXISTING_VPS_DISCOVERY.md`
+- Active Gate: `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`
+- Target decision: `docs/REVIEWER_DECISION_3XUI_TARGET_REPLACED_WITH_FRESH_DROPLET_2026-10-06.md`
 - Active plan: `docs/3X_UI_THREE_NODE_FASTPATH.md`
 - Legacy archive: `docs/archive/LEGACY_PROJECT_INDEX_2026-10-06.md`
