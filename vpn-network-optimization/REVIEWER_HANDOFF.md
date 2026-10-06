@@ -64,7 +64,7 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
-- G4-B Baidu recovery and provider reconciliation through R18 is formally accepted; R19 returned safely before remote consequential mutation, R19R1 repaired the executable Mihomo path, and the consumed R20 live attempt has been fully reconciled: consequential VPS residue and failed-run recovery pending artifacts are clean, while its rollback journal is retained as historical evidence only. R20R6 formally repaired bounded remote error propagation and rollback diagnostics. R21R1 is formally PASS after Owner-local PowerShell 7.6.6 AST/fixture/package validation plus Reviewer diff inspection; R21 remains unexecuted with live invocation count 0 and is re-released exactly once with the repaired runner/validator identities. Persistent REALITY and `SELF-VPN-V1` are not accepted until R21 formally PASSes.
+- G4-B Baidu recovery and provider reconciliation through R18 is formally accepted; R19 returned safely before remote consequential mutation, R19R1 repaired the executable Mihomo path, and the consumed R20 live attempt has been fully reconciled: consequential VPS residue and failed-run recovery pending artifacts are clean, while its rollback journal is retained as historical evidence only. R20R6 formally repaired bounded remote error propagation and rollback diagnostics. R21R1 formally repaired the stale Gate-id binding, but the single R21 live invocation then returned at P0 because a second stale authorization-field binding remained. R21 is consumed with `CONSEQUENTIAL_MUTATION_STARTED=NO`, requires no rollback, and must never be replayed. Current work is the offline-only R21R2 binding repair; persistent REALITY and `SELF-VPN-V1` remain unaccepted.
 
 ### Secret / recovery
 
@@ -104,30 +104,31 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21
-STATE=OWNER_ACTION_REQUIRED_R21_ONE_SHOT_LIVE
-PREVIOUS_RESULT=PASS_R21R1_GATE_BINDING_OFFLINE
-OBJECTIVE=Execute one fresh bounded three-role live run with repaired structured error propagation, rollback diagnostics, and corrected canonical Gate binding.
-MAX_ENDPOINT_THIS_ROUND=One R21 live invocation; P10 import-without-activation; no G4-C/G4-D.
+GATE_ID=G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2
+STATE=OWNER_OFFLINE_REPAIR_VALIDATION_REQUIRED
+PREVIOUS_RESULT=RETURN_R21_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING_NO_MUTATION
+OBJECTIVE=Repair the second stale R21 authorization binding offline and prepare a fresh R22 one-shot live Gate.
+MAX_ENDPOINT_THIS_ROUND=Runner binding + matching fixture + offline PowerShell AST/fixture/package validation only; no live invocation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R21 Gate 78aff88a93d95ee1753a51d1d4fbf6cd0bfea404; runner 2b9a6e5f361905500b00c71548118e9046cd89de; live fixture validator b44fe52a560694dcb49ef0dfece0db253b7aa7a7; package validator 59e18226dff66adcaac978b4b7eeb540a14514c9; template 21c9a73f965e55da0c5d161b3c051e0d3bab1aa0.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed/no replay; R20 VPS and recovery residues clean; R20 rollback journal retained out-of-scope; standalone Windows WG remains enabled; HY2/WG preserved; AUTO_SWITCHING=OFF.
-PREFLIGHT=Safe-sync canonical main; exact Gate/runner/validator/template blobs; PowerShell 7.6.6 Administrator High integrity; tracked project scope clean except accepted results; package/live fixtures already PASS from R21R1 and runner rechecks canonical binding before live mutation.
-REQUIRED_EVIDENCE=Runner sanitized output including phases, structured failure markers if any, one-shot invocation count, rollback status, role order/default, WG/HY2 preserved, system proxy OFF, TUN OFF, STOP_AT_REVIEWER.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if the single R21 run completes all required phases and retains its new rollback journal for Reviewer; any failure/ambiguity returns without second attempt.
-ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback only on failure. Owner must not manually retry or invoke rollback after R21 returns.
-OWNER_ONLY_ACTIONS=Run exactly one R21 live checkpoint in Administrator PowerShell 7.6.6; at P10 import exact generated profile without activation.
-REVIEWER_TO_EXECUTOR_RELAY=Use runner blob 2b9a6e5f361905500b00c71548118e9046cd89de with documented fixed live arguments exactly once.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R21 output only and stop.
-R21R1_RESULT=PASS
-R21R1_REVIEW_EVIDENCE=docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_REVIEW.md
-R21_LIVE_INVOCATIONS_CONSUMED=0
-R21_LIVE_INVOCATIONS_AUTHORIZED=1
+TARGET_AND_SCOPE=Runner Gate/one-shot Handoff binding and matching fixture only; Handoff must later expose exact R22 consumed=0/authorized=1/second=NO fields.
+APPLICABLE_CRITICAL_CONSTRAINTS=R21 consumed/no replay; R21 consequential mutation never started; rollback not required; R20 consumed/no replay; WG/HY2/provider/Secret/Clash/network state untouched.
+PREFLIGHT=Canonical main; runner blob 2b9a6e5f361905500b00c71548118e9046cd89de; live validator blob b44fe52a560694dcb49ef0dfece0db253b7aa7a7; package validator 59e18226dff66adcaac978b4b7eeb540a14514c9.
+REQUIRED_EVIDENCE=Exact source-binding repair diff; PowerShell AST runner/validator PASS; live fixtures PASS; package validator PASS; no live/SSH/VPS/provider/Secret/DPAPI/Clash/network action.
+ACCEPTANCE_CRITERIA=Formal PASS only after executable offline validation; then release new R22 live Gate exactly once.
+ROLLBACK_STATUS_OR_PLAN=Source-only rollback to the locked pre-repair blobs if repair validation fails. No live rollback is applicable to R21.
+OWNER_ONLY_ACTIONS=Run the bounded local temporary-worktree source repair + offline validation checkpoint provided by Reviewer; no live action.
+REVIEWER_TO_EXECUTOR_RELAY=Patch only the exact stale Gate/authorization binding and matching fixture. Do not change transport, role order, rollback or provider semantics.
+EXECUTOR_TO_REVIEWER_RELAY=Return post-repair blobs, minimal diff stats, AST/fixture/package results and proof of zero live/external action.
+R21_RESULT=RETURN_R21_P0_REVIEWER_LIVE_AUTHORIZATION_MISSING_NO_MUTATION
+R21_LIVE_INVOCATIONS_CONSUMED=1
 SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
+CONSEQUENTIAL_MUTATION_STARTED=NO
+ROLLBACK_REQUIRED=NO
+R22_LIVE_RELEASED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, R20R6 error-propagation repair, and R21R1 Gate-binding repair are historical accepted work. R20 is consumed and must never be replayed. Current work is the re-released R21 one-shot live Gate shown in CURRENT_GATE above.
+G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, R20R6 error-propagation repair, R21R1 Gate-id repair, and the consumed R21 P0 return are historical accepted facts. R20 and R21 must never be replayed. Current work is the offline-only R21R2 repair shown in CURRENT_GATE above.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -371,7 +372,7 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 ## UNRESOLVED
 
 - G4-B remains **IN_PROGRESS** solely because R21 has not yet been executed and formally reviewed.
-- R21R1 is formally PASS. R21 is now re-released with one standing authorized live invocation; consumed count remains 0 and a second R21 invocation is forbidden.
+- R21 is consumed at P0 with no consequential mutation and cannot be retried. R21R2 offline repair is current; R22 has not yet been released.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still unaccepted.
 - G4-C remains pending after formal R21 PASS and is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
 - G4-D remains pending after G4-C: migrate WG-BASELINE into native Clash/Mihomo WireGuard; standalone Windows WireGuard may be disabled only after formal G4-D PASS.
@@ -380,22 +381,21 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Owner executes exactly one R21 Administrator PowerShell 7.6.6 live checkpoint using the repaired runner blob `2b9a6e5f361905500b00c71548118e9046cd89de`. At P10 import only the exact generated profile without activation. Return sanitized output to Reviewer; do not run a second R21 attempt.
+Run the single bounded R21R2 local temporary-worktree repair/validation checkpoint. It patches only the runner Handoff binding and matching fixture, runs PowerShell AST + live fixtures + package validation offline, and pushes the resulting source-only commit only if all checks pass.
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one R21 live checkpoint under the standing documented authorization. Keep Baidu identity, SSH key path and recovery passphrase local. Keep standalone Windows WireGuard enabled. At P10 import only the generated profile and do not activate/switch it. If the run returns failure or ambiguity, do not retry and do not manually invoke rollback.
+Run the R21R2 offline source repair/validation checkpoint provided by Reviewer. Do not invoke any live runner. R21 is consumed and must not be run again.
 
 ## EVIDENCE_POINTERS
 
-Read only what is needed for the current R21 decision:
+Read only what is needed for the current R21R2 decision:
 
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — current re-locked one-shot live Gate and exact Owner checkpoint boundary.
-- `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_REVIEW.md` — formal Reviewer PASS for the Gate-binding repair; live invocation count remained zero.
-- `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1.md` — historical bounded offline repair Gate.
-- `docs/G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6.md` — accepted structured error/rollback diagnostic repair.
-- `EXECUTION_EVIDENCE.md` — append-only historical execution proof through R20R6; R21R1 proof is in the dedicated review evidence above to avoid large-file rewrite.
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — chronology through R20R6/R21 release; use current Handoff for later R21R1 state.
-- `README.md -> Canonical current state` — compact snapshot after synchronization.
+- `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2.md` — current offline repair Gate.
+- `docs/G4B_R21_P0_RETURN_REVIEW_R6R2L_R21.md` — formal R21 P0 RETURN; live invocation consumed, no consequential mutation.
+- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — consumed historical R21 Gate; never replay.
+- `docs/G4B_R21_P0_GATE_BINDING_OFFLINE_R6R2L_R21R1_REVIEW.md` — historical R21R1 PASS.
+- `EXECUTION_EVIDENCE.md` — append-only historical execution proof through R20R6.
+- `README.md` — compact snapshot may lag this Handoff during R21R2 repair; `REVIEWER_HANDOFF.md -> CURRENT_GATE` is authoritative.
 - `DECISION_LOG.md` — architecture and Owner-authorized role/final-validation decisions when rationale is needed.
-- Older R5–R20 Gate files and `EXECUTOR_HANDOFF.md` are historical/supporting material only; do not let them override `CURRENT_GATE`.
+- Older Gates and `EXECUTOR_HANDOFF.md` are historical/supporting material only; do not let them override `CURRENT_GATE`.
