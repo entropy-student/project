@@ -1,21 +1,39 @@
 # G4-B Baidu Stale Pending Quarantine Reconciliation R6R2L-R17
 
-Status: SUSPENDED_PENDING_R17R1_CODE_VALIDATION / OWNER_AUTHORIZATION_RECORDED / REMOTE_PROVIDER_MUTATION_NOT_YET_EXECUTED
+Status: READY_FOR_OWNER_EXECUTION / R17R1_FORMAL_PASS / OWNER_AUTHORIZATION_RELEASED / REMOTE_PROVIDER_MUTATION_NOT_YET_EXECUTED
 
-## REVIEW HOLD — R17R1 OFFLINE CODE VALIDATION
+## REVIEWER RELEASE — R17R1 FORMAL PASS
 
-A later Reviewer reconciliation identified that executable local usability evidence must be completed before this consequential Gate may consume the recorded Owner authorization.
+R17R1 is formally closed PASS after Owner-compatible PowerShell 7.6.6 executable offline validation and canonical-main durability readback.
 
-Current blocking Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1`.
+Final locked execution identities:
 
-While R17R1 is open:
+```text
+R17_FINAL_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+R17_FINAL_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+R17R1_RESULT=PASS_R17R1_OFFLINE_CODE_VALIDATION
+R17_OWNER_AUTHORIZATION=GRANTED_UNCHANGED_SCOPE
+R17_EXECUTION_RELEASED=YES
+R17_PROVIDER_MUTATION_EXECUTED=NO
+```
 
-- the Owner's explicit R17 authorization remains recorded but is **not released for execution**;
-- do **not** run `-Mode Run -OwnerAuthorized`;
-- do not contact Baidu or perform any provider mutation;
-- helper/validator identities recorded below are starting/review identities, not a release-to-run decision;
-- local Codex must complete offline code review, any necessary repair, executable regression validation, final blob capture, and mandatory Reviewer stop;
-- only a later Reviewer PASS/relock may return this R17 Gate to Owner-action-ready state.
+Reviewer acceptance includes:
+- both scripts parse;
+- default helper path is non-mutating;
+- provider command scope remains exactly `who / ls / mv`;
+- permanent delete remains absent/forbidden;
+- stale inherited `$LASTEXITCODE` regression passes;
+- one-pending, quarantine-file, quarantine-directory, pending-directory, unknown-object, multiple-pending-reject and final-present-reject fixtures pass;
+- source/target shape guards pass;
+- production forward and rollback state-machine branches both execute successfully under isolated offline test doubles;
+- rollback markers propagate and rollback success is type-checked as Boolean;
+- no real Provider/config/Secret/DPAPI/SSH/VPS/Clash/network action occurred during R17R1.
+
+The Owner's previously granted authorization applies to this same bounded R17 consequence and is now released. It does not expand scope. The next Owner checkpoint may run the exact final helper with `-Mode Run -OwnerAuthorized` only after safe-syncing canonical `main`, re-locking this Gate/helper/validator identity, AST-parsing both scripts, and requiring the final offline validator to PASS.
+
+## HISTORICAL REVIEW HOLD — CLOSED
+
+R17 had been suspended while `G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1` was open. That hold is now closed by the formal PASS above. No Provider mutation occurred during the hold.
 
 This hold narrows execution only; it does not expand R17 consequences or authorize any new action.
 
@@ -111,9 +129,9 @@ The authorization is valid only for the already-declared R17 maximum endpoint an
 
 ```text
 R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
-R17_HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
-R17_VALIDATOR_BLOB=359cddf73075c090396a49d106022efd3f078029
+R17_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
 R17_PREPARATION_EVIDENCE=docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md
 R17_PREPARATION_EVIDENCE_BLOB=51d29f3e819a516b3ab85d13e036700cab41ff8e
 ```
