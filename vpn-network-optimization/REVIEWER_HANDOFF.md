@@ -105,23 +105,27 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
-STATE=OFFLINE_REPAIR_AUDIT_REQUIRED
+STATE=OWNER_OFFLINE_REPAIR_VALIDATION_REQUIRED
 PREVIOUS_RESULT=PASS_R22R5_FAILED_RUN_RESIDUE_CLEAN
 OBJECTIVE=Repair and regression-test every offline-detectable defect class exposed by R21/R22 before any fresh live Gate.
 MAX_ENDPOINT_THIS_ROUND=Runner/validator/package offline source repair and fixtures only; no live/external action.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=P7 readiness polling; rollback systemd diagnostics/postconditions; firewall counter normalization; future one-shot Gate binding contract.
 APPLICABLE_CRITICAL_CONSTRAINTS=R20/R21/R22 consumed/no replay; R22 failed-run residue clean; REALITY runtime absent; WG/HY2 healthy; rollback journal retained historical evidence; no fresh live Gate until R22R6 formal PASS.
-PREFLIGHT=Canonical main; current runner and validator source; R22R6 Gate current; offline-only temporary worktree recommended.
+PREFLIGHT=Canonical main; R22R6 source repair commit 1034d52a7eeb449759b6e87557ad2545d339b5ec; runner blob 2f62064c4057803c3116fa428370fa1ad48bbb76; live validator blob 8aaecac4c873e8a3e112fd5f8da0fa587ed443da; audit validator blob 1e02c0605bc783c142826822b4deaef2f0e5d11c; offline-only temporary worktree required.
 REQUIRED_EVIDENCE=AST runner/validator; delayed-readiness positive; readiness timeout negative; service-inactive negative; listener ownership negative; restart-readiness reuse; rollback systemd postcondition fixtures; iptables counter-only positive and semantic-drift negative; package validator; R19R1 parser regression; zero external action.
 ACCEPTANCE_CRITERIA=Formal PASS only when all required offline regressions pass and Reviewer verifies the diff is bounded to the audited defect classes.
 ROLLBACK_STATUS_OR_PLAN=Source-only rollback to locked pre-repair blobs if offline validation fails.
 OWNER_ONLY_ACTIONS=Run the bounded local offline repair/validation checkpoint supplied by Reviewer when released; no SSH/VPS/provider/Secret/DPAPI/Clash/network action.
 REVIEWER_TO_EXECUTOR_RELAY=Do not release or invoke a fresh live Gate inside R22R6.
-EXECUTOR_TO_REVIEWER_RELAY=Return repaired blobs, minimal diff, full offline fixture/package markers, and proof of zero external action.
+EXECUTOR_TO_REVIEWER_RELAY=Run the locked repaired sources offline and return AST/live-fixture/audit-fixture/package markers plus proof of zero external action.
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
 R22R5_RESULT=PASS
 R22_FAILED_RUN_RESIDUE=CLEAN
+R22R6_SOURCE_REPAIR_COMMIT=1034d52a7eeb449759b6e87557ad2545d339b5ec
+R22R6_RUNNER_BLOB=2f62064c4057803c3116fa428370fa1ad48bbb76
+R22R6_LIVE_VALIDATOR_BLOB=8aaecac4c873e8a3e112fd5f8da0fa587ed443da
+R22R6_AUDIT_VALIDATOR_BLOB=1e02c0605bc783c142826822b4deaef2f0e5d11c
 FRESH_LIVE_GATE_RELEASED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
