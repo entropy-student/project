@@ -106,27 +106,29 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1
-STATE=EXECUTOR_OFFLINE_REPAIR_REQUIRED
-PREVIOUS_RESULT=RETURN_R1_RELEASE_MARKER_CONFLICT
-PARENT_GATE=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
-R1_CANDIDATE_COMMIT=812f18980f9f10d22e2c8399e7022bcfe347c387
-OBJECTIVE=Repair only the read-only Owner checkpoint release contract.
-MAX_ENDPOINT_THIS_ROUND=R1 helper/validator release-contract repair + offline fixtures; mandatory stop before Owner execution.
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+STATE=OWNER_READONLY_CHECKPOINT_RELEASED
+PREVIOUS_RESULT=PASS_G4B_TAKEOVER_REALITY_REBASE_RELEASE_REPAIR_R1R1
+R1R1_PASS_COMMIT=903267dbb531ae56a68f742b12905eec9842d714
+TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+OBJECTIVE=Run one bounded Owner-local read-only Windows/VPS/Baidu reality checkpoint and classify current state.
+MAX_ENDPOINT_THIS_ROUND=One Owner read-only checkpoint; STOP_AT_REVIEWER immediately after markers are returned.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Dedicated R1_OWNER_READONLY_CHECKPOINT_RELEASED marker; FRESH_LIVE_GATE_RELEASED must remain NO.
-APPLICABLE_CRITICAL_CONSTRAINTS=No Owner checkpoint; no SSH/VPS/Provider/Secret/DPAPI/Clash/network target action; no live runner changes; R20+ reference-only.
-REQUIRED_EVIDENCE=AST; positive dedicated release fixture; unreleased/missing/live-release-conflict/Gate-mismatch negatives; all existing R1 fixtures; zero external target action.
-ACCEPTANCE_CRITERIA=Formal Reviewer PASS only after exact helper/validator diff inspection and offline evidence.
-ROLLBACK_STATUS_OR_PLAN=Source-only revert of R1R1-owned source changes.
-OWNER_ONLY_ACTIONS=NONE.
-R1_OWNER_READONLY_CHECKPOINT_RELEASED=NO
+TARGET_AND_SCOPE=Read-only Windows health/local metadata + strict-SSH VPS state + read-only Baidu identity/listing counts.
+APPLICABLE_CRITICAL_CONSTRAINTS=No live runner; no rollback/cleanup; no route/service/profile/provider mutation; no Secret/DPAPI content readout; R20+ state claims remain reference-only.
+REQUIRED_EVIDENCE=Exact sanitized marker block emitted by the R1 helper, including CURRENT_REALITY and mutation=NO markers.
+ACCEPTANCE_CRITERIA=Reviewer classifies CLEAN_BASELINE, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE from Owner checkpoint output.
+ROLLBACK_STATUS_OR_PLAN=Not applicable; checkpoint is read-only.
+OWNER_ONLY_ACTIONS=Run the released R1 helper from Administrator PowerShell 7.6.x with the required local SSH/Baidu paths; return only its emitted marker block.
+R1_OWNER_READONLY_CHECKPOINT_RELEASED=YES
 FRESH_LIVE_GATE_RELEASED=NO
 ```
 
-Canonical repair Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1.md`.
+Canonical parent Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
 
-Reviewer finding: the R1 candidate is not safe to release because its source preflight incorrectly uses `FRESH_LIVE_GATE_RELEASED=YES` as the read-only checkpoint release condition. That would falsely release a future consequential live Gate. R1R1 repairs only this contract.
+R1R1 release-contract repair formally passed. Reviewer decision: `docs/REVIEWER_DECISION_G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1_PASS.md`.
+
+This release is strictly for one read-only Owner checkpoint. It is not a live G4-B implementation release.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -189,15 +191,21 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## NEXT_STEP
 
-Executor performs only `G4B_TAKEOVER_REALITY_REBASE_READONLY_RELEASE_REPAIR_R1R1`: replace the incorrect live-release dependency with the dedicated read-only checkpoint release marker and extend the validator with direct positive/negative production-contract fixtures.
+Owner runs the released R1 helper exactly once from the local Administrator PowerShell 7.6.x environment and returns the sanitized emitted marker block.
 
-After PASS_CANDIDATE, Reviewer inspects the exact two-file diff. Only then may `R1_OWNER_READONLY_CHECKPOINT_RELEASED` be changed to YES for one Owner-local read-only checkpoint. `FRESH_LIVE_GATE_RELEASED` remains NO.
+Reviewer then classifies the current reality as one of:
+
+- `CLEAN_BASELINE` -> prepare one clean G4-B live Gate;
+- `PROJECT_RESIDUAL_PRESENT` -> prepare one bounded cleanup/reconciliation Gate;
+- `AMBIGUOUS_BASELINE` -> prepare one narrow diagnostic Gate.
+
+Do not run any historical R20-R22 helper, live runner, rollback, or manual cleanup before Reviewer classification.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.**
+Run exactly one released read-only R1 checkpoint from Administrator PowerShell 7.6.x and return only the sanitized output marker block.
 
-Do not run the new R1 helper yet. No historical R20-R22 helper/live/rollback/cleanup action is authorized.
+Do not run any historical R20-R22 helper/live/rollback/cleanup command. Do not manually change Clash, WireGuard, routes, services, VPS files, or Baidu contents for this checkpoint.
 
 ## EVIDENCE_POINTERS
 
