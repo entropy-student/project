@@ -11161,3 +11161,28 @@ R20R4_NETWORK_MUTATION=NO
 Interpretation: Baidu `who` succeeded far enough to parse a canonical UID, but the Owner-entered expected value differed. No provider/recovery/VPS/network mutation occurred. Historical R16/R17/R18 stored only hidden-input UID match PASS markers, not the numeric UID, so the prior numeric identifier cannot be recovered from canonical history without violating the prior privacy boundary.
 
 Next Gate: `G4B_R20_RECOVERY_PENDING_OWNER_CONFIRM_READONLY_R6R2L_R20R4R1` at `d13d5fbb22735c50a492396ff1c8fe44b6cb5613`; helper `2b3c418229ad2e340ad4284833bc29aa45f0719c`. It displays the current UID only in a local Windows dialog for Owner confirmation and never emits it to terminal/GitHub evidence.
+
+
+## 2026-10-06 — R20R4R1 safe RETURN; Baidu output encoding defect identified
+
+```text
+R20R4R1_RESULT=RETURN_R20R4R1_BAIDU_UID_PARSE_OR_UNIQUENESS_FAILED_SAFE
+R20R4R1_SAFE_SYNC=PASS
+R20R4R1_SOURCE_IDENTITY=PASS
+R20R4R1_AST=PASS
+R20R4R1_MODE=READ_ONLY
+R20R4R1_FAILURE=BAIDU_UID_PARSE_OR_UNIQUENESS_FAILED
+R20R4R1_TEMP_RUNTIME_CLEANUP=PASS
+R20R4R1_UID_EMITTED_TO_TERMINAL=NO
+R20R4R1_RECOVERY_CONTENT_READ=NO
+R20R4R1_RECOVERY_MUTATION=NO
+R20R4R1_BAIDU_MUTATION=NO
+R20R4R1_SSH_OR_VPS_ACTION=NO
+R20R4R1_NETWORK_MUTATION=NO
+```
+
+Reviewer source comparison found a narrow regression: the R20R4/R20R4R1 Baidu process wrapper omitted explicit UTF-8 stdout/stderr decoding, while previously accepted R16/R17/R18 implementations set both output encodings to UTF-8. The R20R4 error code also combined parse failure and UID mismatch, so that prior return does not independently establish an account change.
+
+R20R4R2 restores only the proven UTF-8 process-decoding seam. No provider/recovery/VPS/network write is introduced.
+
+Next Gate: `G4B_R20_RECOVERY_PENDING_UTF8_REPAIR_READONLY_R6R2L_R20R4R2` at `d46d01f4bebbd9f660d1bc975f42258c99120acb`; helper `1b515b88a14599bd7bc55d837f96ecd38420f547`.
