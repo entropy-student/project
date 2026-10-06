@@ -64,7 +64,9 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
-- G4-B Baidu recovery and provider reconciliation through R18 is formally accepted; R19 returned safely before remote consequential mutation, R19R1 repaired the executable Mihomo path, and the consumed R20 live attempt has been fully reconciled: consequential VPS residue and failed-run recovery pending artifacts are clean, while its rollback journal is retained as historical evidence only. R20R6 formally repaired bounded remote error propagation and rollback diagnostics. R21 returned safely at P0 before consequential mutation because a stale authorization-field binding remained. R21R2 is now formally PASS after the exact +7/-5 two-file repair, PowerShell AST, live fixtures, package validation, and Reviewer diff inspection. R20 and R21 are both consumed and must never be replayed. The only current live Gate is R22, authorized for exactly one fresh invocation; persistent REALITY and `SELF-VPN-V1` remain unaccepted until R22 formally PASSes.
+- G4-B Baidu recovery/provider preparation through **R18**, plus R19/R19R1, remains the last trusted execution anchor for takeover. R18 independently proved the production recovery namespace clean; R19 returned before persistent remote mutation; R19R1 behaviorally repaired the HY2 certificate-fingerprint renderer and passed the installed Mihomo parse regression.
+- By explicit Owner takeover decision on 2026-10-06, **R20 and later material is reference-only until independently re-proven**. R20/R21/R22 execution-state, cleanup, authorization and later live-runner acceptance claims are not used as current truth. Their source changes may be selectively reused only after fresh Reviewer inspection/testing.
+- Persistent REALITY and `SELF-VPN-V1` remain **UNACCEPTED**. Current target reality after the post-R20 attempts is treated as **UNKNOWN_PENDING_READONLY_REBASE**, not guessed from the inconsistent post-R20 Handoff.
 
 ### Secret / recovery
 
@@ -104,33 +106,29 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_POST_R22_P7_COMPLETE_OFFLINE_REPAIR_AUDIT_R6R2L_R22R6
-STATE=OWNER_OFFLINE_REPAIR_VALIDATION_REQUIRED
-PREVIOUS_RESULT=PASS_R22R5_FAILED_RUN_RESIDUE_CLEAN
-OBJECTIVE=Repair and regression-test every offline-detectable defect class exposed by R21/R22 before any fresh live Gate.
-MAX_ENDPOINT_THIS_ROUND=Runner/validator/package offline source repair and fixtures only; no live/external action.
+GATE_ID=G4B_TAKEOVER_REALITY_REBASE_READONLY_R1
+STATE=EXECUTOR_IMPLEMENTATION_REQUIRED
+PREVIOUS_TRUSTED_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
+TRUSTED_ANCHOR_COMMIT=85a33288c23e794d200ddf5e48d5bb7ae0d839c0
+POST_R20_TRUST=REFERENCE_ONLY_UNTIL_INDEPENDENTLY_REPROVEN
+OBJECTIVE=Build and review one bounded read-only Owner checkpoint that independently classifies current Windows/VPS/Baidu G4-B reality.
+MAX_ENDPOINT_THIS_ROUND=New small helper + offline fixtures + Reviewer source inspection only; mandatory stop before Owner execution.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=P7 readiness polling; rollback systemd diagnostics/postconditions; firewall counter normalization; future one-shot Gate binding contract.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20/R21/R22 consumed/no replay; R22 failed-run residue clean; REALITY runtime absent; WG/HY2 healthy; rollback journal retained historical evidence; no fresh live Gate until R22R6 formal PASS.
-PREFLIGHT=Canonical main; R22R6 source repair commit 1034d52a7eeb449759b6e87557ad2545d339b5ec; runner blob 2f62064c4057803c3116fa428370fa1ad48bbb76; live validator blob 8aaecac4c873e8a3e112fd5f8da0fa587ed443da; audit validator blob 1e02c0605bc783c142826822b4deaef2f0e5d11c; offline-only temporary worktree required.
-REQUIRED_EVIDENCE=AST runner/validator; delayed-readiness positive; readiness timeout negative; service-inactive negative; listener ownership negative; restart-readiness reuse; rollback systemd postcondition fixtures; iptables counter-only positive and semantic-drift negative; package validator; R19R1 parser regression; zero external action.
-ACCEPTANCE_CRITERIA=Formal PASS only when all required offline regressions pass and Reviewer verifies the diff is bounded to the audited defect classes.
-ROLLBACK_STATUS_OR_PLAN=Source-only rollback to locked pre-repair blobs if offline validation fails.
-OWNER_ONLY_ACTIONS=Run the bounded local offline repair/validation checkpoint supplied by Reviewer when released; no SSH/VPS/provider/Secret/DPAPI/Clash/network action.
-REVIEWER_TO_EXECUTOR_RELAY=Do not release or invoke a fresh live Gate inside R22R6.
-EXECUTOR_TO_REVIEWER_RELAY=Run the locked repaired sources offline and return AST/live-fixture/audit-fixture/package markers plus proof of zero external action.
-R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22R5_RESULT=PASS
-R22_FAILED_RUN_RESIDUE=CLEAN
-R22R6_SOURCE_REPAIR_COMMIT=1034d52a7eeb449759b6e87557ad2545d339b5ec
-R22R6_RUNNER_BLOB=2f62064c4057803c3116fa428370fa1ad48bbb76
-R22R6_LIVE_VALIDATOR_BLOB=8aaecac4c873e8a3e112fd5f8da0fa587ed443da
-R22R6_AUDIT_VALIDATOR_BLOB=1e02c0605bc783c142826822b4deaef2f0e5d11c
+TARGET_AND_SCOPE=Windows production baseline metadata; SFO3 WG/HY2/REALITY/service/path metadata; Baidu production recovery namespace counts/identity classification; zero mutation.
+APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard retained; HY2 untouched; proxy/TUN OFF; no route/firewall/service/profile/provider/recovery mutation; no Secret value/hash output; R20+ never replayed.
+PREFLIGHT=Canonical main; exact Gate fresh-read; trusted R19R1 constants/contracts only when needed; existing post-R20 helpers are reference patterns only.
+REQUIRED_EVIDENCE=AST; read-only command allowlist; mutation-negative fixtures; Secret-output negative checks; strict SSH contract; provider mutation negative; bounded sanitized output contract.
+ACCEPTANCE_CRITERIA=Helper is independently Reviewer-inspected and proves zero mutation; only then may Owner run exactly one read-only checkpoint.
+ROLLBACK_STATUS_OR_PLAN=Source-only revert for R1-owned files; no target rollback because execution is read-only.
+OWNER_ONLY_ACTIONS=NONE until Reviewer releases the prepared checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Implement a NEW small helper; do not patch/release the live runner and do not inherit R22 run-id/time-window/journal assumptions.
+EXECUTOR_TO_REVIEWER_RELAY=Return helper identity + AST/fixtures/negative mutation/Secret-output evidence; stop before Owner run.
 FRESH_LIVE_GATE_RELEASED=NO
-OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-R20, R21 and R22 are consumed and must never be replayed. R22 failed-run residue is clean. Current work is the complete offline repair audit above; no fresh live Gate exists yet.
+Canonical Gate: `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md`.
+
+This is a deliberate **rebase Gate**, not “R23”. It breaks the accidental post-R20 chain and rebuilds current truth from fresh read-only evidence.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
@@ -166,47 +164,54 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 ## DEFAULT_EXECUTION_CHANNEL
 
 - Reviewer may directly perform normal repository/document/source reconciliation inside the accepted project boundary.
-- Current execution channel is Owner-local Windows PowerShell 7.6.6, Administrator + High integrity, running only the R22R1 read-only reconciliation helper.
-- R22 is consumed. Owner must not rerun R22, invoke rollback mode, or perform manual remote cleanup before Reviewer classifies R22R1.
-- Local paths are never source authority; each consequential run safe-syncs to GitHub `main` and verifies the exact Gate/runner/validator blobs before mutation.
+- Current execution channel is **Executor local/offline implementation only** for the new takeover read-only helper and fixtures.
+- Owner-local execution is **not released yet**. Owner does not run R22/R22R1/R22R6 or any historical live/rollback/cleanup helper.
+- Local paths are never source authority. The future released read-only checkpoint must fresh-sync GitHub `main` and lock its own source identity before any external read.
+- No live G4-B runner is currently authorized or released.
 
 ## CURRENT_ROLLBACK_STATUS
 
-- Standalone Windows WireGuard remains the active production/rollback baseline and must stay enabled through R22R1 and G4-C.
-- Accepted pre-R21 state has WG and HY2 healthy; system proxy OFF and Clash TUN OFF.
-- The consumed R20 attempt is closed: remote consequential residue, transaction residue, and failed-run recovery pending artifacts are clean; recovery finals are absent.
-- The retained R20 rollback journal is historical evidence only and is out of scope for R21; it must not be reused or deleted by R21.
-- R21 is consumed at P0 with no consequential mutation. R22 is consumed at P7 after consequential mutation; its rollback journal and recovery pending artifacts are retained because automatic rollback could not be verified. Persistent REALITY/profile state is not accepted.
-- R22 already returned rollback UNKNOWN. Only R22R1 read-only reconciliation is allowed now; no second live invocation and no manual rollback/cleanup.
+- Standalone Windows WireGuard remains the accepted production/rollback baseline and must stay enabled.
+- Trusted R19/R19R1 evidence says the R19 attempt stopped before persistent remote mutation; R19R1 was local/offline only.
+- R18 is the last trusted Provider production-namespace CLEAN proof before the R20+ chain.
+- Because R20+ execution/cleanup claims are reference-only for takeover, the **current post-R20 runtime/recovery state is UNKNOWN until the new read-only rebase completes**.
+- Do not use or delete any historical rollback journal, recovery artifact, quarantine object, REALITY path/service, profile, runtime identity or Provider object merely to make the tree look clean.
+- No rollback or cleanup is currently authorized.
 
 ## UNRESOLVED
 
-- G4-B remains **IN_PROGRESS** because R22 ended at P7 with rollback UNKNOWN and R22R1 reconciliation is pending.
-- R22 is consumed at P7. Automatic rollback is UNKNOWN, so all mutation remains frozen until R22R1 classifies actual residue/baseline state.
-- Persistent REALITY backup service and persistent `SELF-VPN-V1` remain unaccepted. P10 was never reached, so no accepted three-role profile import exists.
-- G4-C remains pending until G4-B is recovered and formally PASS; it is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
+- G4-B remains **IN_PROGRESS**.
+- Current Windows/VPS/Baidu G4-B reality after R20+ is **UNKNOWN_PENDING_READONLY_REBASE**.
+- Persistent REALITY backup service and persistent `SELF-VPN-V1` are still unaccepted regardless of post-R20 claims.
+- The post-R20 live runner contains potentially useful repairs (structured remote error propagation, readiness polling, rollback diagnostics, iptables counter normalization), but those changes are not a released live candidate until independently re-reviewed and behaviorally qualified.
+- G4-C remains pending and is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
 - G4-D remains pending after G4-C: migrate WG-BASELINE into native Clash/Mihomo WireGuard; standalone Windows WireGuard may be disabled only after formal G4-D PASS.
-- Final v1 production default/control posture, final WireGuard routing/kill-switch policy, and MVP v1 seal remain pending.
+- Final v1 control posture, WireGuard routing/kill-switch policy and MVP v1 seal remain pending.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Owner runs the single R22R1 read-only reconciliation helper. Reviewer then classifies the state as CLEAN, PROJECT_RESIDUAL_PRESENT, or AMBIGUOUS_BASELINE and designs the next bounded Gate. No rollback, cleanup, provider mutation, or new live Gate occurs inside R22R1.
+Executor implements the single new helper required by `G4B_TAKEOVER_REALITY_REBASE_READONLY_R1` and validates it offline. Reviewer then inspects the exact source/fixtures. Only after formal release does Owner run one atomic read-only checkpoint.
+
+The checkpoint will independently classify current reality as `CLEAN_BASELINE`, `PROJECT_RESIDUAL_PRESENT`, or `AMBIGUOUS_BASELINE`. No cleanup and no new live G4-B Gate occurs before that classification.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the exact R22R1 helper once in Administrator PowerShell 7.6.6 using the existing DigitalOcean SSH private key. Do not enter Baidu UID or recovery passphrase; the helper must not request either. Return only its sanitized output to Reviewer.
+**NONE.**
+
+Do not run R22R1, R22R6, the historical live runner, rollback mode, or manual cleanup. Wait for the new takeover read-only helper to be implemented and Reviewer-released.
 
 ## EVIDENCE_POINTERS
 
-Read only what is needed for the current R22R1 decision:
+Read only what is needed for the takeover Gate:
 
-- `docs/G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1.md` — current read-only reconciliation Gate.
-- `scripts/g4b-r22-readonly-reconciliation.ps1` — current read-only helper, blob `5ecb62fe2a1d544db4ea198a7cb3c4df3c5e00f9`.
-- `docs/G4B_R22_P7_RETURN_REVIEW_R6R2L_R22.md` — formal consumed R22 P7 rollback-unknown return.
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22.md` — consumed historical R22 Gate; never replay.
-- `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2_REVIEW.md` — historical R21R2 PASS.
-- `EXECUTION_EVIDENCE.md` — append-only historical proof through R20R6; later R21/R22 proof uses dedicated Reviewer records to avoid large-file rewrites.
-- `README.md -> Canonical current state` — compact snapshot after synchronization.
-- `DECISION_LOG.md` — architecture and Owner-approved final validation scope.
-- Older Gates and `EXECUTOR_HANDOFF.md` are historical/supporting material only; do not let them override `CURRENT_GATE`.
+- `docs/G4B_TAKEOVER_REALITY_REBASE_READONLY_R1.md` — current canonical Gate.
+- trusted anchor commit `85a33288c23e794d200ddf5e48d5bb7ae0d839c0` — formal R19R1 PASS state before R20.
+- `docs/G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1.md` — accepted R19R1 local repair boundary.
+- `docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md` — parent G4-B acceptance contract.
+- `docs/G4_FINAL_THREE_ROLE_VALIDATION_PLAN.md` — Owner-approved final G4-C/G4-D sequence.
+- `docs/REVIEWER_TRANSITION_2026-10-04.md` and `docs/REVIEWER_TRANSITION_2026-10-05.md` — accepted pre-R20 chronology/supporting context.
+- current post-R20 runner/validators/helpers — **reference-only source material**, never current-state authority.
+- `EXECUTION_EVIDENCE.md` — query only exact trusted sections when a fact needs proof; do not bulk replay it.
+- `EXECUTOR_HANDOFF.md` and R20+ Gate narratives are historical/supporting material only and cannot override this Handoff.
+
