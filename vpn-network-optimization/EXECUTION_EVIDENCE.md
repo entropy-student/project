@@ -10928,3 +10928,32 @@ G4C_AUTHORIZED_BY_THIS_GRANT=NO
 ```
 
 Owner approved the previously described R19 scope: persistent project-owned REALITY credentials/service and TCP/443 listener, one persistent SELF-VPN-V1 profile import without activation, and encrypted Baidu recovery pending→final promotion as part of one bounded live run. Local-only inputs remain local. Historical live Gate/authorization is not used as execution authority.
+
+
+## 2026-10-06 — R19 safe RETURN at P5 local Mihomo parse
+
+```text
+R19_SOURCE_IDENTITY=PASS
+R19_AUTHORIZATION_READBACK=PASS
+R19_AST_RUNNER=PASS
+R19_AST_VALIDATOR=PASS
+R19_OFFLINE_VALIDATOR=PASS
+R19_PRE_LIVE_RELEASE_CHECK=PASS
+R19_LOCAL_INPUTS=READY
+R19_LIVE_INVOCATION_COUNT=1
+G4B_RECOVERY_PENDING_VERIFIED=YES
+RUNNER_FAILED_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
+FAILURE_CODE=MIHOMO_CONFIG_PARSE_FAILED
+CONSEQUENTIAL_MUTATION_STARTED=NO
+REMOTE_ROLLBACK=PASS
+BAIDU_PENDING_ROLLBACK=PASS
+OWNER_R19_CHECKPOINT=RETURN_FOR_REVIEW
+NO_SECOND_R19_ATTEMPT=YES
+G4C_EXECUTED=NO
+```
+
+Reviewer result: `RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED`.
+
+This is a safe local pre-consequence failure. The generated three-role client profile failed the real installed Mihomo parse check before persistent remote mutation. The owned Baidu pending recovery object was rolled back. No R19 retry is authorized.
+
+Next Gate: `G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1` at blob `7e9e7bf4f69645a695d418bd934c04d79625707c`, local Codex offline only.
