@@ -760,3 +760,12 @@ Decision: `PASS_R6R2L_R17_STALE_PENDING_QUARANTINE`.
 R17 executed exactly once under the previously authorized/relocked Gate. Fresh precheck proved one pending source and absent quarantine target. Exactly one source→quarantine rename succeeded. Post-readback proved production namespace final=0/pending=0/unknown=0, source absent and quarantine present. Rollback was not required; permanent delete did not occur.
 
 R17 post-readback is not treated as the final durable CLEAN proof. A separate read-only Gate `G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18` at blob `f42237242503405c11f652240b4baedec8e71e22` must independently report CLEAN before live G4-B resumes. The quarantine object remains retained and outside the production project prefix.
+
+
+## 2026-10-06 — Release one R19 live invocation
+
+Decision: `AUTHORIZE_R19_ONE_SHOT_LIVE_RESUME`.
+
+Fresh Owner authorization is recorded for Gate `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19` only. The released execution identity is runner `2faf59ec5a1653a275b11504fe567d0fc871f94e` and validator `26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3`. Exactly one live invocation is authorized.
+
+Scope includes persistent project-owned REALITY service/credentials, project TCP/443 listener, one SELF-VPN-V1 profile import without activation, and encrypted Baidu recovery pending→final promotion. G4-C, automatic switching, second live invocation, removal of WG/HY2, and permanent deletion of the retained R17 quarantine object remain outside authorization.
