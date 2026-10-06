@@ -10647,3 +10647,19 @@ R17R1R3_PROVIDER_ACTION=NO
 Reviewer source reconciliation found a production helper defect: `Invoke-R17Rollback` emits sanitized markers plus a final Boolean on the success stream, while callers assign the complete stream to `$rollbackOk`. This captures the markers and can turn `$rollbackOk` into an Object[] whose truthiness is not the intended strict Boolean rollback result.
 
 Forward-success behavior is executable-offline proven. Parent R17R1 remains blocked. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_ROLLBACK_OUTPUT_REPAIR_R6R2L_R17R1R4`.
+
+
+## 2026-10-06 — R17R1R4 first repair application stopped before write
+
+Result: `RETURN_R17R1R4_REPAIR_MATCHER_CRLF_MISMATCH`.
+
+Owner-local sanitized evidence:
+```text
+SAFE_FAST_FORWARD=PASS
+R17R1R4_PREFLIGHT=PASS
+REPAIR_MATCH_COUNT=0
+EXPECTED_REPAIR_MATCH_COUNT=3
+SOURCE_WRITE_REACHED=NO
+```
+
+Reviewer readback confirmed the three production `Invoke-R17Rollback` assignment call sites remain present at the accepted helper identity. The first repair matcher anchored at line end without accommodating CRLF, so it failed before `WriteAllText`. This is a repair-harness defect, not new production behavior evidence. R17R1R4 remains the active Gate; production/provider state remains untouched.
