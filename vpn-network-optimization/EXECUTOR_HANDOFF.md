@@ -1,11 +1,15 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — P2R1 Owner-local artifact repair
+## Current execution status — P2R2 Phase A
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2R1_OWNER_LOCAL_ARTIFACT_REPAIR
-STATE=READY_FOR_EXECUTOR
+GATE_ID=3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE
+STATE=READY_FOR_EXECUTOR_SERVER_STAGE
+PHASE=A_SERVER_STAGE_ONLY
+TARGET=143.198.159.233
+REMOTE_STAGE=/root/3xui-owner-transfer
 EXECUTOR_RELEASED=YES
+OWNER_APPDATA_WRITE_ALLOWED=NO
 P3_RELEASED=NO
 STOP_AT_REVIEWER=YES
 ```
@@ -14,22 +18,27 @@ STOP_AT_REVIEWER=YES
 
 Read only:
 
-1. `vpn-network-optimization/docs/3X_UI_P2R1_OWNER_LOCAL_ARTIFACT_REPAIR.md`
+1. `vpn-network-optimization/docs/3X_UI_P2R2_SERVER_STAGE_OWNER_MATERIALIZE.md`
 2. current `vpn-network-optimization/REVIEWER_HANDOFF.md`
-3. `vpn-network-optimization/docs/REVIEWER_RECONCILIATION_P2_LOCAL_ARTIFACT_MISSING_2026-10-06.md`
-4. P2 Executor Evidence only as needed.
+3. P2 server-side accepted Evidence/reconciliation only as needed.
 
-Repair only these Owner-visible files:
+Your scope is remote VPS staging only.
+
+Create and validate only:
 
 ```text
-C:\Users\34707\AppData\Local\vpn-network-optimization\3xui-fastpath\subscription.url
-C:\Users\34707\AppData\Local\vpn-network-optimization\3xui-fastpath\self-vpn-3xui.yaml
+/root/3xui-owner-transfer/subscription.url
+/root/3xui-owner-transfer/self-vpn-3xui.yaml
 ```
 
-Do not execute P3, do not import/activate Clash, do not alter system proxy/TUN/WireGuard/routes, do not rebuild server protocol state, and do not touch old VPS.
+Do **not** inspect, discover, troubleshoot or write:
 
-After repair write sanitized Evidence, push `main`, and STOP_AT_REVIEWER.
+`C:\Users\34707\AppData`
+
+Do not execute P3.
+
+After sanitized Evidence is committed to `main`, STOP_AT_REVIEWER.
 
 ## Owner relay
 
-NONE until Reviewer requests post-repair read-back.
+NONE.
