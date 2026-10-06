@@ -128,7 +128,7 @@ function Assert-CanonicalSource {
     $handoffPath = Join-Path $script:projectRoot 'REVIEWER_HANDOFF.md'
     $handoff = [IO.File]::ReadAllText($handoffPath,[Text.Encoding]::UTF8)
     if ($Mode -eq 'Run') {
-        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
+        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
         Assert-G4B ($handoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES\r?$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
         Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
     }
