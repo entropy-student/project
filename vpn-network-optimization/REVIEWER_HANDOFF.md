@@ -125,7 +125,7 @@ SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO
 CONSEQUENTIAL_MUTATION_STARTED=YES
 REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION
 CURRENT_HELPER=scripts/g4b-r22-readonly-reconciliation.ps1
-R22R1_HELPER_BLOB=eba466b8ff07efe7074acc9a390deeee4659215e
+R22R1_HELPER_BLOB=5ecb62fe2a1d544db4ea198a7cb3c4df3c5e00f9
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
@@ -201,7 +201,7 @@ Run the exact R22R1 helper once in Administrator PowerShell 7.6.6 using the exis
 Read only what is needed for the current R22R1 decision:
 
 - `docs/G4B_R22_P7_ROLLBACK_UNKNOWN_READONLY_R6R2L_R22R1.md` — current read-only reconciliation Gate.
-- `scripts/g4b-r22-readonly-reconciliation.ps1` — current read-only helper, blob `eba466b8ff07efe7074acc9a390deeee4659215e`.
+- `scripts/g4b-r22-readonly-reconciliation.ps1` — current read-only helper, blob `5ecb62fe2a1d544db4ea198a7cb3c4df3c5e00f9`.
 - `docs/G4B_R22_P7_RETURN_REVIEW_R6R2L_R22.md` — formal consumed R22 P7 rollback-unknown return.
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22.md` — consumed historical R22 Gate; never replay.
 - `docs/G4B_R21_P0_AUTH_BINDING_REPAIR_R6R2L_R21R2_REVIEW.md` — historical R21R2 PASS.
