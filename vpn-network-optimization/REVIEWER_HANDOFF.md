@@ -64,7 +64,7 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
-- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. R6R1 subsequently closed the ACL-validator completeness gap. The first bounded live attempt R5 reached P5 and returned before consequential mutation; R6 excluded local DPAPI/HY2/Mihomo, R7 identified PowerShell success-stream pollution at the Baidu process-result boundary, and R8 formally accepted the one-line `[void]$psi.Environment.Remove(...)` repair with full positive/negative regression coverage. R17R1 offline code validation is now formally PASS: final helper/validator identities are locked, forward/rollback executable fixtures pass, negative state fixtures pass, and the previously recorded exact R17 authorization is released. G4-B remains IN_PROGRESS until the R17 provider checkpoint and subsequent clean readback complete.
+- G4-B Baidu recovery and provider reconciliation through R18 is formally accepted; R19 returned safely before remote consequential mutation, R19R1 repaired the executable Mihomo path, and the consumed R20 live attempt has been fully reconciled: consequential VPS residue and failed-run recovery pending artifacts are clean, while its rollback journal is retained as historical evidence only. R20R6 formally repaired bounded remote error propagation and rollback diagnostics. The only current live Gate is R21, authorized for exactly one fresh invocation; persistent REALITY and `SELF-VPN-V1` are not accepted until R21 formally PASSes.
 
 ### Secret / recovery
 
@@ -353,51 +353,29 @@ Owner explicitly narrowed final workload validation: existing performance eviden
 
 ## DEFAULT_EXECUTION_CHANNEL
 
-- Reviewer may directly perform normal repository/document/source repair when inside the current accepted project boundary.
-- Owner executes consequential Windows checkpoints in PowerShell 7.6.6 + Administrator + High integrity.
-- Executor is used when independent implementation/testing materially improves safety or speed; current R3R2 has `EXECUTOR_ROLE=NO_ACTION`.
-- Owner-local convenience path previously used:
-  `C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2c-owner-clash-real-canary.ps1`
-- Local path is not source authority; every consequential run still safe-syncs to GitHub `main` and locks blobs.
+- Reviewer may directly perform normal repository/document/source reconciliation inside the accepted project boundary.
+- Current consequential execution channel is Owner-local Windows PowerShell 7.6.6, Administrator + High integrity, using the R21 runner locked by blob.
+- R21 is one-shot. Owner must not improvise a fallback, second invocation, or manual rollback after a RETURN/ambiguity.
+- Local paths are never source authority; each consequential run safe-syncs to GitHub `main` and verifies the exact Gate/runner/validator blobs before mutation.
 
 ## CURRENT_ROLLBACK_STATUS
 
-- WireGuard is the active production/rollback path.
-- R3R2 final read-back restored the pre-canary network state.
-- The temporary ActiveStore-only HY2 /32 route is absent.
-- The unique temporary C2C profile is removed and the Clash profile store returned to baseline.
-- Project runtime cleanup passed and no R3R2 temporary runtime remains accepted as live state.
-- System proxy is OFF and Clash TUN is OFF.
+- Standalone Windows WireGuard remains the active production/rollback baseline and must stay enabled through R21 and G4-C.
+- Accepted pre-R21 state has WG and HY2 healthy; system proxy OFF and Clash TUN OFF.
+- The consumed R20 attempt is closed: remote consequential residue, transaction residue, and failed-run recovery pending artifacts are clean; recovery finals are absent.
+- The retained R20 rollback journal is historical evidence only and is out of scope for R21; it must not be reused or deleted by R21.
+- R21 has not yet executed, so no R21 rollback journal or persistent REALITY/profile state is accepted yet.
+- On R21 failure, runner-owned bounded rollback may execute; any failure/ambiguity/UNKNOWN returns to Reviewer with no second invocation and no manual rollback.
 
 ## UNRESOLVED
 
-- G4-B0 is formally PASS and closed.
-- G4-B is IN_PROGRESS. R17R1, R17 and R18 are formally PASS; the production Baidu recovery namespace is independently CLEAN (0/0/0). R19 fresh Owner authorization is granted and exactly one live checkpoint is released.
-- R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11→R16 reconciled local ACL/provider residual state; R17 quarantined the single stale pending; R18 independently proved production namespace CLEAN. The historical live one-shot is not replayable. R19 is relocked to the current R10-repaired runner/validator, fresh Owner authorization is granted, and one live invocation is released.
-- Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
-- G4-C remains separate and pending after G4-B formal acceptance, but its Owner-approved scope is now only a three-role manual ChatGPT conversation smoke (HY2/WG/REALITY), not a heavy benchmark/workload matrix.
-- G4-D is added before v1 seal: migrate WG-BASELINE from the standalone Windows WireGuard dependency into a native Clash/Mihomo WireGuard node; only after G4-D formal PASS may the Windows WireGuard client be disabled.
-- Final v1 production default/control posture remains pending G4.
-- Final WireGuard routing / kill-switch policy remains pending v1 sealing.
+- G4-B remains **IN_PROGRESS** solely because R21 has not yet been executed and formally reviewed.
+- Exactly one fresh R21 live invocation is authorized; a second R21 invocation is forbidden.
+- Persistent REALITY backup service and persistent `SELF-VPN-V1` are still unaccepted.
+- G4-C remains pending after formal R21 PASS and is limited to the Owner-approved three-role manual ChatGPT conversation smoke.
+- G4-D remains pending after G4-C: migrate WG-BASELINE into native Clash/Mihomo WireGuard; standalone Windows WireGuard may be disabled only after formal G4-D PASS.
+- Final v1 production default/control posture, final WireGuard routing/kill-switch policy, and MVP v1 seal remain pending.
 - G3-B fresh-target live migration rehearsal remains deferred.
-
-## POST-INTERRUPTION REVIEW — 2026-10-06
-
-```text
-POST_INTERRUPTION_REVIEW=PASS
-CANONICAL_BRANCH=main
-R17R1_RESULT=PASS_R17R1_OFFLINE_CODE_VALIDATION
-R17_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
-R17_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
-R17_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
-R17_EXECUTION_AUTHORIZED=YES
-R17_EXECUTION_RELEASED=YES
-R17_PROVIDER_MUTATION_EXECUTED=NO
-NEXT_ACTION=OWNER_R17_ONE_SHOT_QUARANTINE
-```
-
-Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and final source blobs after the interrupted turn. Canonical state is consistent. Historical stale wording in this Handoff was reconciled; no source/provider/runtime action occurred during this documentation review.
 
 ## NEXT_STEP
 
@@ -409,27 +387,12 @@ Run exactly one R21 live checkpoint under the standing documented authorization.
 
 ## EVIDENCE_POINTERS
 
-Read only what is needed:
+Read only what is needed for the current R21 decision:
 
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_CODE_VALIDATION_R6R2L_R17R1.md` — completed and formally PASSed offline code-validation Gate; no provider action occurred.
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — current relocked consequential R17 Gate; R17R1 formally PASS, Owner authorization released, provider mutation not yet executed.
-- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md` — Reviewer preparation evidence with locked helper/validator identities and source-boundary review.
-- `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 read-only Gate proving final=0/pending=1/unknown=0.
-- `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 local Owner normalization Gate.
-
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R17 chronology, including R15 formal PASS, R16 stale-pending observation and the prepared R17 quarantine boundary.
-- `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current metadata-only ACL-owner drift Gate.
-- `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — historical R11 read-only residual-state Gate and return.
-- `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser-repair Gate and history.
-- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — historical failed live retry Gate; do not execute.
-- `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
-- `EXECUTION_EVIDENCE.md` — append-only execution proof; accepted R2R3/R2R3V2 sections are near the tail.
-- `DECISION_LOG.md` — architecture and authorization rationale, including accepted scanner repair and fresh R3R2 authorization requirement.
-- `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md` — accepted real canary package contract.
-- `docs/G3C_C2B_OWNER_CANARY_PACKAGE.md` — accepted synthetic UI canary package.
-- `docs/G3C_MANUAL_CONTROL_CONTRACT.md` — accepted manual-control contract.
-- `docs/G3B_MIGRATION_PACKAGE.md` and `docs/G3B_STAGED_INSTALL_MANIFEST.md` — accepted G3-B offline migration package.
-- `docs/ROUND_TIMING_RETROSPECTIVE.md` — process/timing notes only; not canonical project truth.
-- `EXECUTOR_HANDOFF.md` — historical Executor facts only; never use it to override this file.
-
-Historical Reviewer narrative remains in Git history and the transition snapshot; it is intentionally not duplicated here.
+- `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21.md` — current one-shot live Gate and exact Owner checkpoint boundary.
+- `docs/G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6.md` — formally accepted offline repair that produced the current R21 runner.
+- `EXECUTION_EVIDENCE.md` — append-only proof; the R20R5/R20R6 formal evidence and R21 release are at the tail.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current chronology through R20R6 formal PASS and R21 release.
+- `README.md -> 2026-10-06 Canonical current state — R20R6 PASS / R21 released` — compact project snapshot; earlier README “current/next” wording is historical.
+- `DECISION_LOG.md` — architecture and Owner-authorized role/final-validation decisions when rationale is needed.
+- Older R5–R20 Gate files and `EXECUTOR_HANDOFF.md` are historical/supporting material only; do not let them override `CURRENT_GATE`.
