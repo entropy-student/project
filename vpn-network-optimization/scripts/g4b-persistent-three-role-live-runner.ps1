@@ -84,6 +84,23 @@ function Invoke-GitRead {
     return (($result -join [Environment]::NewLine).Trim())
 }
 
+function Assert-LiveHandoffContract {
+    param([string]$Handoff,[string]$GateId,[string]$Round)
+    Assert-G4B ($GateId -match '^[A-Z0-9_]{8,160}$') 'LIVE_GATE_ID_INVALID'
+    Assert-G4B ($Round -match '^R[0-9]+$') 'LIVE_ROUND_ID_INVALID'
+    $requirements=[ordered]@{
+        LIVE_G4B_GATE_NOT_CURRENT=('GATE_ID='+$GateId)
+        REVIEWER_LIVE_INVOCATION_ALREADY_CONSUMED=($Round+'_LIVE_INVOCATIONS_CONSUMED=0')
+        REVIEWER_LIVE_AUTHORIZATION_MISSING=($Round+'_LIVE_INVOCATIONS_AUTHORIZED=1')
+        REVIEWER_SECOND_LIVE_INVOCATION_POLICY_INVALID=('SECOND_'+$Round+'_LIVE_INVOCATION_AUTHORIZED=NO')
+        REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED='SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK'
+    }
+    foreach($entry in $requirements.GetEnumerator()){
+        $pattern='(?m)^'+[regex]::Escape([string]$entry.Value)+'\r?$'
+        Assert-G4B ([regex]::IsMatch($Handoff,$pattern)) ([string]$entry.Key)
+    }
+}
+
 function Assert-CanonicalSource {
     $origin = Invoke-GitRead -Arguments @('remote','get-url','origin')
     Assert-G4B ($origin -match '(?i)(?:github\.com[:/]entropy-student/project(?:\.git)?)$') 'CANONICAL_ORIGIN_INVALID'
@@ -128,11 +145,7 @@ function Assert-CanonicalSource {
     $handoffPath = Join-Path $script:projectRoot 'REVIEWER_HANDOFF.md'
     $handoff = [IO.File]::ReadAllText($handoffPath,[Text.Encoding]::UTF8)
     if ($Mode -eq 'Run') {
-        Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22\r?$') 'LIVE_G4B_GATE_NOT_CURRENT'
-        Assert-G4B ($handoff -match '(?m)^R22_LIVE_INVOCATIONS_CONSUMED=0\r?$') 'REVIEWER_LIVE_INVOCATION_ALREADY_CONSUMED'
-        Assert-G4B ($handoff -match '(?m)^R22_LIVE_INVOCATIONS_AUTHORIZED=1\r?$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
-        Assert-G4B ($handoff -match '(?m)^SECOND_R22_LIVE_INVOCATION_AUTHORIZED=NO\r?$') 'REVIEWER_SECOND_LIVE_INVOCATION_POLICY_INVALID'
-        Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK\r?$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
+        Assert-LiveHandoffContract -Handoff $handoff -GateId 'G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R21R2_R6R2L_R22' -Round 'R22'
     }
 }
 
@@ -915,7 +928,7 @@ function Get-RemoteErrorCodeAllowlist {
         'ACCESS_IDENTITY_PROBE_FAILED','CANDIDATE_OWNERSHIP_MISMATCH','CANDIDATE_SERVICE_READBACK_FAILED','CANDIDATE_TRANSACTION_MISSING',
         'CLOSEOUT_OWNERSHIP_MISMATCH','CLOSEOUT_PASS_CANDIDATE_NOT_RECORDED','CLOSEOUT_REVIEWER_PASS_REQUIRED','CLOSEOUT_SERVICE_READBACK_FAILED','CLOSEOUT_TEMP_OWNERSHIP_UNPROVEN','CLOSEOUT_TRANSACTION_MISSING',
         'CONFIG_NOT_STAGED','MIHOMO_ASSET_HASH_MISMATCH','MIHOMO_ASSET_SIZE_LIMIT','MIHOMO_VERSION_MISMATCH','PERSISTENT_TARGET_COLLISION',
-        'PROJECT_DIRECTORY_CONTRACT_INVALID','PROJECT_DIRECTORY_PARENT_INVALID','REALITY_FILESYSTEM_METADATA_INVALID','REALITY_LISTENER_READBACK_INVALID','REALITY_RUNTIME_ACCESS_INVALID','REALITY_SECRET_UNRELATED_READ_ACCESS',
+        'PROJECT_DIRECTORY_CONTRACT_INVALID','PROJECT_DIRECTORY_PARENT_INVALID','REALITY_DAEMON_RELOAD_FAILED','REALITY_FILESYSTEM_METADATA_INVALID','REALITY_LISTENER_NOT_READY','REALITY_LISTENER_OWNERSHIP_MISMATCH','REALITY_LISTENER_READBACK_INVALID','REALITY_LISTENER_READINESS_TIMEOUT','REALITY_RUNTIME_ACCESS_INVALID','REALITY_SECRET_UNRELATED_READ_ACCESS','REALITY_SERVICE_ENABLE_FAILED','REALITY_SERVICE_FAILED','REALITY_SERVICE_NOT_ACTIVE','REALITY_SERVICE_READINESS_TIMEOUT','REALITY_SERVICE_RESTART_FAILED','REALITY_SERVICE_STATE_QUERY_FAILED',
         'REMOTE_ACTION_INVALID','REMOTE_DRIFT_BASELINE_INVALID','REMOTE_FIREWALL_BASELINE_UNAVAILABLE','REMOTE_FIREWALL_DRIFT','REMOTE_IPTABLES4_BASELINE_FAILED','REMOTE_IPTABLES6_BASELINE_FAILED',
         'REMOTE_IPV4_ROUTE_BASELINE_FAILED','REMOTE_IPV4_RULE_BASELINE_FAILED','REMOTE_IPV6_ROUTE_BASELINE_FAILED','REMOTE_IPV6_RULE_BASELINE_FAILED','REMOTE_NATIVE_COMMAND_FAILED','REMOTE_NFT_BASELINE_FAILED','REMOTE_NFT_BASELINE_INVALID',
         'REMOTE_REALITY_SERVICE_PREEXISTED','REMOTE_ROOT_REQUIRED','REMOTE_ROUTE_BASELINE_SHAPE_INVALID','REMOTE_ROUTE_DRIFT','REMOTE_SERVICE_BASELINE_FAILED','REMOTE_SERVICE_BASELINE_SHAPE_INVALID','REMOTE_SERVICE_DRIFT',
@@ -923,7 +936,7 @@ function Get-RemoteErrorCodeAllowlist {
         'ROLLBACK_BINARY_OWNERSHIP_UNPROVEN','ROLLBACK_BINARY_REMOVE_UNVERIFIED','ROLLBACK_CONFIG_OWNERSHIP_UNPROVEN','ROLLBACK_CONFIG_REMOVE_UNVERIFIED','ROLLBACK_GROUP_REMOVE_UNVERIFIED',
         'ROLLBACK_NO_TRANSACTION_READBACK_FAILED','ROLLBACK_OWNERSHIP_MISMATCH','ROLLBACK_PARENT_OWNERSHIP_UNPROVEN','ROLLBACK_PARENT_REMOVE_UNVERIFIED','ROLLBACK_PARENT_SCOPE_INVALID',
         'ROLLBACK_POSTREMOVE_READBACK_FAILED','ROLLBACK_RUNTIME_OWNERSHIP_UNPROVEN','ROLLBACK_RUNTIME_REMOVE_UNVERIFIED','ROLLBACK_SECRETS_DIRECTORY_OWNERSHIP_UNPROVEN',
-        'ROLLBACK_SECRETS_DIRECTORY_REMOVE_UNVERIFIED','ROLLBACK_SERVICE_STOP_UNVERIFIED','ROLLBACK_TEMP_OWNERSHIP_UNPROVEN','ROLLBACK_UNIT_OWNERSHIP_UNPROVEN',
+        'ROLLBACK_DAEMON_RELOAD_FAILED','ROLLBACK_GROUP_DELETE_FAILED','ROLLBACK_SECRETS_DIRECTORY_REMOVE_UNVERIFIED','ROLLBACK_SERVICE_DISABLE_UNVERIFIED','ROLLBACK_SERVICE_STOP_UNVERIFIED','ROLLBACK_TEMP_OWNERSHIP_UNPROVEN','ROLLBACK_UNIT_OWNERSHIP_UNPROVEN','ROLLBACK_USER_DELETE_FAILED',
         'ROLLBACK_UNIT_REMOVE_UNVERIFIED','ROLLBACK_USER_REMOVE_UNVERIFIED','RUN_OWNERSHIP_MARKER_INVALID','RUNTIME_CONFIG_CHECK_IDENTITY_UNAVAILABLE',
         'RUNTIME_GROUP_COLLISION','RUNTIME_USER_COLLISION','STAGE_TEMP_OWNERSHIP_UNPROVEN','STAGE_TEMP_REMOVE_UNVERIFIED','STAGED_BINARY_MISSING','TCP443_LISTENER_QUERY_FAILED'
     )
@@ -1018,7 +1031,7 @@ function Invoke-Remote {
 
 function Get-RemoteSupervisor {
 @'
-import base64, gzip, hashlib, json, os, pathlib, pwd, grp, re, secrets, shutil, socket, stat, subprocess, sys, urllib.request
+import base64, gzip, hashlib, json, os, pathlib, pwd, grp, re, secrets, shutil, socket, stat, subprocess, sys, time, urllib.request
 REQ=json.loads(base64.b64decode('__REQUEST_B64__'))
 RUN_ID=REQ['run_id']
 ACTION=REQ['action']
@@ -1036,9 +1049,9 @@ TXN=pathlib.Path('/var/lib')/('vpn-network-optimization-g4b-'+RUN_ID)
 TMP=pathlib.Path('/tmp')/('vpn-network-optimization-g4b-'+RUN_ID)
 class GateError(Exception):
     def __init__(self, code): self.code=code
-def run(args, timeout=30, input_bytes=None):
+def run(args, timeout=30, input_bytes=None, error_code='REMOTE_NATIVE_COMMAND_FAILED'):
     r=subprocess.run(args, input=input_bytes, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout, check=False)
-    if r.returncode != 0: raise GateError('REMOTE_NATIVE_COMMAND_FAILED')
+    if r.returncode != 0: raise GateError(error_code)
     return r.stdout
 def absent(path):
     try: path.lstat(); return False
@@ -1096,6 +1109,15 @@ def normalize_nft(value,parent=''):
         return result
     if isinstance(value,list): return [normalize_nft(item,parent) for item in value]
     return value
+def normalize_iptables_save(text):
+    lines=[]
+    for raw in text.splitlines():
+        if not raw or raw.startswith('#'): continue
+        line=re.sub(r'^\[\d+:\d+\](?=\s)', '', raw.strip())
+        if line.startswith(':'):
+            line=re.sub(r'\s+\[\d+:\d+\]\s*$', '', line)
+        lines.append(line)
+    return lines
 def capture_remote_drift():
     routes={}
     queries=(
@@ -1123,11 +1145,8 @@ def capture_remote_drift():
         firewall['nft']=canonical_json(normalize_nft(nft))
     for name,command,code in (('iptables4','iptables-save','REMOTE_IPTABLES4_BASELINE_FAILED'),('iptables6','ip6tables-save','REMOTE_IPTABLES6_BASELINE_FAILED')):
         if shutil.which(command):
-            text=checked_text([command],code); lines=[]
-            for line in text.splitlines():
-                if not line or line.startswith('#'): continue
-                lines.append(re.sub(r'^\[\d+:\d+\](?=\s)', '', line.strip()))
-            firewall[name]=canonical_json(lines)
+            text=checked_text([command],code)
+            firewall[name]=canonical_json(normalize_iptables_save(text))
     if not firewall: raise GateError('REMOTE_FIREWALL_BASELINE_UNAVAILABLE')
     service_text=checked_text(['systemctl','list-units','--type=service','--state=active','--no-legend','--no-pager','--plain','--full'],'REMOTE_SERVICE_BASELINE_FAILED')
     services=[]
@@ -1241,21 +1260,53 @@ def configure():
     run(['systemd-analyze','verify',str(staged)],timeout=20)
     write_new(UNIT,unit,0o644); s['created_unit']=True; save_state(s)
     return {'ok':True,'config_parse':'PASS','systemd_unit_parse':'PASS','runtime_access':'PASS','unrelated_secret_read':'DENIED'}
-def enable():
-    s=load_state()
-    if not s.get('created_unit') or not s.get('created_secret_config'): raise GateError('CONFIG_NOT_STAGED')
-    run(['systemctl','daemon-reload']); run(['systemctl','enable','--now',SERVICE],timeout=45); s['service_started']=True; save_state(s)
-    return status()
-def restart():
-    run(['systemctl','restart',SERVICE],timeout=45)
-    return status()
-def status():
-    active=run(['systemctl','is-active',SERVICE],timeout=10).decode().strip()
+def get_reality_service_state():
+    result=subprocess.run(['systemctl','show',SERVICE,'--no-pager','--property=LoadState,ActiveState,SubState,Result,ExecMainCode,ExecMainStatus'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=10)
+    if result.returncode not in (0,1): raise GateError('REALITY_SERVICE_STATE_QUERY_FAILED')
+    state={'LoadState':'unknown','ActiveState':'unknown','SubState':'unknown','Result':'unknown','ExecMainCode':'unknown','ExecMainStatus':'unknown'}
+    for line in result.stdout.splitlines():
+        if '=' in line:
+            key,value=line.split('=',1)
+            if key in state: state[key]=value
+    return state
+def get_reality_listener_state():
     ss=subprocess.run(['ss','-H','-ltnp','sport','=',':443'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=10)
     if ss.returncode: raise GateError('TCP443_LISTENER_QUERY_FAILED')
     lines=ss.stdout.splitlines()
-    owned=bool(lines) and all('mihomo' in x.lower() for x in lines)
-    if active!='active' or not lines or not owned: raise GateError('REALITY_LISTENER_READBACK_INVALID')
+    if not lines: return 'absent'
+    if all('mihomo' in line.lower() for line in lines): return 'mihomo'
+    return 'foreign'
+def wait_reality_ready(timeout=15.0,interval=0.25):
+    deadline=time.monotonic()+timeout
+    service={'ActiveState':'unknown'}
+    listener='absent'
+    while True:
+        service=get_reality_service_state()
+        listener=get_reality_listener_state()
+        if service['ActiveState']=='active' and listener=='mihomo':
+            return {'ok':True,'service':'active','tcp443_listener':'mihomo'}
+        if listener=='foreign': raise GateError('REALITY_LISTENER_OWNERSHIP_MISMATCH')
+        if time.monotonic()>=deadline:
+            if service['ActiveState']=='failed': raise GateError('REALITY_SERVICE_FAILED')
+            if service['ActiveState']!='active': raise GateError('REALITY_SERVICE_READINESS_TIMEOUT')
+            raise GateError('REALITY_LISTENER_READINESS_TIMEOUT')
+        time.sleep(interval)
+def enable():
+    s=load_state()
+    if not s.get('created_unit') or not s.get('created_secret_config'): raise GateError('CONFIG_NOT_STAGED')
+    run(['systemctl','daemon-reload'],error_code='REALITY_DAEMON_RELOAD_FAILED')
+    run(['systemctl','enable','--now',SERVICE],timeout=45,error_code='REALITY_SERVICE_ENABLE_FAILED')
+    s['service_started']=True; save_state(s)
+    return wait_reality_ready()
+def restart():
+    run(['systemctl','restart',SERVICE],timeout=45,error_code='REALITY_SERVICE_RESTART_FAILED')
+    return wait_reality_ready()
+def status():
+    service=get_reality_service_state()
+    listener=get_reality_listener_state()
+    if listener=='foreign': raise GateError('REALITY_LISTENER_OWNERSHIP_MISMATCH')
+    if service['ActiveState']!='active': raise GateError('REALITY_SERVICE_NOT_ACTIVE')
+    if listener!='mihomo': raise GateError('REALITY_LISTENER_NOT_READY')
     return {'ok':True,'service':'active','tcp443_listener':'mihomo'}
 def rollback():
     if absent(TXN):
@@ -1269,10 +1320,15 @@ def rollback():
     if s.get('created_unit') and not absent(UNIT):
         text=UNIT.read_text(encoding='utf-8')
         if not text.startswith('# G4B_RUN_ID='+RUN_ID): raise GateError('ROLLBACK_UNIT_OWNERSHIP_UNPROVEN')
-        run(['systemctl','disable','--now',SERVICE],timeout=30)
+        disable_result=subprocess.run(['systemctl','disable','--now',SERVICE],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=30)
         active=subprocess.run(['systemctl','is-active',SERVICE],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=10)
-        if active.returncode==0 or active.stdout.strip()=='active': raise GateError('ROLLBACK_SERVICE_STOP_UNVERIFIED')
-        UNIT.unlink(); run(['systemctl','daemon-reload'])
+        enabled=subprocess.run(['systemctl','is-enabled',SERVICE],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=10)
+        active_state=active.stdout.strip()
+        enabled_state=enabled.stdout.strip()
+        if active_state not in ('inactive','failed'): raise GateError('ROLLBACK_SERVICE_STOP_UNVERIFIED')
+        if enabled_state in ('enabled','enabled-runtime','linked','linked-runtime','alias'): raise GateError('ROLLBACK_SERVICE_DISABLE_UNVERIFIED')
+        if disable_result.returncode!=0 and (not active_state or not enabled_state): raise GateError('ROLLBACK_SERVICE_DISABLE_UNVERIFIED')
+        UNIT.unlink(); run(['systemctl','daemon-reload'],error_code='ROLLBACK_DAEMON_RELOAD_FAILED')
         if not absent(UNIT): raise GateError('ROLLBACK_UNIT_REMOVE_UNVERIFIED')
     if s.get('created_secret_config') and not absent(SECRETS):
         if not SECRETS.read_bytes().startswith(b'# G4B_RUN_ID='+RUN_ID.encode()+b'\n'): raise GateError('ROLLBACK_CONFIG_OWNERSHIP_UNPROVEN')
@@ -1293,10 +1349,10 @@ def rollback():
         BIN.unlink()
         if not absent(BIN): raise GateError('ROLLBACK_BINARY_REMOVE_UNVERIFIED')
     if s.get('created_user'):
-        run(['userdel',USER],timeout=15)
+        run(['userdel',USER],timeout=15,error_code='ROLLBACK_USER_DELETE_FAILED')
         if subprocess.run(['getent','passwd',USER],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False,timeout=10).returncode!=2: raise GateError('ROLLBACK_USER_REMOVE_UNVERIFIED')
     if s.get('created_group'):
-        run(['groupdel',GROUP],timeout=15)
+        run(['groupdel',GROUP],timeout=15,error_code='ROLLBACK_GROUP_DELETE_FAILED')
         if subprocess.run(['getent','group',GROUP],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False,timeout=10).returncode!=2: raise GateError('ROLLBACK_GROUP_REMOVE_UNVERIFIED')
     for parent in reversed(s.get('created_parents',[])):
         path=pathlib.Path(parent)
