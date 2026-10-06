@@ -54,19 +54,19 @@ Fresh DigitalOcean target
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
-STATE=REVIEWER_RELEASED_EXECUTOR_P0
+GATE_ID=3XUI_FASTPATH_P0_SSH_HOSTKEY_PUBLICKEY_RELAY_R1
+STATE=WAITING_OWNER_PUBLIC_HOST_KEY
+PARENT_GATE=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
+PARENT_RESULT=RETURN_SSH_HOSTKEY_SCAN_UNAVAILABLE
 TARGET=DigitalOcean_143.198.159.233_SFO3
-TARGET_FRESH=YES_OWNER_REPORTED
-TARGET_OLD_VPS=24.199.118.137_OUT_OF_SCOPE
-PINNED_3XUI_VERSION=v3.9.0
-MAX_ENDPOINT=HOSTKEY_TRUST_BOOTSTRAP_THEN_INSTALL_AND_LOOPBACK_BIND
-MANDATORY_REVIEW_STOP=YES
-EXECUTOR_RELEASED=YES
-OWNER_ACTION_REQUIRED=NONE
+ACCEPTED_OWNER_FINGERPRINT=SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ
+EXECUTOR_RELEASED=NO
+OWNER_ACTION_REQUIRED=RETURN_NEW_VPS_ED25519_PUBLIC_KEY_LINE
 ```
 
-Canonical Gate: `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`.
+Canonical Gate: `docs/3X_UI_P0_SSH_HOSTKEY_PUBLICKEY_RELAY_R1.md`.
+
+Parent P0: `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`.
 
 Target replacement decision: `docs/REVIEWER_DECISION_3XUI_TARGET_REPLACED_WITH_FRESH_DROPLET_2026-10-06.md`.
 
@@ -100,19 +100,24 @@ Fresh target contains no accepted project/business data. A failed P0 may be repa
 
 ## UNRESOLVED
 
-- New VPS ED25519 SSH host-key fingerprint was independently relayed by Owner and recorded as `SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`.
-- Whether the previously used DigitalOcean private key was attached to this new droplet is not yet proven.
-- Actual fresh-target RAM/swap/runtime facts remain to be read after strict SSH.
+- `ssh-keyscan` from the Executor host failed twice, so the new host's public key could not be observed remotely.
+- The accepted fingerprint is known, but the exact public ED25519 key bytes still need an independent Owner relay from DigitalOcean Web Console.
+- Strict SSH and all new-VPS runtime/install facts remain untested.
+- Old VPS remains untouched.
 
 ## NEXT_STEP
 
-Executor now runs the complete released P0 Gate. It must verify the fetched ED25519 key against `SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`, establish explicit known-host trust, then install and verify pinned 3x-ui v3.9.0. No further Owner work unless SSH private-key access itself is unavailable.
+Owner returns the new VPS public ED25519 host-key line from DigitalOcean Web Console. Reviewer computes its fingerprint locally. If it exactly matches the accepted fingerprint, Reviewer releases parent P0 using direct verified known_hosts bootstrap and no further ssh-keyscan dependency.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.**
+On new VPS `143.198.159.233` Web Console run:
 
-The one-time host-key fingerprint relay is complete. Wait for Executor P0 completion unless it returns a precise Owner-only SSH-key availability issue.
+```bash
+cat /etc/ssh/ssh_host_ed25519_key.pub
+```
+
+Return only that one `ssh-ed25519 ...` public-key line. Do **not** display the private key file without `.pub`.
 
 ## EVIDENCE_POINTERS
 
