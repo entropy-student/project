@@ -11084,3 +11084,35 @@ R20R1_LOCAL_MUTATION=NO
 Interpretation: rollback removed the consequential REALITY service/runtime surface and preserved WG/HY2, but the R20 transaction directory remains. R20R2 classifies that residue before any cleanup.
 
 Next Gate: `G4B_R20_TRANSACTION_RESIDUAL_READONLY_R6R2L_R20R2` at `92150b47085a770556290dadfca4fdd045c951e0`, helper `dcabd46abc7d2736369e1f0f0a0072f6dfe78398`.
+
+
+## 2026-10-06 — R20R2 transaction residual classification complete
+
+```text
+R20R2_RESULT=PASS_R20R2_TRANSACTION_RESIDUAL_CLASSIFIED
+R20R2_STATE_CREATED_BINARY=YES
+R20R2_STATE_CREATED_USER=YES
+R20R2_STATE_CREATED_GROUP=YES
+R20R2_STATE_CREATED_RUNTIME=YES
+R20R2_STATE_CREATED_SECRETS_DIR=YES
+R20R2_STATE_CREATED_SECRET_CONFIG=YES
+R20R2_STATE_CREATED_UNIT=YES
+R20R2_STATE_SERVICE_STARTED=YES
+R20R2_STATE_PASS_CANDIDATE=NO
+R20R2_CREATED_PARENT_UNKNOWN_COUNT=0
+R20R2_CREATED_PARENT_COUNT=2
+R20R2_PARENT_RUNTIME=ABSENT
+R20R2_PARENT_SECRETS_PARENT=ABSENT
+R20R2_TXN_CHILD_COUNT=2
+R20R2_TXN_UNKNOWN_CHILD_COUNT=0
+R20R2_TXN_STATE_JSON=FILE_PRESENT
+R20R2_TXN_MIHOMO_REALITY_VPN_NETWORK_OPTIMIZATION_SERVICE=FILE_PRESENT
+R20R2_TXN_METADATA_CONTRACT=PASS
+R20R2_REMOTE_MUTATION=NO
+R20R2_SECRET_CONTENT_READ=NO
+R20R2_LOCAL_MUTATION=NO
+```
+
+The only remote R20 residue is the exact root-owned transaction directory containing exactly the state JSON and staged project systemd unit. No unknown child or unknown created-parent path exists; all created parent directories tracked by this run are already absent. R20R3 is released for exact non-recursive cleanup of those two files and the resulting empty transaction directory only.
+
+Next Gate: `G4B_R20_TRANSACTION_RESIDUAL_CLEANUP_R6R2L_R20R3` at `4b3cc6aeb18155c118646a04e28de7cf422826ca`; helper `11bfbd0cf4c4d6e990348fadccfd3d85be64e06b`.
