@@ -10663,3 +10663,19 @@ SOURCE_WRITE_REACHED=NO
 ```
 
 Reviewer readback confirmed the three production `Invoke-R17Rollback` assignment call sites remain present at the accepted helper identity. The first repair matcher anchored at line end without accommodating CRLF, so it failed before `WriteAllText`. This is a repair-harness defect, not new production behavior evidence. R17R1R4 remains the active Gate; production/provider state remains untouched.
+
+
+## 2026-10-06 — R17R1R4 R2 repair harness stopped before source write
+
+Result: `RETURN_R17R1R4_POST_REPLACEMENT_ASSERTION_INVERTED`.
+
+Sanitized Owner-local evidence:
+```text
+SAFE_FAST_FORWARD=PASS
+R17R1R4_PREFLIGHT=PASS
+R17R1R4_ROLLBACK_CALL_COUNT=3
+POST_REPLACEMENT_CHECK=FAIL
+SOURCE_WRITE_REACHED=NO
+```
+
+Reviewer reconciliation: the R2 harness correctly found all three production rollback assignment call sites, then replaced them only in memory. Its next assertion was inverted: it required the obsolete `$rollbackOk=Invoke-R17Rollback ...` string to remain three times after normalization, although successful normalization should reduce that exact obsolete form to zero. The harness stopped before `WriteAllText`; no helper source mutation occurred. R17R1R4 remains active.
