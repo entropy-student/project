@@ -186,3 +186,48 @@ BACKUP_2=REALITY-SFO3
 Only after G4 PASS may MVP v1 sealing persist the final production default/control posture.
 
 G4 PASS does not itself close the deferred fresh-target migration rehearsal; that remains separately tracked unless the Owner later changes its scope.
+
+
+## 11. Owner scope override — 2026-10-06
+
+This section supersedes the heavy G4-C workload/benchmark requirements above for the remaining v1 closeout. Historical sections are retained as design history only.
+
+### G4-C — three-role manual ChatGPT smoke
+
+Purpose: prove the final user-facing control model works, not re-benchmark protocols.
+
+Required test:
+
+1. In Clash Verge, manually select `HY2-SFO3`; confirm a normal ChatGPT conversation can send and receive successfully.
+2. Manually select `WG-BASELINE`; confirm the same.
+3. Manually select `REALITY-SFO3`; confirm the same.
+4. Return to the intended default role.
+5. Automatic switching remains OFF.
+6. No unexplained connectivity break or profile/runtime corruption may occur.
+
+Acceptance is functional. No 60/60 sample, percentile comparison, peak-hour matrix, Codex workload, image-generation workload, or performance ranking is required.
+
+### G4-D — move WireGuard into Clash/Mihomo
+
+G4-C still uses the currently accepted WG baseline semantics. Before v1 seal, a separate G4-D Gate must remove the standalone Windows WireGuard dependency by implementing WG as a native Clash/Mihomo proxy node.
+
+G4-D must prove:
+
+- a Clash/Mihomo WireGuard node can connect through the existing accepted WG server;
+- HY2, internal WG and REALITY are all independently selectable inside one Clash control plane;
+- each role can sustain the minimal ChatGPT smoke;
+- rollback to the existing Windows WireGuard client remains possible during the migration;
+- only after formal G4-D PASS may the Windows WireGuard tunnel/client be disabled;
+- final v1 control plane is Clash Verge, with no requirement to keep the standalone Windows WireGuard client running.
+
+### Revised completion sequence
+
+```text
+G4-B persistent three-role readiness
+→ G4-C three-role ChatGPT switching smoke
+→ G4-D WireGuard-in-Clash migration
+→ disable standalone Windows WireGuard after G4-D PASS
+→ MVP v1 seal
+```
+
+The original heavy G4-C benchmark/workload sections remain archival and are no longer normative for v1 acceptance.
