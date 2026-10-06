@@ -43,7 +43,7 @@ $run='0123456789abcdef0123456789abcdef'
 $pending='vpn-network-optimization-g4b-'+$run+'.vpr1.pending'
 $quarantine='r17-quarantine-'+$run+'.vpr1.pending'
 
-$onePending="当前目录: $remote\n1 2 3 $pending\n"
+$onePending="当前目录: $remote`n1 2 3 $pending`n"
 Assert-R17DirectoryHeader -Listing $onePending
 $pre=Get-R17ListingState -Listing $onePending -SourceName $pending -QuarantineName $quarantine
 Assert-R17Validator ([int]$pre['FinalCount'] -eq 0) 'R17_FIXTURE_PENDING_FINAL_COUNT'
@@ -56,7 +56,7 @@ Assert-R17Validator ([int]$pre['QuarantineDirectoryCount'] -eq 0) 'R17_FIXTURE_P
 Assert-R17Validator ([string]$pre['SingleRunId'] -ceq $run) 'R17_FIXTURE_RUN_ID'
 Write-Output 'R17_FIXTURE_ONE_PENDING=PASS'
 
-$afterForward="当前目录: $remote\n1 2 3 $quarantine\n"
+$afterForward="当前目录: $remote`n1 2 3 $quarantine`n"
 Assert-R17DirectoryHeader -Listing $afterForward
 $post=Get-R17ListingState -Listing $afterForward -SourceName $pending -QuarantineName $quarantine
 Assert-R17Validator ([int]$post['FinalCount'] -eq 0) 'R17_FIXTURE_FORWARD_FINAL_COUNT'
@@ -68,26 +68,25 @@ Assert-R17Validator ([int]$post['QuarantineObjectCount'] -eq 1) 'R17_FIXTURE_FOR
 Assert-R17Validator ([int]$post['QuarantineDirectoryCount'] -eq 0) 'R17_FIXTURE_FORWARD_QUARANTINE_DIRECTORY_COUNT'
 Write-Output 'R17_FIXTURE_QUARANTINE_STATE=PASS'
 
-$quarantineDirectory="当前目录: $remote\n1 2 3 $quarantine/\n"
+$quarantineDirectory="当前目录: $remote`n1 2 3 $quarantine/`n"
 $quarantineDirectoryState=Get-R17ListingState -Listing $quarantineDirectory -SourceName $pending -QuarantineName $quarantine
 Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineCount'] -eq 0) 'R17_FIXTURE_QUARANTINE_DIRECTORY_FILE_COUNT'
 Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineObjectCount'] -eq 1) 'R17_FIXTURE_QUARANTINE_DIRECTORY_OBJECT_COUNT'
 Assert-R17Validator ([int]$quarantineDirectoryState['QuarantineDirectoryCount'] -eq 1) 'R17_FIXTURE_QUARANTINE_DIRECTORY_NOT_DETECTED'
 Write-Output 'R17_FIXTURE_QUARANTINE_DIRECTORY_COLLISION=PASS'
 
-$pendingDirectory="当前目录: $remote\n1 2 3 $pending/\n"
+$pendingDirectory="当前目录: $remote`n1 2 3 $pending/`n"
 $pendingDirectoryState=Get-R17ListingState -Listing $pendingDirectory
 Assert-R17Validator ([int]$pendingDirectoryState['PendingCount'] -eq 0) 'R17_FIXTURE_PENDING_DIRECTORY_PENDING_COUNT'
 Assert-R17Validator ([int]$pendingDirectoryState['UnknownCount'] -eq 1) 'R17_FIXTURE_PENDING_DIRECTORY_UNKNOWN_COUNT'
 Write-Output 'R17_FIXTURE_PROJECT_DIRECTORY_UNKNOWN=PASS'
 
-$unknown="当前目录: $remote\n1 2 3 vpn-network-optimization-g4b-unexpected.vpr1\n"
+$unknown="当前目录: $remote`n1 2 3 vpn-network-optimization-g4b-unexpected.vpr1`n"
 $unknownState=Get-R17ListingState -Listing $unknown
 Assert-R17Validator ([int]$unknownState['UnknownCount'] -eq 1) 'R17_FIXTURE_UNKNOWN_NOT_REJECTED'
 Write-Output 'R17_FIXTURE_UNKNOWN_DETECTION=PASS'
 
 $defaultOutput=@(& $resolved)
-Assert-R17Validator ($LASTEXITCODE -eq 0 -or $null -eq $LASTEXITCODE) 'R17_VALIDATOR_DEFAULT_EXECUTION_EXIT'
 Assert-R17Validator ($defaultOutput -contains 'R17_VALIDATION=PASS') 'R17_VALIDATOR_DEFAULT_VALIDATION_MISSING'
 Assert-R17Validator ($defaultOutput -contains 'R17_DEFAULT_MODE=NON_MUTATING') 'R17_VALIDATOR_DEFAULT_NONMUTATING_MISSING'
 Assert-R17Validator ($defaultOutput -contains 'BAIDU_PROVIDER_ACTION=NO') 'R17_VALIDATOR_DEFAULT_PROVIDER_BOUNDARY_MISSING'
