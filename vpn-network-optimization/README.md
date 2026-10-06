@@ -87,7 +87,7 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R19 OWNER LIVE CHECKPOINT READY
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R19R1 LOCAL MIHOMO PARSE REPAIR
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -150,3 +150,7 @@ C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Sec
 - 当前 WireGuard 是主 VPN，但不是绝对不可断。
 - 若后续测试确实需要断开 WireGuard，必须先由 Owner 切到另一条已确认可用的 VPN，并确认 ChatGPT/Codex 仍可通信，再进入对应 Gate。
 - Executor 不得自行让 Owner 进入“无 VPN”状态。
+
+
+### 2026-10-06 R19 checkpoint
+R19 consumed its single live invocation and safely returned at P5: the generated local SELF-VPN-V1 profile failed the installed Mihomo config parse. Persistent remote mutation had not started; remote rollback and Baidu pending rollback both passed. Live retry is blocked. Current work is R19R1 local Codex offline reproduction/repair; no Owner Administrator PowerShell action is expected.
