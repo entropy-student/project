@@ -14,82 +14,94 @@ Deploy three 3x-ui-managed nodes on fresh DigitalOcean VPS `143.198.159.233`, co
 P0 Fresh VPS trust bootstrap + 3x-ui install      PASS
 P1 Three inbounds + shared client                 PASS
 P2 Secure Mihomo delivery                         RETURN_LOCAL_ARTIFACT_REPAIR
-P2R1 Owner-local artifact repair                  IN_PROGRESS
-P3 Clash import + three-node functional smoke     REVOKED_NOT_EXECUTED
-P4 Final cutover + minimal backup + seal          PENDING
+P2R1 Direct Executor AppData repair               SUPERSEDED_NOT_EXECUTED
+P2R2 Server stage + Owner-host materialization    IN_PROGRESS
+P3 Clash import + three-node smoke                REVOKED_NOT_EXECUTED
+P4 Final cutover + backup + seal                  PENDING
 ```
 
 ## ACCEPTED SERVER STATE
 
-The remote/server portion of P2 remains accepted:
+The remote/server half of P2 remains accepted:
 
 - target `143.198.159.233`;
 - valid bare-IP HTTPS certificate;
 - normal TLS validation;
 - certificate auto-renewal;
-- TLS subscription service on 2096;
-- real Mihomo endpoint previously returned 200;
-- three-node profile shape previously parsed;
-- admin panel remains loopback-only;
-- old VPS `24.199.118.137` remains untouched.
+- TLS Mihomo subscription on 2096;
+- three-node endpoint previously returned 200 and parsed;
+- three P1 inbounds/client remain healthy;
+- admin panel loopback-only;
+- old VPS `24.199.118.137` untouched.
 
 ## OWNER READ-BACK CONTRADICTION
 
-P2 Evidence claimed these files existed:
+P2 claimed Owner-local files under `%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath`.
 
-- `%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath\subscription.url`
-- `%LOCALAPPDATA%\vpn-network-optimization\3xui-fastpath\self-vpn-3xui.yaml`
+Owner independently searched the real Windows session and found neither `subscription.url` nor `self-vpn-3xui.yaml`.
 
-Owner independently ran a recursive PowerShell search in their actual Windows session and received no output.
+Therefore direct Executor writes into Owner `AppData` are not accepted for this project.
 
-Therefore:
+## GOVERNANCE APPLICATION
+
+Per current canonical Governance `vps-project-governance/VNEXT.md` section 11B:
+
+- same absolute path in sandbox/container/redirected runtime does not prove real-host state;
+- Windows path virtualization/redirected app storage must be ruled out;
+- host-local write requires machine/user/effective privilege + target identity and same-target host-local read-back;
+- Owner-local checkpoint is one-shot/minimal and designed by Reviewer/Executor, not interactively debugged by Owner.
+
+Project-specific enforcement from this point:
 
 ```text
-P2_FORMAL_PASS=REVOKED_PENDING_REPAIR
-P2_SERVER_HALF=ACCEPTED
-P2_LOCAL_ARTIFACT_HALF=RETURN
-P3_RELEASE=REVOKED_NOT_EXECUTED
+OWNER_PROFILE_PATH_DIRECT_EXECUTOR_WRITE_TRUSTED=NO
+OWNER_PROFILE_MATERIALIZATION_CHANNEL=OWNER_ATOMIC_CHECKPOINT
+APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 ```
-
-Reconciliation:
-`docs/REVIEWER_RECONCILIATION_P2_LOCAL_ARTIFACT_MISSING_2026-10-06.md`
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2R1_OWNER_LOCAL_ARTIFACT_REPAIR
-STATE=REVIEWER_RELEASED_EXECUTOR_P2R1
-EXACT_OWNER_DIR=C:\Users\34707\AppData\Local\vpn-network-optimization\3xui-fastpath
-EXECUTOR_RELEASED=YES
+GATE_ID=3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE
+STATE=REVIEWER_RELEASED_EXECUTOR_SERVER_STAGE
+PHASE=A_SERVER_STAGE_ONLY
+REMOTE_STAGE=/root/3xui-owner-transfer
+EXECUTOR_MAY_WRITE_OWNER_APPDATA=NO
 P3_RELEASED=NO
-OWNER_ACTION_REQUIRED=NONE_UNTIL_EXECUTOR_RETURNS
+EXECUTOR_RELEASED=YES
+OWNER_ACTION_REQUIRED=NONE_UNTIL_PHASE_A_REVIEW
 MANDATORY_REVIEW_STOP=YES
 ```
 
 Canonical Gate:
-`docs/3X_UI_P2R1_OWNER_LOCAL_ARTIFACT_REPAIR.md`
+`docs/3X_UI_P2R2_SERVER_STAGE_OWNER_MATERIALIZE.md`
+
+Supersede decision:
+`docs/REVIEWER_DECISION_P2R1_SUPERSEDED_OWNER_HOST_MATERIALIZATION.md`
 
 ## CRITICAL_CONSTRAINTS
 
-- repair only Owner-local artifacts;
-- do not rotate/recreate server credentials or inbounds;
+- Executor must not discover, inspect or write `C:\Users\34707\AppData` in P2R2 Phase A;
+- Executor only creates two root-only transfer files on new VPS;
+- after Phase A PASS_CANDIDATE, Reviewer supplies one atomic Owner PowerShell materialization checkpoint;
+- Owner is not asked to debug paths;
+- formal P2 PASS requires same Owner-session exact-path read-back;
 - no Secret output;
-- do not import/activate Clash profile;
-- do not change system proxy/TUN/WireGuard/routes;
-- do not touch old VPS;
-- use the exact Owner-visible absolute path, not ambiguous `%LOCALAPPDATA%`;
-- Executor PASS_CANDIDATE still requires independent Owner read-back before formal P2 PASS.
+- no Clash import/activation yet;
+- no system proxy/TUN/WireGuard/route mutation;
+- no old VPS mutation.
 
 ## NEXT_STEP
 
-Executor runs P2R1 only. After PASS_CANDIDATE, Owner independently lists the exact target directory. If both files are visible and non-empty, Reviewer re-passes P2 and re-releases P3.
+Executor performs only Phase A remote staging. Reviewer checks the staging Evidence. Then Owner runs one exact PowerShell checkpoint to materialize the files onto the real Windows host and read them back in the same session.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until Executor returns.**
+**NONE until Phase A returns.**
 
 ## EVIDENCE_POINTERS
 
 - P2 Evidence: `results/3XUI_FASTPATH_P2_SECURE_MIHOMO_DELIVERY_2026-10-06_EXECUTOR_R1.md`
-- Reconciliation: `docs/REVIEWER_RECONCILIATION_P2_LOCAL_ARTIFACT_MISSING_2026-10-06.md`
-- Active repair Gate: `docs/3X_UI_P2R1_OWNER_LOCAL_ARTIFACT_REPAIR.md`
+- Initial reconciliation: `docs/REVIEWER_RECONCILIATION_P2_LOCAL_ARTIFACT_MISSING_2026-10-06.md`
+- P2R1 supersede: `docs/REVIEWER_DECISION_P2R1_SUPERSEDED_OWNER_HOST_MATERIALIZATION.md`
+- Active Gate: `docs/3X_UI_P2R2_SERVER_STAGE_OWNER_MATERIALIZE.md`
