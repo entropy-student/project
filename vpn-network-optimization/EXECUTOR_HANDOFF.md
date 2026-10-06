@@ -4,38 +4,44 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu UID Parser Repair R6R2J-R1
+## Current execution status — G4-B R19 Local Mihomo Parse Diagnostic R6R2L-R19R1
 
 ```text
-GATE_ID=G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+GATE_ID=G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=2f4d04ce0f46fa4dee0cde8ae52040c302d3ba87
-GATE_BLOB=33609b9eb0b51b6387e428acbf625a3f21d1441f
-UID_PARSER_SOURCE_ONLY_REPAIR=PASS
-CANONICAL_IDENTITY_LINE_IS_SOLE_UID_SOURCE=PASS
-GENERIC_UID_TEXT_WITH_ONE_CANONICAL_LINE=ACCEPTED
-DUPLICATE_CANONICAL_LINES=FAIL_CLOSED
-ZERO_CANONICAL_IDENTITY_LIKE_TEXT=FAIL_CLOSED
-ZERO_CANONICAL_NO_IDENTITY_TEXT=OWNER_ACTION_REQUIRED
-NONZERO_NATIVE_EXIT=NOT_READY
-UID_NUMERIC_BOUNDS=PASS
-UID_HELPER_TEMP_CLEANUP_REGRESSION=PASS
+GATE_BLOB=7e9e7bf4f69645a695d418bd934c04d79625707c
+PRE_GATE_HEAD=5bb7df362a61c1f0ecf528f2b261468914367e55
+SOURCE_REPAIR_COMMIT=dcbc609c329198e49f87191247570ce0e35ff1a6
+CURRENT_FAILURE_REPRODUCED=PASS
+SANITIZED_PARSE_ERROR_CLASS=HY2_FINGERPRINT_FIELD_VALIDATION
+ROOT_CAUSE=HY2 fingerprint placeholder was not rendered
+ENCRYPTION_EMPTY_CANDIDATE=FAIL_STILL
+MINIMAL_FINGERPRINT_RENDER_REPAIR=PASS
+SYNTHETIC_RENDERED_PROFILE_MIHOMO_PARSE=PASS
+PACKAGE_VALIDATOR=PASS
+LIVE_FIXTURE_VALIDATOR=PASS
+FINAL_RUNNER_BLOB=3a5e7c93bb96a4b485283f6590df18c5fac2690f
+FINAL_LIVE_FIXTURE_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+FINAL_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
+FINAL_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
 POWERSHELL_AST_PARSE=PASS
-FULL_UID_VALIDATOR=PASS
 SECRET_SCAN=PASS
-REAL_AUTH_ACTIONS=0
-OWNER_CONFIG_READ=NO
-OWNER_CONFIG_WRITE=NO
-PROVIDER_REQUESTS=0
-NETWORK_REQUESTS=0
+SECRET_ACCESS=NO
+PROVIDER_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+LIVE_RUN_EXECUTED=NO
 REVIEWER_HANDOFF_MODIFIED=NO
-RESULT=PASS_CANDIDATE_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+RESULT=PASS_CANDIDATE_G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1
 STOP_AT_REVIEWER=YES
 ```
 
-The parser now derives a candidate only from exactly one canonical stdout identity line. Generic `uid` mentions no longer invalidate that unique line; zero canonical lines still fail closed on identity-like text, while duplicate canonical lines remain ambiguous. The validator's entrypoint assertion was made CRLF-tolerant after its prior end-anchor rejected the existing CRLF source; no readiness/auth logic changed. Full validator fixtures used synthetic non-secret strings and its bounded temporary filesystem fixture only.
+The original failure was reproduced with the exact production renderer and synthetic inputs. The leading `encryption: ""` hypothesis was rejected by a same-profile single-variable test. The renderer now inserts the certificate fingerprint already computed and pin-checked by the existing secret-bundle validation path; the package validator AST-extracts that exact renderer and runs Mihomo `-t` on both the rejected legacy sentinel variant and repaired synthetic output. Full package and live-runner fixture regressions passed. Parser output remained captured and only a bounded classification was exposed.
 
-Wait for Reviewer; no Owner action or follow-on Gate is authorized here.
+Wait for Reviewer; no R19 live retry, Owner action, or follow-on Gate is authorized here.
+
+## Historical execution status — G4-B Baidu UID Parser Repair R6R2J-R1
 
 ## Historical execution status — G4-B Baidu Console Output Compiled Verification R6R2I-D5-R1
 

@@ -10957,3 +10957,40 @@ Reviewer result: `RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED`.
 This is a safe local pre-consequence failure. The generated three-role client profile failed the real installed Mihomo parse check before persistent remote mutation. The owned Baidu pending recovery object was rolled back. No R19 retry is authorized.
 
 Next Gate: `G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1` at blob `7e9e7bf4f69645a695d418bd934c04d79625707c`, local Codex offline only.
+
+
+## 2026-10-06 — R19R1 local Mihomo rendered-profile diagnosis and repair
+
+```text
+GATE_ID=G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1
+GATE_BLOB=7e9e7bf4f69645a695d418bd934c04d79625707c
+R19R1_PREFLIGHT=PASS
+INITIAL_MAIN_HEAD=5bb7df362a61c1f0ecf528f2b261468914367e55
+SAFE_SYNCED_MAIN_HEAD=dfa5356ae83041189b340342a465ef88e8f76f86
+REMOTE_ADVANCE_SCOPE=UNRELATED_DOCUMENTATION_ONLY
+R19R1_LOCKED_SOURCE_IDENTITIES=PASS
+R19R1_CURRENT_FAILURE_REPRODUCED=PASS
+R19R1_SANITIZED_PARSE_ERROR_CLASS=HY2_FINGERPRINT_FIELD_VALIDATION
+R19R1_ENCRYPTION_EMPTY_CANDIDATE=FAIL_STILL
+R19R1_ROOT_CAUSE=Get-ProfileRenderedText left the HY2 fingerprint sentinel unrendered after Read-Hy2Auth had verified the certificate fingerprint
+R19R1_MINIMAL_REPAIR=PASS
+R19R1_SYNTHETIC_RENDERED_PROFILE_MIHOMO_PARSE=PASS
+R19R1_PACKAGE_VALIDATOR=PASS
+R19R1_LIVE_FIXTURE_VALIDATOR=PASS
+R19R1_CHANGE_SCOPE=scripts/g4b-persistent-three-role-live-runner.ps1;scripts/g4b-three-role-package-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+FINAL_RUNNER_BLOB=3a5e7c93bb96a4b485283f6590df18c5fac2690f
+FINAL_LIVE_FIXTURE_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+FINAL_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
+FINAL_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
+R19R1_SECRET_ACCESS=NO
+R19R1_PROVIDER_ACTION=NO
+R19R1_SSH_OR_VPS_ACTION=NO
+R19R1_NETWORK_MUTATION=NO
+R19R1_CLASH_PROFILE_MUTATION=NO
+R19R1_LIVE_RUN_EXECUTED=NO
+R19R1_TEMP_FIXTURE_CLEANUP=PASS
+REVIEWER_HANDOFF_MODIFIED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The exact production renderer was extracted from the locked runner AST and exercised only with synthetic values. The pre-repair renderer's output failed the installed `C:\Program Files\Clash Verge\verge-mihomo.exe -t` parser; adding only `encryption: ""` still failed. Replacing only the HY2 fingerprint sentinel with a syntactically valid synthetic SHA-256 fingerprint changed the parser result to success. `Read-Hy2Auth` already computes the certificate SHA-256 fingerprint and verifies it against the accepted pin, but previously discarded it. The repair retains that verified non-secret value, passes it explicitly to the renderer, validates its shape, and writes it into the rendered HY2 proxy. The package validator now executes both a negative sentinel fixture and the exact repaired production renderer output with Mihomo in parse-only mode; stdout/stderr are captured in memory and reduced to a bounded error class. No live runner, real profile, Secret, DPAPI, provider, SSH/VPS, or network action was invoked. The pre-existing untracked `results/` content was preserved and excluded from commits.
