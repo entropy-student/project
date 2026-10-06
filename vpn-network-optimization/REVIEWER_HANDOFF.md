@@ -27,8 +27,9 @@ G3-C Real HY2-in-Clash canary R3R2          PASS
 G4-A Three-role target/offline package          PASS
 G4-B0 Windows interface bypass canary            PASS
 G4-B Persistent three-role readiness             IN_PROGRESS
-G4-C Peak-hour + real workload final validate    PENDING
-MVP v1 seal                                 PENDING
+G4-C Three-role ChatGPT switching smoke          PENDING
+G4-D WireGuard-in-Clash migration                 PENDING
+MVP v1 seal                                       PENDING
 ```
 
 ## SYSTEM_MAP
@@ -316,6 +317,23 @@ G4B0_VALIDATOR_BLOB=e6d7ac364aca14d52737315a020de7be8d8db1b0
 G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ```
 
+## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
+
+```text
+OWNER_FINAL_G4_VALIDATION_SCOPE=CHATGPT_THREE_ROLE_SMOKE_ONLY
+G4C_REQUIRED_ROLES=HY2_SFO3,WG_BASELINE,REALITY_SFO3
+G4C_ACCEPTANCE=EACH_ROLE_MANUALLY_SELECTED_IN_CLASH_AND_CAN_CONTINUE_NORMAL_CHATGPT_CONVERSATION
+G4C_HEAVY_BENCHMARKS=NOT_REQUIRED
+G4C_CODEX_WORKLOAD_MATRIX=NOT_REQUIRED
+G4C_IMAGE_GENERATION_MATRIX=NOT_REQUIRED
+G4C_P95_P99_COMPARISON=NOT_REQUIRED
+G4D_OBJECTIVE=MIGRATE_WIREGUARD_FROM_WINDOWS_CLIENT_TO_CLASH_MIHOMO_INTERNAL_NODE
+WINDOWS_WIREGUARD_MAY_BE_DISABLED_ONLY_AFTER_G4D_FORMAL_PASS=YES
+FINAL_CONTROL_PLANE=CLASH_VERGE
+```
+
+Owner explicitly narrowed final workload validation: existing performance evidence is sufficient. G4-C is now a functional smoke only—manually select HY2, WG and REALITY in Clash one at a time and prove normal ChatGPT conversation remains usable on each. After that, G4-D moves WireGuard into Clash/Mihomo so the standalone Windows WireGuard client can be disabled. This scope change affects future Gates only; current R19R1 remains unchanged.
+
 ## CRITICAL_CONSTRAINTS
 
 - Target v1 role order is HY2 PRIMARY, WG BACKUP_1, REALITY BACKUP_2.
@@ -355,7 +373,8 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
 - R10 parser/fixture repair is formally PASS. R11→R16 reconciled local ACL/provider residual state; R17 quarantined the single stale pending; R18 independently proved production namespace CLEAN. The historical live one-shot is not replayable. R19 is relocked to the current R10-repaired runner/validator, fresh Owner authorization is granted, and one live invocation is released.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
-- G4-C remains separate and pending after G4-B formal acceptance.
+- G4-C remains separate and pending after G4-B formal acceptance, but its Owner-approved scope is now only a three-role manual ChatGPT conversation smoke (HY2/WG/REALITY), not a heavy benchmark/workload matrix.
+- G4-D is added before v1 seal: migrate WG-BASELINE from the standalone Windows WireGuard dependency into a native Clash/Mihomo WireGuard node; only after G4-D formal PASS may the Windows WireGuard client be disabled.
 - Final v1 production default/control posture remains pending G4.
 - Final WireGuard routing / kill-switch policy remains pending v1 sealing.
 - G3-B fresh-target live migration rehearsal remains deferred.
