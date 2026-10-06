@@ -154,3 +154,19 @@ C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Sec
 
 ### 2026-10-06 R19 checkpoint
 R19 consumed its single live invocation and safely returned at P5: the generated local SELF-VPN-V1 profile failed the installed Mihomo config parse. Persistent remote mutation had not started; remote rollback and Baidu pending rollback both passed. Live retry is blocked. Current work is R19R1 local Codex offline reproduction/repair; no Owner Administrator PowerShell action is expected.
+
+
+## 最终收口路线（Owner 2026-10-06 更新）
+
+后续不再做复杂的峰值延迟/长任务矩阵。已有历史性能证据足以支持当前协议排序，最终验证改为最小功能闭环：
+
+```text
+R19R1 修复三节点配置解析
+→ 新 live Gate 完成 HY2 / WG / REALITY 三节点持久化导入 Clash
+→ G4-C：在 Clash 中依次手动选择 HY2、WG、REALITY，各自确认能正常继续 ChatGPT 对话
+→ G4-D：把 WG-BASELINE 从 Windows WireGuard 客户端迁移成 Clash/Mihomo 内置 WireGuard 节点
+→ G4-D PASS 后关闭 Windows WireGuard
+→ MVP v1 seal
+```
+
+G4-C 不再要求 60/60、P95/P99、Codex 长任务、OpenAI API 矩阵或生图矩阵。Windows WireGuard 在 G4-D 正式 PASS 前继续作为生产/回退基线，不提前关闭。
