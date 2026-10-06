@@ -138,7 +138,7 @@ try{
     Assert-R20R3 ($p.ExitCode -eq 0) 'R20R3_REMOTE_TRANSACTION_CLEANUP_FAILED'
     $result=ConvertFrom-Json -InputObject $out -AsHashtable -ErrorAction Stop
     Assert-R20R3 ($result['ok'] -eq $true) 'R20R3_REMOTE_READBACK_FAILED'
-}finally{if($null-ne$p){$p.Dispose()};$python=$null}
+}finally{if($null -ne $p){$p.Dispose()};$python=$null}
 
 Assert-R20R3 (Test-Path -LiteralPath $journalPath -PathType Leaf) 'R20R3_LOCAL_JOURNAL_LOST'
 Write-Output 'R20R3_PREFLIGHT_OWNERSHIP=PASS'
