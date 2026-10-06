@@ -194,3 +194,7 @@ R20R3 closed the remaining VPS-side R20 transaction residue while preserving the
 
 ### 2026-10-06 R20R4 safe UID mismatch / R20R4R1 local identity confirmation
 R20R4 stopped safely because the manually entered expected Baidu UID differed from the current parsed account UID. Historical accepted UIDs were intentionally not persisted. R20R4R1 avoids memory-based UID entry: the current UID is shown only in a local Windows dialog for Owner identity confirmation, then the helper continues read-only recovery pending/final reconciliation without printing the UID.
+
+
+### 2026-10-06 R20R4R1 safe RETURN / R20R4R2 UTF-8 repair
+R20R4R1 stopped safely before account confirmation because the Baidu UID line could not be uniquely parsed. Reviewer found the new recovery helpers had omitted explicit UTF-8 stdout/stderr decoding that was present in the previously accepted Baidu helpers. R20R4R2 restores only that decoding seam and repeats the same read-only account-confirmation/recovery-presence check.
