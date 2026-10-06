@@ -44,7 +44,7 @@ foreach($item in @(Get-ChildItem -LiteralPath $runtimeRoot -Filter 'g4b-*.rollba
     }
 
     $baseline=$record['remote_drift_baseline']
-    Assert-R22R1 ($baseline -is [Collections.IDictionary]) 'R22R1_REMOTE_BASELINE_SHAPE_INVALID'
+    Assert-R22R1 ($baseline -is [System.Collections.IDictionary]) 'R22R1_REMOTE_BASELINE_SHAPE_INVALID'
     Assert-R22R1 (
         $baseline.Contains('routes_json') -and
         $baseline.Contains('firewall_json') -and
@@ -431,8 +431,16 @@ if([bool]$remote['txn_state_present']){
     $runMatch=$(if([bool]$remote['txn_run_id_match']){'YES'}else{'NO'})
 }
 
+$txnEntriesSafe=$true
+if($txnPresent){
+    $allowedTxnEntries=@('state.json','mihomo-reality-vpn-network-optimization.service')
+    foreach($entry in @($remote['txn_entries'])){
+        if([string]$entry -notin $allowedTxnEntries){ $txnEntriesSafe=$false }
+    }
+}
+
 $ownershipAmbiguous=$false
-if($txnPresent -and (-not [bool]$remote['txn_state_present'] -or -not [bool]$remote['txn_state_decode_ok'] -or -not [bool]$remote['txn_run_id_match'])){ $ownershipAmbiguous=$true }
+if($txnPresent -and (-not [bool]$remote['txn_state_present'] -or -not [bool]$remote['txn_state_decode_ok'] -or -not [bool]$remote['txn_run_id_match'] -or -not $txnEntriesSafe)){ $ownershipAmbiguous=$true }
 if([bool]$remote['runtime_present'] -and $remote['runtime_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
 if([bool]$remote['secret_config_present'] -and $remote['secret_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
 if([bool]$remote['unit_present'] -and $remote['unit_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
@@ -452,9 +460,12 @@ $remoteResidue=(
     $mihomo -gt 0
 )
 
-$localUnexpected=(
+$localResidue=(
     $localRuntimePresent -or
-    $baiduRuntimePresent -or
+    $baiduRuntimePresent
+)
+
+$localUnsafeUnexpected=(
     $finalLocalPresent -or
     $profileCurrentMatchCount -ne 0
 )
@@ -466,7 +477,8 @@ $recoveryPendingAmbiguous=(
 
 $clean=(
     -not $remoteResidue -and
-    -not $localUnexpected -and
+    -not $localResidue -and
+    -not $localUnsafeUnexpected -and
     -not $recoveryPendingAmbiguous -and
     $wgHealthy -and
     $hyHealthy -and
@@ -476,9 +488,9 @@ $clean=(
 )
 
 $safeResidual=(
-    ($remoteResidue -or $localRuntimePresent -or $baiduRuntimePresent) -and
+    ($remoteResidue -or $localResidue) -and
     -not $ownershipAmbiguous -and
-    -not $localUnexpected -and
+    -not $localUnsafeUnexpected -and
     -not $recoveryPendingAmbiguous -and
     $wgHealthy -and
     $hyHealthy -and
@@ -516,6 +528,7 @@ Write-Output ('R22R1_TRANSACTION_PRESENT='+$(if($txnPresent){'YES'}else{'NO'}))
 Write-Output ('R22R1_TEMP_PRESENT='+$(if($tmpPresent){'YES'}else{'NO'}))
 Write-Output ('R22R1_TRANSACTION_STATE_PRESENT='+$(if([bool]$remote['txn_state_present']){'YES'}else{'NO'}))
 Write-Output ('R22R1_TRANSACTION_RUN_ID_MATCH='+$runMatch)
+Write-Output ('R22R1_TRANSACTION_ENTRIES_SAFE='+$(if($txnEntriesSafe){'YES'}else{'NO'}))
 Write-Output ('R22R1_RUNTIME_USER_PRESENT='+$(if([bool]$remote['runtime_user_present']){'YES'}else{'NO'}))
 Write-Output ('R22R1_RUNTIME_GROUP_PRESENT='+$(if([bool]$remote['runtime_group_present']){'YES'}else{'NO'}))
 Write-Output ('R22R1_ROUTE_BASELINE_MATCH='+$(if($routeMatch){'YES'}else{'NO'}))
