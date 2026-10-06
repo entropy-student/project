@@ -104,24 +104,26 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
-STATE=EXECUTOR_ACTION_REQUIRED_OFFLINE
-PREVIOUS_RESULT=PASS_R20R5_EXACT_PENDING_SET_CLEAN
-OBJECTIVE=Offline-only repair of structured remote error propagation and rollback failure diagnostics before any fresh live Gate.
-MAX_ENDPOINT_THIS_ROUND=Source + fixtures + documentation only; no Secret/DPAPI/provider/SSH/VPS/Clash/network action.
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21
+STATE=OWNER_ACTION_REQUIRED_R21_ONE_SHOT_LIVE
+PREVIOUS_RESULT=PASS_R20R6_ERROR_PROPAGATION_REPAIR
+OBJECTIVE=Execute one fresh bounded three-role live run with repaired structured error propagation and rollback diagnostics.
+MAX_ENDPOINT_THIS_ROUND=One R21 live invocation; P10 import-without-activation; no G4-C/G4-D.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R20R6 Gate 2549ba44475a113c5e66ef101ee3ced7d43984ea; current live runner and live fixture validator.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; no replay; failed-run VPS and recovery pending residues clean; rollback journal retained; exact historical P7 low-level cause is UNKNOWN because old runner discarded structured remote errors.
-PREFLIGHT=Safe-sync main; clean tracked worktree; exact Gate identity; no live authorization required.
-REQUIRED_EVIDENCE=Structured remote GateError propagation fixtures; transport fallback; malformed-response fail-closed; rollback failure-code fixture; success/fingerprint regressions; AST; full fixtures; zero consequential actions.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only after minimal offline repair proves bounded sanitized error preservation without changing live semantics.
-ROLLBACK_STATUS_OR_PLAN=Source/docs-only changes; revert commit if needed. No runtime rollback action.
-OWNER_ONLY_ACTIONS=NONE for this offline Gate.
-REVIEWER_TO_EXECUTOR_RELAY=Implement only docs/G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6.md and stop at Reviewer.
-EXECUTOR_TO_REVIEWER_RELAY=Return source commit, final blobs, fixture markers and zero-action evidence.
-LIVE_G4B_EXECUTION_AUTHORIZED=NO
+TARGET_AND_SCOPE=R21 Gate ae20c33f37d9234cd85f6e08f058993d8ef7fd78; runner 4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b; live fixture validator e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06; package validator 59e18226dff66adcaac978b4b7eeb540a14514c9.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed/no replay; R20 VPS and recovery residues clean; R20 rollback journal retained out-of-scope; standalone Windows WG remains enabled; HY2/WG preserved; AUTO_SWITCHING=OFF.
+PREFLIGHT=Safe-sync main; exact Gate/runner/validator blobs; PowerShell 7.6.6 Administrator; tracked worktree clean; package and live fixtures PASS before live invocation.
+REQUIRED_EVIDENCE=Runner sanitized output including phases, structured failure markers if any, one-shot invocation count, rollback status, role order/default, WG/HY2 preserved, system proxy OFF, TUN OFF, STOP_AT_REVIEWER.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if the new R21 run completes all required phases and retains its new rollback journal for Reviewer; any failure/ambiguity returns without second attempt.
+ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback only on failure. Owner must not manually retry or invoke rollback after R21 returns.
+OWNER_ONLY_ACTIONS=Run exactly one R21 live checkpoint in Administrator PowerShell 7.6.6; at P10 import exact generated profile without activation.
+REVIEWER_TO_EXECUTOR_RELAY=Use runner blob 4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b with documented fixed live arguments exactly once.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R21 output only and stop.
+LIVE_G4B_EXECUTION_AUTHORIZED=YES
+R21_LIVE_INVOCATIONS_AUTHORIZED=1
+SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-R20R6_GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
+R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
@@ -399,11 +401,11 @@ Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and fina
 
 ## NEXT_STEP
 
-Local Codex/Executor performs R20R6 offline source repair and fixtures only. No PowerShell live/provider checkpoint is required from Owner in this Gate.
+Owner executes exactly one R21 Administrator PowerShell 7.6.6 live checkpoint. At P10 import the exact generated profile without activation. Return sanitized output to Reviewer; do not run a second R21 attempt.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE. Wait for the offline Executor PASS_CANDIDATE; do not run R20 or any rollback/live command.
+Run exactly one R21 live checkpoint under the standing documented authorization. Keep Baidu identity, SSH path and recovery passphrase local. Keep standalone Windows WireGuard enabled. At P10 import only the generated profile and do not activate/switch it.
 
 ## EVIDENCE_POINTERS
 
