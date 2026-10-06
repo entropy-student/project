@@ -11214,3 +11214,30 @@ R20R4R2_NETWORK_MUTATION=NO
 Reviewer accepts R20R4R2. The expected failed-run recovery set is now exactly known: local DPAPI pending + local portable pending + exact run-scoped Baidu pending, with both local and remote final artifacts absent. The UTF-8 process decoding repair restored the same provider-output contract used by earlier accepted Baidu checkpoints.
 
 Next Gate: `G4B_R20_RECOVERY_PENDING_EXACT_CLEANUP_R6R2L_R20R5` at `9bc95184691025533df40653c30fa5801452bb9d`, helper `500096ce2bf12c3a8a36aa109d6995ae8352d48e`. R20R5 performs exact ownership-proven pending cleanup only.
+
+
+## 2026-10-06 — R20R5 exact failed-run recovery pending cleanup PASS
+
+```text
+R20R5_RESULT=PASS_R20R5_EXACT_PENDING_SET_CLEAN
+R20R5_OWNER_BAIDU_ACCOUNT_CONFIRMATION=PASS
+R20R5_REMOTE_PENDING_CIPHERTEXT_MATCH=PASS
+R20R5_REMOTE_PENDING_REMOVE=PASS
+R20R5_LOCAL_PENDING_REMOVE=PASS
+R20R5_EXACT_PENDING_SET_CLEAN=PASS
+R20R5_TEMP_RUNTIME_CLEANUP=PASS
+R20R5_REMOTE_PENDING_MUTATION_STARTED=YES
+R20R5_LOCAL_PENDING_MUTATION_STARTED=YES
+R20R5_RECOVERY_DECRYPT=NO
+R20R5_RECOVERY_FINAL_MUTATION=NO
+R20R5_SSH_OR_VPS_ACTION=NO
+R20R5_CLASH_MUTATION=NO
+R20R5_NETWORK_MUTATION=NO
+R20R5_ROLLBACK_JOURNAL_RETAINED=YES
+```
+
+Reviewer accepts R20R5. The failed R20 remote surface, transaction residue and exact recovery pending set are now reconciled clean. The retained rollback journal remains for durable history.
+
+Offline source review also identified that the historical runner discarded structured remote `error_code` values by checking SSH exit code before parsing bounded JSON, and automatic rollback catch discarded its bounded failure code. Therefore the exact historical P7 low-level cause is not recoverable from R20 evidence and must not be guessed.
+
+Next Gate: `G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6` at `2549ba44475a113c5e66ef101ee3ced7d43984ea`.
