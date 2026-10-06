@@ -682,3 +682,21 @@ FINAL_CONTROL_PLANE=CLASH_VERGE
 ```
 
 Owner does not require another complex real-workload benchmark. After G4-B, G4-C only needs manual switching among all three Clash roles with successful normal ChatGPT conversation on each. G4-D then migrates WireGuard into Clash/Mihomo; the standalone Windows WireGuard client remains active until G4-D formal PASS and may then be disabled. Current R19R1 diagnostic scope is unchanged.
+
+
+### R19R1 formal PASS / R20 prepared — 2026-10-06
+
+```text
+R19R1_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
+R19R1_GATE_BLOB=7e9e7bf4f69645a695d418bd934c04d79625707c
+R19R1_SOURCE_COMMIT=dcbc609c329198e49f87191247570ce0e35ff1a6
+FINAL_RUNNER_BLOB=3a5e7c93bb96a4b485283f6590df18c5fac2690f
+FINAL_LIVE_FIXTURE_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+FINAL_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
+FINAL_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
+R20_GATE_BLOB=a35f1c4c62091338a1ef71c19f1af0ac94a60a46
+R20_STATE=FRESH_OWNER_AUTHORIZATION_REQUIRED
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+```
+
+Reviewer accepted the executable diagnosis: the HY2 fingerprint sentinel was left unrendered; `encryption: ""` did not repair parsing; using the already pin-verified certificate fingerprint produced a real local Mihomo parse PASS. The historical R19 one-shot authorization is consumed. R20 is a fresh consequential boundary and requires new explicit Owner authorization.
