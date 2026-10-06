@@ -104,30 +104,30 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_R22_IPTABLES4_COUNTER_NORMALIZATION_READONLY_R6R2L_R22R3
-STATE=OWNER_READONLY_IPTABLES4_COUNTER_RECONCILIATION_REQUIRED
-PREVIOUS_RESULT=RETURN_R22R2_SINGLE_COMPONENT_DRIFT_IPTABLES4
-OBJECTIVE=Determine whether the only remaining firewall mismatch is iptables4 packet/byte counter telemetry.
-MAX_ENDPOINT_THIS_ROUND=One bounded local journal read plus one strict SSH read-only iptables-save query; no mutation.
+GATE_ID=G4B_R22_EXACT_TRANSACTION_RESIDUE_CLEANUP_R6R2L_R22R4
+STATE=OWNER_BOUNDED_TRANSACTION_CLEANUP_REQUIRED
+PREVIOUS_RESULT=PASS_R22R3_COUNTER_ONLY_TELEMETRY
+OBJECTIVE=Delete only the ownership-proven R22 transaction residue after exact pre-clean verification.
+MAX_ENDPOINT_THIS_ROUND=One strict SSH bounded transaction cleanup; no provider/recovery/Clash/network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=iptables4 baseline/current semantic hash and line count after counter-only normalization; raw rules forbidden.
-APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; REALITY runtime surface absent; WG/HY2 healthy; route/service baseline exact; UFW/nft/iptables6 match exactly; retained transaction/recovery pending untouched.
-PREFLIGHT=Canonical R22R3 Gate current; PowerShell 7.6.6; SSH identity/known_hosts available; unique retained R22 rollback journal.
-REQUIRED_EVIDENCE=Baseline/current counter-insensitive iptables4 SHA-256, line counts, match result, zero mutation markers.
-ACCEPTANCE_CRITERIA=Match => classify firewall mismatch as counter-only telemetry; mismatch => remain ambiguous and open narrower structural fingerprint Gate.
-ROLLBACK_STATUS_OR_PLAN=Not applicable; read-only only.
-OWNER_ONLY_ACTIONS=Run exactly one R22R3 read-only iptables4 counter-normalization checkpoint.
-REVIEWER_TO_EXECUTOR_RELAY=Strip only packet/byte counter tokens; preserve all other text/order; output hashes/counts only.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R3 markers only.
+TARGET_AND_SCOPE=R22 transaction directory derived from the unique retained local rollback journal; only staged unit + state.json + empty transaction directory.
+APPLICABLE_CRITICAL_CONSTRAINTS=R22 consumed/no replay; REALITY runtime surface absent; WG/HY2 healthy; route/service baseline exact; firewall semantic baseline restored after counter normalization; recovery pending artifacts frozen.
+PREFLIGHT=Canonical R22R4 Gate current; PowerShell 7.6.6; SSH identity/known_hosts available; unique R22 journal; exact transaction ownership/shape/readback.
+REQUIRED_EVIDENCE=Preflight ownership PASS, transaction cleanup PASS, post-clean remote baseline PASS, WG/HY2 healthy, local rollback journal retained, recovery artifacts untouched.
+ACCEPTANCE_CRITERIA=Transaction absent after exact scoped deletion; no other project/system state changed.
+ROLLBACK_STATUS_OR_PLAN=No rollback of this cleanup. Any failed/ambiguous consequential write stops for fresh read-only reconciliation; no blind retry.
+OWNER_ONLY_ACTIONS=Run exactly one R22R4 bounded transaction cleanup checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Delete only exact owned transaction files and now-empty directory; no service/firewall/route/provider/recovery mutation.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R22R4 markers only and stop.
 R22_RESULT=RETURN_R22_P7_REALITY_LISTENER_READBACK_INVALID_ROLLBACK_UNKNOWN
-R22R1_RESULT=RETURN_AMBIGUOUS_BASELINE_FIREWALL_ONLY
-R22R2_RESULT=RETURN_SINGLE_COMPONENT_DRIFT_IPTABLES4
-R22R3_REVIEW_DOC=docs/G4B_R22R2_REVIEW_IPTABLES4_ONLY_R6R2L_R22R2.md
-R22R3_GATE_DOC=docs/G4B_R22_IPTABLES4_COUNTER_NORMALIZATION_READONLY_R6R2L_R22R3.md
+R22R3_RESULT=PASS_COUNTER_ONLY_TELEMETRY
+R22R4_REVIEW_DOC=docs/G4B_R22R3_REVIEW_COUNTER_ONLY_R6R2L_R22R3.md
+R22R4_GATE_DOC=docs/G4B_R22_EXACT_TRANSACTION_RESIDUE_CLEANUP_R6R2L_R22R4.md
+RECOVERY_PENDING_CLEANUP_ALLOWED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 ```
 
-R20, R21 and R22 are consumed and must never be replayed. R22R1 proved the REALITY runtime surface is absent; R22R2 isolated the remaining mismatch to iptables4 only. Current work is the read-only R22R3 counter-normalization reconciliation above.
+R20, R21 and R22 are consumed and must never be replayed. R22R3 proved firewall semantic baseline restoration. Current work is the exact R22 transaction-residue cleanup only; recovery pending artifacts remain frozen.
 
 ## OWNER-UPDATED FINAL VALIDATION SCOPE — 2026-10-06
 
