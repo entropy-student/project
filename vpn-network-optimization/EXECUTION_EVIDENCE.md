@@ -10545,3 +10545,29 @@ R17R1_R17_RUN_MODE_EXECUTED=NO
 Reviewer source inspection: synthetic validator listings use literal `\n` inside PowerShell double-quoted strings. PowerShell requires backtick newline escapes, so the directory-header parser receives no actual line break. This explains the immediate `BAIDU_DIRECTORY_HEADER_INVALID` fixture failure. The reported LASTEXITCODE failure is not independent evidence because the validator fails earlier.
 
 Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_FIXTURE_REPAIR_R6R2L_R17R1R1`. Helper source and all provider/runtime state remain frozen.
+
+
+## 2026-10-06 — R17R1R1 fixture repair passed; stale LASTEXITCODE defect independently confirmed
+
+Result: `RETURN_R17R1R1_STALE_LASTEXITCODE_FALSE_FAILURE`.
+
+Sanitized Owner-local evidence:
+```text
+R17R1R1_PREFLIGHT=PASS
+R17R1R1_FIXTURE_NEWLINE_REPAIR=PASS
+R17R1R1_CHANGE_SCOPE=PASS
+HELPER_BLOB=3d7797a21c31fb805993530b28d674db4cdf288c
+R17R1R1_AST_VALIDATOR=PASS
+R17R1R1_OFFLINE_VALIDATOR=PASS
+R17R1R1_LASTEXITCODE_REGRESSION=FAIL
+R17R1R1_LASTEXITCODE_EXCEPTION=R17_VALIDATOR_DEFAULT_EXECUTION_EXIT
+FINAL_VALIDATOR_BLOB=c468f99128ebad1f84cfbb0f8a1ec4dc6d6fc3a6
+R17R1R1_PROVIDER_ACTION=NO
+R17R1R1_OWNER_CONFIG_READ=NO
+R17R1R1_SECRET_OR_DPAPI_ACCESS=NO
+R17R1R1_SSH_OR_VPS_ACTION=NO
+R17R1R1_NETWORK_MUTATION=NO
+R17R1R1_R17_RUN_MODE_EXECUTED=NO
+```
+
+Reviewer decision: the fixture-newline repair is behaviorally supported by the normal offline validator PASS. The remaining failure is independent and narrow: the validator asserts inherited `$LASTEXITCODE` after a PowerShell-script invocation that does not necessarily reset it. Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_LASTEXITCODE_REPAIR_R6R2L_R17R1R2`. Helper and all real/provider state remain frozen.
