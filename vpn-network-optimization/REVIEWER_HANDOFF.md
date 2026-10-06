@@ -126,7 +126,7 @@ OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
+G4-B0 is formally closed PASS. R8/R10 parser-output repairs, R11-R18 Baidu reconciliation, R19 safe RETURN, R19R1 executable Mihomo repair, R20 failed-one-shot reconciliation, and R20R6 error-propagation repair are all historical accepted work. R20 is consumed and must never be replayed. Current work is the fresh R21 one-shot live Gate shown in CURRENT_GATE above.
 
 Current G4-B recovery-backend Executor identity:
 
