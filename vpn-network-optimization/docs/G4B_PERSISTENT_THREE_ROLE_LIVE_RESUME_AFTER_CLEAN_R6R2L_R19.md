@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Live Resume After CLEAN R6R2L-R19
 
-Status: READY_FOR_OWNER_EXECUTION / FRESH_OWNER_AUTHORIZATION_GRANTED / ONE_SHOT_LIVE_RELEASED
+Status: RETURN / P5_LOCAL_MIHOMO_CONFIG_PARSE_FAILED / NO_REMOTE_CONSEQUENTIAL_MUTATION / RETRY_BLOCKED_PENDING_R19R1
 
 ## GATE_ID
 `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19`
@@ -135,3 +135,28 @@ G4C_AUTHORIZED_BY_THIS_GRANT=NO
 ```
 
 The Owner approved proceeding with the R19 plan after being told the remaining interactive boundary: one Administrator PowerShell 7.6.6 live checkpoint, local-only UID/SSH-key/passphrase inputs, and one Clash profile import without activation.
+
+
+## OWNER RUN RESULT — 2026-10-06
+
+```text
+OWNER_R19_CHECKPOINT=RETURN_FOR_REVIEW
+RUNNER_FAILED_PHASE=P5_SECRET_AND_RECOVERY_PREPARE
+FAILURE_CODE=MIHOMO_CONFIG_PARSE_FAILED
+CONSEQUENTIAL_MUTATION_STARTED=NO
+REMOTE_ROLLBACK=PASS
+BAIDU_PENDING_ROLLBACK=PASS
+R19_LIVE_INVOCATION_COUNT=1
+NO_SECOND_R19_ATTEMPT=YES
+G4C_EXECUTED=NO
+```
+
+Reviewer classification:
+- preflight, source identity, authorization readback, AST and offline fixture validator all passed;
+- the run reached P5 and successfully verified the encrypted Baidu pending recovery artifact;
+- local generated `SELF-VPN-V1.yaml` then failed the real local `verge-mihomo.exe -t` parse check;
+- no persistent remote mutation had started;
+- remote rollback reported PASS and the owned Baidu pending object rollback reported PASS;
+- no second live invocation is authorized.
+
+R19 is RETURN, not PASS. The next Gate is local-only R19R1 diagnosis/repair. Live authorization is revoked until Reviewer accepts the repair and issues a new live Gate.
