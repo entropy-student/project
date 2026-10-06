@@ -182,3 +182,7 @@ Owner granted standing authorization for the already documented closeout roadmap
 
 ### 2026-10-06 R20 P7 reconciliation
 R20 is consumed and formally RETURNed at P7 after consequential remote mutation began and automatic rollback could not be verified. No second R20 attempt or blind rollback is allowed. Current Gate R20R1 is read-only and determines whether the project state is already clean or whether an ownership-proven rollback Gate is required.
+
+
+### 2026-10-06 R20R2 classified / R20R3 exact cleanup
+R20R2 proved the only remote residue is the R20 transaction directory with exactly two allowlisted project files. R20R3 is released to remove only those two files and the resulting empty transaction directory after repeating ownership and clean-baseline checks. Recovery artifacts remain a separate later reconciliation.
