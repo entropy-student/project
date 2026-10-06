@@ -802,3 +802,38 @@ R20R5_GATE_BLOB=9bc95184691025533df40653c30fa5801452bb9d
 R20R5_HELPER_BLOB=500096ce2bf12c3a8a36aa109d6995ae8352d48e
 R20R5_SCOPE=EXACT_FAILED_RUN_PENDING_CLEANUP_ONLY
 ```
+
+
+### R20R5 PASS / R20R6 formal PASS / R21 released — 2026-10-06
+
+```text
+R20R5_RESULT=PASS_R20R5_EXACT_PENDING_SET_CLEAN
+R20_FAILED_RUN_VPS_RESIDUE=CLEAN
+R20_FAILED_RUN_RECOVERY_PENDING_SET=CLEAN
+R20_RECOVERY_FINAL_ARTIFACTS=ABSENT
+R20_ROLLBACK_JOURNAL=RETAINED_OUT_OF_SCOPE
+
+R20R6_RESULT=PASS_R20R6_ERROR_PROPAGATION_REPAIR
+R20R6_GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
+R20R6_SOURCE_REPAIR_COMMIT=6344fc4625383fbf25883ffb546cceee62a5b010
+R20R6_FINAL_EVIDENCE_COMMIT=d3bd12d6320abd8c0f7c44ba19dc832cea41392d
+R20R6_RUNNER_BLOB=4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b
+R20R6_LIVE_FIXTURE_VALIDATOR_BLOB=e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06
+
+CURRENT_GATE=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21
+R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
+R21_STATE=OWNER_ACTION_REQUIRED_R21_ONE_SHOT_LIVE
+R21_LIVE_EXECUTION_AUTHORIZED=YES
+R21_LIVE_INVOCATIONS_AUTHORIZED=1
+SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
+```
+
+R20 is fully closed as a failed one-shot: its consequential VPS surface, transaction residue and exact failed-run recovery pending set are clean; the retained R20 rollback journal is historical evidence only and is out of scope for R21. R20 must never be replayed.
+
+R20R6 formally repaired structured remote error propagation and rollback diagnostics. The old R20 P7 low-level cause remains UNKNOWN and must not be inferred retrospectively.
+
+R21 is the only current live Gate. It uses a new run id and the repaired runner. Keep standalone Windows WireGuard enabled. At P10 import the generated profile without activating or switching it. On any failure or ambiguity, do not rerun R21 and do not manually invoke rollback.
+
+After formal R21 PASS: G4-C manual ChatGPT smoke on HY2/WG/REALITY → G4-D native WireGuard-in-Clash migration → disable standalone Windows WireGuard only after G4-D PASS → final smoke → MVP v1 seal.
+
+This transition plus `REVIEWER_HANDOFF.md`, `EXECUTION_EVIDENCE.md`, `DECISION_LOG.md`, README, R20R6 Gate and R21 Gate on `main` are sufficient for a fresh Reviewer to continue without this conversation.
