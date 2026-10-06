@@ -4,19 +4,23 @@
 
 ```text
 GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
-STATE=WAITING_REVIEWER_RELEASE
+STATE=READY_FOR_EXECUTOR
 TARGET=143.198.159.233
 EXPECTED_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
 PINNED_3XUI_VERSION=v3.9.0
-EXECUTOR_RELEASED=NO
+EXECUTOR_RELEASED=YES
 STOP_AT_REVIEWER=YES
 ```
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Do **not** execute yet.
+Execute now.
 
-Reviewer is waiting for the Owner-relayed ED25519 host-key fingerprint from the new VPS Web Console. After Reviewer records the fingerprint and changes `EXECUTOR_RELEASED=YES`, start only from:
+Accepted Owner-relayed ED25519 host-key fingerprint:
+
+`SHA256:KV23raBMofyz5I9FL9chXUR9yrX7V6ARUyhAS3awDRQ`
+
+Before SSH trust is written, fetch the new host's ED25519 public key and require an exact fingerprint match. Then start only from:
 
 1. `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`
 2. current `REVIEWER_HANDOFF.md`
@@ -27,4 +31,4 @@ After release, execute the full bounded P0 and stop at Reviewer. No P1 inbounds 
 
 ## Owner relay
 
-Current: ED25519 SHA256 host-key fingerprint only.
+NONE.
