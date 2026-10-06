@@ -778,3 +778,15 @@ Decision: `RETURN_R19_P5_MIHOMO_CONFIG_PARSE_FAILED`.
 R19 stopped at P5 after the encrypted Baidu pending recovery artifact was verified but before any persistent remote mutation. The real installed Mihomo parser rejected the rendered local three-role profile. Remote rollback and owned Baidu pending rollback both reported PASS.
 
 The one-shot R19 authorization is consumed and is not reusable. Canonical live authorization is revoked. R19R1 is a local Codex offline diagnostic/repair Gate; it cannot authorize any live retry.
+
+
+## 2026-10-06 — Narrow final G4 validation and add WireGuard-in-Clash migration
+
+Owner decision:
+- existing performance evidence is sufficient; do not run another heavy peak-hour/percentile/Codex/image-generation workload matrix for v1;
+- G4-C acceptance is reduced to a functional smoke: manually select HY2, WG and REALITY in Clash and prove normal ChatGPT conversation works on each;
+- add G4-D before v1 seal to migrate WG-BASELINE from the standalone Windows WireGuard client into a native Clash/Mihomo WireGuard node;
+- keep the Windows WireGuard client as production/rollback until G4-D formally PASSes;
+- after G4-D PASS, the standalone Windows WireGuard client may be disabled and Clash Verge becomes the single control plane.
+
+This decision changes future validation scope only. The current R19R1 local Mihomo parse diagnostic remains unchanged.
