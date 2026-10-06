@@ -105,20 +105,20 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_R20_RECOVERY_PENDING_EXACT_CLEANUP_R6R2L_R20R5
-STATE=OWNER_ACTION_REQUIRED_EXACT_RECOVERY_CLEANUP
+STATE=OWNER_ACTION_REQUIRED_EXACT_CLEANUP
 PREVIOUS_RESULT=PASS_R20R4R2_EXPECTED_FAILED_RUN_PENDING_SET
-OBJECTIVE=Ownership-prove and remove only the exact R20 local DPAPI pending, local portable pending, and Baidu run-scoped pending; keep finals absent and rollback journal retained.
-MAX_ENDPOINT_THIS_ROUND=One exact recovery-pending cleanup with encrypted ciphertext comparison; no decrypt, final mutation, VPS, Clash or network mutation.
+OBJECTIVE=Delete only the exact R20 failed-run local/Baidu pending recovery set after ciphertext ownership proof.
+MAX_ENDPOINT_THIS_ROUND=Exact Baidu pending rm + exact two local pending deletes + owner-only temp cleanup; no final recovery mutation, decrypt, VPS, Clash or network mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=R20R5 Gate 9bc95184691025533df40653c30fa5801452bb9d; helper 500096ce2bf12c3a8a36aa109d6995ae8352d48e.
-APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; VPS residue closed; WG/HY2 healthy; exact pending set proven; R17 quarantine untouched; final recovery artifacts must remain absent; rollback journal retained.
-PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; unique R20 journal; local pending path/ACL/size/timestamp proofs; local account confirmation; remote pending exact-file/final-absent proof; encrypted ciphertext hash match before rm.
-REQUIRED_EVIDENCE=Owner account confirmation PASS; ciphertext match PASS; remote pending remove PASS; local pending remove PASS; exact set clean PASS; temp cleanup PASS; no decrypt/final/VPS/Clash/network mutation; journal retained.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if all exact pending artifacts are absent, finals remain absent, and journal remains.
-ROLLBACK_STATUS_OR_PLAN=VPS-side R20 state clean. R20R5 closes the failed-run recovery pending residue only.
-OWNER_ONLY_ACTIONS=Execute one R20R5 exact cleanup checkpoint and confirm the locally displayed Baidu account.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 consumed; VPS-side residue closed; WG/HY2 healthy; exact failed-run pending set proven; remote ciphertext must match local portable pending; local pending timestamps must fall inside R20 execution window; rollback journal retained.
+PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper AST PASS; Owner locally confirms current Baidu account; exact pending/final states re-proven.
+REQUIRED_EVIDENCE=Remote pending ciphertext match PASS; exact remote pending removed; exact local pendings removed; finals untouched; temp cleanup PASS; rollback journal retained; unrelated mutation markers NO.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only if exact pending set is absent afterward and no final/unrelated state changed.
+ROLLBACK_STATUS_OR_PLAN=R20 VPS state clean. This Gate closes failed-run recovery pending artifacts only.
+OWNER_ONLY_ACTIONS=Execute one R20R5 exact cleanup helper checkpoint and confirm the local Baidu account dialog.
 REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-recovery-pending-exact-cleanup.ps1 at blob 500096ce2bf12c3a8a36aa109d6995ae8352d48e exactly once after source/AST checks.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R20R5 markers only; do not copy UID into chat.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R20R5 markers only; never copy UID into chat.
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
 R20R5_GATE_BLOB=9bc95184691025533df40653c30fa5801452bb9d
@@ -400,11 +400,11 @@ Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and fina
 
 ## NEXT_STEP
 
-Execute exactly one R20 Administrator PowerShell 7.6.6 live checkpoint using the locked repaired runner. Standing Owner authorization covers this documented Gate; do not ask for another authorization. Stop after the runner returns for Reviewer.
+Execute exactly one R20R5 local PowerShell checkpoint. Do not run R20 or any rollback mode. Stop after sanitized R20R5 output for Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one R20 live checkpoint. Keep Baidu UID, SSH key path and recovery passphrase local. At P10 import only the generated SELF-VPN-V1 profile and do not activate it. No second R20 run is authorized.
+Run the R20R5 exact pending cleanup helper once. Confirm the local Baidu account dialog only if it is the intended project account. Do not expose the UID in chat.
 
 ## EVIDENCE_POINTERS
 
