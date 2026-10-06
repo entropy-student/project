@@ -11139,3 +11139,25 @@ R20R3_LOCAL_NETWORK_MUTATION=NO
 Reviewer accepts the exact non-recursive cleanup. The R20 transaction directory is gone; the consequential REALITY surface remains absent; WG/HY2 remain healthy. The VPS-side R20 residue chain is closed.
 
 Next Gate: `G4B_R20_RECOVERY_PENDING_READONLY_R6R2L_R20R4` at `468e4e7d0fac84b1d1ef2cc9cb4809f9b0dfbcf9`, helper `f697ac18a16b7aa6e9e612779efadd6dfb75fd62`. It observes recovery pending/final presence only and does not read recovery contents.
+
+
+## 2026-10-06 — R20R4 read-only identity input mismatch
+
+```text
+R20R4_RESULT=RETURN_R20R4_BAIDU_UID_MISMATCH_SAFE
+R20R4_SAFE_SYNC=PASS
+R20R4_SOURCE_IDENTITY=PASS
+R20R4_AST=PASS
+R20R4_MODE=READ_ONLY
+R20R4_FAILURE=BAIDU_UID_MISMATCH
+R20R4_TEMP_RUNTIME_CLEANUP=PASS
+R20R4_RECOVERY_CONTENT_READ=NO
+R20R4_RECOVERY_MUTATION=NO
+R20R4_BAIDU_MUTATION=NO
+R20R4_SSH_OR_VPS_ACTION=NO
+R20R4_NETWORK_MUTATION=NO
+```
+
+Interpretation: Baidu `who` succeeded far enough to parse a canonical UID, but the Owner-entered expected value differed. No provider/recovery/VPS/network mutation occurred. Historical R16/R17/R18 stored only hidden-input UID match PASS markers, not the numeric UID, so the prior numeric identifier cannot be recovered from canonical history without violating the prior privacy boundary.
+
+Next Gate: `G4B_R20_RECOVERY_PENDING_OWNER_CONFIRM_READONLY_R6R2L_R20R4R1` at `d13d5fbb22735c50a492396ff1c8fe44b6cb5613`; helper `2b3c418229ad2e340ad4284833bc29aa45f0719c`. It displays the current UID only in a local Windows dialog for Owner confirmation and never emits it to terminal/GitHub evidence.
