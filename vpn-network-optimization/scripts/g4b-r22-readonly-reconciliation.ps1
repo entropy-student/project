@@ -440,11 +440,69 @@ if($txnPresent){
 }
 
 $ownershipAmbiguous=$false
+$createdFlags=$remote['txn_created_flags']
+
 if($txnPresent -and (-not [bool]$remote['txn_state_present'] -or -not [bool]$remote['txn_state_decode_ok'] -or -not [bool]$remote['txn_run_id_match'] -or -not $txnEntriesSafe)){ $ownershipAmbiguous=$true }
-if([bool]$remote['runtime_present'] -and $remote['runtime_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
-if([bool]$remote['secret_config_present'] -and $remote['secret_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
-if([bool]$remote['unit_present'] -and $remote['unit_marker_match'] -ne $true){ $ownershipAmbiguous=$true }
-if([bool]$remote['binary_present'] -and [string]$remote['binary_hash_match'] -eq 'NO'){ $ownershipAmbiguous=$true }
+
+if([bool]$remote['binary_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_binary'] -or
+        [string]$remote['binary_hash_match'] -cne 'YES'
+    ){ $ownershipAmbiguous=$true }
+}
+
+if([bool]$remote['runtime_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_runtime'] -or
+        $remote['runtime_marker_match'] -ne $true
+    ){ $ownershipAmbiguous=$true }
+}
+
+if([bool]$remote['secret_config_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_secret_config'] -or
+        $remote['secret_marker_match'] -ne $true
+    ){ $ownershipAmbiguous=$true }
+}
+
+if([bool]$remote['unit_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_unit'] -or
+        $remote['unit_marker_match'] -ne $true
+    ){ $ownershipAmbiguous=$true }
+}
+
+if([bool]$remote['runtime_user_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_user']
+    ){ $ownershipAmbiguous=$true }
+}
+
+if([bool]$remote['runtime_group_present']){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['created_group']
+    ){ $ownershipAmbiguous=$true }
+}
+
+if(-not $serviceAbsent){
+    if(
+        -not [bool]$remote['txn_state_present'] -or
+        -not [bool]$remote['txn_run_id_match'] -or
+        -not [bool]$createdFlags['service_started']
+    ){ $ownershipAmbiguous=$true }
+}
 
 $routeMatch=[bool]$remote['route_baseline_match']
 $firewallMatch=[bool]$remote['firewall_baseline_match']
