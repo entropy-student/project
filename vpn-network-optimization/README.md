@@ -202,3 +202,57 @@ R20R4R1 stopped safely before account confirmation because the Baidu UID line co
 
 ### 2026-10-06 R20R4R2 PASS / R20R5 exact recovery pending cleanup
 R20R4R2 proved the exact failed-run recovery set: two local pending artifacts plus one exact run-scoped Baidu pending, with both finals absent. R20R5 is released to remove only that set after re-proving local ownership/timestamps, confirming the current Baidu account locally, and matching the remote encrypted pending ciphertext to the local portable pending before deletion.
+
+
+## 2026-10-06 Canonical current state — R20R6 PASS / R21 released
+
+> This section is the current project snapshot. Earlier sections that say “current”, “next”, or “waiting” are historical audit records and must not override this section or `REVIEWER_HANDOFF.md -> CURRENT_GATE`.
+
+```text
+CURRENT_GATE=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R20R6_R6R2L_R21
+CURRENT_STATE=OWNER_ACTION_REQUIRED_R21_ONE_SHOT_LIVE
+
+R20_RESULT=RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN
+R20_SECOND_ATTEMPT=FORBIDDEN
+R20_REMOTE_CONSEQUENTIAL_SURFACE=CLEAN
+R20_REMOTE_TRANSACTION_RESIDUE=CLEAN
+R20_FAILED_RUN_RECOVERY_PENDING_SET=CLEAN
+R20_RECOVERY_FINAL_ARTIFACTS=ABSENT
+R20_ROLLBACK_JOURNAL=RETAINED_OUT_OF_SCOPE
+
+R20R6_RESULT=PASS_R20R6_ERROR_PROPAGATION_REPAIR
+R20R6_GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
+R20R6_SOURCE_REPAIR_COMMIT=6344fc4625383fbf25883ffb546cceee62a5b010
+R20R6_FINAL_EVIDENCE_COMMIT=d3bd12d6320abd8c0f7c44ba19dc832cea41392d
+
+R21_GATE_BLOB=ae20c33f37d9234cd85f6e08f058993d8ef7fd78
+R21_RUNNER_BLOB=4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b
+R21_LIVE_FIXTURE_VALIDATOR_BLOB=e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06
+R21_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
+R21_THREE_ROLE_TEMPLATE_BLOB=21c9a73f965e55da0c5d161b3c051e0d3bab1aa0
+R21_LIVE_EXECUTION_AUTHORIZED=YES
+R21_AUTHORIZED_LIVE_INVOCATIONS=1
+SECOND_R21_LIVE_INVOCATION_AUTHORIZED=NO
+
+ROLE_ORDER=HY2-SFO3_PRIMARY,WG-BASELINE_BACKUP_1,REALITY-SFO3_BACKUP_2
+AUTO_SWITCHING=OFF
+WINDOWS_WIREGUARD=KEEP_ENABLED_THROUGH_R21_AND_G4C
+```
+
+R20R6 repaired bounded structured remote error propagation and rollback failure diagnostics offline. The historical R20 low-level P7 cause remains intentionally UNKNOWN because the old runner discarded the remote structured error before the repair; do not retrospectively guess it.
+
+R21 is a fresh one-shot Gate, not a replay of R20. At P10 the Owner imports only the exact generated `SELF-VPN-V1` profile without activation. Any R21 failure/ambiguity stops at Reviewer; there is no second R21 invocation and no manual rollback retry.
+
+After formal R21 PASS, the remaining v1 route is:
+
+```text
+R21 persistent three-role readiness
+→ G4-C manual Clash switching: HY2 / WG / REALITY, normal ChatGPT conversation succeeds on each
+→ G4-D migrate WG-BASELINE into Clash/Mihomo native WireGuard
+→ formal G4-D PASS
+→ disable standalone Windows WireGuard
+→ final smoke
+→ MVP v1 seal
+```
+
+The Owner's standing authorization covers this documented closeout route. A materially new risk boundary still requires a fresh Reviewer stop.
