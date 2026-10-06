@@ -104,32 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-SUBGATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R19R1_R6R2L_R20
-STATE=OWNER_ACTION_REQUIRED_R20_LIVE
-PREVIOUS_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
-OBJECTIVE=Run exactly one fresh bounded live G4-B attempt using the repaired HY2 fingerprint renderer to establish persistent HY2/WG/REALITY three-role readiness.
-MAX_ENDPOINT_THIS_ROUND=Standing Owner authorization applies to the documented roadmap. R20 is released for exactly one live run and mandatory Reviewer stop.
+GATE_ID=G4B_R20_P7_REMOTE_READONLY_RECONCILIATION_R6R2L_R20R1
+STATE=OWNER_ACTION_REQUIRED_READONLY
+PREVIOUS_RESULT=RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN
+OBJECTIVE=Read-only reconcile exact R20 remote/project state before any further rollback or live attempt.
+MAX_ENDPOINT_THIS_ROUND=One read-only SSH observation using locked helper; no remote/local/provider/Clash/network mutation.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=R20 Gate a35f1c4c62091338a1ef71c19f1af0ac94a60a46; runner 3a5e7c93bb96a4b485283f6590df18c5fac2690f; live validator 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3; template 21c9a73f965e55da0c5d161b3c051e0d3bab1aa0; package validator 59e18226dff66adcaac978b4b7eeb540a14514c9.
-APPLICABLE_CRITICAL_CONSTRAINTS=R18 CLEAN accepted; R19 safe RETURN with no consequential mutation; R19R1 formally PASS; R17 quarantine retained/untouched; WG/HY2 preserved; AUTO_SWITCHING=OFF; system proxy/TUN final OFF; G4-C/G4-D excluded; Secrets never emitted.
-PREFLIGHT=Standing Owner authorization recorded; safe-sync main; exact source blobs; package validator real-Mihomo parse PASS; full live fixture validator PASS; local UID/SSH key/passphrase only.
-REQUIRED_EVIDENCE=Runner final/rollback contract; persistent REALITY readiness; TCP443 readiness; profile import visibility without activation; role order; WG/HY2 preserved; proxy/TUN OFF; recovery promotion only on overall success; cleanup/rollback markers; zero Secret emission.
-ACCEPTANCE_CRITERIA=PASS_CANDIDATE only under exact R20 contract; any failure/ambiguity stops without second attempt.
-ROLLBACK_STATUS_OR_PLAN=R19 left no consequential state; R20 uses runner bounded rollback + retained journal. No second R20 live invocation.
-OWNER_ONLY_ACTIONS=Run exactly one R20 live checkpoint in Administrator PowerShell 7.6.6 and complete the P10 Clash import without activation.
-REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_PERSISTENT_THREE_ROLE_LIVE_AFTER_R19R1_R6R2L_R20.md at blob a35f1c4c62091338a1ef71c19f1af0ac94a60a46. R19 authorization is historical/consumed and is not execution authority.
-EXECUTOR_TO_REVIEWER_RELAY=After authorization and exactly one run, return bounded non-secret markers and stop.
-LIVE_G4B_EXECUTION_AUTHORIZED=YES
-SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
-R19R1_RESULT=PASS_R19R1_LOCAL_MIHOMO_PARSE_REPAIR
-R20_GATE_BLOB=a35f1c4c62091338a1ef71c19f1af0ac94a60a46
-R20_LIVE_RUNNER_BLOB=3a5e7c93bb96a4b485283f6590df18c5fac2690f
-R20_LIVE_RUNNER_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
-R20_PACKAGE_VALIDATOR_BLOB=59e18226dff66adcaac978b4b7eeb540a14514c9
+TARGET_AND_SCOPE=R20R1 Gate 7fdbc077a82e6bbd262d7c5060cd78e0e1a4e2f2; helper 50bc1911d9ae5493cc715e0fb7cfdac8d9266d9c; R20 runner 3a5e7c93bb96a4b485283f6590df18c5fac2690f.
+APPLICABLE_CRITICAL_CONSTRAINTS=R20 one-shot consumed; no second R20; no blind rollback; retained local rollback journal and recovery artifacts must remain untouched; no Secret content reads.
+PREFLIGHT=Safe-sync main; exact Gate/helper blobs; helper PowerShell AST PASS; accepted SSH key only.
+REQUIRED_EVIDENCE=Sanitized service/listener/path/transaction/WG/HY2 state plus all mutation markers NO.
+ACCEPTANCE_CRITERIA=Observation complete only; CLEAN vs PROJECT_RESIDUAL_PRESENT vs AMBIGUOUS_BASELINE determines next Gate.
+ROLLBACK_STATUS_OR_PLAN=UNKNOWN pending R20R1. Do not invoke existing rollback mode.
+OWNER_ONLY_ACTIONS=Execute one read-only R20R1 helper checkpoint.
+REVIEWER_TO_EXECUTOR_RELAY=Run scripts/g4b-r20-readonly-reconciliation.ps1 at blob 50bc1911d9ae5493cc715e0fb7cfdac8d9266d9c exactly once after source/AST checks.
+EXECUTOR_TO_REVIEWER_RELAY=Return only the helper's sanitized markers and stop.
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_STANDING_AUTHORIZATION=GRANTED_FOR_DOCUMENTED_ROADMAP
-OWNER_STANDING_AUTH_SCOPE=R20,G4C_CHATGPT_THREE_ROLE_SMOKE,G4D_WIREGUARD_IN_CLASH,MVP_V1_SEAL
-OWNER_STANDING_AUTH_EXPANSION_POLICY=NEW_MATERIAL_RISK_BOUNDARY_REQUIRES_FRESH_STOP
+R20R1_GATE_BLOB=7fdbc077a82e6bbd262d7c5060cd78e0e1a4e2f2
+R20R1_HELPER_BLOB=50bc1911d9ae5493cc715e0fb7cfdac8d9266d9c
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. R18 is formally PASS. R19 safely RETURNed at P5 before remote consequential mutation. R19R1 is now formally PASS after executable local Mihomo FAIL→PASS proof. Current work is R20 fresh live authorization.
