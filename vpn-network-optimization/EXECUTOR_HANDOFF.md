@@ -1,34 +1,30 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — 3x-ui Existing VPS Discovery P0
+## Current execution status — 3x-ui Fresh VPS P0
 
 ```text
-GATE_ID=3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY
-STATE=READY_FOR_EXECUTOR
-TARGET=24.199.118.137
-TARGET_HOSTNAME_EXPECTED=ubuntu-s-1vcpu-512mb-10gb-sfo3
-TARGET_OS_EXPECTED=Ubuntu_24.04
-EXECUTION_MODE=STRICT_SSH_READONLY
-TARGET_MUTATION_ALLOWED=NO
-SECRET_OUTPUT_ALLOWED=NO
+GATE_ID=3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL
+STATE=WAITING_REVIEWER_RELEASE
+TARGET=143.198.159.233
+EXPECTED_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+PINNED_3XUI_VERSION=v3.9.0
+EXECUTOR_RELEASED=NO
 STOP_AT_REVIEWER=YES
 ```
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Start only from:
+Do **not** execute yet.
 
-1. `docs/3X_UI_P0_EXISTING_VPS_DISCOVERY.md`
+Reviewer is waiting for the Owner-relayed ED25519 host-key fingerprint from the new VPS Web Console. After Reviewer records the fingerprint and changes `EXECUTOR_RELEASED=YES`, start only from:
+
+1. `docs/3X_UI_P0_FRESH_VPS_BOOTSTRAP_INSTALL.md`
 2. current `REVIEWER_HANDOFF.md`
 
-Do not reconstruct the old VPN project.
+Do not reconstruct the legacy VPN project and do not touch old VPS `24.199.118.137`.
 
-Use the existing local SSH identity/known-host metadata if available. Do not auto-accept a host-key change.
-
-Run only the bounded read-only target discovery defined by the Gate, append sanitized proof to `EXECUTION_EVIDENCE.md`, and return the standard completion packet.
-
-Do not install 3x-ui, stop old VPN services, change ports, change firewall, or enter P1.
+After release, execute the full bounded P0 and stop at Reviewer. No P1 inbounds in the same round.
 
 ## Owner relay
 
-NONE unless strict SSH itself cannot proceed safely.
+Current: ED25519 SHA256 host-key fingerprint only.
