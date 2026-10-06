@@ -17,7 +17,7 @@ P2 Secure Mihomo delivery                         PASS
 P2R1 Direct Executor AppData repair               SUPERSEDED_NOT_EXECUTED
 P2R2 Server stage + Owner-host materialization    PASS
 P2R2C Remote transfer cleanup                     DEFERRED_TO_P4
-P3 Clash import + three-node smoke                IN_PROGRESS
+P3 Clash import + three-node smoke                RETURN_BASELINE_NETWORK
 P4 Final cutover + backup + seal                  PENDING
 ```
 
@@ -63,17 +63,16 @@ APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 ## CURRENT_GATE
 
 ```text
-GATE_ID=3XUI_FASTPATH_P3_CLASH_IMPORT_THREE_NODE_SMOKE
-STATE=REVIEWER_RELEASED_EXECUTOR_P3_INTERACTIVE
-TARGET=143.198.159.233
-P0_FORMAL_PASS=YES
-P1_FORMAL_PASS=YES
+GATE_ID=3XUI_FASTPATH_P3_BASELINE_NETWORK_RECONCILIATION
+STATE=WAITING_OWNER_READONLY_BASELINE_DIAGNOSTIC
 P2_FORMAL_PASS=YES
-REMOTE_TRANSFER_CLEANUP=DEFERRED_TO_P4
-OWNER_UI_INTERACTION_REQUIRED=YES_BOUNDED
-LIVE_SERVER_MUTATION_ALLOWED=NO
-OLD_VPS_MUTATION_ALLOWED=NO
-EXECUTOR_RELEASED=YES
+NEW_3XUI_SUBSCRIPTION_IMPORTED=YES
+HY2_SMOKE=UNVERIFIED
+WG_SMOKE=NOT_TESTED
+REALITY_SMOKE=NOT_TESTED
+SERVER_MUTATION_ALLOWED=NO
+P3_RETRY_AUTHORIZED=NO
+OWNER_ACTION_REQUIRED=RESTORE_BASELINE_PROFILE_AND_RUN_READONLY_DIAGNOSTIC
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -101,7 +100,7 @@ Phase A and Owner-host materialization are accepted. Remote transfer cleanup is 
 
 ## OWNER_ACTION_REQUIRED
 
-During P3 only: perform the exact bounded Clash Verge GUI import/selector steps requested by Executor.
+Restore the exact pre-P3 Clash profile, keep the new 3x-ui subscription imported, then run the Reviewer-supplied read-only baseline network diagnostic.
 
 ## EVIDENCE_POINTERS
 
@@ -116,3 +115,5 @@ During P3 only: perform the exact bounded Clash Verge GUI import/selector steps 
 - P2 PASS with deferred cleanup: `docs/REVIEWER_DECISION_P2_PASS_REMOTE_CLEANUP_DEFERRED.md`
 - Active P3 Gate: `docs/3X_UI_P3_CLASH_IMPORT_THREE_NODE_SMOKE.md`
 - P2R2 Phase A Evidence: `results/3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE_2026-10-07_EXECUTOR_R1.md`
+
+- P3 baseline reconciliation: `docs/REVIEWER_RECONCILIATION_P3_BASELINE_HTTPS_RESET.md`
