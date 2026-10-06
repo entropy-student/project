@@ -861,3 +861,12 @@ Decision: `PASS_R20R4R2_EXPECTED_FAILED_RUN_PENDING_SET`.
 The current Baidu account was confirmed locally without emitting its UID. The exact R20 recovery state is: local DPAPI pending present, local portable pending present, exact remote pending present, and both local/remote finals absent. No recovery or provider mutation occurred.
 
 R20R5 may remove only this exact pending set. Before provider deletion, it must download the encrypted pending object into an owner-only temporary directory and prove SHA-256 equality with the local portable pending ciphertext. No decrypt/unprotect is allowed.
+
+
+## 2026-10-06 — PASS R20R5; repair error propagation before fresh live Gate
+
+Decision: `PASS_R20R5_EXACT_PENDING_SET_CLEAN`.
+
+R20 failed-run state is now reconciled: consequential VPS surface clean, transaction residue removed, exact local/Baidu pending recovery artifacts removed, finals absent, WG/HY2 preserved, and rollback journal retained.
+
+Reviewer source inspection found the runner discards remote supervisor structured error codes whenever the SSH process exits nonzero, and automatic rollback hides its own bounded failure code. Consequently the exact historical P7 cause cannot be reconstructed safely. R20R6 is an offline-only repair Gate for error propagation and rollback diagnostics. No fresh live Gate is released until R20R6 formally passes.
