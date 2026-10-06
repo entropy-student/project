@@ -808,3 +808,10 @@ A new live Gate R20 is prepared at `a35f1c4c62091338a1ef71c19f1af0ac94a60a46`. R
 Owner decision: all remaining authorization checkpoints in the currently documented closeout roadmap are approved without repeated prompts.
 
 Applies to R20, the lightweight G4-C three-role ChatGPT smoke, G4-D WireGuard-in-Clash migration, and MVP v1 seal. One-shot execution limits and Reviewer stops remain unchanged. Any materially expanded scope still stops for review.
+
+
+## 2026-10-06 — RETURN R20 at P7; no blind rollback retry
+
+Decision: `RETURN_R20_P7_UNCLASSIFIED_ROLLBACK_UNKNOWN`.
+
+Because consequential remote mutation had started and automatic rollback is unverified, neither R20 nor its rollback path may be blindly replayed. First action is R20R1 read-only reconciliation of the exact project-owned service/listener/paths/transaction state. No Secret content, provider action, Clash mutation, or network mutation is authorized.
