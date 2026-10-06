@@ -636,3 +636,18 @@ R18_STATE=OWNER_ACTION_REQUIRED_READONLY_CLEAN_CHECK
 ```
 
 R17 moved the exact stale pending out of the production namespace into the non-production quarantine namespace with one reversible rename. No rollback or permanent deletion was required. R18 now independently verifies CLEAN using the reviewed read-only helper; no Provider mutation is authorized in R18.
+
+
+### R19 fresh Owner authorization — 2026-10-06
+
+```text
+R19_GATE_BLOB=13ebc71547c975aa7f99434887e07646bb495a00
+R19_LIVE_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+R19_LIVE_RUNNER_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+OWNER_R19_LIVE_AUTHORIZATION=GRANTED
+LIVE_G4B_EXECUTION_AUTHORIZED=YES
+AUTHORIZED_LIVE_INVOCATIONS=1
+SECOND_LIVE_INVOCATION_AUTHORIZED=NO
+```
+
+R18 is formally PASS and the production recovery namespace is CLEAN. The historical live one-shot is not replayed. R19 is released for exactly one Owner Administrator PowerShell 7.6.6 live checkpoint. Local-only UID/SSH-key/passphrase inputs and the P10 Clash import remain Owner actions; the profile must not be activated.
