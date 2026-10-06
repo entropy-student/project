@@ -10884,3 +10884,30 @@ NO_SECOND_R17_ATTEMPT=YES
 Reviewer formally accepts R17. The stale production pending object was moved reversibly into the non-production quarantine namespace with exactly one forward rename. No rollback or permanent deletion occurred.
 
 Next Gate: `G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18`, read-only independent CLEAN observation.
+
+
+## 2026-10-06 — Reviewer formal PASS: R18 independent residual CLEAN
+
+```text
+GATE_ID=G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18
+REVIEWER_RESULT=PASS_R6R2L_R18_RESIDUAL_CLEAN
+R18_GATE_BLOB=f42237242503405c11f652240b4baedec8e71e22
+R18_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+R18_RUN_INVOCATION_COUNT=1
+PROJECT_FINAL_COUNT=0
+PROJECT_PENDING_COUNT=0
+PROJECT_UNKNOWN_COUNT=0
+BAIDU_RESIDUAL_STATE=CLEAN
+TEMP_RUNTIME_CLEANUP=PASS
+BAIDU_MUTATION_ACTION=NO
+R18_UNEXPECTED_OUTPUT_COUNT=0
+NO_SECOND_R18_ATTEMPT=YES
+QUARANTINE_MUTATION=NO
+PERMANENT_DELETE_EXECUTED=NO
+LIVE_G4B_EXECUTED=NO
+G4C_EXECUTED=NO
+```
+
+R18 independently proves the production recovery namespace is CLEAN after R17. The Baidu residual cleanup chain is closed. The R17 quarantine object remains retained outside the production prefix.
+
+The historical G4-B live one-shot Gate is not replayable and locks stale source identities. New Gate `G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19` at blob `11cb06d6b1be7ac372181517bb65cd847a10e81c` is prepared against current R10-repaired runner `2faf59ec5a1653a275b11504fe567d0fc871f94e` and validator `26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3`. Fresh Owner authorization is required before live execution.
