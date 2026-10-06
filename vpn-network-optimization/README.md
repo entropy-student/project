@@ -17,15 +17,14 @@ Build three manually switchable self-hosted nodes on one VPS:
 ## Active flow
 
 ```text
-P0  Existing VPS read-only discovery             CURRENT
-P1  3x-ui v3.9.0 unattended install
-P2  Create HY2 / WireGuard / REALITY via API
-P3  Generate/import one Mihomo subscription
-P4  Three-node manual ChatGPT/OpenAI smoke
-P5  Minimal backup + seal
+P0  Fresh VPS trust bootstrap + 3x-ui install      CURRENT
+P1  Create HY2 / WireGuard / REALITY via API
+P2  Generate/import one Mihomo subscription
+P3  Three-node manual ChatGPT/OpenAI smoke
+P4  Minimal backup + seal
 ```
 
-Current Gate: `3XUI_FASTPATH_P0_EXISTING_VPS_DISCOVERY`
+Current Gate: `3XUI_FASTPATH_P0_FRESH_VPS_BOOTSTRAP_INSTALL`
 
 Active plan: `docs/3X_UI_THREE_NODE_FASTPATH.md`
 
@@ -52,7 +51,7 @@ Historical scripts/docs remain in their original paths to preserve Git reference
 - Never commit or paste panel passwords, UUID secrets, REALITY private keys, HY2 passwords or WireGuard private keys.
 - Prefer the 3x-ui generated Mihomo subscription over maintaining merged YAML manually.
 - Do not add extra automation until the three-node manual flow is proven.
-- P0 is read-only because the selected target is an existing historical VPS. Mutation begins only after Reviewer accepts fresh target reality.
+- The active target is now fresh DigitalOcean droplet `143.198.159.233`; old VPS `24.199.118.137` stays untouched as the live fallback. P0 performs explicit SSH trust bootstrap, pinned 3x-ui install, and loopback-only panel binding.
 
 ## Historical performance facts retained
 
