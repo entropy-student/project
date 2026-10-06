@@ -63,13 +63,13 @@ APPDATA_PATH_DISCOVERY_BY_EXECUTOR=FORBIDDEN_FOR_THIS_REPAIR
 
 ```text
 GATE_ID=3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE
-STATE=REVIEWER_RELEASED_EXECUTOR_SERVER_STAGE
-PHASE=A_SERVER_STAGE_ONLY
+STATE=WAITING_OWNER_PHASE_B_CHECKPOINT
+PHASE=B_OWNER_HOST_MATERIALIZATION
 REMOTE_STAGE=/root/3xui-owner-transfer
 EXECUTOR_MAY_WRITE_OWNER_APPDATA=NO
 P3_RELEASED=NO
-EXECUTOR_RELEASED=YES
-OWNER_ACTION_REQUIRED=NONE_UNTIL_PHASE_A_REVIEW
+EXECUTOR_RELEASED=NO
+OWNER_ACTION_REQUIRED=RUN_ATOMIC_POWERSHELL_CHECKPOINT
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -93,11 +93,11 @@ Supersede decision:
 
 ## NEXT_STEP
 
-Executor performs only Phase A remote staging. Reviewer checks the staging Evidence. Then Owner runs one exact PowerShell checkpoint to materialize the files onto the real Windows host and read them back in the same session.
+Phase A is formally PASS. Owner now runs the exact Reviewer-supplied atomic PowerShell checkpoint on the real Windows host. Formal P2 PASS requires that same checkpoint to materialize both files, lock ACLs, parse the YAML locally, read both exact paths back as non-empty, and clean the remote staging directory.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until Phase A returns.**
+Run the exact atomic PowerShell checkpoint supplied by Reviewer. Do not edit its paths or split it into manual substeps.
 
 ## EVIDENCE_POINTERS
 
@@ -105,4 +105,5 @@ Executor performs only Phase A remote staging. Reviewer checks the staging Evide
 - Initial reconciliation: `docs/REVIEWER_RECONCILIATION_P2_LOCAL_ARTIFACT_MISSING_2026-10-06.md`
 - P2R1 supersede: `docs/REVIEWER_DECISION_P2R1_SUPERSEDED_OWNER_HOST_MATERIALIZATION.md`
 - Active Gate: `docs/3X_UI_P2R2_SERVER_STAGE_OWNER_MATERIALIZE.md`
+- Phase A PASS: `docs/REVIEWER_DECISION_P2R2_PHASE_A_SERVER_STAGE_PASS.md`
 - P2R2 Phase A Evidence: `results/3XUI_FASTPATH_P2R2_SERVER_STAGE_OWNER_MATERIALIZE_2026-10-07_EXECUTOR_R1.md`
