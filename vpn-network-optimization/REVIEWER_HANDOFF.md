@@ -135,5 +135,6 @@ Executor runs only P2 and returns a sanitized completion packet. Reviewer then d
 
 - P1 Evidence: `results/3XUI_FASTPATH_P1_THREE_INBOUNDS_SHARED_CLIENT_2026-10-06_EXECUTOR_R1.md`
 - P1 PASS: `docs/REVIEWER_DECISION_3XUI_P1_THREE_INBOUNDS_SHARED_CLIENT_PASS.md`
+- P2 Executor Evidence: `results/3XUI_FASTPATH_P2_SECURE_MIHOMO_DELIVERY_2026-10-06_EXECUTOR_R1.md`
 - Active Gate: `docs/3X_UI_P2_SECURE_MIHOMO_DELIVERY.md`
 - Legacy archive: `docs/archive/LEGACY_PROJECT_INDEX_2026-10-06.md`
