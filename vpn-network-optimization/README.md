@@ -87,7 +87,7 @@ G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
 G4-B0 Windows 外层绕行验证                   ✅ PASS
-G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R18 CLEAN READBACK
+G4-B 长期三节点可用性                        🚧 IN_PROGRESS / R19 AUTHORIZATION REQUIRED
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -138,7 +138,7 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行并暴露真实 provider-format fixture drift；R10 parser/fixture 修复正式 PASS；R11→R15 完成本机 Baidu config Owner 漂移定位与修复；R16 已完成真实 provider read-only 核对并确认 final=0、pending=1、unknown=0。R17 已正式 PASS，唯一 stale pending 已移出 production namespace 至 quarantine；当前 production post-readback 为 final=0/pending=0/unknown=0。当前唯一下一步是 R18 只读独立复核 CLEAN，quarantine 对象继续保留且禁止永久删除。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。G2-C 也已完成：VLESS+REALITY+Vision 的私网实现 A/B 与公网 TCP/443 canary 均证明互操作，临时路由/listener/runtime 已清理。G3-A、G3-B 离线迁移包、G3-C 手动控制与真实 HY2-in-Clash canary 均已完成；G4-A 与 G4-B0 也已 PASS。当前处于 G4-B 持久三角色 readiness：R8 pipeline-output 修复正式 PASS；R9 已执行并暴露真实 provider-format fixture drift；R10 parser/fixture 修复正式 PASS；R11→R15 完成本机 Baidu config Owner 漂移定位与修复；R16 已完成真实 provider read-only 核对并确认 final=0、pending=1、unknown=0。R17 已正式 PASS，唯一 stale pending 已移出 production namespace 至 quarantine；当前 production post-readback 为 final=0/pending=0/unknown=0。R18 已正式 PASS，production recovery namespace 独立确认 CLEAN（0/0/0）。旧 live one-shot 不再复用；R19 已按当前 R10-repaired runner/validator 准备，等待 fresh Owner authorization。quarantine 对象继续保留且禁止永久删除。G4-C 晚高峰 + 真实 Codex/OpenAI/生图工作负载仍作为 G4-B 正式 PASS 后的独立最终真实场景验收。
 
 
 ## 当前交互目标
