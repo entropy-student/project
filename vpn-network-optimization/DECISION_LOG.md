@@ -801,3 +801,10 @@ Accepted cause: the production renderer left the HY2 certificate fingerprint sen
 Executable proof is accepted: the legacy sentinel profile is rejected by the installed Mihomo parser while the repaired synthetic production-renderer output parses successfully. Package and full live-runner fixture regressions passed with no consequential actions.
 
 A new live Gate R20 is prepared at `a35f1c4c62091338a1ef71c19f1af0ac94a60a46`. R19 authorization remains consumed. R20 requires fresh Owner authorization before exactly one live invocation can be released.
+
+
+## 2026-10-06 — Standing authorization for documented closeout roadmap
+
+Owner decision: all remaining authorization checkpoints in the currently documented closeout roadmap are approved without repeated prompts.
+
+Applies to R20, the lightweight G4-C three-role ChatGPT smoke, G4-D WireGuard-in-Clash migration, and MVP v1 seal. One-shot execution limits and Reviewer stops remain unchanged. Any materially expanded scope still stops for review.
