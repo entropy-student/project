@@ -1,16 +1,17 @@
 # VPN Network Optimization — EXECUTOR HANDOFF
 
-## Current execution status — 3x-ui P2
+## Current execution status — 3x-ui P3
 
 ```text
-GATE_ID=3XUI_FASTPATH_P2_SECURE_MIHOMO_DELIVERY
-STATE=READY_FOR_EXECUTOR
+GATE_ID=3XUI_FASTPATH_P3_CLASH_IMPORT_THREE_NODE_SMOKE
+STATE=READY_FOR_EXECUTOR_INTERACTIVE
 TARGET=143.198.159.233
 P0_FORMAL_PASS=YES
 P1_FORMAL_PASS=YES
+P2_FORMAL_PASS=YES
 EXECUTOR_RELEASED=YES
-ACTIVE_CLASH_PROFILE_MUTATION_ALLOWED=NO
-LIVE_TRAFFIC_SWITCH_ALLOWED=NO
+OWNER_UI_INTERACTION_REQUIRED=YES_BOUNDED
+SERVER_MUTATION_ALLOWED=NO
 STOP_AT_REVIEWER=YES
 ```
 
@@ -18,23 +19,25 @@ STOP_AT_REVIEWER=YES
 
 Read only:
 
-1. `vpn-network-optimization/docs/3X_UI_P2_SECURE_MIHOMO_DELIVERY.md`
+1. `vpn-network-optimization/docs/3X_UI_P3_CLASH_IMPORT_THREE_NODE_SMOKE.md`
 2. current `vpn-network-optimization/REVIEWER_HANDOFF.md`
-3. `vpn-network-optimization/docs/REVIEWER_DECISION_3XUI_P1_THREE_INBOUNDS_SHARED_CLIENT_PASS.md`
-4. official 3x-ui v3.9.0 files narrowly required by the Gate;
-5. current local Clash Verge metadata required for baseline snapshot and Mihomo parse.
+3. `vpn-network-optimization/docs/REVIEWER_DECISION_3XUI_P2_SECURE_MIHOMO_DELIVERY_PASS.md`
+4. current Clash Verge runtime/profile metadata needed for P3.
 
-Do not reread or execute legacy G1-G4/R19-R22/Baidu material.
+Do not execute historical G1-G4/R19-R22/Baidu Gates/runners.
 
-## Accepted state
+## Accepted facts
 
-- server has exactly three healthy accepted inbounds;
-- subscription server is disabled/closed;
-- one shared client exists across all three;
-- P2 preferred mode is valid HTTPS bare-IP subscription;
-- one bounded static Mihomo snapshot fallback is authorized if ACME IP issuance is unavailable;
-- P2 stages and parses only; it must not activate/import/switch the new profile.
+- secure HTTPS remote subscription already exists and normal TLS validation passed;
+- protected local `subscription.url` and parsed three-node YAML are already staged;
+- current old standalone WireGuard/network state is the rollback baseline;
+- P3 requires Owner GUI import/selector acknowledgements;
+- system proxy and TUN remain OFF;
+- all test traffic is sent explicitly through the discovered local Clash SOCKS5 listener;
+- exactly two requests per selected node, six total;
+- P3 performs no server mutation;
+- after tests, restore old active Clash profile while retaining new subscription imported.
 
 ## Owner relay
 
-NONE.
+Only the exact GUI steps/acknowledgements requested during execution.
