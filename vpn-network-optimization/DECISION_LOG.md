@@ -845,3 +845,10 @@ Decision: `RETURN_R20R4_BAIDU_UID_MISMATCH_SAFE`.
 The current Baidu account UID parsed successfully but differed from the manually entered expected UID. No mutation occurred. Because the accepted prior UID was intentionally never persisted, Reviewer will not guess or reconstruct it.
 
 R20R4R1 replaces memory-based numeric input with a local-only identity attestation: the pinned CLI reads the current UID, a Windows dialog displays it only on the Owner machine, and the Owner confirms whether it is the intended project account. The UID is not emitted to terminal or GitHub.
+
+
+## 2026-10-06 — R20R4R1 safe RETURN; restore proven Baidu UTF-8 decoding
+
+Decision: `RETURN_R20R4R1_BAIDU_UID_PARSE_OR_UNIQUENESS_FAILED_SAFE`.
+
+No recovery/provider/VPS/network mutation occurred. Reviewer identified that the new R20 recovery helpers omitted the explicit UTF-8 process-output decoding used by the previously accepted Baidu helpers. R20R4R2 restores that exact decoding contract and otherwise preserves the R20R4R1 read-only behavior. The earlier R20R4 `BAIDU_UID_MISMATCH` classification is not treated as proof of account drift because that helper combined parse and equality into one assertion.
