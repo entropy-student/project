@@ -10851,3 +10851,36 @@ NEXT_ACTION=OWNER_R17_ONE_SHOT_QUARANTINE
 ```
 
 Reviewer re-read only the bounded canonical state needed after the interrupted turn: current Handoff/Gate, Evidence tail, README/Transition state and final helper/validator identities. The canonical technical state is consistent. A few stale narrative lines in Handoff still described the superseded R17R1 blocking state; those lines were corrected on main. No branch-only artifact is required to continue. No production source, Provider, Secret, SSH/VPS, Clash or network action occurred in this reconciliation.
+
+
+## 2026-10-06 — Reviewer formal PASS: R17 stale pending quarantine
+
+```text
+GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+REVIEWER_RESULT=PASS_R6R2L_R17_STALE_PENDING_QUARANTINE
+R17_GATE_BLOB=7d850014c1845a21664f26e503f9da63f4446e6d
+R17_HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+R17_VALIDATOR_BLOB=7a555224720ce65b724012c425b58d6aad2c9026
+R17_RUN_INVOCATION_COUNT=1
+R17_PRECHECK=PASS
+R17_SOURCE_STATE=ONE_PENDING
+R17_QUARANTINE_TARGET_PRECHECK=ABSENT
+R17_REMOTE_MUTATION=MV_TO_QUARANTINE
+R17_SOURCE_AFTER=ABSENT
+R17_QUARANTINE_AFTER=PRESENT
+PROJECT_FINAL_COUNT_AFTER=0
+PROJECT_PENDING_COUNT_AFTER=0
+PROJECT_UNKNOWN_COUNT_AFTER=0
+R17_ROLLBACK_REQUIRED=NO
+R17_RESULT=PASS_CANDIDATE
+TEMP_RUNTIME_CLEANUP=PASS
+R17_FORWARD_MV_COUNT=1
+BAIDU_PERMANENT_DELETE=NO
+R15_ROLLBACK_JOURNAL_ACTION=NONE
+SECRET_VALUES_EMITTED=0
+NO_SECOND_R17_ATTEMPT=YES
+```
+
+Reviewer formally accepts R17. The stale production pending object was moved reversibly into the non-production quarantine namespace with exactly one forward rename. No rollback or permanent deletion occurred.
+
+Next Gate: `G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18`, read-only independent CLEAN observation.
