@@ -59,6 +59,7 @@ $script:physicalEgress = $null
 $script:baseline = $null
 $script:remoteCredentials = $null
 $script:hy2Auth = $null
+$script:hy2Fingerprint = $null
 $script:portablePassphrase = $null
 $script:journalCreated = $false
 $script:preserveRollbackJournal = $false
@@ -342,6 +343,7 @@ function Read-Hy2Auth {
         finally { $cert.Dispose() }
         Assert-G4B ($fingerprint -ceq $match.Groups['v'].Value) 'HY2_CERTIFICATE_FINGERPRINT_MISMATCH'
         $script:hy2Auth=[Text.Encoding]::ASCII.GetString($authBytes)
+        $script:hy2Fingerprint=$fingerprint
     }
     finally {
         if ($reader) { $reader.Dispose() }; if ($stream) { $stream.Dispose() }
@@ -1280,12 +1282,13 @@ except Exception:
 }
 
 function Get-ProfileRenderedText {
-    param([string]$Template,[string]$Uuid,[string]$PublicKey,[string]$ShortId,[string]$InterfaceName)
+    param([string]$Template,[string]$Uuid,[string]$PublicKey,[string]$ShortId,[string]$InterfaceName,[string]$Hy2Fingerprint)
     $cfg=ConvertFrom-Json -InputObject $Template -AsHashtable -ErrorAction Stop
     Assert-G4B ($cfg['proxies'].Count -eq 3 -and $cfg['proxy-groups'].Count -eq 1) 'THREE_ROLE_TEMPLATE_SHAPE_INVALID'
     Assert-G4B ($cfg['proxies'][0]['name'] -ceq 'HY2-SFO3' -and $cfg['proxies'][1]['name'] -ceq 'WG-BASELINE' -and $cfg['proxies'][1]['type'] -ceq 'direct' -and $cfg['proxies'][2]['name'] -ceq 'REALITY-SFO3') 'THREE_ROLE_TEMPLATE_ORDER_INVALID'
     Assert-G4B ($cfg['proxy-groups'][0]['type'] -ceq 'select' -and ($cfg['proxy-groups'][0]['proxies'] -join '|') -ceq 'HY2-SFO3|WG-BASELINE|REALITY-SFO3') 'THREE_ROLE_SELECTOR_INVALID'
-    $cfg['proxies'][0]['server']=$script:publicIp; $cfg['proxies'][0]['password']=$script:hy2Auth; $cfg['proxies'][0]['sni']='hy2.sfo3-a.invalid'; $cfg['proxies'][0]['interface-name']=$InterfaceName
+    Assert-G4B ($Hy2Fingerprint -cmatch '^[0-9A-F]{2}(?::[0-9A-F]{2}){31}$') 'HY2_PROFILE_FINGERPRINT_INVALID'
+    $cfg['proxies'][0]['server']=$script:publicIp; $cfg['proxies'][0]['password']=$script:hy2Auth; $cfg['proxies'][0]['fingerprint']=$Hy2Fingerprint; $cfg['proxies'][0]['sni']='hy2.sfo3-a.invalid'; $cfg['proxies'][0]['interface-name']=$InterfaceName
     $cfg['proxies'][2]['server']=$script:publicIp; $cfg['proxies'][2]['uuid']=$Uuid; $cfg['proxies'][2]['reality-opts']['public-key']=$PublicKey; $cfg['proxies'][2]['reality-opts']['short-id']=$ShortId; $cfg['proxies'][2]['interface-name']=$InterfaceName
     return ('# G4B_RUN_ID='+$script:runId+[Environment]::NewLine+(ConvertTo-Json -InputObject $cfg -Depth 20 -Compress))
 }
@@ -1404,7 +1407,7 @@ try {
     [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$script:localRuntime)
     Assert-OwnerAcl -Path $script:localRuntime
     $profileTemplate=[IO.File]::ReadAllText((Join-Path $script:projectRoot 'templates\clash\self-vpn-v1-three-role.yaml.template'),[Text.Encoding]::UTF8)
-    $rendered=Get-ProfileRenderedText -Template $profileTemplate -Uuid $credentials['uuid'] -PublicKey $credentials['public_key'] -ShortId $credentials['short_id'] -InterfaceName $script:physicalEgress.Name
+    $rendered=Get-ProfileRenderedText -Template $profileTemplate -Uuid $credentials['uuid'] -PublicKey $credentials['public_key'] -ShortId $credentials['short_id'] -InterfaceName $script:physicalEgress.Name -Hy2Fingerprint $script:hy2Fingerprint
     $profileBytes=[Text.Encoding]::UTF8.GetBytes($rendered)
     try { Write-OwnerOnlyFile -Path $script:profileConfig -Bytes $profileBytes } finally { [Security.Cryptography.CryptographicOperations]::ZeroMemory($profileBytes) }
     Invoke-MihomoParse -ConfigPath $script:profileConfig
@@ -1565,6 +1568,7 @@ finally {
         }
     }
     if ($null -ne $script:hy2Auth) { $script:hy2Auth=$null }
+    $script:hy2Fingerprint=$null
     if ($null -ne $script:remoteCredentials) { $script:remoteCredentials=$null }
     if($null -ne $script:portablePassphrase){$script:portablePassphrase.Dispose();$script:portablePassphrase=$null}
     $credentials=$null; $recoveryJson=$null; $recoveryBytes=$null; $rendered=$null; $serverRendered=$null; $unitRendered=$null
