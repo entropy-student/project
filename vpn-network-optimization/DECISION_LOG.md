@@ -827,3 +827,12 @@ R20R1 proves the REALITY service/listener/process/binary/runtime/config/unit and
 Decision: `PASS_R20R2_TRANSACTION_RESIDUAL_CLASSIFIED`.
 
 R20R2 proves the residual transaction directory is project-owned, has the expected metadata, contains exactly two allowlisted files, has no unknown child, and references no still-present created parent directories. R20R3 may therefore remove exactly the staged unit, state JSON, and resulting empty transaction directory after repeating ownership and clean-baseline checks. Recovery artifacts and Baidu remain out of scope.
+
+
+## 2026-10-06 — PASS R20R3; VPS-side R20 residue closed
+
+Decision: `PASS_R20R3_REMOTE_TRANSACTION_CLEANUP`.
+
+The only classified R20 transaction residue was deleted under exact ownership checks, and post-clean readback preserved the clean REALITY baseline and healthy WG/HY2. No recovery, Baidu, Clash, or local network state was changed.
+
+R20R4 now reconciles the retained recovery pending set read-only before any deletion.
