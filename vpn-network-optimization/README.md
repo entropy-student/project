@@ -178,3 +178,7 @@ R19R1 is formally accepted. The R19 P5 parser failure was caused by the HY2 cert
 
 ### 2026-10-06 Standing Owner authorization
 Owner granted standing authorization for the already documented closeout roadmap: R20, lightweight G4-C, G4-D WireGuard-in-Clash migration, and MVP v1 seal. Repetitive authorization prompts are no longer required inside that accepted scope. R20 is released for one live invocation; one-shot execution and Reviewer-stop rules remain unchanged.
+
+
+### 2026-10-06 R20 P7 reconciliation
+R20 is consumed and formally RETURNed at P7 after consequential remote mutation began and automatic rollback could not be verified. No second R20 attempt or blind rollback is allowed. Current Gate R20R1 is read-only and determines whether the project state is already clean or whether an ownership-proven rollback Gate is required.
