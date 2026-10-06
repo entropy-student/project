@@ -852,3 +852,12 @@ R20R4R1 replaces memory-based numeric input with a local-only identity attestati
 Decision: `RETURN_R20R4R1_BAIDU_UID_PARSE_OR_UNIQUENESS_FAILED_SAFE`.
 
 No recovery/provider/VPS/network mutation occurred. Reviewer identified that the new R20 recovery helpers omitted the explicit UTF-8 process-output decoding used by the previously accepted Baidu helpers. R20R4R2 restores that exact decoding contract and otherwise preserves the R20R4R1 read-only behavior. The earlier R20R4 `BAIDU_UID_MISMATCH` classification is not treated as proof of account drift because that helper combined parse and equality into one assertion.
+
+
+## 2026-10-06 — PASS R20R4R2; exact failed-run recovery set proven
+
+Decision: `PASS_R20R4R2_EXPECTED_FAILED_RUN_PENDING_SET`.
+
+The current Baidu account was confirmed locally without emitting its UID. The exact R20 recovery state is: local DPAPI pending present, local portable pending present, exact remote pending present, and both local/remote finals absent. No recovery or provider mutation occurred.
+
+R20R5 may remove only this exact pending set. Before provider deletion, it must download the encrypted pending object into an owner-only temporary directory and prove SHA-256 equality with the local portable pending ciphertext. No decrypt/unprotect is allowed.
