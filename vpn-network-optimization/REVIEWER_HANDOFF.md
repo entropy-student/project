@@ -103,20 +103,24 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18
-STATE=OWNER_ACTION_REQUIRED_R18_READONLY_CLEAN_CHECK
-PREVIOUS_RESULT=PASS_R6R2L_R17_STALE_PENDING_QUARANTINE
-OBJECTIVE=Independently verify production namespace final=0/pending=0/unknown=0 and classify CLEAN after R17.
-MAX_ENDPOINT_THIS_ROUND=Exactly one read-only provider observation using who + ls; no mutation; mandatory Reviewer stop.
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
+SUBGATE_ID=G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19
+STATE=OWNER_AUTHORIZATION_REQUIRED_G4B_LIVE_RESUME_R19
+PREVIOUS_RESULT=PASS_R6R2L_R18_RESIDUAL_CLEAN
+OBJECTIVE=Run one fresh bounded live G4-B attempt using the current R10-repaired runner/validator to establish persistent HY2/WG/REALITY three-role readiness.
+MAX_ENDPOINT_THIS_ROUND=No live execution until fresh Owner authorization. After release: exactly one live run and mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Baidu recovery production project namespace only; R17 quarantine object must remain untouched.
-PREFLIGHT=Owner PowerShell 7.6.6 Administrator; safe-sync main; R18 Gate blob f42237242503405c11f652240b4baedec8e71e22; reused read-only helper blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; AST helper PASS.
-REQUIRED_EVIDENCE=UID match; directory header; project counts 0/0/0; BAIDU_RESIDUAL_STATE=CLEAN; cleanup PASS; all mutation/network/Secret markers NO.
-ACCEPTANCE_CRITERIA=PASS only on fresh exact 0/0/0 CLEAN. Any other state returns without mutation or retry.
-ROLLBACK_STATUS_OR_PLAN=None because R18 is read-only. R17 quarantine object and retained R15 rollback journal remain untouched.
-OWNER_ONLY_ACTIONS=Run the exact R18 read-only checkpoint once and return sanitized markers.
-REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_BAIDU_RESIDUAL_CLEAN_READONLY_R6R2L_R18.md at blob f42237242503405c11f652240b4baedec8e71e22 and scripts/g4b-baidu-residual-readonly-r11.ps1 at blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662. Do not mutate provider state.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized result and stop; never print raw UID, filenames, stdout/stderr or credentials.
+TARGET_AND_SCOPE=runner 2faf59ec5a1653a275b11504fe567d0fc871f94e; validator 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3; R19 Gate 11cb06d6b1be7ac372181517bb65cd847a10e81c.
+APPLICABLE_CRITICAL_CONSTRAINTS=R18 production recovery namespace CLEAN; R17 quarantine retained/untouched; WG and HY2 preserved; AUTO_SWITCHING=OFF; system proxy/TUN final OFF; G4-C excluded; Secrets never emitted.
+PREFLIGHT=Fresh explicit Owner authorization; safe-sync main; exact parent Gate line; exact authorization line; current runner/validator blobs; fixture validator PASS; local UID/SSH key/passphrase only.
+REQUIRED_EVIDENCE=Runner success/rollback contract from R19; persistent REALITY service readiness; TCP443 readiness; profile import visibility without activation; role order; WG/HY2 preserved; proxy/TUN OFF; recovery promotion only on overall success; cleanup/rollback markers; zero Secret emission.
+ACCEPTANCE_CRITERIA=PASS_CANDIDATE only under exact R19 contract; any failure/ambiguity stops without second attempt.
+ROLLBACK_STATUS_OR_PLAN=Use runner bounded rollback + retained journal. No second R19 live invocation.
+OWNER_ONLY_ACTIONS=Fresh explicit authorization is currently required. Do not run the live runner yet.
+REVIEWER_TO_EXECUTOR_RELAY=Use docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RESUME_AFTER_CLEAN_R6R2L_R19.md at blob 11cb06d6b1be7ac372181517bb65cd847a10e81c. Historical live Gate is not execution authority. Current runner/validator blobs are 2faf59ec5a1653a275b11504fe567d0fc871f94e / 26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3.
+EXECUTOR_TO_REVIEWER_RELAY=After authorization and exactly one run, return bounded non-secret markers and stop.
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 ```
 
 G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. R17R1 is formally PASS and R17 is now formally PASS: exactly one stale pending object was reversibly renamed into the non-production quarantine namespace, with post-readback final=0/pending=0/unknown=0 and no rollback/permanent delete. Current work is R18 independent read-only CLEAN verification.
@@ -301,7 +305,7 @@ G4B_OFFLINE_IMPLEMENTATION_R1_GATE_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
 G4B_OFFLINE_REPAIR_R2_GATE_BLOB=b60c1d1bf09cac5467f547b83dc2c13a4af850d8
 G4B_OFFLINE_REPAIR_R3_GATE_BLOB=c76c7118d181f7d01897ba39429334d0068b92e4
 EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
-LIVE_G4B_EXECUTION_AUTHORIZED=YES
+HISTORICAL_LIVE_G4B_EXECUTION_AUTHORIZED=YES
 ```
 
 Locked G4-B0 final identities:
@@ -348,9 +352,9 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B is IN_PROGRESS. R17 Owner authorization remains recorded, but execution is suspended until R17R1 completes local Codex offline code validation and Reviewer relocks the final blobs. Earlier R8/R10 repairs remain PASS; R15 is PASS; R16 proves final=0/pending=1/unknown=0.
+- G4-B is IN_PROGRESS. R17R1, R17 and R18 are formally PASS; the production Baidu recovery namespace is independently CLEAN (0/0/0). The next boundary is R19 persistent three-role live resume, which requires fresh Owner authorization.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 identified the local mismatch as exact `pcs_uploading.json` Owner=ADMIN. R15 formally PASSed after bounded ADMIN→OWNER normalization with strict post-readback and retained rollback journal. R16 then completed read-only provider reconciliation and proved final=0, pending=1, unknown=0: remote production residual state is STALE_PENDING_PRESENT. The prepared R17 one-shot remains unexecuted and is now held behind R17R1 offline code usability validation; no live G4-B retry is authorized.
+- R10 parser/fixture repair is formally PASS. R11→R16 reconciled local ACL/provider residual state; R17 quarantined the single stale pending; R18 independently proved production namespace CLEAN. The historical live one-shot is not replayable. R19 is prepared against the current R10-repaired runner/validator and is not released until fresh Owner authorization.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -376,11 +380,11 @@ Reviewer checked the parent Gate, Handoff, Evidence, README, Transition and fina
 
 ## NEXT_STEP
 
-Owner runs the exact R18 read-only residual CLEAN checkpoint once. It must only execute Baidu `who` and `ls`, prove production project counts 0/0/0 and `BAIDU_RESIDUAL_STATE=CLEAN`, then stop for Reviewer.
+Obtain fresh Owner authorization for R19. After explicit approval, Reviewer will set the canonical runner-visible `LIVE_G4B_EXECUTION_AUTHORIZED=YES` line, relock the R19 Gate/current runner/current validator, and provide exactly one Owner PowerShell live invocation.
 
 ## OWNER_ACTION_REQUIRED
 
-Run R18 read-only once using the expected UID via hidden input. Do not mutate/delete/move the quarantine object and do not run live G4-B/G4-C.
+Fresh approval is required for the R19 consequential scope: persistent REALITY service/credentials and TCP/443 listener, one persistent SELF-VPN-V1 profile import without activation, and encrypted Baidu recovery pending→final promotion. No live runner should be started before that approval.
 
 ## EVIDENCE_POINTERS
 
