@@ -11241,3 +11241,40 @@ Reviewer accepts R20R5. The failed R20 remote surface, transaction residue and e
 Offline source review also identified that the historical runner discarded structured remote `error_code` values by checking SSH exit code before parsing bounded JSON, and automatic rollback catch discarded its bounded failure code. Therefore the exact historical P7 low-level cause is not recoverable from R20 evidence and must not be guessed.
 
 Next Gate: `G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6` at `2549ba44475a113c5e66ef101ee3ced7d43984ea`.
+
+
+## 2026-10-06 — R20R6 bounded remote error propagation and rollback diagnostics
+
+```text
+GATE_ID=G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
+GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
+PRE_GATE_HEAD=3d21f44c73c0a900ca216bfd9feafeeb22880a87
+SOURCE_REPAIR_COMMIT=6344fc4625383fbf25883ffb546cceee62a5b010
+RUNNER_BLOB=4bd7df28e93f29d9d1d2b29ea0be29b2ea43657b
+LIVE_FIXTURE_VALIDATOR_BLOB=e4bb719b9a1b24f81d2322e0615ba44d1d4d8b06
+R20R6_INVOKE_REMOTE_STRUCTURED_ERROR_PROPAGATION=PASS
+R20R6_REMOTE_GATEERROR_FIXTURE=PASS
+R20R6_REMOTE_NATIVE_COMMAND_FIXTURE=PASS
+R20R6_REMOTE_UNCLASSIFIED_FIXTURE=PASS
+R20R6_SSH_TRANSPORT_FALLBACK_FIXTURE=PASS
+R20R6_MALFORMED_RESPONSE_FAIL_CLOSED=PASS
+R20R6_ROLLBACK_FAILURE_CODE_FIXTURE=PASS
+R20R6_SUCCESS_REGRESSION=PASS
+R20R6_R19R1_FINGERPRINT_REGRESSION=PASS
+R20R6_REMOTE_ERROR_ALLOWLIST_COMPLETE=PASS
+POWERSHELL_AST=PASS
+LIVE_RUNNER_FIXTURES=PASS
+REAL_SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+PROVIDER_ACTION=NO
+CLASH_PROFILE_MUTATION=NO
+NETWORK_MUTATION=NO
+EXTERNAL_REQUESTS=0
+LIVE_RUNNER_EXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The production response helper was AST-extracted from the runner and exercised only with synthetic strings. It accepts a bounded, unambiguous JSON error envelope only when `error_code` belongs to the supervisor allowlist, and preserves that code independently of a nonzero SSH exit. On nonzero exit, missing or untrusted structured output maps to the bounded SSH transport fallback; with zero exit, malformed, duplicate-key, or oversized responses fail closed as `REMOTE_RESPONSE_INVALID`. The generic remote exception remains `REMOTE_UNCLASSIFIED` without exception text. Both thrown rollback errors and unverified rollback responses produce an allowlisted `REMOTE_ROLLBACK_FAILURE_CODE` while retaining `REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION`.
+
+The complete `g4b-live-runner-fixture-validator.ps1` passed, including the package validator's synthetic Mihomo parse regression for R19R1. PowerShell AST parsing and staged-source Secret scan passed. Only the live runner, live fixture validator, and these Executor-owned records changed; `REVIEWER_HANDOFF.md` was not modified. Existing untracked `results/` was preserved and excluded from staging. No real Secret/DPAPI access, SSH/VPS operation, Provider action, Clash profile mutation, network mutation, or live runner execution occurred.

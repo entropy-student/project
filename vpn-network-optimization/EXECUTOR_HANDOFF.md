@@ -4,7 +4,37 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B R19 Local Mihomo Parse Diagnostic R6R2L-R19R1
+## Current execution status — G4-B R20 P7/Rollback Error Propagation Offline Repair R6R2L-R20R6
+
+```text
+GATE_ID=G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+GATE_BLOB=2549ba44475a113c5e66ef101ee3ced7d43984ea
+PRE_GATE_HEAD=3d21f44c73c0a900ca216bfd9feafeeb22880a87
+SOURCE_REPAIR_COMMIT=6344fc4625383fbf25883ffb546cceee62a5b010
+REMOTE_ERROR_JSON_PROPAGATION=PASS
+ROLLBACK_FAILURE_CODE_AND_UNKNOWN_STATE=PASS
+OFFLINE_RESPONSE_FIXTURES=PASS
+R19R1_FINGERPRINT_REGRESSION=PASS
+LIVE_RUNNER_FIXTURES=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+PROVIDER_ACTION=NO
+CLASH_PROFILE_MUTATION=NO
+NETWORK_MUTATION=NO
+LIVE_RUNNER_EXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+RESULT=PASS_CANDIDATE_G4B_R20_P7_ROLLBACK_ERROR_PROPAGATION_OFFLINE_R6R2L_R20R6
+STOP_AT_REVIEWER=YES
+```
+
+The runner now validates bounded supervisor JSON before interpreting SSH exit status, preserving only allowlisted structured remote codes. Invalid or oversized responses fail closed; transport failures without trustworthy JSON retain the SSH fallback. Automatic rollback failures emit a bounded failure-code marker and keep the state `UNKNOWN_REQUIRES_RECONCILIATION`. Production helpers were exercised with synthetic responses, and the full offline runner/package validator—including the R19R1 Mihomo fingerprint-render regression—passed. No live runner, SSH, provider, Secret, profile, or network action was run.
+
+Wait for Reviewer; no live retry or follow-on Gate is authorized here.
+
+## Historical execution status — G4-B R19 Local Mihomo Parse Diagnostic R6R2L-R19R1
 
 ```text
 GATE_ID=G4B_R19_LOCAL_MIHOMO_PARSE_DIAGNOSTIC_R6R2L_R19R1
