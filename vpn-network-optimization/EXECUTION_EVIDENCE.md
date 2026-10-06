@@ -10719,3 +10719,32 @@ Reviewer interpretation:
 - forward and rollback production state-machine branches both pass the isolated executable offline harness;
 - the validator and inherited-LASTEXITCODE regression remain passing;
 - helper blob `9c910628932c22c448c822437fd53e0b71804a9c` is not yet durable on canonical main, so parent R17R1 remains blocked pending a scoped commit/push/fresh readback.
+
+
+## 2026-10-06 — R17R1 final Reviewer review found two missing negative fixtures
+
+Result: `PARTIAL_R17R1_FINAL_REVIEW_MISSING_NEGATIVE_FIXTURES`.
+
+Fresh canonical readback:
+```text
+MAIN=e549f4d04dfd425026bd5f8766dd125aaed6d602
+HELPER_BLOB=9c910628932c22c448c822437fd53e0b71804a9c
+VALIDATOR_BLOB=4d490bdbe8f686053cccae8310c72ff74117600b
+HELPER_FORWARD_EXECUTABLE=PASS
+HELPER_ROLLBACK_EXECUTABLE=PASS
+ROLLBACK_MARKERS=PASS
+OFFLINE_VALIDATOR=PASS
+LASTEXITCODE_REGRESSION=PASS
+```
+
+Reviewer inspection confirms existing validator coverage for:
+- one pending;
+- quarantine file state;
+- quarantine-directory collision;
+- pending directory -> unknown;
+- unknown project object;
+- default non-mutating helper execution.
+
+However parent R17R1 explicitly requires executable negative evidence for multiple pending and final-present states. The current validator does not create those two fixtures. Therefore parent R17R1 cannot yet be formally PASS even though no new production helper defect was found.
+
+Next Gate: `G4B_BAIDU_STALE_PENDING_QUARANTINE_VALIDATOR_NEGATIVE_FIXTURES_R6R2L_R17R1R5`. Helper is frozen; no provider action is authorized.
