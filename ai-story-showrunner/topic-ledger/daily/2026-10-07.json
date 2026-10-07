@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-07",
+  "captured_at": "2026-10-07T08:42:16+08:00",
+  "source_status": [
+    {
+      "class": "human_world",
+      "status": "SCANNED",
+      "notes": "consumer shopping, work/career, social media/culture and current public-interest signals scanned"
+    },
+    {
+      "class": "ai_domain",
+      "status": "SCANNED",
+      "notes": "current AI consumer, agent, work, chatbot/privacy and AI-personhood signals scanned"
+    }
+  ],
+  "hot_signals": [
+    {
+      "id": "shopping-ai-recommendation-20261007",
+      "summary": "Survey of 1,000 U.S. regular AI users reports AI is increasingly used for product search/recommendation and purchase journeys.",
+      "source_refs": [
+        "https://www.tradingview.com/news/acceswire%3A1c664f97a094b%3A0-snipp-survey-finds-ai-is-reshaping-the-shopper-journey-with-61-8-of-ai-users-having-purchased-after-an-ai-recommendation/"
+      ],
+      "uncertainties": [
+        "survey is vendor-sponsored and limited to regular AI users; useful as demand signal, not population prevalence"
+      ]
+    },
+    {
+      "id": "ai-work-career-shift-20260930",
+      "summary": "Recent reporting describes workers shifting toward human-touch and skilled-trade careers amid AI automation concerns.",
+      "source_refs": [
+        "https://www.washingtonpost.com/education/2026/09/30/fearing-ai-workers-go-back-school-seeking-jobs-that-still-need-human-touch/"
+      ],
+      "uncertainties": [
+        "career shifts have multiple causes; AI concern should not be treated as sole cause"
+      ]
+    },
+    {
+      "id": "chatbot-personhood-discussion-20261006",
+      "summary": "Fresh public discussion around whether advanced chatbots should be treated as conscious/person-like systems.",
+      "source_refs": [
+        "https://www.uol.com.br/tilt/colunas/iagora/2026/10/06/ia-tem-consciencia-anthropic-quis-convencer-vaticano-e-ouviu-sonoro-nao.ghtm"
+      ],
+      "uncertainties": [
+        "claims about model consciousness remain scientifically unsettled; secondary reporting is not sufficient for a strong mechanism claim"
+      ]
+    }
+  ],
+  "normalized_clusters": [
+    "AI-mediated shopping and preference formation",
+    "AI automation and skill/career formation",
+    "AI personhood / anthropomorphism / identity projection",
+    "agent delegation and control",
+    "chat privacy vs safety"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "identity-model-past-self",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "topic-ledger/EVERGREEN_BANK.md"
+      ],
+      "proposed_human_problem": "AI personality profiles can help people describe themselves while turning past behavior into a default story about who they are allowed to become.",
+      "proposed_mechanism": "inference/classification systems summarize observed behavior into stable-seeming profiles; repeated personalized feedback can reinforce those categories without proving identity is fixed.",
+      "registry_matches": [],
+      "duplicate_status": "CLEAR",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "identity/personality is natively interesting without AI",
+        "paradox is immediately legible: better understanding can become a constraint"
+      ],
+      "asset_notes": [
+        "durable mental model",
+        "strong visual story potential: profile card gradually becoming a cage"
+      ],
+      "recommended_action": "SELECT",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "personality / identity",
+      "human_process_family": "SELF_UNDERSTANDING",
+      "observed_paradox": "the more accurately a system describes your past patterns, the easier it can become to treat those patterns as a fixed future identity",
+      "why_question": "why can being understood more precisely make change feel harder",
+      "human_tension": "self-understanding and useful pattern recognition vs freedom to revise one's identity",
+      "meaning_fingerprint": "UNDERSTANDING_VS_DEFINITION",
+      "controlling_question_seed": "when does a useful description of who I have been become a boundary around who I can become",
+      "human_process_before_ai": "people formed and revised self-understanding through reflection, relationships, experience and changing contexts",
+      "ai_changed_process": "AI can continuously infer, summarize and personalize around past behavior, making an identity model persistent and repeatedly reflected back",
+      "human_problem": "a useful personality model may be mistaken for a fixed definition of the person",
+      "human_stakes": "career choices, relationships, experimentation and willingness to change",
+      "ai_mechanism": "behavioral inference/classification plus personalized feedback loops; the mechanism does not require the model's label to be objectively true",
+      "story_seed": "a person asks an AI to understand them better; each recommendation fits yesterday's self until a new choice is rejected because 'that isn't you'",
+      "curiosity_gap": "why would a more accurate description make self-knowledge less flexible",
+      "audience_payoff": "separate a model that describes past patterns from a verdict about future identity",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "source_refs": [
+        "topic-ledger/EVERGREEN_BANK.md"
+      ],
+      "uncertainties": [
+        "do not claim AI personality inference is clinically valid",
+        "causal evidence that personalization fixes identity is context-dependent"
+      ]
+    },
+    {
+      "candidate_id": "ai-shopping-choice-outsourcing",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.tradingview.com/news/acceswire%3A1c664f97a094b%3A0-snipp-survey-finds-ai-is-reshaping-the-shopper-journey-with-61-8-of-ai-users-having-purchased-after-an-ai-recommendation/"
+      ],
+      "proposed_human_problem": "AI shopping assistants can reduce search cost while moving preference formation upstream into the recommender.",
+      "proposed_mechanism": "recommendation/ranking narrows the considered set before the user compares options.",
+      "registry_matches": [],
+      "duplicate_status": "MEANING_COLLISION",
+      "hard_gate_status": "PASS_BUT_HOLD",
+      "reach_notes": [
+        "fresh consumer signal",
+        "shopping has broad native interest"
+      ],
+      "asset_notes": [
+        "clear stakes but meaning overlaps optimization/exploration family"
+      ],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "shopping / consumption",
+      "human_process_family": "CHOICE_AND_PREFERENCE_FORMATION",
+      "observed_paradox": "faster discovery can reduce the amount of discovery the shopper personally performs",
+      "why_question": "why can better recommendations make choosing easier while narrowing how preferences are formed",
+      "human_tension": "optimization vs exploration",
+      "meaning_fingerprint": "OPTIMIZATION_VS_EXPLORATION",
+      "controlling_question_seed": "when does helpful filtering stop assisting preference and start shaping it",
+      "human_process_before_ai": "people searched, compared, wandered and revised preferences across alternatives",
+      "ai_changed_process": "AI recommendation compresses search and comparison before conscious evaluation",
+      "human_problem": "the user may see fewer alternatives before preference is formed",
+      "human_stakes": "consumer autonomy and preference formation",
+      "ai_mechanism": "ranking/recommendation narrows candidate exposure",
+      "story_seed": "a shopper asks for the best option and gradually stops seeing products outside the assistant's shortlist",
+      "curiosity_gap": "why can a better shortlist make choice less self-directed",
+      "audience_payoff": "notice the difference between saving search time and outsourcing preference formation",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "source_refs": [
+        "https://www.tradingview.com/news/acceswire%3A1c664f97a094b%3A0-snipp-survey-finds-ai-is-reshaping-the-shopper-journey-with-61-8-of-ai-users-having-purchased-after-an-ai-recommendation/"
+      ],
+      "uncertainties": [
+        "vendor-sponsored survey",
+        "meaning collision stronger than freshness advantage"
+      ]
+    },
+    {
+      "candidate_id": "ai-consciousness-personhood",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.uol.com.br/tilt/colunas/iagora/2026/10/06/ia-tem-consciencia-anthropic-quis-convencer-vaticano-e-ouviu-sonoro-nao.ghtm"
+      ],
+      "proposed_human_problem": "human-like responses can invite users to infer an inner subject behind fluent behavior",
+      "proposed_mechanism": "anthropomorphic cues and language fluency can trigger social inference without establishing consciousness",
+      "registry_matches": [],
+      "duplicate_status": "MEANING_COLLISION",
+      "hard_gate_status": "HOLD_EVIDENCE",
+      "reach_notes": [
+        "high curiosity",
+        "fresh discussion"
+      ],
+      "asset_notes": [
+        "could become durable if primary evidence is stronger"
+      ],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "AI_SIGNAL_FIRST_COMPAT",
+      "x_domain": "relationships / identity / culture",
+      "human_process_family": "RELATIONSHIP_NEGOTIATION",
+      "observed_paradox": "the more human-like the conversation feels, the less direct evidence users may have about whether there is any human-like inner experience",
+      "why_question": "why do fluent social signals feel like evidence of an inner self",
+      "human_tension": "responsiveness vs otherness",
+      "meaning_fingerprint": "RESPONSIVENESS_VS_OTHERNESS",
+      "controlling_question_seed": "what exactly are we responding to when a machine feels socially present",
+      "human_process_before_ai": "people inferred minds primarily from other embodied social beings",
+      "ai_changed_process": "language models produce scalable reciprocal social cues without resolving questions of subjective experience",
+      "human_problem": "social fluency can be confused with evidence of personhood",
+      "human_stakes": "attachment, trust and moral interpretation",
+      "ai_mechanism": "anthropomorphic social cues from generative language",
+      "story_seed": "someone keeps receiving perfectly timed empathic replies and slowly starts asking not whether the replies help, but who is 'inside'",
+      "curiosity_gap": "why does responsiveness so easily become personhood in our minds",
+      "audience_payoff": "distinguish social response cues from evidence about consciousness",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "source_refs": [
+        "https://www.uol.com.br/tilt/colunas/iagora/2026/10/06/ia-tem-consciencia-anthropic-quis-convencer-vaticano-e-ouviu-sonoro-nao.ghtm"
+      ],
+      "uncertainties": [
+        "consciousness claims are unsettled",
+        "secondary source insufficient for strong factual framing",
+        "meaning overlaps existing anthropomorphism/otherness territory"
+      ]
+    }
+  ],
+  "evergreen_fallback": [
+    "identity-model-past-self"
+  ],
+  "selected_for_editorial_review": "identity-model-past-self",
+  "notes": [
+    "Gate order applied: Native X Interest → Human Process → WHY/Paradox → Human Tension → Changed Process → Evidence → Human Relevance → Mechanism Integrity → One Mechanism → Storyability → Non-trivial Payoff → Audience Fit → D1–D5.",
+    "No HOT candidate cleared all gates with enough distinct meaning to justify override; 2026-10-07 existing planned Evergreen retained.",
+    "D5 blocked shopping OPTIMIZATION_VS_EXPLORATION and held chatbot-personhood RESPONSIVENESS_VS_OTHERNESS due overlap/evidence weakness.",
+    "No locked/published slot modified; no G4+ action; DAILY_PRODUCTION_CAPABILITY remains unproven."
+  ]
+}
