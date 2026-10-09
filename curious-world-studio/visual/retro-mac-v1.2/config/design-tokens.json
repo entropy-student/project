@@ -1,0 +1,101 @@
+{
+  "name": "Retro Mac Desktop Documentary",
+  "version": "1.2",
+  "status": "visual_spec_locked_not_video_engine",
+  "visual_reference": [
+    "Mac OS X Tiger Aqua desktop",
+    "QuickTime 7 brushed metal"
+  ],
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "aspect_ratio": "16:9"
+  },
+  "states": {
+    "A_desktop": {
+      "role": "short opening",
+      "seconds_range": [
+        1.5,
+        3
+      ]
+    },
+    "B_quicktime": {
+      "role": "entire body",
+      "window_width_pct": 100,
+      "window_height_pct": 100,
+      "fit": "contain",
+      "within_scene_types": [
+        "research_video",
+        "paper_evidence",
+        "stock_video",
+        "self_recording",
+        "illustration",
+        "closing_answer"
+      ]
+    },
+    "C": {
+      "enabled": false
+    }
+  },
+  "colors": {
+    "wallpaper_dark": "#144D91",
+    "wallpaper_light": "#75C4EF",
+    "player_silver": "#DAE3E9",
+    "player_border": "#8096A5",
+    "text": "#2E475C",
+    "aqua_progress": "#53B7E4",
+    "evidence_highlight": "#F6D28B",
+    "caption_white": "#FFFFFF",
+    "caption_backdrop": "rgba(6,23,39,0.85)"
+  },
+  "typography": {
+    "chinese": [
+      "PingFang SC",
+      "Microsoft YaHei",
+      "Noto Sans CJK SC"
+    ],
+    "english": [
+      "Helvetica Neue",
+      "Arial"
+    ],
+    "subtitle": {
+      "font_px_at_1080p": 56,
+      "max_lines": 1,
+      "fullwidth_characters_suggestion": [
+        18,
+        22
+      ],
+      "no_karaoke_highlight": true
+    }
+  },
+  "transitions": {
+    "default": "hard_cut",
+    "dissolve_ms": [
+      120,
+      200
+    ],
+    "desktop_to_player_ms": [
+      250,
+      450
+    ],
+    "still_zoom_max": 1.03
+  },
+  "evidence": {
+    "position": "top-left inside B",
+    "labels": [
+      "原始实验",
+      "论文证据",
+      "独立复现",
+      "辅助素材",
+      "示意画面"
+    ],
+    "requires_source_ledger": true,
+    "license_check_before_publication": true
+  },
+  "component_reuse": {
+    "source": "NovusGFX/retro-design-system/styles/04-aqua-osx/index.html",
+    "license": "MIT, see vendor folder",
+    "scope": "aqua chrome, traffic lights, progress visual only"
+  }
+}
