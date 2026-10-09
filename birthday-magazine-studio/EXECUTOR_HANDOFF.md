@@ -1,5 +1,54 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3C UI/UX productization
+
+```text
+GATE=G3C_UI_UX_PRODUCTIZATION
+RESULT=RETURN_STARTER_IMPORT_FAILED
+EXECUTION_BRANCH=codex/birthday-magazine-g3c-ui-ux-productization
+BASE_MAIN=782a9f191175994536828f0a8b7798e09a3ce513
+LATEST_MAIN_AT_PR_OPEN=391d835bb8994cc4f8483edd81f4d1c2df90fbf5
+MAIN_DRIFT_AFTER_BRANCH_CREATION=SHARED_VPS_INFRASTRUCTURE_ONLY; NO_BIRTHDAY_MAGAZINE_FILES
+PR=#59 https://github.com/entropy-student/project/pull/59
+INITIAL_EVIDENCE_COMMIT=5e4064defa9d2cb5a3c41650b7d759eff6bcaea3
+ASTRA_THEME=INSTALLED
+BESTSELLING_AUTHOR_STARTER=NOT_IMPORTED
+GOOD_ISSUE_PREVIEW_INTEGRATED=NOT_RUN
+WOO_COMMERCE_PATH=NOT_RUN
+USD_39_99_PRODUCT=PREPARED; BROWSER_CTA_PATH=NOT_RUN
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0_THIS_RUN; PHOTO_NETWORK_TEST=NOT_RUN
+DESKTOP_UI=NOT_RUN
+MOBILE_375_UI=NOT_RUN
+ACCOUNT_PRIVATE_REGRESSION=NOT_RUN
+SANDBOX_PAYMENT_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+PRODUCTION_AI_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+CLEANUP_READBACK=PASS
+OWNER_VISUAL_FREEZE=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+The official Bestselling Author template page lists this starter as free, but the installed Starter Templates 4.7.7 Gutenberg importer returned no exact match after checking Popular and Latest. No template was substituted and no lookalike page was built. The required product landing page therefore does not exist yet. The local WordPress/WooCommerce product record was created for setup readiness, but the product CTA/cart/checkout path was not exercised. G2A1 preview and G3A workspace code were copied into G3C without editing their historical source directories; preview-page integration and private-account regression remain unverified.
+
+Reviewer evidence:
+
+- Importer no-match screenshot: [poc/g3c/artifacts/screenshots/starter-template-importer.png](poc/g3c/artifacts/screenshots/starter-template-importer.png).
+- Exact import status, source page, package, search, and no-import record: [poc/g3c/artifacts/reports/starter-import-result.json](poc/g3c/artifacts/reports/starter-import-result.json).
+- Sanitized UI/network record: [poc/g3c/artifacts/reports/starter-template-importer-inspection.json](poc/g3c/artifacts/reports/starter-template-importer-inspection.json).
+- Versions, license/free boundary, source hashes, and synthetic product: [poc/g3c/artifacts/reports/runtime-setup.json](poc/g3c/artifacts/reports/runtime-setup.json).
+- Corrected local-only and generation-disabled readback: [poc/g3c/artifacts/reports/runtime-final-readback.json](poc/g3c/artifacts/reports/runtime-final-readback.json).
+- G3C-only teardown, temporary-file removal, and unrelated-resource fingerprint: [poc/g3c/artifacts/reports/cleanup-readback.json](poc/g3c/artifacts/reports/cleanup-readback.json).
+
+The ignored local password/cache files and G3C containers, volumes, and network were removed. Unrelated Docker container/volume/network fingerprints stayed unchanged. No payment, PayPal, model/provider, production deployment, shared infrastructure, or G4 action occurred. `OWNER_VISUAL_FREEZE=PENDING`; reviewer should decide whether the catalog mismatch can be resolved through the approved free importer. This is not a pass candidate.
+
+### Reviewer follow-up required
+
+Please review the exact importer evidence and decide whether the required free Bestselling Author template should be made available through its official supported catalog/importer. No alternate template or hand-built replacement has been approved or started. After a reviewer decision, the next execution instruction can determine whether to resume G3C or return to Owner; do not infer a G4 authorization from this return.
+
+---
+
 ## Current Gate — G3BR1 cleanup-only closure
 
 ```text

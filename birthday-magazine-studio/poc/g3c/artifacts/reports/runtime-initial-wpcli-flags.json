@@ -1,0 +1,8 @@
+{
+  "capturedAtUtc": "2026-09-29T11:56:35.836Z",
+  "source": "runtime-setup.json initial read-back",
+  "localOnly": false,
+  "generationEnabled": "undefined",
+  "cause": "WORDPRESS_CONFIG_EXTRA was present only on the WordPress service and absent from the WP-CLI service environment.",
+  "resolution": "The two flags were set with project-scoped WP-CLI wp config set and re-read as BMS_G3C_LOCAL_ONLY=true and BMS_G3C_GENERATION_ENABLED=false."
+}
