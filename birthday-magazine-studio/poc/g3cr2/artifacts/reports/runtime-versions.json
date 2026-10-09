@@ -1,0 +1,37 @@
+{
+  "capturedAtUtc": "2026-09-30T05:10:51.8011118Z",
+  "gate": "G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY",
+  "gitBase": "0b12d7d574d62120a5d714cddeeb349f045a39cc",
+  "branch": "codex/birthday-magazine-g3cr2-blocksy-wedding-canary",
+  "dockerEngine": "29.7.2",
+  "compose": "5.4.0",
+  "wordpress": "7.1.1",
+  "php": "8.3.33",
+  "wpCli": "2.12.0",
+  "mariadb": "11.4.7-MariaDB-ubu2404",
+  "mailpitImage": "axllent/mailpit:v1.31.2",
+  "blocksy": {
+    "source": "https://downloads.wordpress.org/theme/blocksy.2.1.57.zip",
+    "license": "GNU General Public License v2 or later",
+    "version": "2.1.57",
+    "wordpressOrgApi": "https://api.wordpress.org/themes/info/1.2/?action=theme_information&request%5Bslug%5D=blocksy",
+    "sha256": "077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d",
+    "installedAndActive": true
+  },
+  "blocksyCompanion": {
+    "source": "https://downloads.wordpress.org/plugin/blocksy-companion.2.1.57.zip",
+    "license": "GPLv2 or later",
+    "version": "2.1.57",
+    "wordpressOrgApi": "https://api.wordpress.org/plugins/info/1.2/?action=plugin_information&request%5Bslug%5D=blocksy-companion",
+    "sha256": "f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072",
+    "installedAndActive": true
+  },
+  "catalogSha256": "f617312bc24c6145ac59ad77134e772045ecfeb1465fb9394d13cbb635b51b75",
+  "catalogQuery": "wp blocksy demo list --format=json",
+  "woocommerce": "NOT_INSTALLED_PHASE_A_STOP",
+  "starterImport": "NOT_RUN",
+  "elementor": "NOT_INSTALLED",
+  "wordpressOrgAutoDownload": "FAILED_INVALID_URL",
+  "officialDirectPackages": "PASS",
+  "latestMainBeforeSubmission": "f6d733811df0793cf6dd181f6482415e43d5bedc"
+}

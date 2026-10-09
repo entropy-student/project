@@ -1,0 +1,45 @@
+{
+  "capturedAtUtc": "2026-09-30T05:11:47.7371435Z",
+  "dockerEngineVersion": "29.7.2",
+  "project": "birthday-magazine-g3cr2",
+  "beforeCleanup": {
+    "containers": [
+      "birthday-magazine-g3cr2-db-1|mariadb:11.4.7|Up 24 minutes (healthy)",
+      "birthday-magazine-g3cr2-mailpit-1|axllent/mailpit:v1.31.2|Up 24 minutes (healthy)",
+      "birthday-magazine-g3cr2-wordpress-1|wordpress:7.1.1-php8.3-apache|Up 7 minutes",
+      "birthday-magazine-g3cr2-wpcli-1|wordpress:cli-php8.3|Up 23 minutes"
+    ],
+    "containerCount": 4,
+    "networkCount": 1,
+    "volumeCount": 2,
+    "volumes": [
+      "birthday-magazine-g3cr2_database",
+      "birthday-magazine-g3cr2_wordpress"
+    ],
+    "networks": [
+      "birthday-magazine-g3cr2_private"
+    ]
+  },
+  "unrelatedResources": {
+    "nonDefaultNetworkCount": 14,
+    "volumeCount": 78,
+    "containerCount": 32,
+    "fingerprintSha256": "dd064c7d3d60ceb39665344028db61c69a60054f6a64f5103716295b341bdc66"
+  },
+  "cleanupStatus": "PASS",
+  "afterCleanup": {
+    "capturedAtUtc": "2026-09-30T05:18:28.7537185Z",
+    "project": "birthday-magazine-g3cr2",
+    "containersRemaining": 0,
+    "volumesRemaining": 0,
+    "networksRemaining": 0,
+    "listenersOn8167Or8168": 0,
+    "temporaryDirectoryExists": false,
+    "containerCount": 32,
+    "volumeCount": 78,
+    "nonDefaultNetworkCount": 14,
+    "unrelatedFingerprintSha256": "dd064c7d3d60ceb39665344028db61c69a60054f6a64f5103716295b341bdc66",
+    "matchesPreTeardown": true,
+    "cleanup": "PASS_PROJECT_SCOPED_DOCKER_DOWN_VOLUMES_AND_EXACT_TMP_REMOVAL"
+  }
+}

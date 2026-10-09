@@ -1,0 +1,47 @@
+{
+  "capturedAtUtc": "2026-09-30T05:10:58.7863452Z",
+  "catalogEntry": "Wedding",
+  "builderField": "gutenberg, elementor",
+  "catalogPluginField": "simply-gallery-block, stackable-ultimate-gutenberg-blocks, wpforms-lite, elementor, ht-slider-for-elementor",
+  "builderSpecificDependencyMapPresent": false,
+  "directoryPackages": [
+    {
+      "latestDirectoryVersion": "3.4.3",
+      "wordpressOrgDirectoryFreePackageAvailable": true,
+      "installed": false,
+      "slug": "simply-gallery-block",
+      "packageUrl": "https://downloads.wordpress.org/plugin/simply-gallery-block.3.4.3.zip"
+    },
+    {
+      "latestDirectoryVersion": "3.20.2",
+      "wordpressOrgDirectoryFreePackageAvailable": true,
+      "installed": false,
+      "slug": "stackable-ultimate-gutenberg-blocks",
+      "packageUrl": "https://downloads.wordpress.org/plugin/stackable-ultimate-gutenberg-blocks.3.20.2.zip"
+    },
+    {
+      "latestDirectoryVersion": "2.0.2.1",
+      "wordpressOrgDirectoryFreePackageAvailable": true,
+      "installed": false,
+      "slug": "wpforms-lite",
+      "packageUrl": "https://downloads.wordpress.org/plugin/wpforms-lite.2.0.2.1.zip"
+    },
+    {
+      "latestDirectoryVersion": "4.3.2",
+      "wordpressOrgDirectoryFreePackageAvailable": true,
+      "installed": false,
+      "slug": "elementor",
+      "packageUrl": "https://downloads.wordpress.org/plugin/elementor.4.3.2.zip"
+    },
+    {
+      "latestDirectoryVersion": "1.7.9",
+      "wordpressOrgDirectoryFreePackageAvailable": true,
+      "installed": false,
+      "slug": "ht-slider-for-elementor",
+      "packageUrl": "https://downloads.wordpress.org/plugin/ht-slider-for-elementor.1.7.9.zip"
+    }
+  ],
+  "paidGutenbergDependency": "UNRESOLVED",
+  "returnCode": "RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS",
+  "reason": "Importer exposes one starter-wide plugin field; it does not map Elementor and HT Slider to a builder variant. No starter import was attempted and Elementor was not installed."
+}
