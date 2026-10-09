@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>发现一件有意思的事｜Retro Mac Channel Style v1.2 — Edge-to-Edge Aqua</title>
+<style>
+:root {--ink:#16324e; --chrome:#e6e7e7;--line:#8b9ca7; --aqua:#1289b0;--subtitle:#fff;--stage-width:1500px}
+*{box-sizing:border-box}body{margin:0;background:#101924;color:#dce9f4;font-family:Inter,"Microsoft YaHei","PingFang SC",sans-serif;min-height:100vh;}
+.intro{max-width:var(--stage-width);margin:0 auto;padding:18px 20px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:9px}.brand-mark{width:26px;height:26px;display:grid;place-items:center;background:linear-gradient(135deg,#f8f4eb,#97c9ef);border:1px solid #bdd9ef;border-radius:7px;color:#1c4c76;font-weight:900}.brand-name{font-size:14px;font-weight:750;letter-spacing:.2px}.brand-sub{font-size:11px;color:#aab8c9;margin-top:3px}.intro .sub{font-size:12px;color:#a7b7c9}
+.stage{width:min(calc(100vw - 40px),var(--stage-width));aspect-ratio:16/9;position:relative;isolation:isolate;overflow:hidden;margin:0 auto;background:#225e9b;box-shadow:0 26px 85px #0009;border-radius:6px;container-type:inline-size;}
+.wallpaper{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 21% 16%,#79c5fb 0%,transparent 40%),radial-gradient(ellipse at 84% 73%,#115c9c 0%,transparent 52%),linear-gradient(135deg,#214783 0%,#63afe0 36%,#114a9f 65%,#05224f 100%)}
+.wallpaper:before{content:"";position:absolute;left:-22%;right:-10%;height:85%;top:15%;border:7cqw solid rgba(220,248,255,.20);border-radius:49% 53% 45% 45%;transform:rotate(-29deg);filter:blur(2.6cqw)}.wallpaper:after{content:"";position:absolute;inset:-40% -15%;background:repeating-linear-gradient(155deg,transparent 0,transparent 12cqw,rgba(232,253,255,.08) 12.2cqw,transparent 14cqw);transform:rotate(-7deg)}
+.menu{height:3.25cqw;position:absolute;top:0;left:0;right:0;z-index:4;display:flex;align-items:center;gap:1.4cqw;padding:0 1.8cqw;color:#283b4f;background:linear-gradient(#fffdf9ec,#dce8f1d9 52%,#bdd3e2c4);border-bottom:1px solid #8aa8be;box-shadow:0 1px 4px #09234330;font-size:1.08cqw;font-weight:550;text-shadow:0 1px #fff}.menu .bold{font-weight:850}.menu .right{margin-left:auto;display:flex;gap:1.3cqw;align-items:center;font-weight:600}
+.app-emblem{font-family:Georgia,serif;display:grid;place-items:center;border-radius:50%;background:linear-gradient(130deg,#ecfbff,#d1e3ed);border:1px solid #9fb3c0;color:#1e6685;width:1.9cqw;height:1.9cqw;font-size:1.15cqw;font-weight:bold}
+.desktop-icons{position:absolute;right:4.0cqw;top:7.0cqw;display:flex;flex-direction:column;align-items:center;gap:2.0cqw;z-index:2}.desk-icon{display:flex;flex-direction:column;align-items:center;gap:.5cqw;width:8.5cqw;cursor:pointer}.desk-icon label{border-radius:.3cqw;background:#15376768;color:white;text-shadow:0 1px 2px #000;display:block;padding:.2cqw .6cqw;font-size:1.15cqw;text-align:center}.drive{height:4.0cqw;width:5.3cqw;border:.16cqw solid #7a8b95;border-radius:.5cqw;background:linear-gradient(155deg,#f6f8fb,#9baebb);box-shadow:inset 0 .6cqw #fff7,0 .8cqw 1.2cqw #09244c60;position:relative}.drive:after{content:"";position:absolute;width:3.8cqw;height:.26cqw;bottom:.58cqw;left:.6cqw;background:#627e90;border-radius:1cqw}.folder{width:5.3cqw;height:3.9cqw;position:relative;border:.14cqw solid #557a9c;border-radius:.3cqw;background:linear-gradient(175deg,#f4faff 0,#b6def8 20%,#75afd7 100%);box-shadow:inset 0 .5cqw #fff9,0 .7cqw .9cqw #12305875}.folder:before{content:"";position:absolute;width:2.3cqw;height:.65cqw;top:-.48cqw;left:.2cqw;background:linear-gradient(#fff,#a5c9e5);border:.14cqw solid #6186a3;border-bottom:0;border-radius:.3cqw .5cqw 0 0}.folder:after{content:"";position:absolute;inset:32% 13% 20%;border-top:.1cqw solid #fff8}
+.dock{position:absolute;bottom:.5cqw;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:end;gap:.6cqw;padding:.55cqw 1.2cqw .55cqw;border:.1cqw solid #fff8;border-radius:1.7cqw 1.7cqw .6cqw .6cqw;background:linear-gradient(#e7f2f899,#9cb4c6a3);box-shadow:0 .3cqw 1cqw #0004;backdrop-filter:blur(.7cqw);transition:opacity .2s,transform .2s}.dock-icon{height:4.25cqw;width:4.25cqw;border:.1cqw solid #fff9;border-radius:1.15cqw;display:grid;place-items:center;box-shadow:inset 0 .35cqw .8cqw #fff8,0 .2cqw .3cqw #0003;font-size:2.4cqw;color:#fff;text-shadow:0 1px 3px #234}.di-1{background:linear-gradient(145deg,#69e6d8,#0269a7)}.di-2{background:linear-gradient(145deg,#fcfbdd,#e8ad48)}.di-3{background:linear-gradient(145deg,#e8e3ff,#7868c8)}.di-4{background:linear-gradient(145deg,#d0f0ff,#3982a7)}.di-5{background:linear-gradient(145deg,#fdcbd0,#e86d7a)}.di-6{background:linear-gradient(145deg,#daf8cc,#6bac54)}
+.dock-icon svg{width:2.4cqw;height:2.4cqw;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.finder{position:absolute;left:17cqw;top:10.5cqw;width:59cqw;height:35.5cqw;background:#f4f5f5;border:.15cqw solid #7c909f;border-radius:.65cqw;box-shadow:0 1.6cqw 2.3cqw #0724447f;overflow:hidden;z-index:2;color:#2c465c}.finder-header{height:3.4cqw;border-bottom:.1cqw solid #9aa8b3;background:repeating-linear-gradient(0deg,#dde0e3,#dde0e3 .13cqw,#e8e9eb .16cqw,#e8e9eb .23cqw);display:flex;align-items:center;padding:0 1.2cqw;gap:1.4cqw;font-size:1.12cqw;font-weight:750}.lights{display:flex;gap:.48cqw}.light{width:1.13cqw;height:1.13cqw;border:.09cqw solid #51616d88;border-radius:50%;box-shadow:inset 0 .15cqw .17cqw #fff9}.red{background:#ff5a58}.yellow{background:#ffcf41}.green{background:#4bca69}.finder-toolbar{height:3.3cqw;border-bottom:.08cqw solid #becbd4;display:flex;align-items:center;gap:1.0cqw;background:linear-gradient(#f4f6f7,#d5dce2);padding:0 1.3cqw;font-size:1cqw;color:#657688}.finder-body{height:calc(100% - 6.7cqw);display:flex;background:#fefefe}.side{width:15cqw;background:#e1eaf1;border-right:.12cqw solid #c3d0da;padding:1.6cqw 1.3cqw;font-size:1.1cqw;line-height:3cqw;color:#375c77}.side b{display:block;color:#283f54;font-size:1.0cqw;margin-bottom:.4cqw}.side .sel{background:#bddbea;border-radius:.5cqw;padding-left:.5cqw}.file-grid{padding:3.7cqw 3.2cqw;display:flex;gap:3.5cqw;align-items:flex-start}.file{width:11cqw;display:flex;flex-direction:column;align-items:center;gap:.6cqw;font-size:1.15cqw;font-weight:600;color:#2b4152;cursor:pointer}.file svg{width:6.5cqw;height:6.5cqw;filter:drop-shadow(0 .25cqw .3cqw #0003)}.file-note{font-size:.9cqw;color:#667f91;font-weight:500;text-align:center}
+.quicktime{position:absolute;left:50%;top:5.6cqw;transform:translateX(-50%) translateY(.7cqw) scale(.985);opacity:0;visibility:hidden;width:80.6cqw;padding:.8cqw;background:linear-gradient(105deg,#c3c9cc,#eff2f4 21%,#b8c1c8 47%,#e2e9ed 78%,#a9b4bd);border:.15cqw solid #697d8b;border-radius:1.1cqw;box-shadow:0 .4cqw .6cqw #fafafa77 inset,0 1.6cqw 4.5cqw #001e3cbb;z-index:8;transition:transform .45s cubic-bezier(.18,.76,.22,1),opacity .3s;overflow:hidden}
+/* v1.1: QuickTime B-mode fills the 16:9 video frame, without a separate C scene. */
+.stage.player .quicktime{top:.45cqw;width:99.0cqw;height:calc(100% - .9cqw);padding:.45cqw;border-radius:.62cqw;display:flex;flex-direction:column;box-shadow:0 .25cqw .35cqw #fafafa66 inset,0 1cqw 3cqw #001e3c88}
+.stage.player .qt-title{flex:0 0 2.65cqw;height:2.65cqw}
+.stage.player .screen{flex:1 1 auto;min-height:0;aspect-ratio:auto}
+.stage.player .sim-header{top:14%}
+.stage.player .qt-controls{flex:0 0 3.85cqw;height:3.85cqw}
+.stage.player .menu,.stage.player .desktop-icons,.stage.player .finder,.stage.player .dock{visibility:hidden}
+.stage:fullscreen{width:100vw;height:100vh;aspect-ratio:auto;max-width:none;border-radius:0;margin:0}
+.stage:fullscreen .quicktime{top:.4cqw;height:calc(100% - .8cqw)}
+.stage.player .quicktime{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0) scale(1)}.stage.player .dock{opacity:.20;transform:translateX(-50%) translateY(50%)}.stage.player .finder{filter:blur(.1cqw) brightness(.85)}
+.qt-title{height:3.0cqw;display:flex;align-items:center;justify-content:space-between;gap:1cqw;color:#395268;font-size:1.06cqw;font-weight:700;padding:0 1cqw}.qt-title .lhs{display:flex;align-items:center;gap:1.0cqw}.qt-title .filehead{display:flex;align-items:center;gap:.45cqw;margin:auto;transform:translateX(-4cqw);font-size:1.17cqw}.qt-title .filehead span{color:#738492;font-weight:500}.qt-title .icon-small{width:1.05cqw;height:1.05cqw;background:#6f8eab;border-radius:.2cqw;}
+.screen{position:relative;background:#071321;border:.18cqw solid #879ca6;outline:.2cqw solid #627b8e44;aspect-ratio:16/8.05;overflow:hidden;color:#fff}
+.scene{position:absolute;inset:0;display:none}.scene.active{display:block}
+.scene.sim{background:radial-gradient(ellipse at 50% 50%,#466e9f 0%,#1b385b 56%,#0d223e 100%)}
+.sim-grid{position:absolute;inset:-40%;background-image:linear-gradient(#abd4ff16 .08cqw,transparent .08cqw),linear-gradient(90deg,#abd4ff16 .08cqw,transparent .08cqw);background-size:4.5cqw 4.5cqw;transform:perspective(42cqw) rotateX(58deg) rotateZ(-10deg) scale(1.15);top:-12%}
+.sim-header{position:absolute;top:5.5%;left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;z-index:2;color:#b8e4f7;font-size:1.07cqw;letter-spacing:.15cqw}.sim-header .status{background:#122b4ac9;border:1px solid #5d96b3;border-radius:5cqw;padding:.48cqw 1.1cqw;}
+.sim-world{position:absolute;left:11%;top:21%;width:77%;height:58%;transform:skewY(-5deg);border:1px solid #80c6ec55;background:linear-gradient(128deg,#315e7d 0%,#284d6c 61%,#1e4266 100%);box-shadow:0 2cqw 3cqw #06152775, inset 0 0 4cqw #9bdfff18}
+.wall{position:absolute;left:41%;top:6%;width:10%;height:71%;background:linear-gradient(90deg,#bed1df,#789cad);box-shadow:1cqw .8cqw 0 #224c6d;transform:skewY(-14deg)}
+.platform{position:absolute;top:55%;left:20%;width:20%;height:18%;background:linear-gradient(105deg,#eec486,#b48354);box-shadow:1cqw 1.2cqw 0 #674734;transform:skewY(7deg)}
+.agent{position:absolute;width:5cqw;height:6.5cqw;border-radius:1.1cqw 1.1cqw .6cqw .6cqw;box-shadow:1cqw 1.4cqw 1cqw #0a1c395a}.agent:before{content:"";position:absolute;top:1.8cqw;left:1.0cqw;width:3cqw;height:1.0cqw;background:#152d49;border-radius:1cqw}.agent.a{left:13%;top:40%;background:linear-gradient(#fbc9a5,#e98962);animation:agentA 6s ease-in-out infinite alternate}.agent.b{left:69%;top:27%;background:linear-gradient(#b8f3db,#57b9ad);animation:agentB 7s ease-in-out infinite alternate}.cone{position:absolute;left:54%;top:39%;width:10%;height:27%;background:linear-gradient(145deg,#f6e2ad,#b99570);transform:skew(-18deg) rotate(-6deg);clip-path:polygon(30% 0,100% 0,70% 100%,0 100%);box-shadow:1cqw 1cqw #1e2a40}
+@keyframes agentA{to{transform:translate(8cqw,-2cqw)}}@keyframes agentB{to{transform:translate(-6cqw,5cqw)}}
+.sim-label{position:absolute;bottom:24%;left:6.5%;z-index:3;font-size:1.2cqw;font-weight:650;letter-spacing:.04cqw;color:#cbe5f4}
+.scene.broll{background:radial-gradient(circle at 40% 35%,#d1e9e1,transparent 55%),linear-gradient(135deg,#526b70,#293e48 60%,#0c2736);}
+.broll .orb{position:absolute;inset:13% 25% 17%;border:2cqw solid #c0e8df4b;border-radius:50%;box-shadow:inset 2cqw 1cqw 4cqw #b6efce22,0 0 9cqw #7faea55e;animation:spin 24s linear infinite}.broll .orb:after{content:"";position:absolute;width:10cqw;height:10cqw;border-radius:50%;left:-4cqw;top:28%;background:radial-gradient(circle at 28% 28%,#f7dec1,#bb9484);box-shadow:0 1cqw 2cqw #091a2e64}@keyframes spin{to{transform:rotate(360deg)}}
+.broll .tagline{position:absolute;top:25%;left:10%;font-size:3.0cqw;font-weight:700;max-width:30cqw;line-height:1.4;letter-spacing:.07cqw;text-shadow:0 .2cqw 1cqw #0006}
+.paper{position:absolute;inset:0;background:linear-gradient(110deg,#e1e3e6,#f8f9fa 25%,#dbe2e8);display:flex;align-items:center;justify-content:center;color:#243747}.paper-sheet{width:67%;height:94%;background:white;box-shadow:0 0 3cqw #3550734d;padding:3.4cqw 4cqw;overflow:hidden}.paper-top{font-size:1.0cqw;color:#798a9a;letter-spacing:.12cqw;margin-bottom:1.3cqw}.paper-title{font-size:2.2cqw;line-height:1.24;font-weight:800;max-width:42cqw}.paper-auth{margin-top:.9cqw;color:#7b8e9f;font-size:1cqw}.rule{height:.1cqw;background:#b8cbd6;margin:2cqw 0}.paper-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.8cqw;font-size:.96cqw;line-height:1.5;color:#6b7a83}.fake-lines{height:.55cqw;margin-bottom:.66cqw;background:#b4c2ce5c;border-radius:3cqw}.fake-lines:nth-child(2n){width:82%}.fake-lines:nth-child(3n){width:96%}.figure{position:relative;border:1px solid #bed1dd;background:#f0f6f9;height:11cqw;overflow:hidden;display:flex;align-items:end;justify-content:space-evenly;padding:1.5cqw 1.7cqw}.bar{width:3.0cqw;background:#7db8ce;border-radius:.2cqw .2cqw 0 0}.bar:nth-child(2){background:#dea07a}.bar:nth-child(3){background:#7ab5a1}.bar:nth-child(4){background:#8a9dcb}.figure-mark{position:absolute;inset:14% 10%;border:.24cqw solid #efb644;border-radius:.8cqw;transform:rotate(-4deg)}.paper-source{position:absolute;right:4.5%;top:3%;font-size:1.1cqw;color:#5a6a76;background:#edf4f7;padding:.4cqw .7cqw;border-radius:.25cqw}
+.outro{position:absolute;inset:0;background:linear-gradient(122deg,#123d5b,#16374a 60%,#223d56);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.1cqw}.outro .kicker{font-size:1.1cqw;letter-spacing:.25cqw;color:#92c8d7}.outro .main{font-weight:800;font-size:3.5cqw;color:#fff;letter-spacing:.08cqw}.outro .sub{font-size:1.4cqw;color:#bdcfde}
+.evidence-chip{position:absolute;top:4.3%;left:3%;z-index:7;display:flex;align-items:center;gap:.5cqw;max-width:55%;background:#081c2be5;border:.07cqw solid #7ca4be;border-radius:.35cqw;padding:.52cqw .8cqw;color:#e6f3fa;font-size:1.05cqw;font-weight:600;box-shadow:0 .4cqw 1.1cqw #0004}.chip-dot{height:.55cqw;width:.55cqw;border-radius:50%;background:#f4be69}.chip-text{font-size:1.0cqw;color:#bbd5e4;font-weight:500}
+.subtitle{position:absolute;z-index:11;bottom:5.6%;left:5%;right:5%;display:flex;justify-content:center;pointer-events:none}.subtitle>span{max-width:100%;background:#061727d9;color:var(--subtitle);font-size:2.9cqw;line-height:1.32;font-weight:720;text-shadow:0 .12cqw .25cqw #000;white-space:nowrap;border-radius:.43cqw;padding:.25cqw .85cqw .38cqw;text-align:center;box-shadow:0 .12cqw 1cqw #0715215c;letter-spacing:.03cqw}
+.qt-controls{height:5.0cqw;display:flex;align-items:center;gap:.85cqw;padding:.2cqw 1.0cqw .3cqw;color:#485b6a}.qt-btn{border:.12cqw solid #7d909f;background:linear-gradient(#f7fcff,#b4c3cf);box-shadow:inset 0 .25cqw .4cqw #ffffff9c,0 .16cqw .3cqw #64717b77;display:grid;place-items:center;width:2.75cqw;height:2.75cqw;border-radius:50%;cursor:pointer;color:#385466;font-size:1.55cqw;font-weight:750}.qt-btn:hover{filter:brightness(1.08)}.qt-skip{font-size:1.05cqw}.progress-rail{height:.72cqw;border:.1cqw solid #7f93a3;border-radius:1cqw;flex:1;background:linear-gradient(#b0c0cd,#e9eef2);box-shadow:inset 0 .2cqw .3cqw #5265783f;overflow:hidden;cursor:pointer}.progress-fill{height:100%;width:0;background:linear-gradient(#79d5f2,#1d94c5 70%,#12638d);border-radius:1cqw;transition:width .1s linear}.clock{font-size:1.0cqw;color:#4b6273;min-width:7.6cqw;text-align:right;font-family:Consolas,monospace;font-weight:750}.vol{font-size:1.2cqw;color:#667e8f}
+.preview-label{position:absolute;left:3%;bottom:3%;font-size:.9cqw;color:#e9f4fc8a;letter-spacing:.08cqw;z-index:6}.stage.player .preview-label{display:none}
+.controls-panel{max-width:var(--stage-width);margin:14px auto 0;padding:12px 20px 28px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:center}.controls-panel .group{display:flex;gap:8px;flex-wrap:wrap}.control{appearance:none;cursor:pointer;padding:10px 14px;color:#dbe8f1;background:#25384a;border:1px solid #577389;border-radius:8px;font-size:13px;font-weight:650}.control.primary{background:#c0e0ec;color:#1c3a4d}.control:hover{filter:brightness(1.12)}.info{font-size:12px;color:#acbbcb;line-height:1.5}.filepicker{display:none}button:focus-visible,.file:focus-visible{outline:2px solid #e3b765;outline-offset:2px}
+@media(max-width:680px){.intro{padding:12px 9px}.intro .sub{display:none}.stage{width:calc(100vw - 12px);border-radius:2px}.controls-panel{padding:12px}.info{width:100%}.control{font-size:12px;padding:8px}.brand-name{font-size:12px}.brand-sub{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.agent,.orb{animation:none!important}.quicktime,.dock{transition:none!important}}
+
+/* v1.2 / full-bleed QuickTime + MIT Aqua design component reuse.
+   Reused/adapted from NovusGFX/retro-design-system/styles/04-aqua-osx/index.html
+   MIT (c) 2026 NovusGFX; LICENSE: ../vendor/LICENSE-NOVUSGFX-MIT.txt
+   The standalone preview bundles the needed component styles inline, offline. */
+:root {
+  --aqua-blue: #4d90fe;
+  --aqua-blue-deep: #2057c2;
+  --aqua-chrome: linear-gradient(to bottom,#e8e8e8,#c8c8c8);
+  --aqua-pinstripe: repeating-linear-gradient(to bottom,rgba(255,255,255,.7) 0 1px,rgba(220,220,230,.7) 1px 2px);
+  --aqua-jelly-red: radial-gradient(circle at 30% 30%,#ff9a8a,#ff4b2b 40%,#b21808);
+  --aqua-jelly-yellow: radial-gradient(circle at 30% 30%,#ffee8a,#ffbe2b 40%,#b28008);
+  --aqua-jelly-green: radial-gradient(circle at 30% 30%,#b5f28a,#59c42b 40%,#1f7008);
+}
+.qt-title .light.red,.finder-header .light.red {background:var(--aqua-jelly-red)}
+.qt-title .light.yellow,.finder-header .light.yellow {background:var(--aqua-jelly-yellow)}
+.qt-title .light.green,.finder-header .light.green {background:var(--aqua-jelly-green)}
+.qt-title .light,.finder-header .light{box-shadow:inset 0 .12cqw 0 #fff8,0 .1cqw .12cqw #0004}
+.stage.player .quicktime{
+    top:0;left:0;transform:none;
+    width:100%;height:100%;padding:.18cqw;
+    border:0;border-radius:0;
+    background:var(--aqua-chrome);
+    box-shadow:none;
+}
+.stage.player .qt-title{
+    flex:0 0 2.25cqw;height:2.25cqw;
+    min-height:0;
+    background:linear-gradient(to bottom,#f2f2f2 0%,#dcdcdc 50%,#bcbcbc 100%);
+    box-shadow:inset 0 .06cqw 0 #fff9;
+    padding:0 1cqw;
+    border-bottom:.08cqw solid #899aa7;
+}
+.stage.player .qt-title .filehead{font-size:1.03cqw}
+.stage.player .qt-title .lhs .lights{gap:.47cqw}
+.stage.player .screen{
+    flex:1 1 auto;min-height:0;aspect-ratio:auto;
+    border:.08cqw solid #7a8b99;outline:0;
+}
+.stage.player .qt-controls{
+    flex:0 0 3.22cqw;height:3.22cqw;
+    padding:.15cqw .7cqw .2cqw;gap:.63cqw;
+    background:var(--aqua-chrome);
+}
+.stage.player .qt-controls .qt-btn{width:2.35cqw;height:2.35cqw;font-size:1.28cqw}
+.stage.player .qt-controls .qt-skip{font-size:.97cqw}
+.stage.player .progress-fill{
+    background:linear-gradient(to bottom,#b1d1ff,#4d90fe 50%,#2057c2 100%);
+}
+.stage.player .preview-label{display:none}
+.stage.player .wallpaper{display:none}
+/* Keeps the same 16:9 frame in the rendered video, without a new C scene. */
+
+</style>
+</head><body>
+<div class="intro"><div class="brand"><span class="brand-mark">?</span><div><div class="brand-name">有趣发现 · RETRO MAC CHANNEL</div><div class="brand-sub">A + B 两态视觉原型 / v1.0</div></div></div><span class="sub">本地打开即可查看 · 不依赖网络 · 无真实论文素材</span></div>
+<main class="stage" id="stage" aria-label="复古桌面及播放器视觉预览">
+<div class="wallpaper"></div>
+<div class="menu"><div class="app-emblem">●</div><span class="bold" id="menuActive">Finder</span><span>文件</span><span>编辑</span><span>显示</span><span>窗口</span><span>帮助</span><div class="right"><span>◉</span><span>▰▰</span><span id="menuClock">10月10日 周六 10:08</span></div></div>
+<div class="desktop-icons"><div class="desk-icon" title="演示盘"><div class="drive"></div><label>研究资料</label></div><div class="desk-icon" id="desktopFolder" tabindex="0" role="button" aria-label="打开今天的发现文件夹"><div class="folder"></div><label>今天的发现</label></div></div>
+<div class="finder" id="finder"><div class="finder-header"><div class="lights"><div class="light red"></div><div class="light yellow"></div><div class="light green"></div></div><span style="margin:auto;transform:translateX(-3.5cqw)">今天的发现</span><span style="opacity:.7;font-size:1cqw">⌕</span></div><div class="finder-toolbar"><span>◀</span><span>▶</span><span>▦</span><span>☰</span><span style="margin-left:auto">3 个项目</span></div><div class="finder-body"><div class="side"><b>位置</b><div>▣ 桌面</div><div class="sel">▣ 今天的发现</div><div>▣ 研究资料</div><div style="margin-top:1cqw"><b>收藏</b>▣ 每日论文</div></div><div class="file-grid"><div class="file" id="videoFile" tabindex="0" role="button" aria-label="打开研究实验视频"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="16" y="10" width="68" height="80" rx="7" fill="#d5dce2" stroke="#7693a6" stroke-width="3"/><rect x="23" y="20" width="54" height="48" rx="2" fill="#285b81"/><path d="m45 30 21 14-21 14z" fill="#dbeaf0"/><path d="M26 78h48" stroke="#7192a6" stroke-width="5" stroke-linecap="round"/></svg><span>研究实验.mov</span><small class="file-note">演示素材 · 约 01:04</small></div><div class="file"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 10H68L85 27V90H18Z" fill="#f5f7fa" stroke="#7598b2" stroke-width="3"/><path d="M68 10V27H85" fill="#dbe5ee"/><path d="M30 42h42M30 52h42M30 62h32" stroke="#98aec0" stroke-width="5"/><rect x="30" y="69" width="36" height="7" fill="#f6db95"/></svg><span>论文证据.pdf</span><small class="file-note">来源需逐期核实</small></div><div class="file"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M15 28h70v57H15z" fill="#a6d7f2" stroke="#688fac" stroke-width="3"/><path d="M15 28l11-12h27l8 12" fill="#c2e5fa" stroke="#688fac" stroke-width="3"/><circle cx="63" cy="47" r="10" fill="#e9e9ad"/><path d="m23 74 18-19 15 14 9-9 15 14z" fill="#5b9da9"/></svg><span>辅助素材</span><small class="file-note">图片／视频</small></div></div></div></div>
+<div class="dock" aria-label="装饰性 Dock"><div class="dock-icon di-1"><svg viewBox="0 0 32 32"><path d="M5 14h22M13 5v22M6 26 26 6"/></svg></div><div class="dock-icon di-2"><svg viewBox="0 0 32 32"><rect x="6" y="7" width="20" height="18" rx="3"/><path d="m13 11 10 5-10 5z"/></svg></div><div class="dock-icon di-3"><svg viewBox="0 0 32 32"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M11 12h10M11 17h10M11 22h6"/></svg></div><div class="dock-icon di-4"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="M6 16h20M16 6a25 25 0 0 0 0 20M16 6a25 25 0 0 1 0 20"/></svg></div><div class="dock-icon di-5"><svg viewBox="0 0 32 32"><path d="M5 24V9l9-4 13 11v11l-13-9z"/></svg></div><div class="dock-icon di-6"><svg viewBox="0 0 32 32"><path d="M16 4v24M4 16h24M8 8l16 16M24 8 8 24"/></svg></div></div>
+<div class="quicktime" id="quicktime">
+<div class="qt-title"><div class="lhs"><div class="lights"><div class="light red" id="closeQT" title="关闭播放器" style="cursor:pointer"></div><div class="light yellow"></div><div class="light green"></div></div></div><div class="filehead"><div class="icon-small"></div><b>今天的发现 · 研究实验.mov</b><span>— QuickTime 风格演示</span></div><span>▤</span></div>
+<div class="screen" id="screen">
+  <section class="scene sim active" data-scene="0"><div class="sim-grid"></div><div class="sim-header"><span>FIELD NOTES / SIMULATION 01</span><span class="status">● DEMO — 非论文实录</span></div><div class="sim-world"><div class="wall"></div><div class="platform"></div><div class="cone"></div><div class="agent a"></div><div class="agent b"></div></div><div class="sim-label">一次不可思议的研究，将从这里开始。</div></section>
+  <section class="scene paper" data-scene="1"><span class="paper-source">论文截图占位 · 不是原论文</span><div class="paper-sheet"><div class="paper-top">RESEARCH PAPER / DEMONSTRATION</div><div class="paper-title">A Surprising Finding in an Experimental World</div><div class="paper-auth">Author names · Year · DOI / URL to be verified</div><div class="rule"></div><div class="paper-cols"><div><strong>ABSTRACT</strong><div style="margin-top:1.1cqw"> <div class="fake-lines"></div><div class="fake-lines"></div><div class="fake-lines"></div><div class="fake-lines"></div><div class="fake-lines"></div><div class="fake-lines"></div></div><div style="margin-top:1.5cqw"><strong>METHOD</strong><div style="margin-top:1cqw"><div class="fake-lines"></div><div class="fake-lines"></div><div class="fake-lines"></div></div></div></div><div><strong>FIGURE — PLACEHOLDER</strong><div class="figure"><div class="bar" style="height:40%"></div><div class="bar" style="height:64%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:82%"></div><div class="figure-mark"></div></div><div style="font-size:1cqw;margin-top:1cqw">本区域正式替换为可追溯的研究原图</div></div></div></div></section>
+  <section class="scene broll" data-scene="2"><div class="orb"></div><div class="tagline">更有趣的不是数字，<br>而是事情怎样发生。</div></section>
+  <section class="scene outro" data-scene="3"><div class="kicker">TODAY'S DISCOVERY</div><div class="main">原来世界这么有意思。</div><div class="sub">每期一件真实发现，讲清楚它为什么发生。</div></section>
+  <div class="evidence-chip" id="evidenceChip"><span class="chip-dot"></span><span id="evidenceType">示意动画</span><span class="chip-text" id="evidenceLabel">非论文真实影像</span></div>
+  <div class="subtitle" id="subtitles"><span id="subtitleText">有些实验的结果，真的会让人愣一下。</span></div>
+</div>
+<div class="qt-controls"><button class="qt-btn qt-skip" id="backBtn" title="回到上一个素材">◀◀</button><button class="qt-btn" id="playBtn" title="播放／暂停">▶</button><button class="qt-btn qt-skip" id="nextBtn" title="下一个素材">▶▶</button><div class="progress-rail" id="progressRail" title="点击跳转"><div class="progress-fill" id="progressFill"></div></div><div class="clock" id="clock">00:00 / 01:04</div><span class="vol">◖))</span></div>
+</div>
+<span class="preview-label">本图为频道视觉原型，所有模拟内容均非论文原始素材</span>
+</main>
+<div class="controls-panel"><div class="group"><button class="control" id="showDesktop">A · 看完整桌面</button><button class="control primary" id="showPlayer">B · 边到边播放器</button><button class="control" id="sceneNext">切换下一类素材</button><button class="control" id="enterFullscreen">浏览器全屏预览</button><button class="control" id="playToggle">▶ 自动轮播</button><button class="control" id="importVideo">导入本地视频（仅预览）</button><input type="file" id="videoInput" class="filepicker" accept="video/*"/></div><span class="info">左边为 16:9 视频构图。此版基于 v1.1 原型，并复用 MIT 开源 Aqua 样式组件（非苹果官方播放器）；可导入视频体验。</span></div>
+<script>
+(()=>{
+const stage=document.getElementById('stage'), playBtn=document.getElementById('playBtn'), toggle=document.getElementById('playToggle');
+const scenes=[...document.querySelectorAll('.scene')];
+const segments=[
+ {at:0,end:19, type:'示意动画', label:'非论文真实影像',cap:'有些实验的结果，真的会让人愣一下。'},
+ {at:19,end:37,type:'文献占位',label:'正式视频需替换为论文原图',cap:'研究证据究竟说了什么？我们来看看。'},
+ {at:37,end:52,type:'辅助画面',label:'非研究证据',cap:'真正有意思的是，它为什么会这样。'},
+ {at:52,end:64,type:'结尾观点',label:'示意文案，非论文结论',cap:'今天又发现了一件有意思的事情。'}
+];
+let t=0,last=0,playing=false,raf=0,demoVideo=null,url=null;
+function two(n){return String(n).padStart(2,'0')};
+function setPlayer(on){stage.classList.toggle('player',on);document.getElementById('menuActive').textContent=on?'QuickTime':'Finder'; if(!on){playing=false;updatePlay()}}
+function sceneAt(time){return Math.max(0,segments.findIndex(s=>time>=s.at&&time<s.end))}
+function render(){let i=t>=64?3:sceneAt(t),s=segments[i];scenes.forEach((x,j)=>x.classList.toggle('active',i===j));
+ document.getElementById('evidenceType').textContent=s.type;document.getElementById('evidenceLabel').textContent=s.label;document.getElementById('subtitleText').textContent=s.cap;
+ document.getElementById('progressFill').style.width=(t/64*100)+'%';document.getElementById('clock').textContent=`${two(Math.floor(t/60))}:${two(Math.floor(t%60))} / 01:04`;
+ document.getElementById('evidenceChip').style.display=i===3?'none':'flex';if(demoVideo)demoVideo.style.display=i===0?'block':'none';
+}
+function updatePlay(){playBtn.textContent=playing?'Ⅱ':'▶';toggle.textContent=playing?'Ⅱ 暂停轮播':'▶ 自动轮播';if(demoVideo){if(playing&&sceneAt(t)===0)demoVideo.play().catch(()=>{});else demoVideo.pause()}}
+function step(time){if(!playing)return;if(last){t+=Math.min((time-last)/1000,.2)}last=time;if(t>=64){t=64;playing=false;last=0}render();updatePlay();if(playing)raf=requestAnimationFrame(step)}
+function setPlaying(on){if(on&&t>=64)t=0;playing=on;last=0;updatePlay();if(on){setPlayer(true);playing=true;raf=requestAnimationFrame(step)}else cancelAnimationFrame(raf)}
+function seek(delta){setPlaying(false);t=Math.min(63.99,Math.max(0,t+delta));render()}
+function next(){let i=sceneAt(Math.min(63.99,t));t=segments[(i+1)%4].at;setPlaying(false);render();setPlayer(true)}
+function prev(){let i=sceneAt(Math.min(63.99,t));t=segments[(i+3)%4].at;setPlaying(false);render();setPlayer(true)}
+function open(){setPlayer(true);render()}
+['videoFile','desktopFolder','showPlayer'].forEach(id=>{let el=document.getElementById(id);el.addEventListener('click',open);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+document.getElementById('enterFullscreen').addEventListener('click',()=>{if(document.fullscreenElement){document.exitFullscreen().catch(()=>{})}else{stage.requestFullscreen().catch(()=>{})}});document.addEventListener('fullscreenchange',()=>{document.getElementById('enterFullscreen').textContent=document.fullscreenElement?'退出浏览器全屏':'浏览器全屏预览'});document.getElementById('showDesktop').addEventListener('click',()=>setPlayer(false));document.getElementById('closeQT').addEventListener('click',()=>setPlayer(false));
+document.getElementById('sceneNext').addEventListener('click',next);document.getElementById('nextBtn').addEventListener('click',next);document.getElementById('backBtn').addEventListener('click',prev);document.getElementById('playBtn').addEventListener('click',()=>setPlaying(!playing));toggle.addEventListener('click',()=>setPlaying(!playing));document.getElementById('progressRail').addEventListener('click',e=>{let b=e.currentTarget.getBoundingClientRect();t=64*(e.clientX-b.left)/b.width;setPlaying(false);setPlayer(true);render()});
+document.getElementById('importVideo').addEventListener('click',()=>document.getElementById('videoInput').click());document.getElementById('videoInput').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(f);if(demoVideo)demoVideo.remove();demoVideo=document.createElement('video');demoVideo.src=url;demoVideo.muted=true;demoVideo.loop=true;demoVideo.playsInline=true;demoVideo.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:1';scenes[0].append(demoVideo);t=0;setPlaying(false);open();render()});
+render();
+})();
+</script>
+</body></html>
