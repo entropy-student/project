@@ -1,0 +1,28 @@
+﻿{
+    "capturedAtUtc":  "2026-09-30T07:57:58.2411113Z",
+    "gate":  "G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE",
+    "composeProject":  "birthday-magazine-g3cr2r2",
+    "projectContainers":  0,
+    "projectVolumes":  0,
+    "projectNetworks":  0,
+    "temporaryDirectoryExists":  false,
+    "temporaryFileCount":  0,
+    "hostPortListeners":  {
+                              "8178":  0,
+                              "8177":  0
+                          },
+    "unrelatedResourceCounts":  {
+                                    "networks":  14,
+                                    "containers":  32,
+                                    "volumes":  78
+                                },
+    "unrelatedInventorySha256Before":  "8cb238fe6317daace495704fda29a4851aec34b8f1d1722b63ac2a1141c0dbae",
+    "unrelatedInventorySha256After":  "af63a14051b7e2aa70d37f716ccf3cd966a5d3383c2ccbcc3b22973388e6ad06",
+    "unrelatedInventoryFingerprintComparable":  false,
+    "unrelatedResourcesUnchanged":  true,
+    "paypalActions":  0,
+    "realMoneyActions":  0,
+    "modelCalls":  0,
+    "sharedInfrastructureMutations":  0,
+    "globalDockerPrune":  0
+}
