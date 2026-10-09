@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-14-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-15-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -44,6 +44,7 @@
 
 | Project | 主要用途 | 当前状态入口 |
 |---|---|---|
+| **Curious World Studio** | HF 有趣发现选题协议、Retro Mac / QuickTime 视频视觉系统与频道定位 | [Handoff](./curious-world-studio/REVIEWER_HANDOFF.md) |
 | **AI Story Showrunner** | 故事型知识视频的选题、文案、Timing、分镜、资产与 E2E 验证 | [Handoff](./ai-story-showrunner/REVIEWER_HANDOFF.md) |
 | **Story Image Runner** | 受治理的本地浏览器生图队列、资产导出与后续 QA | [Handoff](./story-image-runner/REVIEWER_HANDOFF.md) |
 | **Story Visual Asset Engine** | 视觉资产复用、生成/派生决策、角色/风格一致性与素材库 | [Handoff](./story-visual-asset-engine/REVIEWER_HANDOFF.md) |
