@@ -45,3 +45,10 @@
 - 10/7–9 三日 **PARTIAL** 扫描更新 `../research/topic-bank/TOPICS_V1.json`、`BOARD_V1.md`，现 36 条（11 SHORTLIST、15 VERIFY、9 HOLD、1 REJECTED）；真实新增 15 条（2 / 8 / 5）。详细覆盖与失败列表位于 `../research/topic-bank/batches/2026-10-07_to_09_PARTIAL_9_SOURCE_SCAN.md`。
 - 原始项目代码未部署持续拉取；EurekAlert 403，部分 Nature 付费/登录，OpenAlex/API 和 RSS 三日稳定性尚未实测。不可宣布“完整三日扫描通过”。
 - 下一步：修通合法稳定可抓取的官方接口，重跑可计数批次；随后才进入候选 STORY-FIT，不要现在擅自开新剧本或更改 HF-FIND 主协议。
+
+
+## 2026-10-10 官方 API/RSS 可审计采集器
+- 已提交 Python 标准库采集程序 `../research/topic-bank/collector/collect.py`、测试 `test_collect.py`、操作说明 `README.md`，以及根目录 `.github/workflows/cws-source-audit.yml`（只读、workflow_dispatch、一次性 push 测试）。
+- 代码为按来源逐项记可见总量、请求、分页、日期、重复和失败的真实采集准备；HF/PLOS 有分页，MIT/NASA/Nature 是 RSS 快照，JEB 为 Crossref 代理，EurekAlert 无确认公共 API。
+- ChatGPT 容器 DNS 失败，单源请求失败，本地整批执行超时；Actions 真实运行结果尚不能经当前工具查询、**未拿到可核的 artifact**，故目前验收结论为 `IMPLEMENTED / LIVE_RUN_UNVERIFIED`，不能宣称“九源三日扫描 PASS”。
+- 审计依据：`../research/topic-bank/batches/2026-10-10_COLLECTOR_IMPLEMENTATION_AUDIT.md`；题库 36 条保持不变，等待有证据的实际源内容再评选。
