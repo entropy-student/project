@@ -1,4 +1,7 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
+
+> **P3-R5 (2026-10-10) latest**: Owner approved continuing after P3-R4 and asked for a final explanation only of **how duration was estimated**. A read-only offline timing/story-arc audit for D-B and J-B is archived in [P3-R5 timing & listening protocol](research/reports/2026-10-10_P3R5_READTHROUGH_TIMING_AND_AUDIENCE_TEST_PROTOCOL.md). Full narration Chinese Han characters D-B 974, J-B 941; at **unmeasured effective 3.5 Han chars/second**, estimates 4:38 and 4:29; speed sensitivity 3–4 chars/s included. 2–4min structural weak points documented; original narration V1 unchanged. No recorded audio, audience study, production, scoring rule or topic status changes.
+
 > **P3-R4 latest (2026-10-10)**: Owner asked to implement useful findings from an independent narrative review and preserve deferred/rejected proposals separately. Full continuous D-B and J-B narration draft V1 now exists; accepted and deferred findings each have their own report. See [adopted research](research/reports/2026-10-10_P3R4_ADOPTED_REVIEW_FINDINGS_AND_TEST_PLAN.md), [deferred log](research/reports/2026-10-10_P3R4_NOT_ADOPTED_AND_PENDING_LOG.md), [D-B](research/story-fit/prototypes/2026-10-10_P3R4_D_B_FULL_READTHROUGH_V1.md), [J-B](research/story-fit/prototypes/2026-10-10_P3R4_J_B_FULL_READTHROUGH_V1.md). Text prototypes only; no production, real audience data, topic promotion or formal workflow changes.
 
 
