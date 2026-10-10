@@ -29,7 +29,7 @@ def probe_blob(raw, name):
 
 def rar_members(text):
     """Read 7-Zip -slt listing: never trust names for file extraction to disk."""
-    blocks=text.replace('\\r','').split('\\n\\n')
+    blocks=text.replace('\r','').split('\n\n')
     members=[]
     for block in blocks:
         values={}
@@ -77,7 +77,7 @@ def analyze(raw):
         result['status']='HTML_ACCESS_PAGE_NOT_MEDIA';return result
     if raw.startswith(b'Rar!'):
         probe_rar(raw,result)
-        if result.get('status')=='RAR_DECODER_UNAVAILABLE':return result
+        if result.get('status') in ('RAR_DECODER_UNAVAILABLE','RAR_LIST_FAILED','RAR_TOO_MANY_AUDIO_MEMBERS'):return result
     elif zipfile.is_zipfile(io.BytesIO(raw)):
         result['container']='ZIP'
         with zipfile.ZipFile(io.BytesIO(raw)) as archive:
