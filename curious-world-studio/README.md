@@ -1,3 +1,6 @@
+<!-- CWS-20261010-HANDOFF-NAV -->
+> **换聊天/Agent 接手统一入口**：[`docs/PROJECT_HANDOFF_2026-10-10.md`](docs/PROJECT_HANDOFF_2026-10-10.md) → [`REVIEWER_HANDOFF.md`](REVIEWER_HANDOFF.md)。含完整决策、九源框架、36 条选题、采集器未验收状态与下一步顺序。
+
 # Curious World Studio · 世界有点意思（暂定）
 
 > **项目性质**：不露脸的真实发现 / 跨领域探索故事频道，当前为**研究协议 + 视觉规范的文档与原型模块**，不是可自动生成完整视频的成品系统。
