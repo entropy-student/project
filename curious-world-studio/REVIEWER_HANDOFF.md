@@ -31,3 +31,11 @@
 - Owner 决策：**扩大选题范围**；生活/衣食住行/身体与感知的原始研究，与 Hugging Face 科技研究并行，不要求内容一定提 AI。
 - 初选结果：[跨领域选题雷达 v1](research/reports/2026-10-10_跨领域选题雷达_v1.md)：10 个候选（9 个有实证线索、1 个 HOLD），优先五分钟预审意大利面、蚊子偏好、爆米花。注意尚未做系统 B站竞品查重或媒体商用授权确认。
 - 保留 `research/HF_有趣发现_唯一主协议.md` 未变；下一步按同一 STORY-FIT 判据对生活题与科技题公平比较，不宣称原创赛道/供给空白。
+
+
+## 2026-10-10 跨领域信源分层体系（严格筛选版）
+- 最终框架：[`research/SOURCE_SYSTEM_FINAL_V1.md`](research/SOURCE_SYSTEM_FINAL_V1.md)。层次：每日 HF / MIT Research RSS / EurekAlert 浏览；每周 JEB / NASA EO / PLOS 定制 RSS / Nature 专题；原文核实 OpenAlex / PubMed / DOI / 作者原论文。
+- EurekAlert 尚未确证公共 RSS/API，不作为已部署自动采集接口；OpenAlex / PubMed 是检索与核实底座，不应每日扫全量。
+- USDA ARS 降级低频（2026 新闻档案稀疏），arXiv RSS 与 HF 内容重叠，独立 Nature Food 全刊不每日扫。
+- **只完成网站、官方文档和部分 2026-10-07 至 09 样本抽查；没有真实运行三日 API/RSS 批量抓取**。不宣称每日候选数量/通过率/授权已验证。旧 `SOURCE_REGISTRY_V1.md` 为历史候选版，不是最终执行版。
+- Owner 本轮要求只展示信息源体系框架，不启动新扫描或渲染。
