@@ -1,12 +1,12 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
-> **先读**：`docs/PROJECT_HANDOFF_2026-10-10.md`，它是跨聊天恢复和 Reviewer P0/P1 验收说明。保留原 HF-FIND / STYLE_LOCK 的唯一权威地位。
+> **最新状态先读**：`docs/CURRENT_STATE.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
 
 # Agent 入口（本项目唯一）
 
 本项目目录用于保存频道研究与视觉规范，不是执行一次全自动视频制作。
 
 ## 读文件优先级
-1. 项目说明 `README.md`、确定事项 `docs/STATUS_AND_DECISIONS.md`。
+1. 当前状态 `docs/CURRENT_STATE.md`；项目说明 `README.md`、历史决策 `docs/STATUS_AND_DECISIONS.md`。
 2. **研究任务唯一权威协议** `research/HF_有趣发现_唯一主协议.md`。严禁把旧 v1/v2/v3 报告当成并行命令。
 3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。
@@ -24,7 +24,7 @@
 - 源视频 `LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED` 互不替代。
 - 视频固定为 A（简短桌面）+ B（边到边播放器，素材/文献/字幕在内部轮播）；无额外 C 主体模式。
 - 标记“名称候选”为待决定，不能自行注册、改名或公开发布。
-- 不要将原型能播放视频误报为完成自动素材下载、声学字幕对齐或生产渲染。
+- 不要将本仓视觉 HTML 原型误报为完整成片系统。Owner 交接中的本地 OpenMontage 技术底座 READY，但本仓未集成、长片素材语义匹配未验收；视频生产前必须取得 Owner 明确批准。
 
 ## TOPIC-BANK｜跨领域选题正式流程
 - **Owner 已确认顺序**：九大信源→批量发现→筛选评价→正式选题库→STORY-FIT→剧本与素材→成片 QA。该工作流见 `research/topic-bank/WORKFLOW_V1.md`。

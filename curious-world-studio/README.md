@@ -1,5 +1,5 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
-> **换聊天/Agent 接手统一入口**：[`docs/PROJECT_HANDOFF_2026-10-10.md`](docs/PROJECT_HANDOFF_2026-10-10.md) → [`REVIEWER_HANDOFF.md`](REVIEWER_HANDOFF.md)。含完整决策、九源框架、36 条选题、采集器未验收状态与下一步顺序。
+> **换聊天 / Agent 接手入口**：先读 [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)（唯一当前状态），再按需读 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)、[PROJECT_HANDOFF_2026-10-10.md](docs/PROJECT_HANDOFF_2026-10-10.md)（历史记录）。P0/P1 采集器在线运行已验收；九源完整归档仍 PARTIAL。
 
 # Curious World Studio · 世界有点意思（暂定）
 
@@ -19,6 +19,7 @@
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
+| 当前项目状态 | [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) | P3-R1 完成，P3-R2 待执行；仅状态文件，非业务协议 |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |
@@ -50,7 +51,7 @@
 
 ## 当前阶段与后续
 
-研究系统与风格基线已经建立；**未完成**真实视频生产流水线、逐镜头素材授权核验、完整字幕声学对齐、发布自动化。频道正式名称/Logo/最终视觉小修尚待确认。详见 [`docs/STATUS_AND_DECISIONS.md`](docs/STATUS_AND_DECISIONS.md)。
+研究系统和视觉基线已经建立；**当前 P3-R1 完成，等待 P3-R2 同题多机制叙事原型验证**。P0/P1 在线采集回归通过，九源完整性仍 PARTIAL；正式题库 36 条，尚无正式 STORYFIT_GO。Owner 交接称本地 OpenMontage 已完成短片技术闭环，但本仓未接入，约 5 分钟叙事和素材语义匹配质量未验。商业素材授权、声学时间对齐、发布自动化仍待验证；生产前须 Owner 明确确认。详见 [CURRENT_STATE](docs/CURRENT_STATE.md)。
 
 ## 许可与权利
 
@@ -66,5 +67,5 @@
 - 工作流唯一入口：[`research/topic-bank/WORKFLOW_V1.md`](research/topic-bank/WORKFLOW_V1.md)
 - 选题库展示：[`research/topic-bank/BOARD_V1.md`](research/topic-bank/BOARD_V1.md)；机读母表：[`research/topic-bank/TOPICS_V1.json`](research/topic-bank/TOPICS_V1.json)
 - 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
-- 21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）。来自历史研究回填 + 少量定向抽查，**并非九源三日完整扫描或自动化生产系统**；尚无 STORY-FIT 正式通关、竞争分析或素材复用许可。
+- **当前母库 36 条（SHORTLIST 11 / VERIFY 15 / HOLD 9 / REJECTED 1）**。最初 **21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）属于历史首批快照**，之后又定向新增 15 条；不是九源三日全量扫描，未有正式 STORYFIT_GO 或媒体商业复用许可通关。
 - HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。
