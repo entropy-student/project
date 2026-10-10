@@ -10,6 +10,7 @@
 - 全 36 条加入 `next_action:null`，明确未经过独立逐题审核，不能把宏观批次建议伪造为每条具体行动。
 - [WORKFLOW 第 3 节](WORKFLOW_V1.md) 仅把机器字段名从早期文档草案对齐实际 JSON 的 `title`、`ratings.*`、`story_beats` 等，并说明三个视频状态字段不得合并为一个版权批准状态。
 - 新增 [validate_topic_bank.py](validate_topic_bank.py) 与 [test_validate_topic_bank.py](test_validate_topic_bank.py)：检查必备字段、四轴合法枚举、日历日期、空值、重复 ID、状态计数、BOARD 总量和全 ID 覆盖；**不会计算新评分、代替人工选题或判定 STORY-FIT/商用许可**。
+- 新增仓库只读 CI [cws-topic-bank-validation.yml](../../../.github/workflows/cws-topic-bank-validation.yml)，只在对应题库/看板/校验器文件变动时触发离线校验；不抓取来源、不修改生产或其他项目。首轮 GitHub Actions [#38032465320](https://github.com/entropy-student/project/actions/runs/38032465320) 显示 **TOPIC_BANK_VALIDATION=PASS**、**Python unittest 11/11 通过**；后续微调测试会重新运行。
 - `BOARD_V1.md` 不改：题目数量、ID、标题、评级、状态没有变化。
 
 ## 二、日期和来源语义（不可误报）
