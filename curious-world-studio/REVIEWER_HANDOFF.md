@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P1 新进展（比 P0 快照更新）**：已在 GitHub Actions [#38022100048](https://github.com/entropy-student/project/actions/runs/38022100048) 在线验证 P1：24/24 测试、537 条日期窗内元数据、4 个 artifact；覆盖合同明确区分 RSS 快照与完整日期 API 分页，PLOS 全文文档 303 篇保留，另生成 143 条元数据专题提示的人审队列（其余 130 个开放发现、30 个其他文章类型原样保留）。**仍非九源全量、非 STORY-FIT/PRODUCTION_READY**。详见 [P1 COVERAGE AND TOPICS REVIEW](research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。
+
+
 > **2026-10-10 新于接手快照的 P0 在线核查结论**：采集器修复已在 GitHub Actions [#38021149558](https://github.com/entropy-student/project/actions/runs/38021149558) 真实执行，15/15 测试通过，artifact 已核：HF 215、MIT 3、NASA EO 3（坏 XML 有记录地恢复、仍 PARTIAL）、Nature 2、PLOS 303（非旧 2533 章节片段）、JEB Crossref 11，合计 537 条窗口元数据。**九源全量仍未通过**；TOPICS 仍 36 条，不可启动剧本或生产。完整新依据：[2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md](research/topic-bank/batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。
 
 > **新聊天 Reviewer：请先读 [2026-10-10 完整接手快照](docs/PROJECT_HANDOFF_2026-10-10.md)。** 下方为历史推进记录，保留供审计。

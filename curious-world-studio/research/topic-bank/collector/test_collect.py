@@ -143,4 +143,113 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(o["items"][0]["title"],"Earth Observatory")
         self.assertFalse(o["covered_query_pages"])
 
+    def test_plos_screen_subject_metadata_is_only_a_hint(self):
+        r=c.plos_screen("A previously unknown mechanism","Research Article",
+                        ["Animal behavior","Ecology and environmental sciences"])
+        self.assertIn("ANIMALS_NATURE",r["tags"])
+        self.assertEqual(r["review_lane"],"TOPIC_REVIEW")
+        self.assertEqual(r["editorial_status"],"DISCOVERED_UNREVIEWED")
+
+    def test_plos_screen_unmatched_research_is_retained(self):
+        r=c.plos_screen("Novel method of exploration","Research Article",[])
+        self.assertEqual(r["review_lane"],"OPEN_DISCOVERY")
+        self.assertFalse(r["tags"])
+        self.assertTrue(r["research_article_label"])
+
+    def test_plos_non_research_tag_never_auto_promoted(self):
+        r=c.plos_screen("What humans taste","Review",["Nutrition"])
+        self.assertEqual(r["review_lane"],"OTHER_ARTICLE_TYPE")
+        self.assertFalse(r["research_article_label"])
+
+    def test_plos_real_api_subject_metadata_and_lanes(self):
+        import urllib.parse
+        url_log=[]
+        body={"response":{"numFound":3,"docs":[
+          {"id":"10.1371/a","title":"How elephants change behavior",
+           "publication_date":"2026-10-07T09:00:00Z","article_type":"Research Article",
+           "doc_type":"full","subject":["Animal behavior"]},
+          {"id":"10.1371/b","title":"A new chemical mechanism",
+           "publication_date":"2026-10-08T09:00:00Z","article_type":"Research Article",
+           "doc_type":"full"},
+          {"id":"10.1371/c","title":"Diet commentary",
+           "publication_date":"2026-10-09T09:00:00Z","article_type":"Review",
+           "doc_type":"full","subject":["Nutrition"]}]}}
+        def mock_get(url):
+            url_log.append(url)
+            return json.dumps(body).encode()
+        with mock.patch.object(c,"get",side_effect=mock_get):
+            o=c.plos("2026-10-07","2026-10-09")
+        self.assertIn("subject",urllib.parse.parse_qs(urllib.parse.urlsplit(url_log[0]).query)["fl"][0])
+        self.assertEqual(o["in_window"],3)
+        self.assertEqual(o["screening_summary"]["research_article_labeled"],2)
+        self.assertEqual(o["screening_summary"]["review_lane_counts"],
+                         {"OPEN_DISCOVERY":1,"OTHER_ARTICLE_TYPE":1,"TOPIC_REVIEW":1})
+        self.assertEqual(len(o["items"]),3)
+        self.assertTrue(o["covered_query_pages"])
+
+    def test_rolling_feed_date_span_not_archive_proof(self):
+        xml=(b'<rss><channel><item><title>Earlier</title><link>https://example.org/x</link>'
+             b'<pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate></item>'
+             b'<item><title>Later</title><link>https://example.org/y</link>'
+             b'<pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate></item></channel></rss>')
+        with mock.patch.object(c,"get",return_value=xml):
+            out=c.feed("MIT_RESEARCH","https://example.org/rss","2026-10-07","2026-10-09")
+        grade=c.coverage_contract(out,"2026-10-07","2026-10-09")
+        self.assertEqual(out["observed_source_date_min"],"2026-10-05")
+        self.assertEqual(out["observed_source_date_max"],"2026-10-08")
+        self.assertEqual(grade["grade"],"ROLLING_FEED_SNAPSHOT_ONLY")
+        self.assertEqual(grade["requested_days_without_observed_item"],
+                         ["2026-10-07","2026-10-09"])
+        self.assertFalse(grade["absence_of_publications_proven"])
+        self.assertFalse(grade["full_nine_source_window_proven"])
+
+    def test_api_page_complete_is_not_ecosystem_full_coverage(self):
+        o=c.report("PLOS","fixture")
+        o["covered_query_pages"]=True
+        grade=c.coverage_contract(o,"2026-10-07","2026-10-09")
+        self.assertEqual(grade["grade"],"DATED_ENDPOINT_PAGINATION_COMPLETE")
+        self.assertTrue(grade["endpoint_query_pages_complete"])
+        self.assertFalse(grade["full_nine_source_window_proven"])
+
+    def test_crossref_proxy_and_indexes_never_claim_full_source(self):
+        jeb_out=c.report("JEB_CROSSREF_PROXY","fixture")
+        jeb_out["received_pages"]=1
+        jeb=c.coverage_contract(jeb_out,"2026-10-07","2026-10-09")
+        idx=c.coverage_contract(c.report("OpenAlex_PubMed","fixture"),
+                                "2026-10-07","2026-10-09")
+        self.assertIn("CROSSREF",jeb["grade"])
+        self.assertIn("HEALTH_PROBES",idx["grade"])
+        self.assertFalse(jeb["absence_of_publications_proven"])
+
+    def test_plos_review_manifest_is_non_destructive(self):
+        p=c.report("PLOS","fixture")
+        p["received_pages"]=1
+        a=c.datum("PLOS","Why elephants communicate","https://doi.org/10.1371/a","2026-10-08","10.1371/a",kind="Research Article")
+        a["subjects"]=["Animal behavior"]
+        a["screening"]=c.plos_screen(a["title"],a["article_type"],a["subjects"])
+        b=c.datum("PLOS","Unexpected engineering result","https://doi.org/10.1371/b","2026-10-09","10.1371/b",kind="Research Article")
+        b["subjects"]=[]
+        b["screening"]=c.plos_screen(b["title"],b["article_type"],b["subjects"])
+        p["items"]=[a,b]
+        p=c.finish(p,"2026-10-07","2026-10-09")
+        result={"window":["2026-10-07","2026-10-09"],"ran_utc":"fixture","sources":[p]}
+        queue=c.plos_review_manifest(result)
+        self.assertEqual(queue["topic_review_count"],1)
+        self.assertEqual(p["in_window"],2)
+        self.assertEqual(queue["auto_approved_count"],0)
+        self.assertTrue(queue["unmatched_still_retained_in_audit"])
+        self.assertIn("No item approved",c.plos_review_markdown(queue))
+
+    def test_jeb_proxy_pagination_completion_is_not_full_journal(self):
+        body={"message":{"total-results":1,"items":[
+            {"DOI":"10.1242/jeb.1234","type":"journal-article",
+             "published-online":{"date-parts":[[2026,10,8]]},"title":["Bird behavior"]}]}}
+        with mock.patch.object(c,"get",return_value=json.dumps(body).encode()):
+            o=c.jeb("2026-10-07","2026-10-09")
+        self.assertTrue(o["proxy_query_pages_complete"])
+        self.assertFalse(o["covered_query_pages"])
+        grade=c.coverage_contract(o,"2026-10-07","2026-10-09")
+        self.assertTrue(grade["proxy_query_pages_complete"])
+        self.assertFalse(grade["full_nine_source_window_proven"])
+
 if __name__=="__main__":unittest.main()

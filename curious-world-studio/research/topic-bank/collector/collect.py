@@ -10,6 +10,32 @@ START,END="2026-10-07","2026-10-09"
 USER_AGENT="CuriousWorldStudio/1.0 (read-only science metadata)"
 PAGE_CAP=30
 
+# Metadata hints only: never auto-reject an unmatched article or promote a match.
+PLOS_TOPIC_HINTS_V1={
+    "FOOD_TASTE":("food","taste","flavor","flavour","cooking","edible","nutrition","diet","eating","appetite","feeding"),
+    "BEHAVIOR_PSYCHOLOGY":("behavior","behaviour","cognition","cognitive","psychology","perception","attention","memory","decision making","emotion","social psychology","sleep"),
+    "ANIMALS_NATURE":("animal behavior","animal behaviour","ethology","foraging","wildlife","bird","insect","ecology","migration","habitat","biodiversity"),
+    "BODY_SENSES":("sensory","olfaction","smell","hearing","auditory","touch","tactile","vision","visual perception","exercise","human movement"),
+    "DAILY_LIFE_ENVIRONMENT":("urban","transportation","traffic","commuting","mobility","clothing","household","architecture","climate","environmental sciences","remote sensing","geography"),
+}
+
+def plos_screen(title,article_type,subjects):
+    """Route to manual review; never certify relevance or original experiments."""
+    labels=[str(x) for x in subjects] if isinstance(subjects,list) else [str(subjects)] if subjects else []
+    title=str(title or "")
+    tags=[]
+    for tag,terms in PLOS_TOPIC_HINTS_V1.items():
+        if any(re.search(r"(?<!\w)"+re.escape(term)+r"(?!\w)",field,re.I)
+               for field in [title,*labels] for term in terms):
+            tags.append(tag)
+    research=str(article_type or "").strip().casefold()=="research article"
+    return {"ruleset":"PLOS_TOPIC_HINTS_V1","research_article_label":research,
+            "tags":tags,
+            "review_lane":("TOPIC_REVIEW" if tags else "OPEN_DISCOVERY")
+                if research else "OTHER_ARTICLE_TYPE",
+            "editorial_status":"DISCOVERED_UNREVIEWED"}
+
+
 def day(x):
     if isinstance(x,list):x=x[0] if x else ""
     if not x:return None
@@ -32,7 +58,7 @@ def get(url):
 def report(source,mode):
     return {"source":source,"mode":mode,"status":"BLOCKED","attempts":0,"received_pages":0,
       "source_total":None,"raw_count":0,"in_window":0,"missing_dates":0,
-      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0}
+      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0,"observed_source_date_min":None,"observed_source_date_max":None,"observed_in_window_dates":{}}
 
 def read(out,url,xml=False):
     out["attempts"]+=1
@@ -74,12 +100,17 @@ def datum(source,title,url,date,identifier=None,abstract="",kind="unknown"):
 
 def finish(out,start,end,covered=False):
     raw=out["items"];out["raw_count"]=len(raw)
+    dated=[i["date"] for i in raw if i.get("date")]
+    out["observed_source_date_min"]=min(dated,default=None)
+    out["observed_source_date_max"]=max(dated,default=None)
     out["missing_dates"]=sum(1 for i in raw if not i["date"])
     unique={}
     for it in raw:
         if it["date"] and start<=it["date"]<=end:
             unique[it["id"] or it["url"] or it["title"].lower()]=it
     out["items"]=list(unique.values());out["in_window"]=len(unique)
+    out["observed_in_window_dates"]={d:sum(it["date"]==d for it in out["items"])
+                                     for d in sorted({it["date"] for it in out["items"]})}
     out["status"]="BLOCKED" if not out["received_pages"] else "PARTIAL" if out["errors"] else "FETCHED"
     out["covered_query_pages"]=bool(covered and not out["errors"] and out["received_pages"])
     return out
@@ -148,7 +179,7 @@ def plos(start,end):
     q=f"publication_date:[{start}T00:00:00Z TO {end}T23:59:59Z]"
     ended=False
     for page in range(PAGE_CAP):
-        params={"q":q,"fq":"doc_type:full","wt":"json","fl":"id,title,publication_date,abstract,article_type,journal,doc_type","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
+        params={"q":q,"fq":"doc_type:full","wt":"json","fl":"id,title,publication_date,abstract,article_type,journal,doc_type,subject","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
         url="https://api.plos.org/search?"+urllib.parse.urlencode(params)
         resp=read(o,url)
         if not isinstance(resp,dict) or "response" not in resp:
@@ -164,12 +195,30 @@ def plos(start,end):
             title=x.get("title","");title=" ".join(title) if isinstance(title,list) else title
             abstract=x.get("abstract","");abstract=" ".join(abstract) if isinstance(abstract,list) else abstract
             typ=x.get("article_type","");typ=" ".join(typ) if isinstance(typ,list) else typ
-            o["items"].append(datum(o["source"],title,"https://doi.org/"+doi,x.get("publication_date"),doi,abstract,typ))
+            entry=datum(o["source"],title,"https://doi.org/"+doi,x.get("publication_date"),doi,abstract,typ)
+            subjects=x.get("subject",[])
+            entry["subjects"]=[str(v) for v in subjects] if isinstance(subjects,list) else [str(subjects)] if subjects else []
+            entry["screening"]=plos_screen(title,typ,entry["subjects"])
+            o["items"].append(entry)
         if o["source_total"] is None:
             o["errors"].append({"url":url,"error":"numFound unavailable"});break
         if (page+1)*100>=o["source_total"] or not rows:ended=True;break
-    o["notes"].append("Solr fq=doc_type:full counts parent articles, not section fragments; all PLOS journals, not topical or original-experiment only.")
-    return finish(o,start,end,ended and o["source_total"] is not None and len(o["items"])>=o["source_total"])
+    o["notes"].append("Broad parent-article query retained as audit denominator. PLOS topical screening is a secondary NON-DESTRUCTIVE metadata-only review queue.")
+    result=finish(o,start,end,ended and o["source_total"] is not None and len(o["items"])>=o["source_total"])
+    from collections import Counter
+    lanes=Counter(x["screening"]["review_lane"] for x in result["items"])
+    tags=Counter(t for x in result["items"] for t in x["screening"]["tags"])
+    types=Counter(x["article_type"] for x in result["items"])
+    result["screening_summary"]={
+      "ruleset":"PLOS_TOPIC_HINTS_V1","raw_parent_articles":result["in_window"],
+      "subject_labels_present":sum(bool(x["subjects"]) for x in result["items"]),
+      "research_article_labeled":sum(x["screening"]["research_article_label"] for x in result["items"]),
+      "review_lane_counts":dict(sorted(lanes.items())),
+      "topic_tag_counts":dict(sorted(tags.items())),
+      "article_type_counts":dict(sorted(types.items())),
+      "note":"Lexical title/subject hints are not proof of original experiments, story suitability or exhaustive thematic coverage. All parent records are preserved."
+    }
+    return result
 
 def jeb(start,end):
     o=report("JEB_CROSSREF_PROXY","Crossref online-publication metadata, not JEB official feed")
@@ -182,6 +231,7 @@ def jeb(start,end):
             if resp is not None:o["errors"].append({"url":url,"error":"invalid Crossref response"})
             break
         msg=resp["message"];rows=msg.get("items",[])
+        o["source_total"]=msg.get("total-results",o["source_total"])
         for x in rows:
             pid=x.get("DOI","")
             if pid in total:continue
@@ -197,6 +247,9 @@ def jeb(start,end):
         cursor=next_cursor
     o["notes"].append("Crossref DOI date index != journal accepted-manuscript list; archival completeness not proven.")
     out=finish(o,start,end,False)
+    # Proxy endpoint page completion is NOT JEB journal archival completeness.
+    out["proxy_query_pages_complete"]=bool(ended and not out["errors"] and
+        out["source_total"] is not None and len(total)>=out["source_total"])
     out["covered_query_pages"]=False
     return out
 
@@ -209,6 +262,44 @@ def indexes():
     o["status"]="FETCHED" if all(o["health"].values()) else "PARTIAL"
     o["notes"].append("Two exact DOI probes only; NOT a three-day PubMed/OpenAlex scan.")
     return o
+
+def coverage_contract(out,start,end):
+    """Describe observed data without inferring RSS archive completeness."""
+    source=out["source"]
+    if source in ("HF_DAILY_PAPERS","PLOS"):
+        grade=("DATED_ENDPOINT_PAGINATION_COMPLETE" if out["covered_query_pages"]
+               else "DATED_ENDPOINT_PARTIAL")
+        denominator=("HF_DAILY_RANKED_FEED" if source=="HF_DAILY_PAPERS"
+                     else "PLOS_FULL_PARENT_DOCUMENTS")
+    elif source in ("MIT_RESEARCH","NASA_EO_IMAGE","NATURE_HUMAN_BEHAVIOUR"):
+        grade="ROLLING_FEED_SNAPSHOT_ONLY" if out["received_pages"] else "FEED_UNAVAILABLE"
+        denominator="OBSERVED_RSS_ENTRIES_ONLY"
+    elif source=="JEB_CROSSREF_PROXY":
+        grade="CROSSREF_INDEX_PROXY_ONLY" if out["received_pages"] else "PROXY_UNAVAILABLE"
+        denominator="CROSSREF_ONLINE_PUB_DATE_NOT_JEB_ACCEPTED"
+    elif source=="EUREKALERT":
+        grade="MANUAL_DISCOVERY_REQUIRED"
+        denominator="NO_VERIFIED_OPEN_AUTOMATION"
+    else:
+        grade="DOI_HEALTH_PROBES_ONLY"
+        denominator="TWO_FIXED_PROBES_NOT_A_DISCOVERY_SCAN"
+    d0,d1=dt.date.fromisoformat(start),dt.date.fromisoformat(end)
+    days=(d1-d0).days+1
+    if days<=31:
+        missing=[(d0+dt.timedelta(days=i)).isoformat() for i in range(days)
+                 if (d0+dt.timedelta(days=i)).isoformat() not in out.get("observed_in_window_dates",{})]
+    else:
+        missing=None
+    return {"grade":grade,"denominator_kind":denominator,
+            "endpoint_query_pages_complete":bool(out.get("covered_query_pages")),
+            "proxy_query_pages_complete":bool(out.get("proxy_query_pages_complete",False)),
+            "full_nine_source_window_proven":False,
+            "observed_min_date":out.get("observed_source_date_min"),
+            "observed_max_date":out.get("observed_source_date_max"),
+            "observed_in_window_by_date":out.get("observed_in_window_dates",{}),
+            "requested_days_without_observed_item":missing,
+            "absence_of_publications_proven":False,
+            "note":"Missing an RSS feed date never proves that no item was published; endpoint pagination is not completeness of an entire source ecosystem."}
 
 def canonical_key(it):
     """Best-effort cross-source dedup by DOI, arXiv ID, then normalized title."""
@@ -237,6 +328,8 @@ def audit(start,end):
     blocked=report("EUREKALERT","human-reviewed discovery only")
     blocked["notes"].append("No verified public RSS/API; no unauthorized bypass of access controls.")
     results.insert(2,blocked)
+    for o in results:
+        o["coverage_contract"]=coverage_contract(o,start,end)
     # Metadata-only overlap count; fuzzy mismatches remain possible.
     seen={};duplicates=[];total=0
     for source in results:
@@ -256,10 +349,27 @@ def markdown(a):
     out=["# Science source acquisition audit","",
          f'Window: {a["window"][0]} through {a["window"][1]} | Run: {a["ran_utc"]}',"",
          "No complete nine-source harvesting claim. RSS snapshots cannot prove historical coverage.","",
-         "| Source | Status | Attempts | Pages | Received | Dated & unique in window | API window pagination complete |",
-         "|---|---|---:|---:|---:|---:|---|"]
+         "| Source | Fetch status | Coverage grade | Pages | Received | In window | Date span observed | API pagination done |",
+         "|---|---|---|---:|---:|---:|---|---|"]
     for s in a["sources"]:
-        out.append(f'| {s["source"]} | {s["status"]} | {s["attempts"]} | {s["received_pages"]} | {s["raw_count"]} | {s["in_window"]} | {"yes" if s["covered_query_pages"] else "no"} |')
+        c=s.get("coverage_contract",{})
+        span=str(c.get("observed_min_date") or "?")+" → "+str(c.get("observed_max_date") or "?")
+        out.append(f'| {s["source"]} | {s["status"]} | {c.get("grade","NOT_EVALUATED")} | {s["received_pages"]} | {s["raw_count"]} | {s["in_window"]} | {span} | {"yes" if s["covered_query_pages"] else "no"} |')
+    out+=["","## PLOS secondary review lanes (not an automatic topic-bank gate)"]
+    for src in a["sources"]:
+        if src["source"]=="PLOS" and src.get("screening_summary"):
+            screen=src["screening_summary"]
+            out.append("- Full parent-article denominator: "+str(screen["raw_parent_articles"]))
+            out.append("- Labeled Research Article: "+str(screen["research_article_labeled"]))
+            out.append("- With subject metadata: "+str(screen["subject_labels_present"]))
+            out.append("- Review lanes: "+json.dumps(screen["review_lane_counts"],ensure_ascii=False))
+            out.append("- Topic hints: "+json.dumps(screen["topic_tag_counts"],ensure_ascii=False))
+            out.append("- "+screen["note"])
+    out+=["","## Coverage is observational, never negative proof"]
+    for src in a["sources"]:
+        c=src.get("coverage_contract")
+        if c:
+            out.append(f'- {src["source"]}: per-day={json.dumps(c["observed_in_window_by_date"],ensure_ascii=False)}; no observed items={c["requested_days_without_observed_item"]}; denominator={c["denominator_kind"]}.')
     out+=["","## Gaps and failures"]
     for s in a["sources"]:
         out+=["",f'### {s["source"]}']
@@ -267,6 +377,40 @@ def markdown(a):
         for e in s["errors"]:out.append("- ERROR "+json.dumps(e,ensure_ascii=False))
     out+=["","All items are DISCOVERED_UNREVIEWED. No item is auto-added to TOPICS_V1.json,","and commercial media rights and full STORY-FIT remain unverified."]
     return "\n".join(out)+"\n"
+
+def plos_review_manifest(a):
+    source=next((s for s in a["sources"] if s["source"]=="PLOS"),None)
+    items=[] if source is None else [
+      {"id":it["id"],"title":it["title"],"date":it["date"],"url":it["url"],
+       "article_type":it["article_type"],"subject_labels":it.get("subjects",[]),
+       "review_tags":it["screening"]["tags"],"editorial":"DISCOVERED_UNREVIEWED"}
+      for it in source.get("items",[])
+      if it.get("screening",{}).get("review_lane")=="TOPIC_REVIEW"]
+    items.sort(key=lambda x:(x["date"] or "",x["id"]),reverse=True)
+    return {"window":a["window"],"ran_utc":a["ran_utc"],
+            "ruleset":"PLOS_TOPIC_HINTS_V1",
+            "source_status":source["status"] if source else "NOT_RUN",
+            "source_parent_articles":source["in_window"] if source else None,
+            "topic_review_count":len(items),
+            "review_required":True,"auto_approved_count":0,
+            "unmatched_still_retained_in_audit":True,
+            "disclaimer":"Only a manual triage index; not original-research proof, title approval, or story-fit GO.",
+            "items":items}
+
+def plos_review_markdown(manifest):
+    lines=["# PLOS title/subject topical hints — manual review only","",
+      "Window: "+ " to ".join(manifest["window"]), "",
+      "Source fetch: "+manifest["source_status"]+" | Parent articles: "+str(manifest["source_parent_articles"])+
+        " | Priority-review hints: "+str(manifest["topic_review_count"]), "",
+      "**No item approved.** All unmatched and non-research items remain in audit.json. ",
+      "Missing tags do not prove irrelevance; a lexical hit does not prove experiment quality.", "",
+      "| Date | DOI | Title | Metadata hint tags |",
+      "|---|---|---|---|"]
+    for it in manifest["items"]:
+        title=it["title"].replace("|",r"\|").replace("\n"," ").strip()
+        doi=it["id"].replace("|",r"\|")
+        lines.append(f'| {it["date"]} | {doi} | {title} | {", ".join(it["review_tags"])} |')
+    return "\n".join(lines)+"\n"
 
 def main():
     p=argparse.ArgumentParser()
@@ -278,6 +422,9 @@ def main():
     result=audit(a.start,a.end)
     (dest/"audit.json").write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8")
     (dest/"AUDIT.md").write_text(markdown(result),encoding="utf-8")
+    manifest=plos_review_manifest(result)
+    (dest/"PLOS_REVIEW_QUEUE.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+    (dest/"PLOS_REVIEW_QUEUE.md").write_text(plos_review_markdown(manifest),encoding="utf-8")
     print("Output",dest.resolve())
 
 if __name__=="__main__":main()

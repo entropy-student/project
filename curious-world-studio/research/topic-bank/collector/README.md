@@ -56,3 +56,11 @@ py collect.py --start 2026-10-07 --end 2026-10-09 --output .\outputs
 - **九源整体覆盖仍为 PARTIAL / NO-PASS**：未核实 EurekAlert 自动采集、滚动 RSS 完整归档、JEB 原刊全量；OpenAlex/PubMed 仍只做 DOI 探测。
 - 权威新报告：[P0 LIVE REVIEW](../batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。正式题库、HF-FIND 与视觉规范均未更改。
 
+
+## 6. P1 日期覆盖与专题审阅队列（2026-10-10 更新）
+
+- [真实在线验收 #38022100048](https://github.com/entropy-student/project/actions/runs/38022100048)：**24/24** 离线测试通过，4 个 artifact 输出；窗口内仍 537 条元数据，不是节目选题数。
+- 新文件 `PLOS_REVIEW_QUEUE.json`、`PLOS_REVIEW_QUEUE.md` 是自动生成的人工**优先审阅线索**；`audit.json` 保留全部 303 篇 PLOS 基础文章。143 条 TOPIC_REVIEW + 130 条 OPEN_DISCOVERY + 30 条 OTHER_ARTICLE_TYPE，**不是自动准入**；无人工精确率与漏检率证明。
+- 每个来源现在带 `coverage_contract`：仅区分日期查询接口分页结束、RSS 滚动快照、Crossref 元数据代理、人工发现和固定 DOI 健康探测。观察到的日期区间、分日条数和缺项日期已记录。**RSS 缺某日记录不证明该日无发表**。
+- JEB 的 `proxy_query_pages_complete` 与 `covered_query_pages` 分开；即使 Crossref DOI 列表翻完也不能宣布期刊 Accepted Manuscripts 全量。
+- 权威 P1 审查记录：[P1 COVERAGE AND TOPICS REVIEW](../batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。九源全部覆盖仍 **PARTIAL**；不自动改变正式题库。
