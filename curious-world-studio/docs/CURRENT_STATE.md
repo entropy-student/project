@@ -2,6 +2,8 @@
 
 > **更新时间**：2026-10-10；**性质**：项目运行状态与接手导航，**不是业务规则或研究主协议**。
 > 若其他文件有相互矛盾的“目前 / 下一步 / 尚未运行”等时态表述，请以本页最新事实状态为准；**选题业务规则仍以 `research/topic-bank/WORKFLOW_V1.md` 为准**，HF-FIND 和视觉参数仍各以其锁定协议为准。历史报告的研究结论、事实来源和时间戳不得被本页覆盖。
+>
+> **2026-10-10 新聊天 Reviewer 唯一完整接手摘要**：[REVIEWER_HANDOFF_2026-10-10_P4G0.md](REVIEWER_HANDOFF_2026-10-10_P4G0.md)。其作用是集中导航和记载已证/待证，不替代本页当前状态或任何既有协议。
 
 ## 1. 当前阶段与真正的下一步
 
@@ -50,6 +52,7 @@ Owner 批准的既定次序保持：**九大信息源 → 批量发现 → 统�
 2. [README](../README.md) 与 [AGENTS](../AGENTS.md)：项目范围与基本入口。
 3. **业务协议**：[七阶段选题工作流](../research/topic-bank/WORKFLOW_V1.md)、[HF-FIND](../research/HF_有趣发现_唯一主协议.md)、[正式信息源](../research/SOURCE_SYSTEM_FINAL_V1.md)、[视觉锁定](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)。
 4. **数据事实**：[TOPICS_V1.json](../research/topic-bank/TOPICS_V1.json)、[BOARD](../research/topic-bank/BOARD_V1.md)，以及对应批次事实审计。
-5. [REVIEWER_HANDOFF](../REVIEWER_HANDOFF.md)、[STATUS_AND_DECISIONS](STATUS_AND_DECISIONS.md)、[PROJECT_HANDOFF_2026-10-10](PROJECT_HANDOFF_2026-10-10.md) 是**含时间顺序的历史交接补充**，不应反过来重置当前状态。
+5. [本轮新Reviewer交接](REVIEWER_HANDOFF_2026-10-10_P4G0.md)（权威导航/完整进度整理）、[G0上游静态审计](P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md)、[G0本地Codex只读任务书](P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md)：接手本轮 P4 必读。
+6. [REVIEWER_HANDOFF](../REVIEWER_HANDOFF.md)、[STATUS_AND_DECISIONS](STATUS_AND_DECISIONS.md)、[PROJECT_HANDOFF_2026-10-10](PROJECT_HANDOFF_2026-10-10.md) 是**含时间顺序的历史交接补充**，不应反过来重置当前状态。
 
 **治理约束**：项目方向、原始研究历史、既定评分/晋级规则、正式 36 条题库、视觉规范及技术环境均未由这份状态文档修改。

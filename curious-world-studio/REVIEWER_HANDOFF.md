@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **NEW CHAT HANDOFF INDEX — 2026-10-10**: The comprehensive latest Reviewer transfer is [docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md). It consolidates authoritative read order, P3-R6 narrative work, 36-topic bank, visual A/B lock, P4-G0 upstream static evidence, honest local Windows evidence gap, safe local Codex read-only task, and next gates. **Current_state.md remains the unique live status**; all dated snippets below are cumulative history. No new installation/render/audio/test occurred during this handoff.
+
+
 > **P4-G0 LATEST (2026-10-10; PARTIAL only)**: Owner authorized next **combined G0** but forbade generating/testing/installing. Public upstream code of **calesthio/OpenMontage** and CWS repo were read via GitHub; **no access to Owner Windows**. [Static verified G0 audit and adapter blueprint](docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md) documents OpenMontage **AGPL-3.0**, default Explainer word-highlight captions mismatch, documentary-montage music-led defaults mismatch, public `video_compose` Remotion atelier route, `asset_manifest/edit_decisions` strict schemas, and CWS own A/B chrome+single-line subtitle+separate rights ledger. **Actual local install, SHA, Remotion/node_modules, Qwen TTS and Mandarin alignment all UNKNOWN**. [One-pass local Codex task](docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md) must collect evidence + integration design, report back before any G0 PASS. No renderer/TTS/media/test or code changes executed. P3-R6 narrative, visual STYLE_LOCK, 36-topic bank and legal review remain unchanged.
 
 

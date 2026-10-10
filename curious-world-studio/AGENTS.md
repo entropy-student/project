@@ -1,5 +1,5 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
-> **最新状态先读**：`docs/CURRENT_STATE.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
+> **最新状态先读**：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
 
 # Agent 入口（本项目唯一）
 
@@ -11,6 +11,12 @@
 3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。
 5. 本项目位于项目库 `project/curious-world-studio/`，不修改其他一级项目。
+
+## P4-G0 当前唯一执行边界
+
+- 已完成的是 **OpenMontage 上游源码静态审计**；Owner Windows **本机安装状况尚未只读回报**，不得把 G0 误报PASS。
+- 本地 Codex 下一步任务书：`docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md`；先读 `docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md`。
+- G0 只能做本机只读查询与集成设计的文字报告；**禁止安装/下载/运行测试/TTS/渲染/改网络**。新 G1 20–30秒音画样片、G2成片、G3复用均属后续授权。
 
 ## 命令分流
 - `HF-FIND` / 日常发现 / 回归测试：按研究主协议执行，扫描 HF Daily Papers 并出两套榜单；不写剧本、剪辑、部署。
