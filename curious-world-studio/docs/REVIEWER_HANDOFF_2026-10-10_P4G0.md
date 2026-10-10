@@ -97,3 +97,44 @@ FFmpeg 视频封装 & 技术QA → 人审核片 → 决定是否公开发布
 首次回报按此顺序：**①当前 G0 状态→②只读核过的文件与关键证据→③仍UNKNOWN的本机项目→④需要 Owner 本地Codex做什么→⑤是否触发新的批准门槛**。若 Owner 提供了本地 G0 报告，先读报告并比较，不再要求重新完整审计。没有报告就说明“**上游审计完成，本地审计尚待**”。
 
 **这份文件是一次换聊天交接，不代表任务全部完成；清晰分辨“做过什么/打算做什么/什么必须获得下一次授权”比任何进度百分比更重要。**
+
+
+## 8. 换聊天前的最终 Reviewer 复核（2026-10-10；只读事实核验）
+
+**来源**：2026-10-10 在 GitHub `main`（本轮检查起点 `f87477a27fcd96b3c95f1d203516e8990cf8f2f5`）重读正式状态、P4-G0上游静态研究、本地Codex任务、P3叙事决策、正式题库、A/B锁定视觉、README和历史交接。逐项核对16份核心文档的**217个仓库内部相对链接，全部可定位**；这只验证仓库路径，**不等于公网链接可打开、许可实查、视频渲染或者音频测试通过**。
+
+### A. 已确认的基线（继续有效，不能因新聊天重置）
+
+- **业务规则与题库**：`TOPICS_V1.json` 机读回读确认为36条（SHORTLIST 11 / VERIFY 15 / HOLD 9 / REJECTED 1），全部 STORY-FIT = `NOT_STARTED`；J果冻是 CW-0001 SHORTLIST，D认知负荷与B点击声音**不在正式机读题库**。正式四轴 HOOK/SURPRISE/PROGRESSION/VISUAL、来源规范/Schema v1.1、三节点推进及状态规则未修改。
+- **节目内容**：P3-R2～R6所有有效叙事原型、独立评审采纳/未采纳日志均已在main；当前用于试读的是 D-B、J-B两篇完整 V1，不是正式获批发布文案。Owner认可“区分的发现＋锚点回环”作为**试用方法**，同时要求没有固定分钟门槛、不能拖沓、兑现观众承诺。
+- **画面**：`retro-mac-v1.2` 锁定 A简短Mac Tiger桌面＋B边到边QuickTime风格播放器、1920×1080/30fps、严格中文单行字幕、五类真实性标签、无C状态；HTML预览固定64秒四段占位轮播，**不是导出真实视频的引擎**。
+- **技术架构**：OpenMontage→自有CWS Remotion A/B组件→FFmpeg、主音频驱动的中文对齐/字幕/镜头、论文/图库/自制素材权利账本；这些仍是方案，未集成/渲染。上游静态 G0 已核对 `calesthio/OpenMontage` 的 AGPL-3.0、默认 Explainer 高亮字幕与 documentary-montage 音乐驱动限制、严格资产 schema及候选 bespoke atelier 入口。**Owner Windows的本地代码/依赖/音频对齐能力仍未被这个会话读取，G0 不通过。**
+- **此轮接手边界**：没有在电脑运行命令、安装软件、下载素材、调用TTS/视频模型、生成 MP4、对外联络作者、授权购买或公开视频；不能从文档存在推出功能PASS。
+
+### B. 最新实施状态和下一步
+
+`P3_R6_DONE / P4_G0_UPSTREAM_STATIC_DONE / P4_G0_LOCAL_EVIDENCE_PENDING / G1_NOT_AUTHORIZED / NO_AUDIO_OR_VIDEO_PRODUCED`。
+
+真正下一步只有一个：如果 Owner 尚未把本地 G0 报告带回，交给他 **[现成的G0本地Codex只读任务书](P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md)**（不要再让新Reviewer重新设计另一份）。本地Codex完成后回传 `P4_G0_LOCAL_CAPABILITY_READBACK_2026-10-10.md`，由Reviewer对照 [G0上游静态蓝图](P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md) 形成一个有实际本机路径、版本、模块状态和接口证据的结论。只有 G0 通过后才提出**新G1 20–30秒样片**供Owner**另行批准**；新G2首条成片，新G3规模化复用。
+
+### C. 可以直接复制到新聊天的 Reviewer 开场请求
+
+```text
+请接手我在私有 GitHub 仓库 entropy-student/project 的 curious-world-studio 项目，担任新的 Reviewer。上一段 ChatGPT 聊天已结束，所有有效交接已汇总在 main，请以实际 GitHub 最新 main 为唯一事实起点，不要凭旧聊天猜测进度。
+
+第一步请依次阅读：
+1. curious-world-studio/docs/CURRENT_STATE.md（当前唯一状态）
+2. curious-world-studio/docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md（完整接手）
+3. curious-world-studio/docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md（已完成的上游源码静态审查）
+4. curious-world-studio/docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md（下一步本地 Codex 只读任务）
+5. curious-world-studio/docs/VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md（视频生产规划）
+并按交接文件中的链接检查正式选题 WORKFLOW、36条题库、P3-R6及以前的有效叙事决策、D-B/J-B旁白和 Retro Mac v1.2 视觉规范。
+
+当前已经完成 P3-R6 内容叙事纸面阶段和 P4 联合 G0 的公开上游静态核查；Owner Windows 上的 OpenMontage/Remotion/FFmpeg/中文强制对齐等本机只读证据还未回传，不能把 G0 标 PASS。此前已确定不凑视频时长、研究事实与素材权利分开核查、A短桌面+B QuickTime满幅播放器、中文单行字幕，务必保留。不要重做已经完成的上游调研、重建题库或擅自晋级话题。
+
+请先输出：①截至 main 最新提交的项目状态；②已完成/未完成及来源依据；③本机 G0 缺哪些证据；④如何直接使用仓库已有的本地 Codex 任务书完成剩余 G0；⑤下一个必须由我另外批准的关口是什么。
+
+当前仅授权审阅与交接建议：不要安装、升级、下载素材、调用付费模型、修改 Windows/VPS/网络、配音、渲染、生成短样片或发布。若后续我提交本地 G0 报告，请优先验收它而不要重复扫描。除非发现真实文档错误，否则先不要动正式评分、题库、视觉锁定、原剧本或业务协议。
+```
+
+**阅读注意**：上面是一条给新 Reviewer 的用户交接话术，不是任何 Agent 的自动执行指令；是否真的派发本地Codex任务，由Owner控制。
