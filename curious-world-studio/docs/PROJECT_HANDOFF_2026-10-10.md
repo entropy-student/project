@@ -1,3 +1,5 @@
+> **2026-10-10 P1 增量接手提醒（优先于以下历史状态）**：在线采集和覆盖审计已推进，见 [P1 审计](../research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。GitHub Actions #38022100048：24/24 测试、4 个 artifact、537 条窗口元数据。PLOS 303 篇保留，新增 143 条仅供人工审阅的专题提示清单；九源全量仍 PARTIAL，正式题库 36 条与 HF-FIND / Mac v1.2 不变。
+
 # Curious World Studio｜新聊天 / Reviewer 完整接手快照
 **快照日期：2026-10-10｜接手优先级：P0｜只针对 `entropy-student/project/curious-world-studio/`**
 
