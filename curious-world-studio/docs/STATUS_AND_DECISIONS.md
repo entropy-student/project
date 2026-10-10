@@ -1,7 +1,10 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
-> 2026-10-10 完整最新交接：[PROJECT_HANDOFF_2026-10-10.md](PROJECT_HANDOFF_2026-10-10.md)；当前 P1 为采集器真实 Actions run/artifact 验收，之前的历史「下一步」不应覆盖它。
+> 2026-10-10 完整最新交接：[PROJECT_HANDOFF_2026-10-10.md](PROJECT_HANDOFF_2026-10-10.md)；采集器 P0 已有成功的真实 Actions run/artifact 验收；但九源全量覆盖仍 PARTIAL，下一步只处理专题范围与覆盖策略，之前的历史「下一步」不应覆盖它。
 
 # 当前决策与待办
+
+> **2026-10-10 后续 P0 在线验收更新**：成功运行 [Actions #38021149558](https://github.com/entropy-student/project/actions/runs/38021149558)，15/15 测试、artifact `11657992614`；PLOS 重复章节索引问题修复为 303 篇，Nature 入窗 2 条，NASA EO 3 条（上游 XML 修复但来源保持 PARTIAL），HF 215、MIT 3、JEB 11；合计 537 条。九源覆盖 **PARTIAL**，不可称生产级全量；TOPICS 36 条保持不变。审计：[COLLECTOR_P0_LIVE_REVIEW](../research/topic-bank/batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。
+
 
 **更新日期：2026-10-10**。本文件只描述 Curious World Studio，位于 `entropy-student/project/curious-world-studio/`。
 
