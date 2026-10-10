@@ -24,6 +24,7 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
   const videoMs=frame*1000/FPS;
   const isA=videoMs<p.aPrefixDurationMs;
   const audioMs=videoMs-p.audioStartVideoMs;
+  const opening=Math.min(1,Math.max(0,(videoMs-p.aPrefixDurationMs)/350));
   const currentShot=p.shots.find(s=>videoMs>=s.start_video_ms && videoMs<s.end_video_ms);
   const caption=p.captions.find(c=>audioMs>=c.start_audio_ms && audioMs<c.end_audio_ms);
   return <AbsoluteFill style={{fontFamily:baseFont,background:'#112d4d',overflow:'hidden'}}>
@@ -54,7 +55,7 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
       </div>
       <div style={{position:'absolute',top:68,bottom:64,left:0,right:0,background:'#12191f',display:'flex',alignItems:'center',justifyContent:'center'}}>
         {currentShot && <>
-          <Img src={staticFile(currentShot.path)} style={{maxWidth:'100%',maxHeight:'100%',objectFit:'contain',width:'100%',height:'100%'}}/>
+          <Img src={staticFile(currentShot.path)} style={{maxWidth:'100%',maxHeight:'100%',objectFit:'contain',width:'100%',height:'100%',transform:`scale(${0.985+0.015*opening})`}}/>
           <div style={{position:'absolute',top:23,left:25,background:'#102f46e8',color:'#f1f9ff',padding:'9px 19px',fontSize:23,fontWeight:700,borderRadius:7}}>
             {currentShot.evidence_label}
           </div>
@@ -67,7 +68,7 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
       </div>
       <div style={{position:'absolute',bottom:0,height:64,left:0,right:0,background:'linear-gradient(#edf4f7,#b6c5ce)',borderTop:'2px solid #8e9fae',display:'flex',alignItems:'center',gap:27,padding:'0 26px',color:COLOR.type,fontSize:15}}>
         <b style={{fontSize:26}}>❚❚</b><div style={{flex:1,height:11,borderRadius:8,background:'#8299a9',boxShadow:'inset 0 2px 4px #0006',overflow:'hidden'}}><div style={{width:(100*frame/p.durationFrames)+'%',height:'100%',background:COLOR.progress}}/></div>
-        <span>{Math.floor(videoMs/1000)}s / {Math.floor(p.durationFrames/FPS)}s</span><span>Research source · PLOS ONE 2026</span>
+        <span>{Math.floor(videoMs/1000)}s / {Math.floor(p.durationFrames/FPS)}s</span><span>{p.sourceCredit}</span>
       </div>
     </AbsoluteFill>}
     {p.narrationPath && <Sequence from={at(p.audioStartVideoMs)}><Audio src={staticFile(p.narrationPath)}/></Sequence>}
