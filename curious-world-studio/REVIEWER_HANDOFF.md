@@ -1,3 +1,8 @@
+<!-- CWS-20261010-HANDOFF-ENTRY -->
+> **新聊天 Reviewer：请先读 [2026-10-10 完整接手快照](docs/PROJECT_HANDOFF_2026-10-10.md)。** 下方为历史推进记录，保留供审计。
+>
+> **当前最新阶段**：36 条正式候选（11 SHORTLIST / 15 VERIFY / 9 HOLD / 1 REJECTED）；九源窗口 2026-10-07～09 只完成部分网页扫描；`collector/collect.py`、`test_collect.py`、说明、只读 GitHub Actions 已提交，但**尚未获得可核实的真实 Actions run 日志和 artifact**。下一位 Reviewer **只先验证在线采集及覆盖**，不要抢跑剧本/视频。HF 唯一主协议和 Mac 视觉 v1.2 保持锁定。
+
 # Curious World Studio — Reviewer Handoff
 
 **状态**：研究协议与视觉基线已确定；项目处于规范/原型阶段，尚无自动成片系统。
