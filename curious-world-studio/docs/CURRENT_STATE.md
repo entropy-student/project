@@ -9,7 +9,8 @@
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
 - **当前阶段 `P3-R6 NARRATIVE COMPLETE + P4-G0 UPSTREAM STATIC DONE / LOCAL READBACK RECEIVED / G0_CONDITIONAL`**：2026-10-10 Windows 本地 Codex 已按既有任务书完成**只读查询与文字集成设计**，报告已交 Owner 并归档到 GitHub `main`：[本机能力回读](P4_G0_LOCAL_CAPABILITY_READBACK_2026-10-10.md)。存在 OpenMontage、Remotion 4.0.484、Node、FFmpeg、atelier 源码接口的本地证据；但安装无 `.git`，确切源码来源 UNKNOWN，中文**定稿文案强制对齐未证**、Qwen 实际配置 UNKNOWN、没有运行或渲染。Reviewer 已给出 [四项接口纠偏与 G1 验收合同草案](P4_G0_CONTRACT_CORRECTIONS_AND_G1_ACCEPTANCE_2026-10-11.md)，包括音轨零点、权利三状态、主音轨版本锁、一行拆多字幕。**G0 仍为 CONDITIONAL，非 `G0_DESIGN_READY_NO_RENDER`、非 G1/生产 PASS**；2026-10-11 文档修订通过 [PR #93](https://github.com/entropy-student/project/pull/93) 合并至 `main`，未改变本地运行状态。
-- **下一步**：不重复审计已读取的本机版本。先审核上述本机回读与接口纠偏，给出 `G0_CONDITIONAL` 剩余条件的决策；向 Owner 提出**新 G1 20–30 秒短样片的具体输入、执行边界、工具副作用与费用/回滚方案**，再单独获得执行授权。**G1/G2/G3 均尚未启动**。视频生产总规划见[视频生产架构](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。
+- **P4-G1 Owner 本次授权（2026-10-11）**：Owner 同意继续 20–30 秒技术样片，改从已知网站/论文信息源获得素材，**不再要求本地已有素材**。仅授权定向查找/下载图像、许可与内容核对、隔离工程、使用已有本机 Remotion 做**私有免费测试**。新执行包见 [`p4-g1/README.md`](../p4-g1/README.md) 和 [本机 Codex G1 任务](../p4-g1/LOCAL_CODEX_G1_TASK.md)。首个技术段使用既有 J-B 试讲中的连续原文＋ PLOS ONE Fig 7/8（论文图、非已获授权的外链实验视频）；**没有 G1 MP4、没有实际音轨/字幕对齐或本机渲染 PASS**。现阶段状态：`G1_SCOPE_APPROVED / IMPLEMENTATION_PREPARED / LOCAL_EXECUTION_PENDING`。
+- **下一步**：将已审核的 G1 执行包交付 Owner **本机 Codex**，在其 Windows 的既有 OpenMontage / Remotion 上依任务执行：两幅 Fig 图逐件查权利、已有中文音轨/免费本地 TTS 能力判断、定稿文本的真人听审核对、保护性 staging、20–30 秒真实 MP4/SRT/QA。**如无可用本地中文声线、无法核实图片权利或不能做真实听审，报告 BLOCKED，不自动调用云端付费模型、安装软件、拿外链实验视频顶替、或假称 G1 已通过**。P4-G0 仍为 CONDITIONAL；G2/G3 未启动。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）
@@ -35,7 +36,7 @@ Owner 批准的既定次序保持：**九大信息源 → 批量发现 → 统�
 - Codex 回读称 `C:\Users\34707\Tools\OpenMontage` 与 `C:\Users\34707\.agents\skills\openmontage\SKILL.md` 均存在，Skill 声明支持 `$openmontage`；根目录**无 Git 元数据**，版本谱系待核。已见 Remotion 4.0.484、Node 24.19.0、FFmpeg 9.0；存在 ≠ 运行/渲染通过。
 - Owner 历史记录：Pexels/Pixabay → 云端中文 TTS → FFmpeg 曾形成约12秒技术闭环；**此次未重新运行，实际 Qwen 配置依任务书未读取 `.env`、未证实可用；中文字幕定稿文本强制对齐、素材语义匹配、长片质量和商业化授权均 PENDING**。
 - 不重装、不重复 API 连通/12 秒视频基线，不调用云模型生成测试 TTS；不触碰 Windows/VPS 网络或 VPN/WG/HY2/Clash。
-- 未进入生产：**这不是授权启动任何视频、素材下载或付费推理的指令**。进入真正生产前，向 Owner 提供完整方案并征得明确批准。
+- **2026-10-11 例外授权**：Owner 已批准 G1 的隔离私有样片及从研究信息源定向下载可用图片、做实际本地测试；不授权其他视频、付费 TTS、软件安装、未核准的外链实验视频、公开发布或正式商业生产。详见 [G1任务](../p4-g1/LOCAL_CODEX_G1_TASK.md)。
 
 ## 4. 技术 Schema 已修复；以下仍是需要 Owner 裁决的业务逻辑问题（不得自动修改）
 

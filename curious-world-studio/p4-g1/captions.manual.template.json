@@ -1,0 +1,66 @@
+{
+  "status": "NOT_REVIEWED",
+  "method": "manual_listening_against_final_master_audio",
+  "audio_sha256": null,
+  "script_sha256": null,
+  "human_reviewed": false,
+  "notes": "An agent must listen/check timecodes. NOT_REVIEWED data must never render as G1 PASS. Times relative to narration start, milliseconds.",
+  "captions": [
+    {
+      "caption_id": "C001",
+      "line_id": "L001",
+      "text": "真的有人做出了能活动、",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C002",
+      "line_id": "L001",
+      "text": "能发声互动的可食用果冻装置，",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C003",
+      "line_id": "L001",
+      "text": "让一千零九十四位参与者",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C004",
+      "line_id": "L001",
+      "text": "看过两种互动视频。",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C005",
+      "line_id": "L002",
+      "text": "要强调的是：他们只是在网上看视频，",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C006",
+      "line_id": "L002",
+      "text": "之后回答自己的印象",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C007",
+      "line_id": "L002",
+      "text": "和假想吃下它时的感受，",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    },
+    {
+      "caption_id": "C008",
+      "line_id": "L002",
+      "text": "没有真的把果冻吃掉。",
+      "start_audio_ms": null,
+      "end_audio_ms": null
+    }
+  ]
+}

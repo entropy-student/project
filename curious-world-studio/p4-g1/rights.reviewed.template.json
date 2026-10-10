@@ -1,0 +1,29 @@
+{
+  "status": "NOT_REVIEWED",
+  "assets": [
+    {
+      "asset_id": "A001",
+      "sha256": null,
+      "rights_basis": null,
+      "required_attribution": "Fig 7, Shimoyama et al. (2026), PLOS ONE, doi:10.1371/journal.pone.0350612, CC BY 4.0; source figure reproduced without cropping research evidence",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      },
+      "review_notes": "Open Fig 7 file, confirm figure corresponds to adult interaction; verify no separately credited third-party rights and attribution"
+    },
+    {
+      "asset_id": "A002",
+      "sha256": null,
+      "rights_basis": null,
+      "required_attribution": "Fig 8, Shimoyama et al. (2026), PLOS ONE, doi:10.1371/journal.pone.0350612, CC BY 4.0; source figure reproduced without cropping research evidence",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      },
+      "review_notes": "Open Fig 8, confirm baby-like reaction scene and ownership conditions"
+    }
+  ]
+}
