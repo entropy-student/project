@@ -7,6 +7,9 @@
 > **增量接手｜2026-10-10 P2-D 最新 Owner 校准**：Owner 主动排序 **B 毫秒级听觉声音问题第一、D 认知负荷风险决策第二**，同时说四题整体都不错，未否定 A/C。提出个人偏好「日常离自己近，却未仔细观察/思考」，**只是假设，不等于 B 站观众数据**。已有记录：[P2-D Owner 选择和证据复核](../research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)；B 补充音频已定位但未试听/核授权，D 的认知负荷与 tDCS 不可混成单因果。原正式题库 36 条、主协议、视觉均未改；下一步小范围真实观众盲选与独立原文校验，暂不写剧本或晋级。
 
 # Curious World Studio｜新聊天 / Reviewer 完整接手快照
+
+> **2026-10-10 最新 P3 决策待批**：[B/D STORY-FIT 资格＋证据压力测试](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md) 已完成，二者不在正式 36 条 TOPICS，禁止报正式 STORYFIT_GO。编辑建议 B 进入 SHORTLIST 准入审核，D 暂在研究池 HOLD，不是自动状态迁移。请 Owner 依据 [P3 质量审查卡](../research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md) 先判定；真实观众盲选、独立论文二审、同题竞品核查、素材许可均仍 PENDING。**用户已独立装好 OpenMontage 长期工具并有全局 `$openmontage`，当前不需要重装/重复验证 TTS/FFmpeg；视频生产前须由 Owner 明确介入和授权。**
+
 **快照日期：2026-10-10｜接手优先级：P0｜只针对 `entropy-student/project/curious-world-studio/`**
 
 > **最重要的状态：当前已确认频道方向、九源信息源框架、七阶段选题流程、36 条可审计选题记录与 Mac v1.2 视觉基线；采集器/测试/Actions 工作流已经提交 main，但在线 API/RSS 采集尚无可核实的成功运行 artifact，九源完整三日批量扫描仍未通过。不可跳过该阶段擅自写剧本或制作视频。**
