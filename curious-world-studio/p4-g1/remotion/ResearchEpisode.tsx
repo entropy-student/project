@@ -37,7 +37,7 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
           <span style={aquaButton('#ec786c')}/><span style={aquaButton('#fac657')}/><span style={aquaButton('#69cc6a')}/><b style={{marginLeft:22,fontSize:21}}>Research Files</b>
         </div>
         <div style={{display:'flex',flexDirection:'column',alignItems:'center',paddingTop:43,color:COLOR.type,fontSize:20}}>
-          <span style={{fontSize:69}}>📁</span>
+          <span style={{fontSize:69,color:"#2f73b0",fontWeight:900,textShadow:"0 3px 1px white"}}>▣</span>
           <b>会回应的果冻</b>
           <span style={{fontSize:15,marginTop:8}}>正在打开研究文件…</span>
         </div>
