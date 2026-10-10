@@ -115,7 +115,7 @@ class CollectorTests(unittest.TestCase):
     def test_nasa_namespace_recovery_is_partial_not_full_pass(self):
         xml=(b'<rss xmlns:apod="https://science.nasa.gov/apod/"'
              b'xmlns:media="http://search.yahoo.com/mrss/"><channel><item>'
-             b'<title>NASA test item</title><link>https://example.org/image</link>'
+             b'<title>NASA test item</title><link>https://science.nasa.gov/earth/earth-observatory/sample/</link>'
              b'<pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate></item></channel></rss>')
         with mock.patch.object(c,"get",return_value=xml):
             o=c.feed("NASA_EO_IMAGE","https://example.org/nasa","2026-10-07","2026-10-09")
