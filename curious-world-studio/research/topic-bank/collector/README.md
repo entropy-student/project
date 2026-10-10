@@ -64,3 +64,10 @@ py collect.py --start 2026-10-07 --end 2026-10-09 --output .\outputs
 - 每个来源现在带 `coverage_contract`：仅区分日期查询接口分页结束、RSS 滚动快照、Crossref 元数据代理、人工发现和固定 DOI 健康探测。观察到的日期区间、分日条数和缺项日期已记录。**RSS 缺某日记录不证明该日无发表**。
 - JEB 的 `proxy_query_pages_complete` 与 `covered_query_pages` 分开；即使 Crossref DOI 列表翻完也不能宣布期刊 Accepted Manuscripts 全量。
 - 权威 P1 审查记录：[P1 COVERAGE AND TOPICS REVIEW](../batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。九源全部覆盖仍 **PARTIAL**；不自动改变正式题库。
+
+## 7. P2-A 2026-10-10 单评审抽样与官方归档入口审计
+
+- P1 已合并 main，主分支 [Actions #38022638179](https://github.com/entropy-student/project/actions/runs/38022638179) 24/24 回归测试通过；本轮 **未更改 collector 源码、正式 36 选题或自动审阅路由**。
+- 从 PLOS 143 条专题池与 130 条开放发现池各用固定 SHA256 DOI 排序抽样 20 篇，匿名队列初审；明确符合当前频道题材 12/20 与 5/20，初步较强故事线索 4/20 与 2/20。**单模型标题/摘要评价不是人工金标准、STORY-FIT、统计准确率、或有版权的素材批准。**
+- 详情：[P2-A 覆盖/筛选校准审计](../batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md)，含 [40 篇 DOI 与理由](../batches/2026-10-10_P2_PLOS_40_ABSTRACT_REVIEW.md)。
+- 官方目录可浏览：MIT Research 翻页、NASA EO 日期筛选 UI、Nature NHB 年份/类型目录、JEB Accepted manuscripts / 期刊归档；但 **可重复自动遍历、三日完整分母仍未证实**，EurekAlert 仍人工，不可擅自宣告全九源 PASS。

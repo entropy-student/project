@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P2-A 最新：2026-10-10 40 篇 DOI 级人工初审/来源归档可行性核查已完成**（单一模型评审，仅标题和摘要，非全文或正式 Story-Fit）。P1 已经由 PR #74 合并到 main `bf16fd9`，主分支 Actions [#38022638179](https://github.com/entropy-student/project/actions/runs/38022638179) **24/24 通过**。P2 分别抽 `TOPIC_REVIEW` 与 `OPEN_DISCOVERY` 20 篇；频道题材 Y 12 vs 5、较强故事线索 4 vs 2，说明优先队列有用但开放池不可硬淘汰；全部 0 篇自动晋级。MIT/NASA/Nature/JEB 官方网页存在可追踪历史入口，**未证实自动归档全量**。参阅 [P2 报告](research/topic-bank/batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md) 及 [40 DOI 明细](research/topic-bank/batches/2026-10-10_P2_PLOS_40_ABSTRACT_REVIEW.md)。
+
+
 > **P1 新进展（比 P0 快照更新）**：已在 GitHub Actions [#38022100048](https://github.com/entropy-student/project/actions/runs/38022100048) 在线验证 P1：24/24 测试、537 条日期窗内元数据、4 个 artifact；覆盖合同明确区分 RSS 快照与完整日期 API 分页，PLOS 全文文档 303 篇保留，另生成 143 条元数据专题提示的人审队列（其余 130 个开放发现、30 个其他文章类型原样保留）。**仍非九源全量、非 STORY-FIT/PRODUCTION_READY**。详见 [P1 COVERAGE AND TOPICS REVIEW](research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。
 
 
