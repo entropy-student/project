@@ -1,9 +1,12 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **当前状态统一入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。以下为历史研究/交接增量记录，不得将旧段落内的“最新”或 B 优先/D HOLD 当作现在的执行决议。
+
+
 > **P3-R1 最新｜已从论文节目推进回到观看机制校准（2026-10-10）**：本次真正找回用户资料库的前五轮 CMF 原始报告（尤其 3rd-round PROTOTYPES.md 与 fifth-round D3b/P1/P2），再核对 Veritasium 官方水库黑球、TED-Ed 风险选择、B站李白尼日常决策等公开样本。**确立的不是新频道规范，而是三种待试讲述发动机：M1「观察重构」为主、M2「线索追问」有关键材料才做、M3「处境选择」有人物/明确假设处境才做。**共同承诺是“普通事物多出一层可信理解”，不是“观看论文实验流水账”；依然要靠观众/跨题 5 分钟验证。详见 [P3-R1 全文](research/reports/2026-10-10_P3R1_NARRATIVE_MECHANISM_MARKET_RETROSPECT.md)。**历史 P3 B优先D暂缓只是基于实验节点的叙事评价假设，暂不作为晋级最终依据；研究事实保留，36条母库/四轴协议/视觉不变。**下一步 P3-R2：同题不同机制口述梗概 + **完整 4–6min 分段故事压力测试**，不写正式剧本、不用OpenMontage、不生成声音/视频；生产前必须请Owner明确批准。
 
 
-> **P3 最新｜B/D 故事承载力与正式准入（2026-10-10）**：核对 [WORKFLOW_V1](research/topic-bank/WORKFLOW_V1.md) 后发现 B（`10.1371/journal.pbio.3004046`）和 D（`10.1371/journal.pone.0360059`）均**尚未在 36 条 TOPICS 中**，因而不具备正式 STORY-FIT 第 5 阶段资格。已完成原文核验＋4–6 分钟不注水压力测试＋四轴逐项评价＋公开 B站相邻样本检索：[P3 报告](research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)。**B 推荐进入正式 SHORTLIST 编辑准入审核（未晋级），D 推荐 HOLD 继续研究（未正式入库）**。待 Owner 按 [P3 审查卡](research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md) 评价后才能改变审核优先级。B 特别注意 24 人真实听辨与附加 S-Pair 大鼠神经对照不是同一批测试；该论文的官方音频文件级 QA 只在未合并的 P2-E 分支通过，非真人试听或版权 PASS。**不写剧本/不生成 TTS/视频；生产前必须请 Owner 接入其现成 `$openmontage` 本地流程。**
+> **【历史 P3 评估；叙事优先级待 P3-R2 复核】P3｜B/D 故事承载力与准入评估（2026-10-10）**：旧实验层级推导仅作编辑假设；B/D 都不在正式 36 条 TOPICS 中，故不能判 STORYFIT_GO，也未收到 Owner 入库授权。事实核验与竞争样本参见 [P3 报告](research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)。最新节目机制研究 [P3-R1](research/reports/2026-10-10_P3R1_NARRATIVE_MECHANISM_MARKET_RETROSPECT.md) 要求对观众理解变化而非实验节点数重新压力测试；目前不改任何 TOPICS/BOARD 状态。
 
 
 > **P2-D Owner 最新偏好（2026-10-10）**：四题综合都不错，但 **B 声音毫秒时序为第一点击选择，D 认知负荷与风险决策第二**，**不是 A/C 被拒绝**。Owner 新提出「离生活近、但平时没有仔细观察或思考过」的个人编辑偏好；**普通观众是否如此仍未知**，需要独立目标观众验证。B 原文有 S1 Audio 附件 `10.1371/journal.pbio.3004046.s008`（10 类 200ms 脉冲串 + 两组对照），尚未实际试听/验素材许可；D 60 人随机 2x2，50 轮三选，tDCS 与 cognitive load 不能混为单因果。保持 Topic Bank 36、正式 STORY-FIT/版权/竞品未通过。详见 [P2-D Owner B>D 与原文核验](research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)。
