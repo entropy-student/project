@@ -43,3 +43,5 @@ jobs:
           path: ${{ runner.temp }}/cws-source-audit/
           retention-days: 14
           if-no-files-found: warn
+
+# One-time push trigger after collector and regression-test finalization: 2026-10-10.
