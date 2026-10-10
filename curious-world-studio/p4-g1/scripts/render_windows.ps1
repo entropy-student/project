@@ -4,11 +4,17 @@
 param(
   [Parameter(Mandatory=$true)][string]$PilotRoot,
   [Parameter(Mandatory=$true)][string]$Work,
-  [string]$OMRoot="C:\Users\34707\Tools\OpenMontage"
+  [string]$OMRoot="C:\Users\34707\Tools\OpenMontage",
+  [string]$StageSlug="cws-g1-r2",
+  [Parameter(Mandatory=$true)][string]$BrowserExecutable
 )
 $ErrorActionPreference="Stop"
 $PilotRoot=(Resolve-Path -LiteralPath $PilotRoot).Path
 $Work=(Resolve-Path -LiteralPath $Work).Path
+if($StageSlug -notmatch "^cws-g1-[A-Za-z0-9_-]+$"){throw "G1_BAD_STAGE_SLUG: use a new cws-g1-r2-like basename"}
+if(!(Test-Path -LiteralPath $BrowserExecutable -PathType Leaf)){throw "G1_BROWSER_RUNTIME_MISSING: explicitly provide an Owner-approved existing Chrome Headless Shell executable; no auto download allowed."}
+$BrowserExecutable=(Resolve-Path -LiteralPath $BrowserExecutable).Path
+if(Test-Path -LiteralPath (Join-Path $Work "out")){throw "G1_OUT_EXISTS: preserve old evidence and create a fresh isolated work directory"}
 $composer=Join-Path $OMRoot "remotion-composer"
 $python=Join-Path $OMRoot ".venv\Scripts\python.exe"
 $entry=Join-Path $PilotRoot "remotion\entry.tsx"
@@ -19,12 +25,12 @@ if(!(Test-Path $python) -or !(Test-Path $entry) -or !(Test-Path $comp) -or !(Tes
   throw "G1_RUNTIME_BLOCKED: existing Python/Remotion runtime not present; no installs permitted."
 }
 # Generate all props in the isolated Work directory. This fails closed if alignment/rights are unreviewed.
-& $python (Join-Path $PilotRoot "scripts\build_g1.py") --work $Work
+& $python (Join-Path $PilotRoot "scripts\build_g1.py") --work $Work --stage-slug $StageSlug
 if($LASTEXITCODE -ne 0){throw "G1_BUILD_REVIEW_GATE_BLOCKED"}
 $out=Join-Path $Work "out"
 $props=Join-Path $out "episode_props.json"
-$localProject=Join-Path $composer "projects\cws-g1"
-$localMedia=Join-Path $composer "public\cws-g1"
+$localProject=Join-Path $composer "projects\$StageSlug"
+$localMedia=Join-Path $composer "public\$StageSlug"
 if((Test-Path $localProject) -or (Test-Path $localMedia)){throw "G1_STAGE_EXISTS: Existing staging paths cannot be overwritten; review before proceeding."}
 New-Item -ItemType Directory -Path $localProject,$localMedia | Out-Null
 Copy-Item -LiteralPath $entry -Destination (Join-Path $localProject "entry.tsx")
@@ -41,7 +47,7 @@ try {
   # No packages are installed; launch the already installed Remotion CLI from node_modules.
   $cliBin=Join-Path $composer "node_modules\.bin\remotion.cmd"
   if(!(Test-Path -LiteralPath $cliBin)){ throw "G1_RUNTIME_BLOCKED: local remotion.cmd not installed (no npx remote fallback)" }
-  & $cliBin render "projects/cws-g1/entry.tsx" CWSG1 $dest "--props=$props" "--codec=h264"
+  & $cliBin render "projects/$StageSlug/entry.tsx" CWSG1 $dest "--props=$props" "--codec=h264" "--browser-executable=$BrowserExecutable"
   if($LASTEXITCODE -ne 0){throw "G1_RENDER_FAILED; do not auto-reinstall or switch engines"}
 } finally { Pop-Location }
 & ffprobe -v error -show_streams -show_format -of json (Join-Path $out "g1-j-b-preview.mp4") | Out-File -FilePath (Join-Path $out "ffprobe.json") -Encoding utf8NoBOM
