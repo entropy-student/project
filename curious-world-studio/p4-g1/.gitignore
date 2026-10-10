@@ -1,0 +1,9 @@
+work/
+**/work/
+*.mp4
+*.wav
+*.srt
+fig07.png
+fig08.png
+**/out/
+*.secret
