@@ -3,6 +3,9 @@
 
 # 当前决策与待办
 
+> **2026-10-10 P1 实际验收（最新）**：成功运行 [Actions #38022100048](https://github.com/entropy-student/project/actions/runs/38022100048)，24/24 离线回归测试、4 个 artifact；新增分源可审计观测日期/每日条数/严格覆盖等级，PLOS 303 篇中将 143 条元数据专题线索放入人工审阅队列，130 条开放池/30 条其他类型保留；总体窗口元数据 537。**九源全量仍 PARTIAL，不写剧本，不变更正式 36 条选题。** [P1 审计](../research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。
+
+
 > **2026-10-10 后续 P0 在线验收更新**：成功运行 [Actions #38021149558](https://github.com/entropy-student/project/actions/runs/38021149558)，15/15 测试、artifact `11657992614`；PLOS 重复章节索引问题修复为 303 篇，Nature 入窗 2 条，NASA EO 3 条（上游 XML 修复但来源保持 PARTIAL），HF 215、MIT 3、JEB 11；合计 537 条。九源覆盖 **PARTIAL**，不可称生产级全量；TOPICS 36 条保持不变。审计：[COLLECTOR_P0_LIVE_REVIEW](../research/topic-bank/batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。
 
 
