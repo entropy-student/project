@@ -22,8 +22,13 @@ def srt_clock(ms):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--work",required=True,type=pathlib.Path)
+    ap.add_argument("--stage-slug",default="cws-g1",help="New isolated Remotion project/media basename; never reuse staging folders")
     args=ap.parse_args()
     work=args.work.resolve()
+    import re
+    if not re.fullmatch(r"cws-g1(?:-[A-Za-z0-9_-]+)?",args.stage_slug):
+        raise RuntimeError("Invalid CWS stage slug")
+    stage_slug=args.stage_slug
     wav=work/"audio"/"narration.wav"
     if not wav.is_file(): raise RuntimeError(f"No real approved narration WAV: {wav}")
     with wave.open(str(wav),"rb") as f:
@@ -79,14 +84,14 @@ def main():
     half_frame=round((duration_frames+round(prefix_ms*30/1000))/2)
     half_ms=half_frame*1000/30
     shots=[
-      {"shot_id":"S001","asset_id":"A001","path":"cws-g1/fig07.png","start_video_ms":prefix_ms,"end_video_ms":half_ms,"source_in_ms":0,"source_out_ms":None,"fit":"contain","evidence_label":"论文证据"},
-      {"shot_id":"S002","asset_id":"A002","path":"cws-g1/fig08.png","start_video_ms":half_ms,"end_video_ms":end_video_ms,"source_in_ms":0,"source_out_ms":None,"fit":"contain","evidence_label":"论文证据"}]
+      {"shot_id":"S001","asset_id":"A001","path":f"{stage_slug}/fig07.png","start_video_ms":prefix_ms,"end_video_ms":half_ms,"source_in_ms":0,"source_out_ms":None,"fit":"contain","evidence_label":"论文证据"},
+      {"shot_id":"S002","asset_id":"A002","path":f"{stage_slug}/fig08.png","start_video_ms":half_ms,"end_video_ms":end_video_ms,"source_in_ms":0,"source_out_ms":None,"fit":"contain","evidence_label":"论文证据"}]
     props={
       "episodeId":"CWS-G1-J-B-TECHNICAL-PILOT",
       "durationFrames":duration_frames,
       "audioStartVideoMs":prefix_ms,
       "aPrefixDurationMs":prefix_ms,
-      "narrationPath":"cws-g1/narration.wav",
+      "narrationPath":f"{stage_slug}/narration.wav",
       "shots":[{k:s[k] for k in ["shot_id","asset_id","path","start_video_ms","end_video_ms","evidence_label"]} for s in shots],
       "captions":captions,
       "sourceCredit":"Shimoyama et al. (2026), PLOS ONE · CC BY 4.0 · Fig. 7–8"
