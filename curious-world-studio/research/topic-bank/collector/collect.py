@@ -58,7 +58,7 @@ def get(url):
 def report(source,mode):
     return {"source":source,"mode":mode,"status":"BLOCKED","attempts":0,"received_pages":0,
       "source_total":None,"raw_count":0,"in_window":0,"missing_dates":0,
-      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0,"observed_source_date_min":None,"observed_source_date_max":None,"observed_in_window_dates":{}
+      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0,"observed_source_date_min":None,"observed_source_date_max":None,"observed_in_window_dates":{}}
 
 def read(out,url,xml=False):
     out["attempts"]+=1
