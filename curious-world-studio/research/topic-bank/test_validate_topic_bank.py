@@ -68,7 +68,8 @@ class TopicBankValidationTests(unittest.TestCase):
 
     def test_unevidenced_original_url_may_be_null(self):
         item = deepcopy(self.bank)
-        item["topics"][0]["original_url"] = None
+        candidate = next(t for t in item["topics"] if t["original_url"] is not None)
+        candidate["original_url"] = None
         self.assertEqual([], validate_bank(item, self.board))
 
     def test_board_total_mismatch_fails(self):
