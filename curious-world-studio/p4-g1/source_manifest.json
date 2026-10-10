@@ -1,0 +1,50 @@
+{
+  "version": "CWS_G1_SOURCES_V1",
+  "episode_id": "CWS-G1-J-B-TECHNICAL-PILOT",
+  "article": {
+    "title": "Edible agents with perceptible minds: A psychological study of human perception in human–food interaction",
+    "doi": "10.1371/journal.pone.0350612",
+    "article_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0350612",
+    "citation": "Shimoyama T, Kume Y, Yamagata M, Takahashi H, Nakata Y (2026), PLOS ONE 21(6): e0350612",
+    "article_license": "CC BY 4.0; attribution required; per-image exceptions still require checking"
+  },
+  "assets": [
+    {
+      "asset_id": "A001",
+      "local_file": "fig07.png",
+      "source_url": "https://journals.plos.org/plosone/article/figure/image?download=&id=10.1371%2Fjournal.pone.0350612.g007&size=large",
+      "figure_doi": "10.1371/journal.pone.0350612.g007",
+      "source_kind": "paper_figure",
+      "evidence_label": "论文证据",
+      "content_description": "Fig 7 — video 1 adult-style spoken interaction with edible agent",
+      "creator": "Shimoyama et al. (2026)",
+      "required_attribution": "Fig 7 adapted/reproduced from Shimoyama et al. (2026), PLOS ONE, doi:10.1371/journal.pone.0350612, CC BY 4.0. [state modifications]",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      }
+    },
+    {
+      "asset_id": "A002",
+      "local_file": "fig08.png",
+      "source_url": "https://journals.plos.org/plosone/article/figure/image?download=&id=10.1371%2Fjournal.pone.0350612.g008&size=large",
+      "figure_doi": "10.1371/journal.pone.0350612.g008",
+      "source_kind": "paper_figure",
+      "evidence_label": "论文证据",
+      "content_description": "Fig 8 — video 2 baby-like emotional reactions to hand and toys",
+      "creator": "Shimoyama et al. (2026)",
+      "required_attribution": "Fig 8 adapted/reproduced from Shimoyama et al. (2026), PLOS ONE, doi:10.1371/journal.pone.0350612, CC BY 4.0. [state modifications]",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      }
+    }
+  ],
+  "external_videos": {
+    "source": "https://doi.org/10.1371/journal.pone.0350612.s003",
+    "status": "LINK_FOUND_RIGHTS_NOT_VERIFIED",
+    "usage": "EXCLUDED_FROM_G1_UNTIL_VERIFIED"
+  }
+}
