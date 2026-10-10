@@ -4,6 +4,8 @@
 
 > **本文件是历史交接快照。2026-10-10 最新增量**：[P2-B/C 原始研究及官方日期窗对账](../research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md) + [Owner 题目质量投票](../research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)。已核 5 篇 PLOS 原文，确定初步推荐巨噬细胞、点击声；MIT 3/3、NASA 3/3、Nature 2/2、JEB 7/7 当前可见子集对账仅为局部证据。**独立二审、Owner 意愿、正式 STORY-FIT、媒体许可和九源完整性仍未通过**。TOPICS 保留 36 项。
 
+> **增量接手｜2026-10-10 P2-D 最新 Owner 校准**：Owner 主动排序 **B 毫秒级听觉声音问题第一、D 认知负荷风险决策第二**，同时说四题整体都不错，未否定 A/C。提出个人偏好「日常离自己近，却未仔细观察/思考」，**只是假设，不等于 B 站观众数据**。已有记录：[P2-D Owner 选择和证据复核](../research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)；B 补充音频已定位但未试听/核授权，D 的认知负荷与 tDCS 不可混成单因果。原正式题库 36 条、主协议、视觉均未改；下一步小范围真实观众盲选与独立原文校验，暂不写剧本或晋级。
+
 # Curious World Studio｜新聊天 / Reviewer 完整接手快照
 **快照日期：2026-10-10｜接手优先级：P0｜只针对 `entropy-student/project/curious-world-studio/`**
 
