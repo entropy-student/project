@@ -39,7 +39,9 @@ try {
   $dest=Join-Path $out "g1-j-b-preview.mp4"
   if(Test-Path $dest){throw "Refusing overwrite: $dest"}
   # No packages are installed; launch the already installed Remotion CLI from node_modules.
-  & node (Join-Path $composer "node_modules\@remotion\cli\remotion-cli.js") render "projects/cws-g1/entry.tsx" CWSG1 $dest "--props=$props" "--codec=h264"
+  $cliBin=Join-Path $composer "node_modules\.bin\remotion.cmd"
+  if(!(Test-Path -LiteralPath $cliBin)){ throw "G1_RUNTIME_BLOCKED: local remotion.cmd not installed (no npx remote fallback)" }
+  & $cliBin render "projects/cws-g1/entry.tsx" CWSG1 $dest "--props=$props" "--codec=h264"
   if($LASTEXITCODE -ne 0){throw "G1_RENDER_FAILED; do not auto-reinstall or switch engines"}
 } finally { Pop-Location }
 & ffprobe -v error -show_streams -show_format -of json (Join-Path $out "g1-j-b-preview.mp4") | Out-File -FilePath (Join-Path $out "ffprobe.json") -Encoding utf8NoBOM
