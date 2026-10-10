@@ -58,7 +58,7 @@ def get(url):
 def report(source,mode):
     return {"source":source,"mode":mode,"status":"BLOCKED","attempts":0,"received_pages":0,
       "source_total":None,"raw_count":0,"in_window":0,"missing_dates":0,
-      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0}
+      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0,"observed_source_date_min":None,"observed_source_date_max":None,"observed_in_window_dates":{}
 
 def read(out,url,xml=False):
     out["attempts"]+=1
@@ -100,12 +100,17 @@ def datum(source,title,url,date,identifier=None,abstract="",kind="unknown"):
 
 def finish(out,start,end,covered=False):
     raw=out["items"];out["raw_count"]=len(raw)
+    dated=[i["date"] for i in raw if i.get("date")]
+    out["observed_source_date_min"]=min(dated,default=None)
+    out["observed_source_date_max"]=max(dated,default=None)
     out["missing_dates"]=sum(1 for i in raw if not i["date"])
     unique={}
     for it in raw:
         if it["date"] and start<=it["date"]<=end:
             unique[it["id"] or it["url"] or it["title"].lower()]=it
     out["items"]=list(unique.values());out["in_window"]=len(unique)
+    out["observed_in_window_dates"]={d:sum(it["date"]==d for it in out["items"])
+                                     for d in sorted({it["date"] for it in out["items"]})}
     out["status"]="BLOCKED" if not out["received_pages"] else "PARTIAL" if out["errors"] else "FETCHED"
     out["covered_query_pages"]=bool(covered and not out["errors"] and out["received_pages"])
     return out
@@ -174,7 +179,7 @@ def plos(start,end):
     q=f"publication_date:[{start}T00:00:00Z TO {end}T23:59:59Z]"
     ended=False
     for page in range(PAGE_CAP):
-        params={"q":q,"fq":"doc_type:full","wt":"json","fl":"id,title,publication_date,abstract,article_type,journal,doc_type","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
+        params={"q":q,"fq":"doc_type:full","wt":"json","fl":"id,title,publication_date,abstract,article_type,journal,doc_type,subject","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
         url="https://api.plos.org/search?"+urllib.parse.urlencode(params)
         resp=read(o,url)
         if not isinstance(resp,dict) or "response" not in resp:
@@ -190,12 +195,30 @@ def plos(start,end):
             title=x.get("title","");title=" ".join(title) if isinstance(title,list) else title
             abstract=x.get("abstract","");abstract=" ".join(abstract) if isinstance(abstract,list) else abstract
             typ=x.get("article_type","");typ=" ".join(typ) if isinstance(typ,list) else typ
-            o["items"].append(datum(o["source"],title,"https://doi.org/"+doi,x.get("publication_date"),doi,abstract,typ))
+            entry=datum(o["source"],title,"https://doi.org/"+doi,x.get("publication_date"),doi,abstract,typ)
+            subjects=x.get("subject",[])
+            entry["subjects"]=[str(v) for v in subjects] if isinstance(subjects,list) else [str(subjects)] if subjects else []
+            entry["screening"]=plos_screen(title,typ,entry["subjects"])
+            o["items"].append(entry)
         if o["source_total"] is None:
             o["errors"].append({"url":url,"error":"numFound unavailable"});break
         if (page+1)*100>=o["source_total"] or not rows:ended=True;break
-    o["notes"].append("Solr fq=doc_type:full counts parent articles, not section fragments; all PLOS journals, not topical or original-experiment only.")
-    return finish(o,start,end,ended and o["source_total"] is not None and len(o["items"])>=o["source_total"])
+    o["notes"].append("Broad parent-article query retained as audit denominator. PLOS topical screening is a secondary NON-DESTRUCTIVE metadata-only review queue.")
+    result=finish(o,start,end,ended and o["source_total"] is not None and len(o["items"])>=o["source_total"])
+    from collections import Counter
+    lanes=Counter(x["screening"]["review_lane"] for x in result["items"])
+    tags=Counter(t for x in result["items"] for t in x["screening"]["tags"])
+    types=Counter(x["article_type"] for x in result["items"])
+    result["screening_summary"]={
+      "ruleset":"PLOS_TOPIC_HINTS_V1","raw_parent_articles":result["in_window"],
+      "subject_labels_present":sum(bool(x["subjects"]) for x in result["items"]),
+      "research_article_labeled":sum(x["screening"]["research_article_label"] for x in result["items"]),
+      "review_lane_counts":dict(sorted(lanes.items())),
+      "topic_tag_counts":dict(sorted(tags.items())),
+      "article_type_counts":dict(sorted(types.items())),
+      "note":"Lexical title/subject hints are not proof of original experiments, story suitability or exhaustive thematic coverage. All parent records are preserved."
+    }
+    return result
 
 def jeb(start,end):
     o=report("JEB_CROSSREF_PROXY","Crossref online-publication metadata, not JEB official feed")
