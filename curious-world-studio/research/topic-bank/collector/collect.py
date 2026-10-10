@@ -231,6 +231,7 @@ def jeb(start,end):
             if resp is not None:o["errors"].append({"url":url,"error":"invalid Crossref response"})
             break
         msg=resp["message"];rows=msg.get("items",[])
+        o["source_total"]=msg.get("total-results",o["source_total"])
         for x in rows:
             pid=x.get("DOI","")
             if pid in total:continue
@@ -246,6 +247,9 @@ def jeb(start,end):
         cursor=next_cursor
     o["notes"].append("Crossref DOI date index != journal accepted-manuscript list; archival completeness not proven.")
     out=finish(o,start,end,False)
+    # Proxy endpoint page completion is NOT JEB journal archival completeness.
+    out["proxy_query_pages_complete"]=bool(ended and not out["errors"] and
+        out["source_total"] is not None and len(total)>=out["source_total"])
     out["covered_query_pages"]=False
     return out
 
@@ -288,6 +292,7 @@ def coverage_contract(out,start,end):
         missing=None
     return {"grade":grade,"denominator_kind":denominator,
             "endpoint_query_pages_complete":bool(out.get("covered_query_pages")),
+            "proxy_query_pages_complete":bool(out.get("proxy_query_pages_complete",False)),
             "full_nine_source_window_proven":False,
             "observed_min_date":out.get("observed_source_date_min"),
             "observed_max_date":out.get("observed_source_date_max"),
