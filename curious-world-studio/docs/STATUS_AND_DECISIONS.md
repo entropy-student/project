@@ -3,6 +3,9 @@
 
 # 当前决策与待办
 
+> **P3-R1｜讲述机制回归校准完成（2026-10-10；研究假设，不是最终规则）**：[完整市场/CMF 回溯报告](../research/reports/2026-10-10_P3R1_NARRATIVE_MECHANISM_MARKET_RETROSPECT.md) 已逐项读早期五轮原创结论和真实公开节目示例。区分 C4 作者视角、S2 单期有限解释、D3b 主动休闲探索及 CMF-P1「具体发现」/CMF-P2「疑惑有交代」；建议试三种**叙事发动机**：M1 熟悉现象→理解重构（主）、M2 真实线索→有限追问（条件）、M3 具体处境→理解选择（条件）。上轮仅按四层实验数给 B HIGH PROGRESSION / D HOLD 的**观看叙事判断**现标为待重新验证；不否定 PLOS 原始事实，也**不自动给 B/D 晋级**。下一步 P3-R2 使用 B/D/果冻等跨域题作同题不同讲法试验：60–90 秒故事梗概**加**完整 4–6 分钟各段观众理解变化，不改变最终约5分钟规格。**当前不改 WORKFLOW 四轴、题库 36、Mac v1.2、采集器、HF 协议，不写剧本、不生成素材/声音/视频**；生产前 Owner 必须再次明确批准并复用本地 `$openmontage`。
+
+
 > **P3 已完成 B/D 故事证据与资格审查（2026-10-10），但未授予正式 STORY-FIT**：B/D 均不在正式 36 条题库中，按唯一 WORKFLOW 只有先通过 SHORTLIST 编辑准入才能启动正式 GO/CONDITIONAL/NO-GO；本轮完成四轴、5 分钟各节点增量核验、PLOS 原文查证及 B站相邻内容搜索样本。**B 倾向申请正式 SHORTLIST 准入，D 倾向研究 HOLD**，等待 Owner 质量关，不以个人选择代替观众反馈。报告 [P3](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)，[Owner 审查卡](../research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md)。当前无新增 CW ID、无剧本/视频、无 OpenMontage 操作；**视频生产之前主动请 Owner 接入其现成 `$openmontage` 流程**。
 
 
