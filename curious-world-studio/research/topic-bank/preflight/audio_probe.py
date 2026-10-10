@@ -122,6 +122,20 @@ def analyze(raw):
     result['status']='MEDIA_METADATA_VERIFIED' if good else 'RETRIEVED_BUT_AUDIO_NOT_VERIFIED'
     result['clip_duration_sec_min']=min(durations,default=None)
     result['clip_duration_sec_max']=max(durations,default=None)
+    result['matched_pair_checks']=[]
+    for stem in ('S-Pair1','S-Pair2'):
+        matching=[next((m for m in good if m['name'].endswith('/'+stem+suffix+'.wav')),None)
+                  for suffix in ('A','B')]
+        left,right=matching
+        if left and right:
+            peak_delta=abs(left['peak_dbfs']-right['peak_dbfs']) if left.get('peak_dbfs') is not None and right.get('peak_dbfs') is not None else None
+            rms_delta=abs(left['rms_dbfs']-right['rms_dbfs']) if left.get('rms_dbfs') is not None and right.get('rms_dbfs') is not None else None
+            result['matched_pair_checks'].append({'pair':stem,'different_file_sha256':left['sha256']!=right['sha256'],
+                'same_sample_rate':left['sample_rate_hz']==right['sample_rate_hz'],
+                'same_channels':left['channels']==right['channels'],
+                'duration_difference_sec':round(abs(left['duration_sec']-right['duration_sec']),6),
+                'peak_level_difference_db':round(peak_delta,2) if peak_delta is not None else None,
+                'rms_level_difference_db':round(rms_delta,2) if rms_delta is not None else None})
     return result
 
 def main():
