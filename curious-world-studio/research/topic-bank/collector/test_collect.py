@@ -125,4 +125,22 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(o["errors"][0].get("recovery"),"NASA_NAMESPACE_WHITESPACE_ONLY")
         self.assertFalse(o["covered_query_pages"])
 
+    def test_nasa_mixed_feed_excludes_photojournal(self):
+        xml=(b'<rss><channel>'
+             b'<item><title>Earth Observatory</title>'
+             b'<link>https://science.nasa.gov/earth/earth-observatory/example/</link>'
+             b'<pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate></item>'
+             b'<item><title>Unrelated photojournal</title>'
+             b'<link>https://science.nasa.gov/photojournal/mars-photo/</link>'
+             b'<pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate></item>'
+             b'</channel></rss>')
+        with mock.patch.object(c,"get",return_value=xml):
+            o=c.feed("NASA_EO_IMAGE","https://example.org/nasa","2026-10-07","2026-10-09")
+        self.assertEqual(o["feed_entries_seen"],2)
+        self.assertEqual(o["out_of_scope_count"],1)
+        self.assertEqual(o["raw_count"],1)
+        self.assertEqual(o["in_window"],1)
+        self.assertEqual(o["items"][0]["title"],"Earth Observatory")
+        self.assertFalse(o["covered_query_pages"])
+
 if __name__=="__main__":unittest.main()
