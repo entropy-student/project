@@ -378,6 +378,40 @@ def markdown(a):
     out+=["","All items are DISCOVERED_UNREVIEWED. No item is auto-added to TOPICS_V1.json,","and commercial media rights and full STORY-FIT remain unverified."]
     return "\n".join(out)+"\n"
 
+def plos_review_manifest(a):
+    source=next((s for s in a["sources"] if s["source"]=="PLOS"),None)
+    items=[] if source is None else [
+      {"id":it["id"],"title":it["title"],"date":it["date"],"url":it["url"],
+       "article_type":it["article_type"],"subject_labels":it.get("subjects",[]),
+       "review_tags":it["screening"]["tags"],"editorial":"DISCOVERED_UNREVIEWED"}
+      for it in source.get("items",[])
+      if it.get("screening",{}).get("review_lane")=="TOPIC_REVIEW"]
+    items.sort(key=lambda x:(x["date"] or "",x["id"]),reverse=True)
+    return {"window":a["window"],"ran_utc":a["ran_utc"],
+            "ruleset":"PLOS_TOPIC_HINTS_V1",
+            "source_status":source["status"] if source else "NOT_RUN",
+            "source_parent_articles":source["in_window"] if source else None,
+            "topic_review_count":len(items),
+            "review_required":True,"auto_approved_count":0,
+            "unmatched_still_retained_in_audit":True,
+            "disclaimer":"Only a manual triage index; not original-research proof, title approval, or story-fit GO.",
+            "items":items}
+
+def plos_review_markdown(manifest):
+    lines=["# PLOS title/subject topical hints — manual review only","",
+      "Window: "+ " to ".join(manifest["window"]), "",
+      "Source fetch: "+manifest["source_status"]+" | Parent articles: "+str(manifest["source_parent_articles"])+
+        " | Priority-review hints: "+str(manifest["topic_review_count"]), "",
+      "**No item approved.** All unmatched and non-research items remain in audit.json. ",
+      "Missing tags do not prove irrelevance; a lexical hit does not prove experiment quality.", "",
+      "| Date | DOI | Title | Metadata hint tags |",
+      "|---|---|---|---|"]
+    for it in manifest["items"]:
+        title=it["title"].replace("|",r"\|").replace("\n"," ").strip()
+        doi=it["id"].replace("|",r"\|")
+        lines.append(f'| {it["date"]} | {doi} | {title} | {", ".join(it["review_tags"])} |')
+    return "\n".join(lines)+"\n"
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--start",default=START);p.add_argument("--end",default=END)
@@ -388,6 +422,9 @@ def main():
     result=audit(a.start,a.end)
     (dest/"audit.json").write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8")
     (dest/"AUDIT.md").write_text(markdown(result),encoding="utf-8")
+    manifest=plos_review_manifest(result)
+    (dest/"PLOS_REVIEW_QUEUE.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+    (dest/"PLOS_REVIEW_QUEUE.md").write_text(plos_review_markdown(manifest),encoding="utf-8")
     print("Output",dest.resolve())
 
 if __name__=="__main__":main()
