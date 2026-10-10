@@ -1,4 +1,6 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
+> **P3-R4 latest (2026-10-10)**: Independent narrative review useful points were implemented in [two full narration prototypes](../research/reports/2026-10-10_P3R4_ADOPTED_REVIEW_FINDINGS_AND_TEST_PLAN.md); [unadopted proposals are isolated here](../research/reports/2026-10-10_P3R4_NOT_ADOPTED_AND_PENDING_LOG.md). No listener measurements, audiovisual production or modifications to TOPICS/WORKFLOW; Owner review pending. Earlier P3-R3 status notes below are historical.
+
 > **P3-R3 最新补充｜Owner A“研究人员突然出戏”反馈响应（2026-10-10）**：P3-R2 不是最终节目风格；已针对反馈改写 [六篇短原型](../research/story-fit/prototypes/2026-10-10_P3R3_SIX_REWRITTEN_NARRATIVE_PITCHES.md) 与 [六套约五分钟结构](../research/reports/2026-10-10_P3R3_NARRATIVE_CONTINUITY_AND_MIDPOINT_REWRITE.md)，保留所有旧稿版本和事实边界，另有 [编辑QA](../research/reports/2026-10-10_P3R3_OWNER_FEEDBACK_AND_EDITORIAL_QA.md)。**当前等待 Owner 对新版的体验反馈**；旧 P3-R2“等待原版评价”与 P3-R1“下一步 P3-R2”皆为历史步骤。无观众效果保证、无规则更新、无音视频生产。
 
 > **P3-R2 最新研究记录（2026-10-10）**：现有三题 B/D/J 各两版讲述原型（6篇短稿）和6套约五分钟**结构压力测试**已经在 main 归档，见 [短稿](../research/story-fit/prototypes/2026-10-10_P3R2_SIX_MATCHED_NARRATIVE_PITCHES.md) 与 [Owner 评审卡](../research/reports/2026-10-10_P3R2_OWNER_DECISION_AND_EDIT_REVIEW.md)。**尚未实际录音、盲测或做任何真实成片；当前等待 P3-R3 Owner/受众反馈**。下方 P3-R1 的“下一步 P3-R2”仅是历史计划，不再是当前执行阶段。
