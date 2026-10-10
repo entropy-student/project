@@ -212,3 +212,13 @@ P3-R6合格的故事/观众承诺 + 来源事实清单
 **执行效率目标**：每期一次性完成“资产清单 + 许可依据链接 + 必要署名文案”，**无需为每张 CC BY 论文图额外走人工邮件授权**。审片只关注关键视觉对应真实结论、第三方素材例外和风险位点；非关键图库镜头由标准化许可判定自动走候选筛选。
 
 **仍然为 PLAN_ONLY**：本追加内容只是降低不必要的版权焦虑、修正素材分流优先级，不对未经查看的外链做许可证判定，也不启动下载、授权联系、TTS或渲染。
+
+
+## 10. 新 G0 执行进展：上游静态核查已完成，本机只读证据待补（2026-10-10）
+
+Owner 已在聊天中确认“下一步”，授权开始**联合新 G0 的只读规划/审查**，**不等于批准 G1 实际样片生产**。
+
+- [上游源码核验+精确接入蓝图](P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md)：公开 `calesthio/OpenMontage` 主仓的 Remotion、`animated-explainer`、`video_compose` atelier接口、subtitle/alignment、asset/edit JSON schema 已通过**静态源码读取**；修正原先可能直接套 `documentary-montage` 的想法（该流水线音乐主导，反而不适合旁白优先的CWS），以及默认 `Explainer` 的逐词字幕不符合单行无高亮。
+- [本地 Codex 只读 G0 一次执行任务书](P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md)：收集真实安装路径/SHA、node_modules、FFmpeg、Remotion、实际语音/中文对齐能力与版本差异，并在同一轮完成本地适配蓝图与新 G1 实测验收方案。
+- **唯一诚实阶段状态**：`G0_PARTIAL_UPSTREAM_STATIC_DONE_LOCAL_EVIDENCE_PENDING`。本对话没有 Windows 文件读写/本地 Codex 执行工具；当前只完成通过 GitHub 的上游/项目仓库静态审查，**不能写 G0 PASS**，不能说生成工具链已经打通。
+- 原有 P3-R1～P3-R6 叙事与时长决定、A/B v1.2 视觉、正式四轴与36条选题库、媒体权利边界均继续保留，不从技术准备自动推进节目 STORY-FIT 状态。

@@ -6,8 +6,8 @@
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
-- **当前阶段 `P3-R6 NARRATIVE POLICY COMPLETE + P4-P0 VIDEO ARCHITECTURE PLAN_ONLY`**：叙事纸面审稿/自然时长口径已完成，真实音频与受众验证仍未开始。2026-10-10 用户授权**先整体审查视频模板与未来生产流程，只讨论/规划，不生成/测试**；[P4-P0 视频架构总规划](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)已记录。复核表明 retro-mac-v1.2 **仅HTML/CSS外观demo**，64秒四段固定轮播/字幕占位，不能当作已可合成成片；拟**优先复用已有OpenMontage上游的Remotion+FFmpeg**，但 Owner Windows 本地版本/组合器/素材/对齐能力均尚未G0只读查证。P4-P0为**并行技术规划**，不代表正式WORKFLOW第5–7阶段跳级或已授权生产。
-- **下一步**：Owner 已明确同意**原 G0 本地只读审计与原 G1 接入方案设计合并为一关**。执行次序为：**新 G0 一轮交付本机能力矩阵＋OpenMontage/Remotion集成蓝图**（只读，不安装/测试/渲染）→ **新 G1** 另行批准后做20–30秒音画短片验证 → **新 G2** 首条完整低成本作品 → **新 G3** 可复制生产。当前只是同意合并规划，**没有授权本轮开始对 Owner Windows 执行 G0**；真实配音/受众测试及任何生产同样须独立批准。详见[视频架构第7节](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。
+- **当前阶段 `P3-R6 NARRATIVE COMPLETE + P4-G0 UPSTREAM STATIC DONE / LOCAL READBACK PENDING`**：Owner 已批准开始联合G0（本机能力审计＋制作集成蓝图），但 ChatGPT 当前工具仅能访问 GitHub，不能直接读取 Owner Windows 环境。[G0上游源码核查与预设蓝图](P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md)已完成：确认 OpenMontage 主仓 AGPL-3.0、Remotion composer/asset schema、默认 Explainer 高亮字幕及 documentary-montage 不适合直接作为本频道旁白主线；建议 explainer 工作流＋CWS专用 QuickTime 组件/独立权利账本。**本机实际 git版本、node_modules、TTS、中文对齐仍UNKNOWN；G0不能标PASS。** P3-R6不凑时长和两篇故事原型继续有效，仍无实际配音/观众或视频生产。
+- **下一步**：用 [本地 Codex G0 只读任务书](P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md) 在 Owner Windows 上完成**一轮本机证据与对应接口设计**；仅允许只读查询和文字报告，不下载、不安装、不渲染、不测试、不调用付费模型。收到本机报告后才正式判定 G0，并提出新G1 20–30秒短样片方案供 Owner 另行批准；G1/G2/G3不自动启动。规划总档见[视频生产架构](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）

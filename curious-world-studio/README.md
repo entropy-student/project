@@ -49,7 +49,9 @@
 
 **只看样式**：直接在浏览器打开 `visual/retro-mac-v1.2/preview/index.html`。可在 B 模式中导入本地视频观察画框；这不代表版权、字幕声学对齐、渲染已通过。
 
-**视频生成整体规划（2026-10-10）**： [P4-P0 OpenMontage + Remotion/FFmpeg 架构与视觉模板审查](docs/VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。已说明现有 v1.2 HTML 64秒占位轮播与真实生成的差距、统一音轨驱动字幕/镜头、研究/图库/自制素材的证据与版权分流。**仅规划，未安装/生成/测试/发布**；正式决定待Owner评审。
+**视频生成整体规划（2026-10-10）**： [P4-P0 OpenMontage + Remotion/FFmpeg 架构与视觉模板审查](docs/VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。
+
+**G0 执行快照（2026-10-10）**：已完成[上游源码静态核查与接入蓝图](docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md)，准备了[本地Codex一次性只读审计+设计任务](docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md)。当前状态 **G0_PARTIAL_UPSTREAM_STATIC_DONE_LOCAL_EVIDENCE_PENDING**，未执行本地检查、模型、安装或视频测试；实时状态始终以[CURRENT_STATE](docs/CURRENT_STATE.md)为准。已说明现有 v1.2 HTML 64秒占位轮播与真实生成的差距、统一音轨驱动字幕/镜头、研究/图库/自制素材的证据与版权分流。**仅规划，未安装/生成/测试/发布**；正式决定待Owner评审。
 
 ## 当前阶段与后续
 
