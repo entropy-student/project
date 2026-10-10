@@ -1,4 +1,6 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
+> **P3-R2 最新研究记录（2026-10-10）**：现有三题 B/D/J 各两版讲述原型（6篇短稿）和6套约五分钟**结构压力测试**已经在 main 归档，见 [短稿](../research/story-fit/prototypes/2026-10-10_P3R2_SIX_MATCHED_NARRATIVE_PITCHES.md) 与 [Owner 评审卡](../research/reports/2026-10-10_P3R2_OWNER_DECISION_AND_EDIT_REVIEW.md)。**尚未实际录音、盲测或做任何真实成片；当前等待 P3-R3 Owner/受众反馈**。下方 P3-R1 的“下一步 P3-R2”仅是历史计划，不再是当前执行阶段。
+
 > **当前唯一状态**：[CURRENT_STATE.md](CURRENT_STATE.md)。本文件以下保留各轮按时间累积的历史决策和当时待办，各段“最新”不能覆盖当前状态。P0/P1 线上通过而九源整体 PARTIAL；当前 P3-R1 已完成，下一步是 P3-R2。业务规则未变。
 
 # 历史决策与阶段日志（当前状态请见 CURRENT_STATE.md）
