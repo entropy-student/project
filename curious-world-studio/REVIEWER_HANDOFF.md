@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P3-R3 最新（2026-10-10，文本改写，不是节目正式机制通过）**：Owner 选择了**观众正在听有趣故事，却突然因“研究人员/实验”出戏**作为首要缺点，且大体认可语言生硬、答案过早揭示、过于实验目录等其他问题；已依授权制作[新版六篇短原型](research/story-fit/prototypes/2026-10-10_P3R3_SIX_REWRITTEN_NARRATIVE_PITCHES.md)、[新版六套约5分钟结构](research/reports/2026-10-10_P3R3_NARRATIVE_CONTINUITY_AND_MIDPOINT_REWRITE.md)和[反馈及编辑QA](research/reports/2026-10-10_P3R3_OWNER_FEEDBACK_AND_EDITORIAL_QA.md)。措施：**场景/选择先行→观众产生真实疑问→研究证据再回答→回到现场**；M3 的选择延续到中后段，M2 对 B 明确为当前材料的负例、D-A 若不足五分钟不硬凑；论文真实性/限制仍要表达。旧 P3-R2 报告全部保留。当前下一步 Owner 阅读**新版**并给出是否仍出戏的具体句子；无真实盲评、没有音视频制作；TOPICS/BOARD/WORKFLOW/视觉均不变。
+
+
 > **P3-R2 纸面原型已完成（2026-10-10；新于下方 P3-R1）**：B 声音 / D 认知负荷 / J 果冻各完成同题不同机制两个**约60–90秒非视频讲述原型**及对应**完整约5分钟理解推进结构压力测试**；见 [六短稿](research/story-fit/prototypes/2026-10-10_P3R2_SIX_MATCHED_NARRATIVE_PITCHES.md)、[六完整结构](research/reports/2026-10-10_P3R2_SIX_5MIN_NARRATIVE_STRESS_TEST.md)、[Owner 审阅卡](research/reports/2026-10-10_P3R2_OWNER_DECISION_AND_EDIT_REVIEW.md)。编辑假说：B 适配 M1 强于 M2（M2 易成实验目录）；D M3 比 M1 更有选择代入；J M1/M3 都有明确心智/犹豫/内疚分化，**仅纸面判断，不是观众反馈或真实5分钟播放结果**。下一步 P3-R3 Owner 盲审/尽可能独立受众验证。正式流程、四轴、36条题库与视觉全部不变；没有视频/录音、素材授权或正式 STORYFIT_GO。
 
 
