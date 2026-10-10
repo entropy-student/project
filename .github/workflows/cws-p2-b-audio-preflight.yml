@@ -1,0 +1,33 @@
+name: Curious World Studio — P2 B audio research preflight only
+on:
+  push:
+    paths:
+      - '.github/workflows/cws-p2-b-audio-preflight.yml'
+      - 'curious-world-studio/research/topic-bank/preflight/audio_probe.py'
+      - 'curious-world-studio/research/topic-bank/preflight/test_audio_probe.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audio-metadata-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline preflight fixture tests
+        run: |
+          cd curious-world-studio/research/topic-bank/preflight
+          python -m unittest discover -v -p 'test_*.py'
+      - name: Read-only source S1 audio metadata probe
+        env:
+          CWS_QA_OUTPUT: ${{ runner.temp }}/cws-p2b-research-qa
+        run: |
+          python curious-world-studio/research/topic-bank/preflight/audio_probe.py
+      - name: Upload JSON report only (NO AUDIO / NO VIDEO)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cws-p2-b-audio-qa-json-only
+          path: ${{ runner.temp }}/cws-p2b-research-qa/S1_AUDIO_QA.json
+          if-no-files-found: warn
+          retention-days: 14
