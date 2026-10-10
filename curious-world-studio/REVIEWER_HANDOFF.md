@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P4-G0 LATEST (2026-10-10; PARTIAL only)**: Owner authorized next **combined G0** but forbade generating/testing/installing. Public upstream code of **calesthio/OpenMontage** and CWS repo were read via GitHub; **no access to Owner Windows**. [Static verified G0 audit and adapter blueprint](docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md) documents OpenMontage **AGPL-3.0**, default Explainer word-highlight captions mismatch, documentary-montage music-led defaults mismatch, public `video_compose` Remotion atelier route, `asset_manifest/edit_decisions` strict schemas, and CWS own A/B chrome+single-line subtitle+separate rights ledger. **Actual local install, SHA, Remotion/node_modules, Qwen TTS and Mandarin alignment all UNKNOWN**. [One-pass local Codex task](docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md) must collect evidence + integration design, report back before any G0 PASS. No renderer/TTS/media/test or code changes executed. P3-R6 narrative, visual STYLE_LOCK, 36-topic bank and legal review remain unchanged.
+
+
 > **P4-P0 Gate consolidation (2026-10-10; plan only)**: Owner asked to merge former G0 local capability read-only audit and G1 integration design. Combined **NEW G0 = one pass of on-device OpenMontage/Remotion/FFmpeg/Qwen/SRT inventory plus concrete timeline/audio/captions/asset-license/A-B chrome integration blueprint**. New G1=20–30s render validation; new G2=first complete video; new G3=repeatable pipeline. Old labels G2→G1, G3→G2, G4→G3; historical reporting unchanged. Update in [video production plan §7](docs/VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md). No environment read, tests, TTS, installation, render or production authorization occurred.
 
 
