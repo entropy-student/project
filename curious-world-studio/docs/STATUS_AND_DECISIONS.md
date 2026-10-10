@@ -3,6 +3,8 @@
 
 # 当前决策与待办
 
+> **最新 P2-E｜B/D 制作前预审，尚未进入正式 STORY-FIT 或生产**：B 原官方 RAR5 补充音频 15.9MB 已在 [Actions #38025311695](https://github.com/entropy-student/project/actions/runs/38025311695) 真实解析 **14/14 WAV**，对照组文件不同但时长/电平匹配；5/5 离线测试通过。**未做真人试听、压缩后手机播放、权利独立核查**。D 原文主要因子认知负荷/刺激效应和次级问答难度效应已厘清。B 四轴预审 `CONDITIONAL`，D `CONDITIONAL_LOW_CONFIDENCE`，**不等于 STORYFIT_GO**，未新增正式题目。Owner 强制要求：**进入任何视频生产前先通知他，取用昨晚跑通的本地 Codex 视频方法和实例核对接口，批准后才考虑接入**。详见 [P2-E 预审及硬停点](../research/topic-bank/batches/2026-10-10_P2E_BD_PRE_STORYFIT_AND_AUDIO_QA.md)。
+
 > **最新 P2-D Owner 点击偏好已确定：B > D**（前者毫秒级声音差异，后者认知负荷风险决策）；Owner 认为「近、但自己没有深入观察/思考过」的问题更有吸引力，但**仅个人判断，尚不代表 B 站实际观众**。A/C 并未被拒绝。优先核查 B 原论文 S1 Audio 的真实播放效果/复用权、D 认知负荷与 tDCS 的分离解释，随后组织独立目标观众小样本盲选；**不修改四轴、分类器、36 条题库或脚本**。详见 [P2-D Owner 反馈与继续核验](../research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)。
 
 > **最新 P2-B/C 审查进展**：5 篇高故事线索 PLOS 原论文经同一助手原始全文复核，已准备 [Owner 质量把关卡](../research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)；推荐首先比较巨噬细胞与毫秒点击声题。另完成同窗**可见官网子集**对账：MIT 3/3、NASA EO 3/3、Nature 两篇日期与来源核对 2/2、JEB 接受稿可见 7/7 在 Crossref 11 条内；不冒充自动历史全量。报告 [P2-B/C](../research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md)。**仍缺真正独立第二审、Owner 点击意愿和可重复归档遍历验收；九源完整性仍 PARTIAL，正式选题 36 条不变。**
