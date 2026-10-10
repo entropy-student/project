@@ -27,3 +27,14 @@
 - **路线 A**：Strike a Chord 字母运动 + Heider/Simmel 抽象运动知觉相关研究；节目承载力 CONDITIONAL GO，需对跨研究关联与“无字词提示”互动谨慎求证。
 - **路线 B**：4DCodeBench、AgentGarten 原研究具备连续案例；可进入 4–6 分钟内容原型，但原素材逐片 QA 和商业授权尚未完成。
 - **决策**：暂优先 B，保留 A；不修改 HF-FIND 唯一主协议；未开展完整视频制作。
+
+
+## 2026-10-10 Owner 确认的正式选题库顺序（已完成第一批初选）
+
+**九大信息源 → 批量发现 → 统一筛选与评分 → 正式选题库 → STORY-FIT 深审 → 剧本/素材核验 → 视频制作/QA/发布。**
+
+- 工作流唯一入口：[`research/topic-bank/WORKFLOW_V1.md`](../research/topic-bank/WORKFLOW_V1.md)
+- 选题库展示：[`research/topic-bank/BOARD_V1.md`](../research/topic-bank/BOARD_V1.md)；机读母表：[`research/topic-bank/TOPICS_V1.json`](../research/topic-bank/TOPICS_V1.json)
+- 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](../research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
+- 21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）。来自历史研究回填 + 少量定向抽查，**并非九源三日完整扫描或自动化生产系统**；尚无 STORY-FIT 正式通关、竞争分析或素材复用许可。
+- HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。
