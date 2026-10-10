@@ -33,4 +33,18 @@ class AudioPreflightTests(unittest.TestCase):
         out=p.analyze(z.getvalue())
         self.assertIn(out['media'][0]['status'],('MEMBER_RESOURCE_LIMIT','INVALID_MEDIA'))
 
+    def test_rar_listing_parser(self):
+        listing=('Path = /tmp/input.rar\nType = Rar5\n\n'
+                 'Path = clips/A.wav\nSize = 17684\nPacked Size = 9211\n\n'
+                 'Path = README.txt\nSize = 100\n\n'
+                 'Path = B.mp3\nSize = 100500\n')
+        self.assertEqual(p.rar_members(listing),[('clips/A.wav',17684),('B.mp3',100500)])
+
+    def test_rar_requires_decoder(self):
+        from unittest import mock
+        with mock.patch.object(p.shutil,'which',return_value=None):
+            result=p.analyze(b'Rar!\x1a\x07\x01\x00' + b'0'*8)
+        self.assertEqual(result['status'],'RAR_DECODER_UNAVAILABLE')
+        self.assertFalse(result['raw_media_redistributed'])
+
 if __name__=='__main__':unittest.main()
