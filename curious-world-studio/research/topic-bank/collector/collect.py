@@ -32,7 +32,7 @@ def get(url):
 def report(source,mode):
     return {"source":source,"mode":mode,"status":"BLOCKED","attempts":0,"received_pages":0,
       "source_total":None,"raw_count":0,"in_window":0,"missing_dates":0,
-      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[]}
+      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0}
 
 def read(out,url,xml=False):
     out["attempts"]+=1
@@ -126,8 +126,20 @@ def feed(source,url,start,end):
             for el in node:
                 if el.tag.split("}")[-1]=="link" and el.get("href"):
                     link=el.get("href");break
+            o["feed_entries_seen"]+=1
+            if source=="NASA_EO_IMAGE":
+                parsed=urllib.parse.urlsplit(link)
+                is_eo=(parsed.netloc in ("science.nasa.gov","earthobservatory.nasa.gov") and
+                    (parsed.path.startswith("/earth/earth-observatory/") or
+                     parsed.path.startswith("/images/")))
+                if not is_eo:
+                    o["out_of_scope_count"]+=1
+                    continue
             o["items"].append(datum(source,val("title"),link,val("pubDate") or val("published") or val("updated") or val("date") or val("publicationDate") or val("issued"),val("guid") or val("id") or link,val("description") or val("summary"),"feed"))
-        if not o["items"]:o["errors"].append({"url":url,"error":"no parseable items"})
+        if source=="NASA_EO_IMAGE":
+            o["notes"].append(f"NASA feed entries seen={o['feed_entries_seen']}; excluded non-Earth-Observatory={o['out_of_scope_count']}.")
+        if not o["items"] and not o["feed_entries_seen"]:
+            o["errors"].append({"url":url,"error":"no parseable items"})
     o["notes"].append("Rolling feed only: dates falling outside the current feed may be absent. NOT a complete archive.")
     return finish(o,start,end,False)
 
