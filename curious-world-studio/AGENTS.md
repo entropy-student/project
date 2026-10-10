@@ -1,3 +1,6 @@
+<!-- CWS-20261010-HANDOFF-NAV -->
+> **先读**：`docs/PROJECT_HANDOFF_2026-10-10.md`，它是跨聊天恢复和 Reviewer P0/P1 验收说明。保留原 HF-FIND / STYLE_LOCK 的唯一权威地位。
+
 # Agent 入口（本项目唯一）
 
 本项目目录用于保存频道研究与视觉规范，不是执行一次全自动视频制作。
@@ -5,8 +8,9 @@
 ## 读文件优先级
 1. 项目说明 `README.md`、确定事项 `docs/STATUS_AND_DECISIONS.md`。
 2. **研究任务唯一权威协议** `research/HF_有趣发现_唯一主协议.md`。严禁把旧 v1/v2/v3 报告当成并行命令。
-3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。\n5. 此项目位于项目库 `project/curious-world-studio/`，不修改其他一级项目。
+3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。
+5. 本项目位于项目库 `project/curious-world-studio/`，不修改其他一级项目。
 
 ## 命令分流
 - `HF-FIND` / 日常发现 / 回归测试：按研究主协议执行，扫描 HF Daily Papers 并出两套榜单；不写剧本、剪辑、部署。
