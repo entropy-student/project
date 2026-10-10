@@ -47,9 +47,12 @@ py collect.py --start 2026-10-07 --end 2026-10-09 --output .\outputs
 
 **每期候选还要经过**：原论文真伪/方法审核 → 是否有具体故事 → STORY-FIT 4–6 分钟验证 → B站竞品检查 → 原视频逐片审核与商用许可确认；只有这些完成，才能宣称节目制作可行。
 
-## 5. 本轮状态（2026-10-10）
+## 5. 2026-10-10 P0 在线验收更新（覆盖本页原先的“未获得 run”状态）
 
-- 当前 ChatGPT 容器中的对外 DNS 请求均失败，因此**无法在容器执行真实下载**。
-- 官方公开接口、RSS 入口和部分原始页面已通过网页检索核对；GitHub 的工作流文件写入已成功。
-- 目前**没有可从本会话直接核实的 GitHub Actions run ID 或运行结果**，故不能报告实际拉取条目数/耗时/全源成功率。
-- 本文件是运行合同与边界，真正数量必须来自工作流上传的 `audit.json`；不得凭历史 36 个候选推导此轮抓取成功率。
+- [远端真实运行 #38021149558](https://github.com/entropy-student/project/actions/runs/38021149558) 成功：**15/15 离线测试**、三日实时采集及 `cws-source-audit-results` artifact（ID `11657992614`）均已验证。
+- **PLOS 303 篇**基础论文，而不是过去的 2,533 个包含章节片段的文档（修复为 `fq=doc_type:full`，4 页 / `numFound=303`）。
+- **NASA Earth Observatory 3 条**目标栏目记录：从 10 条 RSS 原始记录中排除 3 条非 EO 的 Photojournal；上游 XML 格式异常由有限兼容修复，仅记 `PARTIAL`。
+- **Nature Human Behaviour 2 条**落在日期窗口内；HF 215、MIT 3、JEB/Crossref 11，最终 537 条窗口元数据，跨源 key 去重后仍为 537。此数字不是优质选题数量。
+- **九源整体覆盖仍为 PARTIAL / NO-PASS**：未核实 EurekAlert 自动采集、滚动 RSS 完整归档、JEB 原刊全量；OpenAlex/PubMed 仍只做 DOI 探测。
+- 权威新报告：[P0 LIVE REVIEW](../batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。正式题库、HF-FIND 与视觉规范均未更改。
+
