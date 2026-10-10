@@ -1,0 +1,31 @@
+name: Curious World Studio — topic bank schema validation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/cws-topic-bank-validation.yml'
+      - 'curious-world-studio/research/topic-bank/TOPICS_V1.json'
+      - 'curious-world-studio/research/topic-bank/BOARD_V1.md'
+      - 'curious-world-studio/research/topic-bank/validate_topic_bank.py'
+      - 'curious-world-studio/research/topic-bank/test_validate_topic_bank.py'
+  pull_request:
+    paths:
+      - '.github/workflows/cws-topic-bank-validation.yml'
+      - 'curious-world-studio/research/topic-bank/TOPICS_V1.json'
+      - 'curious-world-studio/research/topic-bank/BOARD_V1.md'
+      - 'curious-world-studio/research/topic-bank/validate_topic_bank.py'
+      - 'curious-world-studio/research/topic-bank/test_validate_topic_bank.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Schema and board consistency
+        run: python curious-world-studio/research/topic-bank/validate_topic_bank.py
+      - name: Offline regression tests
+        run: python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py -v

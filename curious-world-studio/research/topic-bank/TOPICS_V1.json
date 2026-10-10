@@ -1,5 +1,5 @@
 {
-  "schema": "CW-TOPIC-BANK-1.0",
+  "schema": "CW-TOPIC-BANK-1.1",
   "created_at": "2026-10-10",
   "scope": "21 historical imported topics + 15 targeted verified/discovered candidates from 2026-10-07 to 09; source coverage PARTIAL, NOT a nine-source exhaustive scan",
   "counts": {
@@ -36,7 +36,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0002",
@@ -65,7 +69,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0003",
@@ -94,7 +102,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0004",
@@ -123,7 +135,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0005",
@@ -152,7 +168,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0006",
@@ -181,7 +201,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0007",
@@ -210,7 +234,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0008",
@@ -239,7 +267,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0009",
@@ -268,7 +300,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0010",
@@ -297,7 +333,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0011",
@@ -326,7 +366,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0012",
@@ -355,7 +399,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0013",
@@ -384,7 +432,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0014",
@@ -413,7 +465,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0015",
@@ -442,7 +498,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0016",
@@ -471,7 +531,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0017",
@@ -500,7 +564,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0018",
@@ -529,7 +597,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0019",
@@ -558,7 +630,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0020",
@@ -587,7 +663,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0021",
@@ -616,7 +696,11 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "original_url": null,
+      "discovered_on": null,
+      "published_on": null,
+      "next_action": null
     },
     {
       "id": "CW-0022",
@@ -648,7 +732,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0023",
@@ -680,7 +765,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0024",
@@ -712,7 +798,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0025",
@@ -744,7 +831,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0026",
@@ -776,7 +864,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0027",
@@ -808,7 +897,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0028",
@@ -840,7 +930,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0029",
@@ -872,7 +963,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0030",
@@ -904,7 +996,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0031",
@@ -936,7 +1029,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0032",
@@ -968,7 +1062,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0033",
@@ -1000,7 +1095,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0034",
@@ -1032,7 +1128,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0035",
@@ -1064,7 +1161,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     },
     {
       "id": "CW-0036",
@@ -1096,7 +1194,8 @@
       "video_content": "NOT_FRAME_REVIEWED",
       "media_rights": "UNKNOWN",
       "bilibili_competitors": "NOT_CHECKED",
-      "storyfit_status": "NOT_STARTED"
+      "storyfit_status": "NOT_STARTED",
+      "next_action": null
     }
   ],
   "latest_batch": "2026-10-07_to_09_PARTIAL_9_SOURCE_SCAN",

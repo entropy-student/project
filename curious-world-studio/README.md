@@ -65,7 +65,7 @@
 **九大信息源 → 批量发现 → 统一筛选与评分 → 正式选题库 → STORY-FIT 深审 → 剧本/素材核验 → 视频制作/QA/发布。**
 
 - 工作流唯一入口：[`research/topic-bank/WORKFLOW_V1.md`](research/topic-bank/WORKFLOW_V1.md)
-- 选题库展示：[`research/topic-bank/BOARD_V1.md`](research/topic-bank/BOARD_V1.md)；机读母表：[`research/topic-bank/TOPICS_V1.json`](research/topic-bank/TOPICS_V1.json)
+- 选题库展示：[`research/topic-bank/BOARD_V1.md`](research/topic-bank/BOARD_V1.md)；机读母表：[`research/topic-bank/TOPICS_V1.json`](research/topic-bank/TOPICS_V1.json)（Schema v1.1：旧题保持、未知日期留 null；[字段变更说明](research/topic-bank/SCHEMA_V1_1_CHANGELOG.md)）。只读结构检查：`python curious-world-studio/research/topic-bank/validate_topic_bank.py`
 - 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
 - **当前母库 36 条（SHORTLIST 11 / VERIFY 15 / HOLD 9 / REJECTED 1）**。最初 **21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）属于历史首批快照**，之后又定向新增 15 条；不是九源三日全量扫描，未有正式 STORYFIT_GO 或媒体商业复用许可通关。
 - HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。

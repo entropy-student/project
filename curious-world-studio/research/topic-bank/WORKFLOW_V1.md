@@ -42,10 +42,21 @@
 
 ## 3. 批次与文件规范
 
-每批单独一个检索日志 `batches/YYYY-MM-DD_*.md`；统一数据文件 `TOPICS_V1.json` + 面向人的 `BOARD_V1.md`；ID 一旦发放不重用。每条至少:
-`id, question, area, discovery_source, original_source, date, links, story_angle, status, hook, surprise, progression, visual, evidence_state, competitor_check, media_state, caveat, next_action, batch_id`.
+每批单独一个检索日志 `batches/YYYY-MM-DD_*.md`；统一数据文件 `TOPICS_V1.json` + 面向人的 `BOARD_V1.md`；ID 一旦发放不重用。
 
-权威结构为本文件，选题库为 `TOPICS_V1.json`；`BOARD_V1.md` 是同一快照的人类可读视图，更新时必须同步校验数量与状态。
+**机器可读字段合同（`CW-TOPIC-BANK-1.1`，与已经使用的 JSON 对齐）**：以下为**数据存储/校验规范**，不是更改本文件第 0–2 节的来源、评分、晋级或 STORY-FIT 业务规则。
+
+- **原有必备字段**：`id, title, area, discovery_source, source_url, status, ratings, story_beats, critical_caveat, batch_id, owner_selected, evidence_state, source_originality, video_link, video_content, media_rights, bilibili_competitors, storyfit_status`。
+- **已有的四轴评分**保存在 `ratings.hook / ratings.surprise / ratings.progression / ratings.visual`，仍只允许 `HIGH / MED / LOW / UNKNOWN`；原先的分数、含义与 SHORTLIST 推荐门槛均保持不变。
+- **统一存在但可为 `null` 的追溯元数据**：`original_url`（候选原始资料定位 URL；并非已核实为论文原文的证明）、`discovered_on`（该次检索记录的发现日期）、`published_on`（当时登记的对应资料日期，具体是论文还是新闻须另核）、`next_action`（已明确记录的下一项审核动作）。无可核事实时必须用 JSON `null`，不能拿批次日期冒充论文发表日期，也不能以 `UNKNOWN` 文本伪装已完成。
+- **旧字段对应**：历史文档的 `question → title`、`hook/surprise/progression/visual → ratings.*`、`story_angle → title + story_beats`、`caveat → critical_caveat`、`competitor_check → bilibili_competitors`、`media_state → video_link + video_content + media_rights` 仅为**兼容对照**；后两者不是单项可替代的“版权已通过”字段。`original_source`/`links` 未被 `source_url` 自动等同于已核真原文，单项事实仍以 `evidence_state` 及批次原始证据为准。
+- **批次执行约束**：新旧数据必须允许未知为 `null`；信息补齐时留可追溯证据，不得因添加/留空字段自动晋级、降级、认定素材可商用或计算新分数。
+
+**同步核验**：以 `TOPICS_V1.json` 为机读母数据，`BOARD_V1.md` 仅是同一快照的人类可读视图；新增/变更题目时同步检查 ID、数量与状态。只读校验工具：
+`python curious-world-studio/research/topic-bank/validate_topic_bank.py`；
+回归：
+`python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py`。
+该工具仅检查**数据结构与展示一致性**，不负责重新评审内容价值或判断版权。
 
 ## 4. 生效范围
 

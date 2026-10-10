@@ -35,9 +35,9 @@ Owner 批准的既定次序保持：**九大信息源 → 批量发现 → 统�
 - 不重装、不重复 API 连通/12 秒视频基线，不调用云模型生成测试 TTS；不触碰 Windows/VPS 网络或 VPN/WG/HY2/Clash。
 - 未进入生产：**这不是授权启动任何视频、素材下载或付费推理的指令**。进入真正生产前，向 Owner 提供完整方案并征得明确批准。
 
-## 4. 尚待 Owner 裁决的业务逻辑问题（不得自动修改）
+## 4. 技术 Schema 已修复；以下仍是需要 Owner 裁决的业务逻辑问题（不得自动修改）
 
-1. `WORKFLOW_V1.md` 的字段列表与实际 `TOPICS_V1.json` 的 Schema 不同：已建立[只读映射和缺口清单](../research/topic-bank/SCHEMA_COMPATIBILITY_REVIEW.md)，**未调整正式 Schema、字段名、门槛或分类器**。如果要定版校验器/迁移，请先 Owner 决定。
+1. **Schema 技术不一致已按 Owner 授权修复**：`TOPICS_V1.json` 扩展至 `CW-TOPIC-BANK-1.1`，保留原有 36 条内容/评分/状态；四项可空追溯字段以 `null` 表示未知；WORKFLOW **只修改第 3 节字段合同**，新增只读校验器和按文件范围触发的 GitHub Actions（[首轮通过记录](https://github.com/entropy-student/project/actions/runs/38032465320)）。见 [Schema v1.1 迁移记录](../research/topic-bank/SCHEMA_V1_1_CHANGELOG.md)。**评分和晋级业务规则仍未修改**。
 2. 旧四轴 PROGRESSION 倾向按“多证据节点”评估；P3-R1 新研究倾向按“观众理解如何变化”评估。**当前正式规则不变**；P3-R2 测试后再提出修订方案。
 3. B/D 的旧编辑建议仅作历史记录；不得自动为 B/D 新建 CW ID、升级 SHORTLIST、赋予 STORYFIT_GO 或把 D 正式标为 HOLD。
 4. M1/M2/M3 仅待测试；真实人物选择和假设情境是两种不同来源边界，是否写入正式节目协议需 Owner 许可。

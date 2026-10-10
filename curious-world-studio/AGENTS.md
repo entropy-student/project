@@ -29,5 +29,6 @@
 ## TOPIC-BANK｜跨领域选题正式流程
 - **Owner 已确认顺序**：九大信源→批量发现→筛选评价→正式选题库→STORY-FIT→剧本与素材→成片 QA。该工作流见 `research/topic-bank/WORKFLOW_V1.md`。
 - 指令 `TOPIC-BANK` /「批量发现与入库」：先读 `research/SOURCE_SYSTEM_FINAL_V1.md` 与 `research/topic-bank/WORKFLOW_V1.md`，然后新建带日期和覆盖量的批次日志，更新 `TOPICS_V1.json` 并同步 `BOARD_V1.md`。
+- 每次触及 `TOPICS_V1.json` / `BOARD_V1.md` 时，先跑 `python curious-world-studio/research/topic-bank/validate_topic_bank.py` 与 `python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py`；两项仅核字段、ID、日期格式及看板同步，不修改业务评分或晋级。
 - `SHORTLIST` 只代表准入下一阶段，不能说 `STORYFIT_GO`；资源商用授权、B 站竞争和逐片实测必须分开记录。
 - 不要因为 Owner 喜爱某些标题就夸大观众好感，也不因某项研究技术性强就简单淘汰。HF-FIND 仍只按原唯一主协议扫描 HF。
