@@ -1,3 +1,6 @@
+<!-- CWS-20261010-HANDOFF-NAV -->
+> 2026-10-10 完整最新交接：[PROJECT_HANDOFF_2026-10-10.md](PROJECT_HANDOFF_2026-10-10.md)；当前 P1 为采集器真实 Actions run/artifact 验收，之前的历史「下一步」不应覆盖它。
+
 # 当前决策与待办
 
 **更新日期：2026-10-10**。本文件只描述 Curious World Studio，位于 `entropy-student/project/curious-world-studio/`。
