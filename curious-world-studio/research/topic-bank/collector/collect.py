@@ -171,6 +171,18 @@ def indexes():
     o["notes"].append("Two exact DOI probes only; NOT a three-day PubMed/OpenAlex scan.")
     return o
 
+def canonical_key(it):
+    """Best-effort cross-source dedup by DOI, arXiv ID, then normalized title."""
+    import unicodedata
+    text=" ".join([str(it.get("id","")),str(it.get("url",""))])
+    m=re.search(r"10\.\d{4,9}/[^\s?#]+",text,re.I)
+    if m:return "doi:"+m.group(0).rstrip(".,;").lower()
+    m=re.search(r"(?:arxiv\.org/abs/|huggingface\.co/papers/)?(\d{4}\.\d{4,5})(?:v\d+)?",text)
+    if m:return "arxiv:"+m.group(1)
+    title=unicodedata.normalize("NFKC",it.get("title","")).casefold()
+    title=re.sub(r"[^\w]+","",title,flags=re.UNICODE)
+    return "title:"+title if title else "url:"+it.get("url","")
+
 def audit(start,end):
     sources=[lambda:hf(start,end),lambda:feed("MIT_RESEARCH","https://news.mit.edu/rss/research",start,end),
       lambda:feed("NASA_EO_IMAGE","https://science.nasa.gov/feed/earth-observatory/image-of-the-day",start,end),
@@ -186,9 +198,20 @@ def audit(start,end):
     blocked=report("EUREKALERT","human-reviewed discovery only")
     blocked["notes"].append("No verified public RSS/API; no unauthorized bypass of access controls.")
     results.insert(2,blocked)
+    # Metadata-only overlap count; fuzzy mismatches remain possible.
+    seen={};duplicates=[];total=0
+    for source in results:
+        for it in source.get("items",[]):
+            total+=1
+            key=canonical_key(it)
+            if key in seen:
+                duplicates.append({"key":key,"sources":[seen[key],source["source"]]})
+            else:seen[key]=source["source"]
     return {"window":[start,end],"ran_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
        "coverage":"PER-ENDPOINT ONLY; NOT nine-source exhaustive",
-       "sources":results,"all_nine_source_complete":False,"production_ready":False}
+       "sources":results,"date_window_items_across_sources":total,
+       "unique_keys_across_sources":len(seen),"cross_source_duplicate_keys":duplicates,
+       "all_nine_source_complete":False,"production_ready":False}
 
 def markdown(a):
     out=["# Science source acquisition audit","",
