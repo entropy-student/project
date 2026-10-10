@@ -1,0 +1,29 @@
+{
+  "status": "REVIEWED_FOR_PRIVATE_G1_PILOT",
+  "assets": [
+    {
+      "asset_id": "A001",
+      "sha256": "3bd76561dc2674cb3506627696ed62a81b89ce7ff69d093110601b9388f2555d",
+      "rights_basis": "The article copyright statement grants CC BY 4.0 reuse with attribution. Fig. 7 is identified in the article as the Video 1 outline; its caption contains no separate third-party credit or rights exception. This review covers the original figure image for the private G1 pilot only.",
+      "required_attribution": "Fig. 7 from Shimoyama T, Kume Y, Yamagata M, Takahashi H, Nakata Y (2026), “Edible agents with perceptible minds: A psychological study of human perception in human–food interaction,” PLOS ONE 21(6): e0350612, https://doi.org/10.1371/journal.pone.0350612, CC BY 4.0. Source bitmap presented in contain fit; separate Retro Mac UI, evidence label, and subtitles are compositional additions.",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "CONTENT_VERIFIED",
+        "reuse_rights_verified": "REUSE_RIGHTS_VERIFIED"
+      },
+      "review_notes": "Downloaded 3300x691 PNG. Visually matches the three-panel Fig. 7 Video 1 consultation storyboard (15 s, 36 s, 76 s); paper caption describes the agent's speaking/swaying vs stillness and states the displayed timestamps are not in the original video. Figure title/DOI, article CC BY notice, and nearby caption checked. No crop or color edit planned; third-party S3 video/audio is excluded."
+    },
+    {
+      "asset_id": "A002",
+      "sha256": "80af1515e6b4e5dfa1dce0065929a424620d7aed3666b96a16c246f505749dbc",
+      "rights_basis": "The article copyright statement grants CC BY 4.0 reuse with attribution. Fig. 8 is identified in the article as the Video 2 outline; its caption contains no separate third-party credit or rights exception. This review covers the original figure image for the private G1 pilot only.",
+      "required_attribution": "Fig. 8 from Shimoyama T, Kume Y, Yamagata M, Takahashi H, Nakata Y (2026), “Edible agents with perceptible minds: A psychological study of human perception in human–food interaction,” PLOS ONE 21(6): e0350612, https://doi.org/10.1371/journal.pone.0350612, CC BY 4.0. Source bitmap presented in contain fit; separate Retro Mac UI, evidence label, and subtitles are compositional additions.",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "CONTENT_VERIFIED",
+        "reuse_rights_verified": "REUSE_RIGHTS_VERIFIED"
+      },
+      "review_notes": "Downloaded 2400x1076 PNG. Visually matches the six-panel Fig. 8 Video 2 storyboard (15 s, 19 s, 33 s, 47 s, 62 s, 86 s), showing hand/toy prompts and different reactions; paper caption confirms the scenes and that displayed timestamps are not in the original video. Figure title/DOI, article CC BY notice, and nearby caption checked. No crop or color edit planned; no S3 video, extracted audio, or sound asset used."
+    }
+  ]
+}
