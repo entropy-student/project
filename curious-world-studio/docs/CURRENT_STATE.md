@@ -6,8 +6,8 @@
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
-- **当前阶段 `P3-R6 NATURAL RUNTIME POLICY + NARRATIVE QA COMPLETE → REAL LISTENING TEST PENDING`**：Owner 确认“时长服从内容，不拖沓、不硬凑”；已以最小改动同步 [WORKFLOW](../research/topic-bank/WORKFLOW_V1.md) 第5步和 HOLD 时长口径，保留其他业务门槛。完成 D-B/J-B 两篇连续口播 V1 的纸面承诺与节奏复核，见 [P3-R6 编辑决策及复核](../research/reports/2026-10-10_P3R6_CONTENT_FIRST_DURATION_AND_NARRATIVE_GATE.md)；旧 [P3-R5 时长估算](../research/reports/2026-10-10_P3R5_READTHROUGH_TIMING_AND_AUDIENCE_TEST_PROTOCOL.md)仅供参考，无需为了目标秒数补写。两篇 V1 正文均未修改，无真实录音/受众测试。
-- **下一步**：进入真正的**连续声音试读与小样本听感验证**：先按实际音色得到真实音轨长度，检查故事承诺是否兑现、有无拖沓和突然切研究、观众是否误解研究事实。开始云 TTS、音视频生产、付费推理或真实发布前需另行确认具体实施方案；不得冒充已经完成真实观众测试。
+- **当前阶段 `P3-R6 NARRATIVE POLICY COMPLETE + P4-P0 VIDEO ARCHITECTURE PLAN_ONLY`**：叙事纸面审稿/自然时长口径已完成，真实音频与受众验证仍未开始。2026-10-10 用户授权**先整体审查视频模板与未来生产流程，只讨论/规划，不生成/测试**；[P4-P0 视频架构总规划](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)已记录。复核表明 retro-mac-v1.2 **仅HTML/CSS外观demo**，64秒四段固定轮播/字幕占位，不能当作已可合成成片；拟**优先复用已有OpenMontage上游的Remotion+FFmpeg**，但 Owner Windows 本地版本/组合器/素材/对齐能力均尚未G0只读查证。P4-P0为**并行技术规划**，不代表正式WORKFLOW第5–7阶段跳级或已授权生产。
+- **下一步**：先由 Owner 评审并确定是否采纳上述架构。若同意，未来从**G0 只读核对 Owner Windows 本地 OpenMontage/Remotion/FFmpeg 实际版本和能力**开始（不安装、下载、渲染或付费调用）；再确认统一音轨驱动的中文对齐、素材版权/语义匹配、A/B外观合成接口。真实旁白/观众测试与任何视频生成均待**单独授权**。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）

@@ -19,7 +19,7 @@
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
-| 当前项目状态 | [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) | P3-R1 完成，P3-R2 待执行；仅状态文件，非业务协议 |
+| 当前项目状态 | [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) | P3-R6 叙事纸面阶段完成；P4-P0 视频架构规划待Owner评审，未进行实际声音/视频测试 |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |
@@ -49,9 +49,11 @@
 
 **只看样式**：直接在浏览器打开 `visual/retro-mac-v1.2/preview/index.html`。可在 B 模式中导入本地视频观察画框；这不代表版权、字幕声学对齐、渲染已通过。
 
+**视频生成整体规划（2026-10-10）**： [P4-P0 OpenMontage + Remotion/FFmpeg 架构与视觉模板审查](docs/VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。已说明现有 v1.2 HTML 64秒占位轮播与真实生成的差距、统一音轨驱动字幕/镜头、研究/图库/自制素材的证据与版权分流。**仅规划，未安装/生成/测试/发布**；正式决定待Owner评审。
+
 ## 当前阶段与后续
 
-研究系统和视觉基线已经建立；**当前 P3-R1 完成，等待 P3-R2 同题多机制叙事原型验证**。P0/P1 在线采集回归通过，九源完整性仍 PARTIAL；正式题库 36 条，尚无正式 STORYFIT_GO。Owner 交接称本地 OpenMontage 已完成短片技术闭环，但本仓未接入，约 5 分钟叙事和素材语义匹配质量未验。商业素材授权、声学时间对齐、发布自动化仍待验证；生产前须 Owner 明确确认。详见 [CURRENT_STATE](docs/CURRENT_STATE.md)。
+研究系统和视觉基线已经建立；**P3-R6 已完成叙事纸面复核与自然时长原则，目前并行开展 P4-P0 视频生成架构规划（只讨论，不执行）**。P0/P1 在线采集回归通过，九源完整性仍 PARTIAL；正式题库 36 条，尚无正式 STORYFIT_GO。Owner 交接称本地 OpenMontage 已完成短片技术闭环，但本仓未接入，约 5 分钟叙事和素材语义匹配质量未验。商业素材授权、声学时间对齐、发布自动化仍待验证；生产前须 Owner 明确确认。详见 [CURRENT_STATE](docs/CURRENT_STATE.md)。
 
 ## 许可与权利
 
