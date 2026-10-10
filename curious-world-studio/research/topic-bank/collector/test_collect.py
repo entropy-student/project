@@ -42,6 +42,10 @@ class CollectorTests(unittest.TestCase):
         o=c.finish(o,"2026-10-07","2026-10-09")
         self.assertEqual(o["raw_count"],2)
         self.assertEqual(o["in_window"],1)
+    def test_doi_overlap_from_different_discovery_urls(self):
+        a=c.datum("PLOS","A","https://doi.org/10.1371/journal.pone.0350612","2026-10-07")
+        b=c.datum("PubMed","A","https://example.com/record","2026-10-07","10.1371/journal.pone.0350612")
+        self.assertEqual(c.canonical_key(a),c.canonical_key(b))
     def test_markdown_prevents_false_approval(self):
         a={"window":["2026-10-07","2026-10-09"],"ran_utc":"FIXTURE","sources":[c.report("TEST","fixture")]}
         self.assertIn("DISCOVERED_UNREVIEWED",c.markdown(a))
