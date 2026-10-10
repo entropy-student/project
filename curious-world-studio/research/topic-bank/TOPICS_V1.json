@@ -1,0 +1,622 @@
+{
+  "schema": "CW-TOPIC-BANK-1.0",
+  "created_at": "2026-10-10",
+  "scope": "history-import + 3 targeted new source verifications, NOT a nine-source exhaustive scan",
+  "counts": {
+    "SHORTLIST": 9,
+    "VERIFY": 7,
+    "HOLD": 4,
+    "REJECTED": 1
+  },
+  "topics": [
+    {
+      "id": "CW-0001",
+      "title": "如果果冻会说话，你还舍得吃吗？",
+      "area": "食品与感知",
+      "discovery_source": "PLOS ONE",
+      "source_url": "https://doi.org/10.1371/journal.pone.0350612",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "2024实际食用实验",
+        "2026只看视频评价",
+        "心智判断变化却无显著内疚差异"
+      ],
+      "critical_caveat": "2024与2026是不同实验；2026受试者没有真的吃",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": true,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0002",
+      "title": "大象想赶走同伴，会先确认对方注意了吗？",
+      "area": "动物行为",
+      "discovery_source": "EurekAlert!/Animal Cognition",
+      "source_url": "https://doi.org/10.1007/s10071-026-02108-7",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "野外交流",
+        "观察接收者注意",
+        "等待反馈和继续手势"
+      ],
+      "critical_caveat": "视觉注意不是读心术，现场录像商用授权未知",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": true,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0003",
+      "title": "学习网页只卡两秒，真的会影响学习吗？",
+      "area": "数字生活",
+      "discovery_source": "Nature Human Behaviour",
+      "source_url": "https://doi.org/10.1038/s41562-026-02598-y",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "MED",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "延迟交互体验",
+        "两组纵向准实验",
+        "多任务与学习参与变化"
+      ],
+      "critical_caveat": "不是随机对照实验；每次卡顿不一定导致成绩下降",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": true,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0004",
+      "title": "为什么一根意大利面总断成不止两截？",
+      "area": "食品物理",
+      "discovery_source": "MIT News",
+      "source_url": "https://news.mit.edu/2018/mit-mathematicians-solve-age-old-spaghetti-mystery-0813",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "先试着掰",
+        "解释次生断裂",
+        "引入扭转装置"
+      ],
+      "critical_caveat": "需要回到 2005/2018 原论文和实验细节",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0005",
+      "title": "爆米花为什么既会跳又会响？",
+      "area": "食品物理",
+      "discovery_source": "Journal Royal Society Interface",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4345489/",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "高帧率观察",
+        "研究弹跳机制",
+        "同步收音分析爆响"
+      ],
+      "critical_caveat": "声音机制不应夸大成排他性定论",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0006",
+      "title": "为什么蚊子偏爱某些人？",
+      "area": "生活与动物",
+      "discovery_source": "Rockefeller/Cell",
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0092867422012533",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "采集皮肤气味",
+        "埃及伊蚊选择",
+        "羧酸与嗅觉线索"
+      ],
+      "critical_caveat": "实验评分差异不等于日常叮咬次数差异",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0007",
+      "title": "为什么没出事故的路也能突然堵车？",
+      "area": "交通",
+      "discovery_source": "New Journal of Physics",
+      "source_url": "https://ir.library.osaka-u.ac.jp/repo/ouka/all/93262/",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "环形车道实验",
+        "微小速度扰动",
+        "逆向拥堵波"
+      ],
+      "critical_caveat": "需核原始影像与中文平台覆盖",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0008",
+      "title": "手指泡水后起皱，抓湿物体会更牢吗？",
+      "area": "身体与感知",
+      "discovery_source": "PubMed/PLOS",
+      "source_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253185",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "神经血管机制",
+        "早期实验结果",
+        "比较未复现与握力研究"
+      ],
+      "critical_caveat": "不同实验测量指标不同，不能声称互相推翻",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0009",
+      "title": "为什么听起来更响的薯片更脆？",
+      "area": "食品感知",
+      "discovery_source": "Oxford Archive",
+      "source_url": "https://doi.org/10.1111/j.1745-459x.2004.080403.x",
+      "status": "HOLD",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "MED",
+        "progression": "LOW",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "改变咬薯片听觉反馈",
+        "观察主观脆度评分",
+        "讨论多感官"
+      ],
+      "critical_caveat": "单篇论文自然只有一两个知识点",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0010",
+      "title": "为什么有些运动服更容易有汗味？",
+      "area": "衣着与微生物",
+      "discovery_source": "Applied Environmental Microbiology",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4249026/",
+      "status": "HOLD",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "MED",
+        "progression": "MED",
+        "visual": "LOW"
+      },
+      "story_beats": [
+        "运动后的衣服",
+        "气味比较",
+        "微生物检查"
+      ],
+      "critical_caveat": "原实验并非清洗后异味研究，真实画面不足",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0011",
+      "title": "为什么有些番茄漂亮却没有番茄味？",
+      "area": "食品农业",
+      "discovery_source": "Science/PubMed",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/28126817/",
+      "status": "HOLD",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "MED",
+        "progression": "MED",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "品尝与风味差异",
+        "398份材料分析",
+        "相关遗传线索"
+      ],
+      "critical_caveat": "不可泛化到所有现代番茄；需补历史和行为",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0012",
+      "title": "雨后泥土香从哪里来？雨滴里为什么冒气泡？",
+      "area": "自然与气味",
+      "discovery_source": "MIT/Nature Communications",
+      "source_url": "https://www.nature.com/articles/ncomms7083",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "MED",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "高速拍摄雨滴",
+        "气泡与气溶胶",
+        "研究与气味传播的关联"
+      ],
+      "critical_caveat": "微滴不是所有土味的充分解释",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0013",
+      "title": "同样的25度为什么有的房间更冷？",
+      "area": "居住",
+      "discovery_source": "热舒适学术摘要",
+      "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0360132306002253",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "UNKNOWN",
+        "progression": "LOW",
+        "visual": "LOW"
+      },
+      "story_beats": [
+        "相同气温",
+        "考虑辐射气流",
+        "真实对照待寻找"
+      ],
+      "critical_caveat": "目前无具体多步原始实验，不能入 shortlist",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0014",
+      "title": "露营爱好者怎么在地图上找到古老撞击坑？",
+      "area": "自然探索",
+      "discovery_source": "NASA Earth Observatory",
+      "source_url": "https://earthobservatory.nasa.gov/",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "发现地图圆形",
+        "请专家鉴别",
+        "实地检查"
+      ],
+      "critical_caveat": "目前只有源站主页，需定位 NASA 精确文章和原始地质证据",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0015",
+      "title": "AI玩捉迷藏，为什么会搬斜坡翻墙？",
+      "area": "科技行为",
+      "discovery_source": "HF/AgentGarten",
+      "source_url": "https://mirros-lab.github.io/agent-garten/",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "躲藏者搭掩体",
+        "寻找者搬坡",
+        "失败后移动重试"
+      ],
+      "critical_caveat": "不同回合不得剪作单次完整实录",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0016",
+      "title": "AI复刻沙子为什么堆得像面团？",
+      "area": "科技物理",
+      "discovery_source": "HF/4DCodeBench",
+      "source_url": "https://4dcodebench.com/",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "按视频重建物理世界",
+        "水和沙子的失败",
+        "绳索与布料不同方法"
+      ],
+      "critical_caveat": "单一案例不能推广到所有模型或所有物理",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0017",
+      "title": "为什么让字母动起来会觉得它活了？",
+      "area": "科技视觉",
+      "discovery_source": "HF/Strike a Chord",
+      "source_url": "https://strikeachordkt.github.io/strikeachord/",
+      "status": "HOLD",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "MED",
+        "progression": "LOW",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "字母运动",
+        "motion-only对照",
+        "若拓展需另查几何知觉"
+      ],
+      "critical_caveat": "原论文承诺兑现但不足自然五分钟",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0018",
+      "title": "为什么插吸管前先看杯子？",
+      "area": "科技机器人",
+      "discovery_source": "HF/EyeRobot",
+      "source_url": "https://eyerobot2.github.io/",
+      "status": "REJECTED",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "LOW",
+        "progression": "LOW",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "杯子",
+        "吸管",
+        "插入口"
+      ],
+      "critical_caveat": "Owner已评价答案没有超出常识；仅当前故事切口淘汰",
+      "batch_id": "PRIOR_REPORT",
+      "owner_selected": false,
+      "evidence_state": "PRIOR_REPORT_RECORDED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0019",
+      "title": "软片折弯时为何知道自己变成了什么形状？",
+      "area": "材料科技",
+      "discovery_source": "MIT News",
+      "source_url": "https://news.mit.edu/2026/shape-sensing-sheet-digitally-tracks-movement-bends-twists-1008",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "MED",
+        "surprise": "MED",
+        "progression": "MED",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "软光纤通光",
+        "折弯实时形状重建",
+        "剪断部分传感仍可工作"
+      ],
+      "critical_caveat": "机构报道已读，原研究全文/演示及五分钟必要性待核",
+      "batch_id": "NEW_SPOT_CHECK",
+      "owner_selected": false,
+      "evidence_state": "PAPER_OR_INSTITUTION_TEXT_CHECKED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0020",
+      "title": "活肌肉机器人为什么能跟着光转弯？",
+      "area": "生物工程",
+      "discovery_source": "MIT News",
+      "source_url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
+      "status": "VERIFY",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "HIGH",
+        "visual": "HIGH"
+      },
+      "story_beats": [
+        "培育光敏肌肉",
+        "优化凝胶支架",
+        "给不同鳍打光过迷宫"
+      ],
+      "critical_caveat": "9月29日历史文章，不是今日新发布；需核原始论文/视频权",
+      "batch_id": "NEW_SPOT_CHECK",
+      "owner_selected": false,
+      "evidence_state": "PAPER_OR_INSTITUTION_TEXT_CHECKED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    },
+    {
+      "id": "CW-0021",
+      "title": "主人与狗同睡，到底谁先影响谁？",
+      "area": "生活宠物",
+      "discovery_source": "PLOS ONE",
+      "source_url": "https://doi.org/10.1371/journal.pone.0358453",
+      "status": "SHORTLIST",
+      "ratings": {
+        "hook": "HIGH",
+        "surprise": "HIGH",
+        "progression": "MED",
+        "visual": "MED"
+      },
+      "story_beats": [
+        "25位主人和38对人狗活动记录",
+        "比较活动先后",
+        "关联并不等于因果"
+      ],
+      "critical_caveat": "不能直接断言狗或主人造成对方苏醒",
+      "batch_id": "NEW_SPOT_CHECK",
+      "owner_selected": false,
+      "evidence_state": "PAPER_OR_INSTITUTION_TEXT_CHECKED",
+      "source_originality": "CHECK_PER_ITEM",
+      "video_link": "NOT_CONFIRMED_AS_REUSABLE",
+      "video_content": "NOT_FRAME_REVIEWED",
+      "media_rights": "UNKNOWN",
+      "bilibili_competitors": "NOT_CHECKED",
+      "storyfit_status": "NOT_STARTED"
+    }
+  ]
+}
