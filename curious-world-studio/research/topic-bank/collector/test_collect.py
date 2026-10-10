@@ -212,8 +212,9 @@ class CollectorTests(unittest.TestCase):
         self.assertFalse(grade["full_nine_source_window_proven"])
 
     def test_crossref_proxy_and_indexes_never_claim_full_source(self):
-        jeb=c.coverage_contract(c.report("JEB_CROSSREF_PROXY","fixture"),
-                                "2026-10-07","2026-10-09")
+        jeb_out=c.report("JEB_CROSSREF_PROXY","fixture")
+        jeb_out["received_pages"]=1
+        jeb=c.coverage_contract(jeb_out,"2026-10-07","2026-10-09")
         idx=c.coverage_contract(c.report("OpenAlex_PubMed","fixture"),
                                 "2026-10-07","2026-10-09")
         self.assertIn("CROSSREF",jeb["grade"])
