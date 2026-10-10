@@ -6,8 +6,8 @@
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。约 **4–6 分钟**，通常瞄准 **5 分钟**；抖音/小红书辅助。
-- **当前阶段 `P3-R4 TWO READTHROUGH V1 COMPLETE → OWNER REVIEW PENDING`**：已记录 Owner 的主反馈 A（故事沉浸中“研究人员/实验”突然登场造成出戏），并修订 B/D/J 同题对照的**六篇短开场 + 六套约五分钟连续性结构**。新版详见 [六篇改写](../research/story-fit/prototypes/2026-10-10_P3R3_SIX_REWRITTEN_NARRATIVE_PITCHES.md)、[中后段修订](../research/reports/2026-10-10_P3R3_NARRATIVE_CONTINUITY_AND_MIDPOINT_REWRITE.md)、[反馈及QA](../research/reports/2026-10-10_P3R3_OWNER_FEEDBACK_AND_EDITORIAL_QA.md)。旧版 P3-R2 原型全部保留供回溯。**文字修订已完成，不代表新版经过真实受众检验或正式五分钟成片验证。**
-- **下一步**：Owner 审阅新版 J-A/J-B、D-B、B-A 的自然叙事感，尤其指出是否仍有突然切到研究报告的句子、中段选择/观察有没有延续；若可用，再进行独立目标观众非诱导盲评。不要把这次编辑体验假设升级成 STORY-FIT 四轴或晋级规则；完整正式脚本/音视频生产仍未获授权。
+- **当前阶段 `P3-R4 READTHROUGH V1 COMPLETE → OWNER REVIEW PENDING`**：两篇D-B和J-B连续旁白已新增；外部评审采纳项、保留项均单独记录。尚未做真实读稿测试、视频生产或正式STORY-FIT审核。
+- **下一步**：Owner审阅两篇完整文本；以后真实配音、听众测试、视频生产均另行决定。本轮不改选题评分和正式晋级条件。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）
