@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Only inspect B paper supplementary audio; never redistribute source bytes."""
 import datetime, hashlib, io, json, os, pathlib, shutil, subprocess, tempfile
-import urllib.request, zipfile
+import urllib.request, urllib.parse, zipfile
 
 SOURCE = 'https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3004046.s008&type=supplementary'
 CAP = 30_000_000
@@ -27,6 +27,47 @@ def probe_blob(raw, name):
                 'duration_sec':float(duration) if duration is not None else None,
                 'bit_depth':stream.get('bits_per_sample') or stream.get('bits_per_raw_sample')}
 
+def rar_members(text):
+    """Read 7-Zip -slt listing: never trust names for file extraction to disk."""
+    blocks=text.replace('\\r','').split('\\n\\n')
+    members=[]
+    for block in blocks:
+        values={}
+        for line in block.splitlines():
+            if ' = ' in line:
+                k,v=line.split(' = ',1);values[k]=v
+        name=values.get('Path','')
+        if name.lower().endswith(AUDIO_EXT) and values.get('Size','').isdigit():
+            members.append((name,int(values['Size'])))
+    return members
+
+def probe_rar(raw,result):
+    tool=shutil.which('7z') or shutil.which('7zz')
+    result['container']='RAR5'
+    if not tool:
+        result['status']='RAR_DECODER_UNAVAILABLE';return result
+    with tempfile.NamedTemporaryFile(suffix='.rar') as temp:
+        temp.write(raw);temp.flush()
+        info=subprocess.run([tool,'l','-slt',temp.name],capture_output=True,text=True,timeout=25)
+        if info.returncode:
+            result['status']='RAR_LIST_FAILED';result['error']=info.stderr[:180];return result
+        members=rar_members(info.stdout)
+        result['listed_audio_members']=len(members)
+        if len(members)>200:
+            result['status']='RAR_TOO_MANY_AUDIO_MEMBERS';return result
+        for name,size in members:
+            if size>12_000_000:
+                result['media'].append({'name':name,'status':'MEMBER_RESOURCE_LIMIT'});continue
+            try:
+                extracted=subprocess.run([tool,'e','-so',temp.name,name],
+                  capture_output=True,timeout=25)
+                if extracted.returncode or len(extracted.stdout)>12_000_000:
+                    result['media'].append({'name':name,'status':'RAR_EXTRACT_FAILED'});continue
+                result['media'].append(probe_blob(extracted.stdout,name))
+            except Exception as exc:
+                result['media'].append({'name':name,'status':'PROBE_ERROR','error':str(exc)[:160]})
+    return result
+
 def analyze(raw):
     result={'sha256':hashlib.sha256(raw).hexdigest(),'download_bytes':len(raw),'media':[],
             'scope':'format and decoding metadata only','device_playback_verified':False,
@@ -34,7 +75,10 @@ def analyze(raw):
             'video_generated':False,'raw_media_redistributed':False}
     if raw.lstrip().lower().startswith((b'<!doctype html', b'<html')):
         result['status']='HTML_ACCESS_PAGE_NOT_MEDIA';return result
-    if zipfile.is_zipfile(io.BytesIO(raw)):
+    if raw.startswith(b'Rar!'):
+        probe_rar(raw,result)
+        if result.get('status')=='RAR_DECODER_UNAVAILABLE':return result
+    elif zipfile.is_zipfile(io.BytesIO(raw)):
         result['container']='ZIP'
         with zipfile.ZipFile(io.BytesIO(raw)) as archive:
             infos=archive.infolist();result['total_zip_members']=len(infos)
@@ -66,7 +110,7 @@ def main():
     try:
         req=urllib.request.Request(SOURCE,headers={'User-Agent':'CuriousWorldStudio-ResearchPreflight/1.0','Accept':'application/zip,audio/*,application/octet-stream,*/*'})
         with urllib.request.urlopen(req,timeout=35) as r:
-            report.update({'response_status':r.status,'final_url':r.url,
+            report.update({'response_status':r.status,'final_url_without_query':urllib.parse.urlsplit(r.url)._replace(query='',fragment='').geturl(),
                 'content_type':r.headers.get('content-type'),'content_length':r.headers.get('content-length')})
             raw=r.read(CAP+1)
         if len(raw)>CAP:report['status']='DOWNLOAD_TOO_LARGE'
