@@ -46,3 +46,14 @@
 - 校准报告：[STORY_FIT_CLICK_CALIBRATION_2026-10-10.md](research/STORY_FIT_CLICK_CALIBRATION_2026-10-10.md)。主结论：生活中可代入的主体/处境 + 直觉预测 → 实证反差/后续动作，比学科标签更能解释这次选题兴趣。
 - 编辑优先：果冻（2024 真吃与 2026 只看视频评价，且内疚感无显著差异）→ 大象（有明确多步行为与等待，但作者野外实验视频商用权未确认）→ 页面延迟（准实验数据扎实、作者有自助 2 秒交互体验，但视频故事画面少）。前两题进入下一轮 STORY-FIT 深审，第三题留作互动型备选。
 - **未修改** HF-FIND 主协议；不要把动物心智推断、2026 果冻真的被试吃、微延迟研究是随机对照试验这类错误带入剧本。未完成原创录像商业授权或中文平台竞品查重。
+
+
+## 2026-10-10 Owner 确认的正式选题库顺序（已执行第一批）
+
+**九大信息源 → 批量发现 → 统一筛选与评分 → 正式选题库 → STORY-FIT 深审 → 剧本/素材核验 → 视频制作/QA/发布。**
+
+- 工作流唯一入口：[`research/topic-bank/WORKFLOW_V1.md`](research/topic-bank/WORKFLOW_V1.md)
+- 选题库展示：[`research/topic-bank/BOARD_V1.md`](research/topic-bank/BOARD_V1.md)；机读母表：[`research/topic-bank/TOPICS_V1.json`](research/topic-bank/TOPICS_V1.json)
+- 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
+- 21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）。来自历史研究回填 + 少量定向抽查，**并非九源三日完整扫描或自动化生产系统**；尚无 STORY-FIT 正式通关、竞争分析或素材复用许可。
+- HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。
