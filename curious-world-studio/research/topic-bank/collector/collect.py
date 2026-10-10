@@ -41,14 +41,25 @@ def read(out,url,xml=False):
         try:
             o=ET.fromstring(raw) if xml else json.loads(raw)
         except ET.ParseError as exc:
-            # Keep a bounded sample of malformed upstream XML for diagnosis.
-            # Do not silently repair the source and count it as valid.
+            # Record the exact upstream error. One observed NASA feed defect is
+            # an absent space between two xmlns attributes; fix only that token.
             line,col=exc.position
             lines=raw.splitlines()
             context=lines[line-1][max(0,col-70):col+70] if 0<line<=len(lines) else b""
-            out["errors"].append({"url":url,"error":str(exc),
-                "response_bytes":len(raw),
-                "xml_error_context":context.decode("utf-8","replace")[:140]})
+            diagnostic={"url":url,"error":str(exc),"response_bytes":len(raw),
+                "xml_error_context":context.decode("utf-8","replace")[:140]}
+            if xml and out["source"]=="NASA_EO_IMAGE" and b'"xmlns:media=' in raw:
+                try:
+                    repaired=ET.fromstring(raw.replace(b'"xmlns:media=',b'" xmlns:media=',1))
+                except ET.ParseError:
+                    pass
+                else:
+                    diagnostic["recovery"]="NASA_NAMESPACE_WHITESPACE_ONLY"
+                    out["errors"].append(diagnostic)
+                    out["notes"].append("Upstream NASA RSS was malformed; repaired one missing namespace-attribute space for parsing. Status stays PARTIAL.")
+                    out["received_pages"]+=1
+                    return repaired
+            out["errors"].append(diagnostic)
             return None
         out["received_pages"]+=1
         return o
