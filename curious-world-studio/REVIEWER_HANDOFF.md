@@ -1,7 +1,10 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
+
+> **2026-10-10 新于接手快照的 P0 在线核查结论**：采集器修复已在 GitHub Actions [#38021149558](https://github.com/entropy-student/project/actions/runs/38021149558) 真实执行，15/15 测试通过，artifact 已核：HF 215、MIT 3、NASA EO 3（坏 XML 有记录地恢复、仍 PARTIAL）、Nature 2、PLOS 303（非旧 2533 章节片段）、JEB Crossref 11，合计 537 条窗口元数据。**九源全量仍未通过**；TOPICS 仍 36 条，不可启动剧本或生产。完整新依据：[2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md](research/topic-bank/batches/2026-10-10_COLLECTOR_P0_LIVE_REVIEW.md)。
+
 > **新聊天 Reviewer：请先读 [2026-10-10 完整接手快照](docs/PROJECT_HANDOFF_2026-10-10.md)。** 下方为历史推进记录，保留供审计。
 >
-> **当前最新阶段**：36 条正式候选（11 SHORTLIST / 15 VERIFY / 9 HOLD / 1 REJECTED）；九源窗口 2026-10-07～09 只完成部分网页扫描；`collector/collect.py`、`test_collect.py`、说明、只读 GitHub Actions 已提交，但**尚未获得可核实的真实 Actions run 日志和 artifact**。下一位 Reviewer **只先验证在线采集及覆盖**，不要抢跑剧本/视频。HF 唯一主协议和 Mac 视觉 v1.2 保持锁定。
+> **原交接快照阶段（历史记录，以前述 P0 在线核查结论为准）**：36 条正式候选（11 SHORTLIST / 15 VERIFY / 9 HOLD / 1 REJECTED）；九源窗口 2026-10-07～09 只完成部分网页扫描；`collector/collect.py`、`test_collect.py`、说明、只读 GitHub Actions 已提交，但**尚未获得可核实的真实 Actions run 日志和 artifact**。下一位 Reviewer **只先验证在线采集及覆盖**，不要抢跑剧本/视频。HF 唯一主协议和 Mac 视觉 v1.2 保持锁定。
 
 # Curious World Studio — Reviewer Handoff
 

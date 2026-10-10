@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - '.github/workflows/cws-source-audit.yml'
+      - 'curious-world-studio/research/topic-bank/collector/collect.py'
+      - 'curious-world-studio/research/topic-bank/collector/test_collect.py'
   workflow_dispatch:
     inputs:
       start_date:

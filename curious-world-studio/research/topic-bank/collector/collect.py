@@ -32,12 +32,35 @@ def get(url):
 def report(source,mode):
     return {"source":source,"mode":mode,"status":"BLOCKED","attempts":0,"received_pages":0,
       "source_total":None,"raw_count":0,"in_window":0,"missing_dates":0,
-      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[]}
+      "covered_query_pages":False,"archive_complete":False,"errors":[],"notes":[],"items":[],"feed_entries_seen":0,"out_of_scope_count":0}
 
 def read(out,url,xml=False):
     out["attempts"]+=1
     try:
-        raw=get(url);o=ET.fromstring(raw) if xml else json.loads(raw)
+        raw=get(url)
+        try:
+            o=ET.fromstring(raw) if xml else json.loads(raw)
+        except ET.ParseError as exc:
+            # Record the exact upstream error. One observed NASA feed defect is
+            # an absent space between two xmlns attributes; fix only that token.
+            line,col=exc.position
+            lines=raw.splitlines()
+            context=lines[line-1][max(0,col-70):col+70] if 0<line<=len(lines) else b""
+            diagnostic={"url":url,"error":str(exc),"response_bytes":len(raw),
+                "xml_error_context":context.decode("utf-8","replace")[:140]}
+            if xml and out["source"]=="NASA_EO_IMAGE" and b'"xmlns:media=' in raw:
+                try:
+                    repaired=ET.fromstring(raw.replace(b'"xmlns:media=',b'" xmlns:media=',1))
+                except ET.ParseError:
+                    pass
+                else:
+                    diagnostic["recovery"]="NASA_NAMESPACE_WHITESPACE_ONLY"
+                    out["errors"].append(diagnostic)
+                    out["notes"].append("Upstream NASA RSS was malformed; repaired one missing namespace-attribute space for parsing. Status stays PARTIAL.")
+                    out["received_pages"]+=1
+                    return repaired
+            out["errors"].append(diagnostic)
+            return None
         out["received_pages"]+=1
         return o
     except Exception as e:
@@ -103,8 +126,20 @@ def feed(source,url,start,end):
             for el in node:
                 if el.tag.split("}")[-1]=="link" and el.get("href"):
                     link=el.get("href");break
-            o["items"].append(datum(source,val("title"),link,val("pubDate") or val("published") or val("updated"),val("guid") or val("id") or link,val("description") or val("summary"),"feed"))
-        if not o["items"]:o["errors"].append({"url":url,"error":"no parseable items"})
+            o["feed_entries_seen"]+=1
+            if source=="NASA_EO_IMAGE":
+                parsed=urllib.parse.urlsplit(link)
+                is_eo=(parsed.netloc in ("science.nasa.gov","earthobservatory.nasa.gov") and
+                    (parsed.path.startswith("/earth/earth-observatory/") or
+                     parsed.path.startswith("/images/")))
+                if not is_eo:
+                    o["out_of_scope_count"]+=1
+                    continue
+            o["items"].append(datum(source,val("title"),link,val("pubDate") or val("published") or val("updated") or val("date") or val("publicationDate") or val("issued"),val("guid") or val("id") or link,val("description") or val("summary"),"feed"))
+        if source=="NASA_EO_IMAGE":
+            o["notes"].append(f"NASA feed entries seen={o['feed_entries_seen']}; excluded non-Earth-Observatory={o['out_of_scope_count']}.")
+        if not o["items"] and not o["feed_entries_seen"]:
+            o["errors"].append({"url":url,"error":"no parseable items"})
     o["notes"].append("Rolling feed only: dates falling outside the current feed may be absent. NOT a complete archive.")
     return finish(o,start,end,False)
 
@@ -113,7 +148,7 @@ def plos(start,end):
     q=f"publication_date:[{start}T00:00:00Z TO {end}T23:59:59Z]"
     ended=False
     for page in range(PAGE_CAP):
-        params={"q":q,"wt":"json","fl":"id,title,publication_date,abstract,article_type,journal","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
+        params={"q":q,"fq":"doc_type:full","wt":"json","fl":"id,title,publication_date,abstract,article_type,journal,doc_type","rows":100,"start":page*100,"sort":"publication_date asc,id asc"}
         url="https://api.plos.org/search?"+urllib.parse.urlencode(params)
         resp=read(o,url)
         if not isinstance(resp,dict) or "response" not in resp:
@@ -121,15 +156,19 @@ def plos(start,end):
             break
         r=resp["response"];o["source_total"]=r.get("numFound");rows=r.get("docs",[])
         for x in rows:
+            doi=str(x.get("id",""))
+            if (x.get("doc_type") not in (None,"full") or
+                re.search(r"/(?:abstract|body|references|title|methods|introduction)$",doi,re.I)):
+                o["errors"].append({"url":url,"error":"unexpected PLOS partial document","id":doi[:150]})
+                continue
             title=x.get("title","");title=" ".join(title) if isinstance(title,list) else title
             abstract=x.get("abstract","");abstract=" ".join(abstract) if isinstance(abstract,list) else abstract
             typ=x.get("article_type","");typ=" ".join(typ) if isinstance(typ,list) else typ
-            doi=x.get("id","")
-            o["items"].append(datum(o["source"],title,"https://doi.org/"+str(doi),x.get("publication_date"),doi,abstract,typ))
+            o["items"].append(datum(o["source"],title,"https://doi.org/"+doi,x.get("publication_date"),doi,abstract,typ))
         if o["source_total"] is None:
             o["errors"].append({"url":url,"error":"numFound unavailable"});break
         if (page+1)*100>=o["source_total"] or not rows:ended=True;break
-    o["notes"].append("Solr query is all dated articles across PLOS journals, not only psychology or story-worthy experiments.")
+    o["notes"].append("Solr fq=doc_type:full counts parent articles, not section fragments; all PLOS journals, not topical or original-experiment only.")
     return finish(o,start,end,ended and o["source_total"] is not None and len(o["items"])>=o["source_total"])
 
 def jeb(start,end):
