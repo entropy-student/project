@@ -1,3 +1,5 @@
+> **统一当前状态**：请先看 [CURRENT_STATE.md](CURRENT_STATE.md)。本文件是**历史接手快照**，其中旧“21 条”“在线运行尚未验收”“P0/P1 待办”记录已过时，不可直接当现行指令。P0/P1 已有线上成功记录，九源仍 PARTIAL，当前研究重点已进入 P3-R2。
+
 > **2026-10-10 P1 增量接手提醒（优先于以下历史状态）**：在线采集和覆盖审计已推进，见 [P1 审计](../research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)。GitHub Actions #38022100048：24/24 测试、4 个 artifact、537 条窗口元数据。PLOS 303 篇保留，新增 143 条仅供人工审阅的专题提示清单；九源全量仍 PARTIAL，正式题库 36 条与 HF-FIND / Mac v1.2 不变。
 
 > **本文件是 2026-10-10 的历史快照；最新增量请优先看**：[P2-A 抽样及历史来源核查](../research/topic-bank/batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md) 与 [40 条 DOI 逐项评分](../research/topic-bank/batches/2026-10-10_P2_PLOS_40_ABSTRACT_REVIEW.md)。P1 合入 main `bf16fd9`，24/24 测试已在主分支真实验证；P2-A 40 条样本只做单模型标题/摘要初审；九源完整性仍 **PARTIAL**，正式题库仍 36 条。切勿将旧的 P0/P1 待办覆盖为当前状态。
@@ -8,11 +10,11 @@
 
 # Curious World Studio｜新聊天 / Reviewer 完整接手快照
 
-> **2026-10-10 最新 P3 决策待批**：[B/D STORY-FIT 资格＋证据压力测试](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md) 已完成，二者不在正式 36 条 TOPICS，禁止报正式 STORYFIT_GO。编辑建议 B 进入 SHORTLIST 准入审核，D 暂在研究池 HOLD，不是自动状态迁移。请 Owner 依据 [P3 质量审查卡](../research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md) 先判定；真实观众盲选、独立论文二审、同题竞品核查、素材许可均仍 PENDING。**用户已独立装好 OpenMontage 长期工具并有全局 `$openmontage`，当前不需要重装/重复验证 TTS/FFmpeg；视频生产前须由 Owner 明确介入和授权。**
+> **【历史 P3 编辑建议，观看机制 P3-R1 后需要重评】2026-10-10 P3 决策待批**：[B/D STORY-FIT 资格＋证据压力测试](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md) 已完成，B/D 均不在 36 条 TOPICS，不能自动正式晋级。旧 B 申请 SHORTLIST / D 暂 HOLD 是早期实验节点导向的判断，现在等待 P3-R2 叙事机制比较。OpenMontage 本地技术已据 Owner 交接 READY，但视频生产前仍须 Owner 明确批准。
 
 **快照日期：2026-10-10｜接手优先级：P0｜只针对 `entropy-student/project/curious-world-studio/`**
 
-> **最重要的状态：当前已确认频道方向、九源信息源框架、七阶段选题流程、36 条可审计选题记录与 Mac v1.2 视觉基线；采集器/测试/Actions 工作流已经提交 main，但在线 API/RSS 采集尚无可核实的成功运行 artifact，九源完整三日批量扫描仍未通过。不可跳过该阶段擅自写剧本或制作视频。**
+> **【原始历史快照的过期状态，不得据此重跑已成功 P0/P1】当时确认频道方向与 36 条题库，但尚未取得远端 run artifact；如今 P0/P1 在线运行已证，九源全量仍 PARTIAL。当前阶段以 [CURRENT_STATE.md](CURRENT_STATE.md) 为准。**
 >
 > **本文件是 2026-10-10 对话交接摘要**；所有研究论据、数据与许可的细节分别以链接的原始报告、母数据和权威规范为准。历史文件若包含过时的“下一步”，以本文件最新阶段状态优先；不要静默删除历史证据。
 
