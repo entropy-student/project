@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P3 最新｜B/D 故事承载力与正式准入（2026-10-10）**：核对 [WORKFLOW_V1](research/topic-bank/WORKFLOW_V1.md) 后发现 B（`10.1371/journal.pbio.3004046`）和 D（`10.1371/journal.pone.0360059`）均**尚未在 36 条 TOPICS 中**，因而不具备正式 STORY-FIT 第 5 阶段资格。已完成原文核验＋4–6 分钟不注水压力测试＋四轴逐项评价＋公开 B站相邻样本检索：[P3 报告](research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)。**B 推荐进入正式 SHORTLIST 编辑准入审核（未晋级），D 推荐 HOLD 继续研究（未正式入库）**。待 Owner 按 [P3 审查卡](research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md) 评价后才能改变审核优先级。B 特别注意 24 人真实听辨与附加 S-Pair 大鼠神经对照不是同一批测试；该论文的官方音频文件级 QA 只在未合并的 P2-E 分支通过，非真人试听或版权 PASS。**不写剧本/不生成 TTS/视频；生产前必须请 Owner 接入其现成 `$openmontage` 本地流程。**
+
+
 > **P2-D Owner 最新偏好（2026-10-10）**：四题综合都不错，但 **B 声音毫秒时序为第一点击选择，D 认知负荷与风险决策第二**，**不是 A/C 被拒绝**。Owner 新提出「离生活近、但平时没有仔细观察或思考过」的个人编辑偏好；**普通观众是否如此仍未知**，需要独立目标观众验证。B 原文有 S1 Audio 附件 `10.1371/journal.pbio.3004046.s008`（10 类 200ms 脉冲串 + 两组对照），尚未实际试听/验素材许可；D 60 人随机 2x2，50 轮三选，tDCS 与 cognitive load 不能混为单因果。保持 Topic Bank 36、正式 STORY-FIT/版权/竞品未通过。详见 [P2-D Owner B>D 与原文核验](research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)。
 
 > **P2-B/C 新增核查（2026-10-10；本行较下方 P2-A 新）**：5 篇 PLOS 官方原始研究方法/结果/局限完成**同一助手**更深核验；其中巨噬细胞 `10.1371/journal.pone.0356679`（OPEN 漏词线索）与毫秒点击声 `10.1371/journal.pbio.3004046` 推荐提交 Owner 判断，棒球策略与 tDCS 决策为条件候选，人体束带静息血流研究暂 HOLD；AI 编码摘要 `10.1371/journal.pone.0343857` 本轮官方全文未验证。P2-C 核对 MIT 3/3、NASA 3/3、Nature 单项原文 2/2、JEB 当前接受稿可见子集 7/7 在 Crossref 11 条内，但**均非历时档案穷尽**。详情 [P2-B/C 报告](research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md) 和 [Owner 质量把关卡](research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)。独立 Reviewer/Owner 判定和正式 STORY-FIT 均**待做**，36 题不变。

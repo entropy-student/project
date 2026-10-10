@@ -3,6 +3,9 @@
 
 # 当前决策与待办
 
+> **P3 已完成 B/D 故事证据与资格审查（2026-10-10），但未授予正式 STORY-FIT**：B/D 均不在正式 36 条题库中，按唯一 WORKFLOW 只有先通过 SHORTLIST 编辑准入才能启动正式 GO/CONDITIONAL/NO-GO；本轮完成四轴、5 分钟各节点增量核验、PLOS 原文查证及 B站相邻内容搜索样本。**B 倾向申请正式 SHORTLIST 准入，D 倾向研究 HOLD**，等待 Owner 质量关，不以个人选择代替观众反馈。报告 [P3](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)，[Owner 审查卡](../research/topic-bank/batches/2026-10-10_P3_BD_OWNER_EDITORIAL_DECISION_CARD.md)。当前无新增 CW ID、无剧本/视频、无 OpenMontage 操作；**视频生产之前主动请 Owner 接入其现成 `$openmontage` 流程**。
+
+
 > **最新 P2-D Owner 点击偏好已确定：B > D**（前者毫秒级声音差异，后者认知负荷风险决策）；Owner 认为「近、但自己没有深入观察/思考过」的问题更有吸引力，但**仅个人判断，尚不代表 B 站实际观众**。A/C 并未被拒绝。优先核查 B 原论文 S1 Audio 的真实播放效果/复用权、D 认知负荷与 tDCS 的分离解释，随后组织独立目标观众小样本盲选；**不修改四轴、分类器、36 条题库或脚本**。详见 [P2-D Owner 反馈与继续核验](../research/topic-bank/batches/2026-10-10_P2D_OWNER_BD_PREFERENCE_AND_EVIDENCE.md)。
 
 > **最新 P2-B/C 审查进展**：5 篇高故事线索 PLOS 原论文经同一助手原始全文复核，已准备 [Owner 质量把关卡](../research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)；推荐首先比较巨噬细胞与毫秒点击声题。另完成同窗**可见官网子集**对账：MIT 3/3、NASA EO 3/3、Nature 两篇日期与来源核对 2/2、JEB 接受稿可见 7/7 在 Crossref 11 条内；不冒充自动历史全量。报告 [P2-B/C](../research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md)。**仍缺真正独立第二审、Owner 点击意愿和可重复归档遍历验收；九源完整性仍 PARTIAL，正式选题 36 条不变。**
