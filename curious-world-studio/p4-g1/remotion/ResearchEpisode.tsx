@@ -55,7 +55,11 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
       </div>
       <div style={{position:'absolute',top:68,bottom:64,left:0,right:0,background:'#12191f',display:'flex',alignItems:'center',justifyContent:'center'}}>
         {currentShot && <>
-          <Img src={staticFile(currentShot.path)} style={{maxWidth:'100%',maxHeight:'100%',objectFit:'contain',width:'100%',height:'100%',transform:`scale(${0.985+0.015*opening})`}}/>
+          {/* Evidence viewport and subtitle rail occupy separate, fixed vertical zones.
+              Always reserve the bottom rail; do not resize the research figure at each caption cut. */}
+          <div style={{position:'absolute',top:0,bottom:152,left:20,right:20,display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}}>
+            <Img src={staticFile(currentShot.path)} style={{objectFit:'contain',width:'100%',height:'100%',transform:`scale(${0.985+0.015*opening})`}}/>
+          </div>
           <div style={{position:'absolute',top:23,left:25,background:'#102f46e8',color:'#f1f9ff',padding:'9px 19px',fontSize:23,fontWeight:700,borderRadius:7}}>
             {currentShot.evidence_label}
           </div>
