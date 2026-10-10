@@ -43,7 +43,7 @@ export const ResearchEpisode:React.FC<PilotProps>=(p)=>{
         </div>
       </div>
       <div style={{position:'absolute',bottom:29,left:'32%',width:'36%',height:69,borderRadius:18,background:'#f9fcffad',border:'1px solid #ffffffac',boxShadow:'0 8px 16px #0005',display:'flex',justifyContent:'center',alignItems:'center',gap:27,fontSize:40}}>
-        <span>📁</span><span>🔎</span><span>📄</span><span>▶</span>
+        <span style={{color:"#396d9c"}}>▣</span><span style={{color:"#396d9c"}}>⌕</span><span style={{color:"#396d9c"}}>▤</span><span style={{color:"#396d9c"}}>▶</span>
       </div>
     </AbsoluteFill> :
     <AbsoluteFill style={{background:'linear-gradient(#eff4f6,#d5e0e5)',color:COLOR.type}}>
