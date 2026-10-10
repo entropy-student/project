@@ -65,3 +65,10 @@
 - 新增 SHORTLIST：**夜鹰在慢速捕虫与长途迁徙中的飞行权衡**（Lund 10/9 研究新闻、论文 9/30）和**冲绳城市海岸蓝魔雀鲷的基因表达压力与外表丰度反差**（OIST 10/9、Nature Communications DOI）。均未过 STORY-FIT/视频素材审核。
 - 源覆盖：HF 三个日榜打开，但未逐一深读全部摘要；MIT 研究页仅首屏列表；JEB Accepted Manuscripts 日间列表 7 条可见稿、2 篇摘要；NASA 3 个对应 Image of Day 原文；PLOS/Nature/EurekAlert 通过定向搜索而非完整抓取。EurekAlert 本站直达 403，OpenAlex API 未跑；PubMed 部分核原论文学术信息。**不允许计算统一来源入选率或声称九大来源自动化已部署**。
 - 更新母表 `research/topic-bank/TOPICS_V1.json` 与看板 `research/topic-bank/BOARD_V1.md`，本批无任何素材商用许可确认、无中文平台竞品系统检查，不进入剧本。
+
+
+## 2026-10-10 数据采集器（提交代码，远端运行结果待验收）
+- [collector/collect.py](research/topic-bank/collector/collect.py)、[离线测试](research/topic-bank/collector/test_collect.py)、[操作说明](research/topic-bank/collector/README.md)，以及根目录 `.github/workflows/cws-source-audit.yml` 已提交。
+- 实际程序按 2026-10-07～09 取数，记录 API 页数/真实计数/错误/日期/去重；其中 HF/PLOS 支持分页，MIT/NASA/Nature 是当前 RSS 快照，JEB 为 Crossref 索引代理，EurekAlert 无可核对公开 API，因此**不可能仅靠该程序把九源三日全面标成 PASS**。
+- [本轮严格审计](research/topic-bank/batches/2026-10-10_COLLECTOR_IMPLEMENTATION_AUDIT.md)：本地容器 DNS 无外网；仓库 Actions 的运行 ID/artifact 暂无法通过已有工具取回；**真实采集量和三日 API 稳定性尚未得到远端验收**。
+- GitHub Actions 工作流只读，并通过 artifact 提供审计 JSON/Markdown，不更改题库。母表暂仍 **36** 条；不可凭代码提交宣称九源生产扫描已达标。
