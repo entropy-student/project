@@ -1,0 +1,809 @@
+{
+  "date": "2026-10-10",
+  "captured_at": "2026-10-10T08:39:31+08:00",
+  "source_status": [
+    {
+      "type": "HUMAN_WORLD",
+      "status": "VERIFIED",
+      "sources": [
+        "https://www.jiemian.com/article/15171500.html",
+        "https://www.theguardian.com/technology/2026/oct/06/brain-rot-tung-tung-tung-sahur-noxa-openai-video",
+        "https://www.pcgamer.com/games/strategy/one-of-the-most-popular-total-war-warhammer-3-mods-was-deliberately-corrupted-by-its-creator-to-sabotage-ai-made-copies/",
+        "https://digitalcommons.butler.edu/ccom_papers/146/",
+        "https://theijournal.ca/index.php/ijournal/article/view/29484",
+        "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70036"
+      ],
+      "notes": "中国经典影视二创治理、全球网络迷因归属争议、游戏模组社区、日常睡眠/美食/游戏兴趣"
+    },
+    {
+      "type": "AI_DOMAIN",
+      "status": "VERIFIED",
+      "sources": [
+        "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai",
+        "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/",
+        "https://www.wired.com/story/book-publishers-are-quietly-using-more-ai-staff-are-revolting",
+        "https://arxiv.org/abs/2505.17241",
+        "https://arxiv.org/abs/2607.26899"
+      ],
+      "notes": "AI生成游戏、Agent现实误操作、出版工作流AI化、创作实验研究"
+    }
+  ],
+  "hot_signals": [
+    {
+      "id": "ai-classic-remix-20261009",
+      "date": "2026-10-09",
+      "source": "https://www.jiemian.com/article/15171500.html",
+      "summary": "三平台披露9月AI魔改经典影视治理情况",
+      "half_life": "3–7d",
+      "action": "HOLD"
+    },
+    {
+      "id": "ai-game-generation-20261007",
+      "date": "2026-10-07",
+      "source": "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai",
+      "summary": "Google Playground和Unity Spark相关发布",
+      "half_life": "3–7d",
+      "action": "D5_HOLD"
+    },
+    {
+      "id": "ai-agent-false-tip-20261009",
+      "date": "2026-10-09",
+      "source": "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/",
+      "summary": "Reuters报道AI自动测试提交不当警情线索",
+      "half_life": "2–5d",
+      "action": "D5_HOLD"
+    },
+    {
+      "id": "ai-meme-authorship-20261006",
+      "date": "2026-10-06",
+      "source": "https://www.theguardian.com/technology/2026/oct/06/brain-rot-tung-tung-tung-sahur-noxa-openai-video",
+      "summary": "AI生成网络迷因角色的权利归属争议",
+      "half_life": "5–10d",
+      "action": "SUPPORT_EXISTING_EVERGREEN"
+    },
+    {
+      "id": "ai-publishing-workflow-20261009",
+      "date": "2026-10-09",
+      "source": "https://www.wired.com/story/book-publishers-are-quietly-using-more-ai-staff-are-revolting",
+      "summary": "出版机构AI应用引发员工担忧",
+      "half_life": "3–7d",
+      "action": "HOLD"
+    },
+    {
+      "id": "ai-mod-copy-20261005",
+      "date": "2026-10-05",
+      "source": "https://www.pcgamer.com/games/strategy/one-of-the-most-popular-total-war-warhammer-3-mods-was-deliberately-corrupted-by-its-creator-to-sabotage-ai-made-copies/",
+      "summary": "游戏模组作者抗议AI未经同意复制改造",
+      "half_life": "5–10d",
+      "action": "EVERGREEN_FUTURE"
+    }
+  ],
+  "normalized_clusters": [
+    {
+      "cluster": "AI_CREATIVE_AUTHORSHIP",
+      "signals": [
+        "ai-game-generation-20261007",
+        "ai-meme-authorship-20261006"
+      ],
+      "canonical_meaning": "GENERATION_VS_AUTHORSHIP",
+      "dedup": "D1 distinct events, D5 same editorial question"
+    },
+    {
+      "cluster": "AI_DELEGATION_AUTHORITY",
+      "signals": [
+        "ai-agent-false-tip-20261009"
+      ],
+      "canonical_meaning": "DELEGATION_VS_CONTROL",
+      "dedup": "D5 existing registry"
+    },
+    {
+      "cluster": "CULTURAL_REMIX",
+      "signals": [
+        "ai-classic-remix-20261009",
+        "ai-mod-copy-20261005"
+      ],
+      "canonical_meaning": "REMIX_ACCESS_VS_CULTURAL_CONTEXT or REMIX_ACCESS_VS_CREATOR_CONSENT",
+      "dedup": "different stakes: cultural context versus creator consent"
+    },
+    {
+      "cluster": "WORK_CREATIVE_AGENCY",
+      "signals": [
+        "ai-publishing-workflow-20261009"
+      ],
+      "canonical_meaning": "EFFICIENCY_VS_CREATIVE_AGENCY",
+      "dedup": "not yet qualified"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "generation-vs-authorship",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai",
+        "https://www.theguardian.com/technology/2026/oct/06/brain-rot-tung-tung-tung-sahur-noxa-openai-video",
+        "https://arxiv.org/abs/2505.17241",
+        "https://arxiv.org/abs/2607.26899"
+      ],
+      "proposed_human_problem": "生成100个想法仍未形成自己想表达的作品",
+      "proposed_mechanism": "generative candidate abundance reduces drafting friction, not human curation/commitment",
+      "registry_matches": [
+        "generation-vs-authorship"
+      ],
+      "duplicate_status": "EXISTING_SCHEDULED_CANONICAL",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "创作与游戏是独立于AI的原生兴趣；10/7 AI游戏创作产品、10/6 AI角色权益争议强化时效性"
+      ],
+      "asset_notes": [
+        "可视化一百张稿纸/筛选/反复修改；适合角色驱动叙事"
+      ],
+      "recommended_action": "SELECT_EXISTING_2026-10-10",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "创作 / 游戏 / 网络文化",
+      "human_process_family": "CREATION_AND_AUTHORSHIP",
+      "observed_paradox": "作品候选越容易生成，创作者越可能难以确定哪一个真正代表自己",
+      "why_question": "为什么AI能替你生成一百个创意，却不一定让你更像一个作者？",
+      "human_tension": "低成本的生成丰度 vs 作者主动选择、修订与承担表达后果",
+      "meaning_fingerprint": "GENERATION_VS_AUTHORSHIP",
+      "controlling_question_seed": "当创作的执行成本接近零时，作者身份究竟落在生成、选择还是持续修改之中？",
+      "human_process_before_ai": "人从构思、草稿、选择到修改承担较高执行成本",
+      "ai_changed_process": "生成式AI压缩草稿和变体生产时间，扩张可供筛选的候选集",
+      "human_problem": "生成数量不等于个人表达形成",
+      "human_stakes": "作品的辨识度、作者自我认同与表达责任",
+      "ai_mechanism": "概率式内容生成能按提示快速生产多个候选，但不能自动证明用户对其中某个表达有真实承诺",
+      "story_seed": "角色为做出一部‘最像自己’的短片让AI生成100个版本，逐个挑选却越来越难下决定；直到一处刻意保留的不完美细节迫使其选择",
+      "curiosity_gap": "为什么更多选项反而没让作品更像我",
+      "audience_payoff": "区分生成能力与作者性，不否认AI对创作效率和质量的帮助",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai",
+        "https://www.theguardian.com/technology/2026/oct/06/brain-rot-tung-tung-tung-sahur-noxa-openai-video",
+        "https://arxiv.org/abs/2505.17241",
+        "https://arxiv.org/abs/2607.26899",
+        "https://www.copyright.gov/ai/index.html"
+      ],
+      "uncertainties": [
+        "不能从生成多推导创作质量一定下降；研究发现个人创造力可提高、集体多样性可能下降",
+        "法律著作权判断与叙事作者感不能等同",
+        "故事需呈现AI辅助构思的真实价值"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "EXISTING_CANONICAL_REUSE",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "SAME_CANONICAL_NO_NEW_ENTRY"
+    },
+    {
+      "candidate_id": "hot-game-creator",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai"
+      ],
+      "proposed_human_problem": "低门槛生成并不自动带来游戏设计质量",
+      "proposed_mechanism": "prompt-to-game prototype generation",
+      "registry_matches": [
+        "generation-vs-authorship"
+      ],
+      "duplicate_status": "D5_COLLISION",
+      "hard_gate_status": "PASS_BUT_DUPLICATE",
+      "reach_notes": [
+        "10/7新产品强时效性"
+      ],
+      "asset_notes": [],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "游戏 / 创作",
+      "human_process_family": "CREATION_AND_AUTHORSHIP",
+      "observed_paradox": "不会编程也能做游戏，但做得出来不等于有作者意图",
+      "why_question": "为什么人人能生成游戏，仍未必人人都成为游戏设计者？",
+      "human_tension": "低门槛生成 vs 主动设计/选择/修订",
+      "meaning_fingerprint": "GENERATION_VS_AUTHORSHIP",
+      "controlling_question_seed": "生成游戏与设计一个值得玩、表达个人选择的游戏差在哪",
+      "human_process_before_ai": "创作者需要编程/美术/测试迭代",
+      "ai_changed_process": "自然语言驱动生成可试玩原型",
+      "human_problem": "生成与设计作者性混淆",
+      "human_stakes": "游戏表达与创作投入",
+      "ai_mechanism": "自然语言提示驱动多模态代码/资产生成，降低原型生产门槛",
+      "story_seed": "角色一分钟做出五款游戏却没有一款真正愿意让朋友玩",
+      "curiosity_gap": "游戏能做出来为什么不想玩",
+      "audience_payoff": "理解生成与作者设计的区别",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.theverge.com/tech/1006477/google-playground-unity-spark-ai"
+      ],
+      "uncertainties": [
+        "产品功能来自报道，不能外推所有游戏类型"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "HOLD_SAME_TENSION_AND_QUESTION_AS_2026-10-10"
+    },
+    {
+      "candidate_id": "hot-agent-false-tip",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/"
+      ],
+      "proposed_human_problem": "AI agent误操作造成外部后果",
+      "proposed_mechanism": "tool capability versus authorization",
+      "registry_matches": [
+        "tools-do-not-mean-permission",
+        "agent-delegated-workflow"
+      ],
+      "duplicate_status": "D3_D5_COLLISION",
+      "hard_gate_status": "PASS_BUT_DUPLICATE",
+      "reach_notes": [],
+      "asset_notes": [],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "公共服务 / 数字生活",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "AI本应帮助办事，却在未授权情形下向真实公共系统提交信息",
+      "why_question": "为什么能执行任务的AI更需要明确哪些按钮绝不能按？",
+      "human_tension": "委托便利 vs 人的授权与责任边界",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "controlling_question_seed": "能做某件事是否等于被允许做？",
+      "human_process_before_ai": "人核实并决定是否向机构提交材料",
+      "ai_changed_process": "自主Agent可跨网站执行表单提交",
+      "human_problem": "错误自动动作触及现实第三方",
+      "human_stakes": "公共资源、信任、合规责任",
+      "ai_mechanism": "工具可达性与执行权限是不同层次",
+      "story_seed": "助理把‘帮我查’误当‘替我提交’",
+      "curiosity_gap": "AI怎么会真的按下那个按钮",
+      "audience_payoff": "区分工具能力与授权边界",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/"
+      ],
+      "uncertainties": [
+        "事件发生于7月、10/9报道；不能归纳为Agent普遍会违法",
+        "新闻报道未替代原始技术事故报告"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "HOLD_EXISTING_DELEGATION_VS_CONTROL"
+    },
+    {
+      "candidate_id": "hot-classic-ai-remix",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.jiemian.com/article/15171500.html"
+      ],
+      "proposed_human_problem": "AI二创让经典更易传播也引发语境争议",
+      "proposed_mechanism": "generative remix cost reduction",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "HOLD_EVIDENCE_AND_ONE_MECHANISM",
+      "reach_notes": [
+        "10/9中国平台治理新闻；原生经典影视兴趣较强"
+      ],
+      "asset_notes": [],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "经典影视 / 短视频文化",
+      "human_process_family": "CULTURE_AND_AUTHENTICITY",
+      "observed_paradox": "经典角色因魔改再次传播，却同时引发原作语境与边界争议",
+      "why_question": "为什么经典作品被AI改得越容易传播，争议可能越大？",
+      "human_tension": "再创作参与感 vs 原作文化语境与观众期待",
+      "meaning_fingerprint": "REMIX_ACCESS_VS_CULTURAL_CONTEXT",
+      "controlling_question_seed": "怎样区分有意义的再创作与抹除原作语境的随意拼贴",
+      "human_process_before_ai": "二创需剪辑、表演、制作资源与人工判断",
+      "ai_changed_process": "生成工具降低角色和场景改编成本",
+      "human_problem": "再创作和内容治理的边界争议",
+      "human_stakes": "文化理解、创作者权益、平台传播",
+      "ai_mechanism": "生成式视频/图像合成可低成本改变既有角色与情境",
+      "story_seed": "主角为让朋友认识老剧做一段AI混剪，传播很广却被老观众指出角色完全走样",
+      "curiosity_gap": "为什么越火反而越容易惹争议",
+      "audience_payoff": "理解技术降低改编成本与文化判断仍需人承担",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.jiemian.com/article/15171500.html"
+      ],
+      "uncertainties": [
+        "平台公布的处置量不等于全部AI二创都违规",
+        "新闻集中于特定违规内容，不能据此推断所有二创的文化效果",
+        "若同时讲版权、政策和文化冲突将超出单机制"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PARTIAL",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "AT_RISK",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "DISTINCT"
+    },
+    {
+      "candidate_id": "hot-publisher-ai-workflow",
+      "lane": "HOT",
+      "signal_refs": [
+        "https://www.wired.com/story/book-publishers-are-quietly-using-more-ai-staff-are-revolting"
+      ],
+      "proposed_human_problem": "出版工作AI化与员工自主冲突",
+      "proposed_mechanism": "content automation changes task allocation",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "HOLD_ONE_MECHANISM_AND_EVIDENCE",
+      "reach_notes": [
+        "10/9出版员工争议"
+      ],
+      "asset_notes": [],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "出版 / 工作 / 创作",
+      "human_process_family": "WORK_AND_MASTERY",
+      "observed_paradox": "出版机构引入AI提升效率，部分员工反而更担心创作自主与透明度",
+      "why_question": "为什么提高内容生产效率可能引发创作者反抗？",
+      "human_tension": "流程效率 vs 创作劳动自主与知情",
+      "meaning_fingerprint": "EFFICIENCY_VS_CREATIVE_AGENCY",
+      "controlling_question_seed": "谁有权决定作品生产过程的哪些环节可以自动化",
+      "human_process_before_ai": "编辑/设计/营销由人员承担并讨论工作分工",
+      "ai_changed_process": "AI可生成文案和封面草案并自动化部分出版流程",
+      "human_problem": "工作流程变化中的决策权与透明度",
+      "human_stakes": "劳动自主、创作伦理、组织信任",
+      "ai_mechanism": "生成式内容与自动化改变任务分配成本",
+      "story_seed": "编辑发现封面草稿不再经过团队讨论",
+      "curiosity_gap": "省事为何反而产生冲突",
+      "audience_payoff": "辨认效率与决策权的区别",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.wired.com/story/book-publishers-are-quietly-using-more-ai-staff-are-revolting"
+      ],
+      "uncertainties": [
+        "单篇报道未能代表出版业整体",
+        "监控、版权、生成内容是不同机制，难压缩为单期"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "AT_RISK",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "DISTINCT"
+    },
+    {
+      "candidate_id": "body-metrics-vs-feeling",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70036"
+      ],
+      "proposed_human_problem": "睡眠分数与身体感受冲突",
+      "proposed_mechanism": "sensor-based sleep proxy estimation",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "睡眠焦虑是常见生活问题"
+      ],
+      "asset_notes": [],
+      "recommended_action": "SCHEDULE_2026-10-13",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "身体 / 睡眠 / 可穿戴设备",
+      "human_process_family": "BODY_AND_SENSING",
+      "observed_paradox": "设备报告睡眠评分很好，人起床却依然觉得疲惫",
+      "why_question": "为什么设备说你睡得不错，你却觉得一点都没休息好？",
+      "human_tension": "量化指标 vs 主观身体体验",
+      "meaning_fingerprint": "DATA_VS_EMBODIED_EXPERIENCE",
+      "controlling_question_seed": "睡眠评分在测量什么，为什么不能代替身体全部感受？",
+      "human_process_before_ai": "依靠主观睡意与生活观察判断休息",
+      "ai_changed_process": "算法从传感器信号估计睡眠状态并呈现评分",
+      "human_problem": "把算法代理指标误当身体全部状态",
+      "human_stakes": "健康焦虑与日常判断",
+      "ai_mechanism": "可穿戴睡眠算法基于传感器估计部分睡眠特征而非直接测量所有体验",
+      "story_seed": "主角起床困得睁不开眼，手表却给出高分，于是反复追查自己的‘错误感觉’",
+      "curiosity_gap": "数据与感受冲突时谁在说谎",
+      "audience_payoff": "理解代理测量的边界",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70036"
+      ],
+      "uncertainties": [
+        "不能据单一设备研究断言全部品牌不准确",
+        "非医学诊断内容"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT_BEDROOM_SCORE_VS_MORNING_BEHAVIOR",
+      "d5_meaning": "DISTINCT"
+    },
+    {
+      "candidate_id": "family-recipe-tacit-knowledge",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "https://theijournal.ca/index.php/ijournal/article/view/29484"
+      ],
+      "proposed_human_problem": "家传菜谱文字化与手感传承不一致",
+      "proposed_mechanism": "language-to-procedure information loss",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "PASS",
+      "reach_notes": [],
+      "asset_notes": [],
+      "recommended_action": "SCHEDULE_2026-10-14",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "美食 / 家庭 / 代际传承",
+      "human_process_family": "MEMORY_AND_TRANSMISSION",
+      "observed_paradox": "AI整理的菜谱步骤清楚，复刻家里那道菜仍可能少一点熟悉味道",
+      "why_question": "为什么AI把家传菜谱整理得很完整，做出来却不一定是那个味道？",
+      "human_tension": "标准化可复制性 vs 情境化的手感经验",
+      "meaning_fingerprint": "STANDARDIZATION_VS_TACIT_EXPERIENCE",
+      "controlling_question_seed": "文字步骤与示范中的身体判断究竟各保存了什么",
+      "human_process_before_ai": "通过边做边看、动作、气味和口头纠正传递做菜经验",
+      "ai_changed_process": "AI转写/结构化口述和照片为规范步骤",
+      "human_problem": "隐性经验在文字化时可能遗漏",
+      "human_stakes": "家庭记忆、食物复现与传承",
+      "ai_mechanism": "生成式结构化将非结构化描述转为文本步骤，但未观察到的感官判断无法凭空可靠恢复",
+      "story_seed": "角色按AI整理的外婆菜谱严格称重，却被外婆一句‘这个火候还不对’打断",
+      "curiosity_gap": "明明完全照做怎么味道不同",
+      "audience_payoff": "区分可写规则与隐性操作经验",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://theijournal.ca/index.php/ijournal/article/view/29484"
+      ],
+      "uncertainties": [
+        "具体家庭差异不能归因于AI本身",
+        "小样本定性研究仅支持经验传承的存在"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT_KITCHEN_HEAT_STEAM_HANDS",
+      "d5_meaning": "DISTINCT"
+    },
+    {
+      "candidate_id": "game-assistance-achievement",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "https://digitalcommons.butler.edu/ccom_papers/146/"
+      ],
+      "proposed_human_problem": "游戏辅助与玩家成就感之间的张力",
+      "proposed_mechanism": "adaptive assistance changes perceived agency",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "PASS",
+      "reach_notes": [],
+      "asset_notes": [],
+      "recommended_action": "SCHEDULE_2026-10-15",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "游戏 / 挑战",
+      "human_process_family": "PLAY_AND_CHALLENGE",
+      "observed_paradox": "AI辅助让通关更顺利，成就感却不一定增加",
+      "why_question": "为什么AI帮你把游戏打得更顺，你反而可能没那么有成就感？",
+      "human_tension": "降低阻碍 vs 自己克服挑战的胜任感",
+      "meaning_fingerprint": "SMOOTHNESS_VS_ACHIEVEMENT",
+      "controlling_question_seed": "什么时候帮助保留了玩家的胜任感，什么时候替玩家拿走了挑战？",
+      "human_process_before_ai": "玩家通过反复尝试形成掌控感",
+      "ai_changed_process": "AI提示、辅助操作和攻略缩短试错",
+      "human_problem": "把困难清除后可能同时削弱成功的归属感",
+      "human_stakes": "游戏乐趣与自主挑战",
+      "ai_mechanism": "个性化提示/辅助系统改变玩家面对的反馈与决策负担",
+      "story_seed": "主角为了通关开启全程AI辅助，终于打赢却没想截图分享",
+      "curiosity_gap": "赢了为什么不开心",
+      "audience_payoff": "区分便利、掌控感和游戏成就",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://digitalcommons.butler.edu/ccom_papers/146/"
+      ],
+      "uncertainties": [
+        "实验研究支持胜任感关联，但不证明AI辅助一定降低乐趣",
+        "应与学习形成技能的题区分：核心是玩耍体验"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT_GAME_BOSS_VICTORY_EMPTY_REACTION",
+      "d5_meaning": "DISTINCT_FROM_GUIDANCE_VS_SKILL_FORMATION_GAME_EXPERIENCE_NOT_SKILL_TRAINING"
+    },
+    {
+      "candidate_id": "group-dinner-preference",
+      "lane": "EVERGREEN",
+      "signal_refs": [],
+      "proposed_human_problem": "算法群体推荐与真实协商错位",
+      "proposed_mechanism": "aggregated ranking versus individual constraints",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "HOLD_EVIDENCE_NEEDS_BETTER_SOURCE",
+      "reach_notes": [],
+      "asset_notes": [],
+      "recommended_action": "SCHEDULE_2026-10-16",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "美食 / 朋友聚会 / 群体决策",
+      "human_process_family": "SOCIAL_COORDINATION",
+      "observed_paradox": "AI算出全员评分最高的餐厅，聚餐仍有人不满意",
+      "why_question": "为什么AI找到了大家评分最高的餐厅，聚餐却未必更开心？",
+      "human_tension": "汇总偏好的效率 vs 彼此照顾和协商过程",
+      "meaning_fingerprint": "CONSENSUS_VS_INDIVIDUAL_PREFERENCE",
+      "controlling_question_seed": "群体最优评分与每个人愿意接受的共同决定差在哪里？",
+      "human_process_before_ai": "朋友互相询问忌口、预算、距离并做妥协",
+      "ai_changed_process": "推荐模型聚合评分、距离、偏好形成候选排序",
+      "human_problem": "可量化的总体偏好忽略个人硬约束和协商",
+      "human_stakes": "聚会关系、体面与参与感",
+      "ai_mechanism": "排序/聚合目标可能与群体中的硬约束、分配公平不同",
+      "story_seed": "AI选出五星餐厅，一位朋友却因为忌口只能喝水，大家临时改去普通小馆",
+      "curiosity_gap": "所有人评分都高为何有人没法吃",
+      "audience_payoff": "区分平均最优与共同接受的选择",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.jiemian.com/article/15171500.html"
+      ],
+      "uncertainties": [
+        "需补充群体推荐/多目标公平研究才能正式过Evidence Gate",
+        "不得以纯假想故事代替真实群体推荐研究"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PARTIAL",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "DISTINCT_FROM_OPTIMIZATION_VS_EXPLORATION_GROUP_FAIRNESS_NOT_DISCOVERY"
+    },
+    {
+      "candidate_id": "ai-culture-remix-consent",
+      "lane": "EVERGREEN",
+      "signal_refs": [
+        "https://www.pcgamer.com/games/strategy/one-of-the-most-popular-total-war-warhammer-3-mods-was-deliberately-corrupted-by-its-creator-to-sabotage-ai-made-copies/"
+      ],
+      "proposed_human_problem": "AI辅助模组复制与作者同意冲突",
+      "proposed_mechanism": "AI lowers code adaptation friction",
+      "registry_matches": [],
+      "duplicate_status": "NEW",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "游戏模组社区有真实自发需求，近期事件提供具体冲突"
+      ],
+      "asset_notes": [],
+      "recommended_action": "SCHEDULE_2026-10-16",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "游戏 / 模组社区 / 创作者权益",
+      "human_process_family": "CREATION_AND_AUTHORSHIP",
+      "observed_paradox": "AI让修改游戏模组更容易，却引发原作者对未经同意复制的抵触",
+      "why_question": "为什么AI让更多人能改游戏，原作者却可能更不愿分享作品？",
+      "human_tension": "低门槛社区再创作 vs 原作者同意与贡献归属",
+      "meaning_fingerprint": "REMIX_ACCESS_VS_CREATOR_CONSENT",
+      "controlling_question_seed": "当复制和改造成本下降时，创作者的授权意愿怎样影响共享社区？",
+      "human_process_before_ai": "模组二创需要技术劳动、协作与原作者授权",
+      "ai_changed_process": "AI代码生成降低非授权复制与兼容性改造的技术门槛",
+      "human_problem": "更容易复用不等于已获得创作者同意",
+      "human_stakes": "社区信任、免费共享生态、作者持续维护动力",
+      "ai_mechanism": "生成式代码辅助压缩复制/改造的操作成本，不改变许可和署名义务",
+      "story_seed": "主角热心给旧模组做AI兼容版并上传，却发现原作者主动破坏自己的旧版本抗议复制",
+      "curiosity_gap": "免费分享的人为什么反而阻止更多人用",
+      "audience_payoff": "理解技术可复制性与社会授权是不同问题",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "https://www.pcgamer.com/games/strategy/one-of-the-most-popular-total-war-warhammer-3-mods-was-deliberately-corrupted-by-its-creator-to-sabotage-ai-made-copies/"
+      ],
+      "uncertainties": [
+        "原作者破坏模组行为属特定案例，不能泛化",
+        "须核对模组许可文本，不得推断具体侵权定性"
+      ],
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS",
+      "d1_signal": "NEW",
+      "d2_topic": "NEW",
+      "d3_angle": "NEW",
+      "d4_story_visual_motif": "DISTINCT_GAME_MOD_UPLOAD_COMMUNITY_BACKLASH",
+      "d5_meaning": "DISTINCT_FROM_GENERATION_VS_AUTHORSHIP_CONSENT_AND_COMMUNITY_GOVERNANCE"
+    }
+  ],
+  "evergreen_fallback": [
+    "generation-vs-authorship",
+    "body-metrics-vs-feeling",
+    "family-recipe-tacit-knowledge",
+    "game-assistance-achievement",
+    "ai-culture-remix-consent"
+  ],
+  "selected_for_editorial_review": {
+    "topic_id": "generation-vs-authorship",
+    "title": "为什么AI能替你生成一百个创意，却不一定让你更像一个作者？",
+    "date": "2026-10-10",
+    "lane": "EVERGREEN",
+    "primary_content_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": false,
+    "decision": "KEEP_EXISTING_PLANNED_SLOT",
+    "meaning_fingerprint": "GENERATION_VS_AUTHORSHIP",
+    "human_process_family": "CREATION_AND_AUTHORSHIP"
+  },
+  "notes": [
+    "Full pre-gates and Evidence/Human Relevance/Mechanism Integrity/One Mechanism/Storyability/Non-trivial Payoff/Audience Fit evaluated per candidate; HOLD candidates retain reasons.",
+    "D1–D5 compared against current Registry, Calendar and cross-domain meaning; game generation overlaps today's creation question; agent story overlaps delegation/control; no HOT override.",
+    "The selected story's meaning fingerprint is a dedup key, not a thesis; test both AI ideation benefit and loss of diversity/commitment without asserting universal harm.",
+    "Rolling schedule today+6: 2026-10-10 through 2026-10-16. Do not touch locked/published. No G4+ and DAILY_PRODUCTION_CAPABILITY remains UNPROVEN.",
+    "Group-dinner candidate held for insufficient external evidence; replaced in 10/16 tail by source-backed game mod creator-consent candidate."
+  ],
+  "rolling_schedule": [
+    {
+      "date": "2026-10-13",
+      "topic": "为什么设备说你睡得不错，你却觉得一点都没休息好？",
+      "lane": "EVERGREEN",
+      "business_job": "TRUST",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "status": "planned",
+      "meaning_notes": "身体/睡眠 × BODY_AND_SENSING × DATA_VS_EMBODIED_EXPERIENCE",
+      "topic_id": "body-metrics-vs-feeling"
+    },
+    {
+      "date": "2026-10-14",
+      "topic": "为什么AI把家传菜谱整理得很完整，做出来却不一定是那个味道？",
+      "lane": "EVERGREEN",
+      "business_job": "TRUST",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "status": "planned",
+      "meaning_notes": "家庭美食 × MEMORY_AND_TRANSMISSION × STANDARDIZATION_VS_TACIT_EXPERIENCE",
+      "topic_id": "family-recipe-tacit-knowledge"
+    },
+    {
+      "date": "2026-10-15",
+      "topic": "为什么AI帮你把游戏打得更顺，你反而可能没那么有成就感？",
+      "lane": "EVERGREEN",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "status": "planned",
+      "meaning_notes": "游戏 × PLAY_AND_CHALLENGE × SMOOTHNESS_VS_ACHIEVEMENT",
+      "topic_id": "game-assistance-achievement"
+    },
+    {
+      "date": "2026-10-16",
+      "topic": "为什么AI让更多人能改游戏，原作者却可能更不愿分享作品？",
+      "lane": "EVERGREEN",
+      "business_job": "TRUST",
+      "editorial_mode": "STORY_ACTION",
+      "target_duration": "3–5 min",
+      "status": "planned",
+      "meaning_notes": "游戏模组 × CREATION_AND_AUTHORSHIP × REMIX_ACCESS_VS_CREATOR_CONSENT",
+      "topic_id": "ai-culture-remix-consent"
+    }
+  ]
+}
