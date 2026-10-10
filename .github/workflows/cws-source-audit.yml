@@ -1,0 +1,45 @@
+name: Curious World Studio — read-only source audit
+on:
+  push:
+    paths:
+      - '.github/workflows/cws-source-audit.yml'
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'Start date, inclusive (YYYY-MM-DD)'
+        required: true
+        default: '2026-10-07'
+      end_date:
+        description: 'End date, inclusive (YYYY-MM-DD)'
+        required: true
+        default: '2026-10-09'
+permissions:
+  contents: read
+concurrency:
+  group: cws-source-audit
+  cancel-in-progress: false
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline tests
+        run: |
+          cd curious-world-studio/research/topic-bank/collector
+          python -m unittest discover -v -p 'test_*.py'
+      - name: Date-scoped source audit (read-only)
+        env:
+          START_DATE: ${{ inputs.start_date || '2026-10-07' }}
+          END_DATE: ${{ inputs.end_date || '2026-10-09' }}
+        run: |
+          python curious-world-studio/research/topic-bank/collector/collect.py \
+            --start "$START_DATE" --end "$END_DATE" --output "$RUNNER_TEMP/cws-source-audit"
+      - name: Publish raw counts and access failures (not TOPICS bank)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cws-source-audit-results
+          path: ${{ runner.temp }}/cws-source-audit/
+          retention-days: 14
+          if-no-files-found: warn
