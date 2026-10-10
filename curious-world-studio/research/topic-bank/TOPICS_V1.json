@@ -1,7 +1,7 @@
 {
   "schema": "CW-TOPIC-BANK-1.0",
   "created_at": "2026-10-10",
-  "scope": "history-import + 3 targeted new source verifications, NOT a nine-source exhaustive scan",
+  "scope": "21 historical imported topics + 15 targeted verified/discovered candidates from 2026-10-07 to 09; source coverage PARTIAL, NOT a nine-source exhaustive scan",
   "counts": {
     "SHORTLIST": 11,
     "VERIFY": 15,
