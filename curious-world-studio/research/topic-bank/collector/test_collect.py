@@ -221,4 +221,35 @@ class CollectorTests(unittest.TestCase):
         self.assertIn("HEALTH_PROBES",idx["grade"])
         self.assertFalse(jeb["absence_of_publications_proven"])
 
+    def test_plos_review_manifest_is_non_destructive(self):
+        p=c.report("PLOS","fixture")
+        p["received_pages"]=1
+        a=c.datum("PLOS","Why elephants communicate","https://doi.org/10.1371/a","2026-10-08","10.1371/a",kind="Research Article")
+        a["subjects"]=["Animal behavior"]
+        a["screening"]=c.plos_screen(a["title"],a["article_type"],a["subjects"])
+        b=c.datum("PLOS","Unexpected engineering result","https://doi.org/10.1371/b","2026-10-09","10.1371/b",kind="Research Article")
+        b["subjects"]=[]
+        b["screening"]=c.plos_screen(b["title"],b["article_type"],b["subjects"])
+        p["items"]=[a,b]
+        p=c.finish(p,"2026-10-07","2026-10-09")
+        result={"window":["2026-10-07","2026-10-09"],"ran_utc":"fixture","sources":[p]}
+        queue=c.plos_review_manifest(result)
+        self.assertEqual(queue["topic_review_count"],1)
+        self.assertEqual(p["in_window"],2)
+        self.assertEqual(queue["auto_approved_count"],0)
+        self.assertTrue(queue["unmatched_still_retained_in_audit"])
+        self.assertIn("No item approved",c.plos_review_markdown(queue))
+
+    def test_jeb_proxy_pagination_completion_is_not_full_journal(self):
+        body={"message":{"total-results":1,"items":[
+            {"DOI":"10.1242/jeb.1234","type":"journal-article",
+             "published-online":{"date-parts":[[2026,10,8]]},"title":["Bird behavior"]}]}}
+        with mock.patch.object(c,"get",return_value=json.dumps(body).encode()):
+            o=c.jeb("2026-10-07","2026-10-09")
+        self.assertTrue(o["proxy_query_pages_complete"])
+        self.assertFalse(o["covered_query_pages"])
+        grade=c.coverage_contract(o,"2026-10-07","2026-10-09")
+        self.assertTrue(grade["proxy_query_pages_complete"])
+        self.assertFalse(grade["full_nine_source_window_proven"])
+
 if __name__=="__main__":unittest.main()
