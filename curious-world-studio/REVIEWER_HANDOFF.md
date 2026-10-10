@@ -57,3 +57,11 @@
 - 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
 - 21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）。来自历史研究回填 + 少量定向抽查，**并非九源三日完整扫描或自动化生产系统**；尚无 STORY-FIT 正式通关、竞争分析或素材复用许可。
 - HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。
+
+
+## 2026-10-10 首轮跨领域三日来源扫描（重要：部分覆盖）
+- 已执行 2026-10-07 至 09（各源发表日期）定向扫描与论文核查，**不是全量九源爬取，也不是三日稳定自动化测试**。
+- 批次审计：[research/topic-bank/batches/2026-10-07_to_09_PARTIAL_9_SOURCE_SCAN.md](research/topic-bank/batches/2026-10-07_to_09_PARTIAL_9_SOURCE_SCAN.md)。新加 CW-0022～0036 共 **15** 角度：SHORTLIST **2** / VERIFY **8** / HOLD **5**。与历史 21 条合并，总 **36**：SHORTLIST **11** / VERIFY **15** / HOLD **9** / REJECTED **1**。
+- 新增 SHORTLIST：**夜鹰在慢速捕虫与长途迁徙中的飞行权衡**（Lund 10/9 研究新闻、论文 9/30）和**冲绳城市海岸蓝魔雀鲷的基因表达压力与外表丰度反差**（OIST 10/9、Nature Communications DOI）。均未过 STORY-FIT/视频素材审核。
+- 源覆盖：HF 三个日榜打开，但未逐一深读全部摘要；MIT 研究页仅首屏列表；JEB Accepted Manuscripts 日间列表 7 条可见稿、2 篇摘要；NASA 3 个对应 Image of Day 原文；PLOS/Nature/EurekAlert 通过定向搜索而非完整抓取。EurekAlert 本站直达 403，OpenAlex API 未跑；PubMed 部分核原论文学术信息。**不允许计算统一来源入选率或声称九大来源自动化已部署**。
+- 更新母表 `research/topic-bank/TOPICS_V1.json` 与看板 `research/topic-bank/BOARD_V1.md`，本批无任何素材商用许可确认、无中文平台竞品系统检查，不进入剧本。
