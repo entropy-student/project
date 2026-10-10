@@ -1,4 +1,6 @@
 # Curious World Studio｜跨领域选题信源登记册 v1
+
+> **HISTORICAL / SUPERSEDED（历史候选版）**：本文件保存早期来源调研和候选取舍，不是现行九大来源执行清单。正式九源分层以 [SOURCE_SYSTEM_FINAL_V1.md](SOURCE_SYSTEM_FINAL_V1.md) 为准；真实采集覆盖和当前工作请读 [CURRENT_STATE.md](../docs/CURRENT_STATE.md)。本文件原有措辞仅代表创建时状态。
 > 研究日：2026-10-10 · 状态：**PROPOSED / SOURCE LINKS VERIFIED / AUTOMATED HARVEST NOT YET TESTED**
 > 此清单仅锁定**候选信息源体系**和角色分工，下一轮才做 3 天采样与自动抓取连通性测试。用户尚未批准改写研究主协议。
 > 频道目标：找出能把普通观众带入约 4–6 分钟真实探索的研究或实验故事。不能以 AI 为必须领域。
