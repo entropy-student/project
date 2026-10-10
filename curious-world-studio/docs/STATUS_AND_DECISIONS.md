@@ -1,4 +1,6 @@
 <!-- CWS-20261010-HANDOFF-NAV -->
+> **本轮换聊天完整交接（2026-10-10）**：[P4-G0 Reviewer 一次性接手文档](REVIEWER_HANDOFF_2026-10-10_P4G0.md)。它集中指向本轮 main 中的故事/选题/视觉/生产架构/上游审计和本地Codex只读任务书。**实际 G0 仅上游静态部分完成，Owner Windows 本地回报未见；未生成音频/视频或运行测试。** 旧轮次“最新状态”按历史理解。
+
 > **P4-P0 技术规划（2026-10-10，PLAN_ONLY）**：Owner 要求先整体审查已锁定的 Retro Mac v1.2 视觉网页模版，形成 OpenMontage+Remotion/FFmpeg、中文音轨对齐、论文/图库/自制素材权利与分镜时间轴的**清晰规划**，明确**先讨论、不进入任何生成或测试**。已归档 [P4-P0 视频生产架构计划](VIDEO_PRODUCTION_ARCHITECTURE_PLAN_2026-10-10.md)。网页预览是64秒固定轮播非真实渲染器；Owner 本地 OpenMontage 实际版号/所装组件仍未知，下一步待Owner决定是否开展 G0 只读审计。P3-R6、源库、视觉STYLE_LOCK、授权边界均保持有效。
 
 > **P3-R6 CURRENT (2026-10-10)**: Owner accepted **content-first natural length** with no fixed runtime gate. [Decision and narrative assessment](../research/reports/2026-10-10_P3R6_CONTENT_FIRST_DURATION_AND_NARRATIVE_GATE.md) and [formal workflow clarified](../research/topic-bank/WORKFLOW_V1.md) only for stage5 and HOLD runtime wording. Do not interpret old 4–6min language as mandatory, or old estimates as recorded audio. D-B/J-B continuous V1 not rewritten; next is real spoken listening validation if separately authorized. No changes to scoring axes, topic statuses, production or media rights.
