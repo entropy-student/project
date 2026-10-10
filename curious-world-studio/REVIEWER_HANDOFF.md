@@ -1,4 +1,6 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
+> **P3-R4 latest (2026-10-10)**: Owner asked to implement useful findings from an independent narrative review and preserve deferred/rejected proposals separately. Full continuous D-B and J-B narration draft V1 now exists; accepted and deferred findings each have their own report. See [adopted research](research/reports/2026-10-10_P3R4_ADOPTED_REVIEW_FINDINGS_AND_TEST_PLAN.md), [deferred log](research/reports/2026-10-10_P3R4_NOT_ADOPTED_AND_PENDING_LOG.md), [D-B](research/story-fit/prototypes/2026-10-10_P3R4_D_B_FULL_READTHROUGH_V1.md), [J-B](research/story-fit/prototypes/2026-10-10_P3R4_J_B_FULL_READTHROUGH_V1.md). Text prototypes only; no production, real audience data, topic promotion or formal workflow changes.
+
 
 > **P3-R3 最新（2026-10-10，文本改写，不是节目正式机制通过）**：Owner 选择了**观众正在听有趣故事，却突然因“研究人员/实验”出戏**作为首要缺点，且大体认可语言生硬、答案过早揭示、过于实验目录等其他问题；已依授权制作[新版六篇短原型](research/story-fit/prototypes/2026-10-10_P3R3_SIX_REWRITTEN_NARRATIVE_PITCHES.md)、[新版六套约5分钟结构](research/reports/2026-10-10_P3R3_NARRATIVE_CONTINUITY_AND_MIDPOINT_REWRITE.md)和[反馈及编辑QA](research/reports/2026-10-10_P3R3_OWNER_FEEDBACK_AND_EDITORIAL_QA.md)。措施：**场景/选择先行→观众产生真实疑问→研究证据再回答→回到现场**；M3 的选择延续到中后段，M2 对 B 明确为当前材料的负例、D-A 若不足五分钟不硬凑；论文真实性/限制仍要表达。旧 P3-R2 报告全部保留。当前下一步 Owner 阅读**新版**并给出是否仍出戏的具体句子；无真实盲评、没有音视频制作；TOPICS/BOARD/WORKFLOW/视觉均不变。
 
