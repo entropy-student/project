@@ -259,6 +259,43 @@ def indexes():
     o["notes"].append("Two exact DOI probes only; NOT a three-day PubMed/OpenAlex scan.")
     return o
 
+def coverage_contract(out,start,end):
+    """Describe observed data without inferring RSS archive completeness."""
+    source=out["source"]
+    if source in ("HF_DAILY_PAPERS","PLOS"):
+        grade=("DATED_ENDPOINT_PAGINATION_COMPLETE" if out["covered_query_pages"]
+               else "DATED_ENDPOINT_PARTIAL")
+        denominator=("HF_DAILY_RANKED_FEED" if source=="HF_DAILY_PAPERS"
+                     else "PLOS_FULL_PARENT_DOCUMENTS")
+    elif source in ("MIT_RESEARCH","NASA_EO_IMAGE","NATURE_HUMAN_BEHAVIOUR"):
+        grade="ROLLING_FEED_SNAPSHOT_ONLY" if out["received_pages"] else "FEED_UNAVAILABLE"
+        denominator="OBSERVED_RSS_ENTRIES_ONLY"
+    elif source=="JEB_CROSSREF_PROXY":
+        grade="CROSSREF_INDEX_PROXY_ONLY" if out["received_pages"] else "PROXY_UNAVAILABLE"
+        denominator="CROSSREF_ONLINE_PUB_DATE_NOT_JEB_ACCEPTED"
+    elif source=="EUREKALERT":
+        grade="MANUAL_DISCOVERY_REQUIRED"
+        denominator="NO_VERIFIED_OPEN_AUTOMATION"
+    else:
+        grade="DOI_HEALTH_PROBES_ONLY"
+        denominator="TWO_FIXED_PROBES_NOT_A_DISCOVERY_SCAN"
+    d0,d1=dt.date.fromisoformat(start),dt.date.fromisoformat(end)
+    days=(d1-d0).days+1
+    if days<=31:
+        missing=[(d0+dt.timedelta(days=i)).isoformat() for i in range(days)
+                 if (d0+dt.timedelta(days=i)).isoformat() not in out.get("observed_in_window_dates",{})]
+    else:
+        missing=None
+    return {"grade":grade,"denominator_kind":denominator,
+            "endpoint_query_pages_complete":bool(out.get("covered_query_pages")),
+            "full_nine_source_window_proven":False,
+            "observed_min_date":out.get("observed_source_date_min"),
+            "observed_max_date":out.get("observed_source_date_max"),
+            "observed_in_window_by_date":out.get("observed_in_window_dates",{}),
+            "requested_days_without_observed_item":missing,
+            "absence_of_publications_proven":False,
+            "note":"Missing an RSS feed date never proves that no item was published; endpoint pagination is not completeness of an entire source ecosystem."}
+
 def canonical_key(it):
     """Best-effort cross-source dedup by DOI, arXiv ID, then normalized title."""
     import unicodedata
@@ -286,6 +323,8 @@ def audit(start,end):
     blocked=report("EUREKALERT","human-reviewed discovery only")
     blocked["notes"].append("No verified public RSS/API; no unauthorized bypass of access controls.")
     results.insert(2,blocked)
+    for o in results:
+        o["coverage_contract"]=coverage_contract(o,start,end)
     # Metadata-only overlap count; fuzzy mismatches remain possible.
     seen={};duplicates=[];total=0
     for source in results:
@@ -305,10 +344,27 @@ def markdown(a):
     out=["# Science source acquisition audit","",
          f'Window: {a["window"][0]} through {a["window"][1]} | Run: {a["ran_utc"]}',"",
          "No complete nine-source harvesting claim. RSS snapshots cannot prove historical coverage.","",
-         "| Source | Status | Attempts | Pages | Received | Dated & unique in window | API window pagination complete |",
-         "|---|---|---:|---:|---:|---:|---|"]
+         "| Source | Fetch status | Coverage grade | Pages | Received | In window | Date span observed | API pagination done |",
+         "|---|---|---|---:|---:|---:|---|---|"]
     for s in a["sources"]:
-        out.append(f'| {s["source"]} | {s["status"]} | {s["attempts"]} | {s["received_pages"]} | {s["raw_count"]} | {s["in_window"]} | {"yes" if s["covered_query_pages"] else "no"} |')
+        c=s.get("coverage_contract",{})
+        span=str(c.get("observed_min_date") or "?")+" → "+str(c.get("observed_max_date") or "?")
+        out.append(f'| {s["source"]} | {s["status"]} | {c.get("grade","NOT_EVALUATED")} | {s["received_pages"]} | {s["raw_count"]} | {s["in_window"]} | {span} | {"yes" if s["covered_query_pages"] else "no"} |')
+    out+=["","## PLOS secondary review lanes (not an automatic topic-bank gate)"]
+    for src in a["sources"]:
+        if src["source"]=="PLOS" and src.get("screening_summary"):
+            screen=src["screening_summary"]
+            out.append("- Full parent-article denominator: "+str(screen["raw_parent_articles"]))
+            out.append("- Labeled Research Article: "+str(screen["research_article_labeled"]))
+            out.append("- With subject metadata: "+str(screen["subject_labels_present"]))
+            out.append("- Review lanes: "+json.dumps(screen["review_lane_counts"],ensure_ascii=False))
+            out.append("- Topic hints: "+json.dumps(screen["topic_tag_counts"],ensure_ascii=False))
+            out.append("- "+screen["note"])
+    out+=["","## Coverage is observational, never negative proof"]
+    for src in a["sources"]:
+        c=src.get("coverage_contract")
+        if c:
+            out.append(f'- {src["source"]}: per-day={json.dumps(c["observed_in_window_by_date"],ensure_ascii=False)}; no observed items={c["requested_days_without_observed_item"]}; denominator={c["denominator_kind"]}.')
     out+=["","## Gaps and failures"]
     for s in a["sources"]:
         out+=["",f'### {s["source"]}']
