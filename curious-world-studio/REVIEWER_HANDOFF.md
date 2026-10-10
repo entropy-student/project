@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P3-R2 纸面原型已完成（2026-10-10；新于下方 P3-R1）**：B 声音 / D 认知负荷 / J 果冻各完成同题不同机制两个**约60–90秒非视频讲述原型**及对应**完整约5分钟理解推进结构压力测试**；见 [六短稿](research/story-fit/prototypes/2026-10-10_P3R2_SIX_MATCHED_NARRATIVE_PITCHES.md)、[六完整结构](research/reports/2026-10-10_P3R2_SIX_5MIN_NARRATIVE_STRESS_TEST.md)、[Owner 审阅卡](research/reports/2026-10-10_P3R2_OWNER_DECISION_AND_EDIT_REVIEW.md)。编辑假说：B 适配 M1 强于 M2（M2 易成实验目录）；D M3 比 M1 更有选择代入；J M1/M3 都有明确心智/犹豫/内疚分化，**仅纸面判断，不是观众反馈或真实5分钟播放结果**。下一步 P3-R3 Owner 盲审/尽可能独立受众验证。正式流程、四轴、36条题库与视觉全部不变；没有视频/录音、素材授权或正式 STORYFIT_GO。
+
+
 > **当前状态统一入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。以下为历史研究/交接增量记录，不得将旧段落内的“最新”或 B 优先/D HOLD 当作现在的执行决议。
 
 
