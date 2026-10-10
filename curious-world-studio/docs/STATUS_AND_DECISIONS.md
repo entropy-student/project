@@ -38,3 +38,10 @@
 - 第一批审计：[`research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md`](../research/topic-bank/batches/2026-10-10_SEED_IMPORT_AND_SPOTCHECK.md)
 - 21 条（SHORTLIST 9 / VERIFY 7 / HOLD 4 / REJECTED 1）。来自历史研究回填 + 少量定向抽查，**并非九源三日完整扫描或自动化生产系统**；尚无 STORY-FIT 正式通关、竞争分析或素材复用许可。
 - HF-FIND 唯一主协议及 QuickTime v1.2 视觉规范保持不变；本选题库框架在跨领域层面调度，不是第二份 HF-FIND 主协议。
+
+
+## 2026-10-10 选题库首次跨领域来源取样
+- 工作顺序和准入标准已记录于 `../research/topic-bank/WORKFLOW_V1.md`。
+- 10/7–9 三日 **PARTIAL** 扫描更新 `../research/topic-bank/TOPICS_V1.json`、`BOARD_V1.md`，现 36 条（11 SHORTLIST、15 VERIFY、9 HOLD、1 REJECTED）；真实新增 15 条（2 / 8 / 5）。详细覆盖与失败列表位于 `../research/topic-bank/batches/2026-10-07_to_09_PARTIAL_9_SOURCE_SCAN.md`。
+- 原始项目代码未部署持续拉取；EurekAlert 403，部分 Nature 付费/登录，OpenAlex/API 和 RSS 三日稳定性尚未实测。不可宣布“完整三日扫描通过”。
+- 下一步：修通合法稳定可抓取的官方接口，重跑可计数批次；随后才进入候选 STORY-FIT，不要现在擅自开新剧本或更改 HF-FIND 主协议。
