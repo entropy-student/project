@@ -1,13 +1,36 @@
 #!/usr/bin/env python3
 """Only inspect B paper supplementary audio; never redistribute source bytes."""
 import datetime, hashlib, io, json, os, pathlib, shutil, subprocess, tempfile
-import urllib.request, urllib.parse, zipfile
+import urllib.request, urllib.parse, zipfile, wave, struct, math
 
 SOURCE = 'https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3004046.s008&type=supplementary'
 CAP = 30_000_000
 AUDIO_EXT = ('.wav', '.wave', '.mp3', '.flac', '.m4a', '.ogg', '.aac', '.aif', '.aiff')
 
 def probe_blob(raw, name):
+    # Standard-library PCM WAVE QA does not require ffprobe on CI.
+    if name.lower().endswith(('.wav','.wave')) or raw.startswith(b'RIFF'):
+        try:
+            with wave.open(io.BytesIO(raw),'rb') as w:
+                channels=w.getnchannels();rate=w.getframerate();frames=w.getnframes()
+                samplewidth=w.getsampwidth();comptype=w.getcomptype()
+                stats={'name':name,'status':'AUDIO_METADATA_VERIFIED',
+                    'sha256':hashlib.sha256(raw).hexdigest(),'size_bytes':len(raw),
+                    'codec':'pcm_wav','sample_rate_hz':rate,'channels':channels,
+                    'bit_depth':samplewidth*8,'frames':frames,
+                    'duration_sec':round(frames/rate,6) if rate else None,
+                    'compression':comptype}
+                if samplewidth==2 and comptype=='NONE':
+                    pcm=w.readframes(min(frames,300000))
+                    samples=struct.unpack('<'+str(len(pcm)//2)+'h',pcm) if len(pcm)%2==0 else ()
+                    if samples:
+                        peak=max(abs(x) for x in samples)/32768
+                        rms=math.sqrt(sum(x*x for x in samples)/len(samples))/32768
+                        stats['peak_dbfs']=round(20*math.log10(peak),2) if peak else None
+                        stats['rms_dbfs']=round(20*math.log10(rms),2) if rms else None
+                return stats
+        except (wave.Error,EOFError,ValueError,struct.error):
+            pass
     if shutil.which('ffprobe') is None:
         return {'name':name,'status':'UNVERIFIED','why':'ffprobe unavailable'}
     with tempfile.NamedTemporaryFile(suffix=pathlib.Path(name).suffix) as tmp:
