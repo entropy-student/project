@@ -10,6 +10,32 @@ START,END="2026-10-07","2026-10-09"
 USER_AGENT="CuriousWorldStudio/1.0 (read-only science metadata)"
 PAGE_CAP=30
 
+# Metadata hints only: never auto-reject an unmatched article or promote a match.
+PLOS_TOPIC_HINTS_V1={
+    "FOOD_TASTE":("food","taste","flavor","flavour","cooking","edible","nutrition","diet","eating","appetite","feeding"),
+    "BEHAVIOR_PSYCHOLOGY":("behavior","behaviour","cognition","cognitive","psychology","perception","attention","memory","decision making","emotion","social psychology","sleep"),
+    "ANIMALS_NATURE":("animal behavior","animal behaviour","ethology","foraging","wildlife","bird","insect","ecology","migration","habitat","biodiversity"),
+    "BODY_SENSES":("sensory","olfaction","smell","hearing","auditory","touch","tactile","vision","visual perception","exercise","human movement"),
+    "DAILY_LIFE_ENVIRONMENT":("urban","transportation","traffic","commuting","mobility","clothing","household","architecture","climate","environmental sciences","remote sensing","geography"),
+}
+
+def plos_screen(title,article_type,subjects):
+    """Route to manual review; never certify relevance or original experiments."""
+    labels=[str(x) for x in subjects] if isinstance(subjects,list) else [str(subjects)] if subjects else []
+    title=str(title or "")
+    tags=[]
+    for tag,terms in PLOS_TOPIC_HINTS_V1.items():
+        if any(re.search(r"(?<!\w)"+re.escape(term)+r"(?!\w)",field,re.I)
+               for field in [title,*labels] for term in terms):
+            tags.append(tag)
+    research=str(article_type or "").strip().casefold()=="research article"
+    return {"ruleset":"PLOS_TOPIC_HINTS_V1","research_article_label":research,
+            "tags":tags,
+            "review_lane":("TOPIC_REVIEW" if tags else "OPEN_DISCOVERY")
+                if research else "OTHER_ARTICLE_TYPE",
+            "editorial_status":"DISCOVERED_UNREVIEWED"}
+
+
 def day(x):
     if isinstance(x,list):x=x[0] if x else ""
     if not x:return None
