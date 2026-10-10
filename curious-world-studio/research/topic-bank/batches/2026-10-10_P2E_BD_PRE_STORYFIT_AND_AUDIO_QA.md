@@ -10,6 +10,7 @@
 - 第一次 GitHub Actions [#38025083185](https://github.com/entropy-student/project/actions/runs/38025083185) 探针：3/3 fixture tests PASS；直接获得**PLOS 官方 S1 Audio 压缩档 15,927,334 bytes，HTTP 200**，SHA256 `175525c7d0b9a6af24af32a6bb36bbcdb2131d053bcd7cd13c9bbef2ce832a0c`；实际为 **RAR5**，最初不支持解包，正确标记未验证。
 - 第二次 [#38025192764](https://github.com/entropy-student/project/actions/runs/38025192764)：5/5 fixture tests PASS，临时运行器 7-Zip 成功列出 `Sound_File/` 下 **14 个 WAV** 文件，但 `ffprobe` 不在执行环境，因而只是“音频文件存在”，尚未解码。
 - 第三次 [#38025235581](https://github.com/entropy-student/project/actions/runs/38025235581)：5/5 fixture tests PASS，通过 **Python 内置 wave** 成功解码/读取 **14/14 WAV** 的 PCM 元数据。仅向 Actions artifact #`11660068453` 上传 `S1_AUDIO_QA.json`，**不上传原始音频或视频，不存储在正式题库**。
+- 最终复测 [#38025311695](https://github.com/entropy-student/project/actions/runs/38025311695)：5/5 fixture PASS，14/14 WAV 元数据成功，artifact `11659589029` 只包含 JSON；`matched_pair_checks` 精确验证 S-Pair1A/B 与 S-Pair2A/B **每一组两文件的 SHA256 不同、样本率相同、同声道、时长差 0.0 秒、峰值差 0.0 dB、RMS 差 0.0 dB**。这有利于控制配对实验响度，但仍不是人耳听感已经验证。
 - 最终脚本 `research/topic-bank/preflight/audio_probe.py` 使用 RAR 内存提取、来源字节上限及媒体单文件上限，并**去除签名重定向 URL 的 query**，避免泄露临时签名；所有输出仅为研究审核元数据。
 - **不可误报**：以上 QA 验证了「官方原始素材可获取且 WAV 格式确实可解码」，**没有真人耳机试听、手机外放真实验证、受众盲选或音频来源逐件商业授权确认**。
 
