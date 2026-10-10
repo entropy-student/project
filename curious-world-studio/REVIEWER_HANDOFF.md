@@ -1,5 +1,8 @@
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
+> **P2-B/C 新增核查（2026-10-10；本行较下方 P2-A 新）**：5 篇 PLOS 官方原始研究方法/结果/局限完成**同一助手**更深核验；其中巨噬细胞 `10.1371/journal.pone.0356679`（OPEN 漏词线索）与毫秒点击声 `10.1371/journal.pbio.3004046` 推荐提交 Owner 判断，棒球策略与 tDCS 决策为条件候选，人体束带静息血流研究暂 HOLD；AI 编码摘要 `10.1371/journal.pone.0343857` 本轮官方全文未验证。P2-C 核对 MIT 3/3、NASA 3/3、Nature 单项原文 2/2、JEB 当前接受稿可见子集 7/7 在 Crossref 11 条内，但**均非历时档案穷尽**。详情 [P2-B/C 报告](research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md) 和 [Owner 质量把关卡](research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)。独立 Reviewer/Owner 判定和正式 STORY-FIT 均**待做**，36 题不变。
+
+
 > **P2-A 最新：2026-10-10 40 篇 DOI 级人工初审/来源归档可行性核查已完成**（单一模型评审，仅标题和摘要，非全文或正式 Story-Fit）。P1 已经由 PR #74 合并到 main `bf16fd9`，主分支 Actions [#38022638179](https://github.com/entropy-student/project/actions/runs/38022638179) **24/24 通过**。P2 分别抽 `TOPIC_REVIEW` 与 `OPEN_DISCOVERY` 20 篇；频道题材 Y 12 vs 5、较强故事线索 4 vs 2，说明优先队列有用但开放池不可硬淘汰；全部 0 篇自动晋级。MIT/NASA/Nature/JEB 官方网页存在可追踪历史入口，**未证实自动归档全量**。参阅 [P2 报告](research/topic-bank/batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md) 及 [40 DOI 明细](research/topic-bank/batches/2026-10-10_P2_PLOS_40_ABSTRACT_REVIEW.md)。
 
 

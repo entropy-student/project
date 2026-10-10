@@ -2,6 +2,8 @@
 
 > **本文件是 2026-10-10 的历史快照；最新增量请优先看**：[P2-A 抽样及历史来源核查](../research/topic-bank/batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md) 与 [40 条 DOI 逐项评分](../research/topic-bank/batches/2026-10-10_P2_PLOS_40_ABSTRACT_REVIEW.md)。P1 合入 main `bf16fd9`，24/24 测试已在主分支真实验证；P2-A 40 条样本只做单模型标题/摘要初审；九源完整性仍 **PARTIAL**，正式题库仍 36 条。切勿将旧的 P0/P1 待办覆盖为当前状态。
 
+> **本文件是历史交接快照。2026-10-10 最新增量**：[P2-B/C 原始研究及官方日期窗对账](../research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md) + [Owner 题目质量投票](../research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)。已核 5 篇 PLOS 原文，确定初步推荐巨噬细胞、点击声；MIT 3/3、NASA 3/3、Nature 2/2、JEB 7/7 当前可见子集对账仅为局部证据。**独立二审、Owner 意愿、正式 STORY-FIT、媒体许可和九源完整性仍未通过**。TOPICS 保留 36 项。
+
 # Curious World Studio｜新聊天 / Reviewer 完整接手快照
 **快照日期：2026-10-10｜接手优先级：P0｜只针对 `entropy-student/project/curious-world-studio/`**
 

@@ -3,6 +3,9 @@
 
 # 当前决策与待办
 
+> **最新 P2-B/C 审查进展**：5 篇高故事线索 PLOS 原论文经同一助手原始全文复核，已准备 [Owner 质量把关卡](../research/topic-bank/batches/2026-10-10_P2_OWNER_TOPIC_QUALITY_GATE.md)；推荐首先比较巨噬细胞与毫秒点击声题。另完成同窗**可见官网子集**对账：MIT 3/3、NASA EO 3/3、Nature 两篇日期与来源核对 2/2、JEB 接受稿可见 7/7 在 Crossref 11 条内；不冒充自动历史全量。报告 [P2-B/C](../research/topic-bank/batches/2026-10-10_P2B_PRIMARY_REVIEW_AND_P2C_CROSSWALK.md)。**仍缺真正独立第二审、Owner 点击意愿和可重复归档遍历验收；九源完整性仍 PARTIAL，正式选题 36 条不变。**
+
+
 > **2026-10-10 最新 P2-A：第一轮样本审查完成；完整性仍未通过**。P1 已由 PR #74 合并 main，主分支 [Actions #38022638179](https://github.com/entropy-student/project/actions/runs/38022638179) 24/24 测试、线上审计成功。P2 预先固定 40 篇样本（TOPIC 20、OPEN 20），隐藏队列标签进行单模型标题/摘要初审：明确题材吻合 12 vs 5，较强故事线索 4 vs 2；**此数据不能外推为全库准确率或正式 Story-Fit**，开放池两条强线索证明不应硬淘汰。MIT/NASA/Nature/JEB 的官方历史网页入口已核，但自动档案穷尽未验证。下一步 P2-B 双审与全文复核，P2-C 官方目录与 RSS 日期窗口差异核查；正式选题仍 36 条。详见 [P2 报告](../research/topic-bank/batches/2026-10-10_P2_CALIBRATION_AND_ARCHIVE_FEASIBILITY.md)。
 
 
