@@ -11,7 +11,7 @@
   "independent_official_release": "https://www.uec.ac.jp/eng/news/announcement/2026/20260624_7779.html",
   "publication_license_policy": "https://plos.org/terms-of-use/",
   "youtube_license_policy": "https://support.google.com/youtube/answer/2797468",
-  "source_status_note": "Academic article contains S3 Appendix links to videos; university links these on YouTube. External video copies are NOT automatically covered by article CC BY. No YouTube video player or license setting was directly accessible in this review; no video binary was downloaded or inspected.",
+  "source_status_note": "Initial 2026-10-11 registry based on paper/university link lookup, with no video watched then. Later the Windows Codex did watch all three original YouTube players to end and observed selected actions, but could not audit sound or an explicit license; video files remain not downloaded, reproduction rights UNKNOWN. See latest_screening_report.",
   "videos": [
     {
       "asset_id": "JB-VID-00",
@@ -29,8 +29,36 @@
         "content_verified": "NOT_VERIFIED",
         "reuse_rights_verified": "UNKNOWN"
       },
-      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
-      "video_data_retrieved": false
+      "license_status": "RIGHTS_UNKNOWN_PERMISSION_REQUIRED",
+      "video_data_retrieved": false,
+      "online_screening": {
+        "performed_on": "2026-10-11",
+        "screening_method": "Edge official YouTube embedded video playback to completion; no recording or downloads",
+        "uploader_seen": "NAKATA Lab UEC Tokyo",
+        "visibility_seen": "UNLISTED",
+        "uploader_license_field_visible": false,
+        "uploader_license_status": "UNKNOWN",
+        "audio_audition": "NOT_VERIFIED_BY_EAR",
+        "max_displayed_quality": "720p",
+        "online_visual_status": "VIDEO_WATCHED_SELECT_ACTIONS_VISUALLY_VERIFIED",
+        "verified_clip_bounds": "APPROX_WINDOWS_NOT_FRAME_ACCURATE",
+        "observed_windows": [
+          {
+            "approx_time": "00:05–00:09",
+            "observation": "ingredients/materials shown"
+          },
+          {
+            "approx_time": "00:12–00:17",
+            "observation": "pouring into metal mold"
+          },
+          {
+            "approx_time": "00:31–00:36",
+            "observation": "mold opened and product removed"
+          }
+        ],
+        "uploaded_on": "2025-09-27",
+        "displayed_duration": "0:41"
+      }
     },
     {
       "asset_id": "JB-VID-01",
@@ -52,8 +80,29 @@
         "content_verified": "NOT_VERIFIED",
         "reuse_rights_verified": "UNKNOWN"
       },
-      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
-      "video_data_retrieved": false
+      "license_status": "RIGHTS_UNKNOWN_PERMISSION_REQUIRED",
+      "video_data_retrieved": false,
+      "online_screening": {
+        "performed_on": "2026-10-11",
+        "screening_method": "Edge official YouTube embedded video playback to completion; no recording or downloads",
+        "uploader_seen": "NAKATA Lab UEC Tokyo",
+        "visibility_seen": "UNLISTED",
+        "uploader_license_field_visible": false,
+        "uploader_license_status": "UNKNOWN",
+        "audio_audition": "NOT_VERIFIED_BY_EAR",
+        "max_displayed_quality": "720p60",
+        "online_visual_status": "VIDEO_WATCHED_SELECT_ACTIONS_VISUALLY_VERIFIED",
+        "verified_clip_bounds": "APPROX_WINDOWS_NOT_FRAME_ACCURATE",
+        "observed_windows": [
+          {
+            "approx_time": "00:50–00:55",
+            "observation": "jelly agent centered; repeated left-right swaying NOT visibly verified"
+          }
+        ],
+        "research_key_action_verified": false,
+        "uploaded_on": "2025-09-26",
+        "displayed_duration": "1:31"
+      }
     },
     {
       "asset_id": "JB-VID-02",
@@ -78,11 +127,52 @@
         "content_verified": "NOT_VERIFIED",
         "reuse_rights_verified": "UNKNOWN"
       },
-      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
-      "video_data_retrieved": false
+      "license_status": "RIGHTS_UNKNOWN_PERMISSION_REQUIRED",
+      "video_data_retrieved": false,
+      "online_screening": {
+        "performed_on": "2026-10-11",
+        "screening_method": "Edge official YouTube embedded video playback to completion; no recording or downloads",
+        "uploader_seen": "NAKATA Lab UEC Tokyo",
+        "visibility_seen": "UNLISTED",
+        "uploader_license_field_visible": false,
+        "uploader_license_status": "UNKNOWN",
+        "audio_audition": "NOT_VERIFIED_BY_EAR",
+        "max_displayed_quality": "720p60",
+        "online_visual_status": "VIDEO_WATCHED_SELECT_ACTIONS_VISUALLY_VERIFIED",
+        "verified_clip_bounds": "APPROX_WINDOWS_NOT_FRAME_ACCURATE",
+        "observed_windows": [
+          {
+            "approx_time": "00:18–00:23",
+            "observation": "hand/forearm approaches jelly agent"
+          },
+          {
+            "approx_time": "00:34–00:39",
+            "observation": "expanding colored spring toy prominently blocks jelly"
+          },
+          {
+            "approx_time": "01:03–01:08",
+            "observation": "second blue/yellow toy near jelly"
+          },
+          {
+            "approx_time": "01:24–01:29",
+            "observation": "hand passes above jelly; goodbye NOT verified"
+          }
+        ],
+        "bell_evidence": "NOT_VERIFIED_VISIBLE_OR_BY_EAR",
+        "uploaded_on": "2025-09-26",
+        "displayed_duration": "1:33"
+      }
     }
   ],
   "anchor_note": "Times quoted in paper Fig 7/8 captions as screenshot positions; do not interpret them as already audited usable clip in/out or assume exact key events occur at these times. Paper explicitly says timestamp labels in figures are not part of original video.",
   "access_rule": "Inspect official video in browser in read-only fashion before proposing cuts. Download/re-encode/modify/use in test or published video only after checking explicit permission/license or a specifically reviewed applicable exception, plus channel/platform terms. Do not fall back to full figure composites without editorial evaluation.",
-  "release_boundaries": "No change to formal topic bank, STORY-FIT status, official script, G1_R2 NOT_PASS, visual lock, or G2 authorization."
+  "release_boundaries": "No change to formal topic bank, STORY-FIT status, official script, G1_R2 NOT_PASS, visual lock, or G2 authorization.",
+  "latest_screening_report": "../../docs/P4_G1V_SOURCE_SCREENING_READBACK_2026-10-11.md",
+  "downloader_status": {
+    "tool": "yt-dlp",
+    "local_cli_presence": "TOOL_NOT_PRESENT",
+    "installed_in_screening": false,
+    "download_authorized": false
+  },
+  "boundary_note": "verification.content_verified remains NOT_VERIFIED for complete source/its sound and exact frames. The separate online_screening fields capture visual observations only. License and third-party sound rights remain UNKNOWN. No direct source-media files obtained."
 }
