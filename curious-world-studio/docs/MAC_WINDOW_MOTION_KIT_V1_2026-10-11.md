@@ -1,5 +1,8 @@
 # Curious World Studio｜Mac Window Motion Kit v1（独立视觉实验提案）
 
+> **首批 HTML Demo 最新视觉审查（2026-10-11）**：Owner 实看否决，Reviewer 严格复核判定 **`RETURN_VISUAL_REJECTED_ALL_FIVE`**。原版仅凭5/5操作/重置和三帧截图并不能视为动效可用于视频；必须重新复用 Research Aqua V2 原鼠标路径/点击波纹及桌面窗口位置，解决MW-03只交换z-index与不足0.3秒即完成动作的问题。**首批优先返工，第二批 Spotlight/Exposé/Dock Genie/拖拽暂不执行；一切均保持实验且不自动集成正式影片。** 见 [Reviewer退回报告](MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md) 与 [返工任务](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)。
+
+
 > **状态：EXPERIMENT_ONLY / NOT_APPROVED_FOR_FORMAL_VIDEO** · 2026-10-11  
 > Owner 新支线目标：探索 Research Aqua / Mac OS X Tiger 风格的**窗口动画**，让知识视频的证据开关、切换和暂停表现更自然。**本提案不修改**现有 G1V-A V2 视觉源、M1/M2 已验收视频和源码，**不自动扩展**正式视频只允许 2 转场 / 4 布局 / 6 信息呈现的动效选择。所有新增窗口/状态特效先作为独立演示，Owner 观看后才决定是否修改正式合同。
 >
