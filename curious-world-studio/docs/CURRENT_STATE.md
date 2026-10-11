@@ -1,5 +1,11 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-POSTMERGE-CANONICAL -->
+> **最新事实快照（2026-10-11，覆盖下面带“当时最新 / PR未合并”等历史时间戳段落）**：权威单一最新交接入口 **[合并后项目完整 Handoff](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)**。GitHub **[#116](https://github.com/entropy-student/project/pull/116) 已合并**五文件 M2 测试适配源码（merge `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`）；其新 head `4684bffa...` 已经独立代码 Review **PASS**：legacy React props 复制后规范化、blackdetect 命中在QA PASS之前 fail closed，静态黑段负例已补；PS7.6.5等本机检查为 Codex 报告，不冒充本沙盒重新运行。**代码合并并不使 M2/G1 正式 PASS**：两支 M2 MP4 文件 QA PASS，F2 同哈希9秒单次回归 renderer/runner=0，但原第184帧失败根因 UNKNOWN、观察器后处理 exit1、6x 内存余量最低221.86MiB，仍不启动 G2。
+> **Mac Window Motion Kit**：[#115](https://github.com/entropy-student/project/pull/115) 也**已合并，但仅限4个设计/退回 Markdown 文件**（merge `667809fec3c961a834b96321a21e70b5525111f2`）；**首批 5 个 HTML 动效仍为 Owner/Reviewer 视觉退回 `RETURN_VISUAL_REJECTED_ALL_FIVE`**，前期按钮 5/5 smoke PASS 不等于视觉通过。待按 [严格返工 Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md) 在独立目录重新实现；第二批 Spotlight/Exposé/Dock Genie/拖拽先 HOLD，不能并入正式视频。
+> **素材、yt-dlp 与正式片**：正式片继续遵守 3＋1 + 2/4/6、Research Aqua A→B 和默认16:9横屏，不做AI生图/生视频、不画实体、不循环素材；yt-dlp 已在显式本地 HTTP代理下对 Blender 一条 MP4 直链和全片解码真实 PASS，YouTube 匿名元数据仍登录挑战、CWS wrapper 未经独立端到端审核。首次正式片进入生产前需项目专属**只读清理盘点→Owner单独确认精确删除列表**，此前一律不删除。下一步不再提交/重审已合并的#116，也不重渲原测试片；按总汇决定正式研究素材/配音字幕/资源预算与返工支线各自后续 Gate。**本页下方历史阶段和老“下一步”段落保留用于证据追溯；不再代表当前指令。**
+
+
 > **更新时间**：2026-10-11；**性质**：项目运行状态与接手导航，**不是业务规则或研究主协议**。
 > 若其他文件有相互矛盾的“目前 / 下一步 / 尚未运行”等时态表述，请以本页最新事实状态为准；**选题业务规则仍以 `research/topic-bank/WORKFLOW_V1.md` 为准**，HF-FIND 和视觉参数仍各以其锁定协议为准。历史报告的研究结论、事实来源和时间戳不得被本页覆盖。
 >
@@ -30,6 +36,10 @@
 > **yt-dlp 支线最新 Reviewer Review（2026-10-11，覆盖前两轮失败的后续有效结果）**：Owner 上传 **真实 Sintel 480p MP4** + 5件本机报告/JSON；Reviewer 在沙盒**独立核对 MP4 SHA `b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`、4,372,373B、H.264 854×480@24fps/52.208333秒、AAC双声道、FFprobe及FFmpeg全片解码 exit0**。本机预检识别 `HTTP_PROXY` 误以 HTTP 指向仅支持 SOCKS5 的 `127.0.0.1:10808`，而 Clash 现有 `127.0.0.1:7897` 可 HTTP CONNECT；在 yt-dlp 命令显式指定 `--proxy http://127.0.0.1:7897` 后 Blender 直链**真实下载成功（本机退出0）**，故 `YTDLP_DIRECT_DOWNLOAD=PASS_ONE_SOURCE_WITH_EXPLICIT_PROXY`，前两轮 RETURN 留历史但不再代表最新直链结果。PowerShell 同 URL Range GET HTTP206、65536B 为单独路由对照。YouTube 页面依旧 `FAIL_SITE_SIGN_IN_CHALLENGE`（不绕过、不代表所有网站）；新 `cws-ytdlp.ps1` **本机报告已创建并通过语法检查，但未提供脚本本体供 Reviewer 审查，也未用 wrapper 本身端到端验收**。成功只证明这条直链和当前端口，后续端口变动先重新核实，不修改 VPN/Clash/system proxy。完整 [支线第三轮独立 Review](P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md)。**支线可停止重复通用测试**，真实视频素材版权/研究对应关系需逐片核验。主线仍为 F2 候选通过、M2 补丁代码 PR 待提交/审查，不因此标 G1/G2 PASS；生产前受控清理未执行。
 
 ## 1. 当前阶段与真正的下一步
+
+> **2026-10-11 post-merge 最新下一步（优先于本节以下旧 bullets）**：M2 code 已合并并通过本轮源码 review，**本节以下任何“当前还在 M1 / 下一个任务是 M2、旧运行回归”的语句都是历史时间快照**。正式 G1/G2 仍未通过/获授权；应 (a) 保留前次第184帧/观察器缺口，停止重复旧小样回归，(b) 单独规划正式首片选题Story-Fit、研究真实镜头版权、云配音与单行字幕音画对齐、内存并发预算，(c) 正式生产前受控只读清理盘点及 Owner另行确认删除清单，(d) 与正式制作隔离审看首批5个Mac动效返工，先不要启动第二批。最新完整状态：[项目总汇](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
+
+
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
 - **当前阶段 `P3-R6 NARRATIVE COMPLETE + P4-G0 UPSTREAM STATIC DONE / LOCAL READBACK RECEIVED / G0_CONDITIONAL`**：2026-10-10 Windows 本地 Codex 已按既有任务书完成**只读查询与文字集成设计**，报告已交 Owner 并归档到 GitHub `main`：[本机能力回读](P4_G0_LOCAL_CAPABILITY_READBACK_2026-10-10.md)。存在 OpenMontage、Remotion 4.0.484、Node、FFmpeg、atelier 源码接口的本地证据；但安装无 `.git`，确切源码来源 UNKNOWN，中文**定稿文案强制对齐未证**、Qwen 实际配置 UNKNOWN、该 G0 只读报告阶段没有运行或渲染（但后续 G1/G1V-A 已真实渲染，见下文）。Reviewer 已给出 [四项接口纠偏与 G1 验收合同草案](P4_G0_CONTRACT_CORRECTIONS_AND_G1_ACCEPTANCE_2026-10-11.md)，包括音轨零点、权利三状态、主音轨版本锁、一行拆多字幕。**G0 仍为 CONDITIONAL，非 `G0_DESIGN_READY_NO_RENDER`、非 G1/生产 PASS**；2026-10-11 文档修订通过 [PR #93](https://github.com/entropy-student/project/pull/93) 合并至 `main`，未改变本地运行状态。

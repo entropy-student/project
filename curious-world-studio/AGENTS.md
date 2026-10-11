@@ -1,3 +1,6 @@
+<!-- CWS-20261011-AUTHORITATIVE-POSTMERGE -->
+> **当前唯一有效阶段入口（2026-10-11，优先于本文件所有旧顶部片段）**：[docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md) + [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**PR #116已合并M2五文件测试源码**，独立代码复核认定 React props复制与黑段检测 fail-closed 两个阻塞已修，**不是M2/G1正式PASS**；旧184帧失败原因UNKNOWN、F2渲染成功但观察器exit1、长片内存风险仍在。**PR #115也已合并，但仅包含Mac动效设计与视觉退回/返工文档**：首批5个HTML操作smoke PASS但视觉 `RETURN_VISUAL_REJECTED_ALL_FIVE`，缺V2鼠标路径和MW-03真切换，绝不作为正式视频动效通过；第二批4项暂停。yt-dlp Blender直链通过，YouTube受挑战/wrapper未端到端；只用已核来源。**不得重开旧M2 PR、重复旧9s渲染、自动清理、推进G2**。正式片前清理先只读盘点，删除需Owner另外批准；真实视频/云配音/单行字幕/资源稳定性仍需独立 Gate。此段为最新状态，后面旧“PR待提交/尚未安装/F2计划”均为时间点历史，不再当执行任务。
+
 <!-- CWS-20261011-YTDLP-THIRD-TEST-PASS-LATEST -->
 > **yt-dlp 支线最新（2026-10-11）**：Owner 已上传真实 Blender 480p MP4及5份诊断材料，Reviewer 独立 SHA、FFprobe、FFmpeg 全解码 PASS。对比本机端口握手报告后，问题源于 `HTTP_PROXY` 把 SOCKS-only 10808 声明为 HTTP，而 Clash mixed 7897 是可用 HTTP 代理；使用 `--proxy http://127.0.0.1:7897` 后**指定 Blender 官方视频实际下载成功**。`DIRECT_MEDIA_DOWNLOAD=PASS_ONE_SOURCE`，不是全部视频站点可用。YouTube 仍有匿名挑战，不准绕过。新建的 `cws-ytdlp.ps1` 只有 Codex 本机语法和哈希报告，**脚本本体未提交供 Reviewer code QA**，不标 `WRAPPER_END_TO_END_PASS`；代理端口变动先读回实际配置，勿改全局代理/VPN。最新 Review：`docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`。所有旧支线 RETURN 仅属历史。**主线 M2 patch 仍待独立代码 PR 审查，G1/G2 仍 NOT_PASS**；不重新跑测试片，不清理关键证据或提前执行正式视频生产。
 

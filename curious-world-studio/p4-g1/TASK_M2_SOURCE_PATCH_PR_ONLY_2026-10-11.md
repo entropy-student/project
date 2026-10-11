@@ -1,5 +1,9 @@
 # M2 测试源码五文件补丁｜限定代码 PR 提交任务（未执行）
 
+<!-- COMPLETED_PR116_20261011 -->
+> **历史任务完成，不得再下发！** 2026-10-11 [PR #116](https://github.com/entropy-student/project/pull/116) 已包含此五文件补丁并合并到 main（merge commit `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`），两个后续 code review blocker 已在已审 head `4684bffa899d57859faaec65b18678de94dd97c8` 修好。本页下方“只创建PR/尚未执行/未获授权”是**任务发出时的历史约束**，不是当前新任务。正式M2/G1没有自动PASS，下一步不是重做旧小片。现行状态优先参考 [合并后交接总汇](../docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
+
+
 > 状态：`PROPOSED_READY_FOR_OWNER_RELAY` · 2026-10-11。**仅代码审查/PR，不是渲染测试、正式视频生产，也不包含对现有失败日志的更多调查。**  
 > 依据：`docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`。  
 > **Owner 可将本文明确转发给本地主线 Codex，才构成当前代码分支和 PR 写入授权；未转发前无需 Codex 主动执行。**

@@ -1,7 +1,12 @@
 # Curious World Studio｜Reviewer 接手与 M2 现行 Gate（2026-10-11）
 
-> CURRENT_REVIEWER_STATE: `M2_RETURN_UNDIAGNOSED_RENDER_FAILURE / TWO_CANDIDATE_MP4_FILE_QA_PASS / M2_F1_DIAG_CLOSED_INCONCLUSIVE / M2_F2_PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION / M2_SOURCE_PATCH_PR_REVIEW_NEXT`  
+> CURRENT_REVIEWER_STATE: `M2_CODE_MERGED_CODE_REVIEW_PASS / M2_HISTORICAL_GATE_RETURN / M2_F2_ONE_RENDER_CANDIDATE_PASS / G1_NOT_PASS / G2_NOT_AUTHORIZED / MAC_MOTION_FIVE_VISUAL_RETURN`  
+> 下文以早期 M2-f1/f2/PR-only 命名的段落属历史证据；本页最新业务状态见 `CURRENT_TRUTH_POST_115_116_MERGE_2026-10-11`。  
 > 本文替代先前 `REVIEWER_HANDOFF_2026-10-11_G1VA.md` 作为新会话默认 Reviewer 入口；历史 Handoff 和原证据仍保留。唯一实时状态 `CURRENT_STATE.md`。
+
+## CURRENT_TRUTH_POST_115_116_MERGE_2026-10-11
+
+**必须先阅读** [合并后权威总汇](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)，其时间点晚于下面的 M2-F1/F2 与 PR-only 老 Gate 段落。已独立查到 GitHub **PR #116 M2五文件代码 merge `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`；PR #115 窗口动效**仅设计/退回文档** merge `667809fec3c961a834b96321a21e70b5525111f2`**。M2 两项 blocker 已修，静态 code review PASS，**不是 M2/G1正式 PASS**，仍有原184帧未知根因、F2观察器exit1、6x低可用内存。窗口5/5仅功能 smoke通过、**全部视觉 RETURN**（缺 V2 同源鼠标点击/图标定位、MW-03假切换）；第二批4项暂停。yt-dlp Blender直链1次真实下载与解码PASS、YouTube仍挑战、wrapper未端到端审。不要再做旧 M2代码PR或旧 G1-M1片重复渲染；下一步正式节目Story-Fit/真实版权素材/配音字幕/资源预算，以及正式首片前只读清理+精确删除单独授权；视觉支线按 V2 返工独立审批。
 
 ## PROJECT_GOAL
 不露脸、B站优先、跨领域真实有趣发现，以证据支持自然故事，不凑时长；A Research Aqua 桌面真实开窗操作→B QuickTime 满幅播放器，保持原始材料权利、语义与观看体验。
@@ -34,10 +39,11 @@
 - 完整 Review 记录：`docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`。仅拟定一轮后续可观测回归 `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md`，**PLAN_ONLY/未获 Owner 执行授权**，不许旧 F1 Gate 再跑。
 
 ## CURRENT_GATE
-- 原 M2 双素材任务正式状态仍 `RETURN_UNDIAGNOSED_RENDER_FAILURE`，旧 M1 第184帧 renderer 读取失败后未诊断重试的历史偏差不可抹去。两支 MP4 QA 候选通过，不重新生成，M2 补丁**未合并**。
-- F1 只读诊断已有 `RETURN_DIAGNOSTIC_INCONCLUSIVE` 并**STOP**，不再请求相同旧日志；从脱敏日志额外确认同帧 `/proxy` HTTP500，但完整首败 argv/exit 缺失、根因仍未知。
-- 当前**没有已授权待执行的新渲染 Gate**。F2 只是带明确上限、用于采集下一次真实 argv/exit/资源状态的**一次可观测回归建议**，由 Owner 明确授权后才能安排。
-- 本次不涉及 yt-dlp 支线或生产前清理，也不启动 G2。
+- **主线代码当前已合并**：#116 五文件源码通过独立静态 Review、原 React props 与黑段检测两个 blocker 已修；无须发起另一份旧源码 PR，不允许据此自动宣告 M2/G1 PASS。
+- **历史媒体 Gate仍有 RETURN**：M2 两支输出真实文件 QA已通过；原 M1 runner首败第184帧本地proxy500根因 UNKNOWN，F1只读取证 INCONCLUSIVE；F2 唯一实跑成功，render/runner=0但观察器后处理自身exit1、launcher ExitCode缺失。原 STOP 违例保留，不重复跑旧测试视频，未获授权的正式 G1/G2 继续禁止。
+- **窗口支线**：#115 已合并**设计与返工任务文档**，首批五个UI HTML视觉仍被 Owner拒绝；返工与主线隔离，第二批 HOLD。已获通过的 V2 视觉真源不变。
+- **下载支线**：yt-dlp 单一 Blender直链用显式HTTP代理成功并通过媒体解码；YouTube元数据挑战、wrapper未验收，且不能推广为全部网站/版权许可。
+- **当前下一步**：项目专属正式生产前*只读*清理盘点→Reviewer验证→Owner单独批准具体删除后才能执行；正式选题、授权素材、中文云配音与单行字幕时序/长片资源安全方案另行 Gate。完整阅读 [合并后总汇](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
 
 ## OWNER_DECISION_2026-10-11 / ACTIVE_VIDEO_ASSET_POLICY
 - 未来正式视频采用 **3＋1**：研究/实验原始素材、OpenMontage 检索、yt-dlp 已知来源的合规下载路径；**Codex 动效只保留 Owner 选定的 2 转场衔接、4 画面布局、6 信息呈现三大类**，其他 1/3/5/7 不用；**不绘制果冻等实体、不生成 AI 图片/视频、禁止重复镜头/循环素材**。按需要选取，不要求三路都用。权威合同：[VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
@@ -75,7 +81,9 @@
 Owner Windows 的本地 Codex，明确 M2 Gate，项目内独立 worktree/stage；不能直接借 GitHub 文档假装读取了 Owner 硬盘。
 
 ## CURRENT_ROLLBACK_STATUS
-M1 main 四份原始源码和锁定 V2 HTML 仍是已接受基线；M2 的 5 文件 patch 只留本地未经合并。Owner 报告本地 M2 隔离 stage 和证据目录已生成并保留，**Reviewer 未登录 Windows 核实现场保留情况**；不清理 M1/R1/R2/M2、失败或成功 stage，先保全失败日志。回滚细节见 Owner 上传的 `rollback_plan.md`。
+- 主线 GitHub已把 M2五文件补丁合并进入 main（#116, merge `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`）；不能再称“只在本地未合并”。锁定的 V2 HTML 仍为基准、既有M1/M2实际视频与本机QA证据须保留。
+- 如需要回滚 GitHub M2 patch，应走**另行审查的单独Revert PR**，不得隐式重置或强制移动 main；该回滚会影响随后测试源码依赖，不应随意执行。
+- 本机Windows旧 stage 与失败日志是否仍完整，当前 Reviewer 未直接登录Owner机器核实；正式生产前清理时必须先列证据/引用、保全原始文件。Mac旧HTML ZIP仍保存为视觉失败的历史审查样本。没有授权任何删除。
 
 ## MOST_RECENT_YTDLP_OWNER_RELAY
 Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESENT`；`Get-Command yt-dlp` 无匹配，FFmpeg/FFprobe 9.0 版本命令成功。按 Gate 停止后**没有执行元数据提取、下载或解码，也没有安装/改网络/M2**。无可供 Reviewer 直接读取的日志，记为 `OWNER_REPORTED`，见 `docs/P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md`。**该历史预检本身不含安装授权**；随后 Owner 已另行授权并完成安装测试回报；**当前安装已获证，真实媒体下载失败**；M2 不变。
@@ -84,11 +92,17 @@ Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESE
 M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事镜头、中文配音/对齐、原视频版权、自动素材编排、G1完整视觉/音频 Gate、G2资格。
 
 ## NEXT_STEP / OWNER_ACTION_REQUIRED
-- 主线 F2 单次回归证据 Review 已完成，**不再需要渲染新测试视频**。下一步只需把 M2 五文件原补丁提交一份代码 PR 并完成独立源码审查；任务书 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`。此任务尚未由 Owner 转发确认 GitHub 写权限；**不批准自行合并或 G2**。
-- 之后安全进行正式生产前项目特定清理 Gate（单独确认精确删除项），并着手真实横屏研究素材、配音、单行字幕和正式成片编排。长片应考虑内存和并发约束。
-- 支线第二轮 yt-dlp 返回 `RETURN_REMOTE_DISCONNECTED`；若需继续优先一次同 URL 请求路径对照，不因下载支线阻断其它素材路径。
+1. **停止已完成任务**：#116已合并、两个源码 blocker已修、M2/F2旧小样已获媒体候选技术证据；不用重开 PR/重渲视频/循环只读旧日志。
+2. **正式视频新 Gate需单独规划/授权**：以已有36选题库先做 Story-Fit，选来源与再使用权可核的真实横屏视频，镜头/旁白/音轨锁/单行字幕映射与长片资源安全预算；未完成前不得说 G1/G2/生产PASS。
+3. **生产前清理**：先只读盘点和精确保全名单，Owner对具体删除项另行批准之前绝不删。
+4. **Mac视觉支线**：按返工任务提交**独立新的离线HTML+正常1×可观看证据**，Reviewer和Owner完成视觉验收前全部保持 RETURN，第二批四项停。
+5. **交接优先**：读取 `docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`，随后基于GitHub实际最新main与证据决定下一步，旧文里的“F2 PLAN_ONLY/PR待开/yt-dlp尚未安装”仅指历史时间点。
 
 ## EVIDENCE_POINTERS
+- **`docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`（2026-10-11 post-merge 最新权威入口）**
+- **`docs/MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md`（5/5视觉退回）**
+- **`p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md`（第一批返工，不修改主线）**
+- **GitHub PR #116（已合并 M2源码）/ PR #115（已合并视觉设计文档、非视觉通过）**
 - `docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`（**最新支线**：Blender 真实直链/解码通过，YouTube 仍需登录验证）
 - `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`（**最新主线** F2 Reviewer 实际 MP4 QA）
 - `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`（**当前下一步**：五文件补丁只提交 PR、无新视频渲染）
