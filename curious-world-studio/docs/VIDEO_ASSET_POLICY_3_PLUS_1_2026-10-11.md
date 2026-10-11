@@ -46,6 +46,8 @@
 
 **下次能力验证顺序**（不抢跑已派发的 M2）：M2 结束且 Reviewer 确认进入正式素材准备 Gate 后，由本地 Codex **先只读** `Get-Command yt-dlp -ErrorAction SilentlyContinue`、`yt-dlp --version`（仅工具存在时）、`yt-dlp --list-extractors`（仅限现有工具，记录版本、退出码与可见能力）。若工具不存在，报告 `TOOL_NOT_PRESENT` 停止，**不要默认下载安装**；需要安装或下载新的第三方文件时另列影响和授权。具有实际权限明确、可被复用的一个具体测试源后，再另批**最小且可审阅**的 URL 元数据/单素材试验；不能用这次三段浏览器播放记录冒充该试验已过。
 
+> **2026-10-11 更新的本机结果**：Owner 转交的单独 Codex 预检返回 `RETURN_TOOL_NOT_PRESENT`（`Get-Command yt-dlp` 无结果），FFmpeg/FFprobe 9.0 可用；元数据、下载、解码均未运行，未安装任何工具。该事实记录在 [P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md](P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md)，其证据属性为 Owner 转交执行报告，非 Reviewer 本机直接复测；下一次安装/实际下载仍需明确新授权。现有 M2 任务范围不变。
+
 ## 5. 与制作流程、角色和 Gate 的衔接
 
 - 只改变**正式视频的内容取材策略**；不改变频道定位、研究源体系、选题状态、论文事实、A/B UI、30fps/1080p 输出、旁白语音与字幕的现有事实或权限。
