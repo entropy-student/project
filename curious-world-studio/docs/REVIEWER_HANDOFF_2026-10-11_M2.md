@@ -1,6 +1,6 @@
 # Curious World Studio｜Reviewer 接手与 M2 现行 Gate（2026-10-11）
 
-> CURRENT_REVIEWER_STATE: `M2_RETURN_UNDIAGNOSED_RENDER_FAILURE / TWO_CANDIDATE_MP4_FILE_QA_PASS / M2_F1_RETURN_DIAGNOSTIC_INCONCLUSIVE_AND_STOP / M2_F2_PLAN_ONLY_NOT_AUTHORIZED`  
+> CURRENT_REVIEWER_STATE: `M2_RETURN_UNDIAGNOSED_RENDER_FAILURE / TWO_CANDIDATE_MP4_FILE_QA_PASS / M2_F1_DIAG_CLOSED_INCONCLUSIVE / M2_F2_PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION / M2_SOURCE_PATCH_PR_REVIEW_NEXT`  
 > 本文替代先前 `REVIEWER_HANDOFF_2026-10-11_G1VA.md` 作为新会话默认 Reviewer 入口；历史 Handoff 和原证据仍保留。唯一实时状态 `CURRENT_STATE.md`。
 
 ## PROJECT_GOAL
@@ -14,6 +14,13 @@
 - M1 单次 1920×1080、30fps、6秒、静音自制媒体 → 9秒 Remotion，前任 Reviewer 独立技术 QA **PASS_ONE_FIXTURE**。Owner 2026-10-11 仅说「我没啥问题，可以继续推进」：记为 `OWNER_NO_OBJECTION_TO_PROCEED`，**不能证明完整观看 MP4**；M1 视觉通过仍不可用于 G1 正式 PASS。
 - **最新 M2 执行证据（2026-10-11）**：Owner 上传 M2 真实两支 MP4、源 patch/报告，Reviewer 独立重新核对 MP4 SHA、FFprobe、全片解码、黑帧及关键帧；**两支输出视频文件 QA PASS**，但**旧 M1 runner 在第184帧报错后未先诊断即重试**，违背原 Gate STOP。后续旧帧41可解码，Remotion 临时抽帧失败根因未确认。**正式 M2 Gate = RETURN_UNDIAGNOSED_RENDER_FAILURE**；M2 新代码未合并，G1/G2 状态不变。见 `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`。
 - 当前 GitHub main 在本轮文档记录前核对为 `bb7c7f2ea3f6eb1a6136b6f6aae4c814393ae631`。M2 本地 Executor checkout 仍以 `c8cf8f90672c6428bcc553ebf951acdafc8ac45e` 作为初始源基线；之后 main 的文档决策（3＋1、2/4/6）是正式视频未来政策，**不能要求 M2 本地 checkout 自动重建或误认为 M2 patch 已合并**。
+
+## NEWEST_M2_F2_REVIEWER_RESULT_2026-10-11
+- Owner 最新已回传主线 F2：真实 9秒 MP4、日志/QA/props 与源码补丁，Reviewer 沙盒独立验证文件 SHA、ffprobe、270帧真实解码/黑帧，并完整读入 15条资源样本。`PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION`；渲染/旧 M1 runner 退出0，历史184帧这次通过，视频 SHA=`d1e25a34ad41ba87a8e7ee836c4f44a54d39ac52c511861f350e340da6ba2516` 与早先已接受 M1 同。
+- 观察器后处理自身退出1且未持久化 launcher ExitCode；不影响已经取得的实际视频和 runner/renderer 0，但不能说整个观察器 PASS。
+- 可用 RAM 最低221.86MiB（6x）、进程工作集峰值3891.34MiB；正式长视频需给内存/并发设置安全余量，尚不能认定以前旧故障系内存导致。
+- 正式 M2 Gate 历史仍 RETURN；F2 功能候选已验，旧源码 patch 5文件 SHA=`4c5df1ad6a5acea1f74fa26f76d9038d0d7e62b48a1b98c2bd8a678392554482` 尚未合并。**现在无需重渲或再次只读旧日志诊断。** 见 `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`。
+- 下一个主线动作：Owner 可下发 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md` 让 Codex 将确切5文件 patch 从最新 main 单独提出**代码 PR 不合并**，交 Reviewer diff 审核；不得扩大到 G2 或正式视频生产。yt-dlp 支线隔离。
 
 ## SYSTEM_MAP
 - Windows 本地现存 OpenMontage/Remotion4.0.484/FFmpeg/Node，调用已授权缓存 Chrome Headless Shell（具体实机状态以 Gate preflight 重新核对）；不触 VPS/VPN。
@@ -69,10 +76,13 @@ Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESE
 M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事镜头、中文配音/对齐、原视频版权、自动素材编排、G1完整视觉/音频 Gate、G2资格。
 
 ## NEXT_STEP / OWNER_ACTION_REQUIRED
-下一步：停止对旧首次失败日志的重复诊断；Reviewer 仅**建议**一轮新隔离 stage、完整捕获命令/退出码和最小资源日志的有界 M1 兼容回归。它是 `PLAN_ONLY`，在 Owner 新授权前不得执行，若运行失败必须停止，不能再换 stage 重试。可并行进行正式首期脚本/素材的只读规划，且正式生产前仍执行已记录的受控清理。
-Owner: 目前**无必须再转交的旧 F1 材料**，旧诊断已经结束。若想推进技术收口，只需针对新的 F2 受控单轮验证另行授权；不需要重传 M2 两支视频。
+- 主线 F2 单次回归证据 Review 已完成，**不再需要渲染新测试视频**。下一步只需把 M2 五文件原补丁提交一份代码 PR 并完成独立源码审查；任务书 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`。此任务尚未由 Owner 转发确认 GitHub 写权限；**不批准自行合并或 G2**。
+- 之后安全进行正式生产前项目特定清理 Gate（单独确认精确删除项），并着手真实横屏研究素材、配音、单行字幕和正式成片编排。长片应考虑内存和并发约束。
+- 支线第二轮 yt-dlp 返回 `RETURN_REMOTE_DISCONNECTED`；若需继续优先一次同 URL 请求路径对照，不因下载支线阻断其它素材路径。
 
 ## EVIDENCE_POINTERS
+- `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`（**最新主线** F2 Reviewer 实际 MP4 QA）
+- `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`（**当前下一步**：五文件补丁只提交 PR、无新视频渲染）
 - `docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md`（支线第二轮 Blender HEAD 与下载失败，仍无视频）
 - `docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`（最新主线 F1 Review）
 - `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md`（计划，未授权运行）

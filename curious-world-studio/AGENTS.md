@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2F2-NEWEST-REVIEW -->
+> **最新主线（2026-10-11）**：Owner 已上传 M2-F2 唯一真实回归 MP4 与7件报告；Reviewer 独立验出 **9秒1920x1080@30/270帧/H.264全解码、黑帧无命中、SHA同历史M1**，Remotion和旧M1 runner exit0；F2为 **PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION**。新观察器后处理自身exit1、launcher退出记录缺失，记为采集缺口；渲染期间可用RAM最低221.86MiB（6x）须在未来长片控制。历史 M2 返回状态不变、M2 五文件源码仍**未合并**，没有 G1/G2 PASS。**不再重渲这些测试片**。下一步由 Owner 明确转发 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`，让本地主线只将精确五文件旧 M2 补丁提出代码 PR，**未经 Reviewer 复核不合并，不进入 G2，不清理证据，不动网络或支线**。见 `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`。以下较早提及 F2 PLAN_ONLY/F1 最新 Gate 的内容均为历史，按本条最新结果解释。
+
 <!-- CWS-20261011-M2F1-NEWEST-GATE-STATUS -->
 > **最新 Review/执行边界（2026-10-11）**：M2-F1 只读诊断已回报并由 Reviewer 核对两份完整上传文本 SHA；历史第184帧媒体抽帧失败与本地 /proxy HTTP500 同帧，根因仍 UNKNOWN；因首次 argv/退出码不可从历史资料补齐，`M2-F1=RETURN_DIAGNOSTIC_INCONCLUSIVE` 且**STOP，不再重复该任务**。原 M2 Gate 仍 RETURN、M2 源码 patch 尚未合并。下一选项 `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md` 仅为 **PLAN_ONLY / NOT_AUTHORIZED**，不能自动执行新的渲染、重试、清理或 G2。已成功的两支 M2 候选 MP4 不重做；支线 yt-dlp 保持独立。权威审核 `docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`。下文较早“当前仅允许运行 F1 只读 Gate”是历史状态，已被本段覆盖。
 
