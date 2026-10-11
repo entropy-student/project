@@ -17,6 +17,10 @@
 
 > **M2 最新 Reviewer 独立检查（2026-10-11）**：Owner 已实际上传 `landscape_24`、`portrait_30` 两支 MP4、manifest、patch 和故障文档；Reviewer **在当前运行环境重新计算两支视频及 patch SHA**，独立 FFprobe/全片 FFmpeg 解码/黑段检查/抽帧审看，证明两支**真实输出视频的文件 QA 通过**（H.264 1920×1080@30，9秒/270帧，无音频；竖屏居中未明显拉伸），详见 [M2 独立 QA/Return](P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md)。然而上传的本地记录显示**旧 M1 runner 首次在输出第184帧读取媒体帧失败后，被未经诊断就新 stage 重试**，违反已发 M2 Gate 的 STOP 规则；事后诊断仅证明源帧41可解码，compositor 临时资源失败根因 `UNKNOWN`。**正式 M2 = `RETURN_UNDIAGNOSED_RENDER_FAILURE`；G1_NOT_PASS / G2_NOT_AUTHORIZED；M2 patch 不合并。** 下一步仅做 [首次失败日志的只读诊断](../p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md)，**不重新渲染、不安装、不清理**。先前 M2 Gate 标记 READY / NOT_STARTED 是提交任务前的历史时间快照，不再代表当前阶段。
 
+> **Owner 新决定（2026-10-11）**：正式节目里的**视频素材默认优先 16:9 横屏**，竖版只在更真实、更必要时按画面布局 `contain` 作为例外，绝不拉伸/强裁关键内容；频道最终仍 1920×1080@30。**制作第一支正式完整视频之前必须做一轮受控清理**：先完成 M2 初次失败日志取证并保留证据，再做只读盘点和逐项删除清单；未获 Owner 具体删除授权，**禁止执行清理**。见 [3＋1素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md) / [正式生产前清理合同](PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md)。
+
+> **yt-dlp 最新 Reviewer 复核（2026-10-11）**：Owner 上传 36 件文件 ZIP，Reviewer 逐项查阅 `final-install-check.json`、命令/错误、许可页面、官方 Release API 元数据等，并在 GitHub 官方 API **独立确认**版本 `2026.08.19` EXE 的 SHA256 为 `66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a`；Codex 本机报告显示安装可运行且哈希一致（**Reviewer 未实际读取 Windows 的 EXE 字节**）。Commons 元数据/重定向/静态媒体获取多次 `RemoteDisconnected`，同源 PowerShell 获取返回 HTTP **429**；**没有得到视频文件**，故 `YTDLP_INSTALL=VERIFIED_BY_LOCAL_REPORT`、`YTDLP_REAL_DOWNLOAD=RETURN_YTDLP_MEDIA_REQUEST_FAILED`、`YTDLP_FFPROBE_DECODE=NOT_RUN`；以前 `TOOL_NOT_PRESENT` 是本轮**安装前历史状态**。详见 [yt-dlp 证据复核](P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md)。不应再次安装，不改变 M2-F1 只读诊断 Gate。
+
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
