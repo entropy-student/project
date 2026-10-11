@@ -1,3 +1,6 @@
+<!-- CWS-20261011-F2-REVIEWER-TRUE-MP4-RESULT -->
+> **主线 F2 最新 Reviewer 复核（2026-10-11）**：Reviewer 读取 Owner 上传的真实9秒 MP4/日志/QA/五文件源码 patch 并独立 SHA/ffprobe/全片 decode/blackdetect，**270帧正常，renderer/runner exit0**，输出 SHA 与历史 M1 完全一致。`F2_PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION`；观察器后处理脚本自身 exit1、launcher ExitCode 未记入汇总，不可冒认全通过。资源样本最低可用 RAM 221.86MiB（6x），正式长片需专门约束资源。**旧 M2/G1 Gate 仍 NOT_PASS、patch 未合并**；不再重做 M1/M2 测试片，进入 [五文件补丁提交代码 PR 任务](p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md)（待 Owner 转发授权，PR 不自动合并）。详见 [F2独立 QA](docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md)。
+
 <!-- CWS-20261011-YTDLP-BLENDER-FOLLOWUP -->
 > **yt-dlp 支线第二轮（2026-10-11）**：Owner 上传 Blender 官方 480p MP4/YouTube 视频测试报告，Reviewer 已阅读四份文件并核对 SHA。Blender **PowerShell HEAD HTTP200**，但 yt-dlp 实际请求 `RemoteDisconnected`；YouTube 元数据请求同样远端断连。**没有下载文件，FFmpeg 解码未执行**，工具本身仍可启动，无需重装；HEAD 不等于视频 GET 下载成功，不能断言 VPN 或程序根因。后续如果处理，应先针对同 URL 请求差异做有限诊断，**不在主线运行时擅自启动**。见 [支线二轮复核](docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md)。
 
