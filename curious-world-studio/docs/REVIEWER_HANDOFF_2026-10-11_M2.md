@@ -37,6 +37,9 @@ Owner Windows 的本地 Codex，明确 M2 Gate，项目内独立 worktree/stage�
 ## CURRENT_ROLLBACK_STATUS
 M1 main 四份源码与锁定的 V2 HTML 是可确定的代码回滚基线；本机 M2 stage 尚未创建，新的真实持久化恢复状态 UNKNOWN，Preflight须确认。勿删除 M1/R1/R2/历史测试目录。
 
+## MOST_RECENT_YTDLP_OWNER_RELAY
+Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESENT`；`Get-Command yt-dlp` 无匹配，FFmpeg/FFprobe 9.0 版本命令成功。按 Gate 停止后**没有执行元数据提取、下载或解码，也没有安装/改网络/M2**。无可供 Reviewer 直接读取的日志，记为 `OWNER_REPORTED`，见 `docs/P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md`。如要安装/真实下载需新的 Owner 授权与独立 Gate；M2 不变。
+
 ## UNRESOLVED
 M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事镜头、中文配音/对齐、原视频版权、自动素材编排、G1完整视觉/音频 Gate、G2资格。
 
