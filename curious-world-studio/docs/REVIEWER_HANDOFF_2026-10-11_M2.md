@@ -22,6 +22,10 @@
 ## CURRENT_GATE
 `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`：**M2 单轮双夹具本机受控技术验证**。24fps 横屏与30fps 竖屏，source时钟/首帧/contain/进度、M1受影响代码回归。已获 Owner 继续推进方向授权，Reviewer 明确有界测试边界；**当前仅 TASK_READY，未实际运行**。必须在 Reviewer 接收/验收前停止。
 
+## OWNER_DECISION_2026-10-11 / ACTIVE_VIDEO_ASSET_POLICY
+- 未来正式视频采用 **3＋1**：研究/实验原始素材、OpenMontage 检索、yt-dlp 已知来源的合规下载路径；Codex 只叠加极少量强调/转场，**不绘制果冻等实体、不生成 AI 图片/视频、禁止重复镜头/循环素材**。按需要选取，不要求三路都用。权威合同：[VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
+- yt-dlp 既往本机实证是 `TOOL_NOT_PRESENT`；Edge 播放3/3并非 yt-dlp 下载通过。后续独立验证；**已发出的 M2 仅工程测试、不加真实素材/下载、不因新合同重跑**。
+
 ## CRITICAL_CONSTRAINTS
 - 不重画 V2，不改 STYLE_LOCK、题库、正式剧本、HF-FIND；A/B无C，1920x1080@30输出，版权/研究真实事实分层。
 - 不安装/下载、不花钱、不碰真正研究视频、Cloud TTS、Windows特权/VPS/WG/HY2/Clash、G2/G3、发布。
@@ -41,6 +45,8 @@ M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事�
 Owner: **仅需转交给本地 Codex 运行当前 M2 Gate，并在完成后向 Reviewer 提供 MP4/证据包**。无账号、付款、安装或系统权限修改请求；在 Executor 实际报告到来之前，不宣称 M2 已运行。
 
 ## EVIDENCE_POINTERS
+- `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`（最新 Owner 正式素材决策）
+- `docs/P4_G1V_SOURCE_SCREENING_READBACK_2026-10-11.md`（yt-dlp 缺失、Edge 3/3 验证事实）
 - `docs/P4_G1VA_M1_REVIEWER_INDEPENDENT_QA_2026-10-11.md`
 - `p4-g1/m1-media-adapter/README.md`
 - `docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md`（前一阶段历史）
