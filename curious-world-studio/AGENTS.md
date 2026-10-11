@@ -1,8 +1,12 @@
+<!-- CWS-20261011-LANDSCAPE-PREPROD-CLEANUP-YTDLP -->
+> **Owner 2026-10-11 最新决定**：正式视频里的源素材**默认选 16:9 横屏**，竖版仅在有必要且内容真实/权利可核时用 B 内 `contain` 或 4 类布局，不拉伸、不裁切关键证据。**首支正式完整视频开始生产前需要受控清理 Gate**，先做目录/引用/证据/备份盘点、Owner 授权精确删除清单，**本轮绝不清理**。合同 `docs/PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md`。
+> **yt-dlp 已收到安装及下载回报**：Owner 上传测试 ZIP，Reviewer 已核对官方 Release digest 与本机安装报告，工具安装可认定获证；Wikimedia 媒体请求失败，返回 `RETURN_YTDLP_MEDIA_REQUEST_FAILED`，没有下载或媒体解码。见 `docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md`。**不能因为测试失败就删除工具、改 VPN、重新安装，不能在 M2-F1 Gate 里继续 yt-dlp 测试**。
+
 <!-- CWS-20261011-M2-RETURN-CURRENT-REVIEW -->
 > **现行 Gate 已更新（2026-10-11）**：Owner 上传两支 M2 MP4，经 Reviewer 独立文件 QA 通过；但 M1 runner 初次 frame184 渲染故障后未经诊断直接重试，原 M2 Gate **RETURN_UNDIAGNOSED_RENDER_FAILURE**。**当前仅允许运行** `p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md` 的只读日志诊断；不得重跑 M2、改码、清理、借新安装授权跑 yt-dlp、推进 G2。正文旧 M2 Gate relay 属历史。最新结论见 `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`。
 
 <!-- CWS-20261011-246-MOTION-AND-YTDLP-AUTHORITY -->
-> **Owner 最新动效选择：只要 2/4/6 三大类**——2 转场衔接；4 双画面/分屏/画中画布局；6 真实来源、证据标签和单行字幕的信息呈现。禁止镜头推拉平移、动态局部放大/圈注追踪、定格快慢放、新滤镜和另造界面特效。保留 Research Aqua A/B 已选外壳的原有鼠标/窗口行为。权威限制见 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`。**Owner 已向本地 Codex 下发一份独立的 yt-dlp 安装与合法测试视频下载/解码提示词**，仅该独立任务获授权安装特定官方程序；不要把此许可套用到 M2，当前实际结果未知。原文件下方提到的“不得擅自下载安装”仍适用于其他未授权任务。
+> **Owner 最新动效选择：只要 2/4/6 三大类**——2 转场衔接；4 双画面/分屏/画中画布局；6 真实来源、证据标签和单行字幕的信息呈现。禁止镜头推拉平移、动态局部放大/圈注追踪、定格快慢放、新滤镜和另造界面特效。保留 Research Aqua A/B 已选外壳的原有鼠标/窗口行为。权威限制见 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`。**Owner 已向本地 Codex 下发一份独立的 yt-dlp 安装与合法测试视频下载/解码提示词**，仅该独立任务获授权安装特定官方程序；不要把此许可套用到 M2，现已获得执行回报：本机安装校验获证，但真实下载未成功。原文件下方提到的“不得擅自下载安装”仍适用于其他未授权任务。
 
 <!-- CWS-20261011-3PLUS1-ACTIVE-POLICY -->
 > **最新 Owner 授权素材政策**：正式视频必须遵守 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`：研究/实验一手素材、OpenMontage视频检索、yt-dlp 合规视频提取三路按需选；Codex **只可做少量真实素材后期强调/转场**。禁止 AI 生图/生视频、代码/SVG/Canvas画果冻等实体、重复或循环镜头。**当前已派发 M2 Gate 只测自制几何测试片，范围和验收保持不变。** yt-dlp 的本机能力 `UNVERIFIED`，不得基于历史 Edge 播放视频假定工具已安装，不得擅自下载安装。
