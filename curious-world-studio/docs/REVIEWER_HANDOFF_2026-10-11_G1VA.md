@@ -5,7 +5,7 @@
 
 ## 0. 一句话状态
 
-**Owner 已选定 Assistant V2 Research Aqua 作为 G1V-A 桌面动画的唯一当前视觉参考；它是可重复查看的真实9秒动画，但独立 Canvas HTML 尚未移植到可复用 Remotion 视频素材输入接口。Codex 的7秒旧版本已真实渲染、机器 QA 通过，却不采纳其视觉/交互实现。当前明确状态：`G1_NOT_PASS / G2_NOT_AUTHORIZED / G3_NOT_AUTHORIZED`。**
+**Owner 已选定 Assistant V2 Research Aqua 为 G1V-A 桌面视觉基准；2026-10-11 的 M1 又以相同 HTML 成功跑通真实6秒自制 MP4输入，输出9秒/270帧 Remotion 视频，Reviewer独立核对首帧逐像素一致、冻结与1秒播放帧相符，结论为 `M1_REVIEWER_TECH_PASS_ONE_FIXTURE / OWNER_VISUAL_REVIEW_PENDING`。但目前仅单个1920×1080/30fps/无声测试素材已证实，不是任意媒体输入/成片制作。G1/G2/G3 仍未获通过/启动。**
 
 ## 1. 权威文件按此顺序阅读
 
@@ -14,7 +14,7 @@
 3. [官方 STYLE_LOCK v1.2](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md) 与 [V2 源码与状态语义](../p4-g1/visual-reference/README.md) → [真实 HTML](../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html)。
 4. [V2 QA manifest](../p4-g1/visual-reference/V2_QA_manifest_2026-10-11.json) 和 [离线渲染脚本参考](../p4-g1/visual-reference/render_reference.py)；源脚本在 Linux `/usr/bin/chromium` 跑，**不是 Windows 可直接运行的 Remotion 生产代码**。
 5. [Codex VA 原始执行报告](P4_G1VA_CODEX_LOCAL_EXECUTION_REPORT_2026-10-11.md) 与 [机器 QA](P4_G1VA_CODEX_MACHINE_QA_2026-10-11.md)。
-6. [下一步本地 Codex 精确任务](../p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。
+6. **M1最新已执行证据**：[Reviewer实际 MP4 /首帧独立复核](P4_G1VA_M1_REVIEWER_INDEPENDENT_QA_2026-10-11.md)、[正式可复用源码](../p4-g1/m1-media-adapter/README.md)。[先前 Codex M1 执行任务](../p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)已执行，勿当下一阶段重新启动。
 7. 后续若要追溯 G0/G1R1/G1R2：先看 [G1R2 复核](P4_G1_R2_REVIEWER_INDEPENDENT_QA_AND_OWNER_GATE_2026-10-11.md)、[G1Owner视觉否决](P4_G1V_ORIGINAL_VIDEO_DISCOVERY_RIGHTS_AND_VISUAL_RESET_2026-10-11.md) 与 [原视频只读核验](P4_G1V_SOURCE_SCREENING_READBACK_2026-10-11.md)。再读 [2026-10-10 旧接手文档](REVIEWER_HANDOFF_2026-10-10_P4G0.md) 作为历史进度，不用它重置今天状态。
 
 ## 2. 迄今发生过什么（不可互相覆盖的事实）
@@ -66,10 +66,10 @@
 
 ## 7. 精准下一步与验收边界
 
-**马上要执行的是 [P4-G1V-A-M1：V2 真实视频媒体输入适配](../p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)**。仅使用已有 Remotion/FFmpeg/获批浏览器缓存和本地自制测试视频；从同一视频文件提取原始第0帧→开窗停留→点击播放真正从0帧开始→用实际媒体时长驱动UI进度。**不得改画视觉皮肤**。本机 Codex 完成独立 MP4/源码/时间轴/QA报告后返交当前 Reviewer；Reviewer 独立读实际视频并做语义/布局检查，成功后才申请合并 scoped PR。
+**P4-G1V-A-M1 已完成单输入技术验证并归档至 main**：实际本地6秒 MP4 的第0帧在开窗时冻结，到点击播放后按真实媒体帧推进；Reviewer独立观看抽帧对照并核 SHA、首帧逐像素一致、播放1秒帧相符。接下来先请 Owner 常速看 M1 9秒真实成片并反馈视觉是否认可；若认可，再做单独 M2 参数化/第二种帧率和尺寸测试的计划与审批。**不直接重跑M1、不把单样本推断成通用视频流水线、不自动推进G2/G3。**
 
 **不要把 M1 误命名 G2，也不要宣称素材发现与商业授权自动化已经完成**。下一个真正要主攻的 B 内容视觉机制，要等 M1 可重用适配成立后另行评审。
 
 ## 8. 新 Reviewer 可直接复用的接手指令
 
-> 请接手 `entropy-student/project` → `curious-world-studio`；先从 `main` 读 `docs/CURRENT_STATE.md`、`docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md`、`p4-g1/visual-reference/README.md`、`p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html`、`p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md`。当前 Owner 选择 Assistant V2 Research Aqua 桌面动画，Codex 负责在已有 Remotion 里接入真实本地测试视频的首帧冻结与播放时钟。不要修改正式题库/剧本/STYLE_LOCK，不使用研究原视频，不能因机器 PASS 声称 G1 已完成，不启动 G2。当前 Reviewer 仍为原 ChatGPT；收到 Codex M1 实际报告和 MP4 后独立复核与落 main。
+> 请接手 `entropy-student/project` → `curious-world-studio`；先从 `main` 读 `docs/CURRENT_STATE.md`、`docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md`、`p4-g1/visual-reference/README.md`、`p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html`、`p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md`。Owner 选择 Assistant V2 Research Aqua 桌面动画；Codex已在 M1 接入真实本地自制测试 MP4，Reviewer 已独立验证单素材首帧冻结/播放时钟并归档代码。不要修改正式题库/剧本/STYLE_LOCK，不使用研究原视频，不能因机器 PASS 声称 G1 已完成，不启动 G2。当前 Reviewer 仍为原 ChatGPT；收到 Codex M1 实际报告和 MP4 后独立复核与落 main。
