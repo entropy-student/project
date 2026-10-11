@@ -1,3 +1,6 @@
+<!-- CWS-20261011-YTDLP-BLENDER-FOLLOWUP -->
+> **yt-dlp 支线第二轮（2026-10-11）**：Owner 上传 Blender 官方 480p MP4/YouTube 视频测试报告，Reviewer 已阅读四份文件并核对 SHA。Blender **PowerShell HEAD HTTP200**，但 yt-dlp 实际请求 `RemoteDisconnected`；YouTube 元数据请求同样远端断连。**没有下载文件，FFmpeg 解码未执行**，工具本身仍可启动，无需重装；HEAD 不等于视频 GET 下载成功，不能断言 VPN 或程序根因。后续如果处理，应先针对同 URL 请求差异做有限诊断，**不在主线运行时擅自启动**。见 [支线二轮复核](docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md)。
+
 <!-- CWS-20261011-M2F1-REVIEW-STOP -->
 > **主线最新（2026-10-11）**：F1 只读诊断文件已由 Reviewer 在沙盒独立读/核哈希，同帧 `/proxy` HTTP500 被确认；因首败精确 argv/退出码、成功临时媒体 SHA 与当时资源快照未记录，根因 `ROOT_CAUSE_UNKNOWN`，`M2-F1=RETURN_DIAGNOSTIC_INCONCLUSIVE`，不再重复旧资料挖掘。**M2正式仍 RETURN，G1/G2 未解锁、M2 patch 未合并**。新 [F2 一轮可观测兼容回归](p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md)只是**未授权计划**，需要 Owner 另行批准；两支旧视频已经通过文件 QA，不必重做。见 [Reviewer 记录](docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md)。
 
