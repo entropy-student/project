@@ -1,3 +1,6 @@
+<!-- CWS-20261011-3PLUS1-ACTIVE-POLICY -->
+> **最新 Owner 授权素材政策**：正式视频必须遵守 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`：研究/实验一手素材、OpenMontage视频检索、yt-dlp 合规视频提取三路按需选；Codex **只可做少量真实素材后期强调/转场**。禁止 AI 生图/生视频、代码/SVG/Canvas画果冻等实体、重复或循环镜头。**当前已派发 M2 Gate 只测自制几何测试片，范围和验收保持不变。** yt-dlp 的本机能力 `UNVERIFIED`，不得基于历史 Edge 播放视频假定工具已安装，不得擅自下载安装。
+
 <!-- CWS-20261011-M2-CURRENT-NAV -->
 > **Reviewer/Executor 现行入口**：`docs/CURRENT_STATE.md` → `docs/REVIEWER_HANDOFF_2026-10-11_M2.md` → `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`。本文件以下原「P4-G0唯一执行边界」是 **2026-10-10 历史块，现已被 M2 Gate 取代**，不得据此禁止已经获得授权的受控 M2 本机验证，也不得据旧块重做 G0。M2 仅允许本地自制24fps横屏/30fps竖屏夹具的隔离测试和 M1 代码改后回归，**不安装/下载/付费/研究原视频/G2**。Owner 表示可以继续不等于亲自观看 M1 MP4 的证明。Executor 启动只读取 Gate relay 指定文件，不扫历史。
 
