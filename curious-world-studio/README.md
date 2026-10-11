@@ -12,13 +12,13 @@
 
 频道向观众的承诺：**每期分享一个值得好奇的真实发现，让观众看见它、弄明白它，并清楚知道研究证实了什么、没有证实什么。**
 
-> **当前执行顺序**：先读 [唯一活状态 / ZIP交接](docs/CURRENT_STATE.md)；项目旧Review、M1/M2测试、G0报告只作历史证据。**CWS本地只读清理审计已完成，清单分类纠错待ZIP回包；主线R1可不等待这项小清理而另行下发**。今后普通轮次只交ZIP和SHA，不再每天更新仓库文档。只有正式代码/模板/长期规范/重大决定才更新GitHub。
+> **当前执行顺序**：先读 [唯一活状态 / ZIP交接](docs/CURRENT_STATE.md)；项目旧Review、M1/M2测试、G0报告只作历史证据。**清理审计和纠错已Reviewer通过：安全删除0B，已结束；主线R1已经由Owner下发，等待Codex验收ZIP**。今后普通轮次只交ZIP和SHA，不再每天更新仓库文档。只有正式代码/模板/长期规范/重大决定才更新GitHub。 **Codex可在本地Git checkout读正式规范，不需每轮下载；后续获准执行任务可把简短工作笔记、权利台账和ZIP存到项目忽略的 `.local/`，不上传Git。**
 
 ## 当前组成
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
-| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **唯一活状态：R1尚未下发；先只读清理；Mac独立Demo审完停开发；G1未正式PASS**。以下其他行保留为对应历史版本的技术记录 |
+| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **唯一活状态：R1已下发待ZIP、清理结束且未删除、Mac支线停止新增、G1未正式PASS**。以下其他行保留为对应历史版本的技术记录 |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |

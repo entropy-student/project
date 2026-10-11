@@ -1,5 +1,9 @@
 <!-- CWS-STABLE-WORKFLOW-20261011 -->
-> **CURRENT / 优先规则：** 先读 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)。自2026-10-11起，**本地Codex各轮回包为ZIP→Owner上传→Assistant独立Review；普通阶段报告不新建GitHub文档，不每轮开PR；**Reviewer下一轮默认只用文字提示词反馈，不让Owner反向下载Reviewer ZIP给Codex，除非Codex本地缺不可重建的必要输入****。仅锁定的生产源码/复用模板/长效规范/正式题库变更及里程碑状态需要Git分支、Review和适当合并。**本地CWS只读审计已完成，分类纠错提示词已下发但结果ZIP未回；0B获准删除。主线R1已备但尚未下发，可不等待纠错。** MW07最终精修已收到并获Reviewer技术/视觉改善认可，Owner Windows `file://` 与最后观感待确认；Mac支线不再开发新批次。**G1未正式PASS、G2未授权，公开发布/付费/外联/删除另需批准。** 本文件下方标`历史 P4-G0`等段落均只作过往任务记录，不能覆盖本段当前指令。
+> **当前有效入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**主线R1已由Owner下发，正在等Codex结果ZIP**，不可重新派发或宣称R1已完成；CWS本地清理审计+纠错已Reviewer通过，安全可删0B，实际删除0项。Mac动效支线停止新增开发，Owner Windows`file://`与最后视觉签收仍待确认。**G1未正式PASS、G2未授权。**
+>
+> **固定交接**：默认只把Reviewer的**文字任务提示词**发给本地Codex；Codex交付一个包含证据、manifest与SHA的ZIP，由Owner转给Reviewer。无需再把Reviewer的ZIP反向传给Codex，除非特定不可重建的输入必须传递。普通报告不进GitHub；经批准的长效规范/生产代码/重大决策才提交。
+>
+> **本地常用文档**：若本机已存在Git checkout，先读本地Git受控规范；Codex从**后续获得工作区写权限的任务**起可将必要工作笔记、源权利台账、RUN索引及ZIP存在 `curious-world-studio/.local/`（受项目`.gitignore`保护），不得将其当成另一份正式规范；**当前R1只读Gate不得因这条追加写入任务**。未经Owner单独批准不付费、不外联、不删除、不改变版权状态、不发布。
 
 # Agent 入口（本项目唯一）
 
