@@ -1,0 +1,665 @@
+{
+  "date": "2026-10-11",
+  "captured_at": "2026-10-11T08:49:06+08:00",
+  "source_status": [
+    {
+      "type": "HUMAN_WORLD",
+      "status": "VERIFIED_PUBLIC_NEWS_AND_RESEARCH; NO_LIVE_PLATFORM_LEADERBOARD",
+      "sources": [
+        "https://finance.sina.com.cn/roll/2026-10-06/doc-iniuhpzf5692097.shtml",
+        "https://finance.sina.com.cn/jjxw/2026-09-25/doc-inisyywc4623209.shtml",
+        "https://www.jiemian.com/article/15171500.html",
+        "https://www.research.atspotify.com/publications/the-engagement-diversity-connection-evidence-from-a-field-experiment-on-spotify",
+        "https://ideas.repec.org/a/inm/ormnsc/v60y2014i4p805-823.html",
+        "https://pubmed.ncbi.nlm.nih.gov/38602788/"
+      ],
+      "notes": "电影/社交平台/经典影视/阅读/游戏原生兴趣；未取得可核验的小红书或B站当日热榜，不将媒体报道伪装成平台实时热度"
+    },
+    {
+      "type": "AI_DOMAIN",
+      "status": "VERIFIED_NEWS_PRIMARY_PRODUCT_AND_RESEARCH",
+      "sources": [
+        "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
+        "https://www.huxe.com/",
+        "https://www.businessinsider.com/ai-agents-instinct-muse-redefine-personal-shopping-online-2026-10",
+        "https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/",
+        "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/10/ico-secures-changes-from-leading-ai-developers-as-scrutiny-extends-to-ai-agents/",
+        "https://arxiv.org/abs/2602.09907"
+      ],
+      "notes": "10月8–10日Agent、AI个性化音频、AI购物案例、AI阅读研究；区分报道时间与实际交易/产品发布时间"
+    }
+  ],
+  "hot_signals": [
+    {
+      "id": "huxe-licensing-20261009-10",
+      "date": "2026-10-09/10",
+      "source": "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
+      "summary": "苹果披露与已停运Huxe的雇佣/非独占技术授权安排，非10月新产品发布",
+      "half_life": "2–5d news, underlying deal June",
+      "action": "HOLD_D5_SUPPORT_EXISTING"
+    },
+    {
+      "id": "agent-shopping-20261010",
+      "date": "2026-10-10",
+      "source": "https://www.businessinsider.com/ai-agents-instinct-muse-redefine-personal-shopping-online-2026-10",
+      "summary": "用户案例：AI代购意外大量鸡翅",
+      "half_life": "2–4d",
+      "action": "HOLD_D5"
+    },
+    {
+      "id": "gemini-work-agent-20261008",
+      "date": "2026-10-08",
+      "source": "https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/",
+      "summary": "跨应用工作Agent发布",
+      "half_life": "3–7d",
+      "action": "HOLD_D4_D5"
+    },
+    {
+      "id": "ai-privacy-ico-20261008",
+      "date": "2026-10-08",
+      "source": "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/10/ico-secures-changes-from-leading-ai-developers-as-scrutiny-extends-to-ai-agents/",
+      "summary": "英国ICO对基础模型数据保护及Agent风险征询",
+      "half_life": "3–7d",
+      "action": "HOLD_RELATED_AGENT_CONTROL"
+    }
+  ],
+  "normalized_clusters": [
+    {
+      "cluster": "PERSONALIZED_CULTURAL_EXPERIENCE",
+      "signals": [
+        "huxe-licensing-20261009-10",
+        "evergreen-personalized-recommendation"
+      ],
+      "canonical_meaning": "PERSONALIZATION_VS_SHARED_CULTURE",
+      "dedup": "D1 Huxe Oct9/10 coverage merged; D5 collides with 10/11 scheduled; Huxe supports context only, not an override"
+    },
+    {
+      "cluster": "AGENT_DELEGATION_CONTROL",
+      "signals": [
+        "agent-shopping-20261010",
+        "gemini-work-agent-20261008",
+        "ai-privacy-ico-20261008"
+      ],
+      "canonical_meaning": "DELEGATION_VS_CONTROL",
+      "dedup": "D2/D3 related existing agent-permission; D5 cross-X shopping/work duplicate"
+    },
+    {
+      "cluster": "READING_INFORMATION_EXPERIENCE",
+      "signals": [
+        "2026-reading-study",
+        "kindle-reading-assistant"
+      ],
+      "canonical_meaning": "INFORMATION_VS_EXPERIENCE",
+      "dedup": "D5 distinct from GUIDANCE_VS_SKILL_FORMATION; evergreen only"
+    },
+    {
+      "cluster": "GAME_ACHIEVEMENT",
+      "signals": [
+        "game-assistance-evergreen"
+      ],
+      "canonical_meaning": "SMOOTHNESS_VS_ACHIEVEMENT",
+      "dedup": "D5 distinct from skill learning"
+    },
+    {
+      "cluster": "CLASSIC_REMIX",
+      "signals": [
+        "2026-classic-remix-governance"
+      ],
+      "canonical_meaning": "REMIX_ACCESS_VS_CULTURAL_CONTEXT",
+      "dedup": "D1 repeated previous daily; evidence/one mechanism hold"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "shared-culture-personalized-feeds",
+      "lane": "EVERGREEN",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "娱乐 / 社交媒体 / 音乐",
+      "human_process_family": "COMMUNITY_AND_SHARED_EXPERIENCE",
+      "observed_paradox": "每个人收到更贴合自己口味的内容，但朋友可能越来越难找到共同看过的节目和梗",
+      "why_question": "为什么推荐越来越懂你，我们共同喜欢的东西反而可能越来越少？",
+      "human_tension": "个人相关性与选择自由 vs 共同文化接触与交流入口",
+      "meaning_fingerprint": "PERSONALIZATION_VS_SHARED_CULTURE",
+      "controlling_question_seed": "个性化推荐何时增加个人满意度，却可能减少朋友之间的内容交集？",
+      "human_process_before_ai": "同一时间段接触大众媒体、榜单、朋友分享并形成共同谈资",
+      "ai_changed_process": "个性化排序根据每人的互动记录分别分发不同的文化内容",
+      "human_problem": "朋友在同一个平台上却看到不同内容，难以共享话题",
+      "human_stakes": "社交连接、共同记忆、文化发现和个人兴趣",
+      "ai_mechanism": "基于个人历史与相似用户信号的推荐排序优化个体相关性；个体多样性、群体多样性和交集是不同指标",
+      "story_seed": "两位朋友都说最近刷到了神作，交换手机才发现各自一个梗都没见过；试图共同选一部片，算法继续给出不同首选",
+      "curiosity_gap": "都在刷同一个平台，为什么连同一个梗都没见过？",
+      "audience_payoff": "分清推荐更合口味、内容更丰富、大家有共同话题这三件事；理解个性化与共同文化并非必然反比",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://finance.sina.com.cn/jjxw/2026-09-25/doc-inisyywc4623209.shtml",
+        "https://finance.sina.com.cn/roll/2026-10-06/doc-iniuhpzf5692097.shtml"
+      ],
+      "source_refs": [
+        "https://www.research.atspotify.com/publications/the-engagement-diversity-connection-evidence-from-a-field-experiment-on-spotify",
+        "https://ideas.repec.org/a/inm/ormnsc/v60y2014i4p805-823.html",
+        "https://ouci.dntb.gov.ua/en/works/422MbGW4/",
+        "https://finance.sina.com.cn/jjxw/2026-09-25/doc-inisyywc4623209.shtml",
+        "https://finance.sina.com.cn/roll/2026-10-06/doc-iniuhpzf5692097.shtml"
+      ],
+      "uncertainties": [
+        "Spotify的播客随机实验发现个体多样性下降、整体多样性上升；不可直接推出中国短视频平台必然减少共同话题",
+        "2014年另一项实证研究发现个性化反而增加消费交集，结论依赖推荐设计和消费量",
+        "无可靠10/11实时小红书或B站热榜数据；新闻仅作为人类文化兴趣代理信号",
+        "不可把所有推荐平台说成使用相同算法"
+      ],
+      "proposed_human_problem": "朋友在同一个平台上却看到不同内容，难以共享话题",
+      "proposed_mechanism": "基于个人历史与相似用户信号的推荐排序优化个体相关性；个体多样性、群体多样性和交集是不同指标",
+      "registry_matches": [
+        "personalization-vs-shared-culture"
+      ],
+      "meaning_registry_matches": [
+        "personalization-vs-shared-culture"
+      ],
+      "duplicate_status": "EXISTING_SCHEDULED_TOPIC",
+      "meaning_duplicate_status": "EXISTING_SCHEDULED_TOPIC",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "社交平台共同话题是原生生活兴趣；国庆电影档与内容分发新闻构成背景",
+        "有推荐实验直接支持个体/总体多样性指标可能分离"
+      ],
+      "asset_notes": [
+        "跨平台长青的判断模型",
+        "与10/5旅行探索题区分：本期关注人际共享交集而非个人偶遇"
+      ],
+      "recommended_action": "KEEP_2026-10-11_PLANNED",
+      "d1_signal": "CLUSTERED",
+      "d2_topic": "EXISTING",
+      "d3_angle": "SAME_CALENDAR_SEED",
+      "d4_story_visual_motif": "DISTINCT_FRIENDS_EXCHANGE_SCREENS",
+      "d5_meaning": "MATCH_SAME_PLANNED_TOPIC_NOT_NEW_DUPLICATE",
+      "story_motif": "朋友互相推荐作品→交换手机→彼此首页不同→寻找共同节目",
+      "visual_motif": "两台手机交错、聊天表情梗对不上、公共屏幕与个人推荐列表",
+      "hook_pattern": "朋友发来爆火梗，我一个也没见过",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "hot-huxe-personal-audio-20261010",
+      "lane": "HOT",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "播客 / 听新闻 / 文化消费",
+      "human_process_family": "COMMUNITY_AND_SHARED_EXPERIENCE",
+      "observed_paradox": "每人都能拥有自己的AI播客，但朋友之间可能少了共同听过的内容",
+      "why_question": "为什么人人都有私人播客以后，我们还能一起聊什么？",
+      "human_tension": "个人适配与便捷 vs 共享文化参照",
+      "meaning_fingerprint": "PERSONALIZATION_VS_SHARED_CULTURE",
+      "controlling_question_seed": "私人化的内容体验会怎样改变共同文化交集？",
+      "human_process_before_ai": "用户听共同播客节目并交流片段",
+      "ai_changed_process": "生成式系统按用户材料和偏好制作不同的音频内容",
+      "human_problem": "个性化内容可能缺少可共享的原始文本",
+      "human_stakes": "社交谈资、文化共识与内容发现",
+      "ai_mechanism": "基于用户上下文的个性化内容生成，而非传统统一节目分发",
+      "story_seed": "朋友们都听了同名‘今日播客’，聊起来发现各自听到的故事不同",
+      "curiosity_gap": "为什么同一个节目每个人听到的内容不一样",
+      "audience_payoff": "理解内容生成式个性化与公共文化参照的区别",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/"
+      ],
+      "source_refs": [
+        "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
+        "https://www.huxe.com/"
+      ],
+      "uncertainties": [
+        "2026-10-09/10报道的是此前6月告知欧盟的雇佣与非独占技术授权安排，不代表10月新产品发布",
+        "Huxe服务已于2026-05-28结束，苹果未来产品计划未公开",
+        "尚无证据表明个性化音频正在减少共享文化"
+      ],
+      "proposed_human_problem": "个性化内容可能缺少可共享的原始文本",
+      "proposed_mechanism": "基于用户上下文的个性化内容生成，而非传统统一节目分发",
+      "registry_matches": [
+        "personalization-vs-shared-culture"
+      ],
+      "meaning_registry_matches": [
+        "personalization-vs-shared-culture"
+      ],
+      "duplicate_status": "NEW_EVENT_EXISTING_TOPIC",
+      "meaning_duplicate_status": "COLLISION",
+      "hard_gate_status": "HOLD_EVIDENCE_AND_D5",
+      "reach_notes": [
+        "报道新鲜但交易不新鲜"
+      ],
+      "asset_notes": [
+        "可作为未来个性化生成案例，不能当作已发布苹果功能"
+      ],
+      "recommended_action": "HOLD_SUPPORT_TODAY_NO_OVERRIDE",
+      "d1_signal": "MERGED_OCT9_OCT10_COVERAGE",
+      "d2_topic": "RELATED_EXISTING",
+      "d3_angle": "NEW_AUDIO_SURFACE_SAME_QUESTION",
+      "d4_story_visual_motif": "DIFFERENT_AUDIO_HEADPHONES",
+      "d5_meaning": "HOLD_EXISTING_PERSONALIZATION_VS_SHARED_CULTURE",
+      "story_motif": "",
+      "visual_motif": "",
+      "hook_pattern": "",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "evidence_gate": "PARTIAL",
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "hot-agent-grocery-20261010",
+      "lane": "HOT",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "买菜 / 消费 / 家务",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "让AI替自己买菜省时间，却收到意外的大份量",
+      "why_question": "为什么买菜越自动化，最后那一下确认越重要？",
+      "human_tension": "委托效率 vs 授权和实际后果",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "controlling_question_seed": "可以自动购买是否意味着应由AI自行决定数量与付款？",
+      "human_process_before_ai": "人核对购物清单、数量、预算后付款",
+      "ai_changed_process": "Agent跨网站选择商品并可能下单",
+      "human_problem": "购买错误直接变成费用和物品",
+      "human_stakes": "钱、退货成本、信任",
+      "ai_mechanism": "工具执行能力与确认/授权边界分离",
+      "story_seed": "主角让AI备货，开门看到一大箱鸡翅",
+      "curiosity_gap": "为什么省事反而多了一堆东西",
+      "audience_payoff": "识别需人工确认的不可逆动作",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://www.businessinsider.com/ai-agents-instinct-muse-redefine-personal-shopping-online-2026-10"
+      ],
+      "source_refs": [
+        "https://www.businessinsider.com/ai-agents-instinct-muse-redefine-personal-shopping-online-2026-10",
+        "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/10/ico-secures-changes-from-leading-ai-developers-as-scrutiny-extends-to-ai-agents/"
+      ],
+      "uncertainties": [
+        "单篇采访个案，无法推广所有购物Agent",
+        "真实报道细节需与原文逐项核对"
+      ],
+      "proposed_human_problem": "购买错误直接变成费用和物品",
+      "proposed_mechanism": "工具执行能力与确认/授权边界分离",
+      "registry_matches": [
+        "tools-do-not-mean-permission",
+        "agent-delegated-workflow"
+      ],
+      "meaning_registry_matches": [
+        "tools-do-not-mean-permission"
+      ],
+      "duplicate_status": "RELATED_EXISTING",
+      "meaning_duplicate_status": "COLLISION",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "具体买菜后果具强可视化"
+      ],
+      "asset_notes": [
+        "换了消费场景，仍是授权边界"
+      ],
+      "recommended_action": "HOLD_D5_COLLISION",
+      "d1_signal": "NEW",
+      "d2_topic": "RELATED_EXISTING",
+      "d3_angle": "SAME_PERMISSION_QUESTION",
+      "d4_story_visual_motif": "NEW_GROCERY_SCENE",
+      "d5_meaning": "HOLD_EXISTING_DELEGATION_VS_CONTROL",
+      "story_motif": "",
+      "visual_motif": "",
+      "hook_pattern": "",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "hot-gemini-work-agent-20261008",
+      "lane": "HOT",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "工作 / 协作",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "一个助手可以跨多种工作应用执行，组织却需要更清晰的权限边界",
+      "why_question": "为什么会干活的助手还要申请权限？",
+      "human_tension": "效率与组织安全/责任",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "controlling_question_seed": "会操作所有软件是否等于被允许做所有事？",
+      "human_process_before_ai": "员工逐个应用操作并承担审批责任",
+      "ai_changed_process": "工作Agent跨应用编排任务",
+      "human_problem": "跨应用动作可能绕过组织流程",
+      "human_stakes": "工作数据、授权和责任",
+      "ai_mechanism": "Agent工具可达性与权限控制相分离",
+      "story_seed": "新同事AI会办所有事，却卡在财务审批门外",
+      "curiosity_gap": "为何全能助手卡在一个按钮",
+      "audience_payoff": "理解工具能力与组织授权的区别",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/"
+      ],
+      "source_refs": [
+        "https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/",
+        "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/10/ico-secures-changes-from-leading-ai-developers-as-scrutiny-extends-to-ai-agents/"
+      ],
+      "uncertainties": [
+        "发布属于10月8日，企业预览能力不等于所有用户可用"
+      ],
+      "proposed_human_problem": "跨应用动作可能绕过组织流程",
+      "proposed_mechanism": "Agent工具可达性与权限控制相分离",
+      "registry_matches": [
+        "tools-do-not-mean-permission"
+      ],
+      "meaning_registry_matches": [
+        "tools-do-not-mean-permission"
+      ],
+      "duplicate_status": "RELATED_EXISTING",
+      "meaning_duplicate_status": "COLLISION",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "AI企业更新有热度但非大众首选入口"
+      ],
+      "asset_notes": [
+        "办公助理母题也重复"
+      ],
+      "recommended_action": "HOLD_D4_D5",
+      "d1_signal": "NEW",
+      "d2_topic": "RELATED_EXISTING",
+      "d3_angle": "SAME_PERMISSION_QUESTION",
+      "d4_story_visual_motif": "REPETITION_RISK_OFFICE_ASSISTANT",
+      "d5_meaning": "HOLD_EXISTING_DELEGATION_VS_CONTROL",
+      "story_motif": "",
+      "visual_motif": "",
+      "hook_pattern": "",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "reading-summary-vs-reading-experience",
+      "lane": "EVERGREEN",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "阅读 / 小说 / 文化娱乐",
+      "human_process_family": "ATTENTION_AND_DISCOVERY",
+      "observed_paradox": "AI能快速讲清小说人物和结局，但知道情节并不等于经历阅读时的悬念与情绪",
+      "why_question": "为什么AI能一分钟讲完一本小说，你却可能还是想自己读完？",
+      "human_tension": "信息压缩与效率 vs 逐步体验与情绪参与",
+      "meaning_fingerprint": "INFORMATION_VS_EXPERIENCE",
+      "controlling_question_seed": "知道故事发生了什么，和亲自经历故事的展开，差在哪里？",
+      "human_process_before_ai": "读者按作者安排的节奏逐步经历人物选择与未知",
+      "ai_changed_process": "AI摘要将长篇叙事压缩为事件和要点",
+      "human_problem": "把获取情节信息误认为完成了阅读体验",
+      "human_stakes": "阅读乐趣、情绪投入、时间分配",
+      "ai_mechanism": "语言模型摘要保留选定信息而压缩叙事顺序、铺垫和局部细节",
+      "story_seed": "主角偷懒先让AI总结推理小说，朋友讨论时他知道凶手却完全不懂大家为何被某个场景打动",
+      "curiosity_gap": "知道结局为何仍没得到阅读时的体验",
+      "audience_payoff": "区分信息获取型阅读与体验型阅读；知道何时摘要是工具、何时不能代替过程",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://www.theverge.com/news/844538/kindle-app-ask-this-book-ai-ios"
+      ],
+      "source_refs": [
+        "https://arxiv.org/abs/2602.09907",
+        "https://pubmed.ncbi.nlm.nih.gov/38602788/",
+        "https://www.theverge.com/news/844538/kindle-app-ask-this-book-ai-ios"
+      ],
+      "uncertainties": [
+        "没有直接因果实验能证明所有AI摘要均削弱阅读乐趣",
+        "2026年学生阅读小样本研究主要观察学习策略，不能直接外推小说审美",
+        "摘要对查找事实、回顾人物关系有真实价值"
+      ],
+      "proposed_human_problem": "把获取情节信息误认为完成了阅读体验",
+      "proposed_mechanism": "语言模型摘要保留选定信息而压缩叙事顺序、铺垫和局部细节",
+      "registry_matches": [],
+      "meaning_registry_matches": [],
+      "duplicate_status": "NEW",
+      "meaning_duplicate_status": "DISTINCT",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "阅读小说、剧透与省时间有稳定原生兴趣"
+      ],
+      "asset_notes": [
+        "Information vs experience 是独立意义层；不讨论技能习得或作者归属"
+      ],
+      "recommended_action": "SCHEDULE_2026-10-17",
+      "d1_signal": "EVERGREEN_NO_FRESH_EVENT_REQUIRED",
+      "d2_topic": "NEW",
+      "d3_angle": "DISTINCT_FROM_LEARNING_SKILL",
+      "d4_story_visual_motif": "DISTINCT_BOOK_REVEAL_AND_MISSING_EMOTION",
+      "d5_meaning": "DISTINCT_FROM_GUIDANCE_VS_SKILL_FORMATION_AND_GENERATION_VS_AUTHORSHIP",
+      "story_motif": "提前知道结局→和朋友讨论时错过情感铺垫→重读一段重新理解",
+      "visual_motif": "翻页悬念/剧透卡片/阅读时间进度",
+      "hook_pattern": "我一分钟读完一本书，结果最精彩的地方被我跳过去了",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "game-assistance-achievement-existing",
+      "lane": "EVERGREEN",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "游戏 / 挑战",
+      "human_process_family": "PLAY_AND_CHALLENGE",
+      "observed_paradox": "游戏辅助让胜利更容易却未必更有成就感",
+      "why_question": "为什么AI帮你把游戏打得更顺，你反而可能没那么有成就感？",
+      "human_tension": "顺利过关 vs 亲自克服挑战",
+      "meaning_fingerprint": "SMOOTHNESS_VS_ACHIEVEMENT",
+      "controlling_question_seed": "辅助什么时候帮助玩家，什么时候夺走玩家的胜任感？",
+      "human_process_before_ai": "玩家反复尝试、掌握操作并完成挑战",
+      "ai_changed_process": "AI提示/辅助操作降低操作负担",
+      "human_problem": "成功不一定带来个人成就感",
+      "human_stakes": "游戏乐趣、挑战与掌控感",
+      "ai_mechanism": "适应性辅助改变反馈与自主决策负担",
+      "story_seed": "玩家开了全自动模式赢下Boss却没想截图",
+      "curiosity_gap": "赢了为何不开心",
+      "audience_payoff": "理解便利与胜任感的不同",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [],
+      "source_refs": [
+        "https://digitalcommons.butler.edu/ccom_papers/146/"
+      ],
+      "uncertainties": [
+        "游戏研究不能证明所有AI辅助都会降低乐趣"
+      ],
+      "proposed_human_problem": "成功不一定带来个人成就感",
+      "proposed_mechanism": "适应性辅助改变反馈与自主决策负担",
+      "registry_matches": [],
+      "meaning_registry_matches": [],
+      "duplicate_status": "NEW",
+      "meaning_duplicate_status": "DISTINCT",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "游戏通关的原生情绪容易共鸣"
+      ],
+      "asset_notes": [
+        "与技能形成区别：讨论游玩成就，不是学习效果"
+      ],
+      "recommended_action": "KEEP_2026-10-15_PLANNED",
+      "d1_signal": "EVERGREEN",
+      "d2_topic": "EXISTING_CALENDAR_10_15",
+      "d3_angle": "DISTINCT_FROM_SKILL_LEARNING",
+      "d4_story_visual_motif": "GAME_BOSS_VICTORY_EMPTY_REACTION",
+      "d5_meaning": "DISTINCT",
+      "story_motif": "",
+      "visual_motif": "",
+      "hook_pattern": "",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "evidence_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "one_mechanism_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    },
+    {
+      "candidate_id": "classic-remix-culture-hold",
+      "lane": "HOT",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "经典影视 / 短视频文化",
+      "human_process_family": "CULTURE_AND_AUTHENTICITY",
+      "observed_paradox": "AI改编经典角色更容易传播，却可能让原有语境变形",
+      "why_question": "为什么经典角色越容易被改编，老观众反而越不开心？",
+      "human_tension": "二创参与感 vs 原作语境",
+      "meaning_fingerprint": "REMIX_ACCESS_VS_CULTURAL_CONTEXT",
+      "controlling_question_seed": "改编何时让作品传播，何时遮蔽原作语境？",
+      "human_process_before_ai": "剪辑、表演、人工制作二创",
+      "ai_changed_process": "生成工具降低角色/场景改编成本",
+      "human_problem": "文化语境与传播趣味冲突",
+      "human_stakes": "创作者表达与观众文化记忆",
+      "ai_mechanism": "生成式视频改变素材改编成本",
+      "story_seed": "主角为朋友改编一段老剧，传播后被老观众指认角色完全走样",
+      "curiosity_gap": "为什么越传播越争议",
+      "audience_payoff": "理解技术降低制作成本不等于消除文化判断",
+      "primary_content_job": "DISCOVERY",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "signal_refs": [
+        "https://www.jiemian.com/article/15171500.html"
+      ],
+      "source_refs": [
+        "https://www.jiemian.com/article/15171500.html"
+      ],
+      "uncertainties": [
+        "特定治理报道不能推出所有AI二创有害",
+        "版权、文化语境、平台治理多机制混杂"
+      ],
+      "proposed_human_problem": "文化语境与传播趣味冲突",
+      "proposed_mechanism": "生成式视频改变素材改编成本",
+      "registry_matches": [
+        "generation-vs-authorship"
+      ],
+      "meaning_registry_matches": [],
+      "duplicate_status": "NEW",
+      "meaning_duplicate_status": "DISTINCT",
+      "hard_gate_status": "HOLD_EVIDENCE_ONE_MECHANISM",
+      "reach_notes": [
+        "中国经典影视话题具原生兴趣"
+      ],
+      "asset_notes": [
+        "不为热点牺牲单机制"
+      ],
+      "recommended_action": "HOLD",
+      "d1_signal": "REPEATED_FROM_2026_10_10",
+      "d2_topic": "RELATED",
+      "d3_angle": "DISTINCT_CULTURAL_CONTEXT",
+      "d4_story_visual_motif": "DISTINCT",
+      "d5_meaning": "DISTINCT_BUT_NOT_READY",
+      "story_motif": "",
+      "visual_motif": "",
+      "hook_pattern": "",
+      "conversion_adjacency": "LOW",
+      "conversion_path_hypothesis": "none without audience demand",
+      "one_mechanism_only": true,
+      "evidence_gate": "PARTIAL",
+      "one_mechanism_gate": "AT_RISK",
+      "native_x_interest": "PASS",
+      "human_process_gate": "PASS",
+      "why_paradox_gate": "PASS",
+      "human_tension_gate": "PASS",
+      "changed_process_gate": "PASS",
+      "human_relevance_gate": "PASS",
+      "mechanism_integrity_gate": "PASS",
+      "storyability_gate": "PASS",
+      "non_trivial_payoff_gate": "PASS",
+      "audience_fit_gate": "PASS"
+    }
+  ],
+  "evergreen_fallback": [
+    "shared-culture-personalized-feeds",
+    "reading-summary-vs-reading-experience",
+    "game-assistance-achievement-existing"
+  ],
+  "selected_for_editorial_review": {
+    "candidate_id": "shared-culture-personalized-feeds",
+    "topic": "为什么推荐越来越懂你，我们共同喜欢的东西反而可能越来越少？",
+    "date": "2026-10-11",
+    "lane": "EVERGREEN",
+    "business_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": false,
+    "reason": "原Calendar选题已有足够的原生社交文化兴趣和直接实证/反例；热点未过D5或新产品/半衰期验证，不抢占"
+  },
+  "notes": [
+    "Gate order: Native X Interest → Human Process → WHY/Paradox → Human Tension → Changed Process → Evidence → Human Relevance → Mechanism Integrity → One Mechanism → Storyability → Non-trivial Payoff → Audience Fit; each candidate fields recorded.",
+    "D1–D5 checked against current registry and October calendar; Huxe audio versus entertainment ranking is cross-domain same controlling question, hold; shopping versus workplace agents share delegation-control, hold.",
+    "Counter-evidence explicitly preserved: personalization does not necessarily fragment shared exposure; both positive and negative studies exist.",
+    "2026-10-11 to 2026-10-17 rolling schedule; 10/17 proposed reading topic; 10/11–16 existing planned rows preserved; no locked/published touched.",
+    "DAILY_PRODUCTION_CAPABILITY remains UNPROVEN; no G4+, rendering, or publication."
+  ]
+}
