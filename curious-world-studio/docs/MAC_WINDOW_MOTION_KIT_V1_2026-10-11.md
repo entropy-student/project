@@ -1,5 +1,9 @@
 # Curious World Studio｜Mac Window Motion Kit v1（独立视觉实验提案）
 
+<!-- POSTMERGE_VISUAL_RETURN -->
+> **2026-10-11 最新仓库事实**：此提案随 [PR #115](https://github.com/entropy-student/project/pull/115) 已合并到 main，但它是**纯Markdown规划/反例Review/返工Gate归档**，**首批五个窗口动效并未达到视觉通过、也未集成到Remotion**。当前Owner/Reviewer结果 `RETURN_VISUAL_REJECTED_ALL_FIVE`：太快、无已锁V2模拟鼠标操作、图标/Dock位置/样式偏差、MW-03只换z-index无清晰真实切换；新独立HTML返工需按 [严格返工 Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)，旧版HTML/ZIP不删不覆盖，第二批4项暂停。正式视频政策仍由[3+1/2/4/6合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)约束。权威合并后状态见[统一交接](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
+
+
 > **首批 HTML Demo 最新视觉审查（2026-10-11）**：Owner 实看否决，Reviewer 严格复核判定 **`RETURN_VISUAL_REJECTED_ALL_FIVE`**。原版仅凭5/5操作/重置和三帧截图并不能视为动效可用于视频；必须重新复用 Research Aqua V2 原鼠标路径/点击波纹及桌面窗口位置，解决MW-03只交换z-index与不足0.3秒即完成动作的问题。**首批优先返工，第二批 Spotlight/Exposé/Dock Genie/拖拽暂不执行；一切均保持实验且不自动集成正式影片。** 见 [Reviewer退回报告](MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md) 与 [返工任务](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)。
 
 
