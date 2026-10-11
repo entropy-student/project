@@ -13,16 +13,18 @@ import {
 } from 'remotion';
 
 type Props = {
-  assetPath: string;
-  posterPath: string;
-  prototypePath: string;
-  assetDurationMs: number;
-  assetFrameCount: number;
-  assetWidth: number;
-  assetHeight: number;
-  assetFpsNumerator: number;
-  assetFpsDenominator: number;
-  playStartFrame: number;
+  assetPath?: string;
+  posterPath?: string;
+  prototypePath?: string;
+  assetDurationMs?: number;
+  assetFrameCount?: number;
+  assetWidth?: number;
+  assetHeight?: number;
+  assetFpsNumerator?: number;
+  assetFpsDenominator?: number;
+  playStartFrame?: number;
+  assetFileName?: string;
+  assetRightsBasis?: string;
 };
 
 type PrototypeWindow = Window & {
@@ -96,11 +98,56 @@ const patchResearchAquaHtml = (
   );
 };
 
-const replaceMediaFilename = (html: string): string => {
+const replaceMediaFilename = (html: string, assetFileName: string): string => {
+  if (!/^[A-Z0-9_-]+\.mp4$/.test(assetFileName)) {
+    throw new Error('Media display filename must be a simple uppercase MP4 filename');
+  }
   const matches = html.match(/JELLY_01\.mov/g) ?? [];
   if (matches.length !== 2) throw new Error('Expected the archived V2 filename in exactly two UI labels');
-  return html.replaceAll('JELLY_01.mov', 'LOCAL-DEMO.mp4');
+  return html.replaceAll('JELLY_01.mov', assetFileName);
 };
+
+function assertMediaProps(props: Props): asserts props is Required<Props> {
+  const paths = [props.assetPath, props.posterPath, props.prototypePath];
+  if (!paths.every((value) => typeof value === 'string' && value.length > 0)) {
+    throw new Error('Media, poster, and locked prototype paths are required');
+  }
+  const legacyM1Input =
+    props.assetFileName === undefined &&
+    props.assetRightsBasis === undefined &&
+    typeof props.assetPath === 'string' &&
+    /^cws-g1va-v2-media-m1-[a-z0-9-]+\/local-demo\.mp4$/.test(props.assetPath.replaceAll('\\', '/')) &&
+    props.assetDurationMs === 6000 &&
+    props.assetFrameCount === 180 &&
+    props.assetWidth === 1920 &&
+    props.assetHeight === 1080 &&
+    props.assetFpsNumerator === 30 &&
+    props.assetFpsDenominator === 1 &&
+    props.playStartFrame === 143;
+  if (legacyM1Input) {
+    props.assetFileName = 'LOCAL-DEMO.mp4';
+    props.assetRightsBasis = 'self_generated_local_test_only';
+  }
+  if (typeof props.assetFileName !== 'string' || !/^[A-Z0-9_-]+\.mp4$/.test(props.assetFileName)) {
+    throw new Error('Media display filename must be a simple uppercase MP4 filename');
+  }
+  if (
+    typeof props.assetDurationMs !== 'number' || !Number.isSafeInteger(props.assetDurationMs) || props.assetDurationMs <= 0 ||
+    typeof props.assetFrameCount !== 'number' || !Number.isSafeInteger(props.assetFrameCount) || props.assetFrameCount <= 0 ||
+    typeof props.assetWidth !== 'number' || !Number.isSafeInteger(props.assetWidth) || props.assetWidth <= 0 ||
+    typeof props.assetHeight !== 'number' || !Number.isSafeInteger(props.assetHeight) || props.assetHeight <= 0 ||
+    typeof props.assetFpsNumerator !== 'number' || !Number.isSafeInteger(props.assetFpsNumerator) || props.assetFpsNumerator <= 0 ||
+    typeof props.assetFpsDenominator !== 'number' || !Number.isSafeInteger(props.assetFpsDenominator) || props.assetFpsDenominator <= 0
+  ) {
+    throw new Error('Media metadata must contain positive integer duration, dimensions, frame count, and FPS');
+  }
+  if (typeof props.playStartFrame !== 'number' || !Number.isSafeInteger(props.playStartFrame) || props.playStartFrame < 0) {
+    throw new Error('Media play start must be a non-negative composition frame');
+  }
+  if (props.assetRightsBasis !== 'self_generated_local_test_only') {
+    throw new Error('Only self-generated local test media is allowed in this gate');
+  }
+}
 
 const getWindowGeometry = (time: number): WindowGeometry | null => {
   if (time < 1.92) return null;
@@ -128,11 +175,16 @@ const getWindowGeometry = (time: number): WindowGeometry | null => {
 };
 
 export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
+  assertMediaProps(props);
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
+  if (fps !== 30 || durationInFrames !== 270) {
+    throw new Error('M2 output composition must remain 1920x1080 at 30fps for 270 frames');
+  }
   const outerTime = frame / fps;
   const assetDurationSeconds = props.assetDurationMs / 1000;
   const playStartSeconds = props.playStartFrame / fps;
+  const assetDurationOutputFrames = Math.ceil((props.assetDurationMs * fps) / 1000);
   const innerHandle = useRef<number | null>(null);
   if (innerHandle.current === null) {
     innerHandle.current = delayRender('Load the archived Research Aqua canvas');
@@ -153,12 +205,12 @@ export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
   const contentTop = windowGeometry ? windowGeometry.y + 63 : 0;
   const contentOpacity = windowGeometry?.a ?? 0;
   const playStartFrame = props.playStartFrame;
-  const availableFrames = Math.max(1, Math.min(props.assetFrameCount, durationInFrames - playStartFrame));
+  const availableFrames = Math.max(1, Math.min(assetDurationOutputFrames, durationInFrames - playStartFrame));
   const patchedHtml = useMemo(
     () => prototypeHtml === null
       ? null
-      : replaceMediaFilename(patchResearchAquaHtml(prototypeHtml, assetDurationSeconds, playStartSeconds)),
-    [prototypeHtml, assetDurationSeconds, playStartSeconds],
+      : replaceMediaFilename(patchResearchAquaHtml(prototypeHtml, assetDurationSeconds, playStartSeconds), props.assetFileName),
+    [prototypeHtml, assetDurationSeconds, playStartSeconds, props.assetFileName],
   );
 
   useEffect(() => {
@@ -236,8 +288,8 @@ export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
               <AbsoluteFill>
                 <OffthreadVideo
                   src={mediaUrl}
-                  startFrom={0}
-                  endAt={props.assetFrameCount}
+                  trimBefore={0}
+                  trimAfter={assetDurationOutputFrames}
                   playbackRate={1}
                   muted
                   volume={0}
