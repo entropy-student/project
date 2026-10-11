@@ -38,7 +38,7 @@ M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事�
 
 ## NEXT_STEP / OWNER_ACTION_REQUIRED
 下一步：**执行有界 M2 后由 Reviewer 独立复核**；Executor不能自行进入 G2。
-Owner: **NONE 当前**（除需本人启动本地 Codex 并提交真实证据时按最小转交执行；无账号/付款/系统修改请求）。
+Owner: **仅需转交给本地 Codex 运行当前 M2 Gate，并在完成后向 Reviewer 提供 MP4/证据包**。无账号、付款、安装或系统权限修改请求；在 Executor 实际报告到来之前，不宣称 M2 已运行。
 
 ## EVIDENCE_POINTERS
 - `docs/P4_G1VA_M1_REVIEWER_INDEPENDENT_QA_2026-10-11.md`
