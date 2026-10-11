@@ -1,5 +1,19 @@
 # Curious World Studio｜2026-10-11 已确定状态总汇 / 下一位 Reviewer 交接入口
 
+## LATEST_WAVE2_REVIEW_20261011｜第二批4项真实上传+独立验收（最新）
+
+> 第二批4种Research Aqua窗口动效**已有独立HTML/ZIP产物**，不能再理解成只有Owner授权未执行；Reviewer实际打开并拆包复核，结果：`WAVE2_TECH_PASS_4/4`，`MW11 Spotlight / MW12 Exposé / MW13 Finder拖拽 = REVIEWER_KEEP_CANDIDATE`，`MW07 Dock Genie = REVIEWER_HOLD_VISUAL_POLISH`，**`OWNER_VISUAL_SIGNOFF_PENDING`**。详细 [高标准Wave2审查](MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。
+>
+> 证据：ZIP SHA `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`，87/87文件SHA对照，53张1280×720关键帧，四条真实WebM可解码且录制时长超过动作终帧；**Reviewer自运行1×全部4条、0.5×MW12/MW07、MW12先D后A真实重选和MW13真实pointer拖入**均通过，无浏览器错误/外部HTTP；原V2静态母版对照截图字节一致。
+>
+> **高标准剩余问题**：MW07中途6px分段Genie形成可见文字撕裂和边缘阶梯，建议仅针对MW07密化映射、重新做1×尾帧证据；Windows Edge `file://` 双击仍未由Owner实测（Reviewer容器管理员阻挡）；录屏帧密度不能宣称连续30fps，V2动态Dock旧5px例外也仍在。**KEEP只是Reviewer视觉候选，不是Owner最终通过，不是任何正式B的2/4/6扩权、Remotion新效果/G1/G2 PASS**。
+>
+> **当前并行分工**：Owner负责最终审美/选题方向与授权；主线Codex负责STORY-FIT/真实权利/2-4-6 Aqua轻量预览/音画闭环；支线Codex负责独立窗口动效及必要MW07精修；Reviewer负责源码/录屏/视觉QA与及时交接。本次不启动主线新Gate、不修改已合并M2代码/素材合同。
+>
+> 本节**优先于**下方较早写的 `Wave2 AUTHORIZED_NOT_EXECUTED` 及“第二批尚未制作”阶段文字，旧决策时间轴保留。
+
+
+
 ## LATEST_AQUA_3PLUS1_ALIGNMENT_20261011｜正式视频＋1动效也对齐Research Aqua（当前最新）
 
 > Owner 最新意见：「唯一的问题是那3➕1的动效可能也要参考这种样式，整理目前项目进展到main，继续推进吧」。本次已执行**文档级视觉一致性设计与首次Story-Fit只读预检**，没有修改锁定视频合同、Remotion源码或真正制作视频。
