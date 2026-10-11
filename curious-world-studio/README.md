@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2F1-REVIEW-STOP -->
+> **主线最新（2026-10-11）**：F1 只读诊断文件已由 Reviewer 在沙盒独立读/核哈希，同帧 `/proxy` HTTP500 被确认；因首败精确 argv/退出码、成功临时媒体 SHA 与当时资源快照未记录，根因 `ROOT_CAUSE_UNKNOWN`，`M2-F1=RETURN_DIAGNOSTIC_INCONCLUSIVE`，不再重复旧资料挖掘。**M2正式仍 RETURN，G1/G2 未解锁、M2 patch 未合并**。新 [F2 一轮可观测兼容回归](p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md)只是**未授权计划**，需要 Owner 另行批准；两支旧视频已经通过文件 QA，不必重做。见 [Reviewer 记录](docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md)。
+
 <!-- CWS-20261011-LANDSCAPE-CLEANUP-YTDLP-REVIEW -->
 > **新 Owner 约束（2026-10-11）**：正式视频中的**源素材默认优先横屏**（16:9），竖屏是有必要时的 `contain` 例外；最终片仍横屏 1920×1080@30。**正式首期生产前必须完成一次项目专属清理**，但不能现在删除已上传 M2 证据、失败日志或项目其他文件；先只读盘点、列清单并另获 Owner 删除授权。见 [素材政策](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)及[清理合同](docs/PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md)。
 > **yt-dlp 最新实证**：[Reviewer 已审查本机 ZIP](docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md)：官方 `yt-dlp.exe` 2026.08.19 本机安装哈希/版本自检符合 GitHub Release 官方 digest，但 Wikimedia 媒体下载返回 `RemoteDisconnected`/HTTP429，没有真正下载的视频。**工具安装已获证，下载未通过，视频解码未执行**；无需重装，不改 VPN。M2-F1 仍为当前失败日志只读 Gate。
