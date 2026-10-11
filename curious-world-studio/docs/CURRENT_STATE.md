@@ -23,6 +23,8 @@
 
 > **主线 F1 最新复核（2026-10-11）**：Owner 已上传 `m2_f1_readonly_diagnostic.md` 与脱敏日志摘录，Reviewer **实际读取两文件并核对 SHA**，确认旧 M1 runner 第184帧在源 PTS20992 取帧失败，且同帧本地 `/proxy` 报 HTTP **500**；本地回报显示源帧41可解码、失败临时副本在事后与源哈希一致，**不证明失败瞬间状态**。首败完整 argv/进程退出码、成功临时副本哈希、故障当时资源采样等 `NOT_RECORDED`，根因 `ROOT_CAUSE_UNKNOWN`。按 F1 现有日志证据范围已审至尽头，结果 **`RETURN_DIAGNOSTIC_INCONCLUSIVE / STOP_NO_MORE_SAME_EVIDENCE_REVIEW`**；不得因为缺历史字段再循环同样只读任务。原 M2 **`RETURN_UNDIAGNOSED_RENDER_FAILURE`**、两支候选 MP4 文件 QA PASS、M2 patch 本机未合并、G1 NOT PASS / G2 NOT AUTHORIZED 均保持。详细见 [F1 Reviewer 结论](P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md)。如要主动闭环，只规划 [F2 有界观测回归（PLAN_ONLY）](../p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md)，**还未获执行授权、不允许自动运行**；正式首期选题/合法素材调查可并行，预生产清理仍须独立批准具体删除项。
 
+> **支线 yt-dlp 第二轮 Reviewer 复核（2026-10-11）**：Owner 上传 `report.txt`、`direct-download.stdout.txt`、`page-extraction-result.json`、`environment.json`，Reviewer 实际读取四份文件并独立计算 SHA。Blender 官方 `sintel_trailer-480p.mp4` **PowerShell HEAD=HTTP200**（报告称4,372,373B、video/mp4），但 yt-dlp 请求 `RemoteDisconnected`、exit1、**无媒体文件**；Blender 官方 YouTube 预告片的网页/API 页同样 `RemoteDisconnected`、无 JSON 元数据。`INSTALL=PASS_EXISTING_BY_OWNER_REPORT`，`DIRECT_MEDIA_DOWNLOAD=RETURN_REMOTE_DISCONNECTED`，`VIDEO_PAGE_EXTRACTION=RETURN_REMOTE_DISCONNECTED`，`FFPROBE_FFMPEG_DECODE=NOT_RUN_NO_FILE`。**HEAD 成功不等于 GET 可下载**；根因不能擅自指向 VPN/代理/yt-dlp，旧支线后续的 Wikimedia 失败依旧有效；两次不同网站测试未证明下载能力成功。下一步如需解决，优先限制为一次**同 URL 的 HEAD 与小范围 GET/请求路径差异只读预检+受控请求**（需要新的 Owner 授权），不再盲目换更多网站。详情见 [第二轮支线 Review](P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md)。**主线最新 F2 Codex 结果仍待 Owner 转交，不因此改变主线正式状态。**
+
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
