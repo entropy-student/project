@@ -9,8 +9,8 @@
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
 - **当前阶段 `P3-R6 NARRATIVE COMPLETE + P4-G0 UPSTREAM STATIC DONE / LOCAL READBACK RECEIVED / G0_CONDITIONAL`**：2026-10-10 Windows 本地 Codex 已按既有任务书完成**只读查询与文字集成设计**，报告已交 Owner 并归档到 GitHub `main`：[本机能力回读](P4_G0_LOCAL_CAPABILITY_READBACK_2026-10-10.md)。存在 OpenMontage、Remotion 4.0.484、Node、FFmpeg、atelier 源码接口的本地证据；但安装无 `.git`，确切源码来源 UNKNOWN，中文**定稿文案强制对齐未证**、Qwen 实际配置 UNKNOWN、没有运行或渲染。Reviewer 已给出 [四项接口纠偏与 G1 验收合同草案](P4_G0_CONTRACT_CORRECTIONS_AND_G1_ACCEPTANCE_2026-10-11.md)，包括音轨零点、权利三状态、主音轨版本锁、一行拆多字幕。**G0 仍为 CONDITIONAL，非 `G0_DESIGN_READY_NO_RENDER`、非 G1/生产 PASS**；2026-10-11 文档修订通过 [PR #93](https://github.com/entropy-student/project/pull/93) 合并至 `main`，未改变本地运行状态。
-- **P4-G1-R2 真实复渲及独立视频 Review（2026-10-11）**：Owner 本地 Codex 从提交 `a839767ddd55119b805e1a6af170b9c4aa1cfc78` 运行 G1-R2，交付真实 24.200秒、1920×1080、30fps、726帧 MP4，复用 Fig. 7/8、同一已听审 WAV/8条字幕、既有 Headless Shell。原始证据见 [R2 执行报告](P4_G1_R2_EXECUTION_REPORT_2026-10-11.md)。Reviewer [独立核对上传 MP4](P4_G1_R2_REVIEWER_INDEPENDENT_QA_AND_OWNER_GATE_2026-10-11.md) 的 SHA、规格、726帧解码/黑帧、Fig.8 不再遮挡，且音轨与源 WAV 在7段匹配到一致约 +1.842676秒、相关系数0.996979–0.998526，未见累积漂移；Fig.7 360px 预览结构可辨但文字过细，**成片仍无 Owner 真人完整听审及最终主观体验反馈**。当前 `G1_CONDITIONAL / NOT_PASS`，G2/G3 尚未启动。首次 R1 未授权下载浏览器作为历史执行偏差保留；R2 仅按 Owner 新授权复用缓存、报告未再次下载。
-- **下一步**：不重新下载素材/渲染或修改技术栈。先请 Owner **完整播放并试听最终 R2 MP4**，检查配音、八条字幕声学分界（尤其 C003/C004 和 C006/C007）、开头/末尾、整体画面体验及 Fig.7 手机可读性；反馈通过与否和具体时间点。Reviewer 据真人反馈决定 `G1_TECH_PASS` 或继续 `G1_CONDITIONAL`，正式内容视觉可读性与 STORY-FIT、自动强制对齐仍各按独立后续门禁评估。**不得因机器人检测通过就自动启动 G2/G3**。
+- **P4-G1-R2 真实复渲 + Owner 视觉否决（2026-10-11）**：G1-R2 的24.2秒 H.264 1920×1080/30fps/726帧样片、字幕/音频波形对齐、Fig.8防遮挡等机器QA真实完成（[本机R2报告](P4_G1_R2_EXECUTION_REPORT_2026-10-11.md)、[Reviewer独立QA](P4_G1_R2_REVIEWER_INDEPENDENT_QA_AND_OWNER_GATE_2026-10-11.md)）；**Owner 实际观看后明确拒绝其视觉质量**：A 段是静态假桌面而非桌面→打开文件→播放器→全屏动态事件；B 段把 Fig.7/8 多格拼图作为主要静态画面，没有观众愿意看的真实实验行为镜头；Windows SAPI 配音音色差，音量及字幕同步基本可接受。**唯一结果：`G1_VISUAL_REJECTED / G1_NOT_PASS`**。之前的静帧/机器 PASS 不等于视觉体验通过，不能只等最终音频听审就自动晋级；G2/G3 均未获授权。
+- **下一步（P4-G1V 素材/真实视觉语法纠偏）**：经[原视频来源/许可调研](P4_G1V_ORIGINAL_VIDEO_DISCOVERY_RIGHTS_AND_VISUAL_RESET_2026-10-11.md)，2026研究团队公开的**三段原始动态视频**（制作过程、Video1回答与摆动、Video2对人和玩具等反应）已在 PLOS 论文与大学官方新闻稿中查到；[机读视频台账](../p4-g1/evidence/JB_ORIGINAL_VIDEO_SOURCE_REGISTRY_2026-10-11.json) 仅确认视频链接与论文描述，**未直接观看播放器完整动态内容或核到每段 YouTube 上传许可，剪辑/发布权利 `UNKNOWN`**。先让本地Codex按照[只读视频观看与许可任务书](../p4-g1/LOCAL_CODEX_G1V_VIDEO_SCREENING_READONLY_TASK_2026-10-11.md) 对镜头、上传者、许可类型、画质、真实时间码取证；备好[未发送的权利咨询草稿](../p4-g1/ORIGINAL_VIDEO_PERMISSION_REQUEST_EN_2026-10-11.md)。**不自动下载/剪辑视频、不自动联系作者、不重渲 R2、不改正式剧本与频道视觉锁、不启动 G2/G3**。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）
@@ -25,8 +25,8 @@ Owner 批准的既定次序保持：**九大信息源 → 批量发现 → 统�
 | 论文/事实 | P2-A 标题摘要抽样、P2-B/C 原文/来源对账、P2-D Owner 偏好 B>D 及 P3 的研究事实**可追溯**；独立二审、真实观众实验、完整竞品与逐件媒体授权仍未通过 |
 | B 补充音频 | [P2-E 文件级 QA 索引](../research/topic-bank/batches/2026-10-10_P2E_AUDIO_QA_EVIDENCE_INDEX.md)：官方 RAR5 可获取，14/14 WAV 的格式和元数据核验成功；**非真人试听、非音频生成、非播放兼容或商用授权 PASS**；原脚本/工作流留在未合并研究分支，不进入生产 |
 | 视觉 | `visual/retro-mac-v1.2/docs/STYLE_LOCK.md` 为锁定的 Tiger Aqua / QuickTime 7 **A/B 两状态视觉规范**；HTML 仅外观预览；无第三个 C 状态 |
-| 视频执行技术 | **真实 CWS G1-R1 与 G1-R2 Remotion MP4 均已生成**；R2 24.2秒样片获机器与抽帧 QA 支持，Fig.8 遮挡已修复、7段音频相关性高；缺 Owner 成片完整试听，**G1 仍 CONDITIONAL**，这不意味着长视频/完整流程已验证 |
-| 本仓生产接口 | **G1 技术样片以独立 CWS Remotion 入口完成**，不等于上游 OpenMontage 通用生产接口已整合；`CWS_TO_OPENMONTAGE=NOT_INTEGRATED` 按完整交付流水线维度仍成立。文案→镜头→自动寻找可用素材的稳定量产仍未证明，G2 未授权 |
+| 视频执行技术 | CWS 独立 Remotion 24.2秒 MP4 真实完成，机器同步与 Fig.8 遮挡修复验证成立；**Owner 明确否决静态桌面+论文拼接图的视觉表达**，G1仍不通过。后续须真实桌面交互动画、来源明确的动态实验镜头和更合适的声音 |
+| 本仓生产接口 | G1 独立代码可渲染，不代表 OpenMontage 完整生产链集成；原视频链接虽确认，**实际权利/剪辑镜头未核**，不能以 Fig 拼图伪称视频主体；`CWS_TO_OPENMONTAGE=NOT_INTEGRATED` 按完整量产路径仍成立，G2 未授权 |
 
 在线采集佐证：[P1 审计](../research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)、[Actions #38022638179](https://github.com/entropy-student/project/actions/runs/38022638179)；叙事校准：[P3-R1](../research/reports/2026-10-10_P3R1_NARRATIVE_MECHANISM_MARKET_RETROSPECT.md)；B/D 旧结构评审：[P3 报告](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)。
 
