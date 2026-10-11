@@ -205,3 +205,4 @@ Write-Output "G1VA_M1_RENDERED=$Final"
 Write-Output "G1VA_M1_SHA256=$($qa.output_sha256)"
 Write-Output "G1VA_M1_QA=$(Join-Path $Out 'machine_qa.json')"
 Write-Output "G1VA_M1_STATUS=OWNER_REVIEW_PENDING_G1_NOT_PASS"
+
