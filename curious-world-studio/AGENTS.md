@@ -2,7 +2,7 @@
 > **Reviewer/Executor 现行入口**：`docs/CURRENT_STATE.md` → `docs/REVIEWER_HANDOFF_2026-10-11_M2.md` → `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`。本文件以下原「P4-G0唯一执行边界」是 **2026-10-10 历史块，现已被 M2 Gate 取代**，不得据此禁止已经获得授权的受控 M2 本机验证，也不得据旧块重做 G0。M2 仅允许本地自制24fps横屏/30fps竖屏夹具的隔离测试和 M1 代码改后回归，**不安装/下载/付费/研究原视频/G2**。Owner 表示可以继续不等于亲自观看 M1 MP4 的证明。Executor 启动只读取 Gate relay 指定文件，不扫历史。
 
 <!-- CWS-20261010-HISTORY-NAV -->
-> **历史 2026-10-10 入口（已过时）**：：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
+> **历史 2026-10-10 入口（已过时）**：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
 
 # Agent 入口（本项目唯一）
 
