@@ -5,7 +5,7 @@
 
 ## 0. 一句话状态
 
-**Owner 已选定 Assistant V2 Research Aqua 作为 G1V-A 桌面动画的唯一当前视觉参考；它是可重复查看的真实9秒动画，但独立 Canvas HTML 尚未移植到可复用 Remotion 视频素材输入接口。Codex 的7秒旧版本已真实渲染、机器 QA 通过，却不采纳其视觉/交互实现。G1 整体视觉仍未PASS，G2/G3 禁止推进。**
+**Owner 已选定 Assistant V2 Research Aqua 作为 G1V-A 桌面动画的唯一当前视觉参考；它是可重复查看的真实9秒动画，但独立 Canvas HTML 尚未移植到可复用 Remotion 视频素材输入接口。Codex 的7秒旧版本已真实渲染、机器 QA 通过，却不采纳其视觉/交互实现。当前明确状态：`G1_NOT_PASS / G2_NOT_AUTHORIZED / G3_NOT_AUTHORIZED`。**
 
 ## 1. 权威文件按此顺序阅读
 
