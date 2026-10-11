@@ -1,3 +1,6 @@
+<!-- CWS-20261011-YTDLP-THIRD-TEST-PASS-LATEST -->
+> **yt-dlp 支线最新（2026-10-11）**：Owner 已上传真实 Blender 480p MP4及5份诊断材料，Reviewer 独立 SHA、FFprobe、FFmpeg 全解码 PASS。对比本机端口握手报告后，问题源于 `HTTP_PROXY` 把 SOCKS-only 10808 声明为 HTTP，而 Clash mixed 7897 是可用 HTTP 代理；使用 `--proxy http://127.0.0.1:7897` 后**指定 Blender 官方视频实际下载成功**。`DIRECT_MEDIA_DOWNLOAD=PASS_ONE_SOURCE`，不是全部视频站点可用。YouTube 仍有匿名挑战，不准绕过。新建的 `cws-ytdlp.ps1` 只有 Codex 本机语法和哈希报告，**脚本本体未提交供 Reviewer code QA**，不标 `WRAPPER_END_TO_END_PASS`；代理端口变动先读回实际配置，勿改全局代理/VPN。最新 Review：`docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`。所有旧支线 RETURN 仅属历史。**主线 M2 patch 仍待独立代码 PR 审查，G1/G2 仍 NOT_PASS**；不重新跑测试片，不清理关键证据或提前执行正式视频生产。
+
 <!-- CWS-20261011-M2F2-NEWEST-REVIEW -->
 > **最新主线（2026-10-11）**：Owner 已上传 M2-F2 唯一真实回归 MP4 与7件报告；Reviewer 独立验出 **9秒1920x1080@30/270帧/H.264全解码、黑帧无命中、SHA同历史M1**，Remotion和旧M1 runner exit0；F2为 **PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION**。新观察器后处理自身exit1、launcher退出记录缺失，记为采集缺口；渲染期间可用RAM最低221.86MiB（6x）须在未来长片控制。历史 M2 返回状态不变、M2 五文件源码仍**未合并**，没有 G1/G2 PASS。**不再重渲这些测试片**。下一步由 Owner 明确转发 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`，让本地主线只将精确五文件旧 M2 补丁提出代码 PR，**未经 Reviewer 复核不合并，不进入 G2，不清理证据，不动网络或支线**。见 `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`。以下较早提及 F2 PLAN_ONLY/F1 最新 Gate 的内容均为历史，按本条最新结果解释。
 
