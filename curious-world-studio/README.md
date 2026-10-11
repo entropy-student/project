@@ -1,5 +1,5 @@
 <!-- CWS-20261011-HANDOFF-NAV -->
-> **最新接手入口（2026-10-11）**：先读 [唯一当前状态](docs/CURRENT_STATE.md)、[Reviewer完整接手](docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md)、[已选V2 Research Aqua视觉实现](p4-g1/visual-reference/README.md)、[G1VA真实MP4输入适配任务](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。[2026-10-10 P4-G0交接](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md)和[更早 handoff](REVIEWER_HANDOFF.md)属于历史。**当前视觉参考已选定，完整G1/G2尚未通过**；P0/P1采集器已在线验证，九源归档仍 PARTIAL。
+> **最新接手入口（2026-10-11）**：先读 [唯一当前状态](docs/CURRENT_STATE.md)、[Reviewer完整接手](docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md)、[已选V2 Research Aqua视觉实现](p4-g1/visual-reference/README.md)、[G1VA真实MP4输入适配任务](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。[2026-10-10 P4-G0交接](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md)和[更早 handoff](REVIEWER_HANDOFF.md)属于历史。**已选V2视觉，M1真MP4媒体接入已获Reviewer单夹具技术验证，完整G1/G2尚未通过**；P0/P1采集器已在线验证，九源归档仍 PARTIAL。
 
 # Curious World Studio · 世界有点意思（暂定）
 
@@ -19,14 +19,16 @@
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
-| 当前项目状态 | [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) | **P3-R6研究完成；G0本机报告已落库；G1R1/R2真实24.2秒样片机器验证但视觉被否决；G1VA选定 V2 Research Aqua视觉基准，真实可复用媒体接入待做。G1整体未通过** |
+| 当前项目状态 | [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) | **P3-R6研究完成；G0本机报告已落库；G1R1/R2真实24.2秒样片机器验证但视觉被否决；G1VA选定 V2 Research Aqua视觉基准；M1真MP4首帧冻结/点击播放/实际时长单夹具已过Reviewer QA，后续格式仍待验证，G1整体未通过** |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |
 | 机读视觉参数 | [`visual/retro-mac-v1.2/config/design-tokens.json`](visual/retro-mac-v1.2/config/design-tokens.json) | 对应 v1.2 |
 | 可交互预览 | [`visual/retro-mac-v1.2/preview/index.html`](visual/retro-mac-v1.2/preview/index.html) | 视觉原型，非渲染引擎 |
 | **最新视觉实现真源** | [V2 Research Aqua自包含HTML](p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html) | Owner已选定的 A→B 桌面行为视觉参考，**非生产级任意MP4素材适配** |
-| **下一项执行任务** | [G1VA V2本地媒体适配合同](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md) | 待本机Codex实现；当前Reviewer继续负责验收 |
+| **已执行的M1合同（历史）** | [G1VA V2本地媒体适配合同](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md) | 已使用本地自制 MP4 跑通单输入测试，不需重做 |
+| **最新媒体接入代码** | [M1 Remotion 适配与渲染脚本](p4-g1/m1-media-adapter/README.md) | 实测运行源码经上传 ZIP Git blob 精确核对，通用性仍未证 |
+| **最新独立Reviewer QA** | [M1真实MP4验收](docs/P4_G1VA_M1_REVIEWER_INDEPENDENT_QA_2026-10-11.md) | 技术单夹具通过，Owner实际成片观看待确认 |
 | 已知问题 / 决策日志 | [`docs/STATUS_AND_DECISIONS.md`](docs/STATUS_AND_DECISIONS.md) | 维护中 |
 | Agent / Codex 入口 | [`AGENTS.md`](AGENTS.md) | 指向各权威文档 |
 
