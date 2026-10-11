@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2-RETURN-CURRENT-REVIEW -->
+> **现行 Gate 已更新（2026-10-11）**：Owner 上传两支 M2 MP4，经 Reviewer 独立文件 QA 通过；但 M1 runner 初次 frame184 渲染故障后未经诊断直接重试，原 M2 Gate **RETURN_UNDIAGNOSED_RENDER_FAILURE**。**当前仅允许运行** `p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md` 的只读日志诊断；不得重跑 M2、改码、清理、借新安装授权跑 yt-dlp、推进 G2。正文旧 M2 Gate relay 属历史。最新结论见 `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`。
+
 <!-- CWS-20261011-246-MOTION-AND-YTDLP-AUTHORITY -->
 > **Owner 最新动效选择：只要 2/4/6 三大类**——2 转场衔接；4 双画面/分屏/画中画布局；6 真实来源、证据标签和单行字幕的信息呈现。禁止镜头推拉平移、动态局部放大/圈注追踪、定格快慢放、新滤镜和另造界面特效。保留 Research Aqua A/B 已选外壳的原有鼠标/窗口行为。权威限制见 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`。**Owner 已向本地 Codex 下发一份独立的 yt-dlp 安装与合法测试视频下载/解码提示词**，仅该独立任务获授权安装特定官方程序；不要把此许可套用到 M2，当前实际结果未知。原文件下方提到的“不得擅自下载安装”仍适用于其他未授权任务。
 
