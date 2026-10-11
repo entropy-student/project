@@ -1,4 +1,4 @@
-"""Original deterministic offline render of the CWS G1V-A V2 HTML canvas.
+"""Reproducibility reference adapted from the original CWS G1V-A V2 HTML canvas renderer.
 Historical script preserved as used; requires pre-existing Python Playwright,
 Chromium at /usr/bin/chromium, and FFmpeg. No downloading or installations.
 Not a Windows Codex or production Remotion adapter.
