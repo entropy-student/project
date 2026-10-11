@@ -1,3 +1,6 @@
+<!-- CWS-20261011-MOTION-V2-REWORK -->
+> **Mac动效第一批最新返工（2026-10-11，优先于下文“首批全部视觉退回”的旧版结论）**：旧版5项仍历史RETURN；Owner现上传新V2 ZIP，Reviewer独立 SHA 72/72、44张1280×720、五条WebM全解码、**1×五项真实浏览器到终帧、MW03 0.5×和 A↔B 真画布点击完成**。`MW01/02/03=REVIEWER_KEEP_CANDIDATE`、`MW04/05=UI_DEMO_HOLD`，**Owner视觉签收仍未发生，未入正式Remotion或扩展2/4/6**。V2 Dock t0静态冻结5px差异、原WebM截尾、Windows本机file://未验证；第二批仍HOLD。详见 `docs/MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md`。主线M2源码已合并但G1/G2仍NOT_PASS，勿用本支线改变主线结论。
+
 <!-- CWS-20261011-AUTHORITATIVE-POSTMERGE -->
 > **当前唯一有效阶段入口（2026-10-11，优先于本文件所有旧顶部片段）**：[docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md) + [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**PR #116已合并M2五文件测试源码**，独立代码复核认定 React props复制与黑段检测 fail-closed 两个阻塞已修，**不是M2/G1正式PASS**；旧184帧失败原因UNKNOWN、F2渲染成功但观察器exit1、长片内存风险仍在。**PR #115也已合并，但仅包含Mac动效设计与视觉退回/返工文档**：首批5个HTML操作smoke PASS但视觉 `RETURN_VISUAL_REJECTED_ALL_FIVE`，缺V2鼠标路径和MW-03真切换，绝不作为正式视频动效通过；第二批4项暂停。yt-dlp Blender直链通过，YouTube受挑战/wrapper未端到端；只用已核来源。**不得重开旧M2 PR、重复旧9s渲染、自动清理、推进G2**。正式片前清理先只读盘点，删除需Owner另外批准；真实视频/云配音/单行字幕/资源稳定性仍需独立 Gate。此段为最新状态，后面旧“PR待提交/尚未安装/F2计划”均为时间点历史，不再当执行任务。
 

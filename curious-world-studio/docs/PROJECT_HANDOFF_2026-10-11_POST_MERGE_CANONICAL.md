@@ -33,6 +33,14 @@
 - **第二批已选但暂停**：Spotlight 搜索、Exposé 总览、Dock Genie、文件拖拽，共4个。需第一批新 Demo 真正达到观看质量且 Owner 通过后再单独授权。连同原已有开窗机制构成 **1+5+4=10种优先视觉行为**；其他 Sheet/Finder info 等备用。
 - 关键文件：[V1候选与两批顺序](MAC_WINDOW_MOTION_KIT_V1_2026-10-11.md)、[首版严格视觉退回](MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md)、[首批新 HTML 返工 Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)。**PR#115 已合并文档，但视觉结果仍为 RETURN**。当前没有看到下一批返工完成与 Owner 接受的证据。
 
+### MAC_MOTION_V2_CANDIDATE_2026_10_11｜最新第一批返工上传与独立Review（优先于上方原版RETURN）
+
+- **上传新版完整 ZIP，不是仅规划**：Owner提交 `cws-mac-window-motion-kit-v2-rework-20261011(2).zip` (24,667,105B；SHA256 `8987b1a5594ecc346d463ec3c8f47239de5c50587711eb56232ed48964757b67`)，Reviewer解压后独立核 `SHA256SUMS` 72/72 PASS、HTML 32,052B、44张正式关键帧1280×720、5条WebM视频全解码PASS。
+- **新技术结论** `V2_REWORK_REVIEWER_TECHNICAL_PASS`：Reviewer自己在独立Chromium中正常**1×真播放五项至终帧**，Reset/JS错误/零网络均核；实测墙钟≈3.72/5.27/6.74/5.54/5.77秒。对关键的 **MW03** 另外独立跑 `0.5×≈13.007s`，真实画布点击 B→A、A→B **均成立**，窗口几何会大幅交换，不再是旧版只调z-index；MW02手动Open选择亦获证。
+- **初步视觉状态** `MW01/02/03=REVIEWER_KEEP_CANDIDATE`，`MW04/05=UI_DEMO_ONLY_HOLD`；**OWNER正式常速观看/KEEP或DROP仍 PENDING**。不能反过来覆盖旧版5/5视觉 RETURN，也**不能视作可直接进正式Remotion或G1/G2 PASS**。第二批4项仍 HOLD。
+- **尚未独立解决的限制**：V2静态底座锁定 `desktop(t=0)`，原V2 Dock play图标 `t>1.75` 上移5px与波纹缓动被省略；需Owner是否接受。视频WebM 5条实际压缩时长均短于对应演示总时长，尤其MW02差约1秒；不能只用录屏冒称五项完整实时录到尾帧，Reviewer另以浏览器回放验证了操作到终帧。受限Chromium `file://` 直开仍 `NOT_VERIFIED_FILE_URL`，等待Owner Windows Edge双击检查。
+- **本次审核报告**：[Mac Window Motion Kit v2 独立Reviewer QA](MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md)。此报告新于原 [V1严厉视觉退回](MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md)；两个时间点结果并存，不删除旧证据。
+
 ## 四、正式节目定位与素材生产边界
 
 - 频道：B站主阵地，抖音/小红书辅助；不露脸、观点/观察/追问驱动，研究事实与行为镜头相符，不能用格式冗长弥补故事。当前规划以 4–6 分钟作参考，**不强制凑时长**。七阶段固定：九大信息源→批量发现→评分→正式题库→Story-Fit→剧本/证据/权利→视频制作/QA/发布。
