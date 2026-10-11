@@ -43,4 +43,14 @@ function Assert-M2StageSlug {
   if($StageSlug -notmatch "^cws-g1va-m2-$([regex]::Escape($profilePart))-[a-z0-9-]+$"){throw 'M2_BAD_STAGE_SLUG'}
 }
 
-Export-ModuleMember -Function Assert-M2AssetContract,Assert-M2PosterMatchesSource,Assert-M2FreshPaths,Assert-M2StageSlug
+function Get-M2BlackdetectHits {
+  param([Parameter(Mandatory=$true)][AllowEmptyString()][string]$LogText)
+  return @($LogText -split '\r?\n' | Where-Object {$_ -match '\bblack_start\s*:'})
+}
+
+function Assert-M2NoBlackSegments {
+  param([Parameter(Mandatory=$true)][AllowEmptyCollection()][string[]]$Hits)
+  if($Hits.Count -gt 0){throw "M2_BLACK_SEGMENT_DETECTED: count=$($Hits.Count)"}
+}
+
+Export-ModuleMember -Function Assert-M2AssetContract,Assert-M2PosterMatchesSource,Assert-M2FreshPaths,Assert-M2StageSlug,Get-M2BlackdetectHits,Assert-M2NoBlackSegments
