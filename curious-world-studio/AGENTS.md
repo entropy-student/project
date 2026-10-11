@@ -1,3 +1,6 @@
+<!-- CWS-20261011-WAVE2-INDEPENDENT-REVIEW -->
+> **最新Wave2独立Reviewer结论（2026-10-11，覆盖下文授权未执行状态）**：第二批4种 Research Aqua HTML已由Owner上传（ZIP `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`）；Reviewer自算87/87 SHA、真实1×四种到终帧、0.5×独立查MW12与MW07、Exposé D→A重新选择及Finder手动拖拽。**`WAVE2_TECH_PASS_ALL_4 / MW11_12_13_KEEP_CANDIDATES / MW07_HOLD_VISUAL_POLISH / OWNER_VISUAL_PENDING`**。Genie 6px条带变形虽真实，F051等中途文字撕裂与阶梯边缘需看Owner是否接受；如不接受只局部独立新版本精修，不覆盖旧ZIP。file://Windows双击仍待Owner核；四段WebM完整但不能宣称连续30fps。权威报告 `docs/MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md`。正式B仍只允许2/4/6轻型视觉，未经新授权不得把Genie/Exposé加到真实研究画面；M2源码已合并但正式G1/G2未PASS。下文“第二批未制作”是时间点历史。
+
 <!-- CWS-20261011-246-AQUA-STORYFIT -->
 > **最新2026-10-11视觉与正式首期推进**：Owner要求“3＋1的动效也参考已原则认可的Research Aqua”。**3是原研究/OpenMontage/yt-dlp取材渠道，＋1才是2转场/4布局/6信息字幕**；为B制作新的 [Aqua视觉语法提案](docs/P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)，绝不自动新增1/3/5/7类特效或让B每帧都塞窗口；前期所有正式素材合同与STYLE_LOCK继续有效。首期只读预检Owner所选SHORTLIST `CW-0002` 的 [原论文/叙事证据与录像许可缺口](docs/P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)：`STORYFIT_CONDITIONAL_SOURCE_VIDEO_GAP`，题库原`STORYFIT_NOT_STARTED`仍不变，**没有获证可用的原始行为视频、不做正式渲染**。建议下一步先完成3种2/4/6独立离线UI小样与CW0002真实行为影像/权利只读检索；有gap就HOLD_ASSET_GAP并考虑CW0005，不造AI科研视频。Mac第二批4项仍已授权且等独立Codex执行，M2/G1/G2未因此晋级。现行入口 `docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`。
 
