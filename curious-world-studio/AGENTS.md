@@ -1,3 +1,6 @@
+<!-- CWS-20261011-MAINLINE-SWIMLANE-OWNER-DELEGATION -->
+> **2026-10-11 Owner 主线泳道与协作最新决定**：**支线只再做一次MW07 Genie局部精修后收尾**，第三批不开发；**主线为主**，Assistant担任主编/独立Reviewer，先决定内容/故事结构/2-4-6视觉与QA（不能替代版权/付费/发布许可），主线Codex只作有界执行，Owner在R2提案和R4完整内部草片做两个主要复核；新增外联/付费/清理/商业发布仍需单独确认。**最短理想4轮内部草片**：R1 CW0002/CW0005一手论文+真实画面+rights只读比选，R2剧本+句/镜头/证据表+3个Aqua2-4-6轻量HTML，R3真实30–60秒音画字幕测试，R4首片前只读清理和Owner精确删除授权后第一版完整草片。正式G1仍未PASS，G2未授权、发布另需审批。先读 `docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md` 和 `p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md`；支线读 `p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md`。这两项本地Executor任务当前都**尚未执行**。下方前期“先做其它模板/四种Mac待最终逐项KEEP”等归档保留，不构成扩展任务授权。 
+
 <!-- CWS-20261011-WAVE2-INDEPENDENT-REVIEW -->
 > **最新Wave2独立Reviewer结论（2026-10-11，覆盖下文授权未执行状态）**：第二批4种 Research Aqua HTML已由Owner上传（ZIP `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`）；Reviewer自算87/87 SHA、真实1×四种到终帧、0.5×独立查MW12与MW07、Exposé D→A重新选择及Finder手动拖拽。**`WAVE2_TECH_PASS_ALL_4 / MW11_12_13_KEEP_CANDIDATES / MW07_HOLD_VISUAL_POLISH / OWNER_VISUAL_PENDING`**。Genie 6px条带变形虽真实，F051等中途文字撕裂与阶梯边缘需看Owner是否接受；如不接受只局部独立新版本精修，不覆盖旧ZIP。file://Windows双击仍待Owner核；四段WebM完整但不能宣称连续30fps。权威报告 `docs/MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md`。正式B仍只允许2/4/6轻型视觉，未经新授权不得把Genie/Exposé加到真实研究画面；M2源码已合并但正式G1/G2未PASS。下文“第二批未制作”是时间点历史。
 
