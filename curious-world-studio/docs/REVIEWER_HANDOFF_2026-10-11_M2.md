@@ -46,6 +46,11 @@
 - Owner 交付的 yt-dlp 独立安装/测试 ZIP 已由 Reviewer 检查：官方程序 `2026.08.19` 的本机安装/sha/version 报告可与 GitHub 官方 Release 对账，工具已就位（按 Owner 本机报告）；Commons 真实媒体请求失败：`RemoteDisconnected` 与 PowerShell GET HTTP429，**没生成媒体/没解码**，结果 `RETURN_YTDLP_MEDIA_REQUEST_FAILED`。详情见 `docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md`，不需要重新安装。**未对其他网站测试，不假定所有网站都失败。**
 - M2 原故障 `RETURN_UNDIAGNOSED_RENDER_FAILURE` 仍独立未解除；下一步依旧是 **M2-F1 既存日志只读诊断**。不得将“清理前置要求”变成当前删除授权，也不得让 yt-dlp 失败引发 VPN 变更。
 
+## YTDLP_BRANCH_SECOND_TEST_REVIEW_2026-10-11
+- Owner 已提交支线第二轮 Blender/YouTube 共四份证据文件，Reviewer 在此会话实读并算哈希。yt-dlp 已安装、无需重装；PowerShell 对 Blender 480p MP4 的 **HEAD HTTP200** 仅证明 HEAD 响应，yt-dlp 的下载请求 **RemoteDisconnected**，YouTube 的网页/API 提取也 RemoteDisconnected；**无实际视频、无解码，支线 RETURN_REMOTE_DISCONNECTED**。
+- HEAD vs GET **请求方法不同**；不能推导 yt-dlp 故障或 VPN/代理原因。若继续，先在新授权下进行**单 URL、有限网络流量、严格 STOP 的路径对照**；不能试遍网站、修改 VPN 或侵占主线运行资源。详情：`docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md`。
+- Owner 说明主线 Codex F2 结果**尚未返回**，本次仅记录支线，主线 M2 仍 RETURN、M2-F1 STOP、F2 先前为提案且现据 Owner 已派给本地 Codex，但**未收到可验收的执行结果**；Reviewer 不假定已成功。
+
 ## CRITICAL_CONSTRAINTS
 - 不重画 V2，不改 STYLE_LOCK、题库、正式剧本、HF-FIND；A/B无C，1920x1080@30输出，版权/研究真实事实分层。
 - 不安装/下载、不花钱、不碰真正研究视频、Cloud TTS、Windows特权/VPS/WG/HY2/Clash、G2/G3、发布。
@@ -68,6 +73,7 @@ M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事�
 Owner: 目前**无必须再转交的旧 F1 材料**，旧诊断已经结束。若想推进技术收口，只需针对新的 F2 受控单轮验证另行授权；不需要重传 M2 两支视频。
 
 ## EVIDENCE_POINTERS
+- `docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md`（支线第二轮 Blender HEAD 与下载失败，仍无视频）
 - `docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`（最新主线 F1 Review）
 - `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md`（计划，未授权运行）
 - `docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md`（工具已安装，媒体下载失败）
