@@ -1,8 +1,8 @@
 <!-- CWS-20261011-M2-CURRENT-NAV -->
 > **最新（2026-10-11，M2 Gate 已制定，未执行）**：Owner 表示「没啥问题，可以继续推进」，这代表认可继续验证，不代表可证明其完整观看了 M1 最终 9 秒 MP4。当前 Reviewer 入口是 [M2 Handoff](docs/REVIEWER_HANDOFF_2026-10-11_M2.md)，唯一状态是 [CURRENT_STATE](docs/CURRENT_STATE.md)，本地 Codex 下一任务是 [M2 双规格媒体 Gate](p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md)。**M1 仅单夹具技术 PASS；M2 未运行；G1 未 PASS；G2/G3 未授权。** 以下旧阶段描述保留历史背景。
 
-<!-- CWS-20261011-HANDOFF-NAV -->
-> **最新接手入口（2026-10-11）**：先读 [唯一当前状态](docs/CURRENT_STATE.md)、[Reviewer完整接手](docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md)、[已选V2 Research Aqua视觉实现](p4-g1/visual-reference/README.md)、[G1VA真实MP4输入适配任务](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。[2026-10-10 P4-G0交接](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md)和[更早 handoff](REVIEWER_HANDOFF.md)属于历史。**已选V2视觉，M1真MP4媒体接入已获Reviewer单夹具技术验证，完整G1/G2尚未通过**；P0/P1采集器已在线验证，九源归档仍 PARTIAL。
+<!-- CWS-20261011-M1-HISTORY-NAV -->
+> **历史 M1 交接入口（2026-10-11）**：先读 [唯一当前状态](docs/CURRENT_STATE.md)、[Reviewer完整接手](docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md)、[已选V2 Research Aqua视觉实现](p4-g1/visual-reference/README.md)、[G1VA真实MP4输入适配任务](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。[2026-10-10 P4-G0交接](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md)和[更早 handoff](REVIEWER_HANDOFF.md)属于历史。**已选V2视觉，M1真MP4媒体接入已获Reviewer单夹具技术验证，完整G1/G2尚未通过**；P0/P1采集器已在线验证，九源归档仍 PARTIAL。
 
 # Curious World Studio · 世界有点意思（暂定）
 
@@ -60,7 +60,7 @@
 
 **G0 执行快照（2026-10-10）**：已完成[上游源码静态核查与接入蓝图](docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md)，准备了[本地Codex一次性只读审计+设计任务](docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md)。当前状态 **G0_PARTIAL_UPSTREAM_STATIC_DONE_LOCAL_EVIDENCE_PENDING**，未执行本地检查、模型、安装或视频测试；实时状态始终以[CURRENT_STATE](docs/CURRENT_STATE.md)为准。已说明现有 v1.2 HTML 64秒占位轮播与真实生成的差距、统一音轨驱动字幕/镜头、研究/图库/自制素材的证据与版权分流。**仅上游只读审查和架构规划，未安装/生成/测试/发布**；本地 G0 完成及新 G1 实测均须后续按权限决策。
 
-## 当前阶段与后续
+## 历史阶段记录与后续（以顶部 M2 更新为准）
 
 研究系统和视觉基线已经建立；**P3-R6 已完成叙事纸面复核与自然时长原则。P4-G0 联合审计已完成上游静态部分，但本地 Codex 实机只读回报仍待完成，故不标 G0_PASS。**P0/P1 在线采集回归通过，九源完整性仍 PARTIAL；正式题库 36 条，尚无正式 STORYFIT_GO。Owner 交接称本地 OpenMontage 已完成短片技术闭环，但本仓未接入，约 5 分钟叙事和素材语义匹配质量未验。商业素材授权、声学时间对齐、发布自动化仍待验证；生产前须 Owner 明确确认。详见 [CURRENT_STATE](docs/CURRENT_STATE.md)。
 
