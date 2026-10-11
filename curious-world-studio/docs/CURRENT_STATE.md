@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-MW07-REVIEW-CLOSED -->
+> **Mac支线最新2026-10-11结论**：Owner已实际下发的**MW07 Genie最后局部精修任务**收到新ZIP并由Reviewer**独立复核**：ZIP SHA `57c6644583b4a2d149295a861087fc71c62041ddac7a0ae82192c959311361f2`，包内91/91文件清单验证；F051旧6px边缘台阶→新版连续纹理曲线/不再明显横带撕裂；Reviewer自己在Chromium真实1×6.52s/0.5×12.79s均到F191、Reset和手动Dock点击有效，2段WebM完整解码，0 JS/网络。结论 **`MW07_FINAL_POLISH_TECH_PASS / REVIEWER_KEEP_CANDIDATE / OWNER_FINAL_VISUAL_AND_WINDOWS_FILE_URL_PENDING`**，**停止继续开发窗口动效新模板或循环精修**，不自动授权正式B视频使用。缓存需约90MiB、预热0.88~1.67s，录屏可变帧率非30fps验证，Windows Edge`file://`未正式验证。见 [MW07完整独立Review](MAC_WINDOW_MOTION_KIT_MW07_FINAL_POLISH_REVIEWER_QA_2026-10-11.md)。**主线R1任务书仍尚未下发**，可以立即按 [三泳道4轮计划](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md) 转给主线Codex执行只读调查；旧“支线仍在执行”“MW07视觉HOLD”仅历史状态。G1/G2/版权/付费/删除权限不变。
+
+
 <!-- CWS-20261011-SWIMLANE-THREE-LANES -->
 > **2026-10-11 Owner最新协作反馈与状态修正**：Owner**已经下发支线MW07精修任务，但执行结果尚未回来；主线R1任务书虽已备好，却**尚未下发**。已将[主线四轮协作泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)改为**“假定支线收尾后的纯主线三角色时序图”**：Assistant先定任务和Reviewer验收/编辑决策→Owner在当前本地工具条件下转交任务给Codex→Codex执行→Owner转回结果→Assistant审查；R1由Assistant定首选题、R2由Owner关键复核①、R3由Assistant审音画小样、R4由Owner关键复核②完整内部草片。**最少理想4轮出可看内部草片，不包含发布**；R1尚未启动、支线尚未完成。版权、付费、实际删除、外联和正式发布/G2仍需Owner各自明确批准，未因此改变素材/视频正式Gate或现有产物状态。
 
