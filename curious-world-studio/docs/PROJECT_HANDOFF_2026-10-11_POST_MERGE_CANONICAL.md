@@ -1,5 +1,14 @@
 # Curious World Studio｜2026-10-11 已确定状态总汇 / 下一位 Reviewer 交接入口
 
+## LATEST_MW07_FINAL_REVIEWER_REVIEW_20261011｜支线开发收尾，主线R1仍未执行
+
+- 独立Mac Wave2最后精修`MW07 Dock Genie` 已返工交付且经过Reviewer独立SHA/画面/代码/浏览器/录屏复核：原6px带状阶梯与字形横纹明显改善为连续1px逆映射，非线性Genie仍保留、191帧/6.37s流程不变；新HTML SHA `6bd889e5b7487c5ef94fc36693941fb96298023190f9db0422bf1c9854f34551`，ZIP SHA `57c6644583b4a2d149295a861087fc71c62041ddac7a0ae82192c959311361f2`，包内91/91 SHA通过。Reviewer实测1×≈6.52s、0.5×≈12.79s终帧/Reset/Dock点击均通过，**`MW07_REVIEWER_KEEP_CANDIDATE / OWNER_VISUAL_SIGNOFF_PENDING`**。详见 [MW07最终Review](MAC_WINDOW_MOTION_KIT_MW07_FINAL_POLISH_REVIEWER_QA_2026-10-11.md)。
+- 此项目独立动效库**停止追加功能和新的修复轮次**，除非Owner观看明确指出阻塞；MW11/12/13前次KEEP候选不变。Owner本地Windows Edge `file://` 仍未实测，缓存90MiB/预热约0.9-1.7s与WebM变帧率局限仍在；这不构成正式Remotion / 主体B播放器新特效授权。
+- **主线R1仍未下发**（本人此轮只审支线Zip并同步文档），按 [三泳道四轮流转](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md) 现在应由Owner将 [R1 CW0002/CW0005只读选题素材权利任务](../p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md) 发主线Codex；Codex回包→Assistant独立Reviewer审→选题/R2。R2与R4为Owner主要复核节点，用户不需执行日常编辑决策。M2/G1正式未PASS、G2未授权、发布/许可/删除仍逐项审批。
+- 本节**优先于**下方历史的“MW07仍需开发/支线任务未完成”描述，保留旧审查作为追溯资料。
+
+
+
 ## LATEST_MAINLINE_ONLY_SWIMLANE_20261011｜三角色、四轮真实交接流程（更新）
 
 > Owner澄清：**支线MW07精修任务已下发但未收到结果，主线R1虽准备完却尚未下发**。Owner要看的泳道是**支线完成后的主线全过程**，而不是主线和支线并行图。已将 [4轮主线三泳道图](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)重绘：Assistant负责每轮任务制定与证据审查/编辑决策，Owner负责把任务传给本地主线Codex并将执行结果传回；Owner仅在R2内容/视觉计划和R4完整内部样片作2次主要复核（权利/付费/外联/具体删除/发布另批），Codex只在任务授权内执行。R1真实来源+权限比选→R2剧本/镜头+Aqua2/4/6预览→R3合法素材30–60s配音字幕联调→R4全片内部草片/QA。**最短理想4轮不等于可发布，也不意味着本次GitHub文档改动已经启动任何Codex任务**。下面较旧“支线与主线并行、主线立即推进”的句子是规划时态，不应误解为R1已下发/执行。
