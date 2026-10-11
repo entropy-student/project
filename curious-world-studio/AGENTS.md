@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2F1-NEWEST-GATE-STATUS -->
+> **最新 Review/执行边界（2026-10-11）**：M2-F1 只读诊断已回报并由 Reviewer 核对两份完整上传文本 SHA；历史第184帧媒体抽帧失败与本地 /proxy HTTP500 同帧，根因仍 UNKNOWN；因首次 argv/退出码不可从历史资料补齐，`M2-F1=RETURN_DIAGNOSTIC_INCONCLUSIVE` 且**STOP，不再重复该任务**。原 M2 Gate 仍 RETURN、M2 源码 patch 尚未合并。下一选项 `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md` 仅为 **PLAN_ONLY / NOT_AUTHORIZED**，不能自动执行新的渲染、重试、清理或 G2。已成功的两支 M2 候选 MP4 不重做；支线 yt-dlp 保持独立。权威审核 `docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`。下文较早“当前仅允许运行 F1 只读 Gate”是历史状态，已被本段覆盖。
+
 <!-- CWS-20261011-LANDSCAPE-PREPROD-CLEANUP-YTDLP -->
 > **Owner 2026-10-11 最新决定**：正式视频里的源素材**默认选 16:9 横屏**，竖版仅在有必要且内容真实/权利可核时用 B 内 `contain` 或 4 类布局，不拉伸、不裁切关键证据。**首支正式完整视频开始生产前需要受控清理 Gate**，先做目录/引用/证据/备份盘点、Owner 授权精确删除清单，**本轮绝不清理**。合同 `docs/PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md`。
 > **yt-dlp 已收到安装及下载回报**：Owner 上传测试 ZIP，Reviewer 已核对官方 Release digest 与本机安装报告，工具安装可认定获证；Wikimedia 媒体请求失败，返回 `RETURN_YTDLP_MEDIA_REQUEST_FAILED`，没有下载或媒体解码。见 `docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md`。**不能因为测试失败就删除工具、改 VPN、重新安装，不能在 M2-F1 Gate 里继续 yt-dlp 测试**。
