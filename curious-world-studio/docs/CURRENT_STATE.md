@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-SWIMLANE-THREE-LANES -->
+> **2026-10-11 Owner最新协作反馈与状态修正**：Owner**已经下发支线MW07精修任务，但执行结果尚未回来；主线R1任务书虽已备好，却**尚未下发**。已将[主线四轮协作泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)改为**“假定支线收尾后的纯主线三角色时序图”**：Assistant先定任务和Reviewer验收/编辑决策→Owner在当前本地工具条件下转交任务给Codex→Codex执行→Owner转回结果→Assistant审查；R1由Assistant定首选题、R2由Owner关键复核①、R3由Assistant审音画小样、R4由Owner关键复核②完整内部草片。**最少理想4轮出可看内部草片，不包含发布**；R1尚未启动、支线尚未完成。版权、付费、实际删除、外联和正式发布/G2仍需Owner各自明确批准，未因此改变素材/视频正式Gate或现有产物状态。
+
+
 <!-- CWS-20261011-MAIN-SWIMLANE-R1 -->
 > **Owner最新协作决定（2026-10-11）**：主编/Reviewer（Assistant）负责编辑方向、事实/镜头取舍与独立QA决策，主线Codex负责逐轮可核证执行，Owner仅在**R2内容+镜头方案、R4完整内部草片**做关键复核（付费/版权/对外联络/删除/正式发布另需明确授权）；支线Codex仅允许**最后一次MW07 Genie局部6px条带/文字撕裂精修**，不做新动效批次。理想条件**4轮到完整可观看内部草片**：R1 两题（CW0002大象/CW0005爆米花）只读事实、真实录像+权限比选→我定优先；R2 旁白故事/逐句镜头/Research Aqua轻量2/4/6三小样→Owner方向复核；R3 30–60秒合法真实素材+配音字幕一体联调→ReviewerQA；R4 正式首片前受控清理（先只读盘点，任何删除另获Owner精确授权）+内部完整草片→Owner复核。**不是4轮保证能发布；任何不具备复用权或音画不达标必须HOLD**。权威泳道：[四轮协作与角色](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)，本地两项新任务分别为 [主线R1只读Gate](../p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md) 与 [支线仅MW07精修Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md)，**均为任务书已准备、Executor尚未回报结果**。下方较早“第二批正在审/先做Aqua空模板”等阶段文字仅为历史快照。M2/G1/G2和3+1正式素材政策不变。
 
