@@ -29,10 +29,15 @@ $withAudio=Copy-BaseMetadata; $withAudio.audio_stream_count=1; $withAudio.stream
 Expect-Rejection 'audio_stream_present' {Assert-M2AssetContract -Metadata ([pscustomobject]$withAudio)}
 Expect-Rejection 'stage_collision' {Assert-M2FreshPaths -Paths @($PSScriptRoot)}
 Expect-Rejection 'poster_mismatch' {Assert-M2PosterMatchesSource -SourceDigest ('c'*32) -PosterDigest ('d'*32)}
+$syntheticBlackLog='[blackdetect @ 0x1] black_start:0.000000 black_end:0.100000 black_duration:0.100000'
+$syntheticBlackHits=@(Get-M2BlackdetectHits -LogText $syntheticBlackLog)
+Expect-Rejection 'blackdetect_hit' {Assert-M2NoBlackSegments -Hits $syntheticBlackHits}
+$clearBlackHits=@(Get-M2BlackdetectHits -LogText '[ffmpeg] decoded video frame 0')
+Assert-M2NoBlackSegments -Hits $clearBlackHits
 Assert-M2StageSlug -Profile 'landscape_24' -StageSlug 'cws-g1va-m2-landscape-24-x7k2p9'
 if(Test-Path -LiteralPath $OutputPath){throw "M2_NEGATIVE_REPORT_EXISTS: $OutputPath"}
 $parent=Split-Path -Parent $OutputPath
 if(!(Test-Path -LiteralPath $parent)){New-Item -ItemType Directory -Path $parent | Out-Null}
-$report=[ordered]@{schema='CWS_G1VA_M2_NEGATIVE_GUARDS_V1';result='PASS';negative_cases=$cases;positive_slug_validation='PASS'}
+$report=[ordered]@{schema='CWS_G1VA_M2_NEGATIVE_GUARDS_V1';result='PASS';negative_cases=$cases;positive_slug_validation='PASS';positive_blackdetect_validation='PASS'}
 $report | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $OutputPath -Encoding utf8NoBOM
 "M2_NEGATIVE_GUARDS=PASS"; "NEGATIVE_CASES=$($cases.Count)"; "REPORT=$OutputPath"
