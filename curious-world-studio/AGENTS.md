@@ -1,8 +1,8 @@
 <!-- CWS-20261011-M2-CURRENT-NAV -->
 > **Reviewer/Executor 现行入口**：`docs/CURRENT_STATE.md` → `docs/REVIEWER_HANDOFF_2026-10-11_M2.md` → `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`。本文件以下原「P4-G0唯一执行边界」是 **2026-10-10 历史块，现已被 M2 Gate 取代**，不得据此禁止已经获得授权的受控 M2 本机验证，也不得据旧块重做 G0。M2 仅允许本地自制24fps横屏/30fps竖屏夹具的隔离测试和 M1 代码改后回归，**不安装/下载/付费/研究原视频/G2**。Owner 表示可以继续不等于亲自观看 M1 MP4 的证明。Executor 启动只读取 Gate relay 指定文件，不扫历史。
 
-<!-- CWS-20261010-HANDOFF-NAV -->
-> **最新状态先读**：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
+<!-- CWS-20261010-HISTORY-NAV -->
+> **历史 2026-10-10 入口（已过时）**：：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
 
 # Agent 入口（本项目唯一）
 
@@ -15,7 +15,7 @@
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。
 5. 本项目位于项目库 `project/curious-world-studio/`，不修改其他一级项目。
 
-## P4-G0 当前唯一执行边界
+## 历史 P4-G0 执行边界（当前 M2 不适用）
 
 - 已完成的是 **OpenMontage 上游源码静态审计**；Owner Windows **本机安装状况尚未只读回报**，不得把 G0 误报PASS。
 - 本地 Codex 下一步任务书：`docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md`；先读 `docs/P4_G0_UPSTREAM_STATIC_AUDIT_AND_INTEGRATION_BLUEPRINT_2026-10-10.md`。
