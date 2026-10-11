@@ -1,0 +1,88 @@
+{
+  "version": "CWS_P4_G1V_VIDEO_SOURCE_AUDIT_V1",
+  "audited_on": "2026-10-11",
+  "paper": {
+    "title": "Edible agents with perceptible minds: A psychological study of human perception in human–food interaction",
+    "doi": "10.1371/journal.pone.0350612",
+    "published_on": "2026-06-22",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0350612",
+    "article_license": "CC BY 4.0 (published PLOS content)"
+  },
+  "independent_official_release": "https://www.uec.ac.jp/eng/news/announcement/2026/20260624_7779.html",
+  "publication_license_policy": "https://plos.org/terms-of-use/",
+  "youtube_license_policy": "https://support.google.com/youtube/answer/2797468",
+  "source_status_note": "Academic article contains S3 Appendix links to videos; university links these on YouTube. External video copies are NOT automatically covered by article CC BY. No YouTube video player or license setting was directly accessible in this review; no video binary was downloaded or inspected.",
+  "videos": [
+    {
+      "asset_id": "JB-VID-00",
+      "title": "Generation process for the edible agent",
+      "url": "https://youtu.be/S75xd_0SOVs",
+      "kind": "original_research_process_video",
+      "paper_duration_s": 42,
+      "university_press_duration_s": 41,
+      "behavior_described": "gelatin/ingredients heating, pouring, cooling, removing from mold; exact scene cuts not verified",
+      "paper_screenshot_reference": "Fig 9 (a–f)",
+      "paper_anchor_seconds": [],
+      "screening_priority": "HIGH",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      },
+      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
+      "video_data_retrieved": false
+    },
+    {
+      "asset_id": "JB-VID-01",
+      "title": "Video 1 High Agency Low Experience",
+      "url": "https://youtu.be/0_hgrf0pi2Y",
+      "kind": "original_experiment_video",
+      "paper_duration_s": 91,
+      "university_press_duration_s": 91,
+      "behavior_described": "edible agent converses in Japanese, sways while talking and remains still otherwise; first ~15s is sound check",
+      "paper_screenshot_reference": "Fig 7 (a-c)",
+      "paper_anchor_seconds": [
+        15,
+        36,
+        76
+      ],
+      "screening_priority": "HIGH",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      },
+      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
+      "video_data_retrieved": false
+    },
+    {
+      "asset_id": "JB-VID-02",
+      "title": "Video 2 Low Agency High Experience",
+      "url": "https://youtu.be/0GW9b6Sk-9U",
+      "kind": "original_experiment_video",
+      "paper_duration_s": 93,
+      "university_press_duration_s": 93,
+      "behavior_described": "edible agent reacts with baby-like voice to hand, expanding toy, bell and goodbye; first ~15s is sound check",
+      "paper_screenshot_reference": "Fig 8 (a-f)",
+      "paper_anchor_seconds": [
+        15,
+        19,
+        33,
+        47,
+        62,
+        86
+      ],
+      "screening_priority": "HIGH",
+      "verification": {
+        "link_found": "LINK_FOUND",
+        "content_verified": "NOT_VERIFIED",
+        "reuse_rights_verified": "UNKNOWN"
+      },
+      "license_status": "EXTERNAL_YOUTUBE_LICENSE_UNVERIFIED",
+      "video_data_retrieved": false
+    }
+  ],
+  "anchor_note": "Times quoted in paper Fig 7/8 captions as screenshot positions; do not interpret them as already audited usable clip in/out or assume exact key events occur at these times. Paper explicitly says timestamp labels in figures are not part of original video.",
+  "access_rule": "Inspect official video in browser in read-only fashion before proposing cuts. Download/re-encode/modify/use in test or published video only after checking explicit permission/license or a specifically reviewed applicable exception, plus channel/platform terms. Do not fall back to full figure composites without editorial evaluation.",
+  "release_boundaries": "No change to formal topic bank, STORY-FIT status, official script, G1_R2 NOT_PASS, visual lock, or G2 authorization."
+}
