@@ -1,5 +1,8 @@
 # Curious World Studio｜Mac Window Motion Kit v1（独立视觉实验提案）
 
+<!-- OWNER_APPROVED_WAVE2_20261011 -->
+> **最新Owner决策（2026-10-11）**：第一批新V2整体验收反馈「基本达到要求」，记录 `OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`；第二批四项 Spotlight(MW-11)、Exposé(MW-12)、Dock Genie(MW-07)、拖拽(MW-13) **已由Owner授权开始制作离线HTML Demo**，`AUTHORIZED_NOT_EXECUTED`。下方“第二批HOLD/暂停”属授权前历史计划；Owner认可不等于4项已制作或正式G1/G2通过。参见 [Owner记录](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md) / [第二批Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md)。
+
 <!-- POSTMERGE_VISUAL_RETURN -->
 > **2026-10-11 最新仓库事实**：此提案随 [PR #115](https://github.com/entropy-student/project/pull/115) 已合并到 main，但它是**纯Markdown规划/反例Review/返工Gate归档**，**首批五个窗口动效并未达到视觉通过、也未集成到Remotion**。当前Owner/Reviewer结果 `RETURN_VISUAL_REJECTED_ALL_FIVE`：太快、无已锁V2模拟鼠标操作、图标/Dock位置/样式偏差、MW-03只换z-index无清晰真实切换；新独立HTML返工需按 [严格返工 Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)，旧版HTML/ZIP不删不覆盖，第二批4项暂停。正式视频政策仍由[3+1/2/4/6合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)约束。权威合并后状态见[统一交接](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
 
