@@ -23,8 +23,12 @@
 `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`：**M2 单轮双夹具本机受控技术验证**。24fps 横屏与30fps 竖屏，source时钟/首帧/contain/进度、M1受影响代码回归。已获 Owner 继续推进方向授权，Reviewer 明确有界测试边界；**当前仅 TASK_READY，未实际运行**。必须在 Reviewer 接收/验收前停止。
 
 ## OWNER_DECISION_2026-10-11 / ACTIVE_VIDEO_ASSET_POLICY
-- 未来正式视频采用 **3＋1**：研究/实验原始素材、OpenMontage 检索、yt-dlp 已知来源的合规下载路径；Codex 只叠加极少量强调/转场，**不绘制果冻等实体、不生成 AI 图片/视频、禁止重复镜头/循环素材**。按需要选取，不要求三路都用。权威合同：[VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
+- 未来正式视频采用 **3＋1**：研究/实验原始素材、OpenMontage 检索、yt-dlp 已知来源的合规下载路径；**Codex 动效只保留 Owner 选定的 2 转场衔接、4 画面布局、6 信息呈现三大类**，其他 1/3/5/7 不用；**不绘制果冻等实体、不生成 AI 图片/视频、禁止重复镜头/循环素材**。按需要选取，不要求三路都用。权威合同：[VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
 - yt-dlp 既往本机实证是 `TOOL_NOT_PRESENT`；Edge 播放3/3并非 yt-dlp 下载通过。后续独立验证；**已发出的 M2 仅工程测试、不加真实素材/下载、不因新合同重跑**。
+
+## OWNER_DECISION_2026-10-11 / MOTION_AND_SEPARATE_TOOL_TEST
+- Owner 从七个动效大类选择了 **2/4/6**，正式 B 视频只准转场、真实素材布局、信息字幕/证据标签；禁止推镜/平移、动态圈注/局部放大、定格慢放和新视觉滤镜。固定 Research Aqua 桌面→播放器操作不变。以 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md` 为现行合同。
+- Owner 已将**独立** yt-dlp 官方安装 + CC0 小样本下载/解码提示词下发 Codex，授权仅限该提示词界限；`INSTALL_AND_DOWNLOAD_TEST=PENDING_EXECUTOR_REPORT`，不可冒认成功。此前工具缺失回报仍为历史事实；M2 禁止挟带安装/网络/视频下载操作。
 
 ## CRITICAL_CONSTRAINTS
 - 不重画 V2，不改 STYLE_LOCK、题库、正式剧本、HF-FIND；A/B无C，1920x1080@30输出，版权/研究真实事实分层。
@@ -38,7 +42,7 @@ Owner Windows 的本地 Codex，明确 M2 Gate，项目内独立 worktree/stage�
 M1 main 四份源码与锁定的 V2 HTML 是可确定的代码回滚基线；本机 M2 stage 尚未创建，新的真实持久化恢复状态 UNKNOWN，Preflight须确认。勿删除 M1/R1/R2/历史测试目录。
 
 ## MOST_RECENT_YTDLP_OWNER_RELAY
-Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESENT`；`Get-Command yt-dlp` 无匹配，FFmpeg/FFprobe 9.0 版本命令成功。按 Gate 停止后**没有执行元数据提取、下载或解码，也没有安装/改网络/M2**。无可供 Reviewer 直接读取的日志，记为 `OWNER_REPORTED`，见 `docs/P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md`。如要安装/真实下载需新的 Owner 授权与独立 Gate；M2 不变。
+Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESENT`；`Get-Command yt-dlp` 无匹配，FFmpeg/FFprobe 9.0 版本命令成功。按 Gate 停止后**没有执行元数据提取、下载或解码，也没有安装/改网络/M2**。无可供 Reviewer 直接读取的日志，记为 `OWNER_REPORTED`，见 `docs/P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md`。**该历史预检本身不含安装授权**；随后 Owner 已单独授权并下发安装及真实小样本下载任务，但**执行结果未回报**；M2 不变。
 
 ## UNRESOLVED
 M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事镜头、中文配音/对齐、原视频版权、自动素材编排、G1完整视觉/音频 Gate、G2资格。
