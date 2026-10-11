@@ -1,3 +1,6 @@
+<!-- CWS-20261011-AUTHORITATIVE-POSTMERGE -->
+> **最新项目状态入口（2026-10-11，覆盖下方历史时点表述）**：[项目合并后完整交接总汇](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md) · [当前快照](docs/CURRENT_STATE.md)。**[#116](https://github.com/entropy-student/project/pull/116)已合并**五文件M2测试媒体适配源码，两处blocker修复并获独立源码review **PASS**；但此前M2第184帧根因未知、F2仅单次候选、正式M2/G1不因合并自动PASS，G2未授权。**[#115](https://github.com/entropy-student/project/pull/115)已合并**复古Mac窗口动效**文档**，但首批5项视觉**全部退回**（原V2鼠标与布局未正确继承，MW-03假窗口切换），新HTML返工Gate已备，第二批四项暂停。yt-dlp Blender官方直链单点实际下载/解码PASS，YouTube匿名元数据未通过；正式素材仍按3+1与2/4/6、横屏16:9、证据版权逐条确认。正式视频前清理只允许先只读盘点，具体删除需另外授权；新阶段聚焦真实研究素材+中文旁白/单行字幕/音画QA及长片资源预算。**以下旧的“源码未合并/yt-dlp未安装”文字只反映历史，不是新的执行任务。**
+
 <!-- CWS-20261011-YTDLP-DIRECT-PASS-LATEST -->
 > **支线 yt-dlp 最新独立 QA（2026-10-11）**：Owner 上传 **4,372,373B 的 Blender Sintel 真实 MP4**，Reviewer 自行 SHA/FFprobe/FFmpeg 验证 **854×480@24/52.208s/H.264+AAC/全片解码PASS**，SHA `b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`。本机配置发现 `HTTP_PROXY` 错把 SOCKS-only 10808 当 HTTP，明确让 yt-dlp 使用现有 Clash HTTP `--proxy http://127.0.0.1:7897` 后**一个 Blender 官方直链下载成功**，不需重装/改 VPN。**YouTube 元数据仍遭反机器人登录挑战**；不能断言所有来源可用。Codex 声称新建项目 wrapper 且语法检查通过，但 Reviewer 还未读取脚本/做 wrapper 实测；只记录 `WRAPPER_CREATED_OWNER_REPORTED`。见 [yt-dlp 本轮独立 Review](docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md)。此前失败记录为历史。主线代码 PR 和正式生产前清理仍是下一阶段，不被本轮支线改变。
 
