@@ -1,0 +1,94 @@
+{
+  "version": "G1VA_V2_TECH_QA",
+  "videos": [
+    {
+      "file": "G1VA_V2_Research_Aqua_9s_1080p.mp4",
+      "sha256": "914a4a7b4dd5dfd542561e2a89a5d65a5c8fbf78d322b5c35afb93a2092a96d2",
+      "file_bytes": 1318432,
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "frames": 270,
+      "duration_s": 9,
+      "codec": "h264",
+      "audio_tracks": 0,
+      "decode_ok": true,
+      "black_frames_reported": false,
+      "ffmpeg_decode_error": ""
+    },
+    {
+      "file": "G1VA_V2_Classic_Aqua_9s_1080p.mp4",
+      "sha256": "ff18ac1a359b1561612a54903433846fadbb7eac963feaa60319abf0bd3cdd6f",
+      "file_bytes": 1235893,
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "frames": 270,
+      "duration_s": 9,
+      "codec": "h264",
+      "audio_tracks": 0,
+      "decode_ok": true,
+      "black_frames_reported": false,
+      "ffmpeg_decode_error": ""
+    }
+  ],
+  "behaviorStates": [
+    {
+      "phase": "player-opening",
+      "assetTimeSeconds": 0,
+      "progress": 0,
+      "wallpaper": "research",
+      "firstFrameHeld": true
+    },
+    {
+      "phase": "player-opening",
+      "assetTimeSeconds": 0,
+      "progress": 0,
+      "wallpaper": "research",
+      "firstFrameHeld": true
+    },
+    {
+      "phase": "first-frame-paused",
+      "assetTimeSeconds": 0,
+      "progress": 0,
+      "wallpaper": "research",
+      "firstFrameHeld": true
+    },
+    {
+      "phase": "first-frame-paused",
+      "assetTimeSeconds": 0,
+      "progress": 0,
+      "wallpaper": "research",
+      "firstFrameHeld": true
+    },
+    {
+      "phase": "asset-playing",
+      "assetTimeSeconds": 0,
+      "progress": 0,
+      "wallpaper": "research",
+      "firstFrameHeld": false
+    },
+    {
+      "phase": "asset-playing",
+      "assetTimeSeconds": 2,
+      "progress": 0.16666666666666666,
+      "wallpaper": "research",
+      "firstFrameHeld": false
+    },
+    {
+      "phase": "asset-playing",
+      "assetTimeSeconds": 4,
+      "progress": 0.3333333333333333,
+      "wallpaper": "research",
+      "firstFrameHeld": false
+    }
+  ],
+  "firstFrameHoldsExactly": true,
+  "paused_source_roi_mad": 0,
+  "source_changes_after_play_roi_mad": 3.4756769444863607,
+  "material": "self-drawn original procedural jelly scene; not original study video, not archival scientific evidence",
+  "noAudio": "visual-only prototype (by design)",
+  "internalProgress": "0 until play at 4.76s; then elapsed asset time / 12s; external MP4 runtime 9.0s",
+  "voiceOrSubtitle": "none in this isolated prototype",
+  "humanVisualApproval": "PENDING_OWNER_REVIEW"
+}
