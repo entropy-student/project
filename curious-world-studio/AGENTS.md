@@ -1,5 +1,5 @@
 <!-- CWS-STABLE-WORKFLOW-20261011 -->
-> **CURRENT / 优先规则：** 先读 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)。自2026-10-11起，**本地Codex各轮回包为ZIP→Owner上传→Assistant独立Review；普通阶段报告不新建GitHub文档，不每轮开PR**。仅锁定的生产源码/复用模板/长效规范/正式题库变更及里程碑状态需要Git分支、Review和适当合并。**立即动作仅CWS本地只读清理审计，无获准删除清单；主线R1已备但尚未下发。** MW07最终精修已收到并获Reviewer技术/视觉改善认可，Owner Windows `file://` 与最后观感待确认；Mac支线不再开发新批次。**G1未正式PASS、G2未授权，公开发布/付费/外联/删除另需批准。** 本文件下方标`历史 P4-G0`等段落均只作过往任务记录，不能覆盖本段当前指令。
+> **CURRENT / 优先规则：** 先读 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)。自2026-10-11起，**本地Codex各轮回包为ZIP→Owner上传→Assistant独立Review；普通阶段报告不新建GitHub文档，不每轮开PR；**Reviewer下一轮默认只用文字提示词反馈，不让Owner反向下载Reviewer ZIP给Codex，除非Codex本地缺不可重建的必要输入****。仅锁定的生产源码/复用模板/长效规范/正式题库变更及里程碑状态需要Git分支、Review和适当合并。**本地CWS只读审计已完成，分类纠错提示词已下发但结果ZIP未回；0B获准删除。主线R1已备但尚未下发，可不等待纠错。** MW07最终精修已收到并获Reviewer技术/视觉改善认可，Owner Windows `file://` 与最后观感待确认；Mac支线不再开发新批次。**G1未正式PASS、G2未授权，公开发布/付费/外联/删除另需批准。** 本文件下方标`历史 P4-G0`等段落均只作过往任务记录，不能覆盖本段当前指令。
 
 # Agent 入口（本项目唯一）
 
