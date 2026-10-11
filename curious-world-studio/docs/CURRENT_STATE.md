@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-246-AQUA-ALIGNMENT -->
+> **最新主线视觉衔接与Story-Fit进度（2026-10-11）**：Owner建议正式3＋1中的「＋1」**2转场／4布局／6信息字幕**也参考已接受的 Research Aqua 风格；已创建 [Aqua 2/4/6视觉语法提案](P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)，用既有银灰/深蓝/字体/线条作为 B中少量信息与分栏的样式，**不新增类别7 UI特效、不盖住真研究画面、不改 STYLE_LOCK与正式3＋1合同**。状态 `STYLE_ALIGNMENT_PROPOSAL / PREVIEW_NOT_EXECUTED`，下一步独立HTML三示例正常速度审美验收。为真正推进内容，已对Owner曾选的 SHORTLIST **CW-0002大象手势**开展 [原论文只读Story-Fit预检](P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)：论文存在且局部事实已核，**原研究录像可访问性/具体画面及复用权仍未知**，故 `CW0002_STORYFIT_CONDITIONAL_MEDIA_GAP`，原题库状态未变、不批准正式视频制作。Mac窗口动效第一批v2获Owner原则认可、第二批4项独立HTML已授权但尚未收到新产物；和B中2/4/6视觉统一是**两条隔离工作线**。M2源码已合并不等于正式G1PASS，G2未授权，制作前清理仍需单独精确删除批准。历史较早“素材未找到/第二批禁行/PR旧状态”等必须按最新有效记录解读。
+
+
 <!-- CWS-20261011-MAC-WAVE2-OWNER-AUTH -->
 > **2026-10-11 Mac动效 Owner 最新决定（覆盖本页下方旧版拒绝/第一批新V2待签/第二批暂停的阶段快照）**：Owner已观看第一批 V2返工并表示「**基本达到要求了**」，允许保留作为演示库基线，并授权「**其他模版也可以开始了**」。记录为 **`WAVE1_V2_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`**（MW01/02/03优先保留、MW04/05仅Demo保留，**不是正式视频集成权**）；此前V1旧版5项视觉RETURN仍为真实历史。第二批四项 `MW-11 Spotlight / MW-12 Exposé / MW-07 Dock Genie / MW-13 拖拽` 已**授权制作独立HTML（`AUTHORIZED_NOT_EXECUTED`）**，可将 [第二批严格任务](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md) 交独立Codex执行。第一批细节精修（Dock动态5px、短尾WebM、Windows file双击）列低优先级，不阻塞第二批；不覆盖既有证据。见 [Owner新决定](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。主线M2/G1/G2状态、3＋1/2/4/6正式合同、正式视频前清理单独审批一律不变。**下方“第二批暂停/Owner签收未发生”段落是此更新前历史。**
 

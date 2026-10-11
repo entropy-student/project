@@ -4,6 +4,12 @@
 > 下文以早期 M2-f1/f2/PR-only 命名的段落属历史证据；本页最新业务状态见 `CURRENT_TRUTH_POST_115_116_MERGE_2026-10-11`。  
 > 本文替代先前 `REVIEWER_HANDOFF_2026-10-11_G1VA.md` 作为新会话默认 Reviewer 入口；历史 Handoff 和原证据仍保留。唯一实时状态 `CURRENT_STATE.md`。
 
+## LATEST_AQUA_VISUAL_246_AND_CW0002_PRECHECK
+
+- Owner要求**正式“3+1”的+1允许的2/4/6组件视觉**沿用Research Aqua语言，**不是增开第7类动画，也不是三素材渠道的风格重构**；[视觉规范草案](P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)已归档，`VISUAL_PREVIEW_NOT_STARTED`，后续通过不使用未许可媒体的离线HTML三场景评审后才决定正式B渲染。
+- 已对Owner所选 `CW-0002` (SHORTLIST) 从Springer原论文做**首次Story-Fit事实和版权缺口只读预检**，`CONDITIONAL_SOURCE_VIDEO_GAP`，论文内提录制91h录像但**真实视频公开可用性/逐帧内容/复用许可均未通过**，须先寻找含研究真实行为的合法可用视频；不能把CC BY文章文字直接推广至全部外部视频，不能做正式视频发布。原`TOPICS_V1.json`和`BOARD_V1.md`未修改，题目仍`storyfit_status=NOT_STARTED`。[详细预检](P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)。
+- 第一批Mac动效v2的Owner原则通过、第二批独立HTML已授权未收到执行新结果，按原Owner决定；正式M2/G1仍未PASS，G2未授权。下一步Owner无需重复旧9s渲染，可并行**CW0002合法影像只读调查**、**B类2/4/6独立样式预览**及受控清理只读盘点（无删除权）。
+
 ## LATEST_MAC_WAVE2_OWNER_AUTH_2026-10-11
 
 Owner 已实际看首批Mac Window Motion Kit新V2五项并表示「**基本达到要求**」，Reviewer仍保留[独立技术/视觉候选QA](MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md)。新状态 `WAVE1_V2_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`，MW01/02/03优先、MW04/05仅UI DEMO，正式Remotion未授权；旧V1五项视觉RETURN只作历史。Owner授权第二批4项 `MW11 Spotlight / MW12 Exposé / MW07 Dock Genie / MW13 drag-drop` 独立HTML实施（**任务已写，尚未实际启动本地Codex**）；读取 [第二批Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md)。低优先级剩余Dock动态5px / WebM短尾 / Windows本机 file URL验收不阻挡第二批。权威 [Owner新决定](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。下文“第一批Owner待看、第二批暂停”是此前历史。
