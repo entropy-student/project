@@ -1,55 +1,12 @@
-<!-- CWS-20261011-MAINLINE-SWIMLANE-OWNER-DELEGATION -->
-> **2026-10-11 Owner 主线泳道与协作最新决定**：**支线只再做一次MW07 Genie局部精修后收尾**，第三批不开发；**主线为主**，Assistant担任主编/独立Reviewer，先决定内容/故事结构/2-4-6视觉与QA（不能替代版权/付费/发布许可），主线Codex只作有界执行，Owner在R2提案和R4完整内部草片做两个主要复核；新增外联/付费/清理/商业发布仍需单独确认。**最短理想4轮内部草片**：R1 CW0002/CW0005一手论文+真实画面+rights只读比选，R2剧本+句/镜头/证据表+3个Aqua2-4-6轻量HTML，R3真实30–60秒音画字幕测试，R4首片前只读清理和Owner精确删除授权后第一版完整草片。正式G1仍未PASS，G2未授权、发布另需审批。先读 `docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md` 和 `p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md`；支线读 `p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md`。这两项本地Executor任务当前都**尚未执行**。下方前期“先做其它模板/四种Mac待最终逐项KEEP”等归档保留，不构成扩展任务授权。 
-
-<!-- CWS-20261011-WAVE2-INDEPENDENT-REVIEW -->
-> **最新Wave2独立Reviewer结论（2026-10-11，覆盖下文授权未执行状态）**：第二批4种 Research Aqua HTML已由Owner上传（ZIP `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`）；Reviewer自算87/87 SHA、真实1×四种到终帧、0.5×独立查MW12与MW07、Exposé D→A重新选择及Finder手动拖拽。**`WAVE2_TECH_PASS_ALL_4 / MW11_12_13_KEEP_CANDIDATES / MW07_HOLD_VISUAL_POLISH / OWNER_VISUAL_PENDING`**。Genie 6px条带变形虽真实，F051等中途文字撕裂与阶梯边缘需看Owner是否接受；如不接受只局部独立新版本精修，不覆盖旧ZIP。file://Windows双击仍待Owner核；四段WebM完整但不能宣称连续30fps。权威报告 `docs/MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md`。正式B仍只允许2/4/6轻型视觉，未经新授权不得把Genie/Exposé加到真实研究画面；M2源码已合并但正式G1/G2未PASS。下文“第二批未制作”是时间点历史。
-
-<!-- CWS-20261011-246-AQUA-STORYFIT -->
-> **最新2026-10-11视觉与正式首期推进**：Owner要求“3＋1的动效也参考已原则认可的Research Aqua”。**3是原研究/OpenMontage/yt-dlp取材渠道，＋1才是2转场/4布局/6信息字幕**；为B制作新的 [Aqua视觉语法提案](docs/P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)，绝不自动新增1/3/5/7类特效或让B每帧都塞窗口；前期所有正式素材合同与STYLE_LOCK继续有效。首期只读预检Owner所选SHORTLIST `CW-0002` 的 [原论文/叙事证据与录像许可缺口](docs/P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)：`STORYFIT_CONDITIONAL_SOURCE_VIDEO_GAP`，题库原`STORYFIT_NOT_STARTED`仍不变，**没有获证可用的原始行为视频、不做正式渲染**。建议下一步先完成3种2/4/6独立离线UI小样与CW0002真实行为影像/权利只读检索；有gap就HOLD_ASSET_GAP并考虑CW0005，不造AI科研视频。Mac第二批4项仍已授权且等独立Codex执行，M2/G1/G2未因此晋级。现行入口 `docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`。
-
-<!-- CWS-20261011-MAC-WAVE2-AUTHORIZED -->
-> **2026-10-11 最新Owner窗口动效决策，优先于以下旧视觉候选/第二批HOLD段落**：首批5种Research Aqua V2 HTML动效Owner整体反馈「基本达到要求了」→ **`WAVE1_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`**；MW01/02/03优先保留、MW04/05仅DEMO库，旧版五项视觉RETURN仍是历史。Owner允许**第二批4种现在开始**：MW11 Spotlight、MW12 Exposé、MW07 Dock Genie、MW13文件拖拽；正式当前 **`AUTHORIZED_FOR_ISOLATED_HTML_ONLY / NOT_EXECUTED`**，Codex须读 `p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md`，复用第一批v2和锁定V2真源，不能另造UI、假Exposé或scale冒充Genie；不覆盖第一批、不开Remotion/正式视频。旧v2细节Dock动态5px、WebM短尾、file URL未单独验收为不阻塞第二批的优化项。权威Owner决定 `docs/MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md`，总状态仍见 `docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`。**主线M2源码已合并，但G1/G2仍NOT_PASS；正式视频只按既定3+1与2/4/6。**
-
-<!-- CWS-20261011-MOTION-V2-REWORK -->
-> **Mac动效第一批最新返工（2026-10-11，优先于下文“首批全部视觉退回”的旧版结论）**：旧版5项仍历史RETURN；Owner现上传新V2 ZIP，Reviewer独立 SHA 72/72、44张1280×720、五条WebM全解码、**1×五项真实浏览器到终帧、MW03 0.5×和 A↔B 真画布点击完成**。`MW01/02/03=REVIEWER_KEEP_CANDIDATE`、`MW04/05=UI_DEMO_HOLD`，**Owner视觉签收仍未发生，未入正式Remotion或扩展2/4/6**。V2 Dock t0静态冻结5px差异、原WebM截尾、Windows本机file://未验证；第二批仍HOLD。详见 `docs/MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md`。主线M2源码已合并但G1/G2仍NOT_PASS，勿用本支线改变主线结论。
-
-<!-- CWS-20261011-AUTHORITATIVE-POSTMERGE -->
-> **当前唯一有效阶段入口（2026-10-11，优先于本文件所有旧顶部片段）**：[docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md) + [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**PR #116已合并M2五文件测试源码**，独立代码复核认定 React props复制与黑段检测 fail-closed 两个阻塞已修，**不是M2/G1正式PASS**；旧184帧失败原因UNKNOWN、F2渲染成功但观察器exit1、长片内存风险仍在。**PR #115也已合并，但仅包含Mac动效设计与视觉退回/返工文档**：首批5个HTML操作smoke PASS但视觉 `RETURN_VISUAL_REJECTED_ALL_FIVE`，缺V2鼠标路径和MW-03真切换，绝不作为正式视频动效通过；第二批4项暂停。yt-dlp Blender直链通过，YouTube受挑战/wrapper未端到端；只用已核来源。**不得重开旧M2 PR、重复旧9s渲染、自动清理、推进G2**。正式片前清理先只读盘点，删除需Owner另外批准；真实视频/云配音/单行字幕/资源稳定性仍需独立 Gate。此段为最新状态，后面旧“PR待提交/尚未安装/F2计划”均为时间点历史，不再当执行任务。
-
-<!-- CWS-20261011-YTDLP-THIRD-TEST-PASS-LATEST -->
-> **yt-dlp 支线最新（2026-10-11）**：Owner 已上传真实 Blender 480p MP4及5份诊断材料，Reviewer 独立 SHA、FFprobe、FFmpeg 全解码 PASS。对比本机端口握手报告后，问题源于 `HTTP_PROXY` 把 SOCKS-only 10808 声明为 HTTP，而 Clash mixed 7897 是可用 HTTP 代理；使用 `--proxy http://127.0.0.1:7897` 后**指定 Blender 官方视频实际下载成功**。`DIRECT_MEDIA_DOWNLOAD=PASS_ONE_SOURCE`，不是全部视频站点可用。YouTube 仍有匿名挑战，不准绕过。新建的 `cws-ytdlp.ps1` 只有 Codex 本机语法和哈希报告，**脚本本体未提交供 Reviewer code QA**，不标 `WRAPPER_END_TO_END_PASS`；代理端口变动先读回实际配置，勿改全局代理/VPN。最新 Review：`docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`。所有旧支线 RETURN 仅属历史。**主线 M2 patch 仍待独立代码 PR 审查，G1/G2 仍 NOT_PASS**；不重新跑测试片，不清理关键证据或提前执行正式视频生产。
-
-<!-- CWS-20261011-M2F2-NEWEST-REVIEW -->
-> **最新主线（2026-10-11）**：Owner 已上传 M2-F2 唯一真实回归 MP4 与7件报告；Reviewer 独立验出 **9秒1920x1080@30/270帧/H.264全解码、黑帧无命中、SHA同历史M1**，Remotion和旧M1 runner exit0；F2为 **PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION**。新观察器后处理自身exit1、launcher退出记录缺失，记为采集缺口；渲染期间可用RAM最低221.86MiB（6x）须在未来长片控制。历史 M2 返回状态不变、M2 五文件源码仍**未合并**，没有 G1/G2 PASS。**不再重渲这些测试片**。下一步由 Owner 明确转发 `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`，让本地主线只将精确五文件旧 M2 补丁提出代码 PR，**未经 Reviewer 复核不合并，不进入 G2，不清理证据，不动网络或支线**。见 `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`。以下较早提及 F2 PLAN_ONLY/F1 最新 Gate 的内容均为历史，按本条最新结果解释。
-
-<!-- CWS-20261011-M2F1-NEWEST-GATE-STATUS -->
-> **最新 Review/执行边界（2026-10-11）**：M2-F1 只读诊断已回报并由 Reviewer 核对两份完整上传文本 SHA；历史第184帧媒体抽帧失败与本地 /proxy HTTP500 同帧，根因仍 UNKNOWN；因首次 argv/退出码不可从历史资料补齐，`M2-F1=RETURN_DIAGNOSTIC_INCONCLUSIVE` 且**STOP，不再重复该任务**。原 M2 Gate 仍 RETURN、M2 源码 patch 尚未合并。下一选项 `p4-g1/PROPOSAL_M2_F2_ONE_BOUNDED_OBSERVABLE_REGRESSION_2026-10-11.md` 仅为 **PLAN_ONLY / NOT_AUTHORIZED**，不能自动执行新的渲染、重试、清理或 G2。已成功的两支 M2 候选 MP4 不重做；支线 yt-dlp 保持独立。权威审核 `docs/P4_M2_F1_REVIEWER_DIAGNOSTIC_INCONCLUSIVE_AND_STOP_2026-10-11.md`。下文较早“当前仅允许运行 F1 只读 Gate”是历史状态，已被本段覆盖。
-
-<!-- CWS-20261011-LANDSCAPE-PREPROD-CLEANUP-YTDLP -->
-> **Owner 2026-10-11 最新决定**：正式视频里的源素材**默认选 16:9 横屏**，竖版仅在有必要且内容真实/权利可核时用 B 内 `contain` 或 4 类布局，不拉伸、不裁切关键证据。**首支正式完整视频开始生产前需要受控清理 Gate**，先做目录/引用/证据/备份盘点、Owner 授权精确删除清单，**本轮绝不清理**。合同 `docs/PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md`。
-> **yt-dlp 已收到安装及下载回报**：Owner 上传测试 ZIP，Reviewer 已核对官方 Release digest 与本机安装报告，工具安装可认定获证；Wikimedia 媒体请求失败，返回 `RETURN_YTDLP_MEDIA_REQUEST_FAILED`，没有下载或媒体解码。见 `docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md`。**不能因为测试失败就删除工具、改 VPN、重新安装，不能在 M2-F1 Gate 里继续 yt-dlp 测试**。
-
-<!-- CWS-20261011-M2-RETURN-CURRENT-REVIEW -->
-> **现行 Gate 已更新（2026-10-11）**：Owner 上传两支 M2 MP4，经 Reviewer 独立文件 QA 通过；但 M1 runner 初次 frame184 渲染故障后未经诊断直接重试，原 M2 Gate **RETURN_UNDIAGNOSED_RENDER_FAILURE**。**当前仅允许运行** `p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md` 的只读日志诊断；不得重跑 M2、改码、清理、借新安装授权跑 yt-dlp、推进 G2。正文旧 M2 Gate relay 属历史。最新结论见 `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`。
-
-<!-- CWS-20261011-246-MOTION-AND-YTDLP-AUTHORITY -->
-> **Owner 最新动效选择：只要 2/4/6 三大类**——2 转场衔接；4 双画面/分屏/画中画布局；6 真实来源、证据标签和单行字幕的信息呈现。禁止镜头推拉平移、动态局部放大/圈注追踪、定格快慢放、新滤镜和另造界面特效。保留 Research Aqua A/B 已选外壳的原有鼠标/窗口行为。权威限制见 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`。**Owner 已向本地 Codex 下发一份独立的 yt-dlp 安装与合法测试视频下载/解码提示词**，仅该独立任务获授权安装特定官方程序；不要把此许可套用到 M2，现已获得执行回报：本机安装校验获证，但真实下载未成功。原文件下方提到的“不得擅自下载安装”仍适用于其他未授权任务。
-
-<!-- CWS-20261011-3PLUS1-ACTIVE-POLICY -->
-> **最新 Owner 授权素材政策**：正式视频必须遵守 `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`：研究/实验一手素材、OpenMontage视频检索、yt-dlp 合规视频提取三路按需选；Codex **只可做少量真实素材后期强调/转场**。禁止 AI 生图/生视频、代码/SVG/Canvas画果冻等实体、重复或循环镜头。**当前已派发 M2 Gate 只测自制几何测试片，范围和验收保持不变。** yt-dlp 的本机能力 `UNVERIFIED`，不得基于历史 Edge 播放视频假定工具已安装，不得擅自下载安装。
-
-<!-- CWS-20261011-M2-CURRENT-NAV -->
-> **Reviewer/Executor 现行入口**：`docs/CURRENT_STATE.md` → `docs/REVIEWER_HANDOFF_2026-10-11_M2.md` → `p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`。本文件以下原「P4-G0唯一执行边界」是 **2026-10-10 历史块，现已被 M2 Gate 取代**，不得据此禁止已经获得授权的受控 M2 本机验证，也不得据旧块重做 G0。M2 仅允许本地自制24fps横屏/30fps竖屏夹具的隔离测试和 M1 代码改后回归，**不安装/下载/付费/研究原视频/G2**。Owner 表示可以继续不等于亲自观看 M1 MP4 的证明。Executor 启动只读取 Gate relay 指定文件，不扫历史。
-
-<!-- CWS-20261010-HISTORY-NAV -->
-> **历史 2026-10-10 入口（已过时）**：`docs/CURRENT_STATE.md`，**新聊天完整交接**读 `docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md`。`docs/PROJECT_HANDOFF_2026-10-10.md` 和 `REVIEWER_HANDOFF.md` 为历史交接增量，其中旧“下一步”不再代表当前。原选题 WORKFLOW / HF-FIND / STYLE_LOCK 的业务权威不变。
+<!-- CWS-STABLE-WORKFLOW-20261011 -->
+> **CURRENT / 优先规则：** 先读 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)。自2026-10-11起，**本地Codex各轮回包为ZIP→Owner上传→Assistant独立Review；普通阶段报告不新建GitHub文档，不每轮开PR**。仅锁定的生产源码/复用模板/长效规范/正式题库变更及里程碑状态需要Git分支、Review和适当合并。**立即动作仅CWS本地只读清理审计，无获准删除清单；主线R1已备但尚未下发。** MW07最终精修已收到并获Reviewer技术/视觉改善认可，Owner Windows `file://` 与最后观感待确认；Mac支线不再开发新批次。**G1未正式PASS、G2未授权，公开发布/付费/外联/删除另需批准。** 本文件下方标`历史 P4-G0`等段落均只作过往任务记录，不能覆盖本段当前指令。
 
 # Agent 入口（本项目唯一）
 
 本项目目录用于保存频道研究与视觉规范，不是执行一次全自动视频制作。
 
 ## 读文件优先级
-1. 当前状态 `docs/CURRENT_STATE.md`；项目说明 `README.md`、历史决策 `docs/STATUS_AND_DECISIONS.md`。
+1. **唯一当前状态、ZIP任务交接、读文件最短路径：`docs/CURRENT_STATE.md`**；项目简介 `README.md`。`docs/STATUS_AND_DECISIONS.md` 与历次 Reviewer 报告仅历史溯源。
 2. **研究任务唯一权威协议** `research/HF_有趣发现_唯一主协议.md`。严禁把旧 v1/v2/v3 报告当成并行命令。
 3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。
