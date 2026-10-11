@@ -58,6 +58,14 @@
 - HEAD vs GET **请求方法不同**；不能推导 yt-dlp 故障或 VPN/代理原因。若继续，先在新授权下进行**单 URL、有限网络流量、严格 STOP 的路径对照**；不能试遍网站、修改 VPN 或侵占主线运行资源。详情：`docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md`。
 - Owner 说明主线 Codex F2 结果**尚未返回**，本次仅记录支线，主线 M2 仍 RETURN、M2-F1 STOP、F2 先前为提案且现据 Owner 已派给本地 Codex，但**未收到可验收的执行结果**；Reviewer 不假定已成功。
 
+## YTDLP_BRANCH_THIRD_TEST_DIRECT_DOWNLOAD_PASS_2026-10-11
+- Owner 本轮上传 Blender Sintel **真实 MP4** 和5份报告；Reviewer 沙盒独立读取、SHA、ffprobe、ffmpeg 全片解码验证：4,372,373B、854×480@24、52.208333s、H264 + AAC、MP4 SHA=`b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`，全解码 exit0，`YTDLP_DIRECT_DOWNLOAD=PASS_ONE_SOURCE_WITH_EXPLICIT_PROXY`。
+- 代理配置差异：进程 `HTTP_PROXY` 的 HTTP scheme 指向 10808 SOCKS-only；Clash 实际 7897 mixed HTTP/SOCKS；显式 `--proxy http://127.0.0.1:7897` 实际下载成功。不要修系统 VPN/环境变量来追溯，后续核对端口是否仍在监听。PowerShell Range GET HTTP206（65536B）是不同直连请求路径，不等于 yt-dlp 先前成功。
+- YouTube `FAIL_SITE_SIGN_IN_CHALLENGE`，不借用 Cookie/登录、不绕过；**只确立直链 Blender 样本通过，不宣称所有站点/网页提取器成功**。
+- 本机 CWS wrapper `cws-ytdlp.ps1` 报告称存在且语法通过，Reviewer 没有收到脚本字节/独立验收，也未由 wrapper 真正触发本次成功下载，故 `WRAPPER_END_TO_END_QA=NOT_PROVEN`；不能把 wrapper 当全站通用 Downloader PASS。
+- 最新详见 `docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`；此前 `YTDLP_BRANCH_SECOND_TEST_REVIEW_2026-10-11` 是**历史失败**。
+- **不改变主线** F2 MP4 候选通过、M2 五文件代码 PR 审查待完成；G1/G2 尚未解锁；正式素材默认16:9横屏、第一支完整视频生产前清理仍待单独授权。
+
 ## CRITICAL_CONSTRAINTS
 - 不重画 V2，不改 STYLE_LOCK、题库、正式剧本、HF-FIND；A/B无C，1920x1080@30输出，版权/研究真实事实分层。
 - 不安装/下载、不花钱、不碰真正研究视频、Cloud TTS、Windows特权/VPS/WG/HY2/Clash、G2/G3、发布。
@@ -81,6 +89,7 @@ M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事�
 - 支线第二轮 yt-dlp 返回 `RETURN_REMOTE_DISCONNECTED`；若需继续优先一次同 URL 请求路径对照，不因下载支线阻断其它素材路径。
 
 ## EVIDENCE_POINTERS
+- `docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md`（**最新支线**：Blender 真实直链/解码通过，YouTube 仍需登录验证）
 - `docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md`（**最新主线** F2 Reviewer 实际 MP4 QA）
 - `p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md`（**当前下一步**：五文件补丁只提交 PR、无新视频渲染）
 - `docs/P4_YTDLP_BLENDER_FOLLOWUP_REVIEW_RETURN_2026-10-11.md`（支线第二轮 Blender HEAD 与下载失败，仍无视频）
