@@ -223,6 +223,9 @@ $blackOutput=& ffmpeg -hide_banner -i $Final -vf 'blackdetect=d=0.03:pix_th=0.10
 $blackExit=$LASTEXITCODE
 $blackOutput | Set-Content -LiteralPath $blackLog -Encoding utf8NoBOM
 if($decodeExit -ne 0 -or $blackExit -ne 0){throw 'M2_DECODE_OR_BLACKDETECT_FAILED'}
+$blackLogText=Get-Content -Raw -LiteralPath $blackLog
+$blackHits=@(Get-M2BlackdetectHits -LogText $blackLogText)
+Assert-M2NoBlackSegments -Hits $blackHits
 $keyframeTimes=@(
   @{name='01-desktop-initial';time=0.300},@{name='02-cursor-moving';time=0.933},@{name='03-file-selected';time=1.500},@{name='04-double-click-feedback';time=1.733},
   @{name='05-player-window-opening';time=2.200},@{name='06-green-button-fullscreen-transition';time=3.500},@{name='07-fullscreen-paused-first-frame';time=4.400},
@@ -309,7 +312,7 @@ $qa=[ordered]@{
   output_codec=[string]$finalVideo[0].codec_name;width=[int]$finalVideo[0].width;height=[int]$finalVideo[0].height
   output_fps=[string]$finalVideo[0].avg_frame_rate;output_duration_seconds=[double]$finalProbe.format.duration;decoded_frames=[int]$finalVideo[0].nb_read_frames
   audio_stream_count=$finalAudio.Count;full_decode_exit_code=$decodeExit;full_decode_log=$decodeLog
-  blackdetect_exit_code=$blackExit;blackdetect_hits=@(Select-String -LiteralPath $blackLog -Pattern 'black_start' | ForEach-Object Line)
+  blackdetect_exit_code=$blackExit;blackdetect_hits=$blackHits
   source_mp4=$Source;source_sha256=$sourceSha;source_probe=$probe;source_probe_exit_code=0
   source_fps=$fpsText;source_frame_count=$readFrames;source_duration_ms=$sourceDurationMs;source_rights_basis=$rights;source_cfr_timestamp_count=$frameTimes.Count;source_max_pts_deviation_ms=($maxPtsDeviation*1000);source_frame_pts_file=(Join-Path $Work 'source_frame_pts.csv')
   poster_png=$Poster;poster_sha256=$posterSha;source_frame0_rgb24_md5=$sourceFrame0Md5;poster_rgb24_md5=$posterMd5;poster_pixel_by_pixel_match=($sourceFrame0Md5 -ceq $posterMd5)
