@@ -1,5 +1,8 @@
 # Mac Window Motion Kit｜Codex 独立预览任务书（等待 Owner 转交执行）
 
+> **2026-10-11 最新结果（Reviewer / Owner 视觉否决）**：首版 5项 HTML Demo 的按钮/Reset/seek 等功能 smoke test 曾通过，但 Owner 实际观看发现节奏不可读、没有 V2 的模拟鼠标点击操作、图标/窗口偏移和 MW-03 仅换 z-index 没有可辨识切换；Reviewer 完成严格重审，状态 **`RETURN_VISUAL_REJECTED_ALL_FIVE`**。**本原任务已执行，不能原样重跑并宣称通过**。下一步须先由 Owner 单独转发 [视觉返工 Gate](MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md)；详见 [视觉退回报告](../docs/MAC_WINDOW_MOTION_KIT_V1_REVIEWER_VISUAL_RETURN_2026-10-11.md)。旧 ZIP/HTML 是失败证据，保留不覆盖；第二批4项暂停制作，主线不受影响。
+
+
 > `PROPOSED / NOT_EXECUTED` · 新独立支线，只做**5个 UI 预览动效**，不是主线 G1/G2 的新验收条件，也不是正式视频制作的行为授权。  
 > 父协议与设计表：`docs/MAC_WINDOW_MOTION_KIT_V1_2026-10-11.md`。  
 > **仅 Owner 将本文件转发到另外一个独立 Codex 才视为独立实验预览授权。**
