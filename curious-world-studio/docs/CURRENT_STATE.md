@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-MAC-WAVE2-OWNER-AUTH -->
+> **2026-10-11 Mac动效 Owner 最新决定（覆盖本页下方旧版拒绝/第一批新V2待签/第二批暂停的阶段快照）**：Owner已观看第一批 V2返工并表示「**基本达到要求了**」，允许保留作为演示库基线，并授权「**其他模版也可以开始了**」。记录为 **`WAVE1_V2_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`**（MW01/02/03优先保留、MW04/05仅Demo保留，**不是正式视频集成权**）；此前V1旧版5项视觉RETURN仍为真实历史。第二批四项 `MW-11 Spotlight / MW-12 Exposé / MW-07 Dock Genie / MW-13 拖拽` 已**授权制作独立HTML（`AUTHORIZED_NOT_EXECUTED`）**，可将 [第二批严格任务](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md) 交独立Codex执行。第一批细节精修（Dock动态5px、短尾WebM、Windows file双击）列低优先级，不阻塞第二批；不覆盖既有证据。见 [Owner新决定](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。主线M2/G1/G2状态、3＋1/2/4/6正式合同、正式视频前清理单独审批一律不变。**下方“第二批暂停/Owner签收未发生”段落是此更新前历史。**
+
+
 <!-- CWS-20261011-POSTMERGE-CANONICAL -->
 > **最新事实快照（2026-10-11，覆盖下面带“当时最新 / PR未合并”等历史时间戳段落）**：权威单一最新交接入口 **[合并后项目完整 Handoff](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)**。GitHub **[#116](https://github.com/entropy-student/project/pull/116) 已合并**五文件 M2 测试适配源码（merge `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`）；其新 head `4684bffa...` 已经独立代码 Review **PASS**：legacy React props 复制后规范化、blackdetect 命中在QA PASS之前 fail closed，静态黑段负例已补；PS7.6.5等本机检查为 Codex 报告，不冒充本沙盒重新运行。**代码合并并不使 M2/G1 正式 PASS**：两支 M2 MP4 文件 QA PASS，F2 同哈希9秒单次回归 renderer/runner=0，但原第184帧失败根因 UNKNOWN、观察器后处理 exit1、6x 内存余量最低221.86MiB，仍不启动 G2。
 > **Mac Window Motion Kit**：[#115](https://github.com/entropy-student/project/pull/115) 也**已合并，但仅限4个设计/退回 Markdown 文件**（merge `667809fec3c961a834b96321a21e70b5525111f2`）；**首批 5 个 HTML 动效仍为 Owner/Reviewer 视觉退回 `RETURN_VISUAL_REJECTED_ALL_FIVE`**，前期按钮 5/5 smoke PASS 不等于视觉通过。待按 [严格返工 Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_V1_VISUAL_REWORK_GATE_2026-10-11.md) 在独立目录重新实现；第二批 Spotlight/Exposé/Dock Genie/拖拽先 HOLD，不能并入正式视频。
