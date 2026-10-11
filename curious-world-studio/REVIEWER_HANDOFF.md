@@ -1,3 +1,6 @@
+<!-- CWS-HISTORICAL-REVIEWER-HANDOFF-REDIRECT-20261011 -->
+> **Historical index only**：本文件顶部原先`2026-10-10`G0任务时态已被后续实际执行覆盖。最新执行/协作规则只有 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)：以后普通Codex执行结果只通过独立ZIP交接，不按每轮新增GitHub Reviewer文档；需要回溯M1/M2/G0时再读本页。**2026-10-11本地清理只读审计已被Owner排在主线R1之前；尚未收到盘点成果或批准任何删除。**
+
 <!-- CWS-20261010-HANDOFF-ENTRY -->
 
 > **NEW CHAT HANDOFF INDEX — 2026-10-10**: The comprehensive latest Reviewer transfer is [docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md). It consolidates authoritative read order, P3-R6 narrative work, 36-topic bank, visual A/B lock, P4-G0 upstream static evidence, honest local Windows evidence gap, safe local Codex read-only task, and next gates. **Current_state.md remains the unique live status**; all dated snippets below are cumulative history. No new installation/render/audio/test occurred during this handoff.
