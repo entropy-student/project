@@ -1,3 +1,6 @@
+<!-- CWS-20261011-YTDLP-DIRECT-PASS-LATEST -->
+> **支线 yt-dlp 最新独立 QA（2026-10-11）**：Owner 上传 **4,372,373B 的 Blender Sintel 真实 MP4**，Reviewer 自行 SHA/FFprobe/FFmpeg 验证 **854×480@24/52.208s/H.264+AAC/全片解码PASS**，SHA `b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`。本机配置发现 `HTTP_PROXY` 错把 SOCKS-only 10808 当 HTTP，明确让 yt-dlp 使用现有 Clash HTTP `--proxy http://127.0.0.1:7897` 后**一个 Blender 官方直链下载成功**，不需重装/改 VPN。**YouTube 元数据仍遭反机器人登录挑战**；不能断言所有来源可用。Codex 声称新建项目 wrapper 且语法检查通过，但 Reviewer 还未读取脚本/做 wrapper 实测；只记录 `WRAPPER_CREATED_OWNER_REPORTED`。见 [yt-dlp 本轮独立 Review](docs/P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md)。此前失败记录为历史。主线代码 PR 和正式生产前清理仍是下一阶段，不被本轮支线改变。
+
 <!-- CWS-20261011-F2-REVIEWER-TRUE-MP4-RESULT -->
 > **主线 F2 最新 Reviewer 复核（2026-10-11）**：Reviewer 读取 Owner 上传的真实9秒 MP4/日志/QA/五文件源码 patch 并独立 SHA/ffprobe/全片 decode/blackdetect，**270帧正常，renderer/runner exit0**，输出 SHA 与历史 M1 完全一致。`F2_PASS_CANDIDATE_ONE_OBSERVABLE_REGRESSION`；观察器后处理脚本自身 exit1、launcher ExitCode 未记入汇总，不可冒认全通过。资源样本最低可用 RAM 221.86MiB（6x），正式长片需专门约束资源。**旧 M2/G1 Gate 仍 NOT_PASS、patch 未合并**；不再重做 M1/M2 测试片，进入 [五文件补丁提交代码 PR 任务](p4-g1/TASK_M2_SOURCE_PATCH_PR_ONLY_2026-10-11.md)（待 Owner 转发授权，PR 不自动合并）。详见 [F2独立 QA](docs/P4_G1VA_M2_F2_REVIEWER_INDEPENDENT_MEDIA_QA_2026-10-11.md)。
 
