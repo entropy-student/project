@@ -1,5 +1,16 @@
 # Curious World Studio｜2026-10-11 已确定状态总汇 / 下一位 Reviewer 交接入口
 
+## LATEST_AQUA_3PLUS1_ALIGNMENT_20261011｜正式视频＋1动效也对齐Research Aqua（当前最新）
+
+> Owner 最新意见：「唯一的问题是那3➕1的动效可能也要参考这种样式，整理目前项目进展到main，继续推进吧」。本次已执行**文档级视觉一致性设计与首次Story-Fit只读预检**，没有修改锁定视频合同、Remotion源码或真正制作视频。
+- **「3＋1」厘清**：3是素材来源渠道（原研究一手 / OpenMontage / yt-dlp合法已知URL），不是三种不同视觉设计；`＋1`仍仅允许 **2转场、4画面布局、6来源/信息/单行字幕**。Owner要求其**参考已原则认可的V2 Research Aqua视觉体系**，即蓝灰银色/字号/线条/节奏统一，不意味着让所有B研究画面额外套Mac Finder浮窗/Genie/HUD，不能未经授权开启禁用的类别1/3/5/7。
+- **视觉文件已落地但非实现PASS**：[3＋1/Aqua 2-4-6视觉语法v0.1](P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)。A桌面已有固定鼠标与窗口视觉；B主体真素材满幅为主：2默认硬切、必要时120–200ms叠化，4轻银灰分隔的真实不同证据/必要时竖屏contain，6少量来源标签/真实数据/单行中文字幕。**规范提案STATUS=`STYLE_ALIGNMENT_PROPOSAL / VISUAL_IMPLEMENTATION_NOT_STARTED`**，不能冒称生成过有权正式片。
+- **主线Story-Fit有实质只读进展**：[CW-0002“大象怎样确认同伴注意”原文/视频权利预检](P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)，已从题库11个SHORTLIST选这个Owner偏好题做**试验候选**，联网核到2026 Springer原始论文的研究条件（南非野生象冲突手势、注意观察、等待/持续、41类手势/两类目标、研究有录像但公开可用视频未核）。**`STORYFIT_READONLY_PRECHECK/CONDITIONAL_SOURCE_VIDEO_GAP`**：学术原文可读，**原始行为视频`LINK_NOT_CONFIRMED` / `CONTENT_NOT_FRAME_REVIEWED` / `REUSE_RIGHTS_UNKNOWN`**，B站同题竞品未查，`STORYFIT_GO`尚未评审。原题库字段`CW-0002 status=SHORTLIST/storyfit_status=NOT_STARTED`**不改**。
+- **现在的实用下一步**：A) 独立做2/4/6三张**不使用未授权科研视频**的离线 HTML 小样，Owner看过才定正式B视觉；B) 对CW-0002原文逐Beat核验+合法原始视频/许可证/内容时码调查，无法拿到真行为影像则`HOLD_ASSET_GAP`并评估CW-0005等备选；C) 生产前受控只读清理盘点与真正有权视频的音轨/字幕/资源预算。Mac第二批4项仍只有`AUTHORIZED_FOR_ISOLATED_HTML_ONLY / NOT_EXECUTED`，独立Codex可同时制作，**不阻塞主线研究**。
+- **权限边界**：本次未修改 `STYLE_LOCK.md` 或 `VIDEO_ASSET_POLICY_3_PLUS_1...`；原V2、M2源码、3+1/2-4-6许可、旧视觉返工证据、G1 NOT PASS/G2 NOT AUTHORIZED、清理需精确Owner确认均不变。此新段优先于下方较早“下一步”的阶段性句子。
+
+
+
 > **AUTHORITATIVE CURRENT SNAPSHOT** · 更新时间：2026-10-11（PR #116、#115 均已合并后的 GitHub 状态）  
 > **阅读规则**：这是**状态索引**，不重写或提高历史测试的结论、不取代研究与视觉主协议。下一位 Reviewer 应先读本页，再读 `docs/CURRENT_STATE.md`、`docs/REVIEWER_HANDOFF_2026-10-11_M2.md` 及各项**原始带时间戳证据**。历史文档里“PR open / 尚未安装 / F2 未执行 / M2 源码未合并”均是**当时的记录，不再是当前执行指令**。若 main 新增提交，应再次核实实际 PR/head/merged 状态。
 
