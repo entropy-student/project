@@ -1,6 +1,6 @@
 # Curious World Studio｜Reviewer 接手与 M2 现行 Gate（2026-10-11）
 
-> CURRENT_REVIEWER_STATE: `M2_GATE_READY / EXECUTION_NOT_STARTED`  
+> CURRENT_REVIEWER_STATE: `M2_RETURN_UNDIAGNOSED_RENDER_FAILURE / TWO_CANDIDATE_MP4_FILE_QA_PASS / M2_F1_READONLY_DIAGNOSTIC_GATE_READY`  
 > 本文替代先前 `REVIEWER_HANDOFF_2026-10-11_G1VA.md` 作为新会话默认 Reviewer 入口；历史 Handoff 和原证据仍保留。唯一实时状态 `CURRENT_STATE.md`。
 
 ## PROJECT_GOAL
@@ -12,7 +12,8 @@
 - G1R1/R2 真实24.2秒 MP4 技术能力可核，**Owner 否决旧视觉**，不得复升为 G1 PASS。
 - G1V-A **V2 Research Aqua** 为 Owner 选定视觉真源。
 - M1 单次 1920×1080、30fps、6秒、静音自制媒体 → 9秒 Remotion，前任 Reviewer 独立技术 QA **PASS_ONE_FIXTURE**。Owner 2026-10-11 仅说「我没啥问题，可以继续推进」：记为 `OWNER_NO_OBJECTION_TO_PROCEED`，**不能证明完整观看 MP4**；M1 视觉通过仍不可用于 G1 正式 PASS。
-- Github main 接手基线 `d8b63657a4c61d70d41e20098a3e9049c1c303a2`（合并 #104）。
+- **最新 M2 执行证据（2026-10-11）**：Owner 上传 M2 真实两支 MP4、源 patch/报告，Reviewer 独立重新核对 MP4 SHA、FFprobe、全片解码、黑帧及关键帧；**两支输出视频文件 QA PASS**，但**旧 M1 runner 在第184帧报错后未先诊断即重试**，违背原 Gate STOP。后续旧帧41可解码，Remotion 临时抽帧失败根因未确认。**正式 M2 Gate = RETURN_UNDIAGNOSED_RENDER_FAILURE**；M2 新代码未合并，G1/G2 状态不变。见 `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`。
+- 当前 GitHub main 在本轮文档记录前核对为 `bb7c7f2ea3f6eb1a6136b6f6aae4c814393ae631`。M2 本地 Executor checkout 仍以 `c8cf8f90672c6428bcc553ebf951acdafc8ac45e` 作为初始源基线；之后 main 的文档决策（3＋1、2/4/6）是正式视频未来政策，**不能要求 M2 本地 checkout 自动重建或误认为 M2 patch 已合并**。
 
 ## SYSTEM_MAP
 - Windows 本地现存 OpenMontage/Remotion4.0.484/FFmpeg/Node，调用已授权缓存 Chrome Headless Shell（具体实机状态以 Gate preflight 重新核对）；不触 VPS/VPN。
@@ -20,7 +21,8 @@
 - 输入输出媒体、海报、manifest/关键帧、运行日志写**项目专属隔离 stage**；二进制视频保留 Windows/审查附件，不默认进入 GitHub main。云服务/原研究外链视频/付款/自动发布不在本 Gate。
 
 ## CURRENT_GATE
-`p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md`：**M2 单轮双夹具本机受控技术验证**。24fps 横屏与30fps 竖屏，source时钟/首帧/contain/进度、M1受影响代码回归。已获 Owner 继续推进方向授权，Reviewer 明确有界测试边界；**当前仅 TASK_READY，未实际运行**。必须在 Reviewer 接收/验收前停止。
+M2 原 Gate `P4-G1V-A-M2_VARIANT_MEDIA_INPUT` 已收到本机执行候选并正式 **RETURN**，不能继续靠旧授权尝试重渲或自行标 PASS。
+下一步是单独的 **[P4-G1V-A-M2-F1 首次失败只读诊断 Gate](../p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md)**，状态 `GATE_READY / EXECUTION_NOT_STARTED`。**只读**核对旧失败/重试 `render.log` 和现存 stage 原始证据，根因允许 UNKNOWN，但要说清证据缺口；不得渲染、安装、清理、更改代码或进入 G2。完成后等待 Reviewer 决策，原已成功 MP4 无须重跑。
 
 ## OWNER_DECISION_2026-10-11 / ACTIVE_VIDEO_ASSET_POLICY
 - 未来正式视频采用 **3＋1**：研究/实验原始素材、OpenMontage 检索、yt-dlp 已知来源的合规下载路径；**Codex 动效只保留 Owner 选定的 2 转场衔接、4 画面布局、6 信息呈现三大类**，其他 1/3/5/7 不用；**不绘制果冻等实体、不生成 AI 图片/视频、禁止重复镜头/循环素材**。按需要选取，不要求三路都用。权威合同：[VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
@@ -39,7 +41,7 @@
 Owner Windows 的本地 Codex，明确 M2 Gate，项目内独立 worktree/stage；不能直接借 GitHub 文档假装读取了 Owner 硬盘。
 
 ## CURRENT_ROLLBACK_STATUS
-M1 main 四份源码与锁定的 V2 HTML 是可确定的代码回滚基线；本机 M2 stage 尚未创建，新的真实持久化恢复状态 UNKNOWN，Preflight须确认。勿删除 M1/R1/R2/历史测试目录。
+M1 main 四份原始源码和锁定 V2 HTML 仍是已接受基线；M2 的 5 文件 patch 只留本地未经合并。Owner 报告本地 M2 隔离 stage 和证据目录已生成并保留，**Reviewer 未登录 Windows 核实现场保留情况**；不清理 M1/R1/R2/M2、失败或成功 stage，先保全失败日志。回滚细节见 Owner 上传的 `rollback_plan.md`。
 
 ## MOST_RECENT_YTDLP_OWNER_RELAY
 Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESENT`；`Get-Command yt-dlp` 无匹配，FFmpeg/FFprobe 9.0 版本命令成功。按 Gate 停止后**没有执行元数据提取、下载或解码，也没有安装/改网络/M2**。无可供 Reviewer 直接读取的日志，记为 `OWNER_REPORTED`，见 `docs/P4_YTDLP_LOCAL_TOOL_PREFLIGHT_OWNER_READBACK_2026-10-11.md`。**该历史预检本身不含安装授权**；随后 Owner 已单独授权并下发安装及真实小样本下载任务，但**执行结果未回报**；M2 不变。
@@ -48,10 +50,12 @@ Owner 于 2026-10-11 转交 Codex 本机存在性预检：`RETURN_TOOL_NOT_PRESE
 M1 Owner 完整常速观片证据、24fps/竖屏通用性、B正式动态故事镜头、中文配音/对齐、原视频版权、自动素材编排、G1完整视觉/音频 Gate、G2资格。
 
 ## NEXT_STEP / OWNER_ACTION_REQUIRED
-下一步：**执行有界 M2 后由 Reviewer 独立复核**；Executor不能自行进入 G2。
-Owner: **仅需转交给本地 Codex 运行当前 M2 Gate，并在完成后向 Reviewer 提供 MP4/证据包**。无账号、付款、安装或系统权限修改请求；在 Executor 实际报告到来之前，不宣称 M2 已运行。
+下一步：按新 Gate **只读诊断既存 M1 首次失败 log**；不重渲 M2 候选、不再修改 main 源码，Reviewer 收到诊断及脱敏日志后定处置。
+Owner: 将 `p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md` 转发 Windows 本地 Codex，完成后提供诊断摘要及初次失败相关原始日志的脱敏小片段即可；不需要重新上传那两支候选 MP4。
 
 ## EVIDENCE_POINTERS
+- `docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md`（本轮独立 QA 与 Return）
+- `p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md`（当前只读 Gate）
 - `docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`（最新 Owner 正式素材决策）
 - `docs/P4_G1V_SOURCE_SCREENING_READBACK_2026-10-11.md`（yt-dlp 缺失、Edge 3/3 验证事实）
 - `docs/P4_G1VA_M1_REVIEWER_INDEPENDENT_QA_2026-10-11.md`
