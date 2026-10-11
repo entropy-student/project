@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2-RETURN-REVIEW -->
+> **M2 执行最新状态（2026-10-11）**：Owner 已上传两支真 MP4，Reviewer 独立核对文件哈希、真实解码、抽帧和竖屏居中，**候选视频文件 QA 通过**。旧 M1 兼容测试初次报错后被未诊断重试，故原 M2 Gate **RETURN_UNDIAGNOSED_RENDER_FAILURE**，新源码补丁**未合并**，G1/G2 仍未解锁。详见 [Reviewer 复核](docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md)，下一步仅为 [首次故障只读诊断](p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md)，不重新渲染。
+
 <!-- CWS-20261011-246-MOTION-DECISION -->
 > **最新后期动效决策（2026-10-11）**：Owner 从七大类中只选择 **2 转场衔接、4 画面布局、6 信息呈现**；不做 1 镜头运动、3 聚焦强调、5 时间控制、7 额外风格/界面特效。锁定的 V2 Research Aqua A/B 操作动画保持不变。见 [3＋1正式素材与动效合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。Owner 已向 Codex **单独下发** yt-dlp 官方安装/合法短片真实下载测试提示词，目前 **等待结果**，并非已经验证通过；原 M2 任务不变。
 
