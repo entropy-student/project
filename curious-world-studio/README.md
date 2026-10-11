@@ -1,3 +1,6 @@
+<!-- CWS-20261011-WAVE2-INDEPENDENT-REVIEW -->
+> **最新第二批 Mac 动效复核（2026-10-11）**：四个独立离线HTML已**交付并接受Reviewer真实技术复核**，不是仅授权未执行。MW11 Spotlight、MW12 Exposé、MW13 Finder拖拽为**Reviewer KEEP候选**；MW07 Dock Genie 为 **HOLD视觉小修**（形变真实但6px条带造成可见阶梯与文字扭曲）。四项1×播放和Reset实测通过，MW12/MW07 0.5×、MW12 D→A重选及MW13手动拖入均独立验收；Owner还未对四项下逐项KEEP，Windows Edge file://未验证，正式视频集成未批准。详见 [Wave2独立Review](docs/MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。主线依旧为Story-Fit/真实权益素材与Aqua 2/4/6视觉规范预览、音轨字幕闭环，不重复旧M2视频测试。
+
 <!-- CWS-20261011-246-AQUA-STORYFIT -->
 > **最新内容生产设计（2026-10-11）**：Owner提出正式3＋1的**＋1后期**也保持Research Aqua一致审美；新增 [2转场／4画面布局／6来源字幕信息的Aqua视觉语法提案](docs/P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)（**尚未实现/视觉验收；正式2/4/6合同未扩容**）。正式B的真实原视频依旧满幅为先，而非每个镜头套macOS小窗。主线首次Story-Fit从Owner偏好的 [CW-0002大象交流](docs/P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)开始只读预检：论文核心事实可查，研究原始影片链接、逐帧匹配和复用许可都尚未确认，`CONDITIONAL_SOURCE_VIDEO_GAP`、没有`STORYFIT_GO`。下一步是合法源视频查证+三场景Aqua 2/4/6离线演示，而非再重跑旧M2片；Mac第二批4种仍独立进行。状态总入口 [PROJECT_HANDOFF](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
 

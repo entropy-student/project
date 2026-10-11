@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-WAVE2-REVIEW-NEW -->
+> **2026-10-11 第二批Mac动效最新落盘与Reviewer结论（覆盖下方“仅授权、未制作”历史快照）**：Owner已上传Wave2四动效独立HTML/ZIP，ZIP SHA `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`。Reviewer独立SHA 87/87、53张1280×720关键帧、4条WebM全解码，并重跑四项1×完整浏览器播放/Reset、MW12和MW07 0.5×、MW12重新选择D→A、MW13手动拖拽。状态 `WAVE2_INDEPENDENT_TECH_PASS_4_OF_4`；**MW11 Spotlight、MW12 Exposé、MW13 Finder拖拽 = KEEP候选，MW07 Dock Genie = HOLD视觉小修**（真实非线性条带，但有6px阶梯与文字撕裂）；四项均待Owner实看签收，正式B/G1/G2仍未获授权。file://Windows双击尚未证实；录像是低/变帧率QA，不代表30fps连续视频。详见 [本轮独立Reviewer复核](MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。主线仍是CW0002 Story-Fit/合法原始素材缺口+Aqua 2/4/6预览提案、配音字幕/内存预算，首次正式片前清理先只读盘点，精确删除需Owner另批。
+
+
 <!-- CWS-20261011-246-AQUA-ALIGNMENT -->
 > **最新主线视觉衔接与Story-Fit进度（2026-10-11）**：Owner建议正式3＋1中的「＋1」**2转场／4布局／6信息字幕**也参考已接受的 Research Aqua 风格；已创建 [Aqua 2/4/6视觉语法提案](P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)，用既有银灰/深蓝/字体/线条作为 B中少量信息与分栏的样式，**不新增类别7 UI特效、不盖住真研究画面、不改 STYLE_LOCK与正式3＋1合同**。状态 `STYLE_ALIGNMENT_PROPOSAL / PREVIEW_NOT_EXECUTED`，下一步独立HTML三示例正常速度审美验收。为真正推进内容，已对Owner曾选的 SHORTLIST **CW-0002大象手势**开展 [原论文只读Story-Fit预检](P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)：论文存在且局部事实已核，**原研究录像可访问性/具体画面及复用权仍未知**，故 `CW0002_STORYFIT_CONDITIONAL_MEDIA_GAP`，原题库状态未变、不批准正式视频制作。Mac窗口动效第一批v2获Owner原则认可、第二批4项独立HTML已授权但尚未收到新产物；和B中2/4/6视觉统一是**两条隔离工作线**。M2源码已合并不等于正式G1PASS，G2未授权，制作前清理仍需单独精确删除批准。历史较早“素材未找到/第二批禁行/PR旧状态”等必须按最新有效记录解读。
 
