@@ -15,6 +15,8 @@
 
 > **最新 yt-dlp 独立任务授权（2026-10-11）**：Owner 已把**单独安装 yt-dlp 官方 Windows 程序并下载/解码一个合法测试片**的提示词下发到本地 Codex；**本次尚无新执行回报，不得声明已安装或测试成功**。以前 `RETURN_TOOL_NOT_PRESENT` 是历史预检结果，不因新授权改写；独立测试和已派发的 M2 不得混用资源/工作区、不得改 VPN/系统配置，完整证据回报前为 `YTDLP_INSTALL_AND_DOWNLOAD=PENDING_EXECUTOR_REPORT`。
 
+> **M2 最新 Reviewer 独立检查（2026-10-11）**：Owner 已实际上传 `landscape_24`、`portrait_30` 两支 MP4、manifest、patch 和故障文档；Reviewer **在当前运行环境重新计算两支视频及 patch SHA**，独立 FFprobe/全片 FFmpeg 解码/黑段检查/抽帧审看，证明两支**真实输出视频的文件 QA 通过**（H.264 1920×1080@30，9秒/270帧，无音频；竖屏居中未明显拉伸），详见 [M2 独立 QA/Return](P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md)。然而上传的本地记录显示**旧 M1 runner 首次在输出第184帧读取媒体帧失败后，被未经诊断就新 stage 重试**，违反已发 M2 Gate 的 STOP 规则；事后诊断仅证明源帧41可解码，compositor 临时资源失败根因 `UNKNOWN`。**正式 M2 = `RETURN_UNDIAGNOSED_RENDER_FAILURE`；G1_NOT_PASS / G2_NOT_AUTHORIZED；M2 patch 不合并。** 下一步仅做 [首次失败日志的只读诊断](../p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md)，**不重新渲染、不安装、不清理**。先前 M2 Gate 标记 READY / NOT_STARTED 是提交任务前的历史时间快照，不再代表当前阶段。
+
 ## 1. 当前阶段与真正的下一步
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
