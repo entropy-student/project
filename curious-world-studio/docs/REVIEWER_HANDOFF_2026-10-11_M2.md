@@ -4,6 +4,10 @@
 > 下文以早期 M2-f1/f2/PR-only 命名的段落属历史证据；本页最新业务状态见 `CURRENT_TRUTH_POST_115_116_MERGE_2026-10-11`。  
 > 本文替代先前 `REVIEWER_HANDOFF_2026-10-11_G1VA.md` 作为新会话默认 Reviewer 入口；历史 Handoff 和原证据仍保留。唯一实时状态 `CURRENT_STATE.md`。
 
+## LATEST_MAC_WAVE2_OWNER_AUTH_2026-10-11
+
+Owner 已实际看首批Mac Window Motion Kit新V2五项并表示「**基本达到要求**」，Reviewer仍保留[独立技术/视觉候选QA](MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md)。新状态 `WAVE1_V2_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`，MW01/02/03优先、MW04/05仅UI DEMO，正式Remotion未授权；旧V1五项视觉RETURN只作历史。Owner授权第二批4项 `MW11 Spotlight / MW12 Exposé / MW07 Dock Genie / MW13 drag-drop` 独立HTML实施（**任务已写，尚未实际启动本地Codex**）；读取 [第二批Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md)。低优先级剩余Dock动态5px / WebM短尾 / Windows本机 file URL验收不阻挡第二批。权威 [Owner新决定](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。下文“第一批Owner待看、第二批暂停”是此前历史。
+
 ## CURRENT_TRUTH_POST_115_116_MERGE_2026-10-11
 
 **必须先阅读** [合并后权威总汇](PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)，其时间点晚于下面的 M2-F1/F2 与 PR-only 老 Gate 段落。已独立查到 GitHub **PR #116 M2五文件代码 merge `43fe51a335e03b2695cd2f19f37ffecf1d6f0f3a`；PR #115 窗口动效**仅设计/退回文档** merge `667809fec3c961a834b96321a21e70b5525111f2`**。M2 两项 blocker 已修，静态 code review PASS，**不是 M2/G1正式 PASS**，仍有原184帧未知根因、F2观察器exit1、6x低可用内存。窗口5/5仅功能 smoke通过、**全部视觉 RETURN**（缺 V2 同源鼠标点击/图标定位、MW-03假切换）；第二批4项暂停。yt-dlp Blender直链1次真实下载与解码PASS、YouTube仍挑战、wrapper未端到端审。不要再做旧 M2代码PR或旧 G1-M1片重复渲染；下一步正式节目Story-Fit/真实版权素材/配音字幕/资源预算，以及正式首片前只读清理+精确删除单独授权；视觉支线按 V2 返工独立审批。
