@@ -1,3 +1,6 @@
+<!-- CWS-20261011-MAINLINE-SWIMLANE-R1 -->
+> **最新生产协作方向（2026-10-11）**：停止Mac窗口支线扩张，只允许MW07 Genie进行**一次**局部视觉精修；从现在起主力推进第一支正式内容。Owner明确要求**Assistant做大多数编辑选择、Owner复核关键方案和成片、主线Codex执行、Reviewer独立QA**。见 [四轮主线泳道](docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)：R1 大象CW0002/爆米花CW0005 **真实论文/影像/版权只读比选**（当前第一步，见[R1 Gate](p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md)）；R2 三段故事/逐句镜头+Aqua2/4/6样式预览给Owner；R3 30–60秒真片音画字幕联调；R4正式首片前只读清理+单独精确删除批准后成片内部草样给Owner。**理想4轮出内部可看草片，不承诺四轮出版、G1/G2仍未PASS或授权**；出版/付费/版权/外联/删除均需独立确认。 [MW07收尾Gate](p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md) 专给支线Codex，维持其它三动效Reviewer候选与旧QA记录。新任务书本身不表示本地已执行。 
+
 <!-- CWS-20261011-WAVE2-INDEPENDENT-REVIEW -->
 > **最新第二批 Mac 动效复核（2026-10-11）**：四个独立离线HTML已**交付并接受Reviewer真实技术复核**，不是仅授权未执行。MW11 Spotlight、MW12 Exposé、MW13 Finder拖拽为**Reviewer KEEP候选**；MW07 Dock Genie 为 **HOLD视觉小修**（形变真实但6px条带造成可见阶梯与文字扭曲）。四项1×播放和Reset实测通过，MW12/MW07 0.5×、MW12 D→A重选及MW13手动拖入均独立验收；Owner还未对四项下逐项KEEP，Windows Edge file://未验证，正式视频集成未批准。详见 [Wave2独立Review](docs/MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。主线依旧为Story-Fit/真实权益素材与Aqua 2/4/6视觉规范预览、音轨字幕闭环，不重复旧M2视频测试。
 

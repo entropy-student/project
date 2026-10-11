@@ -1,5 +1,9 @@
 # Curious World Studio｜当前唯一状态快照
 
+<!-- CWS-20261011-MAIN-SWIMLANE-R1 -->
+> **Owner最新协作决定（2026-10-11）**：主编/Reviewer（Assistant）负责编辑方向、事实/镜头取舍与独立QA决策，主线Codex负责逐轮可核证执行，Owner仅在**R2内容+镜头方案、R4完整内部草片**做关键复核（付费/版权/对外联络/删除/正式发布另需明确授权）；支线Codex仅允许**最后一次MW07 Genie局部6px条带/文字撕裂精修**，不做新动效批次。理想条件**4轮到完整可观看内部草片**：R1 两题（CW0002大象/CW0005爆米花）只读事实、真实录像+权限比选→我定优先；R2 旁白故事/逐句镜头/Research Aqua轻量2/4/6三小样→Owner方向复核；R3 30–60秒合法真实素材+配音字幕一体联调→ReviewerQA；R4 正式首片前受控清理（先只读盘点，任何删除另获Owner精确授权）+内部完整草片→Owner复核。**不是4轮保证能发布；任何不具备复用权或音画不达标必须HOLD**。权威泳道：[四轮协作与角色](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)，本地两项新任务分别为 [主线R1只读Gate](../p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md) 与 [支线仅MW07精修Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md)，**均为任务书已准备、Executor尚未回报结果**。下方较早“第二批正在审/先做Aqua空模板”等阶段文字仅为历史快照。M2/G1/G2和3+1正式素材政策不变。
+
+
 <!-- CWS-20261011-WAVE2-REVIEW-NEW -->
 > **2026-10-11 第二批Mac动效最新落盘与Reviewer结论（覆盖下方“仅授权、未制作”历史快照）**：Owner已上传Wave2四动效独立HTML/ZIP，ZIP SHA `9487840262a7292ac38b975e8ad44e338c0489823bc52afda0e9cf73247e86d1`。Reviewer独立SHA 87/87、53张1280×720关键帧、4条WebM全解码，并重跑四项1×完整浏览器播放/Reset、MW12和MW07 0.5×、MW12重新选择D→A、MW13手动拖拽。状态 `WAVE2_INDEPENDENT_TECH_PASS_4_OF_4`；**MW11 Spotlight、MW12 Exposé、MW13 Finder拖拽 = KEEP候选，MW07 Dock Genie = HOLD视觉小修**（真实非线性条带，但有6px阶梯与文字撕裂）；四项均待Owner实看签收，正式B/G1/G2仍未获授权。file://Windows双击尚未证实；录像是低/变帧率QA，不代表30fps连续视频。详见 [本轮独立Reviewer复核](MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。主线仍是CW0002 Story-Fit/合法原始素材缺口+Aqua 2/4/6预览提案、配音字幕/内存预算，首次正式片前清理先只读盘点，精确删除需Owner另批。
 

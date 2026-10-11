@@ -1,5 +1,17 @@
 # Curious World Studio｜2026-10-11 已确定状态总汇 / 下一位 Reviewer 交接入口
 
+## LATEST_OWNER_COLLAB_FOCUS_MAIN_R1_20261011｜结束支线扩张、主线按4轮协作（最新）
+
+> Owner 2026-10-11 最新授权：「我们把支线修完，专心推主线」；「一些涉及决策类的事情，肯定要你来定，我复核」；请求**主线泳道图及最少几轮拿到第一版影片**。权威 [主线四轮协作与泳道图](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)。
+
+- **分工与授权边界**：Assistant担任编辑主编/独立Reviewer，主动决定候选题顺序、故事角度、素材镜头取舍、视觉2/4/6策略及QA裁决；主线Codex只按一次一次有界任务执行与回报；Owner重点在**R2节目设计、R4第一版完整样片**复核（如收费TTS、外联许可、具体删除、发布/G2等另需显式批准）；支线Codex最后一次只修 **MW07 Dock Genie** 的6px条带锯齿/文字撕裂。**主编编辑选择不能替代法律版权/付费/正式发布批准**。
+- **最短主线四轮（内部完整草片，非承诺/非发布）**：R1 `CW0002 vs CW0005 原文+真实画面+复用权只读比选`（我根据证据定优先题）；R2 `剧本/逐句镜头/证据+2/4/6 Aqua独立预览`（Owner第1次审）；R3 `30–60秒音画字幕/真实素材联调`（Reviewer审，需授权的费用单独批准）；R4 `CWS专属清理先只读盘点、精确删除需批准→正式内部完整草片+QA`（Owner第2次审）。**理想情况下4轮出可看内部草片；发布需要额外正式许可与Owner终审，不保证4轮上线**；任何rights或素材证据缺口可加轮、切题或HOLD。
+- **主线现在只有R1已规划，尚未执行**：任务 [R1两题原始证据/视频权利Gate](../p4-g1/P4_MAIN_R1_EDITORIAL_STORYFIT_RIGHTS_GATE_2026-10-11.md)。CW0002大象Owner曾选且Springer原文预检有实证，但研究原视频权利UNKNOWN；CW0005爆米花已SHORTLIST为对照，须实际查高速影像/声音与权利，不能假设有权。原TOPICS和正式状态未变；R1不渲染/不下载授权未知视频/不付费/不启动G2。
+- **支线收尾一次**：[MW07限定局部视觉精修任务](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_MW07_FINAL_POLISH_GATE_2026-10-11.md) 已准备交独立Codex，**NOT_EXECUTED**；MW11 Spotlight、MW12 Exposé、MW13 Finder拖拽仍Reviewer KEEP候选、Owner尚未逐项最终复核；不开发第三批，不修改原ZIP或正式主线Remotion。
+- **原权威正式合同全部有效**：Research Aqua A→B、3真实来源＋1后期的2转场/4布局/6信息与单行字幕、真实画面权利三关、旧M2源码已合并但G1 NOT PASS/G2未授权、正式第一片前受控清理须清单逐项获准删除。此前“下一步继续四动效验收/先做2-4-6空模板”的意见被本决策**重新排序**：先R1确保有题有真实可用镜头，再在R2把视觉预览与脚本一起设计。
+
+
+
 ## LATEST_WAVE2_REVIEW_20261011｜第二批4项真实上传+独立验收（最新）
 
 > 第二批4种Research Aqua窗口动效**已有独立HTML/ZIP产物**，不能再理解成只有Owner授权未执行；Reviewer实际打开并拆包复核，结果：`WAVE2_TECH_PASS_4/4`，`MW11 Spotlight / MW12 Exposé / MW13 Finder拖拽 = REVIEWER_KEEP_CANDIDATE`，`MW07 Dock Genie = REVIEWER_HOLD_VISUAL_POLISH`，**`OWNER_VISUAL_SIGNOFF_PENDING`**。详细 [高标准Wave2审查](MAC_WINDOW_MOTION_KIT_WAVE2_INDEPENDENT_QA_2026-10-11.md)。
