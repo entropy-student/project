@@ -9,8 +9,8 @@
 
 - **项目定位**：B站主阵地、不露脸、跨领域真实现象/研究；观众在休闲探索中获得一项可核对的“原来如此”。**2026-10-10 Owner 明确：无强制时长、不能拖沓、优先兑现观众承诺与观看感受**；原常用 4–6 分钟仅供策划排期参考。抖音/小红书辅助。
 - **当前阶段 `P3-R6 NARRATIVE COMPLETE + P4-G0 UPSTREAM STATIC DONE / LOCAL READBACK RECEIVED / G0_CONDITIONAL`**：2026-10-10 Windows 本地 Codex 已按既有任务书完成**只读查询与文字集成设计**，报告已交 Owner 并归档到 GitHub `main`：[本机能力回读](P4_G0_LOCAL_CAPABILITY_READBACK_2026-10-10.md)。存在 OpenMontage、Remotion 4.0.484、Node、FFmpeg、atelier 源码接口的本地证据；但安装无 `.git`，确切源码来源 UNKNOWN，中文**定稿文案强制对齐未证**、Qwen 实际配置 UNKNOWN、没有运行或渲染。Reviewer 已给出 [四项接口纠偏与 G1 验收合同草案](P4_G0_CONTRACT_CORRECTIONS_AND_G1_ACCEPTANCE_2026-10-11.md)，包括音轨零点、权利三状态、主音轨版本锁、一行拆多字幕。**G0 仍为 CONDITIONAL，非 `G0_DESIGN_READY_NO_RENDER`、非 G1/生产 PASS**；2026-10-11 文档修订通过 [PR #93](https://github.com/entropy-student/project/pull/93) 合并至 `main`，未改变本地运行状态。
-- **P4-G1 真实样片已生成但未通过（2026-10-11）**：Windows 本机 Codex 续跑以原审定字幕和 Fig. 7/8 生成真实 **24.200秒、1920×1080、30fps、726帧 MP4**、8段 SRT、时间轴与 QA 记录（[本机报告](P4_G1_EXECUTION_REPORT_FINAL_2026-10-11.md)）。Reviewer 已独立读取上传 MP4，确认文件 SHA、媒体规格，抽查 13 帧，且将最终 AAC 与源 WAV 的 7 个位置音频匹配为固定 **+1.84268s、相关系数0.9970–0.9985**，显示无明显累积漂移，但**不替代真人完整试听**。Fig.8 底行证据被字幕底板遮挡；Fig.7 横幅很细小；Remotion 在未明确获批情况下自动下载约113.3MB Chrome Headless Shell，留下约282MB 缓存（**越界执行偏差**）。当前状态为 **`G1_CONDITIONAL / NOT_PASS`**，非 G1 通过；详见 [Reviewer 独立复核与 R2 修复方案](P4_G1_REVIEW_POST_RENDER_AND_R2_PLAN_2026-10-11.md)。G0 仍 CONDITIONAL，G2/G3 未启动。
-- **下一步（Owner 已批准浏览器复用）**：2026-10-11 Owner 明确同意保留并复用**已下载**的 Chrome Headless Shell，作为 Remotion 视频渲染的专用浏览器；日常上网继续 Edge。G1-R2 授权范围为**仅复用现存缓存、不重复下载/安装/升级、不改默认浏览器**；已经发生的越界下载记录保留。遵守 [G1-R2 本地 Codex 任务书](../p4-g1/LOCAL_CODEX_G1_R2_TASK_2026-10-11.md)，在新的隔离 TEMP 与独立 Composer staging 中修复研究图字幕遮挡，使用显式 `--browser-executable`，真人完整试听和视觉 QA 后才能评判 G1。PR 修复尚未运行，**当前仍 `G1_CONDITIONAL / NOT_PASS`**；不要覆盖 G1-R1 证据，不启动 G2/G3。
+- **P4-G1-R2 真实复渲及独立视频 Review（2026-10-11）**：Owner 本地 Codex 从提交 `a839767ddd55119b805e1a6af170b9c4aa1cfc78` 运行 G1-R2，交付真实 24.200秒、1920×1080、30fps、726帧 MP4，复用 Fig. 7/8、同一已听审 WAV/8条字幕、既有 Headless Shell。原始证据见 [R2 执行报告](P4_G1_R2_EXECUTION_REPORT_2026-10-11.md)。Reviewer [独立核对上传 MP4](P4_G1_R2_REVIEWER_INDEPENDENT_QA_AND_OWNER_GATE_2026-10-11.md) 的 SHA、规格、726帧解码/黑帧、Fig.8 不再遮挡，且音轨与源 WAV 在7段匹配到一致约 +1.842676秒、相关系数0.996979–0.998526，未见累积漂移；Fig.7 360px 预览结构可辨但文字过细，**成片仍无 Owner 真人完整听审及最终主观体验反馈**。当前 `G1_CONDITIONAL / NOT_PASS`，G2/G3 尚未启动。首次 R1 未授权下载浏览器作为历史执行偏差保留；R2 仅按 Owner 新授权复用缓存、报告未再次下载。
+- **下一步**：不重新下载素材/渲染或修改技术栈。先请 Owner **完整播放并试听最终 R2 MP4**，检查配音、八条字幕声学分界（尤其 C003/C004 和 C006/C007）、开头/末尾、整体画面体验及 Fig.7 手机可读性；反馈通过与否和具体时间点。Reviewer 据真人反馈决定 `G1_TECH_PASS` 或继续 `G1_CONDITIONAL`，正式内容视觉可读性与 STORY-FIT、自动强制对齐仍各按独立后续门禁评估。**不得因机器人检测通过就自动启动 G2/G3**。
 - 原始故事性评判「B 优于 D、D 应 HOLD」是此前**证据节点视角的编辑假设**；后续仍需从观众体验重审。研究事实保留，**未改变任何正式题目状态**。
 
 ## 2. 七阶段流程与当前完成度（简述）
@@ -25,8 +25,8 @@ Owner 批准的既定次序保持：**九大信息源 → 批量发现 → 统�
 | 论文/事实 | P2-A 标题摘要抽样、P2-B/C 原文/来源对账、P2-D Owner 偏好 B>D 及 P3 的研究事实**可追溯**；独立二审、真实观众实验、完整竞品与逐件媒体授权仍未通过 |
 | B 补充音频 | [P2-E 文件级 QA 索引](../research/topic-bank/batches/2026-10-10_P2E_AUDIO_QA_EVIDENCE_INDEX.md)：官方 RAR5 可获取，14/14 WAV 的格式和元数据核验成功；**非真人试听、非音频生成、非播放兼容或商用授权 PASS**；原脚本/工作流留在未合并研究分支，不进入生产 |
 | 视觉 | `visual/retro-mac-v1.2/docs/STYLE_LOCK.md` 为锁定的 Tiger Aqua / QuickTime 7 **A/B 两状态视觉规范**；HTML 仅外观预览；无第三个 C 状态 |
-| 视频执行技术 | Owner 历史交接称 OpenMontage 的约12秒短片技术闭环 PASS；**本机只读报告**另确认 OpenMontage、Node/Remotion、FFmpeg、atelier 的存在性，未运行测试；不代表 CWS 集成、音画同步、长片质量或自动中文对齐已验证 |
-| 本仓生产接口 | `CWS_TO_OPENMONTAGE=NOT_INTEGRATED`；文案→镜头→正确图库素材尚未实证通过；不重复安装/开发已有本地基础工具；全部视频生产前必须请 Owner 决定与确认 |
+| 视频执行技术 | **真实 CWS G1-R1 与 G1-R2 Remotion MP4 均已生成**；R2 24.2秒样片获机器与抽帧 QA 支持，Fig.8 遮挡已修复、7段音频相关性高；缺 Owner 成片完整试听，**G1 仍 CONDITIONAL**，这不意味着长视频/完整流程已验证 |
+| 本仓生产接口 | **G1 技术样片以独立 CWS Remotion 入口完成**，不等于上游 OpenMontage 通用生产接口已整合；`CWS_TO_OPENMONTAGE=NOT_INTEGRATED` 按完整交付流水线维度仍成立。文案→镜头→自动寻找可用素材的稳定量产仍未证明，G2 未授权 |
 
 在线采集佐证：[P1 审计](../research/topic-bank/batches/2026-10-10_COLLECTOR_P1_COVERAGE_AND_TOPICS_REVIEW.md)、[Actions #38022638179](https://github.com/entropy-student/project/actions/runs/38022638179)；叙事校准：[P3-R1](../research/reports/2026-10-10_P3R1_NARRATIVE_MECHANISM_MARKET_RETROSPECT.md)；B/D 旧结构评审：[P3 报告](../research/topic-bank/batches/2026-10-10_P3_BD_STORYFIT_ENTRY_GATE_REVIEW.md)。
 
