@@ -1,8 +1,12 @@
+<!-- CWS-20261011-LANDSCAPE-CLEANUP-YTDLP-REVIEW -->
+> **新 Owner 约束（2026-10-11）**：正式视频中的**源素材默认优先横屏**（16:9），竖屏是有必要时的 `contain` 例外；最终片仍横屏 1920×1080@30。**正式首期生产前必须完成一次项目专属清理**，但不能现在删除已上传 M2 证据、失败日志或项目其他文件；先只读盘点、列清单并另获 Owner 删除授权。见 [素材政策](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)及[清理合同](docs/PREPRODUCTION_CLEANUP_POLICY_2026-10-11.md)。
+> **yt-dlp 最新实证**：[Reviewer 已审查本机 ZIP](docs/P4_YTDLP_INSTALL_REVIEW_AND_MEDIA_REQUEST_RETURN_2026-10-11.md)：官方 `yt-dlp.exe` 2026.08.19 本机安装哈希/版本自检符合 GitHub Release 官方 digest，但 Wikimedia 媒体下载返回 `RemoteDisconnected`/HTTP429，没有真正下载的视频。**工具安装已获证，下载未通过，视频解码未执行**；无需重装，不改 VPN。M2-F1 仍为当前失败日志只读 Gate。
+
 <!-- CWS-20261011-M2-RETURN-REVIEW -->
 > **M2 执行最新状态（2026-10-11）**：Owner 已上传两支真 MP4，Reviewer 独立核对文件哈希、真实解码、抽帧和竖屏居中，**候选视频文件 QA 通过**。旧 M1 兼容测试初次报错后被未诊断重试，故原 M2 Gate **RETURN_UNDIAGNOSED_RENDER_FAILURE**，新源码补丁**未合并**，G1/G2 仍未解锁。详见 [Reviewer 复核](docs/P4_G1VA_M2_REVIEWER_UPLOAD_QA_AND_RETURN_2026-10-11.md)，下一步仅为 [首次故障只读诊断](p4-g1/LOCAL_CODEX_M2_M1_RENDER_FAILURE_READONLY_GATE_2026-10-11.md)，不重新渲染。
 
 <!-- CWS-20261011-246-MOTION-DECISION -->
-> **最新后期动效决策（2026-10-11）**：Owner 从七大类中只选择 **2 转场衔接、4 画面布局、6 信息呈现**；不做 1 镜头运动、3 聚焦强调、5 时间控制、7 额外风格/界面特效。锁定的 V2 Research Aqua A/B 操作动画保持不变。见 [3＋1正式素材与动效合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。Owner 已向 Codex **单独下发** yt-dlp 官方安装/合法短片真实下载测试提示词，目前 **等待结果**，并非已经验证通过；原 M2 任务不变。
+> **最新后期动效决策（2026-10-11）**：Owner 从七大类中只选择 **2 转场衔接、4 画面布局、6 信息呈现**；不做 1 镜头运动、3 聚焦强调、5 时间控制、7 额外风格/界面特效。锁定的 V2 Research Aqua A/B 操作动画保持不变。见 [3＋1正式素材与动效合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。Owner 已向 Codex **单独下发** yt-dlp 安装/下载测试提示词，**现已收到结果：安装已通过本机报告核验，真实下载失败、解码未运行**；原 M2 任务不变。
 
 <!-- CWS-20261011-3PLUS1-ASSET-NAV -->
 > **最新 Owner 正式素材决策（2026-10-11）**：[3＋1 视频素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)：**论文/实验原始资料、OpenMontage检索、yt-dlp URL 提取/合规下载**，再由 Codex 对真实素材加少量动效。**不用 AI 生成图片/视频，不让 Codex 画果冻等实体，不重复/循环素材；按需求选，不强制凑三路。** 旧四路/五路建议已否决。现有 M2 本地测试任务已派发，**不变更 M2 范围**；yt-dlp 本机此前不存在，浏览器实看3/3不是 yt-dlp 下载能力 PASS。
