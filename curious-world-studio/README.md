@@ -1,3 +1,6 @@
+<!-- CWS-20261011-246-AQUA-STORYFIT -->
+> **最新内容生产设计（2026-10-11）**：Owner提出正式3＋1的**＋1后期**也保持Research Aqua一致审美；新增 [2转场／4画面布局／6来源字幕信息的Aqua视觉语法提案](docs/P4_VISUAL_GRAMMAR_3PLUS1_RESEARCH_AQUA_246_2026-10-11.md)（**尚未实现/视觉验收；正式2/4/6合同未扩容**）。正式B的真实原视频依旧满幅为先，而非每个镜头套macOS小窗。主线首次Story-Fit从Owner偏好的 [CW-0002大象交流](docs/P4_CW0002_STORYFIT_READONLY_PREFLIGHT_2026-10-11.md)开始只读预检：论文核心事实可查，研究原始影片链接、逐帧匹配和复用许可都尚未确认，`CONDITIONAL_SOURCE_VIDEO_GAP`、没有`STORYFIT_GO`。下一步是合法源视频查证+三场景Aqua 2/4/6离线演示，而非再重跑旧M2片；Mac第二批4种仍独立进行。状态总入口 [PROJECT_HANDOFF](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md)。
+
 <!-- CWS-20261011-WAVE2-START-AUTH -->
 > **最新Mac动效Owner结果（2026-10-11）**：第一批五种新版V2 HTML演示整体「基本达到要求」→**Owner原则认可、可作为动效库基准**，保留旧版视觉失败历史；MW01/02/03优先、MW04/05仅演示，尚未授权正式视频集成。**第二批4种独立动效Spotlight/Exposé/Dock Genie/文件拖拽已授权开始制作HTML Demo**，但还没有执行/产物证据；详见 [第二批制作Gate](p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md) 和 [Owner决策](docs/MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。旧Dock动态图标5px/QA录屏尾段/Windows file双击问题留小修，不再阻塞第二批；正式M2/G1/G2仍未通过，正常生产素材合同不变。下方“第二批HOLD/首批Owner待验”属反馈前阶段历史。
 
