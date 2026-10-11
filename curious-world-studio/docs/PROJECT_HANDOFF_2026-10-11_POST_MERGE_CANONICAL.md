@@ -1,5 +1,9 @@
 # Curious World Studio｜2026-10-11 已确定状态总汇 / 下一位 Reviewer 交接入口
 
+<!-- CWS-20261011-SNAPSHOT-NOT-LIVE -->
+> **状态说明：本文件是2026-10-11的详细历史证据汇总，不是持续更新的唯一活状态。** 后续项目入口已收敛到 [`CURRENT_STATE.md`](CURRENT_STATE.md)；**本地Codex执行→ZIP+SHA→Owner上传→Assistant独立Review**，以后不逐轮新增GitHub审查报告或堆叠“LATEST”前言。此前PR/M2/Mac动效各阶段实际证据可在本文件追溯，不代表所有旧“最新”段落同时生效。清理当前仅允许项目专属只读盘点、未授权删除；主线R1尚未下发，G1未正式PASS、G2未授权。
+
+
 ## LATEST_MW07_FINAL_REVIEWER_REVIEW_20261011｜支线开发收尾，主线R1仍未执行
 
 - 独立Mac Wave2最后精修`MW07 Dock Genie` 已返工交付且经过Reviewer独立SHA/画面/代码/浏览器/录屏复核：原6px带状阶梯与字形横纹明显改善为连续1px逆映射，非线性Genie仍保留、191帧/6.37s流程不变；新HTML SHA `6bd889e5b7487c5ef94fc36693941fb96298023190f9db0422bf1c9854f34551`，ZIP SHA `57c6644583b4a2d149295a861087fc71c62041ddac7a0ae82192c959311361f2`，包内91/91 SHA通过。Reviewer实测1×≈6.52s、0.5×≈12.79s终帧/Reset/Dock点击均通过，**`MW07_REVIEWER_KEEP_CANDIDATE / OWNER_VISUAL_SIGNOFF_PENDING`**。详见 [MW07最终Review](MAC_WINDOW_MOTION_KIT_MW07_FINAL_POLISH_REVIEWER_QA_2026-10-11.md)。
