@@ -1,3 +1,6 @@
+<!-- CWS-20261011-WAVE2-START-AUTH -->
+> **最新Mac动效Owner结果（2026-10-11）**：第一批五种新版V2 HTML演示整体「基本达到要求」→**Owner原则认可、可作为动效库基准**，保留旧版视觉失败历史；MW01/02/03优先、MW04/05仅演示，尚未授权正式视频集成。**第二批4种独立动效Spotlight/Exposé/Dock Genie/文件拖拽已授权开始制作HTML Demo**，但还没有执行/产物证据；详见 [第二批制作Gate](p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md) 和 [Owner决策](docs/MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。旧Dock动态图标5px/QA录屏尾段/Windows file双击问题留小修，不再阻塞第二批；正式M2/G1/G2仍未通过，正常生产素材合同不变。下方“第二批HOLD/首批Owner待验”属反馈前阶段历史。
+
 <!-- CWS-20261011-AUTHORITATIVE-POSTMERGE -->
 > **最新项目状态入口（2026-10-11，覆盖下方历史时点表述）**：[项目合并后完整交接总汇](docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md) · [当前快照](docs/CURRENT_STATE.md)。**[#116](https://github.com/entropy-student/project/pull/116)已合并**五文件M2测试媒体适配源码，两处blocker修复并获独立源码review **PASS**；但此前M2第184帧根因未知、F2仅单次候选、正式M2/G1不因合并自动PASS，G2未授权。**[#115](https://github.com/entropy-student/project/pull/115)已合并**复古Mac窗口动效**文档**，但首批5项视觉**全部退回**（原V2鼠标与布局未正确继承，MW-03假窗口切换），新HTML返工Gate已备，第二批四项暂停。yt-dlp Blender官方直链单点实际下载/解码PASS，YouTube匿名元数据未通过；正式素材仍按3+1与2/4/6、横屏16:9、证据版权逐条确认。正式视频前清理只允许先只读盘点，具体删除需另外授权；新阶段聚焦真实研究素材+中文旁白/单行字幕/音画QA及长片资源预算。**以下旧的“源码未合并/yt-dlp未安装”文字只反映历史，不是新的执行任务。**
 

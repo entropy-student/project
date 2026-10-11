@@ -3,6 +3,15 @@
 > **AUTHORITATIVE CURRENT SNAPSHOT** · 更新时间：2026-10-11（PR #116、#115 均已合并后的 GitHub 状态）  
 > **阅读规则**：这是**状态索引**，不重写或提高历史测试的结论、不取代研究与视觉主协议。下一位 Reviewer 应先读本页，再读 `docs/CURRENT_STATE.md`、`docs/REVIEWER_HANDOFF_2026-10-11_M2.md` 及各项**原始带时间戳证据**。历史文档里“PR open / 尚未安装 / F2 未执行 / M2 源码未合并”均是**当时的记录，不再是当前执行指令**。若 main 新增提交，应再次核实实际 PR/head/merged 状态。
 
+## LATEST_OWNER_WAVE2_AUTH_20261011｜第一批原则认可、第二批4项启动授权（**最新**）
+
+> 2026-10-11 Owner 已对首批5项V2返工表示 **「基本达到要求了」**，并授权 **「其他模版也可以开始了」**。最新版决定：[Owner原则认可与第二批授权](MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md)。本页下方此前写的 `OWNER_VISUAL_SIGNOFF_PENDING` 与 `第二批HOLD` 属此明确反馈**之前**的真实阶段，不得作为当前禁止制作的理由。
+
+- **第一批**：由“Reviewer视觉KEEP候选、Owner待看”升级为 `WAVE1_V2_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`。MW01/02/03 `OWNER_PROVISIONAL_KEEP`，MW04/05 `DEMO_KEEP_ONLY`；不冒认每项正式终审/1:1复刻，更不等于允许把暂停和假进度集成正式B科研视频。保留旧v1视觉退回历史。
+- **低优先级的微修**：原V2桌面动态Dock图标5px变化与新版t0冻结、5段WebM短于完整演示、Windows Edge `file://` 未独立复核，作为非阻塞 backlog；此轮不重做第一批，不覆盖原ZIP和HTML。
+- **第二批已解锁** `WAVE2_FOUR_ISOLATED_HTML_DEMOS_AUTHORIZED`：`MW-11 Spotlight`、`MW-12 Exposé`、`MW-07 Dock Genie`、`MW-13 Finder拖拽`。严格执行 [第二批四项离线HTML Gate](../p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md)，重用V2桌面、鼠标、窗口与Dock；4项须自然1×/0.5×、真实互动、完整录屏/关键帧、独立Owner视觉验收。**此处仅记录GitHub任务书，Owner本地Codex还未被此操作实际启动**，不得称四项已经制作完毕。
+- **主线仍独立**：PR #116 M2源码已合并，两项blocker已修，但正式M2/G1没PASS、G2没授权。正式片应开始Story-Fit与逐片合法素材、配音/字幕/长片资源预算；正式落盘前项目受控清理必须先只读盘点→Owner另批具体删除清单。
+
 ## 一、最新 GitHub 事实与正式判定（不可混淆）
 
 | 工作线 / 对象 | 2026-10-11 实时 GitHub + Review 事实 | 当前有效状态 |

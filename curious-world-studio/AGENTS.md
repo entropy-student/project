@@ -1,3 +1,6 @@
+<!-- CWS-20261011-MAC-WAVE2-AUTHORIZED -->
+> **2026-10-11 最新Owner窗口动效决策，优先于以下旧视觉候选/第二批HOLD段落**：首批5种Research Aqua V2 HTML动效Owner整体反馈「基本达到要求了」→ **`WAVE1_OWNER_PROVISIONAL_VISUAL_ACCEPTANCE`**；MW01/02/03优先保留、MW04/05仅DEMO库，旧版五项视觉RETURN仍是历史。Owner允许**第二批4种现在开始**：MW11 Spotlight、MW12 Exposé、MW07 Dock Genie、MW13文件拖拽；正式当前 **`AUTHORIZED_FOR_ISOLATED_HTML_ONLY / NOT_EXECUTED`**，Codex须读 `p4-g1/MAC_WINDOW_MOTION_KIT_WAVE2_4_DEMOS_GATE_2026-10-11.md`，复用第一批v2和锁定V2真源，不能另造UI、假Exposé或scale冒充Genie；不覆盖第一批、不开Remotion/正式视频。旧v2细节Dock动态5px、WebM短尾、file URL未单独验收为不阻塞第二批的优化项。权威Owner决定 `docs/MAC_WINDOW_MOTION_KIT_OWNER_DECISION_AND_WAVE2_AUTH_2026-10-11.md`，总状态仍见 `docs/PROJECT_HANDOFF_2026-10-11_POST_MERGE_CANONICAL.md`。**主线M2源码已合并，但G1/G2仍NOT_PASS；正式视频只按既定3+1与2/4/6。**
+
 <!-- CWS-20261011-MOTION-V2-REWORK -->
 > **Mac动效第一批最新返工（2026-10-11，优先于下文“首批全部视觉退回”的旧版结论）**：旧版5项仍历史RETURN；Owner现上传新V2 ZIP，Reviewer独立 SHA 72/72、44张1280×720、五条WebM全解码、**1×五项真实浏览器到终帧、MW03 0.5×和 A↔B 真画布点击完成**。`MW01/02/03=REVIEWER_KEEP_CANDIDATE`、`MW04/05=UI_DEMO_HOLD`，**Owner视觉签收仍未发生，未入正式Remotion或扩展2/4/6**。V2 Dock t0静态冻结5px差异、原WebM截尾、Windows本机file://未验证；第二批仍HOLD。详见 `docs/MAC_WINDOW_MOTION_KIT_V2_REWORK_REVIEWER_QA_2026-10-11.md`。主线M2源码已合并但G1/G2仍NOT_PASS，勿用本支线改变主线结论。
 
