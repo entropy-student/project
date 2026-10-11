@@ -175,16 +175,17 @@ const getWindowGeometry = (time: number): WindowGeometry | null => {
 };
 
 export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
-  assertMediaProps(props);
+  const normalizedProps = {...props};
+  assertMediaProps(normalizedProps);
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   if (fps !== 30 || durationInFrames !== 270) {
     throw new Error('M2 output composition must remain 1920x1080 at 30fps for 270 frames');
   }
   const outerTime = frame / fps;
-  const assetDurationSeconds = props.assetDurationMs / 1000;
-  const playStartSeconds = props.playStartFrame / fps;
-  const assetDurationOutputFrames = Math.ceil((props.assetDurationMs * fps) / 1000);
+  const assetDurationSeconds = normalizedProps.assetDurationMs / 1000;
+  const playStartSeconds = normalizedProps.playStartFrame / fps;
+  const assetDurationOutputFrames = Math.ceil((normalizedProps.assetDurationMs * fps) / 1000);
   const innerHandle = useRef<number | null>(null);
   if (innerHandle.current === null) {
     innerHandle.current = delayRender('Load the archived Research Aqua canvas');
@@ -194,9 +195,9 @@ export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
   const [prototypeHtml, setPrototypeHtml] = useState<string | null>(null);
   const [frameReady, setFrameReady] = useState(false);
   const continued = useRef(false);
-  const sourceUrl = staticFile(props.prototypePath);
-  const mediaUrl = staticFile(props.assetPath);
-  const posterUrl = staticFile(props.posterPath);
+  const sourceUrl = staticFile(normalizedProps.prototypePath);
+  const mediaUrl = staticFile(normalizedProps.assetPath);
+  const posterUrl = staticFile(normalizedProps.posterPath);
   const windowGeometry = getWindowGeometry(outerTime);
   const footerHeight = windowGeometry?.full ? 70 : 68;
   const contentHeight = windowGeometry
@@ -204,13 +205,13 @@ export const ResearchAquaMediaAdapter: React.FC<Props> = (props) => {
     : 0;
   const contentTop = windowGeometry ? windowGeometry.y + 63 : 0;
   const contentOpacity = windowGeometry?.a ?? 0;
-  const playStartFrame = props.playStartFrame;
+  const playStartFrame = normalizedProps.playStartFrame;
   const availableFrames = Math.max(1, Math.min(assetDurationOutputFrames, durationInFrames - playStartFrame));
   const patchedHtml = useMemo(
     () => prototypeHtml === null
       ? null
-      : replaceMediaFilename(patchResearchAquaHtml(prototypeHtml, assetDurationSeconds, playStartSeconds), props.assetFileName),
-    [prototypeHtml, assetDurationSeconds, playStartSeconds, props.assetFileName],
+      : replaceMediaFilename(patchResearchAquaHtml(prototypeHtml, assetDurationSeconds, playStartSeconds), normalizedProps.assetFileName),
+    [prototypeHtml, assetDurationSeconds, playStartSeconds, normalizedProps.assetFileName],
   );
 
   useEffect(() => {
