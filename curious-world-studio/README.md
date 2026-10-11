@@ -1,3 +1,6 @@
+<!-- CWS-20261011-3PLUS1-ASSET-NAV -->
+> **最新 Owner 正式素材决策（2026-10-11）**：[3＋1 视频素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)：**论文/实验原始资料、OpenMontage检索、yt-dlp URL 提取/合规下载**，再由 Codex 对真实素材加少量动效。**不用 AI 生成图片/视频，不让 Codex 画果冻等实体，不重复/循环素材；按需求选，不强制凑三路。** 旧四路/五路建议已否决。现有 M2 本地测试任务已派发，**不变更 M2 范围**；yt-dlp 本机此前不存在，浏览器实看3/3不是 yt-dlp 下载能力 PASS。
+
 <!-- CWS-20261011-M2-CURRENT-NAV -->
 > **最新（2026-10-11，M2 Gate 已制定，未执行）**：Owner 表示「没啥问题，可以继续推进」，这代表认可继续验证，不代表可证明其完整观看了 M1 最终 9 秒 MP4。当前 Reviewer 入口是 [M2 Handoff](docs/REVIEWER_HANDOFF_2026-10-11_M2.md)，唯一状态是 [CURRENT_STATE](docs/CURRENT_STATE.md)，本地 Codex 下一任务是 [M2 双规格媒体 Gate](p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md)。**M1 仅单夹具技术 PASS；M2 未运行；G1 未 PASS；G2/G3 未授权。** 以下旧阶段描述保留历史背景。
 
@@ -38,6 +41,8 @@
 ## 统一工作方式
 
 **选题**：Hugging Face 是科技发现专用入口；跨领域正式顺序为九大信息源→批量发现→统一筛选→正式选题库→STORY-FIT。技术线 HF-FIND 仍按唯一主协议，其他专业源见跨领域 source registry。
+
+**正式素材来源**：见 [3＋1 视频素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)，仅上述3路真实素材+Codex轻动效，禁止AI/代码画实体与重复使用镜头。
 
 **视频视觉**：A — Mac OS X Tiger 时代 Aqua 桌面简短开场；B — 接近 QuickTime 7 的银灰播放器占满正文 16:9 画布，**B 内部**按旁白展示视频 / 图片 / 论文图表 / 证据；无第三个 C 状态。字幕单行，证据标注来源。
 
