@@ -3,7 +3,9 @@
 > **更新时间**：2026-10-11；**性质**：项目运行状态与接手导航，**不是业务规则或研究主协议**。
 > 若其他文件有相互矛盾的“目前 / 下一步 / 尚未运行”等时态表述，请以本页最新事实状态为准；**选题业务规则仍以 `research/topic-bank/WORKFLOW_V1.md` 为准**，HF-FIND 和视觉参数仍各以其锁定协议为准。历史报告的研究结论、事实来源和时间戳不得被本页覆盖。
 >
-> **当前 Reviewer 完整接手摘要（2026-10-11）**：[REVIEWER_HANDOFF_2026-10-11_G1VA.md](REVIEWER_HANDOFF_2026-10-11_G1VA.md)，包含所有最新 G1V-A 双版本、授权边界、交接路径、分支审计及 Codex 下一任务；[2026-10-10 P4-G0 旧交接](REVIEWER_HANDOFF_2026-10-10_P4G0.md)仅作历史资料。唯一阶段状态仍以本页为准。
+> **当前 Reviewer 完整接手摘要（2026-10-11）**：[REVIEWER_HANDOFF_2026-10-11_M2.md](REVIEWER_HANDOFF_2026-10-11_M2.md)，包含所有最新 G1V-A 双版本、授权边界、交接路径、分支审计及 Codex 下一任务；[2026-10-10 P4-G0 旧交接](REVIEWER_HANDOFF_2026-10-10_P4G0.md)仅作历史资料。唯一阶段状态仍以本页为准。
+
+> **M2 最新 Reviewer 更新（2026-10-11）**：Owner 在本聊天答复「我没啥问题，可以继续推进」，记为 `OWNER_NO_OBJECTION_TO_PROCEED`，不等同于有证据证明已完整观看 M1 9秒成片。M1 仍为 `M1_REVIEWER_TECH_PASS_ONE_FIXTURE`，`G1_NOT_PASS / G2_NOT_AUTHORIZED`。Reviewer 已制定 **[M2 双输入变体验证 Gate](../p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md)**（24fps 横屏、30fps 竖屏、改后 M1 回归），状态 **M2_GATE_READY / EXECUTION_NOT_STARTED**；当前 Reviewer 交接改为 [M2 Handoff](REVIEWER_HANDOFF_2026-10-11_M2.md)。旧 M1「Owner待看」文段保存为历史阶段事实，不得被误读为要求重新执行 M1。未安装、未测试、未渲染或修改本机环境。
 
 ## 1. 当前阶段与真正的下一步
 
