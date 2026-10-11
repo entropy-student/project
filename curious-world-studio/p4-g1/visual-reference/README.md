@@ -9,6 +9,13 @@
 - 当前画中 B 果冻是原创 **示意画面**，并非论文作者真实录像、真实研究数据或已经接入的本地 MP4。Owner 的默认方向是不使用研究原视频，后续以经过权利审核的替代视频素材／自制动画表达，但继续以论文作科学事实依据。
 - `PLAY_START=4.76`，示意素材逻辑时长 `ASSET_DURATION=12`：窗口打开显示同一份示意画面的 `assetTime=0` 首帧；直到点击播放才推进。进度条按素材时间，而非按本外壳 9秒 MP4 总时长；两者不能混淆。
 
+## 复现与下一步（2026-10-11 Reviewer 保全）
+
+- [V2原生成参考脚本](render_reference.py) 与 [两版真实 MP4 QA 清单](V2_QA_manifest_2026-10-11.json) 已补入 GitHub main 预定文档。脚本原设计依赖本机已有 Python Playwright、FFmpeg 和 **Linux `/usr/bin/chromium`**；它的存在不表示在 Owner Windows / Remotion 环境已运行。由 Reviewer 通过容器读取真实 Research/Classic 两条 MP4，核对各自 SHA 和 Research 270帧/1920×1080/30fps。
+- [2026-10-11 唯一完整接手文档](../../docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md) 记录双版对比、权限、历史证据与下一步；[M1媒体适配任务书](../LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md) 负责实际输入 MP4 的第0帧读取、暂停/播放一致性和素材真实时长。
+- `V2_QA_manifest_2026-10-11.json` 的 `humanVisualApproval=PENDING_OWNER_REVIEW` 是**当时测试输出的历史状态**；Owner 后续已明确采用 Research Aqua 作为**视觉参考**，但从未据此批准G1完整视频制作。这两个事实不矛盾。
+- 二进制 MP4 和壁纸/关键帧 PNG 保留为会话内原型产物和 Owner 本地参考，**未提交仓库**；以后接手者能够从 main 获取所有重要文本/源码，但不能仅凭 main 直接打开已有 MP4。
+
 ## 为什么不沿用 Codex 的那份 UI
 
 Codex 的 `DesktopOpenPlay.tsx` 是合法的独立技术原型（7s、30fps、210帧、H.264、无音轨；报告 SHA `26b76c85dc229447b3120a6cc3e45c31e80ffaf90cdf3abcf6d84cc981cc514a`），机器QA不能直接等同视觉通过。**原始 G1V-A 任务书要求不用原始实验视频和 Fig.7/8，且使用标明的自绘占位，所以两版都画了果冻，这是按原范围执行，不是 Codex 无理由漏掉可直接用的视频。**
