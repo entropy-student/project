@@ -1,3 +1,6 @@
+<!-- CWS-20261011-M2-CURRENT-NAV -->
+> **最新（2026-10-11，M2 Gate 已制定，未执行）**：Owner 表示「没啥问题，可以继续推进」，这代表认可继续验证，不代表可证明其完整观看了 M1 最终 9 秒 MP4。当前 Reviewer 入口是 [M2 Handoff](docs/REVIEWER_HANDOFF_2026-10-11_M2.md)，唯一状态是 [CURRENT_STATE](docs/CURRENT_STATE.md)，本地 Codex 下一任务是 [M2 双规格媒体 Gate](p4-g1/LOCAL_CODEX_G1VA_M2_VARIANT_MEDIA_TASK_2026-10-11.md)。**M1 仅单夹具技术 PASS；M2 未运行；G1 未 PASS；G2/G3 未授权。** 以下旧阶段描述保留历史背景。
+
 <!-- CWS-20261011-HANDOFF-NAV -->
 > **最新接手入口（2026-10-11）**：先读 [唯一当前状态](docs/CURRENT_STATE.md)、[Reviewer完整接手](docs/REVIEWER_HANDOFF_2026-10-11_G1VA.md)、[已选V2 Research Aqua视觉实现](p4-g1/visual-reference/README.md)、[G1VA真实MP4输入适配任务](p4-g1/LOCAL_CODEX_G1VA_V2_MEDIA_ADAPTER_TASK_2026-10-11.md)。[2026-10-10 P4-G0交接](docs/REVIEWER_HANDOFF_2026-10-10_P4G0.md)和[更早 handoff](REVIEWER_HANDOFF.md)属于历史。**已选V2视觉，M1真MP4媒体接入已获Reviewer单夹具技术验证，完整G1/G2尚未通过**；P0/P1采集器已在线验证，九源归档仍 PARTIAL。
 
