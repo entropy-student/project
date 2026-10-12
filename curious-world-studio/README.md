@@ -12,13 +12,13 @@
 
 频道向观众的承诺：**每期分享一个值得好奇的真实发现，让观众看见它、弄明白它，并清楚知道研究证实了什么、没有证实什么。**
 
-> **当前执行顺序**：先读 [唯一活状态 / ZIP交接](docs/CURRENT_STATE.md)；项目旧Review、M1/M2测试、G0报告只作历史证据。**清理审计和纠错已Reviewer通过：安全删除0B，已结束；主线R1已经由Owner下发，等待Codex验收ZIP**。今后普通轮次只交ZIP和SHA，不再每天更新仓库文档。只有正式代码/模板/长期规范/重大决定才更新GitHub。 **Codex可在本地Git checkout读正式规范，不需每轮下载；后续获准执行任务可把简短工作笔记、权利台账和ZIP存到项目忽略的 `.local/`，不上传Git。**
+> **当前执行顺序**：先读 [唯一活状态 / ZIP交接](docs/CURRENT_STATE.md)；项目旧Review、M1/M2测试、G0报告只作历史证据。**清理审计和纠错已Reviewer通过：安全删除0B，已结束；主线R1多轮、R2、R2-M1已审，爆米花核心视觉`CW0005_VISUAL_STORYFIT_HOLD`，Owner明确先不换题并暂停推进**。今后普通轮次只交ZIP和SHA，不再每天更新仓库文档。只有正式代码/模板/长期规范/重大决定才更新GitHub。 **Codex可在本地Git checkout读正式规范，不需每轮下载；后续获准执行任务可把简短工作笔记、权利台账和ZIP存到项目忽略的 `.local/`，不上传Git。**
 
-## 当前组成
+**新 Reviewer 唯一详细交接**：[2026-10-12 交接｜暂停不换题](docs/REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。该文档包含 R1→R2-M1 五轮ZIP哈希、素材/版权细节及当前STOP决定，取代旧阶段的待执行提示词。\n\n## 当前组成
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
-| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **唯一活状态：R1已下发待ZIP、清理结束且未删除、Mac支线停止新增、G1未正式PASS**。以下其他行保留为对应历史版本的技术记录 |
+| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **唯一活状态：R2-M1已独立Review，CW0005视觉HOLD且Owner暂停、不换题；清理零删除、Mac支线停新增、G1未正式PASS**。以下其他行保留为对应历史版本的技术记录 |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |
