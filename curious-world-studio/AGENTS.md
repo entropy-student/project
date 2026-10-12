@@ -1,9 +1,9 @@
 <!-- CWS-STABLE-WORKFLOW-20261011 -->
-> **当前有效入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**主线R1已由Owner下发，正在等Codex结果ZIP**，不可重新派发或宣称R1已完成；CWS本地清理审计+纠错已Reviewer通过，安全可删0B，实际删除0项。Mac动效支线停止新增开发，Owner Windows`file://`与最后视觉签收仍待确认。**G1未正式PASS、G2未授权。**
+> **当前有效入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**R1多轮、R2条件设计与R2-M1均已独立Review；当前`CW0005_VISUAL_STORYFIT_HOLD`，Owner决定先不换题并暂停所有新任务**；不可按旧的CW0004/CW0008建议自动切题，见[完整交接](docs/REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；CWS本地清理审计+纠错已Reviewer通过，安全可删0B，实际删除0项。Mac动效支线停止新增开发，Owner Windows`file://`与最后视觉签收仍待确认。**G1未正式PASS、G2未授权。**
 >
 > **固定交接**：默认只把Reviewer的**文字任务提示词**发给本地Codex；Codex交付一个包含证据、manifest与SHA的ZIP，由Owner转给Reviewer。无需再把Reviewer的ZIP反向传给Codex，除非特定不可重建的输入必须传递。普通报告不进GitHub；经批准的长效规范/生产代码/重大决策才提交。
 >
-> **本地常用文档**：若本机已存在Git checkout，先读本地Git受控规范；Codex从**后续获得工作区写权限的任务**起可将必要工作笔记、源权利台账、RUN索引及ZIP存在 `curious-world-studio/.local/`（受项目`.gitignore`保护），不得将其当成另一份正式规范；**当前R1只读Gate不得因这条追加写入任务**。未经Owner单独批准不付费、不外联、不删除、不改变版权状态、不发布。
+> **本地常用文档**：若本机已存在Git checkout，先读本地Git受控规范；Codex从**后续获得工作区写权限的任务**起可将必要工作笔记、源权利台账、RUN索引及ZIP存在 `curious-world-studio/.local/`（受项目`.gitignore`保护），不得将其当成另一份正式规范；**R2/M1已在本地`.local/`交接；Owner当前没有授予新的执行权限**。未经Owner单独批准不付费、不外联、不删除、不改变版权状态、不发布。
 
 # Agent 入口（本项目唯一）
 
