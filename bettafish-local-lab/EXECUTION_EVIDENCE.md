@@ -66,3 +66,8 @@ FINDINGS:
 - Current G0R `1.78 GiB` RAM sample is outdated after Owner voluntarily closed apps; later informal 3.1 and 3.6 GB readings are Owner-reported approximate different units, not a validated G0M pass. Full Compose's ~4 GiB RAM criterion remains intact; source-only smoke does not start Compose.
 ACTUAL_CHANGES: Reviewer documentation only; no Owner host installation/start/credential/platform action.
 NEXT_GATE: `BTFL-G1L-ISOLATED-CRAWLER-EXPORT-OFFLINE-20261013`; code/data fixture smoke, no crawler execution. Formal PASS of offline export does NOT imply authentic crawl works.
+
+## Event 2026-10-13 — Official memory recommendation independently verified
+SOURCE: `DIRECT_READBACK` GitHub official `666ghj/BettaFish` `README.md` and `README-EN.md` from current upstream, section "运行环境要求" / Requirements.
+FINDING: Official memory recommendation is "建议2GB以上" / "2GB+ recommended". Source does not assert 4 GiB currently free host RAM is necessary. Earlier Reviewer ~4 GiB free RAM planning condition was deliberately conservative for full multi-service Compose, not an upstream requirement and not applicable to G1L source-only Gate. This is a clarification, not a correction to the historical G0R raw measurement.
+ACTUAL_CHANGES: GitHub project documentation only, no Owner-local host action.
