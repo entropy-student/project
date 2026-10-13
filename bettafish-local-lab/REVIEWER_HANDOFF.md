@@ -1,55 +1,56 @@
 # BettaFish Local Lab — REVIEWER_HANDOFF
 > Updated: 2026-10-13
-> RULESET: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
-> EXECUTION_CHANNEL: Owner's Windows 11 local Codex
-> EXECUTOR_DOES_NOT_READ_GOVERNANCE: YES
+> Governance: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
+> Canonical project: entropy-student/project main:bettafish-local-lab/
+> Execution channel: Owner's Windows 11 local Codex; Reviewer handles GitHub persistence if safe checkout unavailable
+> STOP_AT_REVIEWER: YES
 
 ## PROJECT_GOAL
-在 Owner 本地 Windows 11 上独立、可恢复、仅 localhost 地部署开源 BettaFish（微舆），验证界面、数据库及后续舆情分析就绪条件；不动现有 VPN/代理、共享项目及生产环境。正式舆情采集和真实模型调用不在首轮授权内。
+在 Owner 的实体 Windows 11 本机独立部署并验证开源 BettaFish（微舆），通过 localhost 查看网页并完成数据库健康检查。初期仅进行无实际平台采集、无外部收费 API 的低风险服务测试。保护当前 VPN、代理、其他项目、账户及数据。
 
 ## PROJECT_STAGE
-NEW_PROJECT / READ_ONLY_DISCOVERY_REQUIRED
+G0 READ-ONLY DISCOVERY: RETURN_NO_SAFE_CHECKOUT recorded; targeted G0R follow-up authorized. No runtime installation/deployment yet.
 
 ## SYSTEM_MAP
-- Target: Owner Windows 11 physical PC; actual machine/user/privilege and Docker Desktop/WSL2 state UNKNOWN until G0 read-back.
-- Source: https://github.com/666ghj/BettaFish ; reviewed upstream main at b67928ff1ce515dd7672408221fb1e9500d0972d (2026-10-13 observation, not frozen tested artifact).
-- Official Docker Compose: GHCR `ghcr.io/666ghj/bettafish:latest` + PostgreSQL 15; default published host ports 5000, 8501–8503, 5444; default bind-mounted `.env`, reports/logs, and `./db_data`. Exact image digest and source/image correspondence UNKNOWN.
-- Browser automation: MindSpider/MediaCrawler, platform login/session required, and deeper crawling separately initialized/operated. Not part of G0 or automatically authorized later.
-- Models: multiple externally provided LLM API configurations; may incur charges. Secrets and account access are Owner-controlled.
-- Data/security: no real data, credentials, public hosting, or production use in G0. Upstream README says academic/research/education only; GPL-2.0 code license separately stated. Do not infer commercial permission.
-- Preferred future app path: project-isolated Owner-local directory, selected only after G0 inventories existing paths; no new path is authorized for mutation in G0.
-- Existing other local projects, Docker workloads, networking, VPN, browser profiles: out of scope.
+- Target: Owner Windows 11 physical host; Codex reported Windows 11 Home build 26300, PowerShell 7.6.5, not elevated. This is OWNER_REPORTED until direct reviewable sanitized read-back.
+- Existing Docker reported: Docker Desktop Engine 4.88.1, Compose 5.4.0 available; named ports 5000, 8501-8503, 5444 not listening; no BettaFish container/network/volume/image detected. All OWNER_REPORTED.
+- Host resources (OWNER_REPORTED): C: available about 205 GiB; system available RAM ~1.4 GiB at probe time; low headroom blocks G1 service start until reconciled. Docker VM memory budget/total physical memory UNKNOWN.
+- Upstream: https://github.com/666ghj/BettaFish at observed main b67928ff1ce515dd7672408221fb1e9500d0972d. Official Compose: GHCR latest + PostgreSQL 15, default host ports 5000, 8501-8503, 5444; .env, database and report bind mounts; no healthcheck in inspected Compose; exact digest and provenance need G1 freezing. MindSpider platform crawling, browser login and model APIs are separate from starting Web UI; no real crawling/model use authorized.
+- License/restriction: upstream GPL-2.0 LICENSE, README also restricts use to research/education; not authorized for commercial product.
+- Current Codex workdir was not a Git repository; no safe local `entropy-student/project` checkout established; no existing local BettaFish install. No local runtime mutations reported.
+- Reviewer persists canonical records via GitHub API so target executor need not checkout management repo merely to write Evidence. Project-specific install workspace will be isolated in a future G1 after source/host validation.
 
 ## CURRENT_ACCEPTED_STATE
-- GitHub canonical Governance v0.2.7 was reviewed by Reviewer for this new project on 2026-10-13.
-- Reviewer has verified official upstream source/README/Compose surface; no target-host direct read-back has occurred.
-- NO local BettaFish deployment is claimed. `RUNTIME=UNKNOWN`, `SECURE_SECRET_PROVISIONING=UNRESOLVED`.
+- Reviewer has read current canonical Governance v0.2.7 and triggered 11A-D.
+- G0 Executor returned `RETURN_NO_SAFE_CHECKOUT`, with bounded diagnostic facts but no repo write. Reviewer retained returned facts as `OWNER_REPORTED` rather than falsifying `DIRECT_READBACK`; see EXECUTION_EVIDENCE.md.
+- Reviewer verified `entropy-student/project` main `bettafish-local-lab/` doc files exist on GitHub. Real Windows host read-back not independently reviewable. No service deployed or tested.
 
 ## CURRENT_GATE
-`BTFL-G0-READONLY-DISCOVERY-20261013`: [G0_LOCAL_READONLY_DISCOVERY_GATE.md](G0_LOCAL_READONLY_DISCOVERY_GATE.md).
+`BTFL-G0R-READONLY-TARGET-RESOURCE-20261013` in `G0R_TARGET_RESOURCE_GATE.md`; short read-only refresh only. G0 original is returned; do not rerun it wholesale.
 
 ## CRITICAL_CONSTRAINTS
-- Only Owner's physical Windows 11 via local Codex; cloud tool/container/Grok Bot/VPS is NOT the target.
-- G0 is READ_ONLY on local machine and GitHub upstream. No install, service start, image pull, file mutation, application setup, credentials reading, scraping, AI API calls, account login, payment, new network exposure.
-- Strict Secret safety (no values, no hashes, no logs or plaintext in Git/chat).
-- No changes to HY2/WireGuard/Clash/VPN/proxy, routes, TUN, MTU, firewall, Docker global configuration, WSL settings, 80/443, or unrelated apps.
-- Only bounded non-secret Evidence + completion packet may be written to `bettafish-local-lab/` in canonical project repository, using GitHub main and exact path scope. Do not modify Governance or other projects.
-- `PASS_CANDIDATE != PASS`. `STOP_AT_REVIEWER=YES`. No G1 until Reviewer acceptance.
+- Only Owner physical Windows host via Codex, no VPS/remote/Grok Bot/sandbox target.
+- G0R read-only. NO clone/checkout/install/pull/run/build/config write/git write/API key/cookie/platform login/crawl/paid calls, admin elevation, resource cleanup, or unrelated process kill.
+- No changes to VPN, Clash, HY2, WireGuard, WSL config, Docker daemon/global resources, firewall, proxy, network, shared apps.
+- Secret values/hashes/profiles/logs never output. Mask machine/username/IP/credentials. Anonymous access exposure forbidden; future G1 localhost-only.
+- This round's canonical GitHub persistence belongs to Reviewer. Executor relays concise sanitized evidence in chat and stops. `PASS_CANDIDATE != PASS`.
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner's Windows 11 local Codex acting as Executor via precisely scoped `REVIEWER_TO_EXECUTOR_RELAY` from G0. Reviewer (ChatGPT) owns Governance interpretation and Gate acceptance.
+Owner Windows 11 local Codex. Reviewer does not pretend GitHub connector has direct access to user's physical PC.
 
 ## CURRENT_ROLLBACK_STATUS
-No local mutation authorized/performed by this round; target local runtime rollback NOT_APPLICABLE for G0. Future G1 must define rollback and persistent-data protection before deploy.
+Target runtime unchanged according to G0 report. No runtime rollback needed for G0/G0R; future deploy must own exact namespace and plan app/DB/report removal/restore.
 
 ## UNRESOLVED
-Local Windows runtime identity, privilege, PowerShell version, Docker Desktop/Compose daemon state, WSL availability, available local disk/memory, conflicting ports/containers, existing local target directory, current project worktree state, real image digest, trustworthy Secret runtime integration, platform data permission, cost plan.
+Physical host identity proof/effective runtime context; total physical/available host memory and Docker VM allocation; practical resource margin after ordinary owner-controlled app closing; exact image digest/source link; Secret placement; production/crawler/browser permissions, costs; future isolated local install path.
 
 ## NEXT_STEP
-Codex runs G0 only, records sanitized evidence and returns. Reviewer inspects, reconciles target state, then decides and authors G1 local-only Docker deployment Gate.
+Owner pastes G0R relay to local Codex; it reports read-only host/resource read-back. Reviewer records/reviews and decides G1 local Docker-only setup when sufficient headroom is evidenced.
 
 ## OWNER_ACTION_REQUIRED
-Copy G0 relay to local Codex. No admin or credential action for G0.
+Pass G0R relay to existing local Codex. If memory insufficient, Owner may voluntarily close their own nonessential apps, but Executor must not terminate apps or alter OS settings.
 
 ## EVIDENCE_POINTERS
-This new project has no accepted runtime Evidence. Executor creates/appends `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` in this folder for G0, preserving only non-secret facts.
+- `EXECUTION_EVIDENCE.md`: Reviewer-persisted G0 return evidence, tagged OWNER_REPORTED where applicable.
+- `G0_LOCAL_READONLY_DISCOVERY_GATE.md`: prior G0 Gate, returned and not replayed.
+- `G0R_TARGET_RESOURCE_GATE.md`: next Gate.
