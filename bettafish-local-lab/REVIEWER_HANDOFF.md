@@ -7,11 +7,10 @@
 > STOP_AT_REVIEWER: YES
 
 ## PROJECT_GOAL
-Owner explicitly requested return to **Docker-based local deployment** for the existing BettaFish project, emphasizing quick relocation and a usable running application. First milestone: guarded localhost-only BettaFish web UI plus disposable PostgreSQL container; existing narrower business goal remains keyword-based XHS posts/comments → export JSON/CSV → Codex analysis. Do not imply Docker UI boot automatically proves crawler or paid AI analysis. No commercial/social-account/paid API authorization.
+Historically BettaFish served as a candidate for keyword-based collection and AI sentiment analysis. **Owner switched active product on 2026-10-13 to independent original MediaCrawler local Windows WebUI**. This BettaFish project is a preserved **PAUSED_BY_OWNER** historical project; do not redeploy it or resume full Docker/Hostinger evaluation without new explicit Owner choice.
 
 ## PROJECT_STAGE
-**PAUSED_BY_OWNER — NO ACTIVE EXECUTION GATE.** Current user effort is original MediaCrawler Windows-first app; all old BettaFish documents/Gates historical and no further download/deploy/cleanup authorized until new Owner decision.
-G1L static source/3-note+4-comment mock JSON result OWNER_REPORTED as PASS_CANDIDATE, Reviewer PARTIAL. Old Windows Python/venv G2 never executed. Docker G2D **RETURN_RESOURCE_PRESSURE** (2026-10-13 Owner-relayed Codex run): image pull aborted before full image/download, no Compose manifest, deployment folder, containers, networks, volumes, password or host ports created. Current stage **RESOURCE_PRESSURE_HOLD / DEPLOY_TARGET_DECISION**. No local retry authorized. Reviewer recommends an optional dedicated Hostinger VPS read-only capability preflight, ONLY after Owner approves that target. Lightweight project-collector Docker remains alternative.
+**PAUSED_BY_OWNER — NO ACTIVE EXECUTION GATE.** Historical: G1L locked source and simulated notes/comments partial, G2D Docker official image pull returned `RETURN_RESOURCE_PRESSURE` before deployment, possible partial Docker pull cache left; G2H conditional Hostinger preflight not executed. No further local/network actions authorized for BettaFish.
 
 ## SYSTEM_MAP
 - Owner physical host (Owner-reported via Codex): HP OEM Windows 11 Home 26300, PowerShell 7.6.5, Docker Desktop Engine 4.88.1 / Compose 5.4.0 previously available. Host RAM total 15.28 GiB, G1L available RAM fluctuated 4.12 → 2.65 GiB (min 2.27). Docker Engine memory capacity 7.40 GiB, **not free/current use**. Official README recommends 2GB+ total machine RAM; prior Reviewer 4GiB FREE threshold was extra conservative and is NOT binding on revised scoped Docker Gate. Resources must be monitored at runtime and fail-closed if pressure.
@@ -27,8 +26,7 @@ G1L static source/3-note+4-comment mock JSON result OWNER_REPORTED as PASS_CANDI
 Reviewer DIRECT_READBACK: GitHub source/Compose/README, unauthenticated `/api/config` problem and project documentation. G2D Docker Executor report OWNER_REPORTED: preflight available RAM low sample 4.349 GiB; during GHCR pull fell 0.793 GiB; after cancellation 0.587–0.606 GiB. Engine capacity 7.40 GiB; disk free 200.49 GiB. BettaFish image incomplete, PG/Nginx not pulled; no Compose manifest, project containers/networks/volumes/secrets/ports. Non-target services reported unchanged; partial Docker pull cache possible and must be left intact unless scoped cleanup authorized. No local app PASS or direct Windows Reviewer verification.
 
 ## CURRENT_GATE
-**NONE (PAUSED_BY_OWNER).** Old G2H conditional Hostinger server investigation is not authorized by Owner's new MediaCrawler local directive; no action permitted on it.
-G2D local Docker Gate returned `RETURN_RESOURCE_PRESSURE` and is CLOSED_FOR_RETRY; no unchanged-command rerun. Conditional candidate `BTFL-G2H-HOSTINGER-REMOTE-READONLY-CAPACITY-20261013` at `G2H_HOSTINGER_REMOTE_READONLY_CAPACITY_GATE.md` is NOT authorized until Owner explicitly elects Hostinger as evaluation target. If Owner instead chooses lightweight Windows collector, Reviewer designs a different Gate. No active write/deploy Gate.
+**NONE (PAUSED_BY_OWNER).** Former G2H resource check is canceled from active queue and may not run without a new Owner decision. Active new project: `mediacrawler-local-lab/G1_WINDOWS_ORIGINAL_WEBUI_LAUNCH_GATE.md`.
 
 ## CRITICAL_CONSTRAINTS
 - Only Owner's own local Windows host; no VPS/Grok Bot. No global Docker/WSL/OS/network/VPN/proxy changes; no unrelated workloads/process termination.
@@ -49,12 +47,10 @@ G1L source/synthetic unchanged. G2D cancelled incomplete image pull; Owner repor
 Root cause of temporary host memory reduction while pulling image UNKNOWN (no process-specific evidence); current host post-cancel RAM about 0.59 GiB at last reported sample. Hostinger KVM2 current free RAM, CPU, Docker presence, existing workloads and isolation are NOT freshly verified; consent to SSH/remote host checks has NOT been granted. Full-app vs embedded-crawler-only Docker deployment decision depends on target resource/readiness. Also image source/digest correlation, usable XHS login/network/terms, actual crawler export and 20-note default minimum guard remain unresolved.
 
 ## NEXT_STEP
-None for BettaFish. Active work: `mediacrawler-local-lab/G1_WINDOWS_ORIGINAL_WEBUI_LAUNCH_GATE.md` under separate canonical project path.
-Owner selects evaluation route. RECOMMENDED: explicitly authorize **read-only** Hostinger KVM2 resource and existing-project impact preflight through G2H, not Docker install. The tentative Hostinger configuration (2 vCPU/8 GB) is historical Owner context, NOT fresh capacity proof; it may host unrelated services. On positive resource/isolation proof, Reviewer authorizes a new isolated Docker crawler-first deployment Gate; fallback if XHS on overseas VPS is inaccessible is lightweight Windows crawler Docker or compliant source/API. Owner's DO SFO3 VPN is excluded; Grok Bot shared cloud computer is not a stable deployment target. Do not retry local G2D unchanged.
+NONE for BettaFish until Owner explicitly resumes it. The only currently authorized next installation Gate is the independent original MediaCrawler local Windows WebUI in `mediacrawler-local-lab/`.
 
 ## OWNER_ACTION_REQUIRED
-NONE for BettaFish. Do not delete/modify its local resources or retry Docker.
-Choose whether to evaluate Hostinger KVM2 (recommended). **Explicit Owner go-ahead required before any SSH**, even read-only. No credentials, login, installation, VPN changes, paid API, production action, or re-run of local image pull is needed now.
+NONE for BettaFish. Do not delete old BettaFish files, retry GHCR pulls, modify local Docker, or contact Hostinger as part of this paused project.
 
 ## EVIDENCE_POINTERS
 - `G2D_DOCKER_LOCALHOST_RAPID_BOOT_GATE.md` historical resource RETURN (not active).
