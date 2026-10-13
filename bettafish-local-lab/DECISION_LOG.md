@@ -30,3 +30,11 @@
 - Disposable local DB protected random credential permitted only after explicit Owner delegation in copied relay; no existing user secret. Do not print or store in repo/ordinary artifacts.
 - Official README “内存建议2GB以上” refers to machine recommendation; G2D uses real resource observation, not earlier Reviewer 4GiB currently-free gate.
 - Existing priority keyword → notes/comments → JSON/CSV → Codex remains unchanged. Docker boot is not crawler PASS.
+
+## Review 2026-10-13 — Local Docker resource RETURN and stop of unchanged retry
+- G2D official GHCR image pull reached host available memory low of 0.587 GiB (from preflight 4.349 GiB), even before any project container started. Exit 1 after cancellation. App/container/DB/proxy/Secret NOT deployed. Review status `RETURN_RESOURCE_PRESSURE`, provenance OWNER_REPORTED.
+- Owner's other Windows workloads must remain running. No further attempts to reclaim memory via ending ChatGPT/Codex/Edge, tuning Docker/WSL globally or Docker-prune. Unknown cause must not be invented.
+- Recommend a Hostinger KVM2 **read-only feasibility Gate** as next optional action. Past owner profile says 2 vCPU/8 GB VPS; current spare resources/other projects UNKNOWN. Never conflate historic total capacity with current free RAM.
+- Do NOT target DigitalOcean SFO3 because user depends on its VPN, nor Grok Bot shared Debian cloud computer (Docker absent and persistence insecure), as first workaround. Avoid claiming either has proven spare resources.
+- Hostinger remote check requires Owner authorization, verified existing SSH host trust and only sanitized probes. A real Docker deployment on that host is a further Gate after positive free-headroom and project isolation proof. Prefer lightweight BettaFish embedded MediaCrawler collector over entire PyTorch/Streamlit app if the business need remains notes/comments JSON export + Codex analytics.
+- Overseas IP/login feasibility for XHS/douyin remains UNKNOWN; confirm separately and lawfully, no cookies/API secrets or real social requests under resource Gate.

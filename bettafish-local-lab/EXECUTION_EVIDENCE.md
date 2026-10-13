@@ -104,3 +104,16 @@ FINDINGS:
 - README officially recommends machine RAM >2GB (not 4 GiB currently free); no blanket available memory Gate for G2D. Memory must be monitored when starting actual containers.
 - No Owner host Docker images/containers were started by Reviewer; no local credentials acquired.
 NEXT_GATE: `BTFL-G2D-DOCKER-LOCALHOST-RAPID-BOOT-20261013`.
+
+## Event 2026-10-13 — G2D local Docker pull aborted on resource pressure
+AUTHORIZED_GATE: `BTFL-G2D-DOCKER-LOCALHOST-RAPID-BOOT-20261013`.
+EXECUTOR_RESULT: `RETURN_RESOURCE_PRESSURE`; REVIEWER_DECISION: `RETURN_RESOURCE_PRESSURE` (no Docker deployment PASS). SOURCE: `OWNER_REPORTED` sanitized text relayed from Windows-local Codex, not Reviewer direct runtime read-back.
+PREFLIGHT_FACTS: Windows 11 Owner host; Docker Engine 29.7.2 / Compose 5.4.0; engine memory total capacity 7.40 GiB, not unused RAM; disk available post 200.49 GiB.
+HOST_AVAILABLE_RAM_GiB: read-only preflight lowest `4.349`; during official GHCR BettaFish image pull `0.793`; post-cancel `0.587–0.606`; min `0.587`. Cause UNKNOWN; this does NOT prove image container memory use because no container started.
+ACTUAL_CHANGES: only attempted official BettaFish GHCR image pull, cancelled (exit 1); incomplete pull/cache possible. Official image not fully present with immutable tag/digest; Postgres/Nginx not pulled. No Compose file, no local app folder, no project containers/networks/volumes/host port binding, no DB password, no secrets; existing G1L assets unchanged.
+OBJECTIVE_READBACK: Codex reports project containers 0, networks 0, volumes 0; 5000 not listening, existing other containers/ports unchanged. No DB health, UI HTTP, negative API security checks or project container memory checks occurred; all are UNVERIFIED/NOT_APPLICABLE, NOT PASS.
+VALIDATION: resource stop condition triggered before start; pull cancellation native exit 1; no target site deployed.
+ANOMALIES: available memory unexpectedly fell by >3 GiB while pulling, then not recovered immediately after cancellation; avoid attributing memory growth to any particular process or blaming BettaFish itself without evidence.
+ROLLBACK_EFFECT: pull cancelled; no project containers to stop. Leave possible shared Docker download cache intact, no prune/kill/daemon tune.
+RESOURCE_OR_BUSINESS_DELTA: local host RAM ~0.587 GiB available as last reported, disk headroom ~200.49 GiB. No paid API or social platform interaction.
+NEXT_ACTION: stop unmodified G2D retries. Owner needs ongoing other local projects, so propose dedicated separate-host resource feasibility evaluation (historical Hostinger KVM2 2 vCPU/8 GB) after explicit approval, or lightweight on-demand pinned BettaFish MediaCrawler container. Shared Grok Bot cloud computer and VPN-hosted DO SFO3 not eligible target without separately justified future decision.
