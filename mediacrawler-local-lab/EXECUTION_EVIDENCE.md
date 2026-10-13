@@ -9,3 +9,13 @@ SECURITY: `ENABLE_CDP_MODE=True`, `CDP_CONNECT_EXISTING=True` by default (danger
 LICENSE: NON-COMMERCIAL LEARNING LICENSE 1.1, research only; no commercial authorization inferred.
 HISTORICAL_HOST_RISK: Prior BettaFish G2D pull reduced Owner-reported available Windows RAM to ~0.587 GiB; current availability UNKNOWN, independent first-run preflight required.
 ACTUAL_LOCAL_CHANGES: NONE by Reviewer. No MediaCrawler deployment, no real crawling or auth. G1 Gate published for Owner local Codex.
+
+## Event 2026-10-13 — G1 returned before installation (owner-local Codex relay)
+AUTHORIZED_GATE: `MC-G1-WIN-ORIGINAL-WEBUI-FIRST-USE-20261013`.
+EXECUTOR_RESULT: `RETURN_RUNTIME_TOOL_MISSING`, `STOP_AT_REVIEWER=YES`.
+REVIEWER_DECISION: `RETURN_RUNTIME_TOOL_MISSING`, accepted as preflight stop, NOT PASS. Provenance `OWNER_REPORTED` (not direct Reviewer Windows readback).
+PREFLIGHT_FACTS: Windows 11 26300, PowerShell 7.6.5 non-admin physical mobile workstation, Codex desktop local context; PowerShell process ancestry confirmation unavailable. Git 2.55.0; system Python 3.10.11; `uv` missing; Python3.11 launcher probe missing; Node 24.19.0; npm 11.17.0; disk free ~199.46 GiB; available RAM readings 2.669 / 2.685 GiB; TCP 8080 unoccupied, 18080 occupied; project directory absent/reparse not found.
+ACTUAL_CHANGES: NONE. Source NOT_CLONED. No venv/browser/Node installs, process, real platform call, cookie/login or files created. No rollback necessary; no test URL, HTTP, source git status evidence exists.
+VALIDATION: preflight correctly failed at strict tool prerequisite; no MediaCrawler runtime validation yet. No confirmed regression in other projects.
+NEXT_ACTION: allow portable project-specific `uv` + Python3.11 in a **new** G1R Gate, followed by original WebUI installation, with monitored resource stop rules. Do not ask Owner for system-wide installs.
+REVIEWER_DIRECT_EXTERNAL_PROOF: GitHub API official uv release `0.12.20`, `uv-x86_64-pc-windows-msvc.zip` SHA256 `95f9bc30fbb3574d276e28ac4a6de932d25153645853d13da8c21eec3bc88d06` (archive length 18,039,150 bytes). Official uv docs: `UV_PYTHON_INSTALL_DIR` and `UV_PYTHON_BIN_DIR` redirect managed Python, `uv python install 3.11 --no-bin` skips default bin shim; `UV_CACHE_DIR` redirects cache. This verification refers to upstream source, NOT local downloaded bytes.

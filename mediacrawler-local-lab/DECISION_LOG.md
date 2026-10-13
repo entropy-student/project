@@ -7,3 +7,8 @@
 - Exactly 2 tracked config toggles allowed to disable CDP and attaching user's existing Chrome/Edge; standard Playwright uses per-project `browser_data` with optional persistent login. Use project-contained browser binary, single `uvicorn` localhost service, no Vite dev after static build.
 - Raw `--cookies` flag currently passed to subprocess/logged by WebUI manager: do NOT enter Cookie into UI or relay; Owner manual QR later requires separate real-action Gate; commercial use excluded by NON-COMMERCIAL LEARNING LICENSE 1.1.
 - No blanket 4GiB free RAM requirement; fresh staged resource safety guard protects other workloads. Avoid any BettaFish Docker partial cache deletion or other project disruption.
+
+## Review 2026-10-13 — G1 tool-missing repaired by portable Python/uv inside project
+- Owner-local first G1 attempt returned early (`RETURN_RUNTIME_TOOL_MISSING`) with no files changed. This is a real prerequisite shortfall, not evidence of MediaCrawler incompatibility or RAM failure.
+- No system-wide Python 3.11 / uv installation necessary. Authorization boundary for G1R expands only to new project-owned portable uv 0.12.20 Windows x64 artifact (GitHub release verified SHA256), uv-managed Python3.11 confined to project-owned `runtime/python`, and project-local install cache, with `--no-bin` to avoid user-global executables. Existing Python 3.10 remains untouched.
+- Prefer one combined bounded Gate (runtime prep+original UI), no extra analysis Gate; stop if current RAM/Disk degrades or other apps affected. No unauthorized platform login/crawler execution and no moving-upstream version changes.
