@@ -1,60 +1,59 @@
 # BettaFish Local Lab — REVIEWER_HANDOFF
 > Updated: 2026-10-13
 > Governance: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
-> Canonical project: entropy-student/project main:bettafish-local-lab/
-> Execution channel: Owner Windows 11 local Codex; Reviewer owns governance/GitHub evidence.
+> Project: entropy-student/project main:bettafish-local-lab/
+> Default executor: Owner Windows 11 local Codex; Reviewer GitHub records
 > STOP_AT_REVIEWER: YES
 
 ## PROJECT_GOAL
-Owner Windows 11 本机保留 BettaFish，轻量实施「关键词 → BettaFish 内嵌 MediaCrawler 采集笔记/评论 → JSON/CSV 文件 → Codex 自行分析」。无需完整 BettaFish 多 Agent、Streamlit 或 PostgreSQL；只在有真实必要时恢复完整系统方案。默认科研/学习测试，不授权商业使用。
+Owner explicitly requested return to **Docker-based local deployment** for the existing BettaFish project, emphasizing quick relocation and a usable running application. First milestone: guarded localhost-only BettaFish web UI plus disposable PostgreSQL container; existing narrower business goal remains keyword-based XHS posts/comments → export JSON/CSV → Codex analysis. Do not imply Docker UI boot automatically proves crawler or paid AI analysis. No commercial/social-account/paid API authorization.
 
 ## PROJECT_STAGE
-G1L offline code+fixture: Executor `PASS_CANDIDATE`; Reviewer `PARTIAL` (source contract independently verified, local synthetic files only OWNER_REPORTED); appropriate to begin low-risk **G2 isolated dependency/actual synthetic writer smoke**. No crawler/browser/real platform interaction yet, no Docker/BettaFish app running.
+G1L static source/3-note+4-comment mock JSON result OWNER_REPORTED as PASS_CANDIDATE, Reviewer PARTIAL. Previous G2 isolated Windows Python/venv Gate was NOT EXECUTED; **superseded/deferred** by Owner-requested Docker route. Current G2D rapid Docker deployment Gate READY_FOR_EXECUTOR. No containers yet reported launched.
 
 ## SYSTEM_MAP
-- Owner target: reported physical HP OEM Windows 11 Home build 26300, PowerShell 7.6.5, local Codex. Desktop ChatGPT/Codex and Edge must remain running; do not stop. Owner's console/RDP marker unavailable, runtime details still OWNER_REPORTED.
-- Host RAM total reported 15.28 GiB. G1L pre 4.12 GiB free; post 2.65 GiB; during min 2.27 GiB, fluctuation cause UNKNOWN. Docker Engine visible total 7.40 GiB but full Compose deferred. Official BettaFish README recommends **2GB+ machine RAM**; Reviewer 4 GiB currently-free full-Compose buffer was not official and is NOT a universal blocker. G2 bounded per-stage live memory monitoring; no owner closing apps.
-- G1L Codex reported isolated checkout `%LOCALAPPDATA%\BettaFishLocalLab\crawler-lite-smoke-v1`, exact root SHA `b67928ff1ce515dd7672408221fb1e9500d0972d`, nested `MindSpider/DeepSentimentCrawling/MediaCrawler` SHA `4de2a325a9cd4f7de7dfb58204b154fc2bb86e40`, source clean. ~383.96 MiB owned directory, ~411.49 MiB volume change, ~204.68 GiB target drive available. Only synthetic 3 notes/4 comments.
-- Reviewer direct upstream readback: pinned MediaCrawler has standalone CLI in `main.py`, `cmd_arg/arg.py`: `--platform xhs --type search --keywords ... --get_comment ... --save_data_option json`; JSON and CSV (+ Excel) native; JSONL not in pinned. Native `tools/async_file_writer.py` saves JSON arrays, pinned `store/xhs/__init__.py` note/comment fields link by `note_id`.
-- BettaFish MindSpider wrapper uses DB keyword tables and forces postgres/db save and generates DB config, therefore do NOT invoke wrapper for lightweight path. Pinned MediaCrawler standalone CLI is preferred; this is still BettaFish's exact embedded version (not replacement project).
-- **Important real-crawl blocker:** XHS `media_platform/xhs/core.py` `search()` forces minimum `CRAWLER_MAX_NOTES_COUNT` of **20**, so simply setting 1 does NOT bound first real experiment. Future single-note/one-comment canary requires verified in-code hard guard BEFORE outgoing detail requests / data writes; do not assume config implies bounded behavior. Reviewer has independently inspected code.
-- Pinned `config/base_config.py` defaults CDP=true/SAVE_LOGIN_STATE=true; can touch active Edge/Chrome profile and Cookie. No browser/session interaction allowed in G2. Raw `xsec_token` appears in xhs URLs and logs; never relay actual scraped raw link/tokens/PII. NON-COMMERCIAL LEARNING LICENSE 1.1; real usage requires terms review.
-- Existing Docker, VPN/Clash/WG/HY2, Edge/ChatGPT/Codex, other active environments always protected. No public ingress, platform login, paid API, crawler requests at this stage.
-- G2 isolated venv/cache/test-owned outputs should be inside `offline-smoke\g2-...`; staged locked source checkout tracked files unchanged, no global package installation, browser binaries install, or Docker.
+- Owner physical host (Owner-reported via Codex): HP OEM Windows 11 Home 26300, PowerShell 7.6.5, Docker Desktop Engine 4.88.1 / Compose 5.4.0 previously available. Host RAM total 15.28 GiB, G1L available RAM fluctuated 4.12 → 2.65 GiB (min 2.27). Docker Engine memory capacity 7.40 GiB, **not free/current use**. Official README recommends 2GB+ total machine RAM; prior Reviewer 4GiB FREE threshold was extra conservative and is NOT binding on revised scoped Docker Gate. Resources must be monitored at runtime and fail-closed if pressure.
+- Existing checked-out source reportedly at `%LOCALAPPDATA%\BettaFishLocalLab\crawler-lite-smoke-v1`: BettaFish `b67928ff1ce515dd7672408221fb1e9500d0972d`, Gitlink MediaCrawler `4de2a325a9cd4f7de7dfb58204b154fc2bb86e40`. Keep this G1L source and fixtures untouched. Full Docker G2D will use **official prebuilt image**, tag resolved once to immutable digest at runtime, NOT a from-source build; digest-to-source SHA correspondence unverified, must not claim it.
+- Official Compose: `ghcr.io/666ghj/bettafish:latest` + `postgres:15`. Default publishes app 5000/8501–8503 and DB 5444 broadly; **must not use unchanged**. G2D derives project-owned private Compose with proxy, isolated network/DB volume, no direct app or DB host published ports; only proxy `127.0.0.1:5000`. Optional three-image deployment: BettaFish, PostgreSQL, nginx:stable-alpine; pin all exact OCI digests after retrieval.
+- Critical upstream bug reviewed directly: `app.py` `GET /api/config` enumerates DB_PASSWORD + LLM API_KEY and `POST /api/config` updates config without authentication. G2D proxy must **block `/api/config` both verbs, `/api/system/start`, `/api/search`, and default block other `/api/` except harmless read-only `/api/system/status`**; site is UI smoke, not working analysis suite. Never place real external credentials in this app now. URL accessibility alone does not constitute confidentiality.
+- Upstream Flask `app.py` waits for front-end command before starting three Streamlit agents. In G2D do not invoke `/api/system/start`; only public site/UI and database process/readiness. The official image may not contain a ready standalone CLI or same source revision as pinned checkout; determine later.
+- G2D path: brand-new project-only `%LOCALAPPDATA%\BettaFishLocalLab\docker-app-v1` (no overwrite). Compose namespace `btfl-local-docker-v1`; volumes/network namespaced. Test DB strictly disposable empty/new. Runtime secrets generated only under explicit Owner delegation for this named project+target in strict private store, not shown in logs or Compose command and not written to GitHub. Password matched through protected app.env bind and Postgres `_FILE` secret, not ordinary environment variable/Compose interpolation. App model keys empty.
+- Source-only G1L established pinned independent MediaCrawler CLI JSON/CSV export; underlying MindSpider wrapper forces DB, and XHS `media_platform/xhs/core.py` overrides note count below 20 to 20. Any future real one-note canary requires a hard guard; no login/CDP/cookies in G2D. Latest MediaCrawler main != BettaFish pinned submodule.
+- User Edge/ChatGPT/Codex, Docker system settings, VPN/Clash/HY2/WG and other projects are untouchable.
 
 ## CURRENT_ACCEPTED_STATE
-- Reviewer direct GitHub proof supports source SHA/gitlink/CLI/config and 20-note crawler minimum. Owner relay supports G1L checkout, static synthetic export readability, and no unrelated changes; no independent Reviewer access to local synthetic bytes. G1L remains `PARTIAL` evidence, not formal PASS; won't be presented as completed real crawl.
-- Files/read-back GitHub documentation persisted by Reviewer; Executor need not git checkout project management repo.
+Reviewer DIRECT_READBACK: GitHub source/Compose/README and unauthenticated `/api/config` problem; current G2D documentation committed to main. Previous G1L runtime snapshots OWNER_REPORTED; no independent Reviewer verification of local G1L fixtures. No owner-local Docker app has been deployed by accepted evidence.
 
 ## CURRENT_GATE
-`BTFL-G2-ISOLATED-RUNTIME-EXPORT-SMOKE-20261013` at `G2_ISOLATED_RUNTIME_EXPORT_SMOKE_GATE.md`. Previous G1L is completed as partial/claimed; G0M is deferred only for optional future full Compose, not active.
+`BTFL-G2D-DOCKER-LOCALHOST-RAPID-BOOT-20261013` at `G2D_DOCKER_LOCALHOST_RAPID_BOOT_GATE.md`, pending local Codex. The old `G2_ISOLATED_RUNTIME_EXPORT_SMOKE_GATE.md` is superseded before execution, not an active prerequisite.
 
 ## CRITICAL_CONSTRAINTS
-- Windows physical Owner-local only. Native exit/status checks. Respect previous source exact SHAs and known isolated location; no cloning again if unchanged.
-- G2 may create only project-owned venv/cache and synthetic export test files in predefined fresh child. No global installer or package changes; no browser binary installation. No child process allowed to access XHS or other social platforms, start CDP, read Edge/Chrome sessions/cookies/.env, or run real crawler.
-- No provider/API/model/paid calls, no commercial crawl, no accounts/platform logins, no Cookie/Secret in chat/command/env/logs/GitHub.
-- No system-wide/global Docker/WSL/VPN/Clash/HY2/WG/routing/firewall/proxy changes, no killing user processes; never stop ChatGPT/Codex/Edge. Own install/test processes may be stopped on resource guard trigger.
-- Real canary must use audited hard count guard because XHS minimum 20; explicit Owner authorizations for platform access/login/profile and provider costs remain outstanding.
-- Source and synthetic data are non-secret. If project checkout shows prior partial/unowned or drift state, return; no override or automatic deletion. GitHub Reviewer owns Evidence and Gate.
+- Only Owner's own local Windows host; no VPS/Grok Bot. No global Docker/WSL/OS/network/VPN/proxy changes; no unrelated workloads/process termination.
+- Single new isolated Docker Compose project, no default upstream 0.0.0.0 ports, DB no exposed host port, app through guarded localhost proxy only. Only known project containers/images/volumes touched; no broad cleanup/prune.
+- Image digests fixed, app source/image correspondence explicitly UNKNOWN until correlated. No from-source build or unbounded tooling.
+- Never start analysis engines/crawler or real login/cookie/browser; no live social requests, paid model/API, real credentials or business data in disposable DB.
+- API leak mitigation must pass GET + POST negative checks, plus blocked start/search and loopback-only port. Failure = contain app by stopping only project-owned containers.
+- Named limited DB test password must be generated only under explicit Owner authorization in G2D relay, protected and never printed. Source .env values public examples are NOT to be used as production passwords. Stop if ACL/secret file design cannot be verified.
+- Actual deployed resource/readiness evidence and safe rollback (only project compose stop/down without deleting volume) required.
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner Windows 11 Codex. Reviewer stores GitHub records.
+Owner physical local Windows Codex; Reviewer owns project GitHub docs. No management repo checkout required on Executor.
 
 ## CURRENT_ROLLBACK_STATUS
-Earlier G1L additive isolated source+synthetic files, reported clean, retained. G2 additive child-only venv/cache/fixture outputs, no irreversible/external actions; failures leave owned state documented, no arbitrary cleanup or overwrite.
+G1L source/synthetic unchanged. G2D only additive project-owned folder / containers / images / namespaced Docker DB volume (disposable no real data); exact owned Compose stop/down preserves volume; removal/credential reset require further approval. Before data with value: backup/restore proof required.
 
 ## UNRESOLVED
-G1L synthetic file Reviewer direct read-back; local Python/uv availability; success and footprint of dependencies; safe actual exporter invocation; XHS one-note exact cap; isolated browser/profile/session; actual data fidelity, platform limits/license, safe provenance of user data; future commercial path.
+Official GHCR image actual digest/provenance/version, image launch health and site startup, compatibility with disposable PostgreSQL, actual memory footprint, proxy guard negative access, data persistence/recovery beyond disposable smoke, embedded crawler inside image and file export, authorized login strategy, single-item XHS guard, legal/terms for commercial use.
 
 ## NEXT_STEP
-Owner sends G2 relay. Codex in same isolated workspace sets up only project-local runtime dependencies if already-present trusted Python/uv support exists, then invokes pinned `AsyncFileWriter` directly using invented note/comment records with project-scoped output. Runs CLI `--help` only after proving import safe/no platform side effects, records bounded evidence; no browser/crawler/login. Reviewer evaluates before real platform Gate.
+Owner relays G2D only to local Codex with explicit, one-round approval for generation of disposable project-specific DB credential. Codex performs one bounded Compose deploy (pull digest → guarded localhost config → DB/Flask/proxy startup → UI/status + negative security + resource evidence). Stops at Reviewer. Then narrow real crawler acquisition/export later, with explicit owner permission.
 
 ## OWNER_ACTION_REQUIRED
-Paste G2 Gate relay to existing Codex. Do not close apps or log into XHS; later real crawler needs fresh explicit consent.
+Copy G2D relay into Windows Codex only if consenting to **isolated disposable test DB secret generation** in project-owned secure location. No existing credentials, app login or system settings required; report sanitized result to Reviewer.
 
 ## EVIDENCE_POINTERS
-- `EXECUTION_EVIDENCE.md`: append-only G1L Codex data and independent source findings.
-- `DECISION_LOG.md`: lightweight project decisions and XHS 20-note limitation.
-- `G2_ISOLATED_RUNTIME_EXPORT_SMOKE_GATE.md`: active next Gate.
-- `G1L_ISOLATED_CRAWLER_EXPORT_OFFLINE_GATE.md`: old G1L Gate (not replayed).
-- `G0M_MEMORY_RECHECK_GATE.md`: deferred full Compose RAM Gate (inactive).
+- `G2D_DOCKER_LOCALHOST_RAPID_BOOT_GATE.md` ACTIVE.
+- `EXECUTION_EVIDENCE.md` historical G1L and Reviewer Docker findings.
+- `DECISION_LOG.md` Docker pivot and remaining data acquisition scope.
+- `G2_ISOLATED_RUNTIME_EXPORT_SMOKE_GATE.md` canceled/deferred before execution.
+- `G0M_MEMORY_RECHECK_GATE.md` historical inactive full-stack memory preflight.

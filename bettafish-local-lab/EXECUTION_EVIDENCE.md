@@ -92,3 +92,15 @@ ADDITIONAL_REVIEWER_DIRECT_SOURCE_FINDING: Pinned `media_platform/xhs/core.py` `
 RESOURCE_OR_BUSINESS_DELTA: No report of charges/external actions; file staging ~0.4 GiB, free RAM variable. Real source-only lightweight candidate, NOT actual crawl or full Compose readiness.
 ROLLBACK_EFFECT: Only project-new owned files; no deletion requested or authorized; G2 must verify source checkout state first.
 NEXT_ACTION: G2 isolated dependency + true `AsyncFileWriter` synthetic export smoke; no real crawler/platform/browser/auth; bounded memory/disk and exact existing workspace. Future G3 authentication/real XHS crawl requires explicit Owner authorization + safe one-item hard guard verification and platform compliance.
+
+## Event 2026-10-13 — Reviewer inspected Docker deployment source, no local runtime action
+SOURCE: `DIRECT_READBACK` GitHub `666ghj/BettaFish` at `b67928ff1ce515dd7672408221fb1e9500d0972d` for `docker-compose.yml`, `Dockerfile`, `.env.example`, `app.py`, `config.py`, `README.md`.
+OWNER_DIRECTION: return to Docker/rapid application delivery instead of unexecuted Windows Python/venv G2.
+FINDINGS:
+- Official Compose image `ghcr.io/666ghj/bettafish:latest` and `postgres:15`; default `ports` publishes 5000 and 8501-8503 plus PG 5444 without localhost restriction. Default Compose NOT authorized as-is.
+- Official `app.py` `CONFIG_KEYS` (lines 85–117) includes DB_PASSWORD and many LLM API_KEY fields; `read_config_values` (lines 134–151) returns literal values, and unauthenticated `GET /api/config` (lines 1203–1211) and `POST /api/config` (lines 1214–1235) expose/edit config. Material credential/data confidentiality risk. G2D requires deny guard through app-unpublished reverse proxy; no real credentials except disposable DB secret; no real API/model keys.
+- `app.py` only initializes Streamlit/Forum/Report after user `POST /api/system/start` (lines 1249ff), thus frontend UI process can be smoke-checked without analytical engines; guarded proxy blocks this.
+- Official Dockerfile installs large scientific Python, PyTorch dependency list and Playwright Chromium; prefer prebuilt official image pin-by-digest for speed. Image-to-source immutable correlation remains UNKNOWN.
+- README officially recommends machine RAM >2GB (not 4 GiB currently free); no blanket available memory Gate for G2D. Memory must be monitored when starting actual containers.
+- No Owner host Docker images/containers were started by Reviewer; no local credentials acquired.
+NEXT_GATE: `BTFL-G2D-DOCKER-LOCALHOST-RAPID-BOOT-20261013`.

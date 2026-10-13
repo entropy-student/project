@@ -22,3 +22,11 @@
 - Separate immutable-source review of `media_platform/xhs/core.py` lines 128–131 reveals hard minimum `xhs_limit_count = 20`; `CRAWLER_MAX_NOTES_COUNT=1` alone cannot enforce a one-note canary. Any future real user access requires programmatic limit/guard, not aspirational prompt/config limit.
 - G2 focuses on isolated dependency install if ready and **actual pinned export writer with synthetic data**. G2 does not grant live XHS, browser, login, API key, paid model, or full BettaFish execution.
 - Host memory fluctuated 4.12 → 2.65 GiB after G1L, cause UNKNOWN. Avoid 4 GiB arbitrary mandatory floor; enforce per-Gate bounded stop conditions and report peak/headroom before real crawl.
+
+## Decision 2026-10-13 — Owner returns to Docker for rapid local application bootstrap
+- Owner: “改一下，部署在docker里吧还是，快速搬运项目然后落地应用。” This supersedes unexecuted G2 Windows Python/venv gate, NOT past G1L evidence. BettaFish retained; no change of canonical project.
+- First objective: official BettaFish Docker image and PostgreSQL through localhost-only guarded proxy, **one bounded Gate** for image pull, config, startup, minimal site/db validation, rollback. No full source build/standalone native CLI install now. Exact image digests freeze observed builds; GHCR artifact correspondence with locked source SHA unknown, must report.
+- Reviewer independently found critical unauthenticated `GET /api/config` returns DB_PASSWORD/API_KEY config and `POST /api/config` modifies settings. Therefore official Compose unchanged is NOT safe. Guard through minimal loopback-only reverse proxy, block all APIs by default except status; hide direct Flask port, no public DB port and no real API keys. UI smoke only; not full analysis/crawler functionality.
+- Disposable local DB protected random credential permitted only after explicit Owner delegation in copied relay; no existing user secret. Do not print or store in repo/ordinary artifacts.
+- Official README “内存建议2GB以上” refers to machine recommendation; G2D uses real resource observation, not earlier Reviewer 4GiB currently-free gate.
+- Existing priority keyword → notes/comments → JSON/CSV → Codex remains unchanged. Docker boot is not crawler PASS.
