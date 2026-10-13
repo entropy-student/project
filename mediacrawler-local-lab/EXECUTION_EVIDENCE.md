@@ -19,3 +19,13 @@ ACTUAL_CHANGES: NONE. Source NOT_CLONED. No venv/browser/Node installs, process,
 VALIDATION: preflight correctly failed at strict tool prerequisite; no MediaCrawler runtime validation yet. No confirmed regression in other projects.
 NEXT_ACTION: allow portable project-specific `uv` + Python3.11 in a **new** G1R Gate, followed by original WebUI installation, with monitored resource stop rules. Do not ask Owner for system-wide installs.
 REVIEWER_DIRECT_EXTERNAL_PROOF: GitHub API official uv release `0.12.20`, `uv-x86_64-pc-windows-msvc.zip` SHA256 `95f9bc30fbb3574d276e28ac4a6de932d25153645853d13da8c21eec3bc88d06` (archive length 18,039,150 bytes). Official uv docs: `UV_PYTHON_INSTALL_DIR` and `UV_PYTHON_BIN_DIR` redirect managed Python, `uv python install 3.11 --no-bin` skips default bin shim; `UV_CACHE_DIR` redirects cache. This verification refers to upstream source, NOT local downloaded bytes.
+
+## Event 2026-10-13 — G1R stopped before any writes due to insufficient available RAM
+AUTHORIZED_GATE: `MC-G1R-PORTABLE-TOOLCHAIN-WEBUI-20261013`.
+EXECUTOR_RESULT: `RETURN_RESOURCE_HEADROOM_INSUFFICIENT`; `STOP_AT_REVIEWER=YES`.
+REVIEWER_DECISION: `RETURN_RESOURCE_HEADROOM_INSUFFICIENT`, no MediaCrawler local launch/PASS. SOURCE: `OWNER_REPORTED` sanitized local Codex packet, not Reviewer direct host access.
+PREFLIGHT_FACTS: Windows 11 build 26300 physical mobile station, PowerShell 7.6.5 non-admin, x64; process ancestor not verified. Existing Node 24.19.0/npm 11.17.0/Git 2.55.0. New MediaCrawler directory absent, no redirection known. Host free disk post ~198.81 GiB. TCP 8080/18080 free on this G1R attempt (G1 prior 18080 occupied: time-dependent port drift, not inferred regression).
+RAM_SNAPSHOTS_AVAILABLE_GiB: early `1.947, 1.822`, latest `1.091, 1.106`; minimum observed `1.091`. Current-Gate prerequisite both >=1.5 GiB immediately pre-write was NOT MET.
+ACTUAL_CHANGES: NONE. 0 downloaded bytes, no project dir, no uv exe, no managed Python, no clone, no npm/backend install, no chromium, no HTTP server, no crawler/QR/Cookie/platform request, no image/port/process. HTTP/WebUI/source SHA/lockfile/build tests NOT_RUN. No project rollback.
+ANOMALIES: OS-available-memory variability observed; **no attribution or causation proof**. A resource threshold triggered before official uv network action. This is not evidence MediaCrawler needs >1.5 GiB or that it used the memory.
+NEXT_ACTION: Because resource holds recur across G2D and G1R, Governance sec6 repeated-failure path calls for one bounded **READ_ONLY memory classification Gate** before another install attempt. No global memory reclaim, force close, WSL/Docker edit, arbitrary 1.5 threshold waiver, or VPS action.

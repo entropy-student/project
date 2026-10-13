@@ -9,7 +9,7 @@
 原样快速复刻 **NanmiCoder/MediaCrawler** 至 Owner Windows 11，首次即可操作原版 WebUI，支持小红书/抖音/快手/B站/微博/贴吧/知乎按关键词搜索、详情、创作者、评论、数据预览/导出（JSONL/JSON/CSV/Excel/SQLite 等原版路径），未来输出交给 Codex 分析。**保持开源原有功能，不开发新前端、AI Agent、多平台自动排队或新增 Docker 架构**。官方版每次采集任务通常单平台；不是原生一次执行七个平台队列。使用限学习研究；商业用途需另取得授权。
 
 ## PROJECT_STAGE
-**G1 RETURN_RUNTIME_TOOL_MISSING**: Owner-local Codex reported no uv / no Python 3.11, so G1 stopped in preflight with zero target writes, zero clone, zero processes. Reviewer reconciled as `RETURN_RUNTIME_TOOL_MISSING`, no runtime PASS. **Current G1R portable-toolchain fast-track Gate READY**, allows entirely project-local uv 0.12.20 and uv-managed CPython 3.11 provisioning followed immediately (if safe) by the original G1 WebUI installation/offline proof, in one bounded round. Old G1 no longer active.
+G1 `RETURN_RUNTIME_TOOL_MISSING` with no writes; new portable G1R authorized. **G1R then returned `RETURN_RESOURCE_HEADROOM_INSUFFICIENT` before ANY download or directory creation**, per Owner-relayed Windows Codex evidence. **LOCAL INSTALL ON HOLD**. Active next Gate: `MC-G1M-WIN-MEMORY-READONLY-DIAG-20261013` (read-only ~1-minute narrow RAM attribution), after Owner forwards; never retry G1R unchanged.
 
 ## SYSTEM_MAP
 - Physical Owner-local Windows 11 Home build 26300, Codex on owner host, PowerShell 7.6.5 (past OWNER_REPORTED); must re-prove before writes. Host ~15.28 GiB total RAM; earlier G2D official BettaFish Docker image download caused available RAM to dip 0.587 GiB (cause UNKNOWN), so STOP on new live resource pressure and NEVER touch other workloads/processes, Docker, Clash/WG/HY2/Edge/ChatGPT/Codex/WSL.
@@ -22,10 +22,10 @@
 - License `NON-COMMERCIAL LEARNING LICENSE 1.1`, forbids commercial use without owner consent; follow target platform rules, limits and privacy. First G1 tests only health/flags/UI and **synthetic** export, no social platform real requests.
 
 ## CURRENT_ACCEPTED_STATE
-Owner-reported G1 preflight: Windows 11 build 26300; PowerShell 7.6.5 non-admin; Codex desktop context local but process-ancestry identity not confirmed (UNKNOWN); Git 2.55.0, system Python 3.10.11, uv ABSENT, Python3.11 ABSENT, Node 24.19.0, npm 11.17.0. Target project path did NOT exist, 8080 free, 18080 occupied; available RAM 2.669/2.685 GiB, disk ~199.46 GiB. Codex reported NO files created, NO source checkout, NO dependency download/start. Reviewer has direct GitHub-only readback of upstream pinned SHA and uv official release `0.12.20` Windows x64 archive digest `sha256:95f9bc30fbb3574d276e28ac4a6de932d25153645853d13da8c21eec3bc88d06`. Windows RAM and target identity remain OWNER_REPORTED.
+Reviewer DIRECT_READBACK: exact upstream locked source and official uv release checksum only; no local runtime verified. Owner-relayed G1R: Windows 11 26300, PowerShell 7.6.5, x64, non-admin; local Codex desktop context but process ancestor not confirmed. Node 24.19.0/npm 11.17.0/Git 2.55.0; uv/Python3.11 not yet installed. Free disk 198.81 GiB; memory before Gate 1.947/1.822 GiB, latest before writing 1.091/1.106 GiB, observed min 1.091 GiB. Ports 8080/18080 free on this sample. Project directory absent, ZERO project bytes/writes/downloads/processes, source un-cloned, HTTP/browser/real crawler all NOT_RUN. No proof what consumed lost available RAM. Earlier G2D had 0.587 GiB min during GHCR pull, but cause UNKNOWN.
 
 ## CURRENT_GATE
-`MC-G1R-PORTABLE-TOOLCHAIN-WEBUI-20261013` at `G1R_PORTABLE_TOOLCHAIN_AND_ORIGINAL_WEBUI_GATE.md` (active). Prior `MC-G1-WIN-ORIGINAL-WEBUI-FIRST-USE-20261013` terminated `RETURN_RUNTIME_TOOL_MISSING`, not rerunnable unchanged. G1R authorizes project-local portable uv/Python3.11 **only via Owner forwarding G1R relay**, with existing original WebUI install/launch scope, no real social crawl/login.
+`MC-G1M-WIN-MEMORY-READONLY-DIAG-20261013` in `G1M_WINDOWS_MEMORY_READONLY_DIAGNOSTIC_GATE.md`. Sole active Gate; Owner relay authorizes read-only bounded host RAM attribution and decision outcome, NOT installs. G1R portable toolchain Gate is RESOURCE_RETURN / INACTIVE; cannot retry unchanged, and G1 historical tool-missing RETURN.
 
 ## CRITICAL_CONSTRAINTS
 - Physical Owner Windows local only. Existing Codex, desktop ChatGPT, Edge, Docker/WSL and VPN/Clash, other projects must continue untouched. No process killing/restart/system tweaks, global uv/Node/Git/Python installs, Windows ACL parent rewrites, global cache/prune, admin.
@@ -38,19 +38,20 @@ Owner-reported G1 preflight: Windows 11 build 26300; PowerShell 7.6.5 non-admin;
 Owner's local Windows 11 Codex. Reviewer creates/updates canonical GitHub docs. Owner relays condensed local evidence.
 
 ## CURRENT_ROLLBACK_STATUS
-G1 produced no writes. G1R additive project-owned new directory only, no existing assets touched. On failure: stop only own test service, preserve exactly owned files for review; no destructive cleanup or global prune. Can reconstruct pinned source + deps; once real data/account profiles arrive, separate backup/retention plan required before deletion or migration.
+G1 and G1R both stopped before writes. No MediaCrawler local new project/root/runtime/browser/port, zero rollback needed. BettaFish historic source/possible Docker partial cache remain untouched. New G1M read-only: no writes, no rollback.
 
 ## UNRESOLVED
-Owner host current RAM and prerequisites Python3.11+/uv/Node/npm availability; browser binary size/pressure; port availability; actual package/build/test performance; real XHS/Douyin auth/terms and output quality; task count XHS search has min 20 page behavior; any upstream WebUI cookie-log vulnerability remains under explicit no-cookie rule; no verified long-term multiple-platform workflow.
+Recent Windows Available RAM was only 1.091 GiB despite ~15.28 GiB installed; origin of variability across 2.685→1.091 GiB UNKNOWN. Total committed vs limit, cached/standby vs process private/working set, browser/Node/Python/Docker/WSL consumption and trend NOT MEASURED. Whether enough headroom is sustained for Playwright later remains UNKNOWN. MediaCrawler actual runtime compatibility/size/real platform auth remain untested. Upstream Cookie logging risk and noncommercial license remain.
 
 ## NEXT_STEP
-Owner forwards **G1R**, not old G1, once. Codex checks same fresh target, downloads **verified uv portable executable into new project root**, uses uv-managed CPython3.11 under project-only runtime folder, then installs lockfile deps/npm, builds original static WebUI, obtains project-only Playwright Chromium and serves loopback 8080. If resources / permissions/tools fail, precise RETURN with staged facts. Reviewer inspects results before any live account/crawler actions.
+Owner forwards the one-shot read-only G1M to local Codex. Codex records 3-4 short RAM snapshots (~45-60s), memory commitment and group-aggregated working sets, no process kill/install, finds main resource category if possible and provides evidence-bound recommendation: (a) stabilize and staged G1R only after new Reviewer Gate, (b) voluntary Owner-led freeing specific known app only (not automatic), or (c) isolated/server option after Owner selects remote route and separate resource/login evaluation. Stop after diagnosis; do NOT perform installs in diagnostic Gate.
 
 ## OWNER_ACTION_REQUIRED
-Paste G1R single relay into Owner-local Codex; this expressly authorizes only the listed **project-local** trusted uv binary and uv-managed Python 3.11 download plus existing G1 installation, not system-global installations. No username/password/Cookie/QR, admin, Docker, VPN or other-app changes. Relay sanitized completion.
+Copy G1M read-only diagnostic relay into local Codex once. No need to close any application, change Docker/WSL/VPN, share credentials, or run admin. Relay sanitized category-level results, no identifying process command lines or files.
 
 ## EVIDENCE_POINTERS
-- `G1R_PORTABLE_TOOLCHAIN_AND_ORIGINAL_WEBUI_GATE.md` ACTIVE.
+- `G1R_PORTABLE_TOOLCHAIN_AND_ORIGINAL_WEBUI_GATE.md` RESOURCE_RETURN / not active.
+- `G1M_WINDOWS_MEMORY_READONLY_DIAGNOSTIC_GATE.md` ACTIVE read-only.
 - `G1_WINDOWS_ORIGINAL_WEBUI_LAUNCH_GATE.md` previous tool-missing RETURN.
 - `EXECUTION_EVIDENCE.md` read-only source review; local runtime pending.
 - `DECISION_LOG.md` scope and native-vs-Docker rationale.
