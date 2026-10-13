@@ -29,3 +29,23 @@ NEXT_ACTION: Reviewer avoids forcing a local management checkout. Run narrowly s
 
 ## Event 2026-10-13 — Reviewer canonical documentation
 PROVENANCE: `DIRECT_READBACK` applies only to GitHub repository records through the connected GitHub connector, NOT Owner Windows runtime. This file records the G0 return from Owner-provided Codex text. Reviewer commits under isolated `bettafish-local-lab/` path; no target changes.
+
+## Event 2026-10-13 — G0R resource read-back returned
+AUTHORIZED_GATE: `BTFL-G0R-READONLY-TARGET-RESOURCE-20261013`
+EXECUTOR_RESULT: `RETURN_RESOURCE_HEADROOM_INSUFFICIENT`; `STOP_AT_REVIEWER=YES`
+REVIEWER_DECISION: `RETURN_RESOURCE_HEADROOM_INSUFFICIENT`; do NOT enter G1 Docker deployment.
+SOURCE: `OWNER_REPORTED` from local Codex sanitized evidence relayed by Owner; this is not direct reviewer access to the Windows physical host.
+
+TARGET_LOCAL_PROOF: Codex host-process ancestry on Windows 11 and HP OEM mobile workstation; WSL/SSH context markers absent; console/RDP markers unavailable. No identifying host/user values output. This makes Owner-local execution plausible, with session type remaining UNKNOWN.
+PS_VERSION: 7.6.5.
+OS: Windows 11 Home Chinese edition, build 26300.
+HOST_TOTAL_RAM_GiB: 15.28.
+HOST_AVAILABLE_RAM_GiB: 1.78 (G0R instant sample).
+DOCKER_ENGINE_RAM_GiB: 7.40 (engine's visible total capacity, **not** Docker's free RAM nor current consumption).
+DOCKER_RESPONSE_EXIT: 0.
+RESOURCE_CRITERION: ~4 GiB currently available host RAM for conservative app + PostgreSQL first run; project-specific planning criterion, NOT validated upstream minimum. Current shortfall ~2.22 GiB. Host fails, engine reported capacity above criterion; neither alone proves successful startup.
+ACTUAL_CHANGES: `NONE` reported; no process termination, config/network/VPN mutation, image pull, container execution, or Secret use.
+ANOMALIES: Console/RDP markers unavailable; memory dynamic and must be freshly rechecked before any resource-consequential start.
+ROLLBACK_EFFECT: NONE_TARGET reported; no target rollback.
+FOLLOW_UP: Owner may choose to save work and close **their own** nonessential apps (no automatic killing). Only then perform a bounded read-only RAM + engine recheck under `G0M_MEMORY_RECHECK_GATE.md`; return to Reviewer to decide whether to authorize a separate G1. No next Gate is implicitly preauthorized to deploy.
+
