@@ -16,3 +16,9 @@
 - It does not state that 4 GiB **currently free** RAM is mandatory. Reviewer-authored ~4 GiB free RAM for full Flask + PostgreSQL + 3 Streamlit service boot was an extra risk buffer and should never have been framed as vendor minimum or general installation blocker.
 - Owner PC total 15.28 GiB; it meets the documented host-memory recommendation, but full-service peak usage remains unmeasured. Don't conflate total system memory, currently available memory, Docker Engine VM capacity, image/disk footprint and peak use.
 - G1L is isolated source/synthetic-only, no full stack deployment; it has its own lightweight preflight. Keep future real collector memory evidence staged and observed. G0M remains a historical optional/full-compose preparation Gate, not prerequisite to G1L. Any future full Compose criterion may be revised with appropriate evidence and safety monitoring.
+
+## Review 2026-10-13 — G1L partial acceptance and actual XHS 20-item floor
+- Owner provided G1L `PASS_CANDIDATE` with correct immutable root+submodule refs and synthetic 3-note/4-comment report. Reviewer independently inspected upstream source and accepted CLI/export contract, but has not directly accessed Owner local synthetic JSON, so formal G1L overall status is `PARTIAL`, not runtime PASS.
+- Separate immutable-source review of `media_platform/xhs/core.py` lines 128–131 reveals hard minimum `xhs_limit_count = 20`; `CRAWLER_MAX_NOTES_COUNT=1` alone cannot enforce a one-note canary. Any future real user access requires programmatic limit/guard, not aspirational prompt/config limit.
+- G2 focuses on isolated dependency install if ready and **actual pinned export writer with synthetic data**. G2 does not grant live XHS, browser, login, API key, paid model, or full BettaFish execution.
+- Host memory fluctuated 4.12 → 2.65 GiB after G1L, cause UNKNOWN. Avoid 4 GiB arbitrary mandatory floor; enforce per-Gate bounded stop conditions and report peak/headroom before real crawl.

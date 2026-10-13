@@ -71,3 +71,24 @@ NEXT_GATE: `BTFL-G1L-ISOLATED-CRAWLER-EXPORT-OFFLINE-20261013`; code/data fixtur
 SOURCE: `DIRECT_READBACK` GitHub official `666ghj/BettaFish` `README.md` and `README-EN.md` from current upstream, section "运行环境要求" / Requirements.
 FINDING: Official memory recommendation is "建议2GB以上" / "2GB+ recommended". Source does not assert 4 GiB currently free host RAM is necessary. Earlier Reviewer ~4 GiB free RAM planning condition was deliberately conservative for full multi-service Compose, not an upstream requirement and not applicable to G1L source-only Gate. This is a clarification, not a correction to the historical G0R raw measurement.
 ACTUAL_CHANGES: GitHub project documentation only, no Owner-local host action.
+
+## Event 2026-10-13 — G1L Codex result reviewed; accepted as PARTIAL / source readiness
+
+AUTHORIZED_GATE: `BTFL-G1L-ISOLATED-CRAWLER-EXPORT-OFFLINE-20261013`.
+EXECUTOR_RESULT: `PASS_CANDIDATE`; `STOP_AT_REVIEWER=YES`.
+REVIEWER_STATUS: `PARTIAL` (bounded offline source-contract candidate supported; local synthetic artifacts, exact runtime workspace and resource use remain `OWNER_REPORTED`, not independently inspected by current Reviewer; formal full Gate PASS withheld). Low-risk G2 isolated preparation may still proceed without presuming real crawl or resource PASS.
+PROVENANCE: `OWNER_REPORTED` for local Codex execution, checkout, filesystem, simulated files, system readings, subprocess actions. `DIRECT_READBACK` for Reviewer independent upstream GitHub source-file/gitlink review. No reviewer direct physical Windows files/runtime.
+PREFLIGHT_FACTS:
+- Same Windows 11 26300, PowerShell 7.6.5, HP OEM portable workstation, Codex parent, no WSL/SSH markers; console/RDP marker unavailable, no personal ID. Host facts only Owner relay.
+- Root commit `b67928ff1ce515dd7672408221fb1e9500d0972d`; pinned MediaCrawler Gitlink `4de2a325a9cd4f7de7dfb58204b154fc2bb86e40`; source proven separately in GitHub.
+- Host currently available RAM pre 4.12 GiB / after 2.65 GiB, low point 2.27 GiB; resource snapshot fluctuated. Cannot attribute ~1.47 GiB drop to git checkout alone. Target disk post free 204.68 GiB.
+ACTUAL_CHANGES: Owner reports one newly created isolated checkout rooted under expected LOCALAPPDATA project namespace plus exactly three synthetic JSON files under offline-smoke. Reported checkout volume-delta 411.49 MiB, owned directory 383.96 MiB; no tracked-code changes; submodule clean; no deps install, crawl, browser, Docker, platform access or credentials.
+OBJECTIVE_READBACK: Codex reports pinned independent CLI `main.py` with xhs/search/keywords/comments/save_data_option=json support; source-only not executed. Builtin JSON-array writer path `data/{platform}/{format}/{type}_{item}_{date}.{format}`; JSON/CSV supported, JSONL not proven. Reviewer independently confirms pinned source CLI/options/exporter and MindSpider wrapper DB coupling.
+SYNTHETIC_VALIDATION (OWNER_REPORTED):
+- 3 invented notes, 4 invented comments; 4 note_id joins, zero orphan comments; required keyword/time fields present. Initial PowerShell array parser issue corrected, no new failure after reread.
+- Artifact SHA256 labels: notes.json `15b4d5f59f4fef49a5649ed93d690a34a9805a5d1b5b1a25d6187ed10865c5b9`; comments.json `a5b3da3eca51c832773082862dd3c7efde8f517c429b6d42994b1492cff9fa7d`; summary.json `d8544aff62b4456eccfa81bfdc1ac0f00e5bf560aeeed5ec86bbaaa42e9c542a`. SHA strings format-valid; file bytes never independently accessed or hashed by Reviewer.
+RISKS: Pinned XHS note URL can embed sensitive xsec_token; code/console logs may carry credentials, profiles, IDs. CDP default true risks existing Chrome/Edge session. Noncommercial learning license. Real crawl untested.
+ADDITIONAL_REVIEWER_DIRECT_SOURCE_FINDING: Pinned `media_platform/xhs/core.py` `search()` has `xhs_limit_count=20` and forcibly sets `CRAWLER_MAX_NOTES_COUNT` to at least 20 if smaller (lines 128–131). Therefore setting note limit=1 in config does NOT prove 1-note canary. An explicit reviewed execution-time guard before network/details/save is required before a real crawl; do not automatically authorize real social actions from this result. Comment count also requires a verified hard upper bound.
+RESOURCE_OR_BUSINESS_DELTA: No report of charges/external actions; file staging ~0.4 GiB, free RAM variable. Real source-only lightweight candidate, NOT actual crawl or full Compose readiness.
+ROLLBACK_EFFECT: Only project-new owned files; no deletion requested or authorized; G2 must verify source checkout state first.
+NEXT_ACTION: G2 isolated dependency + true `AsyncFileWriter` synthetic export smoke; no real crawler/platform/browser/auth; bounded memory/disk and exact existing workspace. Future G3 authentication/real XHS crawl requires explicit Owner authorization + safe one-item hard guard verification and platform compliance.
