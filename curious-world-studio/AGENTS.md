@@ -1,16 +1,15 @@
-<!-- CWS-STABLE-WORKFLOW-20261011 -->
-> **当前有效入口**：[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)。**R1多轮、R2条件设计与R2-M1均已独立Review；当前`CW0005_VISUAL_STORYFIT_HOLD`，Owner决定先不换题并暂停所有新任务**；不可按旧的CW0004/CW0008建议自动切题，见[完整交接](docs/REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；CWS本地清理审计+纠错已Reviewer通过，安全可删0B，实际删除0项。Mac动效支线停止新增开发，Owner Windows`file://`与最后视觉签收仍待确认。**G1未正式PASS、G2未授权。**
->
-> **固定交接**：默认只把Reviewer的**文字任务提示词**发给本地Codex；Codex交付一个包含证据、manifest与SHA的ZIP，由Owner转给Reviewer。无需再把Reviewer的ZIP反向传给Codex，除非特定不可重建的输入必须传递。普通报告不进GitHub；经批准的长效规范/生产代码/重大决策才提交。
->
-> **本地常用文档**：若本机已存在Git checkout，先读本地Git受控规范；Codex从**后续获得工作区写权限的任务**起可将必要工作笔记、源权利台账、RUN索引及ZIP存在 `curious-world-studio/.local/`（受项目`.gitignore`保护），不得将其当成另一份正式规范；**R2/M1已在本地`.local/`交接；Owner当前没有授予新的执行权限**。未经Owner单独批准不付费、不外联、不删除、不改变版权状态、不发布。
+<!-- CWS-STABLE-WORKFLOW-20261015 -->
+> **2026-10-15最新**：先读[唯一当前状态](docs/CURRENT_STATE.md)、[当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)与[MEDIA素材技术架构/阶段规划](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。**素材工具支线MEDIA-R4+R5已执行并部分接受**：本地清理约643MiB、非PeerTube十站成功（较PBS/ARD历史基线增加八站）、过滤8/8与QA12/12独立通过。**正式制作仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`；尚未将`.local`中的媒体技术代码合并进正式主线。**
+> **编号不可混淆**：`MEDIA-R4+R5`是工具清理/国际来源扩展；`PROD-R4`才是四轮制片流程中的第一版完整草片。未来`MEDIA-INTEGRATION`、`MEDIA-R6`、`MEDIA-R7`均未因本文而自动授权。
+> **Owner已锁定的MEDIA获取默认**：排除中国大陆视频平台及全球竖屏/方形素材，最终显示比例≥4:3，未知画质先核实，优先1080p横屏，保留每次拒绝理由；本地流程已验，正式代码待独立接入。**3+1与Research Aqua不变；下载成功与制作许可/内容核验分开**。
+> 普通ZIP验收留本机，重大决策/架构/正式稳定代码才进Git；获准修改生产代码须分支PR/Reviewer核查。不得再把2026-10-12“Owner暂停所有新任务”的旧快照覆盖上述已恢复的MEDIA工具工作；不自动升级制作Gate或发布。
 
 # Agent 入口（本项目唯一）
 
 本项目目录用于保存频道研究与视觉规范，不是执行一次全自动视频制作。
 
 ## 读文件优先级
-1. **唯一当前状态、ZIP任务交接、读文件最短路径：`docs/CURRENT_STATE.md`**；项目简介 `README.md`。`docs/STATUS_AND_DECISIONS.md` 与历次 Reviewer 报告仅历史溯源。
+1. **唯一当前状态：`docs/CURRENT_STATE.md`**，以及 `docs/REVIEWER_HANDOFF_CURRENT.md`、`docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md`；项目简介 `README.md`。`docs/STATUS_AND_DECISIONS.md` 与历次 Reviewer 报告仅历史溯源。
 2. **研究任务唯一权威协议** `research/HF_有趣发现_唯一主协议.md`。严禁把旧 v1/v2/v3 报告当成并行命令。
 3. **视觉任务唯一权威规范** `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`，参数在 `visual/retro-mac-v1.2/config/design-tokens.json`；当前 HTML 仅作预览参考。
 4. 频道气质 `docs/CHANNEL.md`；只有存在具体冲突时才向 Owner 请求裁决。

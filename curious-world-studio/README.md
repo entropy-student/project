@@ -1,24 +1,24 @@
 # Curious World Studio · 世界有点意思（暂定）
 
-> **项目性质**：不露脸的真实发现 / 跨领域探索故事频道，当前为**研究协议 + 视觉规范的文档与原型模块**，不是可自动生成完整视频的成品系统。
->
-> **项目目录名**：`curious-world-studio` 是项目代号；“世界有点意思”目前只是**频道名称候选**，未正式注册或最终确定。
+> **2026-10-15当前状态**：这是Owner的跨领域、不露脸知识视频项目，不是现成成片软件。素材**MEDIA**工具支线已通过跨站搜索、批量下载、格式QA与本地预览的专项测试，最近`MEDIA-R4+R5`清理约643MiB并实测10个非PeerTube成功网站（8个新于历史PBS/ARD基线）。本地横屏/大陆平台过滤通过回归，**仍未合并正式制作源码**。正式节目`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 
-## 一句话定位
+频道核心原则：**知识小众，问题大众；现场具体，过程有趣；证据真实，承诺兑现**。
 
-像一个好奇心旺盛的朋友，发现了一件不可思议但真实存在的事情，忍不住打开资料给大家看，并弄明白它为什么会这样。
+## 当前唯一入口
 
-**核心原则：知识小众，问题大众；现场具体，过程有趣；证据真实，承诺兑现。**
+- [最新状态/协作边界](docs/CURRENT_STATE.md)
+- [当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)
+- [MEDIA技术架构与阶段映射](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)
+- [PROD四轮制片流程（仍有效）](docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)
+- [“3+1”正式素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)
 
-频道向观众的承诺：**每期分享一个值得好奇的真实发现，让观众看见它、弄明白它，并清楚知道研究证实了什么、没有证实什么。**
+**不要混淆**：`MEDIA-R4+R5`为媒体工具实验，`PROD-R4`才是第一版完整草片；两个Gate不互相升级。旧Review和历史阶段快照保留作溯源，不是目前待执行任务。
 
-> **当前执行顺序**：先读 [唯一活状态 / ZIP交接](docs/CURRENT_STATE.md)；项目旧Review、M1/M2测试、G0报告只作历史证据。**清理审计和纠错已Reviewer通过：安全删除0B，已结束；主线R1多轮、R2、R2-M1已审，爆米花核心视觉`CW0005_VISUAL_STORYFIT_HOLD`，Owner明确先不换题并暂停推进**。今后普通轮次只交ZIP和SHA，不再每天更新仓库文档。只有正式代码/模板/长期规范/重大决定才更新GitHub。 **Codex可在本地Git checkout读正式规范，不需每轮下载；后续获准执行任务可把简短工作笔记、权利台账和ZIP存到项目忽略的 `.local/`，不上传Git。**
-
-**新 Reviewer 唯一详细交接**：[2026-10-12 交接｜暂停不换题](docs/REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。该文档包含 R1→R2-M1 五轮ZIP哈希、素材/版权细节及当前STOP决定，取代旧阶段的待执行提示词。\n\n## 当前组成
+## 当前组成
 
 | 模块 | 权威文件 | 状态 |
 | --- | --- | --- |
-| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **唯一活状态：R2-M1已独立Review，CW0005视觉HOLD且Owner暂停、不换题；清理零删除、Mac支线停新增、G1未正式PASS**。以下其他行保留为对应历史版本的技术记录 |
+| **当前项目状态与任务交接** | **[docs/CURRENT_STATE.md](docs/CURRENT_STATE.md)** | **2026-10-15当前状态：MEDIA工具技术闭环实测、R4+R5 PARTIAL，正式CW-0005/G1/G2仍HOLD** |
 | 频道定位与边界 | [`docs/CHANNEL.md`](docs/CHANNEL.md) | 核心定位已确认，频道名称待定 |
 | HF 选题方法 | [`research/HF_有趣发现_唯一主协议.md`](research/HF_有趣发现_唯一主协议.md) | 唯一选题主协议 v1.0 |
 | 视觉风格 | [`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`](visual/retro-mac-v1.2/docs/STYLE_LOCK.md) | 当前 v1.2 视觉基线，允许后续小细节修订 |
