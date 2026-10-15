@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING
+CURRENT_GATE=G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -189,6 +189,15 @@ G3CR7_STATUS_STANDALONE=QA_ONLY
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
+PAYMENT_TARGET_PROVIDER=STRIPE
+STRIPE_MERCHANT_ACCOUNT_REGION=UNKNOWN
+STRIPE_ACCOUNT_EXISTS=UNKNOWN_UNVERIFIED
+STRIPE_TEST_GATEWAY_INTEGRATION=PENDING
+STRIPE_LIVE_COLLECT_AND_PAYOUT=HOLD_UNVERIFIED
+PAYPAL_RETIREMENT=CONSIDERING_NOT_AUTHORIZED
+PAYPAL_CURRENT_SANDBOX_EVIDENCE=RETAIN
+FRONTEND_VISUAL_FREEZE=PASS_KEEP
+STRIPE_READINESS_GATE=G3S0
 ```
 
 ## SYSTEM_MAP
@@ -232,19 +241,19 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING`
+`G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS`
 
-Owner has **accepted the final homepage / Free Preview / core intake frontend UI** as of 2026-10-15. Stop visual-polish loops absent a new concrete Owner request.
+Owner authorized **Stripe as the target payment provider** for Birthday Magazine Studio and is **considering** retiring PayPal, not authorizing its removal.
 
-Authority:
-- `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`
-- latest PR #64 visual candidate: `c90e6f93803ad861745cd476106e00d01c68debb`
+Owner decision:
+- `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
 
-The latest source and test results remain Executor `PASS_CANDIDATE` until independent Reviewer reconciliation. Earlier accepted technical/business evidence remains usable within its unchanged scope.
+Active read-only Gate:
+- `docs/G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS.md`
 
-PR #64 is **open, unmerged, mergeable=false**. Its long-lived branch diverges substantially from `main`. No merge action is authorized; a bounded reconciliation Gate is needed.
+This Gate establishes official Woo Stripe gateway/test-mode/HTTPS/merchant prerequisites before any account or provider mutation. Its PASS does not mean Stripe is connected or real-money collection is proven.
 
-Next technical business layers remain unimplemented: persistent prepayment draft, payment-bound generation, private proof/revision/download/retention and final P1–P12.
+Existing PayPal Sandbox proof, Woo canonical order, Owner-frozen frontend, PR #64 unmerged state, and all critical data/privacy/paid-generation boundaries remain intact.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -309,17 +318,25 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Reviewer independently reviews the latest frontend `PASS_CANDIDATE` source/evidence and correlates its frozen behavior to prior accepted baselines; no visual rework.
-2. Reviewer prepares a bounded PR #64 pre-merge conflict/integration Gate preserving all accepted branch evidence, with no blind rebase/reset; do not merge without separate authorization and Gate.
-3. After accepted source integration, start pre-payment server draft persistence with 12–25 photos, six answers, ephemeral retention and exact Woo order correlation.
-4. Then implement paid-entitlement-to-one-generation-job idempotency, production 12-page magazine output, authenticated proof/revision/download and automatic deletion.
-5. Real-money/payment live canary, production deployment and real customer validation remain separate Owner-authorized milestones.
+1. Executor performs G3S0 read-only Stripe merchant/test-gateway/HTTPS compatibility discovery in the existing local project environment; no Stripe account is assumed to be active.
+2. Reviewer independently reviews readiness/eligibility and, only after PASS, opens a bounded Stripe **test-only** integration Gate using the official WooCommerce Stripe Gateway.
+3. Owner handles Stripe account country/entity, KYC/KYB and login/OAuth/bank linkage only at explicitly identified Stripe-controlled checkpoints.
+4. Complete temporary server-side pre-payment intake draft persistence before any paid generation-ready production chain.
+5. Preserve PayPal Sandbox evidence and keep PayPal installed until separately Owner-authorized migration closeout; test, live collection and payout proof are separate.
+6. PR #64 still requires independent pre-merge reconciliation; current frontend visuals remain frozen.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has already explicitly accepted the frontend UI. No further visual iteration, credentials, deployment or payment action is requested.
+**NONE to start G3S0.** After the read-only readiness Gate, Owner may need to confirm whether a Stripe account already exists and complete account/test-mode authorization in Stripe/Woo controlled UI. Do not provide account credentials, identity documents or bank numbers in chat.
 
 ## EVIDENCE_POINTERS
+
+Current Stripe migration:
+1. `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
+2. `docs/G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS.md`
+3. `docs/MVP_PRODUCT_CONTRACT.md` — payment-before-generation and pre-payment draft requirements
+4. `docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` — historical PayPal provider-specific proof, not Stripe PASS
+
 
 Current visual Owner acceptance 2026-10-15:
 1. `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`
