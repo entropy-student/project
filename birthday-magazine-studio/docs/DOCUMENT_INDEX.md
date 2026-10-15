@@ -12,7 +12,8 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` | One-stop context, read order and exact next-Reviewer verification |
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
-| `G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` | **Current Gate: read-only classification of the blocked WordPress start; G3S1 staging ON HOLD** |
+| `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
+| `G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` | **Current Gate: read-only diagnosis of start-policy refusal and possible cleanup impact; G3S1 staging ON HOLD** |
 | `REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` | **Latest formal G3S1 RETURN**, DB-only partial state and missing Woo/backup proof |
 | PR #64 `evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` | Executor's partial local readbacks; reviewed with host-provenance limitations |
 | `G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` | **Previous implementation Gate on hold**, not PASS; Stripe install NOT attempted; pre-existing plugin state UNKNOWN |
