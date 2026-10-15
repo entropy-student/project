@@ -1,10 +1,10 @@
 # CWS｜MEDIA-OPERATIONS-INTEGRATION：Codex统一素材工具
 
-> **Owner已授权，2026-10-15；待Windows本机执行/独立Reviewer验收。** 本轮把已有的CWS搜索、筛选、按ID下载、FFmpeg技术QA和HTML素材库封装成**一个供Codex调用的轻量CLI**。不做给Owner操作的桌面GUI，不部署VPS或常驻服务，不重复G2 Ubuntu卸载，不做R6精准镜头匹配或PROD制片。
+> **历史执行合同｜2026-10-15已完成并正式合并main，勿重复实施。** 技术Review `MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION`；[PR #131](https://github.com/entropy-student/project/pull/131) squash commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)。下述实施步骤保留供历史追溯，未来新需求要另立Gate。 本轮把已有的CWS搜索、筛选、按ID下载、FFmpeg技术QA和HTML素材库封装成**一个供Codex调用的轻量CLI**。不做给Owner操作的桌面GUI，不部署VPS或常驻服务，不重复G2 Ubuntu卸载，不做R6精准镜头匹配或PROD制片。
 
 ## 目标使用方式
 
-示意接口（**尚不存在；由Codex实现后再验收**），从仓库根目录调用：
+现已合并的实际统一CLI示例（运行仍取决于本机工具和Docker就绪、搜索上游可能部分降级），从仓库根目录调用：
 
 ```powershell
 python curious-world-studio/media-pipeline/cws_media.py doctor --json
@@ -33,6 +33,6 @@ python curious-world-studio/media-pipeline/cws_media.py gallery --json
 - 本机真实验证`doctor`、`discover`的Docker自动启动/两引擎非空检索/自动关闭，`catalog`与`gallery`无服务运行，`fetch --ids`只下载明确选中的有界公开视频并经FFmpeg完整解码+SHA；再次启动复用缓存。旧结果可用于回归但**不得冒充本轮真实搜索/下载**。
 - 覆盖重复调用、已有容器与端口归属、Docker不在线、低内存/磁盘、部分搜索引擎失败、缺失ID、下载失败、用户Ctrl+C、异常退出/无残留、退出码和JSON schema。
 - 在隔离分支提交**一个最小PR**（统一入口、必要Compose模板、单元/真实集成测试、一页README），不自行合并；本轮交**一个脱敏证据ZIP+外层SHA、内部SHA/manifest、运行日志/关键结果和Reviewer handoff**。不上传Ubuntu tar、原片、Cookie/代理凭据。
-- **`MEDIA_OPERATIONS_INTEGRATION_PASS`只能由独立Reviewer在实际Windows运行+PR审查后授予。** 当前为`AUTHORIZED_PENDING_EXECUTION`。MEDIA-R6/R7、PROD-R1~R4、`CW0005_VISUAL_STORYFIT_HOLD`均不改变。
+- **本轮已完成`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION`并合并PR #131**；包括真实SearXNG/4get与Ctrl+C运行证据。请以本合同和Reviewer证据判断原授权范围，**不得将部分上游故障、素材内容或版权问题称为全量PASS**。MEDIA-R6/R7、PROD-R1~R4、`CW0005_VISUAL_STORYFIT_HOLD`均不改变。
 
 历史基础：G2–G4 `G2_G3_G4_TECHNICAL_ACCEPT`，证据ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip` SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`；这不意味着统一入口已经实现。

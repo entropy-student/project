@@ -1,6 +1,6 @@
 # CWS｜MEDIA素材架构与阶段路线（长期规范 · 2026-10-15）
 
-> **最新事实**：Windows本机Docker Desktop按需运行SearXNG+4get的**G2–G4已完成并获`G2_G3_G4_TECHNICAL_ACCEPT`**；旧无Docker、只读恢复、Brave/Exa收费API优先方案不是当前路线。代码PR#129已合并`main`；**本轮Docker Compose/生命周期脚本尚未入main**。正式视频仍`CW0005_VISUAL_STORYFIT_HOLD`，素材技术通关不能代替权利/内容审查。
+> **最新事实**：Windows本机Docker Desktop按需运行SearXNG+4get的**G2–G4已完成并获`G2_G3_G4_TECHNICAL_ACCEPT`**；旧无Docker、只读恢复、Brave/Exa收费API优先方案不是当前路线。代码PR#129及Codex统一CLI/Compose PR#131**均已合并main**（后者squash commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）；运行时上游可部分降级但默认fail-closed。正式视频仍`CW0005_VISUAL_STORYFIT_HOLD`，素材技术通关不能代替权利/内容审查。
 
 ## 1. 架构与模块职责
 
@@ -46,7 +46,7 @@ G2–G4的唯一证据ZIP：`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA
 
 | 阶段 | 目的 | 当前状态 |
 |---|---|---|
-| **MEDIA-OPERATIONS-INTEGRATION** | 将G3/G4中实测的Compose/Windows启停/隔离浏览器QA做成可重复、可一键运行的正式工具 | **优先建议，未获自动执行授权；应单独PR** |
+| **MEDIA-OPERATIONS-INTEGRATION** | 在Codex可调用的`cws_media.py`统一CLI中按需启停Docker搜索、索引/显式ID下载/QA/图库、错误及Ctrl+C清理 | **技术验收`PASS_WITH_UPSTREAM_DEGRADATION`，PR #131已合并main**；浏览器自动测试记录仅在已获许可的隔离实例进行 |
 | **MEDIA-R6** | 输入真实目标动作，定位素材中行为实际发生的时间码、筛选高清有效镜头、检测近重复；用两种不同题材验证 | 待授权 |
 | **MEDIA-R7** | 逐分镜输出视频、准确时段、来源、预览、权利/内容状态与缺口 | 待授权 |
 | **PROD-R1～R4** | 真实选题/证据→剧本与画面→30–60秒音画字幕联调→完整内部草片 | 与MEDIA完全独立，CW-0005 HOLD，未放行新制作 |

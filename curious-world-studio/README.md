@@ -1,6 +1,6 @@
 # Curious World Studio · 世界有点意思（名称暂定）
 
-> **项目状态（2026-10-15）**：CWS是一套不露脸、跨领域真实知识视频的研究与制作项目；**媒体素材的Windows本机Docker技术闭环已通过G2–G4验收，但正式镜头动作匹配、版权与整片制作仍未通过**。唯一现行状态见[CURRENT_STATE](docs/CURRENT_STATE.md)，不要使用历史“待执行G2-G4”的说明作为当前指令。
+> **项目状态（2026-10-15）**：CWS是不露脸的跨领域真实知识视频项目；素材Windows Docker技术闭环G2–G4已过、Codex统一CLI与Compose经Reviewer技术验收后随[PR #131](https://github.com/entropy-student/project/pull/131)正式合并main，**但精准镜头匹配、素材复用权及完整成片未通过**。唯一现行状态见[CURRENT_STATE](docs/CURRENT_STATE.md)，不要使用历史“待执行G2-G4”的说明作为当前指令。
 
 频道编辑原则：**知识小众，问题大众；行为具体，过程有趣；证据真实，承诺兑现**。频道名/Logo未最终确定；B站主阵地，不强制把每期凑到固定分钟数。
 
@@ -26,7 +26,7 @@
 | MEDIA搜索 | **Docker按需SearXNG+4get**，G3四组API非空，316原始记录→77视频/135图片去重 |
 | MEDIA获取与QA | [media-pipeline](media-pipeline/README.md)代码已并入main（PR#129），按ID下载、过滤、FFmpeg完整解码、HTML页技术可用 |
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
-| 运行产品化 | G3/G4的Compose与启停脚本**目前仍为本机独立执行工件，未通过PR纳入正式main** |
+| 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
 | MEDIA-R6/R7 | 动作精准匹配、时间码、分镜素材包尚未开始 |
 | PROD制片 | `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`，无成片/发布授权 |
 
@@ -34,7 +34,7 @@
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**建议但未授权的下一件事**：将现有Windows本机成功运行的Docker Compose、按需启动/停止与自动浏览器技术QA整理成可维护工具，在隔离分支提交PR；其后再推进MEDIA-R6精准镜头与MEDIA-R7分镜素材包。正式制作轨道保持HOLD。涉及付费/版权/清理/上线必须Owner单独决定。
+**下一步建议（尚未授权）**：结束反复优化素材搜索基础设施，优先研究MEDIA-R6“真实动作/时间段识别”，再做R7逐镜头素材包；正式制作仍HOLD。统一CLI已经能给Codex调用，但搜索条目并非已经逐条观看、下载、内容吻合或取得许可。涉及付费/版权/清理/上线必须Owner单独决定。
 
 ## 历史报告与许可证
 

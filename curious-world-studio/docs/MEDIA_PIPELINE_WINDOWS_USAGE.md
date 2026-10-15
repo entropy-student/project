@@ -1,6 +1,6 @@
 # CWS MEDIA pipeline｜Windows 本地使用说明
 
-> **2026-10-15运行事实**：MEDIA工具代码已入main，Windows G2–G4已实测**本机Docker Desktop按需启动SearXNG/4get**并停机释放端口；本说明为独立CLI手动入口，**Docker Compose/Windows一键启停脚本尚未作为正式PR入main**。旧文档中“无Docker尚未通过”是历史尝试，不是当前运行路线。G2–G4已完成，见[最新状态](CURRENT_STATE.md)；无需重做Ubuntu注销。
+> **2026-10-15运行事实**：MEDIA工具代码已入main，Windows G2–G4已实测**本机Docker Desktop按需启动SearXNG/4get**并停机释放端口；本说明为独立CLI手动入口，**Docker Compose与统一Codex JSON CLI已随PR #131入main**。旧文档中“无Docker尚未通过”是历史尝试，不是当前运行路线。G2–G4已完成，见[最新状态](CURRENT_STATE.md)；无需重做Ubuntu注销。
 
 **范围：**该本地可选入口于2026-10-15经PR#129合并`main`；属于CWS素材工具链中的独立入口，用于搜索发现、候选去重与索引、显示方向/格式核验、指定ID下载、FFprobe/FFmpeg QA和本地素材页。它不替代OpenMontage库存来源或正式制作系统，也不改Research Aqua、Remotion、题库或任何节目Gate。
 
@@ -30,10 +30,10 @@
 
 4get目前只调用首页结果；分页必须先验证当前实例返回的next-page令牌结构，程序不会猜测或伪造令牌。
 
-## 无Docker验收与回滚
+## 统一Codex入口与回滚
 
-无Docker整链试验按[正式Gate协议](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)执行。**尚未获得无Docker整链PASS**；即使搜索客户端未调用Docker，也必须验证SearXNG/4get的实际进程来源及是否依赖容器。HTML可由仅绑定127.0.0.1的短时静态HTTP服务器检查，以解决旧`file:`被阻止问题，但必须实际浏览器播放并保留证据。
+新用法参考[media-pipeline/README.md](../media-pipeline/README.md)：`cws_media.py doctor / discover / catalog / fetch / gallery`。按需启动本项目Docker服务，用后停止并保护其它项目；实时SearXNG/4get上游可能部分失败，默认`PARTIAL_SEARCH`返回非零与`ok:false`，仅主动使用`--allow-partial`接受降级。技术浏览器验证要在独立测试会话中自动完成，不强制要求Owner反复手播；**不允许将搜索结果直接算为可商用素材**。旧[无Docker实验合同](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)仅供历史追溯，不再是当前运行计划。
 
-PR #129已合并`main`，不要将“删除已经合并的源码文件”当成普通回滚。回退已接受的源码应通过新PR/受控revert；本地试验资源位于被忽略的`.local/`，按Owner明确的清理授权保留和处理，不修改历史ZIP。
+PR #129及PR #131均已合并`main`，不要将“删除已经合并的源码文件”当成普通回滚。回退已接受的源码应通过新PR/受控revert；本地试验资源位于被忽略的`.local/`，按Owner明确的清理授权保留和处理，不修改历史ZIP。
 
 Research Aqua、Remotion 及“3+1”来源合同未被本PR修改。生产媒体授权、实际动作核验、字幕/音轨/渲染与CW-0005正式Gate均不属于此本地工具的验收范围。
