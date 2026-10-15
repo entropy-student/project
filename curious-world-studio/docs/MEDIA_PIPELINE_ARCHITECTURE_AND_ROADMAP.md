@@ -1,6 +1,6 @@
 # CWS｜MEDIA素材架构与未来阶段路线（长期规范）
 
-> **Owner已确定 / 2026-10-15**。本文件记录已证实的媒体工具架构与未来工程路线。**只有“排除国内平台与非横屏、本地清理、保留核心工具”属于已批准规范；下一阶段实现与制作Gate均需另行授权**。`PROD`节目制作与`MEDIA`基础设施测试有独立编号。
+> **Owner已确定 / 2026-10-15；PR #129现已合并 `main`。** 本文件记录长期MEDIA架构。排除中国大陆平台和非横屏、受限单独素材技术获取为已实现工具能力；**无Docker整链运行、动作精配、节目制作均尚未被验收**。`PROD`与`MEDIA`独立编号。
 
 ## 1. 为什么修改架构
 
@@ -23,7 +23,7 @@
 
 **搜索结果量、去重URL、成功解析、实际下载、解码、动作吻合、复用许可是七个不同指标**，不得互相替代。网站应分`入口域名`/`实际原始视频托管域名`/`平台家族`，不计CDN为新增网站。PeerTube多实例是多站点但通常不是多种提取器家族。
 
-Windows本地素材入口候选及运行顺序见[MEDIA pipeline使用说明](MEDIA_PIPELINE_WINDOWS_USAGE.md)，实现位于[`media-pipeline/`](../media-pipeline/)。2026-10-15该候选已获Owner授权进行本机实测并提交独立PR；在Reviewer验收与Owner合并前，它不代表`main`生产入口已切换，也不改变CW-0005或制作Gate。
+Windows本地可选工具使用说明见[MEDIA pipeline使用说明](MEDIA_PIPELINE_WINDOWS_USAGE.md)，源码位于[`media-pipeline/`](../media-pipeline/)。经Reviewer独立修复验收后，PR #129 于2026-10-15 **已合并main**（commit [`10b369ee`](https://github.com/entropy-student/project/commit/10b369ee5558ed9a0ac2f738aea978623f62ba0f)）；它**不替换**OpenMontage、正式节目渲染/素材权利Gate，也**尚未**证明整链无Docker。
 
 ## 3. 已确定默认过滤与质量规则
 
@@ -33,7 +33,7 @@ Windows本地素材入口候选及运行顺序见[MEDIA pipeline使用说明](ME
 4. **清晰度分层**：优先16:9且1080p+；720p为备选；历史覆盖率测试最小值可低至360像素显示高度并单列**测试门槛**，不能称其为正式制片质量标准。技术分辨率不代表主体清晰或无水印。
 5. **去重**：URL规范化、媒体ID、文件SHA先行；同一内容的转载/不同裁切/不同分辨率需要未来视觉近似核验，不能只依赖SHA判独立作品。
 6. **事实/权利**：媒体的`CONTENT_VERIFIED`、`REUSE_RIGHTS_VERIFIED`独立；素材测试不等于节目可用。科研现场必须继续单独核原研究来源。
-7. **范围**：当前以上规则已在Windows `.local`测试（过滤8/8、QA12/12），正式主线尚未接入；今后修改需要源码变更/测试/独立Review后在分支PR合并。
+7. **范围**：规则已包含在`main`的可选`media-pipeline/`工具模块中，且经PR #129代码审查与Windows实际媒体回归；不是自动注入所有正式制作镜头入口。后续修改继续走分支PR与独立Review。
 8. 正式[3+1视频素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)还记录罕见“竖屏第一手研究证据”布局例外；**MEDIA默认不自动接纳此例外**。如未来Owner确需放行，必须另立明确的制作例外决策/单独源核证，不能偷偷放宽技术过滤。
 
 ## 4. 已完成阶段与证据
@@ -43,7 +43,7 @@ Windows本地素材入口候选及运行顺序见[MEDIA pipeline使用说明](ME
 | MEDIA-R1 搜索发现 | 视频合并1,533个去重URL、图片813；4get额外视频74/图片476 | 不是1,533个可用视频；4get近期零结果待检查 |
 | MEDIA-R2 素材闭环 | 新增22视频/31图片，有预览、指定下载、文件QA；跨题复用测试 | 动作匹配PARTIAL；ZIP无所有完整原片 |
 | MEDIA-R3 国际横屏网站 | 300域名入普查，197站发起真实下载，153成功（151PeerTube+2其他），135不同文件SHA | 153站不代表153平台家族；地区未完全核实 |
-| MEDIA-R4+R5 清理+来源扩展 | 清理CWS隔离You-Get/Lux约643MiB；10非PeerTube成功，新增8；本地过滤及QA回归均过 | 总体PARTIAL；正式入口未整合；5个失败类缺统一标签；本轮最高仅1080p |
+| MEDIA-R4+R5 清理+来源扩展 | 清理CWS隔离You-Get/Lux约643MiB；10非PeerTube成功，新增8；本地过滤及QA回归均过 | 历史总体PARTIAL保留；部分失败类未统一，本轮最高1080p；后续PR#129是独立新验收 |
 
 最新成功的十站为PBS、ARD、DVIDS、NPS、DW、USGS、NOAA、NASA SVS、Wikimedia、Mixkit。实验中5类“获取方法标签”≠5种完全独立的视频平台技术。旧R3成功过4K，本轮10条中2条达到1080p、5条720p、3条低于720p。
 
@@ -53,7 +53,8 @@ Windows本地素材入口候选及运行顺序见[MEDIA pipeline使用说明](ME
 
 | 阶段 | 具体工作 | 准备验收什么 | 授权状态 |
 |---|---|---|---|
-| **MEDIA-INTEGRATION（本轮PR候选）** | 复核依赖、版本与测试；以独立本地模块提供固定过滤、索引、选择性下载与QA入口，不替换OpenMontage或制片流程 | Windows离线回归、SearXNG/4get实时API、指定ID媒体QA已由执行端记录；Reviewer仍需检查PR、日志、权利边界和浏览器预览限制 | **Owner已授权实机验证/PR；分支待独立Reviewer验收，未合并** |
+| **MEDIA-INTEGRATION（已合并main）** | 独立`media-pipeline/`提供搜索/候选索引、筛选、指定ID有限下载、FFprobe/FFmpeg QA和HTML输出 | PR#129 Windows 36/36、独立Reviewer修复验收、合并commit `10b369ee`；未正式集成视频制片 | **技术模块合并PASS；不自动升级节目Gate** |
+| **MEDIA-DOCKERFREE-ACCEPTANCE（当前）** | 验证SearXNG/4get服务与Windows工具都不用Docker；先审现有环境，必要时隔离部署官方非容器服务；实际媒体和本地HTTP浏览器播放 | 同一轮证明服务非容器、API有真实结果、横屏过滤、指定ID视频/图片下载及完整解码、本地实际播放 | **Owner已授权开始；结果待执行端与Reviewer验收** |
 | **MEDIA-R6** | 真实内容/动作匹配、时间码定位、同源近似视频识别、高清优选；真实画面验证后再评级 | 至少两个不同题材的指定动作，不把“标题相近/含关键词”冒充动作已出现 | **待Owner授权** |
 | **MEDIA-R7** | 根据逐句分镜自动生成可浏览素材包，包含原片、预览、素材ID、动作时间段、来源、使用权状态 | 可复算“分镜需求→可用片段”的匹配率，缺素材显式RETURN | **待Owner授权** |
 | **PROD-R1** | 选题、研究证据、第一手素材/权利 | STORYFIT与内容/权利Gate | CW-0005 HOLD |
@@ -65,8 +66,8 @@ Windows本地素材入口候选及运行顺序见[MEDIA pipeline使用说明](ME
 
 ## 6. 优先级建议与停止规则
 
-- 先完成**MEDIA-INTEGRATION**的独立Reviewer验收与Owner合并决定；当前PR候选仍是可选本地工具，不表示生产工作流已自动切换。
+- 已完成**MEDIA-INTEGRATION**的独立Reviewer验收与Owner合并。现在只做[**MEDIA-DOCKERFREE-ACCEPTANCE**](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)，无需重新跑R3全站或R4+R5清理。
 - 然后MEDIA-R6精准匹配，R7分镜素材包；非PeerTube来源按真实分镜缺口定向补充，**不再无限增加PeerTube实例或按支持名单凑网站数**。
-- 优先补查4get清理后零结果，以及 Archive低画质样本、ZDF部分HLS损坏、NRK/RaiPlay/Democracy Now未尝试下载的真实状态。它们是**定向缺口清单**，不是全量重新审网站。
+- 最新PR#129 Windows测试已得到SearXNG/4get真实搜索合计460条（413去重）；**服务迁移为非Docker后还需要独立回归每一引擎的非零返回**。Archive低清和ZDF损坏等保留为未来定向需求，不是本轮扩展任务。
 - 报告每100个去重候选中：实际内容查看、动作匹配、清晰度、最终落盘的条数；小样本不外推成整个互联网覆盖率。
-- 本文件仅记录长期技术规范与计划；**不是授权立即执行生产整合或节目制作**。
+- 本文件是长期技术规范；Owner仅授权开展无Docker素材获取整链验收，**不授权自动/全网无人值守爬取、研发MEDIA-R6、制作/发布节目或扩权操作**。

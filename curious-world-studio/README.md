@@ -1,6 +1,6 @@
 # Curious World Studio · 世界有点意思（暂定）
 
-> **2026-10-15当前状态**：这是Owner的跨领域、不露脸知识视频项目，不是现成成片软件。素材**MEDIA**工具支线已通过跨站搜索、批量下载、格式QA与本地预览的专项测试，最近`MEDIA-R4+R5`清理约643MiB并实测10个非PeerTube成功网站（8个新于历史PBS/ARD基线）。本地横屏/大陆平台过滤通过回归，**仍未合并正式制作源码**。正式节目`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **2026-10-15当前状态**：CWS是Owner的不露脸、跨领域知识视频项目，不是自动成片软件。MEDIA-R4+R5清理约643MiB、实测10个非PeerTube成功网站；**独立可选MEDIA素材工具经PR #129 Review后已合并 `main`**（commit `10b369ee`）。它支持候选搜索、过滤、按ID下载、FFmpeg QA和HTML素材页，但**无Docker整链尚未验收、正式制片引擎尚未接入**。正式节目`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 
 频道核心原则：**知识小众，问题大众；现场具体，过程有趣；证据真实，承诺兑现**。
 
@@ -9,6 +9,7 @@
 - [最新状态/协作边界](docs/CURRENT_STATE.md)
 - [当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)
 - [MEDIA技术架构与阶段映射](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)
+- [无Docker完整运行/验收协议（当前下一Gate）](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)
 - [PROD四轮制片流程（仍有效）](docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)
 - [“3+1”正式素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)
 
