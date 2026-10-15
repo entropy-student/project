@@ -1,5 +1,7 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
+> **新的唯一执行授权（2026-10-15）**：Owner批准`MEDIA-OPERATIONS-INTEGRATION`，要求统一给Codex调用的**轻量本机CLI**，封装已验收的Docker SearXNG/4get按需生命周期及main的媒体搜索/选ID下载/QA/图库；不是给Owner使用的GUI。请按[新Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)执行。**当前没有真实实现/PR/Reviewer PASS证据**；G2-G4维持既有TECHNICAL_ACCEPT，R6/R7/PROD未授权。
+
 > **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
 
 ## 1. 接手时必须记住的事实
@@ -31,9 +33,9 @@
 - 今后技术性浏览器播放由Codex在**获明确授权的隔离浏览器**自动测试`video.play()`、`currentTime`、实际帧和错误/资源回收；不要附着Owner私有Edge窗口，也不能绕过Computer Use明确的安全停止。无法自动运行则写`BROWSER_AUTO_NOT_VERIFIED`，**不要把用户当重复的浏览器单测员**。Owner仍有真实镜头/审美/许可决策权。
 - 所有素材与截图只做`UNKNOWN_TEST_ONLY`技术实验；证据里不得放凭据、Cookie、SSH令牌或私密用户路径，媒体在权限不明时不作为Git附件或发布物。协议的“3+1”例外必须经Owner许可。
 
-## 4. 下轮建议（**全部未自动授权**）
+## 4. 下轮建议（**只有OPERATIONS-INTEGRATION已获新授权；R6/R7/PROD仍未授权**）
 
-**优先：`MEDIA-OPERATIONS-INTEGRATION`**——整理可复用的Windows Docker Compose+一键启停脚本、失败/资源保护和隔离浏览器自动QA，在独立分支形成PR交Reviewer，合并前确认不影响共享服务。G2本身不用重做。随后才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。以上都是后续建议，不得自发执行、购买API/部署VPS或切换正式制作Gate。
+**Owner已授权：`MEDIA-OPERATIONS-INTEGRATION`（当前仍未实现/Review）**——整理可复用的Windows Docker Compose+一键启停脚本、失败/资源保护和隔离浏览器自动QA，在独立分支形成PR交Reviewer，合并前确认不影响共享服务。G2本身不用重做。随后才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。不得擅自推进R6/R7、购买API/部署VPS或切换正式制作Gate；OPERATIONS-INTEGRATION仅在新合同范围内执行。
 
 **制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
 
