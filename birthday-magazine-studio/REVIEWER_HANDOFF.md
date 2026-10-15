@@ -295,7 +295,7 @@ Formal G3S1D Reviewer decision:
 
 **Accepted partial findings:** Four containers, two project volumes, images, network and critical entry points are present by Executor local readback. DB reported running/healthy; WordPress/Mailpit/wpcli stopped. Database volume contents and active Woo/PayPal/Stripe state remain UNKNOWN. Missing 17 G3CR4 historical screenshot PNGs are not runtime prerequisites and do not justify a rebuild. Reviewer's source readback confirms PR #64 diagnostic change is Evidence-only.
 
-**Blocking issue:** `CreateProcess` was rejected by **Codex executor tool policy before process start**, not by proven Docker or Windows permissions. Exact rule and legitimate continuation route UNKNOWN. Dedicated GitHub connector functions worked in Codex even though generic methods were unregistered; this is separate, not account disconnection.
+**Blocking issue:** `CreateProcess` was rejected by **Codex executor tool policy before process start**, not by proven Docker or Windows permissions. Exact rule and legitimate continuation route UNKNOWN. Owner now reports **Codex Windows desktop Full Access had already been enabled for approximately three days in the same ongoing conversation** before the denial. This is OWNER_REPORTED (not direct settings proof) and makes repeating the standard Full Access check unnecessary; exact executor rule/cause remains UNKNOWN. Dedicated GitHub connector functions worked in Codex even though generic methods were unregistered; this is separate, not account disconnection.
 
 **Authority boundary:** No retry, manual CMD/PowerShell, Docker UI/API/SDK, alternate agent/shell, elevation or security policy change as a bypass. The Owner checkpoint asks only whether an **official native approval workflow** exists for the exact operation; does not authorize it yet. If a documented route is found, Reviewer designs a further narrowly reviewed service-start Gate; otherwise remain blocked and seek official support.
 
@@ -367,7 +367,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner checks whether the exact Codex executor interface offers a **documented official approval/permission workflow** for the denied existing G3C WordPress start; record availability and scope only, do not execute.
+1. Owner has already reported **Full Access enabled** in Codex Windows desktop for three days, same conversation. Do not request a repeat toggle. The remaining need is documented per-action approval if officially available, otherwise report the original sanitized `CreateProcess ... blocked by policy` failure to official Codex support.
 2. If mechanism exists, Reviewer independently validates that it truly authorizes the exact bounded action and opens a separate safe-start Gate; otherwise retain STOP and route to official product support.
 3. After a compliant, reviewed restart, re-evaluate WordPress HTTP/Woo/payment plugin flags, consistent DB backup and official Stripe Gateway **inactive-only** staging in original G3S1. No reinstallation, provider activation, PayPal removal or PR merge.
 
