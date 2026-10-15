@@ -1,5 +1,7 @@
 # Curious World Studio｜唯一当前状态与交接入口
 
+> **2026-10-15 Owner最新执行授权（覆盖同页较旧的无Docker限制）**：采用**Windows Docker Desktop本地按需方案**，在一个受控Codex任务中串行执行**G2 Ubuntu-24.04安全备份与卸载、G3 SearXNG+4get Docker搜索服务、G4关键词→筛选→新媒体下载→QA→Edge播放→关闭容器**。正式合同：[MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)。**尚未实际执行，本轮状态`G2_G3_G4_AUTHORIZED_AWAITING_EXECUTION`**。不部署VPS；保留WSL2/Docker后端、旧工作树/中断资料与原片。此前G1A播放已由Owner确认，正式制作仍HOLD。
+
 > **2026-10-15 Owner 决策 / Reviewer 独立核验后的最新状态。** 历史快照只作溯源，不作为下一步命令。**MEDIA-INTEGRATION PR #129 已经经Reviewer修复验收后正式合并main（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）**；成为受限的、本地指定ID的媒体获取及QA工具，**并不意味着正式节目生产链已自动接入或无Docker已通过**。
 >
 > **2026-10-15 Owner最新运行决策**：**以Windows本机按需启动/用毕停止为首选，不部署VPS、不使用Docker、不保持搜索服务常驻。** 之前`MEDIA-DOCKERFREE-ACCEPTANCE`的安装/部署/整链执行被Owner中断，视为**暂停且结果未知**，不是FAIL/PASS。此前先授权[中断后只读现场恢复与按需运行可行性判断](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)，其后G0获得证据级接受，G1A本地启停已执行但部分通过；当前不自动授权G1B，不得依旧协议重启部署；不影响已合并PR #129。

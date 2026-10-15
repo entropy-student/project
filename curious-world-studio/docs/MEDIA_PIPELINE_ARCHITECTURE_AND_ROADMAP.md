@@ -1,5 +1,7 @@
 # CWS｜MEDIA素材架构与未来阶段路线（长期规范）
 
+> **2026-10-15 Owner新增决定**：暂停以无Docker/第三方付费API为首选的执行路线；改为Windows本机**Docker Desktop按需搜索服务**，并在一轮串行执行`G2 Ubuntu安全卸载 / G3 Docker SearXNG+4get / G4 真实媒体全链`。尚未执行或验收。正式规范见[G2-G4合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)；MEDIA-R6/R7和PROD未授权。
+
 > **Owner已确定 / 2026-10-15；PR #129现已合并 `main`。** 本文件记录长期MEDIA架构。排除中国大陆平台和非横屏、受限单独素材技术获取为已实现工具能力；**无Docker整链运行、动作精配、节目制作均尚未被验收**。`PROD`与`MEDIA`独立编号。
 
 ## 1. 为什么修改架构

@@ -1,5 +1,7 @@
 # Curious World Studio · 世界有点意思（暂定）
 
+> **2026-10-15最新CWS MEDIA执行阶段**：Owner批准Windows本地Docker+安全卸载Ubuntu的G2-G4一轮任务，尚待Windows Codex实际执行与Reviewer验收，见[长期执行合同](docs/MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)。此前G1A Edge实播Owner PASS，G2/G3/G4均尚未PASS；正式节目HOLD。
+
 > **2026-10-15当前状态**：CWS是Owner的不露脸、跨领域知识视频项目，不是自动成片软件。MEDIA-R4+R5清理约643MiB、实测10个非PeerTube成功网站；**独立可选MEDIA素材工具经PR #129 Review后已合并 `main`**（commit `10b369ee`）。它支持候选搜索、过滤、按ID下载、FFmpeg QA和HTML素材页，但**无Docker整链尚未验收、正式制片引擎尚未接入**。正式节目`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 
 频道核心原则：**知识小众，问题大众；现场具体，过程有趣；证据真实，承诺兑现**。

@@ -1,5 +1,7 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
+> **LATEST OWNER AUTHORIZATION 2026-10-15**：下一步**G2/G3/G4**合并成一次本机受控任务；不再执行旧`G1B`第三方API路线作为当前计划。先识别并备份独立Ubuntu-24.04后安全注销（不得卸载WSL2/Docker底座）、随后Docker Compose按需启动SearXNG/4get，再完成实际关键词→过滤→下载→FFmpeg→Edge→本Compose关闭。**目前三Gate均待本地执行，绝不宣称完成**。唯一新合同：[G2-G4 Docker本机合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)；若本页下文仍写“无Docker/只G0”等应按日期视为历史。正式制作HOLD。
+
 > **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；G0已得到Reviewer证据级接受；G1A随后执行本地启停与媒体QA并被独立Reviewer评为 **`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**，浏览器播放未验，**仍没有Docker-free或按需完整搜索链PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 >
 > 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。

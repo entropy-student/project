@@ -1,4 +1,5 @@
 <!-- CWS-STABLE-WORKFLOW-20261015 -->
+> **最高优先级2026-10-15 Owner覆盖决策**：本机Docker按需方案正式取代早前“不使用Docker”的运行偏好。**唯一下一任务是[G2-G4完整Docker执行合同](docs/MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)**，目标G2 Ubuntu安全备份卸载（只Ubuntu-24.04，不碰WSL2/Docker）→G3 Compose起SearXNG/4get→G4真实检索下载QA及Edge实播→停本项目服务。尚未执行/验收，禁止按旧G0/G1A/G1B无Docker提示词继续；正式CW-0005 HOLD。
 > **2026-10-15最新**：先读[唯一当前状态](docs/CURRENT_STATE.md)、[当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)、[MEDIA架构/阶段规划](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)和[当前按需运行/中断恢复规范](docs/MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)（原[无Docker验收协议](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停）。**PR#129已合并main（commit `10b369ee`）**，独立本地工具有Windows36/36与Reviewer接受的修复；**尚未获得无Docker整链PASS，也未接入正式制片**。正式制作仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 > **编号不可混淆**：`MEDIA-R4+R5`是素材工具清理/海外来源扩展；`MEDIA-INTEGRATION`已经合并；**旧`MEDIA-DOCKERFREE-ACCEPTANCE`部署执行已被Owner中断并暂停；G0恢复已接受，G1A本地启停+Owner手动浏览器播放已完成，当前待决是G1B零常驻搜索来源方案**。`PROD-R4`是第一版完整草片；`MEDIA-R6/R7`均未授权。
 > **Owner已锁定的MEDIA获取默认**：排除大陆视频平台及全球竖屏/方形，显示比例≥4:3，未知先核实，优先1080p横屏，保留每次拒绝原因；这些规则已在`main`的独立MEDIA模块中，但不自动替换正式节目入口。**3+1与Research Aqua不变；下载成功与制作许可/内容核验分开**。

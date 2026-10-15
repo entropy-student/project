@@ -1,5 +1,7 @@
 # CWS｜MEDIA Windows 即用即停：中断恢复与技术选择规范
 
+> **2026-10-15 Owner已覆盖前一运行选择**：本文件的“无Docker/不卸载Ubuntu/仅G1B搜索API路线”现为**历史对照，不再作为下一轮指令**。当前允许Windows本机Docker Desktop按需运行，并授权有备份和保护前提的Ubuntu-24.04发行版安全卸载。请以[最新G2-G4执行合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)为准；CWS资料、其余WSL、Docker后端、系统网络配置均受保护。
+
 > **OWNER DECISION / ACTIVE · 2026-10-15**。Owner明确希望CWS是**即用即停的本地工具**，不需要长期开机、常驻后台或新增VPS部署；上一轮Codex `MEDIA-DOCKERFREE-ACCEPTANCE` 执行被Owner强制中断，**其完成状态/可能残留进程未知**。本文件**覆盖旧无Docker执行协议中的部署授权和下一任务**，而不是追溯修改已合并代码或历史报告。
 >
 > **历史授权：`MEDIA-ONDEMAND-RECOVERY-G0`只读调查已经完成且获Reviewer接受；其后独立本地`G1A_LOCAL_LIFECYCLE`已执行并获部分接受。最新状态见下方裁决。** 无须Owner上传旧ZIP给Codex；本机必须先核对真实Git工作树、PID与任务痕迹。**禁止直接恢复被中断命令、继续安装或搬迁服务、部署VPS、停止Docker/共享服务或擅自清理遗留文件。**
