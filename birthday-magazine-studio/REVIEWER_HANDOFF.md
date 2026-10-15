@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-16 (G3S2 Reviewer PASS read-only policy research; actual merchant country/entity unknown; no new execution Gate or Codex prompt)
+> Last reviewed: 2026-10-16 (G3S2 policy research PASS; Owner now reports Stripe account registered with unresolved issues; no Codex prompt)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,9 +13,9 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Latest Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` **PASS read-only research**, formal decision `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md`. No active Codex execution Gate. Await Owner's legitimate merchant country/entity choice; no prompt as requested.
+- **Latest Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` **PASS read-only research**, decision `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md`. **New Owner update:** actual Stripe account registered; unspecified problems outstanding; merchant country/entity, verification and payout status unknown. Record: `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md`. No active Codex execution Gate or prompt.
 - Confirm current PR #64 and `main` before consequential future steps. Latest G3S1SV Executor-host Evidence instead reports the **original WordPress, MariaDB and WP-CLI containers running** and local site HTTP 200; Reviewer has not independently accessed Owner hardware. Mailpit remains stopped.
-- G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. Stripe merchant account existence, legal entity/country, public HTTPS callback, payouts and real/Test payment remain unverified.
+- G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
 - PayPal Sandbox stays; no OAuth/merchant onboarding, connection, Gateway activation, checkout, provider action, tunnel or merge is allowed by G3S1.
 
@@ -83,7 +83,7 @@ G3S1SVE_REVIEWER=PASS_EVIDENCE_PERSISTED
 G3S1SVE_PR64_COMMIT=4cb0d527d77a6d583e123acd3f62c45408669569
 G3S1SV_TEMP_PACKAGE_CLEANUP=DEFERRED_POLICY_BLOCKED
 G3S1SV_BACKUP_SNAPSHOT_RECORD_LEVEL_EQUALITY=UNKNOWN_NOT_CLAIMED
-STRIPE_MERCHANT_ACCOUNT_STATUS=UNKNOWN
+STRIPE_MERCHANT_ACCOUNT_STATUS=REGISTERED_OWNER_REPORTED_KYC_AND_PAYMENTS_UNKNOWN
 STRIPE_GATEWAY_STATUS=INACTIVE_NOT_REGISTERED
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
@@ -92,7 +92,9 @@ G3S2_OFFICIAL_STRIPE_MAINLAND=NOT_STANDARD_PAYMENTS_MERCHANT_REGION
 G3S2_HK_INDIVIDUAL_NONHKID=NOT_ELIGIBLE_PER_OFFICIAL_SOURCE
 G3S2_HK_USD_WISE=STRIPE_HK_FEATURE_EXCLUDES_TRANSFERWISE
 G3S2_HK_HKD_WISE=UNKNOWN_NOT_ASSUMED
-G3S2_MERCHANT_ACCOUNT=UNKNOWN
+G3S2_MERCHANT_ACCOUNT=EXISTS_OWNER_REPORTED_ELIGIBILITY_UNKNOWN
+G3S2_OWNER_ACCOUNT_ISSUE=UNSPECIFIED_PENDING_OWNER_OTHER_ARRANGEMENTS
+G3S2_STRIPE_REGISTRATION_OWNER_UPDATE=docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md
 G3S2_ACCOUNT_PROVIDER_HOST_MUTATIONS=0
 G3S2_NEW_CODEX_PROMPT=NONE_OWNER_REQUESTED
 SOURCE_BASELINE_PREFLIGHT=PASS
@@ -337,7 +339,7 @@ CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 
 ## CURRENT_GATE
 
-**G3S2 read-only research COMPLETE / PASS**, see `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` and `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`. **No active execution Gate** until Owner chooses or confirms a legitimate merchant region/entity and account status. **Do not generate a Codex prompt** unless later explicitly requested.
+**G3S2 read-only research COMPLETE / PASS**, see `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` and `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`. **Owner subsequently confirms Stripe account is registered (OWNER_REPORTED).** Specific account issue, merchant region/entity, KYC, payments and payout readiness are unknown; see `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md`. **No active execution Gate. Do not generate a Codex prompt** until Owner requests it.
 
 **G3S1SV + G3S1SVE formal Reviewer PASS (2026-10-15):** `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`. Reviewer directly read PR #64 Evidence `docs/evidence/g3s1sv/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` at `4cb0d527d77a6d583e123acd3f62c45408669569`. Exact PR delta from `d13b27...` is **one sanitized Evidence-only Markdown**; PR still Open/unmerged. G3S1SVE Evidence persistence PASS supersedes former Evidence-missing RETURN; G3S1SV official Stripe **11.1.0 installed as INACTIVE** locally accepted with bounded recovery evidence and explicit limitations. No account, gateway registration, payment or provider calls.
 
@@ -347,7 +349,7 @@ CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 
 **Deferred installer ZIP cleanup:** Windows `%TEMP%\bms-wc-stripe-11.1.0-package.zip` and WP-CLI `/tmp/bms-wc-stripe-11.1.0-package.zip` remained; a prior incomplete host ZIP may also remain (exact details in Evidence). Cleanup PowerShell start was rejected `blocked by policy`; no bypass and no files removed. They are classified as candidate transient installer archives, not live WordPress plugin/DB/backup. **Cleanup DEFERRED**; do not retry the denied shell or route through another shell/agent, and do not let housekeeping trigger installation/restore replay.
 
-**Payments/Owner intent and G3S2 findings:** Current Woo Stripe extension is **installed but not activated**; Stripe gateway unregistered. Stripe officially supports HK for qualifying legitimate HK merchants, **not mainland China standard Stripe Payments merchant accounts**. For HK individuals, Stripe disallows non-HKID individual registration; genuine HK business/sole proprietor with BRN may be verified under applicable business rules. **Wise HK account alone cannot qualify merchant identity; Stripe's HK USD payout policy expressly excludes TransferWise/virtual/neobank accounts for the feature; HKD Wise acceptance unverified.** Owner merchant country/entity, account/KYC/bank eligibility and payout eligibility UNKNOWN. Woo Test mode needs a separate Test-mode account connection and reviewed HTTPS webhook delivery path; loopback-only site is not an internet-reachable HTTPS webhook. No account creation/login, OAuth, plugin activation, checkout, refund, webhook or public route. Historical G3B PayPal sandbox PASS preserved and separate. Owner's conditional PayPal retirement is only **after complete independently tested Stripe end-to-end functionality and payout readiness**, via separate reviewed safe exact-target Gate. PR #64 still Open/mergeable=false; frontend remains Owner-frozen.
+**Payments/Owner intent and G3S2 findings:** Current Woo Stripe extension is **installed but not activated**; Stripe gateway unregistered. Stripe officially supports HK for qualifying legitimate HK merchants, **not mainland China standard Stripe Payments merchant accounts**. For HK individuals, Stripe disallows non-HKID individual registration; genuine HK business/sole proprietor with BRN may be verified under applicable business rules. **Wise HK account alone cannot qualify merchant identity; Stripe's HK USD payout policy expressly excludes TransferWise/virtual/neobank accounts for the feature; HKD Wise acceptance unverified.** Owner account **existence=registered per Owner**, but actual country/entity, KYC, payment activation, bank and payout eligibility remain UNKNOWN; Owner reports unspecified account issues. Woo Test mode needs a separate Test-mode account connection and reviewed HTTPS webhook delivery path; loopback-only site is not an internet-reachable HTTPS webhook. No account creation/login, OAuth, plugin activation, checkout, refund, webhook or public route. Historical G3B PayPal sandbox PASS preserved and separate. Owner's conditional PayPal retirement is only **after complete independently tested Stripe end-to-end functionality and payout readiness**, via separate reviewed safe exact-target Gate. PR #64 still Open/mergeable=false; frontend remains Owner-frozen.
 
 
 ## CRITICAL_CONSTRAINTS
@@ -415,16 +417,18 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **G3S2 research is finished** (official sources and formal Reviewer PASS saved on main). Actual Stripe merchant enrollment cannot be inferred without Owner's genuine country/entity/account facts; **wait for Owner's other arrangements/decision**. No additional Codex prompt or plugin/host action.
-2. After Owner chooses a real qualifying merchant jurisdiction/entity and confirms their Stripe account status, Reviewer may create a separate and explicitly approved Test-only Gate. Before any gateway activation, choose and verify a suitably fresh database+files recovery point and define HTTPS callback, authenticated signed webhook, payment/refund/entitlement reconciliation and rollback.
+1. **G3S2 research is finished** (official sources and formal Reviewer PASS saved on main). Owner now reports an existing Stripe account **with problems not yet specified**. Await Owner's other arrangements and issue description; no Codex prompt or plugin/host action.
+2. After Owner clarifies the account issue, real qualifying merchant jurisdiction/entity and Stripe's verification/payment/payout status, Reviewer may create a separate and explicitly approved Test-only Gate. Before any gateway activation, choose and verify a suitably fresh database+files recovery point and define HTTPS callback, authenticated signed webhook, payment/refund/entitlement reconciliation and rollback.
 3. Preserve installed Stripe 11.1.0 as inactive and PR #64 as Open/unmerged, leave PayPal disabled, and track temp installation ZIP cleanup as separately deferred. No VPS/SSH, account signup or real transactions.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE for G3S2 read-only report.** When ready, Owner may privately decide/confirm the **real Stripe merchant country and business structure (HKID individual / genuine BRN sole proprietorship or company / other supported legitimate entity)** and whether a real Stripe account exists. Never submit identity documents, keys or banking numbers to GitHub/chat. No request for an immediate answer while Owner has other arrangements.
+**NONE now.** Stripe account creation is now Owner-confirmed. When Owner chooses to resume, they may describe the specific non-secret account problem, actual merchant country, entity type and verification/payment/payout statuses. No credentials, identity documents or banking numbers in GitHub/chat. Do not ask for an immediate response or generate Codex prompts while Owner has other arrangements.
 
 
 ## EVIDENCE_POINTERS
+
+0. `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md` — latest Owner report: Stripe account now exists, issue unspecified, activation/KYC/payout not proven, no prompt.
 
 Latest G3S2 read-only Reviewer PASS, awaiting Owner merchant eligibility decision / G3S1SV+SVE bounded PASS:
 0. `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` — CURRENT formal Reviewer PASS for read-only policy research; actual merchant entity remains unknown
