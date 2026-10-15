@@ -2,12 +2,14 @@
 
 > **2026-10-15 Owner 决策 / Reviewer 独立核验后的最新状态。** 历史快照只作溯源，不作为下一步命令。**MEDIA-INTEGRATION PR #129 已经经Reviewer修复验收后正式合并main（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）**；成为受限的、本地指定ID的媒体获取及QA工具，**并不意味着正式节目生产链已自动接入或无Docker已通过**。
 >
-> **2026-10-15 Owner最新运行决策**：**以Windows本机按需启动/用毕停止为首选，不部署VPS、不使用Docker、不保持搜索服务常驻。** 之前`MEDIA-DOCKERFREE-ACCEPTANCE`的安装/部署/整链执行被Owner中断，视为**暂停且结果未知**，不是FAIL/PASS。当前只授权[中断后只读现场恢复与按需运行可行性判断](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)，不得依旧协议重启部署；不影响已合并PR #129。
+> **2026-10-15 Owner最新运行决策**：**以Windows本机按需启动/用毕停止为首选，不部署VPS、不使用Docker、不保持搜索服务常驻。** 之前`MEDIA-DOCKERFREE-ACCEPTANCE`的安装/部署/整链执行被Owner中断，视为**暂停且结果未知**，不是FAIL/PASS。此前先授权[中断后只读现场恢复与按需运行可行性判断](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)，其后G0获得证据级接受，G1A本地启停已执行但部分通过；当前不自动授权G1B，不得依旧协议重启部署；不影响已合并PR #129。
 >
 > **正式制作状态未变**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。未批准更换选题、音画生产、发布或素材复用权；Owner 已恢复**素材工具支线的专项研发和验收**，不能再将2026-10-12“全面暂停”的旧快照当成当前命令。
 
 > **2026-10-15最新独立Reviewer裁决：`MEDIA-ONDEMAND-RECOVERY-G0 / G0_RECOVERY_EVIDENCE_ACCEPT`。** Owner提供的G0 ZIP外层SHA `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`一致，16项SHA256SUMS及15项manifest均匹配；记录显示旧搜索端口无监听，Windows无搜索服务进程，WSL发行版Stopped，G0没有安装/启动/删除/修改Git跟踪文件。**Reviewer仅独立检查提交文件/主线源码，不具有Windows实机直连证据。** 旧运行留下61个文件约1,746,920,513字节（其中WSL VHDX约1,735,393,280字节），当前全部保留。
 > **下一步未自动授权执行**：先审查现有`agent-reach / Exa`检索工具是否可以提供合法的媒体候选发现及其结果留存权利；同时保留“人工来源URL导入→现有按ID下载/QA”的零部署退路。Brave普通API对结果持久存储有限制，现有CWS持久索引不可无条件直连；不得注册付费API、安装搜索服务、启动WSL/VPS/Docker、清理VHDX或自行进入G1。G0通过不等于`ONDEMAND_END_TO_END_PASS`或`DOCKER_FREE_MEDIA_PIPELINE_PASS`。
+
+> **LATEST REVIEWER VERDICT 2026-10-15 — `MEDIA-ONDEMAND-G1A / G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**。Owner交付ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，外层SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`；ZIP CRC、32条SHA256SUMS、31条manifest均独立复算通过。运行日志支持旧素材2视频/1图片的SHA、FFprobe/FFmpeg退出码0、CWS gallery退出码0；回环HTTP 127.0.0.1:18765上实际HEAD返回HTML及MP4 200，启停/重复启动/占端/非正常退出/端口释放测试记录通过。**原片与播放代理不在ZIP中，因此Reviewer未独立完整解码原片。Edge/Chrome实际播放及currentTime推进因为Computer Use无法确定当前URL而安全停止，`BROWSER_NOT_VERIFIED`；HTTP200不能替代播放器PASS。**未运行关键词搜索，也无G1B接入、无Docker-free整链PASS。G1A仅为**本地生命周期与媒体文件QA的部分验收**；正式制作Gate继续HOLD。下一轮仅建议在Owner许可后补**浏览器实际播放验证**，优先正常用户手动打开本机loopback页面记录播放与时间推进，避免通过替代浏览器自动化绕过Computer Use停止指令；不部署/安装/注册API。
 
 ## 1. 一眼看懂
 
@@ -19,6 +21,7 @@
 | 网站覆盖（MEDIA） | 2026-10-13 R3：153成功站（151 PeerTube实例、PBS和ARD），135个不同文件SHA，153段预览独立解码通过 | 153站不是153种平台技术；大量实例运营地区未知 |
 | 清理与海外来源（MEDIA-R4+R5） | 清理22,639个CWS独占You-Get/Lux文件/674,230,911字节（约643MiB）；非PeerTube本轮成功10站（PBS/ARD复验+新增8站） | 历史 `R4R5_PARTIAL_ACCEPT` 仍保留；后来PR #129正式集成了新过滤入口，但不追溯改变R4+R5原Gate |
 | MEDIA-INTEGRATION | PR #129 经36/36项Windows回归、独立Reviewer集中修复验收，已合并 `main`；具备显式ID探测/下载、QA、HTML生成 | **不是无Docker验收**；任意不可信URL防护非完整沙箱；浏览器播放在独立环境尚未验收 |
+| MEDIA-ONDEMAND-G1A | Windows本地受控HTTP、素材复用/解码及启停测试得到执行端证据；独立Reviewer核验ZIP、清单与实现源码 | **浏览器播放未验，故总状态PARTIAL；代码未合并，关键词搜索未测试** |
 | 制片（PROD） | R1多轮素材审查、R2条件脚本设计及R2-M1两条库存媒体已实测，保留旧成果 | 正式G1没有PASS；尚无获准的R3联调或R4整片 |
 
 ## 2. 已确认的素材基础设施架构

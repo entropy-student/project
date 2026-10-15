@@ -1,8 +1,16 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-> **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；当前只执行`MEDIA-ONDEMAND-RECOVERY-G0`只读现场检查与方案核验，**没有Docker-free或按需闭环PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；G0已得到Reviewer证据级接受；G1A随后执行本地启停与媒体QA并被独立Reviewer评为 **`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**，浏览器播放未验，**仍没有Docker-free或按需完整搜索链PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 >
 > 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
+
+## 最新G1A局部验收（2026-10-15，优先于旧G0建议）
+
+- **Reviewer裁决：`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT / BROWSER_NOT_VERIFIED / SEARCH_NOT_IN_SCOPE`。** 接受本地生命周期管理和媒体QA的执行证据，不升级完整G1A或完整MEDIA搜索链。ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`；CRC通过，32条SHA256SUMS+31项manifest一致；脚本可静态解析。
+- 复用**两段原有视频、1张图片，未重新下载**。提供了来源文件SHA、FFprobe JSON、FFmpeg完成且退出0的日志；原片不在ZIP，Reviewer没有独立重新完整解码这3份媒体。6秒浏览器预览副本也未入ZIP。
+- Windows本机`127.0.0.1:18765`实际服务和自检：占端不接管、重复启动不重开、常规关闭、异常子进程退出、关闭后端口释放，日志/JSON一致；HTTP HEAD对目录页、索引页、1段MP4资源返回200，**不证明浏览器真的播放**。
+- Edge/Chrome播放及`currentTime`推进 **BLOCKED / NOT_VERIFIED**：Computer Use因不能可靠确认当前Edge URL而停止；不允许为了凑PASS绕过安全停止。下轮如果Owner同意，以Owner本人**人工**打开127.0.0.1页面、实际观察两个视频时间推进并交非敏感证据优先；只补缺口，不重复建立搜索服务。
+- 原旧工作区3个tracked修改、两处缓存与61项中断资料继续保留；本轮脚本/HTML只在本机隔离目录，**未形成正式PR，勿误认其已经进main**。Exa未调用且数据存储权利未知；MEDIA-R6/R7、制片Gate维持HOLD。
 
 ## 最新G0恢复现场验收（2026-10-15，优先于下方历史“正在进行G0”叙述）
 

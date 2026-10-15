@@ -2,9 +2,16 @@
 
 > **OWNER DECISION / ACTIVE · 2026-10-15**。Owner明确希望CWS是**即用即停的本地工具**，不需要长期开机、常驻后台或新增VPS部署；上一轮Codex `MEDIA-DOCKERFREE-ACCEPTANCE` 执行被Owner强制中断，**其完成状态/可能残留进程未知**。本文件**覆盖旧无Docker执行协议中的部署授权和下一任务**，而不是追溯修改已合并代码或历史报告。
 >
-> **当前仅批准 `MEDIA-ONDEMAND-RECOVERY-G0`：Windows本机只读环境复核与按需技术路线判断。** 无须Owner上传旧ZIP给Codex；本机必须先核对真实Git工作树、PID与任务痕迹。**禁止直接恢复被中断命令、继续安装或搬迁服务、部署VPS、停止Docker/共享服务或擅自清理遗留文件。**
+> **历史授权：`MEDIA-ONDEMAND-RECOVERY-G0`只读调查已经完成且获Reviewer接受；其后独立本地`G1A_LOCAL_LIFECYCLE`已执行并获部分接受。最新状态见下方裁决。** 无须Owner上传旧ZIP给Codex；本机必须先核对真实Git工作树、PID与任务痕迹。**禁止直接恢复被中断命令、继续安装或搬迁服务、部署VPS、停止Docker/共享服务或擅自清理遗留文件。**
 
-## 当前Reviewer裁决附注（2026-10-15，长期索引）
+## G1A 独立Reviewer最新状态（2026-10-15）
+
+- `G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`：本机旧素材复用、媒体QA日志、Python仅127.0.0.1临时HTTP服务与生命周期测试证据可接受；ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`，独立检查32条SHA256SUMS/31条manifest均通过。
+- **`BROWSER_NOT_VERIFIED`**：Computer Use无法确定Edge当前URL而安全停止；不能以HTTP200、HTML文件存在或FFmpeg解码成功冒充真实浏览器播放或currentTime推进。实际原片与MP4预览未收入ZIP，Reviewer只验证日志和静态源码，并未独立完整解码原片或观看视频。
+- **`SEARCH_NOT_IN_SCOPE`**：这一轮没有运行SearXNG/4get/Exa、下载媒体、安装搜索服务或部署VPS。G1A本地服务启停脚本在执行端隔离目录，不在正式Git源码中；不要宣称一键使用全流程已产品化。
+- 后续建议Owner另行许可`G1A-BROWSER-FOCUSED-VERIFY`，由**用户在正常浏览器手动**完成实际播放与时间推进确认，并提供隐私脱敏证据；不通过其他自动化绕过Computer Use的安全停止。本轮不自动授权G1B/API付费/持久索引变更。
+
+## 之前G0 Reviewer裁决（2026-10-15，历史索引）
 
 - `G0_RECOVERY_EVIDENCE_ACCEPT`：Owner上传的只读调查包SHA `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`，16条内部SHA与15项manifest复核通过；仅意味着中断现场和方案比较获得证据级接受。
 - 没有可复用的**当前本机**SearXNG/4get服务；18080/15050无监听，WSL stopped；旧VHDX和原工作树的未提交内容都要保护，不清理。
