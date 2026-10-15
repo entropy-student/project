@@ -1,6 +1,7 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-> **最新Reviewer交接（2026-10-15）**：[PR #131](https://github.com/entropy-student/project/pull/131)已实现5命令JSON CLI但仍OPEN未合并，裁决`MEDIA_OPERATIONS_INTEGRATION_RETURN_FOCUSED_FIX`，Review已在PR反馈。ZIP SHA256 `adad9a05a389be07173a939d20b482cc45131a3576654cabf94b6600ebb5fd42`、30/30 SHA及29项manifest匹配；Linux复测50 PASS/Windows专用1 SKIP。**缺口三项**：SearXNG视频/图片Live均`RemoteDisconnected`，双引擎搜索未PASS；`PARTIAL_SEARCH`竟返回`ok:true`/exit0易误导自动化；真实运行中的Ctrl+C/异常Compose清理/端口释放未验证（仅mock注入PASS）。4get实际返回11视频/81图片，浏览器自动推进0.03→0.78秒（截图未留），视频为历史PeerTube回归而非新独立素材，图片为人工加入Commons候选。**定向修复同一个PR及单份增量ZIP，不自行合并/启动R6/R7。** CW-0005 HOLD。
+
+> **2026-10-15独立Reviewer最新交接｜`CODE_FIX_ACCEPTED / GATE_PARTIAL_RUNTIME_PENDING`**：PR #131最新HEAD `87fddb5491c933637bf9ac67b96562adf2ca6bb3` 未合并；增量ZIP SHA256 `833f8d6bd7a411098352e853865bc4847665fcfcb59f5c39ff10a4d4fb5145db`，CRC和24/24 SHA及23项manifest有效，源码Git blob一致。Reviewer在独立Linux环境使用PR同版pipeline/filter跑24项本轮CLI测试全部PASS；Windows60/60由执行端记录。**默认fail-closed的部分搜索退出、HTTP就绪检查、停止后端口核验的代码/单测改进接受**。剩余`SEARXNG_RECOVERY_NOT_VERIFIED`、`REAL_CTRL_C_CLEANUP_NOT_VERIFIED`：实时discover实际可用内存1233MiB低于1664MiB安全门槛，Compose未启动，不能证明SearXNG恢复或实际Ctrl+C清理。需在Owner本机自然有安全余量后最小补验，不要改门槛/强行关闭共享进程。最新Review评论已写[PR #131](https://github.com/entropy-student/project/pull/131)；仍不可合并或启动MEDIA-R6/R7、PROD，CW-0005 HOLD。
 
 > **此前Owner授权本轮（历史说明）**：Owner批准`MEDIA-OPERATIONS-INTEGRATION`，要求统一给Codex调用的**轻量本机CLI**，封装已验收的Docker SearXNG/4get按需生命周期及main的媒体搜索/选ID下载/QA/图库；不是给Owner使用的GUI。请按[新Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)执行。**已有PR但没有Reviewer PASS/合并**；G2-G4维持既有TECHNICAL_ACCEPT，R6/R7/PROD未授权。
 
