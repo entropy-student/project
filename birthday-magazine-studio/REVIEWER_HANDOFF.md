@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-15 (G3S1S Stripe staging current; Owner conditionally authorizes later PayPal retirement after full Stripe PASS)
+> Last reviewed: 2026-10-15 (G3S1S Reviewer RETURN on DB restore; G3S1SR recovery and conditional inactive Stripe current)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current executable Gate:** `docs/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` (backup before inactive official Stripe plugin staging).
+- **Current executable Gate:** `docs/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` (bounded isolated DB recovery then conditional inactive Stripe stage).
 - Confirm current PR #64 and `main` again before any action. Owner-local containers were **reported stopped**; status has not been independently fresh-read from Owner hardware.
 - G3S0 PASS is **classification only**. Stripe account existence, merchant entity/country, active plugins, actual Woo runtime, public HTTPS endpoint, payouts and test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING
+CURRENT_GATE=G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_EXECUTOR_READBACK
@@ -58,7 +58,13 @@ G3C_WOO_PRODUCT_1113=VIRTUAL_USD_39_99_EXECUTOR_READBACK
 G3C_PPCP=NOT_INSTALLED_EXECUTOR_READBACK
 G3C_STRIPE=NOT_INSTALLED_EXECUTOR_READBACK
 G3B_HISTORICAL_PAYPAL_PASS=SEPARATE_SANDBOX_CLEANED_UP
-G3C_DB_BACKUP_RECOVERABILITY=NOT_VERIFIED
+G3C_DB_BACKUP_RECOVERABILITY=UNVERIFIED_ISOLATED_DB_IMPORT_EXIT_1
+G3S1S_REVIEWER=RETURN_BACKUP_OR_ROLLBACK_UNVERIFIED
+G3S1S_EXECUTOR_EVIDENCE=d0ae16640fe01db90093ca00738c130a6f8a9915
+G3S1S_WP_FILES_ISOLATED_RESTORE=PASS_EXECUTOR_READBACK
+G3S1S_DB_DUMP_HASH=PASS_EXECUTOR_READBACK
+G3S1S_DB_ISOLATED_IMPORT=EXIT_1_CAUSE_UNKNOWN
+G3S1S_STRIPE_INSTALLED=NO
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -257,7 +263,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING
+CURRENT_GATE=G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE
 ```
 
 ## SYSTEM_MAP
@@ -301,17 +307,15 @@ CURRENT_GATE=G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING
 
 ## CURRENT_GATE
 
-`G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING`
+`G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE` — **next approved bounded Gate**: `docs/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md`.
 
-**G3S1R formally Reviewer PASS (2026-10-15):** `docs/REVIEWER_DECISION_G3S1R_PASS_LOCAL_RUNTIME_RESTORED_2026-10-15.md`, based on PR #64 Evidence `docs/evidence/g3s1/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_2026-10-15.md` at `ee03136537fdf9fda9ee36022261f84ba78dca93`. Existing local WordPress started **once successfully** via normal Codex PowerShell; DB/WordPress named volumes and all original container IDs retained, no core repair/reinstall or backup necessary in recovery Gate. DB reported running/healthy; WordPress and WP-CLI running, Mailpit stopped. On `127.0.0.1:8189`, homepage/intake/product/cart/My Account GET 200, empty checkout redirects 302, unauthorized private workspace 403, WooCommerce active and virtual product #1113 USD39.99. PowerShell .NET web client premature response is not independently a WordPress fault given successful curl and Apache readback. Owner-frozen frontend remains unchanged.
+**G3S1S Reviewer RETURN:** `docs/REVIEWER_DECISION_G3S1S_RETURN_BACKUP_RESTORE_UNVERIFIED_2026-10-15.md`. Exact Executor evidence in PR #64 `docs/evidence/g3s1s/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` commit `d0ae16640fe01db90093ca00738c130a6f8a9915`. Existing G3C local WordPress/Woo restored (prior G3S1R PASS). Executor saved protected Owner-local DB SQL dump (~9.8MB, 58 InnoDB tables) with verified hash, WordPress-files (~126MB) and bind-source (~24MB) archives with successful disposable extraction; these files remain in restricted LocalAppData outside Git. **Isolated MariaDB 11.4.7 dump import failed exit 1 with stderr/stdout not retained**, so actual cause and DB restore compatibility UNKNOWN. Follow-up sanitized diagnostic process was tool-policy blocked before start; no bypass. No change to actual G3C DB/volumes/site/PayPal, no Stripe plugin download/install and no public/provider/payment actions.
 
-**Payment separation:** G3C WP-CLI reports neither official PayPal Payments/PPCP nor Stripe installed; legacy Woo PayPal disabled. Historical G3B PayPal sandbox capture/refund/entitlement PASS is **separate** and its disposable G3B test environment was cleaned after acceptance (`docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md`); G3C plugin absence does not overturn G3B historical proof or establish accidental G3C removal. **Neither payment channel is operationally proven in current G3C.** No PayPal changes in the current Gate.
+**Current G3S1SR:** First classify/reproduce only the failed DB import in disposable network-disabled tmpfs MariaDB; save sanitized error stage/class and at most one evidence-supported scratch-only correction. Reuse verified WordPress archives. If DB restore and snapshot freshness/complete backup barrier **PASS**, the same Gate conditionally permits official pinned WooCommerce Stripe Gateway install **inactive only**; if not, STOP without plugin. Do not repeat WordPress startup, general inventory, prior frontend screenshots or PayPal sandbox work. No retry by alternate tool on executor policy denial. Original G3S1S Gate has RETURN and is superseded as active without waiving acceptance criteria.
 
-**New Owner conditional PayPal retirement (2026-10-15):** `docs/OWNER_DECISION_G3S_STRIPE_PASS_THEN_PAYPAL_RETIRE_2026-10-15.md` supersedes the prior *considering/not-authorized* intent **for a future post-Stripe retirement**. Owner wants Stripe to be the sole provider after a full independently accepted Stripe merchant/checkout/webhook/replay/refund/entitlement and applicable real settlement/payout readiness proof, with separately reviewed backup-safe provider cutover/retirement. This is advance intent/approval, **not authority to remove PayPal now**. Do not confuse *inactive plugin installation* with full Stripe PASS. If PPCP remains absent from G3C, plugin removal there is NOT_APPLICABLE. Preserve historical G3B records, all Woo orders/refunds, and existing operational obligations. Decommission requires a future exact-target Reviewer Gate; do not create or execute it during G3S1S.
+**Future payment decision:** Owner requests Stripe as the only provider once fully proven. PayPal removal is conditional on separate Stripe end-to-end checkout/webhook/refund/entitlement and real collection/payout readiness PASS, with an independent rollback-safe retirement Gate. Historical G3B PayPal Sandbox PASS stays valid; PPCP was absent on G3C in last known inventory. Neither provider may be changed by the current failed Gate.
 
-**G3S1S current Gate:** `docs/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md`. From healthy G3C, perform fresh redacted gateway readback, establish verified DB-consistent and WordPress-files backup/recovery barrier **before** plugin write, then if still absent install pinned official WordPress.org `woocommerce-gateway-stripe` **INACTIVE ONLY** and verify no PayPal/settings/provider/checkout mutation. Do not restart/recreate original site unnecessarily. Stripe account/KYC, Test/Live enablement, signed HTTPS, payments/refunds, automation generation, production and PR #64 merge remain separate later Gates.
-
-**Provenance:** Reviewer independently read GitHub Evidence and source/diffs; target host runtime/HTTP/WP results are Executor-host readbacks included in Evidence. Full customer data/order logical integrity, DB-restoration test and current PayPal/provider connection remain UNKNOWN.
+**Provenance:** Reviewer directly examined GitHub evidence and Gate/diffs; all Owner Windows Docker/backup operations are Executor host readback reported in durable PR Evidence, not Reviewer-direct host access.
 
 
 ## CRITICAL_CONSTRAINTS
@@ -379,29 +383,32 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor performs **G3S1S** from the existing running local G3C WordPress/Woo lab; no repeat startup or G3B PayPal Sandbox actions. Fresh-check current plugin/gateway flags and prove a recoverable project-scoped DB/files backup **before plugin mutation**.
-2. If official Stripe Gateway remains absent, install a pinned verified WordPress.org extension **inactive only**, preserve PayPal/Woo settings and current site, no Stripe account/OAuth/provider/checkout operations, no public ingress and no PR merge.
-3. Executor submits sanitized project Evidence to PR #64 and stops. Reviewer decides independently before subsequent Stripe Test onboarding/webhook/payment Gates. Only **after full Stripe end-to-end PASS**, open a separate PayPal retirement Gate based on the standing Owner conditional decision, with recoverable rollback and legacy-order/refund retention.
+1. Codex runs **G3S1SR**: debug one isolated MariaDB restore import with allowlisted error capture, no live DB mutation, no repeated files backup or WordPress startup. Permit one deterministic scratch-only correction; tool-policy refusal -> immediate STOP.
+2. Only upon verified DB restore **and current, complete rollback backup** may Codex in the SAME Gate install official authentic compatible Stripe extension **inactive**, leaving PayPal and provider/payment settings untouched.
+3. Codex writes sanitized Evidence in PR #64 and stops for Reviewer. Stripe onboarding/real money and eventual conditional PayPal retirement are later Gates.
 
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE now: G3S1S prompt already sent to Codex.** Owner now also authorizes **future conditional** PayPal retirement after verified Stripe end-to-end PASS, not current PayPal mutation. Stripe account/country/KYC/payment and other consequential actions remain later separately scoped Owner checkpoints. Stripe account registration, KYB, test OAuth, bank linking, payment and refund remain separate Owner checkpoints. No credentials or ID documents in chat or Git.
+**NONE except relaying the current G3S1SR prompt to Codex.** Original website and data are preserved; no Owner Docker action is needed. Stripe onboarding/KYC/money movement and future conditional PayPal retirement remain separate Owner checkpoints.
 
 ## EVIDENCE_POINTERS
 
-Current G3S1S / accepted G3S1R / prior G3S1P / G3S1D / G3S1 parent / G3S0:
+Current G3S1SR / previous G3S1S RETURN / accepted G3S1R / prior G3S1P / G3S1D / G3S1 parent / G3S0:
+0. `docs/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` — CURRENT Gate, isolate DB import error and stage Stripe inactive ONLY IF backup PASS
+0. `docs/REVIEWER_DECISION_G3S1S_RETURN_BACKUP_RESTORE_UNVERIFIED_2026-10-15.md` — latest formal Reviewer RETURN
+0. PR #64 `docs/evidence/g3s1s/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` at `d0ae166...` — partial backup proof, SQL import exited 1
 0. `docs/OWNER_DECISION_G3S_STRIPE_PASS_THEN_PAYPAL_RETIRE_2026-10-15.md` — advance Owner conditional authorization for later PayPal decommission, NOT current Gate
-0. `docs/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` — CURRENT GATE, recoverable backup then official inactive Stripe extension
+0. `docs/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` — previous Gate RETURN; Stripe not installed
 0. `docs/REVIEWER_DECISION_G3S1R_PASS_LOCAL_RUNTIME_RESTORED_2026-10-15.md` — G3S1R formal PASS local runtime/Woo only
 0. PR #64 `docs/evidence/g3s1/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_2026-10-15.md` at `ee031365...` — target-host readback
-0. `docs/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_GATE_2026-10-15.md` — **CURRENT executable Gate**; one start or safe app-only repair
+0. `docs/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_GATE_2026-10-15.md` — prior completed G3S1R recovery Gate
 0. `docs/OWNER_DECISION_G3S1R_ONE_ROUND_LOCAL_RECOVERY_2026-10-15.md` — Owner fresh restart and conditional WordPress app reinstall request
-0. `docs/G3S1P_OWNER_EXECUTION_PERMISSION_CHECKPOINT.md` — CURRENT Gate; Owner checks official execution approval route only
+0. `docs/G3S1P_OWNER_EXECUTION_PERMISSION_CHECKPOINT.md` — historical superseded Owner checkpoint
 0. `docs/REVIEWER_DECISION_G3S1D_RETURN_POLICY_SOURCE_UNKNOWN_2026-10-15.md` — Reviewer RETURN (policy rule and approved route unknown)
 0. PR #64 `docs/evidence/g3s1/G3S1D_READONLY_RUNTIME_POLICY_DIAGNOSTIC_2026-10-15.md` at `5903726a...` — Executor local diagnostic and missing historical screenshots
 0. `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` — Owner conditional restore intent; loss not proven
-0. `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` — **current active Gate, read-only only**
+0. `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` — historical read-only diagnosis Gate
 0. `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` — latest Reviewer RETURN
 0. PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at `715be642...` — durable Executor summary, no independent Reviewer host readback
 0. `docs/REVIEWER_DECISION_G3S1_RETURN_GITHUB_PLUGIN_TRANSPORT_CLOSED_2026-10-15.md` — formal Reviewer RETURN for initial G3S1 preflight; unchanged Gate
