@@ -76,3 +76,60 @@
 - **ACTUAL_CHANGES：** 新增 `modern-commercial-payment-guide/docs/P2_REWRITE_CANDIDATE.md` 和本 `modern-commercial-payment-guide/EXECUTION_EVIDENCE.md`；隔离分支，不修改原 `main`。
 - **ROLLBACK_EFFECT：** 如 Reviewer RETURN，候选文档可在分支撤回或关闭 PR；原 P1、旧 P2 历史文件及 7/29/42 冻结结构不受本轮影响。
 - **STOP_AT_REVIEWER：** `PASS_CANDIDATE`。Reviewer 审查方法论可用性、事实适用条件、29 美元比较可比性与是否回到百科堆砌；没有跨 Gate 权限。
+
+---
+
+# P2 修订第二轮｜对 Reviewer `RETURN_CONTENT_SYSTEMATICITY` 的返工证据
+
+## 本轮权威与执行边界
+
+- **AUTHORIZED_GATE：** `MCPG-P2-CHAPTER1-INDEPENDENT-REWRITE-20261016`（原 Gate 内的返工，不新增 Gate、不进入 P3）。
+- **REVIEWER_RETURN：** [PR #132 评论 ID 6198541590](https://github.com/entropy-student/project/pull/132#issuecomment-6198541590)，`RETURN_CONTENT_SYSTEMATICITY`。本轮不是重审 P1；没有读取最初被 Owner 废弃的 P2。
+- **PREFLIGHT_DIRECT_READBACK：** PR #132 仍 `open, draft=true, merged=false`；原分支 `mcp-p2-independent-rewrite-20261016`；此次改写前 head `a7f19031361e7e6327bee98b726a5a0c9c6a91fc`、候选文件 blob `17204626fe91441b1f41dc425a8a23aabb51ec03`、本证据文件 blob `5388fec8e0fce61a16708e73c24c12709b4a8704`。
+- **ACTUAL_CHANGE 1：** 在既有 PR 分支替换 `docs/P2_REWRITE_CANDIDATE.md`，GitHub update_file 返回 commit `05eec1aa30271b236299f9ba879ff06313df8fd8` 和 blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`。
+- **DIRECT_READBACK 1：** 用 GitHub fetch_file 重新取得候选 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`，正文 **19,986** 个 JS 字符；经标题文本检查 5/5 二级问题及 9/9 三级编号均存在（9 个小节）；官方 URL 25 个（含同源多次引用）。
+- **ACTUAL_CHANGE 2：** 在本证据文件**末尾追加本轮证据**，不改写前轮历史结果；当前前轮 `PASS_CANDIDATE` 已经由 Reviewer 正式 `RETURN_CONTENT_SYSTEMATICITY` 否决，**不得将旧记录当作获批事实**。
+
+## 六项 Reviewer 缺陷与实际整改对应
+
+| 评论中的缺陷 | 第二轮实质改动 | 供 Reviewer 核查的位置 |
+|---|---|---|
+| 1. 没有完整经营关系模型 | 以订单为最小单位建立**经营主体/商品/买方/交易方式/销售方/店铺/资金终点**七维画像；再用“合同付款链”和“资金责任链”连接卡组织、收单商、平台、MoR 与最终受款账户 | §1.1、§2.1、§2.2 |
+| 2. 仅停留在筛选、没有主备结论 | 两条完整条件化演练写明业务事实、模式、候选、NO/UNKNOWN、主选/备用及最小额外核验；未获准时明确不能宣称可上线 | §5.1 演练 A/B |
+| 3. 不同主体报价被当作同条件比价 | 原香港 Stripe/Paddle/PayPal 改为“跨主体费率示范”单列；另设计**同一大陆主体/同一 $29 商品**的 PayPal 两类经批准产品对比，及**同一 Shopify 大陆企业**第三方 PSP vs 受邀中国版 Shopify Payments 的条件比较。将 MoR 划为同经营者但销售责任不同的评价，不把费率直接排行 | §4.1 三组区分 |
+| 4. 未推演最终银行可得金额 | 将资金分四层：顾客支付、交易余额、可提现余额、银行入账；5/6/10/100 单美元提现批次明示最低 $150、每批 $35 影响；对中转行、入账行、实际换汇标 UNKNOWN | §3.2、§4.1 批次表 |
+| 5. PayPal 费率合同适用范围漏写 | 明示 4.4% + $0.30 **仅适用于 PayPal中国跨境支付服务用户协议 + PayPal全球服务条款**的贝宝支付账户，**不适用于另一 PayPal支付服务用户协议**，另列经批准卡收款价而不泛化 | §3.1、§4.1、来源 S02 |
+| 6. 分类不均衡 | 从商业模式而非厂商列表比较**大陆本地交易、跨境平台实物、跨境独立站实物、SaaS/MoR、外贸 B2B 发票** | §2.1、§5.1 演练及其他三类 |
+
+## 第二轮官方公开资料复核
+
+**官方页面核验日期：2026-10-16**。下列为本轮对修正最关键论断的逐项资料核对；完整 [S01]–[S15] 见候选正文末尾。此处只是公开规则核验，不是商户账户/合同/真实资金验证。
+
+1. **PayPal CN 协议/费用：** [官方费率](https://www.paypal.com/c2/business/paypal-business-fees?locale.x=zh_C2)，页面明确限定两份中国跨境服务及全球条款，排除依另一贝宝支付服务协议开户账户；国际商业收款 4.40%+按币种固定费，USD $0.30；在线卡服务高级版国际 4.10%+$0.30，需申请/批准；对应企业 CN 银行美元电汇 $35/批次。
+2. **PayPal 提现门槛：** [官方中国区提现帮助](https://www.paypal.com/c2/cshelp/article/how-do-i-withdraw-funds-from-my-paypal-account-help394)：大陆银行美元电汇最低 $150，通常 3–7 个工作日，可能延迟/被审核。
+3. **Shopify 大陆企业资格：** [中国版产品](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/china)及[资格/WorldFirst](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/china/requirements)：受邀早期体验、大陆注册企业、跨境销售、WorldFirst 验证、不得用于大陆境内消费者销售。
+4. **Shopify 外部费用叠加：** [第三方收单](https://help.shopify.com/en/manual/payments/third-party-providers)、[第三方交易费](https://help.shopify.com/en/manual/your-account/manage-billing/billing-charges/types-of-charges/third-party-charges/third-party-transaction-fees)、[Payments 卡费](https://help.shopify.com/en/manual/payments/shopify-payments/onboarding/cost-of-shopify-payments)：第三方支付成本与 Shopify 交易费可为两笔；中国版具体账户费率本轮 **UNKNOWN**。
+5. **Paddle 品类/MoR/费与到账：** [限制品类](https://www.paddle.com/help/start/intro-to-paddle/what-am-i-not-allowed-to-sell-on-paddle)、[价目](https://www.paddle.com/pricing)、[结算](https://www.paddle.com/help/manage/get-paid/when-and-how-do-i-get-paid)、[税务定位](https://www.paddle.com/help/sell/tax/how-paddle-handles-vat-on-your-behalf)：主要软件、公开标准 5%+$0.50、月度结算与最低 $100；不是全部数字模板可受理。
+6. **大陆与平台路径：** [支付宝网站支付产品](https://opendocs.alipay.com/open/270)、[商家主体](https://opendocs.alipay.com/b/07i07o)、[Amazon 全球收款](https://gs.amazon.cn/accs)：本地商户支付产品与跨境平台卖家资金出口应分类，不把平台卖家账户当独立站收银台。
+7. **香港 Stripe 只做不同主体示范：** [Stripe 香港标准价格](https://stripe.com/en-hk/pricing) 以及 [全球地区](https://stripe.com/global)。香港价格不能证明大陆独立商家开户。
+
+## 静态数值复算 / 范围检查
+
+设顾客支付 `G = $29.00`、条件为符合 S02 的 CN PayPal 商户国际 USD 交易；示例每笔交易手续费 `round_to_cents(29×4.4%+0.30)=$1.58`，交易后余额按每单 `$27.42` 计算。下表**只扣除公开可确定的交易费与同一路线每次提现 $35**，不承诺银行真的收到该数值。
+
+| 订单数 N | 验证 `N×27.42` | 至少 $150？ | 验证 `N×27.42−35` |
+|---:|---:|---|---:|
+| 1 | $27.42 | 否 | 不可按此路线提现 |
+| 5 | $137.10 | 否 | 不可按此路线提现 |
+| 6 | $164.52 | 是 | $129.52 |
+| 10 | $274.20 | 是 | $239.20 |
+| 100 | $2,742.00 | 是 | $2,707.00 |
+
+**账务限定：** 官网未在本轮验证每一笔真实交易的美分舍入方法；不同余额调整/预留会改变最低额判断。表中 $129.52 等是“扣两层已知费后**银行入账前**的估计额”，**最终银行实际净得和人民币实际可用额均为 UNKNOWN**；不能把前者宣称已确定的银行实收。对于软件 MoR，标准 $29 单笔约 $27.05 但相应 MoR 结算和收款费用仍需查合同。
+
+## 仍属 UNKNOWN、边界和回滚
+
+- **UNKNOWN：** 特定自然人可否获得哪一种 PayPal/数字平台商户产品；Paddle/Lemon 是否接受具体模板及个人；中国版 Shopify 是否向某个商家发出邀请；中国大陆第三方实际提供商、Shopify 中国店铺的确切叠加费、WorldFirst/银行/FX报价、提款审核与真实成交率。
+- **声明限制：** 没有进行任何账户认证、生产支付、真实汇兑或提现；案例是**明确前提下的演练**；不触碰 P1、7/29/42 框架、最初被 Owner 废弃 P2、其他模块、HTML、管理规范或生产基础设施。
+- **ROLLBACK：** 本次只有原 PR 分支内两份 Markdown 变化；旧候选版本仍在历史 commit `a7f19031361e7e6327bee98b726a5a0c9c6a91fc`，正文改稿在 `05eec1aa30271b236299f9ba879ff06313df8fd8`，可以由 Reviewer 决定继续修改或回撤；main 与 P1 均不因 PR 更新而改变。
+- **EXECUTOR_RESULT：** `PASS_CANDIDATE`，**STOP_AT_REVIEWER**；本轮覆盖与公开材料、算术自检不能代替 Reviewer 的方法论和写作质量审核。
