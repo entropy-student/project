@@ -1,0 +1,148 @@
+{
+  "capturedAtUtc": "2026-09-29T12:44:28.397Z",
+  "result": "RETURN_STARTER_IMPORT_FAILED",
+  "plugin": "Starter Templates 4.7.7",
+  "searchedTemplate": "Bestselling Author",
+  "pageBuilder": "Block Editor",
+  "selectedSort": "Latest",
+  "importPerformed": false,
+  "aiBuilderSelected": false,
+  "adminRoute": "/themes.php?page=starter-templates",
+  "pageTitle": "Starter Templates ‹ Birthday Magazine Studio — WordPress",
+  "visibleText": "9 Block Editor What type of website are you building? Business Local Business Personal Care Professionals Personal Sites Community E-Commerce Blog All Latest Your search - Bestselling Author - did not match any Starter Templates. Back Get unlimited access to all Premium Starter Templates and more, at a single low cost! Get Premium Templates Already purchased it? Install and activate Premium Starter Templates [Need Help?]",
+  "buttonLabels": [
+    "Collapse Menu",
+    "Get Premium Templates",
+    "Close dialog"
+  ],
+  "inputs": [
+    {
+      "type": "search",
+      "placeholder": "Search for Starter Templates",
+      "value": "Bestselling Author",
+      "ariaLabel": null
+    }
+  ],
+  "selects": [],
+  "dropdownMeta": [],
+  "sortOptionsAfterOpen": "9 Block Editor What type of website are you building? Business Local Business Personal Care Professionals Personal Sites Community E-Commerce Blog All Popular Popular Latest Starter Templates for: Bestselling Author Back Get unlimited access to all Premium Starter Templates and more, at a single low cost! Get Premium Templates Already purchased it? Install and activate Premium Starter Templates [Need Help?]",
+  "selectedSortAfterClick": "Latest",
+  "selectedSortAfterSearch": "Latest",
+  "latestFilterCount": 1,
+  "latestFilterMeta": [
+    {
+      "tag": "DIV",
+      "className": "stc-toggle-dropdown-popup-item ",
+      "html": "<div class=\"stc-toggle-dropdown-popup-item \">Latest</div>",
+      "parentHtml": "<div class=\"stc-toggle-dropdown-popup-content\"><div class=\"stc-toggle-dropdown-popup-item active\">Popular</div><div class=\"stc-toggle-dropdown-popup-item \">Latest</div></div>"
+    }
+  ],
+  "networkFailures": [
+    {
+      "host": "127.0.0.1",
+      "resourceType": "stylesheet",
+      "method": "GET",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "httpErrors": [
+    {
+      "host": "127.0.0.1",
+      "path": "/wp-content/plugins/var/www/html/wp-content/themes/astra/inc/lib/nps-survey/assets/fonts/figtree.css",
+      "status": 404,
+      "resourceType": "stylesheet"
+    }
+  ],
+  "externalResponses": [
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "host": "",
+      "path": "http://127.0.0.1:8147/3cb739e8-b156-46d7-a8f7-f19064a7951d",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css",
+      "status": 307,
+      "resourceType": "stylesheet"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "host": "startertemplates.com",
+      "path": "/whats-new/feed/",
+      "status": 200,
+      "resourceType": "fetch"
+    },
+    {
+      "host": "websitedemos.net",
+      "path": "/wp-json/starter-templates/v2/sites-search/",
+      "status": 200,
+      "resourceType": "fetch"
+    },
+    {
+      "host": "websitedemos.net",
+      "path": "/wp-json/starter-templates/v2/sites-search/",
+      "status": 200,
+      "resourceType": "fetch"
+    }
+  ],
+  "templateApiMetadata": [
+    {
+      "host": "websitedemos.net",
+      "status": 200,
+      "rootType": "object",
+      "rootKeys": [
+        "success",
+        "message",
+        "ids"
+      ],
+      "arrays": [
+        {
+          "key": "ids",
+          "count": 84
+        }
+      ],
+      "candidateMatches": []
+    },
+    {
+      "host": "websitedemos.net",
+      "status": 200,
+      "rootType": "object",
+      "rootKeys": [
+        "success",
+        "message",
+        "ids"
+      ],
+      "arrays": [
+        {
+          "key": "ids",
+          "count": 84
+        }
+      ],
+      "candidateMatches": []
+    }
+  ]
+}

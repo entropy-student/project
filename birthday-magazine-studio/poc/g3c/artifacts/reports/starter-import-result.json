@@ -1,0 +1,38 @@
+{
+  "capturedAtUtc": "2026-09-29T12:44:28.397Z",
+  "gate": "G3C_UI_UX_PRODUCTIZATION",
+  "result": "RETURN_STARTER_IMPORT_FAILED",
+  "requiredStarter": "Bestselling Author",
+  "officialTemplatePage": "https://wpastra.com/templates/bestselling-author-02/",
+  "officialPageListsTemplateAsFree": true,
+  "localImporter": {
+    "plugin": "Starter Templates 4.7.7",
+    "pageBuilder": "Block Editor",
+    "selectedSort": "Latest",
+    "exactSearchText": "Bestselling Author",
+    "noMatch": true,
+    "displayedMessage": "Your search - Bestselling Author - did not match any Starter Templates.",
+    "catalogResponses": [
+      {
+        "host": "websitedemos.net",
+        "path": "/wp-json/starter-templates/v2/sites-search/",
+        "status": 200,
+        "resourceType": "fetch"
+      },
+      {
+        "host": "websitedemos.net",
+        "path": "/wp-json/starter-templates/v2/sites-search/",
+        "status": 200,
+        "resourceType": "fetch"
+      }
+    ],
+    "aiBuilderSelected": false,
+    "importPerformed": false
+  },
+  "priorPopularSearch": "NO_MATCH",
+  "evidence": {
+    "inspector": "scripts/inspect-bestselling-author.cjs",
+    "inspectionReport": "artifacts/reports/starter-template-importer-inspection.json",
+    "screenshot": "artifacts/screenshots/starter-template-importer.png"
+  }
+}
