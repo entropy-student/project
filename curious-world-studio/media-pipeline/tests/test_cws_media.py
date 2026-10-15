@@ -1,8 +1,10 @@
 import importlib.util
+import io
 import json
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest import mock
 
@@ -170,6 +172,155 @@ class CliTests(unittest.TestCase):
         self.assertIn('127.0.0.1:15050:80', text)
         self.assertEqual(text.count("@sha256:"), 3)
         self.assertNotIn("restart: always", text)
+
+    def test_http_service_health_requires_http_200_and_body(self):
+        response = mock.MagicMock()
+        response.status = 200
+        response.read.return_value = b"<html>ready</html>"
+        response.__enter__.return_value = response
+        opener = mock.Mock()
+        opener.open.return_value = response
+        with mock.patch.object(cws, "build_opener", return_value=opener) as make_opener:
+            result = cws.http_service_health("http://127.0.0.1:18080")
+        self.assertEqual(result, {"ready": True, "status": "HTTP_200"})
+        self.assertEqual(make_opener.call_args.args[0].proxies, {})
+        self.assertEqual(opener.open.call_args.args[0].full_url, "http://127.0.0.1:18080/")
+
+        response.read.return_value = b""
+        opener.open.return_value = response
+        with mock.patch.object(cws, "build_opener", return_value=opener):
+            self.assertEqual(cws.http_service_health("http://127.0.0.1:18080"),
+                             {"ready": False, "status": "EMPTY_BODY"})
+
+    def test_compose_start_requires_http_health_after_ports_open(self):
+        workdir = cws.ROOT / ".local" / "media-operations-test-health"
+        with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=workdir):
+            project = cws.ComposeProject(workdir)
+        daemon = mock.Mock(returncode=0, stdout="29.7.2")
+        with mock.patch("shutil.which", return_value="docker"), \
+             mock.patch("subprocess.run", return_value=daemon), \
+             mock.patch.object(project, "_ensure_env"), \
+             mock.patch.object(project, "running_services", side_effect=[set(), {"searxng", "fourget", "valkey"}]), \
+             mock.patch.object(cws, "port_open", side_effect=[False, False, True, True]), \
+             mock.patch.object(cws, "free_memory_mb", return_value=cws.MIN_FREE_MEMORY_MB + 1), \
+             mock.patch.object(cws, "free_disk_mb", return_value=cws.MIN_FREE_DISK_MB + 1), \
+             mock.patch.object(project, "_run") as compose_run, \
+             mock.patch.object(cws, "http_service_health", side_effect=[
+                 {"ready": True, "status": "HTTP_200"},
+                 {"ready": False, "status": "HTTP_503"},
+             ]), \
+             mock.patch.object(cws.time, "monotonic", side_effect=[0, 0, 111]), \
+             mock.patch.object(cws.time, "sleep"):
+            with self.assertRaises(cws.CliError) as raised:
+                project.start()
+        self.assertEqual(raised.exception.code, "SEARCH_SERVICES_NOT_READY")
+        self.assertIn("fourget=HTTP_503", str(raised.exception))
+        self.assertTrue(project.started_here)
+        compose_run.assert_called_once()
+
+    def test_stop_verifies_ports_are_released(self):
+        workdir = cws.ROOT / ".local" / "media-operations-test-stop"
+        with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=workdir):
+            project = cws.ComposeProject(workdir)
+        project.started_here = True
+        with mock.patch.object(project, "_run", return_value=mock.Mock(returncode=0)), \
+             mock.patch.object(project, "running_services", return_value=set()), \
+             mock.patch.object(cws, "port_open", side_effect=[False, False, False, False]), \
+             mock.patch.object(cws.time, "monotonic", return_value=0):
+            project.stop_if_owned()
+        self.assertFalse(project.started_here)
+
+    def test_stop_reports_open_port_without_stopping_unowned_process(self):
+        workdir = cws.ROOT / ".local" / "media-operations-test-stop-port"
+        with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=workdir):
+            project = cws.ComposeProject(workdir)
+        project.started_here = True
+        with mock.patch.object(project, "_run", return_value=mock.Mock(returncode=0)) as compose_run, \
+             mock.patch.object(project, "running_services", return_value=set()), \
+             mock.patch.object(cws, "port_open", return_value=True), \
+             mock.patch.object(cws.time, "monotonic", side_effect=[0, 11]), \
+             mock.patch.object(cws.time, "sleep"):
+            with self.assertRaises(cws.CliError) as raised:
+                project.stop_if_owned()
+        self.assertEqual(raised.exception.code, "COMPOSE_PORTS_STILL_OPEN")
+        self.assertTrue(project.started_here)
+        compose_run.assert_called_once()
+
+    def _run_discover(self, results, allow_partial=False):
+        with tempfile.TemporaryDirectory() as temp:
+            workdir = Path(temp) / "curious-world-studio" / ".local" / "w"
+            argv = ["--workdir", str(workdir), "discover", "--query", "fixture", "--kind", "both"]
+            if allow_partial:
+                argv.append("--allow-partial")
+
+            def started(project):
+                project.started_here = True
+                project.health_checks = {"searxng": {"ready": True, "status": "HTTP_200"},
+                                         "fourget": {"ready": True, "status": "HTTP_200"}}
+                return True
+
+            output = io.StringIO()
+            with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=workdir), \
+                 mock.patch.object(cws.ComposeProject, "start", autospec=True, side_effect=started), \
+                 mock.patch.object(cws.ComposeProject, "stop_if_owned"), \
+                 mock.patch.object(cws.pipeline, "search", side_effect=results), \
+                 redirect_stdout(output):
+                exit_code = cws.main(argv)
+            return exit_code, json.loads(output.getvalue())
+
+    def test_discover_all_success_is_zero_exit(self):
+        exit_code, result = self._run_discover([2, 3, 4, 5])
+        self.assertEqual(exit_code, 0)
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["code"], "OK")
+
+    def test_discover_partial_failure_is_nonzero_by_default(self):
+        exit_code, result = self._run_discover([2, RuntimeError("offline"), 4, RuntimeError("offline")])
+        self.assertEqual(exit_code, 1)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["code"], "PARTIAL_SEARCH")
+        self.assertEqual(sum(row["status"] == "FAILED" for row in result["data"]["results"]), 2)
+
+    def test_discover_partial_results_require_allow_partial(self):
+        exit_code, result = self._run_discover([2, RuntimeError("offline"), 4, RuntimeError("offline")],
+                                               allow_partial=True)
+        self.assertEqual(exit_code, 0)
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["code"], "PARTIAL_SEARCH_ALLOWED")
+
+    def test_discover_all_failure_is_nonzero_even_with_allow_partial(self):
+        failures = [RuntimeError("offline") for _ in range(4)]
+        exit_code, result = self._run_discover(failures, allow_partial=True)
+        self.assertEqual(exit_code, 1)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["code"], "SEARCH_FAILED")
+
+    def test_discover_upstream_degradation_is_reported_as_partial_failure(self):
+        with tempfile.TemporaryDirectory() as temp:
+            workdir = Path(temp) / "curious-world-studio" / ".local" / "w"
+            output = io.StringIO()
+
+            def search(catalog, engine, kind, query, endpoint, page=1, proxy=None):
+                errors = [{"engine": "fixture", "error_type": "HTTP_503"}] if engine == "searxng" else []
+                catalog.data.setdefault("queries", []).append({"upstream_errors": errors})
+                return 3
+
+            def started(project):
+                project.started_here = True
+                return True
+
+            argv = ["--workdir", str(workdir), "discover", "--query", "fixture", "--kind", "video"]
+            with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=workdir), \
+                 mock.patch.object(cws.ComposeProject, "start", autospec=True, side_effect=started), \
+                 mock.patch.object(cws.ComposeProject, "stop_if_owned"), \
+                 mock.patch.object(cws.pipeline, "search", side_effect=search), \
+                 redirect_stdout(output):
+                exit_code = cws.main(argv)
+            result = json.loads(output.getvalue())
+        self.assertEqual(exit_code, 1)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["data"]["results"][0]["status"], "UPSTREAM_PARTIAL")
+        self.assertEqual(result["warnings"][0]["error"], "UPSTREAM_PARTIAL")
 
 
 if __name__ == "__main__":
