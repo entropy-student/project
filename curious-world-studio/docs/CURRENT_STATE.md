@@ -6,6 +6,9 @@
 >
 > **正式制作状态未变**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。未批准更换选题、音画生产、发布或素材复用权；Owner 已恢复**素材工具支线的专项研发和验收**，不能再将2026-10-12“全面暂停”的旧快照当成当前命令。
 
+> **2026-10-15最新独立Reviewer裁决：`MEDIA-ONDEMAND-RECOVERY-G0 / G0_RECOVERY_EVIDENCE_ACCEPT`。** Owner提供的G0 ZIP外层SHA `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`一致，16项SHA256SUMS及15项manifest均匹配；记录显示旧搜索端口无监听，Windows无搜索服务进程，WSL发行版Stopped，G0没有安装/启动/删除/修改Git跟踪文件。**Reviewer仅独立检查提交文件/主线源码，不具有Windows实机直连证据。** 旧运行留下61个文件约1,746,920,513字节（其中WSL VHDX约1,735,393,280字节），当前全部保留。
+> **下一步未自动授权执行**：先审查现有`agent-reach / Exa`检索工具是否可以提供合法的媒体候选发现及其结果留存权利；同时保留“人工来源URL导入→现有按ID下载/QA”的零部署退路。Brave普通API对结果持久存储有限制，现有CWS持久索引不可无条件直连；不得注册付费API、安装搜索服务、启动WSL/VPS/Docker、清理VHDX或自行进入G1。G0通过不等于`ONDEMAND_END_TO_END_PASS`或`DOCKER_FREE_MEDIA_PIPELINE_PASS`。
+
 ## 1. 一眼看懂
 
 | 轨道 | 最新已证实结果 | 仍未完成 |
@@ -32,7 +35,7 @@
 ## 3. 轮次重新命名：两条轨道不可混用
 
 - **MEDIA-R1** 搜索工具实测 → **MEDIA-R2** 素材获取闭环 → **MEDIA-R3** 国际横屏逐站普查 → **MEDIA-R4+R5** 本地清理与非PeerTube扩展（最新：核心目标达到，总体PARTIAL）。
-- **MEDIA-INTEGRATION**：独立可选工具已Windows测试、Reviewer接受并通过PR #129合并 `main`；不意味着已成为正式制作引擎。**当前 Gate 改为 `MEDIA-ONDEMAND-RECOVERY-G0`（仅只读）**：Codex先核查被中断进程/工作树/现有搜索服务真正来源及即用即停方案，不安装/部署/迁移/停服；[新决策与交接](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)。旧[DOCKERFREE整链验收](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停，之后如确有可行本机路径再另行授权闭环测试。
+- **MEDIA-INTEGRATION**：独立可选工具已Windows测试、Reviewer接受并通过PR #129合并 `main`；不意味着已成为正式制作引擎。**当前 `MEDIA-ONDEMAND-RECOVERY-G0` 已获独立Reviewer接受（只读证据层面）**：Codex先核查被中断进程/工作树/现有搜索服务真正来源及即用即停方案，不安装/部署/迁移/停服；[新决策与交接](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)。旧[DOCKERFREE整链验收](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停，之后如确有可行本机路径再另行授权闭环测试。
 - **MEDIA-R6**（待Owner单独授权）：实际画面/动作匹配、时间码定位、近似内容去重及1080p优先选择。
 - **MEDIA-R7**（待Owner单独授权）：逐分镜素材包，输出真实原片、精准时段、来源、预览及内容/权利状态，再交接正式制作。
 - **PROD-R1** 选题/研究/真实素材/权利 → **PROD-R2** 剧本/分镜/Research Aqua设计 → **PROD-R3** 30–60秒真实音画字幕联调 → **PROD-R4** 第一版完整内部草片。旧[四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)指**PROD**，不是MEDIA-R4。发布另有授权。

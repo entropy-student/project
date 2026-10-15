@@ -4,6 +4,15 @@
 >
 > 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
 
+## 最新G0恢复现场验收（2026-10-15，优先于下方历史“正在进行G0”叙述）
+
+- Reviewer verdict: **`G0_RECOVERY_EVIDENCE_ACCEPT`**；只接受中断现场调查与低复杂度路线评估，**不授权自动开始G1**。提交ZIP：`CWS_MEDIA_ONDEMAND_G0_2026-10-15.zip`，SHA256 `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`；ZIP完整，16项SHA清单与15项manifest独立匹配。
+- 执行端只读证据：本机旧端口18080/15050/18765无监听；无活动本地SearXNG/4get；Windows Python/yt-dlp/FFmpeg可用；Ubuntu-24.04、docker-desktop WSL当前Stopped。**不可从这些本机结果外推所有远端服务均不存在。**
+- 中断运行遗留61项约1.747GB，含1.735GB WSL VHDX；均保留，未授权删除。旧Git工作区停留`codex/cws-media-integration-windows-20261015`、HEAD `4a14f024`，存在三个tracked变更和两个未跟踪__pycache__目录；需保护，切勿reset/clean/pull覆盖。
+- 当前CWS `media-pipeline`只能用SearXNG/4get HTTP endpoint检索，既不能无服务直接关键词搜索，也不控制服务的启动与退出。已验证“本地媒体获取/QA能力”，**未验证无Docker/零常驻完整搜索链路**。
+- Brave Search API当前普通条款允许操作所需瞬时存储，但未授予通常意义的搜索结果持久库权利；CWS的持久catalog不应直接保存未获许可的Brave响应。Exa的留存权利与媒体专用检索覆盖尚未知。G0已证实Codex有`mcporter / agent-reach / Exa`资料搜索路径，**只能作为G1前的候选，不能假定可长期存储或具备视频搜索能力**。
+- 建议优先短路径：检查既有合法搜索工具的接口与存储许可（只读），并评估人工来源URL导入作为完全零搜索服务的保底模式；正式G1安装、API密钥、费用、真实媒体下载与Git代码改动仍要后续授权。
+
 ## 一、项目目的与角色
 
 CWS（Curious World Studio）是Owner的不露脸、观点驱动、跨领域真实问题视频制作项目，B站为主；Research Aqua A→B视觉参考、3+1真实素材合同、36条题库仍有效。不是一个现成第三方软件。ChatGPT充当主编/独立Reviewer，本地Windows Codex负责实际执行，Owner决定费用/删除/外联/正式Gate/发布；普通实验以一个ZIP、SHA和原始日志交接，正式生产代码需分支PR及Reviewer核验。

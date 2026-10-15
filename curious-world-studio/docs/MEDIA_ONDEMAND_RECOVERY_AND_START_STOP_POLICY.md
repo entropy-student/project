@@ -4,6 +4,13 @@
 >
 > **当前仅批准 `MEDIA-ONDEMAND-RECOVERY-G0`：Windows本机只读环境复核与按需技术路线判断。** 无须Owner上传旧ZIP给Codex；本机必须先核对真实Git工作树、PID与任务痕迹。**禁止直接恢复被中断命令、继续安装或搬迁服务、部署VPS、停止Docker/共享服务或擅自清理遗留文件。**
 
+## 当前Reviewer裁决附注（2026-10-15，长期索引）
+
+- `G0_RECOVERY_EVIDENCE_ACCEPT`：Owner上传的只读调查包SHA `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`，16条内部SHA与15项manifest复核通过；仅意味着中断现场和方案比较获得证据级接受。
+- 没有可复用的**当前本机**SearXNG/4get服务；18080/15050无监听，WSL stopped；旧VHDX和原工作树的未提交内容都要保护，不清理。
+- 2026-10-15独立Reviewer验证Brave普通Search API条款禁止将Search Results建立持久缓存/数据库（瞬时运行储存例外；扩展储存须特别授权）；**不批准直接把Brave数据写入现有CWS持久catalog**。Exa的存储与视频/图片覆盖尚未核实。优先评估本机现成`agent-reach`检索能力的合法数据用途，不把其命令行可用等同于MEDIA检索接口已通过。
+- 后续建议采用**零部署、短生命周期**的方案；人工URL导入可作为降级选项，但**不等同于自动关键词批量视频搜索**。任何真实G1/安装/付费API/持久源码更改须有独立Owner授权。
+
 ## 1. 已经成立与尚未成立的事实
 
 - GitHub `main` 已有PR#129合并的CWS `media-pipeline/`；受限范围内可索引SearXNG/4get查询、去重、按ID下载、FFprobe/FFmpeg QA、HTML素材库；代码Windows36/36测试与Reviewer修复验收通过。
