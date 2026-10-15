@@ -194,7 +194,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Current wp-admin: `http://127.0.0.1:8189/wp-admin/`.
 - Product: Woo product 1113, virtual, USD 39.99.
 - Free Preview: project-local frontend component; its optional selected photo remains browser-local; no Preview server photo upload and no model request.
-- Core function page: separate pre-payment full-intake surface; 12–25 photos + structured answers are stored as a temporary server draft before checkout, with no generation/model entitlement.
+- Core function page: separate pre-payment full-intake surface; current implementation keeps answers/photos in browser memory and hands off only the Woo product to checkout. Durable temporary server draft persistence for the 12–25 photos + structured answers is REQUIRED NEXT and is not yet implemented.
 - Account/private workspace: checkout creates/attaches authenticated customer + Woo order ownership; successful payment adopts the exact submitted pre-payment intake snapshot into that order/workspace.
 - Payment baseline: official WooCommerce PayPal Payments; Sandbox proof accepted. Live/real-money not proven.
 - Paid generation: exact production provider/runtime remains UNKNOWN.
