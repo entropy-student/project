@@ -13,6 +13,7 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
+| `OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md` | **Latest Owner update:** Stripe account registered; specific issue, verification and payout readiness unknown; no Codex prompt |
 | `REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` | **CURRENT Reviewer PASS** of G3S2 policy read-only research, actual Owner merchant eligibility unknown; no active Codex Gate |
 | `evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md` | Stripe HK vs mainland merchant requirements, HK identity rules, Wise payout restrictions, Woo Test mode/HTTPS webhook requirements and sources |
 | `G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` | Completed read-only Gate; awaits Owner's real merchant country and structure selection before Test planning |
