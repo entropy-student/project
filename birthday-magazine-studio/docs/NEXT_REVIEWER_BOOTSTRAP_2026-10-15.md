@@ -31,7 +31,10 @@ PR_HEAD_REVIEWED_G3S0=c90e6f93803ad861745cd476106e00d01c68debb
 PR_STATUS_G3S0=OPEN_UNMERGED_MERGEABLE_FALSE
 FRONTEND_OWNER_VISUAL=PASS_FROZEN
 G3S0_REVIEWER_DECISION=PASS_READINESS_CLASSIFICATION_ONLY
-CURRENT_GATE_AT_HANDOFF=G3S1_LOCAL_STRIPE_GATEWAY_STAGING
+CURRENT_GATE_NOW=G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC
+G3S1_PARENT=RETURN_WORDPRESS_START_EXECUTION_POLICY_BLOCKED
+G3S1_PARTIAL_DB=RUNNING_HEALTHY_EXECUTOR_LAST_READBACK_ONLY
+PR64_NEW_EVIDENCE_HEAD=715be642c59f40672f6d83b00aa9bc4a7997dc31
 STRIPE_ACCOUNT_EXISTS=UNKNOWN
 STRIPE_LIVE_ELIGIBILITY_AND_PAYOUT=UNKNOWN
 PAYPAL_RETIREMENT=NOT_AUTHORIZED
@@ -71,7 +74,8 @@ Free Preview: zero model, vision/image generation, third-party upload or server 
 | G3CR6 homepage/FREE Preview and G3CR7 five-step frontend | Owner visual PASS 2026-10-15; technical source latest candidate still has separate review caveat |
 | G3CR7 standalone payment/generation status sample | QA_ONLY; actual status belongs in Woo order/private workspace |
 | G3S0 Stripe account/plugin/webhook readiness | Reviewer PASS classification only, not operational |
-| G3S1 local Woo/Stripe staging | NEXT; no execution evidence yet |
+| G3S1 local Woo/Stripe staging | RETURN; partial local evidence on PR #64, WordPress start blocked by execution policy; DB only running at Executor last readback |
+| G3S1D read-only execution-policy diagnosis | **CURRENT GATE**; no service starts/stops or policy bypass |
 | Stripe install/test/live/merchant/KYC/payout | UNKNOWN / NOT DONE |
 | Pre-payment server draft/snapshot linkage | NOT DONE |
 | Stripe synthetic test capture, webhook signature, refund and replay | NOT DONE |
@@ -80,7 +84,7 @@ Free Preview: zero model, vision/image generation, third-party upload or server 
 
 Frontend visual style: Stripe-inspired SaaS application structure + Birthday Magazine mulberry `#713F5D`; no decorative SVG/mesh/abstract face figures. Final UI visually accepted by Owner at PR #64 c90e6f...; DO NOT reopen visual work absent new Owner demand. The separate latest technical PASS_CANDIDATE source check is not automatically cleared by visual approval.
 
-Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PHP8.3, MariaDB 11.4.7, Mailpit 1.31.2, WooCommerce 11.1.2, Woo product 1113 virtual USD39.99; localhost `127.0.0.1:8189` / Mailpit 8190. G3S0 Executor **reported all three containers STOPPED, volumes/networks retained**, and did not restart; active plugins/payment settings/products are **NOT fresh read back**.
+Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PHP8.3, MariaDB 11.4.7, Mailpit 1.31.2, WooCommerce 11.1.2, Woo product 1113 virtual USD39.99; localhost `127.0.0.1:8189` / Mailpit 8190. G3S0 earlier reported three stopped **core** containers; a later G3S1 Executor run identified a fourth same-project helper `wpcli` in the Compose source, started only the DB, and then returned on WordPress start policy denial. Reviewer confirmed four Compose services from GitHub source, but did not directly read the Owner's Docker host. At the last Executor readback DB was running/healthy and WordPress/Mailpit/wpcli stopped. Payment plugins/products are **NOT fresh read back**.
 
 ## Current payment choice and limitations
 
@@ -98,9 +102,9 @@ Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PH
 
 **Preserved owner-relayed Executor report and evidence limitations:** `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
 
-**Current Gate:** `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`. The Gate already exists on main and must be used as written, not re-designed by default.
+**Current Gate:** `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` (read-only diagnosis). Parent `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` is ON HOLD after a formal RETURN. See `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at commit `715be642...`. No Stripe staging or restart retry is allowed inside G3S1D.
 
-G3S1 phases:
+Deferred parent G3S1 phases (NOT AUTHORIZED IN G3S1D):
 1. fresh PR/main project-scoped comparison, confirm actual Owner Windows target and correct retained G3C containers/mounts/ports;
 2. safe start of **existing** stopped containers only, no rebuild/pull/recreate/delete; separately verify HTTP, DB, Woo and product metadata;
 3. redacted plugin inventory and PPCP/Stripe settings status (do not read Secret values);
@@ -122,25 +126,23 @@ Do **not** connect Stripe account/Test mode, expose HTTPS tunnel, create test ch
 
 ## Reviewer next-turn instructions
 
-If the next message is a Codex G3S1 result:
+If the next message is a **Codex G3S1D diagnostic** result:
 
-1. Read canonical governance and the triggered specialists, `REVIEWER_HANDOFF.md`, current `G3S1` Gate, then the Executor's evidence (not broad history).
-2. Fresh GitHub main + PR head + project-scoped changes.
-3. Verify exact Owner-local Windows execution identity, same G3C container IDs/mounts, no recreation; health separated into container/HTTP/DB/Woo.
-4. If staged, check backup is DB-consistent and restorable, source/version/hash of official Stripe package, plugin inactive/not checkout-offered, PayPal unchanged.
-5. Verify mutation counters: **0 provider auth/API / payment / refund / public tunnel / live checkout / model / production / Shared VPS / PR merge**.
-6. Preserve UNKNOWN merchant/KYC/payout until separately Owner-verified.
-7. Reviewer writes independent PASS/RETURN and scoped evidence to main, updates Handoff, and opens only the next justified Gate.
+1. Read current Governance slices, authoritative Handoff and **current G3S1D Gate**, then the diagnostic Evidence only.
+2. Fresh-read project-scoped main and PR #64, inspect the original policy denial's accessible sanitized source and any allowed current-state readback. Distinguish Executor host report from Reviewer source direct readback.
+3. Do not construe a diagnosis as permission to restart WordPress, stop the already-started DB, use a new command path or modify policy. Review any explicitly authorized compliant next route, or RETURN if UNKNOWN.
+4. Persist Reviewer decision / resulting Gate / Handoff on main with fresh readback. Keep original G3S1 staging on hold until Reviewer explicitly releases it.
 
-If the next user request is ONLY to hand off this chat, do not run G3S1 yourself. Provide compact Owner-facing progress + a copyable next-Reviewer starter prompt pointing at this bootstrap and current Gate.
+If this chat ends, use this bootstrap only as a locator and give priority to the current `REVIEWER_HANDOFF.md` and current Gate.
 
 ## Read order for new Reviewer
 
-1. `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` (current full required slices + triggers).
+1. `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` (current required universal slices, triggers and applicable specialists).
 2. `entropy-student/project/main/birthday-magazine-studio/REVIEWER_HANDOFF.md`.
-3. `entropy-student/project/main/birthday-magazine-studio/docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` (this summary).
-4. `entropy-student/project/main/birthday-magazine-studio/docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`.
-5. G3S0 Reviewer decision/evidence index, Owner Stripe decision, MVP contract (only the relevant sections), accepted PayPal invariants as needed.
-6. Incoming Executor G3S1 report, actual evidence, then any exact source/host file needed.
+3. `entropy-student/project/main/birthday-magazine-studio/docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` (this locator).
+4. `entropy-student/project/main/birthday-magazine-studio/docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md`.
+5. `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md`.
+6. Incoming G3S1D Executor evidence and exact relevant source/host readbacks; older G3S1 staging Gate only for its preserved boundaries.
+
 
 **Do not take broad history or prior chat assistant statements as higher authority than fresh GitHub current state.**
