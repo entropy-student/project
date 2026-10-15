@@ -1,76 +1,57 @@
-# CWS｜MEDIA素材架构与未来阶段路线（长期规范）
+# CWS｜MEDIA素材架构与阶段路线（长期规范 · 2026-10-15）
 
-> **2026-10-15 Owner新增决定**：暂停以无Docker/第三方付费API为首选的执行路线；改为Windows本机**Docker Desktop按需搜索服务**，并在一轮串行执行`G2 Ubuntu安全卸载 / G3 Docker SearXNG+4get / G4 真实媒体全链`。尚未执行或验收。正式规范见[G2-G4合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)；MEDIA-R6/R7和PROD未授权。
+> **最新事实**：Windows本机Docker Desktop按需运行SearXNG+4get的**G2–G4已完成并获`G2_G3_G4_TECHNICAL_ACCEPT`**；旧无Docker、只读恢复、Brave/Exa收费API优先方案不是当前路线。代码PR#129已合并`main`；**本轮Docker Compose/生命周期脚本尚未入main**。正式视频仍`CW0005_VISUAL_STORYFIT_HOLD`，素材技术通关不能代替权利/内容审查。
 
-> **Owner已确定 / 2026-10-15；PR #129现已合并 `main`。** 本文件记录长期MEDIA架构。排除中国大陆平台和非横屏、受限单独素材技术获取为已实现工具能力；**无Docker整链运行、动作精配、节目制作均尚未被验收**。`PROD`与`MEDIA`独立编号。
+## 1. 架构与模块职责
 
-## 1. 为什么修改架构
+`具体题材/目标动作 → SearXNG与4get（Docker仅按需启动） → CWS索引/去重/来源追踪 → 横屏与平台过滤 → 显式ID探测/yt-dlp获取 → FFprobe/FFmpeg整片技术QA+SHA → HTML预览/本地浏览器 → 关闭本项目容器`
 
-过去围绕yt-dlp、You-Get和Lux反复比“单条视频能否下载”，缺少跨站搜索→内容预览→可选下载的闭环。实际测到“支持多个提取器”不等于“可以发现多个视频素材”。此后通过SearXNG/4get搜索、候选索引、yt-dlp、FFprobe/FFmpeg、HTML素材库形成闭环；再扩展海外横屏网站并清理重复工具。
-
-这不是替换频道选题协议、OpenMontage库存源或“3+1”制作素材合同，而是增加**独立的发现/筛选/技术获取层**。
-
-## 2. 固定模块与接口
-
-| 阶段 | 工具或组件 | 输入 | 输出/必须记录 |
-|---|---|---|---|
-| 需求 | 选题/分镜搜索词 | 主题、动作、关键词 | `query_id`、目标动作、来源类别 |
-| 搜索 | SearXNG + 4get +已知网站目录/原始研究页 | 关键词或可靠视频页 | 查询源、原页URL、标题、缩略图、引擎状态 |
-| 候选合并 | CWS本地脚本 | 全部结果 | 标准化URL、媒体ID、网站域名/平台家族、去重与原始来源 |
-| 过滤 | CWS候选/队列 | 域名、尺寸元数据 | 大陆平台排除、显示宽高比、画质等级、`UNKNOWN_NEEDS_PROBE`及拒绝理由 |
-| 获取 | yt-dlp主线；公开合法直链/官方API回退（仅已验证时） | 明确选择的URL/媒体ID | 实际文件、真实下载方法、异常状态；不得绕过登录/DRM/付费限制 |
-| QA | FFprobe/FFmpeg | 实际媒体文件 | 实际显示宽高/帧率/时长、完整解码、原片SHA、抽帧 |
-| 查阅 | HTML本地素材库、CSV/JSON索引 | 文件/来源/QA | 可预览、按来源/清晰度/重复等状态筛选与导出 |
-| 未来 | MEDIA-R6/R7 | 实际视频 + 分镜动作需求 | 真实片段时间码、相关性、可重放的镜头素材包 |
-
-**搜索结果量、去重URL、成功解析、实际下载、解码、动作吻合、复用许可是七个不同指标**，不得互相替代。网站应分`入口域名`/`实际原始视频托管域名`/`平台家族`，不计CDN为新增网站。PeerTube多实例是多站点但通常不是多种提取器家族。
-
-Windows本地可选工具使用说明见[MEDIA pipeline使用说明](MEDIA_PIPELINE_WINDOWS_USAGE.md)，源码位于[`media-pipeline/`](../media-pipeline/)。经Reviewer独立修复验收后，PR #129 于2026-10-15 **已合并main**（commit [`10b369ee`](https://github.com/entropy-student/project/commit/10b369ee5558ed9a0ac2f738aea978623f62ba0f)）；它**不替换**OpenMontage、正式节目渲染/素材权利Gate，也**尚未**证明整链无Docker。
-
-## 3. 已确定默认过滤与质量规则
-
-1. **大陆平台排除**：搜索/候选/下载队列排除大陆视频平台与可归属的镜像/短链；不要按中文标题或服务器IP误封国际网站。
-2. **全球非横屏排除**：竖屏和方形都不入MEDIA正式候选；旋转和SAR修正后显示宽高比**≥4:3**才合格。视频容器原始width/height可能不等于最终显示比例。
-3. **未知时先核实**：缺分辨率、旋转/SAR未知时标`UNKNOWN_NEEDS_PROBE`并执行有界合法检查；不能一律当竖屏拒绝。
-4. **清晰度分层**：优先16:9且1080p+；720p为备选；历史覆盖率测试最小值可低至360像素显示高度并单列**测试门槛**，不能称其为正式制片质量标准。技术分辨率不代表主体清晰或无水印。
-5. **去重**：URL规范化、媒体ID、文件SHA先行；同一内容的转载/不同裁切/不同分辨率需要未来视觉近似核验，不能只依赖SHA判独立作品。
-6. **事实/权利**：媒体的`CONTENT_VERIFIED`、`REUSE_RIGHTS_VERIFIED`独立；素材测试不等于节目可用。科研现场必须继续单独核原研究来源。
-7. **范围**：规则已包含在`main`的可选`media-pipeline/`工具模块中，且经PR #129代码审查与Windows实际媒体回归；不是自动注入所有正式制作镜头入口。后续修改继续走分支PR与独立Review。
-8. 正式[3+1视频素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)还记录罕见“竖屏第一手研究证据”布局例外；**MEDIA默认不自动接纳此例外**。如未来Owner确需放行，必须另立明确的制作例外决策/单独源核证，不能偷偷放宽技术过滤。
-
-## 4. 已完成阶段与证据
-
-| MEDIA阶段（工具支线） | 已实际验证 | 尚存限制 |
+| 模块 | 输入 | 输出/边界 |
 |---|---|---|
-| MEDIA-R1 搜索发现 | 视频合并1,533个去重URL、图片813；4get额外视频74/图片476 | 不是1,533个可用视频；4get近期零结果待检查 |
-| MEDIA-R2 素材闭环 | 新增22视频/31图片，有预览、指定下载、文件QA；跨题复用测试 | 动作匹配PARTIAL；ZIP无所有完整原片 |
-| MEDIA-R3 国际横屏网站 | 300域名入普查，197站发起真实下载，153成功（151PeerTube+2其他），135不同文件SHA | 153站不代表153平台家族；地区未完全核实 |
-| MEDIA-R4+R5 清理+来源扩展 | 清理CWS隔离You-Get/Lux约643MiB；10非PeerTube成功，新增8；本地过滤及QA回归均过 | 历史总体PARTIAL保留；部分失败类未统一，本轮最高1080p；后续PR#129是独立新验收 |
+| 来源/搜索 | 查询词、论文官方材料、非大陆海外站点 | 视频/图片候选URL、来源、缩略图、检索状态；不是可用许可 |
+| 去重与过滤 | 索引/metadata | URL、媒体ID/域名/平台家族去重；中国大陆视频平台排除、方形及竖屏排除、缺尺寸待probe |
+| 探测/指定获取 | Owner或运行端明确选择的视频/图片ID | yt-dlp等验证路径、实际媒体文件、失败状态；不绕登录/DRM |
+| 技术QA | 实际媒体文件 | 旋转/SAR修正后的显示比例、分辨率、帧率、FFmpeg完整解码、SHA及代表帧 |
+| 人类查看 | CWS HTML与Windows本机浏览器 | 本地素材与搜索缩略图区分、真实视频播放；**不代表镜头语义、内容核验或权利许可** |
+| 未来 R6/R7 | 具体分镜动作+已下载素材 | 精确时间码、动作匹配/近似重复、逐镜头素材包，尚未实现 |
 
-最新成功的十站为PBS、ARD、DVIDS、NPS、DW、USGS、NOAA、NASA SVS、Wikimedia、Mixkit。实验中5类“获取方法标签”≠5种完全独立的视频平台技术。旧R3成功过4K，本轮10条中2条达到1080p、5条720p、3条低于720p。
+**七项指标必须分别记录**：搜索URL、去重URL、可解析视频、真实下载、技术解码、动作吻合、可复用权利。PeerTube多个实例是多个域名，**不能算多个独立技术平台家族**；CDN不能单独算独立来源。
 
-原始可复核证据存Owner本地归档的各轮ZIP；最近验收包：`CWS_R4R5_CLEANUP_DIVERSIFICATION_20261015.zip`，SHA-256 `b6c5117305d3d7d824af99b55920ca7fb738d799f5a60f14e708425ec883ddd1`。完整Windows原片不在ZIP，Reviewer独立复核只覆盖10段短预览和执行端QA日志。
+## 2. 永久默认约束
 
-## 5. 下一步：不要混淆MEDIA与PROD
+1. **只纳入非大陆视频平台**；按域名/实际平台家族识别，不以标题语言和服务器地理位置简单封锁。
+2. **视频必须是横屏**，旋转/SAR修正后实际显示比例≥4:3；排除全球竖屏及方形。源宽高未知先有限核实，不能当非横屏误拒。
+3. **优先16:9、1080p以上**；720p备选；测试可按单轮另设较低技术门槛，但不得冒充正式制片质量已过。
+4. 搜索发现、下载成功、内容已逐帧核验、权利已确认是不同状态；`reuse_rights=UNKNOWN`不得自动变为PASS。
+5. 保存平台/来源、原始URL、媒体ID/文件SHA、失败原因；视觉近重复/跨站转载的语义去重留给R6，不用SHA不同就断言两份独立作品。
+6. 正式[3+1素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)中的罕见竖屏第一手证据例外，不允许MEDIA默认放行；须Owner单独批准该镜头例外。
+7. 新稳定代码通过隔离分支PR→Reviewer独立检查→合并；不在main存媒体、备份、日志或敏感配置。CWS有限目标URL约束**并非SSRF沙箱**，不得变公网自动下载服务。
+8. 技术视频播放由Codex在获准的独立浏览器自动检查事件与时间推进，缺测试环境需如实标记；Owner主要审查真实动作/故事/审美和权利。
 
-| 阶段 | 具体工作 | 准备验收什么 | 授权状态 |
-|---|---|---|---|
-| **MEDIA-INTEGRATION（已合并main）** | 独立`media-pipeline/`提供搜索/候选索引、筛选、指定ID有限下载、FFprobe/FFmpeg QA和HTML输出 | PR#129 Windows 36/36、独立Reviewer修复验收、合并commit `10b369ee`；未正式集成视频制片 | **技术模块合并PASS；不自动升级节目Gate** |
-| **MEDIA-ONDEMAND-RECOVERY-G0（当前）** | Owner中断旧无Docker/VPS部署探索；只读检查残留进程、工作树和现有搜索服务依赖，比较无常驻/无Docker/无VPS的本机按需启动、停止方式 | 输出原生服务可复用性、启停控制范围、成本与阻塞；不能把预案叫已部署/已验收 | **只读授权；[规范](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)** |
-| **MEDIA-DOCKERFREE-ACCEPTANCE（旧Gate暂停）** | 旧搜索服务原生安装/整链计划不再自动执行 | 未来如Owner另行授权，可复用其验收指标，当前不得部署VPS/安装搜索服务 | **PAUSED_BY_OWNER** |
-| **MEDIA-R6** | 真实内容/动作匹配、时间码定位、同源近似视频识别、高清优选；真实画面验证后再评级 | 至少两个不同题材的指定动作，不把“标题相近/含关键词”冒充动作已出现 | **待Owner授权** |
-| **MEDIA-R7** | 根据逐句分镜自动生成可浏览素材包，包含原片、预览、素材ID、动作时间段、来源、使用权状态 | 可复算“分镜需求→可用片段”的匹配率，缺素材显式RETURN | **待Owner授权** |
-| **PROD-R1** | 选题、研究证据、第一手素材/权利 | STORYFIT与内容/权利Gate | CW-0005 HOLD |
-| **PROD-R2** | 剧本、分镜、Research Aqua样式 | Owner第一次正式视觉/叙事审美复核 | 条件设计已做，正式未PASS |
-| **PROD-R3** | 30–60秒真实音画字幕联调 | 真实媒体、配音、字幕、版权和渲染稳定性 | 未授权 |
-| **PROD-R4** | 第一支完整内部草片 | 全片与Owner第二次正式复核 | 未授权 |
+## 3. 已验证的各阶段
 
-**名称映射**：前期临时说的“R4清理、R5多网站、R6精准动作、R7分镜素材包”应统称**MEDIA-R4+R5 / MEDIA-R6 / MEDIA-R7**；仓库2026-10-11的“四轮主线”应称**PROD-R1～R4**，它从未因素材工具支线的成功而自动结束。
+| 阶段 | 证据进度 | 限制 |
+|---|---|---|
+| MEDIA-R1 | 历史合并1,533去重视频URL、813图片URL；4get特定对照视频增量74、图片476 | 这些都是搜索候选，不是成片资源 |
+| MEDIA-R2 | 22视频、31图片本地获取、预览与技术QA已测 | 真实跨题动作适配PARTIAL |
+| MEDIA-R3 | 300域名盘点、197站实测尝试、153成功（**151 PeerTube实例、PBS、ARD**），135个不同文件SHA | 不应宣传成153种视频网站技术 |
+| MEDIA-R4+R5 | CWS独占You-Get/Lux旧资源清理约643MiB；10个非PeerTube来源技术验证：PBS、ARD、DVIDS、NPS、DW、USGS、NOAA、NASA SVS、Wikimedia、Mixkit | 原独立Reviewer综合`R4R5_PARTIAL_ACCEPT`仍保留 |
+| MEDIA-INTEGRATION | [PR#129](https://github.com/entropy-student/project/pull/129)已合并main，Windows36/36测试；含受控搜索索引/格式探测/显式ID下载/QA | 独立CLI工具，不等于已替换正式OpenMontage/制片入口 |
+| MEDIA-RECOVERY-G0/G1A | 旧无Docker探索中断后恢复现场；本地静态HTTP/Edge手播G1A通过 | 旧探索仅作历史，不是当前G2/G3/G4要重复的工作 |
+| **G2-G4（最新）** | **Ubuntu-24.04已备份注销；Docker SearXNG+4get四组API非空；raw316→77视频/135图片；下载两PeerTube实例视频+一图片、全解码、Edge手动播放、最终停止端口释放；技术PASS** | Ubuntu tar恢复未由Reviewer亲自操作，浏览器是Owner实测，不是自动化；样本动作及版权不通过 |
 
-## 6. 优先级建议与停止规则
+G2–G4的唯一证据ZIP：`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`，50文件SHA/49manifest匹配；Reviewer独立完整解码4个附件媒体。本轮Ubuntu tar仅本地归档，不上传GitHub。
 
-- 已完成**MEDIA-INTEGRATION**的独立Reviewer验收与Owner合并。当前先做[**MEDIA-ONDEMAND-RECOVERY-G0**](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)只读检查，先解决“中断后到底还运行什么”和“能否即开即停”，**不自动部署VPS、无需重跑R3或清理R4+R5**；旧[无Docker整链Gate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停。
-- 然后MEDIA-R6精准匹配，R7分镜素材包；非PeerTube来源按真实分镜缺口定向补充，**不再无限增加PeerTube实例或按支持名单凑网站数**。
-- 最新PR#129 Windows测试已得到SearXNG/4get真实搜索合计460条（413去重）；**若未来选定的按需搜索方案得到单独授权，需要重新测每种实际启用的引擎是否能返回有效结果**。Archive低清和ZDF损坏等保留为未来定向需求，不是本轮扩展任务。
-- 报告每100个去重候选中：实际内容查看、动作匹配、清晰度、最终落盘的条数；小样本不外推成整个互联网覆盖率。
-- 本文件是长期技术规范；Owner仅授权开展无Docker素材获取整链验收，**不授权自动/全网无人值守爬取、研发MEDIA-R6、制作/发布节目或扩权操作**。
+## 4. 未来阶段与已授权范围
+
+| 阶段 | 目的 | 当前状态 |
+|---|---|---|
+| **MEDIA-OPERATIONS-INTEGRATION** | 将G3/G4中实测的Compose/Windows启停/隔离浏览器QA做成可重复、可一键运行的正式工具 | **优先建议，未获自动执行授权；应单独PR** |
+| **MEDIA-R6** | 输入真实目标动作，定位素材中行为实际发生的时间码、筛选高清有效镜头、检测近重复；用两种不同题材验证 | 待授权 |
+| **MEDIA-R7** | 逐分镜输出视频、准确时段、来源、预览、权利/内容状态与缺口 | 待授权 |
+| **PROD-R1～R4** | 真实选题/证据→剧本与画面→30–60秒音画字幕联调→完整内部草片 | 与MEDIA完全独立，CW-0005 HOLD，未放行新制作 |
+| **发布** | 播放成品、字幕质量、权利和Owner最终批准后发布 | 未授权 |
+
+**原“MEDIA-R4+R5”和“PROD-R4”编号完全不同。** 未来不再为了凑站点数无限遍历PeerTube；先服务真正缺的研究动作。当前不要重复G2 Ubuntu卸载或已经验收的两段Edge技术播放。
+
+[最新状态](CURRENT_STATE.md) · [Reviewer交接](REVIEWER_HANDOFF_CURRENT.md) · [G2-G4原合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md) · [3+1正式素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。

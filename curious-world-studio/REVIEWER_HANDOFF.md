@@ -1,4 +1,6 @@
 <!-- CWS-HISTORICAL-REVIEWER-HANDOFF-REDIRECT-20261011 -->
+> **2026-10-15当前入口（覆盖本页全部旧时态）**：[唯一当前项目状态](docs/CURRENT_STATE.md) · [最新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。G2–G4已完成并技术接受；本页2026-10-10~11日期中的“下一步/待执行”均是历史快照，严禁作为新执行授权。
+
 > **Historical index only**：本文件顶部原先`2026-10-10`G0任务时态已被后续实际执行覆盖。最新执行/协作规则只有 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)：以后普通Codex执行结果只通过独立ZIP交接，不按每轮新增GitHub Reviewer文档；需要回溯M1/M2/G0时再读本页。**2026-10-11本地清理只读审计已被Owner排在主线R1之前；尚未收到盘点成果或批准任何删除。**
 
 <!-- CWS-20261010-HANDOFF-ENTRY -->

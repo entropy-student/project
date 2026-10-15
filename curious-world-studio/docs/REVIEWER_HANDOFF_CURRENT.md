@@ -1,82 +1,46 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-> **LATEST REVIEWER VERDICT（2026-10-15）：`G2_G3_G4_TECHNICAL_ACCEPT`**。Ubuntu-24.04备份+注销、Docker Compose SearXNG+4get本机真实搜索、CWS下载/QA/Owner Edge人工播放/关闭的执行证据已交付并获独立Review核验；**非节目素材/权限/动作匹配通过**。ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip` SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`；50文件哈希和49 manifest一致；Reviewer独立完整解码打包的2原片/1兼容浏览器预览/1 JPEG。备份TAR不在包内，G2还原能力未由Reviewer亲测；G3真实非空API四响应通过；两段视频是**不同PeerTube实例，同一平台家族**；Owner确认Edge播放但Reviewer无录像，不能视为独立浏览器自动化QA。**未来机器播放应由Codex经许可在隔离测试浏览器自动验证（`readyState`、`videoWidth/Height`、`play()`、`currentTime`增长、截图/报错/关闭），不再默认要求Owner重复点播**；不要绕过原浏览器控制安全停止。所有服务已由执行端停止，CW-0005 HOLD仍不变。
+> **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
 
-> **LATEST OWNER AUTHORIZATION 2026-10-15**：下一步**G2/G3/G4**合并成一次本机受控任务；不再执行旧`G1B`第三方API路线作为当前计划。先识别并备份独立Ubuntu-24.04后安全注销（不得卸载WSL2/Docker底座）、随后Docker Compose按需启动SearXNG/4get，再完成实际关键词→过滤→下载→FFmpeg→Edge→本Compose关闭。**目前三Gate均待本地执行，绝不宣称完成**。唯一新合同：[G2-G4 Docker本机合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)；若本页下文仍写“无Docker/只G0”等应按日期视为历史。正式制作HOLD。
+## 1. 接手时必须记住的事实
 
-> **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；G0已得到Reviewer证据级接受；G1A随后执行本地启停与媒体QA并被独立Reviewer评为 **`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**，浏览器播放未验，**仍没有Docker-free或按需完整搜索链PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
->
-> 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
+- 项目不是自动成片应用，而是不露脸、观点/好奇心驱动的跨领域知识频道；频道名未定、B站主阵地、视频叙述时长不硬凑。视觉[STYLE_LOCK](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)锁A短Mac Aqua桌面开场→B全幅QuickTime播放器、单行字幕。
+- 研究：[36条题库](../research/topic-bank/BOARD_V1.md)，11 SHORTLIST / 15 VERIFY / 9 HOLD / 1 REJECTED；仅部分九源采样，未经正式STORYFIT_GO。P3叙事原型是纸面成果，不能算已受众测或已配音。
+- 正式视频素材：严格按[3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)；搜得到、能下载、FFmpeg能解码、动作真实出现、与旁白匹配、商用可复用**六件不同的事**。
+- 生产：CW-0005爆米花R1研究/R2条件故事/R2-M1库存短素材有历史证据，但爆裂/压缩/回弹科研动作和权利未消缺；`G1_NOT_PASS / G2_NOT_AUTHORIZED`，未授权切题、R3音画联调、R4首个完整草片或发布。
+- MEDIA工具：独立可选Python工具通过[PR #129](https://github.com/entropy-student/project/pull/129)合并main（commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）；36/36项Windows单测，Reviewer针对失败退出码和有限私网地址防护修复接受；**不是完整SSRF沙箱、也没有自动接入OpenMontage制作**。
+- Owner Windows运行决策：**Docker Desktop/WSL2本机按需搜索，SearXNG+4get容器、Python+yt-dlp+FFmpeg在Windows，非VPS，非24h常驻**。Ubuntu-24.04已被安全备份并注销；保留Docker后端。前期无Docker/Brave/Exa方案只作历史探索，不是当前待执行路径。
 
-## 最新G1A浏览器补测｜OWNER播放PASS，独立证据范围（2026-10-15）
+## 2. 最新G2/G3/G4裁决（逐项说明证据责任）
 
-- **新验收状态：`G1A_BROWSER_OWNER_PASS / G1A_LOCAL_LIFECYCLE_ACCEPTED`**，覆盖并解决以下历史行文的`BROWSER_NOT_VERIFIED`。Owner在Edge手动确认“两段都通过”，即两段预览均显示画面且进度持续推进；未提供录屏或截图。
-- ZIP `CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip`，SHA256 `07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`。Reviewer已验证外层SHA、ZIP CRC、27项SHA256SUMS、26项manifest、HTML播放事件函数与Python脚本语法；HTTP日志显示两条预览MP4 GET 200，服务仅127.0.0.1:18765，完成后PID 24568退出且监听数0。
-- **严格区分来源**：浏览器可见画面和currentTime增长是**Owner实际人工报告**，而非Reviewer远程观看；原片OGV/WebM和六秒MP4代理副本都未随ZIP上传，Reviewer只检验FFprobe元数据和FFmpeg退出0的执行端记录，未独立解码完整原片。权利继续`UNKNOWN_TEST_ONLY`。
-- 复用的两个6秒代理：Io/Theora原片640x440→H.264 MP4 640x440；NASA SVS VP8+Opus原片3840x2160/60fps→H.264/AAC MP4 1280x720。此轮零下载、零转码、零源码变更。
-- **下一实际缺口为G1B搜索来源**：现有CWS需要外部SearXNG/4get HTTP API，但Owner拒绝长时服务/VPS/Docker。先比较零部署临时搜索来源、合法留存/商业条款、现有agent-reach能力和CWS的持久索引契约，不假设Brave普通搜索API可永久存储、Exa一定支持视频/图片或已有合法持久化权利。不要自动启动G1B、安装、订阅或修改正式代码。
+| Gate | 目前证据及结论 | 不可夸大 |
+|---|---|---|
+| **G2** | 执行端先导出、读验完整`Ubuntu-24.04` tar，SHA `5F870E83109F3D976C4D2BF24843D9AC59C4520E8C1CA65897CE071B9FC48276`，1,522,626,560字节，注销指定发行版且Docker WSL2后端可用；**技术接受** | tar在Owner本地，Reviewer**未独立恢复该tar**；不删Docker与其它WSL数据 |
+| **G3** | 本机Compose SearXNG/4get仅127.0.0.1监听，视频/图片四类API实际非空；raw316，视频去重77、图片去重135；端口停止释放，容器和缓存卷留存；**技术接受** | 局部上游引擎错误仍存在，HTTP200≠每种媒体搜索都正常 |
+| **G4** | 实际两PeerTube实例视频+一JPEG下载、哈希和FFprobe/FFmpeg完整解码；Owner在Edge手动确认两段播放，视频时间推进；**技术接受** | PeerTube实例不等于独立平台家族；样片动作不适配爆米花，权限`UNKNOWN_TEST_ONLY`；Reviewer无Owner浏览器录屏 |
 
-## G1A前次局部验收（历史，现已由浏览器补测解决）（2026-10-15，优先于旧G0建议）
+本轮唯一ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA256 **`651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`**；独立Reviewer核过**50条SHA/49项manifest**及所附**2原视频、1预览视频、1张图片**的完整解码。没有把大Ubuntu备份装入ZIP，未证明Reviewer已验证实地恢复。CWS搜索服务最后为停止态，而非持续在线。
 
-- **Reviewer裁决：`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT / BROWSER_NOT_VERIFIED / SEARCH_NOT_IN_SCOPE`。** 接受本地生命周期管理和媒体QA的执行证据，不升级完整G1A或完整MEDIA搜索链。ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`；CRC通过，32条SHA256SUMS+31项manifest一致；脚本可静态解析。
-- 复用**两段原有视频、1张图片，未重新下载**。提供了来源文件SHA、FFprobe JSON、FFmpeg完成且退出0的日志；原片不在ZIP，Reviewer没有独立重新完整解码这3份媒体。6秒浏览器预览副本也未入ZIP。
-- Windows本机`127.0.0.1:18765`实际服务和自检：占端不接管、重复启动不重开、常规关闭、异常子进程退出、关闭后端口释放，日志/JSON一致；HTTP HEAD对目录页、索引页、1段MP4资源返回200，**不证明浏览器真的播放**。
-- Edge/Chrome播放及`currentTime`推进 **BLOCKED / NOT_VERIFIED**：Computer Use因不能可靠确认当前Edge URL而停止；不允许为了凑PASS绕过安全停止。下轮如果Owner同意，以Owner本人**人工**打开127.0.0.1页面、实际观察两个视频时间推进并交非敏感证据优先；只补缺口，不重复建立搜索服务。
-- 原旧工作区3个tracked修改、两处缓存与61项中断资料继续保留；本轮脚本/HTML只在本机隔离目录，**未形成正式PR，勿误认其已经进main**。Exa未调用且数据存储权利未知；MEDIA-R6/R7、制片Gate维持HOLD。
+早前经验：`G0_RECOVERY_EVIDENCE_ACCEPT`；`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`历史遗留的`BROWSER_NOT_VERIFIED`已由Owner手动Edge补测解决（ZIP `CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip`，SHA256 `07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`）。**未来自动浏览器测试不能拿旧Owner手动记录冒充机器测试**。
 
-## 最新G0恢复现场验收（2026-10-15，优先于下方历史“正在进行G0”叙述）
+## 3. 当前环境、保全与审查纪律
 
-- Reviewer verdict: **`G0_RECOVERY_EVIDENCE_ACCEPT`**；只接受中断现场调查与低复杂度路线评估，**不授权自动开始G1**。提交ZIP：`CWS_MEDIA_ONDEMAND_G0_2026-10-15.zip`，SHA256 `05ff890e6b87c420754a315812c7199c3da6c7c09116db5f5ffb3281c69f8c42`；ZIP完整，16项SHA清单与15项manifest独立匹配。
-- 执行端只读证据：本机旧端口18080/15050/18765无监听；无活动本地SearXNG/4get；Windows Python/yt-dlp/FFmpeg可用；Ubuntu-24.04、docker-desktop WSL当前Stopped。**不可从这些本机结果外推所有远端服务均不存在。**
-- 中断运行遗留61项约1.747GB，含1.735GB WSL VHDX；均保留，未授权删除。旧Git工作区停留`codex/cws-media-integration-windows-20261015`、HEAD `4a14f024`，存在三个tracked变更和两个未跟踪__pycache__目录；需保护，切勿reset/clean/pull覆盖。
-- 当前CWS `media-pipeline`只能用SearXNG/4get HTTP endpoint检索，既不能无服务直接关键词搜索，也不控制服务的启动与退出。已验证“本地媒体获取/QA能力”，**未验证无Docker/零常驻完整搜索链路**。
-- Brave Search API当前普通条款允许操作所需瞬时存储，但未授予通常意义的搜索结果持久库权利；CWS的持久catalog不应直接保存未获许可的Brave响应。Exa的留存权利与媒体专用检索覆盖尚未知。G0已证实Codex有`mcporter / agent-reach / Exa`资料搜索路径，**只能作为G1前的候选，不能假定可长期存储或具备视频搜索能力**。
-- 建议优先短路径：检查既有合法搜索工具的接口与存储许可（只读），并评估人工来源URL导入作为完全零搜索服务的保底模式；正式G1安装、API密钥、费用、真实媒体下载与Git代码改动仍要后续授权。
+- 保护旧本机工作树**3项tracked未提交修改和2项未追踪缓存目录**；保留中断材料、合法备份tar与旧媒体；不能用`reset --hard`、`git clean`、`docker system prune`、`down -v`覆盖/清理。
+- **本机Docker Compose配置及一键生命周期脚本目前是执行端本地工件**：真实验收过，不等于已经推Git、经PR审查或作为通用工具发布；下一次正式入库必须从最新main开隔离分支，保留旧树。
+- 网络：不改Windows系统代理、VPN/Clash、OpenMontage及别的项目Docker容器；仅本CWS Compose项目操作；服务只绑127.0.0.1、不自动常驻。
+- 今后技术性浏览器播放由Codex在**获明确授权的隔离浏览器**自动测试`video.play()`、`currentTime`、实际帧和错误/资源回收；不要附着Owner私有Edge窗口，也不能绕过Computer Use明确的安全停止。无法自动运行则写`BROWSER_AUTO_NOT_VERIFIED`，**不要把用户当重复的浏览器单测员**。Owner仍有真实镜头/审美/许可决策权。
+- 所有素材与截图只做`UNKNOWN_TEST_ONLY`技术实验；证据里不得放凭据、Cookie、SSH令牌或私密用户路径，媒体在权限不明时不作为Git附件或发布物。协议的“3+1”例外必须经Owner许可。
 
-## 一、项目目的与角色
+## 4. 下轮建议（**全部未自动授权**）
 
-CWS（Curious World Studio）是Owner的不露脸、观点驱动、跨领域真实问题视频制作项目，B站为主；Research Aqua A→B视觉参考、3+1真实素材合同、36条题库仍有效。不是一个现成第三方软件。ChatGPT充当主编/独立Reviewer，本地Windows Codex负责实际执行，Owner决定费用/删除/外联/正式Gate/发布；普通实验以一个ZIP、SHA和原始日志交接，正式生产代码需分支PR及Reviewer核验。
+**优先：`MEDIA-OPERATIONS-INTEGRATION`**——整理可复用的Windows Docker Compose+一键启停脚本、失败/资源保护和隔离浏览器自动QA，在独立分支形成PR交Reviewer，合并前确认不影响共享服务。G2本身不用重做。随后才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。以上都是后续建议，不得自发执行、购买API/部署VPS或切换正式制作Gate。
 
-## 二、截至2026-10-15确实做了什么
+**制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
 
-1. **搜索发现**：SearXNG + 4get；历史对照视频合并1,533个去重URL，图片813个；4get对比SearXNG额外增74个视频URL和476个图片URL，但当时视频来源增量域名为0。这是URL数量不是可用素材数。
-2. **媒体闭环**：批量候选、浏览/抽帧、选择性yt-dlp下载、FFprobe/FFmpeg QA和HTML本地素材库实测；22段视频+31张图片新增，跨题咖啡动作不匹配，`ACTION_MATCH_PARTIAL`。
-3. **网站覆盖**：前次R3 300个网站标识入表、197站真实下载尝试、153站成功，151个PeerTube实例+PBS/ARD；135个不同文件SHA。网站数不能冒充家族数。
-4. **最新R4+R5**：经受控清理删22,639个CWS独占You-Get/Lux文件、674,230,911字节（约643MiB）；76个注册域名进入探测，18次下载/QA尝试，**10个非PeerTube网站成功**（PBS/ARD复验+8个相对历史基线新增）；10个不同文件SHA。来源：PBS、ARD、DVIDS、NPS、DW、USGS、NOAA、NASA SVS、Wikimedia Commons、Mixkit。
-5. **画质**：最近10份原片中2条1080p、5条720p、3条低于720p；本轮最高1920×1080@30fps；R3历史最高实测4K。
-6. **规则**：本地MEDIA排除大陆平台、所有竖屏和方形，按旋转/SAR修正判断至少4:3横屏，未知画质先核实；过滤8/8与QA12/12独立回归通过。**该规则已进入main的可选MEDIA工具入口，尚未替换正式节目制作链**。
-7. **删除边界**：只确认CWS隔离文件，保留yt-dlp/FFmpeg/SearXNG/4get/OpenMontage/历史证据；以前的零删除审计属于2026-10-11不同范围，不得覆盖2026-10-15确实删除的记录。
+## 5. 可用文件与历史证据
 
-## 三、2026-10-15新接受的MEDIA-INTEGRATION与下一轮
+- [项目唯一当前状态](CURRENT_STATE.md)、[MEDIA阶段与架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)、[G2-G4执行合同（已完成，保留安全约束）](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)、[Windows媒体工具使用说明](MEDIA_PIPELINE_WINDOWS_USAGE.md)、[正式3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
+- [早期CW-0005叙事/素材长交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；[PROD四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)；[MEDIA-R3/R4+R5统计及历史材料](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。历史Gate使用当时语态，不是现在的操作许可。
+- [2026-10-15合并前旧CURRENT_STATE Git快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/CURRENT_STATE.md)、[旧Reviewer交接快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/REVIEWER_HANDOFF_CURRENT.md)。不在main重复复制过时的每轮前言。
 
-- PR #129：Windows搜索、过滤、手动ID下载和QA闭环已验证；初版发现批量错误退出码与远端私网URL校验不足，集中修复后Windows 36/36测试通过；独立Linux 35通过+1 Windows限定跳过；集中修复结论 `PR129_FOCUSED_FIX_ACCEPT`，合并commit `10b369ee`。
-- 真实媒体：前一轮NASA SVS+Commons两视频及1图片完整解码曾在Reviewer环境独立执行；最后的PR集中修复回归取Commons 640×440、721帧，**原片未随最终ZIP上传，只能确认执行日志、SHA、代表帧，不能宣称独立重解码最后一轮原片**。NASA未知尺寸未计成功。
-- 安全：本工具仅本地、人工ID、限定下载；DNS与实际socket未绑定，yt-dlp可能进行嵌套跳转，**非完整SSRF沙箱**，不能开放成公网站或无人值守任意URL处理。
-- **Owner后续变更（覆盖上一条执行计划）**：上一轮Docker-free方案被强行中断；目前不继续VPS/原生搜索服务部署，也不要求常驻运行；只批准**Windows ONDEMAND只读恢复与技术选择评估**，详见[新Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)。不宣布Docker-free PASS，不启动MEDIA-R6或制片。
-
-## 四、旧R4+R5历史Reviewer结论（仍保留）
-
-- 总裁决：`R4R5_PARTIAL_ACCEPT / NON_PEERTUBE_10_SITE_TARGET_MET / CLEANUP_EVIDENCE_PASS / FORMAL_CWS_INTEGRATION_NOT_DONE`。
-- G0清理PASS（基于执行端回读）；G1本地过滤PASS；G2历史修复PARTIAL；G3非PeerTube十站PASS；G4失败复盘PARTIAL；G5看板PARTIAL；G6证据PASS。
-- Reviewer核算清理明细22,639项与金额字节，ZIP中141项文件SHA及十段真实视频短预览独立全片解码通过。完整约330.25MiB原片没装入ZIP，原片SHA/完整解码**只是本机执行端证据**；不能说Reviewer也重解码过完整原片。HTML看板独立浏览器受策略拦截，不能写为已完成浏览器交互验收。
-- 66个非合格域名中32个缺正确单视频样本页，不代表66个下载失败。Archive低清视频可解码但未达测试门槛，ZDF部分HLS损坏，NRK/RaiPlay/Democracy Now未真正下载，5个站点统一错误类别尚缺；4get清理后HTTP200/零搜索结果需再测。
-- MEDIA技术成功不等于研究真实动作匹配，不等于可正式复用或已获得制片授权。
-
-## 四、最新Owner决策与下一轮安排
-
-已确定：从新素材采集开始默认**排除大陆视频平台、全球竖屏/方形视频；优先1080p横屏；保留严格QA和可追溯拒绝原因**。已确认独占的无效实验文件可有边界清理、不可碰共享工具。SearXNG与4get继续互补，yt-dlp为主下载器，FFmpeg/FFprobe作技术QA，OpenMontage不删除。
-
-**R4+R5已执行，PR #129 MEDIA-INTEGRATION也已合并。不要再次执行这两轮。** 此前Owner曾许可无Docker整链验收，但执行中被Owner强制终止，新决定是按需即用即停、Windows本机优先且不部署VPS；只先检查中断现场及现有搜索服务真实依赖，再由Reviewer决定是否发起受限的本地启停闭环。之后是否进入`MEDIA-R6`动作/时间码精准匹配与`MEDIA-R7`分镜素材包，须另行授权。旧“R4四轮主线”是`PROD-R4`，正式制片仍HOLD。
-
-## 五、证据包与溯源
-
-- `CWS_MEDIA_SEARCH_BENCHMARK_R1_20261013.zip` + `CWS_MEDIA_SEARCH_R1_REVIEWER_DECISION_2026-10-13.md`
-- `CWS_MEDIA_PIPELINE_R2_20261013.zip` + `CWS_MEDIA_PIPELINE_R2_REVIEWER_DECISION_2026-10-13.md`
-- `CWS_INTERNATIONAL_VIDEO_SITE_COVERAGE_R3_20261013.zip` + `CWS_INTERNATIONAL_VIDEO_SITE_COVERAGE_R3_REVIEWER_DECISION_2026-10-14.md`
-- 最新`CWS_R4R5_CLEANUP_DIVERSIFICATION_20261015.zip`，外层SHA-256：`b6c5117305d3d7d824af99b55920ca7fb738d799f5a60f14e708425ec883ddd1`；对应`CWS_R4R5_REVIEWER_DECISION_2026-10-15.md`。
-- 证据/大媒体存Owner Windows本机和Reviewer上传ZIP，不应该上传Git仓库；恢复工作前核实每个文件的真实本机位置，不能假设沙箱路径即Owner路径。旧[主线完整交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)的科研权利与视觉细节仍有效。
-- 新Reviewer不要反复跑同一300站/153预览、不要重新测You-Get/Lux；只在Owner授权的明确Gate内动手。
-
-## 六、接手一句话
-
-**PR #129已合并main，CWS的独立本地MEDIA工具已代码验收，但正式制片未接入且无Docker整链未实际验收。Owner当前仅推进MEDIA-ONDEMAND-RECOVERY-G0，下一步本机启停验收需另行批准，之后才考虑R6/R7；CW-0005与G1/G2继续HOLD。**
+**一句话交接：CWS已完成本机Docker素材发现/下载/技术QA可用性验证，但正式Compose启停工具尚未PR入库、镜头动作/权利未通过、正式成片仍HOLD。**

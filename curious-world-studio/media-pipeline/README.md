@@ -13,7 +13,7 @@ It does not change the production video pipeline, CW-0005 state, Research Aqua, 
 
 The CLI accepts a work directory only inside `curious-world-studio/.local/`. That tree is ignored by Git and stores the index, downloads, previews, and gallery.
 
-**Main status (2026-10-15):** merged via reviewed PR #129. Container-free end-to-end operation has **not yet passed**; see [non-Docker runtime and acceptance policy](../docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md). The search backend(s) may themselves be containerized even though this CLI does not use Docker.
+**Main status (2026-10-15):** this optional Python CLI was merged via reviewed PR #129. The Owner subsequently accepted the Windows **Docker-backed, on-demand** SearXNG/4get technical chain (G2–G4); see [current state](../docs/CURRENT_STATE.md). The Docker Compose, lifecycle scripts, and browser automation were exercised separately but are **not yet merged as first-class reusable tools**. A non-Docker search backend is no longer the current deployment goal. No formal shot matching, rights or video-production approval is implied.
 
 ## Windows PowerShell
 

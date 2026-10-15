@@ -2,11 +2,11 @@
 
 > **Reviewer结果补充（2026-10-15，覆盖此文下面的AWAITING/预案描述）**：`G2_G3_G4_TECHNICAL_ACCEPT`，ZIP SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`。G2备份/注销和Docker后端健在以执行端日志证明（备份TAR本地保留、Reviewer未作恢复）；G3四组API真实非空、Compose完成停止/复启/最后关闭；G4同PeerTube技术家族的两个不同托管站点视频、Unsplash JPEG均通过了Reviewer独立完整文件FFmpeg解码；Owner在Edge手动确认播放。**素材动作与权利没有通过，正式制作仍HOLD。** 技术播放应在今后由Codex自己的隔离浏览器测试自动化完成，不应把用户手动点播作为常规QA必选步骤。
 
-> **OWNER批准，2026-10-15，ACTIVE / AWAITING_WINDOWS_EXECUTOR。** Owner最新决策：**安全卸载独立`Ubuntu-24.04`发行版（保留WSL底座/Docker后端）→ 在Windows Docker Desktop按需启动隔离的SearXNG+4get → 在同一轮完成CWS关键词搜索、筛选、人工指定ID下载、文件QA、浏览器实播、停止并回读**。本合同覆盖此前“不使用Docker/不卸载Ubuntu”的过时运行限制；此前G0、G1A的已验证事实不作追溯撤销。
+> **历史执行合同（已执行并由Reviewer技术接受，2026-10-15）**。下方采用当时的命令式语气供审计溯源；**不是下一轮任务，不要重复备份/注销Ubuntu或重跑G2-G4**。当前状态以[CURRENT_STATE](CURRENT_STATE.md)为准。原合同： Owner最新决策：**安全卸载独立`Ubuntu-24.04`发行版（保留WSL底座/Docker后端）→ 在Windows Docker Desktop按需启动隔离的SearXNG+4get → 在同一轮完成CWS关键词搜索、筛选、人工指定ID下载、文件QA、浏览器实播、停止并回读**。本合同覆盖此前“不使用Docker/不卸载Ubuntu”的过时运行限制；此前G0、G1A的已验证事实不作追溯撤销。
 >
 > 本轮只在Owner**实体Windows 11**及其既有Docker Desktop工作，不部署VPS、不启动独立长期云服务。CWS仍不属于正式节目制作系统；`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`、Research Aqua/3+1、MEDIA-R6/R7全部不变。
 >
-> **状态命名**：`G2_UBUNTU_SAFE_REMOVAL`、`G3_DOCKER_SEARCH_SERVICES`、`G4_MEDIA_END_TO_END`。正式结果只由本机Executor出具实际证据，交独立Reviewer裁决；文档合并main**不表示实际完成G2/G3/G4**。
+> **阶段编号**（历史执行）：`G2_UBUNTU_SAFE_REMOVAL`、`G3_DOCKER_SEARCH_SERVICES`、`G4_MEDIA_END_TO_END`。本轮现已交Executor证据并获独立Reviewer技术接受；正式节目仍HOLD。
 
 ## 0. 总体限制与硬保护
 

@@ -1,5 +1,7 @@
 # CWS MEDIA pipeline｜Windows 本地使用说明
 
+> **2026-10-15运行事实**：MEDIA工具代码已入main，Windows G2–G4已实测**本机Docker Desktop按需启动SearXNG/4get**并停机释放端口；本说明为独立CLI手动入口，**Docker Compose/Windows一键启停脚本尚未作为正式PR入main**。旧文档中“无Docker尚未通过”是历史尝试，不是当前运行路线。G2–G4已完成，见[最新状态](CURRENT_STATE.md)；无需重做Ubuntu注销。
+
 **范围：**该本地可选入口于2026-10-15经PR#129合并`main`；属于CWS素材工具链中的独立入口，用于搜索发现、候选去重与索引、显示方向/格式核验、指定ID下载、FFprobe/FFmpeg QA和本地素材页。它不替代OpenMontage库存来源或正式制作系统，也不改Research Aqua、Remotion、题库或任何节目Gate。
 
 正式项目目前保持 `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。本模块的技术可访问、可下载和解码结果，不代表镜头内容匹配、复用权审核或正式节目批准。
