@@ -91,7 +91,7 @@ G3CR7_ACCEPTED_REPRODUCTION_BASELINE=e71f94377d341a88ba388f2c5da153e7cd6ee8b8
 G3CR7_PAYMENT_TRUTH_REVIEW=INVALIDATED_ROLE_SEPARATION
 G3CR7_PREVIEW_STYLE_HANDOFF=INVALIDATED_ROLE_SEPARATION
 G3CR7_RUNTIME_VISUAL=UNVERIFIED
-G3CR7_OWNER_VISUAL=PENDING_REVIEW_OF_G3CR7V1
+G3CR7_OWNER_VISUAL=PASS_ON_2026_10_15_LATEST_VISUAL
 G3CR7R1_EXECUTOR_HEAD=88f45f5d712e3c1fe26f4386628703716b8eca3e
 G3CR7R1_REVIEW=RETURN_EVIDENCE_INTEGRATION
 G3CR7R1_CLEAN_SOURCE_DIFF=RETURN
@@ -180,6 +180,12 @@ G3CR7V2R4_FINAL_PR_HEAD=c90e6f93803ad861745cd476106e00d01c68debb
 G3CR7V2R4_OWNER_FINAL_VISUAL=PASS
 G3CR7V2R4_FRONTEND_VISUAL_FREEZE=YES
 G3CR7V2R4_NEXT_LAYER=BACKEND_FLOW_COMPLETION
+G3CR7_FRONTEND_OWNER_PASS_DATE=2026-10-15
+G3CR7_FRONTEND_OWNER_ACCEPTED_CANDIDATE=c90e6f93803ad861745cd476106e00d01c68debb
+G3CR7_FRONTEND_OWNER_VISUAL_FREEZE=YES
+G3CR7_LATEST_EXECUTOR_TECHNICAL_REVIEW=PENDING_INDEPENDENT_REVIEW
+G3CR7_PR64=OPEN_UNMERGED_MERGEABLE_FALSE
+G3CR7_STATUS_STANDALONE=QA_ONLY
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -203,6 +209,8 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+- **Owner UI visual acceptance 2026-10-15:** homepage / Free Preview / core five-step intake are now visually accepted and frozen for this MVP stage at PR #64 head `c90e6f93803ad861745cd476106e00d01c68debb`. Standalone status fixture remains QA-only. This Owner decision is distinct from independent Reviewer acceptance of latest branch-only source/evidence and does not authorize merge, backend readiness, live payment, P1-P12 final design or production deployment. See `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`.
+
 - **Owner flow correction 2026-10-04:** canonical flow is **Homepage -> Free Preview -> Core function page -> full intake -> Submit -> Payment -> automatic generation -> complete result**. The free Preview remains browser-local/zero-model; the separate core function page may upload/store the complete 12–25 photo + answer draft before payment. Payment still gates all production generation. This supersedes the earlier “paid intake after checkout” wording.
 
 - G2BR3: real-AI structured content + deterministic 12-page PDF Solution Proof PASS.
@@ -224,23 +232,19 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING`
+`FRONTEND_OWNER_ACCEPTED_REVIEWER_SOURCE_RECONCILIATION_PENDING`
 
-Owner has completed live local review and reports the current frontend UI is satisfactory.
+Owner has **accepted the final homepage / Free Preview / core intake frontend UI** as of 2026-10-15. Stop visual-polish loops absent a new concrete Owner request.
 
-Frontend visual scope is now frozen for the current MVP stage:
-- homepage overall composition/motion;
-- Free Preview/core-entry;
-- core five-step intake;
-- current 2048/1440/375 responsive direction;
-- current Birthday Magazine preview material/style treatment.
+Authority:
+- `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`
+- latest PR #64 visual candidate: `c90e6f93803ad861745cd476106e00d01c68debb`
 
-Owner decision:
-- `docs/OWNER_DECISION_G3CR7V2R4_FRONTEND_VISUAL_FREEZE_2026-10-15.md`
+The latest source and test results remain Executor `PASS_CANDIDATE` until independent Reviewer reconciliation. Earlier accepted technical/business evidence remains usable within its unchanged scope.
 
-Standalone status preview remains QA-only. Production status belongs in Woo/order/private workspace.
+PR #64 is **open, unmerged, mergeable=false**. Its long-lived branch diverges substantially from `main`. No merge action is authorized; a bounded reconciliation Gate is needed.
 
-No further frontend visual iteration should start without a new explicit Owner decision. The next Gate should move to backend flow completion.
+Next technical business layers remain unimplemented: persistent prepayment draft, payment-bound generation, private proof/revision/download/retention and final P1–P12.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -305,21 +309,24 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Freeze the accepted frontend and stop visual iteration.
-2. Reconcile/prepare PR #64 before any merge; GitHub currently reports mergeable=false.
-3. Open the next product Gate for backend flow completion:
-   - durable temporary pre-payment draft persistence for 12–25 photos + six answers;
-   - exact submitted snapshot handoff into Woo checkout/order;
-   - paid entitlement -> one canonical generation-ready job;
-   - idempotent payment/refund/cancellation semantics.
-4. After that, connect the already-proven content/PDF Solution Proof to an unattended production generation/storage/private-delivery runtime.
-5. Final P1–P12 production visual work remains later, after the backend transaction/fulfillment loop is real enough to support it.
+1. Reviewer independently reviews the latest frontend `PASS_CANDIDATE` source/evidence and correlates its frozen behavior to prior accepted baselines; no visual rework.
+2. Reviewer prepares a bounded PR #64 pre-merge conflict/integration Gate preserving all accepted branch evidence, with no blind rebase/reset; do not merge without separate authorization and Gate.
+3. After accepted source integration, start pre-payment server draft persistence with 12–25 photos, six answers, ephemeral retention and exact Woo order correlation.
+4. Then implement paid-entitlement-to-one-generation-job idempotency, production 12-page magazine output, authenticated proof/revision/download and automatic deletion.
+5. Real-money/payment live canary, production deployment and real customer validation remain separate Owner-authorized milestones.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE for frontend.** Current MVP frontend visual direction is frozen.
+**NONE.** Owner has already explicitly accepted the frontend UI. No further visual iteration, credentials, deployment or payment action is requested.
 
 ## EVIDENCE_POINTERS
+
+Current visual Owner acceptance 2026-10-15:
+1. `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`
+2. PR #64 candidate `c90e6f93803ad861745cd476106e00d01c68debb`
+3. `docs/evidence/g3cr7v2r4-preview-materials/README.md` — latest Executor candidate, pending independent technical acceptance
+4. `docs/MVP_PRODUCT_CONTRACT.md` — frozen product contract
+
 
 Current G3CR7:
 1. `docs/REVIEWER_DECISION_G3CR7_SOURCE_PASS_RUNTIME_VISUAL_PENDING.md`
