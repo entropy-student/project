@@ -8,7 +8,7 @@
 
 [中文](./README.md)
 
-![Projects](https://img.shields.io/badge/projects-14-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-15-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-Chinese%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -34,6 +34,7 @@
 
 | Project | Purpose | Current-state entry |
 |---|---|---|
+| **Google Trends Market Radar** | Overseas Google search trends, data-quality checks, and market-opportunity research | [Handoff](./google-trends-market-radar/REVIEWER_HANDOFF.md) |
 | **Conversion Leak Audit** | Storefront conversion-leak scanning, Top-3 findings, and fix queue | [Handoff](./conversion-leak-audit/docs/REVIEWER_HANDOFF.md) |
 | **Mini Craft Night Kit** | WordPress/WooCommerce single-product ecommerce and physical-product validation | [Handoff](./mini-craft-night-kit/REVIEWER_HANDOFF.md) |
 | **Birthday Magazine Studio** | Generate personalized birthday magazines from photos and memories | [Handoff](./birthday-magazine-studio/REVIEWER_HANDOFF.md) |
