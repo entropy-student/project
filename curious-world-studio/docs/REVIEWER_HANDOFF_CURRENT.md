@@ -1,9 +1,6 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-
-> **2026-10-15独立Reviewer最新交接｜`CODE_FIX_ACCEPTED / GATE_PARTIAL_RUNTIME_PENDING`**：PR #131最新HEAD `87fddb5491c933637bf9ac67b96562adf2ca6bb3` 未合并；增量ZIP SHA256 `833f8d6bd7a411098352e853865bc4847665fcfcb59f5c39ff10a4d4fb5145db`，CRC和24/24 SHA及23项manifest有效，源码Git blob一致。Reviewer在独立Linux环境使用PR同版pipeline/filter跑24项本轮CLI测试全部PASS；Windows60/60由执行端记录。**默认fail-closed的部分搜索退出、HTTP就绪检查、停止后端口核验的代码/单测改进接受**。剩余`SEARXNG_RECOVERY_NOT_VERIFIED`、`REAL_CTRL_C_CLEANUP_NOT_VERIFIED`：实时discover实际可用内存1233MiB低于1664MiB安全门槛，Compose未启动，不能证明SearXNG恢复或实际Ctrl+C清理。需在Owner本机自然有安全余量后最小补验，不要改门槛/强行关闭共享进程。最新Review评论已写[PR #131](https://github.com/entropy-student/project/pull/131)；仍不可合并或启动MEDIA-R6/R7、PROD，CW-0005 HOLD。
-
-> **此前Owner授权本轮（历史说明）**：Owner批准`MEDIA-OPERATIONS-INTEGRATION`，要求统一给Codex调用的**轻量本机CLI**，封装已验收的Docker SearXNG/4get按需生命周期及main的媒体搜索/选ID下载/QA/图库；不是给Owner使用的GUI。请按[新Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)执行。**已有PR但没有Reviewer PASS/合并**；G2-G4维持既有TECHNICAL_ACCEPT，R6/R7/PROD未授权。
+> **2026-10-15 Reviewer最终裁决：`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION / MERGE_CANDIDATE`，PR [#131](https://github.com/entropy-student/project/pull/131)仍OPEN未合并。** ZIP `CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`，CRC正常、23条SHA/22项manifest均由Reviewer独立核实。Windows60/60回归是执行端日志，Reviewer之前独立复核24个CLI单测。SearXNG video/image各88/110条、4get各15/81条；294查询级记录→190去重候选（93视频/97图片）。**SearXNG上游Google 403、Brave解析错误、Vimeo/Pinterest超时仍为PARTIAL；默认`PARTIAL_SEARCH`返回`ok:false`及exit1符合fail-closed；只有调用方明确`--allow-partial`才接受不完整结果。** 真PTY Ctrl+C执行端证据：活动连接存在、CLI发`INTERRUPTED`、本项目三容器退出码0、两个端口关闭、无关容器IDs未变化；Reviewer独立核查包内证据但未亲手运行Owner Windows。**两个此前待补运行Gate已证实，后续不必再以所有第三方上游完全成功为合并障碍**。需要Owner/仓库合并流程另行授权并在合并时核当前main/PR可合并性；不得擅自合并、启动R6/R7/制作或宣称素材许可通过。正式CW-0005 HOLD不变。
 
 > **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
 
@@ -38,7 +35,7 @@
 
 ## 4. 下轮建议（**只有OPERATIONS-INTEGRATION已获新授权；R6/R7/PROD仍未授权**）
 
-**Owner已授权：`MEDIA-OPERATIONS-INTEGRATION`（当前仍未实现/Review）**——整理可复用的Windows Docker Compose+一键启停脚本、失败/资源保护和隔离浏览器自动QA，在独立分支形成PR交Reviewer，合并前确认不影响共享服务。G2本身不用重做。随后才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。不得擅自推进R6/R7、购买API/部署VPS或切换正式制作Gate；OPERATIONS-INTEGRATION仅在新合同范围内执行。
+**`MEDIA-OPERATIONS-INTEGRATION`技术Reviewer验收已通过（上游降级可接受），PR #131仍未合并**——Owner另批合并前复核最新main差异/CI及合并规则，保留第三方上游失败提示、默认非零退出。无需重做G2-G4或再次验证Ctrl+C。之后如获单独授权才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。不得擅自推进R6/R7、购买API/部署VPS或切换正式制作Gate；OPERATIONS-INTEGRATION仅在新合同范围内执行。
 
 **制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
 
@@ -48,4 +45,4 @@
 - [早期CW-0005叙事/素材长交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；[PROD四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)；[MEDIA-R3/R4+R5统计及历史材料](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。历史Gate使用当时语态，不是现在的操作许可。
 - [2026-10-15合并前旧CURRENT_STATE Git快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/CURRENT_STATE.md)、[旧Reviewer交接快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/REVIEWER_HANDOFF_CURRENT.md)。不在main重复复制过时的每轮前言。
 
-**一句话交接：CWS已完成本机Docker素材发现/下载/技术QA可用性验证，但正式Compose启停工具尚未PR入库、镜头动作/权利未通过、正式成片仍HOLD。**
+**一句话交接：CWS已完成本机Docker素材发现/下载/技术QA可用性验证，但正式Compose启停工具已在PR #131中、尚未合并main、镜头动作/权利未通过、正式成片仍HOLD。**
