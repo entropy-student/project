@@ -33,6 +33,20 @@ python $tool --workdir $work download-image --ids image-REPLACE_WITH_CANDIDATE_I
 python $tool --workdir $work gallery
 ```
 
+## Codex JSON entry point
+
+`cws_media.py` is the small orchestration CLI for Codex. It reuses the module above and the pinned, loopback-only Compose project in `docker/`; it does not create a second index or downloader. All commands emit one JSON envelope (`schema_version`, `ok`, `command`, `code`, `data`, `warnings`). Search starts only this unique Compose project and stops it if this invocation started it. Search never downloads. `fetch` requires explicit catalog IDs.
+
+```powershell
+python curious-world-studio/media-pipeline/cws_media.py doctor
+python curious-world-studio/media-pipeline/cws_media.py discover --query 'popcorn popping' --kind both --docker-proxy 'http://host.docker.internal:7897'
+python curious-world-studio/media-pipeline/cws_media.py catalog --kind video --limit 100
+python curious-world-studio/media-pipeline/cws_media.py fetch --ids video-EXPLICIT_ID --proxy 'http://127.0.0.1:7897'
+python curious-world-studio/media-pipeline/cws_media.py gallery
+```
+
+The optional Docker proxy is restricted to an unauthenticated HTTP(S) endpoint at `host.docker.internal`; set it only to a currently verified host listener. The optional media proxy is a process-level HTTP(S) proxy and is passed to yt-dlp/fetch calls without changing system settings. `doctor`, `catalog`, and `gallery` do not start containers. The ignored default work directory is `curious-world-studio/.local/media-operations`; runtime Compose secrets are generated there and never emitted in JSON. Before starting Compose, resource checks require at least 1.625 GiB free memory (the 1.375 GiB combined container caps plus 256 MiB host reserve) and 2 GiB free disk. `discover --kind both` queries video and image against both engines; per-engine counts, timings and sanitized upstream error categories are returned. A reused already-running complete project is left running.
+
 Global executable and proxy options must appear before the subcommand. Search never starts downloads. Video acquisition requires an explicitly supplied candidate ID that passed a format probe; a caller may select a validated format ID. The CLI caps an invocation at 30 unique IDs, a video at 80 MB hard maximum, an invocation's video total at 2 GB hard maximum, and an image at 15 MB. 4get page 1 only is implemented; its continuation token is not inferred.
 
 ## Behavior and status boundaries

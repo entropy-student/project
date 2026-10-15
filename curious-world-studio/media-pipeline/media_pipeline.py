@@ -382,8 +382,26 @@ def search(catalog: Catalog, engine: str, kind: str, query: str, endpoint: str, 
         records = parse_results(engine, kind, payload)
         catalog.add(records)
         status = "EMPTY_RESULTS" if not records else "OK"
+        upstream_errors = []
+        # Preserve a safe diagnostic summary without persisting arbitrary upstream text.
+        if engine == "searxng":
+            for row in payload.get("unresponsive_engines", []) if isinstance(payload, dict) else []:
+                if isinstance(row, (list, tuple)) and row:
+                    name = str(row[0])[:80]
+                    detail = str(row[1])[:160] if len(row) > 1 else ""
+                    match = re.search(r"(?:HTTP\s*)?(\d{3})", detail, re.I)
+                    category = "HTTP_" + match.group(1) if match else (
+                        "TIMEOUT" if "timeout" in detail.lower() else
+                        "CONNECTION_ERROR" if "connect" in detail.lower() else "UPSTREAM_ERROR")
+                    upstream_errors.append({"engine": name, "error_type": category})
+        else:
+            for field in ("error", "errors", "unresponsive_engines"):
+                value = payload.get(field) if isinstance(payload, dict) else None
+                if value:
+                    upstream_errors.append({"engine": "fourget", "error_type": "UPSTREAM_" + field.upper()})
         catalog.data["queries"].append({"engine": engine, "kind": kind, "query": query,
                                         "page": page, "count": len(records), "status": status,
+                                        "upstream_errors": upstream_errors,
                                         "elapsed_ms": round((time.monotonic() - started) * 1000)})
         catalog.save()
         return len(records)
