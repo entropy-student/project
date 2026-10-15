@@ -91,6 +91,24 @@ class CliTests(unittest.TestCase):
         run.assert_not_called()
         self.assertFalse(project.started_here)
 
+    def test_doctor_reports_low_memory_as_not_ready(self):
+        args = cws.build_parser().parse_args(["doctor"])
+        command = mock.Mock(returncode=0, stdout="5.4.0")
+        daemon = mock.Mock(returncode=0, stdout="29.7.2")
+        with mock.patch.object(cws.pipeline, "ensure_local_workdir", return_value=cws.ROOT / ".local" / "doctor-test"), \
+             mock.patch.object(cws.pipeline, "_validated_proxy", return_value=None), \
+             mock.patch.object(cws, "tool_status", return_value={"available": True, "version": "test"}), \
+             mock.patch.object(cws.shutil, "which", return_value="docker"), \
+             mock.patch.object(cws.subprocess, "run", side_effect=[command, daemon]), \
+             mock.patch.object(cws, "free_memory_mb", return_value=cws.MIN_FREE_MEMORY_MB - 1), \
+             mock.patch.object(cws, "free_disk_mb", return_value=cws.MIN_FREE_DISK_MB + 1), \
+             mock.patch.object(cws, "port_open", return_value=False):
+            ok, code, data, warnings, exit_code = cws.dispatch(args)
+        self.assertFalse(ok)
+        self.assertEqual(code, "LOW_MEMORY")
+        self.assertEqual(exit_code, 2)
+        self.assertTrue(any("below" in warning for warning in warnings))
+
     def test_missing_id_fetch_is_nonzero_and_json_compatible(self):
         with tempfile.TemporaryDirectory() as temp:
             workdir = Path(temp) / "curious-world-studio" / ".local" / "w"

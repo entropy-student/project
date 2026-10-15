@@ -303,13 +303,21 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
         result = {"python": sys.version.split()[0], "executables": tools, "docker": bool(docker),
                   "compose_version": compose_version, "docker_daemon": daemon_ok,
                   "memory_free_mb": memory, "disk_free_mb": disk,
+                  "minimums": {"memory_free_mb": MIN_FREE_MEMORY_MB, "disk_free_mb": MIN_FREE_DISK_MB},
                   "ports": {"searxng_127.0.0.1:18080_in_use": port_open(18080),
                             "fourget_127.0.0.1:15050_in_use": port_open(15050)},
                   "compose_template": str(COMPOSE.relative_to(ROOT.parent)).replace("\\", "/"),
                   "rights": "UNKNOWN_TEST_ONLY"}
         missing = [name for name, status in tools.items() if not status["available"]]
-        ok = not missing and bool(docker) and daemon_ok and compose_version is not None
-        return ok, "READY" if ok else "DOCTOR_INCOMPLETE", result, ["missing: " + ",".join(missing)] if missing else [], 0 if ok else 2
+        warnings = ["missing: " + ",".join(missing)] if missing else []
+        ready = not missing and bool(docker) and daemon_ok and compose_version is not None
+        if ready and memory < MIN_FREE_MEMORY_MB:
+            warnings.append(f"free memory {memory} MiB is below {MIN_FREE_MEMORY_MB} MiB")
+            return False, "LOW_MEMORY", result, warnings, 2
+        if ready and disk < MIN_FREE_DISK_MB:
+            warnings.append(f"free disk {disk} MiB is below {MIN_FREE_DISK_MB} MiB")
+            return False, "LOW_DISK", result, warnings, 2
+        return ready, "READY" if ready else "DOCTOR_INCOMPLETE", result, warnings, 0 if ready else 2
     if command == "catalog":
         if args.limit < 1 or args.limit > 2000:
             raise CliError("INVALID_LIMIT", "limit must be between 1 and 2000")

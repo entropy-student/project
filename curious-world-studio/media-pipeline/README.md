@@ -75,6 +75,6 @@ Windows integration acceptance has additionally exercised live SearXNG/4get vide
 ## Known limits
 
 - 4get continuation pagination is not implemented until its live token shape and continuation contract are validated.
-- The built-in browser in this execution rejected `file:` URLs by security policy; the generated HTML and local asset paths were statically checked, while in-browser playback was not claimed as verified.
+- The built-in browser rejected `file:` URLs by security policy. This CLI acceptance instead served the generated gallery through a temporary loopback HTTP server and verified local HTML5 video playback in the isolated in-app browser; this does not imply Owner Edge or editorial review.
 - The public-suffix fallback is intentionally approximate when no locally pinned PSL is supplied; platform exclusion uses explicit hostname suffix matching.
 - This package does not select shots by semantic action, perform near-duplicate visual matching, establish commercial reuse rights, or connect to OpenMontage or Remotion. It is not a production-ready unattended downloader.
