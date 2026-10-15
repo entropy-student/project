@@ -13,7 +13,10 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
-| `G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | **CURRENT Gate:** bounded isolated DB restore proof, then conditional inactive Stripe installation within same round |
+| `G3S1SH_CODEX_POLICY_HOLD_AND_RESUME_CRITERIA_2026-10-15.md` | **CURRENT HOLD:** no additional Codex host retries; wait for officially supported policy resolution |
+| `REVIEWER_DECISION_G3S1SR_RETURN_EXECUTOR_POLICY_HOLD_2026-10-15.md` | **Formal Reviewer RETURN:** G3S1SR scratch DB import command rejected before PowerShell startup |
+| PR #64 `evidence/g3s1sr/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | Latest saved Executor evidence; backup checksums still match, Stripe not installed |
+| `G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | Previous Gate RETURN, no longer an authorized execution request |
 | `REVIEWER_DECISION_G3S1S_RETURN_BACKUP_RESTORE_UNVERIFIED_2026-10-15.md` | **Reviewer RETURN:** DB import failed exit 1 and exact error was not retained; backup not fully restorable |
 | PR #64 `evidence/g3s1s/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | Executor's private backup/hash/file restore PASS and isolated DB restore unverified |
 | `G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | Previous Gate RETURN; Stripe not downloaded or installed |
