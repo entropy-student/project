@@ -4,7 +4,20 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-04
+> Last reviewed: 2026-10-15 (G3S0 readiness Reviewer PASS; G3S1 local staging NEXT)
+
+## NEW_REVIEWER_ENTRYPOINT_2026_10_15
+
+**Start here when this conversation has run out:** `docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md`.
+
+- The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
+- Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
+- G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
+- **Current executable Gate:** `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`.
+- Confirm current PR #64 and `main` again before any action. Owner-local containers were **reported stopped**; status has not been independently fresh-read from Owner hardware.
+- G3S0 PASS is **classification only**. Stripe account existence, merchant entity/country, active plugins, actual Woo runtime, public HTTPS endpoint, payouts and test payment remain unverified.
+- Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
+- PayPal Sandbox stays; no OAuth/merchant onboarding, connection, Gateway activation, checkout, provider action, tunnel or merge is allowed by G3S1.
 
 ## PROJECT_GOAL
 
@@ -198,6 +211,8 @@ PAYPAL_RETIREMENT=CONSIDERING_NOT_AUTHORIZED
 PAYPAL_CURRENT_SANDBOX_EVIDENCE=RETAIN
 FRONTEND_VISUAL_FREEZE=PASS_KEEP
 STRIPE_READINESS_GATE=G3S0_PASS_LIMITED_READONLY
+G3S0_OWNER_RELAY_EVIDENCE_INDEX=docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md
+NEXT_REVIEWER_BOOTSTRAP=docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md
 G3S0_REVIEWER_DECISION=PASS
 G3S0_PASS_SCOPE=READINESS_CLASSIFICATION_ONLY
 G3S0_EXECUTOR_REPORT_PROVENANCE=OWNER_RELAY_NO_DURABLE_EXECUTOR_EVIDENCE
@@ -325,8 +340,8 @@ Protected backend behavior for the current visual/research phase:
 - unattended production provider/runtime and provider-spend idempotency;
 - production storage/private delivery/recovery;
 - production refund/cancellation policy;
-- final visual freeze after template selection and the subsequent bounded implementation/review;
-- final visual freeze after template research/selection remains pending; source/branch packaging for G3CR6R3C is resolved.
+- independent technical reconciliation of the latest Owner-accepted frontend branch candidate, distinct from completed Owner visual acceptance;
+- final P1–P12 magazine artifact design, still deferred; long-term source/branch packaging still requires separate PR #64 merge reconciliation.
 
 ## NEXT_STEP
 
@@ -344,7 +359,9 @@ Protected backend behavior for the current visual/research phase:
 ## EVIDENCE_POINTERS
 
 Current G3S1 / parent G3S0:
-1. `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`
+1. `docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` — next Reviewer start-here
+2. `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` — preserved Executor relay / evidence limitations
+3. `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`
 2. `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`
 3. `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
 4. `docs/G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS.md`
