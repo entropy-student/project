@@ -1,9 +1,6 @@
 # Curious World Studio｜唯一当前状态（2026-10-15）
 
-
-> **2026-10-15增量独立复核｜`MEDIA_OPERATIONS_CODE_FIX_ACCEPTED / GATE_PARTIAL_RUNTIME_PENDING`**：[PR #131](https://github.com/entropy-student/project/pull/131)最新HEAD `87fddb5491c933637bf9ac67b96562adf2ca6bb3` 仍OPEN未合并。ZIP `CWS_MEDIA_OPERATIONS_PR131_FOCUSED_FIX_20261015.zip` SHA256=`833f8d6bd7a411098352e853865bc4847665fcfcb59f5c39ff10a4d4fb5145db`，CRC通过、24/24内部SHA及23/23manifest一致，3项源码Git blob与PR一致。Reviewer用同版pipeline/filter独立跑本轮24/24单测通过；Windows完整60/60 PASS仅有执行端证据。代码修正已接受：部分搜索失败默认非零/ok:false（显式allow-partial才允许），HTTP应用就绪检测与停止后端口核验。**但SearXNG视频/图片实时API尚未恢复验证，真实运行时Ctrl+C清理亦未实测**，因为可用内存1233MiB低于安全门槛1664MiB，正确阻止Docker启动。需内存自然恢复后仅补这两个实机Gate；严禁降低门槛、关闭其它项目或凭mock称PASS。旧G2-G4技术PASS与CW-0005 HOLD不变。
-
-> **此前Owner授权本轮（现在已实施为PR，待修复/Review）**：`MEDIA-OPERATIONS-INTEGRATION`，仅将现有素材搜索/筛选/显式ID下载/QA、按需Docker启停封装成**供Codex统一调用的轻量CLI**，不做Owner常用GUI、VPS或常驻后台。正式执行范围见[唯一Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。后续真实实现须Windows Codex隔离分支PR+独立Reviewer验收；`MEDIA_OPERATIONS_INTEGRATION_PASS`**尚未成立**，正式制作仍HOLD。
+> **2026-10-15独立Reviewer最终运行裁决：`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION`，PR [#131](https://github.com/entropy-student/project/pull/131)为`MERGE_CANDIDATE`，**仍OPEN、未合并main**。最终ZIP `CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`，CRC正常，23项SHA256SUMS与22项manifest均独立检查吻合。Windows60/60测试由执行端提供日志（Reviewer之前独立复核本轮CLI代码单测）。本轮内存实测2,680/2,410MiB>1,664MiB门槛；SearXNG视频88/图片110、4get视频15/图片81，合计294次查询级记录、去重190候选（93视频/97图片）；**上游Google视频403、Brave解析失败、Vimeo/Pinterest超时仍存在**，所以CLI正确`PARTIAL_SEARCH / ok:false / exit 1`，可选`--allow-partial`显式使用降级结果，**不是全部上游成功**。另有真正Windows PTY Ctrl+C及ESTABLISHED搜索socket记录：CLI`INTERRUPTED`；三个本项目容器exited(0)、18080/15050端口释放、无本轮Python残留、无关容器ID不变。Reviewer检查的是提交证据，不是亲自连接Owner Windows。**本轮未核验190条候选画面、下载、复用许可或动作匹配**；正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`不变。不需为第三方上游完全无错误而阻塞本地工具技术验收，但不得把默认exit1宣传为全源PASS。
 
 > **最高优先级事实入口，替换此前逐轮叠加的“最新状态”段落。** 主线状态：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**MEDIA素材技术闭环已通过，正式制作没有放行**。下次协作先读本页与[当前Reviewer交接](REVIEWER_HANDOFF_CURRENT.md)；旧执行合同/旧报告保留为历史，不再以其中“待执行”口吻发起任务。
 >
@@ -43,9 +40,9 @@
 
 ## 4. 唯一当前交接决定与后续候选
 
-**最新已完成Gate：`G2_G3_G4_TECHNICAL_ACCEPT`。新的`MEDIA-OPERATIONS-INTEGRATION`已由Owner授权，但执行/Review尚未完成。** 后续按价值优先：
+**最新完成Gate：`G2_G3_G4_TECHNICAL_ACCEPT`；统一Codex CLI的PR #131已经通过限定范围内的技术验收（允许上游降级），但**正式源码未合并main**。后续按价值优先：
 
-1. **MEDIA-OPERATIONS-INTEGRATION（已授权，待本机执行及Reviewer验收）**：在隔离分支把经过实测的Docker Compose、Windows按需启动/停止和隔离浏览器技术QA变成可重复运行的正式工具；重跑资源/端口/错误/停止回归，PR交独立Reviewer后再决定合并。**无需重新注销Ubuntu或重复G2–G4全量验收**。
+1. **MEDIA-OPERATIONS-INTEGRATION（技术验收PASS_WITH_UPSTREAM_DEGRADATION，PR #131未合并）**：已在隔离分支完成Codex JSON CLI、Docker本机按需启停、真实搜索与取消清理验收；接下来是Owner合并授权/合并前核对，不需要重复G2–G4或再要求全部外部搜索引擎100%可用。
 2. **MEDIA-R6（建议、未授权）**：围绕真正分镜目标，定位视频中实际动作出现的时段、比对不同来源技术家族与内容匹配率，补足`CW-0005`爆裂/压缩/回弹真实镜头缺口；不得标题匹配就算动作出现。
 3. **MEDIA-R7（建议、未授权）**：输出镜头级视频/时间码/来源/预览/内容与权利状态/缺口说明，供正式PROD另行审查。
 
@@ -54,7 +51,7 @@
 ## 5. 交接、证据和历史保留策略
 
 - **Owner**决定执行范围、付费、删除、外联、版权、正式Gate、发布；**Windows Codex**动手并交一个脱敏原始证据ZIP+外层SHA；**ChatGPT Reviewer**只在真实证据范围内独立检查并给PASS/PARTIAL/RETURN/HOLD；Review不能替代Owner对删除/制作的授权。
-- GitHub `main`只存**已批准的稳定源码、协议、当前状态与交接**，不是放原片、备份tar、逐轮日志或每轮多个重复报告的地方；正式代码改动分支PR→Reviewer→合并。当前不把尚未入库的本机Compose脚本描述为已正式上线。
+- GitHub `main`只存**已批准的稳定源码、协议、当前状态与交接**，不是放原片、备份tar、逐轮日志或每轮多个重复报告的地方；正式代码改动分支PR→Reviewer→合并。PR #131包含Compose与CLI实现但仍未合并main，不能表述为已上线。
 - 证据：`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`（SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`）；`Ubuntu-24.04`备份tar本地保留。前轮G1A、PR#129/R1–R5证据在[交接](REVIEWER_HANDOFF_CURRENT.md)追溯。历史文档“旧最新/下一步”的时态不得覆盖本页。
 - [旧CURRENT_STATE原样Git快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/CURRENT_STATE.md)，供需要复盘的Reviewer查阅，无须复制冗长历史叙述到main。
 
