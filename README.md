@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-15-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-16-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -34,6 +34,7 @@
 
 | Project | 主要用途 | 当前状态入口 |
 |---|---|---|
+| **Google Trends Market Radar** | 海外 Google 搜索趋势、数据质量校准与商业机会发现 | [Handoff](./google-trends-market-radar/REVIEWER_HANDOFF.md) |
 | **Conversion Leak Audit** | 独立站转化漏损扫描、Top 3 诊断与后续修复队列 | [Handoff](./conversion-leak-audit/docs/REVIEWER_HANDOFF.md) |
 | **Mini Craft Night Kit** | WordPress / WooCommerce 单品电商与跨境实物验证 | [Handoff](./mini-craft-night-kit/REVIEWER_HANDOFF.md) |
 | **Birthday Magazine Studio** | 照片与回忆自动生成生日纪念杂志 | [Handoff](./birthday-magazine-studio/REVIEWER_HANDOFF.md) |
