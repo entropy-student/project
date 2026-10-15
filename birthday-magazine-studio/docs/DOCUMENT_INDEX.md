@@ -13,7 +13,10 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
-| `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` | **CURRENT Gate:** verify new-chat successful DB import against exact local backup and isolation, then optional inactive Stripe |
+| `G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` | **CURRENT Gate:** publish retained sanitized execution Evidence to PR #64; no host actions or temp cleanup |
+| `REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md` | Reviewer RETURN: inactive Stripe install reported, PR Evidence missing, cleanup denied |
+| `OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md` | Owner-reported successful 58-table restore and official Stripe 11.1.0 installed inactive; pending Reviewer verification |
+| `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` | Previous execution Gate; install reported complete but not yet reviewable |
 | `OWNER_RELAY_G3S1SV_GITHUB_TRANSPORT_CLOSED_2026-10-15.md` | G3S1SV Codex GitHub plugin `Transport closed` preflight STOP; repo/PR readable by Reviewer, no Stripe or DB actions |
 | `OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md` | Owner reports exit 0 and 58/58 tables in a fresh Codex chat; proof correlation still pending |
 | `G3S1SH_CODEX_POLICY_HOLD_AND_RESUME_CRITERIA_2026-10-15.md` | Previous HOLD following old Codex policy denial; new Owner evidence calls for a narrow correlation Gate |
