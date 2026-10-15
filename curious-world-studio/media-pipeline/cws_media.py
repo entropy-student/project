@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.error import HTTPError, URLError
+from urllib.request import ProxyHandler, Request, build_opener
 
 import media_pipeline as pipeline
 
@@ -138,6 +139,33 @@ def port_open(port: int) -> bool:
         return sock.connect_ex(("127.0.0.1", port)) == 0
 
 
+def http_service_health(endpoint: str, timeout: float = 3) -> dict:
+    """Check the local web process, separately from TCP port availability."""
+    request = Request(endpoint.rstrip("/") + "/", headers={"User-Agent": "CWS-MEDIA-OPERATIONS/1"})
+    try:
+        # Do not route loopback health checks through ambient Windows proxy settings.
+        opener = build_opener(ProxyHandler({}))
+        with opener.open(request, timeout=timeout) as response:
+            status = int(response.status)
+            has_body = bool(response.read(1))
+        if status != 200:
+            return {"ready": False, "status": "HTTP_" + str(status)}
+        if not has_body:
+            return {"ready": False, "status": "EMPTY_BODY"}
+        return {"ready": True, "status": "HTTP_200"}
+    except HTTPError as exc:
+        return {"ready": False, "status": "HTTP_" + str(exc.code)}
+    except (URLError, TimeoutError, OSError) as exc:
+        reason = getattr(exc, "reason", exc)
+        if isinstance(reason, TimeoutError):
+            status = "TIMEOUT"
+        elif isinstance(reason, ConnectionRefusedError):
+            status = "CONNECTION_REFUSED"
+        else:
+            status = "CONNECTION_FAILED"
+        return {"ready": False, "status": status}
+
+
 def validate_docker_proxy(value: str | None) -> str | None:
     if not value:
         return None
@@ -161,6 +189,7 @@ class ComposeProject:
         self.env_path = self.workdir / "runtime.env"
         self.docker_proxy = validate_docker_proxy(docker_proxy)
         self.started_here = False
+        self.health_checks = {}
 
     def _base(self) -> list[str]:
         return ["docker", "compose", "--project-name", self.name,
@@ -216,7 +245,16 @@ class ComposeProject:
         expected = {"searxng", "fourget", "valkey"}
         if running:
             if running == expected:
-                return False
+                if not port_open(18080) or not port_open(15050):
+                    raise CliError("SEARCH_SERVICES_NOT_READY", "running containers do not expose both loopback ports", 1)
+                self.health_checks = {
+                    "searxng": http_service_health("http://127.0.0.1:18080"),
+                    "fourget": http_service_health("http://127.0.0.1:15050"),
+                }
+                if all(check["ready"] for check in self.health_checks.values()):
+                    return False
+                details = ",".join(f"{name}={check['status']}" for name, check in self.health_checks.items())
+                raise CliError("SEARCH_SERVICES_NOT_READY", details, 1)
             raise CliError("PROJECT_PARTIAL_RUNNING", "This project has a partial or unexpected running service set")
         if port_open(18080) or port_open(15050):
             raise CliError("PORT_IN_USE", "A required loopback search port is already occupied")
@@ -231,9 +269,15 @@ class ComposeProject:
         while time.monotonic() < deadline:
             services = self.running_services()
             if services == expected and port_open(18080) and port_open(15050):
-                return True
+                self.health_checks = {
+                    "searxng": http_service_health("http://127.0.0.1:18080"),
+                    "fourget": http_service_health("http://127.0.0.1:15050"),
+                }
+                if all(check["ready"] for check in self.health_checks.values()):
+                    return True
             time.sleep(1)
-        raise CliError("SEARCH_SERVICES_NOT_READY", "Compose services did not become ready")
+        details = ",".join(f"{name}={check['status']}" for name, check in self.health_checks.items())
+        raise CliError("SEARCH_SERVICES_NOT_READY", details or "Compose services did not become ready", 1)
 
     def stop_if_owned(self) -> None:
         if not self.started_here:
@@ -243,6 +287,11 @@ class ComposeProject:
             raise CliError("COMPOSE_STOP_FAILED", f"compose stop exit {result.returncode}")
         if self.running_services():
             raise CliError("COMPOSE_STOP_INCOMPLETE", "owned project still has running services")
+        deadline = time.monotonic() + 10
+        while time.monotonic() < deadline and (port_open(18080) or port_open(15050)):
+            time.sleep(0.25)
+        if port_open(18080) or port_open(15050):
+            raise CliError("COMPOSE_PORTS_STILL_OPEN", "a required loopback search port remains open")
         self.started_here = False
 
 
@@ -262,6 +311,8 @@ def build_parser() -> JsonArgumentParser:
     d.add_argument("--kind", choices=("video", "image", "both"), default="both")
     d.add_argument("--docker-proxy", default=os.environ.get("CWS_DOCKER_HTTP_PROXY"),
                    help="Optional verified HTTP(S) proxy at host.docker.internal")
+    d.add_argument("--allow-partial", action="store_true",
+                   help="Return success when some requested searches succeed and others fail")
     c = sub.add_parser("catalog")
     c.add_argument("--json", action="store_true", help="JSON is always emitted")
     c.add_argument("--kind", choices=("video", "image"))
@@ -398,19 +449,31 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
                 for kind in kinds:
                     try:
                         count = pipeline.search(catalog, engine, kind, args.query, endpoint, page=1, proxy=proxy)
-                        query_record = catalog.data.get("queries", [{}])[-1]
+                        query_record = (catalog.data.get("queries") or [{}])[-1]
+                        upstream_errors = query_record.get("upstream_errors", [])
+                        status = "OK" if count and not upstream_errors else (
+                            "UPSTREAM_PARTIAL" if count else "EMPTY_RESULTS")
                         results.append({"engine": engine, "kind": kind, "count": count,
-                                        "status": "OK" if count else "EMPTY_RESULTS",
-                                        "upstream_errors": query_record.get("upstream_errors", []),
+                                        "status": status,
+                                        "code": None if status == "OK" else status,
+                                        "upstream_errors": upstream_errors,
                                         "elapsed_ms": query_record.get("elapsed_ms")})
+                        if status != "OK":
+                            warnings.append({"engine": engine, "kind": kind, "error": status})
                     except Exception as exc:
                         error = failure_code(exc)
                         warnings.append({"engine": engine, "kind": kind, "error": error})
                         results.append({"engine": engine, "kind": kind, "count": 0, "status": "FAILED", "code": error})
             successes = sum(row["status"] == "OK" for row in results)
-            code = "OK" if successes == len(results) and successes else "PARTIAL_SEARCH" if successes else "SEARCH_FAILED"
-            ok = successes > 0
-            exit_code = 0 if ok else 1
+            failed = len(results) - successes
+            if not failed and successes:
+                code, ok, exit_code = "OK", True, 0
+            elif successes and args.allow_partial:
+                code, ok, exit_code = "PARTIAL_SEARCH_ALLOWED", True, 0
+            elif successes:
+                code, ok, exit_code = "PARTIAL_SEARCH", False, 1
+            else:
+                code, ok, exit_code = "SEARCH_FAILED", False, 1
         finally:
             if project.started_here:
                 try:
@@ -423,6 +486,7 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
         return ok, code, {"query": args.query, "requested_kinds": kinds,
                            "results": results, "catalog_items": len(catalog.data.get("items", {})),
                            "compose_project": project.name, "started_by_invocation": started_by_invocation,
+                           "service_health": project.health_checks,
                            "cleanup": cleanup, "rights": "UNKNOWN_TEST_ONLY"}, warnings, exit_code
     raise CliError("UNKNOWN_COMMAND", "unsupported command")
 
