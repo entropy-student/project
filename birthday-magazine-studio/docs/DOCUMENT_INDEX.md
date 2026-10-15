@@ -2,6 +2,21 @@
 
 > Purpose: prevent research, historical snapshots and prototypes from competing with the canonical current project truth.
 
+## 2026-10-15 Current Reviewer Entry
+
+These are the **current-stage** documents; historic visual/payment Gates below remain preservation references and do not supersede them.
+
+| Document | Role |
+|---|---|
+| `../REVIEWER_HANDOFF.md` | **Canonical current project status** |
+| `NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` | One-stop context, read order and exact next-Reviewer verification |
+| `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
+| `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
+| `G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` | **Current active Gate: local inactive official Stripe plugin staging** |
+| `OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md` | Stripe target primary, PayPal removal **NOT** authorized |
+| `MVP_PRODUCT_CONTRACT.md` | Frozen buyer-flow / paid-generation invariants |
+| `OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md` | Frontend Owner visual PASS; not a backend/merge claim |
+
 ## Authority map
 
 | Path | Role | Status / rule |
