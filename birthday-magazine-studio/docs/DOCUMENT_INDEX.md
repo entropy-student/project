@@ -13,7 +13,10 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
-| `G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_GATE_2026-10-15.md` | **CURRENT Gate:** one normal start attempt after Codex desktop restart; conditional backed-up WordPress app-only repair; no data-volume reset |
+| `G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | **CURRENT Gate:** recoverable local DB/files backup, then official Stripe plugin installed inactive if absent |
+| `REVIEWER_DECISION_G3S1R_PASS_LOCAL_RUNTIME_RESTORED_2026-10-15.md` | **Formal Reviewer PASS:** original WordPress/Woo local site restored, no reinstall or payment proof |
+| PR #64 `evidence/g3s1/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_2026-10-15.md` | Executor source of host-local curl/Docker/Woo/plugin status, PR commit `ee031365...` |
+| `G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_GATE_2026-10-15.md` | Completed WordPress recovery Gate, no further site start required |
 | `OWNER_DECISION_G3S1R_ONE_ROUND_LOCAL_RECOVERY_2026-10-15.md` | Owner fresh Codex restart and scoped, conditional WordPress repair authorization |
 | `G3S1P_OWNER_EXECUTION_PERMISSION_CHECKPOINT.md` | Prior Owner approval-path inquiry, superseded as current Gate by fresh Owner G3S1R decision |
 | `REVIEWER_DECISION_G3S1D_RETURN_POLICY_SOURCE_UNKNOWN_2026-10-15.md` | Formal G3S1D RETURN; executor tool policy denial before start, rule and compliant path unknown |
