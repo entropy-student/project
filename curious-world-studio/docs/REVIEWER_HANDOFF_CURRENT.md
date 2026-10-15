@@ -1,5 +1,7 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
+> **本轮新增Owner授权（尚未执行）**：R6L/R7L合并为一次快速素材匹配试跑，CW-0005选4个真实画面需求；限3–5候选/需求，最多两轮搜索，找相关且够用片段并输出素材清单，不做逐帧定位或新模型开发。[执行合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。正式制作/发布与权利审批仍HOLD。
+
 > **2026-10-15 Reviewer最终裁决：`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION / MERGED_MAIN`，PR [#131](https://github.com/entropy-student/project/pull/131)已于Owner授权后squash合并main（commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）。** ZIP `CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`，CRC正常、23条SHA/22项manifest均由Reviewer独立核实。Windows60/60回归是执行端日志，Reviewer之前独立复核24个CLI单测。SearXNG video/image各88/110条、4get各15/81条；294查询级记录→190去重候选（93视频/97图片）。**SearXNG上游Google 403、Brave解析错误、Vimeo/Pinterest超时仍为PARTIAL；默认`PARTIAL_SEARCH`返回`ok:false`及exit1符合fail-closed；只有调用方明确`--allow-partial`才接受不完整结果。** 真PTY Ctrl+C执行端证据：活动连接存在、CLI发`INTERRUPTED`、本项目三容器退出码0、两个端口关闭、无关容器IDs未变化；Reviewer独立核查包内证据但未亲手运行Owner Windows。**两个此前待补运行Gate已证实，后续不必再以所有第三方上游完全成功为合并障碍**。Owner本轮已授权并完成合并，合并前检查`mergeable=true / clean`，PR #131仅变动6项CWS media-pipeline文件、此前追加main未触及这些文件。**不要重复G2–G4或本轮集成验收，也不得未经另行授权启动R6/R7/制作或宣称素材许可通过。**正式CW-0005 HOLD不变。
 
 > **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
@@ -33,9 +35,9 @@
 - 今后技术性浏览器播放由Codex在**获明确授权的隔离浏览器**自动测试`video.play()`、`currentTime`、实际帧和错误/资源回收；不要附着Owner私有Edge窗口，也不能绕过Computer Use明确的安全停止。无法自动运行则写`BROWSER_AUTO_NOT_VERIFIED`，**不要把用户当重复的浏览器单测员**。Owner仍有真实镜头/审美/许可决策权。
 - 所有素材与截图只做`UNKNOWN_TEST_ONLY`技术实验；证据里不得放凭据、Cookie、SSH令牌或私密用户路径，媒体在权限不明时不作为Git附件或发布物。协议的“3+1”例外必须经Owner许可。
 
-## 4. 下轮建议（**只有OPERATIONS-INTEGRATION已获新授权；R6/R7/PROD仍未授权**）
+## 4. 下一轮（**R6L/R7L轻量小试验已授权；PROD正式制作仍未授权**）
 
-**`MEDIA-OPERATIONS-INTEGRATION`技术验收已通过且PR #131已合并main**——现可作为Codex本机受控工具复用，保留上游失败提示、默认非零退出；无需重做G2-G4或再次验证Ctrl+C。之后如获单独授权才考虑`MEDIA-R6`目标动作/时间码、内容近重复、非PeerTube多家族检验和`MEDIA-R7`逐分镜素材包。不得擅自推进R6/R7、购买API/部署VPS或切换正式制作Gate；OPERATIONS-INTEGRATION仅在新合同范围内执行。
+**`MEDIA-OPERATIONS-INTEGRATION`已完成并合并main。Owner已另行授权`MEDIA-R6L/R7L-FAST-MATCH-PILOT`，尚未实跑**：详见[唯一新合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。仅CW-0005四个画面需求，相关够用即停，最多两轮有界搜索并直接给素材清单。**不为普通镜头逐帧识别、定死精确时间码、遍历80站或新开发视觉模型；关键科学证据必须真实且不混充。** 版权/视频成片Gate独立；无需重做G2-G4。
 
 **制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
 

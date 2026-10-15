@@ -1,8 +1,9 @@
 <!-- CWS-AUTHORITATIVE-ENTRY-20261015 -->
-> **最新完成（2026-10-15）**：`MEDIA-OPERATIONS-INTEGRATION`已完成技术Review `MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION`并由Owner授权将[PR #131](https://github.com/entropy-student/project/pull/131)合并main（[`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）。Codex可使用`media-pipeline/cws_media.py`统一查询/候选/显式ID下载/QA/图库及本项目按需Docker；**上游搜索部分错误必须显式呈现，默认PARTIAL_SEARCH非零，明确`--allow-partial`才接受降级**。不做GUI、VPS或常驻服务；CW-0005正式HOLD、R6/R7未授权。
+> **Owner当前下一轮授权（2026-10-15，尚未执行）**：`MEDIA-R6L/R7L-FAST-MATCH-PILOT`，仅CW-0005四个真实画面需求，以现有CLI/索引快速找相关够用片段并给素材清单；每需求先看3–5候选、最多两轮搜索。**不新造逐帧模型、不强求精确秒数、不进入正式制作或解除CW-0005 HOLD**。唯一[本轮执行合同](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。
+> **最新完成（2026-10-15）**：`MEDIA-OPERATIONS-INTEGRATION`已完成技术Review `MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION`并由Owner授权将[PR #131](https://github.com/entropy-student/project/pull/131)合并main（[`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）。Codex可使用`media-pipeline/cws_media.py`统一查询/候选/显式ID下载/QA/图库及本项目按需Docker；**上游搜索部分错误必须显式呈现，默认PARTIAL_SEARCH非零，明确`--allow-partial`才接受降级**。不做GUI、VPS或常驻服务；CW-0005正式HOLD。**仅R6L/R7L小样本试跑现已授权，完整模型化R6/R7及PROD未授权。**
 # Curious World Studio｜Agent / Codex 唯一入口
 
-> **最新有效结果**：`MEDIA-INTEGRATION PR#129 MERGED`；本机`G2_G3_G4_TECHNICAL_ACCEPT`（Ubuntu备份注销、Docker按需搜索、真实素材下载/解码/Owner Edge手播通过）。**Docker Compose和统一Codex工具已由PR #131合并main；媒体动作/复用权、CW-0005制作Gate尚未通过。** 不重复G2–G4或操作集成验收；后续R6/R7须Owner另行授权。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **最新有效结果**：`MEDIA-INTEGRATION PR#129 MERGED`；本机`G2_G3_G4_TECHNICAL_ACCEPT`（Ubuntu备份注销、Docker按需搜索、真实素材下载/解码/Owner Edge手播通过）。**Docker Compose和统一Codex工具已由PR #131合并main；媒体动作/复用权、CW-0005制作Gate尚未通过。** 不重复G2–G4或操作集成验收；R6L/R7L仅按现行轻量合同试跑，完整R6/R7产品化仍须另行授权。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 >
 > **先读**：[唯一当前状态](docs/CURRENT_STATE.md) → [最新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md) → [MEDIA架构/阶段表](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。旧`G0`、`G1A`、`G1B`、`DOCKERFREE`和已经完成的`G2-G4`“下一步”指令**全部历史化**，不能再根据旧文字重新卸载Ubuntu、安装组件或要求Owner重播旧样片。
 
@@ -28,6 +29,6 @@
 - `HF-FIND`：按唯一主协议执行HF日榜发现；不自行制作视频。
 - `TOPIC-BANK`：按[工作流](research/topic-bank/WORKFLOW_V1.md)和[九源注册表](research/SOURCE_SYSTEM_FINAL_V1.md)，修改母表/看板时先运行`python curious-world-studio/research/topic-bank/validate_topic_bank.py`及`python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py`。
 - `STYLE-REVIEW`：仅依据视觉锁与真实证据评论样式，不自动开发渲染器。
-- `MEDIA-OPERATIONS-INTEGRATION`已经完成并合并main；后续Codex可调用`media-pipeline/cws_media.py`，安全要求和历史验收见[已完成合同](docs/MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。`MEDIA-R6`、`MEDIA-R7`、`PROD-*`仍需单独Owner授权。
+- `MEDIA-OPERATIONS-INTEGRATION`已合并main；Codex用`media-pipeline/cws_media.py`。**`MEDIA-R6L/R7L-FAST-MATCH-PILOT`已获Owner本轮有限授权**，必须遵守[快速匹配试跑合同](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)；完整R6/R7产品化与`PROD-*`、版权/公开发布尚未授权。
 
 历史G0/M2/阶段报告只用于追溯。**GitHub main记录稳定代码和长期规范，执行ZIP/媒体保留Owner本机，不为每轮普通QA新增重复Git报告。**

@@ -27,14 +27,14 @@
 | MEDIA获取与QA | [media-pipeline](media-pipeline/README.md)代码已并入main（PR#129），按ID下载、过滤、FFmpeg完整解码、HTML页技术可用 |
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
 | 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
-| MEDIA-R6/R7 | 动作精准匹配、时间码、分镜素材包尚未开始 |
+| MEDIA-R6L/R7L | **已授权但尚未实跑**：4个CW-0005画面需求，相关够用即停，形成简单素材清单；不做逐帧模型 |
 | PROD制片 | `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`，无成片/发布授权 |
 
 ## 当前工作边界
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**下一步建议（尚未授权）**：结束反复优化素材搜索基础设施，优先研究MEDIA-R6“真实动作/时间段识别”，再做R7逐镜头素材包；正式制作仍HOLD。统一CLI已经能给Codex调用，但搜索条目并非已经逐条观看、下载、内容吻合或取得许可。涉及付费/版权/清理/上线必须Owner单独决定。
+**当前下一轮（Owner已授权，待Windows本机实跑）**：[MEDIA-R6L/R7L快速素材匹配小试验](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。不再为了精确动作时间码重复构建新模型；先从CW-0005取4个画面需求，快速筛选相关且够用的真实候选，输出轻量素材清单。现有CLI可用，搜索结果不等于已验证画面或可复用许可；正式制片、付费、删除和发布仍需单独授权。
 
 ## 历史报告与许可证
 
