@@ -14,8 +14,8 @@
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
 - **Current Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md`. Stripe inactive local staging and retained Evidence formally Reviewer PASS; next classify merchant eligibility and Test prerequisites **read-only**.
-- Confirm current PR #64 and `main` again before any action. Owner-local containers were **reported stopped**; status has not been independently fresh-read from Owner hardware.
-- G3S0 PASS is **classification only**. Stripe account existence, merchant entity/country, active plugins, actual Woo runtime, public HTTPS endpoint, payouts and test payment remain unverified.
+- Confirm current PR #64 and `main` before consequential future steps. Latest G3S1SV Executor-host Evidence instead reports the **original WordPress, MariaDB and WP-CLI containers running** and local site HTTP 200; Reviewer has not independently accessed Owner hardware. Mailpit remains stopped.
+- G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. Stripe merchant account existence, legal entity/country, public HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
 - PayPal Sandbox stays; no OAuth/merchant onboarding, connection, Gateway activation, checkout, provider action, tunnel or merge is allowed by G3S1.
 
