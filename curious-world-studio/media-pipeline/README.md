@@ -42,6 +42,10 @@ Global executable and proxy options must appear before the subcommand. Search ne
 - The gallery distinguishes local media from search thumbnails. A search thumbnail is labelled as unverified and is not represented as actual video preview.
 - `FULL_DECODE_PASS` and `IMAGE_DECODE_PASS` describe technical checks only. Rights, attribution, research provenance, and editorial action matching remain independent review fields.
 
+## External URL safety scope
+
+The local pipeline rejects private/non-global candidate addresses, checks redirect targets used by its bounded HTTP fetches, and probes unknown remote formats from bounded local temporary files rather than passing remote URLs directly to FFprobe. These checks are guardrails, not a complete SSRF sandbox: DNS is checked before the connection but is not pinned to the connected socket, and yt-dlp may follow provider-controlled redirects or nested manifests outside the Python redirect handler. Do not treat this utility as safe for arbitrary untrusted URLs on a network that exposes private services; use an independently restricted egress environment for that threat model.
+
 ## Tests
 
 From `curious-world-studio/`:

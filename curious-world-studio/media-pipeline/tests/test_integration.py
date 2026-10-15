@@ -77,7 +77,7 @@ class IntegrationTests(unittest.TestCase):
                 self.assertEqual(c.data['queries'][-1]['status'],'EMPTY_RESULTS')
     def test_loopback_ignores_explicit_proxy(self):
         captured=[]
-        with patch.object(p,'build_opener',side_effect=lambda h:(captured.append(h) or h)):
+        with patch.object(p,'build_opener',side_effect=lambda h,*rest:(captured.append(h) or h)):
             p._opener_for('http://127.0.0.1:18080/search','http://127.0.0.1:7897')
             self.assertEqual(captured[-1].proxies,{})
             p._opener_for('https://example.org/media','http://127.0.0.1:7897')
@@ -119,7 +119,9 @@ class IntegrationTests(unittest.TestCase):
                      'format':{'duration':'2'}}
             results=[p.subprocess.CompletedProcess([],0,json.dumps(metadata),'') ,
                      p.subprocess.CompletedProcess([],0,json.dumps(ffprobe),'')]
-            with patch.object(p,'run',side_effect=results):
+            with patch.object(p,'run',side_effect=results), \
+                 patch.object(p,'_validate_public_url'), \
+                 patch.object(p,'fetch_limited',return_value=(b'sample','video/mp4','https://cdn.example.org/v.mp4')):
                 row=p.probe_one(c,key,'yt-dlp',proxy='http://127.0.0.1:7897',ffprobe='ffprobe')
             self.assertEqual(row['status'],'READY_TO_DOWNLOAD')
             self.assertEqual(row['bounded_format_probe'][0]['status'],'PROBED')
@@ -131,6 +133,104 @@ class IntegrationTests(unittest.TestCase):
             key=next(iter(c.data['items']));c.data['items'][key].update({'status':'READY_TO_DOWNLOAD','format_id':'1','landscape_format_ids':['1']})
             with self.assertRaisesRegex(ValueError,'not validated as landscape'):
                 p.download_one(c,key,'yt-dlp','ffprobe','ffmpeg',format_id='2')
+    def test_cli_returns_failure_for_missing_and_invalid_ids(self):
+        with tempfile.TemporaryDirectory() as d:
+            with patch.object(p,'CWS_ROOT',Path(d)):
+                workdir=Path(d)/'.local'/'test'
+                c=p.Catalog(workdir)
+                c.add(p.parse_results('searxng','video',{'results':[{'url':'https://example.org/1'}]}))
+                key=next(iter(c.data['items']))
+                with patch.object(p,'probe_one',return_value={'status':'PROBE_FAILED'}):
+                    from contextlib import redirect_stdout,redirect_stderr
+                    from io import StringIO
+                    out=StringIO()
+                    with redirect_stdout(out),redirect_stderr(StringIO()):
+                        status=p.main(['--workdir',str(workdir),'probe','--ids',key,'absent'])
+                self.assertEqual(status,1)
+                self.assertIn('"failed": 2',out.getvalue())
+                self.assertIn('NOT_IN_INDEX',out.getvalue())
+
+    def test_cli_returns_success_only_if_all_ids_pass(self):
+        with tempfile.TemporaryDirectory() as d:
+            with patch.object(p,'CWS_ROOT',Path(d)):
+                workdir=Path(d)/'.local'/'test'
+                c=p.Catalog(workdir)
+                c.add(p.parse_results('searxng','video',{'results':[{'url':'https://example.org/1'}]}))
+                key=next(iter(c.data['items']))
+                with patch.object(p,'probe_one',return_value={'status':'READY_TO_DOWNLOAD'}):
+                    from contextlib import redirect_stdout
+                    from io import StringIO
+                    with redirect_stdout(StringIO()):
+                        self.assertEqual(p.main(['--workdir',str(workdir),'probe','--ids',key]),0)
+
+    def test_dns_private_public_url_rejected(self):
+        private=[(2,1,6,'',('192.168.0.13',443))]
+        with patch.object(p.socket,'getaddrinfo',return_value=private):
+            with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
+                p._validate_public_url('https://rebound.example.test/v.mp4')
+
+    def test_probe_rejects_private_dns_before_ytdlp(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=p.Catalog(Path(d))
+            c.add(p.parse_results('searxng','video',{'results':[{'url':'https://rebound.example.test/1'}]}))
+            key=next(iter(c.data['items']))
+            private=[(p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('192.168.0.13',443))]
+            with patch.object(p.socket,'getaddrinfo',return_value=private), patch.object(p,'run') as runner:
+                with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
+                    p.probe_one(c,key,'yt-dlp')
+            runner.assert_not_called()
+
+    def test_download_rejects_private_dns_before_ytdlp(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=p.Catalog(Path(d))
+            c.add(p.parse_results('searxng','video',{'results':[{'url':'https://rebound.example.test/1'}]}))
+            key=next(iter(c.data['items']))
+            c.data['items'][key].update({'status':'READY_TO_DOWNLOAD','format_id':'1','landscape_format_ids':['1']})
+            private=[(p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('192.168.0.13',443))]
+            with patch.object(p.socket,'getaddrinfo',return_value=private), patch.object(p.subprocess,'Popen') as runner:
+                with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
+                    p.download_one(c,key,'yt-dlp','ffprobe','ffmpeg')
+            runner.assert_not_called()
+
+    def test_redirect_refused_before_request_to_private_host(self):
+        handler=p._SafeRedirectHandler(loopback_only=False)
+        request=p.Request('https://example.org/file')
+        with self.assertRaises(ValueError):
+            handler.redirect_request(request,None,302,'Found',{},'http://127.0.0.1/secrets')
+
+    def test_remote_format_does_not_give_ffprobe_network_url(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=p.Catalog(Path(d))
+            c.add(p.parse_results('searxng','video',{'results':[{'url':'https://example.org/1'}]}))
+            key=next(iter(c.data['items']))
+            meta={'title':'test','formats':[{'format_id':'f1','url':'https://cdn.example.org/v.mp4','width':None,'height':None,'vcodec':'unknown'}]}
+            ffprobe={'streams':[{'codec_type':'video','width':1280,'height':720,'codec_name':'h264'}]}
+            calls=[]
+            def local_only(command,*args,**kwargs):
+                calls.append(command)
+                if command[0]=='yt-dlp':
+                    return p.subprocess.CompletedProcess(command,0,json.dumps(meta),'')
+                self.assertNotIn('https://', ' '.join(command))
+                self.assertTrue(Path(command[-1]).exists())
+                return p.subprocess.CompletedProcess(command,0,json.dumps(ffprobe),'')
+            with patch.object(p,'run',side_effect=local_only),patch.object(p,'_validate_public_url'), \
+                 patch.object(p,'fetch_limited',return_value=(b'sample','video/mp4','https://cdn.example.org/v.mp4')):
+                row=p.probe_one(c,key,'yt-dlp')
+            self.assertEqual(row['status'],'READY_TO_DOWNLOAD')
+            self.assertEqual(len(calls),2)
+
+    def test_remote_playlist_url_never_passed_to_ffprobe(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=p.Catalog(Path(d))
+            c.add(p.parse_results('searxng','video',{'results':[{'url':'https://example.org/1'}]}))
+            key=next(iter(c.data['items']))
+            meta={'title':'test','formats':[{'format_id':'hls','url':'https://cdn.example.org/master.m3u8','width':None,'height':None,'vcodec':'unknown'}]}
+            with patch.object(p,'run',return_value=p.subprocess.CompletedProcess([],0,json.dumps(meta),'')) as runner, \
+                 patch.object(p,'_validate_public_url'):
+                row=p.probe_one(c,key,'yt-dlp')
+            self.assertEqual(row['bounded_format_probe'][0]['status'],'UNSAFE_OR_UNSUPPORTED_REMOTE_PROBE')
+            self.assertEqual(runner.call_count,1)
+
     @unittest.skipUnless(os.name=='nt','Windows process-tree behavior')
     def test_windows_timeout_kills_child_process_tree(self):
         child_code='import time; time.sleep(60)'

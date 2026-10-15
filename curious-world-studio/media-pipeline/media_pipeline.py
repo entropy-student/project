@@ -12,13 +12,14 @@ import json
 import os
 import re
 import signal
+import socket
 import subprocess
 import sys
 import tempfile
 import time
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
-from urllib.request import ProxyHandler, Request, build_opener
+from urllib.request import ProxyHandler, Request, build_opener, HTTPRedirectHandler
 from urllib.error import HTTPError, URLError
 
 from media_filter import assess_candidate, assess_orientation, is_mainland_video_platform, normalize_host
@@ -178,11 +179,43 @@ def _is_loopback(host: str) -> bool:
         return False
 
 
+def _validate_public_url(url: str) -> None:
+    """Reject private targets before requests; never accept untrusted DNS resolutions."""
+    cleaned_url(url)
+    target = urlsplit(url)
+    host = (target.hostname or "").rstrip(".").lower()
+    if host.endswith((".local", ".internal", ".home.arpa")):
+        raise ValueError("LOCAL_NETWORK_MEDIA_URL")
+    try:
+        addresses = socket.getaddrinfo(host, target.port or (443 if target.scheme == "https" else 80), type=socket.SOCK_STREAM)
+    except socket.gaierror as exc:
+        raise ValueError("MEDIA_HOST_DNS_UNRESOLVED") from exc
+    if not addresses or any(not ipaddress.ip_address(info[4][0]).is_global for info in addresses):
+        raise ValueError("NON_PUBLIC_MEDIA_ADDRESS")
+
+
+class _SafeRedirectHandler(HTTPRedirectHandler):
+    def __init__(self, loopback_only: bool):
+        self.loopback_only = loopback_only
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urlsplit(newurl)
+        if target.scheme not in ("http", "https") or not target.hostname or target.username or target.password:
+            raise ValueError("INVALID_REDIRECT_URL")
+        if self.loopback_only:
+            if not _is_loopback(target.hostname):
+                raise ValueError("SEARCH_REDIRECT_OFF_LOOPBACK")
+        else:
+            _validate_public_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def _opener_for(url: str, proxy: str | None):
     host = urlsplit(url).hostname or ""
     proxy = _validated_proxy(proxy)
-    mapping = {} if _is_loopback(host) or not proxy else {"http": proxy, "https": proxy}
-    return build_opener(ProxyHandler(mapping))
+    local = _is_loopback(host)
+    mapping = {} if local or not proxy else {"http": proxy, "https": proxy}
+    return build_opener(ProxyHandler(mapping), _SafeRedirectHandler(local))
 
 
 def _child_env(proxy: str | None = None) -> dict[str, str]:
@@ -239,9 +272,10 @@ def fetch_json(url: str, timeout=20, proxy: str | None = None) -> dict:
 
 
 def fetch_limited(url: str, cap: int, timeout: int = 20, proxy: str | None = None):
-    cleaned_url(url)
+    _validate_public_url(url)
     opener = _opener_for(url, proxy)
     with opener.open(Request(url, headers={"User-Agent": "CWS-MEDIA-INTEGRATION/1"}), timeout=timeout) as r:
+        _validate_public_url(r.geturl())
         final_url = cleaned_url(r.geturl())
         content_type = r.headers.get_content_type().lower()
         data = r.read(cap + 1)
@@ -398,6 +432,7 @@ def probe_one(catalog: Catalog, key: str, ytdlp: str, timeout=60, proxy: str | N
         item["status"] = "EXCLUDED"
         catalog.save()
         return item
+    _validate_public_url(item["url"])
     cmd = [ytdlp, "--ignore-config", "--no-playlist", "--skip-download", "--dump-single-json", "--no-warnings",
            "--socket-timeout", "15", "--retries", "0"]
     if proxy:
@@ -429,12 +464,20 @@ def probe_one(catalog: Catalog, key: str, ytdlp: str, timeout=60, proxy: str | N
                   and not x.get("has_drm") and x.get("vcodec") != "none"][:5]:
             result = {"format_id": str(f.get("format_id") or ""), "status": "UNKNOWN"}
             try:
-                cmd = [ffprobe, "-v", "error", "-rw_timeout", "10000000", "-show_streams",
-                       "-show_format", "-of", "json"]
-                if proxy:
-                    cmd.extend(["-http_proxy", _validated_proxy(proxy)])
-                cmd.append(f["url"])
-                p_remote = run(cmd, 15, proxy)
+                # Never pass untrusted remote formats directly to ffprobe: a remote
+                # playlist or redirect could make ffprobe fetch an internal URL.
+                _validate_public_url(f["url"])
+                suffix = Path(urlsplit(f["url"]).path).suffix.lower()
+                if suffix not in (".mp4", ".webm", ".mkv", ".mov", ".ogv", ".avi"):
+                    result["status"] = "UNSAFE_OR_UNSUPPORTED_REMOTE_PROBE"
+                    bounded_results.append(result)
+                    continue
+                content, _, _ = fetch_limited(f["url"], 16_000_000, timeout=12, proxy=proxy)
+                with tempfile.TemporaryDirectory(prefix="cws-probe-") as tempdir:
+                    local_probe = Path(tempdir) / ("candidate" + suffix)
+                    local_probe.write_bytes(content)
+                    cmd = [ffprobe, "-v", "error", "-show_streams", "-show_format", "-of", "json", str(local_probe)]
+                    p_remote = run(cmd, 15, None)
                 if p_remote.returncode == 0:
                     probed = json.loads(p_remote.stdout)
                     stream = next((s for s in probed.get("streams", []) if s.get("codec_type") == "video"), None)
@@ -450,7 +493,7 @@ def probe_one(catalog: Catalog, key: str, ytdlp: str, timeout=60, proxy: str | N
                         result["status"] = "NO_VIDEO_STREAM"
                 else:
                     result["status"] = "FFPROBE_EXIT_" + str(p_remote.returncode)
-            except (subprocess.TimeoutExpired, json.JSONDecodeError, OSError, ValueError) as exc:
+            except (subprocess.TimeoutExpired, json.JSONDecodeError, OSError, ValueError, RuntimeError) as exc:
                 result["status"] = type(exc).__name__.upper()
             bounded_results.append(result)
         orientation, fmtid = metadata_orientation(formats)
@@ -545,6 +588,7 @@ def download_one(catalog: Catalog, key: str, ytdlp: str, ffprobe: str, ffmpeg: s
     selected_format = str(format_id or item["format_id"])
     if selected_format not in item.get("landscape_format_ids", [str(item["format_id"])]):
         raise ValueError("Format ID was not validated as landscape")
+    _validate_public_url(item["url"])
     fmt = selected_format + "+bestaudio/" + selected_format
     # Watch both temporary and final outputs; provider Content-Length may be absent.
     cmd = [ytdlp, "--ignore-config", "--no-playlist", "--no-warnings", "--no-progress",
@@ -677,25 +721,38 @@ def main(argv=None) -> int:
         ids = list(dict.fromkeys(args.ids))
         if len(ids) > 30:
             parser.error("at most 30 explicit ids per invocation")
+        results = []
         for key in ids:
             if key not in c.data["items"]:
+                c.event(args.action, "FAILED", id=key, error="NOT_IN_INDEX")
                 print("NOT_IN_INDEX", key, file=sys.stderr)
+                results.append({"id": key, "status": "FAILED", "reason": "NOT_IN_INDEX"})
                 continue
             try:
                 if args.action == "probe":
                     r = probe_one(c, key, args.ytdlp, args.timeout, args.proxy, args.ffprobe)
+                    accepted = r["status"] == "READY_TO_DOWNLOAD"
                 elif args.action == "download-image":
                     r = download_image_one(c, key, args.ffprobe, args.ffmpeg, args.max_bytes, args.timeout, args.proxy)
+                    accepted = r["status"] == "IMAGE_DECODE_PASS"
                 elif c.data["items"][key].get("kind") == "image":
                     r = download_image_one(c, key, args.ffprobe, args.ffmpeg, args.max_bytes,
                                            min(args.timeout, 30), args.proxy)
+                    accepted = r["status"] == "IMAGE_DECODE_PASS"
                 else:
                     r = download_one(c, key, args.ytdlp, args.ffprobe, args.ffmpeg, args.max_bytes,
                                      args.timeout, args.max_total_bytes, args.proxy, args.format_id)
+                    accepted = r["status"] == "FULL_DECODE_PASS"
                 print(key, r["status"])
-            except (RuntimeError, ValueError, subprocess.TimeoutExpired) as exc:
+                results.append({"id": key, "status": r["status"], "success": accepted})
+            except (RuntimeError, ValueError, subprocess.TimeoutExpired, OSError) as exc:
                 c.event(args.action, "FAILED", id=key, error=type(exc).__name__)
                 print(key, "FAILED", type(exc).__name__, file=sys.stderr)
+                results.append({"id": key, "status": "FAILED", "reason": type(exc).__name__, "success": False})
+        failures = sum(not row.get("success", False) for row in results)
+        print(json.dumps({"action": args.action, "success": len(results) - failures,
+                          "failed": failures, "results": results}, ensure_ascii=False))
+        return 1 if failures else 0
     elif args.action == "gallery":
         print(gallery(c))
     elif args.action == "summary":
