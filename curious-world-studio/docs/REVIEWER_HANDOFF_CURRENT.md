@@ -1,6 +1,8 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-> **新的唯一执行授权（2026-10-15）**：Owner批准`MEDIA-OPERATIONS-INTEGRATION`，要求统一给Codex调用的**轻量本机CLI**，封装已验收的Docker SearXNG/4get按需生命周期及main的媒体搜索/选ID下载/QA/图库；不是给Owner使用的GUI。请按[新Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)执行。**当前没有真实实现/PR/Reviewer PASS证据**；G2-G4维持既有TECHNICAL_ACCEPT，R6/R7/PROD未授权。
+> **最新Reviewer交接（2026-10-15）**：[PR #131](https://github.com/entropy-student/project/pull/131)已实现5命令JSON CLI但仍OPEN未合并，裁决`MEDIA_OPERATIONS_INTEGRATION_RETURN_FOCUSED_FIX`，Review已在PR反馈。ZIP SHA256 `adad9a05a389be07173a939d20b482cc45131a3576654cabf94b6600ebb5fd42`、30/30 SHA及29项manifest匹配；Linux复测50 PASS/Windows专用1 SKIP。**缺口三项**：SearXNG视频/图片Live均`RemoteDisconnected`，双引擎搜索未PASS；`PARTIAL_SEARCH`竟返回`ok:true`/exit0易误导自动化；真实运行中的Ctrl+C/异常Compose清理/端口释放未验证（仅mock注入PASS）。4get实际返回11视频/81图片，浏览器自动推进0.03→0.78秒（截图未留），视频为历史PeerTube回归而非新独立素材，图片为人工加入Commons候选。**定向修复同一个PR及单份增量ZIP，不自行合并/启动R6/R7。** CW-0005 HOLD。
+
+> **此前Owner授权本轮（历史说明）**：Owner批准`MEDIA-OPERATIONS-INTEGRATION`，要求统一给Codex调用的**轻量本机CLI**，封装已验收的Docker SearXNG/4get按需生命周期及main的媒体搜索/选ID下载/QA/图库；不是给Owner使用的GUI。请按[新Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)执行。**已有PR但没有Reviewer PASS/合并**；G2-G4维持既有TECHNICAL_ACCEPT，R6/R7/PROD未授权。
 
 > **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
 
