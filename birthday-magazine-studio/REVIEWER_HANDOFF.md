@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-15 (G3S0 readiness Reviewer PASS; G3S1 local staging NEXT)
+> Last reviewed: 2026-10-15 (G3S1 initial preflight Reviewer RETURN for Codex GitHub transport; same Gate remains current)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -225,6 +225,10 @@ G3S1_RUNTIME_START=AUTHORIZED_EXISTING_CONTAINERS_ONLY
 G3S1_STRIPE_PLUGIN_STAGE=CONDITIONAL_OFFICIAL_INACTIVE_ONLY
 G3S1_STRIPE_PROVIDER_ACTIONS=0
 G3S1_PAYPAL_REMOVAL=0
+G3S1_ATTEMPT_1_REVIEWER=RETURN_GITHUB_PLUGIN_TRANSPORT_CLOSED
+G3S1_ATTEMPT_1_EXECUTOR_EVIDENCE=OWNER_RELAY_ONLY_NO_HOST_NATIVE_EVIDENCE
+G3S1_ATTEMPT_1_REPORTED_G3C_CONTAINERS=4_UNVERIFIED_VS_G3S0_3
+G3S1_RUNTIME_STAGING=NOT_STARTED
 ```
 
 ## SYSTEM_MAP
@@ -281,6 +285,8 @@ Current implementation Gate:
 G3S1 first proves actual retained local container/volume identity and safely restarts **existing** project containers; then performs fresh Woo/gateway readback and establishes a DB-consistent rollback barrier. Only if safe/absent may it install an official pinned Stripe Gateway **inactive**, with zero Stripe account/provider/payment actions.
 
 Owner Stripe country/entity/Test account authorization and public HTTPS webhook remain future separate checkpoints. PayPal remains intact and enabled state unchanged. Owner-accepted frontend remains frozen. PR #64 mergeability still deferred.
+
+**G3S1 initial preflight RETURN (2026-10-15):** Executor encountered `codex_apps/github.fetch_pr — Transport closed` and reported stopping with no container start, backup, plugin install or business mutation. These are Owner-relayed claims, not Reviewer host proof. Reviewer GitHub readback succeeded independently; this does **not** prove Codex's transport recovered. Earlier G3S0 reported three stopped G3C services; new G3S1 report says four containers. The extra/mismatched count requires actual Owner Windows project-label/ID/mount classification before starting any container. Formal result: `docs/REVIEWER_DECISION_G3S1_RETURN_GITHUB_PLUGIN_TRANSPORT_CLOSED_2026-10-15.md`; provenance index: `docs/evidence/g3s1/OWNER_RELAY_GITHUB_TRANSPORT_RETURN_2026-10-15.md`. **Keep G3S1 Gate unchanged**; retry only incomplete Phase 0 when approved Codex GitHub connector can read current PR/main.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -341,11 +347,12 @@ Protected backend behavior for the current visual/research phase:
 - production storage/private delivery/recovery;
 - production refund/cancellation policy;
 - independent technical reconciliation of the latest Owner-accepted frontend branch candidate, distinct from completed Owner visual acceptance;
+- G3S1 attempt-1 Codex GitHub transport failure and unexplained 3-versus-4 G3C container report (both requiring new Executor-local readback);
 - final P1–P12 magazine artifact design, still deferred; long-term source/branch packaging still requires separate PR #64 merge reconciliation.
 
 ## NEXT_STEP
 
-1. Executor runs `G3S1_LOCAL_STRIPE_GATEWAY_STAGING` on the actual retained Owner Windows G3C environment, fail-closed on environment identity.
+1. Executor retries only incomplete G3S1 Phase 0 after its **approved GitHub connector** can successfully fresh-read PR #64/main; reconcile the reported 4 containers versus prior 3-service baseline on the actual Owner Windows Docker host before startup. If tool transport or target identity remains uncertain, RETURN.
 2. Safely start existing stopped services only, fresh-read WP/Woo/product and PayPal/Stripe gateway flags, and verify a recoverable local DB/files backup.
 3. If absent, install pinned official WooCommerce Stripe Gateway **inactive only**; no provider login, OAuth, gateway enablement, payment or public tunnel.
 4. Reviewer independently verifies the new plugin/runtime readbacks and decides the next test-only authentication/HTTPS Gate.
@@ -359,6 +366,8 @@ Protected backend behavior for the current visual/research phase:
 ## EVIDENCE_POINTERS
 
 Current G3S1 / parent G3S0:
+0. `docs/REVIEWER_DECISION_G3S1_RETURN_GITHUB_PLUGIN_TRANSPORT_CLOSED_2026-10-15.md` — formal Reviewer RETURN for initial G3S1 preflight; unchanged Gate
+0. `docs/evidence/g3s1/OWNER_RELAY_GITHUB_TRANSPORT_RETURN_2026-10-15.md` — Owner-relayed Executor failure and independent Reviewer GitHub scope check
 1. `docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` — next Reviewer start-here
 2. `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` — preserved Executor relay / evidence limitations
 3. `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`
