@@ -1,6 +1,6 @@
 # Birthday Magazine Studio — Next Reviewer Bootstrap
 
-> Updated: 2026-10-15
+> Updated: 2026-10-16
 > Purpose: sufficient handoff for a NEW Reviewer when chat context runs out
 > Canonical truth: **current** `birthday-magazine-studio/REVIEWER_HANDOFF.md` + **current Gate** on GitHub `main`. This file is a concise locator/status snapshot and never overrides them.
 > Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md`, v0.2.7 ACTIVE_PROVISIONAL.
@@ -31,7 +31,14 @@ PR_HEAD_REVIEWED_G3S0=c90e6f93803ad861745cd476106e00d01c68debb
 PR_STATUS_G3S0=OPEN_UNMERGED_MERGEABLE_FALSE
 FRONTEND_OWNER_VISUAL=PASS_FROZEN
 G3S0_REVIEWER_DECISION=PASS_READINESS_CLASSIFICATION_ONLY
-CURRENT_GATE_NOW=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
+CURRENT_GATE_NOW=NONE_G3S2_READONLY_PASS_AWAIT_OWNER_LEGAL_MERCHANT_DECISION
+G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH
+G3S2_EVIDENCE=docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md
+G3S2_STRIPE_MERCHANT_ENTITY=UNKNOWN
+G3S2_HONG_KONG=SUPPORTED_CONDITIONAL_ENTITY_AND_IDENTITY
+G3S2_CHINA_MAINLAND=NOT_SUPPORTED_STANDARD_STRIPE_PAYMENTS_MERCHANT
+G3S2_HK_USD_WISE_PAYOUT=STRIPE_HK_USD_FEATURE_EXCLUDES_TRANSFERWISE
+G3S2_NEW_CODEX_PROMPT=NO_OWNER_REQUEST
 G3S1SV_REVIEWER=PASS_LOCAL_STRIPE_11_1_0_STAGED_INACTIVE_BOUNDED
 G3S1SVE_REVIEWER=PASS_EVIDENCE_PERSISTED
 G3S1SVE_PR64_EVIDENCE=4cb0d527d77a6d583e123acd3f62c45408669569
@@ -71,7 +78,7 @@ G3S1R_CONDITIONAL_APP_ONLY_REPAIR=OWNER_AUTHORIZED_WITH_VERIFIED_DB_AND_FILES_BA
 DATABASE_OR_NAMED_VOLUME_RESET=FORBIDDEN
 G3S1D_REVIEWER=RETURN_EXECUTION_POLICY_SOURCE_UNKNOWN
 G3S1D_PR_EVIDENCE_HEAD=5903726a68160624c52e871f2dde9d36123a9aa3
-NEXT_OWNER_ACTION=NONE_FOR_INACTIVE_STAGE_OPTIONAL_G3S2_READONLY_READINESS
+NEXT_OWNER_ACTION=NONE_NOW_OWNER_MERCHANT_COUNTRY_ENTITY_DECISION_WHEN_READY
 G3S1_PARENT=RETURN_WORDPRESS_START_EXECUTION_POLICY_BLOCKED
 G3S1_PARTIAL_DB=RUNNING_HEALTHY_EXECUTOR_LAST_READBACK_ONLY
 OWNER_G3C_LOCAL_RECOVERY=REQUESTED_CONDITIONALLY
@@ -127,7 +134,7 @@ Free Preview: zero model, vision/image generation, third-party upload or server 
 | G3S1SH Codex policy hold | Historical HOLD after blocked command; new Owner result allows only a fresh narrowly scoped correlation Gate |
 | G3S1SV local Stripe inactive staging | **Formal bounded Reviewer PASS**: official Stripe 11.1.0 installed inactive, MariaDB 58/58 restore, no payment; deferred temp ZIP cleanup and documented snapshot limitations |
 | G3S1SVE postinstall Evidence reconciliation | **PASS**: retained native evidence committed to PR #64 at `4cb0d527...`, no new host command |
-| G3S2 Stripe merchant account readiness | **CURRENT Gate**, read-only official merchant eligibility, Owner legal entity/country and Test readiness; no account or gateway action |
+| G3S2 Stripe merchant account readiness | **Reviewer PASS for public-policy read-only research**; official country/entity/KYC restrictions and Wise HK USD payout limits confirmed; Owner's actual eligibility remains unknown, no active execution Gate |
 | Stripe install/test/live/merchant/KYC/payout | UNKNOWN / NOT DONE |
 | Pre-payment server draft/snapshot linkage | NOT DONE |
 | Stripe synthetic test capture, webhook signature, refund and replay | NOT DONE |
@@ -158,7 +165,7 @@ Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PH
 
 **Owner local recovery direction:** `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md`; recent cleanup is Owner-reported but no resource deletion is yet demonstrated. Prefer original services and intact data over reinstall/recreate; policy bypass is forbidden.
 
-**Current Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` (**read-only**). Reviewer accepted G3S1SVE Evidence persistence and G3S1SV **bounded inactive Stripe 11.1.0 stage**: formal decision `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`, PR #64 exact Evidence at `4cb0d527...`. Protected original SQL backup recovered in isolated MariaDB 11.4.7, native import exit 0 and 58/58 tables; plugin native install exit 0, inactive, gateway unregistered. PayPal and order/site flags unchanged as Executor-host readback. **Explicit limits:** backup row-by-row snapshot-to-live equality, scratch ID and independent published vendor checksum not retained; before any consequential Test/Live/payment work use fresh verified selected recovery/rollback point. Cleanup of leftover local installer ZIPs remains deferred due PowerShell policy denial, not a reason to reinstall. G3S2 only determines Stripe legitimate merchant country/entity eligibility and eventual Owner/Test prerequisites, no bank/auth/plugin action or money. Returned Hostinger VPS unrelated.
+**Latest Gate G3S2 complete:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` — **Reviewer PASS read-only public-policy research** recorded at `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` with source evidence at `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`. Owner legal Stripe merchant region/entity and payout eligibility still UNKNOWN. **No current Codex execution Gate or prompt; await Owner's other arrangements.** Reviewer accepted G3S1SVE Evidence persistence and G3S1SV **bounded inactive Stripe 11.1.0 stage**: formal decision `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`, PR #64 exact Evidence at `4cb0d527...`. Protected original SQL backup recovered in isolated MariaDB 11.4.7, native import exit 0 and 58/58 tables; plugin native install exit 0, inactive, gateway unregistered. PayPal and order/site flags unchanged as Executor-host readback. **Explicit limits:** backup row-by-row snapshot-to-live equality, scratch ID and independent published vendor checksum not retained; before any consequential Test/Live/payment work use fresh verified selected recovery/rollback point. Cleanup of leftover local installer ZIPs remains deferred due PowerShell policy denial, not a reason to reinstall. G3S2 established: Hong Kong is available for qualifying genuine merchants, mainland China is not a standard Stripe merchant Payments region, non-HKID HK individual registration is restricted, genuine HK BRN sole proprietor may qualify after Stripe checks, and Stripe's HK USD payout policy excludes Wise/TransferWise/virtual USD accounts for that feature. HKD Wise account compatibility remains unknown, not assumed. No bank/auth/plugin action or money. Returned Hostinger VPS unrelated.
 
 **Historical Gate:** `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` (read-only diagnosis). Parent `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` is ON HOLD after a formal RETURN. See `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at commit `715be642...`. No Stripe staging or restart retry is allowed inside G3S1D.
 
@@ -184,21 +191,20 @@ Do **not** connect Stripe account/Test mode, expose HTTPS tunnel, create test ch
 
 ## Reviewer next-turn instructions
 
-If next message is **G3S2** read-only Stripe merchant eligibility/readiness results:
+**G3S2 has already been researched and formally Reviewer PASSED (read-only). Do not rerun it or send a Codex prompt.**
 
-1. Refresh PR #64/main exact project refs and current Handoff/G3S2 Gate; do not replay accepted WordPress, MariaDB import or official Stripe installation.
-2. Check official supported Stripe merchant country/entity requirements, payout-bank rules and supported Test onboarding path as relevant to Owner's real eligibility. Previous Owner reported no registered Stripe merchant account; current status must be confirmed or remain UNKNOWN.
-3. Produce concrete Owner-only prerequisites, with no fabricated merchant identity/address, personal docs or credentials in chat/Git. If eligible verified Test setup is later approved, require a new scoped, fresh backup/recoverability gate before plugin activation, webhook and any payment.
-4. Temporary ZIP installer cleanup remains a narrow deferred housekeeping issue under policy constraint; do not rerun blocked deletion or reinstall.
-5. Formally PASS/RETURN any new Gate after durable Evidence and source readback; preserve frozen frontend, PR #64 Open, and PayPal retirement condition.
+1. If Owner supplies another arrangement, a legitimate Stripe business country/entity or new account status, reconcile only that named new information with official Stripe regional verification and payout rules.
+2. Until eligibility confirmed, remain STOP: no plugin activation, Stripe login/registration, public tunnel, test payment, refund, provider action, or PR #64 merge. Keep local official 11.1.0 plugin inactive.
+3. If Owner later chooses a merchant path, design a **new separately authorized** Test-only Gate with fresh protected recovery point, reviewed callback/HTTPS or official safe local test delivery, signed webhook and payment/refund/entitlement negative guards; avoid broad source changes.
+4. Historical Stripe ZIP installer cleanup remains deferred due a blocked cleanup command; do not retry or route through alternate tools.
 
 ## Read order for new Reviewer
 
 1. `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md`.
 2. `entropy-student/project/main/birthday-magazine-studio/REVIEWER_HANDOFF.md`.
-3. `entropy-student/project/main/birthday-magazine-studio/docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md`.
-4. `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md` and PR #64 evidence at `4cb0d527...`.
-5. Owner-approved merchant country/Stripe account details (only when voluntarily supplied, no credentials) and applicable official Stripe policy.
+3. `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` and `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`.
+4. `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md` and PR #64 executor evidence at `4cb0d527...`.
+5. Owner merchant country/legal entity/account status only when voluntarily provided. Never request ID photos/bank numbers/keys.
 
 
 **Do not take broad history or prior chat assistant statements as higher authority than fresh GitHub current state.**
