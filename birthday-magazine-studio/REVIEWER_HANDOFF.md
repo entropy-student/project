@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS
+CURRENT_GATE=G3S1_LOCAL_STRIPE_GATEWAY_STAGING
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -197,7 +197,19 @@ STRIPE_LIVE_COLLECT_AND_PAYOUT=HOLD_UNVERIFIED
 PAYPAL_RETIREMENT=CONSIDERING_NOT_AUTHORIZED
 PAYPAL_CURRENT_SANDBOX_EVIDENCE=RETAIN
 FRONTEND_VISUAL_FREEZE=PASS_KEEP
-STRIPE_READINESS_GATE=G3S0
+STRIPE_READINESS_GATE=G3S0_PASS_LIMITED_READONLY
+G3S0_REVIEWER_DECISION=PASS
+G3S0_PASS_SCOPE=READINESS_CLASSIFICATION_ONLY
+G3S0_EXECUTOR_REPORT_PROVENANCE=OWNER_RELAY_NO_DURABLE_EXECUTOR_EVIDENCE
+G3S0_LOCAL_RUNTIME=STOPPED_EXECUTOR_REPORTED_NOT_DIRECT_REVIEWER_READBACK
+G3S0_WOO_PLUGIN_INVENTORY=UNKNOWN_DEFER_G3S1
+G3S0_STRIPE_MERCHANT_AND_PAYOUT=UNKNOWN_OWNER_CHECKPOINT_LATER
+G3S0_HTTPS_TEST_CALLBACK=NOT_PREPARED
+G3S0_MAIN_SOURCE_FRESHNESS=PROJECT_SCOPED_NO_NEW_APPLICATION_SOURCE_DIFF
+G3S1_RUNTIME_START=AUTHORIZED_EXISTING_CONTAINERS_ONLY
+G3S1_STRIPE_PLUGIN_STAGE=CONDITIONAL_OFFICIAL_INACTIVE_ONLY
+G3S1_STRIPE_PROVIDER_ACTIONS=0
+G3S1_PAYPAL_REMOVAL=0
 ```
 
 ## SYSTEM_MAP
@@ -241,19 +253,19 @@ STRIPE_READINESS_GATE=G3S0
 
 ## CURRENT_GATE
 
-`G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS`
+`G3S1_LOCAL_STRIPE_GATEWAY_STAGING`
 
-Owner authorized **Stripe as the target payment provider** for Birthday Magazine Studio and is **considering** retiring PayPal, not authorizing its removal.
+G3S0 read-only Stripe readiness is **Reviewer PASS limited to classification**. Runtime/DB/plugin flags remain `UNKNOWN` because the retained Owner-local G3C containers were stopped and not restarted for G3S0.
 
-Owner decision:
-- `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`
 
-Active read-only Gate:
-- `docs/G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS.md`
+Current implementation Gate:
+- `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`
 
-This Gate establishes official Woo Stripe gateway/test-mode/HTTPS/merchant prerequisites before any account or provider mutation. Its PASS does not mean Stripe is connected or real-money collection is proven.
+G3S1 first proves actual retained local container/volume identity and safely restarts **existing** project containers; then performs fresh Woo/gateway readback and establishes a DB-consistent rollback barrier. Only if safe/absent may it install an official pinned Stripe Gateway **inactive**, with zero Stripe account/provider/payment actions.
 
-Existing PayPal Sandbox proof, Woo canonical order, Owner-frozen frontend, PR #64 unmerged state, and all critical data/privacy/paid-generation boundaries remain intact.
+Owner Stripe country/entity/Test account authorization and public HTTPS webhook remain future separate checkpoints. PayPal remains intact and enabled state unchanged. Owner-accepted frontend remains frozen. PR #64 mergeability still deferred.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -318,18 +330,25 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor performs G3S0 read-only Stripe merchant/test-gateway/HTTPS compatibility discovery in the existing local project environment; no Stripe account is assumed to be active.
-2. Reviewer independently reviews readiness/eligibility and, only after PASS, opens a bounded Stripe **test-only** integration Gate using the official WooCommerce Stripe Gateway.
-3. Owner handles Stripe account country/entity, KYC/KYB and login/OAuth/bank linkage only at explicitly identified Stripe-controlled checkpoints.
-4. Complete temporary server-side pre-payment intake draft persistence before any paid generation-ready production chain.
-5. Preserve PayPal Sandbox evidence and keep PayPal installed until separately Owner-authorized migration closeout; test, live collection and payout proof are separate.
-6. PR #64 still requires independent pre-merge reconciliation; current frontend visuals remain frozen.
+1. Executor runs `G3S1_LOCAL_STRIPE_GATEWAY_STAGING` on the actual retained Owner Windows G3C environment, fail-closed on environment identity.
+2. Safely start existing stopped services only, fresh-read WP/Woo/product and PayPal/Stripe gateway flags, and verify a recoverable local DB/files backup.
+3. If absent, install pinned official WooCommerce Stripe Gateway **inactive only**; no provider login, OAuth, gateway enablement, payment or public tunnel.
+4. Reviewer independently verifies the new plugin/runtime readbacks and decides the next test-only authentication/HTTPS Gate.
+5. Owner later confirms actual Stripe account country/entity/test authorization through Stripe-controlled UI; do not assume Wise Hong Kong banking qualifies.
+6. Preserve PayPal Sandbox, frozen frontend and PR #64 until separately authorized migration/merge work.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE to start G3S0.** After the read-only readiness Gate, Owner may need to confirm whether a Stripe account already exists and complete account/test-mode authorization in Stripe/Woo controlled UI. Do not provide account credentials, identity documents or bank numbers in chat.
+**NONE for G3S1** if Codex can prove it is operating on the real existing Owner-local Windows G3C environment. Any Stripe account registration, KYC, country/entity declaration, test OAuth, bank linking, payment or refund requires a later separate Owner-controlled checkpoint. No credential or ID documents in chat or Git.
 
 ## EVIDENCE_POINTERS
+
+Current G3S1 / parent G3S0:
+1. `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`
+2. `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md`
+3. `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
+4. `docs/G3S0_STRIPE_ACCOUNT_AND_GATEWAY_READINESS.md`
+
 
 Current Stripe migration:
 1. `docs/OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md`
