@@ -2,6 +2,8 @@
 
 > **2026-10-15 Owner 决策 / Reviewer 独立核验后的最新状态。** 历史快照只作溯源，不作为下一步命令。**MEDIA-INTEGRATION PR #129 已经经Reviewer修复验收后正式合并main（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）**；成为受限的、本地指定ID的媒体获取及QA工具，**并不意味着正式节目生产链已自动接入或无Docker已通过**。
 >
+> **2026-10-15 Owner最新运行决策**：**以Windows本机按需启动/用毕停止为首选，不部署VPS、不使用Docker、不保持搜索服务常驻。** 之前`MEDIA-DOCKERFREE-ACCEPTANCE`的安装/部署/整链执行被Owner中断，视为**暂停且结果未知**，不是FAIL/PASS。当前只授权[中断后只读现场恢复与按需运行可行性判断](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)，不得依旧协议重启部署；不影响已合并PR #129。
+>
 > **正式制作状态未变**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。未批准更换选题、音画生产、发布或素材复用权；Owner 已恢复**素材工具支线的专项研发和验收**，不能再将2026-10-12“全面暂停”的旧快照当成当前命令。
 
 ## 1. 一眼看懂
@@ -30,7 +32,7 @@
 ## 3. 轮次重新命名：两条轨道不可混用
 
 - **MEDIA-R1** 搜索工具实测 → **MEDIA-R2** 素材获取闭环 → **MEDIA-R3** 国际横屏逐站普查 → **MEDIA-R4+R5** 本地清理与非PeerTube扩展（最新：核心目标达到，总体PARTIAL）。
-- **MEDIA-INTEGRATION**：独立可选工具已Windows测试、Reviewer接受并通过PR #129合并 `main`；不意味着已成为正式制作引擎。**下一Gate为 `MEDIA-DOCKERFREE-ACCEPTANCE`（Owner已授权开始，待真实环境验收）**：核验搜索服务与CWS均无Docker依赖、实时搜索→人工选ID→下载→本机完整解码→浏览器播放。[长效验收协议](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)。
+- **MEDIA-INTEGRATION**：独立可选工具已Windows测试、Reviewer接受并通过PR #129合并 `main`；不意味着已成为正式制作引擎。**当前 Gate 改为 `MEDIA-ONDEMAND-RECOVERY-G0`（仅只读）**：Codex先核查被中断进程/工作树/现有搜索服务真正来源及即用即停方案，不安装/部署/迁移/停服；[新决策与交接](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)。旧[DOCKERFREE整链验收](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停，之后如确有可行本机路径再另行授权闭环测试。
 - **MEDIA-R6**（待Owner单独授权）：实际画面/动作匹配、时间码定位、近似内容去重及1080p优先选择。
 - **MEDIA-R7**（待Owner单独授权）：逐分镜素材包，输出真实原片、精准时段、来源、预览及内容/权利状态，再交接正式制作。
 - **PROD-R1** 选题/研究/真实素材/权利 → **PROD-R2** 剧本/分镜/Research Aqua设计 → **PROD-R3** 30–60秒真实音画字幕联调 → **PROD-R4** 第一版完整内部草片。旧[四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)指**PROD**，不是MEDIA-R4。发布另有授权。

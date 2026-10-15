@@ -54,7 +54,8 @@ Windows本地可选工具使用说明见[MEDIA pipeline使用说明](MEDIA_PIPEL
 | 阶段 | 具体工作 | 准备验收什么 | 授权状态 |
 |---|---|---|---|
 | **MEDIA-INTEGRATION（已合并main）** | 独立`media-pipeline/`提供搜索/候选索引、筛选、指定ID有限下载、FFprobe/FFmpeg QA和HTML输出 | PR#129 Windows 36/36、独立Reviewer修复验收、合并commit `10b369ee`；未正式集成视频制片 | **技术模块合并PASS；不自动升级节目Gate** |
-| **MEDIA-DOCKERFREE-ACCEPTANCE（当前）** | 验证SearXNG/4get服务与Windows工具都不用Docker；先审现有环境，必要时隔离部署官方非容器服务；实际媒体和本地HTTP浏览器播放 | 同一轮证明服务非容器、API有真实结果、横屏过滤、指定ID视频/图片下载及完整解码、本地实际播放 | **Owner已授权开始；结果待执行端与Reviewer验收** |
+| **MEDIA-ONDEMAND-RECOVERY-G0（当前）** | Owner中断旧无Docker/VPS部署探索；只读检查残留进程、工作树和现有搜索服务依赖，比较无常驻/无Docker/无VPS的本机按需启动、停止方式 | 输出原生服务可复用性、启停控制范围、成本与阻塞；不能把预案叫已部署/已验收 | **只读授权；[规范](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)** |
+| **MEDIA-DOCKERFREE-ACCEPTANCE（旧Gate暂停）** | 旧搜索服务原生安装/整链计划不再自动执行 | 未来如Owner另行授权，可复用其验收指标，当前不得部署VPS/安装搜索服务 | **PAUSED_BY_OWNER** |
 | **MEDIA-R6** | 真实内容/动作匹配、时间码定位、同源近似视频识别、高清优选；真实画面验证后再评级 | 至少两个不同题材的指定动作，不把“标题相近/含关键词”冒充动作已出现 | **待Owner授权** |
 | **MEDIA-R7** | 根据逐句分镜自动生成可浏览素材包，包含原片、预览、素材ID、动作时间段、来源、使用权状态 | 可复算“分镜需求→可用片段”的匹配率，缺素材显式RETURN | **待Owner授权** |
 | **PROD-R1** | 选题、研究证据、第一手素材/权利 | STORYFIT与内容/权利Gate | CW-0005 HOLD |
@@ -66,8 +67,8 @@ Windows本地可选工具使用说明见[MEDIA pipeline使用说明](MEDIA_PIPEL
 
 ## 6. 优先级建议与停止规则
 
-- 已完成**MEDIA-INTEGRATION**的独立Reviewer验收与Owner合并。现在只做[**MEDIA-DOCKERFREE-ACCEPTANCE**](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)，无需重新跑R3全站或R4+R5清理。
+- 已完成**MEDIA-INTEGRATION**的独立Reviewer验收与Owner合并。当前先做[**MEDIA-ONDEMAND-RECOVERY-G0**](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)只读检查，先解决“中断后到底还运行什么”和“能否即开即停”，**不自动部署VPS、无需重跑R3或清理R4+R5**；旧[无Docker整链Gate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停。
 - 然后MEDIA-R6精准匹配，R7分镜素材包；非PeerTube来源按真实分镜缺口定向补充，**不再无限增加PeerTube实例或按支持名单凑网站数**。
-- 最新PR#129 Windows测试已得到SearXNG/4get真实搜索合计460条（413去重）；**服务迁移为非Docker后还需要独立回归每一引擎的非零返回**。Archive低清和ZDF损坏等保留为未来定向需求，不是本轮扩展任务。
+- 最新PR#129 Windows测试已得到SearXNG/4get真实搜索合计460条（413去重）；**若未来选定的按需搜索方案得到单独授权，需要重新测每种实际启用的引擎是否能返回有效结果**。Archive低清和ZDF损坏等保留为未来定向需求，不是本轮扩展任务。
 - 报告每100个去重候选中：实际内容查看、动作匹配、清晰度、最终落盘的条数；小样本不外推成整个互联网覆盖率。
 - 本文件是长期技术规范；Owner仅授权开展无Docker素材获取整链验收，**不授权自动/全网无人值守爬取、研发MEDIA-R6、制作/发布节目或扩权操作**。

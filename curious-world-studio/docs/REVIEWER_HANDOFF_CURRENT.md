@@ -1,8 +1,8 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
-> **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。当前正在准备**MEDIA-DOCKERFREE-ACCEPTANCE**，**尚没有Docker-free PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；当前只执行`MEDIA-ONDEMAND-RECOVERY-G0`只读现场检查与方案核验，**没有Docker-free或按需闭环PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 >
-> 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [无Docker整链Gate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
+> 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
 
 ## 一、项目目的与角色
 
@@ -23,7 +23,7 @@ CWS（Curious World Studio）是Owner的不露脸、观点驱动、跨领域真�
 - PR #129：Windows搜索、过滤、手动ID下载和QA闭环已验证；初版发现批量错误退出码与远端私网URL校验不足，集中修复后Windows 36/36测试通过；独立Linux 35通过+1 Windows限定跳过；集中修复结论 `PR129_FOCUSED_FIX_ACCEPT`，合并commit `10b369ee`。
 - 真实媒体：前一轮NASA SVS+Commons两视频及1图片完整解码曾在Reviewer环境独立执行；最后的PR集中修复回归取Commons 640×440、721帧，**原片未随最终ZIP上传，只能确认执行日志、SHA、代表帧，不能宣称独立重解码最后一轮原片**。NASA未知尺寸未计成功。
 - 安全：本工具仅本地、人工ID、限定下载；DNS与实际socket未绑定，yt-dlp可能进行嵌套跳转，**非完整SSRF沙箱**，不能开放成公网站或无人值守任意URL处理。
-- 下一个Owner已许可阶段：`MEDIA-DOCKERFREE-ACCEPTANCE`。先读[唯一长期验收协议](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)，在Windows+实际原生SearXNG/4get服务完成无容器证明与真实搜索→下载→浏览器播放验收。**现阶段不宣称无Docker已通过，也不启动MEDIA-R6或制片**。
+- **Owner后续变更（覆盖上一条执行计划）**：上一轮Docker-free方案被强行中断；目前不继续VPS/原生搜索服务部署，也不要求常驻运行；只批准**Windows ONDEMAND只读恢复与技术选择评估**，详见[新Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)。不宣布Docker-free PASS，不启动MEDIA-R6或制片。
 
 ## 四、旧R4+R5历史Reviewer结论（仍保留）
 
@@ -37,7 +37,7 @@ CWS（Curious World Studio）是Owner的不露脸、观点驱动、跨领域真�
 
 已确定：从新素材采集开始默认**排除大陆视频平台、全球竖屏/方形视频；优先1080p横屏；保留严格QA和可追溯拒绝原因**。已确认独占的无效实验文件可有边界清理、不可碰共享工具。SearXNG与4get继续互补，yt-dlp为主下载器，FFmpeg/FFprobe作技术QA，OpenMontage不删除。
 
-**R4+R5已执行，PR #129 MEDIA-INTEGRATION也已合并。不要再次执行这两轮。** 本次Owner已许可下一轮无Docker整链验收；先用真实环境证明无容器搜索服务、候选过滤、指定ID下载/解码及浏览器播放，再由Reviewer确认Gate。之后是否进入`MEDIA-R6`动作/时间码精准匹配与`MEDIA-R7`分镜素材包，须另行授权。旧“R4四轮主线”是`PROD-R4`，正式制片仍HOLD。
+**R4+R5已执行，PR #129 MEDIA-INTEGRATION也已合并。不要再次执行这两轮。** 此前Owner曾许可无Docker整链验收，但执行中被Owner强制终止，新决定是按需即用即停、Windows本机优先且不部署VPS；只先检查中断现场及现有搜索服务真实依赖，再由Reviewer决定是否发起受限的本地启停闭环。之后是否进入`MEDIA-R6`动作/时间码精准匹配与`MEDIA-R7`分镜素材包，须另行授权。旧“R4四轮主线”是`PROD-R4`，正式制片仍HOLD。
 
 ## 五、证据包与溯源
 
@@ -50,4 +50,4 @@ CWS（Curious World Studio）是Owner的不露脸、观点驱动、跨领域真�
 
 ## 六、接手一句话
 
-**PR #129已合并main，CWS的独立本地MEDIA工具已代码验收，但正式制片未接入且无Docker整链未实际验收。Owner当前推进MEDIA-DOCKERFREE-ACCEPTANCE，随后才能考虑R6/R7；CW-0005与G1/G2继续HOLD。**
+**PR #129已合并main，CWS的独立本地MEDIA工具已代码验收，但正式制片未接入且无Docker整链未实际验收。Owner当前仅推进MEDIA-ONDEMAND-RECOVERY-G0，下一步本机启停验收需另行批准，之后才考虑R6/R7；CW-0005与G1/G2继续HOLD。**

@@ -9,7 +9,8 @@
 - [最新状态/协作边界](docs/CURRENT_STATE.md)
 - [当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)
 - [MEDIA技术架构与阶段映射](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)
-- [无Docker完整运行/验收协议（当前下一Gate）](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)
+- [按需启停与中断恢复（当前下一Gate）](docs/MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)
+- [历史无Docker部署/整链验收协议（已暂停）](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)
 - [PROD四轮制片流程（仍有效）](docs/P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)
 - [“3+1”正式素材合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)
 

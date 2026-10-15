@@ -1,6 +1,6 @@
 <!-- CWS-STABLE-WORKFLOW-20261015 -->
-> **2026-10-15最新**：先读[唯一当前状态](docs/CURRENT_STATE.md)、[当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)、[MEDIA架构/阶段规划](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)和[无Docker验收协议](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)。**PR#129已合并main（commit `10b369ee`）**，独立本地工具有Windows36/36与Reviewer接受的修复；**尚未获得无Docker整链PASS，也未接入正式制片**。正式制作仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
-> **编号不可混淆**：`MEDIA-R4+R5`是素材工具清理/海外来源扩展；`MEDIA-INTEGRATION`已经合并；**当前唯一获准的新任务是`MEDIA-DOCKERFREE-ACCEPTANCE`**。`PROD-R4`是第一版完整草片；`MEDIA-R6/R7`均未授权。
+> **2026-10-15最新**：先读[唯一当前状态](docs/CURRENT_STATE.md)、[当前Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)、[MEDIA架构/阶段规划](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)和[当前按需运行/中断恢复规范](docs/MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)（原[无Docker验收协议](docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md)暂停）。**PR#129已合并main（commit `10b369ee`）**，独立本地工具有Windows36/36与Reviewer接受的修复；**尚未获得无Docker整链PASS，也未接入正式制片**。正式制作仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **编号不可混淆**：`MEDIA-R4+R5`是素材工具清理/海外来源扩展；`MEDIA-INTEGRATION`已经合并；**旧`MEDIA-DOCKERFREE-ACCEPTANCE`部署执行已被Owner中断并暂停；当前唯一新任务为`MEDIA-ONDEMAND-RECOVERY-G0`只读**。`PROD-R4`是第一版完整草片；`MEDIA-R6/R7`均未授权。
 > **Owner已锁定的MEDIA获取默认**：排除大陆视频平台及全球竖屏/方形，显示比例≥4:3，未知先核实，优先1080p横屏，保留每次拒绝原因；这些规则已在`main`的独立MEDIA模块中，但不自动替换正式节目入口。**3+1与Research Aqua不变；下载成功与制作许可/内容核验分开**。
 > 普通ZIP验收留本机，重大决策/架构/正式稳定代码才进Git；获准修改生产代码须分支PR/Reviewer核查。不得再把2026-10-12“Owner暂停所有新任务”的旧快照覆盖上述已恢复的MEDIA工具工作；不自动升级制作Gate或发布。
 
@@ -18,7 +18,7 @@
 ## 历史 P4-G0 执行边界（当前 M2 不适用）
 
 - 已完成的是 **OpenMontage 上游源码静态审计**；Owner Windows **本机安装状况尚未只读回报**，不得把 G0 误报PASS。
-- **历史**本地G0任务书：`docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md`，只能作历史溯源。当前MEDIA下一Gate请读`docs/MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md`，不得依旧G0自动停止新授权测试。
+- **历史**本地G0任务书：`docs/P4_G0_LOCAL_CODEX_READONLY_TASK_2026-10-10.md`，只能作历史溯源。当前MEDIA下一Gate请读`docs/MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md`，仅可做中断恢复G0只读现场调查，不得按旧无Docker部署Gate启动任务。
 - G0 只能做本机只读查询与集成设计的文字报告；**禁止安装/下载/运行测试/TTS/渲染/改网络**。新 G1 20–30秒音画样片、G2成片、G3复用均属后续授权。
 
 ## 命令分流

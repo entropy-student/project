@@ -1,4 +1,6 @@
-# CWS｜MEDIA 无 Docker 运行合同与整链验收（长期生效）
+# CWS｜MEDIA 无 Docker 运行合同与整链验收（历史Gate，当前暂停）
+
+> **2026-10-15 Owner最新决定：此文的“可部署Linux/VPS、安装原生SearXNG/4get、立即执行DF-G0~G6”执行授权已暂停。** Codex上轮执行被Owner强制中断；当前唯一允许动作是[ONDEMAND中断现场只读恢复与可行性评估](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md)，**不得按本旧Gate续跑、对VPS执行远程命令或部署、安装/停止Docker或共享服务**。旧DF验收表仅作未来若重新获批后的参考标准；`DOCKER_FREE_MEDIA_PIPELINE_PASS`依然未建立。
 
 > **Owner授权启动 · 2026-10-15 · CURRENT GATE: `MEDIA-DOCKERFREE-ACCEPTANCE / NOT_YET_VERIFIED`**。前置代码PR #129已经在独立Reviewer集中修复验收后合并GitHub `main`（commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）。本合同要求由Owner Windows本地Codex实测整个MEDIA链路**无需容器**，不是立即修改其他系统或宣称PASS的结果报告。与`MEDIA-R6/R7`和`PROD-R1~R4`分离。
 
