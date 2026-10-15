@@ -1,5 +1,7 @@
 # CWS｜G2–G4 Windows Docker按需素材整链：执行与验收合同
 
+> **Reviewer结果补充（2026-10-15，覆盖此文下面的AWAITING/预案描述）**：`G2_G3_G4_TECHNICAL_ACCEPT`，ZIP SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`。G2备份/注销和Docker后端健在以执行端日志证明（备份TAR本地保留、Reviewer未作恢复）；G3四组API真实非空、Compose完成停止/复启/最后关闭；G4同PeerTube技术家族的两个不同托管站点视频、Unsplash JPEG均通过了Reviewer独立完整文件FFmpeg解码；Owner在Edge手动确认播放。**素材动作与权利没有通过，正式制作仍HOLD。** 技术播放应在今后由Codex自己的隔离浏览器测试自动化完成，不应把用户手动点播作为常规QA必选步骤。
+
 > **OWNER批准，2026-10-15，ACTIVE / AWAITING_WINDOWS_EXECUTOR。** Owner最新决策：**安全卸载独立`Ubuntu-24.04`发行版（保留WSL底座/Docker后端）→ 在Windows Docker Desktop按需启动隔离的SearXNG+4get → 在同一轮完成CWS关键词搜索、筛选、人工指定ID下载、文件QA、浏览器实播、停止并回读**。本合同覆盖此前“不使用Docker/不卸载Ubuntu”的过时运行限制；此前G0、G1A的已验证事实不作追溯撤销。
 >
 > 本轮只在Owner**实体Windows 11**及其既有Docker Desktop工作，不部署VPS、不启动独立长期云服务。CWS仍不属于正式节目制作系统；`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`、Research Aqua/3+1、MEDIA-R6/R7全部不变。
@@ -51,3 +53,10 @@
 - Reviewer独立复查每个Gate；`G2_PASS`必须有可恢复备份+目标发行版消失；`G3_PASS`必须两服务真实返回非空搜索+容器可停止；`G4_PASS`必须新素材的2视频/1图片下载+全解码+Owner实播反馈+停止释放（不涉及节目素材权利）。
 - 若产生了可长期复用的Compose、入口脚本、测试，则以**独立分支PR**提交，经独立Reviewer接受后再决定合并main；**不提交证据原片、不自行合并**。只维护长效`CURRENT_STATE`/`REVIEWER_HANDOFF_CURRENT`/本Gate，不在Git创建每轮大量短命报告。
 - 官方依据：Docker WSL2 backend https://docs.docker.com/desktop/features/wsl/ ，Microsoft WSL export/unregister https://learn.microsoft.com/windows/wsl/basic-commands ，SearXNG容器 https://docs.searxng.org/admin/installation-docker.html ，4get docker https://git.lolcat.ca/lolcat/4get/src/branch/master/docs/docker.md 。
+
+## 后续媒体浏览器技术QA：默认自动，不将人工点播当成常规验收依赖（2026-10-15新要求）
+
+- **Automated-browser技术证明**：在拥有明确许可的独立/隔离浏览器实例与临时用户资料目录中访问本轮`http://127.0.0.1:<本轮端口>/...`，不是附着、操作或窥视Owner正在使用的Edge窗口。可采用本机已获许可的Playwright、Edge/Chrome DevTools Protocol或等效的可审计工具。不会因早先Computer Use不能确认**Owner已打开窗口**，就得出视频播放无法自动检测的结论。
+- 每个受检视频须捕获URL一致性、HTTP响应、HTML`video.error`/网络状态、`readyState>=2`、`videoWidth>0`和`videoHeight>0`、`play()`履约、播放事件、两次带实时间隔的`currentTime`增长、截图或视频帧检查、异常回报和关闭后残留端口/进程检查。黑屏/静帧判定需结合有意义的抽帧核验，不可只看HTTP200或脚本将`currentTime`设成更大值。
+- 本轮代码或OS缺少可许可的测试浏览器时，报告`BROWSER_AUTOMATION_BLOCKED`及准确阻碍，不得通过偷偷使用其它自动化控制方式绕过既有安全停止；可征得用户许可采用**隔离测试会话**，但不应默认让Owner重复播放。仅对**内容真实性、爆裂动作是否实际出现、画面叙事适配、审美、商用权利**等主观或人工审核项目寻求Owner确认。
+- 将上述规则用于后续复验/新增MEDIA样片；**不追溯把本次Owner手动确认伪装为机器Playwright/Reviewer直接观看的证据**。脚本或测试若要纳入正式main，须经独立PR和Reviewer通过。

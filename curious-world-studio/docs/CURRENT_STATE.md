@@ -1,5 +1,8 @@
 # Curious World Studio｜唯一当前状态与交接入口
 
+> **2026-10-15最新结果｜独立Reviewer：`G2_G3_G4_TECHNICAL_ACCEPT`。** Windows执行端报告G2、G3、G4各PASS；Reviewer已独立核验唯一ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`，CRC=OK，50项SHA256SUMS及49项manifest全部匹配，4份打包媒体在独立Linux上FFprobe+FFmpeg完整解码成功。两搜索服务响应各包含非空视频和图片，raw 316、去重77视频+135图片；容器/端口已由执行端记录停止。G2完整WSL TAR(1,522,626,560字节)备份存Owner本机且未入ZIP，Reviewer不能独立恢复验证，只确认执行端全量流读取日志、退出码及Docker仍能运行。Edge两段真实视频画面与时间推进由**Owner本人手动反馈PASS**，无独立录屏/Reviewer浏览器重放。**不同源网站均属PeerTube家族；本轮片段代表帧不显示目标爆米花爆裂；权利`UNKNOWN_TEST_ONLY`，正式`CW0005_VISUAL_STORYFIT_HOLD`不变。**
+> **技术验收新规则（防止无谓人工重测）**：今后浏览器**能否加载、解码、播放、时间推进、异常和资源释放**由Codex在**隔离的新测试浏览器会话**用许可的Playwright/CDP等直接自动执行并留日志/截图证据；不要控制/附着Owner已打开的私人Edge窗口，也不得借其它自动化方式绕过明确的安全停止。自动化如不可获准运行就标`BROWSER_AUTO_NOT_VERIFIED`并报告原因，**不默认要求Owner重复点视频**；Owner只承担真实内容/动作吻合、审美和正式授权判断。自动化测通不等于镜头内容或版权PASS。
+
 > **2026-10-15 Owner最新执行授权（覆盖同页较旧的无Docker限制）**：采用**Windows Docker Desktop本地按需方案**，在一个受控Codex任务中串行执行**G2 Ubuntu-24.04安全备份与卸载、G3 SearXNG+4get Docker搜索服务、G4关键词→筛选→新媒体下载→QA→Edge播放→关闭容器**。正式合同：[MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)。**尚未实际执行，本轮状态`G2_G3_G4_AUTHORIZED_AWAITING_EXECUTION`**。不部署VPS；保留WSL2/Docker后端、旧工作树/中断资料与原片。此前G1A播放已由Owner确认，正式制作仍HOLD。
 
 > **2026-10-15 Owner 决策 / Reviewer 独立核验后的最新状态。** 历史快照只作溯源，不作为下一步命令。**MEDIA-INTEGRATION PR #129 已经经Reviewer修复验收后正式合并main（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）**；成为受限的、本地指定ID的媒体获取及QA工具，**并不意味着正式节目生产链已自动接入或无Docker已通过**。

@@ -1,5 +1,7 @@
 # CWS｜当前Reviewer交接（2026-10-15）
 
+> **LATEST REVIEWER VERDICT（2026-10-15）：`G2_G3_G4_TECHNICAL_ACCEPT`**。Ubuntu-24.04备份+注销、Docker Compose SearXNG+4get本机真实搜索、CWS下载/QA/Owner Edge人工播放/关闭的执行证据已交付并获独立Review核验；**非节目素材/权限/动作匹配通过**。ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip` SHA256 `651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`；50文件哈希和49 manifest一致；Reviewer独立完整解码打包的2原片/1兼容浏览器预览/1 JPEG。备份TAR不在包内，G2还原能力未由Reviewer亲测；G3真实非空API四响应通过；两段视频是**不同PeerTube实例，同一平台家族**；Owner确认Edge播放但Reviewer无录像，不能视为独立浏览器自动化QA。**未来机器播放应由Codex经许可在隔离测试浏览器自动验证（`readyState`、`videoWidth/Height`、`play()`、`currentTime`增长、截图/报错/关闭），不再默认要求Owner重复点播**；不要绕过原浏览器控制安全停止。所有服务已由执行端停止，CW-0005 HOLD仍不变。
+
 > **LATEST OWNER AUTHORIZATION 2026-10-15**：下一步**G2/G3/G4**合并成一次本机受控任务；不再执行旧`G1B`第三方API路线作为当前计划。先识别并备份独立Ubuntu-24.04后安全注销（不得卸载WSL2/Docker底座）、随后Docker Compose按需启动SearXNG/4get，再完成实际关键词→过滤→下载→FFmpeg→Edge→本Compose关闭。**目前三Gate均待本地执行，绝不宣称完成**。唯一新合同：[G2-G4 Docker本机合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)；若本页下文仍写“无Docker/只G0”等应按日期视为历史。正式制作HOLD。
 
 > **最新接手点（2026-10-15）**：经独立Reviewer接受的[PR #129](https://github.com/entropy-student/project/pull/129) **已合并到main**（squash commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`），MEDIA工具具备Windows搜索/指定ID下载/FFprobe+FFmpeg QA的实证基础。Owner已中断上一轮**MEDIA-DOCKERFREE-ACCEPTANCE**部署探索，改为**Windows按需启动/用毕停止、无VPS/无Docker/无常驻**；G0已得到Reviewer证据级接受；G1A随后执行本地启停与媒体QA并被独立Reviewer评为 **`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**，浏览器播放未验，**仍没有Docker-free或按需完整搜索链PASS证据**。正式节目仍`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
