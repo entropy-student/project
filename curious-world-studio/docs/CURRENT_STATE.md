@@ -11,6 +11,9 @@
 
 > **LATEST REVIEWER VERDICT 2026-10-15 — `MEDIA-ONDEMAND-G1A / G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`**。Owner交付ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，外层SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`；ZIP CRC、32条SHA256SUMS、31条manifest均独立复算通过。运行日志支持旧素材2视频/1图片的SHA、FFprobe/FFmpeg退出码0、CWS gallery退出码0；回环HTTP 127.0.0.1:18765上实际HEAD返回HTML及MP4 200，启停/重复启动/占端/非正常退出/端口释放测试记录通过。**原片与播放代理不在ZIP中，因此Reviewer未独立完整解码原片。Edge/Chrome实际播放及currentTime推进因为Computer Use无法确定当前URL而安全停止，`BROWSER_NOT_VERIFIED`；HTTP200不能替代播放器PASS。**未运行关键词搜索，也无G1B接入、无Docker-free整链PASS。G1A仅为**本地生命周期与媒体文件QA的部分验收**；正式制作Gate继续HOLD。下一轮仅建议在Owner许可后补**浏览器实际播放验证**，优先正常用户手动打开本机loopback页面记录播放与时间推进，避免通过替代浏览器自动化绕过Computer Use停止指令；不部署/安装/注册API。
 
+> **2026-10-15最新验收｜G1A浏览器补测完成：`G1A_BROWSER_OWNER_PASS / G1A_LOCAL_LIFECYCLE_ACCEPTED`。** Owner亲自在Edge打开`http://127.0.0.1:18765/index.html`，对已有2个六秒H.264 MP4预览均反馈“**两段都通过**”（画面可见、播放时间持续增加）。执行端HTTP日志同时记录了两条MP4的GET成功；`lifecycle.py`完成服务停止、PID 24568消失、端口18765零监听。Reviewer复核`CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip`：外层SHA256=`07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`，ZIP CRC无错误、27条SHA清单一致、26条manifest元数据全部匹配；播放HTML机制与Python生命周期脚本通过静态检查。**独立Reviewer没有浏览器录屏、截图或实际原片副本，播放PASS仅为Owner实测确认；Reviewer没有重新完整解码原片**。这次仅结束G1A旧的浏览器缺口，不等于搜索源接入、无Docker整链或成片Gate通过。
+> **下一步**：不再反复补浏览器证明；优先推进`G1B-SEARCH-SOURCE`，在不部署VPS/Docker、不启常驻服务的前提下，对搜索接口的**视频/图片覆盖、保存/留存权、费用/配额、与CWS持久索引兼容性**做可判定的选择。**G1B当前尚未执行或获Reviewer PASS**；如需要支付、安装、API接入或Git生产代码修改，仍单独走Owner授权与分支PR。
+
 ## 1. 一眼看懂
 
 | 轨道 | 最新已证实结果 | 仍未完成 |
@@ -21,7 +24,7 @@
 | 网站覆盖（MEDIA） | 2026-10-13 R3：153成功站（151 PeerTube实例、PBS和ARD），135个不同文件SHA，153段预览独立解码通过 | 153站不是153种平台技术；大量实例运营地区未知 |
 | 清理与海外来源（MEDIA-R4+R5） | 清理22,639个CWS独占You-Get/Lux文件/674,230,911字节（约643MiB）；非PeerTube本轮成功10站（PBS/ARD复验+新增8站） | 历史 `R4R5_PARTIAL_ACCEPT` 仍保留；后来PR #129正式集成了新过滤入口，但不追溯改变R4+R5原Gate |
 | MEDIA-INTEGRATION | PR #129 经36/36项Windows回归、独立Reviewer集中修复验收，已合并 `main`；具备显式ID探测/下载、QA、HTML生成 | **不是无Docker验收**；任意不可信URL防护非完整沙箱；浏览器播放在独立环境尚未验收 |
-| MEDIA-ONDEMAND-G1A | Windows本地受控HTTP、素材复用/解码及启停测试得到执行端证据；独立Reviewer核验ZIP、清单与实现源码 | **浏览器播放未验，故总状态PARTIAL；代码未合并，关键词搜索未测试** |
+| MEDIA-ONDEMAND-G1A | 生命周期与本地素材文件QA由执行端验证；Owner手动在Edge确认两段6秒H.264预览正常显示、currentTime推进；HTTP GET和退出证据一致 | **G1A范围内验收完成（Owner确认播放）；本机独立启停脚本尚未以PR纳入Git；关键词搜索/G1B仍未开始** |
 | 制片（PROD） | R1多轮素材审查、R2条件脚本设计及R2-M1两条库存媒体已实测，保留旧成果 | 正式G1没有PASS；尚无获准的R3联调或R4整片 |
 
 ## 2. 已确认的素材基础设施架构

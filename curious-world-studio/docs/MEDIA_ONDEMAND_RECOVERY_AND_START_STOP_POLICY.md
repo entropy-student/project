@@ -4,7 +4,13 @@
 >
 > **历史授权：`MEDIA-ONDEMAND-RECOVERY-G0`只读调查已经完成且获Reviewer接受；其后独立本地`G1A_LOCAL_LIFECYCLE`已执行并获部分接受。最新状态见下方裁决。** 无须Owner上传旧ZIP给Codex；本机必须先核对真实Git工作树、PID与任务痕迹。**禁止直接恢复被中断命令、继续安装或搬迁服务、部署VPS、停止Docker/共享服务或擅自清理遗留文件。**
 
-## G1A 独立Reviewer最新状态（2026-10-15）
+## G1A浏览器补测验收更新（2026-10-15，覆盖以下旧未验证状态）
+
+- `G1A_BROWSER_OWNER_PASS / G1A_LOCAL_LIFECYCLE_ACCEPTED`：Owner在Edge手动确认2段6秒MP4预览画面与持续时间推进，HTTP GET日志佐证两资源实际请求。G1A本地短时127.0.0.1 HTTP启停与素材QA的执行记录已经形成可接受的闭环证据，Owner完成浏览器缺口。
+- 交付ZIP `CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip` SHA256 `07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`，CRC无错，27项SHA、26项manifest均复核匹配。**没有独立录屏、截图、原片或MP4代理副本，Reviewer没有直接看播放器或全片重新解码**；播放PASS只基于Owner实测。
+- 接下来不是重新搭搜索服务器，而是`G1B-SEARCH-SOURCE`候选方案验证：无VPS、无Docker、无后台常驻；严格比较现成检索接口能否找到视频/图片、费用和条款是否允许保存CWS索引。**尚未获得完整素材搜索一键即停PASS**；CWS启动器正式入库也尚无PR。任何收费/下载/安装/代码修改需要明确后续许可。
+
+## G1A 前次独立Reviewer局部验收（历史）（2026-10-15）
 
 - `G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`：本机旧素材复用、媒体QA日志、Python仅127.0.0.1临时HTTP服务与生命周期测试证据可接受；ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`，独立检查32条SHA256SUMS/31条manifest均通过。
 - **`BROWSER_NOT_VERIFIED`**：Computer Use无法确定Edge当前URL而安全停止；不能以HTTP200、HTML文件存在或FFmpeg解码成功冒充真实浏览器播放或currentTime推进。实际原片与MP4预览未收入ZIP，Reviewer只验证日志和静态源码，并未独立完整解码原片或观看视频。

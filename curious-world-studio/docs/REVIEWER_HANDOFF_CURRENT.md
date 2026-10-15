@@ -4,7 +4,15 @@
 >
 > 阅读顺序：[CURRENT_STATE](CURRENT_STATE.md) → [MEDIA技术架构与阶段映射](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [按需运行恢复Gate](MEDIA_ONDEMAND_RECOVERY_AND_START_STOP_POLICY.md) → [暂停的旧无DockerGate](MEDIA_DOCKERFREE_RUNTIME_AND_ACCEPTANCE.md) → [AGENTS](../AGENTS.md) → 需要科研/版权历史时再读[2026-10-12制片交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
 
-## 最新G1A局部验收（2026-10-15，优先于旧G0建议）
+## 最新G1A浏览器补测｜OWNER播放PASS，独立证据范围（2026-10-15）
+
+- **新验收状态：`G1A_BROWSER_OWNER_PASS / G1A_LOCAL_LIFECYCLE_ACCEPTED`**，覆盖并解决以下历史行文的`BROWSER_NOT_VERIFIED`。Owner在Edge手动确认“两段都通过”，即两段预览均显示画面且进度持续推进；未提供录屏或截图。
+- ZIP `CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip`，SHA256 `07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`。Reviewer已验证外层SHA、ZIP CRC、27项SHA256SUMS、26项manifest、HTML播放事件函数与Python脚本语法；HTTP日志显示两条预览MP4 GET 200，服务仅127.0.0.1:18765，完成后PID 24568退出且监听数0。
+- **严格区分来源**：浏览器可见画面和currentTime增长是**Owner实际人工报告**，而非Reviewer远程观看；原片OGV/WebM和六秒MP4代理副本都未随ZIP上传，Reviewer只检验FFprobe元数据和FFmpeg退出0的执行端记录，未独立解码完整原片。权利继续`UNKNOWN_TEST_ONLY`。
+- 复用的两个6秒代理：Io/Theora原片640x440→H.264 MP4 640x440；NASA SVS VP8+Opus原片3840x2160/60fps→H.264/AAC MP4 1280x720。此轮零下载、零转码、零源码变更。
+- **下一实际缺口为G1B搜索来源**：现有CWS需要外部SearXNG/4get HTTP API，但Owner拒绝长时服务/VPS/Docker。先比较零部署临时搜索来源、合法留存/商业条款、现有agent-reach能力和CWS的持久索引契约，不假设Brave普通搜索API可永久存储、Exa一定支持视频/图片或已有合法持久化权利。不要自动启动G1B、安装、订阅或修改正式代码。
+
+## G1A前次局部验收（历史，现已由浏览器补测解决）（2026-10-15，优先于旧G0建议）
 
 - **Reviewer裁决：`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT / BROWSER_NOT_VERIFIED / SEARCH_NOT_IN_SCOPE`。** 接受本地生命周期管理和媒体QA的执行证据，不升级完整G1A或完整MEDIA搜索链。ZIP `CWS_MEDIA_ONDEMAND_G1A_LOCAL_LIFECYCLE_20261015.zip`，SHA256 `4f5d7d7874830feb18597b76e4164f0f2b224ebb60cda4667fbec74e14b0bacc`；CRC通过，32条SHA256SUMS+31项manifest一致；脚本可静态解析。
 - 复用**两段原有视频、1张图片，未重新下载**。提供了来源文件SHA、FFprobe JSON、FFmpeg完成且退出0的日志；原片不在ZIP，Reviewer没有独立重新完整解码这3份媒体。6秒浏览器预览副本也未入ZIP。
