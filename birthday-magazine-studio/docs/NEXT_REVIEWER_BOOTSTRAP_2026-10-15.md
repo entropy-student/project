@@ -31,16 +31,22 @@ PR_HEAD_REVIEWED_G3S0=c90e6f93803ad861745cd476106e00d01c68debb
 PR_STATUS_G3S0=OPEN_UNMERGED_MERGEABLE_FALSE
 FRONTEND_OWNER_VISUAL=PASS_FROZEN
 G3S0_REVIEWER_DECISION=PASS_READINESS_CLASSIFICATION_ONLY
-CURRENT_GATE_NOW=G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY
+CURRENT_GATE_NOW=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
+G3S1SV_REVIEWER=PASS_LOCAL_STRIPE_11_1_0_STAGED_INACTIVE_BOUNDED
+G3S1SVE_REVIEWER=PASS_EVIDENCE_PERSISTED
+G3S1SVE_PR64_EVIDENCE=4cb0d527d77a6d583e123acd3f62c45408669569
+G3S1SV_TEMP_PACKAGE_CLEANUP=DEFERRED_BLOCKED_BY_POLICY
+STRIPE_ACTIVATED=NO
+STRIPE_MERCHANT_ACCOUNT=UNKNOWN
 G3S1SV_OWNER_REPORTED_RESTORE=EXIT_0_58_OF_58_MARIADB_11_4_7
 G3S1SV_OWNER_REPORTED_STRIPE=11_1_0_INSTALLED_INACTIVE_EXIT_0
 G3S1SV_POSTINSTALL_CLEANUP=POLICY_DENIED_TEMP_PACKAGES_RETAINED
-G3S1SV_PR64_EVIDENCE=MISSING
-G3S1SV_REVIEWER=RETURN_EXECUTOR_EVIDENCE_NOT_PERSISTED
+G3S1SV_PR64_EVIDENCE=PERSISTED_READBACK_VERIFIED
+G3S1SV_EARLIER_RETURN=SUPERSEDED_BY_G3S1SVE_PERSISTENCE_PASS
 G3S1SVE_HOST_ACTIONS=0
 G3S1SV_OWNER_REPORT=IMPORT_EXIT_0_58_TABLES_NEW_CODEX_CHAT
-G3S1SV_SOURCE_AND_TARGET_CORRELATION=OWNER_REPORTED_PASS_PR_REVIEW_PENDING
-G3S1SV_STRIPE_INACTIVE_STAGE=EXECUTOR_REPORTED_COMPLETE_REVIEWER_PENDING
+G3S1SV_SOURCE_AND_TARGET_CORRELATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_BOUNDED
+G3S1SV_STRIPE_INACTIVE_STAGE=REVIEWER_PASS_LOCAL_BOUNDED
 G3S1SR_FORMAL_REVIEWER=RETURN_EXECUTION_POLICY_BLOCKED_DB_DIAGNOSTIC
 G3S1SR_PR_EVIDENCE=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
@@ -56,7 +62,7 @@ G3S1R_FORMAL_REVIEWER=PASS_LOCAL_RUNTIME_WOO
 G3S1R_EVIDENCE_PR=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_SITE=RESTORED_NO_REINSTALL
 G3C_PPCP=NOT_INSTALLED_PREVIOUS_READBACK
-G3C_STRIPE=11_1_0_INSTALLED_INACTIVE_OWNER_REPORTED_PENDING_PR_EVIDENCE
+G3C_STRIPE=11_1_0_INSTALLED_INACTIVE_ACCEPTED_EXECUTOR_EVIDENCE
 G3B_HISTORICAL_PAYPAL_PASS=SEPARATE_DISPOSABLE_SANDBOX_ACCEPTED
 G3S1S_BACKUP_BEFORE_ANY_PLUGIN_WRITE=MANDATORY
 OWNER_RESTARTED_CODEX_WINDOWS_DESKTOP=YES_OWNER_REPORTED
@@ -65,7 +71,7 @@ G3S1R_CONDITIONAL_APP_ONLY_REPAIR=OWNER_AUTHORIZED_WITH_VERIFIED_DB_AND_FILES_BA
 DATABASE_OR_NAMED_VOLUME_RESET=FORBIDDEN
 G3S1D_REVIEWER=RETURN_EXECUTION_POLICY_SOURCE_UNKNOWN
 G3S1D_PR_EVIDENCE_HEAD=5903726a68160624c52e871f2dde9d36123a9aa3
-NEXT_OWNER_ACTION=RELAY_G3S1SVE_EVIDENCE_ONLY_TO_INSTALLING_CODEX_CHAT
+NEXT_OWNER_ACTION=NONE_FOR_INACTIVE_STAGE_OPTIONAL_G3S2_READONLY_READINESS
 G3S1_PARENT=RETURN_WORDPRESS_START_EXECUTION_POLICY_BLOCKED
 G3S1_PARTIAL_DB=RUNNING_HEALTHY_EXECUTOR_LAST_READBACK_ONLY
 OWNER_G3C_LOCAL_RECOVERY=REQUESTED_CONDITIONALLY
@@ -119,8 +125,9 @@ Free Preview: zero model, vision/image generation, third-party upload or server 
 | G3S1S official Stripe inactive staging | **RETURN**; file restore passed but isolated DB import exit 1, exact cause not captured |
 | G3S1SR DB restore diagnostic and conditional Stripe | **RETURN**; pre-process Codex executor policy blocked; no scratch import occurred |
 | G3S1SH Codex policy hold | Historical HOLD after blocked command; new Owner result allows only a fresh narrowly scoped correlation Gate |
-| G3S1SV new-chat import and inactive Stripe | **Owner reports completed:** SQL restore exit 0/58 tables; Stripe 11.1.0 installed inactive; cleanup process denied; Executor PR Evidence missing |
-| G3S1SVE postinstall Evidence reconciliation | **CURRENT Gate**: submit existing retained sanitized Evidence to PR #64 without any host command |
+| G3S1SV local Stripe inactive staging | **Formal bounded Reviewer PASS**: official Stripe 11.1.0 installed inactive, MariaDB 58/58 restore, no payment; deferred temp ZIP cleanup and documented snapshot limitations |
+| G3S1SVE postinstall Evidence reconciliation | **PASS**: retained native evidence committed to PR #64 at `4cb0d527...`, no new host command |
+| G3S2 Stripe merchant account readiness | **CURRENT Gate**, read-only official merchant eligibility, Owner legal entity/country and Test readiness; no account or gateway action |
 | Stripe install/test/live/merchant/KYC/payout | UNKNOWN / NOT DONE |
 | Pre-payment server draft/snapshot linkage | NOT DONE |
 | Stripe synthetic test capture, webhook signature, refund and replay | NOT DONE |
@@ -151,7 +158,7 @@ Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PH
 
 **Owner local recovery direction:** `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md`; recent cleanup is Owner-reported but no resource deletion is yet demonstrated. Prefer original services and intact data over reinstall/recreate; policy bypass is forbidden.
 
-**Current Gate:** `docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` (**documentation-only**). Latest Owner report: G3S1SV succeeded with exact existing backup/import native exit 0, MariaDB 11.4.7, 58/58 tables; official Stripe Gateway 11.1.0 installed exit 0 but inactive; website/PayPal/orders original stable. PowerShell cleanup of temporary plugin archives was then denied by policy, leaving those files in local Windows temp and WP-CLI `/tmp`. **No new G3S1SV Executor Evidence in PR #64** at Reviewer look-up; this is Owner-reported, NOT formal Reviewer PASS. Reviewer decision `docs/REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md`. G3S1SVE allows only normal GitHub plugin Evidence persistence from retained tool results, NO new Windows/Docker/WP-CLI commands, installation replay or temp file cleanup; plugin state must be independently reviewed next. Hostinger VPS returned; do not use SSH/VPS. PayPal must not be modified.
+**Current Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` (**read-only**). Reviewer accepted G3S1SVE Evidence persistence and G3S1SV **bounded inactive Stripe 11.1.0 stage**: formal decision `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`, PR #64 exact Evidence at `4cb0d527...`. Protected original SQL backup recovered in isolated MariaDB 11.4.7, native import exit 0 and 58/58 tables; plugin native install exit 0, inactive, gateway unregistered. PayPal and order/site flags unchanged as Executor-host readback. **Explicit limits:** backup row-by-row snapshot-to-live equality, scratch ID and independent published vendor checksum not retained; before any consequential Test/Live/payment work use fresh verified selected recovery/rollback point. Cleanup of leftover local installer ZIPs remains deferred due PowerShell policy denial, not a reason to reinstall. G3S2 only determines Stripe legitimate merchant country/entity eligibility and eventual Owner/Test prerequisites, no bank/auth/plugin action or money. Returned Hostinger VPS unrelated.
 
 **Historical Gate:** `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` (read-only diagnosis). Parent `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` is ON HOLD after a formal RETURN. See `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at commit `715be642...`. No Stripe staging or restart retry is allowed inside G3S1D.
 
@@ -177,21 +184,21 @@ Do **not** connect Stripe account/Test mode, expose HTTPS tunnel, create test ch
 
 ## Reviewer next-turn instructions
 
-If next message is **G3S1SVE** documentation-only result:
+If next message is **G3S2** read-only Stripe merchant eligibility/readiness results:
 
-1. Refresh main and PR #64, read submitted exact sanitized G3S1SV Executor Evidence; distinguish native process outputs from Owner relay.
-2. Verify private source backup identity/correlation, isolated successful native MariaDB exit 0 and 58/58 tables, recovery point freshness and original DB/volume unchanged.
-3. Verify official WordPress.org Stripe 11.1.0 package and checksums/compatibility, install native exit 0, **inactive** plugin state, Woo gateway absent, PayPal and order/page state unchanged.
-4. Classify the left-over temporary plugin archives and blocked cleanup; decide whether core staging can PASS with minor deferred cleanup or must remain partial. Do not bypass policy or demand reinstall.
-5. Persist formal Reviewer decision/main Handoff and read back. No Stripe activation/payment, PayPal retirement, or PR merge.
+1. Refresh PR #64/main exact project refs and current Handoff/G3S2 Gate; do not replay accepted WordPress, MariaDB import or official Stripe installation.
+2. Check official supported Stripe merchant country/entity requirements, payout-bank rules and supported Test onboarding path as relevant to Owner's real eligibility. Previous Owner reported no registered Stripe merchant account; current status must be confirmed or remain UNKNOWN.
+3. Produce concrete Owner-only prerequisites, with no fabricated merchant identity/address, personal docs or credentials in chat/Git. If eligible verified Test setup is later approved, require a new scoped, fresh backup/recoverability gate before plugin activation, webhook and any payment.
+4. Temporary ZIP installer cleanup remains a narrow deferred housekeeping issue under policy constraint; do not rerun blocked deletion or reinstall.
+5. Formally PASS/RETURN any new Gate after durable Evidence and source readback; preserve frozen frontend, PR #64 Open, and PayPal retirement condition.
 
 ## Read order for new Reviewer
 
 1. `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md`.
 2. `entropy-student/project/main/birthday-magazine-studio/REVIEWER_HANDOFF.md`.
-3. `entropy-student/project/main/birthday-magazine-studio/docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md`.
-4. `docs/REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md` and Owner relay `docs/OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md`.
-5. PR #64 newly submitted G3S1SV Executor Evidence and relevant local source metadata only.
+3. `entropy-student/project/main/birthday-magazine-studio/docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md`.
+4. `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md` and PR #64 evidence at `4cb0d527...`.
+5. Owner-approved merchant country/Stripe account details (only when voluntarily supplied, no credentials) and applicable official Stripe policy.
 
 
 **Do not take broad history or prior chat assistant statements as higher authority than fresh GitHub current state.**
