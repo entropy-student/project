@@ -14,6 +14,7 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
 | `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` | **CURRENT Gate:** verify new-chat successful DB import against exact local backup and isolation, then optional inactive Stripe |
+| `OWNER_RELAY_G3S1SV_GITHUB_TRANSPORT_CLOSED_2026-10-15.md` | G3S1SV Codex GitHub plugin `Transport closed` preflight STOP; repo/PR readable by Reviewer, no Stripe or DB actions |
 | `OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md` | Owner reports exit 0 and 58/58 tables in a fresh Codex chat; proof correlation still pending |
 | `G3S1SH_CODEX_POLICY_HOLD_AND_RESUME_CRITERIA_2026-10-15.md` | Previous HOLD following old Codex policy denial; new Owner evidence calls for a narrow correlation Gate |
 | `REVIEWER_DECISION_G3S1SR_RETURN_EXECUTOR_POLICY_HOLD_2026-10-15.md` | **Formal Reviewer RETURN:** G3S1SR scratch DB import command rejected before PowerShell startup |
