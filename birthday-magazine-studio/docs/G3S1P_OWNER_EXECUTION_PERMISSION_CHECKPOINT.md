@@ -16,7 +16,15 @@
     REQUIRED_EVIDENCE=DOCUMENTED_APPROVAL_MECHANISM_OR_UNAVAILABLE; EXACT_SCOPE; OWNER_PERMISSION_DECISION_IF_APPLICABLE; NO_TARGET_MUTATION.
     ACCEPTANCE_CRITERIA=Official approval mechanism is identified and narrowly applicable to the blocked action, or formally classified unavailable. Neither result authorizes Docker execution.
     ROLLBACK_STATUS_OR_PLAN=No writes; DB and volumes preserved. DB last reported running; data integrity UNKNOWN.
-    OWNER_ONLY_ACTIONS=Owner checks the official executor approval/security settings or contacts official support; if available, Owner may request a separate Reviewer-designed bounded authorization. Do not blindly relax general security settings.
+    OWNER_ONLY_ACTIONS=Full Access already enabled by Owner report. Do not repeat that check. If official documented per-action approval is unavailable, escalate the redacted error to Codex product support; any later operation requires separate reviewed authority.
+
+## Owner response: Full access already enabled
+
+On 2026-10-15, Owner reports using **Codex Windows desktop** with **Full Access already enabled for about three days**, in the **same unchanged conversation/session** when the denial occurred. Provenance: OWNER_REPORTED, not independent settings UI readback.
+
+Do **not** ask Owner to enable Full Access again or assume insufficient user permission. Current inconsistency: Full Access reportedly enabled while `CreateProcess` was still denied before Docker invocation. The exact executor policy layer/rule remains UNKNOWN; a client/session/tool bug or a more specific rule is possible but unproven.
+
+The current outstanding checkpoint is now **officially supported diagnosis/permission escalation**, not repeating the standard Full Access setting check. If no native, documented per-action approval is surfaced, the next recommended action is to report the exact redacted `CreateProcess ... blocked by policy` error and Windows-desktop / long-lived session context to official Codex support. Do not try a new session, different executor surface or manual Docker launch merely to evade this denial.
 
 ## Reviewer to Owner checkpoint
 
