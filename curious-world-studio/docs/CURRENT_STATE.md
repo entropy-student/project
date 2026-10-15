@@ -1,6 +1,7 @@
 # Curious World Studio｜唯一当前状态（2026-10-15）
 
-> **2026-10-15最新Reviewer裁决：`MEDIA_OPERATIONS_INTEGRATION_RETURN_FOCUSED_FIX`。** [PR #131](https://github.com/entropy-student/project/pull/131)已实现统一JSON CLI并保持OPEN未合并；Windows报告51项测试通过，独立Reviewer复核ZIP（SHA256 `adad9a05a389be07173a939d20b482cc45131a3576654cabf94b6600ebb5fd42`，30项SHA/29项manifest）、在Linux复跑50 PASS/1项Windows专项SKIP。**实际搜索仅4get成功，SearXNG video/image连接中断；部分搜索仍ok:true/exit0可能误导代理；真实运行中中断清理尚未实测。**已将3项定向返工写在PR Review评论，当前**未获Gate PASS、未合并**。旧项目G2–G4技术PASS不受影响，CW-0005继续HOLD。
+
+> **2026-10-15增量独立复核｜`MEDIA_OPERATIONS_CODE_FIX_ACCEPTED / GATE_PARTIAL_RUNTIME_PENDING`**：[PR #131](https://github.com/entropy-student/project/pull/131)最新HEAD `87fddb5491c933637bf9ac67b96562adf2ca6bb3` 仍OPEN未合并。ZIP `CWS_MEDIA_OPERATIONS_PR131_FOCUSED_FIX_20261015.zip` SHA256=`833f8d6bd7a411098352e853865bc4847665fcfcb59f5c39ff10a4d4fb5145db`，CRC通过、24/24内部SHA及23/23manifest一致，3项源码Git blob与PR一致。Reviewer用同版pipeline/filter独立跑本轮24/24单测通过；Windows完整60/60 PASS仅有执行端证据。代码修正已接受：部分搜索失败默认非零/ok:false（显式allow-partial才允许），HTTP应用就绪检测与停止后端口核验。**但SearXNG视频/图片实时API尚未恢复验证，真实运行时Ctrl+C清理亦未实测**，因为可用内存1233MiB低于安全门槛1664MiB，正确阻止Docker启动。需内存自然恢复后仅补这两个实机Gate；严禁降低门槛、关闭其它项目或凭mock称PASS。旧G2-G4技术PASS与CW-0005 HOLD不变。
 
 > **此前Owner授权本轮（现在已实施为PR，待修复/Review）**：`MEDIA-OPERATIONS-INTEGRATION`，仅将现有素材搜索/筛选/显式ID下载/QA、按需Docker启停封装成**供Codex统一调用的轻量CLI**，不做Owner常用GUI、VPS或常驻后台。正式执行范围见[唯一Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。后续真实实现须Windows Codex隔离分支PR+独立Reviewer验收；`MEDIA_OPERATIONS_INTEGRATION_PASS`**尚未成立**，正式制作仍HOLD。
 
