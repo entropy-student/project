@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-15 (G3S1 second RETURN after WordPress start policy denial; G3S1D read-only diagnostic current)
+> Last reviewed: 2026-10-15 (Owner requests conditional local recovery; G3S1D read-only cleanup/policy diagnosis remains current)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -238,6 +238,10 @@ G3S1_WOO_PLUGIN_INVENTORY=UNKNOWN_RUNTIME_NOT_READY
 G3S1_BACKUP=NOT_CREATED
 G3S1_OFFICIAL_STRIPE_INACTIVE_INSTALL=NOT_DONE
 G3S1_RESUME_STAGING=ON_HOLD_PENDING_G3S1D_REVIEW
+OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
+OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
+G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
+G3S1D_POLICY_BYPASS=FORBIDDEN
 CURRENT_GATE=G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC
 ```
 
@@ -288,6 +292,8 @@ Formal Reviewer decision:
 - `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md`
 - Durable Executor partial evidence (PR #64): `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at `715be642c59f40672f6d83b00aa9bc4a7997dc31`.
 - Current diagnostic: `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md`.
+
+**Owner 2026-10-15 conditional recovery request:** Owner reports a recent cleanup may have removed something, and wishes to restore the existing local environment. This is not proof of deletion. `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` records the recovery-first priority and no data overwrite/recreate or execution-policy bypass. The active G3S1D Gate now includes read-only classification of any actually missing project resources. A safe normal restart may be considered only after diagnostic Reviewer decision, within a separately released execution boundary.
 
 **G3S1 partial evidence accepted with provenance limits; formal G3S1 PASS not achieved.** GitHub connectivity recovered. Reviewer directly verified PR #64 Compose blob `d174843...` defines four G3C services, including `wpcli`; this resolves the previous 3-core-service/4-total-container discrepancy at source level. Executor's durable Evidence reports same-target Docker identity and mounts, retained WordPress assets, DB container started/healthy, then WordPress startup denied **before execution** by a local command-execution policy. The detailed policy refusal is not yet diagnosed. WordPress, Mailpit, wpcli remained stopped and HTTP ports unbound at Executor last readback. **DB may still be running; Reviewer has no direct current host access.**
 
@@ -355,14 +361,15 @@ Protected backend behavior for the current visual/research phase:
 - production storage/private delivery/recovery;
 - production refund/cancellation policy;
 - independent technical reconciliation of the latest Owner-accepted frontend branch candidate, distinct from completed Owner visual acceptance;
-- G3S1 attempt-1 Codex GitHub transport failure and unexplained 3-versus-4 G3C container report (both requiring new Executor-local readback);
+- G3S1 Codex execution-policy denial; exact cause/authorized compliant route still unknown;
+- Owner-reported recent cleanup, with no currently proven deletion of the four G3C containers or the two named volumes;
 - final P1–P12 magazine artifact design, still deferred; long-term source/branch packaging still requires separate PR #64 merge reconciliation.
 
 ## NEXT_STEP
 
-1. Executor performs **G3S1D read-only diagnosis only**, without repeating the denied WordPress start: classify exact approved-tool/policy refusal using accessible sanitized metadata; where read-only Docker status is permitted, reconcile DB/current service identities and ports; otherwise mark current runtime UNKNOWN.
+1. Executor performs **G3S1D read-only diagnosis only**, without repeating the denied WordPress start: classify exact approved-tool/policy refusal and verify whether the recent Owner-reported cleanup actually removed any named G3C resources; where allowed read-only Docker status is available, reconcile DB/current service identities and ports; otherwise mark current runtime UNKNOWN.
 2. Executor preserves a concise durable diagnostic Evidence file in the project PR, stops and returns for Reviewer PASS/RETURN.
-3. Reviewer determines whether an explicitly policy-compliant process can resume the existing G3S1 staging, or whether separate Owner checkpoint/authorization is needed. No side-channel bypass.
+3. Reviewer determines whether an explicitly policy-compliant normal restart of the retained services can resume G3S1 staging, or whether a **new separate bounded recovery Gate** and/or Owner checkpoint is required for any proven missing resource. No side-channel bypass, no data overwrite.
 4. Once safely resumed in a **later approved round**, complete retained WordPress runtime/Woo/plugin readback, DB-consistent backup/recoverability and only eligible official Stripe Gateway **inactive** staging. Provider account/Test connection/public HTTPS/payment/refund remain future Gates.
 
 
@@ -373,6 +380,7 @@ Protected backend behavior for the current visual/research phase:
 ## EVIDENCE_POINTERS
 
 Current G3S1D diagnostic / G3S1 parent / G3S0:
+0. `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` — Owner conditional restore intent; loss not proven
 0. `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` — **current active Gate, read-only only**
 0. `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` — latest Reviewer RETURN
 0. PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at `715be642...` — durable Executor summary, no independent Reviewer host readback
