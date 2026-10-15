@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-15 (Owner reports successful new Codex chat DB restore; G3S1SV evidence correlation current)
+> Last reviewed: 2026-10-15 (G3S1SV inactive Stripe install Owner-reported, PR Evidence absent; G3S1SVE evidence-only recovery current)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current Gate:** `docs/G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md`. Correlate new-chat import success to exact private backup, then conditionally stage Stripe inactive.
+- **Current Gate:** `docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md`. Installation already reported; **documentation-only reconciliation**, NO host commands, reinstall, DB import or cleanup.
 - Confirm current PR #64 and `main` again before any action. Owner-local containers were **reported stopped**; status has not been independently fresh-read from Owner hardware.
 - G3S0 PASS is **classification only**. Stripe account existence, merchant entity/country, active plugins, actual Woo runtime, public HTTPS endpoint, payouts and test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE
+CURRENT_GATE=G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_EXECUTOR_READBACK
@@ -56,7 +56,7 @@ G3C_MAILPIT=STOPPED_EXECUTOR_READBACK
 G3C_SITE_LOOPBACK_8189=HTTP_200_EXECUTOR_CURL
 G3C_WOO_PRODUCT_1113=VIRTUAL_USD_39_99_EXECUTOR_READBACK
 G3C_PPCP=NOT_INSTALLED_EXECUTOR_READBACK
-G3C_STRIPE=NOT_INSTALLED_EXECUTOR_READBACK
+G3C_STRIPE=11_1_0_INSTALLED_INACTIVE_OWNER_REPORTED_NOT_REVIEWER_VERIFIED
 G3B_HISTORICAL_PAYPAL_PASS=SEPARATE_SANDBOX_CLEANED_UP
 G3C_DB_BACKUP_RECOVERABILITY=UNVERIFIED_ISOLATED_DB_IMPORT_EXIT_1
 G3S1S_REVIEWER=RETURN_BACKUP_OR_ROLLBACK_UNVERIFIED
@@ -73,7 +73,13 @@ CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
 PROJECT_EXECUTION_STATUS=OWNER_NEW_CHAT_IMPORT_SUCCESS_PENDING_CORRELATION
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=NOT_YET_VERIFIED
-G3S1SV_FORMAL_RESTORE_PASS=NOT_YET_GRANTED
+G3S1SV_FORMAL_RESTORE_PASS=REVIEW_PENDING_PERSISTED_PR_EVIDENCE
+G3S1SV_DB_RESTORE=EXIT_0_58_OF_58_MARIADB_11_4_7_OWNER_REPORTED
+G3S1SV_STRIPE_INSTALL=EXIT_0_INSTALLED_INACTIVE_OWNER_REPORTED
+G3S1SV_POSTINSTALL_CLEANUP=BLOCKED_BY_POLICY_REPORTED
+G3S1SV_TEMP_FILES=RETAINED_HOST_TEMP_AND_WPCLI_TMP_REPORTED
+G3S1SV_REVIEWER=RETURN_EXECUTOR_EVIDENCE_NOT_PERSISTED
+G3S1SVE_CURRENT_SCOPE=GITHUB_PR64_EVIDENCE_ONLY_NO_HOST_COMMANDS
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -272,7 +278,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE
+CURRENT_GATE=G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY
 ```
 
 ## SYSTEM_MAP
@@ -316,17 +322,15 @@ CURRENT_GATE=G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE
 
 ## CURRENT_GATE
 
-`G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE` — current Gate: `docs/G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md`.
+`G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY` — current **documentation-only** Gate: `docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md`.
 
-**Latest G3S1SV preflight (OWNER_REPORTED):** A subsequent Codex chat stopped before any local action when `codex_apps/github.fetch_pr` for PR #64 returned `Transport closed`. This is a **Codex GitHub connector transport issue**, distinct from SQL import or Windows execution policy. Reviewer independently read PR #64 and the Gate through the connected GitHub app; PR remains Open/unmerged at `d13b27...`. Record: `docs/OWNER_RELAY_G3S1SV_GITHUB_TRANSPORT_CLOSED_2026-10-15.md`. Same G3S1SV Gate stays current but cannot execute until Codex's **normal** GitHub preflight connection is working. No Stripe/PayPal/DB writes in this attempt, as Owner reported. Do not create another diagnostic Gate or use SSH/VPS/alternate command tools to substitute for Codex's connector.
+**G3S1SV latest Owner relay:** `docs/OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md`. Owner reports exact existing protected local backup matched restricted manifest, native isolated MariaDB 11.4.7 import exit 0 and 58/58 tables, original G3C DB/WordPress identities/digest/site HTTP 200 unchanged; official Stripe Gateway **11.1.0 was installed exit 0 and remained INACTIVE**, gateway not registered/available, PayPal still disabled and order count unchanged, no payments. These are **OWNER_REPORTED Codex readbacks**, not yet independently reviewable Executor PR Evidence. DO NOT reinstall Stripe or rerun successful MariaDB import.
 
-**Prior new-chat import report:** Another normal Codex conversation reports actual MariaDB backup **import exit 0, 58/58 tables, no errors**. See `docs/OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md`. This strongly suggests the earlier failure/blocked command was session/command-specific, **not proven database corruption**. Exact cause of earlier `CreateProcess blocked by policy` remains unknown.
+**Post-install issue:** Attempt to delete temporary package artifacts (local Windows temp + WP-CLI container `/tmp`) was rejected by Codex PowerShell execution policy. Codex stopped without bypass. Those packages remain local, **cleanup DEFERRED**; no deletion/retry through different shell/API/scheduler/agent. Original application mutation has already reportedly succeeded; cleanup failure does not itself reverse it. No new PR #64 Evidence was submitted; Reviewer direct GitHub readback found PR #64 still Open/unmerged at `d13b27fd8290d0575bd3ac7733f3f3039b415a21`.
 
-**Need just one bounded correlation:** Check the successful operation used the exact existing protected G3S1S `wordpress-db-consistent.sql` bytes matching the private backup manifest; verify the MariaDB 11.4.7 scratch target was fully isolated and did not mount original volumes; preserve native exit 0, 58-table and read-compatibility evidence. Do not redo successful import merely for proof. Reuse earlier WordPress-file and bind-source recovery PASS; confirm backup freshness before any plugin write. Current formal backup PASS is still PENDING, not silently assumed from a two-line result.
+**Reviewer current decision:** `docs/REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md`: **RETURN** until actual retained Executor host Evidence is sanitized, committed to PR #64 and reviewed. Governance §10 freezes further host mutations when a consequential operation ran but Evidence durability failed. Current G3S1SVE only permits **normal GitHub connector read/write documentation** of already retained information, no host process runs, no temp cleanup. If a required field is lost, mark UNKNOWN and let Reviewer decide; never fake proof or replay a completed write to recreate it.
 
-**Conditional next stage:** If all source/target/restoration and rollback checks PASS in G3S1SV, the same Gate permits only a pinned official WooCommerce Stripe plugin **installed INACTIVE**. No account connection, gateway activation, payment, PayPal change, public service, VPS/SSH or PR merge. If correlation cannot be proven, RETURN rather than guess.
-
-**History/status:** G3S1R WordPress/Woo local recovery PASS. G3S1S isolated import exited 1 with no retained stderr. G3S1SR restore diagnostic was blocked before execution, leading to prior G3S1SH HOLD. Fresh Owner-reported new-chat success is new evidence for a narrowly scoped review, not proof a product policy bug is fixed. Local G3C PPCP absent, Stripe absent in prior readback; historical G3B PayPal sandbox PASS retained. Owner wants PayPal removal only after full Stripe end-to-end and payout-readiness PASS in another Gate.
+**Payment separation:** Stripe plugin installed inactive (Owner report) is not Stripe Test/Live payment, KYC, payout or refund readiness. Legacy PayPal G3B sandbox historical proof is separate; G3C PayPal remains disabled Owner-reported. Owner eventually wants PayPal retirement only after full Stripe live readiness, separately reviewed. No payment, activation, PayPal removal, PR merge or VPS/SSH.
 
 
 ## CRITICAL_CONSTRAINTS
@@ -394,20 +398,22 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. First restore/verify Codex's **official GitHub plugin connection** in the same app, then perform one normal **read-only PR #64 metadata lookup**. If `Transport closed` persists, STOP with one precise error; no SSH/VPS or unofficial fallback.
-2. Once normal GitHub preflight succeeds, in the **new working Codex conversation**, read back already-completed import's backup identity, native exit 0, 58/58 tables, scratch isolation and original data preservation; do not repeat import.
-3. If full current backup/rollback compatibility is proven, conditionally install the official compatible Stripe Gateway **inactive only** in the same Gate. If missing proof, return precise blocker; no broad repeat diagnostic loop.
-4. Save sanitized PR #64 Evidence; STOP for Reviewer. No PayPal change or Stripe provider/payment actions.
-
+1. Codex should perform the **G3S1SVE documentation-only Gate** in the existing execution conversation: use only already retained native results, commit concise sanitized G3S1SV Executor Evidence to PR #64 through the regular connected GitHub app, then verify the new commit/file. **No new PowerShell/Docker/WP-CLI commands**.
+2. Reviewer checks source/target backup recovery and official plugin provenance/version, inactive state, no provider/PayPal/order/site regressions. Assess any UNKNOWN and whether temporary installer packages can be deferred as a separately scoped safe cleanup. Do not assume a plugin staging PASS until independent evidence review.
+3. Only after Reviewer reconciliation decide the next task. No Stripe live/Test enablement, account binding, payment, PayPal removal, or PR merge.
 
 ## OWNER_ACTION_REQUIRED
 
-**Owner may relay current G3S1SV Gate to the working new Codex conversation.** Only read back the already-successful test, then conditional Stripe inactive stage. No new VPS/SSH, Full Access toggle, duplicate import, payment or PayPal action.
+**Relay G3S1SVE Evidence-only instructions to the Codex conversation that completed the installation.** No Owner Docker work; no installation retry, database import or cleanup commands.
+
 
 ## EVIDENCE_POINTERS
 
-Current G3S1SV / historical G3S1SH HOLD and G3S1SR RETURN / G3S1R PASS:
-0. `docs/G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` — CURRENT Gate, correlate successful original backup restore and conditionally install inactive Stripe
+Current G3S1SVE evidence-only recovery / G3S1SV Owner-reported inactive plugin / previous Gate history:
+0. `docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` — CURRENT Gate: GitHub Evidence persistence only, zero host execution
+0. `docs/REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md` — formal Reviewer RETURN until persisted install evidence
+0. `docs/OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md` — Owner-reported MariaDB exit 0, official Stripe 11.1.0 inactive, cleanup blocked, PR Evidence absent
+0. `docs/G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` — previous execution Gate, install reported complete, Evidence missing
 0. `docs/OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md` — Owner-reported native exit 0 and 58/58 tables in new Codex conversation, pending proof correlation
 0. `docs/G3S1SH_CODEX_POLICY_HOLD_AND_RESUME_CRITERIA_2026-10-15.md` — previous HOLD based on former Codex executor denial; new Owner result prompts scoped review
 0. `docs/REVIEWER_DECISION_G3S1SR_RETURN_EXECUTOR_POLICY_HOLD_2026-10-15.md` — latest Reviewer RETURN
