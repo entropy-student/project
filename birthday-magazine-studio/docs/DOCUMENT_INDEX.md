@@ -15,7 +15,7 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` | **Current Gate: read-only classification of the blocked WordPress start; G3S1 staging ON HOLD** |
 | `REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` | **Latest formal G3S1 RETURN**, DB-only partial state and missing Woo/backup proof |
 | PR #64 `evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` | Executor's partial local readbacks; reviewed with host-provenance limitations |
-| `G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` | **Previous implementation Gate on hold**, not PASS; Stripe remains inactive/uninstalled according to Executor |
+| `G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` | **Previous implementation Gate on hold**, not PASS; Stripe install NOT attempted; pre-existing plugin state UNKNOWN |
 | `REVIEWER_DECISION_G3S1_RETURN_GITHUB_PLUGIN_TRANSPORT_CLOSED_2026-10-15.md` | Prior transport RETURN (superseded by later execution-policy RETURN) |
 | `OWNER_DECISION_G3S_STRIPE_PRIMARY_PAYPAL_RETIREMENT_DEFERRED_2026-10-15.md` | Stripe target primary, PayPal removal **NOT** authorized |
 | `MVP_PRODUCT_CONTRACT.md` | Frozen buyer-flow / paid-generation invariants |
