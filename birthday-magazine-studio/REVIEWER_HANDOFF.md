@@ -232,7 +232,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`FRONTEND_OWNER_ACCEPTED_REVIEWER_SOURCE_RECONCILIATION_PENDING`
+`FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING`
 
 Owner has **accepted the final homepage / Free Preview / core intake frontend UI** as of 2026-10-15. Stop visual-polish loops absent a new concrete Owner request.
 
