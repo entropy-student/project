@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-15 (G3S1SVE Reviewer PASS Evidence; G3S1SV bounded PASS installed inactive Stripe 11.1.0; G3S2 read-only merchant readiness next)
+> Last reviewed: 2026-10-16 (G3S2 Reviewer PASS read-only policy research; actual merchant country/entity unknown; no new execution Gate or Codex prompt)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md`. Stripe inactive local staging and retained Evidence formally Reviewer PASS; next classify merchant eligibility and Test prerequisites **read-only**.
+- **Latest Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` **PASS read-only research**, formal decision `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md`. No active Codex execution Gate. Await Owner's legitimate merchant country/entity choice; no prompt as requested.
 - Confirm current PR #64 and `main` before consequential future steps. Latest G3S1SV Executor-host Evidence instead reports the **original WordPress, MariaDB and WP-CLI containers running** and local site HTTP 200; Reviewer has not independently accessed Owner hardware. Mailpit remains stopped.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. Stripe merchant account existence, legal entity/country, public HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
+CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_EXECUTOR_READBACK
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S1SV_INACTIVE_STRIPE_INSTALL_REVIEWER_PASS_G3S2_READONLY_NEXT
+PROJECT_EXECUTION_STATUS=G3S2_POLICY_READONLY_PASS_WAIT_OWNER_LEGAL_MERCHANT_ELIGIBILITY
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -86,6 +86,15 @@ G3S1SV_BACKUP_SNAPSHOT_RECORD_LEVEL_EQUALITY=UNKNOWN_NOT_CLAIMED
 STRIPE_MERCHANT_ACCOUNT_STATUS=UNKNOWN
 STRIPE_GATEWAY_STATUS=INACTIVE_NOT_REGISTERED
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
+G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
+G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
+G3S2_OFFICIAL_STRIPE_MAINLAND=NOT_STANDARD_PAYMENTS_MERCHANT_REGION
+G3S2_HK_INDIVIDUAL_NONHKID=NOT_ELIGIBLE_PER_OFFICIAL_SOURCE
+G3S2_HK_USD_WISE=STRIPE_HK_FEATURE_EXCLUDES_TRANSFERWISE
+G3S2_HK_HKD_WISE=UNKNOWN_NOT_ASSUMED
+G3S2_MERCHANT_ACCOUNT=UNKNOWN
+G3S2_ACCOUNT_PROVIDER_HOST_MUTATIONS=0
+G3S2_NEW_CODEX_PROMPT=NONE_OWNER_REQUESTED
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -284,7 +293,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
+CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 ```
 
 ## SYSTEM_MAP
@@ -328,7 +337,7 @@ CURRENT_GATE=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
 
 ## CURRENT_GATE
 
-`G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY` — **read-only next Gate**, `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md`.
+**G3S2 read-only research COMPLETE / PASS**, see `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` and `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`. **No active execution Gate** until Owner chooses or confirms a legitimate merchant region/entity and account status. **Do not generate a Codex prompt** unless later explicitly requested.
 
 **G3S1SV + G3S1SVE formal Reviewer PASS (2026-10-15):** `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`. Reviewer directly read PR #64 Evidence `docs/evidence/g3s1sv/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` at `4cb0d527d77a6d583e123acd3f62c45408669569`. Exact PR delta from `d13b27...` is **one sanitized Evidence-only Markdown**; PR still Open/unmerged. G3S1SVE Evidence persistence PASS supersedes former Evidence-missing RETURN; G3S1SV official Stripe **11.1.0 installed as INACTIVE** locally accepted with bounded recovery evidence and explicit limitations. No account, gateway registration, payment or provider calls.
 
@@ -338,7 +347,7 @@ CURRENT_GATE=G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY
 
 **Deferred installer ZIP cleanup:** Windows `%TEMP%\bms-wc-stripe-11.1.0-package.zip` and WP-CLI `/tmp/bms-wc-stripe-11.1.0-package.zip` remained; a prior incomplete host ZIP may also remain (exact details in Evidence). Cleanup PowerShell start was rejected `blocked by policy`; no bypass and no files removed. They are classified as candidate transient installer archives, not live WordPress plugin/DB/backup. **Cleanup DEFERRED**; do not retry the denied shell or route through another shell/agent, and do not let housekeeping trigger installation/restore replay.
 
-**Payments/Owner intent:** Current Woo Stripe extension is **installed but not activated**; Stripe gateway unregistered. Merchant account/legitimate region/entity/KYC/bank and payout eligibility UNKNOWN. Next G3S2 is read-only policy/Owner-readiness planning, no account creation/login, OAuth, plugin activation, checkout, refund, webhook or public route. Historical G3B PayPal sandbox PASS preserved and separate. Owner's conditional PayPal retirement is only **after complete independently tested Stripe end-to-end functionality and payout readiness**, via separate reviewed safe exact-target Gate. PR #64 still Open/mergeable=false; frontend remains Owner-frozen.
+**Payments/Owner intent and G3S2 findings:** Current Woo Stripe extension is **installed but not activated**; Stripe gateway unregistered. Stripe officially supports HK for qualifying legitimate HK merchants, **not mainland China standard Stripe Payments merchant accounts**. For HK individuals, Stripe disallows non-HKID individual registration; genuine HK business/sole proprietor with BRN may be verified under applicable business rules. **Wise HK account alone cannot qualify merchant identity; Stripe's HK USD payout policy expressly excludes TransferWise/virtual/neobank accounts for the feature; HKD Wise acceptance unverified.** Owner merchant country/entity, account/KYC/bank eligibility and payout eligibility UNKNOWN. Woo Test mode needs a separate Test-mode account connection and reviewed HTTPS webhook delivery path; loopback-only site is not an internet-reachable HTTPS webhook. No account creation/login, OAuth, plugin activation, checkout, refund, webhook or public route. Historical G3B PayPal sandbox PASS preserved and separate. Owner's conditional PayPal retirement is only **after complete independently tested Stripe end-to-end functionality and payout readiness**, via separate reviewed safe exact-target Gate. PR #64 still Open/mergeable=false; frontend remains Owner-frozen.
 
 
 ## CRITICAL_CONSTRAINTS
@@ -406,19 +415,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Next **G3S2 read-only**: verify Stripe eligibility for the Owner's actual legal merchant country/entity, supported settlement bank/payout prerequisites and exact steps before Woo Stripe Test onboarding. Do not assume Owner has an eligible Stripe account or Wise HK by itself qualifies.
-2. Record clear Owner-only merchant/KYC/account steps for a future separately approved Gate. Keep Stripe 11.1.0 inactive in the local Windows site until fresh recovery readiness and Test-specific authorization; **no Codex host mutations now**.
-3. Keep leftover ZIP archives tracked as low-priority deferred local cleanup. No retry of the blocked deletion or alternate tool bypass. No PayPal removal, live payment, checkout, production or PR #64 merge.
+1. **G3S2 research is finished** (official sources and formal Reviewer PASS saved on main). Actual Stripe merchant enrollment cannot be inferred without Owner's genuine country/entity/account facts; **wait for Owner's other arrangements/decision**. No additional Codex prompt or plugin/host action.
+2. After Owner chooses a real qualifying merchant jurisdiction/entity and confirms their Stripe account status, Reviewer may create a separate and explicitly approved Test-only Gate. Before any gateway activation, choose and verify a suitably fresh database+files recovery point and define HTTPS callback, authenticated signed webhook, payment/refund/entitlement reconciliation and rollback.
+3. Preserve installed Stripe 11.1.0 as inactive and PR #64 as Open/unmerged, leave PayPal disabled, and track temp installation ZIP cleanup as separately deferred. No VPS/SSH, account signup or real transactions.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE immediately for local inactive staging (now Reviewer PASS).** Owner may decide later whether to register a legitimate Stripe merchant account and select a lawful supported merchant country/entity; no credentials or personal identity files in GitHub/chat. G3S2 read-only eligibility review requires no Docker or payment action.
+**NONE for G3S2 read-only report.** When ready, Owner may privately decide/confirm the **real Stripe merchant country and business structure (HKID individual / genuine BRN sole proprietorship or company / other supported legitimate entity)** and whether a real Stripe account exists. Never submit identity documents, keys or banking numbers to GitHub/chat. No request for an immediate answer while Owner has other arrangements.
 
 
 ## EVIDENCE_POINTERS
 
-Current G3S2 read-only merchant readiness / G3S1SV+SVE bounded PASS / historical G3S1 gates:
-0. `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` — CURRENT Gate, read-only Stripe legitimate merchant eligibility and Test readiness
+Latest G3S2 read-only Reviewer PASS, awaiting Owner merchant eligibility decision / G3S1SV+SVE bounded PASS:
+0. `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` — CURRENT formal Reviewer PASS for read-only policy research; actual merchant entity remains unknown
+0. `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md` — official Stripe HK/Mainland merchant eligibility, Wise payout restriction, Woo Test prerequisites
+0. `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` — completed read-only Gate, no further execution delegated
 0. `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md` — Reviewer PASS for Evidence and inactive local Stripe staging; explicit limitations and deferred temp ZIP cleanup
 0. PR #64 `docs/evidence/g3s1sv/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` at `4cb0d527...` — reviewed retained Executor source evidence
 0. `docs/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` — completed Evidence-only Gate PASS
