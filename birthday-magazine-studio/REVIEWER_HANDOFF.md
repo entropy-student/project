@@ -32,8 +32,8 @@ TECHNICAL_SOLUTION_PROOF=PASS
 WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
-OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP
+OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
+CURRENT_GATE=FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -68,7 +68,7 @@ CORE_AHA_OWNER_SELECTION=PENDING
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
-OWNER_VISUAL_FREEZE=HOMEPAGE_PASS_PRODUCT_VISUAL_PENDING
+OWNER_VISUAL_FREEZE=PASS_CURRENT_MVP_FRONTEND
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
 REPEATABILITY=UNKNOWN
@@ -81,8 +81,8 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=OWNER_RETURN_WIDESCREEN_COMPOSITION
-CORE_FUNCTION_ONBOARDING_SURFACE=OWNER_RETURN_WIDESCREEN_SCALE
+HOMEPAGE_ENTRY_SURFACE=OWNER_PASS_FROZEN
+CORE_FUNCTION_ONBOARDING_SURFACE=OWNER_PASS_FROZEN
 POSTPAY_GENERATION_STATUS_SURFACE=PRODUCT_COMPONENT_STATUS_QA_PAGE_DEMOTED
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
@@ -176,6 +176,10 @@ G3CR7V2R4_CTA_ACTION_ONLY=YES
 G3CR7V2R4_CTA_PRICE_META_SEPARATE=YES
 G3CR7V2R4_INTAKE_WIDESCREEN=SCALE_UP
 G3CR7V2R4_STATUS=QA_ONLY_NOT_PRODUCT_SURFACE
+G3CR7V2R4_FINAL_PR_HEAD=c90e6f93803ad861745cd476106e00d01c68debb
+G3CR7V2R4_OWNER_FINAL_VISUAL=PASS
+G3CR7V2R4_FRONTEND_VISUAL_FREEZE=YES
+G3CR7V2R4_NEXT_LAYER=BACKEND_FLOW_COMPLETION
 G3CR7V1_OWNER_VISUAL=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
@@ -220,25 +224,23 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP`
+`FRONTEND_VISUAL_FREEZE_COMPLETE_NEXT_GATE_PENDING`
 
-Owner live review RETURNed the 2048px desktop composition.
+Owner has completed live local review and reports the current frontend UI is satisfactory.
 
-New facts:
-- previous 1440-centric review hid widescreen scale weakness;
-- Owner's actual live captures are 2048px wide and become the primary desktop quality viewport;
-- current fake no-photo artwork is CSS gradient art, not the already-removed mesh SVG, and is now explicitly rejected;
-- homepage CTA hierarchy is overloaded;
-- homepage and intake both still feel too small/sparse at 2048px;
-- standalone status remains QA-only.
-
-Current Gate:
-- `docs/G3CR7V2R4_WIDESCREEN_COMPOSITION_AND_PLACEHOLDER_CLEANUP.md`
+Frontend visual scope is now frozen for the current MVP stage:
+- homepage overall composition/motion;
+- Free Preview/core-entry;
+- core five-step intake;
+- current 2048/1440/375 responsive direction;
+- current Birthday Magazine preview material/style treatment.
 
 Owner decision:
-- `docs/OWNER_DECISION_G3CR7V2R4_WIDESCREEN_COMPOSITION_RETURN_2026-10-05.md`
+- `docs/OWNER_DECISION_G3CR7V2R4_FRONTEND_VISUAL_FREEZE_2026-10-15.md`
 
-Stripe-derived component language, mulberry palette, cache-safe CSS delivery and all business behavior remain accepted.
+Standalone status preview remains QA-only. Production status belongs in Woo/order/private workspace.
+
+No further frontend visual iteration should start without a new explicit Owner decision. The next Gate should move to backend flow completion.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -303,16 +305,19 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor runs the G3CR7V2R4 widescreen composition Gate.
-2. Remove CSS-generated fake photo art entirely; no-photo state becomes neutral empty frames with no replacement asset.
-3. Recompose homepage Preview/core-entry around a light mulberry feature field and a simplified CTA hierarchy.
-4. Scale homepage and intake for 2048px first, then verify 1440 and 375.
-5. Return nine viewport screenshots plus geometry readback and leave the exact candidate mounted for Owner.
-6. Do not touch Status QA page, backend, payment or P1-P12.
+1. Freeze the accepted frontend and stop visual iteration.
+2. Reconcile/prepare PR #64 before any merge; GitHub currently reports mergeable=false.
+3. Open the next product Gate for backend flow completion:
+   - durable temporary pre-payment draft persistence for 12–25 photos + six answers;
+   - exact submitted snapshot handoff into Woo checkout/order;
+   - paid entitlement -> one canonical generation-ready job;
+   - idempotent payment/refund/cancellation semantics.
+4. After that, connect the already-proven content/PDF Solution Proof to an unattended production generation/storage/private-delivery runtime.
+5. Final P1–P12 production visual work remains later, after the backend transaction/fulfillment loop is real enough to support it.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner's 2048px screenshots and explicit visual RETURN are sufficient for the next bounded Gate.
+**NONE for frontend.** Current MVP frontend visual direction is frozen.
 
 ## EVIDENCE_POINTERS
 
