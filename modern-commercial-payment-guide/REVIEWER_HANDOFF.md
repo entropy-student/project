@@ -102,12 +102,12 @@
 | 阶段 | 工作范围 | 当前状态 | 具体成果位置 |
 |---|---|---|---|
 | P1 | 内容覆盖审查 | **PASS（Owner已确认，仅结构层）**；不代表全文答案通过 | 《现代商业支付系统_实施与内容工作文档.md》P1章节 |
-| P2 | ①收款方案选择的完整文字样板 | **RETURN_OWNER_REJECTED：旧稿整体废弃**；已开启独立重写 Gate，不继承旧稿 | 同上 P2章节 |
+| P2 | ①收款方案选择的完整文字样板 | **RETURN_CONTENT_SYSTEMATICITY：PR #132 新稿未通过 Reviewer**；旧 P2 仍废弃，下一轮在同一 PR 内重构正文 | [PR #132](https://github.com/entropy-student/project/pull/132) 候选稿、执行证据、Reviewer评审评论 |
 | P3 | 零散支付知识如何融入主线 | 未启动；形式仍开放 | 未来写入工作文档 |
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1 结构审查 PASS；P2 旧样板因 Owner 明确否决而整体废弃。新执行者仅进入 P2 独立重写 Gate，重写稿提交 Reviewer 独立审查前，P3–P5 不启动。
+**当前闸门：** P1 结构审查 PASS；旧 P2 Owner 否决且不得复用；[PR #132](https://github.com/entropy-student/project/pull/132) 已完成独立重写候选，但 Reviewer 判定 `RETURN_CONTENT_SYSTEMATICITY`。在当前 Gate 内修订并再次 Review；P3–P5 不启动。
 
 ## 八、文件分工和更新规则
 
@@ -122,15 +122,22 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_REWRITE_GATE_RELEASED`（先重写第一板块，不是全项目 P2 PASS）。
+- **PROJECT_STAGE：** `P2_REVIEW_RETURN_CONTENT_SYSTEMATICITY`（PR #132 未获内容 PASS，继续当前 P2 修订，不推进 P3）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
 - **CURRENT_ACCEPTED_STATE：** P1 `PASS`（Owner于2026-10-16确认，仅结构覆盖层）；7/29/42问题暂时冻结。此前 P2 样板 `REJECTED_NOT_BASELINE`，仅保留历史证据。
-- **CURRENT_GATE：** `MCPG-P2-CHAPTER1-INDEPENDENT-REWRITE-20261016`，详见 [P2 独立重写 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_REWRITE_GATE.md)。
+- **CURRENT_GATE：** `MCPG-P2-CHAPTER1-INDEPENDENT-REWRITE-20261016`，在原 Gate 范围内按照 [PR #132 Reviewer 评审](https://github.com/entropy-student/project/pull/132) 返工；[Gate 原文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_REWRITE_GATE.md)。
 - **CRITICAL_CONSTRAINTS：** 不改最高准则、7/29/42冻结框架；不以旧 P2 为底稿；P1不重跑；先怎么做再为什么；来源可核验；不建百科/计算器、不进入 P3/HTML。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** 内容型写入；保留旧 P2 为已否决历史证据，新稿写入独立候选文件；不删改已接受的冻结框架及 P1。
-- **UNRESOLVED：** 旧稿为何未达预期的细项由重写稿的独立审查检验；海量细碎问题的组织方式仍开放。
-- **NEXT_STEP：** 新 Agent 独立写出第一板块候选正文、来源及自检证据；停在 `PASS_CANDIDATE`，Reviewer核验后再决定 `PASS/RETURN`。
-- **OWNER_ACTION_REQUIRED：** 把 Gate 的简短启动提示词复制到新对话；新 Agent 输出后，将候选稿/证据链接转交本对话。
-- **EVIDENCE_POINTERS：** P1 证据在同目录《现代商业支付系统_实施与内容工作文档.md》第二节；旧 P2 在该文件第三节，被标记为废弃且不得作为新稿基线。
+- **UNRESOLVED：** PR #132 的方法论系统性、同条件可比性和案例闭环不足；PayPal 中国区费率合同适用边界待修正。海量细碎问题的呈现方式仍开放。
+- **NEXT_STEP：** Executor 读取 PR #132 的 Reviewer 返回意见，围绕系统模型、完整业务决策演练、同口径费用/提现路径和费率适用合同重构候选正文，提交同一 PR；Reviewer 再次检查。
+- **OWNER_ACTION_REQUIRED：** NONE；如使用另一个 Executor 对话，向其转交 [PR #132 评论](https://github.com/entropy-student/project/pull/132) 即可。
+- **EVIDENCE_POINTERS：** P1 证据在文件库实施文档第二节；旧 P2 在第三节仅为废弃历史。PR #132 分支的 `docs/P2_REWRITE_CANDIDATE.md` 与 `EXECUTION_EVIDENCE.md` 为本轮候选和执行证据；Reviewer 审查决定记录在 PR #132 评论（ID `6198541590`）。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
+
+## 十、当前 Reviewer 决定（2026-10-16）
+
+- **评审对象：** [PR #132](https://github.com/entropy-student/project/pull/132)，候选 commit `a7f19031361e7e6327bee98b726a5a0c9c6a91fc`；两份新增文件仅在 PR 分支，尚未合并。
+- **评审状态：** `RETURN_CONTENT_SYSTEMATICITY`；冻结 5/9 结构覆盖基本满足，主要公开费率算术有据，但章节对经营条件的系统建模、同条件可比选型、两个案例的最终条件化结论、提现净额全程推演不达标。另需限定 PayPal 大陆费率适用协议。
+- **完整理由与修订验收要求：** 见 [PR #132 审查评论](https://github.com/entropy-student/project/pull/132)（comment ID `6198541590`）。因 GitHub 不允许账号对自身 PR 使用 `REQUEST_CHANGES` review 按钮，本轮以 PR 评论 + 本 Handoff 作正式 Reviewer RETURN；不是 GitHub changes-requested 标志。
+- **下一轮范围：** 在同一 P2 Gate 中重构稿件并补充证据，再停在 Reviewer；维持 P1 PASS、7/29/42 冻结、旧 P2 废弃，P3/P4/P5 未授权。
