@@ -31,7 +31,10 @@ PR_HEAD_REVIEWED_G3S0=c90e6f93803ad861745cd476106e00d01c68debb
 PR_STATUS_G3S0=OPEN_UNMERGED_MERGEABLE_FALSE
 FRONTEND_OWNER_VISUAL=PASS_FROZEN
 G3S0_REVIEWER_DECISION=PASS_READINESS_CLASSIFICATION_ONLY
-CURRENT_GATE_NOW=G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC
+CURRENT_GATE_NOW=G3S1P_OWNER_EXECUTION_PERMISSION_CHECKPOINT
+G3S1D_REVIEWER=RETURN_EXECUTION_POLICY_SOURCE_UNKNOWN
+G3S1D_PR_EVIDENCE_HEAD=5903726a68160624c52e871f2dde9d36123a9aa3
+NEXT_OWNER_ACTION=OFFICIAL_CODEX_EXECUTION_APPROVAL_PATH_INQUIRY_ONLY
 G3S1_PARENT=RETURN_WORDPRESS_START_EXECUTION_POLICY_BLOCKED
 G3S1_PARTIAL_DB=RUNNING_HEALTHY_EXECUTOR_LAST_READBACK_ONLY
 OWNER_G3C_LOCAL_RECOVERY=REQUESTED_CONDITIONALLY
@@ -107,7 +110,9 @@ Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PH
 
 **Owner local recovery direction:** `docs/OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md`; recent cleanup is Owner-reported but no resource deletion is yet demonstrated. Prefer original services and intact data over reinstall/recreate; policy bypass is forbidden.
 
-**Current Gate:** `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` (read-only diagnosis). Parent `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` is ON HOLD after a formal RETURN. See `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at commit `715be642...`. No Stripe staging or restart retry is allowed inside G3S1D.
+**Current Gate:** `docs/G3S1P_OWNER_EXECUTION_PERMISSION_CHECKPOINT.md` (Owner approval-path check only, no execution). Former G3S1D read-only diagnostic completed with Reviewer RETURN because approved execution route is still UNKNOWN. See `docs/REVIEWER_DECISION_G3S1D_RETURN_POLICY_SOURCE_UNKNOWN_2026-10-15.md` and PR #64 diagnostic Evidence `5903726a...`.
+
+**Historical Gate:** `docs/G3S1D_LOCAL_START_EXECUTION_POLICY_DIAGNOSTIC.md` (read-only diagnosis). Parent `docs/G3S1_LOCAL_STRIPE_GATEWAY_STAGING.md` is ON HOLD after a formal RETURN. See `docs/REVIEWER_DECISION_G3S1_RETURN_LOCAL_WORDPRESS_START_BLOCKED_2026-10-15.md` and PR #64 `docs/evidence/g3s1/EXECUTOR_PARTIAL_PREFLIGHT_2026-10-15.md` at commit `715be642...`. No Stripe staging or restart retry is allowed inside G3S1D.
 
 Deferred parent G3S1 phases (NOT AUTHORIZED IN G3S1D):
 1. fresh PR/main project-scoped comparison, confirm actual Owner Windows target and correct retained G3C containers/mounts/ports;
