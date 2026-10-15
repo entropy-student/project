@@ -18,13 +18,13 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | PR #64 `evidence/g3s1sv/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` at `4cb0d527...` | Reviewer-inspected retained native execution details; limits enumerated |
 | `G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` | Completed evidence persistence Gate, PASS; not the active Gate |
 | `REVIEWER_DECISION_G3S1SV_RETURN_EVIDENCE_NOT_PERSISTED_2026-10-15.md` | Reviewer RETURN: inactive Stripe install reported, PR Evidence missing, cleanup denied |
-| `OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md` | Owner-reported successful 58-table restore and official Stripe 11.1.0 installed inactive; pending Reviewer verification |
-| `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` | Previous execution Gate; install reported complete but not yet reviewable |
+| `OWNER_RELAY_G3S1SV_STRIPE_INACTIVE_INSTALLED_EVIDENCE_PENDING_2026-10-15.md` | Historical Owner relay before PR Evidence; superseded by later bounded Reviewer PASS |
+| `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md` | Previous execution Gate; completed and Reviewer accepted within inactive-install scope |
 | `OWNER_RELAY_G3S1SV_GITHUB_TRANSPORT_CLOSED_2026-10-15.md` | G3S1SV Codex GitHub plugin `Transport closed` preflight STOP; repo/PR readable by Reviewer, no Stripe or DB actions |
-| `OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md` | Owner reports exit 0 and 58/58 tables in a fresh Codex chat; proof correlation still pending |
+| `OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md` | Historical early Owner report; later source correlation reviewed in G3S1SVE Evidence |
 | `G3S1SH_CODEX_POLICY_HOLD_AND_RESUME_CRITERIA_2026-10-15.md` | Previous HOLD following old Codex policy denial; new Owner evidence calls for a narrow correlation Gate |
 | `REVIEWER_DECISION_G3S1SR_RETURN_EXECUTOR_POLICY_HOLD_2026-10-15.md` | **Formal Reviewer RETURN:** G3S1SR scratch DB import command rejected before PowerShell startup |
-| PR #64 `evidence/g3s1sr/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | Latest saved Executor evidence; backup checksums still match, Stripe not installed |
+| PR #64 `evidence/g3s1sr/G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | Earlier historical Executor evidence before successful Stripe inactive staging |
 | `G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | Previous Gate RETURN, no longer an authorized execution request |
 | `REVIEWER_DECISION_G3S1S_RETURN_BACKUP_RESTORE_UNVERIFIED_2026-10-15.md` | **Reviewer RETURN:** DB import failed exit 1 and exact error was not retained; backup not fully restorable |
 | PR #64 `evidence/g3s1s/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | Executor's private backup/hash/file restore PASS and isolated DB restore unverified |
