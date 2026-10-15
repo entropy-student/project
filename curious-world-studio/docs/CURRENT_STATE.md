@@ -1,5 +1,7 @@
 # Curious World Studio｜唯一当前状态（2026-10-15）
 
+> **2026-10-15 Owner已授权下一轮（尚未实施）**：`MEDIA-OPERATIONS-INTEGRATION`，仅将现有素材搜索/筛选/显式ID下载/QA、按需Docker启停封装成**供Codex统一调用的轻量CLI**，不做Owner常用GUI、VPS或常驻后台。正式执行范围见[唯一Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。后续真实实现须Windows Codex隔离分支PR+独立Reviewer验收；`MEDIA_OPERATIONS_INTEGRATION_PASS`**尚未成立**，正式制作仍HOLD。
+
 > **最高优先级事实入口，替换此前逐轮叠加的“最新状态”段落。** 主线状态：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**MEDIA素材技术闭环已通过，正式制作没有放行**。下次协作先读本页与[当前Reviewer交接](REVIEWER_HANDOFF_CURRENT.md)；旧执行合同/旧报告保留为历史，不再以其中“待执行”口吻发起任务。
 >
 > **运行路线定案**：Windows 11本机 Docker Desktop，SearXNG + 4get **按需启动/用后停止**；Python/yt-dlp/FFprobe/FFmpeg/CWS在Windows运行；**不部署VPS、不要求Docker长期开启**。Ubuntu-24.04已依执行端证据安全备份后注销，仅保留所需WSL2和Docker后端。
@@ -38,9 +40,9 @@
 
 ## 4. 唯一当前交接决定与后续候选
 
-**最新已完成Gate：`G2_G3_G4_TECHNICAL_ACCEPT`。目前没有自动发起的新执行Gate。** 下次由Owner明确授权后，按价值优先：
+**最新已完成Gate：`G2_G3_G4_TECHNICAL_ACCEPT`。新的`MEDIA-OPERATIONS-INTEGRATION`已由Owner授权，但执行/Review尚未完成。** 后续按价值优先：
 
-1. **MEDIA-OPERATIONS-INTEGRATION（建议、未授权）**：在隔离分支把经过实测的Docker Compose、Windows按需启动/停止和隔离浏览器技术QA变成可重复运行的正式工具；重跑资源/端口/错误/停止回归，PR交独立Reviewer后再决定合并。**无需重新注销Ubuntu或重复G2–G4全量验收**。
+1. **MEDIA-OPERATIONS-INTEGRATION（已授权，待本机执行及Reviewer验收）**：在隔离分支把经过实测的Docker Compose、Windows按需启动/停止和隔离浏览器技术QA变成可重复运行的正式工具；重跑资源/端口/错误/停止回归，PR交独立Reviewer后再决定合并。**无需重新注销Ubuntu或重复G2–G4全量验收**。
 2. **MEDIA-R6（建议、未授权）**：围绕真正分镜目标，定位视频中实际动作出现的时段、比对不同来源技术家族与内容匹配率，补足`CW-0005`爆裂/压缩/回弹真实镜头缺口；不得标题匹配就算动作出现。
 3. **MEDIA-R7（建议、未授权）**：输出镜头级视频/时间码/来源/预览/内容与权利状态/缺口说明，供正式PROD另行审查。
 
