@@ -53,7 +53,9 @@ G3S1D_DIAG=POLICY_DENIAL_AND_CLEANUP_RESOURCE_CLASSIFICATION_READ_ONLY
 PR64_NEW_EVIDENCE_HEAD=715be642c59f40672f6d83b00aa9bc4a7997dc31
 STRIPE_ACCOUNT_EXISTS=UNKNOWN
 STRIPE_LIVE_ELIGIBILITY_AND_PAYOUT=UNKNOWN
-PAYPAL_RETIREMENT=NOT_AUTHORIZED
+PAYPAL_RETIREMENT=OWNER_CONDITIONAL_AFTER_FULL_STRIPE_PASS_NOT_NOW
+PAYPAL_RETIREMENT_DECISION=docs/OWNER_DECISION_G3S_STRIPE_PASS_THEN_PAYPAL_RETIRE_2026-10-15.md
+CURRENT_PAYPAL_MUTATION=PROHIBITED
 ```
 
 Do not assume these commits remain tips; **refresh PR #64 and main** every new Reviewer round. There are known old PR/document conflicts; never blind rebase, reset, squash, merge or discard accepted evidence. Shared monorepo unrelated changes do not by themselves block project-scoped freshness.
@@ -105,6 +107,8 @@ Frontend visual style: Stripe-inspired SaaS application structure + Birthday Mag
 Local historical stack: Owner Windows 11; G3C isolated Docker WordPress 7.1.1/PHP8.3, MariaDB 11.4.7, Mailpit 1.31.2, WooCommerce 11.1.2, Woo product 1113 virtual USD39.99; localhost `127.0.0.1:8189` / Mailpit 8190. G3S0 earlier reported three stopped **core** containers; a later G3S1 Executor run identified a fourth same-project helper `wpcli` in the Compose source, started only the DB, and then returned on WordPress start policy denial. Reviewer confirmed four Compose services from GitHub source, but did not directly read the Owner's Docker host. At the last Executor readback DB was running/healthy and WordPress/Mailpit/wpcli stopped. Payment plugins/products are **NOT fresh read back**.
 
 ## Current payment choice and limitations
+
+**Owner latest direction (2026-10-15):** once Stripe has independently PASSed the full provider test-to-real collection/refund/settlement readiness checks, Owner wants PayPal removed. This advance conditional approval is in `docs/OWNER_DECISION_G3S_STRIPE_PASS_THEN_PAYPAL_RETIRE_2026-10-15.md`. It does NOT amend current G3S1S (inactive Stripe plugin only), and any eventual removal requires a separate reviewed exact-target decommission Gate with rollback and preservation of historical PayPal/Woo records. PPCP currently absent in local G3C; do not install it merely to remove.
 
 - Owner selects **Stripe as TARGET PRIMARY payment provider**.
 - Existing PayPal Payments Sandbox evidence preserved; do not disable/uninstall unless Owner separately authorizes a post-validation migration.
