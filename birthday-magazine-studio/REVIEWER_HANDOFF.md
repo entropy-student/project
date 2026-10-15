@@ -318,7 +318,9 @@ CURRENT_GATE=G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE
 
 `G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE` — current Gate: `docs/G3S1SV_VERIFY_NEW_CHAT_DB_RESTORE_THEN_INACTIVE_STRIPE_2026-10-15.md`.
 
-**New material Owner report:** Another normal Codex conversation reports actual MariaDB backup **import exit 0, 58/58 tables, no errors**. See `docs/OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md`. This strongly suggests the earlier failure/blocked command was session/command-specific, **not proven database corruption**. Exact cause of earlier `CreateProcess blocked by policy` remains unknown.
+**Latest G3S1SV preflight (OWNER_REPORTED):** A subsequent Codex chat stopped before any local action when `codex_apps/github.fetch_pr` for PR #64 returned `Transport closed`. This is a **Codex GitHub connector transport issue**, distinct from SQL import or Windows execution policy. Reviewer independently read PR #64 and the Gate through the connected GitHub app; PR remains Open/unmerged at `d13b27...`. Record: `docs/OWNER_RELAY_G3S1SV_GITHUB_TRANSPORT_CLOSED_2026-10-15.md`. Same G3S1SV Gate stays current but cannot execute until Codex's **normal** GitHub preflight connection is working. No Stripe/PayPal/DB writes in this attempt, as Owner reported. Do not create another diagnostic Gate or use SSH/VPS/alternate command tools to substitute for Codex's connector.
+
+**Prior new-chat import report:** Another normal Codex conversation reports actual MariaDB backup **import exit 0, 58/58 tables, no errors**. See `docs/OWNER_RELAY_G3S1SV_NEW_CODEX_CHAT_DB_RESTORE_SUCCESS_2026-10-15.md`. This strongly suggests the earlier failure/blocked command was session/command-specific, **not proven database corruption**. Exact cause of earlier `CreateProcess blocked by policy` remains unknown.
 
 **Need just one bounded correlation:** Check the successful operation used the exact existing protected G3S1S `wordpress-db-consistent.sql` bytes matching the private backup manifest; verify the MariaDB 11.4.7 scratch target was fully isolated and did not mount original volumes; preserve native exit 0, 58-table and read-compatibility evidence. Do not redo successful import merely for proof. Reuse earlier WordPress-file and bind-source recovery PASS; confirm backup freshness before any plugin write. Current formal backup PASS is still PENDING, not silently assumed from a two-line result.
 
@@ -392,9 +394,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. In the **new working Codex conversation**, read back the already-completed import's backup identity, native exit 0, 58/58 tables, scratch isolation and original data preservation; do not repeat import.
-2. If full current backup/rollback compatibility is proven, conditionally install the official compatible Stripe Gateway **inactive only** in the same Gate. If missing proof, return precise blocker; no broad repeat diagnostic loop.
-3. Save sanitized PR #64 Evidence; STOP for Reviewer. No PayPal change or Stripe provider/payment actions.
+1. First restore/verify Codex's **official GitHub plugin connection** in the same app, then perform one normal **read-only PR #64 metadata lookup**. If `Transport closed` persists, STOP with one precise error; no SSH/VPS or unofficial fallback.
+2. Once normal GitHub preflight succeeds, in the **new working Codex conversation**, read back already-completed import's backup identity, native exit 0, 58/58 tables, scratch isolation and original data preservation; do not repeat import.
+3. If full current backup/rollback compatibility is proven, conditionally install the official compatible Stripe Gateway **inactive only** in the same Gate. If missing proof, return precise blocker; no broad repeat diagnostic loop.
+4. Save sanitized PR #64 Evidence; STOP for Reviewer. No PayPal change or Stripe provider/payment actions.
 
 
 ## OWNER_ACTION_REQUIRED
