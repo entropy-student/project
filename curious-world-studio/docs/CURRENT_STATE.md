@@ -1,6 +1,8 @@
 # Curious World Studio｜唯一当前状态（2026-10-15）
 
-> **2026-10-15 Owner已授权下一轮（尚未实施）**：`MEDIA-OPERATIONS-INTEGRATION`，仅将现有素材搜索/筛选/显式ID下载/QA、按需Docker启停封装成**供Codex统一调用的轻量CLI**，不做Owner常用GUI、VPS或常驻后台。正式执行范围见[唯一Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。后续真实实现须Windows Codex隔离分支PR+独立Reviewer验收；`MEDIA_OPERATIONS_INTEGRATION_PASS`**尚未成立**，正式制作仍HOLD。
+> **2026-10-15最新Reviewer裁决：`MEDIA_OPERATIONS_INTEGRATION_RETURN_FOCUSED_FIX`。** [PR #131](https://github.com/entropy-student/project/pull/131)已实现统一JSON CLI并保持OPEN未合并；Windows报告51项测试通过，独立Reviewer复核ZIP（SHA256 `adad9a05a389be07173a939d20b482cc45131a3576654cabf94b6600ebb5fd42`，30项SHA/29项manifest）、在Linux复跑50 PASS/1项Windows专项SKIP。**实际搜索仅4get成功，SearXNG video/image连接中断；部分搜索仍ok:true/exit0可能误导代理；真实运行中中断清理尚未实测。**已将3项定向返工写在PR Review评论，当前**未获Gate PASS、未合并**。旧项目G2–G4技术PASS不受影响，CW-0005继续HOLD。
+
+> **此前Owner授权本轮（现在已实施为PR，待修复/Review）**：`MEDIA-OPERATIONS-INTEGRATION`，仅将现有素材搜索/筛选/显式ID下载/QA、按需Docker启停封装成**供Codex统一调用的轻量CLI**，不做Owner常用GUI、VPS或常驻后台。正式执行范围见[唯一Gate](MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。后续真实实现须Windows Codex隔离分支PR+独立Reviewer验收；`MEDIA_OPERATIONS_INTEGRATION_PASS`**尚未成立**，正式制作仍HOLD。
 
 > **最高优先级事实入口，替换此前逐轮叠加的“最新状态”段落。** 主线状态：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**MEDIA素材技术闭环已通过，正式制作没有放行**。下次协作先读本页与[当前Reviewer交接](REVIEWER_HANDOFF_CURRENT.md)；旧执行合同/旧报告保留为历史，不再以其中“待执行”口吻发起任务。
 >
