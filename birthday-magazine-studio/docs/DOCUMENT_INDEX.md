@@ -13,7 +13,10 @@ These are the **current-stage** documents; historic visual/payment Gates below r
 | `REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md` | G3S0 formal **PASS limited to readiness classification** |
 | `evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md` | Executor's Owner-relayed findings with provenance / unknown limitations |
 | `OWNER_DECISION_G3S1_LOCAL_RECOVERY_PRIORITY_2026-10-15.md` | Owner reports possible cleanup and requests safe recovery of existing G3C; no deletion proved and no bypass granted |
-| `G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | **CURRENT Gate:** recoverable local DB/files backup, then official Stripe plugin installed inactive if absent |
+| `G3S1SR_DB_RESTORE_DIAGNOSTIC_CONDITIONAL_STRIPE_INACTIVE_2026-10-15.md` | **CURRENT Gate:** bounded isolated DB restore proof, then conditional inactive Stripe installation within same round |
+| `REVIEWER_DECISION_G3S1S_RETURN_BACKUP_RESTORE_UNVERIFIED_2026-10-15.md` | **Reviewer RETURN:** DB import failed exit 1 and exact error was not retained; backup not fully restorable |
+| PR #64 `evidence/g3s1s/G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | Executor's private backup/hash/file restore PASS and isolated DB restore unverified |
+| `G3S1S_POST_RECOVERY_OFFICIAL_STRIPE_GATEWAY_INACTIVE_STAGING_2026-10-15.md` | Previous Gate RETURN; Stripe not downloaded or installed |
 | `OWNER_DECISION_G3S_STRIPE_PASS_THEN_PAYPAL_RETIRE_2026-10-15.md` | **NEW Owner decision:** remove PayPal only after verified Stripe end-to-end PASS and separate safe decommission Gate, not now |
 | `REVIEWER_DECISION_G3S1R_PASS_LOCAL_RUNTIME_RESTORED_2026-10-15.md` | **Formal Reviewer PASS:** original WordPress/Woo local site restored, no reinstall or payment proof |
 | PR #64 `evidence/g3s1/G3S1R_ONE_ROUND_WORDPRESS_LOCAL_RECOVERY_2026-10-15.md` | Executor source of host-local curl/Docker/Woo/plugin status, PR commit `ee031365...` |
