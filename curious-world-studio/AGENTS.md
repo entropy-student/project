@@ -1,7 +1,8 @@
 <!-- CWS-AUTHORITATIVE-ENTRY-20261015 -->
+> **Owner最新批准（2026-10-15，尚待执行）**：`MEDIA-OPERATIONS-INTEGRATION`，只实现供Codex调用的本机CLI（搜索、候选ID、按ID下载、QA、HTML素材库、Docker按需启停），不做GUI或常驻服务。统一执行合同：[MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md](docs/MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)。新代码需隔离PR+Reviewer；G2-G4已TECHNICAL_ACCEPT、统一入口未PASS、CW-0005正式HOLD。
 # Curious World Studio｜Agent / Codex 唯一入口
 
-> **最新有效结果**：`MEDIA-INTEGRATION PR#129 MERGED`；本机`G2_G3_G4_TECHNICAL_ACCEPT`（Ubuntu备份注销、Docker按需搜索、真实素材下载/解码/Owner Edge手播通过）。**Docker Compose和一键启停工件尚未通过正式PR入main；媒体动作/复用权、CW-0005制作Gate尚未通过。** 下一项只有**建议**`MEDIA-OPERATIONS-INTEGRATION`，不自动运行。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
+> **最新有效结果**：`MEDIA-INTEGRATION PR#129 MERGED`；本机`G2_G3_G4_TECHNICAL_ACCEPT`（Ubuntu备份注销、Docker按需搜索、真实素材下载/解码/Owner Edge手播通过）。**Docker Compose和一键启停工件尚未通过正式PR入main；媒体动作/复用权、CW-0005制作Gate尚未通过。** 当前已获Owner授权`MEDIA-OPERATIONS-INTEGRATION`，等待Windows Codex执行/PR/独立Review。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
 >
 > **先读**：[唯一当前状态](docs/CURRENT_STATE.md) → [最新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md) → [MEDIA架构/阶段表](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。旧`G0`、`G1A`、`G1B`、`DOCKERFREE`和已经完成的`G2-G4`“下一步”指令**全部历史化**，不能再根据旧文字重新卸载Ubuntu、安装组件或要求Owner重播旧样片。
 
@@ -27,6 +28,6 @@
 - `HF-FIND`：按唯一主协议执行HF日榜发现；不自行制作视频。
 - `TOPIC-BANK`：按[工作流](research/topic-bank/WORKFLOW_V1.md)和[九源注册表](research/SOURCE_SYSTEM_FINAL_V1.md)，修改母表/看板时先运行`python curious-world-studio/research/topic-bank/validate_topic_bank.py`及`python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py`。
 - `STYLE-REVIEW`：仅依据视觉锁与真实证据评论样式，不自动开发渲染器。
-- `MEDIA-OPERATIONS-INTEGRATION`、`MEDIA-R6`、`MEDIA-R7`或`PROD-*`：均需新的Owner授权和明确验收范围，不能仅由路线图触发。
+- `MEDIA-OPERATIONS-INTEGRATION`本轮已授权且必须遵守[唯一Gate](docs/MEDIA_OPERATIONS_AGENT_ENTRY_GATE.md)；`MEDIA-R6`、`MEDIA-R7`、`PROD-*`仍需单独Owner授权。
 
 历史G0/M2/阶段报告只用于追溯。**GitHub main记录稳定代码和长期规范，执行ZIP/媒体保留Owner本机，不为每轮普通QA新增重复Git报告。**
