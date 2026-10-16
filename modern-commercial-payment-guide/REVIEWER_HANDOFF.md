@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1冻结7/29/42结构 PASS、P2已审知识底稿保留；结构保留型 human-writing 全章重跑**Reviewer PASS**（安全撤下两份短文、H1/H2/H3全保留、九节知识与案例/表格/金融条件完整）。新完整稿仅作为 Owner 阅读体验待确认的候选，**不自动覆盖原稿、不合并PR、不启动其他Skill、不推进P3–P5**。
+**当前闸门：** P1冻结7/29/42结构审查 PASS；P2完整结构化 human-writing 内容 Reviewer PASS，但Owner新增两个最终目标：**愿意读**、**读完真正能解答自己的收款问题**。已释放只读 [P2双目标读者价值验证Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_READER_VALUE_VALIDATION_GATE.md)，仅诊断和准备真人测试工具包；没有新稿改写、真实测试或P3授权。PR #132 Open/Draft/未合并。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_STRUCTURED_HUMAN_WRITING_OWNER_REVIEW_PENDING`（最新结构化P2候选Reviewer PASS；Owner对最终阅读体验尚未确认）。
+- **PROJECT_STAGE：** `P2_READER_VALUE_VALIDATION_GATE_RELEASED`（结构/知识底稿和新稿已审通过；阅读意愿与商家问题解决能力待独立验证）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
-- **CURRENT_ACCEPTED_STATE：** P1冻结7/29/42结构 PASS；PR #132 原完整P2知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 仍原样保留；两份旧短篇在当前PR树中删除、历史可恢复；新增完整P2 human-writing 候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 经Reviewer核对标题/章节知识/93表格行/两案例/官源/金额，实验 Gate PASS；文风是否采纳由Owner决定。
-- **CURRENT_GATE：** `MCPG-P2-ROLLBACK-AND-HUMAN-WRITING-STRUCTURED-RERUN-20261016` **Reviewer PASS / CLOSED_FOR_EXPERIMENT**。新稿与 [PR #132 Reviewer 正式评论](https://github.com/entropy-student/project/pull/132#issuecomment-6208802247) 已回读；**当前无新的 Executor Gate**。
+- **CURRENT_ACCEPTED_STATE：** P1冻结7/29/42结构PASS；P2已审知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 完整保留；P2结构保留 human-writing 候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 经Reviewer结构/事实/知识审核PASS；这**不等于**已证明实际读者愿意阅读或获得个人化可执行解答。
+- **CURRENT_GATE：** `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016`，[Gate全文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_READER_VALUE_VALIDATION_GATE.md)，只读验证稿内A阅读驱动力与B输入→答案，生成诊断报告与真实读者小测试包并STOP_AT_REVIEWER，不编辑P2全文。
 - **CRITICAL_CONSTRAINTS：** 不改变最高准则/P1已冻结7/29/42；**已审P2全文原稿一字不覆盖**；以其原本H1、5个H2、9个H3**逐字、原层级、原顺序保留**为不可退让的验收；所有小节各自保留判断/例子/方法和金融边界；先撤两份短篇后再重跑；仅human-writing；证据append-only、无force push/reset；不触碰支付/生产，不进入P3/HTML。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** 两份Owner拒绝的独立短篇从PR当前树**已安全撤销且查证NOT_FOUND**，仍可自旧 commits `d0f000...` 和 `c334105...` 恢复；原P2正文未动；新完整候选可独立删除，历史Evidence持续append-only。GitHub compare确认无force/reset/交叉项目修改，PR Open/Draft/未合并。
-- **UNRESOLVED：** 结构化新稿虽Reviewer认为比原稿更自然且保住5/9知识体系，尚无真实读者完读证据；Owner未亲自确认其阅读欲望与写作风格。银行真实到账、各服务商具体商户资格/费率及FX仍须按实证确认，不能把金融示范当已开通。
-- **NEXT_STEP：** Owner 阅读新完整P2①板块后，反馈是否接受这种**每小节内提升表达、框架完全保留**的风格；如果不满意说明位置，再由Reviewer判断是否需要精准修复。本轮不再默认叠加写作Skill、重启全文或进入P3。
-- **OWNER_ACTION_REQUIRED：** 阅读 [完整结构化human-writing候选](https://github.com/entropy-student/project/blob/bcf703636ef91d5dcde055442fa760e1995be905/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_CANDIDATE.md)，确认是否认可在保留全部1.1–5.1框架前提下的阅读效果。**无需此刻再派Codex任务。**
-- **EVIDENCE_POINTERS：** PR #132 head `bcf703636ef91d5dcde055442fa760e1995be905`；新稿 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`、原稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、Evidence Blob `9aa25725fb2bcca1a94ef9b039873795fe78fe9d`；本轮正式 Reviewer [PR 评论 #6208802247](https://github.com/entropy-student/project/pull/132#issuecomment-6208802247)，原 Gate [文档](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md)。
+- **UNRESOLVED：** 新稿对普通大陆个人卖家的阅读吸引力仅有编辑主观判断、真人反馈`UNVERIFIED`；能否由8项经营输入推出6类可操作输出（含具体核验对象、准入和合法到账）需在3类商家场景中逐项测试；真实商户资格/银行入账仍未知。
+- **NEXT_STEP：** 独立Executor在PR #132只新增 `docs/P2_READER_VALUE_DIAGNOSTIC.md` 和 `docs/P2_READER_TRIAL_KIT.md`，补充append-only Evidence并停Reviewer；Reviewer独立核查后再决定是否需定向改稿，真人读者愿意读的结论仍待真实反馈。
+- **OWNER_ACTION_REQUIRED：** 将 [P2双目标读者价值验证Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_READER_VALUE_VALIDATION_GATE.md) 交给独立Codex Agent执行；完成后的诊断稿提交原Reviewer。当前不用修改文风、不授权招募真实读者/第三Skill。
+- **EVIDENCE_POINTERS：** PR #132固定测试起点 head `bcf703636ef91d5dcde055442fa760e1995be905`；结构化候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`；知识原稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`；上轮 Reviewer PASS 评论 `6208802247`；本轮Gate `P2_READER_VALUE_VALIDATION_GATE.md`，发布后待独立Executor/Reviewer检查，真实读者数据不存在。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -205,3 +205,12 @@
 - **财务与适用条件：** 重新核对公开 PayPal、Stripe HK、Shopify中国与WorldFirst、Paddle官方规则；本轮另外独立复算15组关键数值全部一致，未把企业US$35套给个人；实际银行资金与商户许可保持UNKNOWN。
 - **阅读质量判断：** 文本在各小节内把实际商家问法、解释和行动判断串联，结构没有再被扁平化。Reviewer 判 `PASS` 仅限本受限实验，**不代表Owner最终风格许可、阅读完读率改善的客观证明或批量生产授权**。不再建议连续增加第三Skill。
 - **当前停点：** `P2_STRUCTURED_HUMAN_WRITING_OWNER_REVIEW_PENDING`；PR Open/Draft/未合并，P3–P5 PENDING；Owner直接阅读完整新稿反馈后再考虑下一个Gate。
+
+
+## 十八、P2 双目标读者价值验证 Gate（2026-10-16）
+
+- **Owner 新标准：** 至少满足两个核心条件：①人愿意读；②读完真正解答疑惑、能根据自己的条件选择收款方案。原有标题完整、信息多、正确费率不再单独代表终稿质量。
+- **Reviewer 决定：** 不调用第二/第三写作 Skill、不再次改写正文；先在[本轮只读诊断 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_READER_VALUE_VALIDATION_GATE.md)评估。先用开头和5组二级问题诊断“想不想读”的编辑代理指标，再用3种商家、8项输入、6类输出检验“能不能给出有用答案”，并制作供真实商家试读的轻量问题卡。
+- **目标读者：** 中国大陆个人开发者/个人商家、软件订阅创业者、大陆企业跨境独立站经营者；真实资格/账户/银行没有证据时必须给条件化判断而不是承诺开户成功。
+- **验收分层：** Executor只能验证稿内内容和编制真实测试材料；`EDITORIAL_PROXY` 不是真实的阅读意愿。**仅真人反馈能验证意愿**，未开展时标 `HUMAN_READING_UNVERIFIED`。案例输入输出及诊断必须标来源和不足，不得编假用户数据。
+- **当前状态：** `GATE_RELEASED / EXECUTOR_PENDING`；PR #132 head `bcf703636ef91d5dcde055442fa760e1995be905`；两份原稿都保留且不修改，P3–P5继续PENDING，未启动新稿或外部读者测试。
