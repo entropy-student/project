@@ -426,3 +426,64 @@ No service, account, bookmark, or business data was created. Existing Docker inv
 
 ### EXECUTOR_RESULT
 RETURN_MEILI_PULL_LAYER_DOWNLOAD_OR_EXTRACT — exactly one authorized pull was attempted and accurately classified; it failed before deployment. The precise sub-error is UNKNOWN because the Gate required discarding raw output after safe classification. No second pull, service start, proxy/system change, or other-project action occurred. Stop for Reviewer decision on the next bounded diagnostic Gate; any future global proxy/system action requires separate explicit Owner authorization.
+
+
+## G1G — Docker Hub proxy-root-cause diagnosis — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+GATE_ID=KARAKEEP-WIN-G1G-HUB-PROXY-ROOTCAUSE-20261016
+OWNER_AUTHORIZATION=OWNER_REPORTED Owner authorized only bounded read-only diagnosis, sanitized Evidence append/read-back, and Reviewer handoff. No image pull, Compose start/stop, proxy/VPN/certificate/system change, or other-project action was authorized.
+BASELINE=DIRECT_READBACK Handoff blob 222edd363c30082d49b96e370ad57d52d056dd6e; G1F Evidence blob 02b69eae4c6470094d9383b26300c5c60eadc623; Governance v0.2.7 blob 3917c88a7f36df7a53758b3879a92703d659ef9d.
+
+### PREFLIGHT_FACTS
+- TARGET_IDENTITY: DIRECT_READBACK native Windows 11, interactive PowerShell 7.6.5 session with Explorer in the same session; Docker context desktop-linux and Engine 29.7.2 reachable.
+- ACCEPTED_CONFIG: DIRECT_READBACK the accepted Compose file exists and SHA-256 still matches cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16; Compose and .env are current-user-owned with protected DACLs and three allowlisted principals. .env was not read; no Secret value or hash was inspected or emitted.
+- ACCEPTED_IMAGES: DIRECT_READBACK both previously accepted GHCR image digests remain present. No image was pulled or replaced.
+- HOST_PROXY_STATE: DIRECT_READBACK WinINET proxy enabled, PAC absent, auto-detect disabled; WinHTTP mode direct. No proxy endpoints, PAC contents, credentials, or environment values were read into Evidence.
+- ENGINE_PROXY_FLAGS: DIRECT_READBACK Docker Engine reports HTTP, HTTPS, and NO_PROXY configuration present. Values were not recorded. This does not identify the effective Docker Desktop Containers proxy mode or prove the route used by image pulls.
+- DESKTOP_SETTINGS: DIRECT_READBACK the expected settings-store file exists and parses, but its property names contain no Containers proxy, Docker Desktop proxy, or proxy mode keys. No allowlisted mode enum could be extracted; both effective modes remain UNVERIFIED. The file DACL is not protected and includes one non-allowlisted ACE with effective read/write rights; the identity is withheld. The file was inspected only in local process memory and no unrelated setting values were emitted.
+- LOG_METADATA: DIRECT_READBACK the official httpproxy.log candidate and one same-directory backend log candidate exist. Their DACLs are not protected and each includes a non-allowlisted ACE with effective read/write rights; identities and paths are withheld. Log contents are therefore treated as local diagnostic observations, not tamper-proof records.
+- G1F_TIME_ANCHOR: INFERRED the actual Meilisearch pull timestamp was not recorded. The bounded correlation window used the G1F Evidence commit time 2026-10-16T05:58:57Z +/- 30 minutes only as a proxy, not as the operation time.
+- HTTP_PROXY_LOG_WINDOW: DIRECT_READBACK within that inferred window, 12 records at 2026-10-16T05:54Z–05:55Z matched registry/auth domain categories and CONNECT. No CDN category, recognized HTTP status, TLS, EOF, timeout, DNS, authorization, or proxy-connect failure marker was observed; no log line identified the Containers proxy or fallback route. Attribution to the actual pull is INFERRED only.
+- BACKEND_LOG_WINDOW: DIRECT_READBACK the bounded same-directory backend log candidate had no matching registry/auth/CDN event in the inferred window. Because the pull timestamp is missing, this does not prove that the pull had no backend event.
+- HOST_VS_ENGINE_PATH: DIRECT_READBACK host WinINET/WinHTTP modes and Engine proxy configuration-presence flags were sampled separately. No new host connectivity probe or authenticated/network image request was performed. Neither the historical Windows Host timeout nor the Engine proxy flags establish the effective Containers proxy route or the Meilisearch failure point.
+- CLASSIFIER_AUDIT: INFERRED a no-secret synthetic fixture combining “failed to copy”, “failed to do request”, and “i/o timeout” is classified as LAYER_DOWNLOAD_OR_EXTRACT by a broad-marker-first rule but as TIMEOUT by cause-first rules; a synthetic layer-registration fixture remains LAYER_DOWNLOAD_OR_EXTRACT. The exact G1F classifier source and raw error were not retained, so the real G1F failure is not reclassified.
+
+### ACTUAL_CHANGES
+- LOCAL_MUTATIONS=0. Read-only metadata, Engine state, allowlisted settings-key parsing, and bounded in-memory log classification only. No Compose/.env readback beyond required file metadata/hash, Docker pull/up/down, network probe, system change, or non-target project action occurred.
+- Appended this sanitized G1G Evidence entry to project main. No local diagnostic file or raw log was created or retained.
+
+### OBJECTIVE_READBACK
+- The two proxy modes requested by G1G cannot be established from the current settings-store content; the current Windows proxy modes and Docker Engine proxy-presence flags do not substitute for that missing mode readback.
+- The available httpproxy log gives only an inferred-time-window registry/auth CONNECT observation. It contains no visible error class or CDN request that can locate the failed layer transfer. The backend candidate adds no matching event in that inferred window.
+- Root cause of G1F remains UNVERIFIED: Docker Hub registry/auth or layer CDN failure, proxy routing, and the discarded low-level Docker error cannot be distinguished from retained evidence. The broad G1F layer class is not proof of extraction/storage failure.
+- UNIQUE_NEXT_ACTION: Owner performs a read-only view of Docker Desktop > Settings > Resources > Proxies and relays only the displayed Containers proxy mode and Docker Desktop proxy fallback mode (or “not configured”). Do not change the page or relay proxy addresses, PAC text, credentials, or other settings. The current shell readback has no mode fields and no UI state, so this is the smallest direct acquisition. No rollback is needed for a read-only view. Reviewer can then choose a narrowly scoped next Gate; no retry or configuration change is implied here.
+- Project remains NOT_DEPLOYED; no service stability claim applies.
+
+### VALIDATION
+- Latest main Handoff, latest G1F Evidence, and canonical Governance v0.2.7 were read immediately before the Evidence append and their blob SHAs matched the current G1G baseline.
+- Native Windows identity, current Engine/context, accepted Compose fingerprint, .env metadata/protection only, and both accepted GHCR digests were directly read back.
+- The settings file was inspected for property names and recognized mode enums only; proxy values and other settings values were not emitted. Logs were bounded to the tail of the named official candidates, processed locally, and reduced to allowlisted categories/time buckets. Raw lines were not retained or shown.
+- Synthetic classifier fixtures ran without credentials or project data; no result was used to revise the historical G1F failure.
+- No pull, Compose up/down, settings write, or other-project operation was issued. After the append, GitHub main readback was required to match the complete appended content and preserve the prior Evidence prefix.
+
+### ANOMALIES
+- UNVERIFIED_CONTAINERS_PROXY_MODE: settings-store.json has no proxy mode keys, so the effective Containers proxy mode and Docker Desktop proxy fallback cannot be identified from shell readback.
+- HISTORICAL_PULL_TIME_UNAVAILABLE: G1F records the Evidence commit time, not the actual pull time. Log correlation is therefore explicitly inferred.
+- LOG_DIAGNOSTIC_TRUST_LIMIT: settings/log files have an unprotected DACL with a non-allowlisted read/write ACE; no identity details are disclosed, and those files cannot be treated as tamper-proof evidence.
+- RETURN_CLASSIFIER_GRANULARITY: synthetic audit demonstrates a broad layer marker can mask an inner network timeout; the actual G1F error and exact classifier implementation are unavailable.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1G entry: sanitized local proxy-mode availability, time-window log classification, host/Engine distinction, classifier audit, and the one required next action.
+- G1F source record: main commit 620137a07297cee3d5cd5716fab42685b06b89b6; Evidence blob 02b69eae4c6470094d9383b26300c5c60eadc623.
+- G1G baseline Handoff blob 222edd363c30082d49b96e370ad57d52d056dd6e; canonical Governance v0.2.7 blob 3917c88a7f36df7a53758b3879a92703d659ef9d.
+- Raw settings, proxy endpoints, log lines, URLs, IPs, credentials, Secrets, local absolute paths, and unrelated project data are not included.
+
+### ROLLBACK_EFFECT
+No local rollback is needed. This append-only Evidence entry is the sole repository change; no Docker or Windows state changed. Existing Compose/.env and GHCR images remain untouched.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+No image pull, service/container/volume/network creation, account, bookmark, or business data change occurred. The accepted GHCR images remain present; no non-target Docker resource was queried or changed.
+
+### EXECUTOR_RESULT
+PASS_CANDIDATE — G1G authorized read-only diagnosis and evidence handling are complete, but the effective Docker Desktop proxy modes and root cause remain UNVERIFIED. The one concrete next action is the Owner’s read-only Proxies-page mode readback specified above. No retry, deployment, or settings change was performed; stop at Reviewer.
