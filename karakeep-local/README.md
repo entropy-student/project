@@ -1,52 +1,66 @@
-# Karakeep Local · 项目统一入口
+# Karakeep Local｜文件在哪里、怎么用、如何交给本机 Codex
 
-> 状态更新时间：2026-10-16
-> 原本机安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`；Karakeep 保留运行。
-> **安装/历史状态**：原本机安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`，保留使用；G2B R2 浏览器 Canary `RETURN` 未执行；G3A 曾因 Computer Use 停止 `RETURN`。最新独立 G3B 只读资产盘点 **PASS**，不改变历史 RETURN。
-> 以后项目事实以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一当前状态权威；本文件是索引，不替代 Handoff。
-> **本机归档盘点最新状态**：G3B 只读工作区资产核查 **PASS**，详细结果见 [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md)。`SaSS` 根仅有 `.git`，仓库归属、未推送历史和其它项目引用不明，**继续保留，不批准归档或删除**。没有待执行的新 Gate；原安装仍 CLOSE，G2B/G3A RETURN 不变。
+> **本文件是 Owner 的唯一日常使用入口。** 技术项目状态的权威记录仍见 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)。  
+> 最后整理：2026-10-16；GitHub：`entropy-student/project` 的 `main/karakeep-local/`。  
+> **原安装已结项、应用及数据原位保留。** G3B 的“只读盘点 PASS”不代表删除授权；没有正在执行的新 Gate。  
+> 这里整合的是**说明和文档入口**，不是将运行数据搬到 GitHub 或把整个本机项目迁移到单一文件夹。
 
-## 一、所有项目文档的统一目录
+## 1. 我所有相关文件现在在哪里？
 
-**GitHub 项目资料目录**：https://github.com/entropy-student/project/tree/main/karakeep-local
+请先区分**项目管理文档**、**Windows 本机运行配置**、**Docker 用户数据**三件事：
 
-| 文件 | 用途 |
-|---|---|
-| [README.md](./README.md) | 文档入口、本机配置/数据位置、日常启动命令 |
-| [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md) | Windows 本机资产归档方案；阶段 A 已授权、尚未执行，后续整理/清理未授权 |
-| [G3A_LOCAL_ASSET_READONLY_GATE.md](./G3A_LOCAL_ASSET_READONLY_GATE.md) | 历史阶段 A Gate：只读 Docker/配置报告完成、`SaSS` 未查，安全中止，**不是当前执行指令** |
-| [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md) | 已完成 Gate（历史执行要求）；**Reviewer 已判 G3B 限定范围 PASS，不可再次执行或解读为删除权限** |
-| [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md) | **当前资产地图**：SaSS Git 元数据、Karakeep 配置/卷/WSL2 保存位置、分类及不能删除的原因 |
-| [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) | 唯一当前状态、正在授权的 Gate、后续 Reviewer 交接 |
-| [DECISION_LOG.md](./DECISION_LOG.md) | Owner 决定、Gate 调整及理由；历史决策保留 |
-| [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) | 原安装实施正式 Close 的结项报告及其后补充说明 |
-| [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) | 各轮脱敏执行证据（append-only；**当前最后提交的 Executor Evidence 为 G3B**，旧 G1J 前缀未变） |
+| 类别 | 已核实的位置（可直接复制） | 保存什么 | 能否删除或搬动 |
+|---|---|---|---|
+| **项目文档（主要入口）** | [GitHub `main/karakeep-local/`](https://github.com/entropy-student/project/tree/main/karakeep-local) | 本 README、项目交接、决定、验收与资产清单等 **Markdown 文档** | 在 GitHub 统一查看；不要把历史日志当垃圾删除 |
+| **本机配置目录** | Windows 资源管理器输入 `%USERPROFILE%\KarakeepLocal` | 已核实顶层有 `docker-compose.yml`（运行配置）和 `.env`（含密钥）。**这里不是 Markdown 文档归档文件夹** | **不能删/改名/搬动** |
+| **真实收藏和账户** | Docker 命名卷 `karakeep-local_data`，容器内 `/data` | 网页收藏、账号/数据库、抓取资产等 | **不能删/迁移** |
+| **搜索索引** | Docker 命名卷 `karakeep-local_meilisearch`，容器内 `/meili_data` | Meilisearch 持久数据 | **不能删/迁移** |
+| **Docker Desktop 后端** | Windows 路径**目录** `%LOCALAPPDATA%\Docker\wsl`（此前本机报告） | WSL2 / Docker 的底层共享存储；确切 VHDX 文件完整路径未核实 | **不能手动清理** |
 
-**GitHub 是管理文档的统一入口，不是收藏数据库，也没有密码、`.env`、Docker 数据卷或可用于数据恢复的备份。**
+**重要的事实边界：**
+- 目前**已证实的 Markdown 项目文档存放位置是 GitHub**；现有本机检查并未确认一个额外的本地 Markdown 文档归档目录。不要把 `%USERPROFILE%\KarakeepLocal` 当成文档库，那里只有已报告的两个运行配置文件。
+- GitHub **没有真实收藏数据库、密钥、Docker 数据卷或可以恢复用户资料的备份**。它只是文档存放处。
+- 两个 named volumes 的 Linux 内部位置分别为 `/var/lib/docker/volumes/karakeep-local_data/_data` 和 `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`（此前本机报告）。**这些不是 Windows 资源管理器中的普通目录**。
+- **没有已确认可安全删除的本机文件，删除许可清单为空。** Owner 未要求备份/迁移或重装，数据丢失后的恢复能力仍 `UNVERIFIED`。
+- 以上只覆盖当前 Karakeep 已知资产，**不是 Windows 全盘文件盘点**；本次使用说明不检查任何其它工作区或项目根目录。
 
-## 二、你的 Windows 电脑上，各部分到底放在哪里
+## 2. 文档只分两个部分：平时只看第一部分
 
-本地有三个不同层次，**不是同一个普通 Windows 文件夹**：
+### 第一部分：日常使用说明（1 个文件）
 
-| 内容 | 位置/标识 | 当前事实 |
+**就是你现在看的这个 [README.md](./README.md)**。已经整合了：
+- 文档在 GitHub 哪里、本地配置与收藏实际在哪里；
+- 哪些东西必须原位保留；
+- 日常打开或按需启动 Karakeep 的方法；
+- 将来在**本机 Codex** 中怎么描述这个项目。
+
+**以后绝大多数时候，只需收藏本 README 链接。** 不用每次从几十轮 Gate 和 Evidence 里找操作步骤。
+
+### 第二部分：项目技术档案（为下一位 Reviewer/Codex 保留，不是给日常用户逐页看的）
+
+都在**同一个 GitHub `karakeep-local/` 目录**，没有为分类而移动或删除历史记录：
+
+| 文件 | 保存的内容 | 什么时候才需要 |
 |---|---|---|
-| 本机配置目录 | `$env:USERPROFILE\KarakeepLocal` | 经历史本机执行验证存在；包含受保护 `docker-compose.yml` 和 `.env` |
-| Karakeep 收藏/账号/抓取资产 | Docker named volume `karakeep-local_data` | 由 Docker Desktop Linux 引擎保存、映射到 Web 容器内 `/data` |
-| 搜索索引 | Docker named volume `karakeep-local_meilisearch` | Docker 管理，映射到 Meilisearch 容器内 `/meili_data` |
-| 程序镜像/容器/上述 Docker 卷的主机磁盘后端 | Docker Desktop 管理的 Linux 存储/虚拟磁盘 | G2B Executor 报告 WSL2 磁盘位置目录为 `%LOCALAPPDATA%\Docker\wsl`，**VHDX 文件名/完整路径仍 `UNVERIFIED`**；可能与其它项目共享 |
-| 项目进度与验收文档 | GitHub `project/karakeep-local/` | 同一个项目文档目录，独立于 Docker 用户数据 |
+| [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) | 当前技术状态、保护边界、已接受的结果、遗留问题 | 让新的 Reviewer/Codex 接手复杂工作 |
+| [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md) | 已知 Windows 配置、Docker 卷及限定范围的只读资产地图 | 要判断某个文件/目录是不是运行依赖时 |
+| [DECISION_LOG.md](./DECISION_LOG.md) | Owner 决策、为什么保留/暂停某项操作 | 需要追溯决策原因时 |
+| [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) | 原 Karakeep 安装实施正式 Close 的验收 | 需要证明安装曾完成时 |
+| [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) | 各轮执行证据（append-only，已有 G3B） | Reviewer 核验技术事实时 |
+| [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md) | 此前资产整理计划和边界 | 查历史整理方案时 |
+| `G3A_LOCAL_ASSET_READONLY_GATE.md`、`G3B_SASS_WORKTREE_READONLY_GATE.md` 等 | 历史执行指令 | 仅历史审计；**不要重新下发执行** |
 
-你在 Karakeep 网页新增一个收藏时，应用会将相关记录/抓取资产写入 `karakeep-local_data`，搜索相关数据保存在 `karakeep-local_meilisearch`。本轮 Executor 报告 Docker Linux 内部 mountpoints 分别为 `/var/lib/docker/volumes/karakeep-local_data/_data` 和 `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`；它们不是 Windows 资源管理器普通文件夹。**具体数据库文件名及 Windows VHDX 文件绝对路径未验证**。以上本轮新增细节来自 Owner 转交 Executor 报告，未附正式 G2B Evidence，不能当作 Reviewer 独立本机读回。
+这是**逻辑上两部分、物理上一个 GitHub 目录**的整理方式。保留原证据与历史，避免重复复制、遗失记录。以后增补日常入口内容优先修订本 README，不再为每次小问题新增一个用户阅读文件。
 
-**推荐且已决定的方式**：维持当前 Compose + 原 named volumes，**不**改为 Windows bind mount，不移动/复制/合并卷，不修改 Docker Desktop `Disk image location`，不直接打开/编辑底层 VHDX，也不为了“集中路径”修改镜像或数据。这样无需动已有账号/收藏，也不干扰其它 Docker 项目。
+## 3. 我以后在 Windows 本机怎样打开 Karakeep？
 
-本轮 G2B 报告已使用 `docker volume inspect`、容器 `Mounts` 和 Docker Desktop UI 做只读核对；无需为搜寻 VHDX 文件名继续操作或重复执行已接受的安装检查。具体来源、证据状态与停止边界见 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)。
+**情况 A｜Docker Desktop 和 Karakeep 已经运行**
 
-## 三、日常使用与手动启动
+直接用本机浏览器打开：**http://localhost:3000**。
 
-正常直接打开 http://localhost:3000 （只在同一台 Windows 本机）。
+**情况 B｜Karakeep 没有运行，但要重新打开**
 
-如果 Karakeep 没在运行，**先启动 Docker Desktop 并等待 Linux Engine 就绪**，再打开 Windows PowerShell 执行：
+先手动打开 **Docker Desktop**，等 Linux Engine 显示就绪。再打开 Windows PowerShell，执行：
 
 ```powershell
 Set-Location (Join-Path $env:USERPROFILE 'KarakeepLocal')
@@ -56,20 +70,25 @@ if ($LASTEXITCODE -eq 0) {
 }
 ```
 
-这是基于已冻结 Compose 的日常**按需启动**命令；G2B 不会为了验证它而主动停止或重启容器/电脑。已有镜像和两个 named volumes 必须保留。失败时报告当前报错，不随便卸载、重装或运行 `docker compose down -v` / `docker system prune`。
+这是**按需启动已经安装的服务**，不是重新安装。假如命令报错，把错误原因交给本机 Codex；**不要自行卸载/清理 Docker 卷、修改 .env 或重装**。
 
-## 四、G2B 中止结果与数据风险
+## 4. 以后怎样向本机 Codex 表达？（直接复制）
 
-- **本轮停止**：存储布局已报告完成只读核对，`KarakeepLocal` 顶层只有 `.env` 和 `docker-compose.yml`，**没有可删临时文件，实际删除 0**。Computer Use 无法充分确认 Windows 当前浏览器 URL 而停止，**未添加书签、未进行抓取/搜索/预览，也未执行新 HTTP 检查**。没有 G2B Executor Evidence 或 Commit SHA。Reviewer 已记录未完成、停止并等待 Owner 下一次指令。
-- **不自动重试**：旧 G2B R2 授权已经在停止条件下终止，不能重新下发原提示词强行操作浏览器；如果未来 Owner 要继续单条 Canary，需要 Reviewer 新审批边界。
-- Owner 已明确：**不做备份、恢复演练、迁移、Windows/Docker Desktop 重启测试、长期监控**。旧版包含备份的 G2B 已 `SUPERSEDED_UNEXECUTED`，不能执行。
-- 现有账户/收藏/搜索数据只存电脑上，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；电脑故障或 Docker 存储损坏可能永久丢失收藏。不能将这个风险写成已解决或将 GitHub 文档视为恢复材料。
-- **已审计的最后一轮 Executor GitHub Evidence 为 G3B 只读资产盘点**；其前缀保留 G1J 的全部历史执行证据。G2B/G3A 只以 Owner 转交报告保留中止记录，没有被重新判 PASS。Owner 登录/语言设置入口曾确认，是否最终切换简体中文仍 `UNVERIFIED`。
+> 请接手我 Windows 本机已经安装的 **Karakeep Local**，不是重新部署。  
+> 项目统一文档位于 GitHub `entropy-student/project` 的最新 `main/karakeep-local/README.md`；需要了解当前技术状态时再读同目录 `REVIEWER_HANDOFF.md`。  
+> 本机运行配置在 `$env:USERPROFILE\KarakeepLocal`，Karakeep 收藏数据位于 Docker named volume `karakeep-local_data`，搜索数据位于 `karakeep-local_meilisearch`。  
+> **我本次要做的是：【在这里填写任务】。** 只做该任务所需的最小检查；先说明执行方案、可能影响，再依据我的明确授权进行写操作。  
+> 不要重新安装或迁移，不要删除、清理、重置本机文件、Docker 数据卷、WSL2 存储或密钥，不要重试历史 G2B/G3A/G3B Gate；如只是查看状态，严格只读。**不要检查任何与当前任务无关的工作区或项目根目录。**
 
-## 五、本机文件整理：只读盘点已完成，下一步不自动删除
+例如将占位处换为：`检查为什么 http://localhost:3000 打不开，只读定位问题`；或 `告诉我现在 Karakeep 是否运行，如何打开`。
 
-**Reviewer 已于 2026-10-16 判 G3B 只读盘点 PASS。** 你现在可以直接从 [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md) 查本机资产放在哪里。已知疑似旧工作区是 `%USERPROFILE%\Documents\ChatGPT\SaSS`，G3B 发现它是只有 `.git` 元数据目录、普通工作树为空的本机 Git root；仓库无 origin/upstream，**未推送历史或独有 Git 对象尚不明确**，其它项目/进程是否引用也 `UNKNOWN`。因此它仍列为 `UNKNOWN_OR_SHARED`，**不能仅因工作树为空而删除**。
+**如果只是收藏网页，不需要 Codex。** 直接打开 Karakeep 网页使用即可。
 
-**防误删结论**：`%USERPROFILE%\KarakeepLocal` 的 Compose/`.env`、两个 Karakeep named volumes 以及 Docker Desktop WSL2 共享磁盘一律原位保留；`SaSS` 也先原位保留。GitHub 是统一管理文档入口，不是收藏/密钥备份。本轮没有可立即清理的确证候选，不再自动开新的扫描/整理 Gate。
+## 5. 现在的结论，以及能不能整理/删除文件
 
-如 Owner 将来明确希望把 SaSS 真正删除或归档，需要**独立授权**先核实 Git history 是否保存独有提交及其它运行方引用，并满足可重建/风险边界；不能使用现有 G3B PASS 作为删除许可。现有归档方案见 [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md)。
+- **已完成**：官方 Karakeep 的本机安装结项；GitHub 管理文档集中归档；已知本机运行配置及 Docker 卷的位置登记；限定范围只读盘点 G3B PASS。
+- **历史未完成**：G2B 浏览器单条收藏功能测试和 G3A 中止任务；不影响之前已确认的安装状态，也不需要因整理文档而补跑。
+- **不做/不得自行做**：数据迁移、备份/恢复、系统重启测试、全局 Docker 清理、删除任何未证明无引用的项目资产。
+- **目前可删除项：0 个（没有批准的删除目标）**。整理**文档**和清理**正在运行的资料**是两回事。
+
+**记住三个入口：** 文档看 **GitHub README**；要打开 Karakeep 用 **http://localhost:3000**；本机维护任务交给 **Codex 并指向此 README + Handoff**。
