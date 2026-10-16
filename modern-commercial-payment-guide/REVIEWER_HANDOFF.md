@@ -105,7 +105,7 @@
 | 阶段 | 工作范围 | 当前状态 | 具体成果位置 |
 |---|---|---|---|
 | P1 | 内容覆盖审查 | **PASS（Owner已确认，仅结构层）**；不代表全文答案通过 | 《现代商业支付系统_实施与内容工作文档.md》P1章节 |
-| P2 | ①收款方案选择的完整文字样板与新手教学重构 | **Owner冻结V6保留版不变；独立Executor教学候选已正式Reviewer PASS；等待Owner决定是否采用**（真人阅读UNVERIFIED） | [main冻结V6全文](docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)、[PR新候选](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)、[Reviewer PASS](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161) |
+| P2 | ①收款方案选择的完整文字样板与新手教学重构 | **Owner正式选择外部稿为新正文基线；事实纠错稿已进main，待另一位独立Reviewer复核**；旧冻稿只读归档，真人阅读UNVERIFIED | [Owner采用的新第一部分全文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)、[历史冻结V6](docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)、[PR #132历史候选](https://github.com/entropy-student/project/pull/132) |
 | P3 | 零散支付知识如何融入主线 | 未启动；形式仍开放 | 未来写入工作文档 |
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
