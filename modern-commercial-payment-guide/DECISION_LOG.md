@@ -53,3 +53,12 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **有效正文永久基线（除非Owner另行解冻）**：① `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md` Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`；② `docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md` Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`。本轮任何人不得对这两个文件内容执行写入；外部Agent只能另存候选，且不能提交GitHub。两篇内容冻结不等于事实正确的审计PASS。
 - **清理结果**：从main现行docs移除历史P1覆盖审查Blob `619d443c5dc3cc3e37f7ab274134474c2235f749`、旧P3知识归属计划Blob `62783db8fee2f18e84dd264db974b2e55faf8d95`；历史Git可重建。文件库中的旧修订/纠错/Reviewer/提示词五文件先独立制作SHA校验 ZIP 再移至回收区，留存完整恢复备份 `/项目历史归档/现代商业支付系统_历史修订文档恢复备份_20261016.zip`，SHA256 `93fee77cf398ef32ea606075cab83140960e13bd805e020508b2328b80099b90`。
 - **审稿方式**：只记录来源充分的明显错误与真正影响商家判断的知识深广度缺口；不重写原稿以牺牲可读性。审核提示词 `现代商业支付系统_前两部分_外部Agent独立核验修订提示词.md` 本轮独立生成，SHA256 `9a91f1886d3c07137f79e592303733863494c5cdaaa95d4a6a54549d6df32f77`，由Owner交外部Agent。Agent必须逐条独立核实建议，可驳回，输出两个完整修订Markdown与一份独立执行记录，ZIP三文件，不得直接覆盖冻结正文或自动通过。
+
+
+## 2026-10-17｜Owner正式解冻并要求替换①②
+
+- **授权来源（OWNER_REPORTED）：** 本轮Owner明确指示“这些小问题请你直接修改然后替换现有的第一部分第二部分吧”。这仅解除此前①②正文的写入冻结，授权以上一轮外部Agent第二轮候选稿为底本，定向修复Reviewer列出的细节，正式替换GitHub和Library的两个唯一正文；不扩大为其他章节、支付/退款、HTML或项目部署授权。
+- **上一正式原稿恢复点：** ①原始Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`；②原始Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`，仍可从Git提交历史恢复。
+- **待写入的两篇精修全文：** ① SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`；② SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`。
+- **编辑范围：** PayPal中国大陆小额付款6%+$0.05并用$4算例核实；Stripe Testing改[S11]；插件/Elements的SAQ需条件核定；自研API不保证最高转化；PCI 1092/1588/1604名称链接一致；案例不再误用L3/L4；15分钟对账不保证15分钟履约；补齐简短接入选型和上线验收案例。正式V6 7/29/42问题文本保持原文不变；外部Agent旧执行记录错误以本轮独立修订证据取代，不将其旧逐字对照表视为有效验证。
+- **状态约束：** 仅Owner授权的①②正式文稿变更为当前有效；本次修改属于自执行+验证，不冒充另一轮外部独立Reviewer再次PASS。余下③–⑦与HTML依然未授权执行。
