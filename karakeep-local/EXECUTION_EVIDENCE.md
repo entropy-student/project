@@ -369,3 +369,60 @@ No Karakeep service, project volume/network, account, bookmark, or business data
 
 ### EXECUTOR_RESULT
 PASS_CANDIDATE — G1E read-only scope and required path/network classifications are complete. The accepted Compose is present and fingerprint-matched; current Secret format is safely verified, while historical Secret continuity remains UNVERIFIED. Current Docker networks are classified and stable across two snapshots, but the exact historical changed identity/cause remains UNKNOWN. No local mutation or deployment occurred. Stop here for Reviewer acceptance and next-Gate decision.
+
+## G1F — Meilisearch single-pull diagnostic RETURN — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+GATE_ID=KARAKEEP-WIN-G1F-MEILI-PULL-AND-DEPLOY-20261016
+OWNER_AUTHORIZATION=OWNER_REPORTED Owner authorized one bounded pull of the official getmeili/meilisearch:v1.41.0 image and project-only Karakeep startup only if the pull and all deployment conditions passed. Reuse the existing Compose, Secrets, and two accepted GHCR images. No global proxy, VPN, certificate, Docker Desktop, or system changes were authorized.
+
+### PREFLIGHT_FACTS
+- GITHUB_BASELINE: DIRECT_READBACK current main Handoff blob 0e028d79e7843597b188c3bd1ecc1fcef9faa677; accepted G1E Evidence blob c04540e5bfd29c34744f46c23733f1d31a833370. Handoff records Reviewer acceptance of G1E as PASS.
+- TARGET_IDENTITY: DIRECT_READBACK native interactive Windows PowerShell 7.6.5; current profile matched the canonical Windows profile. Docker context desktop-linux, Engine 29.7.2, Compose 5.4.0; Engine metadata/version queries succeeded.
+- ACCEPTED_CONFIG: DIRECT_READBACK Compose and .env were present at the accepted target. Compose SHA-256 matched cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16. Directory and files were current-user-owned, DACL-protected, and had zero untrusted ACEs. The four expected .env keys were present; the two Secret fields had distinct valid 64-hex formats. Values and Secret hashes were not emitted or saved.
+- COMPOSE_SCOPE: DIRECT_READBACK rendered configuration showed exactly the accepted Web loopback binding 127.0.0.1:3000:3000; Chrome and Meilisearch had zero host-port bindings. Compose supported up --pull never. An initial checker treated null port fields as a nonempty array and stopped before pulling; a targeted re-read of the rendered configuration confirmed one Web binding and zero Chrome/Meilisearch bindings. No mutation occurred during this correction.
+- EXISTING_IMAGES: DIRECT_READBACK both accepted GHCR RepoDigests still matched the recorded Web and Chrome digests. Neither image was pulled again.
+- PRE_PULL_COLLISIONS: DIRECT_READBACK Meilisearch tag absent, no Karakeep project containers/volumes/networks, and port 3000 had no listener or existing published mapping.
+- RESOURCE_AND_ENGINE: DIRECT_READBACK C: had 184.7 GiB free in preflight and after the failed pull; Docker system df succeeded after the attempt. Available RAM after the attempt was 2,495 MiB; no fixed RAM threshold was applied.
+- PROXY_STATE: DIRECT_READBACK at post-pull readback, Windows Internet proxy was enabled, PAC was absent, and automatic detection was disabled; WinHTTP was direct. Docker Engine HTTP/HTTPS/NO_PROXY configuration-presence flags were set. Proxy values and endpoints were not read into Evidence. G1E had recorded Windows Internet proxy disabled; this round made no proxy or system change.
+- POST_PULL_INVENTORY: DIRECT_READBACK after the attempt, 20 containers (1 created, 19 exited, 0 running), 12 volumes, and 11 networks; no Karakeep project object or port-3000 mapping. Two post-pull snapshots 15 seconds apart had stable non-target container ID/state, volume, and network metadata summaries. Counts match the accepted G1E baseline.
+
+### ACTUAL_CHANGES
+- Executed exactly one Docker Engine pull for getmeili/meilisearch:v1.41.0. Docker stdout and stderr were captured only in the local PowerShell process memory, classified against the allowlist, and discarded after classification. No raw output, URL, credential, or Secret was displayed, written, or uploaded.
+- The pull failed. Docker native process exit code was 1; it completed in under 10 seconds, did not hit the local timeout, and was classified as LAYER_DOWNLOAD_OR_EXTRACT at stage layer_download_or_extract. The capture contained no explicit Downloading, Download complete, Extracting, or Pull complete progress marker; layer progress is recorded as NOT_OBSERVED. The exact low-level line was not retained, so no narrower cause is claimed.
+- Classifier fixtures for DNS, proxy-connect, and rate-limit categories passed before the pull. A synthetic native process exit-code probe returned 37 and was captured correctly.
+- No Compose up/down, service start, account creation, bookmark, data write, configuration/Secret change, proxy/VPN/certificate change, or non-target Docker change was performed. No retry, prune, or cleanup occurred.
+
+### OBJECTIVE_READBACK
+- Post-pull Docker image inspection confirms getmeili/meilisearch:v1.41.0 is still absent as a completed image tag. Partial reusable layers may remain; none were removed.
+- Both accepted GHCR images remain present with their accepted digests. No Karakeep project object was created; port 3000 remains free.
+- The Docker Engine pull failure is classified at the layer download/extract category. The captured evidence does not establish whether Windows Host connectivity, Docker Desktop proxy routing, TLS, or storage caused it; no such cause is inferred.
+- Current Windows Internet proxy mode differs from G1E, while WinHTTP remains direct. This was observed only and is not attributed to the pull or to this Executor.
+- Deployment remains NOT_DEPLOYED. No service stability test applies because no service was started.
+
+### VALIDATION
+- Latest main Handoff, accepted G1E Evidence, and Governance v0.2.7 were read before local execution. G1F Gate identity was checked again immediately before the Evidence append.
+- Fresh local readback verified the protected accepted configuration, exact Compose fingerprint, current Secret shape, rendered host-port scope, both existing GHCR digests, target collision absence, and port availability.
+- The single pull used a 600-second ceiling and process-memory-only stdout/stderr capture. Native exit code, elapsed-time bucket, allowlisted class/stage, and progress-marker observation were recorded without raw error text.
+- Post-pull read-only checks confirmed Meilisearch tag absence, Docker system df success, target-object absence, port availability, existing GHCR digests, and stable current non-target inventory across two spaced reads.
+- No raw Docker logs, container internals, volume contents, Secret values/hashes, proxy endpoint values, private IPs, usernames, SIDs, or private object identities were retained.
+
+### ANOMALIES
+- RETURN_MEILI_PULL_LAYER_DOWNLOAD_OR_EXTRACT: the only authorized pull exited 1 and matched the layer download/extract classifier. The exact low-level error text was intentionally discarded after classification; a more specific underlying cause is UNKNOWN. No retry is authorized in this Gate.
+- PROXY_MODE_DRIFT: Windows Internet proxy is now enabled versus G1E's disabled reading. WinHTTP is still direct. The Executor made no setting changes; timing and cause remain UNKNOWN.
+- PREFLIGHT_VALIDATOR_CORRECTION: the first local port-array validator mishandled absent fields; the corrected targeted Compose parse independently confirmed Chrome and Meilisearch have no host bindings. Pull was not started until that readback passed.
+- A failed pull may leave reusable partial image layers. They were retained; no prune or cleanup ran.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1F entry: sanitized preflight, classifier-fixture/native-exit validation, one-pull result, post-pull inventory, and stop point.
+- Handoff baseline: blob 0e028d79e7843597b188c3bd1ecc1fcef9faa677. Accepted G1E Evidence: blob c04540e5bfd29c34744f46c23733f1d31a833370.
+- No raw pull output or local diagnostic artifact was saved.
+
+### ROLLBACK_EFFECT
+No Karakeep container, network, or project volume was created, so project rollback was unnecessary. The failed pull may have left image layers; they remain available for Reviewer-directed continuation. No existing image was removed, and no cleanup command ran.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+No service, account, bookmark, or business data was created. Existing Docker inventory counts matched the accepted baseline and remained stable across the post-pull observation window. C: free space was 184.7 GiB before/after the failed attempt; available RAM after it was 2,495 MiB. No fixed RAM threshold was applied.
+
+### EXECUTOR_RESULT
+RETURN_MEILI_PULL_LAYER_DOWNLOAD_OR_EXTRACT — exactly one authorized pull was attempted and accurately classified; it failed before deployment. The precise sub-error is UNKNOWN because the Gate required discarding raw output after safe classification. No second pull, service start, proxy/system change, or other-project action occurred. Stop for Reviewer decision on the next bounded diagnostic Gate; any future global proxy/system action requires separate explicit Owner authorization.
