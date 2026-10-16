@@ -85,16 +85,16 @@
 ## 五、当前项目状态（2026-10-16｜唯一有效状态）
 
 - **PROJECT_GOAL：** 面向中国大陆个人开发者、独立站经营者及中小商家的通用商业支付科普，回答“怎么收钱、怎么选、怎么用好”；最终为桌面端独立单文件HTML，但当前未授权制作。
-- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS / P3_PLAN_PASS / P4_CHAPTER2_OWNER_PACKAGE_READY / P5_PENDING`。
+- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS_EXTENDABLE / P3_PLAN_PASS / P4_CHAPTER2_OWNER_RELAY_SENT_RESULT_PENDING / P5_PENDING`。正式通过不等于禁止未来有证据的深度/广度扩充。
 - **SYSTEM_MAP：** 纯内容项目；GitHub main保存权威框架、Owner接受正文、P3知识分配、治理交接及审计记录，外部写作Agent只处理Owner上传的脱敏离线ZIP；无生产网站/数据库/Secrets/支付账号、无服务器或真实资金动作。
-- **CURRENT_ACCEPTED_STATE：** V6全书7一级/29二级/42三级问题正式冻结（[完整框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`）；①《收款方案选择》Owner已明确**正式通过**经纠错的外部Agent稿（[现行全文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`）。此为Owner正式内容接受，**不冒充独立Reviewer对本修订稿的PASS或真人试读通过**。P1结构覆盖已通过，P3知识融入/去重方案已规划完成（[P3计划](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)，Blob `322b2220f6a23a247f337f430a68d086306d8b2f`）。
-- **CURRENT_GATE：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`（**OWNER_PACKAGE_READY / EXTERNAL_MD_PENDING**；资料ZIP与提示词已交当前Owner会话，外部Agent尚未产生第二章候选），完整定义见第六节。
-- **CRITICAL_CONSTRAINTS：** ①V6 7/29/42问题原文、归属和顺序未经Owner授权不改；②重点面向新手能懂与熟手有深度，具体订单/直接答案/通用决策方法优先；③必须标明真实主体、商品、地区、产品、费率核验日期，未知权限/到账记UNKNOWN；④不向读者承诺开户、资金实到或免税，不进行真实付款/开户/退款；⑤新文章默认**仅输出完整UTF-8 Markdown**，由Owner最终认可后才归入main；⑥**不再使用human-writing、copy-editing、humanizer三轮写作Skill**，plain-language也非强制；⑦历史PR/旧内容为审计，不允许自动恢复覆盖；⑧没有Owner新授权不制作HTML、不发布。
+- **CURRENT_ACCEPTED_STATE：** V6全书7/29/42问题正式冻结（[完整框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`）；①《收款方案选择》外部Agent修订稿已获Owner**正式通过**（[正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`），允许发现有价值缺口时按受限增补Gate深化，不撤销当前PASS。P1结构审查PASS；P3七章知识归属PASS及深广度补充审查准则已归档（[P3计划](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)）；修订稿真人理解未验证、不得冒称新稿独立Reviewer PASS。
+- **CURRENT_GATE：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`：**OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING**，外部Agent是否已开始执行UNKNOWN。交接资料与提示词已发，暂停重复写作；待完整MD返回后按事实/知识广度/方法深度复核。
+- **CRITICAL_CONSTRAINTS：** ①正式V6 7/29/42问题原文、归属和顺序不改；②Owner授权所有章（含①正式通过版）在**确有实质知识深度/广度不足**时增补，新增解释、案例、计算、来源均可，但要经受限增补+事实/覆盖Review后纳入，不能为了字数增加废话；③零基础看得懂、熟手得方法，商家具体判断/案例优先；④主体、品类、地域、时效、费用及税务核验必须条件化，未验证账户资格/到账UNKNOWN；⑤任何补充不承诺开户、资金实到或免税、不进行真实付款/开户/退款；⑥新章默认只交完整UTF-8 Markdown，Owner认可后再进入main；⑦human-writing/copy-editing/humanizer三Skill不再使用，plain-language非强制；⑧旧PR证据只追溯、不恢复覆盖，未经明确授权不制作HTML或发布。
 - **DEFAULT_EXECUTION_CHANNEL：** 第一部分已用的外部独立写作Agent工作方式：**Reviewer准备完整离线资源ZIP与一份提示词→当面发给Owner→Owner转交外部Agent→Agent只交一份Markdown→Reviewer复核→Owner接受→main归档**。外部Agent无需GitHub仓库权限，且不向外部提供个人账号、识别信息、Secrets。
 - **CURRENT_ROLLBACK_STATUS：** 当前①正文Git Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；清理前main快照commit `f6d3aa43785e1c0671bef4fce2807aa739f0689e`可复原旧正文/实验Gate；旧①Owner冻稿Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；不reset/force。文件库历史4文件以ZIP形式存于 `/项目历史归档/现代商业支付系统_清理前历史文档备份_20261016.zip`，检验SHA256 `5744fd26d6dd89eb1f3b2b5f36524a596621d7677337f6027ce6b89d54019d87`。
-- **UNRESOLVED：** ②–⑦正文尚未编写；新的①虽已Owner通过，真实读者理解与个人商户资格/支付实际闭环尚未验证，出版前应对新近变化的费用/政策做重新核验。原P4最终内容完成度仍仅①已通过。
-- **NEXT_STEP：** 已准备并校验②《收款开通与接入》的**真实全文ZIP**和独立提示词，已交Owner本会话。Owner可将两文件交外部Agent写单份MD；收到候选后再做事实/覆盖Review，不要求外部Agent加入GitHub。
-- **OWNER_ACTION_REQUIRED：** **转交本对话的②章ZIP与提示词给外部Agent**（若暂不打算写，可保留文件而无需采取其他动作）；完成后的MD再交Reviewer。
+- **UNRESOLVED：** ②–⑦全文待写；Owner已下发②写作提示词，尚未收到完整MD。①已正式通过但允许以后按证据完善案例与场景、价格敏感性及无合格方案时的判断；这是**可选增补候选**而非已确认重大遗漏。真人理解/实际账户资格或交易闭环依然UNVERIFIED；出版前金融动态事实须再核验。
+- **NEXT_STEP：** 先等Owner转回外部Agent的**②完整Markdown**；Reviewer对照V6②4H2/5H3、现行①表达与P3深广度五项准则审查，金融事实逐项核验，若内容欠缺提出具体增补位置及理由，不重新派发同一提示词。①的候选补充另在必要时安排一次局部增量Gate，不打断已发②写作。
+- **OWNER_ACTION_REQUIRED：** **NONE**（Owner确认②写作提示词已下发）；待外部Agent返稿时把MD交给本Review流程即可，不需再下载ZIP或重新发送提示词。
 - **EVIDENCE_POINTERS：** [DECISION_LOG.md](DECISION_LOG.md)（Owner最终通过、三Skill退役、快照恢复），[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)（main清理证据），[P1结构审查归档](docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md)，[P3知识归属方案](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)，[旧PR #132](https://github.com/entropy-student/project/pull/132)（已关闭未合并，历史Evidence留在Git固定提交），[现行文档索引](docs/CURRENT_DOCUMENT_INDEX.md)。
 
 ## 六、当前受限Gate与对外写作交接
@@ -103,13 +103,13 @@
 - **OBJECTIVE：** 以第二部分“②收款开通与接入”为题，完成一份从账户准入与收款能力、链接/插件/自开发接入、支付与发货/到账衔接、上线前测试的中文教学正文，复用①的表达优点，但不照抄其表格和具体费率。
 - **MAX_ENDPOINT_THIS_ROUND：** 本轮完成完整资料ZIP、一次提示词交Owner；外部Agent返回后最多进入**②章MD候选审查**，未获Owner明确认可不写入正式main。不得进入③–⑦正文、制作HTML、真实商户申请或支付测试。
 - **MANDATORY_REVIEW_STOP：** `YES; STOP_AT_REVIEWER`。外部Agent不能自我宣布Review通过，Reviewer不代写本章。
-- **TARGET_AND_SCOPE：** 以本Handoff§二–四正式V6框架中的②（4二级/5三级）为唯一标题及知识覆盖基线；阅读①已正式通过的正文和P3知识主归属规则；收款产品/商户准入等事实以最新适用的官方材料为准，不将中国大陆个人/企业混为一体。
+- **TARGET_AND_SCOPE：** 第二部分②（正式V6 4个二级/5个三级）是唯一正文写作目标；可根据教学与决策需要深化案例和解释，不限篇幅，但不得悄然改变正式问题结构、越界制作其它章正文。复用Owner已通过①的表达方式与P3知识主归属。准入/费率等动态金融事实须以对应地区与具体产品官方现行文件核验。
 - **APPLICABLE_CRITICAL_CONSTRAINTS：** 无三写作Skill强制流水线；不提供旧PR/失效Gate；不含任何真实识别信息/Secret；仅文章，无在线帐号或软件实施。
 - **PREFLIGHT：** Reviewer读回最新main正式V6框架、①Owner接受全文及P3方案的Blob；明确②全部4H2/5H3对应知识；只下载可公开的资料与经过核验的官方链接，核对ZIP内文档确为完整内容与清单相符。
 - **REQUIRED_EVIDENCE：** ZIP真实文件清单/源路径或sha、提示词全文、Owner可访问的文件链接；收到候选后完整MD文件、官方引用/核验日期、V6②对应5三级的覆盖检查、金融风险/产品适用性检查及Reviewer结论。
-- **ACCEPTANCE_CRITERIA：** ZIP可解压且包含冻结问题、已接受正文、P3分配与来源说明（禁止空占位/仅链接假装完整文档）；提示词足够独立Agent工作；候选必须每题回答清楚“怎么做与为什么”，术语先释义、流程有真实边界、非单一个人的开户指引、金额/费率不假设成真实报价。
+- **ACCEPTANCE_CRITERIA：** ZIP已核验含完整资料、提示词可独立启动（Owner已发）。返稿应逐项回答正式V6②5个三级问题，且完整体现“怎么做、为什么、何时不适用、如何验证”；深度够用于读者实际行动判断，广度覆盖主体/产品接入方式/交易与交付异常/测试边界等必要差异，不能以单纯字数或堆砌案例替代完整性；专业术语先释义、账号/价格不假定为真实已获批。若不足，Reviewer给出**局部可定位的补充建议**，避免无休止全稿重写。
 - **ROLLBACK_STATUS_OR_PLAN：** 本Gate不修改已接受①、冻结框架或支付系统；外部MD不自动合并，未通过直接保留为未采纳候选。Git已接受状态和清理前固定快照均可回读。
-- **OWNER_ONLY_ACTIONS：** Owner接收并决定是否向外部Agent发送资料；Owner最终审定②章是否被采用。
+- **OWNER_ONLY_ACTIONS：** Owner已完成将提示词交给外部写作Agent的转交动作（OWNER_REPORTED）；如需提供原ZIP、外部Agent可以由Owner直接转交。Owner最终审定②是否采纳；本Gate不授权真人开户、真实支付或其它正文自动改动。
 - **REVIEWER_TO_EXECUTOR_RELAY：** “请阅读我提供的完整资料包和写作提示词，围绕V6②的4个二级和5个三级问题独立写中文Markdown。优先把商家实际开通、接入、交付、测试的流程讲明白；金融事实要有核验来源及地区/主体/商品/时间条件；不复用旧Humanizer稿，不访问GitHub，不实际开户/支付，不做HTML。只交一份UTF-8完整MD，停Reviewer。”
 - **EXECUTOR_TO_REVIEWER_RELAY：** “结果：PASS_CANDIDATE / RETURN_*；改动：完成②整章MD；验证：5三级问题与事实/官方来源自检；问题：UNKNOWN清单；回滚：未修改main；请Reviewer检查：初心读者能否操作理解和产品事实条件；Owner转交：NONE。”
 
@@ -120,7 +120,7 @@ P0 项目目标、V6 7/29/42问题框架           PASS｜Owner冻结
 P1 全书结构覆盖审查                       PASS
 P2 第一部分①收款方案选择                 PASS｜Owner正式通过
 P3 分散支付知识融入七章/去重方法          PASS｜Reviewer规划完成
-P4 其余六章完整正文                       NEXT｜先做②写作资料包/提示词
+P4 其余六章完整正文                       IN_PROGRESS｜②写作交接已发、待MD
 P5 桌面端单文件HTML整合与发布审核         PENDING
 ```
 
