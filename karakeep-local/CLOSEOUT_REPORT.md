@@ -1,6 +1,7 @@
 # Karakeep Local — 实施项目结项报告
 
 > REVIEWER_CLOSEOUT_DATE: 2026-10-16
+> FINAL_PROJECT_CLOSE=2026-10-16 / `CLOSED_PROJECT_RUNTIME_RETAINED`（见第 10 节；保留前文安装实施结项原始记录）
 > CLOSEOUT_ID: KARAKEEP-LOCAL-IMPLEMENTATION-CLOSEOUT-20261016
 > CLOSEOUT_DECISION: **CLOSED_IMPLEMENTATION / RUNTIME_RETAINED**
 > SCOPE: 仅“Windows 本机官方 Karakeep 安装、首次访问与中文界面入口确认”实施工作
@@ -95,3 +96,31 @@
 - Reviewer 正式认定 G2B R2 为 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，不因未执行 Canary 而误称 Karakeep 应用故障。原安装 G1J `PASS` / 安装结项 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` **仍然有效**，数据与运行服务不得删除/迁移。
 - **后续动作：等待下一次 Owner 指令**；停止条件下不继续控制浏览器、不自动创建新 Gate。此前 G2B R2 的剩余工作不是当前正在执行的任务。备份/恢复/重启与长期监控继续由 Owner 排除，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`。
 - **当前权威**：`REVIEWER_HANDOFF.md`；**决策及新旧状态解释**：`DECISION_LOG.md` 最后 `D-20261016-G2B-R2-STOP`；**全部文档统一**：`README.md` 索引。历史 Executor Evidence 的最后实际 append 是 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，本轮 Review 不伪造 G2B Evidence。
+
+## 10. Owner 最终项目整体 CLOSE（2026-10-16，正式结项记录）
+
+### 最终决定和完成范围
+Owner 明确要求将**确定信息**整理到 GitHub 仓库 `main` 并将本项目整体正式 Close。Reviewer 同意把**Karakeep 本机安装 + 已知资产位置整理 + GitHub 文档归档**的项目管理工作状态改为 `CLOSED_PROJECT_RUNTIME_RETAINED`。这不是删除或停用软件的 `DECOMMISSION`：Karakeep 服务、既有账户、两个 Docker named volumes 和本机 Compose/.env **原位保留供日常使用**，没有授权停机、卸载或归档真实收藏数据。
+
+### 归档及用户入口
+- **文档唯一集中处**：[GitHub `entropy-student/project` `main/karakeep-local/`](https://github.com/entropy-student/project/tree/main/karakeep-local)，日常入口 `README.md` 已集中说明位置、两层文档分工、日常浏览器入口及按需 PowerShell 启动命令、给本机 Codex 的任务话术。
+- **项目权威状态**：`REVIEWER_HANDOFF.md`（整个项目已 Close，无下一待执行 Gate）；**实际位置表**：`LOCAL_ASSET_INVENTORY.md`；**决策和理由**：`DECISION_LOG.md`；**安装历史和实际执行证据**：本 Closeout + 原 `EXECUTION_EVIDENCE.md`，保留 GitHub 已存在的旧 Gate 文档。只做**逻辑归档**，不移动/删除 Git 历史证据。
+- **本机已知资产**：`%USERPROFILE%\KarakeepLocal` 是 Compose/`.env` 的受保护配置目录（顶层两个文件），不是本机 Markdown 归档目录；两个持久数据卷 `karakeep-local_data`、`karakeep-local_meilisearch` 在 Docker Desktop Linux 引擎中（Web `/data`、Meilisearch `/meili_data`）；Docker Desktop WSL2 数据磁盘位置**目录**由此前本机报告为 `%LOCALAPPDATA%\Docker\wsl`，精确 VHDX 文件名/绝对路径 `UNVERIFIED`。
+- **其它工作区**：本轮没有操作、查询或删除任何 SaSS/其它项目目录；现有 G3B `SaSS` 只读 PASS 是历史有界盘点，**不是安全删除证明**。不存在已批准的删除清单，`DELETE_ALLOWLIST=EMPTY`。
+
+### 完成状态与未完成的明确例外
+- **已通过且保留的历史**：G1J 安装技术 PASS；G2A Owner 登录/界面语言设置入口 `PASS_SCOPED`；G3B 对已知 SaSS 元数据的只读盘点 PASS，资产清单与 Evidence 均已提交 main 且前一轮经 Reviewer 审核。
+- **未通过不补成 PASS**：G2B R2 与 G3A 为 `RETURN`，真实网页收藏新增/抓取/搜索/预览的端到端 Canary `NOT_RUN`；界面语言切换是否实际持久化 `UNVERIFIED`。本次文档整理无需且没有重新打开这些 Gate。
+- **故障恢复限制**：Owner 已排除备份/恢复演练/迁移、Windows/Docker Desktop 重启测试与长期监控。`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；GitHub **不是**收藏数据库/密钥备份，不能保证磁盘故障后能恢复收藏。记录风险而不是据此无限延后 Owner 要求的非破坏性项目管理 CLOSE。
+- **最新健康证明边界**：真实本机最后可引用健康读回来自已交接的 Executor 报告和已验收的历史 Gate；此次 Reviewer 没有连接 Windows/Docker 重新发 HTTP 请求。整体 Close 不等于“此刻在本机重新测得健康 PASS”。
+- **本轮动作**：只更新 GitHub `main` 项目文档，并从 `main` 读回验证。Windows/Docker、配置、密钥、用户收藏、数据卷、其它项目和 SaSS 没有任何操作；无备份/删除/移动/运行态重启或变更。`EXECUTION_EVIDENCE.md` 原历史不改写、不伪造本次本机执行证据。
+
+### Owner 后续使用方法及终态
+默认本机浏览器访问 `http://localhost:3000`；如未运行，参考 `README.md` 中先启动 Docker Desktop，再从 `%USERPROFILE%\KarakeepLocal` 使用 `docker compose -p karakeep-local up -d --pull never` 按需启动。将来本机 Codex 任务仅需指明 `main/karakeep-local/README.md` 与 `REVIEWER_HANDOFF.md`，加上具体需求，**不需重新跑已完成安装步骤**。
+
+**FINAL_PROJECT_STATUS**=`CLOSED_PROJECT_RUNTIME_RETAINED`  
+**ACTIVE_GATE**=`NONE`  
+**AUTO_FOLLOWUP**=`NONE`  
+**LOCAL_DECOMMISSION**=`NOT_AUTHORIZED`  
+**BACKUP_RECOVERY**=`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`  
+**OWNER_ACTION_REQUIRED**=`NONE`。
