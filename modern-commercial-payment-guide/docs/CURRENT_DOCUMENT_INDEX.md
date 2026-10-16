@@ -2,7 +2,7 @@
 
 > **本文件只做目录与冲突消除，不另建第二份项目状态权威。** 唯一权威仍是GitHub main [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)（最高准则、冻结7/29/42问题及CURRENT_GATE）；治理权威仍是 [spike.skill / vps-project-governance/VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)。这里的文件状态随Handoff更新，如有差异，以Handoff为准。
 >
-> Owner决策：保留并冻结**原V6第一部分全文**为正式对照；Reviewer不得撰写候选。此前Reviewer越权撰写的R1新文已从当前PR树删除；独立Executor有单独的最新Gate，尚未执行。**没有批准以任何新稿替换原V6，也没有批准合并PR或开始其他章节。**
+> Owner决策：继续冻结**原V6第一部分全文**为保留版，另有独立Executor的教学候选在PR #132获**独立Reviewer PASS**；目前**等待Owner决定是否采用新稿替代**。旧Reviewer越权R1已从当前PR树删除且旧Gate VOID。没有批准合并PR或开始其他章节。
 
 ## A. 有效、必须保留或使用的main文档
 
@@ -14,7 +14,7 @@
 | [P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md) | **P1结构覆盖审查已通过的完整记录**，从旧工作文档提取，属历史证据；问题用语以V6为准 | `619d443c5dc3cc3e37f7ab274134474c2235f749` |
 | [P2_V6_BEGINNER_COMPREHENSION_DIAGNOSTIC_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_BEGINNER_COMPREHENSION_DIAGNOSTIC_20261016.md) | **当前教学障碍诊断**：术语先于定义、表格先于示范、跨主体比较过密、方法出现晚；下一稿的事实性问题输入 | `971212deb1c2589e73642d5cdcc9d593760e8164` |
 | [P2_V6_REVIEWER_ASSESSMENT_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md) | 对**旧V6稿**的知识/事实/结构独立审核结果，不能据此宣布新稿/真人测试通过 | `489eabba5a210235f2ef57d91f3aaaa6b19f7b88` |
-| [P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md) | **唯一当前有效的待执行 Gate**：交独立Codex重构第①章，不允许Reviewer执笔，不复用撤回的R1 | `3256b2598ae255b31fdaf483e103b3d49a6ea1f8` |
+| [P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md) | **已完成Gate / 历史审计锚点**：独立Executor已完成，独立Reviewer PASS；**不得重复执行**，下一轮先等Owner采用裁决 | `3256b2598ae255b31fdaf483e103b3d49a6ea1f8` |
 
 ## B. 历史档案：只供追溯，不可当执行指令
 
@@ -28,11 +28,11 @@
 
 ## C. 正在PR中审计，但不得私自合并到main的内容
 
-- PR [#132](https://github.com/entropy-student/project/pull/132) **Open/Draft/未合并**；最后已确认的head `2321737cd65aca50a80c68bca1dc34784e8de9a6`，后续使用前须重新查询。
-- `modern-commercial-payment-guide/EXECUTION_EVIDENCE.md` **只在PR工作分支**，当前Blob `f91872fd8b47cded080fdaf48b456ea14145b555`；含append-only纠错与越权撤销记录。**不是main已有文件**，不能声称全部审计证据已合并main。其关键状态摘要已纳入唯一Handoff。
+- PR [#132](https://github.com/entropy-student/project/pull/132) **Open/Draft/未合并**；最新已核验head `b3da525ae6187acea7e2ec8336474f337b0dc999`，执行前后使用仍须重新核验。
+- `modern-commercial-payment-guide/EXECUTION_EVIDENCE.md` **只在PR工作分支**，当前Blob `b149f5407291447111c4237c95bbc72059ef59a8`；本轮独立Executor只追加57行/0删除，先前纠错append-only记录仍在。它不是main已合并文件。
 - PR中原 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md` Git Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；main独立冻结稿与它逐字相同，**正文有效基线已在main**，无需复制不明PR其它草稿。
 - 原Reviewer自行创建的 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md` **已从PR当前树删除**，撤销提交 `70fa71556099c260c139717fc4a06f5aeeb58dff`；旧历史提交可能仍可访问，不能声称Git历史物理销毁。
-- **尚不存在**有效的独立Executor新稿 `docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md`；下一份候选完成后先独立Reviewer，后Owner决定是否替代冻结稿。
+- **有效新教学候选已存在且独立Reviewer PASS**：[P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)，Blob `567aae34f634790b11517e4ff2095aa390a356d6`；[Reviewer正式评审记录](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)。尚未由Owner采用，不取代main冻稿。
 
 ## D. 当前整体进度
 
@@ -42,15 +42,15 @@ P1 七章结构覆盖审查                        PASS｜仅结构
 P2 第①章完整V6内容和事实                  PASS｜Owner冻结作保留版
 P2 新手理解障碍调研                        PASS｜诊断已在main
 Reviewer越权R1清理、审计纠正               PASS｜当前PR树无R1
-独立Executor教学重构Gate                  NEXT｜已发布、尚未执行
-独立Reviewer审核新候选                     PENDING
+独立Executor教学重构Gate                  PASS｜已完成提交并停Reviewer
+独立Reviewer审核新候选                     PASS｜教学/事实/结构（真人UNVERIFIED）
 Owner比较并决定是否替代原冻稿              PENDING
 其余六章、最终桌面单文件HTML               PENDING
 ```
 
 ## E. 最小接手规则与数据保护
 
-- **Reviewer只有读、审核、发布Gate、写项目管理记录权限；不能自行生成/修改P2正文。** 独立Codex Executor方可按当前Gate写一个完整候选并append-only更新Evidence，停在Reviewer。
+- **Reviewer只负责读、审核、发布Gate、写项目管理记录；不编写/修改P2正文。** 此Gate已由独立Executor完成且获Reviewer PASS，当前不再释放Executor执行；下一步是Owner比较新候选与冻结稿作出采用裁决。
 - 不能为了“全部在main”而直接合并未审PR；先把**真正当前有效**且Owner已接受的文档放在main，PR审计记录通过固定提交和GitHub引用可追溯。所有后续写入必须按 `Current State → Gate → Preflight → Execute → Evidence → Review → New State`。
 - 向下一位Reviewer转达只用项目结构、GitHub路径、文件哈希、公开金融教学假设和权限状态；不要附带真实个人银行卡、账号、护照、身份证、密钥、Cookie、API Token、家庭住址或支付后台截屏。任何敏感信息应留在授权执行环境，不贴到PR/Handoff；**本项目文档索引不包含个人账户标识或凭据**。
 - R1内容旧Git提交可追溯，公共仓库是否可见取决于仓库访问控制；删除当前文件不等于清除Git历史或第三方副本。未经额外审计不承诺彻底消除任何历史信息。
