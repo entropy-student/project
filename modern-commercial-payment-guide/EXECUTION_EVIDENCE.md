@@ -39,3 +39,12 @@
 - **P4第二章资源交付（LOCAL FILE VERIFICATION）：** `/mnt/data/现代商业支付系统_第二部分_完整写作资料包.zip`（ZIP SHA256 `2e7de636fe21149c6d1b5109bb3af628b9d61b7159fdcf123e688a57ca639a8d`，含5份完整Markdown+README内清单；全部zip条目CRC和逐项SHA256 PASS）；提示词 `/mnt/data/现代商业支付系统_第二部分_写作提示词.md`（1,613字节）。资源包仅为供Owner转交的对话文件，不在GitHub提交或获取商户权限；外部Agent仍未动笔。
 - **MUTATION BOUNDARY：** 未改冻结7/29/42题文、已接受①正文Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`、P1验收证据Blob `619d443c5dc3cc3e37f7ab274134474c2235f749`，未触碰其它项目/Secret、真实付款/账户/服务器/HTML。
 - **RESULT：** `P2_OWNER_FINAL_PASS / P3_PLAN_PASS / P4_CHAPTER2_OWNER_PACKAGE_READY_STOP_AT_OWNER`。②正文是否完成仍PENDING；Owner后续只需转交ZIP与提示词，收到MD后由Reviewer审核。该记录仅说明流程和文档校验，不假装完成金融产品实时准入认证。
+
+## Owner补充授权和②写作交接状态更新（2026-10-16）
+
+- **AUTHORIZED_GATE：** 仅项目管理记录补充，Owner允许增加全章（包括已通过①）的实质知识深度与广度，并报告②提示词已发出。不更改正式问题框架/既有正文/已发提示词。
+- **PREFLIGHT_FACTS / DIRECT_READBACK：** 基线① Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`，V6 7/29/42框架 Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，main项目P3计划及Handoff可读。Owner报告「提示词已下发」是 `OWNER_REPORTED`，不是Agent执行成功证据。
+- **ACTUAL_CHANGES：** 仅追加 `DECISION_LOG.md` 决定记录、`docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md` 深广度五项审核规则，以及更新唯一Handoff当前状态和下一Gate的文字；未修改已通过①正文、V6框架或外部Agent输入。
+- **VALIDATION：** Handoff正式V6 §二–四冻结块修改前后字符串完全一致（4,997字符）；新决策不自动撤销①的Owner PASS，第二章状态为 `OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`，外部实际任务状态UNKNOWN。
+- **EVIDENCE_ARTIFACTS_AND_PURPOSE：** 决策提交 `a48b27b205ff40a6d8b8d3a0b1ff29478dc67a7e`；P3增补审核规则 `585e67267a4a993df94eef58232e5ba2072349f8`；Handoff更新 `9aef7b8a8378fbbfa6727868c6f62875af48952b`。
+- **ROLLBACK_EFFECT / NEXT STOP：** 旧正文和框架原Blob不变；等待用户提交外部Agent第二章完整MD后执行独立事实/覆盖/深广度审核，不后台运行任务、不重复发提示词。
