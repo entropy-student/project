@@ -85,33 +85,33 @@
 ## 五、当前项目状态（2026-10-16｜唯一有效状态）
 
 - **PROJECT_GOAL：** 面向中国大陆个人开发者、独立站经营者及中小商家的通用商业支付科普，回答“怎么收钱、怎么选、怎么用好”；最终为桌面端独立单文件HTML，但当前未授权制作。
-- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS_WITH_EXPANSION_MERGED / P3_PLAN_PASS / P4_CHAPTER2_OWNER_RELAY_SENT_RESULT_PENDING / P5_PENDING`。第一部分拓展已直接合并至正式源文件。
+- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS_WITH_EXPANSION_MERGED / P3_PLAN_PASS / P4_CHAPTER2_FIRST_DRAFT_RETURN_REWRITE_PENDING / P5_PENDING`。第二部分外部稿已收到并完成Reviewer审核，正式正文尚未采纳。
 - **SYSTEM_MAP：** 纯内容项目；GitHub main保存权威框架、Owner接受正文、P3知识分配、治理交接及审计记录，外部写作Agent只处理Owner上传的脱敏离线ZIP；无生产网站/数据库/Secrets/支付账号、无服务器或真实资金动作。
 - **CURRENT_ACCEPTED_STATE：** V6全书7/29/42正式问题框架保持不变；第一部分完整正式稿为 [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`，41,922字符。Owner已授权将此前拓展候选整体合并原文，原正文全部保留、增量7,582字符；重复候选文档已从main删除，历史仍可恢复。该合并是Owner决定，不冒称另一独立Reviewer审核完毕；P1与P3原结果继续有效。
-- **CURRENT_GATE：** ①拓展合并事项已按Owner授权执行并完成GitHub内容比对；当前在途主Gate仍为 `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`，状态 `OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`。
+- **CURRENT_GATE：** `MCPG-P4-CH2-EXTERNAL-REVISION-OWNER-RELAY-20261016`：Reviewer已对第二部分独立写作稿给出 `RETURN_FACTUAL_TECHNICAL_SAFETY`，完整整改说明已存项目库与main [P4_CHAPTER2_REVIEWER_RETURN_20261016.md](docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md)；待Owner向原写作Agent转发返修提示词并回传完整修订版MD。未授权真实支付/退款。
 - **CRITICAL_CONSTRAINTS：** ①正式V6 7/29/42问题原文、归属和顺序不改；②Owner授权所有章（含①正式通过版）在**确有实质知识深度/广度不足**时增补，新增解释、案例、计算、来源均可，但要经受限增补+事实/覆盖Review后纳入，不能为了字数增加废话；③零基础看得懂、熟手得方法，商家具体判断/案例优先；④主体、品类、地域、时效、费用及税务核验必须条件化，未验证账户资格/到账UNKNOWN；⑤任何补充不承诺开户、资金实到或免税、不进行真实付款/开户/退款；⑥新章默认只交完整UTF-8 Markdown，Owner认可后再进入main；⑦human-writing/copy-editing/humanizer三Skill不再使用，plain-language非强制；⑧旧PR证据只追溯、不恢复覆盖，未经明确授权不制作HTML或发布。
 - **DEFAULT_EXECUTION_CHANNEL：** 第一部分已用的外部独立写作Agent工作方式：**Reviewer准备完整离线资源ZIP与一份提示词→当面发给Owner→Owner转交外部Agent→Agent只交一份Markdown→Reviewer复核→Owner接受→main归档**。外部Agent无需GitHub仓库权限，且不向外部提供个人账号、识别信息、Secrets。
 - **CURRENT_ROLLBACK_STATUS：** ①现行Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`；合并前Owner通过正文Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；完整旧文件与撤销候选均可用Git固定版本恢复，不做reset/force；文件库历史备份保持原路径。
-- **UNRESOLVED：** ①拓展内容已合并为正式全文，额外独立事实审读和真人阅读仍未进行；②–⑦待写，②已交外部Agent但未收到完整MD，不能推断其执行进度。出版前动态金融事实应再次核验。
-- **NEXT_STEP：** 等待②外部Agent交付完整Markdown后检查V6问题覆盖、实用方法、事实、深广度；不重复派发旧提示词。①现在采用合并后的单一正式文件，后续改动只在发现具体问题时局部修正。
-- **OWNER_ACTION_REQUIRED：** NONE；①已按Owner指令合并，②写作资料仍在外部Agent处，返稿后提交即可。
-- **EVIDENCE_POINTERS：** [DECISION_LOG.md](DECISION_LOG.md)、[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)、[第一部分唯一正式正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)、[V6正式框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)、[现行索引](docs/CURRENT_DOCUMENT_INDEX.md)。
+- **UNRESOLVED：** ②已收到初稿（25,274字符、483行，正式4H2/5H3全覆盖）但含强制真实刷卡测试、错误统一Webhook验签、业务幂等与PCI责任泛化等阻断问题，Reviewer结论 `RETURN_FACTUAL_TECHNICAL_SAFETY`；返修后须再审，未正式归入main正文。③–⑦全文未写；①已正式合并拓展（41,922字符）。
+- **NEXT_STEP：** Owner只需把本对话的第二部分返修提示词（已归档在文件库）和Reviewer评审说明交给原外部作者，要求在保留4H2/5H3与叙事结构的前提下**精确修改**；返回单份完整UTF-8 Markdown后再审核事实、技术和内容覆盖。无需重新发起整章策划，也不提前进入③或HTML。
+- **OWNER_ACTION_REQUIRED：** 将 《现代商业支付系统_第二部分_返修提示词.md》 与 《现代商业支付系统_第二部分_Reviewer评审与返修说明.md》 发给原外部写作Agent；返修完成后将完整Markdown上传本对话进行复审。
+- **EVIDENCE_POINTERS：** [第二部分Reviewer RETURN记录](docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md)、[DECISION_LOG.md](DECISION_LOG.md)、[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)、[已接受第一部分](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)、[V6全书冻结框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)、[当前有效文档索引](docs/CURRENT_DOCUMENT_INDEX.md)。
 
 ## 六、当前受限Gate与对外写作交接
 
-- **GATE_ID：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`
-- **OBJECTIVE：** 以第二部分“②收款开通与接入”为题，完成一份从账户准入与收款能力、链接/插件/自开发接入、支付与发货/到账衔接、上线前测试的中文教学正文，复用①的表达优点，但不照抄其表格和具体费率。
-- **MAX_ENDPOINT_THIS_ROUND：** 本轮完成完整资料ZIP、一次提示词交Owner；外部Agent返回后最多进入**②章MD候选审查**，未获Owner明确认可不写入正式main。不得进入③–⑦正文、制作HTML、真实商户申请或支付测试。
-- **MANDATORY_REVIEW_STOP：** `YES; STOP_AT_REVIEWER`。外部Agent不能自我宣布Review通过，Reviewer不代写本章。
-- **TARGET_AND_SCOPE：** 第二部分②（正式V6 4个二级/5个三级）是唯一正文写作目标；可根据教学与决策需要深化案例和解释，不限篇幅，但不得悄然改变正式问题结构、越界制作其它章正文。复用Owner已通过①的表达方式与P3知识主归属。准入/费率等动态金融事实须以对应地区与具体产品官方现行文件核验。
-- **APPLICABLE_CRITICAL_CONSTRAINTS：** 无三写作Skill强制流水线；不提供旧PR/失效Gate；不含任何真实识别信息/Secret；仅文章，无在线帐号或软件实施。
-- **PREFLIGHT：** Reviewer读回最新main正式V6框架、①Owner接受全文及P3方案的Blob；明确②全部4H2/5H3对应知识；只下载可公开的资料与经过核验的官方链接，核对ZIP内文档确为完整内容与清单相符。
-- **REQUIRED_EVIDENCE：** ZIP真实文件清单/源路径或sha、提示词全文、Owner可访问的文件链接；收到候选后完整MD文件、官方引用/核验日期、V6②对应5三级的覆盖检查、金融风险/产品适用性检查及Reviewer结论。
-- **ACCEPTANCE_CRITERIA：** ZIP已核验含完整资料、提示词可独立启动（Owner已发）。返稿应逐项回答正式V6②5个三级问题，且完整体现“怎么做、为什么、何时不适用、如何验证”；深度够用于读者实际行动判断，广度覆盖主体/产品接入方式/交易与交付异常/测试边界等必要差异，不能以单纯字数或堆砌案例替代完整性；专业术语先释义、账号/价格不假定为真实已获批。若不足，Reviewer给出**局部可定位的补充建议**，避免无休止全稿重写。
-- **ROLLBACK_STATUS_OR_PLAN：** 本Gate不修改已接受①、冻结框架或支付系统；外部MD不自动合并，未通过直接保留为未采纳候选。Git已接受状态和清理前固定快照均可回读。
-- **OWNER_ONLY_ACTIONS：** Owner已完成将提示词交给外部写作Agent的转交动作（OWNER_REPORTED）；如需提供原ZIP、外部Agent可以由Owner直接转交。Owner最终审定②是否采纳；本Gate不授权真人开户、真实支付或其它正文自动改动。
-- **REVIEWER_TO_EXECUTOR_RELAY：** “请阅读我提供的完整资料包和写作提示词，围绕V6②的4个二级和5个三级问题独立写中文Markdown。优先把商家实际开通、接入、交付、测试的流程讲明白；金融事实要有核验来源及地区/主体/商品/时间条件；不复用旧Humanizer稿，不访问GitHub，不实际开户/支付，不做HTML。只交一份UTF-8完整MD，停Reviewer。”
-- **EXECUTOR_TO_REVIEWER_RELAY：** “结果：PASS_CANDIDATE / RETURN_*；改动：完成②整章MD；验证：5三级问题与事实/官方来源自检；问题：UNKNOWN清单；回滚：未修改main；请Reviewer检查：初心读者能否操作理解和产品事实条件；Owner转交：NONE。”
+- **GATE_ID：** `MCPG-P4-CH2-EXTERNAL-REVISION-OWNER-RELAY-20261016`
+- **OBJECTIVE：** 修复已收到第二部分外部独立稿的严重金融事实、收款测试、Webhook签名、幂等及PCI责任错误，保留其故事、教学深度和正式V6 4H2/5H3全问题覆盖。
+- **MAX_ENDPOINT_THIS_ROUND：** Owner将已备好返修提示词及详尽Reviewer说明转给**原独立写作Agent**；Agent仅交一份完整修订MD；Reviewer接收后再审，**未通过/未经Owner确认不得并入main**。不得开展真实支付、退款、账户/生产开通、其他章节与HTML。
+- **MANDATORY_REVIEW_STOP：** `YES`。作者不能自审PASS；提交修订稿后停止等待Reviewer。
+- **TARGET_AND_SCOPE：** 外部来稿 `现代商业支付系统_第二部分_独立重写稿(1).md`，SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`；项目库 `/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿_待返修.md`；逐项返修明细 [P4_CHAPTER2_REVIEWER_RETURN_20261016.md](docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md)，以及文件库里的完整Reviewer说明/提示词。
+- **APPLICABLE_CRITICAL_CONSTRAINTS：** V6问题数量/文字/归属顺序未获Owner更改授权；杜绝现实小额刷卡/退款的通用强制建议；必须区分Stripe与PayPal签名机制、PCI商户残余责任、业务幂等/对账/交易状态/退款责任；官方条款按时间/商户/地区/商品适用条件写；禁止三写作Skill流水线、假冒正式审批/真实账号权限。
+- **PREFLIGHT：** Reviewer已读GitHub main V6、Owner正式通过①、P3知识分配与原稿全483行；当前无需重新准备原始ZIP。作者启动前只需原稿、Reviewer说明、返修提示词。
+- **REQUIRED_EVIDENCE：** 修订完成的完整MD、4H2/5H3逐字覆盖检查、逐项P0/P1整改位置、金融法务/技术论点对应官方原始链接与适用边界、假设案例与真实规章区分。
+- **ACCEPTANCE_CRITERIA：** 五类P0全部消除，清单/图表与正文同步修改，P1重要问题闭环；支付与提现不混淆、第三方付款状态校验方法可验证；原稿文章优势得以保留，绝不要求真实生产刷卡/退款为默认测试；经独立Reviewer审核及Owner确认后才可采用。
+- **ROLLBACK_STATUS_OR_PLAN：** ①正式全文保持当前Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`；②仅留文件库原始稿与Reviewer意见，未写入main正式正文，返修失败直接保留返回结论，不污染现行内容。
+- **OWNER_ONLY_ACTIONS：** Owner转交两份返修材料并在收到完整MD后回传；所有真实商户/支付/退款行动需要独立新授权，本项目写作Gate不授权。
+- **REVIEWER_TO_EXECUTOR_RELAY：** 只发 `现代商业支付系统_第二部分_返修提示词.md` + `现代商业支付系统_第二部分_Reviewer评审与返修说明.md` 和原稿；保留原故事与4H2/5H3，按P0/P1逐项改，产出一份完整 `现代商业支付系统_第二部分_定向返修完整稿.md`，不得改GitHub/付款/退款，停Reviewer。
+- **EXECUTOR_TO_REVIEWER_RELAY：** “结果：PASS_CANDIDATE / RETURN_*；改动：第二部分精确系统返修完整稿；验证：P0/P1逐项消除+4H2/5H3不变；问题：无或已标UNKNOWN；回滚：未修改main；请Reviewer检查：金融事实/Webhook/PCI/退款及线上测试边界；Owner转交：NONE。”
 
 ## 七、项目阶段总览
 
@@ -120,7 +120,7 @@ P0 项目目标、V6 7/29/42问题框架           PASS｜Owner冻结
 P1 全书结构覆盖审查                       PASS
 P2 第一部分①收款方案选择                 PASS｜拓展已并入正式全文
 P3 分散支付知识融入七章/去重方法          PASS｜Reviewer规划完成
-P4 其余六章完整正文                       IN_PROGRESS｜②写作交接已发、待MD
+P4 其余六章完整正文                       RETURN｜②初稿待定向返修
 P5 桌面端单文件HTML整合与发布审核         PENDING
 ```
 
