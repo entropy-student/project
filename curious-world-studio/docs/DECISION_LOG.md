@@ -17,3 +17,7 @@ Owner对下一步内部30–60秒音画样片表示授权，并说明不需要�
 ## 2026-10-16｜Owner：完整视频及以后每期采用双轮口播润色
 
 Owner将先前使用的两套Skill分工确定为 Curious World Studio 的长期文案方法：第一轮 [KKKKhazix/human-writing](https://github.com/KKKKhazix/human-writing/tree/v1.1.0/human-writing) 负责结构、讲述逻辑与自然中文；第二轮 [blader/humanizer v3.1.0](https://github.com/blader/humanizer/tree/v3.1.0) 负责消除模板化AI语言、冗余衔接和重复句型。Reviewer在润色后对照事实、引文、样本边界、实验与假说，并复核口播可读性，配音前冻结版本。适用于R4完整内部草片及未来所有正式完整视频；不要求重新执行已经下发的R3小修，不构成R4或发布授权。具体常设流程见 [VIDEO_SCRIPT_POLISH_WORKFLOW](VIDEO_SCRIPT_POLISH_WORKFLOW.md)。两个外部仓库和版本已核对，当前并未在Owner本机安装/运行两Skill。
+
+## 2026-10-16｜Owner正式否决R3视频视觉呈现（本轮权威结论）
+
+Owner实际观看返修成片，指出重复素材和长段文字介绍让它无法作为合格视频。Reviewer回看18帧实际视频并核镜头清单：55.367秒视频中Pexels #854959占20.223秒，Pixabay #2793占25.727秒，合计83.0%；另S05纯文字机制卡占5.849秒，虽没有重放相同源时间码，但视觉仍单调，科技论述没有落实为可看的视觉故事。Owner的“画面相关即可”是指不必精准实验逐帧匹配，**不等于能用两条近似素材和PPT文字撑整片**。Reviewer正式整体结论调整为`RETURN_OWNER_VISUAL_STORYFIT`；取消之前的“只待声音验收”要求，技术链路/局部可读性仍PASS，整体质量FAIL。暂停扩展R4或发布，下一步先作视觉方案再等新授权；原版权PARTIAL、CW0005正式HOLD/G1/G2/NO_PUBLISH均不变。
