@@ -1,11 +1,11 @@
 # Karakeep Local · Windows 本机资产地图与整理计划
 
 > 计划日期：2026-10-16
-> STATUS=`PHASE_A_PARTIAL_G3A_STOP_G3B_READY`（G3A 已尝试但中止；剩余 SaSS 精确盘点待 Owner 下发 G3B）
+> STATUS=`PHASE_A_SCOPED_G3B_PASS_NO_CLEANUP_AUTHORIZED`（已明确的 SaSS 工作区限定范围只读盘点完成，其他旧工作区未覆盖）
 > PHASE_A_HISTORY=`G3A_LOCAL_ASSET_READONLY_GATE.md` / `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`
-> CURRENT_GATE=`G3B_SASS_WORKTREE_READONLY_GATE.md` / `READY_FOR_OWNER_RELAY_NOT_EXECUTED`
+> LAST_GATE=`G3B_SASS_WORKTREE_READONLY_GATE.md` / `PASS`（历史执行 Gate；当前 `NO_ACTIVE_GATE`）
 > 适用范围：仅 Owner 电脑上 `karakeep-local` 的配置、Docker 存储和可能遗留的项目工作区；不涉及其它产品。
-> **阶段 A 已尝试执行 G3A，但只读配置/Docker 报告完成后遇 Computer Use 浏览器安全停止；SaSS/Git 未检查且无 Executor Evidence**。Reviewer 新建 G3B，等待 Owner 主动下发；任何本机移动、删除、备份或恢复未获授权。
+> **G3A 已安全 RETURN；后续 G3B 对已知 SaSS 路径的限定范围只读盘点已由 Reviewer 审核 PASS，结果在 `LOCAL_ASSET_INVENTORY.md`。本次只解决已知资产的防误删地图，不宣称全盘清理完成；任何移动、删除、备份或恢复未获授权。**
 > 权威项目状态：`REVIEWER_HANDOFF.md`；所有项目管理文档统一 `https://github.com/entropy-student/project/tree/main/karakeep-local`。
 
 ## 1. 为什么不能直接删一个“项目根目录”
@@ -25,7 +25,7 @@ Karakeep 不是把全部文件都放在同一个 Windows 文件夹的普通本�
 
 ## 2. 推荐的三步实施路径
 
-**阶段 A — 只读发现**（G3A 已实际尝试，因浏览器安全停止未完成；已知疑似工作区 `%USERPROFILE%\Documents\ChatGPT\SaSS`，下一轮只按 `G3B_SASS_WORKTREE_READONLY_GATE.md` 做精准只读调查，不复跑已报告的 Docker/ACL 核对）：
+**阶段 A — 只读发现**（G3A 已安全 RETURN；G3B 仅对已明确的 `%USERPROFILE%\Documents\ChatGPT\SaSS` 完成限定范围盘点，GitHub `LOCAL_ASSET_INVENTORY.md` 和 `EXECUTION_EVIDENCE.md` 已正式提交并通过 Reviewer；不重跑历史检查）：
 
 1. 在**真实 Windows PowerShell** 中只读确认 `$env:USERPROFILE\KarakeepLocal` 及其文件名/类型、`docker compose config --services` 是否会暴露 Secret（如有风险则跳过此命令）、`docker inspect` 目标容器 Mounts/Compose labels、`docker volume inspect` 两项目卷、Docker Desktop UI 中数据盘目录。仅输出非敏感元数据；不读取、打印、hash、复制 `.env`，不扫描数据库内容或 VHDX。
 2. 在用户已知的普通文件位置（Desktop、Documents、Downloads、已知开发根路径）**有界发现疑似 `sass`/`saas` 工作区**。记录完整路径（若其中包含私密用户标识则用环境变量表达）、目录层级、受控空间与尺寸、最近改动时间、git root/remote、`git status` 的非敏感分类及未推送/未跟踪文件是否存在。**不要递归遍历整个 C 盘、不要打开文件正文、不要读取隐藏密钥/数据库**。
@@ -56,6 +56,14 @@ Karakeep 不是把全部文件都放在同一个 Windows 文件夹的普通本�
 
 ## 4. 执行与验收边界
 
-当前状态是 `PHASE_A_PARTIAL_G3A_STOP_G3B_READY`：G3A 只读部分报告完成，但没有正式 G3A Executor Evidence 或资产清单，SaSS/Git 未核查。Reviewer 已针对准确路径建立 `G3B_SASS_WORKTREE_READONLY_GATE.md`，Owner 将**新的**提示词交本机 PowerShell Codex 才会再次开始；需要的结果只有：可审核的非秘密文件路径/目录归属、当前运行引用、候选目录的安全分类和明示不确定项、无副作用证明、GitHub 项目内脱敏证据。完成后停 Reviewer；**没有自动“顺便删除”权限**。
+当前状态是 `PHASE_A_SCOPED_G3B_PASS_NO_CLEANUP_AUTHORIZED`：G3B 的 SaSS 工作区只读元数据和 Git/Docker 直接引用边界已完成，且 GitHub inventory/Evidence 提交/读回经 Reviewer 独立核查；G3A 原 RETURN 仍然是历史事实。**不需要再运行 Codex 来重复阶段 A**。本 Gate 证明的内容限于已知 SaSS 路径，不是全电脑扫描；已知结果：可审核的非秘密文件路径/目录归属、当前运行引用、候选目录的安全分类和明示不确定项、无副作用证明、GitHub 项目内脱敏证据。完成后停 Reviewer；**没有自动“顺便删除”权限**。
 
 使用入口（Docker Desktop Engine 就绪时）：`http://localhost:3000`。当前机器未有经验证的离机恢复方案：`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`。如果用户只想节省空间，应先估算可弃候选体积，而不是清理被共享的 Docker 磁盘。
+
+## 5. 已验收的资产地图与本轮收口（2026-10-16）
+
+- **G3B = PASS（仅精准盘点）**。正式结果见 [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md)，执行证据见 [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 的 G3B 追加段，Reviewer 判断见 [DECISION_LOG.md](./DECISION_LOG.md) 的 `D-20261016-G3B-REVIEW-PASS-SCOPED`。
+- `SaSS` 根为 Git root，普通工作树文件/目录/tracked paths 全 0，仅有 `.git` 目录；无 origin/upstream，**未推送历史/仓库来源/其它运行进程引用未知**。故分类 `UNKNOWN_OR_SHARED`，**不能作为实际归档或删除候选**。
+- 本机 `KarakeepLocal` 配置/Secret、两个 named volumes、Docker Desktop WSL2 存储继续受保护。该项目没有已确认可删除的本机资产；Owner 无须为了“目录统一”搬动运行数据。
+- 原 G3B Executor 在只读调查中曾多查 `.git` 的直接子项**数量**，无名称/正文读取或文件更改；Reviewer 记轻微范围偏差，不影响已审查的盘点结论，不推广为下一轮扫描授权。
+- **本次维护到此停下**：`NO_ACTIVE_GATE`、`DELETE_ALLOWLIST=EMPTY`。后续如果 Owner 明确选择删除/归档 SaSS，则要先另行核实 Git objects/历史唯一性与其它项目引用、恢复/重建方式，独立 Gate/Owner 后果授权；不可直接删除。原 G2B 的浏览器功能 Canary 未执行，原安装 CLOSE 仍有效。
