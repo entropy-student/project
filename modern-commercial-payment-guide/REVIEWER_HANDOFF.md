@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1冻结7/29/42问题 PASS，P2第①板块知识与完整 human-writing 候选结构/事实Reviewer PASS；**P2双目标读者价值诊断与去提示化试读工具本轮Reviewer PASS**（已审只读诊断、Q6/Q7开放题、读者问卷/主持人答案隔离）。真实读者A愿读及B脱稿理解仍 **UNVERIFIED**。下一步仅待Owner决定是否开展3名目标读者的轻量试读；原文章不改、不叠加写作Skill，PR #132 Open/Draft/未合并，P3–P5 PENDING。
+**当前闸门：** P1 原始7/29/42冻结问题不变、P2①知识/金融内容Reviewer PASS、双目标读者试读工具PASS。**冻结前发现展示框架偏差：P2现稿一级1/1、二级5/5与冻结原文一致，但三级9/9均为叙事化改写标题、0/9逐字相同。** 之前“9/9标题逐字不变”只指两版P2间，不等于与原V5冻结三级题一致。正文尚未改，本项目暂不进入Owner正式冻结/合并，等待Owner选择恢复原V5三级正式标题或明确允许原标题和展示标题双轨索引。真实读者反馈仍UNVERIFIED。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_READER_VALUE_REAL_READER_FEEDBACK_PENDING`（双目标文本诊断和试读工具已Reviewer PASS，尚无真实读者兴趣/理解反馈；Owner试读决策待定）。
+- **PROJECT_STAGE：** `P2_OWNER_FREEZE_PENDING_V5_H3_PRESENTATION_RECONCILIATION`（P2内容与试读工具Reviewer PASS；原V5冻结三级问题同现稿9个展示H3标题不一致，等待Owner决定如何对齐后才能正式冻结）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
 - **CURRENT_ACCEPTED_STATE：** P1结构7/29/42 PASS；第①板块原知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、完整 human-writing 候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 未变。P2阅读诊断 Blob `09d59a974631756ba59d64fa2d054bbf0e06ed10` 已Reviewer内容PASS；试读工具修订 Blob `5af87f86f6ed9b4035017914cc0aa840006f2dbe` 的开放题与答案隔离已Reviewer PASS。真实读者是否愿读、是否读懂尚无数据，不可冒充通过。
-- **CURRENT_GATE：** `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016` **Reviewer PASS / CLOSED_FOR_TOOL_PREPARATION**。正式 [PR #132 Reviewer 评论 #6209581069](https://github.com/entropy-student/project/pull/132#issuecomment-6209581069)；本 Gate 验证的是诊断与中立试读工具**可用**，不是A/B真人目标已实现。**无新的Executor Gate**。
+- **CURRENT_GATE：** 读者验证准备 Gate `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016` 为 Reviewer PASS / CLOSED_FOR_TOOL_PREPARATION；**无活跃Executor Gate**。新增的只是冻结前问题记录：[PR #132结构显示偏差评论](https://github.com/entropy-student/project/pull/132#issuecomment-6209810142)。
 - **CRITICAL_CONSTRAINTS：** 面向大众的商业支付**知识科普与选型方法论**，不是按个人提供获批开户推荐；P1冻结7/29/42不得修改；P2第①板块5个二级/9个三级标题、两个完整案例、已审正文与金融事实保护；已撤销短篇不能恢复成正文；Evidence append-only，禁止force push/reset，未经授权不得合并/进P3–P5。真实试读只可在Owner明确决定后、按已审工具包标记**仅分享问卷区**，不外发含主持人答案的整份工具包；不能虚构阅读效果。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** 原已审P2正文和完整结构化候选 Blob未变；两旧短篇仍已从PR当前树安全撤销、历史可恢复；最新中立试读工具可按原错误版本 Commit `a350593...`恢复（如需，但不推荐），此前Evidence历史保留且本轮在其后仅追加16行；无生产/账号/支付变更；PR仍Draft/Open/未合并。
-- **UNRESOLVED：** 两项终极读者目标尚未真人测试：A编辑代理分8/12≠真实阅读意愿，B六项通用学习结果正文5项SUPPORTED/1项PARTIAL≠真人掌握。第①板块首次角色术语解释偏密、§1.1七维表前置、§4.1数据表切换、完整案例§5.1出现较晚。试读问卷已修复诱导/答案泄露，实际主持人必须只复制问卷标记间内容；此前没有真实答卷。
-- **NEXT_STEP：** 停止重复润色和写作Skill实验；由Owner判断是否采用已审核试读工具，用固定文章版本让3名目标读者分别反馈①是否愿读及理由、②是否脱稿复述选型步骤与参考案例。获取数据后再由Reviewer决定要不要针对§1.1/2.2/4.1/5.1进行小范围内容修复。非Owner授权不得直接联系读者、改P2或进入P3。
-- **OWNER_ACTION_REQUIRED：** 如决定开始试读，由Owner使用 [PR最新工具包](https://github.com/entropy-student/project/blob/f04899142b2156cb2e685faff25342b6cab6ca4e/modern-commercial-payment-guide/docs/P2_READER_TRIAL_KIT.md) **仅复制标记之间的问卷段落**发送给最多3名普通目标读者，匿名保留原始回答；不得分享整个含主持人答案的工具包。若暂不试读，Owner动作为NONE，项目停在真人反馈待定。
-- **EVIDENCE_POINTERS：** PR #132 最新head `f04899142b2156cb2e685faff25342b6cab6ca4e`；本轮仅试读工具 Blob `a357aaa715cd4e4eafb913754f52aa579cdf115d`→`5af87f86f6ed9b4035017914cc0aa840006f2dbe`，执行Evidence `b22ddb946fa7812401b7eed56d1a681f077510fd`→`1555dbb4aacc6f55b444ef2414f74eea85ab9ac5`；诊断 `09d59a974631756ba59d64fa2d054bbf0e06ed10`、原知识正文 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、人文候选 `7924e80634f1f09a5628a78458c43a90d5019fd1` 均未变；[正式Reviewer PASS](https://github.com/entropy-student/project/pull/132#issuecomment-6209581069)，Governance v0.2.7。
+- **UNRESOLVED：** **冻结前结构展示冲突**：V5原冻结三级问题为问句（9条），P2稿对应编号9条却全部改成叙事断言标题，最明显2.2/3.2显示侧重点有所变化；源P1冻结原文实际未变。原先Reviewer误将“两个P2版本标题逐字相同”报告成“原始冻结框架逐字保留”。Owner需决定恢复V5三级原题作正式标题（推荐）还是确认展示别名加原问题映射。另有A/B真人阅读与理解依旧UNVERIFIED。
+- **NEXT_STEP：** 暂不冻结。Owner审阅原V5九个三级问题 vs 当前P2九个标题的逐项对照后给明确偏好；如决定恢复正式原题，由Reviewer发布最小改头+9项知识覆盖核对Gate给独立Executor，不删正文、不损现有风格和案例；如批准展示别名，应将V5原题到叙事标题的9项对照固定记录，再讨论冻结与读者反馈。P3–P5保持PENDING。
+- **OWNER_ACTION_REQUIRED：** 决定①完整P2是否要以**已冻结V5三级问题原文**作为九个正式Markdown三级标题（Reviewer推荐，仅调整标题，把当前叙事标题移入各小节导语），或②是否准许当前九个更自然的标题作为展示别名但保留完整原V5问题对应表；现阶段没有正文返工、冻结或合并授权。
+- **EVIDENCE_POINTERS：** 原冻结权威：本Handoff第2–4节（①一级/5二级/9三级，9个V5问句逐字可查）；P2展示稿 PR #132 head `f04899142b2156cb2e685faff25342b6cab6ca4e` / human-writing候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`；[结构偏差正式记录 #6209810142](https://github.com/entropy-student/project/pull/132#issuecomment-6209810142)。试读工具PASS评论 #6209581069 与两个正文Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、`7924e80634f1f09a5628a78458c43a90d5019fd1`仍有效；本次只进行只读核验和管理文档记录，未动PR内容。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -244,3 +244,12 @@
 - **双目标状态：** A 编辑代理 `8/12`，真人意愿 `UNVERIFIED`；B 正文知识支撑 `5 SUPPORTED + 1 PARTIAL`，真人脱稿理解 `UNVERIFIED`。阅读障碍集中§1.1早期七维表、§2第一次角色术语、§4费用表密集、§5完整案例过晚；还未以真人反馈证明是否值得改。
 - **边界：** 本项目仅提供普适的商业支付知识、选型方法和代表性参考案例，不承担每人个案推荐；不得更改7/29/42/本章5/9、不加第二Skill、未经新Gate不改正文/不合并或进P3–P5。
 - **下一步/Owner checkpoint：** Owner可自行选择邀请3名目标读者，按原文章固定版本与**无答案问卷节选**收集原始匿名回答；阅读意愿与读后理解分别记录，人数少仅供编辑方向诊断。不选择就暂停在 `P2_READER_VALUE_REAL_READER_FEEDBACK_PENDING`，当前无新Executor任务。
+
+
+## 二十二、冻结前查明：P2叙事化标题与V5冻结三级题不一致（2026-10-16）
+
+- **正式记录：** [PR #132 #6209810142](https://github.com/entropy-student/project/pull/132#issuecomment-6209810142)。Owner提出“为何感觉框架变化”，Reviewer逐一对照唯一冻结权威本Handoff第四节与当前P2人文候选，确认一级1/1、二级5/5逐字不变，**三级9/9字面不同（0/9逐字相同）**；章节编号/顺序仍在。
+- **原因：** 原独立`docs/P2_REWRITE_GATE.md`允许不逐字重复问题标题，Executor为提升阅读感将9项问句改成叙事标题；后续`docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md`却将这些已改写标题当“必须逐字保留的原P2标题”，故后续检查只验证了两份P2文档间一致性，**没有发现与V5冻结题头字面不符**。此前Reviewer所说“原框架逐字保留”存在口径错误，在此正式纠正。
+- **边界：** GitHub main中的7/29/42原冻结问题从未被这轮更改；P2正文、试读工具、其他已审事实亦未更改。疑点在于“文章面对读者的三级标题”和“项目原本冻结的三级问题”不是一个字面。内容9项实质覆盖此前已审，2.2/3.2题头聚焦较窄仍须在后续必要时核对回答范围。
+- **冻结状态：** 不将当前P2认定已获Owner冻结，暂时`P2_OWNER_FREEZE_PENDING_V5_H3_PRESENTATION_RECONCILIATION`；真人试读仍未启动。
+- **Owner选择：** A（Reviewer推荐）恢复V5原9个三级问题问句为正式Markdown标题，现有9个叙事短句可做节内导读，保持P2完整知识、内容、来源、案例不删；B 允许当前标题作展示别名，但必须保留“V5冻结原题→P2展示标题”的9项可核验映射。任何一种都需Owner明确选择后新立受限Executor Gate，不自行改稿或合并。
