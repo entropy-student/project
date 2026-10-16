@@ -1,6 +1,8 @@
 # MokerSaaS G1 — Local Hardening + Docker Compose + Bounded Smoke
+
+> IMPORTANT: G1 was partially executed and returned at credential recovery; its original authorization and relay below are no longer active. DO NOT rerun this Gate or repeat completed builds. Current read-only Gate: `G1R_DB_CREDENTIAL_RECOVERY_DIAGNOSTIC_GATE.md`.
 > GATE_ID: MOKER-G1-LOCAL-HARDEN-COMPOSE-SMOKE-20261016
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_LOCAL_DB_CREDENTIAL_RECOVERY_BLOCKED — 2026-10-16; historical returned Gate, NOT active
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 (Reviewer interpreted)
 > UPSTREAM SOURCE: ItusiAI/MokerSaaS pinned c98f68c68de312cc1378130b96f82418e22bd5f3
 > MAX_ENDPOINT_THIS_ROUND: isolated project-owned source + security/provider adapters + Compose build/start on 127.0.0.1 ONLY + bounded local UI/DB/security negative smoke (conditional on prerequisite proofs)
