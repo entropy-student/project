@@ -70,3 +70,13 @@
 - Execution: updated official file in main (commit `f9d8bb8cf2d7fa1d2416fd8e4d963b6a4974baf2`), read back exact content equality with candidate, then deleted duplicate candidate in main (commit `ad5c570a87123600456f7b1350165b1cf2c61810`).
 - Library: overwrote `/现代商业支付系统/现代商业支付系统_第一部分_采纳修订版.md` with the exact new bytes; local Git-blob digest matches new official file blob.
 - Result: `OWNER_MERGE_COMPLETE`; existing V6 framework unchanged, old source fully recoverable from Git history, no claim of additional independent financial-review PASS; Chapter 2 externally dispatched task remains in progress awaiting a Markdown response.
+
+
+## MCPG-P4-CH2-EXTERNAL-MD-REVIEW-20261016
+
+- **PREFLIGHT / DIRECT_READBACK：** 已从本轮用户上传的原始文件完整读取483行 / 25,274字符；用户原稿SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`，4个正式H2与5个正式H3逐字各出现一次。V6框架 main Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，正式①正文 Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`，未发现影响本轮评审基线的漂移。
+- **READ-ONLY TECH/FINANCIAL REVIEW：** 核验Stripe测试文档（live模式不可用真实卡资料“测试”）、Stripe Webhook乱序/同一业务不同Event对象、PayPal RSA证书或Verify API机制、PCI SSC SAQ A第三方合作后仍有残余责任、EU数字内容撤回权条件及Stripe退款时效。详细源链接及P0/P1行号见 [docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md](docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md)。
+- **CRITICAL RETURNS：** P0-01生产真实$1刷卡/退款强制建议，P0-02将PayPal验签误写成通用HMAC，P0-03错误将event_id去重当业务幂等，P0-04错误宣称托管链接零PCI责任，P0-05资质/商品/退款法律门槛绝对化。P1详细事项含虚构案例、账户7级模型、编造性能时间、订单核对、退款权益、双清单与原始来源不足。
+- **ACCEPTED QUALITY：** 完整4H2/5H3覆盖与连贯叙事、决策框架及工具清单；`STRUCTURE_PASS / FACT_AND_SAFETY_RETURN`，不以篇幅作为PASS依据。尚无执行方返修文件。
+- **PERSISTENCE：** 完整原稿、Reviewer评审及返修提示词已上传文件库 `/现代商业支付系统/` 分离保存；Reviewer回执本身已新增至main `docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md`，首写commit `0c471d04c13a9ffc368f48030f7a22a101b9ba2a`；main Handoff更新下一Gate `MCPG-P4-CH2-EXTERNAL-REVISION-OWNER-RELAY-20261016`。上传原稿未写main正式正文。
+- **ROLLBACK/STOP：** 只修改Reviewer报告/项目治理记录，未触碰①全文或V6冻框，未启动真实支付/退款、服务器配置或HTML；`REVIEWER_RETURN_FACTUAL_TECHNICAL_SAFETY`，Owner最小转交两份返修材料给原作者。
