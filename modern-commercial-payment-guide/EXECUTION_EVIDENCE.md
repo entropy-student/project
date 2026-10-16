@@ -92,3 +92,14 @@
 - **Mechanical QA:** 4个正式H2+5个正式H3各一次、全部原文字一致；15项新上线清单编号完备；17项附录文献；原稿严重错误的“生产强制1美元真实刷卡”“绝对零PCI负担”“统一HMAC和7级制度”等已清除。验证的是文章结构与部分原始来源，不代表具体商户资格或真实支付/退款已获批准。
 - **Persistence:** 直接修订稿已保存至文件库 `/现代商业支付系统/现代商业支付系统_第二部分_定向返修完整稿.md`（原输入与旧审核分开保留）；GitHub main新增待Owner确认的完整修订稿，commit `b9eab02113837710be99dc1a10e227f0f37a53ef`，随后补齐与源稿一致的末尾换行commit `563ba38c7deeb700050074b21f0c68b0d3a12021`。旧原始稿、旧审核记录未覆盖。
 - **Status / Gate:** `DIRECT_REVISION_COMPLETE / SELF_QA_PASS / OWNER_ADOPTION_PENDING`；因编辑与本轮自检由同一执行者完成，**不声称独立Reviewer再次PASS**。不向Owner要求重新联系外部写作Agent。V6 7/29/42权威框架及第一部分正式Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`均保持不变；无真实开户、支付、退款、服务器或HTML行为。
+
+
+## CHAPTERS-1-2-RESTORE-USER-ORIGINALS-20261016
+
+- Authorization: Owner requested both chapters be restored to the exact two personally uploaded Markdown versions due to poorer readability in the assistant modifications.
+- Original source proofs: `现代商业支付系统_第一部分_独立重写稿.md` SHA256 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`, 75,639 bytes, 33,755 characters, 687 lines; `现代商业支付系统_第二部分_独立重写稿(1).md` SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`, 58,594 bytes, 25,274 characters, 483 lines. Both UTF-8 without BOM and with one trailing LF, no CRLF.
+- Preflight main: chapter1 modified blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`; chapter2 edited blob `f89193e29f296ac8ce5e88ab0b58632786540669`; V6 framework blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`.
+- Chapter2 created verbatim `docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md`, commit `912ff7065560fcd25ad03048467d782613527ff5`, blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`. Exact text and Git blob read back.
+- Chapter1 replaced directly in existing canonical `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md`, commit `251ebd28aba888a6420b456a64137cbf740fd848`, blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`. Exact text and Git blob read back.
+- Library: the five earlier edited/review documents were moved to `/项目历史归档/现代商业支付系统_旧修订与评审/`; original chapter2 library document renamed back to its original upload name; original chapter1 uploaded to project folder under its original name. Neither original file was changed for readability, accuracy or formatting.
+- Scope: documentation-only change; no payment account, production merchant, environment, or real-money operations. Review concerns previously identified in original versions remain historical evidence and must not be described as resolved by restoration.
