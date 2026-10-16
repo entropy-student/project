@@ -84,3 +84,15 @@
 - **Disclosed scope note**：Executor 曾额外查询 `.git` **直接子项的数量**，属于较冻结“不要下探 .git”建议更深入一级的**轻微只读范围偏差**；没有输出/读取条目名称或正文、没有改变本机状态，数量也未参与归档或删除结论。Reviewer 认为这一已披露的只读元数据查询**不实质影响 G3B 证据和接受范围**，记录异常、禁止把它解释成未来可任意遍历 `.git`，**不要求重跑已有效核验**。
 - **No deletion clearance**：`SaSS` 项目所有权、Git 历史和远端恢复性、其它项目进程的引用均 `UNVERIFIED/UNKNOWN`；即使工作树看似空，也不代表 `.git` 不存独有对象或可以安全删除。**`ARCHIVE_CANDIDATE=NONE`、`DELETE_ALLOWLIST=EMPTY`**。不建议现在继续发散搜索/重复部署；只保持本地原位并在文档注明“不要误删”，未来如 Owner 单独要求删除，再设明确归属+历史+引用+重建证明的受控 Gate。
 - **Remaining task disposition**：独立“项目本机文件在哪、防误删资产地图”的已知范围可结束为 `INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN`；没有下一轮自动 Executor Gate。历史 G3A `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`、G2B R2 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED` 保持原结论；用户取消备份 `BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED` 不变，不能将本轮只读文档作为备份。
+
+## D-20261016-FINAL-PROJECT-CLOSE — Owner 正式关闭 Karakeep Local 项目管理，运行资源保留
+
+- **Explicit Owner decision（2026-10-16）**：Owner 要求“将确定的信息整理到项目文档当中，GitHub 仓库的 main 当中，本项目正式 close”。这是**关闭已完成的项目安装、资料定位及文档整理管理工作**，**不是**软件卸载、停止服务、数据删除或 Git 仓库删除授权。
+- **Formal disposition**：`PROJECT_STATUS=CLOSED_PROJECT_RUNTIME_RETAINED`，`ACTIVE_GATE=NONE`，`AUTO_FOLLOWUP=NONE`，`DOC_ARCHIVE=main:karakeep-local/`；旧 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 的安装 Close 仍是历史有效事实。此状态含“运行资源保留”，**不声称在 Reviewer 未连接本机的此刻新鲜验证 HTTP/容器仍健康**。
+- **Confirmed Owner-facing documentation**：统一日常入口 `README.md` 已整合**明确存储位置、两部分文档分工、打开/启动应用的方法、本机 Codex 复用话术及不可删除边界**。技术权威 `REVIEWER_HANDOFF.md`，限定范围只读资产地图 `LOCAL_ASSET_INVENTORY.md`，决策史 `DECISION_LOG.md`，历史实施结项与证据 `CLOSEOUT_REPORT.md` / `EXECUTION_EVIDENCE.md`。上述文档及旧 Gate 均在**同一个 GitHub main 目录**，无额外已证实的本机 Markdown 文档归档目录。
+- **Durable assets retained in situ**：Windows `%USERPROFILE%\KarakeepLocal` 顶层 `docker-compose.yml`、受保护 `.env`；两个 Docker named volumes `karakeep-local_data`（Web `/data`，账号/网页收藏及资产）与 `karakeep-local_meilisearch`（Meili `/meili_data`，索引）；Docker Desktop WSL2 后端磁盘目录（Owner 转交本机 Executor 报告）`%LOCALAPPDATA%\Docker\wsl`。底层具体 VHDX 文件绝对路径 `UNVERIFIED`。上述均**保留不动**，不尝试集中迁移成普通 Windows 文件夹。
+- **Important boundaries**：本次明令不对 Owner 的 `SaSS` 或任何其它工作区执行扫描、移动或删除；现有 SaSS 历史资料仅作为 G3B 有界已验收记录归档，不产生清理许可。整体已批准删除清单 `EMPTY`，文件删除/搬迁/备份/恢复/容器操作 `0`（本次 Reviewer 文档结项轮）。GitHub 不含 Secret、真实收藏、数据库或异机恢复副本。
+- **Independent prior results**：安装 `G1J PASS`、Owner 登录入口 `G2A PASS_SCOPED`、SaSS 限定范围只读 `G3B PASS`；原 G2B R2 与 G3A `RETURN`，**没有**完成网页新增收藏→抓取→搜索/预览 Canary，也没有 G2B/G3A Executor Evidence。不能在项目整体 Close 时把历史 RETURN 重写为 PASS。
+- **Accepted deferred and unrecoverable risks**：Owner 明确不做备份/恢复演练、数据迁移、重启持久性测试或长期监控；`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，本机存储损坏可导致资料永久丢失。语言设置最终切换/持久化 `UNVERIFIED`；VHDX 路径未知；非全机文件盘点。均为**关闭时已明确列出的例外项**，不自动触发新工作。
+- **Future reopen condition**：Owner 只有在明确提出新的维护需求时才重新打开独立有界 Gate；平时直接 `http://localhost:3000` 使用，若未运行，从 `%USERPROFILE%\KarakeepLocal` 目录通过 README 所述 PowerShell 项目级命令按需启动。**无需持续 Reviewer、无需新的 Codex 提示词或手动清理**。
+- **Evidence provenance**：Reviewer 本次只改 GitHub 项目管理文件并执行 main readback，未连接或改变真实 Windows/Docker。旧 `EXECUTION_EVIDENCE.md` append-only 保留不修改；完成时 GitHub main 文件 readback 为文档归档完成的证据。
