@@ -71,3 +71,10 @@
 - Owner UI：当前对话中打开登录后 Karakeep 页面截图，以及“找到了”语言设置的 Owner 反馈；均仅作为 `OWNER_REPORTED`，不上传截图/个人账户信息到 GitHub。
 - Reviewer Close 决策理由：实现了**本机可登录、中文界面设置入口存在且所有三官方服务技术可用**的安装目标，缺口被明确界定为后续使用/恢复能力而非安装失败。因此可关闭安装实施任务并保留服务，不宣布全部运营、数据保护和真实收藏功能 PASS。
 - `OWNER_ACTION_REQUIRED=NONE`：无需再派发 Codex、不索取 Secret、不执行本机清理或重新安装。再次使用时按 Owner 意愿开始新 Gate。
+
+## 7. 结项后 Owner 决定（2026-10-16，更新说明，不改写原结项事实）
+
+- **Owner 最新决定**：明确表示电脑当前没有独立备份位置，并选择**不再安排任何备份、恢复演练或数据迁移**，只把 Karakeep 资料留在原 Windows 本机；不做系统/Docker Desktop 重启测试和长期监控。
+- **风险状态**：`BACKUP_NOT_REQUESTED`（由 Owner 明确取消）及 `RESTORE_UNVERIFIED`（未验收），不应被误解为有可靠备份。电脑、系统盘或 Docker 数据丢失可能造成账户与收藏无法恢复。**这不修改 G1J 安装 PASS 与原本的项目实施 Close，只是对后续维护范围的有界调整。**
+- **唯一剩余维护**：最新 `REVIEWER_HANDOFF.md` 的 G2B 仅负责一条可丢弃公开 URL 功能测试与无引用、可重建的本项目临时文件安全清理；在未有证据前不标 PASS。今后发生数据恢复需要时，必须由 Owner 重新提出任务。
+- **全部文档入口**：`https://github.com/entropy-student/project/tree/main/karakeep-local`，由 `README.md` 索引。真实数据及受保护 `.env` 继续留在 Windows 本机/Docker 命名卷，绝不上传 GitHub。
