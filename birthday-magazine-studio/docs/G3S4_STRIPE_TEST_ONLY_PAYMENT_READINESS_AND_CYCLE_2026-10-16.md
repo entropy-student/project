@@ -1,11 +1,11 @@
 # G3S4 — Stripe TEST-only WooCommerce payment loop, conditional combined Gate
 
 > Date: 2026-10-16
-> Status: **AWAIT_OWNER_EXPLICIT_TEST_ONLY_PROVIDER_AND_ORDER_MUTATION_AUTHORIZATION**
+> Status: **OWNER_AUTHORIZED_TEST_ONLY — PRECONDITIONAL_GATE_ACTIVE**
 > Parent Reviewer PASS: `docs/REVIEWER_DECISION_G3S3R_PASS_LOCAL_RUNTIME_RECOVERY_2026-10-16.md`
 > Runtime source: original local Windows G3C; PR #64 evidence at `1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c`
 > Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7
-> This is a **planned Gate, not permission to execute provider or payment writes yet**.
+> Explicit Owner authorization: `docs/OWNER_AUTHORIZATION_G3S4_STRIPE_TEST_ONLY_2026-10-16.md`. Provider/checkout TEST-only writes are **conditional on fresh source/runtime verification, new qualified recovery point and Owner-controlled authenticated consent**; STOP on failed/ambiguous preflight.
 
 ## Gate contract
 
@@ -27,7 +27,7 @@ EXECUTOR_TO_REVIEWER_RELAY=Fixed short result with Evidence Git SHA and exact ST
 
 ## Execution phases — strictly conditional
 
-**A — Read-only target and source preflight.** Start from this Gate, parent Reviewer PASS, current actual PR #64 head and locally mounted `poc/g3c/compose.yaml`, Stripe/Woo source and the currently preserved dirty-worktree change-path inventory. Current G3S3R result: MariaDB, WordPress and WP-CLI were running, WP 7.1.1, Woo 11.1.2, Stripe 11.1.0 installed *inactive* and product #1113 virtual USD39.99. That is dated Executor readback, not a guarantee of current state. Check local `http://127.0.0.1:8189` with explicit loopback proxy bypass where required. Compare **effective mounted files** (not only old HEAD) to selected PR source, list exact project-scoped different/untracked paths and preserve all dirty/untracked files, including 17 historical screenshot deletions. If the runtime candidate is ambiguous, return before provider write. No git reset/stash/rebase/clean/merge or silent sync.
+**A — Read-only target and source preflight.** Current Owner approval is explicitly recorded for this one bounded G3S4 Test-only round in `docs/OWNER_AUTHORIZATION_G3S4_STRIPE_TEST_ONLY_2026-10-16.md`. The current instruction sent to Executor must relay that approval; do not infer login consent from a GitHub file alone.  Start from this Gate, parent Reviewer PASS, current actual PR #64 head and locally mounted `poc/g3c/compose.yaml`, Stripe/Woo source and the currently preserved dirty-worktree change-path inventory. Current G3S3R result: MariaDB, WordPress and WP-CLI were running, WP 7.1.1, Woo 11.1.2, Stripe 11.1.0 installed *inactive* and product #1113 virtual USD39.99. That is dated Executor readback, not a guarantee of current state. Check local `http://127.0.0.1:8189` with explicit loopback proxy bypass where required. Compare **effective mounted files** (not only old HEAD) to selected PR source, list exact project-scoped different/untracked paths and preserve all dirty/untracked files, including 17 historical screenshot deletions. If the runtime candidate is ambiguous, return before provider write. No git reset/stash/rebase/clean/merge or silent sync.
 
 **B — Fresh recovery prerequisite.** Create a **new** selected consistent protected backup of the current test DB and WordPress state/uploads and verify integrity and restoration semantics (isolated instance/volume where needed, no touch to original DB for rehearsal); preserve preexisting archives. Record metadata only outside the protected host. Do not duplicate previously accepted old 58-table import simply as a box-tick; new verified recovery exists for this higher-risk Test-write scope. A failure here stops before Stripe configuration.
 
