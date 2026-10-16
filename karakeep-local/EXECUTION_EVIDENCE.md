@@ -487,3 +487,68 @@ No image pull, service/container/volume/network creation, account, bookmark, or 
 
 ### EXECUTOR_RESULT
 PASS_CANDIDATE — G1G authorized read-only diagnosis and evidence handling are complete, but the effective Docker Desktop proxy modes and root cause remain UNVERIFIED. The one concrete next action is the Owner’s read-only Proxies-page mode readback specified above. No retry, deployment, or settings change was performed; stop at Reviewer.
+
+
+## G1I — Scoped proxy recovery and conditional first start — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1I-SCOPED-PROXY-RECOVERY-20261016`
+`AUTHORITY=Owner-authorized scope recorded in current main Handoff and reconfirmed in this task`
+`SCOPE=Read-only proxy diagnosis; at most one official Meilisearch pull; conditional first start of karakeep-local; required project-only rollback on anomaly; sanitized Evidence append/readback`
+
+### PREFLIGHT_FACTS
+- `DIRECT_READBACK` Native Windows 11 PowerShell 7.6.5; Docker Desktop 4.95.0 Personal; Linux Engine 29.7.2; Compose 5.4.0; context `desktop-linux`.
+- `DIRECT_READBACK` Existing Compose fingerprint matched the Handoff SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`; protected directory ACL and `.env` shape passed. The four required key names and two distinct 64-hex secret shapes were checked in protected memory only. No secret values or hashes were emitted, copied to GitHub, or changed.
+- `DIRECT_READBACK` Both accepted GHCR images were present before deployment with the Handoff RepoDigests. Meilisearch `getmeili/meilisearch:v1.41.0` was absent before this Gate. No `karakeep-local` containers, volumes, or network existed; baseline was 20 containers / 0 running / 12 volumes / 11 networks. Host port 3000 was free. No active pull/build/start or running container workload was found before any optional shared proxy setting could be considered.
+- `DIRECT_READBACK` Docker Desktop Proxies UI was read before/after the pull and after Compose start: Docker Desktop proxy selected `System proxy`; Containers proxy selected `Same as host proxy`; Apply disabled. These matched the G1H baseline. No temporary or persistent proxy setting was changed, so no proxy restoration action was needed.
+- `DIRECT_READBACK` Windows static System proxy resolved to an existing loopback HTTP proxy candidate. Its protocol was verified as HTTP with successful CONNECT and TLS to Docker Hub registry and auth endpoints; unauthenticated registry response was 401 and auth-root HEAD was 404. No proxy address, port, URL, credential, or environment value is included. A framework-default helper selected a different process proxy route and was not used as evidence for the explicit System-proxy test.
+- `DIRECT_READBACK` Bounded Docker Desktop proxy log processing around the actual pull found 42 records across registry/auth/CDN categories and CONNECT activity; no recognized TLS, EOF, timeout, DNS, authentication, or proxy error category. Raw log lines and URLs were not retained or disclosed. These logs are corroborative; the actual successful pull is the authoritative outcome.
+- `DIRECT_READBACK` C: free space sampled at approximately 184.4 GiB before and 184.1 GiB after the pull. No fixed free-RAM threshold was applied.
+
+### ACTUAL_CHANGES
+- Exactly one authorized pull was executed: `docker pull getmeili/meilisearch:v1.41.0`. Start `2026-10-16T06:58:36.467Z`, end `2026-10-16T06:59:06.664Z`, elapsed 30.2 s, exit code 0. No GHCR image was pulled again. Meilisearch RepoDigest readback: `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`.
+- `docker compose -p karakeep-local up -d --pull never` returned exit code 0 at `2026-10-16T07:01:39Z`. No Compose, `.env`, key, Windows proxy, Clash/VPN, certificate, daemon/WSL setting, or non-target project was modified.
+- After finding the Chrome Host-header incompatibility below, the Gate rollback rule was applied using only `docker compose -p karakeep-local down` (no `-v`, no image-removal option), exit code 0.
+
+### OBJECTIVE_READBACK
+- `DIRECT_READBACK` While running, all three target containers used the intended official images and RepoDigests: Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`; Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`; Meilisearch digest above.
+- `DIRECT_READBACK` At `2026-10-16T07:05:24Z`, Web, Meilisearch, and Chrome were running; Web health was healthy; all had restart count 0 and OOMKilled=false. No healthcheck was configured for the two dependency containers. Host `http://localhost:3000` returned HTTP 200 and HTML contained the Karakeep marker. The only host mapping was Web `127.0.0.1:3000`; Windows listener readback showed loopback only. Meilisearch `/health` returned 200 from the Web container.
+- `DIRECT_READBACK` Chrome exposes container TCP 9222, with no host port mapping; the port was reachable from Web. The Web configuration uses the `chrome:9222` service alias. HTTP requests through that alias returned 500 with the sanitized response: “Host header is specified and is not an IP address or localhost.” The same Chrome endpoint returned 200 when the request Host header was the literal `127.0.0.1`. This establishes an actual incompatibility in the frozen internal Web→Chrome route; Chrome container status alone does not satisfy the Gate dependency-availability criterion.
+- `DIRECT_READBACK` After rollback: target container count 0; target project network absent; the two project volumes `karakeep-local_data` and `karakeep-local_meilisearch` remain; total containers/running/networks returned to baseline 20/0/11; total volumes are 14 (baseline 12 plus the two preserved project volumes); port 3000 has no listener. All three official images and their RepoDigests remain present.
+
+### VALIDATION
+- The no-credential proxy probes used explicit CONNECT/TLS and expected unauthenticated HTTP responses; no image was pulled during these probes. Docker Desktop UI readback verified the proxy modes remained unchanged through the pull and start.
+- A credential-free synthetic classifier fixture was checked before the single pull so an inner timeout/TLS/auth cause would take precedence over a broad layer-copy message. The real pull had no error; no historical failure was reclassified.
+- Compose startup, service/image identity, Web/Meilisearch HTTP checks, loopback-only port exposure, container OOM/restart state, resource stats, and cleanup were read back with project-scoped commands. At the 07:05Z sample, host available memory was approximately 1,315 MiB and container stats were Web 368 MiB, Meilisearch 28.2 MiB, Chrome 331.7 MiB; at later cleanup host available memory was approximately 2,098 MiB. These are observations, not thresholds. No OOM or restart was observed during the approximately five-minute run.
+- After cleanup, all target containers and the host port were absent, both project volumes and all images remained, and non-target inventory counts matched the pre-start baseline. No account, AI key, or bookmark data was added.
+- No Secret, proxy address/credential, raw log, raw command output, or unrelated project data was submitted.
+
+### ANOMALIES
+- The first internal Chrome probe used port 3000 and was refused; image metadata then directly identified the correct exposed container port 9222. The corrected port test showed TCP reachability.
+- The corrected HTTP test exposed the actionable blocker: Chromium rejects the Docker service DNS Host header but accepts a literal IP Host header. Because the frozen Web configuration targets the service alias, Chrome is not usable through the configured internal route. This is not a Docker Hub pull failure.
+- Initial Compose startup and the homepage HTTP 200 therefore do not constitute full G1I acceptance. No attempt was made to change the frozen Compose/browser endpoint or Chrome launch flags under this Gate.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- Current G1I Handoff read from main before execution: blob `115e9428f2f6107ad1267569a66cfa6d1b86f173`.
+- Latest prior G1G Evidence baseline: commit `2a2ba90bafe0c68048720b87cbba5ddce77c150b`, blob `9c77c352eb2766c308f7dfe1aa7c011fb62a0db4`.
+- Canonical Governance read from `entropy-student/spike.skill` main, `vps-project-governance/VNEXT.md` v0.2.7, blob `3917c88a7f36df7a53758b3879a92703d659ef9d`.
+- Docker Desktop proxy behavior reference: https://docs.docker.com/desktop/settings-and-maintenance/settings/
+- Local Windows UI, proxy handshake, Docker state, image digest, and bounded log evidence were reduced to the facts above. No screenshot or raw local diagnostic was uploaded.
+
+### ROLLBACK_EFFECT
+No Docker Desktop or Windows proxy setting was changed; the G1H proxy modes were read back unchanged, so proxy rollback was not required. The only rollback was project-scoped Compose down without volume removal after the Chrome dependency anomaly. Karakeep containers and its network are stopped/removed; the two named volumes, three official images, Compose, and `.env` remain. No other Docker project or system setting was changed.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+The temporary first start created three target containers, two target volumes, and one target network. After the required rollback, containers and network were removed, while the two volumes and three images were retained. Baseline non-target totals returned to 20 containers / 0 running / 11 networks; volumes are baseline plus two preserved target volumes. Port 3000 is currently released. No user account or real bookmark data was created. Host memory varied during the run and cleanup; no fixed threshold was used and no OOM/restart was observed.
+
+### EXECUTOR_RESULT
+`RETURN — Meilisearch pull succeeded through the unchanged, verified Docker Desktop proxy route and the official three-image set is present. The initial Compose start and localhost Web HTTP 200 succeeded, but G1I acceptance is not met: Web→Chrome requests using the configured service alias receive Chromium HTTP 500 due to the Host-header restriction. The project was stopped with the authorized project-only rollback and volumes retained. The concrete next step is for Reviewer to issue a separate, narrowly scoped Chrome-compatibility Gate: identify a documented supported internal endpoint/Host-header mechanism for the current official Chrome image and frozen Karakeep version, then authorize only the necessary Karakeep-local browser-route change and revalidate without publishing Chrome on a host port. Do not reuse G1I to change Compose or retry deployment. Stop at Reviewer.
+
+Executor-to-Reviewer relay:
+结果：G1I RETURN，Meili 镜像下载及临时启动成功，但 Chrome 内部 Host-header 限制阻断完整验收。
+改动：只新增官方 Meili 镜像及 Karakeep 初装容器/卷/网络；无代理、Compose、密钥或其他项目设置变更。
+验证：Docker Hub HTTP CONNECT/TLS 可用；三镜像 RepoDigest、Web HTTP 200、Meili health 200、Chrome 9222 TCP 均读回；Web→Chrome 服务别名 HTTP 500，字面 IP Host 返回 200；所有容器重启 0、无 OOM、Web 仅绑定 127.0.0.1:3000。
+问题：当前官方 Chrome 镜像拒绝 `chrome:9222` 的 Host header；应用首页 200 不代表浏览器依赖已可用。
+回滚：已运行项目级 `docker compose -p karakeep-local down` 无 `-v`；卷和镜像保留，代理设置未动，3000 已释放。
+请 Reviewer 检查：确认 G1I 结果并决定是否创建独立 Chrome 兼容性 Gate。
+Owner 转交：本地服务已停止；当前无可访问地址。等待 Reviewer，不进入下一 Gate。
