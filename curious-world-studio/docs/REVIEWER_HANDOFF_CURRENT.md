@@ -20,6 +20,8 @@
 
 > **Owner最新意思必须保真：**“我对精准的要求不高，匹配其实就行了”“只要相关就可以了”。前任Reviewer虽然口头同意，仍把爆米花“淀粉脚”研究实录当作不可逾越的素材Gate、重复增加搜索轮次，这是错误升级。**不要继续开展R6/R7精准科研画面调查；画面相关、听得懂、不冒充研究实录即可**。正确科学表述、来源可追溯、具体素材权利/公开发布许可仍要分别审查。
 
+> **Owner 新增长期写作决策（2026-10-16）**：每期完整视频在实际配音前加入两轮文案润色：[human-writing](VIDEO_SCRIPT_POLISH_WORKFLOW.md) 先处理结构/自然中文，[humanizer v3.1.0](VIDEO_SCRIPT_POLISH_WORKFLOW.md) 再消除模板痕迹，Reviewer之后做事实与口播回归。R4若扩写全片按此执行；本次已经下发的R3返修**不改任务边界**，R4仍未授权。详见[唯一项目级文案润色工作流](VIDEO_SCRIPT_POLISH_WORKFLOW.md)。
+
 ## 一、首读路径和职责
 
 - 项目：`entropy-student/project` → `curious-world-studio/`。**首读[CURRENT_STATE](CURRENT_STATE.md)（唯一事实源）→ [CWS AGENTS](../AGENTS.md)→本文**；仅需特定细节再按链接回溯旧证据，别从历史报告的“下一轮”另开任务。

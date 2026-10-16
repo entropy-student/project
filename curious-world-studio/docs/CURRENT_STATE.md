@@ -38,6 +38,10 @@
 4. 不重跑MEDIA G2–G4、PR129/131、R6L/R7L，不新建逐帧识别模型或80站点搜片轮次。若内部小样检查通过，R4须另获Owner批准；发布仍需独立授权。
 5. 已生效决策见 [DECISION_LOG](DECISION_LOG.md)，关键执行证据见 [EXECUTION_EVIDENCE](EXECUTION_EVIDENCE.md)。
 
+## 3A. 完整视频与后续每期的双轮文案润色（Owner已决定）
+
+新增长期表达流程：[中文科普口播双轮润色工作流](VIDEO_SCRIPT_POLISH_WORKFLOW.md)。R2/后续每期的完整旁白在录音前按**human-writing（v1.1.0，结构与表达）→ humanizer（用户指定v3.1.0，去模板化）→ Reviewer事实/口播回归检查**处理；R4全片新增/重写部分须先完成该流程再制作正式配音和字幕。保留科研事实、出处和假说边界，不为“去AI味”删知识；这是R4和未来视频的**流程要求而非R4执行授权**。已经下发的R3同Gate小修仅处理字幕与证据问题，**不因本新规范返工重配音**。
+
 ## 4. 执行与交接边界
 
 - **3+1素材合同**保留：论文/研究机构一手、OpenMontage、合法yt-dlp；后期仅2转场/4布局/6信息。新视频默认非大陆平台、横屏≥4:3、优先1080p。禁AI伪造研究实拍、代码绘制实体、循环重复凑时长；`LINK_FOUND`、`CONTENT_VERIFIED`、`REUSE_RIGHTS_VERIFIED`各自独立。精确匹配要求降低不等于素材权利放宽。
