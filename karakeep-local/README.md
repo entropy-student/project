@@ -2,7 +2,7 @@
 
 > 状态更新时间：2026-10-16
 > 原本机安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`；Karakeep 保留运行。
-> **唯一待下发任务**：`KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`（R2 定稿），仅本机存储位置只读核对、单条公开收藏测试、确证可弃文件的安全清理。**Executor 尚未执行 G2B。**
+> **最新状态**：G2B R2 已尝试、在 Computer Use 无法确认浏览器目标 URL 时安全停止；Canary 未执行、删除 0、Executor 未提交 G2B Evidence。Reviewer 判 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，**等待下一次 Owner 指令，当前没有可执行的新 Gate**。
 > 以后项目事实以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一当前状态权威；本文件是索引，不替代 Handoff。
 
 ## 一、所有项目文档的统一目录
@@ -28,14 +28,14 @@
 | 本机配置目录 | `$env:USERPROFILE\KarakeepLocal` | 经历史本机执行验证存在；包含受保护 `docker-compose.yml` 和 `.env` |
 | Karakeep 收藏/账号/抓取资产 | Docker named volume `karakeep-local_data` | 由 Docker Desktop Linux 引擎保存、映射到 Web 容器内 `/data` |
 | 搜索索引 | Docker named volume `karakeep-local_meilisearch` | Docker 管理，映射到 Meilisearch 容器内 `/meili_data` |
-| 程序镜像/容器/上述 Docker 卷的主机磁盘后端 | Docker Desktop 管理的 Linux 存储/虚拟磁盘 | **Windows 上实际磁盘文件绝对路径 `UNVERIFIED`**；可能和其它 Docker 项目共用底层磁盘 |
+| 程序镜像/容器/上述 Docker 卷的主机磁盘后端 | Docker Desktop 管理的 Linux 存储/虚拟磁盘 | G2B Executor 报告 WSL2 磁盘位置目录为 `%LOCALAPPDATA%\Docker\wsl`，**VHDX 文件名/完整路径仍 `UNVERIFIED`**；可能与其它项目共享 |
 | 项目进度与验收文档 | GitHub `project/karakeep-local/` | 同一个项目文档目录，独立于 Docker 用户数据 |
 
-你在 Karakeep 网页新增一个收藏时，应用会将相关记录/抓取资产写入 `karakeep-local_data`，搜索相关数据保存在 `karakeep-local_meilisearch`。具体数据库文件名、抓取产生哪些文件，以及 Windows 虚拟磁盘的确切路径**尚未经本轮本机只读核验**，不应凭模板猜测。
+你在 Karakeep 网页新增一个收藏时，应用会将相关记录/抓取资产写入 `karakeep-local_data`，搜索相关数据保存在 `karakeep-local_meilisearch`。本轮 Executor 报告 Docker Linux 内部 mountpoints 分别为 `/var/lib/docker/volumes/karakeep-local_data/_data` 和 `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`；它们不是 Windows 资源管理器普通文件夹。**具体数据库文件名及 Windows VHDX 文件绝对路径未验证**。以上本轮新增细节来自 Owner 转交 Executor 报告，未附正式 G2B Evidence，不能当作 Reviewer 独立本机读回。
 
 **推荐且已决定的方式**：维持当前 Compose + 原 named volumes，**不**改为 Windows bind mount，不移动/复制/合并卷，不修改 Docker Desktop `Disk image location`，不直接打开/编辑底层 VHDX，也不为了“集中路径”修改镜像或数据。这样无需动已有账号/收藏，也不干扰其它 Docker 项目。
 
-如只想查看本机归属：下一轮 G2B 可通过 `docker volume inspect`、容器 `Mounts`、Docker Desktop **Settings → Resources → Advanced → Disk image location**（界面如果提供）进行**只读核对**，只记录路径类型和卷名等非秘密元数据；Linux `Mountpoint` 不等于资源管理器中的 Windows 普通文件夹。绝不可把默认模板路径冒充这台电脑的已验证实际位置。
+本轮 G2B 报告已使用 `docker volume inspect`、容器 `Mounts` 和 Docker Desktop UI 做只读核对；无需为搜寻 VHDX 文件名继续操作或重复执行已接受的安装检查。具体来源、证据状态与停止边界见 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)。
 
 ## 三、日常使用与手动启动
 
@@ -53,9 +53,10 @@ if ($LASTEXITCODE -eq 0) {
 
 这是基于已冻结 Compose 的日常**按需启动**命令；G2B 不会为了验证它而主动停止或重启容器/电脑。已有镜像和两个 named volumes 必须保留。失败时报告当前报错，不随便卸载、重装或运行 `docker compose down -v` / `docker system prune`。
 
-## 四、剩余一次性任务与数据风险
+## 四、G2B 中止结果与数据风险
 
-- G2B 只做：本机存储布局**只读核对**、一条无敏感信息的公开网页收藏保存/抓取/搜索/预览测试、严格仅本项目**确证无引用且可再生的临时/诊断文件**安全清理。没有可靠的删除候选则不删。
+- **本轮停止**：存储布局已报告完成只读核对，`KarakeepLocal` 顶层只有 `.env` 和 `docker-compose.yml`，**没有可删临时文件，实际删除 0**。Computer Use 无法充分确认 Windows 当前浏览器 URL 而停止，**未添加书签、未进行抓取/搜索/预览，也未执行新 HTTP 检查**。没有 G2B Executor Evidence 或 Commit SHA。Reviewer 已记录未完成、停止并等待 Owner 下一次指令。
+- **不自动重试**：旧 G2B R2 授权已经在停止条件下终止，不能重新下发原提示词强行操作浏览器；如果未来 Owner 要继续单条 Canary，需要 Reviewer 新审批边界。
 - Owner 已明确：**不做备份、恢复演练、迁移、Windows/Docker Desktop 重启测试、长期监控**。旧版包含备份的 G2B 已 `SUPERSEDED_UNEXECUTED`，不能执行。
 - 现有账户/收藏/搜索数据只存电脑上，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；电脑故障或 Docker 存储损坏可能永久丢失收藏。不能将这个风险写成已解决或将 GitHub 文档视为恢复材料。
-- 最后实际的本机技术执行是 **G1J PASS**；Owner 后续登录并找到语言设置入口，简体中文是否已经实际切换仍 `UNVERIFIED`。G2B 没有收到执行结果或清理证明。
+- **已审计的最后一轮 Executor GitHub Evidence 仍是 G1J PASS**；G2B 的本机只读报告由 Owner 转交、未持久化到 Executor Evidence。Owner 先前成功登录并找到语言设置入口；是否已切换简体中文仍 `UNVERIFIED`。
