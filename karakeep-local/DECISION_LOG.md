@@ -18,3 +18,11 @@
 - **Why combined**：同一 Owner Windows/本地 Karakeep、同一证据与安全边界，可串行完成；独立备份目的地或一致性未验证时只能判 PARTIAL，不允许运行中 SQLite/Meili 不一致复制冒充可靠恢复。
 - **Explicit exceptions**：如无真正不同故障域且受控的备份位置，`OFF_DEVICE_RECOVERY` 保留 `UNVERIFIED`，不自行上传到 GitHub/外部服务；不删除原卷、Secret、镜像、共享 Docker 对象，不作故意设备重启或长期监控。
 - **Normal re-entry**：已冻结的 Compose 位于 Owner 的 `USERPROFILE\KarakeepLocal`，可在 Docker Desktop Engine 就绪后从该目录 `docker compose -p karakeep-local up -d --pull never`，再访问 `http://localhost:3000`。不需要日常调用 Codex，除非出现真实故障。
+
+## D-20261016-G2B-R1 — Owner 取消备份，所有项目文档集中在一个目录
+
+- **Owner latest decision**：目前没有独立备份位置，明确要求**完全取消此次数据和 Secret 备份、快照、恢复验证、迁移及备份介质寻找**。收藏和账户数据直接留在本机 Docker 命名卷；不做设备/Docker Desktop 重启测试或长期观察。
+- **Risk accepted, not solved**：`BACKUP_NOT_REQUESTED / OFF_DEVICE_RECOVERY_UNVERIFIED`。单电脑/磁盘故障时账户、网页收藏与搜索数据可能无法找回；不能把 GitHub 文档、原两个 Docker 卷或本机存储当作已验证备份。
+- **Reviewer scope adjustment**：此前 `KARAKEEP-WIN-G2B-ONE-SHOT-BACKUP-CANARY-CLEANUP-20261016` 草案在尚无 G2B 执行证据前被 **SUPERSEDED_UNEXECUTED**；当前仅 `KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`，包含一条公开测试收藏与确证可弃的本机临时/诊断文件清理，绝不进入持久卷/.env 或批量资料清理。
+- **Document home**：`https://github.com/entropy-student/project/tree/main/karakeep-local`；新增该目录的 `README.md` 汇总 Handoff、Closeout、Decision、Evidence 的入口与本机路径说明。GitHub 只存脱敏项目文档，不上传原数据库/密钥或原日志。
+- **Closeout remains**：最初安装实施状态 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 保持不变，剩余一次性 G2B 是 Owner 单独下达的项目级维护，不撤销历史 Close。
