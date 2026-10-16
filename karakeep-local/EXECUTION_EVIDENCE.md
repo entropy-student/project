@@ -104,3 +104,60 @@ No Karakeep service or data delta; no account or bookmark was created. Host free
 
 ### EXECUTOR_RESULT
 `RETURN_SECRET_ACCESS_MISMATCH` + `RETURN_PREFLIGHT_DRIFT` — stop before creating the project directory or either secret. Reviewer should resolve a safely protectable target path/ACL and establish a trusted Docker Engine free-space readout before authorizing another G1 attempt.
+
+
+## G1R — Windows local first-install attempt RETURN — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1R-ACL-DISK-DEPLOY-20261016`
+`OWNER_AUTHORIZATION=OWNER_REPORTED` Owner explicitly authorized one protected new Karakeep directory, two fresh random secrets, a bounded no-network diagnostic container, and official Compose deployment only after all preflight checks pass. Secret values must not be output or uploaded.
+
+### PREFLIGHT_FACTS
+- `TARGET_IDENTITY`: `DIRECT_READBACK` Owner Windows 11 native PowerShell 7.6.5 session; Docker context `desktop-linux`; Docker Desktop Linux Engine 29.7.2; Compose v5.4.0; engine reports 12 CPUs and 7.40 GiB memory.
+- `HOST_RAM`: `DIRECT_READBACK` 3.35 GiB free at the final pre-deployment preflight; after the failed image-pull attempt, a fresh read showed 1.74 GiB free, below the 2.0 GiB startup floor. No Karakeep service was started.
+- `TARGET_DIRECTORY`: `DIRECT_READBACK` selected the previously absent USERPROFILE candidate. Its existing parent chain has trusted owners, no reparse components, and no external effective Full Control, child deletion, ACL-change, or ownership-change grants; the current user can create the leaf. APPDATA fallback was rejected because its chain had an external high-rights grant. Existing parent ACLs were not changed.
+- `LEAF_ACL`: `DIRECT_READBACK` new directory, Compose file, and `.env` have protected DACLs with only the current user, SYSTEM, and Administrators allowed Full Control. Owner readback is the current user. The private absolute path and SIDs are omitted.
+- `ENGINE_STORAGE`: `DIRECT_READBACK` Docker reports root `/var/lib/docker` and storage driver `overlayfs`. WSL Docker Desktop data mount reported 1,055,762,868 KiB total and 997,071,484 KiB available (950.88 GiB). A single local-image diagnostic container's overlay root reported the same total and 997,071,376 KiB available; it was within 108 KiB of the WSL readback. The default Docker Desktop WSL data-disk file exists on the host system volume, which had 191.36 GiB free.
+- `VOLUME_MAPPING`: `DIRECT_READBACK` all 12 existing volumes use the `local` driver; a metadata-only sample mountpoint is under DockerRootDir's `volumes` directory. No volume contents were read. The diagnostic container's requested application-volume path did not appear as a separate `df` row, so that row was not claimed as a direct volume measurement. Volume capacity is mapped through the local driver mountpoint under the same Docker data root and Docker Desktop data disk. Docker references: [WSL 2 backend](https://docs.docker.com/desktop/features/wsl/), [Docker Desktop backup locations](https://docs.docker.com/desktop/settings-and-maintenance/backup-and-restore/), [Docker local volumes](https://docs.docker.com/engine/storage/volumes/), [Docker data root](https://docs.docker.com/engine/daemon/).
+- `DIAGNOSTIC_CONTAINER`: `DIRECT_READBACK` one existing local WordPress CLI image was run with `--rm --pull=never --network=none --read-only --memory=128m --cpus=0.25 --pids-limit=16`; no secret or host/business-data mount was supplied. After exit, the exact probe name was absent and container, volume-name, and network snapshots matched. The three pre-existing running workloads remained running and matched their pre-probe shape.
+- `PORT_AND_COLLISIONS`: `DIRECT_READBACK` Windows TCP and Docker published-port checks found no port 3000 listener. No `karakeep-local` Compose project or either expected project volume existed. Existing Docker inventory before/after the probe remained 20 containers (3 running), 12 volumes; no unrelated object was changed.
+- `OFFICIAL_SOURCE`: `DIRECT_READBACK` official `karakeep-app/karakeep` main Compose blob `865bb147cef972926d5dc32e50645876fd110555`, unchanged from accepted G0. Official Docker install instructions identify the four environment entries used here (`KARAKEEP_VERSION`, `NEXTAUTH_SECRET`, `MEILI_MASTER_KEY`, `NEXTAUTH_URL`): https://github.com/karakeep-app/karakeep/blob/main/docs/docs/02-installation/01-docker.md.
+
+### ACTUAL_CHANGES
+- Created only the selected new project directory, `docker-compose.yml`, and `.env`; the local Compose source is the pinned official file with only the web port changed to `127.0.0.1:3000:3000`. Local Compose SHA-256: `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`.
+- Generated exactly two distinct 32-byte CSPRNG values encoded as 64-character hex and stored them only in the protected `.env`. No value, digest, or secret-bearing command output was recorded. The file has the official version, local URL, and two secret keys; no AI API key was added.
+- `docker compose config --quiet` returned 0. Read-only normalized config confirmed exactly web/chrome/meilisearch, the resolved project volumes `karakeep-local_data` and `karakeep-local_meilisearch`, loopback-only web binding, and no host ports for Chrome/Meilisearch.
+- `docker compose pull` was attempted for those three configured images and exited 1. The sanitized output classifier identified a network/TLS class. The raw error was not retained or displayed. A read-only reconciliation found none of the three target image tags present; Docker aggregate usage remained 9 images / 2.612 GB, 20 containers, and 12 volumes.
+- No Compose service was started, no project volume was created, and no account or bookmark was created. No other Docker project, existing directory ACL, Docker/WSL setting, or system configuration was changed.
+
+### OBJECTIVE_READBACK
+- Protected project files and the two distinct secret entries read back successfully without displaying their values; all three ACLs remained protected.
+- Docker Compose configuration parsed successfully and matched the reviewed service/port/volume scope.
+- Deployment stopped before `compose up`: image pull exited with the classified network/TLS failure, and current available host RAM was 1.74 GiB, below the startup floor.
+
+### VALIDATION
+- Fresh latest-main Handoff readback still identified G1R before Evidence write; prior Evidence was fetched with blob SHA `5761255fab46af8fcfeeb2ae8f69565821be1940`. This record is appended without rewriting prior G0/G1 history.
+- Official Compose file identity and official Docker installation guide were read through the GitHub connector. Docker storage semantics were checked against the linked official Docker documents above.
+- Final local reconciliation: both protected ACLs, four expected environment entries, distinct 64-hex secret formats, Compose quiet-config exit 0, zero target image tags, no Compose project/project volumes, no probe residue, three existing workloads unchanged, and no port 3000 listener.
+- No raw pull output, Secret value, Windows absolute path, SID, or unrelated container name was saved.
+
+### ANOMALIES
+- `RETURN_DEPLOY_IMAGE_PULL_NETWORK_TLS`: the pull exited non-zero and the sanitized classifier matched network/TLS; the exact low-level stderr was intentionally not retained, and no retry was attempted.
+- `RETURN_PREFLIGHT_DRIFT`: the latest post-failure host RAM reading was 1.74 GiB, below the 2.0 GiB start threshold; this Executor did not start services.
+- Several early local validators were corrected before final readback: one treated the Windows `FullControl` composite enum as a bitmask; one compared Compose's logical volume keys to their resolved project names; the first secret-format regex did not handle CRLF and a later check used the wrong key delimiter length. Corrected read-only checks passed. No existing file was overwritten and no additional secret pair was generated.
+- The diagnostic container's `df` output did not show its requested application-volume path as expected; volume mapping was instead established from DockerRootDir, local-driver mountpoint metadata, the matched overlay/data-disk capacity, and the official Docker storage description. Reviewer should assess this storage-domain proof together with the Gate.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This appended G1R entry: sanitized host, storage, ACL, configuration, pull, and stop-state readbacks.
+- Official Compose: https://github.com/karakeep-app/karakeep/blob/main/docker/docker-compose.yml — source blob `865bb147cef972926d5dc32e50645876fd110555`.
+- Official install configuration: https://github.com/karakeep-app/karakeep/blob/main/docs/docs/02-installation/01-docker.md.
+- Docker storage references are linked under `PREFLIGHT_FACTS`. No secret-bearing logs or private host paths are attached.
+
+### ROLLBACK_EFFECT
+- No service or named volume was created, so no `docker compose down` was needed. No `down -v`, prune, or image cleanup ran. The protected directory, official Compose file, and generated `.env` are retained for Reviewer-directed recovery; there is no Karakeep business data. The temporary diagnostic container left no container, volume, or network residue. Backup/restore of future real data remains `UNVERIFIED`.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+- No Karakeep runtime or business-data delta. Existing 3 running services, 20 total containers, and 12 volumes remained unchanged. Host free RAM was 3.35 GiB at final preflight and 1.74 GiB after the failed pull. No account, bookmark, AI key, or public port was created.
+
+### EXECUTOR_RESULT
+`RETURN_DEPLOY_IMAGE_PULL_NETWORK_TLS + RETURN_PREFLIGHT_DRIFT` — stop before service startup. Reviewer should inspect the pull-failure classification, current RAM headroom, and the overlay/local-volume storage mapping, then define any next Gate. Do not treat this as PASS and do not advance stages.
