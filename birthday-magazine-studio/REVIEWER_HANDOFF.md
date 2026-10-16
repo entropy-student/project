@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-16 (G3S3 formally RETURN on stopped existing local runtime and dirty/stale source; G3S3R recovery Gate awaits explicit Owner startup authorization)
+> Last reviewed: 2026-10-16 (G3S3R PASS bounded: existing Windows G3C runtime restored; G3S4 Stripe TEST-only Gate planned, awaiting explicit Owner authorization)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,8 +13,8 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current Gate:** `docs/G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_AND_SOURCE_RECONCILIATION_2026-10-16.md` — limited existing-container local recovery/source verification, **Owner approval required before any start**. Completed G3S3 `RETURN_PREFLIGHT_DRIFT` decision `docs/REVIEWER_DECISION_G3S3_RETURN_PREFLIGHT_DRIFT_2026-10-16.md`; Executor evidence PR #64 commit `2eb033658ad0ed04dacfe3a0f2b26101ab4697e3`. Local containers stopped, checkout stale/dirty; no runtime restart or Stripe action in G3S3.
-- Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3 Executor-host readback shows all four original G3C containers stopped** (DB/wpcli exit 137, WP/mailpit exit 0). Former G3S1SV running/HTTP 200 observations are historical only, not the present runtime. Reviewer has not independently accessed Owner hardware.
+- **Next Gate (planned, NOT authorized):** `docs/G3S4_STRIPE_TEST_ONLY_PAYMENT_READINESS_AND_CYCLE_2026-10-16.md`. G3S3R **formal Reviewer PASS for bounded existing local runtime recovery/read-only Woo/Stripe inspection** in `docs/REVIEWER_DECISION_G3S3R_PASS_LOCAL_RUNTIME_RECOVERY_2026-10-16.md`. PR #64 Evidence-only head `1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c`. Only with separate Owner TEST-only provider connection/synthetic payment/TEST refund authorization and new qualified DB+WP backup may G3S4 progress to provider writes.
+- Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3R Executor-host readback**: original DB running/healthy, WordPress running/HTTP 200 when localhost proxy bypass is used, WP-CLI running, Mailpit stopped; this is accepted at the G3S3R stage only. Reviewer has not directly accessed Owner hardware.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
 - PayPal Sandbox stays; no OAuth/merchant onboarding, connection, Gateway activation, checkout, provider action, tunnel or merge is allowed by G3S1.
@@ -46,14 +46,14 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_OWNER_APPROVAL_REQUIRED
+CURRENT_GATE=NONE_G3S4_PLANNED_AWAIT_OWNER_TEST_ONLY_AUTH
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
-G3C_WORDPRESS=STOPPED_EXIT_0_G3S3_EXECUTOR_READBACK
-G3C_DB=STOPPED_EXIT_137_CAUSE_UNKNOWN_G3S3_EXECUTOR_READBACK
-G3C_WPCLI=STOPPED_EXIT_137_CAUSE_UNKNOWN_G3S3_EXECUTOR_READBACK
+G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
+G3C_DB=RUNNING_HEALTHY_G3S3R_EXECUTOR_READBACK
+G3C_WPCLI=RUNNING_G3S3R_EXECUTOR_READBACK
 G3C_MAILPIT=STOPPED_EXIT_0_G3S3_EXECUTOR_READBACK
-G3C_SITE_LOOPBACK_8189=NOT_RETESTED_IN_G3S3_WP_STOPPED
+G3C_SITE_LOOPBACK_8189=HTTP_200_WITH_EXPLICIT_LOOPBACK_PROXY_BYPASS_G3S3R_EXECUTOR
 G3C_WOO_PRODUCT_1113=VIRTUAL_USD_39_99_EXECUTOR_READBACK
 G3C_PPCP=NOT_INSTALLED_EXECUTOR_READBACK
 G3C_STRIPE=11_1_0_INSTALLED_INACTIVE_REVIEWER_ACCEPTED_EXECUTOR_EVIDENCE
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S3_RETURN_PREFLIGHT_DRIFT_G3S3R_CONDITIONAL_RECOVERY_AWAIT_OWNER
+PROJECT_EXECUTION_STATUS=G3S3_RETURN_FIXED_BY_G3S3R_PASS_G3S4_TEST_ONLY_GATE_PLANNED_OWNER_AUTH_PENDING
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -93,7 +93,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=2eb033658ad0ed04dacfe3a0f2b26101ab4697e3
+PR64_LAST_VERIFIED_HEAD=1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -111,7 +111,17 @@ G3S3_G3C_LOCAL_SOURCE_HEAD=f50cc974ead65c9811f952cdf0a327c548f14efc
 G3S3_LOCAL_VS_PR_COMMIT_LAG=46_AT_2EB0336
 G3S3_LOCAL_UNCOMMITTED_CHANGES=3_SOURCE_EDITS_17_TRACKED_SCREENSHOT_DELETIONS
 G3S3_VOLUME_NAMES=existing_database_and_wordpress_intact_METADATA_ONLY
-G3S3R_OWNER_START_AUTHORIZATION=REQUIRED_NOT_YET_GIVEN
+G3S3R_OWNER_START_AUTHORIZATION=APPROVED_USED_ONCE_EXPIRED_FOR_NEW_ROUNDS
+G3S3R_REVIEWER=PASS_BOUNDED_EXISTING_RUNTIME_RESTORED
+G3S3R_EVIDENCE_COMMIT=1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c
+G3S3R_G3C_SOURCE=EFFECTIVE_BIND_MOUNTS_RELEVANT_PATHS_MATCH_PR_EXECUTOR_REPORTED;OVERALL_DIRTY_WORKTREE_RETAINED
+G3S3R_PROXY=DEFAULT_CURL_FAILED_LOCALHOST_BYPASS_HTTP_200
+G3S3R_INTERNAL_DB_CRASH_RECOVERY=OBSERVED_TWO_MARKERS_NO_INNODB_FATAL
+G3S3R_WOO_VERSION=11_1_2_ACTIVE
+G3S3R_STRIPE_VERSION=11_1_0_INACTIVE
+G3S3R_ORDER_PRODUCT=1113_VIRTUAL_USD_39_99
+G3S4_OWNER_TEST_MODE_AUTHORIZATION=PENDING_NOT_YET_GRANTED
+G3S4_FRESH_RECOVERY_POINT=NOT_YET_CREATED
 G3S3R_ALLOWED_RUNTIME_START=CONDITIONAL_DB_WP_WPCLI_EXISTING_IDS_ONLY
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
@@ -311,7 +321,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_OWNER_APPROVAL_REQUIRED
+CURRENT_GATE=NONE_G3S4_PLANNED_AWAIT_OWNER_TEST_ONLY_AUTH
 ```
 
 ## SYSTEM_MAP
@@ -332,6 +342,8 @@ CURRENT_GATE=G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_OWNER_APPROVAL_REQUIRED
 - Shared VPS dependency: NONE accepted for current Gate.
 
 ## CURRENT_ACCEPTED_STATE
+
+- **Latest formal Reviewer decision G3S3R PASS (bounded, 2026-10-16):** exact PR #64 single Evidence commit `1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c` reviewed. Executor restarted ONLY original G3C DB, WordPress, WP-CLI once each by existing ID with native exit 0; DB healthy, loopback HTTP200 on proxy bypass. Woo 11.1.2 active, Stripe 11.1.0 installed inactive, virtual product #1113 USD39.99, one existing owned Woo order checked. Mailpit stayed stopped; no Stripe/PayPal/checkout/provider/write or source mutation. Source checkout remains locally stale/dirty, not production-eligible by inference. See `docs/REVIEWER_DECISION_G3S3R_PASS_LOCAL_RUNTIME_RECOVERY_2026-10-16.md`.
 
 - **2026-10-16 G3S3 Reviewer RETURN:** fresh Owner-Windows Executor evidence PR #64 `2eb033658ad0ed04dacfe3a0f2b26101ab4697e3` confirms all four named G3C containers stopped (DB/wpcli exit 137, root cause unknown), local checkout head `f50cc974...` behind current PR and dirty (three source edits + 17 tracked screenshot deletions). Current Woo/Stripe settings could not be freshly read. No runtime/code/payment write performed. Evidence commit added **only one Markdown file**; see `docs/REVIEWER_DECISION_G3S3_RETURN_PREFLIGHT_DRIFT_2026-10-16.md`.
 
@@ -361,15 +373,13 @@ CURRENT_GATE=G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_OWNER_APPROVAL_REQUIRED
 
 ## CURRENT_GATE
 
-**Current G3S3R bounded local recovery Gate:** `docs/G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_AND_SOURCE_RECONCILIATION_2026-10-16.md`. Gate is **awaiting explicit Owner authorization** to start only existing G3C MariaDB, WordPress and WP-CLI once, by original container ID, after a narrow read-only preflight verifies host/container/mount/volume/source/backup and absence of material data/exposure risk. Mailpit stays stopped. If source/volume/authorization risks remain, RETURN without startup.
+**G3S3R FORMAL PASS — completed:** `docs/REVIEWER_DECISION_G3S3R_PASS_LOCAL_RUNTIME_RECOVERY_2026-10-16.md`; one consolidated sanitized PR #64 Evidence file at `1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c`. Existing original MariaDB 11.4.7, WordPress 7.1.1, WP-CLI running; DB healthy, local HTTP 200 with proxy bypass, Mailpit stopped. Woo 11.1.2 active, official Stripe 11.1.0 installed inactive/not registered; virtual product #1113 $39.99 USD and existing owned order readback accepted **for this bounded runtime scope**. Source effective mounts compare as matching selected PR runtime-relevant files according to Executor, while older local HEAD/three source edits/17 deletions/13 untracked items remain; exact protected clean source build and whole checkout synchronization NOT accepted.
 
-**G3S3 formally RETURN_PREFLIGHT_DRIFT**, not PASS: `docs/REVIEWER_DECISION_G3S3_RETURN_PREFLIGHT_DRIFT_2026-10-16.md`; evidence-only PR #64 commit `2eb033658ad0ed04dacfe3a0f2b26101ab4697e3`. All G3C containers stopped; local `g3cr2` checkout at `f50cc974...` dirty/stale against PR #64 `2eb0336...`, and preview plugin PHP not proven matching. Stop cause 137 is UNKNOWN. Do **not** reset/stash/clean/rebase local Git, delete snapshots, recreate/import DB, run `docker compose up`, install Stripe, or assume new PR head is the local mounted source.
+**NEXT G3S4 GATE PREPARED, AWAITING OWNER AUTHORIZATION:** `docs/G3S4_STRIPE_TEST_ONLY_PAYMENT_READINESS_AND_CYCLE_2026-10-16.md`. It defines one combined recovery-prerequisite + **TEST-only** Stripe/Woo signed webhook, synthetic checkout/cancel/replay/TEST refund exercise. Before any TEST account/OAuth/provider/paid status write the Owner must explicitly approve the exact Test-only scope, then Executor must prove the actual current source/runtime, a **fresh** protected restorable DB + WordPress/uploads recovery point and rollback. Gate creation is not authorization. The previous G3S3R permission covered only one existing-container start and has been consumed.
 
-**Recovery evidence boundaries:** previously accepted G3S1SV/SVE Stripe extension **11.1.0 installed inactive** remains historical; original Woo product #1113 virtual USD39.99 and 58-table MariaDB isolated backup restore passed within that prior stage. Fresh **present** Woo plugin/config/readiness UNKNOWN. Earlier protected backup and original project named volumes present per G3S3 metadata; no current Test-write rollback accepted. Starting MariaDB may run crash recovery internally; startup cannot be claimed as zero state change or fully reversible. This exact startup requires Owner approval and independent Reviewer validation.
+**Not proven:** Stripe merchant country, actual charges_enabled and payouts eligibility (Owner reports dashboard review approved), Stripe TEST payment/refund/webhook, LIVE acceptance, prepayment server draft with 12–25 photos/answers, automatic PDF production, private delivery, public WordPress backend, production health or PR merge. The Netlify `https://birthday-magazine-original.netlify.app/` site is original-design static information/preview only; it is not a Woo checkout endpoint. PayPal historical Sandbox PASS preserved, retirement deferred.
 
-**Owner Stripe review and public frontend:** Owner says Stripe merchant review approved, but actual country/entity/charges/payout statuses remain not independently proven; original static Netlify frontend owner-accepted at `https://birthday-magazine-original.netlify.app/`, not Woo checkout, backend or webhook. Deferred PayPal retirement, PR merge, real/test transactions and production deployment remain forbidden.
-
-**Parent stages preserved:** G3S1R local restore PASS at past runtime only, G3S1SV/SVE inactive Stripe plugin staging PASS, G3S2 official policy research PASS, visual Owner PASS and historical PayPal Sandbox PASS are not replayed. Full prepayment intake draft persistence, worker/PDF private fulfillment and public WordPress hosting remain PENDING.
+**Safety:** Do not rerun already-accepted DB import or plugin install, reset dirty worktree, enable live payments, start tunnel/webhooks, write provider account settings, change public site, delete PayPal, deploy production or merge PR #64 without the separately authorized Gate.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -411,6 +421,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## CURRENT_ROLLBACK_STATUS
 
+- G3S3R original existing-container startup succeeded, including internal MariaDB crash-recovery markers. Prior old backup files still exist but predate this startup, are NOT a fresh qualified Test-write rollback, and cannot guarantee bytewise reversible startup. G3S4 requires **new** selected database+WordPress/files/uploads backup with integrity and restore proof before test/provider writes. No routine reimport/restart required.
 - **G3S3R conditional runtime start**: existing stopped DB/wpcli exit 137; startup may trigger internal crash recovery. Existing original volumes and prior manifest/SQL/WP archive remain protected. Pre-start snapshot/reference evidence and Owner approval are required by the Gate; **do not assert full bytewise rollback or run a blind restore**. If unsafe, remain stopped and RETURN.
 - G3S3 is read-only, no mutation to undo. The next Test-only activation Gate must select/verify current restorable DB+WordPress files, exact rollback and original payment configuration before writing. Historical G3S1SV restore does not by itself qualify production rollback.
 - Accepted rollback target: G3CR6R1 state.
@@ -422,6 +433,9 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- G3S3R recovered local existing WordPress/Woo runtime; former container-stop blocker FIXED. Exit-137 original cause still UNKNOWN (`OOMKilled=false`), not a current active runtime failure.
+- Dirty/stale checkout remains intentionally intact with 3 source edits, 17 tracked screenshot deletions and 13 untracked items; Executor states runtime-relevant effective mounted source matches PR, but full source tree cleanliness/fingerprints for future source changes not independently documented. G3S4 must pin effective runtime source before writes; no forced sync.
+- Stripe test-only account connection, signed webhook, test order capture/refund/replay and separate live payouts remain unverified, Owner TEST-only permission pending. Old private backup does not qualify as a new Test-write recovery point.
 - G3S3 current Windows G3C runtime stopped; DB and WP-CLI exit 137 **cause UNKNOWN**, possible normal shutdown/kill/OOM must not be guessed; further diagnosis is pending.
 - G3S3 local G3C dirty checkout `f50cc974...`, differs from PR #64 `2eb0336...`; 3 source edits/17 tracked screenshot deletions preserved, preview plugin differs, exact Test source correlation pending; do not forcibly sync.
 - Stripe review APPROVED Owner-reported; merchant country/entity, payment/payout activation, compatible settlement bank, account restrictions and successful Test/Live charges not independently verified.
@@ -443,19 +457,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **G3S3R one scoped local recovery round**: Owner first explicitly authorizes startup of the **existing** three G3C DB/WordPress/WP-CLI containers, conditional on safe read-only preflight. Executor inventories exact current stopped container IDs/volumes/mounts/dirty source and old backup metadata. If safe, single existing-container start sequence and read-only current Woo/Stripe/product/checkout verification; no `compose up`, no new containers, no DB import, no payments. Reviewer accepts/returns the result. No manual restart outside Gate.
-2. If G3S3R proves source/runtime enough for a stable Test target, Reviewer opens a separate **fresh backup + Stripe TEST-only connection, signed webhook, Woo order/amount/USD/replay/refund/entitlement** Gate. A dirty mounted branch may need independently approved isolated source alignment first; do not mix PR updates with local loss or PR64 merge.
-3. Complete durable prepayment photo/answer intake binding, paid generation and private 12-page delivery, then production WordPress/Woo backend. Netlify remains a static original-design front end.
-4. Real-money canary and optional PayPal retirement require separate Owner approval and Reviewer PASS; source branch PR #64 remains Open/unmerged.
+1. **Await explicit Owner Test-only approval**, then execute prepared G3S4 Gate `docs/G3S4_STRIPE_TEST_ONLY_PAYMENT_READINESS_AND_CYCLE_2026-10-16.md` in the existing Owner Windows runtime. Do NOT repeat G3S3R startup or old database restore.
+2. G3S4 initial preflight classifies all dirty source paths/effective mounts without losing local changes, verifies current WordPress/Woo/Stripe, and establishes a **new protected, correctly restored** DB+WordPress/uploads backup. Only if those checks PASS and Owner-specific TEST authorization is present, connect/activate the **TEST** gateway and exercise one bounded synthetic Woo product payment/cancel/signed webhook first/replay/invalid signature and TEST refund/revocation. Stop for Reviewer and no LIVE operations.
+3. After TEST loop PASS, build secure server-side prepayment 12–25-photo+answer draft/order correlation, idempotent paid generation and private PDF delivery; only then scope public WordPress/Woo backend hosting and real-money canary with separate Owner decision.
+4. Preserve historical PayPal evidence and PR #64 Open/unmerged; no redesign or cleanup unrelated to Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Required before Phase B startup:** Owner must explicitly authorize starting **only the three existing** Birthday G3C containers (MariaDB, WordPress and WP-CLI) **once** after safe preflight; no recreation/import/clean/sync. Startup may perform normal database crash recovery; authorization does not cover Test payment or production.
-- **If not authorized:** Codex may perform only G3S3R Phase A read-only inspections and report `RETURN_OWNER_ACTION_REQUIRED` without startup.
-- No Stripe account secrets, bank data, real payments, hosting spend, Netlify update or PayPal change needed.
+- **Needed only to start G3S4 test writes:** explicit permission for Owner-managed Stripe **TEST-only** account connection/OAuth, local Woo gateway Test activation/configuration, **synthetic** USD39.99 Woo Test charge and TEST refund, with no real cards/cash or customer materials. No credentials or bank/identity details should be relayed. Gate creation alone does not authorize these actions.
+- **No further permission needed for G3S3R:** its one-container-start approval was exercised and is closed. If Owner does not authorize G3S4 yet, leave Stripe inactive; no further host or provider mutations.
 
 ## EVIDENCE_POINTERS
 
+0. `docs/REVIEWER_DECISION_G3S3R_PASS_LOCAL_RUNTIME_RECOVERY_2026-10-16.md` — **CURRENT formal Reviewer PASS**, bounded local recovery and read-only Woo/Stripe state, with limitations.
+0. `docs/G3S4_STRIPE_TEST_ONLY_PAYMENT_READINESS_AND_CYCLE_2026-10-16.md` — next combined **TEST-only** Gate, created but **not authorized** for provider/test order writes.
+0. PR #64 `docs/evidence/g3s3r/G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_2026-10-16.md` at `1b2e3c4e0b7c3c2f4961c991a2626f341dec5b7c` — single consolidated Evidence, existing DB/WP/WPCLI start and read-only diagnostics.
 0. `docs/G3S3R_EXISTING_LOCAL_RUNTIME_RECOVERY_AND_SOURCE_RECONCILIATION_2026-10-16.md` — **CURRENT Gate**, conditional existing-container startup requires explicit Owner approval and safe preflight.
 0. `docs/REVIEWER_DECISION_G3S3_RETURN_PREFLIGHT_DRIFT_2026-10-16.md` — formal Reviewer RETURN; PR #64 single-file Evidence independently checked.
 0. PR #64 `docs/evidence/g3s3/G3S3_EXECUTOR_PREFLIGHT_2026-10-16.md` at `2eb033658ad0ed04dacfe3a0f2b26101ab4697e3` — G3S3 fresh Windows/Docker stopped-runtime and dirty source readback; no startup.
