@@ -78,3 +78,11 @@
 - **风险状态**：`BACKUP_NOT_REQUESTED`（由 Owner 明确取消）及 `RESTORE_UNVERIFIED`（未验收），不应被误解为有可靠备份。电脑、系统盘或 Docker 数据丢失可能造成账户与收藏无法恢复。**这不修改 G1J 安装 PASS 与原本的项目实施 Close，只是对后续维护范围的有界调整。**
 - **唯一剩余维护**：最新 `REVIEWER_HANDOFF.md` 的 G2B 仅负责一条可丢弃公开 URL 功能测试与无引用、可重建的本项目临时文件安全清理；在未有证据前不标 PASS。今后发生数据恢复需要时，必须由 Owner 重新提出任务。
 - **全部文档入口**：`https://github.com/entropy-student/project/tree/main/karakeep-local`，由 `README.md` 索引。真实数据及受保护 `.env` 继续留在 Windows 本机/Docker 命名卷，绝不上传 GitHub。
+
+## 8. 后续存储方式定稿（2026-10-16 / G2B R2，原结项记录不回写）
+
+- Owner 在此前**未下发任何 G2B 提示词、未执行 G2B**的基础上，询问收藏实际存放在哪里、是否应将项目集中为一个 Windows 文件夹，并接受 Reviewer 推荐：**保留当前 Docker named volumes，不进行存储迁移，也不改变 Compose / Docker Desktop 磁盘位置**。
+- 原 `$env:USERPROFILE\KarakeepLocal` 是本机配置文件目录，不等同整个项目数据目录。两 named volumes `karakeep-local_data`（Web 内 `/data`）及 `karakeep-local_meilisearch`（Meili 内 `/meili_data`）由 Docker Linux 引擎管理；底层 Windows Docker 虚拟磁盘的**确切绝对路径仍是 `UNVERIFIED`**，当前只能通过本机只读核对认定。
+- 正式的**项目文档统一目录**：https://github.com/entropy-student/project/tree/main/karakeep-local ，以 `README.md` 索引、`REVIEWER_HANDOFF.md` 为下一位 Reviewer 唯一有效状态、`DECISION_LOG.md` 为决策史、`EXECUTION_EVIDENCE.md` 为历史执行事实。GitHub 不承载任何真实收藏、账号或密钥。
+- 唯一尚待下发的 G2B R2 仅含**只读存储核对 + 一条可丢弃网页收藏功能测试 + 安全临时文件清理**。不备份、不恢复、不迁移、不重启、不长期监控。过去的备份版 G2B 草案与后来的 R1 都未下发/执行，且不得作为当前授权依据；详情以最新 Handoff 为准。
+- 实施 Close 仍然有效，继续使用原本机服务；`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED` 是 Owner 接受的资料丢失风险，不是数据安全通过。
