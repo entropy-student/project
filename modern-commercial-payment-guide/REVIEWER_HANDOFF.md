@@ -110,7 +110,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** **Owner已正式确认V6新手友好7/29/42框架并完成GitHub落地**：七个一级不变，21个二级+37个三级改为Owner批准文字，其余原文保留；旧V4/V5冻结问题完整保存在历史归档。新框架是此Handoff第2–4节的唯一现行权威。旧P2第①板块V5+Humanizer全文知识/事实曾Reviewer PASS，但其五个二级+九个三级正式标题现在不匹配V6，**必须重新制作第①板块的V6完整候选**，不可误认已Owner冻结。保持深入浅出、方法论、完整两案例/93表格行/15出处/金融事实和自然中文。下步独立Executor受限重跑、Reviewer审核、Owner确认。PR #132 Open/Draft/未合并；P3–P5未进入。
+**当前闸门：** **正式V6全框架已由Owner冻结**：7/29/42完整标题、编号、归属维持正式V6；旧V4/V5历史归档。第①板块**V6完整重跑新稿已完成并经独立Reviewer PASS**（16正式标题、7H4、93表格行、15来源及25URL、两完整案例、金融金额及主备方法保留），[PR #132正式审核](https://github.com/entropy-student/project/pull/132#issuecomment-6212937671)，[独立自测报告](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md)。**尚待Owner阅读认可并正式冻结第①正文**；真人愿读/读后理解仍UNVERIFIED。PR Open/Draft/未合并，无P3–P5。
 
 ## 八、文件分工和更新规则
 
@@ -125,17 +125,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `FRAMEWORK_V6_FROZEN_P2_V6_FULL_RERUN_GATE_RELEASED`（正式V6 7/29/42已Owner确认并落入main，旧V4/V5归档已验证；Reviewer已发布第一部分完整V6重跑Gate，等待独立Codex Executor生成候选并交Reviewer）。
+- **PROJECT_STAGE：** `P2_V6_FULL_CANDIDATE_OWNER_FINAL_REVIEW_PENDING`（V6全7/29/42目录正式冻结，P2第①完整V6稿已独立Reviewer PASS；Owner未正式冻结正文或合并PR）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
-- **CURRENT_ACCEPTED_STATE：** Owner于2026-10-16正式批准[V6新手卖家友好7/29/42完整框架](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)（快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`），本Handoff第二至第四节已原样同步为唯一权威；V4/V5原文归档Blob `25569a0042f9a1a0e9ba67835f9105cb7d8c3423`。P2旧V5+Humanizer全文 Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`、旧知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、旧human-writing稿 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 内容曾Reviewer PASS且保留不变；但**P2的5/9正式题目现在不是现行V6正式标题，新的P2 V6候选尚不存在**。
-- **CURRENT_GATE：** `MCPG-P2-V6-READER-FRIENDLY-FULL-RERUN-20261016`，**GATE_RELEASED/EXECUTOR_PENDING**：[现行P2 V6重跑Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_READER_FRIENDLY_FULL_RERUN_GATE.md)，Blob `b23539269e19bdd89a402e76337633e8e17e0e2f`；本轮只允许在PR #132新增完整V6候选和Evidence append-only，STOP_AT_REVIEWER，旧V5正文不可覆盖。
-- **CRITICAL_CONSTRAINTS：** ①现行正式冻结**V6 7一级/29二级/42三级问题文字、编号、归属和顺序**，未经Owner再授权不得改；②面向大陆个人开发者、独立站及小白中小商家的大众支付知识、深入浅出、愿意读/读得懂、注重“怎么做→为什么”与通用选型方法论，不替每个个人提供定制方案；③自然中文、human-writing/Humanizer已审经验，禁模板式AI腔，但不可用Skill删知识；④原P2全部5个知识组/9个问题、7个H4、93行表格、两完整经营案例、S01–S15/25外链、资格/退款/拒付/银行实际到账和数值适用边界保持；⑤仅从完整已审V5+Humanizer稿生成新独立V6全文，旧稿不改，Evidence append-only；⑥不用新Skill实验、禁止主动真人试读、真实商户资金操作、PR合并或启动P3–P5；⑦最终交付桌面单文件可交互HTML须在后续获授权。
+- **CURRENT_ACCEPTED_STATE：** 正式V6 7/29/42冻结权威为本Handoff第2–4节/快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`；历史V4/V5归档Blob `25569a0042f9a1a0e9ba67835f9105cb7d8c3423`。PR #132 head `dd40ca89ecdffff195f43e3d00c84fa3dee2ada8`：新稿 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md` Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`、22,702字符/321行，正式V6标题16/16、旧H4 7/7、93表格行/25URL、S01–S15、两个完整案例及金融限制独立Reviewer PASS；Evidence Blob `05a463ae551e18e08f3d1d03b3eac12e6ebc88cc`仅追加51行，旧V5 Humanizer完整稿Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`及其他历史原稿均未变；**尚未Owner正式冻结P2正文**。
+- **CURRENT_GATE：** `MCPG-P2-V6-READER-FRIENDLY-FULL-RERUN-20261016` **REVIEWER_PASS / CLOSED_FOR_EDITORIAL_REVIEW**，证据 [独立评审](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md)与[PR审核 #6212937671](https://github.com/entropy-student/project/pull/132#issuecomment-6212937671)。**当前无活跃Executor任务**，下一步Owner全文阅读、决定正式冻结或提出针对性修改。
+- **CRITICAL_CONSTRAINTS：** Owner正式V6 7/29/42原文、数量、归属、次序不可擅改。读者为中国大陆个人开发者/新手卖家/独立站经营者/中小商家；内容深入浅出，愿意读、读得懂，回答怎么收钱/怎么选/怎么用，先讲怎么做再讲为什么，注重**普适选型方法**和有边界的完整案例，**不得为每个个人定制商户收款答案**；自然中文Human-writing+Humanizer已有有效成果，不因去AI味删知识。P2已审7H4/93行表格/两完整案例/S01–S15/25URL、支付/银行到账/税务与退款拒付责任、所有金额和官方资格条件须保留。真实愿读/读懂UNVERIFIED；未经Owner授权不得合并PR/推进P3–P5/发动真人试读或做真实金融操作；最终为单文件桌面交互HTML。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
-- **CURRENT_ROLLBACK_STATUS：** 本轮只新增独立新稿 `docs/P2_V5_STRUCTURED_HUMANIZER_CANDIDATE.md` 和向Evidence追加55行；PR基线 `f04899142b2156cb2e685faff25342b6cab6ca4e`、旧知识稿/完整human-writing稿的固定Blob仍在。新稿若不被Owner接受，可单独撤回此新增候选并保留旧稿，Evidence只追加纠正不截断，绝无force/reset或真实支付状态改变。PR仍Open/Draft/未合并。
-- **UNRESOLVED：** V6已正式冻结，但PR #132现有P2正文5个H2与9个H3还为V5问题原文，未与新Handoff同步；需完成**全章**V6正式标题恢复，并在不减知识的前提下按新手提问视角最小调整衔接/概念首次解释。V6正文未生成，真人是否愿读和读后能否独立复述仍UNVERIFIED；旧V5全文的审核不可直接证明新V6全文合格。
-- **NEXT_STEP：** 交独立Codex按最新P2 V6 Gate完成整个第①板块重跑：精确替换现行V6 5H2/9H3并按新手疑问调节段落首句/衔接，保留7H4/93表格行/两全案例/15来源/25URL、退款责任与全部数字适用条件；Evidence追加、PR新Commit停Reviewer。Reviewer独立检查新稿是否真的回答V6问题，Owner复核后才可正式冻结P2。
-- **OWNER_ACTION_REQUIRED：** 将[现行P2 V6完整重跑Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_READER_FRIENDLY_FULL_RERUN_GATE.md)交独立Codex Executor，完成后回传新稿文件链接及Commit SHA；**V6正式框架无需再确认**，不需要银行账户资料或真实支付操作。
-- **EVIDENCE_POINTERS：** Owner 2026-10-16正式批准V6；现行正式框架Handoff第二至第四节、V6快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，历史旧V4/V5归档Blob `25569a0042f9a1a0e9ba67835f9105cb7d8c3423`；本轮最新Gate `docs/P2_V6_READER_FRIENDLY_FULL_RERUN_GATE.md` Blob `b23539269e19bdd89a402e76337633e8e17e0e2f`；旧V5+Humanizer正文 PR #132 HEAD `78d8ff48ec019bc051e59eb768f175f384a60a43` / Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`，仍原样；**新V6 P2正文未生成**。
+- **CURRENT_ROLLBACK_STATUS：** 新稿仅独立新增 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md`，对应PR基线 `78d8ff48ec019bc051e59eb768f175f384a60a43` 可恢复且旧V5 Humanizer及历史底稿Blob完全没变；Evidence旧Blob `15064d3d0ce2f56d85c040e0a72854070ad1bcea` 为现Blob `05a463ae551e18e08f3d1d03b3eac12e6ebc88cc`的完整前缀、追加51行0删除。若Owner不接受，可精准撤销新稿但不截断Evidence；不reset、force或合并。PR仍Open/Draft/未合并。
+- **UNRESOLVED：** P2①V6全文虽然知识/结构/适用条件已独立Reviewer PASS，但**Owner尚未阅读确认或正式冻结正文**。实际读者A阅读兴趣、B读后能否脱稿解释通用选择方法与一个案例 **UNVERIFIED**。非阻断风险：第1.1七维表出现较早、4.1多组费用表且L138/140略重复、完整案例集中5.1。Gate旧引用main Handoff整文件Blob `17c59ea...`与执行期`2c8daae...`不同，但权威第2–4节与V6快照逐字一致，已Reviewer具体核实为**无实质漂移**，绝不可泛化忽视未来SHA冲突。
+- **NEXT_STEP：** Owner阅读 [V6第一部分完整候选](https://github.com/entropy-student/project/blob/dd40ca89ecdffff195f43e3d00c84fa3dee2ada8/modern-commercial-payment-guide/docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md)，重点检查正文是否符合新手卖家的实际疑问、是否深入浅出、读起来是否自然、案例能否教会通用方法。若满意可明确“正式冻结第一部分V6正文”；若不满意指出具体H3/段落，Reviewer才设计最小受限修订Gate。当前不再派Codex，不自动合并或进P3–P5。
+- **OWNER_ACTION_REQUIRED：** 请Owner直接打开固定Commit完整V6稿并回复“确认冻结第一部分”或指出具体不足。**不需要再次下发Executor修改、不需要提供个人银行信息、无需真实付款**；Owner确认正文也不默认合并PR或授权P3–P5。
+- **EVIDENCE_POINTERS：** PR #132 head `dd40ca89ecdffff195f43e3d00c84fa3dee2ada8` Open/Draft；P2新稿Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`，V6正式快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，Gate Blob `b23539269e19bdd89a402e76337633e8e17e0e2f`；PR新增完整候选320行、Evidence追加51行（现Blob `05a463ae551e18e08f3d1d03b3eac12e6ebc88cc`），旧V5全文Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`保持。[正式Reviewer PASS评论](https://github.com/entropy-student/project/pull/132#issuecomment-6212937671)；[Reviewer完整自测](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md) Blob `489eabba5a210235f2ef57d91f3aaaa6b19f7b88`；真人兴趣/理解仍UNVERIFIED。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -312,3 +312,13 @@
 - **唯一内容重跑范围：** PR #132固定基线head `78d8ff48ec019bc051e59eb768f175f384a60a43`，在其分支新增 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md`，保留所有旧稿。新稿需逐字有正式V6 1H1/5H2/9H3，且从新手疑问出发真正重写必要首段/过渡；不得只机械换标题，自然中文须延续旧Humanizer成熟成果，不凭空新编资格事实。
 - **硬资产保护：** 7H4/93行Markdown表格逐字/同序，2全业务案例、S01–S15及25URL、金额复算、银行到账与退款争议反向责任、公司/个人适用合同限制。证据续写append-only，执行结果最多PASS_CANDIDATE，STOP_AT_REVIEWER；无合并、真实交易、P3–P5或Owner终稿冻结。
 - **实时状态：** `FRAMEWORK_V6_FROZEN_P2_V6_FULL_RERUN_GATE_RELEASED`；正式新V6正文**尚未产出**。Owner只需将Gate交独立Codex，未来结果交Reviewer单独审核。
+
+
+## 二十九、P2① V6完整新手友好稿：独立Reviewer PASS，等待Owner最终确认（2026-10-16）
+
+- **正式结论：** [PR #132 #6212937671](https://github.com/entropy-student/project/pull/132#issuecomment-6212937671)，[完整独立Reviewer报告](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md) Blob `489eabba5a210235f2ef57d91f3aaaa6b19f7b88`；Gate `MCPG-P2-V6-READER-FRIENDLY-FULL-RERUN-20261016` **Reviewer PASS**。请勿把这项PASS误写为Owner已确认P2正文或真人读者A/B达标。
+- **新完整正文：** `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md` PR commit `dd40ca89ecdffff195f43e3d00c84fa3dee2ada8`，Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`，22,702字符/321行。九个V6三级问题首段可定位直接回答，每章保留深入方法论与适用条件；独立冷读在不代表真人的前提下支持内容完整和自然中文效果。
+- **关键保真：** V6正式标题1H1/5H2/9H3/1来源H2共16/16逐字、层级与顺序一致；旧7H4、93行表格正文逐字全同；15条S01–S15来源与25处URL不变；大陆自然人29美元设计模板/大陆企业29美元实物2例完整保留，七维画像、双链与退拒付责任、六节点、G/T/A/B、四轮主备不缺；17个Reviewer独立费率及到手额复算全部无冲突。
+- **执行范围/审计：** 相比PR head `78d8ff48ec019bc051e59eb768f175f384a60a43`，仅新建P2 V6候选+Evidence末尾追加51行（0删除），所有旧审文及框架未修改；现Evidence Blob `05a463ae551e18e08f3d1d03b3eac12e6ebc88cc`。PR维持Open/Draft/未合并、无资金操作或P3–P5。
+- **Handoff SHA差异审核：** Gate列的旧main整文件Blob `17c59ea...` 与执行期Handoff `2c8daae...`不一致，系Reviewer在Gate发布后继续写入阶段/交接历史；V6权威第2–4节与独立快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`完全一致，且旧PR初始head正确，故具体判定 `MANAGEMENT_METADATA_DRIFT_RECONCILED / PASS`；未来SHA变化仍须逐案验证。
+- **非阻断风险与待办：** 初学者前段七维表仍密，§4.1费用比较表集中、L138/L140略重复，完整两案例至§5.1；真实愿意读/读懂仍UNVERIFIED。正式阶段 `P2_V6_FULL_CANDIDATE_OWNER_FINAL_REVIEW_PENDING`。Owner直接读稿后决定接受/正式冻结或指出具体需要修订的小节，**不需重新下发泛化写作Skill或重跑整章**。
