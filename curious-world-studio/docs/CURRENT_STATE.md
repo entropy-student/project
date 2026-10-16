@@ -1,6 +1,8 @@
 # Curious World Studio｜唯一当前状态（2026-10-16）
 
-> **2026-10-16 有效更新**：PROD-R2 旁白与S01–S10编辑经Reviewer独立验收PASS；Owner已授权PROD-R3 仅本机内部30–60秒有声样片，但**尚未执行**。正式CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH 保持。当前任务请见 [R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)，生效旁白见 [R2定稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。
+> **2026-10-16 最新R3验收增量**：PROD-R3样片已制作，Reviewer技术完整性PASS、正式总评 RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX：S05浅色卡上的白字字幕对比不足，三步卡与实际旁白的受压/回弹顺序有错位；Pixabay #2793台账链接误写为#37441；脱敏包有本机绝对路径。保持同一个R3 Gate，仅作已发现问题的有界修正；不重配音、不搜新素材、不增基础设施。正式CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH不变。 [执行证据](EXECUTION_EVIDENCE.md)。
+
+> **2026-10-16 R2完成与R3授权历史记录**：PROD-R2 旁白与S01–S10编辑经Reviewer独立验收PASS；Owner已授权PROD-R3 仅本机内部30–60秒有声样片，但**尚未执行**。正式CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH 保持。当前任务请见 [R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)，生效旁白见 [R2定稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。
 
 
 > **Owner最终明确：画面相关就可以，不追求逐句精准或逐帧对应。** 前任Reviewer将爆米花“淀粉脚受压反弹”的高速实验影像升级成持续制作的必需条件，并据此增加素材轮次，**这是过严的编辑判断，已纠正**。科学事实、诚实标注“辅助素材”、素材使用权不放宽；但普通相关实拍配准确旁白及简洁出处文字即可用于内容方案。不再因缺某段原研究实录自动搜更多站点、重做R6/R7或延期全部创作。历史`PARTIAL_ASSET_GAP`只保留原试验结果。
@@ -19,7 +21,7 @@
 | G2–G4 | Windows本机Docker SearXNG+4get按需启动；真实搜→指定ID下载→FFprobe/FFmpeg解码→Owner Edge预览→安全停止，TECHNICAL_ACCEPT | 浏览器Owner实测不等于独立Reviewer现场观看；素材内容/许可另查 |
 | 统一素材CLI | PR#129与PR#131均已合并main。`media-pipeline/cws_media.py`提供`doctor/discover/catalog/fetch/gallery`、Compose生命周期及Ctrl+C清理 | 外部搜索源部分降级，默认`PARTIAL_SEARCH/ok:false/exit1`；接受结果须主动`--allow-partial`，非公网工具 |
 | R6L/R7L快配试验 | 2026-10-16已结束，历史Reviewer`PARTIAL_ASSET_GAP`。复用Pexels 854959/Pixabay 2793普通锅内及氛围镜头，95搜索结果→90去重 | 5新研究链接未播放，仅LINK_FOUND；精确高速科研片未证实；**不再把这个缺口当作必须补齐才能继续编辑的规定** |
-| 正式制片 | 制片R1–R4流程规范已写 | **`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`仍为正式Gate**；只有PROD-R3本机内部样片获新授权（尚未执行），不能自动扩大成完整制作或发布 |
+| 正式制片 | R2编辑PASS；R3已实际输出55.367秒内部音画MP4（ZIP真实校验42/42、独立FFmpeg全片解码） | **R3总评RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX**，字幕可读性/步骤对应/来源链接与路径脱敏待原轮次小修；正式 `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH` 继续，不准进入R4或发布 |
 
 ## 2. 爆米花现有内容和可复用候选
 
@@ -31,7 +33,7 @@
 ## 3. 当前执行路径（2026-10-16生效）
 
 1. **PROD-R2内容编辑PASS**：修订包 CWS_PROD_R2_CW0005_EDITORIAL_REVISION_20261016.zip，外层SHA-256 e547e48cd107b7a05e47aae466fc9efbd84f8a381f9065a0bb8213cd0dc5c6dc；Reviewer独立校验ZIP CRC、包内6/6 SHA及S01–S10，核对S05/S07与论文标题。已接受的文本与镜头设计见 [R2定稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。约55秒仅为估算，没有配音、字幕对齐、成片。
-2. **PROD-R3内部样片已授权，未执行**：仅使用既有脚本、Aqua→QuickTime、Qwen TTS、Remotion/FFmpeg、两条相关真实库存片，在Owner Windows本机制作30–60秒可听可看的内部MP4；任务、验收与回滚见 [R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)。
+2. **PROD-R3内部样片已实际执行，Reviewer要求原轮次小修**：仅使用既有脚本、Aqua→QuickTime、Qwen TTS、Remotion/FFmpeg、两条相关真实库存片，在Owner Windows本机已产出55.367秒内部MP4，独立Reviewer已校ZIP与解码；S05字幕对比/步骤时序和台账脱敏需原轮次小修；任务、验收与回滚见 [R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)。
 3. Owner不希望再因版权调查拖延**内部测试**；Pexels 854959及Pixabay 2793复用权仍PARTIAL、不被冒充原科研实录，也不视为已获公开发布/商业许可。正式G1/G2/HOLD/NO_PUBLISH继续不变。
 4. 不重跑MEDIA G2–G4、PR129/131、R6L/R7L，不新建逐帧识别模型或80站点搜片轮次。若内部小样检查通过，R4须另获Owner批准；发布仍需独立授权。
 5. 已生效决策见 [DECISION_LOG](DECISION_LOG.md)，关键执行证据见 [EXECUTION_EVIDENCE](EXECUTION_EVIDENCE.md)。
@@ -42,4 +44,4 @@
 - Windows 11 + Docker Desktop/WSL2，搜索容器只绑定回环、按需启停；不部署VPS、不改代理/VPN/Clash或其他项目Docker、不清除旧缓存/媒体/备份。保留曾报告的3项未提交tracked改动、2项缓存及Ubuntu tar，不能`reset --hard`、`git clean`、`docker system prune`、`down -v`。真实运行资源状态按每次现场测量。
 - **新Reviewer首读**：[本轮完整交接](REVIEWER_HANDOFF_CURRENT.md)→[CWS AGENTS](../AGENTS.md)→[3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)→[视觉锁](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)→[工具手册](../media-pipeline/README.md)。旧[2026-10-12科学/素材交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)保留历史证据，但其“必须有高速原片才能继续”的编辑Gate已经被Owner降低精度的决定修订。
 
-**本期结论：R2编辑PASS，R3内部样片已授权但尚未执行；不再继续精确素材研究。**
+**本期结论：R2编辑PASS，R3已有真实55.367秒MP4且技术闭环成立；整体R3因画面字幕可读性及证据细节RETURN一次有界原轮次小修，不搜新素材。**

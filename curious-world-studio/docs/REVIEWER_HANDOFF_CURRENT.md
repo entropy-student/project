@@ -5,16 +5,16 @@
 | 字段 | 当前有效事实 |
 |---|---|
 | PROJECT_GOAL | 不露脸跨领域“为什么”视频，优先完成第一条可观看、可听的内部作品 |
-| PROJECT_STAGE | PROD-R2 编辑PASS；PROD-R3 内部样片 AUTHORIZED_NOT_EXECUTED |
+| PROJECT_STAGE | PROD-R2编辑PASS；PROD-R3 55.367秒样片已交，Reviewer技术校验PASS、正式总评RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX |
 | SYSTEM_MAP | 36题库；Mac Aqua短桌面→QuickTime全幅播放器；Owner Windows11本机Codex、OpenMontage/Qwen TTS、Remotion/FFmpeg、按需本地Docker素材工具；非VPS部署 |
 | CURRENT_ACCEPTED_STATE | PR#129/#131已合并main；G2–G4技术链通过；R6L/R7L已完成；R2修订文本/分镜审核通过 |
-| CURRENT_GATE | [PROD-R3-CW0005-INTERNAL-AV-SAMPLE](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)；Owner授权内部30–60秒音画样片，未执行 |
+| CURRENT_GATE | [PROD-R3-CW0005-INTERNAL-AV-SAMPLE](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md) 同Gate一次最小修正（字幕对比、S05步骤时序、Pixabay ID链接、ZIP本机路径脱敏），再交Reviewer；无R4授权 |
 | CRITICAL_CONSTRAINTS | CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH；普通画面相关、不能冒充原实验；素材权利PARTIAL |
 | DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex → 脱敏ZIP与SHA → ChatGPT Reviewer独立验收，Owner仅转交与必要授权 |
 | CURRENT_ROLLBACK_STATUS | Git文档修改使用隔离分支PR可回退；R3本机回滚尚待运行前预检，旧媒体/工作树不得覆盖 |
-| UNRESOLVED | 尚无真实R3 MP4、配音字幕同步QA；具体复用权未核；正式Story-Fit及发布仍HOLD |
-| NEXT_STEP | 执行且仅执行[R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)，交付实际MP4及音画验收证据 |
-| OWNER_ACTION_REQUIRED | R3授权已给；转交当前Gate至本机Codex并返回ZIP；新付费/发布/超范围行动另批准 |
+| UNRESOLVED | 已有55.367秒MP4且可解码；S05机制卡白字底色对比不足、三步画卡与旁白部分错位；Pixabay 2793链接指向37441；部分JSON/JSONL含Owner本机绝对路径；音色真人听感未独立确认；正式版权/Story-Fit/发布仍HOLD |
+| NEXT_STEP | 同一R3 Gate有界小修，复用已有音频和媒体，修复可读性/时序与台账脱敏；返回修正版单一ZIP/视频，不新增素材/模型/开发轮次 |
+| OWNER_ACTION_REQUIRED | 仅转交Reviewer原轮次小修要求给本机Codex、带回修订ZIP；不需要重复授权搜片或R4 |
 | EVIDENCE_POINTERS | [R2生效稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)、[执行证据](EXECUTION_EVIDENCE.md)、[决策](DECISION_LOG.md)、下文历史ZIP/SHA |
 
 
@@ -59,7 +59,7 @@
 
 **R2正式编辑裁决为PASS**：R2修订ZIP SHA-256 e547e48cd107b7a05e47aae466fc9efbd84f8a381f9065a0bb8213cd0dc5c6dc，Reviewer独立核完整性、事实与S01–S10。生效稿见[R2旁白镜头](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。只通过编辑文本；55秒是估算；真实声音、字幕和成片并未验证。S05可配音前小幅口语化。
 
-**R3已由Owner授权但未执行**：仅一条30–60秒内部音画小样，使用既有真实辅助画面和工具，完成后必须停在Reviewer；完整约束和交接字段见[R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)。Owner要求内部测试不再新增版权调查轮次，素材权利仍为PARTIAL，不意味着准许公开/商用。
+**R3已执行并提供真实MP4；Reviewer独立技术校验通过，但整体须原轮次小修**：已产出55.367秒内部音画小样；S05白字/浅底对比不足、画卡次序有错位，Pixabay页面ID及日志本机绝对路径需修订后停在Reviewer；完整约束和交接字段见[R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)。Owner要求内部测试不再新增版权调查轮次，素材权利仍为PARTIAL，不意味着准许公开/商用。
 
 **不得自动进入R4或解除正式Gate**。不再因为淀粉脚原论文高速录像缺失继续搜片或研发识别工具。
 

@@ -40,3 +40,17 @@
 - ROLLBACK_EFFECT：NOT_APPLICABLE。
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：NONE。
 - EXECUTOR_RESULT：NOT_STARTED。
+
+## EVIDENCE 2026-10-16｜PROD-R3内部音画初版（Reviewer局部PASS / 总评RETURN）
+
+- AUTHORIZED_GATE：PROD-R3-CW0005-INTERNAL-AV-SAMPLE，Owner仅内部样片授权。
+- PREFLIGHT_FACTS：Codex在本机执行、使用既有音视频和Qwen TTS；本机目标、仓库工作区未变及零充值为执行端记录（OWNER/EXECUTOR_REPORTED），Reviewer未接管Windows直接读回。
+- ACTUAL_CHANGES：本机独立目录产生55.366667秒1920×1080@30fps H.264/AAC MP4、WAV旁白、ASS/SRT、逐镜头清单及QA证据；失败/修复轮次为原任务内一次TTS取回代理重试、FFmpeg SAR调整、版式返修，无正式Git改动的本机直接证据。
+- OBJECTIVE_READBACK：Reviewer实际取得 CWS_PROD_R3_CW0005_INTERNAL_AV_SAMPLE_20261016.zip，SHA256 d06a5cc1c34fb171cbf593f056670773f999a02c151465d84344c0ff1d5dba0d；ZIP CRC无错，SHA清单42/42匹配；直接FFprobe读取视频55.366667秒1661帧1920x1080/30fps、AAC24kHz单声道并FFmpeg独立全片音视频解码exit0；直接查看最终真实抽帧，见S05字幕和卡片。音轨存在且音频信号非静音；音色实际主观试听未由Reviewer工具独立完成。
+- VALIDATION：独立技术解码/实际画面与字幕抽检PASS；执行端的隔离浏览器readyState=4/videoWidth=1920/currentTime推进/ended=true源于ZIP日志，非Reviewer亲控Windows。**本轮最终裁决 RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX**，原因如下。
+- ANOMALIES：① S05约21.4–27.3秒浅灰纯文字卡上白字中文字幕缺乏足够对比，违背清晰可读验收；②“脚受压→脚回弹”卡片的先后显示滞后于对应旁白，容易混淆最核心解释，属于局部时间轴问题，不要求科研原片；③ SOURCE_RIGHTS.md 对“Pixabay #2793”错误列出以37441结尾的另一素材URL，应改用历史已接受的id-2793页面，不做新版权搜查；④ tables/shot_timeline.json 与 evidence/render_commands.jsonl含Owner本机完整绝对路径，未完全达到脱敏ZIP要求（不存储具体本机路径到Git）；⑤未做真人主观声音试听，不可把有AAC音轨当作音色审美通过。
+- REQUIRED_NEXT_ACTION：继续**同一个R3 Gate**，保留原音轨/源素材/脚本，重渲染S05字幕确保暗底高对比并使三步说明与旁白事件顺序大致一致；仅纠正Pixabay来源URL及ZIP元数据本机路径脱敏；更新QA关键帧及清单，交一个新ZIP与SHA。不得新素材搜索、新TTS、推翻视觉/模型、额外轮次或R4。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：上述ZIP、SOURCE_RIGHTS.md、QA_RESULTS.md、captions/narration.srt、overlay.ass、shot_timeline_final.csv、qa2_22/24/26关键帧、MP4（均存Owner本地/聊天上传；不推原媒体入Git）。
+- ROLLBACK_EFFECT：本次Review仅读取上传ZIP，无Windows变更；旧MP4/源文件保留属于执行端报告。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：Reviewer无新增费用/本机运行；执行端声称使用既有免费TTS额度。
+- EXECUTOR_RESULT：PASS_CANDIDATE；REVIEWER_RESULT：RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX（技术部分PASS，总体未PASS）。
