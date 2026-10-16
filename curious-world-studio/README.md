@@ -1,6 +1,6 @@
 # Curious World Studio · 世界有点意思（名称暂定）
 
-> **项目状态（2026-10-16）**：选题、叙事、Mac Aqua→QuickTime视觉规范与本机素材获取能力已经建立，PR#129/#131已合并main，PROD-R2编辑审核PASS，PROD-R3已产出55.367秒内部样片并处于Reviewer限定的原轮次小修；R4完整草片尚未授权。Owner最新要求**画面相关即可，不需逐帧精准或每句配研究实录**；科学表述和素材许可仍须单独核验。R6L/R7L历史`PARTIAL_ASSET_GAP`不触发新搜片。最新事实看[CURRENT_STATE](docs/CURRENT_STATE.md)，接手看[完整Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
+> **项目状态（2026-10-16）**：选题、叙事、Mac Aqua→QuickTime视觉规范与本机素材获取能力已经建立，PR#129/#131已合并main，PROD-R2编辑审核PASS，PROD-R3已产出55.367秒返修内部样片且视频技术和S05画面通过Reviewer复核，唯一剩余真人声音与审美确认；R4完整草片尚未授权。Owner最新要求**画面相关即可，不需逐帧精准或每句配研究实录**；科学表述和素材许可仍须单独核验。R6L/R7L历史`PARTIAL_ASSET_GAP`不触发新搜片。最新事实看[CURRENT_STATE](docs/CURRENT_STATE.md)，接手看[完整Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
 
 频道编辑原则：**知识小众，问题大众；行为具体，过程有趣；证据真实，承诺兑现**。频道名/Logo未最终确定；B站主阵地，不强制把每期凑到固定分钟数。
 
@@ -30,13 +30,13 @@
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
 | 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
 | MEDIA-R6L/R7L | **已完成试跑**：两条现有爆米花影片可提供相关辅助画面；精确研究原片缺口保留为历史，不再自动要求增加搜片轮次 |
-| PROD制片 | R2文本编辑PASS；R3已有55.367秒内部MP4、待同Gate最小返修后Reviewer复审；R4全片未获授权，未来必须在配音前完成双轮润色；正式HOLD/G1/G2/NO_PUBLISH维持 |
+| PROD制片 | R2文本编辑PASS；R3修订55.367秒MP4的技术与S05视觉独立PASS，真人听感待Owner确认；R4未授权，未来全片配音前双轮润色；正式HOLD/G1/G2/NO_PUBLISH维持 |
 
 ## 当前工作边界
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**当前唯一执行事项**：Owner已向本机Codex下发[R3同Gate最小返修](docs/REVIEWER_HANDOFF_CURRENT.md)，只修字幕对比、步骤时序、来源链接及脱敏并交回ZIP给Reviewer，不额外重配音或搜片。待R3通过且Owner另行批准R4时，将[双轮润色工作流](docs/VIDEO_SCRIPT_POLISH_WORKFLOW.md)纳入完整内部草片Gate。素材权利仍PARTIAL，不发布。
+**当前剩余事项**：R3返修画面、哈希和全片解码均通过，不需再向Codex发重复修复指令；仅待Owner对最终MP4声音清楚/自然度和整体审美作一次确认。后续R4需另行授权，并包含[双轮润色工作流](docs/VIDEO_SCRIPT_POLISH_WORKFLOW.md)。素材权利仍PARTIAL，不发布。
 
 ## 历史报告与许可证
 
