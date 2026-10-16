@@ -1,101 +1,92 @@
 # Karakeep Local · Reviewer Handoff
 
-> 项目日期：2026-10-16
-> 治理：`entropy-student/spike.skill` 最新 main `vps-project-governance/VNEXT.md` v0.2.7
-> Current authority：本文件；历史执行事实：同项目 `EXECUTION_EVIDENCE.md`
+> 当前状态：`NOT_DEPLOYED` · 2026-10-16
+> 治理权威：`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
+> 本文件是 Reviewer 接受的当前状态；历史事实只读引用 `EXECUTION_EVIDENCE.md`，不得覆盖历史。
 
 ## PROJECT_GOAL
-在 Owner Windows 11 本机最小改动部署 Karakeep 官方原版 Docker 三服务，浏览器仅本机访问 http://127.0.0.1:3000；首次注册/中文设置/真实收藏留在安装 PASS 后。当前不接 Codex、AI API，不改软件源码，不碰其他 Docker 项目。
+在 Owner Windows 11 本机最小改动部署 Karakeep 官方 Docker Compose 三服务，使用原生 Web UI，仅 `http://127.0.0.1:3000` 访问。首轮只验证服务和登录页；Owner 首次注册、中文设置、收藏测试在通过后开展。不改上游源码、不接 AI API/Codex、不发布公网、不改其它 Docker 项目。
 
 ## PROJECT_STAGE
-**G1N_DIAGNOSE_NETWORK_AND_CONDITIONAL_DEPLOY**（待 Owner 本机 Codex 执行）；**NOT_DEPLOYED**。Owner 于 2026-10-16 明确撤销 Reviewer 自定的「部署前宿主可用内存 ≥2.0 GiB」硬门槛；本 Gate 不设置新的固定剩余内存数值。
-- G0：只读发现事实已接受（Executor 历史 `RETURN_STORAGE_LAYOUT_UNRESOLVED`）；G1：`RETURN_SECRET_ACCESS_MISMATCH + RETURN_PREFLIGHT_DRIFT` 已接受。
-- G1R：Reviewer 已直接读取 `EXECUTION_EVIDENCE.md`，包括最终 blob `67050da8beb674d7f5d822f2fc9194978ccfe5b4`。接受已完成的本机受保护配置创建及磁盘验证证据；**不接受部署 PASS**，因为 pull 返回网络/TLS 分类错误且 pull 后可用 RAM = 1.74 GiB < 2.0 GiB 起步门槛。
-- 不重做 G0/G1/G1R 已证明通过的工作。不清理本项目唯一 Secret、不另造密钥，不修改已保护的配置，除非 Reviewer 新 Gate 授权。
+`G1C_STOPPED-WORKLOAD-RECONCILE-AND-DEPLOY` 待本机 Executor。
+- G0/G1/G1R 历史及 RETURN 保留在 Evidence；G1R 已创建安全目录、官方 Compose 和两个新随机密钥，磁盘/ACL 验证通过；上轮失败的拉取网络原因不明。
+- **G1N 已经由 Reviewer 查验**：`EXECUTION_EVIDENCE.md` `main` blob `2e8df6d432bdf00c4abe5f28d4faa22afaee444d`（提交 `d399c8776c188f3a153b4e6e95f4d5bf371a53f2`）。接受其事实和停机决定：仅只读检查、Karakeep 未启动、20 个 Docker 容器均 `exited`，而先前其中 3 个运行；Host GHCR 可达、Host Docker Hub 超时，**daemon 真正拉取路径未测试**。结果 `RETURN_PREFLIGHT_DRIFT_EXISTING_CONTAINERS_STOPPED + RETURN_REGISTRY_HOST_TIMEOUT`，不追溯修改。
+- Reviewer 裁决：`20 exited / 0 running` 是**本机其他服务当前观测状态**，不能自动归因 Karakeep，也**不要求恢复旧的 3 个容器**。先用最小只读检查判断是否存在 Docker Engine 整体故障/非目标数据风险；若没有积极的异常证据且项目边界仍清晰，可将非目标容器的停止状态作为 G1C 的新对照基线，允许受限 Karakeep 拉取与安装。若 Engine 不稳、OOM/存储故障、异常的自动重启/服务状态变化、或用户既有数据完整性风险无法排除，则 RETURN。禁止仅凭 Docker 容器数量变化推测原因。
 
 ## SYSTEM_MAP
-- HOST：Owner 实体 Windows 11、PowerShell 7.6.5、Docker Desktop Linux Engine 29.7.2、Compose v5.4.0、context desktop-linux（G1R 观察；运行前重新核实）。
-- CONFIG：本机 `$env:USERPROFILE\KarakeepLocal`，现有受保护 `docker-compose.yml` 和 `.env`。二者 ACL 已实测，仅用户、SYSTEM、Administrators 可访问；绝不能输出密钥/文件内容到聊天、GitHub 或日志。
-- CONFIG_IDENTITY：本机 Compose SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；官方源 Git blob `865bb147cef972926d5dc32e50645876fd110555`；仅 web port 改 `127.0.0.1:3000:3000`。
-- SERVICES：原版 web / chrome / meilisearch；`docker compose -p karakeep-local`；卷 `karakeep-local_data`（应用数据库/收藏）和 `karakeep-local_meilisearch`（搜索），G1R 结束时尚未创建。初始化环境文件包含 NEXTAUTH_SECRET、MEILI_MASTER_KEY、NEXTAUTH_URL、KARAKEEP_VERSION；不含 AI 密钥。
-- DOCKER STORAGE：Docker Desktop 数据 VHDX 位于宿主系统盘；G1R WSL 数据挂载和隔离诊断容器的 overlay 余量约 950.88 GiB，相差仅 108 KiB；Docker local volume mountpoint 位于 DockerRootDir 对应数据根之下，Host C 盘有 191.36 GiB 空闲。单独容器 df 未直接给出专属 volume 行，**不能写成已单独实测命名卷**；综合证据足以通过初装需 >=8 GiB 的空间准则，部署当次新鲜复核即可。
-- OTHER WORKLOADS：既有 WordPress CLI、WordPress web（8189）、MariaDB 三容器，G1R 前后稳定；不重启/改动/清理其他资源。
-- NETWORK：Docker Desktop Windows 系统代理与 Docker Desktop image pull/Containers proxy 可能不同；pull 报 network/TLS 类，具体 stderr 子类未保留，根因 UNKNOWN。
-- DEFAULT_EXECUTION_CHANNEL：Owner 本机 PowerShell 的 Codex。ChatGPT GitHub Reviewer 不代表 Owner 本机操作已经执行。
-- BACKUP/RECOVERY：当前尚无真实用户数据。项目启动异常允许项目专属 `docker compose -p karakeep-local down`，保留项目卷、配置和 Secret；`down -v` / prune 禁止。真实使用前仍需备份/恢复验证，当前为 `RECOVERY_UNVERIFIED`。
+- Owner Windows 11 原生 PowerShell 7.6.5、Docker Desktop Linux Engine 29.7.2、Compose v5.4.0、context `desktop-linux`；G1N 已核实，G1C 部署前新鲜复核。
+- Karakeep 本机配置：受保护的 `$env:USERPROFILE\KarakeepLocal\docker-compose.yml` 和 `.env`。Compose SHA-256：`cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；官方 Compose blob `865bb147cef972926d5dc32e50645876fd110555`。
+- Compose 项目 `karakeep-local`：官方 `web` (`ghcr.io/karakeep-app/karakeep:release`), `chrome` (`ghcr.io/karakeep-app/karakeep-chrome:release`), `meilisearch` (`getmeili/meilisearch:v1.41.0`)。仅 web 发布 `127.0.0.1:3000:3000`，其它服务无 host ports。
+- 持久卷（尚未创建）：`karakeep-local_data`、`karakeep-local_meilisearch`；以 `docker compose -p karakeep-local` 隔离。G1R 验证的 Docker Engine/数据盘映射允许初装（要求可靠空余 >=8 GiB），但不构成未来用户数据的备份验证。
+- 已有新 Secret：NEXTAUTH_SECRET、MEILI_MASTER_KEY，严格保护；不得显示、再生、替换、复制或输出 hash；无 AI API key。文件 ACL 仅当前用户、SYSTEM、Administrators。
+- 非目标：既有 WordPress CLI/Web（历史发布 8189）、MariaDB 等容器；G1N 记录 20 个全部退出且原因时间未知。**不自动启动/停止/重建**它们、改变其 restart policy，或清理其卷/镜像。
+- NETWORK：Windows Host `ghcr.io` DNS/TCP/TLS 成功、`/v2/` 返回预期 401；`registry-1.docker.io` Host 443 超时；WinHTTP 直连，Windows/Engine HTTP 代理均存在（未输出详情）；Docker Desktop daemon pull 行为仍未知。
+- BACKUP/RESTORE：项目尚无真实收藏；若启动异常只允许停止项目容器并保留 `.env`/卷；不 `down -v` 或 `prune`。Secret 异机恢复和真实资料备份恢复仍 `UNVERIFIED`。
 
 ## CURRENT_ACCEPTED_STATE
-- `DIRECT_READBACK`：G1R 期间安全独立项目目录与受限配置/密钥已经创建；Compose `config --quiet` PASS；服务/网络/卷命名与本地端口限制正确，两个独立 32-byte CSPRNG Secret 保留且没有明文记录。
-- `DIRECT_READBACK`：G1R 单个网络隔离只读诊断容器无遗留；Engine 存储有足够空间；3 个现有容器未受影响；Karakeep 目标 tags 未拉取成功、目标容器/卷无创建、3000 未监听。
-- `DIRECT_READBACK`：pull 退出 1，分类 `NETWORK_TLS`，低层原因 UNKNOWN；前置 RAM 3.35 GiB，pull 失败后 1.74 GiB。因此不可启动。此前 G1R Reviewer 判 `RETURN_DEPLOY_IMAGE_PULL_NETWORK_TLS + RETURN_PREFLIGHT_DRIFT`，**历史结果原样保留**。
-- 目前唯一目标：确定 Docker image pull 层的准确故障类别，资源合格后仅作一次有诊断依据的受限重试；不通过则记录停在诊断，不继续反复重试。
+G1N `DIRECT_READBACK`：Compose 内容 fingerprint、leaf ACL、四个 env key 格式、端口与卷声明均有效；无 Karakeep images/container/volume，Windows 3000 未监听；宿主可用内存 2064 MiB（仅观测，不作为启动门槛）、C: 剩余 188.5 GiB；20 个其它 Docker 容器均 exited；既有三项此前运行状态的原因 `UNKNOWN`。
+G1N 对 Host GHCR 的访问成功和 Docker Hub 连接超时只能证明 **Host 路径**，不能证明 Docker Desktop daemon 的 pull 路径。没有执行 pull/up。
+**Reviewer 接受 G1N 的 RETURN**，历史 Evidence 不修改；下一 Gate 先核实非目标状态，再按独立项目边界推进。
 
 ## CURRENT_GATE
-
-**OWNER_MEMORY_POLICY_UPDATE**：官方 Docker Compose / 安装文档未规定「Windows 宿主机部署前必须有 2 GiB 可用 RAM」；之前该值是 Reviewer 的保守操作阈值，不是上游硬性要求。现按 Owner 明确指示删除固定剩余内存门槛，只保留实际健康与隔离回滚检查。此决定不追溯改写 G1R 的真实停止历史，也不影响单独的镜像拉取网络/TLS 阻碍。
-
-**GATE_ID**：`KARAKEEP-WIN-G1N-PULL-DIAG-CONDITIONAL-DEPLOY-20261016`
-
-**OBJECTIVE**：沿用已安全生成的配置，先查 Docker 镜像拉取网络/TLS 的具体原因，若有可验证的可用连接且资源合格，则尝试完成官方三服务部署与 localhost Web 验证。
+**GATE_ID**：`KARAKEEP-WIN-G1C-EXISTING-STATE-AND-PULL-20261016`
+**OBJECTIVE**：不碰其他服务的情况下，核实 Docker Engine 能否安全运行新的隔离项目，并尽可能完成 Karakeep 官方三镜像拉取和 localhost Web 启动。
 
 **MAX_ENDPOINT_THIS_ROUND**：
-1. 原生 Windows / Docker Desktop / 项目文件只读 preflight；容器/资源/端口基线。
-2. 仅诊断目标镜像 registry（官方 Compose 的 ghcr.io 与 Docker Hub）从 Windows Host 与 Docker Desktop image pull 网络路径的差异。允许只读诊断 DNS、TLS、证书信任/代理模式（仅输出是否配置及模式，不暴露地址/密码/token/证书内容）。不得改代理、Clash、VPN、Docker Desktop/daemon 设置、证书存储、registry mirrors、安全检查。
-3. **仅当** preflight 满足、前次错误已尽量按可复核证据缩小到明确类别、没有需要修改宿主/全局配置的阻塞、Docker 数据盘剩余 >=8 GiB，且未观察到系统/其他容器存在实际内存故障或明显不稳定时，可尝试一次受限、官方目标镜像专属 pull 诊断：先单个目标镜像并在进程内脱敏读取错误分类；成功则按原配置完成剩余官方镜像拉取；任何失败立即停止，不重复/不借用其它镜像源或 insecure registry。
-4. 三镜像均以可审查 digest 成功拉取、原有服务未退化且未发现实际内存/OOM 故障时，允许 `docker compose -p karakeep-local up -d --pull never`（或当前 Docker Compose 等效可用语义）只启动本项目；验证 web/依赖/本机负面访问边界与资源。不可自动进入 Owner 注册/真实数据阶段。
-5. 任一关键条件未达时精确 RETURN，停止对本机进一步写入，保留现有 `.env`/Compose；不执行无依据的下一次 pull。
+1. 只读确认 Owner Windows 原生 PowerShell、本机 Docker Desktop context/Engine、Karakeep 原始配置/Secret ACL/hash 和 `config --quiet`，项目无碰撞、3000 空闲、Docker 实际可用磁盘、当前内存（数值只记录）。
+2. 仅对**原 G1N 记录中的 3 个非目标容器**（执行环境内部辨认原 WordPress CLI/Web 和 MariaDB）做小范围 `docker inspect`，读取 `State.Status/ExitCode/OOMKilled/StartedAt/FinishedAt`、restart policy、必要的 daemon 近期事件元数据及引擎错误/状态；可用时用不包含 Secret 的系统元数据对照。不得查看/回传环境值、业务数据库内容、原始业务 logs。不能确定停止原因时标 `UNKNOWN`，不以猜测定为健康或人为操作。
+3. **Reviewer 预定义的新基线规则**：若 Engine 可用且稳定、目标没有对象冲突、非目标对象现状可明确固定，未发现 Docker 系统性异常、OOM/持续非预期重启或影响既有数据的活动故障，则接受当下非目标容器为 `EXISTING_EXITED_BASELINE`（不要求 3 个重新启动），并允许继续下一步。即使停止原因 `UNKNOWN`，也不得仅因它们不是 running 而再次返回。若有积极的高风险异常迹象/本机不稳则 RETURN，不擅自修复他项目。
+4. 只读检查 Docker Desktop 代理模式/目标 registry reachability 的脱敏分类。若允许本轮诊断 pull，**仅对冻结 Compose 中的官方镜像执行有边界的单次 pull**：先 GHCR 目标镜像，若成功再其余两个官方镜像（含 Docker Hub）。捕获并在本机内当场脱敏分类 DNS/TCP/TLS/cert/proxy/401/403/timeout/rate-limit 等；单一镜像失败即停止，无同一错误的无依据重试。
+5. 全部目标镜像有确实可用的 digest、目标安全前提仍通过、无现有项目状态恶化时，允许 `docker compose -p karakeep-local up -d --pull never`（先核实 Compose 版本支持该语义）只部署 Karakeep，并验证 Web 登录页、内部服务及负面端口边界、容器重启/OOM/宿主稳定性。绝不注册账户、接 AI API、导入真实资料或进入下一 Gate。
 
-**MANDATORY_REVIEW_STOP**：诊断完成或条件部署结束后提交 Evidence，必须交 Reviewer 才能决定下一 Gate。
+**MANDATORY_REVIEW_STOP**：G1C 执行结束（包括失败）必须追加 Evidence、提交并从 main 读回，停在 Reviewer；不得自动继续。
 
-**TARGET_AND_SCOPE**：仅 `$env:USERPROFILE\KarakeepLocal` 现有受保护项目配置与 `karakeep-local` Compose/官方三镜像；禁止更改其他任何 Docker 项目/卷/网络、系统代理、Docker daemon/WSL 设置。初装无真实收藏，不对外发布。
+**TARGET_AND_SCOPE**：仅 Owner Windows 本机、已存在的安全配置目录、官方 Compose 三镜像、新 `karakeep-local` 项目及明确的两个专用命名卷。非目标 Docker 项目、主机网络、代理/Clash/VPN、Docker Desktop daemon/WSL、证书/安全设置一律只读且禁止修改。
 
 **APPLICABLE_CRITICAL_CONSTRAINTS**：
-- **复用已存在的密钥和配置**：验证文件/目录 owner、DACL 和 Compose 文件 hash、`.env` 字段格式（绝不能输出 Secret、行内容或 Secret 摘要），不得替换/旋转/展示两个 Secret。
-- G1R 结束 RAM 为 1.74 GiB，是历史观测值，不再视为部署阻断线；Owner 明确取消此前 Reviewer 自定的启动前 ≥2.0 GiB 与启动后 <0.8 GiB 的固定数值门槛，不另设任意数值替代。继续在 pull/up 前后观测宿主可用内存、Karakeep 容器内存和 OOM/restart、Windows 响应、已有三容器健康。若实际发生 OOM/持续异常重启、明显系统失稳或现有服务退化，立即只停止本项目并 RETURN。Executor 不得擅自关闭非目标项目/宿主进程腾内存；正常的低剩余 RAM 数字本身不等于失败。
-- Docker Storage 原 G1R 的充分证据不反复要求原方式重采全套，确认目标 data backing 与最小 8 GiB 安全空间无明显漂移即可。
-- 原失败没有保存低层消息，不能臆测 TLS 子类。对任何原始 Docker 错误/日志/代理地址/令牌，必须在受保护执行上下文当场转换为 allowlisted 类别：`DNS_FAIL | TCP_CONNECT_FAIL | TLS_HANDSHAKE | CERTIFICATE_VERIFY | PROXY_CONNECT_OR_AUTH | HTTP_401_EXPECTED | HTTP_403 | RATE_LIMIT | TIMEOUT | IMAGE_NOT_FOUND | UNKNOWN`，不得把原始错误复制到 Evidence/聊天。
-- 不能通过 `--insecure`、`insecure-registries`、禁用 TLS 验证、全局修改 CA/网络安全设置或镜像替换绕过拉取失败；若某类网络问题必须动 Desktop proxy 或证书，返回 Reviewer 请求独立批准。
-- GitHub Evidence 不接触本机 Secret、私人路径/身份、原始日志/代理网址；网络信息只提供分类与脱敏读数。
+- 复用旧 `.env` 和 Compose，不输出/再造/改密钥；ACL、hash 必须吻合已接受数据，若不符 RETURN。
+- 不允许 Executor 自动恢复那三个停止的非目标容器，亦不可以因为它们退出就假定有故障。要记录并固定 **进入本 Gate 时的真实状态**，部署后证明目标以外的对象未被本次执行改变；非目标原本已停止时不能声称其业务服务可用。
+- 取消所有自定的固定剩余 RAM 2GiB/0.8GiB 阈值。实时观测即可；一旦有实际 OOM、系统明显失稳、持续重启或非目标对象出现新的退化，立即仅停止 Karakeep 并 RETURN。
+- Host 对 Docker Hub 超时不等于 Engine 拉取必然失败；镜像必须走官方原始地址。不得 `insecure-registries`、证书跳过、镜像替换、代理设置修改或重建已停项目。
+- 仅本机 127.0.0.1:3000 暴露 Web；无公网/局域网服务端口。
+- 任何原始 Docker 错误、Secret-bearing 日志、代理 URL/凭据只在受保护本机分析；Evidence 只保留脱敏错误类别/非私人可审证据。
+- 仓库存储端仅项目级 Evidence 更新；严禁对 GitHub 提交 `.env`、Secret、数据卷及原始系统 logs。
 
-**PREFLIGHT**：
-1. 读回目标本机/用户/权限、Docker 上下文、现有三个非目标容器稳定状态、3000 端口、新鲜宿主可用内存及 Docker 数据存储剩余量，确认无同名项目/镜像/卷意外漂移。内存仅作为观察和前后对照指标，不因低于 2.0 GiB 自动禁止 pull/up；如有实际 OOM、已有服务退化或系统不稳定则按范围停止。
-2. 检查既有项目目录和配置是否保持 G1R 提交过的 hash、Leaf ACL、安全边界与期望 `.env` key 数及格式；文件异常即 RETURN，不能自动修复或重生密钥。
-3. 从官方 Compose 确定完整目标 image 列表与 tag，读取 Host / Docker Desktop 代理模式及 registry 的 TLS/DNS/tcp 应答，区分浏览器/PowerShell HTTP 可达与 daemon image pull 可用性；必要时一次经过限额的官方单镜像 pull 诊断。
-4. 条件允许时正式拉取、复测 RAM 和原三个服务，再启动、核对只绑定 127.0.0.1 的 3000 端口、内部服务状态、Docker image identity 和不修改其他项目。
+**PREFLIGHT**：本机/Engine 正常；安全配置 read-back；磁盘后端剩余 >=8 GiB；端口未占用且项目无对象碰撞；非目标状态/故障类已只读归类，没有实际高风险异常；网络探测不改变宿主设置。无强制宿主空闲 RAM 数值。
 
-**REQUIRED_EVIDENCE**：追加本项目 `EXECUTION_EVIDENCE.md` G1N 段落，包含授权、原错误故障分类、Host/Desktop 网络路径差异的脱敏事实、内存前后、是否实际 pull/up、各镜像 identity/digest（非凭空生成）、项目与其他容器/卷/端口的前后状态、资源安全边界、回滚作用与异常；不输出原始日志和任何 Secret/代理 URL。提交 `main` 并读回验证。
+**REQUIRED_EVIDENCE**：追加 `karakeep-local/EXECUTION_EVIDENCE.md` 的 G1C，明确三个原有容器开始/结束状态（无名字/私密内容）、`ExitCode/OOMKilled` 的汇总、停止原因的证据等级、未恢复它们、Docker Engine 健康分类、Host vs daemon registry 可达性分类、镜像 pull 尝试数/结果与 digest（成功才写）、新的 Karakeep 容器及卷状态、localhost 访问和非 loopback 负面检查、资源前后与仅项目级回滚情况。按已有字段组织，提交 main 并读回。
 
 **ACCEPTANCE_CRITERIA**：
-- 诊断分支：至少获得较 G1R 更具体、可行动的网络错误类，或清楚说明因缺少哪些证据无法分类；不执行超出 Gate 的配置修复。精确 RETURN。
-- 条件部署分支：只使用已有受保护密钥与冻结 Compose、官方三镜像完整拉取后启动、无实际内存/OOM 故障且 Web 登录页 `http://127.0.0.1:3000` 可达且非 localhost 不可达、Chrome/Meili 仅内部网络、3 个原有容器维持健康；磁盘空间要求和实际健康检查通过（不以固定空闲 RAM 门槛判定），元数据重启语义和可恢复性标记诚实。无 Owner 注册/真实数据。
-- Executor 自报 `PASS_CANDIDATE` 仍需 Reviewer 从 GitHub 查看相关 Evidence 才能正式 PASS。
+- 诊断分支：说明基线漂移是否可接纳与具体证据；若不能部署，具体指出安全/网络/引擎的阻碍和是否做过 pull，不含猜测。
+- 部署分支：已存在安全配置完整、三个官方服务成功运行、数据库/搜索/浏览器依赖和本机登录页可用、3000 仅回环、其它服务 host ports 未新增、既有 Docker 容器/卷/网络未被改动，运行稳定且无真实 OOM；提交可审镜像身份/digest 和 Evidence 读回。无账户/收藏数据。
+- 不能以 `docker ps running` 或 HTTP 200 单一信号替代完整检查。Executor `PASS_CANDIDATE` 不等于 Reviewer PASS。
 
-**ROLLBACK_STATUS_OR_PLAN**：如果 pull 失败，不创建容器；保留已下载到的只属于本轮项目镜像供下一轮只读判定，不 prune 或删除其它镜像。若 up 后失败，只对确证 `karakeep-local` 的容器/网络做 `docker compose -p karakeep-local down`（不带 `-v`），保留配置、密钥和两个命名卷；任何未知对象/镜像别动。数据恢复 `UNVERIFIED`，还没真实数据。
+**ROLLBACK_STATUS_OR_PLAN**：镜像 pull 失败则保留已经拉取的官方目标镜像、不额外清理；服务启动后如异常，确认项目 label/name 后仅 `docker compose -p karakeep-local down`（绝不 `-v`），保留现有 Secret/Compose/独立卷。禁止 `prune`，不可触碰非目标数据。唯一业务数据仍为空，备份/跨设备恢复未验证。
 
-**OWNER_ONLY_ACTIONS**：Owner 需在本轮转交明确授权：仅本项目的受限镜像 pull 和满足 Gate 前提后启动；不授权改系统/代理/证书、清理既有资源、密钥轮换、账户注册、真实收藏。
+**OWNER_ONLY_ACTIONS**：Owner 转交本轮明确授权：仅限 Karakeep 三个官方镜像受限拉取和合格前提下的项目级首次启动；不授权重新启动任何原有 WordPress/MariaDB 服务，不授权任何全局代理/daemon/证书/ACL 改变，不授权注册或真实数据导入。
 
 **REVIEWER_TO_EXECUTOR_RELAY**：
-> 你是 Windows 本机 Codex Executor。仅读最新 main `karakeep-local/REVIEWER_HANDOFF.md` 的 CURRENT_GATE、CURRENT_ACCEPTED_STATE、SYSTEM_MAP、CRITICAL_CONSTRAINTS 与 `karakeep-local/EXECUTION_EVIDENCE.md` 最新 G1R 段落。不要重做已经通过的 ACL/存储诊断，不要另造 Secret。执行 `KARAKEEP-WIN-G1N-PULL-DIAG-CONDITIONAL-DEPLOY-20261016`：先做只读 Docker Desktop image-pull 网络/TLS/代理的目标诊断，保护敏感信息，新鲜检查当前 RAM、磁盘、端口、原本三容器及已存在的受保护配置；只在 Gate 前提达到时执行**一次**有诊断依据的官方镜像拉取，全部拉取成功且未出现实际 OOM/系统失稳/原有服务退化时再启动唯一 Karakeep 项目，检查 Web/内部依赖与隔离。如需更改 Docker Desktop 代理、证书、系统网络或其他项目，则不修改、准确 RETURN。追加脱敏 Evidence、提交并读回 GitHub main，按固定格式返还，停在 Reviewer。
+> 你是 Windows 本机 Codex Executor。读取最新 main `karakeep-local/REVIEWER_HANDOFF.md` 的 CURRENT_GATE、SYSTEM_MAP、CURRENT_ACCEPTED_STATE、CRITICAL_CONSTRAINTS，并读取 `karakeep-local/EXECUTION_EVIDENCE.md` 最新 G1N 小节作为现有证据。不要重做 G0/G1/G1R。执行 `KARAKEEP-WIN-G1C-EXISTING-STATE-AND-PULL-20261016`：先只读核实 3 个原有容器为何/如何退出（未知如实标 UNKNOWN），没有明确系统故障时以当前 exited 状态作为非目标基线，不为此自动恢复。按 Gate 新鲜检查安全配置、端口、磁盘和 Docker 稳定；允许诊断和**每目标镜像一次**受限官方 pull，失败分类后停止。若三个镜像拉取并验证成功，按现有 Compose 只启动 `karakeep-local`，核验 `127.0.0.1:3000` 与资源和隔离；禁止改其他容器、代理/VPN/WSL/daemon/证书/密钥。输出脱敏 Evidence 到 main 并读回，完成后在 Reviewer 处停止。
 
 **EXECUTOR_TO_REVIEWER_RELAY**：结果；改动；验证；问题；回滚；请 Reviewer 检查；Owner 转交。
 
 ## CRITICAL_CONSTRAINTS
-不改 Karakeep 源码；不新建/覆盖/输出 Secret；只 localhost；只用官方冻结 Compose 和镜像；不动其他 Docker 项目、系统级代理/安全证书/WSL/daemon；不设宿主剩余 RAM 的强制启动数值门槛，但监测 OOM/重启/Windows 与非目标服务健康并在实际异常时停止本项目；无向 GitHub 或聊天输出的敏感错误。Owner 才能授权越界。
+原生 Windows 本机；仅官方原版、localhost；沿用既有受保护配置/Secret；严禁修改非目标三容器及数据/网络/全局设置；不因 RAM 静态数值或既有容器单纯 exited 反复终止；但主动发现系统性危险则停。未达到部署证据不得声称成功。
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner 本机原生 PowerShell / Codex。
+Owner Windows 本机 PowerShell Codex（G0–G1N 已验证有效）。
 
 ## CURRENT_ROLLBACK_STATUS
-G1R 前无 Karakeep 数据；G1R 仅新建受保护配置和密钥、未启动服务/卷，无需 Docker 回滚。G1N 可用的回滚仅为项目级 `down` 保留卷；数据/Secret 独立恢复 `UNVERIFIED`。
+当前没有任何 Karakeep 容器或项目卷，现有安全配置/密钥保留；真实业务资料尚无。项目级 `down` 无 `-v` 为恢复计划 `PLAN_ONLY`，实际远程备份/恢复 `UNVERIFIED`。
 
 ## UNRESOLVED
-Docker 镜像拉取到底是代理/TLS 证书/网络超时/鉴权的哪类；当前运行实际内存是否稳定；官方三镜像 pull 与 Web 真正运行尚未验证。
+既有三个容器退出的准确原因/发生时间未确认；需新鲜只读核验是否安全；Docker Desktop daemon 真实 pull 路径、Docker Hub timeout 是否仍现、目标官方镜像能否拉取；Karakeep 服务还未跑起来。
 
 ## NEXT_STEP
-Owner 转交 G1N 给 Windows 本机 Codex，先网络诊断后有条件单次拉取与启动；Reviewer 检查 Evidence 决定 PASS/RETURN。
+Owner 转交 G1C 给 Windows 本机 Codex；通过非目标状态判定后对官方镜像有边界拉取并视结果启动，复核 Evidence。
 
 ## OWNER_ACTION_REQUIRED
-本轮 Owner 应明确授权**仅 Karakeep 官方镜像单次诊断 pull 与条件启动**；其它系统网络设置修改不在授权内。没有要求 Owner 先清理内存或关闭应用；Codex 不得关闭非目标程序。
+Owner 需明确授权本 G1C 的仅项目镜像拉取和合格后的初装；无需提供 Secret，无需恢复/关闭其他 Docker 应用。
 
 ## EVIDENCE_POINTERS
-`karakeep-local/EXECUTION_EVIDENCE.md`：G0 `ec4f95d`、G1 `c0170cb`、G1R blob `67050da8beb674d7f5d822f2fc9194978ccfe5b4`。G1N 追加新段落。
+`karakeep-local/EXECUTION_EVIDENCE.md`：G0、G1、G1R、G1N（最新提交 `d399c8776c188f3a153b4e6e95f4d5bf371a53f2`，blob `2e8df6d432bdf00c4abe5f28d4faa22afaee444d`），后续 G1C 追加。
