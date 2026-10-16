@@ -1,0 +1,1930 @@
+{
+  "capturedAtUtc": "2026-09-30T07:52:07.019Z",
+  "gate": "G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE",
+  "request": {
+    "url": "https://startersites.io?route=v2/demo/get_all&companion_version=2.1.57",
+    "method": "GET",
+    "caller": "WordPress wp_remote_get()",
+    "authParametersSent": false
+  },
+  "http_status": 200,
+  "wp_error": null,
+  "response_body_bytes": 52186,
+  "response_body_sha256": "c59a7cb0c6e25e59da507141f0439b05e1a19b72de772ad32b71a61c583e9185",
+  "json_decoded": true,
+  "json_error": null,
+  "catalog_json": [
+    {
+      "name": "Growly",
+      "url": "https://startersites.io/blocksy/growly/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "marketing, digitalmarketing, seo, branding, advertising, socialmedia, growth, strategy, analytics, campaigns",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "19-03-2026",
+      "builder": "",
+      "plugins": [
+        "fluentform",
+        "greenshift-animation-and-page-builder-blocks"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/growly/screenshot.jpg"
+    },
+    {
+      "name": "Growly",
+      "url": "https://startersites.io/blocksy/growly/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "marketing, digitalmarketing, seo, branding, advertising, socialmedia, growth, strategy, analytics, campaigns",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "19-03-2026",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/growly-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Book Store",
+      "url": "https://startersites.io/blocksy/book-store/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "books, bookstore, onlinebooks, bookshop, reading, literature, ebooks, novels, authors, book sales",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "30-01-2026",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "advanced-custom-fields",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/book-store/screenshot.jpg"
+    },
+    {
+      "name": "Book Store",
+      "url": "https://startersites.io/blocksy/book-store/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "books, bookstore, onlinebooks, bookshop, reading, literature, ebooks, novels, authors, book sales",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "10-02-2026",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "elementor",
+        "advanced-custom-fields",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/book-store-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Codespot",
+      "url": "https://startersites.io/blocksy/codespot/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "code, development, apps, ai, software, programming, engineering, tutorials, tools, tech",
+      "created_at": "22-01-2026",
+      "builder": "",
+      "plugins": [
+        "fluentform",
+        "greenshift-animation-and-page-builder-blocks",
+        "easy-code-manager"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/codespot/screenshot.jpg"
+    },
+    {
+      "name": "Codespot",
+      "url": "https://startersites.io/blocksy/codespot/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "code, development, apps, ai, software, programming, engineering, tutorials, tools, tech",
+      "created_at": "12-02-2026",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform",
+        "easy-code-manager"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/codespot-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Landscape",
+      "url": "https://startersites.io/blocksy/landscape/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Nonprofit",
+        "Personal"
+      ],
+      "keywords": "farming, agronomy, irrigation, crops, livestock, soil, harvest, tractors, agrochemicals, sustainability",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-01-2026",
+      "builder": "",
+      "plugins": [
+        "fluentform",
+        "greenshift-animation-and-page-builder-blocks"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/landscape/screenshot.jpg"
+    },
+    {
+      "name": "Landscape",
+      "url": "https://startersites.io/blocksy/landscape/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Nonprofit",
+        "Personal"
+      ],
+      "keywords": "farming, agronomy, irrigation, crops, livestock, soil, harvest, tractors, agrochemicals, sustainability",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-09-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/landscape-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Web Studio",
+      "url": "https://startersites.io/blocksy/web-studio/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "web design, development, branding, marketing, SEO, ecommerce, UX, UI, coding, analytics",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-01-2026",
+      "builder": "",
+      "plugins": [
+        "advanced-custom-fields",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/web-studio/screenshot.jpg"
+    },
+    {
+      "name": "Web Studio",
+      "url": "https://startersites.io/blocksy/web-studio/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "web design, development, branding, marketing, SEO, ecommerce, UX, UI, coding, analytics",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-09-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "advanced-custom-fields",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/web-studio-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Invest Boost",
+      "url": "https://startersites.io/blocksy/investboost/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Investing, Stocks, Crypto, Wealth, Finance, Trading, Real Estate, Portfolio, Retirement, Markets",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "13-03-2025",
+      "builder": "",
+      "plugins": [
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/invest-boost/screenshot.jpg"
+    },
+    {
+      "name": "Invest Boost",
+      "url": "https://startersites.io/blocksy/investboost/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Investing, Stocks, Crypto, Wealth, Finance, Trading, Real Estate, Portfolio, Retirement, Markets",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-04-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/invest-boost-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Kiddy",
+      "url": "https://startersites.io/blocksy/kiddy/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Clothing, Children's Fashion, Baby Clothes, Toddler Outfits, Boys' Apparel, Girls' Dresses, Shoes, Newborn Essentials, Trendy Wear, Accessories, Organic Baby Clothing, Stylish Clothes, Winter Wear, Summer Outfits, Designer Fashion, Affordable Clothing, Party Dresses, School Uniforms, Baby Gift Sets, Online Clothing Store\r\n",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "18-03-2025",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "fluentform",
+        "greenshift-animation-and-page-builder-blocks"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/kiddy/screenshot.jpg"
+    },
+    {
+      "name": "Kiddy",
+      "url": "https://startersites.io/blocksy/kiddy/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Clothing, Children's Fashion, Baby Clothes, Toddler Outfits, Boys' Apparel, Girls' Dresses, Shoes, Newborn Essentials, Trendy Wear, Accessories, Organic Baby Clothing, Stylish Clothes, Winter Wear, Summer Outfits, Designer Fashion, Affordable Clothing, Party Dresses, School Uniforms, Baby Gift Sets, Online Clothing Store\r\n",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "23-04-2025",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/kiddy-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Consultant",
+      "url": "https://startersites.io/blocksy/consultant/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Nonprofit",
+        "Personal"
+      ],
+      "keywords": "Consulting, Strategy, Business, Management, Advisor, Solutions, Planning, Growth, Expertise, Analysis, Leadership, Development, Marketing, Finance, Operations, Innovation, Coaching, Optimization, Professional, Services",
+      "created_at": "07-11-2024",
+      "builder": "",
+      "plugins": [
+        "greenshift-animation-and-page-builder-blocks",
+        "fluent-booking"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/consultant/screenshot.jpg"
+    },
+    {
+      "name": "Consultant",
+      "url": "https://startersites.io/blocksy/consultant/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Nonprofit",
+        "Personal"
+      ],
+      "keywords": "Consulting, Strategy, Business, Management, Advisor, Solutions, Planning, Growth, Expertise, Analysis, Leadership, Development, Marketing, Finance, Operations, Innovation, Coaching, Optimization, Professional, Services",
+      "created_at": "17-07-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluent-booking"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/consultant-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Furniture",
+      "url": "https://startersites.io/blocksy/furniture/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Furniture, Sofa, Chair, Table, Bed, Desk, Cabinet, Dresser, Ottoman, Couch, Dining, Home, Decor, Interior, Modern, Vintage, Contemporary, Rustic, Quality, Affordable",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "14-10-2025",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/furniture/screenshot.jpg"
+    },
+    {
+      "name": "Furniture",
+      "url": "https://startersites.io/blocksy/furniture/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Furniture, Sofa, Chair, Table, Bed, Desk, Cabinet, Dresser, Ottoman, Couch, Dining, Home, Decor, Interior, Modern, Vintage, Contemporary, Rustic, Quality, Affordable",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "26-12-2024",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/furniture-elementor/screenshot.jpg"
+    },
+    {
+      "name": "E-Bike",
+      "url": "https://startersites.io/blocksy/e-bike/",
+      "is_pro": true,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Electric, Bike, eBike, Bicycle, Cycling, Eco-friendly, Commute, Mobility, Electric Vehicle, Sustainable, Transportation, Urban, Adventure, Lightweight, Foldable, Hybrid",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "22-05-2024",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/e-bike/screenshot.jpg"
+    },
+    {
+      "name": "E-Bike",
+      "url": "https://startersites.io/blocksy/e-bike/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Electric, Bike, eBike, Bicycle, Cycling, Eco-friendly, Commute, Mobility, Electric Vehicle, Sustainable, Transportation, Urban, Adventure, Lightweight, Foldable, Hybrid",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "08-01-2025",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/e-bike-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Pottery",
+      "url": "https://startersites.io/blocksy/pottery/",
+      "is_pro": true,
+      "categories": [
+        "Ecommerce",
+        "Personal"
+      ],
+      "keywords": "Pottery, Ceramics, Handmade, Artisan, Craft, Clay, Sculpture, Vase, Mug, Bowl, Plate, Pot, Art, Decor, Artist, Handcrafted, Unique, Design, Home, Decorations",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "22-04-2024",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/pottery/screenshot.jpg"
+    },
+    {
+      "name": "Pottery",
+      "url": "https://startersites.io/blocksy/pottery/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce",
+        "Personal"
+      ],
+      "keywords": "Pottery, Ceramics, Handmade, Artisan, Craft, Clay, Sculpture, Vase, Mug, Bowl, Plate, Pot, Art, Decor, Artist, Handcrafted, Unique, Design, Home, Decorations",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "07-01-2025",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/pottery-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Smile Dent",
+      "url": "https://startersites.io/blocksy/smile-dent/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Dentist, Clinic, Dental, Dentistry, Teeth, Oral, Care, Health, Appointment, Emergency, Whitening, Restoration, Smile, Surgery, Examination",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/smile-dent/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Smile Dent",
+      "url": "https://startersites.io/blocksy/smile-dent/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Dentist, Clinic, Dental, Dentistry, Teeth, Oral, Care, Health, Appointment, Emergency, Whitening, Restoration, Smile, Surgery, Examination",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/smile-dent-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Smart Home",
+      "url": "https://startersites.io/blocksy/smart-home/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Smart, Home, Gadgets, Automation, Technology, IoT, Devices, Connected, Innovation, Control, Security, Convenience, Efficiency, Integration, Wireless, Monitoring, Energy, Comfort, Lifestyle, Modern, Cloud",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "21-01-2025",
+      "builder": "",
+      "plugins": [
+        "fluentform",
+        "greenshift-animation-and-page-builder-blocks"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/smart-home/screenshot.jpg"
+    },
+    {
+      "name": "Smart Home",
+      "url": "https://startersites.io/blocksy/smart-home/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Smart, Home, Gadgets, Automation, Technology, IoT, Devices, Connected, Innovation, Control, Security, Convenience, Efficiency, Integration, Wireless, Monitoring, Energy, Comfort, Lifestyle, Modern, Cloud",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "personal_v2",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "21-01-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/smart-home-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Daily News",
+      "url": "https://startersites.io/blocksy/daily-news/",
+      "is_pro": true,
+      "categories": [
+        "Blog",
+        "Business",
+        "News",
+        "Personal"
+      ],
+      "keywords": "News, Daily, Headlines, Breaking, Current, Events, Information, Reports, Journalism, Media, Coverage, Worldwide, International, Stories, Trending, Analysis, Insight",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "07-01-2025",
+      "builder": "",
+      "plugins": [
+        "fluentform",
+        "translatepress-multilingual",
+        "greenshift-animation-and-page-builder-blocks"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/daily-news/screenshot.jpg"
+    },
+    {
+      "name": "Cosmetic",
+      "url": "https://startersites.io/blocksy/cosmetic/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce",
+        "Personal"
+      ],
+      "keywords": "Beauty, Cosmetics, Makeup, Skincare, Fragrance, Haircare, BeautyTools, Beauty Products, Cosmetology, Glamour, Beauty Care, Fashion, Beauty Essentials, Wellness, Nails, Spa, Luxury, Organic, Trends, Discount, WooCommerce, Store, Market, Boutique",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "24-12-2025",
+      "builder": "",
+      "plugins": [
+        "woocommerce",
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/cosmetic/screenshot.jpg"
+    },
+    {
+      "name": "Cosmetic",
+      "url": "https://startersites.io/blocksy/cosmetic/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce",
+        "Personal"
+      ],
+      "keywords": "Beauty, Cosmetics, Makeup, Skincare, Fragrance, Haircare, BeautyTools, Beauty Products, Cosmetology, Glamour, Beauty Care, Fashion, Beauty Essentials, Wellness, Nails, Spa, Luxury, Organic, Trends, Discount, WooCommerce, Store, Market, Boutique",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "08-01-2025",
+      "builder": "elementor",
+      "plugins": [
+        "woocommerce",
+        "fluentform",
+        "elementor"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/cosmetic-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Real Estate",
+      "url": "https://startersites.io/blocksy/real-estate/",
+      "is_pro": true,
+      "categories": [
+        "Business",
+        "Ecommerce",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "RealEstate, Property, Listings, Homes, Houses, Apartments, Realtor, Brokerage, Rentals, Condos, Land, Investment, Residential, Commercial, Agents, Buyers, Sellers, Market, Properties",
+      "plans": [
+        "personal",
+        "professional",
+        "agency",
+        "professional_v2",
+        "agency_v2"
+      ],
+      "created_at": "18-09-2025",
+      "builder": "",
+      "plugins": [
+        "greenshift-animation-and-page-builder-blocks",
+        "fluentform",
+        "advanced-custom-fields"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/real-estate/screenshot.jpg"
+    },
+    {
+      "name": "Photo Studio",
+      "url": "https://startersites.io/blocksy/photo-studio/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Photography, Studio, Portraits, Photoshoots, Photographer, Lighting, Editing, Poses, Backdrops, Glamour, Fashion, Headshots, Props, Composition, Retouching, Professional, Creative, Artistic, StudioSetup, Model",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "modula-best-grid-gallery",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/photo-studio/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Photo Studio",
+      "url": "https://startersites.io/blocksy/photo-studio/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Photography, Studio, Portraits, Photoshoots, Photographer, Lighting, Editing, Poses, Backdrops, Glamour, Fashion, Headshots, Props, Composition, Retouching, Professional, Creative, Artistic, StudioSetup, Model",
+      "created_at": "01-07-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "modula-best-grid-gallery"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/photo-studio-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Restaurant",
+      "url": "https://startersites.io/blocksy/restaurant/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Restaurant, Food, Cuisine, Menu, Dining, Chef, Delicious, Eatery, Gourmet, Culinary, Fine-dining, Bistro, Eat, Tasty, Fresh, Reservation, Hospitality, Ambiance, Taste, Flavor",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/restaurant/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Restaurant",
+      "url": "https://startersites.io/blocksy/restaurant/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Restaurant, Food, Cuisine, Menu, Dining, Chef, Delicious, Eatery, Gourmet, Culinary, Fine-dining, Bistro, Eat, Tasty, Fresh, Reservation, Hospitality, Ambiance, Taste, Flavor",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/restaurant-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Wood",
+      "url": "https://startersites.io/blocksy/wood/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Woodwork, Carpentry, Craftsmanship, Handmade, Artisan, DIY, Handcrafted, Timber, Joinery, Craft, Carpenter, Woodcraft, Handiwork, Creations",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wood/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Wood",
+      "url": "https://startersites.io/blocksy/wood/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Woodwork, Carpentry, Craftsmanship, Handmade, Artisan, DIY, Handcrafted, Timber, Joinery, Craft, Carpenter, Woodcraft, Handiwork, Creations",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wood-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Renovation",
+      "url": "https://startersites.io/blocksy/renovation/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Renovation, Remodeling, Improvement, Construction, Contractors, Interior, Exterior, Renovators, Kitchen, Bathroom, Flooring, Carpentry, Design, Renovate, Restoration, Upgrade, Refurbishment, Construction",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/renovation/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Renovation",
+      "url": "https://startersites.io/blocksy/renovation/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Renovation, Remodeling, Improvement, Construction, Contractors, Interior, Exterior, Renovators, Kitchen, Bathroom, Flooring, Carpentry, Design, Renovate, Restoration, Upgrade, Refurbishment, Construction",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/renovation-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Beverr",
+      "url": "https://startersites.io/blocksy/beverr/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "Design, Agency, Creative, Branding, Graphics, Portfolio, Art, Web, Digital, Logo, Identity, Studio, Brand, Visual, Concept, Illustration, Website, Marketing",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "mb-custom-post-type",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/beverr/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Beverr",
+      "url": "https://startersites.io/blocksy/beverr/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "Design, Agency, Creative, Branding, Graphics, Portfolio, Art, Web, Digital, Logo, Identity, Studio, Brand, Visual, Concept, Illustration, Website, Marketing",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "mb-custom-post-type"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/beverr-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Catering",
+      "url": "https://startersites.io/blocksy/catering/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Catering, Food, Events, Weddings, Parties, Corporate, Menu, Buffet, Cuisine, Chef, Delicious, Gourmet, Tasty, Caterer, Catered, Platters, Banquet",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/catering/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Catering",
+      "url": "https://startersites.io/blocksy/catering/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Catering, Food, Events, Weddings, Parties, Corporate, Menu, Buffet, Cuisine, Chef, Delicious, Gourmet, Tasty, Caterer, Catered, Platters, Banquet",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/catering-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Barber Shop",
+      "url": "https://startersites.io/blocksy/barber-shop/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Barber, Haircuts, Grooming, Shaving, Beard, Trimming, Men, Salon, Hairstyles, Razor, Clippers, Pomade, Barbershop, Appointment",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/barber-shop/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Barber Shop",
+      "url": "https://startersites.io/blocksy/barber-shop/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Barber, Haircuts, Grooming, Shaving, Beard, Trimming, Men, Salon, Hairstyles, Razor, Clippers, Pomade, Barbershop, Appointment",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/barber-shop-elementor/screenshot.jpg"
+    },
+    {
+      "name": "BizConsult",
+      "url": "https://startersites.io/blocksy/bizconsult/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Business, Consulting, Strategy, Management, Advisory, Solutions, Analysis, Planning, Development, Growth, Leadership, Innovation, Optimization, Performance, Implementation, Expertise, Services, Professional, Consulting, Firm",
+      "created_at": "03-04-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/bizconsult/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "BizConsult",
+      "url": "https://startersites.io/blocksy/bizconsult/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Business, Consulting, Strategy, Management, Advisory, Solutions, Analysis, Planning, Development, Growth, Leadership, Innovation, Optimization, Performance, Implementation, Expertise, Services, Professional, Consulting, Firm",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/bizconsult-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Gadgets",
+      "url": "https://startersites.io/blocksy/gadgets/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Tech, Gadgets, Electronics, Online, Shop, Devices, Accessories, Innovation, Technology, Smartphones, Tablets, Laptops, Headphones, Speakers, Wearables, Cameras, Gaming, Drones, Robots, Deals",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/gadgets/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Gadgets",
+      "url": "https://startersites.io/blocksy/gadgets/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Tech, Gadgets, Electronics, Online, Shop, Devices, Accessories, Innovation, Technology, Smartphones, Tablets, Laptops, Headphones, Speakers, Wearables, Cameras, Gaming, Drones, Robots, Deals",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/gadgets-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Home Decor",
+      "url": "https://startersites.io/blocksy/home-decor/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Decor, Interior, Home, Online, Shop, Furniture, Accessories, Design, Style, Modern, Vintage, Contemporary, Chic, Elegant, Affordable, Trendy, Unique, Quality, Luxury, Minimalistic",
+      "created_at": "03-09-2025",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "woocommerce",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/home-decor/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Home Decor",
+      "url": "https://startersites.io/blocksy/home-decor/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Decor, Interior, Home, Online, Shop, Furniture, Accessories, Design, Style, Modern, Vintage, Contemporary, Chic, Elegant, Affordable, Trendy, Unique, Quality, Luxury, Minimalistic",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/home-decor-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Cleaning Service",
+      "url": "https://startersites.io/blocksy/cleaning-service/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Cleaning, Service, Home, Office, Housekeeping, Maid, Professional, Residential, Commercial, Sanitization, Disinfection, Janitorial, Organizing, Vacuuming, Dusting, Mopping, Scrubbing, Spotless, Eco-friendly, Reliable",
+      "created_at": "17-07-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/cleaning-service/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Cleaning Service",
+      "url": "https://startersites.io/blocksy/cleaning-service/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Cleaning, Service, Home, Office, Housekeeping, Maid, Professional, Residential, Commercial, Sanitization, Disinfection, Janitorial, Organizing, Vacuuming, Dusting, Mopping, Scrubbing, Spotless, Eco-friendly, Reliable",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/cleaning-service-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Car Service",
+      "url": "https://startersites.io/blocksy/car-service/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Car, Service, Repair, Maintenance, Mechanic, Automotive, Garage, Oil, Change, Tune-up, Inspection, Brakes, Transmission, Tires, Alignment, Diagnostic, Engine, Parts, Warranty, Dealership",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "leadin",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/car-service/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Car Service",
+      "url": "https://startersites.io/blocksy/car-service/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Car, Service, Repair, Maintenance, Mechanic, Automotive, Garage, Oil, Change, Tune-up, Inspection, Brakes, Transmission, Tires, Alignment, Diagnostic, Engine, Parts, Warranty, Dealership",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "leadin"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/car-service-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Floreo",
+      "url": "https://startersites.io/blocksy/floreo/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Flowers, Bouquets, Roses, Gifts, Delivery, Floral, Arrangements, Roses, Wedding, Anniversary, Birthday, Occasion, Online, Order, Fresh, Local, International, Beautiful, Fragrant, Special",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/floreo/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Floreo",
+      "url": "https://startersites.io/blocksy/floreo/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Flowers, Bouquets, Roses, Gifts, Delivery, Floral, Arrangements, Roses, Wedding, Anniversary, Birthday, Occasion, Online, Order, Fresh, Local, International, Beautiful, Fragrant, Special",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/floreo-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Garderobe",
+      "url": "https://startersites.io/blocksy/garderobe/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Clothing, Apparel, Fashion, Style, Trend, Boutique, Dresses, Shirts, Pants, Jeans, Tops, Skirts, Jackets, Sweaters, Outfits, Accessories, Footwear, Designer, Casual, Formal",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/garderobe/screenshot.jpg"
+    },
+    {
+      "name": "Garderobe",
+      "url": "https://startersites.io/blocksy/garderobe/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce",
+        "Personal"
+      ],
+      "keywords": "Clothing, Apparel, Fashion, Style, Trend, Boutique, Dresses, Shirts, Pants, Jeans, Tops, Skirts, Jackets, Sweaters, Outfits, Accessories, Footwear, Designer, Casual, Formal",
+      "created_at": "06-12-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/garderobe-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Petsy",
+      "url": "https://startersites.io/blocksy/petsy/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Pet, Accessories, Shop, Dogs, Cats, Supplies, Collars, Leashes, Toys, Beds, Bowls, Grooming, Treats, Clothing, Harnesses, Petcare, Fashion, Comfort, Stylish, Quality",
+      "created_at": "12-12-2025",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "woocommerce",
+        "fluentform"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/petsy/screenshot.jpg"
+    },
+    {
+      "name": "Petsy",
+      "url": "https://startersites.io/blocksy/petsy/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Pet, Accessories, Shop, Dogs, Cats, Supplies, Collars, Leashes, Toys, Beds, Bowls, Grooming, Treats, Clothing, Harnesses, Petcare, Fashion, Comfort, Stylish, Quality",
+      "created_at": "09-12-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "woocommerce",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/petsy-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Justice",
+      "url": "https://startersites.io/blocksy/justice/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Justice, Law, Legal, Rights, Court, Lawyer, Advocacy, Equality, Fairness, Judgment, Legislation, Civil, Criminal, Justice system, Jurisdiction, Ethics, Human rights, Advocacy, Equity, Tribunal",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/justice/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Justice",
+      "url": "https://startersites.io/blocksy/justice/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Justice, Law, Legal, Rights, Court, Lawyer, Advocacy, Equality, Fairness, Judgment, Legislation, Civil, Criminal, Justice system, Jurisdiction, Ethics, Human rights, Advocacy, Equity, Tribunal",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/justice-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "simply-gallery-block",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Web Agency",
+      "url": "https://startersites.io/blocksy/web-agency/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Web, Agency, Design, Development, Marketing, SEO, Online, Presence, Responsive, E-commerce, Mobile, Graphic, User, Experience, Content, Social, Branding, Creative, Strategy, WordPress",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/web-agency/screenshot.jpg"
+    },
+    {
+      "name": "Web Agency",
+      "url": "https://startersites.io/blocksy/web-agency/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Web, Agency, Design, Development, Marketing, SEO, Online, Presence, Responsive, E-commerce, Mobile, Graphic, User, Experience, Content, Social, Branding, Creative, Strategy, WordPress",
+      "created_at": "25-04-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/web-agency-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Persona",
+      "url": "https://startersites.io/blocksy/persona/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "Video blogger, Filmmaker, Content creator, Vlog, YouTube, Cinematography, Filmography, Editing, Production, Director, Camera, Storytelling, Creative, Entertainment, Digital media, YouTube channel, Social media, Influencer, Streaming, Web series",
+      "created_at": "26-06-2025",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/persona/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Persona",
+      "url": "https://startersites.io/blocksy/persona/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal",
+        "Portfolio"
+      ],
+      "keywords": "Video blogger, Filmmaker, Content creator, Vlog, YouTube, Cinematography, Filmography, Editing, Production, Director, Camera, Storytelling, Creative, Entertainment, Digital media, YouTube channel, Social media, Influencer, Streaming, Web series",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/persona-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Yogi",
+      "url": "https://startersites.io/blocksy/yogi/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal"
+      ],
+      "keywords": "Yoga, Classes, Meditation, Wellness, Mindfulness, Fitness, Health, Exercise, Stretching, Practice, Asanas, Breathing, Relaxation, Balance, Strength, Flexibility, Community, Instructor, Workshops, Retreats",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "mb-custom-post-type",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/yogi/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Yogi",
+      "url": "https://startersites.io/blocksy/yogi/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal"
+      ],
+      "keywords": "Yoga, Classes, Meditation, Wellness, Mindfulness, Fitness, Health, Exercise, Stretching, Practice, Asanas, Breathing, Relaxation, Balance, Strength, Flexibility, Community, Instructor, Workshops, Retreats",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "mb-custom-post-type"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/yogi-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Homi",
+      "url": "https://startersites.io/blocksy/homi/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Furniture, Modern, Design, Contemporary, Stylish, Craftsmanship, Quality, Comfort, Luxury, Interior, Decor, Home, Living, Bedroom, Dining, Office, Sofas, Chairs, Tables, Accessories",
+      "created_at": "09-09-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/homi/screenshot.jpg"
+    },
+    {
+      "name": "Homi",
+      "url": "https://startersites.io/blocksy/homi/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Furniture, Modern, Design, Contemporary, Stylish, Craftsmanship, Quality, Comfort, Luxury, Interior, Decor, Home, Living, Bedroom, Dining, Office, Sofas, Chairs, Tables, Accessories",
+      "created_at": "27-10-2025",
+      "builder": "brizy",
+      "plugins": [
+        "woocommerce",
+        "wpforms-lite",
+        "brizy"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/homi-brizy/screenshot.jpg"
+    },
+    {
+      "name": "Homi",
+      "url": "https://startersites.io/blocksy/homi/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Ecommerce"
+      ],
+      "keywords": "Furniture, Modern, Design, Contemporary, Stylish, Craftsmanship, Quality, Comfort, Luxury, Interior, Decor, Home, Living, Bedroom, Dining, Office, Sofas, Chairs, Tables, Accessories",
+      "created_at": "09-12-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "woocommerce",
+        "fluentform"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/homi-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Tasty",
+      "url": "https://startersites.io/blocksy/tasty/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal"
+      ],
+      "keywords": "Food, Recipes, Cooking, Culinary, Cuisine, Dishes, Ingredients, Meals, Delicious, Homemade, Healthy, Tasty, Gastronomy, Chef, Instructions, Preparation, Flavors, Nutrition, Appetizers, Desserts",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "recipe-card-blocks-by-wpzoom",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/tasty/screenshot.jpg"
+    },
+    {
+      "name": "Tasty",
+      "url": "https://startersites.io/blocksy/tasty/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal"
+      ],
+      "keywords": "Food, Recipes, Cooking, Culinary, Cuisine, Dishes, Ingredients, Meals, Delicious, Homemade, Healthy, Tasty, Gastronomy, Chef, Instructions, Preparation, Flavors, Nutrition, Appetizers, Desserts",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy",
+        "recipe-card-blocks-by-wpzoom"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/tasty-brizy/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Tasty",
+      "url": "https://startersites.io/blocksy/tasty/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Personal"
+      ],
+      "keywords": "Food, Recipes, Cooking, Culinary, Cuisine, Dishes, Ingredients, Meals, Delicious, Homemade, Healthy, Tasty, Gastronomy, Chef, Instructions, Preparation, Flavors, Nutrition, Appetizers, Desserts",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "wpforms-lite",
+        "elementor",
+        "recipe-card-blocks-by-wpzoom"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/tasty-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Business",
+      "url": "https://startersites.io/blocksy/business/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Business, Company, Services, Solutions, Products, Innovation, Quality, Excellence, Professional, Reliable, Leadership, Success, Expertise, Growth, Performance, Customer, Satisfaction, Trust, Brand, Industry",
+      "created_at": "30-01-2025",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/business/screenshot.jpg"
+    },
+    {
+      "name": "Business",
+      "url": "https://startersites.io/blocksy/business/",
+      "is_pro": false,
+      "categories": [
+        "Business"
+      ],
+      "keywords": "Business, Company, Services, Solutions, Products, Innovation, Quality, Excellence, Professional, Reliable, Leadership, Success, Expertise, Growth, Performance, Customer, Satisfaction, Trust, Brand, Industry",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/business-brizy/screenshot.jpg"
+    },
+    {
+      "name": "Business",
+      "url": "https://startersites.io/blocksy/business/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Business, Company, Services, Solutions, Products, Innovation, Quality, Excellence, Professional, Reliable, Leadership, Success, Expertise, Growth, Performance, Customer, Satisfaction, Trust, Brand, Industry",
+      "created_at": "30-01-2025",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite"
+      ],
+      "elementor_experiment_container": true,
+      "screenshot": "https://startersites.io/demos-manager/demos/business-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Review Hub",
+      "url": "https://startersites.io/blocksy/product-reviews/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Tech, Reviews, Gadgets, Electronics, Products, Analysis, Ratings, Comparison, Insights, Recommendations, Features, Specifications, Performance, User-friendly, Innovation, Trends, Technology, Updates, Evaluation",
+      "created_at": "02-04-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/product-reivews/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Review Hub",
+      "url": "https://startersites.io/blocksy/product-reviews/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Tech, Reviews, Gadgets, Electronics, Products, Analysis, Ratings, Comparison, Insights, Recommendations, Features, Specifications, Performance, User-friendly, Innovation, Trends, Technology, Updates, Evaluation",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "wpforms-lite",
+        "elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/product-reivews-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Charity",
+      "url": "https://startersites.io/blocksy/charity/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Nonprofit",
+        "Personal"
+      ],
+      "keywords": "Charity, Nonprofit, Donation, Volunteer, Philanthropy, Community, Support, Cause, Fundraising, Give, Help, Outreach, Advocacy, Humanitarian, Impact, Mission, Welfare, Empowerment, Awareness, Contribution",
+      "created_at": "14-10-2025",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/charity/screenshot.jpg"
+    },
+    {
+      "name": "Charity",
+      "url": "https://startersites.io/blocksy/charity/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Nonprofit"
+      ],
+      "keywords": "Charity, Nonprofit, Donation, Volunteer, Philanthropy, Community, Support, Cause, Fundraising, Give, Help, Outreach, Advocacy, Humanitarian, Impact, Mission, Welfare, Empowerment, Awareness, Contribution",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/charity-brizy/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Charity",
+      "url": "https://startersites.io/blocksy/charity/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Nonprofit"
+      ],
+      "keywords": "Charity, Nonprofit, Donation, Volunteer, Philanthropy, Community, Support, Cause, Fundraising, Give, Help, Outreach, Advocacy, Humanitarian, Impact, Mission, Welfare, Empowerment, Awareness, Contribution",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "wpforms-lite",
+        "elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/charity-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Travel",
+      "url": "https://startersites.io/blocksy/travel/",
+      "is_pro": false,
+      "categories": [
+        "Travel"
+      ],
+      "keywords": "Travel, Adventure, Explore, Destination, Vacation, Journey, Trip, Tourism, Getaway, Experience, Wanderlust, Discovery, Expedition, Leisure, Holiday, Itinerary, Activities, Sightseeing, Accommodation, Travelogue",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/travel/screenshot.jpg"
+    },
+    {
+      "name": "Travel",
+      "url": "https://startersites.io/blocksy/travel/",
+      "is_pro": false,
+      "categories": [
+        "Travel"
+      ],
+      "keywords": "Travel, Adventure, Explore, Destination, Vacation, Journey, Trip, Tourism, Getaway, Experience, Wanderlust, Discovery, Expedition, Leisure, Holiday, Itinerary, Activities, Sightseeing, Accommodation, Travelogue",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/travel-brizy/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Travel",
+      "url": "https://startersites.io/blocksy/travel/",
+      "is_pro": false,
+      "categories": [
+        "Travel"
+      ],
+      "keywords": "Travel, Adventure, Explore, Destination, Vacation, Journey, Trip, Tourism, Getaway, Experience, Wanderlust, Discovery, Expedition, Leisure, Holiday, Itinerary, Activities, Sightseeing, Accommodation, Travelogue",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "wpforms-lite",
+        "elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/travel-elementor/screenshot.jpg"
+    },
+    {
+      "name": "App",
+      "url": "https://startersites.io/blocksy/app/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": null,
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "getwid"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/app/screenshot.jpg"
+    },
+    {
+      "name": "App",
+      "url": "https://startersites.io/blocksy/app/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Mobile, Application, App, Software, Development, iOS, Android, Smartphone, Tablet, Download, Install, Interface, User-friendly, Features, Functionality, Performance, Compatibility, Security, Updates, Tech",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/app-brizy/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "App",
+      "url": "https://startersites.io/blocksy/app/",
+      "is_pro": false,
+      "categories": [
+        "Business",
+        "Personal"
+      ],
+      "keywords": "Mobile, Application, App, Software, Development, iOS, Android, Smartphone, Tablet, Download, Install, Interface, User-friendly, Features, Functionality, Performance, Compatibility, Security, Updates, Tech",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/app-elementor/screenshot.jpg"
+    },
+    {
+      "name": "Modern Shop",
+      "url": "https://startersites.io/blocksy/modern-shop/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Shop, Store, Online, Fashion, Lifestyle, Trendy, Chic, Apparel, Accessories, Boutique, Stylish, Urban, Contemporary, Designer, Unique, Vintage, Luxury, Minimalist, Streetwear, Casual, WooCommerce, Store, Marketplace, Outlet",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/modern-shop/screenshot.jpg"
+    },
+    {
+      "name": "Modern Shop",
+      "url": "https://startersites.io/blocksy/modern-shop/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Shop, Store, Online, Fashion, Lifestyle, Trendy, Chic, Apparel, Accessories, Boutique, Stylish, Urban, Contemporary, Designer, Unique, Vintage, Luxury, Minimalist, Streetwear, Casual, WooCommerce, Store, Marketplace, Outlet",
+      "created_at": "02-05-2024",
+      "builder": "brizy",
+      "plugins": [
+        "brizy",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/modern-shop-brizy/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Modern Shop",
+      "url": "https://startersites.io/blocksy/modern-shop/",
+      "is_pro": false,
+      "categories": [
+        "Ecommerce"
+      ],
+      "keywords": "Shop, Store, Online, Fashion, Lifestyle, Trendy, Chic, Apparel, Accessories, Boutique, Stylish, Urban, Contemporary, Designer, Unique, Vintage, Luxury, Minimalist, Streetwear, Casual, WooCommerce, Store, Marketplace, Outlet",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "woocommerce"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/modern-shop-elementor/screenshot.jpg"
+    },
+    {
+      "name": "News",
+      "url": "https://startersites.io/blocksy/blog/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "News",
+        "Personal",
+        "Travel"
+      ],
+      "keywords": "News, Blog, Updates, Articles, Information, Headlines, Reporting, Journalism, Breaking, Current, Stories, Events, Analysis, Opinions, Trends, Coverage, Reports, Features, Insights, Digest",
+      "created_at": "09-08-2024",
+      "builder": "",
+      "plugins": [
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/news/screenshot.jpg"
+    }
+  ],
+  "wedding_variants": [
+    {
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "simply-gallery-block",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding-elementor/screenshot.jpg"
+    }
+  ],
+  "wedding_variant_count": 2,
+  "wedding_gutenberg_record_count": 0,
+  "wedding_gutenberg_records": [],
+  "query_success": true
+}

@@ -1,0 +1,52 @@
+{
+  "capturedAtUtc": "2026-09-30T07:51:41.045Z",
+  "gate": "G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE",
+  "wordpress": "7.1.1",
+  "php": "8.3.33",
+  "wpCli": "WP-CLI 2.12.0",
+  "mariadb": "11.4.7-MariaDB-ubu2404",
+  "theme": {
+    "name": "Blocksy",
+    "version": "2.1.57",
+    "status": "active",
+    "source": "https://downloads.wordpress.org/theme/blocksy.2.1.57.zip",
+    "sha256": "077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d",
+    "license": "GNU General Public License v2 or later"
+  },
+  "companion": {
+    "name": "Blocksy Companion",
+    "version": "2.1.57",
+    "status": "active",
+    "source": "https://downloads.wordpress.org/plugin/blocksy-companion.2.1.57.zip",
+    "sha256": "f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072",
+    "license": "GPLv2 or later"
+  },
+  "otherPlugins": [
+    {
+      "name": "akismet",
+      "status": "inactive",
+      "version": "5.7.2"
+    },
+    {
+      "name": "bms-g3a-commerce-loop",
+      "status": "inactive",
+      "version": "0.1.0"
+    },
+    {
+      "name": "blocksy-companion",
+      "status": "active",
+      "version": "2.1.57"
+    },
+    {
+      "name": "hello",
+      "status": "inactive",
+      "version": "1.7.2"
+    },
+    {
+      "name": "00-g3a-local-mailpit",
+      "status": "must-use",
+      "version": "0.1.0"
+    }
+  ],
+  "secretsPersisted": false
+}

@@ -1,0 +1,45 @@
+{
+  "requested_demo": "Wedding",
+  "variants": [
+    {
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "20-03-2024",
+      "builder": "",
+      "plugins": [
+        "simply-gallery-block",
+        "stackable-ultimate-gutenberg-blocks",
+        "wpforms-lite"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding/screenshot.jpg"
+    },
+    {
+      "elementor_experiment_container": true,
+      "name": "Wedding",
+      "url": "https://startersites.io/blocksy/wedding/",
+      "is_pro": false,
+      "categories": [
+        "Blog",
+        "Business",
+        "Portfolio"
+      ],
+      "keywords": "Wedding, Bride, Groom, Venue, Ceremony, Reception, Dress, Photography, Flowers, Decor, Planning, Bridal, Engagement, Rings, Love, Marriage, Vows, Honeymoon, Registry, Celebration",
+      "created_at": "02-05-2024",
+      "builder": "elementor",
+      "plugins": [
+        "elementor",
+        "wpforms-lite",
+        "ht-slider-for-elementor"
+      ],
+      "screenshot": "https://startersites.io/demos-manager/demos/wedding-elementor/screenshot.jpg"
+    }
+  ],
+  "exact_gutenberg_records": []
+}
