@@ -2,9 +2,9 @@
 
 > 状态更新时间：2026-10-16
 > 原本机安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`；Karakeep 保留运行。
-> **最新状态**：G2B R2 已尝试、在 Computer Use 无法确认浏览器目标 URL 时安全停止；Canary 未执行、删除 0、Executor 未提交 G2B Evidence。Reviewer 判 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，**等待下一次 Owner 指令，当前没有可执行的新 Gate**。
+> **安装/历史状态**：原本机安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`，保留使用；G2B R2 浏览器 Canary `RETURN` 未执行；G3A 曾因 Computer Use 停止 `RETURN`。最新独立 G3B 只读资产盘点 **PASS**，不改变历史 RETURN。
 > 以后项目事实以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一当前状态权威；本文件是索引，不替代 Handoff。
-> **归档盘点最新状态**：G3A 已尝试，但在浏览器工具无法确认 URL 时安全停止，`SaSS` 未检查、G3A Evidence 未提交。**唯一新的目标性只读 Gate 为 [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md)**；需要 Owner 下发，尚未执行。G2B 原 RETURN 不变，绝不授权删除/移动/备份/迁移。
+> **本机归档盘点最新状态**：G3B 只读工作区资产核查 **PASS**，详细结果见 [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md)。`SaSS` 根仅有 `.git`，仓库归属、未推送历史和其它项目引用不明，**继续保留，不批准归档或删除**。没有待执行的新 Gate；原安装仍 CLOSE，G2B/G3A RETURN 不变。
 
 ## 一、所有项目文档的统一目录
 
@@ -15,11 +15,12 @@
 | [README.md](./README.md) | 文档入口、本机配置/数据位置、日常启动命令 |
 | [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md) | Windows 本机资产归档方案；阶段 A 已授权、尚未执行，后续整理/清理未授权 |
 | [G3A_LOCAL_ASSET_READONLY_GATE.md](./G3A_LOCAL_ASSET_READONLY_GATE.md) | 历史阶段 A Gate：只读 Docker/配置报告完成、`SaSS` 未查，安全中止，**不是当前执行指令** |
-| [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md) | **当前唯一准备中的只读 Gate**：仅查已知 `SaSS` 工作区的 Git/归属/引用，不使用浏览器或 Computer Use |
+| [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md) | 已完成 Gate（历史执行要求）；**Reviewer 已判 G3B 限定范围 PASS，不可再次执行或解读为删除权限** |
+| [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md) | **当前资产地图**：SaSS Git 元数据、Karakeep 配置/卷/WSL2 保存位置、分类及不能删除的原因 |
 | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) | 唯一当前状态、正在授权的 Gate、后续 Reviewer 交接 |
 | [DECISION_LOG.md](./DECISION_LOG.md) | Owner 决定、Gate 调整及理由；历史决策保留 |
 | [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) | 原安装实施正式 Close 的结项报告及其后补充说明 |
-| [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) | 各轮脱敏执行证据（append-only；当前最后一轮实际执行为 G1J） |
+| [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) | 各轮脱敏执行证据（append-only；**当前最后提交的 Executor Evidence 为 G3B**，旧 G1J 前缀未变） |
 
 **GitHub 是管理文档的统一入口，不是收藏数据库，也没有密码、`.env`、Docker 数据卷或可用于数据恢复的备份。**
 
@@ -63,10 +64,12 @@ if ($LASTEXITCODE -eq 0) {
 - **不自动重试**：旧 G2B R2 授权已经在停止条件下终止，不能重新下发原提示词强行操作浏览器；如果未来 Owner 要继续单条 Canary，需要 Reviewer 新审批边界。
 - Owner 已明确：**不做备份、恢复演练、迁移、Windows/Docker Desktop 重启测试、长期监控**。旧版包含备份的 G2B 已 `SUPERSEDED_UNEXECUTED`，不能执行。
 - 现有账户/收藏/搜索数据只存电脑上，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；电脑故障或 Docker 存储损坏可能永久丢失收藏。不能将这个风险写成已解决或将 GitHub 文档视为恢复材料。
-- **已审计的最后一轮 Executor GitHub Evidence 仍是 G1J PASS**；G2B 的本机只读报告由 Owner 转交、未持久化到 Executor Evidence。Owner 先前成功登录并找到语言设置入口；是否已切换简体中文仍 `UNVERIFIED`。
+- **已审计的最后一轮 Executor GitHub Evidence 为 G3B 只读资产盘点**；其前缀保留 G1J 的全部历史执行证据。G2B/G3A 只以 Owner 转交报告保留中止记录，没有被重新判 PASS。Owner 登录/语言设置入口曾确认，是否最终切换简体中文仍 `UNVERIFIED`。
 
-## 五、本机文件整理：先做什么
+## 五、本机文件整理：只读盘点已完成，下一步不自动删除
 
-整理 Karakeep 前，**不要先删除疑似根目录 `sass` / `saas` 或 Docker 目录**。其完整路径、是否存在未提交资料或被项目引用仍 `UNKNOWN`。推荐顺序：**G3A 已报告完成配置/Docker 的只读核对，但在扫描工作区前安全停止，未形成 Executor Evidence**。已知疑似目录是 `%USERPROFILE%\Documents\ChatGPT\SaSS`，但它的 Git 状态和是否被其它项目使用仍 `UNKNOWN`。**下一步由 Owner 发起 G3B，只读检查这个确定路径**，预期在 GitHub 新建 `LOCAL_ASSET_INVENTORY.md`（目前尚未创建）并追加 G3B Evidence。Reviewer 审核分类后，只有经 Owner 单独授权具体路径，才能考虑真正归档或删除。
+**Reviewer 已于 2026-10-16 判 G3B 只读盘点 PASS。** 你现在可以直接从 [LOCAL_ASSET_INVENTORY.md](./LOCAL_ASSET_INVENTORY.md) 查本机资产放在哪里。已知疑似旧工作区是 `%USERPROFILE%\Documents\ChatGPT\SaSS`，G3B 发现它是只有 `.git` 元数据目录、普通工作树为空的本机 Git root；仓库无 origin/upstream，**未推送历史或独有 Git 对象尚不明确**，其它项目/进程是否引用也 `UNKNOWN`。因此它仍列为 `UNKNOWN_OR_SHARED`，**不能仅因工作树为空而删除**。
 
-[完整归档方案](./LOCAL_ASSET_ARCHIVE_PLAN.md) 不要求重新部署、迁移收藏、备份、重启或浏览器操作。历史 G2B 仍 RETURN，安装实施已 CLOSE、服务保留。
+**防误删结论**：`%USERPROFILE%\KarakeepLocal` 的 Compose/`.env`、两个 Karakeep named volumes 以及 Docker Desktop WSL2 共享磁盘一律原位保留；`SaSS` 也先原位保留。GitHub 是统一管理文档入口，不是收藏/密钥备份。本轮没有可立即清理的确证候选，不再自动开新的扫描/整理 Gate。
+
+如 Owner 将来明确希望把 SaSS 真正删除或归档，需要**独立授权**先核实 Git history 是否保存独有提交及其它运行方引用，并满足可重建/风险边界；不能使用现有 G3B PASS 作为删除许可。现有归档方案见 [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md)。
