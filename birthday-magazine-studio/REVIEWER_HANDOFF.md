@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-16 (G3S2 policy research PASS; Owner now reports Stripe account registered with unresolved issues; no Codex prompt)
+> Last reviewed: 2026-10-16 (G3S3 read-only local Test preflight opened; Owner reports Stripe review approved and original frontend exported to Netlify)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Latest Gate:** `docs/G3S2_STRIPE_ACCOUNT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-15.md` **PASS read-only research**, decision `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md`. **New Owner update:** actual Stripe account registered; unspecified problems outstanding; merchant country/entity, verification and payout status unknown. Record: `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md`. No active Codex execution Gate or prompt.
+- **Latest Gate:** `docs/G3S3_LOCAL_WOOCOMMERCE_STRIPE_TEST_PREFLIGHT_2026-10-16.md` — targeted Windows/local **read-only** Stripe Test integration preflight. G3S2 prior policy research PASS. Owner says **Stripe review approved** and original frontend exported to `https://birthday-magazine-original.netlify.app/` with visuals restored. This is OWNER_REPORTED; merchant country and live charges/payout status unverified; static site is not the WooCommerce production runtime. Record: `docs/OWNER_UPDATE_G3S3_STRIPE_APPROVED_NETLIFY_STATIC_2026-10-16.md`.
 - Confirm current PR #64 and `main` before consequential future steps. Latest G3S1SV Executor-host Evidence instead reports the **original WordPress, MariaDB and WP-CLI containers running** and local site HTTP 200; Reviewer has not independently accessed Owner hardware. Mailpit remains stopped.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
+CURRENT_GATE=G3S3_LOCAL_WOO_STRIPE_TEST_READONLY_PREFLIGHT_ACTIVE
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_EXECUTOR_READBACK
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S2_POLICY_READONLY_PASS_WAIT_OWNER_LEGAL_MERCHANT_ELIGIBILITY
+PROJECT_EXECUTION_STATUS=G3S3_LOCAL_TEST_READONLY_PREFLIGHT_READY
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -83,8 +83,17 @@ G3S1SVE_REVIEWER=PASS_EVIDENCE_PERSISTED
 G3S1SVE_PR64_COMMIT=4cb0d527d77a6d583e123acd3f62c45408669569
 G3S1SV_TEMP_PACKAGE_CLEANUP=DEFERRED_POLICY_BLOCKED
 G3S1SV_BACKUP_SNAPSHOT_RECORD_LEVEL_EQUALITY=UNKNOWN_NOT_CLAIMED
-STRIPE_MERCHANT_ACCOUNT_STATUS=REGISTERED_OWNER_REPORTED_KYC_AND_PAYMENTS_UNKNOWN
+STRIPE_MERCHANT_ACCOUNT_STATUS=REVIEW_APPROVED_OWNER_REPORTED_ACTUAL_CHARGES_PAYOUT_UNKNOWN
 STRIPE_GATEWAY_STATUS=INACTIVE_NOT_REGISTERED
+STRIPE_REVIEW=APPROVED_OWNER_REPORTED_NOT_PROVIDER_READBACK
+STRIPE_ACCOUNT_COUNTRY_ENTITY=UNKNOWN
+STRIPE_CHARGES_ENABLED=UNKNOWN
+STRIPE_PAYOUTS_ENABLED=UNKNOWN
+PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
+NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
+NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
+WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
+PR64_LAST_VERIFIED_HEAD=4cb0d527d77a6d583e123acd3f62c45408669569
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -93,10 +102,10 @@ G3S2_HK_INDIVIDUAL_NONHKID=NOT_ELIGIBLE_PER_OFFICIAL_SOURCE
 G3S2_HK_USD_WISE=STRIPE_HK_FEATURE_EXCLUDES_TRANSFERWISE
 G3S2_HK_HKD_WISE=UNKNOWN_NOT_ASSUMED
 G3S2_MERCHANT_ACCOUNT=EXISTS_OWNER_REPORTED_ELIGIBILITY_UNKNOWN
-G3S2_OWNER_ACCOUNT_ISSUE=UNSPECIFIED_PENDING_OWNER_OTHER_ARRANGEMENTS
+G3S2_OWNER_ACCOUNT_ISSUE=SUPERSEDED_BY_REVIEW_APPROVED_OWNER_REPORTED
 G3S2_STRIPE_REGISTRATION_OWNER_UPDATE=docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md
 G3S2_ACCOUNT_PROVIDER_HOST_MUTATIONS=0
-G3S2_NEW_CODEX_PROMPT=NONE_OWNER_REQUESTED
+G3S3_CODEX_READONLY_GATE=PREPARED_ON_MAIN_OWNER_REQUESTED_RESUME
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -295,7 +304,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
+CURRENT_GATE=G3S3_LOCAL_WOO_STRIPE_TEST_READONLY_PREFLIGHT_ACTIVE
 ```
 
 ## SYSTEM_MAP
@@ -304,6 +313,7 @@ CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 - Commerce/order: WooCommerce 11.1.2, canonical.
 - Current local G3C runtime: project-isolated Docker/MariaDB/Mailpit; retained for Owner/Reviewer frontend review.
 - Current local site: `http://127.0.0.1:8189/`.
+- Public *static* original-frontend export: `https://birthday-magazine-original.netlify.app/` — visual restoration OWNER_REPORTED; no WordPress/WooCommerce/DB/webhook/paid generation behind this Netlify domain.
 - Current wp-admin: `http://127.0.0.1:8189/wp-admin/`.
 - Product: Woo product 1113, virtual, USD 39.99.
 - Free Preview: project-local frontend component; its optional selected photo remains browser-local; no Preview server photo upload and no model request.
@@ -315,6 +325,9 @@ CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 - Shared VPS dependency: NONE accepted for current Gate.
 
 ## CURRENT_ACCEPTED_STATE
+
+- **2026-10-16 Owner milestone:** Stripe application review approved OWNER_REPORTED, not independent Stripe account-status verification; actual country/entity, charges enabled, payouts and payout-bank compatibility UNKNOWN. Prior 'review issues outstanding' Owner statement superseded for approval result only. See `docs/OWNER_UPDATE_G3S3_STRIPE_APPROVED_NETLIFY_STATIC_2026-10-16.md`.
+- **Public site:** original WordPress frontend exported to Netlify and visual restoration Owner accepted. Static marketing/preview site != working WordPress/Woo checkout, uploaded draft, authenticated customer workspace or signed callback. Public external anonymous/static-assets check not independently inspected.
 
 - **Owner UI visual acceptance 2026-10-15:** homepage / Free Preview / core five-step intake are now visually accepted and frozen for this MVP stage at PR #64 head `c90e6f93803ad861745cd476106e00d01c68debb`. Standalone status fixture remains QA-only. This Owner decision is distinct from independent Reviewer acceptance of latest branch-only source/evidence and does not authorize merge, backend readiness, live payment, P1-P12 final design or production deployment. See `docs/OWNER_DECISION_G3CR7_FRONTEND_VISUAL_ACCEPTANCE_2026-10-15.md`.
 
@@ -339,18 +352,15 @@ CURRENT_GATE=NONE_G3S2_READONLY_PASS_OWNER_DECISION_PENDING
 
 ## CURRENT_GATE
 
-**G3S2 read-only research COMPLETE / PASS**, see `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md` and `docs/evidence/g3s2/G3S2_OFFICIAL_STRIPE_MERCHANT_ELIGIBILITY_AND_TEST_READINESS_READONLY_2026-10-16.md`. **Owner subsequently confirms Stripe account is registered (OWNER_REPORTED).** Specific account issue, merchant region/entity, KYC, payments and payout readiness are unknown; see `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md`. **No active execution Gate. Do not generate a Codex prompt** until Owner requests it.
+**ACTIVE G3S3 — local read-only test integration preflight:** `docs/G3S3_LOCAL_WOOCOMMERCE_STRIPE_TEST_PREFLIGHT_2026-10-16.md`. Codex may inspect current Owner Windows G3C WordPress/WooCommerce/Stripe-plugin status, source identity, current recovery inventory and precise Stripe TEST-only signed-webhook/checkout/refund plan. Mandatory stop at Reviewer. No Stripe login/OAuth, gateway activation, test or real charge/refund, public tunnel, cleanup, PayPal mutation, deployment or PR merge. This is **not** a payment integration PASS.
 
-**G3S1SV + G3S1SVE formal Reviewer PASS (2026-10-15):** `docs/REVIEWER_DECISION_G3S1SVE_AND_G3S1SV_PASS_INACTIVE_STRIPE_STAGING_2026-10-15.md`. Reviewer directly read PR #64 Evidence `docs/evidence/g3s1sv/G3S1SVE_EXECUTOR_EVIDENCE_RECOVERY_ONLY_2026-10-15.md` at `4cb0d527d77a6d583e123acd3f62c45408669569`. Exact PR delta from `d13b27...` is **one sanitized Evidence-only Markdown**; PR still Open/unmerged. G3S1SVE Evidence persistence PASS supersedes former Evidence-missing RETURN; G3S1SV official Stripe **11.1.0 installed as INACTIVE** locally accepted with bounded recovery evidence and explicit limitations. No account, gateway registration, payment or provider calls.
+**Owner Stripe status:** review approved OWNER_REPORTED, but Stripe account identity/country/legal form, actual charges and payouts flags and eligible settlement account still unverified. G3S2 read-only official-policy research PASS remains valid, see `docs/REVIEWER_DECISION_G3S2_PASS_READONLY_POLICY_PLAN_OWNER_ELIGIBILITY_PENDING_2026-10-16.md`.
 
-**DB recovery:** Executor host readback: same private G3S1S protected source SQL 9,802,953 bytes matched backup manifest, isolated scratch MariaDB 11.4.7 with `network=none`, tmpfs and no project data mounts, native import exit 0, server/table query exit 0, **58/58 expected tables**, scratch subsequently removed. Prior WordPress and binding source files passed isolated extraction. Original G3C DB/WordPress container identities, two named volumes, Woo product #1113 virtual USD39.99, 1 Woo order, aggregate 58 tables/1,311 rows, PayPal disabled and site GET 200 stable pre/post plugin installation. These **remain Executor-host readbacks recorded in PR**, not direct Reviewer Windows inspection.
+**Preserved technical PASS:** official Woo Stripe 11.1.0 installed **inactive** in local G3C from G3S1SV/SVE accepted Executor readback. Original local WP/MariaDB had recovered, Woo product #1113 USD39.99. Previous isolated 58/58 DB restore proved the scope of *inactive install only*. Do not repeat it just for evidence; before a future Test-mode activation, prove a fresh suitable restore point. The prior temporary installer ZIP cleanup remains policy-blocked/deferred. PR #64 remains Open/unmerged, last verified head `4cb0d527d77a6d583e123acd3f62c45408669569`.
 
-**Explicit recovery limitations:** Backup snapshot 2026-10-15 21:31:28 +08:00; snapshot-to-live row-level equality was NOT retained. Scratch container ID, separate native backup-manifest comparison exit code, and vendor-published independent plugin checksum were also NOT retained. Reviewer narrowly accepted local **inactive** staging only; **no broader restore/merchant/payment/production readiness claim**. A future *consequential Test/Live activation/payment* Gate needs an adequately fresh verified selected recovery point and rollback plan. Do not rerun the already-successful inactive install or previous MariaDB backup import solely to restate Evidence.
+**Source/deployment distinction:** Netlify `https://birthday-magazine-original.netlify.app/` hosts a public-facing static original-frontend export, not WordPress/WooCommerce/MariaDB or a provider webhook. Browser-local free Preview remains zero-model/no server upload. Full prepayment photo/answer draft is not yet durably stored/linked to canonical order; real production PDF generation/delivery is not connected. A later dedicated public hosting/cutover Gate will be required.
 
-**Deferred installer ZIP cleanup:** Windows `%TEMP%\bms-wc-stripe-11.1.0-package.zip` and WP-CLI `/tmp/bms-wc-stripe-11.1.0-package.zip` remained; a prior incomplete host ZIP may also remain (exact details in Evidence). Cleanup PowerShell start was rejected `blocked by policy`; no bypass and no files removed. They are classified as candidate transient installer archives, not live WordPress plugin/DB/backup. **Cleanup DEFERRED**; do not retry the denied shell or route through another shell/agent, and do not let housekeeping trigger installation/restore replay.
-
-**Payments/Owner intent and G3S2 findings:** Current Woo Stripe extension is **installed but not activated**; Stripe gateway unregistered. Stripe officially supports HK for qualifying legitimate HK merchants, **not mainland China standard Stripe Payments merchant accounts**. For HK individuals, Stripe disallows non-HKID individual registration; genuine HK business/sole proprietor with BRN may be verified under applicable business rules. **Wise HK account alone cannot qualify merchant identity; Stripe's HK USD payout policy expressly excludes TransferWise/virtual/neobank accounts for the feature; HKD Wise acceptance unverified.** Owner account **existence=registered per Owner**, but actual country/entity, KYC, payment activation, bank and payout eligibility remain UNKNOWN; Owner reports unspecified account issues. Woo Test mode needs a separate Test-mode account connection and reviewed HTTPS webhook delivery path; loopback-only site is not an internet-reachable HTTPS webhook. No account creation/login, OAuth, plugin activation, checkout, refund, webhook or public route. Historical G3B PayPal sandbox PASS preserved and separate. Owner's conditional PayPal retirement is only **after complete independently tested Stripe end-to-end functionality and payout readiness**, via separate reviewed safe exact-target Gate. PR #64 still Open/mergeable=false; frontend remains Owner-frozen.
-
+**Provider preference:** Stripe primary; PayPal Sandbox PASS remains independent historical evidence. Owner's conditional PayPal retirement is **deferred** until Reviewer-proven Stripe test/live/payment/payout/fulfillment cutover and exact-target safe retirement Gate.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -392,6 +402,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## CURRENT_ROLLBACK_STATUS
 
+- G3S3 is read-only, no mutation to undo. The next Test-only activation Gate must select/verify current restorable DB+WordPress files, exact rollback and original payment configuration before writing. Historical G3S1SV restore does not by itself qualify production rollback.
 - Accepted rollback target: G3CR6R1 state.
 - Prior G3CR6/G3CR6R1 rollback evidence must not be overwritten.
 - G3CR6R2 is superseded before execution.
@@ -401,6 +412,9 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- Stripe review APPROVED Owner-reported; merchant country/entity, payment/payout activation, compatible settlement bank, account restrictions and successful Test/Live charges not independently verified.
+- Static Netlify original-frontend export accepted visually by Owner; publicly accessible asset/route/anonymous negative checks unverified. Netlify is not the WordPress production backend.
+- Actual Stripe TEST-mode Woo payment, signed callbacks, cancellation, replay and refund/entitlement revocation NOT PROVEN.
 - exact buyer segment within the broader US birthday-gift market;
 - durable archive of Owner-reported Problem Evidence/VOC;
 - real US customer payment at USD 39.99;
@@ -417,17 +431,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **G3S2 research is finished** (official sources and formal Reviewer PASS saved on main). Owner now reports an existing Stripe account **with problems not yet specified**. Await Owner's other arrangements and issue description; no Codex prompt or plugin/host action.
-2. After Owner clarifies the account issue, real qualifying merchant jurisdiction/entity and Stripe's verification/payment/payout status, Reviewer may create a separate and explicitly approved Test-only Gate. Before any gateway activation, choose and verify a suitably fresh database+files recovery point and define HTTPS callback, authenticated signed webhook, payment/refund/entitlement reconciliation and rollback.
-3. Preserve installed Stripe 11.1.0 as inactive and PR #64 as Open/unmerged, leave PayPal disabled, and track temp installation ZIP cleanup as separately deferred. No VPS/SSH, account signup or real transactions.
+1. Owner forwards G3S3 Gate to Windows-local Codex; Executor runs **read-only** project-targeted preflight, no Stripe login or plugin changes. Reviewer examines sanitized evidence and decides PASS/RETURN.
+2. If preflight PASS and Owner authorizes the exact merchant TEST-only connection, open a separate Test-mode write Gate: fresh backed-up Woo runtime; signed Test callback; synthetic Woo product/order, success/failure, replay/idempotence and test refund/revocation; no real money. Preserve earlier PayPal test evidence, don't delete PayPal.
+3. Build durable pre-payment photo/answer draft linked to account/order and paid entitlement, complete production 12-page generation + private delivery; then plan production WordPress/Woo/DB/storage/HTTPS deployment. Netlify is informational only and doesn't host paid backend.
+4. Only after explicit Owner real-money Canary permission and live/payout/reconciliation checks, progress to G3 paid-MVP PASS and later G4 acquisition/unit economics. PR #64 must undergo source merge/reconciliation separately; no broad visual redesign.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE now.** Stripe account creation is now Owner-confirmed. When Owner chooses to resume, they may describe the specific non-secret account problem, actual merchant country, entity type and verification/payment/payout statuses. No credentials, identity documents or banking numbers in GitHub/chat. Do not ask for an immediate response or generate Codex prompts while Owner has other arrangements.
-
+- **Now:** transfer this Gate to Codex on Owner Windows machine for a bounded read-only runtime preflight; no credential/account access needed.
+- **Next authorization checkpoint:** Owner provides only non-secret merchant country/entity and whether payments/payouts remain restricted, then separately approves TEST-only gateway OAuth/configuration/payment simulations. No bank numbers, IDs or credentials in chat or GitHub.
+- **No present live-money or hosting purchase action.**
 
 ## EVIDENCE_POINTERS
 
+0. `docs/G3S3_LOCAL_WOOCOMMERCE_STRIPE_TEST_PREFLIGHT_2026-10-16.md` — ACTIVE Windows-local test-integration read-only Gate and complete Executor relay.
+0. `docs/OWNER_UPDATE_G3S3_STRIPE_APPROVED_NETLIFY_STATIC_2026-10-16.md` — OWNER_REPORTED approved Stripe review and original static frontend site, with unresolved real provider/runtime capabilities.
 0. `docs/OWNER_UPDATE_G3S2_STRIPE_ACCOUNT_REGISTERED_ISSUES_PENDING_2026-10-16.md` — latest Owner report: Stripe account now exists, issue unspecified, activation/KYC/payout not proven, no prompt.
 
 Latest G3S2 read-only Reviewer PASS, awaiting Owner merchant eligibility decision / G3S1SV+SVE bounded PASS:
