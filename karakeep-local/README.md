@@ -4,7 +4,7 @@
 > 原本机安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`；Karakeep 保留运行。
 > **最新状态**：G2B R2 已尝试、在 Computer Use 无法确认浏览器目标 URL 时安全停止；Canary 未执行、删除 0、Executor 未提交 G2B Evidence。Reviewer 判 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，**等待下一次 Owner 指令，当前没有可执行的新 Gate**。
 > 以后项目事实以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一当前状态权威；本文件是索引，不替代 Handoff。
-> **当前唯一待本机执行 Gate**：[G3A_LOCAL_ASSET_READONLY_GATE.md](./G3A_LOCAL_ASSET_READONLY_GATE.md)，Owner 已授权**只读本机资产盘点**，本机 Codex 尚未执行；无文件删除/移动/备份/迁移权限。历史 G2B 仍为 RETURN。
+> **归档盘点最新状态**：G3A 已尝试，但在浏览器工具无法确认 URL 时安全停止，`SaSS` 未检查、G3A Evidence 未提交。**唯一新的目标性只读 Gate 为 [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md)**；需要 Owner 下发，尚未执行。G2B 原 RETURN 不变，绝不授权删除/移动/备份/迁移。
 
 ## 一、所有项目文档的统一目录
 
@@ -14,7 +14,8 @@
 |---|---|
 | [README.md](./README.md) | 文档入口、本机配置/数据位置、日常启动命令 |
 | [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md) | Windows 本机资产归档方案；阶段 A 已授权、尚未执行，后续整理/清理未授权 |
-| [G3A_LOCAL_ASSET_READONLY_GATE.md](./G3A_LOCAL_ASSET_READONLY_GATE.md) | **唯一当前执行说明**：Owner Windows 只读盘点配置/Docker/疑似 `sass` 工作区，在 GitHub 产出脱敏清单和 Evidence |
+| [G3A_LOCAL_ASSET_READONLY_GATE.md](./G3A_LOCAL_ASSET_READONLY_GATE.md) | 历史阶段 A Gate：只读 Docker/配置报告完成、`SaSS` 未查，安全中止，**不是当前执行指令** |
+| [G3B_SASS_WORKTREE_READONLY_GATE.md](./G3B_SASS_WORKTREE_READONLY_GATE.md) | **当前唯一准备中的只读 Gate**：仅查已知 `SaSS` 工作区的 Git/归属/引用，不使用浏览器或 Computer Use |
 | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) | 唯一当前状态、正在授权的 Gate、后续 Reviewer 交接 |
 | [DECISION_LOG.md](./DECISION_LOG.md) | Owner 决定、Gate 调整及理由；历史决策保留 |
 | [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) | 原安装实施正式 Close 的结项报告及其后补充说明 |
@@ -66,6 +67,6 @@ if ($LASTEXITCODE -eq 0) {
 
 ## 五、本机文件整理：先做什么
 
-整理 Karakeep 前，**不要先删除疑似根目录 `sass` / `saas` 或 Docker 目录**。其完整路径、是否存在未提交资料或被项目引用仍 `UNKNOWN`。推荐顺序：**Owner 已授权一次只读资产盘点（G3A），等待本机 Codex 执行**；查明运行配置、Docker 两卷和疑似旧工作区的归属与引用，输出 GitHub `LOCAL_ASSET_INVENTORY.md`（当前尚未创建）；由 Reviewer 审核分类哪些必须保留，哪些可以作为未来清理候选；最后**仅在 Owner 单独批准具体路径后**才可能精确清理。
+整理 Karakeep 前，**不要先删除疑似根目录 `sass` / `saas` 或 Docker 目录**。其完整路径、是否存在未提交资料或被项目引用仍 `UNKNOWN`。推荐顺序：**G3A 已报告完成配置/Docker 的只读核对，但在扫描工作区前安全停止，未形成 Executor Evidence**。已知疑似目录是 `%USERPROFILE%\Documents\ChatGPT\SaSS`，但它的 Git 状态和是否被其它项目使用仍 `UNKNOWN`。**下一步由 Owner 发起 G3B，只读检查这个确定路径**，预期在 GitHub 新建 `LOCAL_ASSET_INVENTORY.md`（目前尚未创建）并追加 G3B Evidence。Reviewer 审核分类后，只有经 Owner 单独授权具体路径，才能考虑真正归档或删除。
 
 [完整归档方案](./LOCAL_ASSET_ARCHIVE_PLAN.md) 不要求重新部署、迁移收藏、备份、重启或浏览器操作。历史 G2B 仍 RETURN，安装实施已 CLOSE、服务保留。
