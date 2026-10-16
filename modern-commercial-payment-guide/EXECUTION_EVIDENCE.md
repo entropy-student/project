@@ -48,3 +48,15 @@
 - **VALIDATION：** Handoff正式V6 §二–四冻结块修改前后字符串完全一致（4,997字符）；新决策不自动撤销①的Owner PASS，第二章状态为 `OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`，外部实际任务状态UNKNOWN。
 - **EVIDENCE_ARTIFACTS_AND_PURPOSE：** 决策提交 `a48b27b205ff40a6d8b8d3a0b1ff29478dc67a7e`；P3增补审核规则 `585e67267a4a993df94eef58232e5ba2072349f8`；Handoff更新 `9aef7b8a8378fbbfa6727868c6f62875af48952b`。
 - **ROLLBACK_EFFECT / NEXT STOP：** 旧正文和框架原Blob不变；等待用户提交外部Agent第二章完整MD后执行独立事实/覆盖/深广度审核，不后台运行任务、不重复发提示词。
+
+
+## MCPG-P2-CH1-DEPTH-BREADTH-EXPANSION-20261016｜Owner直接授权拓展（独立Review待办）
+
+- **AUTHORIZATION**：Owner先允许已通过第①章在深度广度不足时扩展，本轮再次明确要求“没有的话开始吧直接”。本轮目标是**完整拓展稿**，不复写其他六章，不覆盖已接受①。
+- **PREFLIGHT_FACTS（DIRECT_READBACK）**：当前正式① Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`，正式V6 7/29/42问题Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，P3知识分配与Owner增补授权均已回读。①主稿全文由文件库 materialize 出本地验证，Git Blob再次计算精确匹配。
+- **TARGET / CHANGES（DIRECT_READBACK）**：仅新建 [docs/P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md](docs/P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md)；Git Commit `1748ed3cf38c90fdbbbd1bfc1abcd6a35bde6561`，Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`，41,922字符、842正文行+终止换行，原正式稿34,340字符、692正文行+换行，净增7,582字符。
+- **EIGHT ADDITIONS**：①一次性交付/订阅/B2B商品经营关系判断；②非软件数字商品与Paddle受理分类/审核条件；③两档教学费率交叉点约$27.78、PayPal仅针对适用账户及申请批准的小额费率、提款频次$105例子；④固定运营成本100单盈亏平衡例；⑤全部候选NO/UNKNOWN时的合法退出与最小核实路径；⑥订阅SaaS $15×100单完整案例、MoR与自售的合同成本对比；⑦三类渠道的支付/经营权力和总成本边界；⑧画布形成可用/待核验/暂停三种合格结论。文末新增S19–S24官方来源。
+- **SOURCE VALIDATION**：现场核验PayPal China官方商家费用（2025-06-18公告版本）、Paddle AUP（2026-04-13更新）/商品税务类别/订阅及MoR关系、Shopify第三方交易费说明，新增定价示例明确标“虚构报价/仅演算”，未将账户批准、银行到账当做已证实。样例计算内部复核（费率A=2.9%+$0.30、B=3.8%+$0.05，$27.78交叉点；月$20固定费÷$0.20=100单；100笔$15月订阅自收单假设手续费$75 vs MoR例子$125；$35×4−$35=$105）。
+- **MECHANICAL PROOF（LOCAL）**：对逐行Text差异跑序列比对，9项diff操作**全部为insert**、无replace/delete；V6①五正式H2与九H3标题逐字保留各一处；原S01–S18条目及原费用/案例/决策画布均保留；GitHub读取新Blob与本地Git Blob完全一致，旧主稿与冻结框架Blob均未变。
+- **ACCEPTANCE / REVIEW BOUNDARY**：`EXPANSION_WRITING_COMPLETE / SELF_QA_PASS / INDEPENDENT_REVIEW_PENDING / OWNER_ADOPTION_PENDING`。本轮文案编写及自检不等于另一名独立Reviewer批准，也不代表原①Owner接受基线已被替换；正式修订需独立事实/覆盖/可读性评审，再由Owner确认采用。真实读者测试与具体账户资质仍UNVERIFIED。
+- **ROLLBACK / PRODUCTION DELTA**：正式①主稿不变、V6框架不变；候选为独立新文件，删除新文件即可撤掉候选；无真实账户、支付、服务器、HTML、其它章节修改。②外部Agent提示词已发送的事实继续维持 `OWNER_RELAY_SENT/EXTERNAL_MD_RESULT_PENDING`。
