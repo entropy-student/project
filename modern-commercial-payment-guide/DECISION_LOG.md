@@ -29,3 +29,8 @@
 - **质量优先于凑篇幅：** 不满足“让商家做出更准确的判断 / 理解为何如此 / 知道下一步验证什么”的补充不加入；历史或未确认政策必须标注适用条件，不能将推演、报价、到账和主体准入说成已证实。
 - **②章交接新状态：** Owner明确**已向外部写作Agent下发提示词**；根据Owner报告，本轮写作交接已完成，外部Agent是否实际开始/结束执行未知，状态 `OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`。不重新发送现有ZIP和提示词，也不在其执行期间擅自改写已发的版本；待收到候选后优先审核其深度与广度，不足则提出可定位的补充，而不是再次重做整个流程。
 - **①候选扩充审视（初步冷读，不等于新增事实）：** ①已包含$29订单、两类完整案例、四类快速场景、收费敏感性和决策画布；如后续审核证实确有读者决策缺口，优先考虑：不同**客单价/交易频次**导致固定笔费与提现成本选择变化；**订阅/软件/一次性数字资料**在合同责任、付款与风险结构的对比；**国内自营 vs 跨境平台 vs 海外自营**的可比较决策路径；以及当**全部候选UNKNOWN/NO**时该如何继续核验或调整经营方案。以上仅为可验证的增补候选，非断言正文现有不合格。
+
+
+## 2026-10-16 - Chapter 1 expansion merged by Owner direction
+
+The Owner instructed direct merge of the complete expansion into the existing approved Chapter 1 source file. Main source `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md` now has Git blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8` (41,922 characters). Earlier approved blob: `a56bca37079972cede6d7201dea3e9fbcb19b39f` (34,340 characters). All earlier content retained. Redundant expansion candidate removed from main after identical-content read-back and remains accessible in Git history. The chapter 2 external writing task remains unchanged. Financial-review status is not reclassified by this merge.
