@@ -82,40 +82,62 @@
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **3. 怎么判断现在的收款方式好不好用？** | 3.1 付款成功率、手续费、到账时间和拒付率，应该怎么看？ |
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **4. 生意变化了，什么时候要调整收款方式？** | 4.1 什么变化意味着应该调整或增加收款渠道？<br>4.2 换收款服务商真的更划算吗？切换时会遇到什么麻烦或风险？ |
 
-## 五、正式封板与下一步（Owner 2026-10-17确认）
+## 五、当前权威决策与正式版本（Owner 2026-10-17）
 
-- **PROJECT_STAGE：** `V6_FRAMEWORK_FROZEN / CH1_FINAL_SEALED / CH2_FINAL_SEALED / CH3_EXTERNAL_WRITER_PACKET_READY / CH4-CH7_PENDING / HTML_PENDING`。
-- **Owner最高决策**：第一、二部分已经通过并**正式封板**。除非Owner再次明确授权，任何Executor/Reviewer/外部Agent不得修改、润色、增补或替换这两篇正文。此前返修意见与历史草稿不再是有效候选。
-- **①唯一正式封板正文**：[P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`。
-- **②唯一正式封板正文**：[P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`。
-- **7/29/42 全书框架**：本Handoff第二至第四节为唯一正式问题文字；只读[框架快照](docs/FROZEN_FRAMEWORK_V6_20261016.md) Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，不得改动数量/标题/归属/顺序。
-- **文件库现行正文路径**：`/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`及`/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`，历史文件名未改，但内容是正式封板版；项目库新增③独立写作ZIP，为在途资料包**不是正文**。
-- **清理**：main/doc与文件库已无失效修订稿或重复的候选正文；两个历史备份ZIP属于可恢复资料，保留而非删除。历史恢复与执行细节仅见[DECISION_LOG.md](DECISION_LOG.md)和[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)。
+- **PROJECT_ID / REPOSITORY：** `modern-commercial-payment-guide` / [entropy-student/project](https://github.com/entropy-student/project/tree/main/modern-commercial-payment-guide)；GitHub `main` 是项目正文、冻结结构和Gate/索引/执行记录的权威位置。有效文档目录索引 [docs/CURRENT_DOCUMENT_INDEX.md](docs/CURRENT_DOCUMENT_INDEX.md)。历史旧PR #132已关闭未合并，不再作为现行稿源。
+- **总目标**：《现代商业支付系统｜如何收钱更快、更省、更安全？》，为中国大陆个人开发者、跨境独立站与中小商家提供可读、准确、实操型科普，围绕“怎么做、为什么这样做、什么时候要改变”。全书最终形态为桌面端单文件HTML（尚未授权生成）。
+- **OWNER_CURRENT_DECISION：** Owner正式封板第一、第二部分，并指示“把第四部分的也写了吧，一块搞。同时记录一下交接文档等信息，避免后续新的reviewer接受不到完整的信息”。据此前已定稿的外部Agent写作→独立Reviewer→Owner采纳流程，将**③+④合并为一轮外部独立写作任务**；这只是**写作资料准备与任务交接**，不等于生成正式第③/④章。后续Owner明确同意前不能改已封板正文，也不能自动采纳新候选。
+- **CURRENT_ACCEPTED_STATE：** 
+  - **① SEALED / NO EDIT**：[第一部分唯一正式正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，Library `/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`（旧文件名下存的是正式封板版，不是旧原稿）。
+  - **② SEALED / NO EDIT**：[第二部分唯一正式正文](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，Library `/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`（旧文件名下存正式封板版）。
+  - **V6 7/29/42 FROZEN**：本文件第二至第四节是一级7、二级29、三级42个**文字及顺序唯一权威**；[冻结对照快照](docs/FROZEN_FRAMEWORK_V6_20261016.md) Git Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。修改任一冻结问题或已封板文章，都需要新的Owner明确授权。
+- **CURRENT_WRITER_SCOPE：** 
+  - **③ 顾客付款｜如何让顾客更方便、更顺利地完成付款？** 4个正式H2 / 5个正式H3：付款方式；总价/币种/续费透明；结账放弃及必要验证；付款失败后顾客如何正确恢复。**侧重顾客看到什么、如何减少掉单。**
+  - **④ 支付处理｜如何确保每笔交易正确收款、不出差错？** 4个正式H2 / 5个正式H3：按下支付按钮后的各类状态；商家如何验证真正收了多少钱；正确履约触发点；重复扣款/漏单如何查明纠正。**侧重商家后台的可信支付/订单事实。**
+  - 两章合计正式`8H2/10H3`，具体标题原文以本Handoff§三–四及最新联合ZIP里的 `01_第三四部分V6冻结问题与边界.md` 为准。③④内部二三级编号每章从1重新开始。
+- **避免重复：**①已讲经营主体/支付模式/服务商/费率选择；②已讲开户、支付链接/插件/API、Webhook基本接入与上线验证；③主要是顾客端体验/支付失败引导；④是收款真实状态、服务器核验、正确履约和漏单恢复；⑤银行到账提现、⑥退款拒付、⑦税务成本后续单独写。④可以引用②的Webhook概念，但不能把②的技术安装教程重复写一次。
+- **当前唯一有效外部写作输入：** `/现代商业支付系统/现代商业支付系统_第三四部分_联合独立写作资料包_20261017.zip`，SHA256 `88ae6de6b80417ef95b7ab33bc73040ce064c1bf1703d9a99f37eaeef7800158`，74,112字节，ZIP中**7个Markdown**：联合任务提示词、③④冻结题文和跨章边界、①②封板只读全文、③④官方核验来源、**新Reviewer交接快照**、SHA256清单README。两份只读正文在包内SHA256与正式封板正文完全一致。Library ID `libfile_5b2fbf5640d881919cb2e02a6cb15f90`。
+- **已替代的旧单章资料包：** 第三部分单独ZIP `现代商业支付系统_第三部分_独立写作资料包_20261017.zip` SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`，已从项目活动目录移至 `/项目历史归档/`；仅可追溯，**不得与新联合任务同时作为有效写作指令**。两篇封板正文与过往两个历史恢复ZIP不删除。
+- **外部作者交付约定（本轮统一）：** 交一个 `现代商业支付系统_第三四部分_联合独立写作成果.zip`，根目录**恰好3个UTF-8 Markdown**：`现代商业支付系统_第三部分_完整候选稿.md`、`现代商业支付系统_第四部分_完整候选稿.md`、`现代商业支付系统_第三四部分_独立核验与执行记录.md`。记录分别核验③4H2/5H3、④4H2/5H3的逐字题文、引文/出处/适用边界、两篇独立文本、交叉重复、SHA256/ZIP CRC、UNKNOWN。旧第三章单独交“正文+执行记录两文件ZIP”的方式已被本联合Gate**明确替代**。
+- **金融真实操作：** 本项目本轮**仅写知识文章/参考资料与项目文档**，不操作支付账户、商户开通、真实支付或退款、订单数据库、Webhook线上环境、服务器/网站或HTML。外部作者只能交候选，既无必要也未获GitHub正式正文写权限。
+- **CURRENT_UNRESOLVED：** 截至本轮，新③④正文**尚未收到**、候选质量/核验结论 `UNKNOWN`；商户所在国/可用服务商动态规则须由作者按其所述情景重查。①②的正式封板是Owner决策，不等于永远不变化的官方金融费率认证。
 
-## 六、唯一当前Gate：第三部分外部独立写作
+## 六、当前有效 Gate｜③④联合外部写作并准备独立Reviewer接手
 
-- **GATE_ID：** `MCPG-CH3-INDEPENDENT-WRITER-OWNER-RELAY-20261017`。
-- **OBJECTIVE**：完成③《顾客付款｜如何让顾客更方便、更顺利地完成付款？》的完整第三部分独立候选初稿，不重复①②、不提前覆盖④支付处理/⑤资金结算/⑥售后风险/⑦财务合规。
-- **MAX_ENDPOINT_THIS_ROUND**：已完成Owner决策记录、双章封板与现有有效资料清理、③写作资料包/外部Agent提示词准备；**本轮不代写或正式采纳③**，不得触碰已封板①②、全书框架或支付账户/真实资金。
-- **TARGET_AND_SCOPE**：③正式V6 **四个二级/五个三级问题逐字冻结**，详见全书冻结框架与资料包的`01_第三部分V6冻结问题与边界.md`。
-- **AUTHORITATIVE_INPUT**：`/现代商业支付系统/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`；本聊天亦提供同一ZIP下载及单独提示词。包含①②最新版只读全文，两个内部参考稿SHA256与封板一致，来源为Stripe/PayPal/欧盟等可核验官方入口；源站可变，内容需Writer自行核验。
-- **APPLICABLE_CRITICAL_CONSTRAINTS**：外部Writer保留①②故事化、深入浅出、直面商家痛点的叙述；不因严谨而堆免责声明或把读者文章变成审核表。不编造固定可用付款方式、转化率、服务商资格；账户地区/币种/买家/商品限制先核验；失败状态不明先查单、不重复扣款；3DS不绕开必要验证。
-- **PREFLIGHT**：① `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、② `51dab57d0ed5d5458b14422040297ebfbcebe676`、V6 `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`已回读；当前项目无其它待清理无效文档；写作ZIP已测试CRC且与章1/2SHA相符。
-- **REQUIRED_EVIDENCE / ACCEPTANCE**：Writer应交付**一份完整第三部分UTF-8 Markdown正文 + 一份独立事实/执行核验记录Markdown**，两文件压缩ZIP，哈希/可解压验证、4H2/5H3标题逐字通过、来源适用边界及未核实项列明、明确不重复或修改①②，正文可读、有示例和落地方法。Writer自报不能代替独立Reviewer PASS。
-- **MANDATORY_REVIEW_STOP**：`YES`；待第三部分候选ZIP回传后，独立Reviewer定向Review；是否正式采纳由Owner决定。
-- **ROLLBACK**：①②封板Blob完整，历史可恢复；③未写入main，无可回滚的正文变更；仅取消/重建写作资料包即可。
-- **OWNER_ONLY_ACTIONS**：Owner转发ZIP给外部写作Agent；Agent无需GitHub写权限，不授权真实付款/退款。收到外部候选时再给Reviewer。
-- **REVIEWER_TO_EXECUTOR_RELAY**：只把③写作ZIP交Agent；Agent读00提示词→01 V6→02/03封板只读正文→04官方来源，写完整③与独立执行记录，组成两文件ZIP；结束后停止。
-- **EXECUTOR_TO_REVIEWER_RELAY**：“候选③完整MD、独立核验记录、两文件ZIP、文件SHA256、引用来源与UNKNOWN、冻结标题逐字自检、未修改①②/全书框架；请Reviewer逐项验收。”
-- **NEXT_STEP**：`OWNER_RELAY_PENDING`；无需再审/改①②。③候选回来后再进入Reviewer Gate。
+- **GATE_ID：** `MCPG-CH3-CH4-JOINT-INDEPENDENT-WRITER-OWNER-RELAY-20261017`。
+- **OBJECTIVE：** 只读①②/V6，完成第三、四部分联合外部写作资料包与充分的Reviewer交接，让Owner一次转交给同一Agent。
+- **TARGET_AND_SCOPE：** ③和④两个全新候选章节，按V6题文与源包写作，不修改任何已经封板的现行正文；当前GitHub内**没有第三或第四部分正式正文**。
+- **MAX_ENDPOINT_THIS_ROUND：** 准备/核实/入库一个联合资料包，归档旧③单独包，更新Handoff、有效文档索引、Owner决策、append-only执行证据；最多交Owner可用ZIP和一段转交话术。**不得自行标记Writer已完成、不得直接将③④候选稿视为正式正文、不得进入⑤–⑦与HTML**。
+- **APPLICABLE_CRITICAL_CONSTRAINTS：** 上述①②封板SHA、V6 7/29/42冻结、资料包恰好7个Markdown且SHA/CRC一致；支付文档的来源、地区与API版本均需独立核验。真实支付/退款/生产账户操作需单独Owner授权，不能在写作Gate发生。
+- **PREFLIGHT：** 2026-10-17回读GitHub main和Library：①②Blob分别为`bf6b31...`、`51dab5...`，冻结框架为`8c7e1d...`，GitHub项目现行目录未发现失效候选。原③输入ZIP CRC正常、两篇封板参考全文SHA与正式版匹配；联合ZIP新建并做成员数量/CRC及冻结题文机械核验。
+- **REQUIRED_EVIDENCE：** 联合ZIP SHA256与七文件SHA256清单（ZIP内README）、Library稳定ID、原③单章包归档路径、GitHub Handoff/Index/Decision/Evidence读回、①②/V6 Git Blob未变、未执行真实支付与正式正文写入。
+- **ACCEPTANCE_CRITERIA：** 联合ZIP为唯一活动输入，包含两篇准确封板参考全文、③4H2/5H3、④4H2/5H3、可核验官方资料与新Reviewer可独立接手的上下文；旧③包移出活动目录；三章以上无人误认为已获Owner采用；文档同步且只读回验通过。
+- **MANDATORY_REVIEW_STOP：** `YES`；在外部Writer回传候选前停止，后续独立Reviewer复核必须先查本Gate当前权威性及GitHub源文件指纹。
+- **ROLLBACK_STATUS_OR_PLAN：** ①②本轮没有正文修改；联合资料包为新建资源可直接禁用；旧③包保留在历史目录可恢复，全部历史Git还原点未改动。
+- **OWNER_ONLY_ACTIONS：** Owner把本联合ZIP转交外部写作Agent；外部Agent收到资料自行写两篇，不需账号或GitHub写权限。Owner收到其3MD成果ZIP后回传给Reviewer；只有Owner能授权③④正式入库。
+- **REVIEWER_TO_EXECUTOR_RELAY：** “从联合ZIP的`00_第三四部分联合独立写作提示词.md`开始，再读`01_第三四部分V6冻结问题与边界.md`；②①封板只读作素材；核对`04_第三四部分官方资料与核验入口.md`，禁止照抄未验证的服务商条件；输出两个完整候选+一份共享独立核验记录，ZIP恰好3个Markdown；不用更新GitHub。不得从过期第三章单独包继续旧交付规范。”
+- **EXECUTOR_TO_REVIEWER_RELAY：** “第三部分完整MD、第四部分完整MD、合并独立核验与执行记录MD、三文件成果ZIP、SHA256/CRC、冻结标题对照、来源与UNKNOWN、与封板①②知识边界核验。未执行线上支付，未碰冻结正文。请求Reviewer独立评审并停在Owner采纳前。”
+- **RESULT_THIS_ROUND：** `JOINT_WRITER_INPUT_READY / OWNER_RELAY_PENDING / CH3_CH4_NOT_AUTHORED`。唯一有效写作输入已准备，**没有一个外部候选或任何正式第三、四章**。
 
-## 七、阶段
+## 七、新Reviewer最小完整接手路线（不用追问前任）
+
+1. **认定唯一主线：** 从GitHub `main` 的 `modern-commercial-payment-guide/REVIEWER_HANDOFF.md` 开始，看本节当前Gate，并读取 `docs/CURRENT_DOCUMENT_INDEX.md`；不要让旧PR #132、旧③单独任务包或历史返修Gate反向覆盖当前决定。
+2. **校验封板范围：** 回读①Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、②Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、V6冻结问题Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。如果不符则先只读对账，绝不能随意恢复或重写。
+3. **定位真实成果：** 本Gate仅是③④写作任务启动；没有任何③④正式稿。等Owner贴回联合成果ZIP后，先检验3文件CRC/hash，再验证③/④各4H2/5H3逐字且归属正确。
+4. **Reviewer聚焦：** ③用户实际选择/价格/安全/流失，④支付状态/可信确认/履约/幂等/异常。特别核查服务商地区可用性、Stripe与PayPal不同的授权/捕获/验签、跨阶段状态、Webhooks重复与乱序、模糊扣款结果、案例与来源绑定；不要只看Agent自己提交的PASS声明。
+5. **产出与决定：** 明确给出具体行号和可证明的PASS/RETURN，不以改写可读性为代价；Review只针对候选，未获Owner批准不归并进正式main。写Reviewer记录到`EXECUTION_EVIDENCE.md`（追加）并更新本Handoff状态，不把全部候选正文堆到交接文件里。
+6. **独立与治理：** GitHub当前有效治理仍以 `entropy-student/spike.skill` 的 `vps-project-governance/VNEXT.md` 及触发的支付/关闭规则为准。Owner权限、Secret、真实付款/退款始终独立授权；历史修订证据可追溯但不自动继承权威。
+
+## 八、项目进度图
 
 ```text
-① 收款方案选择                   SEALED / NO EDIT
-② 收款开通与接入                 SEALED / NO EDIT
-③ 顾客付款                       WRITER PACK READY / NOT DRAFTED
-④–⑦ 余下章节                     PENDING
-全书 7 / 29 / 42 正式结构         FROZEN
-最终单文件HTML                    PENDING
+全书V6 7 / 29 / 42问题框架       FROZEN
+① 收款方案选择                  OWNER FINAL SEALED / NO EDIT
+② 收款开通与接入                OWNER FINAL SEALED / NO EDIT
+③ 顾客付款                      JOINED WRITER PACK READY / NO DRAFT
+④ 支付处理                      JOINED WRITER PACK READY / NO DRAFT
+⑤ 资金结算与到账                PENDING
+⑥ 售后与资金风险                PENDING
+⑦ 财务与合规经营                PENDING
+桌面端单文件HTML                PENDING
 ```
