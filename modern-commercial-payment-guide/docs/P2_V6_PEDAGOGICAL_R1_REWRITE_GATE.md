@@ -1,3 +1,8 @@
+> **VOID / SUPERSEDED — REVIEWER ROLE VIOLATION (2026-10-16)**  
+> 本Gate此前错误授权Reviewer本人直接编写新候选，违反项目治理（Reviewer设计和审核Gate，独立Executor执行）。Owner明确要求删除Reviewer擅自创作的R1文件，文件已经从PR当前树删除，历史证据已追加纠正。  
+> **本文件只保留供事故追溯，不可再作为执行授权、启动提示词或判断PASS的依据。**  
+> 唯一有效后继Gate：[P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md](P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)，只交独立Codex Executor；已冻结V6旧版不变。  
+
 # P2① V6教学重构 R1｜旧稿冻结、独立候选 Gate
 
 **GATE_ID：** `MCPG-P2-V6-PEDAGOGICAL-R1-20261016`  
