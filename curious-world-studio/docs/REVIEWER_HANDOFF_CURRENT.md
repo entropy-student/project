@@ -1,5 +1,11 @@
 # CWS｜下一位Reviewer完整现行交接（2026-10-16）
 
+## 2026-10-16 生图技巧落档（本轮新增）
+
+- 已新增[**C类生图复用与低浪费执行指南**](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)，整合已验收跨项目`spike.skill/comic-narrative`素材库优先复用、双并发Fast Path、output_hint本地直存、hash/尺寸/QA、避免无意义重生等方法。
+- 来源项目能力已验收；**CWS未实施、未发生成调用、无Token节省的实测百分比**。旧13×6表已历史化；当前MW13×A/B/C每格适配仍在Owner讨论中，不能把后续表格建议自动升级为正式生产许可。
+- 原CW0005视觉HOLD / R3 RETURN / G1 NOT PASS / G2 NOT AUTHORIZED / NO PUBLISH保持不变。
+
 ## 2026-10-16最新Owner确认：三种素材覆盖六类旧方案
 
 - A素材视频（含实际录屏），B素材图片（科研/其他现存图），C AI生图（静态概念、解释示意/插画）；现有13种MW窗口动作不变，理论13×3=39个候选格。复合布局不再单设素材来源，旧13×6为历史提案。

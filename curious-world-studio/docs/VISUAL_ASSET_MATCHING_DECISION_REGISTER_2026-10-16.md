@@ -12,6 +12,8 @@
 
 **经过核验的跨项目实施参考**：`entropy-student/spike.skill/comic-narrative` 的[Part4.5图片库复用](https://github.com/entropy-student/spike.skill/blob/main/comic-narrative/part4_5/ASSET_REUSE_LIBRARY.md)优先搜索既有已验收图、直接复用/编辑/参考、确有缺口才生新图；[imagegen-fast-path](https://github.com/entropy-student/spike.skill/tree/main/comic-narrative/tools/imagegen-fast-path)在Codex内置生图环境已验证并发2、官方output_hint直达路径、复制保存+哈希/尺寸/QA、不要stdin/TTY/base64中转图片、Native像素差异不单独触发重生。**没有实测证明“最低Token用量”**；CWS也未完成技术移植或实拍验证。
 
+**Owner本轮要求记录的C类AI生图技巧**：正式参考文件为[AI生图复用与低浪费执行指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)，对应跨项目已验收的图像库先检索、完整图直接复用/兼容旧图编辑/参考/新生成、双并发、output_hint直存、hash/尺寸/QA、避免仅为Native像素不匹配而重试；源项目测试与CWS实际权限/Token成本测量严格区分。本轮只是文档归档，**不执行生图或改变R4授权状态**。
+
 ## 已确认的决策
 
 | 原七点编号 | Owner裁决 | 适用边界 |
