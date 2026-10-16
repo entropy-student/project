@@ -36,3 +36,14 @@
 - **G2B gate revision**：保持唯一 Gate ID `KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`，标识 `R2`；增加**最小只读存储布局核验**（不独立拆一轮），继续仅一条公开无敏感 Canary 和确证可弃文件的严格清理。此前含备份的 Gate 是 `SUPERSEDED_UNEXECUTED`；R1 也**尚未下发/未执行**。
 - **Risk accepted**：`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，不导出 Secret/数据库、不创建恢复资料、不虚构灾难恢复 PASS；Windows/Docker Desktop 重启测试和长期监控仍明确排除。
 - **Document destination**：全部项目管理文档在 `https://github.com/entropy-student/project/tree/main/karakeep-local`，同目录 `README.md` 是索引、`REVIEWER_HANDOFF.md` 为唯一有效状态、`EXECUTION_EVIDENCE.md` append-only。实际用户数据和 `.env` 绝不上传 GitHub。
+
+## D-20261016-G2B-R2-STOP — 浏览器目标无法确认，未完成并停在 Reviewer
+
+- **Evidence provenance and disposition**：Owner 将本机 Executor 的 G2B R2 中止报告转交 Reviewer；该报告为 `OWNER_REPORTED`（Executor 所述本机读回，**Reviewer 未独立查看原始控制平面**）。按 Governance 接受“报告结果/未完成状态”进入 Handoff，不将未落库的技术运行报告伪装成 `EXECUTION_EVIDENCE.md` 中已验收的独立证据。
+- **Decision**：`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`；本次 G2B R2 **未 PASS**。Computer Use 无法足够确定 Windows 当前浏览器 URL 并要求立即停止，Executor 遵循停止条件，未绕过其它方式重新控制浏览器。这是**本轮工具目标识别阻碍**，不是 Karakeep Web/Chrome 功能失败的证明。
+- **Reported storage findings（provisional）**：本机 `%USERPROFILE%\KarakeepLocal` 配置目录存在，Compose 指纹及 `.env`/配置保护性 ACL 通过；Web `karakeep-local_data` → `/data`，Docker Linux Mountpoint `/var/lib/docker/volumes/karakeep-local_data/_data`；Meili `karakeep-local_meilisearch` → `/meili_data`，Linux Mountpoint `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`。Docker Desktop UI WSL2 数据磁盘**目录**为 `%LOCALAPPDATA%\Docker\wsl`。**VHDX 文件名与完整文件路径仍 `UNVERIFIED`**；上述 Linux Mountpoints **不是 Windows 的普通文件夹**。只读现状报告不构成任何迁移/备份能力。
+- **Reported runtime**：G2B preflight 时 Web/Chrome/Meili 三个目标容器 running、Web healthy、0 restart/0 OOM、Web host publish 仅 loopback 3000、其它 Docker 项目运行数 0。**本轮没有新鲜 HTTP 页面请求**；旧 G1J 的 HTTP PASS 和 Owner G2A 登录截图仍是独立历史证据。
+- **Reported cleanup / Canary**：`KarakeepLocal` 顶层只有 `.env` 和 `docker-compose.yml`，**无经核实可弃临时文件候选**；删除文件 `0`，不是清理失败，也没有删除配置/数据。**收藏新增 `0`，抓取/搜索/预览 `NOT_RUN`**；未读取或修改其它个人收藏。
+- **Reported change and stop boundary**：无配置、卷、Secret、Docker 设置或非目标项目变更，未备份/迁移/重启；没有执行最终 localhost HTTP 回归。**Executor 没有追加 G2B Evidence，也没有 G2B Commit SHA**；`main:karakeep-local/EXECUTION_EVIDENCE.md` 最后仍为 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，Reviewer 本轮核对了该现状。
+- **Current Owner instruction**：等待下一次 Owner 指令，不自动进入新 Gate，不再尝试浏览器 Canary，不补跑后续清理或更新本机环境。此前安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 保持有效；现有登录账户及两 Docker 命名卷全部保留。`BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED` 继续适用。
+- **If explicitly resumed in future**：Reviewer 先设计一次最小的浏览器目标/身份确认与安全手动 Canary 边界，并让 Executor 完整追加 Evidence/main read-back；**不得擅自把当前 STOP 视为已有重试授权**。已报告的存储和无临时文件结论只需必要新鲜确认，不重复 G0–G1J 已接受的历史安装检查。
