@@ -1,6 +1,6 @@
 # 现代商业支付系统｜唯一交接文档
 
-> **唯一结构基线：** 本文件第二至第四节是Owner冻结的V6全书7/29/42问题框架。①和②正文以Owner亲自上传的两篇原始Markdown为准，不再引用助手的事实修订版或拓展版。历史修改可通过Git提交追溯。
+> **唯一结构基线：** 第二至第四节为Owner已冻结的V6全书7/29/42正式问题框架。第一、二部分的用户上传原稿同时**内容冻结**；仅允许在外部副本中制作待核验的修订候选，不允许覆写此仓库现行正文。旧稿与审查材料只在Git历史或受检备份中追溯。
 
 ## 一、项目最高准则（已确认）
 
@@ -82,32 +82,39 @@
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **3. 怎么判断现在的收款方式好不好用？** | 3.1 付款成功率、手续费、到账时间和拒付率，应该怎么看？ |
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **4. 生意变化了，什么时候要调整收款方式？** | 4.1 什么变化意味着应该调整或增加收款渠道？<br>4.2 换收款服务商真的更划算吗？切换时会遇到什么麻烦或风险？ |
 
-## 五、Owner当前决定与唯一文章入口（2026-10-16）
+## 五、现行状态与双稿冻结令｜2026-10-16
 
-- **最高目标**：面向中国大陆个人开发者、跨境/独立站及中小商家，以易懂、有判断方法的方式讲解商业收款。最终产物为单文件桌面HTML，尚未开始制作。
-- **Owner最新明确决定**：**恢复其亲自上传的两篇独立Markdown原稿，不对正文进行任何润色、增补或事实纠错**。原稿完整性与阅读表达是本轮首要验收条件。前一轮助手改写降低可读性，不能再将这些改写标为正式源文本。
-- **①当前唯一正文**：[docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，内容精确等于用户上传的 `现代商业支付系统_第一部分_独立重写稿.md`，Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`，33,755字符（含终止换行），75,639字节。前一版拓展/修正不再现行。
-- **②当前唯一正文**：[docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，内容精确等于用户上传的 `现代商业支付系统_第二部分_独立重写稿(1).md`，Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`，25,274字符（含终止换行），58,594字节。助手直接返修文档已从现行入口退出。
-- **框架冻结**：正式V6的7个一级、29个二级、42个三级问题原文和顺序未改变；[V6框架快照](docs/FROZEN_FRAMEWORK_V6_20261016.md) Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
-- **审查边界**：Owner此次选择的是**原稿的编辑版本和可读性**，不是独立金融、法律或技术事实Review PASS。特别是②原稿之前有支付测试、Webhook验签、PCI等审查异议；历史风险有据可查，但**不许据此自动改写已恢复的原稿**。需要核实或更正时先以独立评审意见形式呈现，获得Owner明确指示再修改。
-- **生产方式**：不自动调用 `human-writing`、`copy-editing`、`humanizer`。后续新章如由外部作者写作，先交完整离线ZIP和一份提示词，由Owner转交；按Owner选择的稿件入库，不默认二次改写。
-- **文件库现行位置**：`/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`、`/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`；此前五份修改/审查文档在 `/项目历史归档/现代商业支付系统_旧修订与评审/`。
-- **历史恢复**：①曾被助手编辑的Git Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`；②助手修订Blob `f89193e29f296ac8ce5e88ab0b58632786540669`；均有历史Git提交，可再构建，但当前不得擅自恢复覆盖。
+- **Owner最新授权：** 删除其余失效与过期文档；把①、②两篇用户上传Markdown设为**内容冻结**，Review只提出明显错误和确有价值的深广度增补建议；Owner将提示词交外部独立Agent核验执行。**禁止任何执行者在当前Round覆写GitHub main或文件库里的冻结正文。** 内容冻结是项目授权约束，不是GitHub管理员写权限的技术锁。
+- **第一部分①唯一权威正文：** [docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) = 上传文件 `现代商业支付系统_第一部分_独立重写稿.md`；SHA256 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`；Git Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`。
+- **第二部分②唯一权威正文：** [docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) = 上传文件 `现代商业支付系统_第二部分_独立重写稿(1).md`；SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`；Git Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`。
+- **V6结构冻结：** 七个一级、29个二级、42个三级问题原文和顺序以本Handoff§二–四为准；快照 [docs/FROZEN_FRAMEWORK_V6_20261016.md](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
+- **现行项目文件库：** `/现代商业支付系统/` 仅两篇用户原始稿；五份助手旧修改及Reviewer材料已在ZIP确认内容完整后**从文件库移至回收区**，备份在 `/项目历史归档/现代商业支付系统_历史修订文档恢复备份_20261016.zip`，SHA256 `93fee77cf398ef32ea606075cab83140960e13bd805e020508b2328b80099b90`。历史备份是恢复手段，不是现行有效正文。
+- **当前main精简：** `docs/`仅两篇正文、V6冻结框架及现行索引。历史P1结构审查、P3归属计划和此前返修稿/Reviewer历史报告均从main现行树退出，但可依固定Git历史恢复。根目录只保留`REVIEWER_HANDOFF.md`、`DECISION_LOG.md`、`EXECUTION_EVIDENCE.md`。
+- **内容边界：** Owner选择了原稿的表达与可读性，但这不意味着稿件所有金融、法务、技术细节已被审核为准确。核对意见只供外部Agent验证，允许驳回错的建议；修订候选即使交付也不自动成为正式版。
 
-## 六、项目阶段与当前Gate
+## 六、当前执行Gate：只读Review与外部Agent交接
+
+- **GATE_ID：** `MCPG-CH1-CH2-FROZEN-READONLY-REVIEW-AGENT-RELAY-20261016`
+- **OBJECTIVE：** 在完全冻结两篇用户原稿的前提下，审查明显数学/金融/法律/技术错漏和实质深广度缺口，形成一份独立核验修订提示词供Owner转交外部Agent。
+- **MAX_ENDPOINT_THIS_ROUND：** 删除已分类且证实可恢复的无效文档、建立可验证冻结状态与项目记录、只读审查两个完整Markdown、生成**单份外部Agent提示词**；不得在本轮执行/直接提交两篇修订正文，不进行真实付款/退款/测试，不进入③–⑦和HTML。
+- **PREFLIGHT：** 已从GitHub main和Library校验两个原稿的SHA256/Git Blob；已读取治理v0.2.7及Closeout要求；五份旧Library文件备份经过每文件SHA256+ZIP CRC核对；历史main文件存在Git提交可恢复。
+- **REQUIRED_EVIDENCE：** 清理白名单和计数、主文冻结Git Blob+SHA256、正式框架Blob、提示词全文与SHA256、官方来源/日期及核验边界、Library/GitHub最终回读。
+- **ACCEPTANCE：** 两篇冻结Markdown与原上传**字节一致且未改变**；V6问题块原文未变；现行Docs无候选/过期Gate；提示词明确每一条Reviewer建议须由外部Agent独立核验、可以驳回；外部Agent仅产出**两篇完整修订Markdown+一篇独立执行记录**，ZIP内恰好三个文件、校验可解压；此轮不声称外部Agent已执行。
+- **MANDATORY_REVIEW_STOP：** `YES`；停在已完成冻结/审核交接，不越界触碰原稿。
+- **ROLLBACK：** 文件库ZIP与Git固定提交均可恢复被清理文档，保留历史，不reset/force；冻结正文无需回滚（未修改）。
+- **OWNER_ONLY_ACTIONS：** Owner将提示词及两篇原始Markdown交外部Agent；收到三文件成果ZIP后决定是否采用任何修改。任何对冻结原稿的正式修改都需要Owner**再次明确解除冻结/授权**。
+- **REVIEWER_TO_EXECUTOR_RELAY：** 外部Agent收到两篇原始Markdown和本会话提供的提示词，先核验意见是否成立，再做最小且可读的候选修订，在单独的执行记录逐项接受/拒绝/UNKNOWN，最后打包三文件ZIP交Owner；禁止写GitHub或覆盖冻结正文。
+- **EXECUTOR_TO_REVIEWER_RELAY：** 交出ZIP+三文件完整性证明、修改意见核验表、金融事实条件、未解决UNKNOWN；停止，不自颁独立Reviewer/Owner PASS。
+
+## 七、阶段总览
 
 ```text
-P0  项目定位与V6 7/29/42结构           PASS / 结构冻结
-P1  全书结构覆盖与知识分配规划         PASS
-P2  ①收款方案选择                      OWNER ORIGINAL RESTORED
-P4  ②收款开通与接入                    OWNER ORIGINAL RESTORED
-P4  ③—⑦其余五章正文                  PENDING
-P5  单文件HTML整合及出版事实核验        PENDING
+P0 正式7/29/42问题框架                 PASS｜冻结
+P1 第一部分①用户上传原文               FROZEN / NO EDIT
+P2 第二部分②用户上传原文               FROZEN / NO EDIT
+P3 独立核验修订意见与Agent交接          PROMPT READY
+P4 ③–⑦其余章节                         PENDING
+P5 单文件HTML整合                       PENDING
 ```
 
-- **CURRENT_GATE**：`MCPG-CH1-CH2-OWNER-ORIGINAL-RESTORE-20261016`，当前动作是精确恢复两篇Markdown、移走当前重复修订稿、同步文件库与索引、最终回读。
-- **MAX_ENDPOINT**：只恢复①②文章及其项目管理关联入口，归档重复修订；不改V6框架、不写新章节、不制作HTML、不进行任何真实金融交易。
-- **ACCEPTANCE**：①正文Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`；②正文Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`；主线有效索引只列这两份正文，历史重复内容与Review仅做历史可追溯。
-- **REVIEW STOP**：两个文本已获Owner明确版本选择，但没有因此获得金融事实审核PASS；如涉及新更正应单独审批。
-- **NEXT_STEP**：等待Owner对后续③章节或全书下一步的明确要求。内容层面不再自动补充或重写①②。
-- **EVIDENCE**：[DECISION_LOG.md](DECISION_LOG.md)、[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)、[CURRENT_DOCUMENT_INDEX.md](docs/CURRENT_DOCUMENT_INDEX.md)。Git只读回滚，不覆盖用户选择的原文。
+后续除Owner明确批准外，不得自动解冻或覆盖①②。当前最小Owner动作：向外部Agent发送**两篇原始Markdown+一份评审提示词**；由Agent返回三文件ZIP。
