@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1冻结7/29/42结构 PASS，P2第①板块知识与完整 human-writing候选的结构/事实Reviewer PASS。P2“双目标读者价值”诊断已审：**诊断内容 PASS，但试读工具存在诱导性题干，Gate正式 `RETURN_TRIAL_KIT_LEADING_PROMPTS`**。实际读者是否愿意读、能否脱稿解释方法与案例均仍 `UNVERIFIED`。原文章不改，PR #132 Open/Draft/未合并，P3–P5 PENDING。
+**当前闸门：** P1冻结7/29/42问题 PASS，P2第①板块知识与完整 human-writing 候选结构/事实Reviewer PASS；**P2双目标读者价值诊断与去提示化试读工具本轮Reviewer PASS**（已审只读诊断、Q6/Q7开放题、读者问卷/主持人答案隔离）。真实读者A愿读及B脱稿理解仍 **UNVERIFIED**。下一步仅待Owner决定是否开展3名目标读者的轻量试读；原文章不改、不叠加写作Skill，PR #132 Open/Draft/未合并，P3–P5 PENDING。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_READER_VALUE_RETURN_TRIAL_KIT_LEADING_PROMPTS`（Reviewer诊断PASS，真实试读工具需要最小去提示化；两项真实读者目标均未实测）。
+- **PROJECT_STAGE：** `P2_READER_VALUE_REAL_READER_FEEDBACK_PENDING`（双目标文本诊断和试读工具已Reviewer PASS，尚无真实读者兴趣/理解反馈；Owner试读决策待定）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
-- **CURRENT_ACCEPTED_STATE：** P1结构7/29/42 PASS；P2第①板块原知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、human-writing完整候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 未变。PR #132 head `a350593e5259b2d3498c8e450d026ce4fcd66c78` 新增诊断 Blob `09d59a974631756ba59d64fa2d054bbf0e06ed10` 已 Reviewer 内容 PASS；试读工具 Blob `a357aaa715cd4e4eafb913754f52aa579cdf115d` 被限定返修；执行Evidence旧内容保留并追加36行。
-- **CURRENT_GATE：** `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016`：Reviewer **`RETURN_TRIAL_KIT_LEADING_PROMPTS`**，仍是同一受限只读验证 Gate，当前返工仅准修改 `P2_READER_TRIAL_KIT.md` 并向 Evidence 追加；[PR意见](https://github.com/entropy-student/project/pull/132#issuecomment-6209319816) / [独立自测报告](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_REVIEWER_SELF_TEST_20261016.md)。
-- **CRITICAL_CONSTRAINTS：** 不改变最高准则/P1已冻结7/29/42；**已审P2全文原稿一字不覆盖**；以其原本H1、5个H2、9个H3**逐字、原层级、原顺序保留**为不可退让的验收；所有小节各自保留判断/例子/方法和金融边界；先撤两份短篇后再重跑；仅human-writing；证据append-only、无force push/reset；不触碰支付/生产，不进入P3/HTML。
+- **CURRENT_ACCEPTED_STATE：** P1结构7/29/42 PASS；第①板块原知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、完整 human-writing 候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1` 未变。P2阅读诊断 Blob `09d59a974631756ba59d64fa2d054bbf0e06ed10` 已Reviewer内容PASS；试读工具修订 Blob `5af87f86f6ed9b4035017914cc0aa840006f2dbe` 的开放题与答案隔离已Reviewer PASS。真实读者是否愿读、是否读懂尚无数据，不可冒充通过。
+- **CURRENT_GATE：** `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016` **Reviewer PASS / CLOSED_FOR_TOOL_PREPARATION**。正式 [PR #132 Reviewer 评论 #6209581069](https://github.com/entropy-student/project/pull/132#issuecomment-6209581069)；本 Gate 验证的是诊断与中立试读工具**可用**，不是A/B真人目标已实现。**无新的Executor Gate**。
+- **CRITICAL_CONSTRAINTS：** 面向大众的商业支付**知识科普与选型方法论**，不是按个人提供获批开户推荐；P1冻结7/29/42不得修改；P2第①板块5个二级/9个三级标题、两个完整案例、已审正文与金融事实保护；已撤销短篇不能恢复成正文；Evidence append-only，禁止force push/reset，未经授权不得合并/进P3–P5。真实试读只可在Owner明确决定后、按已审工具包标记**仅分享问卷区**，不外发含主持人答案的整份工具包；不能虚构阅读效果。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
-- **CURRENT_ROLLBACK_STATUS：** 两份Owner拒绝的独立短篇从PR当前树**已安全撤销且查证NOT_FOUND**，仍可自旧 commits `d0f000...` 和 `c334105...` 恢复；原P2正文未动；新完整候选可独立删除，历史Evidence持续append-only。GitHub compare确认无force/reset/交叉项目修改，PR Open/Draft/未合并。
-- **UNRESOLVED：** A阅读吸引力目前仅编辑代理8/12，**真人意愿UNVERIFIED**；B六项通用知识正文证据5 SUPPORT、1 PARTIAL（PSP/MoR/收单的白话首见解释薄弱），**真人脱稿理解UNVERIFIED**。试读问题Q6/Q7暴露预期答案，主持人答案和读者题在同一文件直接分享会泄题；需要隔离试卷/答案并修正文案。参考案例完整但在§5.1才出现且常需跨章节回看。
-- **NEXT_STEP：** 独立Executor只在PR #132修复试读工具Q6/Q7的诱导式问法、规定向读者只提供无答案题目节选并保留主持人答案；Evidence append-only、回读后立即STOP_AT_REVIEWER。Reviewer复核后再由Owner决定是否安排3名普通目标读者试读；不重写正文、不加Skill、无P3。
-- **OWNER_ACTION_REQUIRED：** 将[Reviewer的极小返工意见](https://github.com/entropy-student/project/pull/132#issuecomment-6209319816)交给独立 Codex Executor，限制其只改试读工具包和Evidence；完成后传回新 Commit SHA。此阶段无需真实用户、隐私数据或个人化支付方案。
-- **EVIDENCE_POINTERS：** PR head `a350593e5259b2d3498c8e450d026ce4fcd66c78`；诊断报告 Blob `09d59a974631756ba59d64fa2d054bbf0e06ed10`；试读包 Blob `a357aaa715cd4e4eafb913754f52aa579cdf115d`；Evidence Blob `b22ddb946fa7812401b7eed56d1a681f077510fd`；两原稿 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`、`f8bb110f07ef654df2f5b4b9285540e89261b1f7`；[正式Reviewer评论 #6209319816](https://github.com/entropy-student/project/pull/132#issuecomment-6209319816)；[独立复核报告](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_REVIEWER_SELF_TEST_20261016.md)。
+- **CURRENT_ROLLBACK_STATUS：** 原已审P2正文和完整结构化候选 Blob未变；两旧短篇仍已从PR当前树安全撤销、历史可恢复；最新中立试读工具可按原错误版本 Commit `a350593...`恢复（如需，但不推荐），此前Evidence历史保留且本轮在其后仅追加16行；无生产/账号/支付变更；PR仍Draft/Open/未合并。
+- **UNRESOLVED：** 两项终极读者目标尚未真人测试：A编辑代理分8/12≠真实阅读意愿，B六项通用学习结果正文5项SUPPORTED/1项PARTIAL≠真人掌握。第①板块首次角色术语解释偏密、§1.1七维表前置、§4.1数据表切换、完整案例§5.1出现较晚。试读问卷已修复诱导/答案泄露，实际主持人必须只复制问卷标记间内容；此前没有真实答卷。
+- **NEXT_STEP：** 停止重复润色和写作Skill实验；由Owner判断是否采用已审核试读工具，用固定文章版本让3名目标读者分别反馈①是否愿读及理由、②是否脱稿复述选型步骤与参考案例。获取数据后再由Reviewer决定要不要针对§1.1/2.2/4.1/5.1进行小范围内容修复。非Owner授权不得直接联系读者、改P2或进入P3。
+- **OWNER_ACTION_REQUIRED：** 如决定开始试读，由Owner使用 [PR最新工具包](https://github.com/entropy-student/project/blob/f04899142b2156cb2e685faff25342b6cab6ca4e/modern-commercial-payment-guide/docs/P2_READER_TRIAL_KIT.md) **仅复制标记之间的问卷段落**发送给最多3名普通目标读者，匿名保留原始回答；不得分享整个含主持人答案的工具包。若暂不试读，Owner动作为NONE，项目停在真人反馈待定。
+- **EVIDENCE_POINTERS：** PR #132 最新head `f04899142b2156cb2e685faff25342b6cab6ca4e`；本轮仅试读工具 Blob `a357aaa715cd4e4eafb913754f52aa579cdf115d`→`5af87f86f6ed9b4035017914cc0aa840006f2dbe`，执行Evidence `b22ddb946fa7812401b7eed56d1a681f077510fd`→`1555dbb4aacc6f55b444ef2414f74eea85ab9ac5`；诊断 `09d59a974631756ba59d64fa2d054bbf0e06ed10`、原知识正文 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、人文候选 `7924e80634f1f09a5628a78458c43a90d5019fd1` 均未变；[正式Reviewer PASS](https://github.com/entropy-student/project/pull/132#issuecomment-6209581069)，Governance v0.2.7。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -234,3 +234,13 @@
 - **A差距：** 首屏§1.1七维表、§2角色密集、§4多个不同法律资格的价格示范与§5案例出现晚，使阅读动力持续性仍待优化；真人兴趣和完读 `UNVERIFIED`。
 - **B差距：** 方法框架/两链/案例已齐，真正“读者看懂”的证据未取得；概念的首次白话解释与知识分布存在理解门槛，真人脱稿复述 `UNVERIFIED`。
 - **最小后续动作：** 同 Gate 限定 Executor 只编辑 `docs/P2_READER_TRIAL_KIT.md` Q6/Q7与隔离发送说明，Evidence append-only，STOP Reviewer；新稿修订前不真实发放。**无第三写作Skill、不重写P2、不合并、不进入P3–P5**。Owner后续选择是否找3名普通读者进行小样本验证。
+
+
+## 二十一、试读工具返修已通过 Reviewer，等待真实读者反馈（2026-10-16）
+
+- **正式结论：** [PR #132 Reviewer #6209581069](https://github.com/entropy-student/project/pull/132#issuecomment-6209581069)，Gate `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016` **PASS / CLOSED_FOR_TOOL_PREPARATION**；仅证明中立诊断和工具可用于后续真实试读，**没有宣告文章满足愿意读/理解两个终极目标**。
+- **复核基线：** 最新PR `f04899142b2156cb2e685faff25342b6cab6ca4e`，Open/Draft/未合并。本轮compare到 `a350593...` 仅改 `docs/P2_READER_TRIAL_KIT.md` +11/-5 和 Evidence +16/-0；新问卷 Blob `5af87f86f6ed9b4035017914cc0aa840006f2dbe`，Evidence Blob `1555dbb4aacc6f55b444ef2414f74eea85ab9ac5`。原已审正文、全章表达稿、诊断报告Blob全部未变。
+- **问卷独立自测：** 源文件 `<!-- READER_QUESTIONNAIRE_BEGIN -->`、`<!-- READER_QUESTIONNAIRE_END -->` 各恰有一处；中间可复制区域包含8道题、固定文章链接和匿名/拒答提示，**没有主持人参考答案或旧版Q6/Q7引导性结论**。Q6改为自由回答考虑事项/原因；Q7改为自行复述案例条件/比较/结论/未知。主持人标准答案在问卷结束标记之外；须只发送问卷区域，不可直接转发整个GitHub工具包文件。
+- **双目标状态：** A 编辑代理 `8/12`，真人意愿 `UNVERIFIED`；B 正文知识支撑 `5 SUPPORTED + 1 PARTIAL`，真人脱稿理解 `UNVERIFIED`。阅读障碍集中§1.1早期七维表、§2第一次角色术语、§4费用表密集、§5完整案例过晚；还未以真人反馈证明是否值得改。
+- **边界：** 本项目仅提供普适的商业支付知识、选型方法和代表性参考案例，不承担每人个案推荐；不得更改7/29/42/本章5/9、不加第二Skill、未经新Gate不改正文/不合并或进P3–P5。
+- **下一步/Owner checkpoint：** Owner可自行选择邀请3名目标读者，按原文章固定版本与**无答案问卷节选**收集原始匿名回答；阅读意愿与读后理解分别记录，人数少仅供编辑方向诊断。不选择就暂停在 `P2_READER_VALUE_REAL_READER_FEEDBACK_PENDING`，当前无新Executor任务。
