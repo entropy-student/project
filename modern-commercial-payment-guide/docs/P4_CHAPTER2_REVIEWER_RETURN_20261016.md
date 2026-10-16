@@ -8,6 +8,8 @@
 - 故事、支付链接/插件/API选型、不可只靠success重定向发货、Webhook验签与事件幂等的原则方向有价值；须修正具体条件，不要推倒重写。
 
 ## 必改的P0
+
+编号：P0-01 生产环境实款测试；P0-02 跨服务商Webhook签名；P0-03 业务幂等与持久化；P0-04 PCI责任；P0-05 监管与合同绝对化。详细逐项返修要求见已存项目文件库的完整版Reviewer说明。
 1. **行334–397/422/449–450：真实生产$1刷卡+退款**被写为通用强制上线路径，触犯Stripe官方测试文档中“禁止用真实支付方式在live mode进行测试”的提醒；不得指导所有读者照做。重写为沙盒与只读生产配置核验优先；必要真实Canary须**具体服务商允许+Owner独立授权+范围/金额/次数限定**，且扣款成功不证明真实提现到账。依据 https://docs.stripe.com/testing。
 2. **行308–312/442：错误统一Webhook验签。** Stripe原文签名Secret与PayPal证书/RSA或官方Verify API不是同一套HMAC-SHA256流程。必须逐产品解说。依据 https://docs.stripe.com/webhooks 与 https://developer.paypal.com/api/rest/webhooks/rest/。
 3. **行251–254/318–326/443–444：技术上错误的“一张event_id唯一表就足够防止双重发货”。** Stripe同一业务可产生不同Event对象，事件乱序；数据库插入成功不代表订单状态和履约成功，事件去重不等于订单业务幂等。改为验证商户/环境/订单/金额币种/最终付款状态、业务事务/持久排队(outbox)、支付对象+业务订单去重、失败重试及重查，按供应商明确ACK契约。依据 https://docs.stripe.com/webhooks。
