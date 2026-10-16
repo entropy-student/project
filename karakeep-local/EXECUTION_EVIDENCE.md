@@ -616,3 +616,67 @@ Executor-to-Reviewer relay:
 回滚：未执行，验收候选通过故保持服务运行；若 Reviewer 要求停止，仅使用项目级 down，不带 `-v`。
 请 Reviewer 检查：核查 G1J Evidence，独立裁定浏览器依赖证据是否满足 Gate。
 Owner 转交：Karakeep 保持运行，可访问 `http://localhost:3000`；不注册账户、不添加真实收藏，等待 Reviewer，不进入下一阶段。
+
+## G3B — SaSS 工作区精准只读资产盘点 — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`KARAKEEP-WIN-G3B-SASS-WORKTREE-READONLY-20261016`，来源为最新 main 的 `karakeep-local/G3B_SASS_WORKTREE_READONLY_GATE.md`（blob `9f094a9284a79c873a2034897dc16ffc8a2576de`）与 `REVIEWER_HANDOFF.md`（blob `031d11a95f7c137e58f53bd4f9ff918d39597ce9`）。Owner 本轮授权仅限 SaSS 精确路径的 Windows 本机只读盘点及 GitHub 两份脱敏文档写入。
+
+### PREFLIGHT_FACTS
+- `EXACT_TARGET_IDENTITY`: 原生 Windows PowerShell 7.6.5；目标由 `Join-Path $env:USERPROFILE 'Documents\ChatGPT\SaSS'` 构造，路径存在，父路径链无 reparse point；输出路径均用环境变量形式脱敏。
+- `SCAN_DEPTH`: SaSS 根与直接子项元数据；没有普通非 Git 子目录，因此未向项目目录继续下探。无源文件正文读取。
+- `EXCLUSIONS`: 未扫描其它项目/整个 C 盘、AppData、浏览器配置、Docker/WSL 数据内容；未读取文件正文、凭据或秘密。Git 仓库状态由禁用 optional locks、fsmonitor 和 untrackedCache 的只读 Git 命令聚合。
+- `SASS_OWNERSHIP`: Git 识别的 root 与 SaSS 目标路径相同；根目录一个条目为 `.git` 元数据目录，普通工作树文件/目录 0，索引 tracked paths 0。仓库为具名分支（分支名不输出），无 origin remote，具体项目归属 UNKNOWN。
+- `GIT_ROOT_AND_DIRTY_COUNTS`: root = `%USERPROFILE%\Documents\ChatGPT\SaSS`; staged=0, modified=0, untracked=0, deleted=0, renamed=0, tracked=0。
+- `UNPUSHED_OR_UPSTREAM_STATUS`: `UNVERIFIED`；无 origin 与 upstream，无法计算推送差异；未执行 fetch 或任何 Git 网络操作。
+- `CONTAINER_DIRECT_MOUNT_REFERENCE`: 对三个目标 `karakeep-local` 容器执行只读 inspect；没有 SaSS bind mount。当前 Compose 工作目录标签指向独立的 `%USERPROFILE%\KarakeepLocal`。此结论只覆盖这三个 Karakeep 容器。
+- `OTHER_PROJECT_REFERENCE_LIMIT`: `UNKNOWN`；没有检查其它项目、进程命令行或跨目录引用，不能据此断言 SaSS 未被其它运行方使用。
+- 既有 Karakeep 配置路径在本轮只核对目录存在；Compose/.env 结构、两卷容器内路径及 Docker Desktop WSL2 目录记录沿用最新 Handoff 的 `OWNER_REPORTED` 信息，没有复跑 G3A；VHDX 确切文件路径仍 UNKNOWN。
+
+### ACTUAL_CHANGES
+- 本机文件、权限、Docker 对象和系统设置写入数均为 0；删除/移动/复制/备份/迁移/归档均为 0。
+- 仅通过 GitHub connector 在 `main` 创建 `karakeep-local/LOCAL_ASSET_INVENTORY.md`，并将本 G3B 记录追加至本 Evidence。
+- `NO_LOCAL_WRITES` = TRUE；`NO_BROWSER_OR_COMPUTER_USE` = TRUE；`NO_CLEANUP` = TRUE；没有使用浏览器或 GUI。
+
+### OBJECTIVE_READBACK
+- SaSS 根只有 Git 元数据目录，普通工作树文件和 tracked path 均为 0；Git status 中 staged、modified、untracked、deleted、renamed 均为 0。
+- SaSS 的 remote/upstream 均未配置，故不能判断是否含未推送或独有提交，分类为 `UNKNOWN_OR_SHARED` 并建议保留。
+- 目标 Karakeep 容器没有 SaSS bind mount；其它项目/进程引用未知。
+- Karakeep 的 config、两个命名卷与 WSL2 后端按来源分别列入清单；卷内容未读，WSL2 后端按共享存储保留。
+- `LOCAL_ASSET_INVENTORY.md` 在本轮创建后通过 main 读回并与提交内容逐字一致；inventory blob `5189a45a15b527b5183243c95e82ce3515bbbb10`。
+- `HISTORICAL_G3A_REPORTED_ONLY` = TRUE；没有补造 G3A Executor Evidence，也没有声称本轮重新验证 G3A 的全部内容。
+
+### VALIDATION
+- SaSS 目标路径存在、未重定向；Git root/status 查询成功；无 tracked 或 dirty/untracked 状态。
+- Docker Engine 只读查询成功，目标容器清单/挂载证据限定于 Karakeep 项目。
+- GitHub main 读回确认 Gate/Handoff blob 未变；inventory 已成功创建并精确读回。Evidence 原始前缀 blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 保留，随后追加此条。
+- `GITHUB_INVENTORY_AND_EVIDENCE_COMMIT_SHA`: inventory commit `720813d9c073ceeb3673c367be0dc9838518efe4`；Evidence append commit SHA 将由 GitHub 写入结果和追加后的 main 读回来验证，并在 Executor-to-Reviewer relay 中提供。
+
+### ANOMALIES
+- `NO_ORIGIN_OR_UPSTREAM`: 无法确认 SaSS 仓库身份、远端副本、推送状态或本地对象的唯一性；不能列作归档候选。
+- `OTHER_REFERENCES_UNKNOWN`: 只证明三个目标 Karakeep 容器无 SaSS bind mount，不证明其它项目/进程不引用 SaSS。
+- 处理 Git 元数据识别时，曾额外取得一次 `.git` 目录的直接子项数量；没有输出/记录其名称、读取文件正文或改变任何内容。该数量不用于资产判断。此为超出计划排除边界的只读元数据查询，披露给 Reviewer 独立评估。
+- 无其它清理或系统变更；无回滚需求。
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- `karakeep-local/LOCAL_ASSET_INVENTORY.md`：SaSS 本机资产分类和来源可信度，含必须保留/归属未知分类及后续安全动作。
+- `karakeep-local/EXECUTION_EVIDENCE.md`：本节为 append-only G3B Executor 证据。
+- 两份文件均只含脱敏路径、计数、限制与归属标签，不含本机用户名、文件名清单、Secret、收藏、数据库或 VHDX 内容。
+
+### ROLLBACK_EFFECT
+本机没有发生写入/删除/移动/备份/Docker 变更，无本机回滚操作。GitHub 文档变更为本 Gate 明确要求的持久证据。
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+没有读取或改变收藏、账户、数据库、Docker 卷、镜像、容器、其它项目或业务数据。只读检查没有创建运行资源。
+
+### EXECUTOR_RESULT
+`PASS_CANDIDATE_WITH_DISCLOSED_SCOPE_NOTE` — SaSS 的可见工作树内容、Git dirty 状态、Karakeep 直接 bind mount 情况已按当前范围核实；因无 origin/upstream 及未检查其它引用，归属、未推送状态和归档安全性均保持 UNKNOWN。另已披露一次不含名称/正文的 `.git` 直接子项计数查询，待 Reviewer 判断其范围影响。请 Reviewer 审核；SaSS 必须保留，本轮不授权归档或删除。
+
+Executor-to-Reviewer relay:
+结果：G3B 只读盘点完成，等待 Reviewer。
+SaSS：目标是一个本地 Git root；根目录除 `.git` 元数据外无普通文件/目录，tracked=0，状态计数全 0；没有 origin/upstream，仓库归属与是否有未推送提交无法确认，分类 UNKNOWN_OR_SHARED，建议保留。
+引用：三个 Karakeep 容器均无 SaSS bind mount；其它项目/进程引用未知。
+其它受保护资产：KarakeepLocal 配置目录、两个命名卷及 Docker Desktop WSL2 目录的来源/关系按清单分别标记 DIRECT_READBACK 或 OWNER_REPORTED；没有读取秘密或卷内容。
+异常：为识别 Git 元数据，曾仅查询 `.git` 直接子项数量；未取得名称/文件内容，未修改。请 Reviewer 评估该范围说明。
+提交：inventory commit `720813d9c073ceeb3673c367be0dc9838518efe4`；Evidence commit SHA 在成功写入及 GitHub main 读回后由本 relay 给出。
+本机写入/清理/移动/备份/迁移=0。停止在 Reviewer，不执行归档或删除。
