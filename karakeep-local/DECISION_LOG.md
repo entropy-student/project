@@ -65,3 +65,12 @@
 - **Deliverables / stop**：仅在 GitHub 项目目录创建脱敏 `LOCAL_ASSET_INVENTORY.md` 和对 `EXECUTION_EVIDENCE.md` 追加 G3A Evidence，提交 main/readback 后停 Reviewer；**Windows/Docker 上零写入、零移动、零删除、零备份**。目前这两份 G3A 结果**尚未产生**，不能判 PASS。
 - **Safety classification**：项目活跃配置/密钥、真实用户卷和共享 Docker 磁盘绝不因整理而移动或删除；`sass/saas` 绝对路径/是否为 Karakeep/独有未提交内容仍 `UNKNOWN`，未查证前禁止断言可删。
 - **Project status**：原安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 及保留运行不变；没有离机备份 `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；G3A 不打开浏览器、不重启服务或电脑、不更改 Compose/Secret。
+
+## D-20261016-G3A-RETURN-BROWSER — G3A 只读部分完成，Computer Use 安全停止
+
+- **Provenance**：Owner 转交本机 Codex 报告，`OWNER_REPORTED`（其中“直接读回”是 Executor 的自述，而非 Reviewer 直接访问本机控制面；无正式 G3A GitHub Evidence）。Reviewer 只接受报告**边界和中止状态**，不伪造 G3A Evidence。
+- **Decision**：`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`。G3A 未完成，不能 PASS。Codex 在切换至浏览器工具时，Computer Use 不能充分确认 Windows 当前 URL 并强制停止；其后没有继续导航或绕过。实际浏览器快捷键操作是否发生/是否生效没有验证，不能断言为零效果；但没有可证的新增 Karakeep 收藏。
+- **Reported valid read-only subresults**：G3A Gate blob `1aa0034641c94525a0ccb3d6acea166ab98ec78c`、执行前 Handoff blob `ce42389127dfebd7be8b8c25809903e5d1e31794`；`%USERPROFILE%\KarakeepLocal` 顶层 `.env`、`docker-compose.yml`，Compose SHA 匹配历史、ACL 保护通过且未读取/计算 Secret 内容或 hash；三服务 running、Web healthy/仅 loopback 3000、非目标运行容器 0；两 named volumes 映射到 Web `/data`、Meili `/meili_data`，Linux mountpoint 为 `/var/lib/docker/volumes/karakeep-local_data/_data` 与 `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`；Docker Desktop WSL2 数据磁盘目录 `%LOCALAPPDATA%\Docker\wsl`，VHDX 完整文件路径 `UNVERIFIED`。
+- **No changes reported**：删除 0、移动 0、无本机文件/Compose/Secret/Docker 卷更改；未进入归档。**G3A 的 `LOCAL_ASSET_INVENTORY.md` 未创建，`EXECUTION_EVIDENCE.md` 未 append，未提交 main，无 G3A Commit SHA**。
+- **Main missing facts**：Owner 报告此工作区的明确路径是 `%USERPROFILE%\Documents\ChatGPT\SaSS`（原 Windows 绝对路径 `C:\Users\34707\Documents\ChatGPT\SaSS`，文档使用环境变量写法避免传播个人目录信息）。但 `SaSS` 的仓库归属、Git 未提交/未推送/未跟踪状态、是否被其它项目引用、文件性质及归档安全性皆 `UNKNOWN`；**绝不可据路径直接删除**。其它候选目录的有界盘点未完成。
+- **Reviewer repair strategy**：停止原 G3A，历史安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`、G2B R2 `RETURN` 全部不变。单独新设更窄的 `G3B` 只读发现 Gate，只针对**已明确的 SaSS 路径**核实 Git/运行引用和文件类别，不再重复 Docker/ACL/storage 全链路、不使用 Computer Use/任何浏览器，即使需要 GitHub 访问也仅允许 GitHub connector/API 而非 GUI。新 Gate 仅为后续 Owner **再次下发执行指令**的准备，不赋予删除/移动/备份权限。
