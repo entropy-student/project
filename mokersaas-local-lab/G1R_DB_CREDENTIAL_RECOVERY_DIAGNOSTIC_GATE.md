@@ -1,6 +1,8 @@
 # MokerSaaS G1R — Synthetic DB Credential / Execution-Policy Reconciliation
+
+> REVIEWER NOTE: Diagnostic PASS only. Original blocked DB password reset was NOT_STARTED at CreateProcess. No existing approved Secret recovery was verified, no credential generated/recovered. G1 still RETURN. Do not replay instructions below. Next `G1S_NEW_TEST_DB_RECOVERY_PROPOSAL.md` is **PENDING EXPLICIT OWNER APPROVAL**, not an active Gate.
 > GATE_ID: MOKER-G1R-DB-CREDENTIAL-POLICY-DIAG-20261016
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: REVIEWER_PASS_DIAGNOSTIC_ONLY — completed 2026-10-16, historic non-executable Gate
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7; interpreted by Reviewer; Executor does not reread entire Governance
 > MAX_ENDPOINT_THIS_ROUND: SAME-HOST READ-ONLY classification of G1 blocked operation, existing synthetic DB credential custody/recoverability metadata, source diff/evidence reviewability and retained Docker state; NO mutation / NO credential rotation / NO service start
 > MANDATORY_REVIEW_STOP: YES
