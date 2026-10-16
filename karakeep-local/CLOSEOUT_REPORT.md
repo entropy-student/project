@@ -86,3 +86,12 @@
 - 正式的**项目文档统一目录**：https://github.com/entropy-student/project/tree/main/karakeep-local ，以 `README.md` 索引、`REVIEWER_HANDOFF.md` 为下一位 Reviewer 唯一有效状态、`DECISION_LOG.md` 为决策史、`EXECUTION_EVIDENCE.md` 为历史执行事实。GitHub 不承载任何真实收藏、账号或密钥。
 - 唯一尚待下发的 G2B R2 仅含**只读存储核对 + 一条可丢弃网页收藏功能测试 + 安全临时文件清理**。不备份、不恢复、不迁移、不重启、不长期监控。过去的备份版 G2B 草案与后来的 R1 都未下发/执行，且不得作为当前授权依据；详情以最新 Handoff 为准。
 - 实施 Close 仍然有效，继续使用原本机服务；`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED` 是 Owner 接受的资料丢失风险，不是数据安全通过。
+
+## 9. G2B R2 中止后的收口状态（2026-10-16，最新补充）
+
+- Owner 已实际下发 G2B R2 给本机 Executor，但该轮**没有完成**：Computer Use 不能充分识别当前 Windows 浏览器 URL 并要求停止，Executor 遵守停止条件；未添加任何公开 Canary 收藏、未测试抓取/搜索/预览、未做新的 HTTP 页面检查，也未清理文件。
+- Executor 的本机报告称：配置路径 `%USERPROFILE%\KarakeepLocal`、原 Compose 指纹、Secret 文件 ACL、两 Docker named volumes 与预期匹配；本机 Docker Desktop WSL2 的磁盘位置目录是 `%LOCALAPPDATA%\Docker\wsl`，**文件级 VHDX 路径仍未知**。其报告的 Linux 卷 mountpoints 及具体关系由 `REVIEWER_HANDOFF.md` 保存，来源为 `OWNER_REPORTED`；没有新增 Executor G2B Evidence main 提交。
+- `KarakeepLocal` 顶层仅原 `.env`、`docker-compose.yml`，无可删临时文件；**删除 0**。据 Executor 本轮 preflight，三目标容器仍 running、Web healthy、无 OOM/restart，仅 Web 绑定 loopback，非目标 Docker 0 running，但未做新的 localhost HTTP 验收。
+- Reviewer 正式认定 G2B R2 为 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，不因未执行 Canary 而误称 Karakeep 应用故障。原安装 G1J `PASS` / 安装结项 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` **仍然有效**，数据与运行服务不得删除/迁移。
+- **后续动作：等待下一次 Owner 指令**；停止条件下不继续控制浏览器、不自动创建新 Gate。此前 G2B R2 的剩余工作不是当前正在执行的任务。备份/恢复/重启与长期监控继续由 Owner 排除，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`。
+- **当前权威**：`REVIEWER_HANDOFF.md`；**决策及新旧状态解释**：`DECISION_LOG.md` 最后 `D-20261016-G2B-R2-STOP`；**全部文档统一**：`README.md` 索引。历史 Executor Evidence 的最后实际 append 是 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，本轮 Review 不伪造 G2B Evidence。
