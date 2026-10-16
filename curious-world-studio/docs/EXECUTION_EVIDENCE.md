@@ -112,3 +112,10 @@
 - DIRECT_READBACK：`entropy-student/spike.skill/main`的`comic-narrative/REVIEWER_HANDOFF.md`明确生图executor reliability PASS/CLOSED且并发2；`tools/imagegen-fast-path/README.md`规定output_hint直接结果路径→拷贝→SHA/尺寸/QA、不经TTY/base64搬运图、Native像素不匹配不单独重生；`part4_5/ASSET_REUSE_LIBRARY.md`规定直接复用/基于旧图修改/仅作参考/新生图四分支。
 - LIMITATIONS：工具链在源项目已验收，不代表CWS已集成；没有逐图Token用量或费用最小化实测。本轮没有任何生图调用、付费、代码执行、视频合成、R4/公开发布授权。
 - PRESERVATION：旧13×6提案降为历史；正式R3视觉RETURN、R4未授权、G1/G2/HOLD/NO_PUBLISH不变，视频同源全项目只用一次的规则不变。
+
+## EVIDENCE 2026-10-16｜Owner要求记录C类AI生图省资源技巧（仅文档）
+
+- OWNER_DIRECT_IN_CHAT：要求“生图部分的技巧请记录”，同时按MW-01～13顺序讨论A视频/B图片/C AI静图的承接矩阵。本轮只将既有已核验的策略归入CWS，不执行实际生图。
+- DIRECT_GITHUB_READBACK：`entropy-student/spike.skill/main` @ `16e33384dc569629a1527d1c9ec0060823af09ce`；`comic-narrative/part4_5/ASSET_REUSE_LIBRARY.md`区分完整图片直接复用、旧图单一状态编辑、仅做参考及新图生成；`comic-narrative/tools/imagegen-fast-path/README.md`及R2R1V验收证据确认并发2、output_hint解析/直接保存、SHA/尺寸/QA、Native像素差异不单独失败。
+- ACTUAL_CHANGE：新增`docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md`，并在现行裁决登记、Handoff和CURRENT_STATE中引用。该技巧是其他项目已验收能力的**移植参考**，CWS未验证其适配，不得称Token计费实测最低。
+- SCOPE/ROLLBACK：仅CWS项目文档，原有文案/历史13×6表/视频媒体/Remotion代码/AI生成资源与其他项目不修改；文档可经Git版本回滚，历史证据保持追加。

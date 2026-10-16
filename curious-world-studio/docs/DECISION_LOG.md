@@ -43,3 +43,7 @@ Owner纠正另造12种分镜母版的路线，决定以原有13种Mac Window Mot
 A素材视频（包含真实录屏）、B现有素材图片（论文/照片/研究图表等）、C AI生成静态图片（经事实审核的示意/概念/插画）。固定13个已有MW动作，理论13×3=39组合、排除不适配项；不重新发明分镜和素材类别，旧13×6仅历史讨论。C类作为将来合法的图像解释手段，局部替代过去绝对禁止AI静态生图的方向；AI生成真实实验/视频仍禁止。C的实际执行、付费、制片和发布仍需独立Gate。
 
 GitHub已核实`entropy-student/spike.skill/comic-narrative`的`part4_5/ASSET_REUSE_LIBRARY.md`提供优先查已验收图片→直接复用/旧图编辑/参考/再生成流程；`tools/imagegen-fast-path/README.md`与R2R1V已验收Codex内置生图并发2、output_hint结果路径直接复制、hash/尺寸/QA，不传送大图stdin/TTY/base64、native画幅像素差异不自动重生。以上并不包含可量化的“最低Token使用量”，CWS尚未移植。
+
+## 2026-10-16｜Owner要求记录C类生图省资源技巧
+
+不另设生图分类与分镜模板。为A视频/B素材图片/C AI生成静态图中的C类，复用`spike.skill/comic-narrative`源项目已验收的完整图素材库判断：先检查兼容成品→直接复用/单图编辑/局部参考/再重新生成；并参考已经实际验证过的Codex内置生图Fast Path，**双并发**、以返回的官方output_hint找真实文件、直接复制保存与SHA/实际像素/QA、避免stdin/TTY/base64搬运、Native像素数值不符时不自动重生。详细参考[AI生图复用与低浪费执行指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)。已明确它能降低无谓调用和返工风险，却没有Token最省百分比或CWS实际运行证据；本轮**只记录技巧**，不执行图片生成、修改正式视频或放行R4。
