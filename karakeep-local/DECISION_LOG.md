@@ -47,3 +47,12 @@
 - **Reported change and stop boundary**：无配置、卷、Secret、Docker 设置或非目标项目变更，未备份/迁移/重启；没有执行最终 localhost HTTP 回归。**Executor 没有追加 G2B Evidence，也没有 G2B Commit SHA**；`main:karakeep-local/EXECUTION_EVIDENCE.md` 最后仍为 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，Reviewer 本轮核对了该现状。
 - **Current Owner instruction**：等待下一次 Owner 指令，不自动进入新 Gate，不再尝试浏览器 Canary，不补跑后续清理或更新本机环境。此前安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 保持有效；现有登录账户及两 Docker 命名卷全部保留。`BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED` 继续适用。
 - **If explicitly resumed in future**：Reviewer 先设计一次最小的浏览器目标/身份确认与安全手动 Canary 边界，并让 Executor 完整追加 Evidence/main read-back；**不得擅自把当前 STOP 视为已有重试授权**。已报告的存储和无临时文件结论只需必要新鲜确认，不重复 G0–G1J 已接受的历史安装检查。
+
+## D-20261016-LOCAL-ARCHIVE-PLAN — 防误删资产地图，先盘点而非搬迁/删除
+
+- **Owner request**：Owner 不清楚同一 Karakeep 项目在 Windows 电脑上实际分散放在哪些路径，担心整理文件时误删；只知道 GitHub 保存了部分项目文件，另提本机疑似 `sass` 目录，要求先**规划**整理归档。
+- **Reviewer disposition**：新增同目录 `LOCAL_ASSET_ARCHIVE_PLAN.md`，状态 `PLAN_ONLY_NOT_EXECUTED`；**不自动开启新本机 Gate、也没有文件删除权限**。建议分阶段：①真实 Owner Windows 只读盘点配置/Docker 卷与疑似旧工作区；②分类形成位置+引用+归属的永久资产地图；③只有 Owner 新授权且对 exact path 完成危险检查后，才独立处理极少可弃文件。
+- **Known protected data**：保留 `%USERPROFILE%\KarakeepLocal` 受保护 Compose/`.env`、两个 Docker named volumes `karakeep-local_data`/`karakeep-local_meilisearch`、Docker Desktop WSL2 数据磁盘、3 容器镜像及其它项目共享资源。GitHub 只是管理文档统一入口，不是收藏数据备份。
+- **Unknowns**：`sass`/`saas` 的完整绝对路径、Git 状态/未提交文件、是否被别的项目引用 **UNKNOWN**；不可根据目录名称宣布可删。Docker VHDX 文件级绝对路径未证实，也不需要为整理强行访问或移动。
+- **Carry forward limits**：此前 G2B R2 因浏览器目标 URL 识别不明安全 STOP，不作为本地文件盘点的阻碍；此新计划完全不接触 Computer Use/浏览器、不重试 Canary。Owner 曾明确取消备份/恢复/迁移/重启/长期监控，继续沿用；当前本地唯一收藏资料无验证备份，进一步要求谨慎处理删除。
+- **Status and next authorization**：历史安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 不变；G2B R2 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED` 不变；未来若 Owner 需要真正开始，先明确批准**只读资产盘点**，由 Reviewer 起新 Gate，再让 Codex 输出脱敏清单并停止；归档/清理另行决定。
