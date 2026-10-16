@@ -161,3 +161,13 @@
 - **LIBRARY WRITE:** `files.manage_library`原路径直接overwrite成功，Library稳定ID未变，无新增重复文章。对应覆盖后的新File IDs `file_00000000ced481fd9d906df04bbd1c49`、`file_00000000c3608230ba4cee4e2950c0a0`；需最终再执行精确哈希readback。
 - **VALIDATION:** 第一部分5个正式二级/9个三级、第二部分4个二级/5个三级逐字完整且位置不变，第一部分新增非V6案例H2不计入问题；每篇[Sxx]正文引文与附录一一存在。第一部分相对第二轮候选只改动1行；第二部分主要11处局部差异，保留全部章节和叙事。完整三文件ZIP `现代商业支付系统_前两部分_正式修订与执行记录_20261017.zip`，SHA256 `4b95c1c2ae9638cf5842cd7afb31d91a416adba24df49d9ab9e84dee709b1a50`，包含两篇正式稿及新的诚实执行记录，CRC通过。
 - **ROLLBACK:** 不删除历史Git，不覆盖V6框架；旧正文可根据原Blob在其他新Gate按Owner要求恢复。没有真实支付、开户、退款、服务器变更。编辑及验证由同一轮执行，非另一独立Reviewer的全书事实审计。状态 `OWNER_ADOPTED_TARGETED_QA_PASS / COMPLETE`，后续更改仍须Owner独立授权。
+
+
+## MCPG-CH1-CH2-FINAL-SEAL-CH3-WRITER-PACK-20261017
+
+- **OWNER_AUTHORIZATION / DIRECT_READBACK**：Owner原话“我没什么问题了，第一第二部分正式封板吧。无效文档删除就好~记得同步相关文档，完事之后我们进行下一部分。依旧依据现在的流程进行”。行为范围为内容最终封板、冗余文件清理核验、文档同步及第三部分独立写作Gate准备；无新增真实收款权限。
+- **PREFLIGHT_BASELINE**：GitHub main docs只有四文件：`CURRENT_DOCUMENT_INDEX.md`、`FROZEN_FRAMEWORK_V6_20261016.md`、`P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md`、`P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md`；项目根另仅`DECISION_LOG.md`、`EXECUTION_EVIDENCE.md`、`REVIEWER_HANDOFF.md`与docs文件夹。文件库执行前仅两篇正式Markdown，没有可识别的现行无效候选，故**实际本轮删除操作0次**；项目历史两个ZIP是有校验的恢复资料，明确留存。
+- **FIRST_TWO_CHAPTERS_SEALED**：①Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，83,440 bytes；②Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，67,885 bytes；现行V6问题框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。封板是Owner本轮明确权威指示，本文文件均未写入，不代表所有第三方支付规则未来不变。
+- **CH3 WRITER MATERIAL PREPARED**：本轮建成 `/mnt/data/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，CRC PASS，6个资料Markdown，ZIP SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`，67,406 bytes。包内①正式只读全文SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`、②正式只读全文SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`与现行Github blob一致。提示词SHA256 `8ca41d56f417a07ffeeb19fc29cfb184a1e6fd95e19e28549b06446f397841b4`。文档包含③4个正式二级/5个三级问题（文字从V6快照摘录）、与①②的边界、Stripe/PayPal/欧盟权威核验入口及独立报告格式。来源本轮网页核对证据：Stripe https://docs.stripe.com/payments/payment-element/migration 、https://docs.stripe.com/currencies；PayPal https://developer.paypal.com/payments/ 、https://developer.paypal.com/sdk/js/v5/configuration。
+- **LIBRARY_PERSISTENCE**：本轮新增Library文件 `/现代商业支付系统/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，Library ID `libfile_552679c2a1ac8191968d19764047148e`；未另存零散草稿、重复封板正文，也未改变已存①②原有Library stable ID。
+- **TARGET_SAFETY / STOP**：已完成封板及③材料准备，不代写第三章正式稿，Writer尚未启动/未知；Owner需将ZIP转发Agent，由Agent交**③完整MD+独立事实/执行记录MD两个文件的ZIP**，先Reviewer审查，后Owner决定采纳。无Git主文编辑或支付账户/退款操作。
