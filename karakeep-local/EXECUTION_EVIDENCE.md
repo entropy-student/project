@@ -263,3 +263,53 @@ Two official GHCR images were added to the local Docker image store; the third p
 
 ### EXECUTOR_RESULT
 `RETURN_PULL_FAILURE_UNKNOWN` — two official GHCR images were pulled and identified by RepoDigest; the single Meilisearch Docker Hub pull failed, so deployment did not start. Stop here for Reviewer assessment; do not retry the failed image or advance the stage in this Gate.
+
+
+## G1D — Docker Hub and Docker Desktop proxy diagnosis; conditional deployment RETURN — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1D-MEILI-HUB-RECOVERY-20261016`
+`OWNER_AUTHORIZATION=OWNER_REPORTED` Owner authorized one pull of the existing official Meilisearch tag only if new actionable evidence supports a safe same-configuration route, followed by startup of only `karakeep-local` if all preconditions pass. Reuse the existing Compose and Secrets; no proxy, certificate, system, or unrelated Docker-project changes; no fixed RAM threshold.
+
+### PREFLIGHT_FACTS
+- `TARGET_IDENTITY`: `DIRECT_READBACK` Current PowerShell identity matched the interactive Windows session: Explorer and Docker Desktop processes were present in the same session. The current user profile matched Windows' canonical profile path and was not a reparse point, ruling out a Codex path virtualization mismatch for the expected profile location.
+- `DOCKER_ENGINE`: `DIRECT_READBACK` Context `desktop-linux`; Engine 29.7.2; Compose 5.4.0. `docker info`, `docker version`, and `docker system df` succeeded. Driver remains `overlayfs`, Docker root matches the accepted `/var/lib/docker` value, Engine memory reports 7.40 GiB.
+- `PROJECT_CONFIG`: `DIRECT_READBACK` Neither the accepted `KarakeepLocal` canonical profile location's `docker-compose.yml` nor `.env` was present. A bounded check of the profile Documents, OneDrive Documents, and current-workspace equivalents also found no Compose file. Compose hash, quiet-config, ACL, and existing Secret-shape checks could not be performed; no file was read, created, or modified. No wider disk search was performed.
+- `DOCKER_BASELINE`: `DIRECT_READBACK` 20 containers (1 created, 19 exited, 0 running), 12 volumes, 11 networks, and 11 images. No `karakeep-local` container or project volume exists. Port 3000 has no Windows listener or Docker published mapping. No non-target stop reason was re-investigated.
+- `IMAGE_READBACK`: `DIRECT_READBACK` The already accepted official images remain present with their expected RepoDigests: Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`; Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`. The Meilisearch tag is absent.
+- `HOST_RESOURCES`: `DIRECT_READBACK` Free host RAM was 2,249 MiB and C: free space 185.0 GiB at sampling. These are observations only; no fixed RAM threshold was applied. Docker Engine aggregate disk usage query succeeded.
+- `PROXY_MODES`: `DIRECT_READBACK` Windows Internet Settings proxy is disabled, WinHTTP is direct, and only the `HTTP_PROXY` environment-variable presence flag is set (values were never read into Evidence). The .NET system-default route classifies as direct. Docker Engine reports HTTP, HTTPS, and NO_PROXY configuration present; HTTP and HTTPS proxy values are equal and classify as a Docker Desktop internal alias. That alias did not resolve from the Windows host. Raw proxy values and endpoint details were not emitted.
+- `DESKTOP_SETTINGS_AND_LOGS`: `DIRECT_READBACK` The bounded standard Docker Desktop settings-file candidates and the targeted backend, daemon, and proxy log paths were absent. Docker Desktop processes are running, but the selected `Containers proxy` / `Docker Desktop proxy` modes and daemon-side Meilisearch failure remain `UNKNOWN`; no raw log was read or retained.
+- `HOST_REGISTRY_PROBES`: `DIRECT_READBACK` DNS succeeded for `registry-1.docker.io`, `auth.docker.io`, and `production.cloudflare.docker.com`. Direct host TCP/443 timed out for all three, so TLS and HTTP status were not reached. Requests using the host system-default route also returned no HTTP status. No token endpoint response body, registry credentials, or raw error was retained.
+- `NON_TARGET_SNAPSHOT`: `DIRECT_READBACK` Container identity/state and volume snapshots matched the G1D entry snapshot; counts remained 20 and 12. Network count remained 11, but the final identity snapshot differed from the entry snapshot; two consecutive final reads matched. The exact identities were kept local, no Docker write command ran, and the cause of this network identity drift is `UNKNOWN`.
+
+### ACTUAL_CHANGES
+- `LOCAL_MUTATIONS=0`: no pull, Compose up/down, Docker object write, configuration/Secret access, or system setting change was performed. The two accepted GHCR images were not downloaded again. This Evidence append is the only planned durable write.
+
+### OBJECTIVE_READBACK
+- The new host evidence confirms the Windows direct path to Docker Hub and the image-layer hostname remains blocked at TCP/443. Docker Engine is configured to use a Docker Desktop internal proxy alias, but its Desktop-only route could not be tested from Windows and Desktop proxy mode/log evidence was unavailable.
+- No new evidence proves Docker Hub reachable through the Engine's proxy or that G1C's failed pull was transient. The conditional one-pull criterion therefore did not pass. Deployment remains `NOT_DEPLOYED`; no account, bookmark, or business data exists.
+
+### VALIDATION
+- Read latest `main` Handoff at blob `1a100f4a0863fef27748303dd400f64af247bd01`, current G1C Evidence at blob `c3d188d3800be0a0714b8785b02e33810e14f793`, and canonical governance `v0.2.7`. G1C records that original Meilisearch pull stderr was not retained; no historical low-level cause was inferred.
+- Fresh local reads verified the accepted Engine context/version, both GHCR RepoDigests, missing Meilisearch tag, no target container/volume, port 3000 availability, current resource readings, and the non-target snapshot result above.
+- No fixed free-RAM threshold was used. No parser was used to infer the old pull error; network outcomes are recorded by probe stage only.
+
+### ANOMALIES
+- `RETURN_CONFIG_NOT_FOUND_AT_ACCEPTED_TARGET`: the protected Compose and Secret files expected for reuse are absent at the verified canonical profile location; their integrity/ACL cannot be revalidated this round.
+- `RETURN_DOCKER_HUB_ROUTE_UNVERIFIED`: host direct TCP to registry, auth, and layer CDN timed out; Docker Desktop's internal proxy route could not be verified, so no safe new Meilisearch pull is justified.
+- `RETURN_HOST_PROXY_MODE_DRIFT`: G1C recorded Windows Internet proxy enabled, while this fresh read reports it disabled. This Executor made no proxy/system changes; when or why it changed is `UNKNOWN`.
+- `RETURN_NON_TARGET_NETWORK_IDENTITY_DRIFT`: network identity snapshot changed during this read-only round while the count stayed 11. No network was inspected, modified, or attributed to Karakeep; cause is `UNKNOWN`.
+- G1C's raw Docker pull stderr remains unavailable. This round did not repeat the pull and does not claim a lower-level cause.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1D section: sanitized Windows host, Engine proxy-presence, bounded endpoint, configuration-presence, and Docker inventory readbacks. It includes no raw proxy address, IP, log line, Secret, private filesystem path, or non-target object identity.
+
+### ROLLBACK_EFFECT
+No Karakeep service or project volume was created, so no rollback was needed. The two successful GHCR images remain. No cleanup, `down -v`, or prune ran. Existing Compose/Secret files were not modified; non-target container and volume snapshots matched. The network identity drift remains unexplained and untouched.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+No Karakeep image, container, volume, network, account, or business-data write was made by this Executor. Observed free RAM was 2,249 MiB and C: free space was 185.0 GiB. Container and volume inventories were unchanged; network count was unchanged but its identity snapshot differed. No fixed RAM floor or OOM conclusion was applied.
+
+### EXECUTOR_RESULT
+`RETURN_CONFIG_NOT_FOUND_AT_ACCEPTED_TARGET + RETURN_DOCKER_HUB_ROUTE_UNVERIFIED + RETURN_HOST_PROXY_MODE_DRIFT + RETURN_NON_TARGET_NETWORK_IDENTITY_DRIFT` — do not pull or start Karakeep in this Gate. Reviewer should reconcile the missing reusable project files, unattributed Windows proxy-mode change, and network identity drift, then decide the smallest next Gate. No stage advancement.
