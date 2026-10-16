@@ -2,7 +2,7 @@
 
 > **本文件只做目录与冲突消除，不另建第二份项目状态权威。** 唯一权威仍是GitHub main [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)（最高准则、冻结7/29/42问题及CURRENT_GATE）；治理权威仍是 [spike.skill / vps-project-governance/VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)。这里的文件状态随Handoff更新，如有差异，以Handoff为准。
 >
-> Owner决策：继续冻结**原V6第一部分全文**为保留版，另有独立Executor的教学候选在PR #132获**独立Reviewer PASS**；目前**等待Owner决定是否采用新稿替代**。旧Reviewer越权R1已从当前PR树删除且旧Gate VOID。没有批准合并PR或开始其他章节。
+> Owner最新决策（2026-10-16）：正式采用外部Agent第一部分的写作方向，新正文经事实纠错后已新增至main。历史Owner冻稿仅供保留回滚；**修订后的新正文尚待另一名独立Reviewer复核**，不能把旧PR候选PASS转记为本稿PASS。全书V6 7/29/42框架不变；PR #132仍Open/Draft/未合并。
 
 ## A. 有效、必须保留或使用的main文档
 
@@ -10,7 +10,8 @@
 |---|---|---|
 | [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) | **唯一有效项目权威**，历史决策、V6全标题、当前阶段、下一Gate和回滚 | 以main实时SHA为准 |
 | [FROZEN_FRAMEWORK_V6_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md) | Owner已正式冻结的**7一级29二级42三级全文快照**，参考权威仍是Handoff第2–4节 | `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62` |
-| [P2_V6_OWNER_FROZEN_REFERENCE_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md) | Owner已冻结的**第一部分V6完整保留稿**，不可被新候选改写或覆盖，历史编辑Reviewer通过内容/财务审查，真人可读性仍未验证 | `777c5ab45e4f2d748c45a1e524bf172fca467967` |
+| [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | **当前Owner选定的第一部分正文基线（外部Agent稿 + 77项金融/数学/风险修订）**；文本已进main，独立Reviewer复审PENDING；真读者UNVERIFIED | `a56bca37079972cede6d7201dea3e9fbcb19b39f` |
+| [P2_V6_OWNER_FROZEN_REFERENCE_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md) | 原Owner冻结的**第一部分V6完整历史保留稿**；现行正文已转向上述Owner选择的外部修订稿；本文件不改不删，历史编辑Reviewer通过内容/财务审查，真人可读性仍未验证 | `777c5ab45e4f2d748c45a1e524bf172fca467967` |
 | [P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md) | **P1结构覆盖审查已通过的完整记录**，从旧工作文档提取，属历史证据；问题用语以V6为准 | `619d443c5dc3cc3e37f7ab274134474c2235f749` |
 | [P2_V6_BEGINNER_COMPREHENSION_DIAGNOSTIC_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_BEGINNER_COMPREHENSION_DIAGNOSTIC_20261016.md) | **当前教学障碍诊断**：术语先于定义、表格先于示范、跨主体比较过密、方法出现晚；下一稿的事实性问题输入 | `971212deb1c2589e73642d5cdcc9d593760e8164` |
 | [P2_V6_REVIEWER_ASSESSMENT_20261016.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_REVIEWER_ASSESSMENT_20261016.md) | 对**旧V6稿**的知识/事实/结构独立审核结果，不能据此宣布新稿/真人测试通过 | `489eabba5a210235f2ef57d91f3aaaa6b19f7b88` |
@@ -32,7 +33,7 @@
 - `modern-commercial-payment-guide/EXECUTION_EVIDENCE.md` **只在PR工作分支**，当前Blob `b149f5407291447111c4237c95bbc72059ef59a8`；本轮独立Executor只追加57行/0删除，先前纠错append-only记录仍在。它不是main已合并文件。
 - PR中原 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md` Git Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；main独立冻结稿与它逐字相同，**正文有效基线已在main**，无需复制不明PR其它草稿。
 - 原Reviewer自行创建的 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md` **已从PR当前树删除**，撤销提交 `70fa71556099c260c139717fc4a06f5aeeb58dff`；旧历史提交可能仍可访问，不能声称Git历史物理销毁。
-- **有效新教学候选已存在且独立Reviewer PASS**：[P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)，Blob `567aae34f634790b11517e4ff2095aa390a356d6`；[Reviewer正式评审记录](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)。尚未由Owner采用，不取代main冻稿。
+- **历史PR教学候选独立Reviewer PASS**：[P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)，Blob `567aae34f634790b11517e4ff2095aa390a356d6`，PASS仅针对这一旧候选；Owner当前选用了**另一份外部修订稿**，不借用原PASS结论。
 
 ## D. 当前整体进度
 
@@ -42,9 +43,10 @@ P1 七章结构覆盖审查                        PASS｜仅结构
 P2 第①章完整V6内容和事实                  PASS｜Owner冻结作保留版
 P2 新手理解障碍调研                        PASS｜诊断已在main
 Reviewer越权R1清理、审计纠正               PASS｜当前PR树无R1
-独立Executor教学重构Gate                  PASS｜已完成提交并停Reviewer
-独立Reviewer审核新候选                     PASS｜教学/事实/结构（真人UNVERIFIED）
-Owner比较并决定是否替代原冻稿              PENDING
+独立Executor旧教学重构Gate                   PASS｜完成历史稿，现不再执行
+独立Reviewer审核旧PR候选                   PASS｜仅旧版本；新外部修订稿待独立复核
+当前第一部分正式编辑基线                    OWNER ADOPTED｜主文已进main，不覆盖历史冻结全文
+Owner已选择外部稿并作事实纠错               DONE｜新文main已存在，修订独立复核PENDING
 其余六章、最终桌面单文件HTML               PENDING
 ```
 
