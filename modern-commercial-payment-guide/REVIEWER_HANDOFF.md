@@ -110,7 +110,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** 第一部分教学候选已由独立Codex Executor提交，独立Reviewer对指定Gate给出`PASS`，详见[PR正式评审记录](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)。**原V6 Owner冻结全文仍是保留基线；Owner尚未授权任何替代、合并或其他章节开始**。旧Reviewer越权R1已从PR当前树撤销，事故证据append-only留存；旧Gate为VOID。PR #132 Open/Draft/未合并；当前只等待Owner裁决，不重复执行已完成Gate。
+**当前闸门（Owner 2026-10-16 新决定）：** Owner在比较独立外部Agent稿件后明确选择「替换」，并允许修正事实性错误。已将**外部稿经77处编辑修正后的新正文**新增至main [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；同步在项目文件库保留修订稿与逐项纠错记录。原冻结V6正文Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`只读保留作历史比较；正式V6全7/29/42问题未改。**该新正文已Owner选作当前编辑基线，但77项修订尚未经另一位独立Reviewer复审，不能冒称其已正式Reviewer PASS/真人理解通过。** PR #132仍Open/Draft/未合并，没有合并或启动P3–P5/HTML。
 
 ## 八、文件分工和更新规则
 
@@ -125,16 +125,16 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_V6_PEDAGOGICAL_INDEPENDENT_REVIEWER_PASS_OWNER_ADOPTION_PENDING`（独立Executor完整教学候选已提交并通过独立Reviewer；Owner冻结保留版与正式V6框架未变，Owner尚未决定是否替换；PR Open/Draft/未合并）。
+- **PROJECT_STAGE：** `P2_CHAPTER1_OWNER_ADOPTED_EXTERNAL_EDITED_BASELINE_INDEPENDENT_REVIEW_PENDING`：Owner批准采用外部Agent稿作为本章新正文；修订版已单独写入main，旧冻稿留存。事实纠错后须另一独立Reviewer再审，未批准发布成最终HTML或推进别章。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
-- **CURRENT_ACCEPTED_STATE：** Owner正式冻结V6 7/29/42与原第一部分V6完整正文，冻结Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`不变；独立Executor在 PR #132 head `b3da525ae6187acea7e2ec8336474f337b0dc999` 新增教学候选 `docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md` Blob `567aae34f634790b11517e4ff2095aa390a356d6`，已获[独立Reviewer PASS](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)（技术/事实/文字代理），**尚未获Owner采用**。已撤销的旧Reviewer R1不在PR当前树，禁止复用；真人理解仍UNVERIFIED。
-- **CURRENT_GATE：** `P2_OWNER_ADOPTION_CHECKPOINT / NO_EXECUTOR_GATE_RELEASED`。已完成的旧Executor Gate `MCPG-P2-V6-PEDAGOGICAL-INDEPENDENT-EXECUTOR-20261016`（Blob `3256b2598ae255b31fdaf483e103b3d49a6ea1f8`）结果为 `REVIEWER_PASS`，仅供追溯，**不允许再重复执行**；下一执行Gate需待Owner决定。先前越权R1 Gate永久 `VOID / SUPERSEDED`。
+- **CURRENT_ACCEPTED_STATE：** 正式V6全书7/29/42问题结构不变；Owner已选择外部Agent的第①章，并保存已更正稿为main [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`。**当前新内容基线就是此稿；原Owner冻结V6正文** [P2_V6_OWNER_FROZEN_REFERENCE_20261016.md](docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md) **仅保留供归档/回滚**，Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`不变。先前独立Executor教学候选Reviewer PASS仅对旧候选有效，不能自动外推至本新稿。
+- **CURRENT_GATE：** `OWNER_ADOPTED_EDITED_CHAPTER1 / INDEPENDENT_CONTENT_REVIEW_PENDING`。此前独立Executor Gate 已执行且停止（PR #132 head `b3da525...`）；撤销R1 Gate继续VOID。**本轮没有新Executor写作Gate**，下一阶段只需另一位独立Reviewer对main新稿的金融事实、引用、章节覆盖及阅读可用性复核，然后由Owner决定发布/后续规划。
 - **CRITICAL_CONSTRAINTS：** ①Governance角色严格分离：Reviewer负责Gate/证据审核/PASS或RETURN，**独立Codex Executor才编写新全文**；②Owner当前V6全框架7/29/42及V6第一部分完整冻结参考稿Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`只读，不覆盖；③独立Executor新稿不得复用已删除Reviewer R1内容或其历史Commit作为文字底稿，只用Owner冻结版与正式诊断；④新手零基础看得懂，熟手得到深度，通用方法论，先例子和步骤后专业定义，非个人支付开户咨询；⑤完整16正式题头、7H4、93表格行、两个案例、S01–S15/25 URL、费用与主体/提现/退款拒付风险仍全量保留；⑥Skill仅plain-language已审文字指南、不得安装不明脚本或循环Humanizer；⑦真实读者价值仍UNVERIFIED，不合并PR、不去P3–P5、不做HTML、无真实资金/账户操作。
-- **DEFAULT_EXECUTION_CHANNEL：** 独立Codex Executor执行受限Gate，Reviewer只负责Gate/证据/独立审核；当前没有待执行Executor Gate，先由Owner决定是否采用PR候选。
+- **DEFAULT_EXECUTION_CHANNEL：** 当前由新独立Reviewer复核 [Owner新正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)；已完成编辑并写main不代表同一编辑者可以自行给予独立Reviewer PASS。无权限自动进入P3–P5或HTML。
 - **CURRENT_ROLLBACK_STATUS：** main Owner冻结V6及PR旧完整V6正文Blob均为 `777c5ab45e4f2d748c45a1e524bf172fca467967`；PR新增教学候选可单独撤销而不损坏冻结正文，Evidence只能append-only更正、不reset/force。先前越权R1已于Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`从现行PR树删除（仍保留Git审计历史）；新PR Evidence Blob `b149f5407291447111c4237c95bbc72059ef59a8`，本轮没发生真实资金/生产变更。
-- **UNRESOLVED：** 新教学候选已Reviewer PASS，但Owner尚未比较/批准替代冻结正文；真人阅读意愿与理解 `UNVERIFIED`；所有具体商户准入、银行到账、换汇与退款真实性仍需按合同/实测核验。已撤销Reviewer R1仅为审计历史，不能恢复为候选。
-- **NEXT_STEP：** Owner直接对比[完整教学新候选](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)与[原冻结保留V6全文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)，裁定采用新稿或保留旧稿/指出具体问题；Owner决定前不再交Executor新任务，不合并PR，不推进P3–P5/HTML。
-- **OWNER_ACTION_REQUIRED：** 阅读[新教学候选](https://github.com/entropy-student/project/blob/b3da525ae6187acea7e2ec8336474f337b0dc999/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md)，决定是否采用它替代原冻结V6保留版；未授权自动替换或合并。
+- **UNRESOLVED：** 外部新正文77处更正需要独立复核；真人读者理解/阅读意愿仍UNVERIFIED，具体商家/银行账户资格与实际结算未实测。原V6结构继续冻结。PR #132的老候选不再是Owner选择的主要写作方向，仍留审计历史。
+- **NEXT_STEP：** 先请独立Reviewer依据新main文稿和原V6问题框架进行事实、来源及覆盖审核；如需编辑纠错由独立Executor/编辑者产生修订，再复审。接受之后才讨论剩余章节及HTML；本轮不再叠加写作Skill。
+- **OWNER_ACTION_REQUIRED：** **无须再次选择文稿**：已明确采用外部稿作为主基线。下一步可把新main正文交独立Reviewer冷读，拿到PASS/RETURN；无需Owner再次输入背景。
 - **EVIDENCE_POINTERS：** [当前有效文档索引](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/CURRENT_DOCUMENT_INDEX.md)；正式V6框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，Owner冻结正文Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；PR #132 Head `b3da525ae6187acea7e2ec8336474f337b0dc999`，教学候选Blob `567aae34f634790b11517e4ff2095aa390a356d6`，PR Evidence Blob `b149f5407291447111c4237c95bbc72059ef59a8`；[本轮独立Reviewer PASS与检查矩阵](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)；旧R1只供历史审计。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
@@ -367,3 +367,12 @@
 - **Reviewer独立核验：** [PR #132正式PASS评论](https://github.com/entropy-student/project/pull/132#issuecomment-6214918161)。PR head `b3da525ae6187acea7e2ec8336474f337b0dc999`，独立教学候选Blob `567aae34f634790b11517e4ff2095aa390a356d6`，Evidence Blob `b149f5407291447111c4237c95bbc72059ef59a8`；自上次已接收PR head `2321737cd65aca50a80c68bca1dc34784e8de9a6`起仅新建候选362行与Evidence +57行/0删除。
 - **教学与知识复核：** 全部16正式标题、7 H4、93行原表、15个来源、25 URL逐字/全局同序；两完整案例、角色资金正反链、六节点、四金额、四轮主备保留。9个三级小节均实质改善教学顺序；金额与合同准入独立抽核通过，见PR评论。部分术语密集、相邻解释重复属非阻断编辑余项，真人理解 `UNVERIFIED`。
 - **权威与下步：** 正式V6 7/29/42及Owner冻结正文Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`不变；已完成的独立Executor Gate不能重跑，先前R1 Gate仍VOID。状态 `REVIEWER_PASS / OWNER_ADOPTION_PENDING`：仅由Owner决定采用新稿替代旧冻结稿或保留原稿/提出精准反馈。无正文修改、无PR合并、无P3–P5/HTML。
+
+## 三十五、Owner采用外部第一部分稿并进行事实纠错（2026-10-16）
+
+- **Owner决定：** 明确要求替换当前第①章内容为外部Agent写作风格稿，允许优化事实错误；不是恢复已撤销R1，也不重新实施旧PR写作Gate。
+- **当前正文（main）：** [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；以用户上传的外部完整稿为基础，在保持引言、主线、两案例、决策画布的同时进行77项文字与事实修订。对应完整修订文件、独立修改清单已上传到文件库 `/现代商业支付系统/`。
+- **纠错范围：** ①支付网络/PSP/银行角色及资金流示意纠错；②拒付时限、争议费和MATCH名单风险去绝对化；③PayPal特定双协议/个人资格、Stripe HK美元/港币不同固定费、Paddle MoR职责与商品约束；④Shopify中国早期受邀、最短结算4个工作日加额外处理、第三方费率；⑤$35/6单手续费占比两种分母、支付成功率示例32.83%毛利率临界计算；⑥假设案例/风险数据明确为教学演算，不冒充真实商户批准或资金到账。新增S16–S18官方来源，保留原S01–S15链接。
+- **已确认读回与历史：** 新文main Blob实测；原冻结V6 Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`和全书V6框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`均未改变；PR #132继续Open/Draft/unmerged，无历史覆盖。现行Owner采用的是新文件，不是直接删除、改写旧冻稿。
+- **独立性限制：** 本轮文本修订由本对话编辑完成，不据此自颁“独立Reviewer PASS”。正式全文事实/适用限制复核尚待另一位独立Reviewer，真人读者验证UNVERIFIED；真实收款、汇兑、账号准入或结算不在此变更范围。
+- **文案写作Skill流程归档：** 早期实际试验依次使用`human-writing`（[KKKKhazix/human-writing](https://github.com/KKKKhazix/human-writing/blob/main/human-writing/SKILL.md)）、`copy-editing`（[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)）；之后单独一次使用`humanizer`（[blader/humanizer](https://github.com/blader/humanizer)）润色V5；教学重构阶段仅将`plain-language`（[arjunprabhulal/agent-skills](https://github.com/arjunprabhulal/agent-skills/blob/main/skills/docs/plain-language/SKILL.md)）列为**可选只读指南**，独立Executor实际表示未运行额外写作Skill。`feynman-explainer`、`plain-writing`、`concept-scaffolding`、`html-explainer`均仅调研或参考原则，未进入有效正文流水线。**本次Owner采用的外部稿没有可核实的Skill执行清单，不能替外部Agent声称调用了任何上述Skill。**
