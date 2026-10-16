@@ -1,6 +1,8 @@
 # MokerSaaS — G0R RESOURCE READ-ONLY CONFIRMATION
+
+> HISTORICAL GATE ONLY (not PASS): superseded by Owner decision `MOKER-D-20261016-NO-RAM-NUMERIC-GATE` and active `G1_LOCAL_HARDEN_COMPOSE_GATE.md`. Retained verbatim otherwise for audit; the old Relay below is INVALID and MUST NOT be used.
 > GATE_ID: MOKER-G0R-RESOURCE-READONLY-20261013
-> STATUS: READY_FOR_EXECUTOR
+> STATUS: SUPERSEDED_NOT_EXECUTED — Owner 2026-10-16 removed this numerical RAM gate; DO NOT EXECUTE
 > MAX_ENDPOINT_THIS_ROUND: read-only latest physical host headroom, Docker engine memory and workload pressure check; chat-only sanitized result
 > MANDATORY_REVIEW_STOP: YES
 > STOP_AT_REVIEWER=YES
