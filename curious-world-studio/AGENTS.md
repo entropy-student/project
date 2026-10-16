@@ -1,6 +1,6 @@
-<!-- CWS-AUTHORITATIVE-ENTRY-20261016 -->
-> **Owner 2026-10-16最新明确**：视频画面“只要相关就可以”，不追求逐帧精准或每句配实验影像。旧R6L/R7L的`PARTIAL_ASSET_GAP`仅是历史研究镜头证据缺口，**不可据此继续增加搜片轮次、制造识别模型或卡住普通内容创作**。科学讲述须准确，库存片只能作为辅助画面、具体使用许可仍单独审核；不能冒充原论文实验。下一步建议编辑现有CW-0005脚本/镜头匹配已有画面，**未授权Codex实际制片/发布**。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`继续保留。首读[CURRENT_STATE](docs/CURRENT_STATE.md)与[完整新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
-> **已完成技术**：PR#129/#131已合并main，Windows Docker SearXNG+4get及`cws_media.py`按需可用；部分上游失败默认`PARTIAL_SEARCH`非零，`--allow-partial`须显式。不重做G2–G4或旧R6L。
+<!-- CWS-AUTHORITATIVE-ENTRY-20261016-R3 -->
+> **当前有效状态（2026-10-16）**：PROD-R2旁白与S01–S10编辑审核PASS；Owner已授权PROD-R3本机30–60秒**内部音画小样**，尚未执行。以[唯一R3 Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)为当前任务，使用[R2已验收稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。旧“尚未授权任何制片”时态已由本次有界许可替代，但CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH正式状态不变。
+> **素材与技术**：普通实拍相关即可，不重搜精确论文实验/建设识别模型。内部样片不另开版权调查；两条库存素材仍PARTIAL、仅作辅助、不可冒充论文实验或发布。PR#129/#131和G2–G4技术闭环已接受，不重跑；禁止触碰VPN/Clash、共享Docker、旧工作树。
 # Curious World Studio｜Agent / Codex 唯一入口
 
 > **最新有效结果**：`MEDIA-INTEGRATION PR#129 MERGED`；本机`G2_G3_G4_TECHNICAL_ACCEPT`（Ubuntu备份注销、Docker按需搜索、真实素材下载/解码/Owner Edge手播通过）。**Docker Compose和统一Codex工具已由PR #131合并main；媒体动作/复用权、CW-0005制作Gate尚未通过。** 不重复G2–G4或操作集成验收；R6L/R7L试跑已完成，完整R6/R7产品化仍须另行授权。正式`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。
@@ -13,7 +13,7 @@
 - **视觉**：A简短Mac Tiger Aqua桌面→B满屏QuickTime 7银灰播放器，单行字幕；以[STYLE_LOCK](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)为规范，HTML原型不等于成片。
 - **素材**：以[3+1正式合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)为最高来源/权利规则，MEDIA技术默认排除大陆平台、竖屏及方形、显示比例≥4:3，优先1080p，未知先有限探测；严格区分`LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED`。
 - **MEDIA当前运行选择**：Windows已有Docker Desktop/WSL2；SearXNG+4get Compose本机按需启停，CWS Python/yt-dlp/FFmpeg本机执行；不部署VPS、不开公网、不需要后台24h常驻。不操作共享Docker项目、VPN/Clash、全局代理、OpenMontage。
-- **制作Gate**：MEDIA技术PASS不能触发`CW0005_VISUAL_STORYFIT_HOLD`解除、不能自动换题、做音画/成片、支付/公开发布。MEDIA-R6/R7与PROD-R1～4互不代替。
+- **制作Gate**：MEDIA技术PASS不能自动解除正式HOLD/G1/G2/NO_PUBLISH；只有Owner于2026-10-16明确授权的PROD-R3内部音画小样可在本轮Gate内执行，不代表换题、完整成片、支付或发布授权。MEDIA与PROD互不代替。
 
 ## Reviewer与执行者职责
 
@@ -29,6 +29,6 @@
 - `HF-FIND`：按唯一主协议执行HF日榜发现；不自行制作视频。
 - `TOPIC-BANK`：按[工作流](research/topic-bank/WORKFLOW_V1.md)和[九源注册表](research/SOURCE_SYSTEM_FINAL_V1.md)，修改母表/看板时先运行`python curious-world-studio/research/topic-bank/validate_topic_bank.py`及`python -m unittest discover -s curious-world-studio/research/topic-bank -p test_validate_topic_bank.py`。
 - `STYLE-REVIEW`：仅依据视觉锁与真实证据评论样式，不自动开发渲染器。
-- `MEDIA-OPERATIONS-INTEGRATION`已合并；R6L/R7L一次试跑已结束。下一步建议按[最新状态](docs/CURRENT_STATE.md)**直接编辑既有CW-0005 50–60秒剧本/S01–S10分镜，使旁白准确且画面相关**，无须继续寻找精确实验录像。历史[试跑合同](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)仅为证据；完整R6/R7产品化、PROD、公开发布仍未获授权。
+- `MEDIA-OPERATIONS-INTEGRATION`已合并；R6L/R7L一次试跑已结束。R2旁白和分镜**已编辑验收PASS**；下一步是执行[PROD-R3内部样片Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)，无须继续寻找精确实验录像。历史[试跑合同](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)仅为证据；完整R6/R7产品化、PROD、公开发布仍未获授权。
 
 历史G0/M2/阶段报告只用于追溯。**GitHub main记录稳定代码和长期规范，执行ZIP/媒体保留Owner本机，不为每轮普通QA新增重复Git报告。**

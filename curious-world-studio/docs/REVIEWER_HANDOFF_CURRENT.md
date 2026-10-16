@@ -1,12 +1,30 @@
 # CWS｜下一位Reviewer完整现行交接（2026-10-16）
 
+## 当前治理看板（覆盖下文历史时态）
+
+| 字段 | 当前有效事实 |
+|---|---|
+| PROJECT_GOAL | 不露脸跨领域“为什么”视频，优先完成第一条可观看、可听的内部作品 |
+| PROJECT_STAGE | PROD-R2 编辑PASS；PROD-R3 内部样片 AUTHORIZED_NOT_EXECUTED |
+| SYSTEM_MAP | 36题库；Mac Aqua短桌面→QuickTime全幅播放器；Owner Windows11本机Codex、OpenMontage/Qwen TTS、Remotion/FFmpeg、按需本地Docker素材工具；非VPS部署 |
+| CURRENT_ACCEPTED_STATE | PR#129/#131已合并main；G2–G4技术链通过；R6L/R7L已完成；R2修订文本/分镜审核通过 |
+| CURRENT_GATE | [PROD-R3-CW0005-INTERNAL-AV-SAMPLE](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)；Owner授权内部30–60秒音画样片，未执行 |
+| CRITICAL_CONSTRAINTS | CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH；普通画面相关、不能冒充原实验；素材权利PARTIAL |
+| DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex → 脱敏ZIP与SHA → ChatGPT Reviewer独立验收，Owner仅转交与必要授权 |
+| CURRENT_ROLLBACK_STATUS | Git文档修改使用隔离分支PR可回退；R3本机回滚尚待运行前预检，旧媒体/工作树不得覆盖 |
+| UNRESOLVED | 尚无真实R3 MP4、配音字幕同步QA；具体复用权未核；正式Story-Fit及发布仍HOLD |
+| NEXT_STEP | 执行且仅执行[R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)，交付实际MP4及音画验收证据 |
+| OWNER_ACTION_REQUIRED | R3授权已给；转交当前Gate至本机Codex并返回ZIP；新付费/发布/超范围行动另批准 |
+| EVIDENCE_POINTERS | [R2生效稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)、[执行证据](EXECUTION_EVIDENCE.md)、[决策](DECISION_LOG.md)、下文历史ZIP/SHA |
+
+
 > **Owner最新意思必须保真：**“我对精准的要求不高，匹配其实就行了”“只要相关就可以了”。前任Reviewer虽然口头同意，仍把爆米花“淀粉脚”研究实录当作不可逾越的素材Gate、重复增加搜索轮次，这是错误升级。**不要继续开展R6/R7精准科研画面调查；画面相关、听得懂、不冒充研究实录即可**。正确科学表述、来源可追溯、具体素材权利/公开发布许可仍要分别审查。
 
 ## 一、首读路径和职责
 
 - 项目：`entropy-student/project` → `curious-world-studio/`。**首读[CURRENT_STATE](CURRENT_STATE.md)（唯一事实源）→ [CWS AGENTS](../AGENTS.md)→本文**；仅需特定细节再按链接回溯旧证据，别从历史报告的“下一轮”另开任务。
 - Owner选择方向、素材是否达到审美、付款/删除/公开发表等授权；Windows Codex负责具体执行并提交脱敏ZIP+SHA；ChatGPT Reviewer负责独立核源、判断事实、内容和可用性的验收。不要要求Owner反复替你手动做技术看片验收。
-- 本次用户要求整理文档并交给下一位Reviewer，**不代表已授权新一次素材搜索、编写新代码、真实制片或公开发布**。历史CW0005状态`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`照实保留，只有新审核/Owner许可才可改变。
+- 本次用户要求整理文档并交给下一位Reviewer，**旧交接时尚未授权；目前新授权仅限PROD-R3内部样片，不包括新搜片、新代码、正式长片或公开发布**。历史CW0005状态`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`照实保留，只有新审核/Owner许可才可改变。
 
 ## 二、项目和技术各自走到哪里
 
@@ -37,11 +55,13 @@
 - R6L/R7L：`CWS_MEDIA_R6L_R7L_FAST_MATCH_PILOT_20261016.zip` SHA256 `81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8`；Reviewer核CRC、20/20内部SHA、19manifest、六张1920×1080 JPEG与HTML嵌入。两原MP4**不在包内**，Reviewer未重解码全片；搜索+容器清理28.2秒、QA抽帧3.8秒不含完整人工审阅时间。
 - Mac窗口动效/视频工程支线与旧清理审计均是单独历史：MW07 Genie与MW11–13已有人提出KEEP候选但**不能推导Owner最终视觉签收**；9秒/M2技术片亦非成片。其他SHA和状态在[旧交接§7](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；无需重跑或复制大证据进Git。
 
-## 五、推荐最短路线（**未授权实际制作**）
+## 五、当前已决定的下一步（覆盖历史计划）
 
-**只建议下一步一次编辑动作，而不是另一轮素材调查：**拿既有50–60秒条件剧本和S01–S10，删去“必须看到淀粉脚实验”的镜头约束，整理成一句旁白对应一个足够相关实拍/必要出处文字的简短清单。尽量使用已知2条爆米花片，内容不宜硬凑；把尚需校验的真实复用权标`PARTIAL`。Reviewer先判断脚本准确、画面不会误导，再给Owner确认方向。
+**R2正式编辑裁决为PASS**：R2修订ZIP SHA-256 e547e48cd107b7a05e47aae466fc9efbd84f8a381f9065a0bb8213cd0dc5c6dc，Reviewer独立核完整性、事实与S01–S10。生效稿见[R2旁白镜头](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。只通过编辑文本；55秒是估算；真实声音、字幕和成片并未验证。S05可配音前小幅口语化。
 
-如Owner明确授权素材使用与制片，Codex可用已有OpenMontage/Remotion/Qwen TTS制作**仅内部观看**30–60秒音画单字幕样片，经真实QA后逐步组织完整自然时长草片；**发布、收费、版权审批须独立授权**。保留旧CW0005 HOLD直至正式内容审查与Owner决定，不自动解除。也不要为了“完成R1–R4几轮”把一个简明工作拆成更多重复任务。
+**R3已由Owner授权但未执行**：仅一条30–60秒内部音画小样，使用既有真实辅助画面和工具，完成后必须停在Reviewer；完整约束和交接字段见[R3 Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)。Owner要求内部测试不再新增版权调查轮次，素材权利仍为PARTIAL，不意味着准许公开/商用。
+
+**不得自动进入R4或解除正式Gate**。不再因为淀粉脚原论文高速录像缺失继续搜片或研发识别工具。
 
 ## 六、执行保全、安全和规范
 
@@ -59,4 +79,4 @@
 4. **[MEDIA架构/R1–R5旧结果](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)**及**[已合并统一CLI](../media-pipeline/README.md)**：工具已足够，不重复执行PR#129/#131或G2–G4。
 5. **[2026-10-12历史完整科学/脚本/MP4证据](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)**、**[2026-10-15 R6L/R7L已完成试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)**、**[正式制片四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)**：历史事实保留，但旧“下一步必须搜科研实录/做R3”不再代表授权。
 
-**向Owner交接的一句话**：现有素材工具已正式合并且足够，普通爆米花视频能支持相关画面；接下来应按“画面相关、讲述真实”的原则直接做好第一条内容的脚本与镜头设计，而不是继续搞精确视频识别或再搜一轮；正式Gate暂维持，等待Owner决定下一项执行。
+**向Owner交接的一句话**：R2爆米花内容编辑已PASS、R3内部音画样片已授权未执行；下一步是用已有工具完成真实可听可看的内部片段，停在Reviewer。
