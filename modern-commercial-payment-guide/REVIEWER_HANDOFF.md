@@ -92,17 +92,16 @@
 - **当前main精简：** `docs/`仅两篇正文、V6冻结框架及现行索引。历史P1结构审查、P3归属计划和此前返修稿/Reviewer历史报告均从main现行树退出，但可依固定Git历史恢复。根目录只保留`REVIEWER_HANDOFF.md`、`DECISION_LOG.md`、`EXECUTION_EVIDENCE.md`。
 - **内容边界：** Owner选择了原稿的表达与可读性，但这不意味着稿件所有金融、法务、技术细节已被审核为准确。核对意见只供外部Agent验证，允许驳回错的建议；修订候选即使交付也不自动成为正式版。
 
-## 六、当前执行Gate：外部Agent三文档返修的Reviewer复核
+## 六、当前执行Gate：第二轮三文件修订候选Reviewer复核
 
-- **GATE_ID：** `MCPG-CH1-CH2-AGENT-ZIP-INDEPENDENT-REVIEW-20261016`
-- **OBJECTIVE：** 独立审核外部Agent提交的两篇候选与执行记录，比较冻结原稿、官方金融技术来源及可读性；不代替Owner决定是否采纳。
-- **MAX_ENDPOINT_THIS_ROUND：** 仅只读审查候选、报告问题并更新Reviewer证据与Handoff；禁止改动两篇正式冻结正文、V6问题、生产支付或第三章之后内容。
-- **PREFLIGHT/INPUT：** 完整ZIP `现代商业支付系统_前两部分_独立核验修订成果.zip` SHA256 `ca8ce3987fa294cc6eaeb7e9ee14639b6d6be5739c9b48d2b06bab0130f2315b`，CRC OK，恰好三篇MD；两篇候选及执行记录哈希校验与记录一致；①②冻结正文与正式V6框架Git指纹无漂移。
-- **REVIEW_RESULT：** `STRUCTURE_AND_DELIVERY_PASS / RETURN_TARGETED_FIX`。已有正确数学更正与部分技术修补；第二部分仍保留Live 1 USD测试/统一HMAC的高风险残句，以及正文引文编号指错平台；另有图表/检查清单与正文冲突、Paddle数字品类过度断言、Webhook持久化与EU数字内容法律条件未补齐。
-- **EVIDENCE：** [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)当轮Reviewer复核条目，用户已收到独立Markdown评审结论与原稿具体行号/官方链接。Reviewer只检验候选，未把外部作者自检视为独立PASS。
-- **ACCEPTANCE_CRITERIA_FOR_NEXT_CANDIDATE：** 修复P0全部残项，跨章节/正文/附录统一引用，纠正P1主要不实断言和业务失败恢复逻辑；禁止引入对可读性的系统性重写；两个修订稿与独立执行记录打包三文档ZIP、给出准确SHA。届时Reviewer复核并由Owner决定是否解冻采纳。
-- **ROLLBACK/OWNER_ONLY：** 两篇原文Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、`0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`仍冻结且未动；第三方Agent不得直接修改GitHub；Owner另行明确指令才可解冻。
-- **NEXT_STEP：** 用户可将本轮Reviewer定向返修结论交外部Agent局部修复，无需重做全篇；未收到新修订版前状态`RETURN_TARGETED_FIX`。
+- **GATE_ID：** `MCPG-CH1-CH2-SECOND-AGENT-ZIP-REVIEW-20261017`
+- **OBJECTIVE：** 对外部Agent第二轮三文件ZIP做只读审查，比对上一轮RETURN、核验与冻结原文/V6框架的保真性以及新补金融/技术来源。
+- **PRE-FLIGHT：** ZIP `现代商业支付系统_前两部分_独立核验修订成果(1).zip`，SHA256 `abc27b962e2189b80c3c9283d3bf9babf1c91b2ee169ce82445ca1a1f428e9e5`，三文件/CRC通过；两篇候选行数709和523；现行冻结第一部分Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、第二部分Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`，V6框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
+- **RESULT：** `DELIVERY_AND_STRUCTURE_PASS / RETURN_NARROW_FACT_AND_EVIDENCE_FIX`。上轮Live支付禁测与Webhook/持久ACK改进已落地；**新发现第一部分PayPal C2国际小额费率被写成5%+$0.05（官方6%+$0.05）**。第二部分Stripe测试来源仍标[S01]而非[S11]。执行记录误用历史非V6问题标题，却宣称逐字对应；其余涉及PCI SAQ A绝对推断/最高转化率、FAQ标签错位、教学案例层级与15分钟交付保证等定向问题。
+- **MAX_ENDPOINT：** 仅写Reviewer结论/本项目交接与append-only Evidence；不得修改、解冻或自动替换①②正式正文；不进入第③–⑦篇、HTML、收款账号与真实支付。
+- **EVIDENCE：** [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)中`MCPG-CH1-CH2-SECOND-AGENT-ZIP-REVIEW-20261017`条目；交付Owner完整 `现代商业支付系统_前两部分_第二轮Reviewer复核结论_20261017.md`，内列逐行、官方来源、最小返修。
+- **ACCEPTANCE_FOR_NEXT_CANDIDATE：** 新候选先独立核对每项修订建议，修正PayPal费率与示例、引文[S11]、V6执行核对表；收敛PCI/转化率等不可靠断言及案例的可核验性。文章保持原貌不扩大重写；仍交付两篇完整Markdown + 一篇执行记录、三文件ZIP；下一轮Review后由Owner单独裁决解冻。
+- **ROLLBACK / OWNER_ONLY：** 冻结①②现行正文及V6结构原封不动，历史Git与Library可恢复；本Round未获得采用候选的Owner权限，不准直接合并main。外部Agent不得覆盖冻结正文。
 
 ## 七、阶段总览
 
@@ -110,9 +109,9 @@
 P0 正式7/29/42问题框架                 PASS｜冻结
 P1 第一部分①用户上传原文               FROZEN / NO EDIT
 P2 第二部分②用户上传原文               FROZEN / NO EDIT
-P3 独立核验修订候选三文件               RETURN｜仅需定向返修
+P3 独立核验修订候选三文件               RETURN｜第二轮仍需少量事实/证据修复
 P4 ③–⑦其余章节                         PENDING
 P5 单文件HTML整合                       PENDING
 ```
 
-后续除Owner明确批准外，不得自动解冻或覆盖①②。Agent已交三文件ZIP并获得Reviewer RETURN；最小下一步仅返修已定位问题，重新交完整三文件ZIP，不重做全文。
+后续除Owner明确批准外，不得自动解冻或覆盖①②。外部Agent已提交第二轮三文件ZIP，Reviewer核验仍有可定位的金融费率、引文及执行记录问题；只需再做局部纠正，不得重写全文。
