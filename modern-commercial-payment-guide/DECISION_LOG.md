@@ -34,3 +34,14 @@
 ## 2026-10-16 - Chapter 1 expansion merged by Owner direction
 
 The Owner instructed direct merge of the complete expansion into the existing approved Chapter 1 source file. Main source `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md` now has Git blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8` (41,922 characters). Earlier approved blob: `a56bca37079972cede6d7201dea3e9fbcb19b39f` (34,340 characters). All earlier content retained. Redundant expansion candidate removed from main after identical-content read-back and remains accessible in Git history. The chapter 2 external writing task remains unchanged. Financial-review status is not reclassified by this merge.
+
+
+## 2026-10-16 | Restore two Owner-uploaded original manuscripts
+
+Owner expressly chose the readability of the two independently written Markdown files over subsequent assistant edits. The published editorial source of truth is now the verbatim original text, not an amended article.
+
+- Chapter 1: originally uploaded `现代商业支付系统_第一部分_独立重写稿.md`, SHA256 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`. Restore original bytes in `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md`. Expected Git blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`.
+- Chapter 2: uploaded `现代商业支付系统_第二部分_独立重写稿(1).md`, SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`. Canonical file is now `docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md`, Git blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`.
+- No original article paragraph or citation has been rewritten or removed in this restoration. Earlier assistant versions and their reviewer notes are historical only, recoverable via previous Git commits and archived library documents, not the current editorial baseline.
+- The original Chapter 2 had previously received factual and technical review objections. Owner restoration is an editorial fidelity choice and does not certify those claims as technically safe or verified. Keep factual review concerns separate from the original article text.
+- The V6 question framework is unchanged. Future editing is not authorized merely because a prior reviewer suggested it; changes to these two articles should be explicitly requested by Owner.
