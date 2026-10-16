@@ -161,3 +161,53 @@ No Karakeep service or data delta; no account or bookmark was created. Host free
 
 ### EXECUTOR_RESULT
 `RETURN_DEPLOY_IMAGE_PULL_NETWORK_TLS + RETURN_PREFLIGHT_DRIFT` — stop before service startup. Reviewer should inspect the pull-failure classification, current RAM headroom, and the overlay/local-volume storage mapping, then define any next Gate. Do not treat this as PASS and do not advance stages.
+
+
+## G1N — Windows Docker pull diagnosis blocked by preflight drift — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1N-PULL-DIAG-CONDITIONAL-DEPLOY-20261016`
+`OWNER_AUTHORIZATION=OWNER_REPORTED` Owner authorized one constrained pull of official Karakeep images and startup only when Gate preconditions pass. Owner explicitly canceled fixed 2 GiB / 0.8 GiB RAM thresholds; low free-RAM readings alone are not a blocker. Reuse existing Compose and Secrets; no proxy, certificate, daemon, WSL, or unrelated-project changes.
+
+### PREFLIGHT_FACTS
+- `TARGET_IDENTITY`: `DIRECT_READBACK` Windows PowerShell host; Docker context `desktop-linux`; Engine 29.7.2; Compose 5.4.0.
+- `PROJECT_CONFIG`: `DIRECT_READBACK` Compose SHA-256 matches accepted G1R value `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`; `docker compose config --quiet` returned 0 and normalized config parsed. Exactly web/chrome/meilisearch services, official image refs `ghcr.io/karakeep-app/karakeep:release`, `ghcr.io/karakeep-app/karakeep-chrome:release`, `getmeili/meilisearch:v1.41.0`; only web publishes `127.0.0.1:3000`; named volumes resolve to `karakeep-local_data` and `karakeep-local_meilisearch`.
+- `CONFIG_ACL_AND_ENV`: `DIRECT_READBACK` project directory, Compose, and env file owners match current user; ACLs are protected and contain no ACE for an untrusted principal. Expected four environment keys exist; both existing Secret values match the expected 64-hex shape and are distinct. No Secret values or hashes were read into Evidence.
+- `HOST_RESOURCES`: `DIRECT_READBACK` available host memory was 2,064 MiB during preflight; C: had 188.5 GiB free. RAM is recorded for comparison only, not evaluated against a fixed threshold. Docker root and overlayfs driver match the accepted G1R backend; prior trusted Engine data-disk proof remains applicable and host backing capacity shows no material drift.
+- `EXISTING_DOCKER_STATE`: `DIRECT_READBACK` Docker reports 20 total containers, all 20 in `exited` state and none running. The accepted Handoff state was 20 total with three existing workloads running. This material runtime drift has unknown cause and was not changed by this read-only execution. No pull or start was attempted.
+- `TARGET_COLLISIONS_AND_PORT`: `DIRECT_READBACK` no Karakeep project containers, expected project volumes, or target image tags were present; Windows port 3000 listener and Docker-published port 3000 were absent.
+- `NETWORK_DIAGNOSTICS`: `DIRECT_READBACK` host proxy modes were inspected without retaining addresses or values. Windows Internet proxy is enabled, WinHTTP reports direct mode, HTTP proxy environment variable is present; Docker Engine reports HTTP/HTTPS/NO_PROXY configuration present. For `ghcr.io`, DNS, TCP/443, and certificate-validated TLS succeeded; unauthenticated `/v2/` returned expected HTTP 401. For `registry-1.docker.io`, DNS succeeded, while the host TCP/443 probe and host `/v2/` request timed out. These are host-path observations; Docker Desktop's image-pull path was not tested this round.
+
+### ACTUAL_CHANGES
+- `LOCAL_MUTATIONS=0`: only read-only host, ACL, Docker metadata, DNS/TCP/TLS, and registry endpoint checks were run. No proxy or certificate settings were changed; no pull/up/down command ran; no image, container, network, volume, or project file was created, replaced, or removed.
+- The G1N pull diagnostic was withheld because all previously running Docker workloads are now exited, failing the Gate's existing-service stability precondition. This return does not attribute the state change to Karakeep or to this Executor.
+
+### OBJECTIVE_READBACK
+- Reused protected Compose and existing Secrets remain intact and match accepted fingerprints/format.
+- Host-to-GHCR path is reachable and the registry's unauthenticated 401 response is expected. Host access to Docker Hub timed out. Actual Docker Desktop image-pull diagnosis remains unperformed, so the original pull failure is not yet narrowed at the daemon layer.
+- Deployment remains `NOT_DEPLOYED`; no Karakeep service or volume exists. No Owner registration or real data was created.
+
+### VALIDATION
+- Latest Handoff and latest G1R Evidence were read from GitHub `main` before execution. The current G1N Gate explicitly removes fixed free-RAM thresholds and requires actual stability checks.
+- Corrected SID-based ACL readback confirmed current-user ownership, protected DACLs, and zero untrusted ACEs on the project directory and both files. An initial helper could not translate the owner string; the corrected read was read-only and passed.
+- Docker state counts were independently re-read with `docker ps -a`: 20 exited, zero running. No container identity was written to Evidence.
+- No raw Docker error/log, proxy address, private host path, SID, Secret value, or Secret digest was saved.
+
+### ANOMALIES
+- `RETURN_PREFLIGHT_DRIFT_EXISTING_CONTAINERS_STOPPED`: Docker's current inventory has zero running containers, compared with three existing workloads running in the accepted state. The cause and timing are unknown. The Gate requires stopping before pull/start when existing services are not stable.
+- `RETURN_REGISTRY_HOST_TIMEOUT`: host TCP/443 and `/v2/` request to `registry-1.docker.io` timed out. Docker Desktop's pull path remains untested; no proxy/certificate/system configuration change is authorized.
+- No fixed RAM threshold was applied. The observed 2,064 MiB did not independently block the Gate.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1N entry records sanitized preflight, host registry diagnostics, and the precise stop condition.
+- The frozen official Compose identity remains source blob `865bb147cef972926d5dc32e50645876fd110555`; local Compose fingerprint and configured public image refs are recorded above.
+- No sensitive local artifact or raw diagnostic output was uploaded.
+
+### ROLLBACK_EFFECT
+No rollback was needed because no Docker write was performed. Existing Compose and protected Secrets remain for Reviewer-directed continuation. Existing Docker containers were observed exited; none was started, stopped, or modified by this execution. No Karakeep business data exists; recovery remains `UNVERIFIED`.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+No Karakeep runtime or business-data delta. No Docker images or objects were added. Host free memory was 2,064 MiB and C: free space was 188.5 GiB at preflight. Docker inventory remained read-only; all 20 containers were exited at verification.
+
+### EXECUTOR_RESULT
+`RETURN_PREFLIGHT_DRIFT_EXISTING_CONTAINERS_STOPPED + RETURN_REGISTRY_HOST_TIMEOUT` — stop before image pull or service startup. Reviewer should reconcile the unexpected stopped workloads and define whether/when the bounded Docker Desktop image-pull diagnosis may proceed. Do not treat this as a PASS candidate or advance the stage.
