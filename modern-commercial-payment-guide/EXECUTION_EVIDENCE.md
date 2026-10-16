@@ -459,3 +459,14 @@
 - **METHOD** 如R1质量未达标，丢弃仅R1候选并在Evidence追加纠正，不截断旧Evidence，不动冻结版、不reset/force。
 - **RESULT** `EDIT_CANDIDATE_READY / INDEPENDENT_REVIEW_PENDING`；**不能声称Reviewer独立PASS**。
 - **NEXT REVIEW** 独立Reviewer冷读1.1、2.2、4.1、两完整案例等，核查新手是不是先理解再学术语及老手深度；Owner看完备选再决定是否替代当前冻结版。
+
+
+---
+
+## Reviewer 越权执行纠正记录（2026-10-16）— APPEND-ONLY
+- **TRIGGER / OWNER_REPORTED：** Owner明确指出“这件事情不应该由你来做，你是reviewer，按照项目管理规范推进，删除这篇文档。”
+- **ROOT CAUSE / REVIEWER CONFIRMED：** 上一轮Reviewer违背治理职责分离，直接在PR #132编写 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md` 并自检；旧Gate `MCPG-P2-V6-PEDAGOGICAL-R1-20261016` 曾错误允许“当前助手实际起草”。**原R1不能作为独立Executor结果或独立Reviewer验收对象；对应Gate立即撤销作为执行授权。**
+- **REMOVAL / DIRECT_READBACK：** PR从head `aac43fa5e129953e83839c318505ee2f56d9e1dd` 通过GitHub Contents API仅删除 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md`，删除Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`。没有reset/force push，不删除Git历史或旧Evidence（Git固定历史提交仍可追溯，但当前工作树文件应不存在）。
+- **FROZEN OWNER BASELINE / DIRECT_READBACK：** main `docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md` Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`仍有效，PR原 `docs/P2_V6_READER_FRIENDLY_FULL_CANDIDATE.md` 同Blob；V6 7/29/42框架未变。用户授权保留原版、未来看Executor的新结果后再决定是否替换，**没有批准删除冻结版**。
+- **RECOVERY BOUNDARY：** 在原工作分支按新的Executor-only Gate从上述冻结原稿**重新独立创作**，新候选不能依赖、复制或“修复”Reviewer已删除的R1历史正文；只可依赖Owner认可的独立诊断/公开plain-language文字Skill与正式框架。旧R1执行证据仅作为发生过的事故历史，不得冒充有效成果。
+- **RESULT：** `REVIEWER_ROLE_BOUNDARY_RESTORED_PENDING_NEW_EXECUTOR_GATE`；全部历史Evidence坚持append-only。无真实支付、无合并PR、无P3–P5、无发布。
