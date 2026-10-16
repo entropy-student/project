@@ -288,3 +288,19 @@
 - **试读标准分离**：建议今后经Owner选择是否让3名真实目标读者试读；A至少2名愿读且能说明吸引点、B至少2名脱稿能复述判断步骤与案例理由及资格未知，**两项分别评价**；N=3不支持统计推断。真人反馈、完读率、理解率、收款渠道账户真实资格全部 `UNVERIFIED`。
 - **预检算术与事实核对**：29美元在指定协议下4.40%+0.30的假设手续费为1.576，按单美分后1.58、余额27.42，五单137.10低于150；企业六单164.52减企业批次35后银行费前129.52。以上引用原文而非新费率或真实银行数据。个人与企业的资格及提现不同；诊断**不要求为读者提供个性化支付商推荐**。
 - **回滚方案及停点**：只新增两份诊断类Markdown文件；如被Reviewer否决可单独撤回，两份原P2 Blob与原历史 Evidence 不因撤稿而丢失；本轮 Evidence 仅补充后续记录。**RESULT = `PASS_CANDIDATE`; `STOP_AT_REVIEWER`。** Reviewer决定诊断 Gate 是否 PASS，Owner可决定后续是否真人试读。
+
+---
+
+# P2 读者试读问卷防诱导返修｜正式 Reviewer RETURN 修补（2026-10-16）
+
+- **REVIEWER_FEEDBACK**：[PR #132 comment #6209319816](https://github.com/entropy-student/project/pull/132#issuecomment-6209319816)；评审判定 `RETURN_TRIAL_KIT_LEADING_PROMPTS`。独立诊断报告内容已 `PASS`；仅允许修补问卷 Q6/Q7 的诱导性与试读者收到答案的隔离问题；不可将此返修当作读者价值最终 PASS。
+- **固定执行基线**：PR #132 head `a350593e5259b2d3498c8e450d026ce4fcd66c78`，Open / Draft / 未合并；原问卷 Blob `a357aaa715cd4e4eafb913754f52aa579cdf115d`；原 Evidence Blob `b22ddb946fa7812401b7eed56d1a681f077510fd`。主 Gate `MCPG-P2-READER-WILLINGNESS-AND-DECISION-VALUE-20261016`（main Blob `578ba5d127ddb150423dbb869d64222b3f565a9c`）适用。
+- **实际唯一非证据文件修改**：`docs/P2_READER_TRIAL_KIT.md`，Commit `720a8f16740fe80eb1bdcbe5d028ba024308e01d`，新 Blob `5af87f86f6ed9b4035017914cc0aa840006f2dbe`，GitHub fetch_file **DIRECT_READBACK EXACT**。
+- **Q6 前后**：原“他为什么应先看自己是什么经营主体、卖什么，再比较支付手续费？你会按什么顺序...”直接给出资格优先费率的判断顺序；新文 `如果给一个新生意选择收款方案，你会依次考虑哪些事情？为什么？`，不提前给顺序。
+- **Q7 前后**：原文提前提示“不能只凭香港银行账户选香港 Stripe、PayPal 仍需核验、5单遇提现额”；新文 `请用自己的话复述文中的大陆自然人数字模板案例：他的条件是什么、比较了哪些方向、怎样得出判断、哪些尚不能确定？`，让读者独立从已读文章回忆案例。
+- **纯问卷导出边界**：以 Markdown 原始文本 `<!-- READER_QUESTIONNAIRE_BEGIN -->` / `<!-- READER_QUESTIONNAIRE_END -->` 作为复制范围。新增文件顶端**仅主持人操作说明**，命令式禁止向真人发送**工具包全文或其 GitHub 工具包链接**，要求仅复制两个标记内文本。主持人对照要点保留在结束标记之后，并明确 `禁止随问卷发送`；提交答案后才内部核对。
+- **自动静态检查**：两个标记精确存在；标记内问卷保留题1–8共8题、文章原文链接与匿名提示；主持人参考答案、旧Q6/Q7提前给出的结论均不在可发送区段；主持人答案在隔离区保留，可供事后核对。**注意安全操作是“只复制区段”，不是把整份 Markdown 发给试读者**。
+- **本轮 Git 精确差异**：通过 `compare_commits` 核实 `a350593...` → `720a8f1...` **只有** `docs/P2_READER_TRIAL_KIT.md` 一份修改，无诊断或正文改动。
+- **不可改变的两份 P2**：完整知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`；人文表达候选 Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`；已独立通过的 `docs/P2_READER_VALUE_DIAGNOSTIC.md` Blob `09d59a974631756ba59d64fa2d054bbf0e06ed10`，均在提交问卷后直接读回未变。P1、7/29/42、其他项目及 main 未触碰。
+- **真人试读状态**：仍 `UNVERIFIED`，未接触、招募、暗示存在真人答卷；本轮只设计中立试读工具，无外部调查、真实支付或商户操作；未调用写作 Skill，未进入 P3–P5。
+- **Evidence / 回退策略**：只在旧完整 Evidence 后追加本节，不擦除原始问卷版本和旧 Reviewer RETURN 的历史。若本轮被否决，可将工具包恢复到旧 Blob `a357aaa...` 所在提交，Evidence 用新补充记录纠正，不截断历史。**Executor RESULT = `PASS_CANDIDATE / STOP_AT_REVIEWER`**，独立 Reviewer 需复核问卷中立性与实际分发隔离；禁止自宣真正读者已喜欢或掌握知识。
