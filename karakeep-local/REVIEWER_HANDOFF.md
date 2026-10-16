@@ -2,30 +2,31 @@
 
 > LAST_REVIEW=2026-10-16
 > PROJECT_STATUS=`CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`（原安装 PASS/Close 保持有效）
-> LAST_GATE_ID=`KARAKEEP-WIN-G3A-LOCAL-ASSET-INVENTORY-READONLY-20261016`
-> LAST_GATE_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`
-> PRIOR_G2B_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`
-> CURRENT_GATE_ID=`KARAKEEP-WIN-G3B-SASS-WORKTREE-READONLY-20261016`
-> CURRENT_GATE_STATUS=`READY_FOR_OWNER_RELAY_NOT_EXECUTED`
-> CURRENT_GATE_FILE=`G3B_SASS_WORKTREE_READONLY_GATE.md`
-> OWNER_AUTHORIZED_SCOPE=`PHASE_A_READ_ONLY_ONLY; G3B_NEEDS_OWNER_DISPATCH`
-> LOCAL_ARCHIVE_PLAN=`LOCAL_ASSET_ARCHIVE_PLAN.md` / PHASE_A=`PARTIAL_G3A_STOP; G3B_PENDING`
+> LAST_GATE_ID=`KARAKEEP-WIN-G3B-SASS-WORKTREE-READONLY-20261016`
+> LAST_GATE_STATUS=`PASS`（限 SaSS 只读资产盘点，含已披露的 .git 浅层数量查询异常；无删除权限）
+> HISTORICAL_G3A_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`
+> HISTORICAL_G2B_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`
+> CURRENT_GATE_ID=`NONE_INVENTORY_REVIEW_COMPLETE`
+> CURRENT_GATE_STATUS=`STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`
+> LOCAL_ASSET_STATUS=`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN`
+> LOCAL_ASSET_INVENTORY=`LOCAL_ASSET_INVENTORY.md`
+> ARCHIVE_CANDIDATES=`NONE` / DELETE_ALLOWLIST=`EMPTY`
 > CANONICAL_GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7 / blob `3917c88a7f36df7a53758b3879a92703d659ef9d`
 > DOCUMENT_HOME=`https://github.com/entropy-student/project/tree/main/karakeep-local`
 > `README.md` 为索引，**本 Handoff 为唯一当前状态权威**；`DECISION_LOG.md` 为决策及本轮 Reviewer 对中止报告的整理；`EXECUTION_EVIDENCE.md` 仍只包含历次 Executor 已成功提交的执行证据。
 
 ## PROJECT_GOAL
-在 Owner 实体 Windows 11 本机运行官方 Karakeep，用于本人收藏网页，登录界面可用且仅 `127.0.0.1:3000` 暴露。**安装实施已于 2026-10-16 正式 CLOSE，运行资源和账户保留**。之后 Owner 限定一次 G2B R2：只读核对 Docker 实际存储、测试最多一条可丢弃公开网页收藏、清理能证明无引用的本项目临时文件；**不备份、不恢复、不迁移、不重启、不监控**。本轮被浏览器目标识别阻碍中止。**Owner 已批准按 `LOCAL_ASSET_ARCHIVE_PLAN.md` 开始阶段 A 的本机文件只读盘点**。已制定独立 `G3A_LOCAL_ASSET_READONLY_GATE.md`，**仅本地只读检查 + GitHub 脱敏结果文档写入**；不是重试 G2B，也未授权本机归档、移动、删除。G3A 本机已尝试但因 Computer Use 浏览器目标无法确认而停止，且未提交 Executor Evidence。现只剩精确路径 `SaSS` 的元数据/Git/引用检查，准备由新 G3B 承接；不再重复 Docker 已报告的读回。
+Owner Windows 11 实体电脑上保留正常使用的 Karakeep（原本机安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`）。为避免清理电脑时误删该项目的分散资料，完成本机配置、Docker 数据卷和用户指出的 `SaSS` 工作区的**限定范围只读资产清单**，以 GitHub `karakeep-local/` 为唯一项目文档入口。**本轮 Reviewer 已判 G3B PASS（只读盘点），但没有获得任何删除/移动/迁移/备份授权，也没有识别出安全归档候选。** Windows/Docker 真实收藏数据仍只留在 Owner 电脑上，不在 GitHub。旧 G2B 浏览器 Canary 与 G3A 未完成历史保持原样，不因 G3B PASS 被补认为 PASS。
 
 ## PROJECT_STAGE
-- **G0–G1I 历史**：Windows/Docker Desktop、受保护本机 Compose/.env、三份官方镜像最终就绪。此前 Meili 下载异常已经克服；G1I 裸 `Host:chrome` 500 是 Chromium Host 安全限制、与真正 Worker CDP 连接不能简单等同，经过独立研究后不再作为失败依据。G1I 的 project-only `down`（无 `-v`）曾停止目标容器并保留两卷，**不是用户数据灾备证明**。
-- **G1J 技术安装 `PASS`（Reviewer 已正式接受）**：Web 登录页 HTTP 200、Meilisearch health 200、Web 容器到 Chrome DevTools 的只读 CDP 握手成功、Worker 浏览器地址解析日志无失败/重试/断连，只有 Web `127.0.0.1:3000` 暴露。三容器健康/无 OOM/重启，G1J 后保留运行。Worker 没有独立 success log，Web OCI revision 缺失，证据边界已接受，**不用再重跑 G1J**。
-- **G2A `PASS_SCOPED`（OWNER_REPORTED）**：Owner 登录后的 Karakeep 网页截图表明能进入账户界面；Owner 找到 `Interface Language` 设置，是否实际切换简体中文并刷新持久仍 `UNVERIFIED`，非当前阻碍。
-- **原安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`**：正式记录在 `CLOSEOUT_REPORT.md`，从未授予删除、退役或迁移权限。
-- **G3A = RETURN（本机已尝试）**：Owner 转交的 Executor 报告表示配置/ACL、三容器与两个卷的只读检查完成；`SaSS` 与其它候选目录的盘点 **NOT_RUN**。Computer Use 无法确定 Windows 浏览器 URL 并要求停下，Executor 遵循停止，无新增书签或删除。浏览器快捷键是否生效 `UNVERIFIED`；未产生 `LOCAL_ASSET_INVENTORY.md` 或 G3A Executor Evidence/main commit。信息来源仅 `OWNER_REPORTED`，不能标 PASS。
-- **G3B READY（尚未执行）**：疑似旧工作区的目标路径现已明确为 `%USERPROFILE%\Documents\ChatGPT\SaSS`；只读核实此文件夹的 Git/内容类型元数据及 Karakeep 直接引用，不再启动 Computer Use/浏览器。完整 Gate `G3B_SASS_WORKTREE_READONLY_GATE.md`。
-- **G2B 版本史**：最早含备份的 G2B 草案 `SUPERSEDED_UNEXECUTED`；R1 取消备份 `SUPERSEDED_UNEXECUTED`；Owner **实际下发**的是 G2B `R2_STORAGE_LAYOUT_NO_MIGRATION`，这是**唯一已经实际尝试的 G2B 版本**。后续 Reviewer 不得继续使用含备份的旧提示词。
-- **2026-10-16 G2B R2 中止**：Owner 转交本机 Executor 报告（`OWNER_REPORTED`，**不是 Reviewer 亲自读取的本机 Docker 控制面**）。Executor 表示已完成最小只读 Docker/ACL/目录核对；没有发现可删临时文件，实际删除 0；在 Computer Use 无法**充分确定 Windows 浏览器当前 URL**时遵从工具停止条件，**未添加任何 Canary 收藏、未执行抓取/搜索/预览，也未做新的 HTTP 请求**。未提交 G2B Evidence、无 G2B Commit SHA。Reviewer 判 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，保留已有历史 PASS，等待新的 Owner 指令。
+- **G0–G1I 历史**：Owner Windows Docker Desktop 原配置、受保护 Compose/.env、三官方镜像及两个命名卷就绪；历史下载/Chrome Host 探针问题已解决或边界已接受，不重新执行。
+- **G1J 技术安装 PASS；原实施正式 CLOSED**：Web 登录页和 Meili health HTTP 200、Web→Chrome CDP 成功、Worker 浏览器连接路径无失败/重试/断连、Web 仅回环 `127.0.0.1:3000`，容器当时无 OOM/restart；技术安装证据已由前 Reviewer 验收。保留运行，不代表卸载授权。
+- **G2A PASS_SCOPED（OWNER_REPORTED）**：Owner 成功登录网页并找到 `Interface Language`；是否真正保存中文仍未验证，非现阶段必要动作。
+- **G2B R2 RETURN**：此前 Computer Use 无法确认 Windows 浏览器当前 URL，安全停止；未执行单条收藏/抓取/搜索/预览 Canary、未提交 Executor G2B Evidence。该 RETURN 不代表 Karakeep 故障，不重启/重试。
+- **G3A RETURN**：从 Owner 转交本机 Executor 报告得知 Compose/ACL/三个容器、两个卷、Docker Desktop WSL2 磁盘目录的只读核查已完成，但 `SaSS` 尚未核查；Computer Use 又因 URL 目标无法确认中止，G3A Executor Evidence 未提交。只将事实当 `OWNER_REPORTED`，保留 RETURN。
+- **G3B `PASS`（Reviewer 2026-10-16 审核）**：Owner Windows 原生 PowerShell 对精确 `%USERPROFILE%\Documents\ChatGPT\SaSS` 的只读元数据/Git/目标容器 mounts 检查已经提交脱敏 `LOCAL_ASSET_INVENTORY.md` 与 append-only `EXECUTION_EVIDENCE.md`。Reviewer 直接核实了两次 GitHub 提交、旧 Evidence 完整前缀、文件内容与状态边界，确定本 Gate 的**只读资产盘点 PASS**。未授权实际归档/删除。
+- **异常已披露**：G3B 额外只读查询 `.git` 直接子项数量，无名称/正文输出，未改动文件；比最窄预期多进入一层 metadata，但对结论无实质影响。仅作为 Scope Note 接受，未来不能照此扩大其它目录扫描。
+- **当前状态**：`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN` / `NO_ARCHIVE_CANDIDATES` / `STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`。没有任何需要自动启动的下一 Gate。
 
 ## SYSTEM_MAP
 - **Target & channel**：Owner 实体 Windows 11 / 本机原生 PowerShell Codex。上次 G1J 的 Windows PowerShell 7.6.5、Docker Desktop 4.95.0 Personal / Linux Engine 29.7.2、Compose 5.4.0，context `desktop-linux`。云端 Reviewer 无法实时读回 Owner 本机，G2B R2 新资料皆来自 Owner 转交 Executor 报告。
@@ -50,44 +51,48 @@
 - **备份风险**：Owner 明确 `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，电脑/磁盘/Docker 虚拟磁盘损坏可造成永久数据丢失；不把用户数据“留本机”当成恢复证据。
 
 ## CURRENT_ACCEPTED_STATE
-**原安装已 PASS/CLOSE，运行及账户保留；旧 G2B R2 仍 RETURN。** G3A 在本机已尝试但正式 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`，**不是 G3A 未下发**。Owner 转交的 Executor 自述（仅 `OWNER_REPORTED`）支持：`%USERPROFILE%\KarakeepLocal` 顶层仅 `.env` 和 Compose、指纹匹配/ACL 保护通过；三容器运行且 Web healthy/仅 loopback、非目标运行容器 0；Docker volumes `karakeep-local_data`→`/data`、`karakeep-local_meilisearch`→`/meili_data`，内部 Linux mountpoints 分别 `/var/lib/docker/volumes/karakeep-local_data/_data` 和 `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`；Docker Desktop WSL2 目录 `%LOCALAPPDATA%\Docker\wsl`、确切 VHDX 文件路径 `UNVERIFIED`。**未执行 SaSS/Git 调查；未删/移/备份文件，未提交 G3A Executor Evidence，main 历史 Evidence 仍停 G1J**。浏览器快捷键效果 `UNVERIFIED`，不得等同 Karakeep 故障或 Canary 成功。
+**安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` / G1J PASS，Karakeep 继续留在本机使用**。本次 G3B 为 `PASS`，仅表示用户明确提出的 `SaSS` 目录被有界盘点且资产清单/Evidence 在 GitHub main 完整持久化；Reviewer 已检查 GitHub，而非亲自连接 Owner Windows 复查，因此本机 `DIRECT_READBACK` 是经审核的 Executor Evidence，不是 Reviewer 亲自的控制面读回。
 
-`SaSS` 精确候选位置现已由 Owner 报告为 `%USERPROFILE%\Documents\ChatGPT\SaSS`；其项目归属、Git 工作区是否未提交/未跟踪/未推送、其它项目引用和归档安全性均 `UNKNOWN`，**严禁按文件夹名判断可删除**。G3B Gate 已由 Reviewer 编写但**尚未执行**，须 Owner 重新转发给本机 Codex。
+**已验收资产情况**：
+- `%USERPROFILE%\KarakeepLocal`：当前 Karakeep Compose + 受保护 `.env`，`PROTECTED_ACTIVE`，原位保留。
+- `karakeep-local_data`：Web `/data` 账户/收藏/抓取等真实持久资料；`karakeep-local_meilisearch`：Meili `/meili_data` 索引；均 `PROTECTED_ACTIVE`，**不可删/移/迁**。
+- Docker Desktop WSL2 后端磁盘目录 `%LOCALAPPDATA%\Docker\wsl`，属于共享/未知资源；文件级 VHDX 具体路径 `UNVERIFIED`，禁止动其任何文件。
+- `%USERPROFILE%\Documents\ChatGPT\SaSS`：本轮 G3B 读回显示 Git root 就是该目录，普通工作树文件/子目录及 tracked 路径均为 0，唯一顶层条目为 `.git`；staged/modified/untracked/deleted/renamed 均为 0。无 origin/upstream，Git history/objects 是否保存唯一资料 `UNVERIFIED`；没有三个 Karakeep 容器对 SaSS 的直接 bind mount，**其它项目/工具进程的引用仍 `UNKNOWN`**。分类 `UNKNOWN_OR_SHARED`，**不得删除或归档**。
+- GitHub `main:karakeep-local/`：单一管理文档目录，`DOCUMENTED_REMOTE`，不含真实收藏、数据库、Secret 或备份恢复文件。
+- 其它旧工作区与整个 Windows 硬盘没有获得全面扫描证据；不可据本次发现声称“整台电脑都已整理完毕”。
+
+**已直接审查的证据**：inventory blob `5189a45a15b527b5183243c95e82ce3515bbbb10`，commit `720813d9c073ceeb3673c367be0dc9838518efe4`；Evidence blob `4712a9d09ce94ed612cc6e83e512934064874efa`，commit `0f041fbe9c7321a53e1cb32ad1afdd89e24be226`。Reviewer 已验证原历史 Evidence blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 是现有文件的**完整精确前缀**。.git 直接子项数量的多一步只读检查，已记入 Decision 的范围异常，不触发重跑或扩大扫描。
 
 ## CURRENT_GATE
-**GATE_ID**：`KARAKEEP-WIN-G3B-SASS-WORKTREE-READONLY-20261016`
-**GATE_STATUS**：`READY_FOR_OWNER_RELAY_NOT_EXECUTED`。
-**GATE_DOC**：`main:karakeep-local/G3B_SASS_WORKTREE_READONLY_GATE.md`，该文件包含全部治理 Gate 必填字段，是本轮完整执行说明。
-**OBJECTIVE**：在原 Windows PowerShell 仅核查**准确路径** `%USERPROFILE%\Documents\ChatGPT\SaSS` 的 1–2 层目录/Git 元数据，确认仓库归属、独有未推送资料、是否为 Karakeep 直接挂载、其它引用未知项。
-**MAX_ENDPOINT_THIS_ROUND**：本机无修改、删除、移动、备份、归档；不重新核查已报告的全部 Docker/ACL，不运行 Computer Use、浏览器或 GUI，不启动/重启任何服务；仅向 GitHub connector/API 写脱敏 `LOCAL_ASSET_INVENTORY.md` 与 append-only `EXECUTION_EVIDENCE.md` G3B 记录，提交/readback。若连接渠道无效则准确 RETURN，不许借浏览器强行提交。
-**MANDATORY_REVIEW_STOP**：仅完成只读 SaSS 盘点和文档证据，结束后交 Reviewer；本 Gate 不提供任何删除权。
-**REVIEWER_TO_EXECUTOR_RELAY**：只使用 `G3B_SASS_WORKTREE_READONLY_GATE.md` 中完整的 `REVIEWER_TO_EXECUTOR_RELAY`，不再下发 G3A/旧 G2B 指令。
-**EXECUTOR_TO_REVIEWER_RELAY**：结果；改动；验证；问题；回滚；请 Reviewer 检查；Owner 转交（必要时）。
+**GATE_ID**：`NONE`（已完成 G3B，`PASS`）
+**CURRENT_OPERATIONAL_STATUS**：`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN`。
+**MAX_ENDPOINT_THIS_ROUND**：Reviewer 仅审查 GitHub 两份 G3B 已提交证据及历史依赖，更新 `DECISION_LOG.md`、`REVIEWER_HANDOFF.md`、`README.md` 与归档计划状态；**不触碰 Owner 本机**，不执行新 Git/GitHub worktree 盘点，也不创建文件删除/归档 Gate。
+**MANDATORY_REVIEW_STOP**：`STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`；无待下发 Codex 指令。
+**NEXT_SCOPE_BOUNDARY**：若 Owner 将来明确要求移动/归档/删除 `SaSS`，先单独取得 Owner 后果授权，要求证明实际项目归属、Git objects/history 是否独有、无未保存资料、其它引用、确切回滚/重建方案与对应证据；任何一个 UNKNOWN 仍失败闭合。禁止把“空工作树”误用为“无重要数据”。
+
 
 ## CRITICAL_CONSTRAINTS
-保留已经 Close 的 Karakeep、`%USERPROFILE%\KarakeepLocal` 受保护 Compose/.env、两个 named volumes、三镜像及 Docker Desktop WSL2 共享磁盘。**本 Gate 严禁任何 Windows 本机写入、文件正文/Secret/用户收藏/数据库读取、备份/迁移/删除/重启/监控**。目录限于确切 `SaSS` 工作区，最多两层元数据及只读 Git 状态/必要三容器 mounts；禁止 Computer Use/浏览器/GUI，禁止其它项目遍历。不能因为 Docker 没直接挂载就断言其它进程/项目不引用 SaSS；不确定全部保留。G3A/旧 G2B 绝不能自动复跑。
+Owner 没有批准对本机或 Docker 的任何移动、删除、重建、备份/恢复或迁移，且无经验证的异故障域备份 `BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED`。配置/`.env`、两 named volumes、Docker WSL2、`SaSS` 工作区以及其它未归属资产全部**原地保留**。禁止 `docker system prune`、`down -v`、共享后端清理、浏览器/Computer Use 继续动作、Windows/Docker 重启测试或长期监控。任何真正的归档/清理是新的明确 Owner 许可与独立 Gate，不自动推进。Github 管理文档不可含 Secret 或真实用户收藏数据。
 
 ## DEFAULT_EXECUTION_CHANNEL
-本次 G3B 只读任务由 Owner **再次主动转发**给本机原生 Windows PowerShell Codex（GitHub connector/API 仅用于提交文档，不能开网页）；正常使用 `http://localhost:3000` 不需 Codex。当前新 Gate 仅准备好，**没有 G3B 本机执行证据**。
+正常只使用 http://localhost:3000；没有新的本机 Codex 任务。未来若 Owner 单独授权只读/归档或清理工作，再由 Reviewer 发布**新的**有界 Gate，默认本机原生 Windows PowerShell Codex，不依赖此前故障的 Computer Use。
 
 ## CURRENT_ROLLBACK_STATUS
-G3A 中止报告称本机资料没有发生修改/删除/移动，`ROLLBACK_NOT_REQUIRED_REPORTED`（非 Reviewer 直接验证）；新 G3B 只读，无本地回滚操作。Owner 取消备份，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED` 风险保留。不得借机停止服务或清理 Docker 数据。
+G3B 本机无新增文件/运行资源写入，删除、移动、备份或迁移计数均为 0；无需本机回滚。GitHub 仅新增 inventory 和 append-only Evidence，Reviewer 完成必要的文档更新。用户拒绝备份 `BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED`，不能宣称可恢复。
 
 ## UNRESOLVED
-`SaSS` 归属、Git 状态/独有资料、其它项目是否引用尚未知；其它候选目录未盘点；G3A Executor Evidence 未提交，浏览器快捷键实际效果不可证明；旧 G2B 的 Canary 未执行；Windows VHDX 完整路径未知。备份、重启、长期监控已由 Owner 排除，不得自行增加。
+`SaSS` 的 Git 历史/对象是否独有、远端保存状态、其它开发项目或进程引用 `UNKNOWN/UNVERIFIED`；Docker WSL2 文件级 VHDX 路径未确认；原 G2B 的网页 Canary、语言设置是否持久化尚未验收。以上是**明确保留的不确定项**，不是自动新开 Gate 的理由。当前资产清单不覆盖全部电脑。
 
 ## NEXT_STEP
-Reviewer 已根据本轮 G3A RETURN 缩小工作范围并建立独立 G3B 只读 Gate。下一步仅 Owner 再次发给本机 Codex 一条 G3B 指令，**直接检查确切 SaSS 路径，不再大范围搜索或开启任何浏览器**。Executor 在 main 保存脱敏 `LOCAL_ASSET_INVENTORY.md` 和 G3B Evidence，读回后停 Reviewer。只有审核后才能提出归档候选；任何本机清理/删除仍需另一个明确授权。
+`NONE_WAIT_OWNER`。G3B 限定只读盘点正式 PASS，`LOCAL_ASSET_INVENTORY.md` 现为可持续使用的防误删地图；Owner 如仅想整理视觉上的文件结构，可保留 SaSS 和 Docker 原位置，不必再运行 Codex。未来若 Owner 明确要求删除/归档 `SaSS`，需要先单独核查独有 Git 历史、其它引用及恢复边界，取得精确路径/后果授权；不能直接把 SaSS 判可删。
 
 ## OWNER_ACTION_REQUIRED
-Owner **只需转发新的 G3B 指令**；无须再提交路径或密码。不要执行旧 G3A 或重试 Computer Use，不操作本地文件。若 GitHub 写连接不可用，Codex 停并报告，不能换成浏览器流程。
+`NONE`。无需新的提示词、密码、Secret、备份位置或手动清理操作。**不要删除 SaSS、KarakeepLocal 或 Docker 卷/WSL2 目录。**
 
 ## EVIDENCE_POINTERS
-- G3A 当前中止及 SaSS 精确路径：Owner 本轮转交 Codex 报告，仅 `OWNER_REPORTED`，在 `DECISION_LOG.md` 的 `D-20261016-G3A-RETURN-BROWSER`；原 G3A Gate blob `1aa0034641c94525a0ccb3d6acea166ab98ec78c`，原 Handoff blob `ce42389127dfebd7be8b8c25809903e5d1e31794`，**无 Executor G3A Evidence / SHA**。
-- 新 G3B Gate：`G3B_SASS_WORKTREE_READONLY_GATE.md`，准备好但未执行。
-- **现行新 Gate（已授权但未执行）**：`G3A_LOCAL_ASSET_READONLY_GATE.md` / `KARAKEEP-WIN-G3A-LOCAL-ASSET-INVENTORY-READONLY-20261016`；允许新建的脱敏结果文件 `LOCAL_ASSET_INVENTORY.md` **当前尚不存在**。
-- **Owner 授权**：2026-10-16 回复“我没问题，开始吧”，对应上一轮 `LOCAL_ASSET_ARCHIVE_PLAN.md` 阶段 A **只读盘点**；不批准删除、移动、备份或迁移。
-- **新增无执行权限的资产归档计划**：`LOCAL_ASSET_ARCHIVE_PLAN.md`；Owner 2026-10-16 本轮提出本机文件归档、防误删问题，Reviewer 仅产出 GitHub 文档。决策见 `DECISION_LOG.md` 的 `D-20261016-LOCAL-ARCHIVE-PLAN`。
-- **本次 G2B 中止的事实源**：2026-10-16 本轮 Owner 转交 Executor 未完成报告，具体摘要记录 `DECISION_LOG.md#d-20261016-g2b-r2-stop--浏览器目标无法确认未完成并停在-reviewer`（`OWNER_REPORTED`）；**未提交 Executor G2B Evidence / Commit SHA**。
-- **历史最后 G1J Executor Evidence**：`main:karakeep-local/EXECUTION_EVIDENCE.md` blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，commit `b801c2b629b303f730d05329c958cffca61686b3`。后续若此 blob 变化需核对是否有人重新 append，不能擅自推测本轮已补全。
-- **正式 Closeout**：`CLOSEOUT_REPORT.md`；**Storage/no migration**：`README.md` 和 `DECISION_LOG.md` 中 `D-20261016-G2B-R2`；Governance `entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7。
+- **G3B 已审查的 Executor GitHub 证据**：`main:karakeep-local/LOCAL_ASSET_INVENTORY.md` blob `5189a45a15b527b5183243c95e82ce3515bbbb10`，commit `720813d9c073ceeb3673c367be0dc9838518efe4`；`main:karakeep-local/EXECUTION_EVIDENCE.md` blob `4712a9d09ce94ed612cc6e83e512934064874efa`，commit `0f041fbe9c7321a53e1cb32ad1afdd89e24be226`，旧前缀 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 不变。
+- **Reviewer G3B 结论**：`main:karakeep-local/DECISION_LOG.md`，节 `D-20261016-G3B-REVIEW-PASS-SCOPED`，包含 .git 浅层计数的已接受范围异常及 no-delete 决定；`G3B_SASS_WORKTREE_READONLY_GATE.md` 为不可重用的历史执行边界。
+- **安装与 G2A 原 Close**：`CLOSEOUT_REPORT.md`；`G1J` 官方完成证据及历史 return 全保留。
+- **G3A 中止**：`DECISION_LOG.md` 节 `D-20261016-G3A-RETURN-BROWSER`（`OWNER_REPORTED`），无 G3A Executor GitHub Evidence。
+- **G2B 中止**：`DECISION_LOG.md` 节 `D-20261016-G2B-R2-STOP`；没做浏览器 Canary。
+- **管理文档主页**：`README.md`；`LOCAL_ASSET_ARCHIVE_PLAN.md` 为已完成“先盘点”的计划存档；Governance `entropy-student/spike.skill:vps-project-governance/VNEXT.md` v0.2.7。
