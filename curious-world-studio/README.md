@@ -9,6 +9,7 @@
 - **[当前整体项目进展与下一步](docs/CURRENT_STATE.md)** — 唯一事实源
 - **[最新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)** — 实验证据/责任与保护边界
 - **[R2已验收稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)**、**[唯一R3 Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)**、[关键执行证据](docs/EXECUTION_EVIDENCE.md)、[决策记录](docs/DECISION_LOG.md)
+- **[素材匹配已确认决策与待议清单](docs/VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)** — 文案匹配期间不修改、后置双Skill润色；当前无类别比例配额、无缺口自动停机；广泛搜片、兜底、模板应用待议。
 - **[长期中文科普口播双轮润色工作流](docs/VIDEO_SCRIPT_POLISH_WORKFLOW.md)** — `human-writing`首轮整体表达、`humanizer v3.1.0`次轮去模板化，事实审核后再配音；适用于R4完整片和以后每期，不改变已下发R3小修。
 - [MEDIA架构与阶段映射](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)
 - [AGENTS / Codex入口](AGENTS.md)

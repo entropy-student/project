@@ -1,5 +1,6 @@
 <!-- CWS-AUTHORITATIVE-ENTRY-20261016-OWNER-VISUAL-RETURN -->
-> **当前最高优先级状态（2026-10-16）**：Owner已实看并否决R3 55.367秒内部视频的视觉叙事：两条库存爆米花片占83%且画面相似，S05约5.85秒纯文字机制卡呈PPT感，正式R3`RETURN_OWNER_VISUAL_STORYFIT`。此前“R3只剩声音审美确认”已被新事实覆盖，不得以字幕技术PASS冒充成片质量PASS。停止R3循环小修与R4；先由Reviewer拟定有实际镜头差异、能用画面解释知识的方案，再待Owner明确授权新执行边界。原技术、R2编辑和权利PARTIAL事实不变；CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH不变。详见[当前状态](docs/CURRENT_STATE.md)、[真实失败证据](docs/EXECUTION_EVIDENCE.md)、[视觉锁](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)。
+ > **Owner最新决策（2026-10-16）**：①素材搜索/匹配/兜底阶段**不许修改文案**；⑦完成素材与视觉方案后才执行 `human-writing v1.1.0 → humanizer v3.1.0 → Reviewer事实复核` 后配音。④当前不设素材类别占比硬门槛；⑥不设素材缺口触发的内容自动停机。②首次广泛搜索方法、③视觉兜底层级、⑤13个Mac窗口模板如何用于正式2/4/6**均待裁决，不可先行执行**。详见[七点裁决登记](docs/VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。本次只有文档整理，不授权R4/发布或解除旧禁AI规则。
+（2026-10-16）**：Owner已实看并否决R3 55.367秒内部视频的视觉叙事：两条库存爆米花片占83%且画面相似，S05约5.85秒纯文字机制卡呈PPT感，正式R3`RETURN_OWNER_VISUAL_STORYFIT`。此前“R3只剩声音审美确认”已被新事实覆盖，不得以字幕技术PASS冒充成片质量PASS。停止R3循环小修与R4；先由Reviewer拟定有实际镜头差异、能用画面解释知识的方案，再待Owner明确授权新执行边界。原技术、R2编辑和权利PARTIAL事实不变；CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH不变。详见[当前状态](docs/CURRENT_STATE.md)、[真实失败证据](docs/EXECUTION_EVIDENCE.md)、[视觉锁](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)。
 > **素材与技术**：普通实拍相关即可，不重搜精确论文实验/建设识别模型。内部样片不另开版权调查；两条库存素材仍PARTIAL、仅作辅助、不可冒充论文实验或发布。PR#129/#131和G2–G4技术闭环已接受，不重跑；禁止触碰VPN/Clash、共享Docker、旧工作树。
 # Curious World Studio｜Agent / Codex 唯一入口
 

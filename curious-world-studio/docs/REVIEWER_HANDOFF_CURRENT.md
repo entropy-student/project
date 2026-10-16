@@ -1,5 +1,11 @@
 # CWS｜下一位Reviewer完整现行交接（2026-10-16）
 
+## 最新Owner七点裁决（2026-10-16，覆盖旧的自动改稿与自动终止建议）
+
+- **已确认**：①素材匹配/兜底时文案不得修改；⑦视觉方案确定后才执行 `human-writing v1.1.0 → humanizer v3.1.0 → Reviewer事实与口播复核`，再配音。④当前不实行静态/动态/兜底时长占比硬限制；⑥不采用“缺素材就自动停机”的内容策略。
+- **待讨论**：②首次广泛搜索范围与方法、③分层兜底候选与制作、⑤原13种Mac窗口模板与正式2/4/6的结合。不得自动批准五类候选、AI生图或旧提案的百分比与停机条件。
+- **当前权限**：仅文档整理，R3整体 `RETURN_OWNER_VISUAL_STORYFIT`、R4未授权、正式HOLD/G1/G2/NO_PUBLISH不变；项目真实安全/资源停止条件仍按Governance执行。完整清单见[决策登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。
+
 ## 当前治理看板（覆盖下文历史时态）
 
 > **2026-10-16 最新Owner内容验收：`RETURN_OWNER_VISUAL_STORYFIT`**。Owner实看修订视频并否决重复的两段锅内爆米花库存镜头和5.849秒纯文字解释卡。Reviewer读镜头表核实两段来源占45.95/55.37秒（约83%）；分割为多个镜头不产生真实视觉多样性。原R3技术/字幕局部PASS保留为技术证据，整条视频质量未过。**取消“只待试听”判断，不自动R4、不给Codex新执行授权**。未来方案必须先证明视觉节拍多样、核心内容由画面表达、文字仅辅助。完整原因见[Evidence](EXECUTION_EVIDENCE.md)及[Style Lock](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)。
@@ -19,8 +25,8 @@
 | DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex → 脱敏ZIP与SHA → ChatGPT Reviewer独立验收，Owner仅转交与必要授权 |
 | CURRENT_ROLLBACK_STATUS | Git文档修改使用隔离分支PR可回退；R3本机回滚尚待运行前预检，旧媒体/工作树不得覆盖 |
 | UNRESOLVED | 两条库存素材占全片约83%且内容高度相似；核心机制由5.849秒纯文字卡替代，视觉故事性不合格；实际观感已被Owner否决，不再等待音色反馈；版权与正式Story-Fit/发布仍HOLD |
-| NEXT_STEP | 先设计内容驱动的镜头清单与相异画面/研究证据呈现方案，避免一条素材切成多段冒充多镜头；未获新执行授权前不得渲染/进入R4 |
-| OWNER_ACTION_REQUIRED | Owner已经明确否决本版视觉内容，本轮无需再次看片或试听；新制片任务是否授权以后单独决定 |
+| NEXT_STEP | 先讨论②首次广泛检索的组织方式、③兜底层级/制作方法、⑤13种窗口模板如何用于正式画面；未获新执行授权前不得渲染/进入R4 |
+| OWNER_ACTION_REQUIRED | 本轮不用转交Codex；下一次继续讨论②③⑤，是否启动制作另行授权 |
 | EVIDENCE_POINTERS | [R2生效稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)、[执行证据](EXECUTION_EVIDENCE.md)、[决策](DECISION_LOG.md)、下文历史ZIP/SHA |
 
 

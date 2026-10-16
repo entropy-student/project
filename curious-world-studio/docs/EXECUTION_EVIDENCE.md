@@ -82,3 +82,10 @@
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：无新增TTS/素材检索、购买、部署、发布或视频渲染。
 - EXECUTOR_RESULT：历史PASS_CANDIDATE；REVIEWER_RESULT：`RETURN_OWNER_VISUAL_STORYFIT`（Owner质量否决，优先于此前`PARTIAL_AUDIO_LISTEN_UNVERIFIED`）。
 - NEXT：先形成有目的的镜头变化/视觉解释方案，在不同场景、动作、可引用研究图像和现有视频之间自然切换；禁止以重复素材和大段文字卡凑时长。质量方案审核后由Owner决定是否授权同一主线新制作Gate，R4和发布没有放行。
+
+## EVIDENCE 2026-10-16｜仅文档的Owner素材匹配/后置润色裁决
+
+- AUTHORIZED_SCOPE：Owner通过本轮聊天要求按Governance整理七点决策并将**已确定部分**同步GitHub main；没有授权搜索、Codex、音视频合成或正式R4。
+- OWNER_DIRECT_IN_CHAT：①匹配阶段文案锁定；⑦方案确定后执行human-writing/humanizer与事实复核；④目前不限制素材类型时长占比；⑥不采取因素材缺口或数值预算自动停止制作的内容机制。②广泛搜索如何实施、③兜底类型/制作、⑤既有13个窗口模板与正式2/4/6如何应用仍待讨论。
+- ACTUAL_CHANGES：同步[裁决登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)与现行状态、交接、配音文案润色工作流，以及修正旧3+1合同与STYLE_LOCK中可擅自改变文案或自动停止的冲突建议；不修改源码、历史视频/媒体、正式R3结论或Governance。
+- VALIDATION_REQUIREMENT：确保不把此前60/40等数字、固定五类兜底、单次搜索上限、AI生图和Mac 13模板集成当成生效规则。R3整体仍`RETURN_OWNER_VISUAL_STORYFIT`；G1/G2/HOLD/NO_PUBLISH与R4未授权持续有效；GitHub合并后需回读文件。
