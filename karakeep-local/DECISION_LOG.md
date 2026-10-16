@@ -26,3 +26,13 @@
 - **Reviewer scope adjustment**：此前 `KARAKEEP-WIN-G2B-ONE-SHOT-BACKUP-CANARY-CLEANUP-20261016` 草案在尚无 G2B 执行证据前被 **SUPERSEDED_UNEXECUTED**；当前仅 `KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`，包含一条公开测试收藏与确证可弃的本机临时/诊断文件清理，绝不进入持久卷/.env 或批量资料清理。
 - **Document home**：`https://github.com/entropy-student/project/tree/main/karakeep-local`；新增该目录的 `README.md` 汇总 Handoff、Closeout、Decision、Evidence 的入口与本机路径说明。GitHub 只存脱敏项目文档，不上传原数据库/密钥或原日志。
 - **Closeout remains**：最初安装实施状态 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 保持不变，剩余一次性 G2B 是 Owner 单独下达的项目级维护，不撤销历史 Close。
+
+## D-20261016-G2B-R2 — 推荐保留 Docker 命名卷，不做目录合并或迁移
+
+- **Owner request**：确认“新增收藏实际保存在哪里、整个本机项目是否在同一处”，同意采用推荐方式；前一轮 Codex 提示词**尚未下发，G2B 尚未执行**。要求把最终决策和足够的有效项目上下文写入 GitHub main，交下任 Reviewer。
+- **Reviewer conclusion**：保持原受保护 `$env:USERPROFILE\KarakeepLocal` 目录仅放 Compose/`.env` 配置；实际应用/收藏/账户在 Docker 命名卷 `karakeep-local_data`（容器 `/data`），搜索数据在 `karakeep-local_meilisearch`（容器 `/meili_data`）。Docker 镜像/容器/命名卷使用 Docker Desktop 管理的 Linux 存储，可与其它项目共享底层虚拟磁盘，**不能声称全部在一个 Windows 普通文件夹**。
+- **Physical path evidence limit**：这台电脑上的 Docker Desktop **实际磁盘/VHDX 绝对路径尚未在本轮核验**，不能从典型 `AppData\Local\Docker\...` 示例推断。下轮仅通过 Docker volume/mount metadata 和 Desktop 设置（可用时）进行只读核对，记录可信路径类型；不打开/挂载/修改底层虚拟磁盘。
+- **Explicit no-migration decision**：不改 Compose volumes 为 Windows bind mounts，不更改 Docker Desktop `Disk image location`、不复制/转移/合并持久卷，不停止或重建项目来“整理文件”。没有备份时这会增加不可逆丢失风险且无现实收益。
+- **G2B gate revision**：保持唯一 Gate ID `KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`，标识 `R2`；增加**最小只读存储布局核验**（不独立拆一轮），继续仅一条公开无敏感 Canary 和确证可弃文件的严格清理。此前含备份的 Gate 是 `SUPERSEDED_UNEXECUTED`；R1 也**尚未下发/未执行**。
+- **Risk accepted**：`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，不导出 Secret/数据库、不创建恢复资料、不虚构灾难恢复 PASS；Windows/Docker Desktop 重启测试和长期监控仍明确排除。
+- **Document destination**：全部项目管理文档在 `https://github.com/entropy-student/project/tree/main/karakeep-local`，同目录 `README.md` 是索引、`REVIEWER_HANDOFF.md` 为唯一有效状态、`EXECUTION_EVIDENCE.md` append-only。实际用户数据和 `.env` 绝不上传 GitHub。
