@@ -1,52 +1,62 @@
-# CWS｜当前Reviewer交接（更新至2026-10-16）
+# CWS｜下一位Reviewer完整现行交接（2026-10-16）
 
-> **2026-10-16 Reviewer最新交接：`MEDIA_R6L_R7L_PILOT_PARTIAL_ASSET_GAP`，轻量试验结束。** ZIP `CWS_MEDIA_R6L_R7L_FAST_MATCH_PILOT_20261016.zip` SHA256 `81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8`，Reviewer独立核对ZIP CRC、20项SHA、19项manifest大小及6张JPEG，确认单独提供HTML与ZIP版相同，6张嵌入图片字节与证据帧一致。**只直接审到了静态抽帧，没有原MP4全片**；两条媒体的历史SHA及FFprobe/FFmpeg返回0基于执行端日志。SearXNG81 + 4get14，90个去重搜索链接，5个候选均未播放且只为`LINK_FOUND`。Prep/Heat普通锅内辅助画面有限可用，After-pop氛围备选；`Mechanism/S04–S06 = ASSET_GAP_EVIDENCE`，许可为Pexels/Pixabay`PARTIAL`、论文附件/候选`UNKNOWN`。**不再反复扩搜或补基础设施测试；没有记录全部人工耗时，不声称“30秒完成素材匹配”**。等待Owner决定是小范围核原论文附件还是改变脚本承诺；`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`不变。
+> **Owner最新意思必须保真：**“我对精准的要求不高，匹配其实就行了”“只要相关就可以了”。前任Reviewer虽然口头同意，仍把爆米花“淀粉脚”研究实录当作不可逾越的素材Gate、重复增加搜索轮次，这是错误升级。**不要继续开展R6/R7精准科研画面调查；画面相关、听得懂、不冒充研究实录即可**。正确科学表述、来源可追溯、具体素材权利/公开发布许可仍要分别审查。
 
-> **2026-10-15历史执行授权（试跑已完成，勿重复下发）**：R6L/R7L合并为一次快速素材匹配试跑，CW-0005选4个真实画面需求；限3–5候选/需求，最多两轮搜索，找相关且够用片段并输出素材清单，不做逐帧定位或新模型开发。[执行合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。正式制作/发布与权利审批仍HOLD。
+## 一、首读路径和职责
 
-> **2026-10-15 Reviewer最终裁决：`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION / MERGED_MAIN`，PR [#131](https://github.com/entropy-student/project/pull/131)已于Owner授权后squash合并main（commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）。** ZIP `CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`，CRC正常、23条SHA/22项manifest均由Reviewer独立核实。Windows60/60回归是执行端日志，Reviewer之前独立复核24个CLI单测。SearXNG video/image各88/110条、4get各15/81条；294查询级记录→190去重候选（93视频/97图片）。**SearXNG上游Google 403、Brave解析错误、Vimeo/Pinterest超时仍为PARTIAL；默认`PARTIAL_SEARCH`返回`ok:false`及exit1符合fail-closed；只有调用方明确`--allow-partial`才接受不完整结果。** 真PTY Ctrl+C执行端证据：活动连接存在、CLI发`INTERRUPTED`、本项目三容器退出码0、两个端口关闭、无关容器IDs未变化；Reviewer独立核查包内证据但未亲手运行Owner Windows。**两个此前待补运行Gate已证实，后续不必再以所有第三方上游完全成功为合并障碍**。Owner本轮已授权并完成合并，合并前检查`mergeable=true / clean`，PR #131仅变动6项CWS media-pipeline文件、此前追加main未触及这些文件。**不要重复G2–G4或本轮集成验收，也不得未经另行授权启动R6/R7/制作或宣称素材许可通过。**正式CW-0005 HOLD不变。
+- 项目：\`entropy-student/project\` → \`curious-world-studio/\`。**首读[CURRENT_STATE](CURRENT_STATE.md)（唯一事实源）→ [CWS AGENTS](../AGENTS.md)→本文**；仅需特定细节再按链接回溯旧证据，别从历史报告的“下一轮”另开任务。
+- Owner选择方向、素材是否达到审美、付款/删除/公开发表等授权；Windows Codex负责具体执行并提交脱敏ZIP+SHA；ChatGPT Reviewer负责独立核源、判断事实、内容和可用性的验收。不要要求Owner反复替你手动做技术看片验收。
+- 本次用户要求整理文档并交给下一位Reviewer，**不代表已授权新一次素材搜索、编写新代码、真实制片或公开发布**。历史CW0005状态\`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH\`照实保留，只有新审核/Owner许可才可改变。
 
-> **唯一当前交接，不叠加历史“最新”状态。** 首读[CURRENT_STATE](CURRENT_STATE.md) → 本页 → [MEDIA架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md) → [正式素材3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。旧Gate、历史仓库报告只作证据索引。**媒体技术状态：`G2_G3_G4_TECHNICAL_ACCEPT`；正式节目：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`。**
+## 二、项目和技术各自走到哪里
 
-## 1. 接手时必须记住的事实
-
-- 项目不是自动成片应用，而是不露脸、观点/好奇心驱动的跨领域知识频道；频道名未定、B站主阵地、视频叙述时长不硬凑。视觉[STYLE_LOCK](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)锁A短Mac Aqua桌面开场→B全幅QuickTime播放器、单行字幕。
-- 研究：[36条题库](../research/topic-bank/BOARD_V1.md)，11 SHORTLIST / 15 VERIFY / 9 HOLD / 1 REJECTED；仅部分九源采样，未经正式STORYFIT_GO。P3叙事原型是纸面成果，不能算已受众测或已配音。
-- 正式视频素材：严格按[3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)；搜得到、能下载、FFmpeg能解码、动作真实出现、与旁白匹配、商用可复用**六件不同的事**。
-- 生产：CW-0005爆米花R1研究/R2条件故事/R2-M1库存短素材有历史证据，但爆裂/压缩/回弹科研动作和权利未消缺；`G1_NOT_PASS / G2_NOT_AUTHORIZED`，未授权切题、R3音画联调、R4首个完整草片或发布。
-- MEDIA工具：独立可选Python工具通过[PR #129](https://github.com/entropy-student/project/pull/129)合并main（commit `10b369ee5558ed9a0ac2f738aea978623f62ba0f`）；36/36项Windows单测，Reviewer针对失败退出码和有限私网地址防护修复接受；**不是完整SSRF沙箱、也没有自动接入OpenMontage制作**。
-- Owner Windows运行决策：**Docker Desktop/WSL2本机按需搜索，SearXNG+4get容器、Python+yt-dlp+FFmpeg在Windows，非VPS，非24h常驻**。Ubuntu-24.04已被安全备份并注销；保留Docker后端。前期无Docker/Brave/Exa方案只作历史探索，不是当前待执行路径。
-
-## 2. 最新G2/G3/G4裁决（逐项说明证据责任）
-
-| Gate | 目前证据及结论 | 不可夸大 |
+| 层面 | 确认事实 | 仍不足 |
 |---|---|---|
-| **G2** | 执行端先导出、读验完整`Ubuntu-24.04` tar，SHA `5F870E83109F3D976C4D2BF24843D9AC59C4520E8C1CA65897CE071B9FC48276`，1,522,626,560字节，注销指定发行版且Docker WSL2后端可用；**技术接受** | tar在Owner本地，Reviewer**未独立恢复该tar**；不删Docker与其它WSL数据 |
-| **G3** | 本机Compose SearXNG/4get仅127.0.0.1监听，视频/图片四类API实际非空；raw316，视频去重77、图片去重135；端口停止释放，容器和缓存卷留存；**技术接受** | 局部上游引擎错误仍存在，HTTP200≠每种媒体搜索都正常 |
-| **G4** | 实际两PeerTube实例视频+一JPEG下载、哈希和FFprobe/FFmpeg完整解码；Owner在Edge手动确认两段播放，视频时间推进；**技术接受** | PeerTube实例不等于独立平台家族；样片动作不适配爆米花，权限`UNKNOWN_TEST_ONLY`；Reviewer无Owner浏览器录屏 |
+| 频道 | 不露脸，B站主、抖音/小红书辅助，跨领域“为什么”；频道名“世界有点意思”仅候选；观点/好奇心引导，知识小众、问题大众 | 未验证成片实际观众反应 |
+| 选题 | [36条看板](../research/topic-bank/BOARD_V1.md)：11 shortlist、15 verify、9 hold、1 rejected；九源抽样定向搜索 | 非九源稳定全量抓取，SHORTLIST不等于拍摄批准 |
+| 故事 | 三种机制“解释/追答案/重建选择”已做原型；CW-0005 R2-M1约50–60秒修订稿及S01–S10分镜 | 正式剧本、Story-Fit最终签收未通过，可按相关素材优化呈现 |
+| 视觉 | [STYLE_LOCK v1.2](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)：Mac Tiger Aqua短桌面→QuickTime全幅播放器，1920×1080/30fps/单行字幕；HTML和9秒无声工程样片 | 非长片音画字幕成品，渲染稳定性/配音对齐未通过 |
+| 配音合成 | Remotion/FFmpeg媒体适配器[PR#116](https://github.com/entropy-student/project/pull/116)合并；OpenMontage Pexels/Pixabay、Qwen TTS \`longzhe_v3.1\`为已有工具偏好 | 完整正式旁白/字幕对齐、音乐混音、发布未做 |
+| MEDIA-R1～R5 | 历史R2下载22视频+31图片；R3盘点300域、试197站、成功153但151属PeerTube实例；R4+R5另核10非PeerTube技术来源 | 不能把站点数算成153独立平台或可商用来源；R4+R5整体PARTIAL |
+| G2–G4 | Windows Docker SearXNG+4get真实搜索→两不同PeerTube实例视频+一JPEG下载→FFmpeg QA→Owner Edge播放→容器停止；\`G2_G3_G4_TECHNICAL_ACCEPT\` | Reviewer没有亲自运行Owner的Windows/Edge，Ubuntu备份tar未亲自恢复 |
+| PR#129/#131 | **均已合并main**；PR#131 squash commit \`201c39a2b61eae7189cc624d5cb2c18dd671de38\`，\`cws_media.py\`提供\`doctor/discover/catalog/fetch/gallery\`，按需Docker及Ctrl+C清理 | 上游部分搜索失败默认\`PARTIAL_SEARCH/ok:false/exit1\`，若仅部分候选足够须明确\`--allow-partial\`；非公网工具 |
+| R6L/R7L试验 | 2026-10-16已结束；既有两段爆米花视频可有限匹配普通画面，95条搜索→90去重；Reviewer历史\`PARTIAL_ASSET_GAP\` | 5标题相关链接未播放，仅LINK_FOUND；无被核验的原研究高速视频；不能据此自动添加新的素材轮次 |
 
-本轮唯一ZIP `CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA256 **`651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875`**；独立Reviewer核过**50条SHA/49项manifest**及所附**2原视频、1预览视频、1张图片**的完整解码。没有把大Ubuntu备份装入ZIP，未证明Reviewer已验证实地恢复。CWS搜索服务最后为停止态，而非持续在线。
+## 三、CW-0005研究事实、真实素材及“相关即可”的处理方式
 
-早前经验：`G0_RECOVERY_EVIDENCE_ACCEPT`；`G1A_LOCAL_LIFECYCLE_PARTIAL_ACCEPT`历史遗留的`BROWSER_NOT_VERIFIED`已由Owner手动Edge补测解决（ZIP `CWS_MEDIA_G1A_BROWSER_VERIFY_20261015.zip`，SHA256 `07b7f169d54b5440bc967d464e2764e34119f98717474a8b92dbfec3ec8337d3`）。**未来自动浏览器测试不能拿旧Owner手动记录冒充机器测试**。
+- 一手：[2015 The physics of popcorn](https://pmc.ncbi.nlm.nih.gov/articles/PMC4345489/)。历史研究核证：温度实验170°C为17/50、180°C为48/50粒爆开，是统计并非单粒固定阈值；跳跃高速实验裂开/淀粉脚受压/反弹约6.9/13.8/20.7ms；声音另一个实验约100/106ms，部分声学机制是作者假说。**这些是科研实验相对时刻，不是库存视频的截取时码。** 事实细节见[2026-10-12历史交接§5](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)。
+- 既有两段真实实拍：[Pexels #854959](https://www.pexels.com/video/cooking-popcorn-854959/) 20.223s/1920×1080，历史文件SHA \`D5CACBD2A8158A8B26C3B4E18F43168533B0D7DDA25EC67DE37A39E864385C78\`；[Pixabay #2793](https://pixabay.com/videos/id-2793/) 25.7267s/1920×1080，SHA \`8C6ED307EF0FF4FC666EF169BE2CC410AD91DEC01B1F003C651B9E92D07E43D7\`。Windows Codex历史下载并FFmpeg解码，本轮核SHA/抽6张帧；MP4位于本机忽略目录\`.local/R2-M1/provider-output/\`。两项具体使用权\`PARTIAL\`，音轨未审/未用。**可作锅内、未爆粒、爆后氛围等辅助画面候选，不是研究实录**。
+- R6L/R7L一轮95搜索结果去重90，5个科研链接仅\`LINK_FOUND\`。2015原论文Movie S1/S2没有实看+单文件许可；精确“淀粉脚受压反弹”研究实录仍缺，但**用户并不要求必须播放这一镜头才讲科学机制**。可以让旁白负责解释，用相关普通视频和来源文字支撑；只要不误导观众说“眼前就是论文实验画面”。
+- **过去不合理的Gate已经修正为编辑偏好**：不建帧级匹配模型，不给每句配精确秒数，不再寻找80站点，不拿\`PARTIAL_ASSET_GAP\`当追加搜索许可；如果某一镜头表达与画面矛盾，就改镜头承诺/文案或删短，不以精确实录作为自动硬条件。素材是否可复用仍需实际使用时核权利。
 
-## 3. 当前环境、保全与审查纪律
+## 四、历轮证据索引，防止漏数/误报
 
-- 保护旧本机工作树**3项tracked未提交修改和2项未追踪缓存目录**；保留中断材料、合法备份tar与旧媒体；不能用`reset --hard`、`git clean`、`docker system prune`、`down -v`覆盖/清理。
-- **本机Docker Compose配置及一键生命周期脚本目前是执行端本地工件**：真实验收过，不等于已经推Git、经PR审查或作为通用工具发布；下一次正式入库必须从最新main开隔离分支，保留旧树。
-- 网络：不改Windows系统代理、VPN/Clash、OpenMontage及别的项目Docker容器；仅本CWS Compose项目操作；服务只绑127.0.0.1、不自动常驻。
-- 今后技术性浏览器播放由Codex在**获明确授权的隔离浏览器**自动测试`video.play()`、`currentTime`、实际帧和错误/资源回收；不要附着Owner私有Edge窗口，也不能绕过Computer Use明确的安全停止。无法自动运行则写`BROWSER_AUTO_NOT_VERIFIED`，**不要把用户当重复的浏览器单测员**。Owner仍有真实镜头/审美/许可决策权。
-- 所有素材与截图只做`UNKNOWN_TEST_ONLY`技术实验；证据里不得放凭据、Cookie、SSH令牌或私密用户路径，媒体在权限不明时不作为Git附件或发布物。协议的“3+1”例外必须经Owner许可。
+- R2-M1：\`CWS_MAIN_R2_M1_MEDIA_PATH_STORY_VISUAL_REVISION_20261012.zip\` SHA256 \`84991ca226e060624eaf7a4ca7c5ade411f8f5f70ab17ee94899e2b0e44b805f\`；约50–60秒脚本+S01–S10，2条OpenMontage MP4本机下载解码，历史ZIP仅六帧非MP4全片。旧R1/R2各包SHA和其他选题（CW-0002大象、CW-0004意面、CW-0008指纹）见[原2026-10-12完整交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)，Owner曾明确不自动换题。
+- Windows G2–G4：\`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip\` SHA256 \`651651f7e21cba1428c0cfac30b09fdc814cc31586b63d278eee9d14a551d875\`；Reviewer核50SHA/49manifest；Docker搜四类非空、316原始记录→77视频/135图片候选；两不同PeerTube实例并非不同平台家族。
+- PR131最终实机：\`CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip\` SHA256 \`8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30\`；Reviewer核23SHA/22manifest；SearXNG 88视频110图片，4get 15视频81图片，190去重候选；真实PTY Ctrl+C，三CWS容器exit(0)、18080/15050释放、无关容器不动。Windows60/60单测为执行端提供的报告。
+- R6L/R7L：\`CWS_MEDIA_R6L_R7L_FAST_MATCH_PILOT_20261016.zip\` SHA256 \`81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8\`；Reviewer核CRC、20/20内部SHA、19manifest、六张1920×1080 JPEG与HTML嵌入。两原MP4**不在包内**，Reviewer未重解码全片；搜索+容器清理28.2秒、QA抽帧3.8秒不含完整人工审阅时间。
+- Mac窗口动效/视频工程支线与旧清理审计均是单独历史：MW07 Genie与MW11–13已有人提出KEEP候选但**不能推导Owner最终视觉签收**；9秒/M2技术片亦非成片。其他SHA和状态在[旧交接§7](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；无需重跑或复制大证据进Git。
 
-## 4. 下一步（**R6L/R7L已完成PARTIAL_ASSET_GAP；正式制作仍未授权**）
+## 五、推荐最短路线（**未授权实际制作**）
 
-**`MEDIA-OPERATIONS-INTEGRATION`已完成并合并main；`MEDIA-R6L/R7L-FAST-MATCH-PILOT`已执行、独立Reviewer裁决`PARTIAL_ASSET_GAP`。** 辅助镜头匹配策略可延用，试验不再重复。S04–S06科学实验画面仍缺，5个标题链接无播放/权利证据，禁止偷换为内容PASS。**只建议Owner在下一轮二选一**：小范围核验2015论文Movie S1/S2实际画面及权利，或不依赖该科研高速画面而调整叙事承诺；必须Owner另行授权。不能自动进入PROD。
+**只建议下一步一次编辑动作，而不是另一轮素材调查：**拿既有50–60秒条件剧本和S01–S10，删去“必须看到淀粉脚实验”的镜头约束，整理成一句旁白对应一个足够相关实拍/必要出处文字的简短清单。尽量使用已知2条爆米花片，内容不宜硬凑；把尚需校验的真实复用权标\`PARTIAL\`。Reviewer先判断脚本准确、画面不会误导，再给Owner确认方向。
 
-**制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
+如Owner明确授权素材使用与制片，Codex可用已有OpenMontage/Remotion/Qwen TTS制作**仅内部观看**30–60秒音画单字幕样片，经真实QA后逐步组织完整自然时长草片；**发布、收费、版权审批须独立授权**。保留旧CW0005 HOLD直至正式内容审查与Owner决定，不自动解除。也不要为了“完成R1–R4几轮”把一个简明工作拆成更多重复任务。
 
-## 5. 可用文件与历史证据
+## 六、执行保全、安全和规范
 
-- [项目唯一当前状态](CURRENT_STATE.md)、[MEDIA阶段与架构](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)、[G2-G4执行合同（已完成，保留安全约束）](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md)、[Windows媒体工具使用说明](MEDIA_PIPELINE_WINDOWS_USAGE.md)、[正式3+1合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。
-- [早期CW-0005叙事/素材长交接](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；[PROD四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)；[MEDIA-R3/R4+R5统计及历史材料](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)。历史Gate使用当时语态，不是现在的操作许可。
-- [2026-10-15合并前旧CURRENT_STATE Git快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/CURRENT_STATE.md)、[旧Reviewer交接快照](https://github.com/entropy-student/project/blob/61baf38618117325aee6d25b755e8f64f765f20b/curious-world-studio/docs/REVIEWER_HANDOFF_CURRENT.md)。不在main重复复制过时的每轮前言。
+- [正式3+1素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)：①原论文/研究机构；②OpenMontage Pexels/Pixabay；③合法源站yt-dlp（不是内容库）。轻动效只有**2转场/4画面布局/6信息字幕**；默认真横屏（显示比例≥4:3、优先16:9/1080p），排除大陆视频平台。严禁生成AI假实验/图、用代码画真实实体、PPT大拼图代实拍、循环重复镜头凑时长。
+- **相关即可不等于虚构**：可用Stock相关素材+准确旁白讲研究；不能标成第一手实验、把库存音轨当科研实录、用未真实出现的动作做科学录像演示。独立记录\`LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED\`。视频下载、解码成功≠已确认复用权。
+- **运行**：Windows11本机Docker Desktop/WSL2，SearXNG+4get端口只绑回环、用后停止；内存保护门槛历史为1664MiB，实际再测。无需VPS、不干预VPN/Clash/全局代理、WordPress/Woo/别的Docker项目。Ubuntu24.04已安全备份注销，tar Owner本地留存。
+- **保全**：历史3项tracked未提交改动+2未追踪缓存、旧媒体/ZIP/Ubuntu tar不覆盖；禁止\`git reset --hard\`、\`git clean\`、\`docker system prune\`、\`down -v\`、擅清旧目录。未来源码修改需最新main隔离分支→独立Reviewer→经授权合并。日志/原片不传main。
+- 技术测试优先Codex隔离浏览器，不附着Owner私人Edge；Reviewer明确标注自己独立验证与Codex执行端报告的区别。Owner只在内容审美/法律权利/发布等关键判断介入，不再承受技术验收轮次。
 
-**一句话交接：CWS已完成本机Docker素材发现/下载/技术QA可用性验证，且正式Compose启停工具已随PR #131合并main、镜头动作/权利未通过、正式成片仍HOLD。**
+## 七、有效文档读取清单
+
+1. **[CURRENT_STATE](CURRENT_STATE.md)**：唯一最新项目状态、规划和最新Owner偏好。
+2. **[CWS AGENTS](../AGENTS.md)**：角色/守护边界/运行要求。
+3. **[3+1正式素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)**与**[视觉锁](../visual/retro-mac-v1.2/docs/STYLE_LOCK.md)**：真实素材、有限动效和窗口规范。
+4. **[MEDIA架构/R1–R5旧结果](MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)**及**[已合并统一CLI](../media-pipeline/README.md)**：工具已足够，不重复执行PR#129/#131或G2–G4。
+5. **[2026-10-12历史完整科学/脚本/MP4证据](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)**、**[2026-10-15 R6L/R7L已完成试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)**、**[正式制片四轮泳道](P4_MAINLINE_COLLAB_SWIMLANE_4_ROUNDS_2026-10-11.md)**：历史事实保留，但旧“下一步必须搜科研实录/做R3”不再代表授权。
+
+**向Owner交接的一句话**：现有素材工具已正式合并且足够，普通爆米花视频能支持相关画面；接下来应按“画面相关、讲述真实”的原则直接做好第一条内容的脚本与镜头设计，而不是继续搞精确视频识别或再搜一轮；正式Gate暂维持，等待Owner决定下一项执行。
