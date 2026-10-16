@@ -1,98 +1,81 @@
-# Karakeep Local · Reviewer Handoff
+# Karakeep Local · 唯一 Reviewer Handoff（项目正式 CLOSE）
 
 > LAST_REVIEW=2026-10-16
-> PROJECT_STATUS=`CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`（原安装 PASS/Close 保持有效）
+> PROJECT_STATUS=`CLOSED_PROJECT_RUNTIME_RETAINED`
+> CLOSE_SCOPE=`INSTALLATION_ACCEPTED; DOCUMENTATION_ARCHIVED; KNOWN_ASSET_MAP_RECORDED`
 > LAST_GATE_ID=`KARAKEEP-WIN-G3B-SASS-WORKTREE-READONLY-20261016`
-> LAST_GATE_STATUS=`PASS`（限 SaSS 只读资产盘点，含已披露的 .git 浅层数量查询异常；无删除权限）
-> HISTORICAL_G3A_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`
+> LAST_GATE_STATUS=`PASS_SCOPED_READONLY_INVENTORY`（Reviewer 已接受限定范围 G3B 的只读盘点）
 > HISTORICAL_G2B_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`
-> CURRENT_GATE_ID=`NONE_INVENTORY_REVIEW_COMPLETE`
-> CURRENT_GATE_STATUS=`STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`
-> LOCAL_ASSET_STATUS=`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN`
-> LOCAL_ASSET_INVENTORY=`LOCAL_ASSET_INVENTORY.md`
-> ARCHIVE_CANDIDATES=`NONE` / DELETE_ALLOWLIST=`EMPTY`
-> CANONICAL_GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7 / blob `3917c88a7f36df7a53758b3879a92703d659ef9d`
-> DOCUMENT_HOME=`https://github.com/entropy-student/project/tree/main/karakeep-local`
-> `README.md` 为索引，**本 Handoff 为唯一当前状态权威**；`DECISION_LOG.md` 为决策及本轮 Reviewer 对中止报告的整理；`EXECUTION_EVIDENCE.md` 仍只包含历次 Executor 已成功提交的执行证据。
+> HISTORICAL_G3A_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EXECUTOR_EVIDENCE_MISSING`
+> CURRENT_GATE_ID=`NONE`
+> ACTIVE_EXECUTOR_TASK=`NONE` / AUTO_FOLLOWUP=`NONE`
+> DELETE_ALLOWLIST=`EMPTY` / LOCAL_DECOMMISSION=`NOT_AUTHORIZED`
+> OWNER_ACTION_REQUIRED=`NONE`
+> GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7（已确认的 Governance blob `3917c88a7f36df7a53758b3879a92703d659ef9d`）
+> DOCUMENT_HOME=https://github.com/entropy-student/project/tree/main/karakeep-local
+> DAILY_ENTRY=`README.md`
+> 决策史在 `DECISION_LOG.md`；已完成的实际本机执行证据在 append-only `EXECUTION_EVIDENCE.md`。本 Handoff 只表述当前结项事实和需要长期保留的边界；不重写历史 Gate。
 
 ## PROJECT_GOAL
-Owner Windows 11 实体电脑上保留正常使用的 Karakeep（原本机安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`）。为避免清理电脑时误删该项目的分散资料，完成本机配置、Docker 数据卷和用户指出的 `SaSS` 工作区的**限定范围只读资产清单**，以 GitHub `karakeep-local/` 为唯一项目文档入口。**本轮 Reviewer 已判 G3B PASS（只读盘点），但没有获得任何删除/移动/迁移/备份授权，也没有识别出安全归档候选。** Windows/Docker 真实收藏数据仍只留在 Owner 电脑上，不在 GitHub。旧 G2B 浏览器 Canary 与 G3A 未完成历史保持原样，不因 G3B PASS 被补认为 PASS。
+Owner 已决定**整体关闭 Karakeep Local 的安装、已知资产位置整理和文档归档的项目管理任务**。保持 Owner Windows 11 本机 Karakeep 配置、服务、账号、收藏和两份 Docker named volumes **原位可继续按需使用**。该 CLOSE **不是应用退役、停止、卸载或真实数据删除**；也不代表未执行的收藏业务 Canary、备份恢复、重启持久性等验收自动 PASS。
 
 ## PROJECT_STAGE
-- **G0–G1I 历史**：Owner Windows Docker Desktop 原配置、受保护 Compose/.env、三官方镜像及两个命名卷就绪；历史下载/Chrome Host 探针问题已解决或边界已接受，不重新执行。
-- **G1J 技术安装 PASS；原实施正式 CLOSED**：Web 登录页和 Meili health HTTP 200、Web→Chrome CDP 成功、Worker 浏览器连接路径无失败/重试/断连、Web 仅回环 `127.0.0.1:3000`，容器当时无 OOM/restart；技术安装证据已由前 Reviewer 验收。保留运行，不代表卸载授权。
-- **G2A PASS_SCOPED（OWNER_REPORTED）**：Owner 成功登录网页并找到 `Interface Language`；是否真正保存中文仍未验证，非现阶段必要动作。
-- **G2B R2 RETURN**：此前 Computer Use 无法确认 Windows 浏览器当前 URL，安全停止；未执行单条收藏/抓取/搜索/预览 Canary、未提交 Executor G2B Evidence。该 RETURN 不代表 Karakeep 故障，不重启/重试。
-- **G3A RETURN**：从 Owner 转交本机 Executor 报告得知 Compose/ACL/三个容器、两个卷、Docker Desktop WSL2 磁盘目录的只读核查已完成，但 `SaSS` 尚未核查；Computer Use 又因 URL 目标无法确认中止，G3A Executor Evidence 未提交。只将事实当 `OWNER_REPORTED`，保留 RETURN。
-- **G3B `PASS`（Reviewer 2026-10-16 审核）**：Owner Windows 原生 PowerShell 对精确 `%USERPROFILE%\Documents\ChatGPT\SaSS` 的只读元数据/Git/目标容器 mounts 检查已经提交脱敏 `LOCAL_ASSET_INVENTORY.md` 与 append-only `EXECUTION_EVIDENCE.md`。Reviewer 直接核实了两次 GitHub 提交、旧 Evidence 完整前缀、文件内容与状态边界，确定本 Gate 的**只读资产盘点 PASS**。未授权实际归档/删除。
-- **异常已披露**：G3B 额外只读查询 `.git` 直接子项数量，无名称/正文输出，未改动文件；比最窄预期多进入一层 metadata，但对结论无实质影响。仅作为 Scope Note 接受，未来不能照此扩大其它目录扫描。
-- **当前状态**：`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN` / `NO_ARCHIVE_CANDIDATES` / `STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`。没有任何需要自动启动的下一 Gate。
+- `G0–G1I`：历史安装准备已收口，原配置、密钥、镜像和 named volumes 已建立。
+- `G1J=PASS`：Reviewer 接受的 Karakeep 技术安装检查；当轮 Web sign-in HTTP 200、Meili health 200、Web→Chrome CDP 只读握手成功，仅 loopback 3000 主机发布，三容器无重启/OOM。原安装项目 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 已正式完成并保留。
+- `G2A=PASS_SCOPED(OWNER_REPORTED)`：Owner 成功登录且找到 `Interface Language` 设置入口；最终保存简体中文 `UNVERIFIED`。
+- `G2B R2=RETURN`：浏览器 Computer Use URL 身份不明触发安全中止；一条公开测试收藏/抓取/搜索/预览 Canary `NOT_RUN`，未提交对应 Executor Evidence。
+- `G3A=RETURN`：配置、卷和 Docker Desktop 只读结果来自 Owner 转交 Executor 报告（非该轮正式 G3A Evidence），未完成候选工作区盘点；工具安全停止，无 G3A Evidence。
+- `G3B=PASS`（仅本机 SaSS 只读盘点）：`LOCAL_ASSET_INVENTORY.md` 与 G3B `EXECUTION_EVIDENCE.md` 完整提交，历史 Evidence 前缀保持不变；Reviewer 核实后接受范围内元数据结果。仓库其他引用和唯一 Git history `UNKNOWN`，`SaSS` 保留。一次多查 `.git` 直接子项**数量**的只读范围偏差已在 `DECISION_LOG.md` 披露和接受；不构成未来下探或删除授权。
+- `2026-10-16 OWNER FINAL CLOSE`：Owner 再次明确要求**确定信息整理到 GitHub `main` 并项目整体 Close**。日常 README 已整合，历史技术档案原目录留存，`ACTIVE_GATE=NONE`；正式记录见 `CLOSEOUT_REPORT.md` 第 10 节和 `DECISION_LOG.md` 的 `D-20261016-FINAL-PROJECT-CLOSE`。
 
 ## SYSTEM_MAP
-- **Target & channel**：Owner 实体 Windows 11 / 本机原生 PowerShell Codex。上次 G1J 的 Windows PowerShell 7.6.5、Docker Desktop 4.95.0 Personal / Linux Engine 29.7.2、Compose 5.4.0，context `desktop-linux`。云端 Reviewer 无法实时读回 Owner 本机，G2B R2 新资料皆来自 Owner 转交 Executor 报告。
-- **应用**：Compose project `karakeep-local`，service `web`、`chrome`、`meilisearch`。仅 Web 发布到 `127.0.0.1:3000:3000`；Chrome 9222 与 Meili 7700 无主机端口。网页入口 `http://localhost:3000`，**G2B R2 期间没有新 HTTP 请求，所以当轮实时网页登录 `NOT_RECHECKED`**。
-- **本机保护性配置**：`%USERPROFILE%\KarakeepLocal` 即 PowerShell `$env:USERPROFILE\KarakeepLocal`；`docker-compose.yml` SHA256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`（G1J accepted baseline，本轮 Executor 报告再次匹配）；同目录 `.env` 四键 `KARAKEEP_VERSION/NEXTAUTH_SECRET/MEILI_MASTER_KEY/NEXTAUTH_URL`，保护性 ACL 本轮报告 PASS。密钥值/哈希/账户密码/Token 不读出、不传 Chat/GitHub、不轮换。Executor 报告**顶层只有这两文件**，因此无已证明可清理的临时文件。
-- **用户真实持久数据**：`karakeep-local_data` → Web `/data`，Executor 报告 Docker Linux mountpoint `/var/lib/docker/volumes/karakeep-local_data/_data`；`karakeep-local_meilisearch` → Meili `/meili_data`，Linux mountpoint `/var/lib/docker/volumes/karakeep-local_meilisearch/_data`。G1J 早已有命名卷名/挂载来源证据，本轮增加**更精确的 Linux 内部路径（OWNER_REPORTED）**，不是 Windows 可直接编辑的普通文件夹。Owner 已注册账户，**两卷必须作为不可删除的真实资料**。
-- **Windows Docker Desktop 磁盘**：Executor 称现有 UI 使用 **WSL2**，磁盘位置**目录**为 `%LOCALAPPDATA%\Docker\wsl`；未显示 VHDX 文件名和完整文件路径，故 `WINDOWS_VHDX_EXACT_PATH=UNVERIFIED`。不得把常见默认 `docker_data.vhdx` 文件名猜为此机事实。默认继续使用 Docker named volumes，**不转 Windows bind mount、不修改 Disk image location、不打开 VHDX**。
-- **三官方镜像冻结**：
-  - Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`
-  - Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`
-  - Meili `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db` v1.41.0
-  - 官方原 Compose `karakeep-app/karakeep` main `docker/docker-compose.yml` blob `865bb147cef972926d5dc32e50645876fd110555`，数据挂载 Web `data:/data`、Meili `meilisearch:/meili_data`；本机 Compose 冻结仅 Web 改 loopback 发布方式。
-- **其他 Docker/系统**：G2B preflight Executor 报告三目标容器 running、Web healthy、restart 0/OOM false、仅 Web loopback、非目标 Docker **0 running**。没有修改其他 WordPress/MariaDB/Compose 项目、系统代理、Docker Desktop/Daemon、Clash 或 Windows。由于没有正式 G2B Evidence，不声称本轮健康验证达到 Reviewer formal PASS。
-- **使用方法**：Docker Desktop Engine 已启动时访问 `http://localhost:3000`。如果未来目标容器停掉，在 Owner PowerShell 手动按需：
+- **Owner 真机/执行边界**：实体 Windows 11 / 原生 Windows PowerShell 7.6.5（历史 G3B 读回），Docker Desktop Linux/WSL2。历史 G1J Docker Desktop 4.95.0 Personal、Engine 29.7.2、Compose 5.4.0、context `desktop-linux`；**不声称这些版本或运行时刻被本轮重新验证**。本云端 Reviewer 无 Owner Windows 实时文件/容器访问。
+- **Web 使用入口**：同一台电脑 `http://localhost:3000`；Compose project `karakeep-local`，服务 `web`、`chrome`、`meilisearch`。G1J 验收仅 Web 主机发布 `127.0.0.1:3000:3000`，Chrome CDP 9222 和 Meili 7700 无主机公开发布。最近 G3A/G3B 的容器状态/挂载读回以实际 Evidence/Owner 转交报告为准，**本次文档 Close 没有新的 HTTP 探针**。
+- **本机配置（必须保留）**：`%USERPROFILE%\KarakeepLocal`，顶层已报告仅 `docker-compose.yml`、受保护 `.env`。Compose G1J accepted SHA256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；原 .env 四键 `KARAKEEP_VERSION`、`NEXTAUTH_SECRET`、`MEILI_MASTER_KEY`、`NEXTAUTH_URL`，**绝不读取、输出、提交、哈希或移动 Secret**。此文件夹**不是 Markdown 文档归档目录**。
+- **真实持久数据（必须保留）**：Web 挂载 Docker named volume `karakeep-local_data` 到容器 `/data`（账号/收藏/抓取资产）；Meili 挂载 `karakeep-local_meilisearch` 到 `/meili_data`（搜索相关数据）。历史 G3A Executor 报告其 Docker Linux mountpoints 为 `/var/lib/docker/volumes/karakeep-local_data/_data`、`/var/lib/docker/volumes/karakeep-local_meilisearch/_data`，**不是可在 Windows 资源管理器中直接清理的目录**。
+- **Docker Desktop 后端（共享、必须保留）**：Owner 转交 Executor 报告 Windows WSL2 数据磁盘目录为 `%LOCALAPPDATA%\Docker\wsl`；确切 `.vhdx` 文件名与绝对路径 `UNVERIFIED`；可能与其它项目共享。禁止手动编辑/删除/迁移虚拟磁盘。
+- **冻结的三官方镜像（历史 G1J accepted）**：Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`；Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`；Meili `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`。不自动 pull/升级。
+- **GitHub 项目 Markdown 文档（唯一确认的集中归档）**：`entropy-student/project` `main/karakeep-local/`；普通用户只看 `README.md`，技术详细/历史看 `REVIEWER_HANDOFF.md`、`LOCAL_ASSET_INVENTORY.md`、`DECISION_LOG.md`、`CLOSEOUT_REPORT.md`、`EXECUTION_EVIDENCE.md`、原 `LOCAL_ASSET_ARCHIVE_PLAN.md` 和历史 Gate。**没有证据证明另有本机统一 Markdown 文档归档目录；GitHub 不包含真实账户/Secret/数据库或备份**。
+- **非本项目的目录**：历史 `SaSS` 有界盘点报告结果保留在 `LOCAL_ASSET_INVENTORY.md`；Owner 最近明确要求不再触碰该根目录。**不查、不动、不删**，不能依据普通工作树为空而宣布其安全删除。
+
+## CURRENT_ACCEPTED_STATE
+- **整体项目管理正式 `CLOSED_PROJECT_RUNTIME_RETAINED`**；文档已集中 GitHub main，日常使用入口在 README，现有 Windows/Docker 运行数据原位保留。
+- `LOCAL_ASSET_INVENTORY.md` 为**已知范围**资产地图，`PROTECTED_ACTIVE` 是配置和两 named volumes，Docker WSL2 属共享/未知，历史 SaSS 属 `UNKNOWN_OR_SHARED`。它**不是**整台电脑文件全盘地图。
+- 当前已证可以安全删除的项目资产为 **0**，`DELETE_ALLOWLIST=EMPTY`；本轮 Reviewer 仅 GitHub 文档更新，Windows/Docker 写入、删除、移动、迁移、备份/恢复、服务重启**均没有执行**。
+- 旧 G2B/G3A 的 `RETURN`、原 G1J/G3B 限定范围 `PASS` 各自保持；未测试过的功能不冒充已经通过。
+- `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；用户明确不安排独立备份、恢复演练、数据迁移、Windows/Docker 重启测试和长期监控，存在磁盘损坏导致独有资料永久丢失的风险，不改变 Owner 的本轮项目管理关闭决定。
+
+## CURRENT_GATE
+`GATE_ID=NONE` / `STATUS=CLOSED_PROJECT_RUNTIME_RETAINED`。没有正在授权的 Executor 任务，无自动重试、无人值守巡检、后续清理 Gate；历史 Gate 只是档案。将来出现**新的明确 Owner 需求**，由新的 Reviewer 判断是否需要有界新 Gate，不能把 Close 当作下一轮写入、删除或继续 Computer Use 的授权。
+
+## CRITICAL_CONSTRAINTS
+不操作任何其他工作区/根目录，不允许任何项目相关数据删除、迁移、备份、恢复、容器重新部署/系统配置变更；不执行 `docker compose down -v`、`docker system prune`、Docker Desktop Reset 或 VHDX 文件清理。保留原 `KarakeepLocal` 的 Compose/.env 和两个 named volumes；不得将其强行搬到一个新 Windows 文件夹，不上传秘密、数据库或真实收藏到 GitHub。真实的删除/卸载/退役需以后 Owner **独立明确授权**和事前数据/引用/恢复评估。不能续跑 G2B/G3A 的浏览器安全停止任务。
+
+## DEFAULT_EXECUTION_CHANNEL
+- **日常访问**：Owner 本机浏览器打开 `http://localhost:3000`。
+- **服务若未运行，按需手动启动**（Owner 自主决定；不在本轮实际执行）：
   ```powershell
   Set-Location (Join-Path $env:USERPROFILE 'KarakeepLocal')
   docker compose -p karakeep-local up -d --pull never
   if ($LASTEXITCODE -eq 0) { Start-Process 'http://localhost:3000' }
   ```
-  该命令不是此轮新执行动作；**不在本轮为验证而重启电脑、Docker Desktop 或容器**。失败时就具体报错另开 Owner 授权。
-- **文档唯一集中目录**：`https://github.com/entropy-student/project/tree/main/karakeep-local`，`README.md` 索引、当前 `REVIEWER_HANDOFF.md`、`DECISION_LOG.md`、历史 `CLOSEOUT_REPORT.md`、历史 append-only `EXECUTION_EVIDENCE.md`。所有文档均脱敏，不上传账号、原数据库、密钥、卷内容/备份。
-- **备份风险**：Owner 明确 `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，电脑/磁盘/Docker 虚拟磁盘损坏可造成永久数据丢失；不把用户数据“留本机”当成恢复证据。
-
-## CURRENT_ACCEPTED_STATE
-**安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` / G1J PASS，Karakeep 继续留在本机使用**。本次 G3B 为 `PASS`，仅表示用户明确提出的 `SaSS` 目录被有界盘点且资产清单/Evidence 在 GitHub main 完整持久化；Reviewer 已检查 GitHub，而非亲自连接 Owner Windows 复查，因此本机 `DIRECT_READBACK` 是经审核的 Executor Evidence，不是 Reviewer 亲自的控制面读回。
-
-**已验收资产情况**：
-- `%USERPROFILE%\KarakeepLocal`：当前 Karakeep Compose + 受保护 `.env`，`PROTECTED_ACTIVE`，原位保留。
-- `karakeep-local_data`：Web `/data` 账户/收藏/抓取等真实持久资料；`karakeep-local_meilisearch`：Meili `/meili_data` 索引；均 `PROTECTED_ACTIVE`，**不可删/移/迁**。
-- Docker Desktop WSL2 后端磁盘目录 `%LOCALAPPDATA%\Docker\wsl`，属于共享/未知资源；文件级 VHDX 具体路径 `UNVERIFIED`，禁止动其任何文件。
-- `%USERPROFILE%\Documents\ChatGPT\SaSS`：本轮 G3B 读回显示 Git root 就是该目录，普通工作树文件/子目录及 tracked 路径均为 0，唯一顶层条目为 `.git`；staged/modified/untracked/deleted/renamed 均为 0。无 origin/upstream，Git history/objects 是否保存唯一资料 `UNVERIFIED`；没有三个 Karakeep 容器对 SaSS 的直接 bind mount，**其它项目/工具进程的引用仍 `UNKNOWN`**。分类 `UNKNOWN_OR_SHARED`，**不得删除或归档**。
-- GitHub `main:karakeep-local/`：单一管理文档目录，`DOCUMENTED_REMOTE`，不含真实收藏、数据库、Secret 或备份恢复文件。
-- 其它旧工作区与整个 Windows 硬盘没有获得全面扫描证据；不可据本次发现声称“整台电脑都已整理完毕”。
-
-**已直接审查的证据**：inventory blob `5189a45a15b527b5183243c95e82ce3515bbbb10`，commit `720813d9c073ceeb3673c367be0dc9838518efe4`；Evidence blob `4712a9d09ce94ed612cc6e83e512934064874efa`，commit `0f041fbe9c7321a53e1cb32ad1afdd89e24be226`。Reviewer 已验证原历史 Evidence blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 是现有文件的**完整精确前缀**。.git 直接子项数量的多一步只读检查，已记入 Decision 的范围异常，不触发重跑或扩大扫描。
-
-## CURRENT_GATE
-**GATE_ID**：`NONE`（已完成 G3B，`PASS`）
-**CURRENT_OPERATIONAL_STATUS**：`INVENTORY_COMPLETED_WITH_RETAINED_UNKNOWN`。
-**MAX_ENDPOINT_THIS_ROUND**：Reviewer 仅审查 GitHub 两份 G3B 已提交证据及历史依赖，更新 `DECISION_LOG.md`、`REVIEWER_HANDOFF.md`、`README.md` 与归档计划状态；**不触碰 Owner 本机**，不执行新 Git/GitHub worktree 盘点，也不创建文件删除/归档 Gate。
-**MANDATORY_REVIEW_STOP**：`STOP_WAIT_OWNER_FOR_ANY_FURTHER_CHANGE`；无待下发 Codex 指令。
-**NEXT_SCOPE_BOUNDARY**：若 Owner 将来明确要求移动/归档/删除 `SaSS`，先单独取得 Owner 后果授权，要求证明实际项目归属、Git objects/history 是否独有、无未保存资料、其它引用、确切回滚/重建方案与对应证据；任何一个 UNKNOWN 仍失败闭合。禁止把“空工作树”误用为“无重要数据”。
-
-
-## CRITICAL_CONSTRAINTS
-Owner 没有批准对本机或 Docker 的任何移动、删除、重建、备份/恢复或迁移，且无经验证的异故障域备份 `BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED`。配置/`.env`、两 named volumes、Docker WSL2、`SaSS` 工作区以及其它未归属资产全部**原地保留**。禁止 `docker system prune`、`down -v`、共享后端清理、浏览器/Computer Use 继续动作、Windows/Docker 重启测试或长期监控。任何真正的归档/清理是新的明确 Owner 许可与独立 Gate，不自动推进。Github 管理文档不可含 Secret 或真实用户收藏数据。
-
-## DEFAULT_EXECUTION_CHANNEL
-正常只使用 http://localhost:3000；没有新的本机 Codex 任务。未来若 Owner 单独授权只读/归档或清理工作，再由 Reviewer 发布**新的**有界 Gate，默认本机原生 Windows PowerShell Codex，不依赖此前故障的 Computer Use。
+  先启动 Docker Desktop 并等待 Engine 就绪，若有异常则另开具体故障排查请求。
+- **以后交给本机 Codex**：提供 GitHub 最新 `main/karakeep-local/README.md`，如需技术状态再读本 `REVIEWER_HANDOFF.md`，明确具体问题；默认最小只读，不执行历史 Gate 或无关项目操作。完整用户话术已整合到 README。
 
 ## CURRENT_ROLLBACK_STATUS
-G3B 本机无新增文件/运行资源写入，删除、移动、备份或迁移计数均为 0；无需本机回滚。GitHub 仅新增 inventory 和 append-only Evidence，Reviewer 完成必要的文档更新。用户拒绝备份 `BACKUP_NOT_REQUESTED/RESTORE_UNVERIFIED`，不能宣称可恢复。
+结项文档操作只发生在 GitHub main，没有对本机运行态修改，无本机回滚需要；未建立可验证的异机备份或数据恢复路径（`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`）。**Docker 卷原位存在不等于灾难恢复备份**。未来若出现真实运行或数据异常，要首先保护剩余数据，另行授权处理。
 
 ## UNRESOLVED
-`SaSS` 的 Git 历史/对象是否独有、远端保存状态、其它开发项目或进程引用 `UNKNOWN/UNVERIFIED`；Docker WSL2 文件级 VHDX 路径未确认；原 G2B 的网页 Canary、语言设置是否持久化尚未验收。以上是**明确保留的不确定项**，不是自动新开 Gate 的理由。当前资产清单不覆盖全部电脑。
+真实收藏 E2E Canary `NOT_RUN`；最终界面语言保存情况 `UNVERIFIED`；Windows Docker VHDX 文件完整路径 `UNVERIFIED`；长期重启稳定性与真实数据异机恢复 `NOT_TESTED/NOT_REQUESTED`；历史 SaSS 独有 Git history 及其他项目引用 `UNKNOWN`。**这些是项目正式 CLOSE 时明确列出的排除项**，不要求在本次重新验收或自动开 Gate。
 
 ## NEXT_STEP
-`NONE_WAIT_OWNER`。G3B 限定只读盘点正式 PASS，`LOCAL_ASSET_INVENTORY.md` 现为可持续使用的防误删地图；Owner 如仅想整理视觉上的文件结构，可保留 SaSS 和 Docker 原位置，不必再运行 Codex。未来若 Owner 明确要求删除/归档 `SaSS`，需要先单独核查独有 Git 历史、其它引用及恢复边界，取得精确路径/后果授权；不能直接把 SaSS 判可删。
+`NONE`。项目整体已经正式关闭，正常继续使用软件。只有 Owner 将来主动提出新功能、故障修复、备份恢复或真正卸载/清理需求时，才考虑重新开启具体范围的工作。
 
 ## OWNER_ACTION_REQUIRED
-`NONE`。无需新的提示词、密码、Secret、备份位置或手动清理操作。**不要删除 SaSS、KarakeepLocal 或 Docker 卷/WSL2 目录。**
+`NONE`。不需要再运行 Codex、提供密码或清理电脑文件。日常操作见 `README.md`。
 
 ## EVIDENCE_POINTERS
-- **G3B 已审查的 Executor GitHub 证据**：`main:karakeep-local/LOCAL_ASSET_INVENTORY.md` blob `5189a45a15b527b5183243c95e82ce3515bbbb10`，commit `720813d9c073ceeb3673c367be0dc9838518efe4`；`main:karakeep-local/EXECUTION_EVIDENCE.md` blob `4712a9d09ce94ed612cc6e83e512934064874efa`，commit `0f041fbe9c7321a53e1cb32ad1afdd89e24be226`，旧前缀 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 不变。
-- **Reviewer G3B 结论**：`main:karakeep-local/DECISION_LOG.md`，节 `D-20261016-G3B-REVIEW-PASS-SCOPED`，包含 .git 浅层计数的已接受范围异常及 no-delete 决定；`G3B_SASS_WORKTREE_READONLY_GATE.md` 为不可重用的历史执行边界。
-- **安装与 G2A 原 Close**：`CLOSEOUT_REPORT.md`；`G1J` 官方完成证据及历史 return 全保留。
-- **G3A 中止**：`DECISION_LOG.md` 节 `D-20261016-G3A-RETURN-BROWSER`（`OWNER_REPORTED`），无 G3A Executor GitHub Evidence。
-- **G2B 中止**：`DECISION_LOG.md` 节 `D-20261016-G2B-R2-STOP`；没做浏览器 Canary。
-- **管理文档主页**：`README.md`；`LOCAL_ASSET_ARCHIVE_PLAN.md` 为已完成“先盘点”的计划存档；Governance `entropy-student/spike.skill:vps-project-governance/VNEXT.md` v0.2.7。
+- **最新整体关闭的明确 Owner 决定**：2026-10-16 Owner 提出“将确定的信息整理到项目文档当中，GitHub 仓库的 main 当中，本项目正式 close”；记录在 `DECISION_LOG.md#D-20261016-FINAL-PROJECT-CLOSE` 与 `CLOSEOUT_REPORT.md` 第 10 节。
+- **主文档归档**：`README.md`（唯一日常入口）、`LOCAL_ASSET_INVENTORY.md`（资产地图）、本 Handoff（项目当前技术状态），都在 GitHub main `karakeep-local/`。
+- **G3B 只读 PASS 已被 Reviewer 独立核对**：`LOCAL_ASSET_INVENTORY.md` blob `5189a45a15b527b5183243c95e82ce3515bbbb10`（commit `720813d9c073ceeb3673c367be0dc9838518efe4`）；`EXECUTION_EVIDENCE.md` blob `4712a9d09ce94ed612cc6e83e512934064874efa`（commit `0f041fbe9c7321a53e1cb32ad1afdd89e24be226`）；旧原始证据前缀 G1J blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4` 保留，G3B 的轻微只读范围异常在 `DECISION_LOG.md`。
+- **安装历史 CLOSE**：`CLOSEOUT_REPORT.md` 原章节 1–9、`EXECUTION_EVIDENCE.md` 历史 G1J；G2B/G3A 的中止及缺失 Evidence 在 `DECISION_LOG.md`，没有伪造。
