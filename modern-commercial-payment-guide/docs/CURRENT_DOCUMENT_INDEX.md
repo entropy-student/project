@@ -8,6 +8,7 @@
 | [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md) | Owner冻结完整V6问题框架快照 | **KEEP / FROZEN** |
 | [P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md](P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md) | P1七章结构覆盖已通过的审计证据；虽为历史成果但具备当前必要的验收追溯价值 | **KEEP / ACCEPTED EVIDENCE** |
 | [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | **Owner已正式通过的第一部分①正文**：外部Agent稿+事实修正；后续引用此版，不再引用旧PR教学候选 | **KEEP / OWNER FINAL PASS** |
+| [P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md](P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md) | **①深度广度拓展完整候选**：原稿全文保留，八项新增/六项官方来源；需独立Reviewer评审与Owner裁决；不能冒充现行正式稿 | **CANDIDATE / REVIEW PENDING** |
 | [P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md](P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md) | 知识点按七章分配、明确首次解释/跨章引用，避免冗余和独立百科 | **KEEP / P3 REVIEWER PLAN PASS** |
 | [DECISION_LOG.md](../DECISION_LOG.md) | Owner最终接受、写作三Skill退役、历史文件恢复锚点 | **KEEP** |
 | [EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md) | 本轮清理与后续规划的主干执行证据；旧PR分支Evidence不是本文件 | **KEEP / APPEND ONLY** |
@@ -21,4 +22,6 @@
 
 ## 下一步
 
-**②《收款开通与接入》写作交接**：按Handoff的当前Gate，先由Reviewer提供**实际含完整参考资料的ZIP + 单独提示词**交Owner，由Owner发给独立外部Agent。新Agent默认只输出单个UTF-8 Markdown文件，先Review，再决定是否接受到main；无需给它GitHub权限、不启动HTML。
+**①已完成拓展候选写作**：[阅读全文](P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md)，后续进行独立事实/数学/读者价值Review，未正式替换已通过稿。
+
+**②《收款开通与接入》写作交接**：按Handoff的当前Gate，完整资料ZIP与独立提示词已交Owner，Owner报告提示词已经下发；目前等待外部Agent完整MD。新Agent默认只输出单个UTF-8 Markdown文件，先Review，再决定是否接受到main；无需给它GitHub权限、不启动HTML。
