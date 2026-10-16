@@ -1,0 +1,73 @@
+# Karakeep Local — 实施项目结项报告
+
+> REVIEWER_CLOSEOUT_DATE: 2026-10-16
+> CLOSEOUT_ID: KARAKEEP-LOCAL-IMPLEMENTATION-CLOSEOUT-20261016
+> CLOSEOUT_DECISION: **CLOSED_IMPLEMENTATION / RUNTIME_RETAINED**
+> SCOPE: 仅“Windows 本机官方 Karakeep 安装、首次访问与中文界面入口确认”实施工作
+> NOT: 服务停用、软件卸载、资料删除、异机灾难恢复已通过，或所有收藏功能已通过
+> Governance: `entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
+> Canonical project status: `karakeep-local/REVIEWER_HANDOFF.md`; historical proof: `karakeep-local/EXECUTION_EVIDENCE.md`（只追加）
+
+## 1. 本轮正式结论和边界
+- **Owner 明确请求正式 Close**，Reviewer 根据已接受的 G1J 技术部署验收、其后 Owner 在真实本机打开 Karakeep 并进入登录后的页面，以及 Owner 已找到 `Interface Language` 设置的反馈，**关闭 Karakeep 本机安装与首次进入 UI 的实施工作**。
+- `G1J=PASS` 是 Reviewer 已正式接受的技术部署 Gate：三个官方容器运行、登录页正常、搜索服务 health 为 200、来自 Web 容器的 Chrome CDP 握手成功、Web 只对 loopback 暴露、未观察 OOM/重启或非目标容器变化。
+- `G2A=PASS_SCOPED`：`OWNER_REPORTED` 及当前对话截图显示 Owner 在 `http://localhost:3000` 进入认证后的 Karakeep 页面（头像和功能页可见）；Owner 表示已找到界面语言设置。**不能推断界面最终已经切换至中文**：是否已选中 Simplified Chinese、是否持久保存为 `UNVERIFIED`。首次注册/登录的原始密码、账户邮箱等不记录。
+- `CLOSEOUT` **只关闭实施任务和后续自动推进**；保持已经运行的 Docker Compose 项目与配置/密钥/卷原样，Owner 今后仍可使用 Karakeep。后续数据备份、真实收藏抓取、重启持久性需要另开明确的新维护/功能 Gate，不能变为隐含 PASS。
+- 无 Docker/Windows 本机写入、无清理、无镜像拉取、无账号/密码读取。Reviewer 仅写 GitHub 项目级文档。
+
+## 2. 实施成果、运行状态与资料清单
+| 对象 | 结项状态 | 证据边界 |
+|---|---|---|
+| Windows Docker Desktop + Compose | 安装环境通过 | G1J Executor 本机直接读回 |
+| Karakeep Web / Chrome / Meilisearch | 三个官方镜像身份已验证；G1J 保持三个容器运行 | 当前无法由云端实时读取 Owner Windows |
+| Web 页面 | `http://localhost:3000`，唯一主机映射 `127.0.0.1:3000:3000` | G1J HTTP 验证 + Owner 后续认证界面截图 |
+| Meilisearch | 内部 `/health` HTTP 200，不发布主机端口 | G1J |
+| Chrome CDP | Web 容器内经正常 IP 端点握手成功，不发布主机端口 | G1J；Worker 独立 success log 缺失，但行为交叉验证满足技术 Gate |
+| 账户与界面 | Owner 已登录并找到 `Interface Language` 设置 | OWNER_REPORTED；语言最终切换结果未验证 |
+| 既有 Docker 项目 | G1J 未作变更；其他 20 个容器当时保持原停止状态 | 不代表其他项目业务健康 |
+| 真实用户收藏和可靠恢复 | **DEFERRED_NOT_PASS** | 未完成抓取 E2E、异机数据+Secret 恢复与重启持久性验收 |
+
+**保留的主机和运行资源（不得在结项时删除）：**
+- Windows Owner 配置目录 `$env:USERPROFILE\KarakeepLocal`，其中 `docker-compose.yml` SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；`.env` 内含 `NEXTAUTH_SECRET`、`MEILI_MASTER_KEY` 等四个原有键，密钥由 Owner 电脑本地权限保护、未提交到 GitHub。实际值和 hash 不提供。
+- Compose project `karakeep-local`；服务名 `web`、`chrome`、`meilisearch`。
+- 已持久化的两个项目命名卷：`karakeep-local_data`、`karakeep-local_meilisearch`。Owner 已可能创建登录账户，**应视卷内资料为持久资产**，不可为“项目 Close”清空。
+- 官方镜像 RepoDigests：
+  - `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`
+  - `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`
+  - `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`（`v1.41.0`）
+- 原本地发布仅 loopback，禁止在 Close 时擅自开放 0.0.0.0、其他服务端口或更改 Docker Desktop 系统代理。
+- 运行/数据状态是“最后一次 G1J 的本机直接读回 + 其后 Owner 网页访问”。不声称在未来任意时刻都持续在线。
+
+## 3. 依治理 11F 的非破坏结项核对
+| Closeout 环节 | 判定 | 处理 |
+|---|---|---|
+| Remote hygiene | PASS（本项目文档范围） | GitHub 仅保留脱敏 Handoff、Evidence、结项和决策记录；原有历史 Evidence 不改、没有提交 Secret、DB/卷内容或私密日志 |
+| Reconstructible archive barrier | **PARTIAL** | GitHub 保留已接受的配置指纹、官方 Compose 来源、镜像身份、卷与项目命名、恢复/停止路径；真实持久卷与原 Secret 只有本机，**没有可验证的离机恢复副本**，所以不能宣称灾难恢复可重建 |
+| Local decommission | **NOT_APPLICABLE / EXPLICITLY_EXCLUDED** | Owner 要关闭实施项目而**继续使用 Karakeep**；不得以 Close 名义运行 `down`、`down -v`、卸载 Docker、清理镜像/卷或删除本机配置。该运行服务明确作为结项后保留的活动资产 |
+| Final reconciliation | PASS（有界范围） | 本机安装、登录页、Owner 登录后 UI 入口与语言设置已验证到相应证据等级；没有新的 Docker/Windows 本机操作，未触碰其他项目；未完成事项明确记 `DEFERRED_NOT_PASS` |
+| Local Git/unpushed workspace inventory | UNVERIFIED / 非破坏结项无需删除 | 本轮无法读取 Owner 本机工作区，也不删除本机源码/配置；未来如要清理须重新做完整审查 |
+
+**数据保留原则**：本次没有批准任何删除或服务器停用。需要彻底卸载、清空数据卷、撤销账户或迁移设备时，另起正式 Closeout/Decommission Gate；不能把本次实施结项当成永久删除许可。
+
+## 4. 已验证的最小操作路径与恢复限制
+- 正常使用入口：`http://localhost:3000`（仅同一台 Windows 电脑；无需外网域名）。
+- 如仅 Docker Desktop 重启导致服务未自动运行，**先 read-only 检查现有容器状态**；必要时在原受保护配置目录中执行项目级 `docker compose -p karakeep-local up -d --pull never`。这属于后续本机维护，不在此次 Reviewer Close 里自动执行。
+- G1I 已验证仅项目级 `docker compose -p karakeep-local down`（不带 `-v`）会移除本项目容器和网络，保留命名卷、镜像、配置与 Secret。它是**项目停止/保留卷**的受测方法，**不是**用户数据和账户的离机灾难恢复证明。
+- 完整异机恢复需配套两命名卷的应用一致性数据备份、当前匹配的 `.env`/Secret 安全恢复、相容镜像/Compose 和实际重建+登录+检索验证。当前均 `UNVERIFIED`；不可依赖 GitHub 文档本身恢复用户私有数据。
+- 不得执行 `docker compose down -v`、`docker system prune` 或删除 `KarakeepLocal/.env` 来“清理项目”。
+
+## 5. 延后义务（均 DEFERRED_NOT_PASS）
+1. **备份/恢复**：在开始保管不可丢失的真实收藏之前，需创建并核验独立故障域的加密 Secret 恢复与应用/Meili 数据一致性备份、恢复演练；不能把本机两个命名卷视为备份。
+2. **真实书签功能**：登录后新增一条可丢弃测试 URL 的抓取、搜索、截图/预览全链路尚未验证，不能据此保证所有网站抓取成功。
+3. **界面最终语言**：Owner 反馈“找到了”语言设置；是否已实际切换成简体中文并在刷新后保持，未再次报告。
+4. **长期运维**：Docker Desktop 重启后的自恢复、长期稳定性、资源高峰（曾观测较低可用内存）尚未做持久性测试；不设自行发明的固定 RAM 门槛。
+5. **版本追溯**：运行 Web 镜像缺 OCI source revision 标签，精确源码 commit 未验证；已用镜像 RepoDigest 固定已部署身份。
+
+以上义务不使本次“安装项目”重新变成进行中，但未来作为真实收藏库正式使用时应优先处理备份恢复。用户此刻可选择只用于可丢弃的测试数据。
+
+## 6. 证据、所有权和最终决策
+- Reviewer 正式 G1J PASS 的 accepted baseline：`EXECUTION_EVIDENCE.md` commit `b801c2b629b303f730d05329c958cffca61686b3`，blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`。
+- G1I 三镜像齐全及项目级安全停止：commit `e760ea202fe2e46560dd0692218a8fe8178a8bac`，Evidence blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`。
+- Owner UI：当前对话中打开登录后 Karakeep 页面截图，以及“找到了”语言设置的 Owner 反馈；均仅作为 `OWNER_REPORTED`，不上传截图/个人账户信息到 GitHub。
+- Reviewer Close 决策理由：实现了**本机可登录、中文界面设置入口存在且所有三官方服务技术可用**的安装目标，缺口被明确界定为后续使用/恢复能力而非安装失败。因此可关闭安装实施任务并保留服务，不宣布全部运营、数据保护和真实收藏功能 PASS。
+- `OWNER_ACTION_REQUIRED=NONE`：无需再派发 Codex、不索取 Secret、不执行本机清理或重新安装。再次使用时按 Owner 意愿开始新 Gate。
