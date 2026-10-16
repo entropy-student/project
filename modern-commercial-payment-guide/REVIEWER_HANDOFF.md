@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** Owner已授权恢复V5九条冻结三级问题作正式H3标题，并使用 `blader/humanizer` v3.1.0自然中文润色。**本轮新版完整P2①已获独立Reviewer PASS**：冻结H1/H2/H3逐字同原文，7个H4/93表格行/两业务案例/S01–S15/25 URL/财务边界全部保留；五组语言改善成立。正式 [PR #132 评论](https://github.com/entropy-student/project/pull/132#issuecomment-6210283420)。**P2尚未由Owner正式冻结**，真人愿读/学会仍UNVERIFIED；PR保持Open/Draft/未合并，P3–P5 PENDING。
+**当前闸门：** Owner已指出当前V5三级问题的用语不够通俗（如①1.1“如何将……转化为收款需求”），要求先**冻结历史上确认的项目最高准则与全部写作/事实/交付约束，未来继续遵循**，并完整列出7一级/29二级/42三级现行问题供审视。P2 V5+Humanizer正文此前Reviewer内容/结构PASS仍有效，但**Owner未接受三级问题措辞、没有授权正式冻结P2**。7/29/42权威问题原文暂时保持不变；三级题目需要Owner另行决定是否授权改措辞，不能由Reviewer暗中替换。PR #132 Open/Draft/未合并；P3–P5未启动。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_V5_HUMANIZER_OWNER_FINAL_REVIEW_PENDING`（Owner批准恢复V5冻结标题及Humanizer一轮润色，新稿独立Reviewer PASS，等待Owner亲自阅读确认和是否正式冻结）。
+- **PROJECT_STAGE：** `P2_OWNER_H3_WORDING_REVIEW_PENDING`（Owner认为V5三级问题不够直白，正在通览全7/29/42；已确认历史目标/写作要求继续固定有效，当前不改任何题目或正文，不正式冻结）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
 - **CURRENT_ACCEPTED_STATE：** P1原7/29/42冻结问题未变。PR #132新完整优先候选 `docs/P2_V5_STRUCTURED_HUMANIZER_CANDIDATE.md` Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`，head `78d8ff48ec019bc051e59eb768f175f384a60a43`：正式V5三级9/9原文字面恢复、知识H2 5/5、H1 1/1、H4 7/7、表格93/93、两全业务案例、S01–S15及25 URL不变，金融假设/资格仍完整，Reviewer Gate PASS。旧知识稿 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`、human-writing完整稿 `7924e80634f1f09a5628a78458c43a90d5019fd1`、诊断 `09d59a974631756ba59d64fa2d054bbf0e06ed10`、试读工具 `5af87f86f6ed9b4035017914cc0aa840006f2dbe` 均未变；未正式冻结、未完成真人测试。
-- **CURRENT_GATE：** `MCPG-P2-V5-H3-RESTORE-AND-HUMANIZER-20261016` **REVIEWER PASS / CLOSED_FOR_EDITORIAL_REVIEW**，详情 [正式PR评论 #6210283420](https://github.com/entropy-student/project/pull/132#issuecomment-6210283420) 与 [本轮Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V5_H3_RESTORE_HUMANIZER_GATE.md)。**当前无活跃Executor Gate**；下一步是Owner阅读/冻结决定。
-- **CRITICAL_CONSTRAINTS：** 面向中国大陆经营者的大众商业支付科普/选型方法论，读者“愿意读、读得懂、掌握方法及完整参考案例”，而非按个人提供开户答案。P1已冻结7/29/42、P2①正式H1/5个H2/9个原V5 H3及7H4、93表格行、2全案例/S01–S15和全部金融适用主体/结算/退款边界未经Owner许可不得改。旧审稿保留、Evidence append-only、无需反复叠加Skill；不合并PR、不动真实资金、不进P3–P5、不宣称人类完读率。
+- **CURRENT_GATE：** `MCPG-P2-V5-H3-RESTORE-AND-HUMANIZER-20261016` 已Reviewer PASS并关闭；**本轮仅对原V4/V5题目做只读完整列举及存档Owner新反馈，无活跃Executor写入Gate**。如Owner最终允许重拟三级问题，先明确边界并由Reviewer制定新的受限Gate，不能自动重写结构。
+- **CRITICAL_CONSTRAINTS：** **历史上已确定的非标题要求正式作为持续冻结约束**：①大众科普，面向中国大陆个人开发者/独立站经营者/中小商家；②深入浅出、愿意读、读得懂、读后能解释方法；③先讲怎么做、再讲为什么，注重方法论与必要原理；④用代表性案例解释判断，不替每个人定制收款咨询；⑤知识系统完整、不可因语言润色删表/删事实/合并知识节点；⑥保留已认可human-writing及Humanizer的自然中文方向但不得将Skill当质量证明；⑦支付主体/地区/商品/金额/法律/退款/提现风险明确限定，官方资料核验；⑧最终桌面端单文件、结构清晰可视化可交互HTML；⑨Owner审核通过才可正式冻结/合并/进P3–P5。现有权威7/29/42及其顺序**保持原文以供Owner评审**，未经Owner就具体修改事项明确授权不得改；Owner已表达V5三级措辞不满意，绝不可声称这些三级题名已经最终满意或P2已正式冻结。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** 本轮只新增独立新稿 `docs/P2_V5_STRUCTURED_HUMANIZER_CANDIDATE.md` 和向Evidence追加55行；PR基线 `f04899142b2156cb2e685faff25342b6cab6ca4e`、旧知识稿/完整human-writing稿的固定Blob仍在。新稿若不被Owner接受，可单独撤回此新增候选并保留旧稿，Evidence只追加纠正不截断，绝无force/reset或真实支付状态改变。PR仍Open/Draft/未合并。
-- **UNRESOLVED：** 新V5+Humanizer全文虽已Reviewer评审PASS，**Owner对自然中文阅读感、知识深度/方法论体验尚未最终确认**，因此正式P2冻结仍PENDING。真人A是否愿意读、B是否脱稿理解方法和案例依旧UNVERIFIED；§1.1七维表提前、§2.1–2.2术语、§4.1密集费用表、§5.1案例较晚出现可能影响新手阅读，但本轮未发现因此必须返工的阻断性问题。
-- **NEXT_STEP：** Owner直接阅读新版 [P2 V5+Humanizer 完整候选](https://github.com/entropy-student/project/blob/78d8ff48ec019bc051e59eb768f175f384a60a43/modern-commercial-payment-guide/docs/P2_V5_STRUCTURED_HUMANIZER_CANDIDATE.md)，确认9个原题逐个回答是否够深入浅出、文风是否更自然、案例是否讲清通用方法。Owner明确同意才另立正式冻结/发布范围；如有具体不满再做最小定向修复。当前不再派Codex、不加Skill、不合并/进入P3。
-- **OWNER_ACTION_REQUIRED：** 阅读最终首选 [P2 V5+Humanizer稿](https://github.com/entropy-student/project/blob/78d8ff48ec019bc051e59eb768f175f384a60a43/modern-commercial-payment-guide/docs/P2_V5_STRUCTURED_HUMANIZER_CANDIDATE.md) 并说明“确认冻结”或指出具体问题/小节。**不需要现在下发新的Executor任务**；即使确认冻结，也不默认授权PR合并、P3–P5或真人试读。
-- **EVIDENCE_POINTERS：** PR #132 head `78d8ff48ec019bc051e59eb768f175f384a60a43`（Open/Draft）；新稿Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`，旧H-writing稿 `7924e80634f1f09a5628a78458c43a90d5019fd1`，知识底稿 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`；Evidence `15064d3d0ce2f56d85c040e0a72854070ad1bcea`（追加55行）；Gate Blob `513fa738a0dfbe8e63270bceec95591c807a4af1`；Humanizer v3.1.0 `SKILL.md` Blob `19fc634208e8cc6ae55d4ff287152583216fd244`；[正式Reviewer PASS #6210283420](https://github.com/entropy-student/project/pull/132#issuecomment-6210283420)。
+- **UNRESOLVED：** V5现行42条三级问题部分表达抽象，例如①1.1“如何将顾客市场、商品类型与交易模式转化为收款需求？”不利于普通商家立刻理解问题指向。需要Owner看完全目录后决定哪些三级问题要改、采用多通俗的标题。知识P2正文与V5标题的结构一致性之前已PASS，但这不等于V5标题的读者友好度被Owner接受；真人阅读欲望/知识掌握UNVERIFIED。
+- **NEXT_STEP：** 将唯一冻结权威Handoff第二至第四节中**7个一级、29个二级、42个三级**全部逐字展示给Owner；等待Owner明确是否重新设计部分/全部三级标题。若决定修改，保留各级原问题和版本变更映射、完整知识与方法论，不做没有授权的结构重排/改正文；之后Reviewer再制定受限Gate。P2正式冻结暂停。
+- **OWNER_ACTION_REQUIRED：** 先浏览7/29/42全目录，指出最不直观的三级题或统一期望的提问方式；当前不必下发新的Codex任务。历史最高准则和质量要求已在本Handoff持续冻结并适用于后续全部章节。
+- **EVIDENCE_POINTERS：** 本Handoff第二至第四节是原V4/V5全7/29/42唯一权威；Owner 2026-10-16反馈“三级问题不够好，如何转化为收款需求难懂”已在本Handoff新决策节记录。P2人文新稿 PR #132 head `78d8ff48ec019bc051e59eb768f175f384a60a43` / Blob `76c0ba0e50adc5377d60f003b479a8b6f7b56c10`；前次编辑/事实Reviewer PASS [#6210283420](https://github.com/entropy-student/project/pull/132#issuecomment-6210283420)，不等于Owner审美/三级措辞确认。本次未变PR或冻结问题原文。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -272,3 +272,12 @@
 - **文风判断：** Humanizer按约束仅改正文语气与术语说明，每个H2均有可观察改善，开头更直接、PSP/MoR白话解释更清晰、表格衔接有所改善；证据11组前后对照，轻量编辑代理评价通过。总体仍是有大量表格的知识指南，阅读吸引力改善尚无真人完读数据。不能以Skill运行证明普通读者一定喜欢。
 - **写入范围/恢复：** PR仅新增1个新候选+Evidence追加55行0删除；原两篇完整P2、诊断与试读工具均原Blob，旧两短文仍历史可恢复；非所选新稿可单独撤下，Evidence不会截断。未触碰main正文/支付账户/真实读者，不进入P3–P5。
 - **Formal GATE RESULT：** `MCPG-P2-V5-H3-RESTORE-AND-HUMANIZER-20261016=REVIEWER_PASS`；**P2整体尚未Owner正式冻结**。当前 `P2_V5_HUMANIZER_OWNER_FINAL_REVIEW_PENDING`，下步仅由Owner读稿、决定是否冻结；不会自动合并PR或展开后续板块。
+
+
+## 二十五、Owner暂缓三级问题最终措辞确认；历史质量要求继续冻结（2026-10-16）
+
+- **Owner新反馈：** 对现行 V5 三级问题的表达方式不满意，典型例子是①1.1“如何将顾客市场、商品类型与交易模式转化为收款需求？”不够直白；请求列出全部七章从一级至三级标题。**没有批准替换任何特定问题**。
+- **历史要求持续冻结：** 已确定的最高目标不变：面向中国大陆个人开发者、独立站商家与中小经营者的**深入浅出、大众可读、系统性强、注重方法论与实操**的商业支付指南。回答“怎么收钱、怎么选、怎么用好”，**先说明怎么做再解释为什么**。需要代表性案例让读者掌握判断，不为每个个体提供具体账户/服务商推荐。全部内容保留必要知识深度、对照数据与表格、付款到银行可用金额的关系、条件化金融合规限定、官方来源，文风自然，避免模板化AI写作。用户目标**愿意读且读完解答共性疑惑**；实际真人效果未经测试不得冒充通过。最终交付结构清晰、可视化且可交互的桌面HTML。
+- **区别两种冻结：** （一）以上**历史产品/内容/方法论/真实性要求固定延续**，任何后续标题修订不得损害；（二）**当前V5 42个三级题名仍是现行待审权威原文，不是Owner满意后的正式最终版**。现有冻结限制继续约束执行者：无Owner明确授权不能改动文字、数量、顺序、归属。一级/二级本轮未收到明确修改要求，同样原文保留。即使日后换词，也须能对应原有知识节点，得到Owner确认。
+- **阶段：** `P2_OWNER_H3_WORDING_REVIEW_PENDING`，P2完整V5+Humanizer新稿已独立Reviewer知识/事实/结构PASS，但Owner尚未最后确认，不得宣告冻结或合并PR。**本轮只更新交接记录，没有新Gate、没有修改第①正文或7/29/42原题**。
+- **后续：** Owner查看全部目录并反馈偏好的普通商家表达方式之后，再决定是否只改三级措辞，还是另立范围受限的全目录重新提问Gate；不得先行生成/替换或扩大修改范围。
