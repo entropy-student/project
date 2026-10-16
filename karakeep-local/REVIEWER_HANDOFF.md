@@ -1,90 +1,79 @@
 # Karakeep Local · Reviewer Handoff
 
-> DATE=2026-10-16 | PROJECT_STATUS=`NOT_DEPLOYED`
-> CURRENT_GATE_ID=`KARAKEEP-WIN-G1J-REAL-BROWSER-PATH-REVALIDATION-20261016`
-> GATE_STATUS=`READY_FOR_FRESH_OWNER_RELAY`
+> REVIEW_DATE=2026-10-16
+> PROJECT_STATUS=`DEPLOYED_LOCAL_TECHNICAL_PASS`
+> LAST_RUNTIME_PROOF=`2026-10-16T07:37:55Z`（Owner Windows 本机 Executor 直接读回；后续仍可能发生运行状态变化）
+> CURRENT_GATE_ID=`KARAKEEP-WIN-G2A-OWNER-FIRST-USE-20261016`
 > GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
-> Current authoritative project state is here; execution history remains append-only in `EXECUTION_EVIDENCE.md`.
+> `REVIEWER_HANDOFF.md` 为当前状态权威；`EXECUTION_EVIDENCE.md` 只追加历史事实，未作历史回写。
 
 ## PROJECT_GOAL
-在 Owner Windows 11 实体本机以 Karakeep 官方三容器 Compose 最小改动部署 Web + Chrome + Meilisearch，仅 Web 发布 `127.0.0.1:3000`。本轮只验证服务/实际浏览器依赖与登录页，不注册账户/新增真实收藏/AI API key，不对其它 Docker 项目做写入。
+在 Owner 实体 Windows 11 本机以官方 Karakeep 三服务 Docker Compose 实现本地收藏管理入口，首装仅 Web 绑定 `127.0.0.1:3000`，保护既有 Docker 项目、Windows/Docker 共享设置及 Secret。当前技术部署已验收；接下来 Owner 自行创建本地账户、验证中文 UI，再进行受控功能/备份验证。不得等同公网生产上线。
 
 ## PROJECT_STAGE
-- **G0–G1R**：Windows / Docker / 配置目录 / 存储 / 项目边界已调查；已建立受保护 Compose 和原 `.env` 两 Secret。历史 RETURN 保留，不回放。
-- **G1C/G1E**：Karakeep Web、Chrome 两 GHCR 官方镜像已下载且 digest 经核对；Compose SHA/Secret ACL 当前有效，网络现状稳定。G1E 只读范围 PASS。
-- **G1F/G1G/G1H**：曾发生 Meilisearch Docker Hub pull 失败，代理诊断后 Owner 确认 Docker Desktop proxy System / Containers proxy Same as host，Clash UI 端口 7897（协议当时未明）。这些为历史和已解决下载路径，不再诊断。
-- **G1I Reviewer accepted RETURN**：已实际读取 `main:karakeep-local/EXECUTION_EVIDENCE.md` G1I commit `e760ea202fe2e46560dd0692218a8fe8178a8bac`，blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`。**官方 Meilisearch 镜像一次 pull 成功**（30.2 秒），整个三镜像集合齐全。原 Compose 无改动、Windows/Docker Desktop 代理无改动。三容器曾成功启动，Web `http://localhost:3000` 及 Meili /health 200、仅 Web 发布 loopback、无 OOM/重启。但 G1I 的**人工直接 HTTP 访问 Chrome `chrome:9222`** 返回 500，`Host:127.0.0.1` 200，故依原 Gate 被返回且仅对本项目 `docker compose down`（无 -v），保留 2 volumes/3 镜像/.env。该 Gate 未证明应用实际 Worker 浏览器连接失败。
-- **Reviewer 新发现（官方源事实）**：Karakeep 官方 `apps/workers/workers/utils/browser.ts` main blob `96192428e232c375680d989a49abb58bb897a6fb` 中 `startBrowserInstance()` 对 `BROWSER_WEB_URL=http://chrome:9222` 会先 `dns.promises.lookup(webUrl.hostname)`，将 hostname 替换为解析出的**实际 IP**，才 `chromium.connectOverCDP`。官方 `packages/trpc/routers/admin.ts` main blob `393114942bd4cc1c6778d12489068db6215d767f` 的状态检查同样先将 Host 替换成 IP。官方 `docker/docker-compose.yml` blob `865bb147cef972926d5dc32e50645876fd110555` 和 Chrome migration guide 保留 `BROWSER_WEB_URL=http://chrome:9222`。因此**直接用 `Host:chrome` 的裸 HTTP 探针被拒绝，只证实 Chrome 的 DevTools Host 安全限制，不证明 Karakeep 实际无法连接**。这是 Reviewer 发现的先前 Gate 检查方法局限，历史原始证据不改写。以上是 upstream main 行为，**冻结的 Web 镜像内是否同一逻辑需要目标行为/版本 read-back 才能判定**。
-- **NEXT G1J**：原配置/原三镜像不变，重新启动项目，检查*实际 Karakeep Worker* 通过 IP 解析后的 Chrome 连接是否可用。若 PASS 则让服务保持运行供 Owner 访问；若真正失败则仅项目 down，不在本轮盲改 Compose。先修验收方法，再决定是否有修复必要。
+| 阶段 | 已接受结果 |
+|---|---|
+| G0–G1R 环境/Compose/Secret | 基础配置与受保护本机文件及权限验证，历史 RETURN 证据保留 |
+| G1C/G1E 镜像与配置现状 | Web、Chrome 两官方 GHCR 镜像和现有 Compose/.env 已验收；G1E 只读 PASS |
+| G1F–G1H Docker Hub 代理定位 | 历史 Meili 拉取失败、Docker Desktop 代理模式由 Owner GUI 确认，事实保留 |
+| G1I 三镜像/首次启动 | 官方 Meilisearch 拉取 PASS；三容器/Meili/Web 短暂运行；Chrome 直接 Host 探针 500 导致原 Gate RETURN，项目按 Gate down、volumes 保留 |
+| **G1J 原配置重新运行/真实浏览器路径** | **Reviewer 正式 PASS**：三镜像和原配置复用，Web/Meili 运行、Worker DNS→IP 行为与成功 CDP 握手相互支持；没有 OOM/重启，隔离正确；项目按 Gate **保持运行** |
+| **G2A Owner 首次网页使用** | NEXT：Owner 用本机浏览器访问登录页，可手动建立仅用于本机测试的账户并验证语言/界面；尚无真实书签 |
+| 后续真实收藏/恢复能力 | PENDING：先确认数据与 Secret 的可恢复方式，之后做有界真实书签/网页抓取功能测试 |
+
+**G1J 正式 Reviewer 判断**：已逐项实际核对 `main:karakeep-local/EXECUTION_EVIDENCE.md` 的 G1J 全段，commit `b801c2b629b303f730d05329c958cffca61686b3`，blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`；同时已核实该提交仅修改 `karakeep-local/EXECUTION_EVIDENCE.md`。接受 G1J 的技术部署 `PASS_CANDIDATE` 为**正式技术部署 PASS**，不代表登录后收藏抓取、应用完整业务功能、重启持久性或灾难恢复 PASS。
 
 ## SYSTEM_MAP
-- Host / Executor：Owner 原生 Windows 11 PowerShell 7.6.5；Docker Desktop 4.95.0 Personal、Linux Engine 29.7.2、Compose v5.4.0、context `desktop-linux`（G1I read-back）。默认渠道为 Owner Windows 本机 Codex。
-- 原本机配置：`$env:USERPROFILE\KarakeepLocal\docker-compose.yml` SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；官方源 Compose blob `865bb147cef972926d5dc32e50645876fd110555`，仅发布改为 `127.0.0.1:3000:3000`。目录 `.env` 包含 `KARAKEEP_VERSION`、`NEXTAUTH_SECRET`、`MEILI_MASTER_KEY`、`NEXTAUTH_URL`，严格保护已有 Secret，绝不显示/重生/替换/提交。
-- **三镜像已全部在本机且通过 G1I RepoDigest read-back**：
-  - Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`
-  - Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`
-  - Meilisearch `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`（tag `v1.41.0`）。
-- 项目 `docker compose -p karakeep-local`；服务 `web`、`chrome`、`meilisearch`。Chrome TCP 9222 和 Meili 7700 只在项目内部可达，**无**主机映射；Web 唯一 host 端口为 `127.0.0.1:3000`。
-- **当前运行真相**：G1I 结束时项目 `down`，目标容器=0、项目网络无、3000 空闲；已有两项目命名卷 `karakeep-local_data` / `karakeep-local_meilisearch` 保留，未注册账户、未导入真实收藏。非目标 20 容器（0 running）/12 卷/11 网络基线；项目完成 down 后总卷数 14。
-- Docker Desktop 当前代理 G1I 实际读回保持 `Docker Desktop proxy=System proxy` / `Containers proxy=Same as host proxy`；不需要再改。此前代理兼容问题不是当前阻碍。Docker Hub pull 成功证据已冻结。
-- 资源：启动时约 1315 MiB available（仅观测，无任意静态最低 RAM 门槛），Web 368MiB / Chrome 332MiB / Meili 28MiB；5 分钟运行无观察到 OOM 和 restart。G1J 要继续观察真实系统稳定性。
-- 恢复：两个本项目卷和原 Secret 保留。异常只允许精确 `docker compose -p karakeep-local down` 且**绝不 -v**，不 `prune`。真实收藏与 Secret 离机备份/恢复仍 `UNVERIFIED`，首次真实资料前另立 Gate。
+- Host/Runner：Owner Windows 11 本机 PowerShell 7.6.5；Docker Desktop 4.95.0 Personal、Linux Engine 29.7.2、Compose 5.4.0、context `desktop-linux`（G1J 读回）。默认执行渠道：Owner Windows 本机 Codex。
+- 受保护配置：`$env:USERPROFILE\KarakeepLocal\docker-compose.yml`，SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；官方源 blob `865bb147cef972926d5dc32e50645876fd110555`，唯一本地端口改为 `127.0.0.1:3000:3000`。`.env` 四键 `KARAKEEP_VERSION/NEXTAUTH_SECRET/MEILI_MASTER_KEY/NEXTAUTH_URL`，两 Secret 当前格式/互异性和 ACL 已验收；绝不输出值/hash/恢复凭据。
+- Compose 项目：`karakeep-local`，服务 `web`、`chrome`、`meilisearch`；仅 Web 绑定 loopback 3000，Chrome 9222 与 Meili 7700 仅项目内部网络，不向主机暴露；实际 Chrome 浏览器 CDP 连接在 Web 容器内部成功。
+- 镜像：Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`；Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`；Meilisearch `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`，v1.41.0。G1J 镜像身份 read-back 匹配；Web 没有可用 OCI revision label，精确源码版本 `UNVERIFIED`。
+- 数据持久：两个已有项目卷 `karakeep-local_data` 与 `karakeep-local_meilisearch`；G1J 已复用，未创建 Owner 账户、书签或 AI key；离机数据和 Secret 恢复能力 `UNVERIFIED`。
+- 最后运行状态：G1J `2026-10-16T07:37:55Z` 本机读回 23 容器/3 running、14 volumes、12 networks；比启动前只新增 3 目标容器和 1 项目 network，20 个其它容器仍未启动/改动。Web `healthy`；全部 0 restart / OOMKilled=false。当前无人从云端实时查询 Owner 本机，后续网页实际打开结果以 Owner 新鲜现场为准。
+- URL：`http://localhost:3000` → `/signin`（HTTP 307）；`http://localhost:3000/signin` 200，页面存在 Karakeep 登录标志。
+- 代理：Docker Desktop proxy = System proxy / Containers proxy = Same as host proxy；G1I 实际不改代理即成功拉 Meili；G1J 未动代理，不需要进一步网络诊断。Clash 7897 是过去 Owner 提供的候选端口；此时不是部署阻碍。
+- 资源：G1J host available RAM 有一次约 424 MiB、随后至约 1.9 GiB；无 OOM/restart，**无静态 RAM 数值 Gate**。Owner Windows 本机 3000 只 loopback，G1J 非 loopback 负面连通不成功；无公网端口。
+- Recovery：G1I 验证目标项目 `docker compose -p karakeep-local down` 无 `-v` 可停掉容器+网络、保留原镜像/配置/两个卷。该动作是已验证的仅项目停止能力，**不等于**数据/账户/Secret 灾难恢复通过。G1J PASS 时**未停止服务**。
 
 ## CURRENT_ACCEPTED_STATE
-G1I **部署验收 RETURN** 已接受，镜像拉取与项目级回滚**均为有效成果**。重要限定：G1I 的 Chrome alias `Host` HTTP 500 和 IP Host 200 是真实观测，但不能推出在用户应用里实际 Chrome 不工作；Karakeep 上游代码有内建 DNS→IP 规避。**目前实际 Worker 浏览器状态 = UNVERIFIED；绝不再把裸 `Host:chrome` HTTP 500 当作 Gate 的独立失败标准**。G1I 完成后没有 Karakeep 运行实例，不得声称目前可访问 localhost:3000。
+**TECHNICAL_INSTALLATION_PASS_AS_OF_G1J**：三官方镜像 identity/readback PASS；原 Compose 与 Secret 安全状态 PASS；Web 登录页/Meili health/Chrome CDP 通路 PASS；Web localhost-only/其他端口未发布、非目标 Docker 不变 PASS；无 observed OOM/restarts，Karakeep 保持运行。
+**BROWSER_EVIDENCE_BOUNDARY**：G1J Worker 真实日志显示曾尝试连接 Chrome、成功将 `chrome` 解析成地址；短窗没有其定义的重试/断开/失败标记；来自 Web 容器的独立、只读 CDP 握手返回 `Browser.getVersion` 成功。Worker 未打印独立 success 日志，未登录 admin API 为 401。这些是**行为正证据与交叉印证**，而不是已读取到 Worker 内存中确切连接句柄；正式技术验收将其视为充足，保留账户登录后的书签抓取 E2E 测试未验证。G1I 的人工 `Host: chrome` 500 为浏览器安全机制观测，不能单独否定上述真实连接。
+**NOT_YET_VALIDATED**：Owner 网页新鲜手动打开、首个用户注册和认证、中文 UI、收藏内容抓取/截图、账户/数据库/volumes 恢复、Docker Desktop 重启持久性、长时间稳定运行、真实数据备份。不得把技术 PASS 说成全面产品功能 PASS。
 
 ## CURRENT_GATE
-**GATE_ID**：`KARAKEEP-WIN-G1J-REAL-BROWSER-PATH-REVALIDATION-20261016`
-
-**OBJECTIVE**：在不改任何现有配置/镜像/Secret/代理的情况下，按 Karakeep 真正的浏览器连接实现重新验收 Chrome。若现有原官方部署确实可工作，直接保持三个服务运行并停在 Reviewer，避免额外反复修复不存在的问题。
-
-**MAX_ENDPOINT_THIS_ROUND**：
-1. 接受 G1I 事实和新 Reviewer 官方源依据，不重跑代理/镜像下载。按新 Gate 先确认本轮新鲜 Owner 明确授权（由 Owner 下发的 G1J Executor 指令提供），Owner 本机 PowerShell + Docker Engine/Compose context、受保护 Compose 指纹/ACL/Secret 形状仅本机安全校验、**三**镜像 digest read-back、两个项目卷已存在且对应本项目、端口 3000 空闲、非目标容器/卷/网络 baseline 与实际资源状态。无配置 drift、其它项目异常时才继续。
-2. 若可从官方 Web 镜像的已记录 image labels/revision 或本机受限只读运行代码证明启动代码的 DNS 解析→IP 机制，则记录与官方 main 的对应关系；**不要求**与当前上游 main 完全相同。不能读出精确版本时如实 `UNVERIFIED`，后续以实际 Worker 行为为主。
-3. 用**原封不动**的 Compose/.env、**仅本项目**执行 `docker compose -p karakeep-local up -d --pull never`（目录/命令需确保选中冻结配置）。禁止新 pull、构建、更新 tag 或调整 `BROWSER_WEB_URL`。容器启动后，控制适当稳定观察窗，核验三个容器 image identity、web 登录页 HTTP 200 + Karakeep 标记、Meili health 200、Host 仅 127.0.0.1:3000，Chrome 9222 仅 Docker 项目内部可达，卷及非目标对象未被变更、无 OOM/持续重启。
-4. **本 Gate 的关键新验收**：观察 Karakeep **实际 Worker/内建 browser connection**（以及可用的内建 admin 浏览器状态读回）是否把 `chrome` 解析为容器 IP 并成功建立 CDP/Playwright 会话。允许在确认日志类别/脱敏边界后**短窗口**只读查看 `karakeep-local` 的 Worker/Chrome 日志，提取 `Connecting`、`Successfully resolved IP`（结果仅记录成功类别，不复制 IP）、`Failed to connect`、`retry`、`disconnected`、`browser connected` 等布尔/计数；不能仅凭日志中未出现失败证明成功。若应用端内建状态或工作进程可给出明确正面连接结果，结合 IP 形式 `/json/version` 200 的内部只读正面探针（Host 要采用客户端正常形式而不是手动伪造成功）方可判 browser dependency PASS。可用时限定应用自身现有接口或同镜像内已存在的官方依赖进行只读 CDP 握手来确认，不能安装工具/加无来源新脚本、不能产生真实收藏或修改持久数据。
-5. 直接使用 `Host:chrome` 的人工 HTTP `/json/version` 返回 500 是 Chromium 已知 Host 安全保护，**不得单独导致 Return 或要求修改 Compose**。如实际 Worker 解析 IP 后仍出现反复真实连接失败，则分类 DNS/IP family/CDP websocket/应用版本/Host 等最窄子域并 `RETURN`；在该 Gate **不擅自修改** Chrome 启动参数、固定 IP、改网络/改环境变量、使用无保护 HTTP 代理或发布 9222。
-6. 若所有真实连接/安全/服务/资源检查均通过，保持 **Karakeep 三容器运行**并报 `PASS_CANDIDATE`、当前 localhost URL + 验收证据，停 Reviewer；**不要因为历史 alias 裸 HTTP 500 再 down**。若真实 browser dependency 确实不通过、Docker/非目标对象有新异常、或无法得到必要的正面证据，则执行仅目标 `docker compose -p karakeep-local down`（不带 `-v`）并记录明确 `RETURN`；保留镜像、卷、Compose/.env。若无法证明目标身份或安全，先停进一步写入并报告。
-7. 本轮不改 Docker Desktop/Windows/Clash/VPN/证书/daemon/WSL、不拉镜像、不建代理、不改其它 Docker 项目、不启动其它容器、不注册账号/导入收藏/AI key、不重置或输出 Secret、无 `prune` / `down -v`。
-
-**MANDATORY_REVIEW_STOP**：G1J 一次执行完成（部署候选或 RETURN）后 append 脱敏 `karakeep-local/EXECUTION_EVIDENCE.md`，提交 GitHub main + read-back，立即停止 Reviewer；不自动进入用户首次注册/收藏阶段。
-
-**TARGET_AND_SCOPE**：Owner Windows 本机已受保护 `USERPROFILE\KarakeepLocal`，原冻结 Compose/.env、三已拉镜像及两现有项目卷；唯一新写入为 `karakeep-local` 的三个运行容器/项目网络与其空应用内部状态。共享 Docker Desktop /代理、其它项目、外网端口不变。
-
-**APPLICABLE_CRITICAL_CONSTRAINTS**：需要本轮明确授权重新启动；无配置/源码/Secret 改动；对真实 browser/CDP 层证明，不强迫裸 hostname Host 检查；项目仅 loopback、其它依赖仅内部；无固定空闲 RAM 数值门槛、关注真实 OOM/重启/稳定性；仅项目恢复，保护已有卷；证据脱敏。
-
-**PREFLIGHT**：收到 Owner 转交的本 Gate 明确授权、Windows 本机身份/Engine/context、3 镜像 digest、两旧卷属于目标项目、原受保护配置 SHA/ACL、无端口或 project-object 冲突、磁盘/实际系统状态允许；失败返回不重构或清理。
-
-**REQUIRED_EVIDENCE**：`EXECUTION_EVIDENCE.md` append G1J：规范字段 `AUTHORIZED_GATE / PREFLIGHT_FACTS / ACTUAL_CHANGES / OBJECTIVE_READBACK / VALIDATION / ANOMALIES / EVIDENCE_ARTIFACTS_AND_PURPOSE / ROLLBACK_EFFECT / RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT / EXECUTOR_RESULT`。包括接受 G1I 镜像身份、应用与官方 main 浏览器解析证据的来源及版本范围、有效容器工作进程浏览器连接正/反证据、真实 Web/Meili/Chrome 健康与访问安全/负面端口测试、项目/非目标 before-after、资源稳定性、若失败时 project-only rollback/卷保留、当前是否可访问 URL；只允许经脱敏白名单统计，绝无原始日志/IP/密钥/代理值/GitHub 大包。main commit/blob read-back。
-
-**ACCEPTANCE_CRITERIA**：G1J 证明原本 G1I 的裸 HTTP 500 不是应用实际连接失败的充分证据；若目标运行时的 Worker/browser 实际 CDP 可用，三服务/登录页/loopback/资源/对象隔离 PASS、镜像 hash identity/原配置持续有效，则 `PASS_CANDIDATE` 且留项目运行，等待 Reviewer 独立判 PASS。若真实 Worker/CDP 证据失败或不足，按目标级 down 返回可行动精确 RETURN。无法观察某一项不编造成功。
-
-**ROLLBACK_STATUS_OR_PLAN**：项目源 Compose 和旧两卷/三镜像可保留恢复；异常且目标 identity 确认后只执行 `docker compose -p karakeep-local down`（无 -v），不会删除卷/重置 Secret。正常验收不 down，保持本机监听 127.0.0.1:3000。没有真实用户资料，跨设备恢复仍 UNVERIFIED。
-
-**OWNER_ONLY_ACTIONS**：G1I 失败后此次是新的项目启动写入，必须有**新一轮** Owner 对 G1J 的有边界授权，Owner 转发含“我授权本次 G1J 仅复用原配置/原镜像重启 Karakeep、验证真实浏览器连接；失败仅项目 down，成功保持运行”的 Codex 指令即作为授权。不需改代理、不需提供 Secret，跨 Gate 新敏感动作仍需单独审核。
-
-**REVIEWER_TO_EXECUTOR_RELAY**：
-> 你是 Owner 实体 Windows 本机 Codex Executor。Owner 本次转交 G1J 指令就是本轮鲜明授权。阅读最新 main `karakeep-local/REVIEWER_HANDOFF.md` CURRENT_GATE、CURRENT_ACCEPTED_STATE、SYSTEM_MAP、CRITICAL_CONSTRAINTS，以及 `EXECUTION_EVIDENCE.md` **仅 G1I 最新段落**。G1I 的 Meili 下载/三镜像/read-back/回滚已验证，不可重做 pull/代理排查。Reviewer 核查 Karakeep 官方 `apps/workers/workers/utils/browser.ts` main（blob `96192428e232c375680d989a49abb58bb897a6fb`）：真实 Worker 会先将 `BROWSER_WEB_URL=http://chrome:9222` 的 hostname DNS 解析成 IP，再 `connectOverCDP`；官方 `admin.ts` 类似。**G1I 的直接 `Host:chrome` HTTP 500 并不证明真实 Worker 失败**。在原配置/原 3 镜像/2 卷完好、仅 127.0.0.1:3000 无冲突与其它项正常后，执行 `docker compose -p karakeep-local up -d --pull never`，优先验证 Web、Meili、**真实 Karakeep Worker/CDP** 的连接读回，短窗口脱敏核验日志、浏览器正面结果、非目标/资源/loopback。不可强制 Chrome 裸 alias HTTP 200；没有证据不得自行修改 Chrome 参数/Compose/IP/Host/代理。确实真实 Worker 失败或正面证据不足则本项目 `down` 不删卷并 RETURN；真实依赖 PASS 则**保持服务运行**、报 `PASS_CANDIDATE` 与 `http://127.0.0.1:3000`，追加 Evidence main 读回，停 Reviewer，不进入注册/收藏。
-
-**EXECUTOR_TO_REVIEWER_RELAY**：结果；改动；验证；问题；回滚；请 Reviewer 检查；Owner 转交。
+**GATE_ID**：`KARAKEEP-WIN-G2A-OWNER-FIRST-USE-20261016`
+**OBJECTIVE**：Owner 在本机网页确认 Karakeep 登录/注册入口，必要时自己创建一个仅用于测试的本地账户，观察界面语言与基本操作；不要求再跑 Codex、不触碰其它容器。
+**MAX_ENDPOINT_THIS_ROUND**：Owner 在运行 Karakeep 的原 Windows 本机打开 `http://localhost:3000`，确认是否重定向到登录页。若页面正常，可选择完成应用自带的首次注册/登录（用户名、邮箱和密码**仅本人在网页内输入，不转发给 Reviewer/Codex**），观察 UI 是否已有中文选项并报告是否成功。此 Gate 不导入真实书签、不连接外部 AI API、不使用支付或公网功能。无需出示密码、Cookie、认证 token、登录后完整截图。
+**MANDATORY_REVIEW_STOP**：Owner 将网页可访问/语言/注册结果回传后由 Reviewer 判断下一步；无需 Codex 先写新 Evidence；Owner 完成前不声明首次使用 PASS。
+**TARGET_AND_SCOPE**：Owner 原 Windows 本机浏览器与仅 loopback Karakeep Web；可选本地测试账户（存在于已隔离命名卷的项目持久层）。不得修改 Compose、系统代理或其它项目。
+**APPLICABLE_CRITICAL_CONSTRAINTS**：证据来源 `OWNER_REPORTED`；登录信息/Secret 不入 Chat/GitHub；本轮不引入真实不可丢失资料；真实收藏前必须明确备份/恢复 Gate。
+**PREFLIGHT**：Owner 同一 Windows 本机 Docker Desktop 正在运行、可以访问本机 3000；若打不开，回报无法访问即可，不猜测为 Chrome 问题，不让 Owner 更改系统代理或重建项目。
+**REQUIRED_EVIDENCE**：Owner 反馈三个非敏感事实：`PAGE_ACCESS=YES|NO`；`LOCAL_ACCOUNT_TEST=CREATED|SKIPPED|ERROR`；`UI_LANGUAGE=ZH|EN|OTHER|UNKNOWN`；不需要截图。
+**ACCEPTANCE_CRITERIA**：当前登录/注册页面可被 Owner 本机访问；若决定创建测试账户，可正常登录且无额外权限范围变化；未向外部输出密码或 token，未在本轮添加真实收藏。
+**ROLLBACK_STATUS_OR_PLAN**：Owner 本轮仅查看 UI 或创建空测试账号，无项目配置更改；遇到问题停止后交 Reviewer，不删除用户账号或卷。业务数据/凭据失去仍 `UNVERIFIED`，首次注册后更应安排恢复。
+**OWNER_ONLY_ACTIONS**：Owner 自行决定是否创建本地账号（账号权限及密码仅 Owner 掌握），不要将账号密码发给 Codex/ChatGPT。本轮 Owner 只需报告基本结果，不需提供 API key。
+**REVIEWER_TO_EXECUTOR_RELAY**：`NONE`；本 Gate 不调用 Codex。
+**EXECUTOR_TO_REVIEWER_RELAY**：`NOT_APPLICABLE`；本 Gate 由 Owner 直接完成 UI 只读或本人注册。
 
 ## CRITICAL_CONSTRAINTS
-三镜像已下载、两命名卷保留；原安全 Compose/.env/Secret 不改、无新拉取/代理变化；仅本项目容器写入、仅 Web loopback；Chrome 裸别名 Host 500 不等于 Worker 失败；实际 CDP 读回为准；无固定静态空闲 RAM 门槛；出现真实 OOM/非目标状态影响按项目级回滚；Evidence 脱敏、Reviewer stop。
+所有配置/.env/Secret 继续冻结；三个已验收镜像原样保留；只有 Web 绑定 127.0.0.1:3000，Chrome/Meili 不公开；非目标 Docker 项目不修改；无任何固定剩余 RAM 门槛但真实 OOM/重启要停；禁止 `prune` 和 `down -v`；后续真实数据前的可靠备份、Secret 离机恢复与恢复验证未完成，不能宣称全面产品或灾难恢复 PASS。
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner Windows 11 原生 PowerShell Codex；新 G1J 由 Owner 发送执行指令建立本轮授权。
+后续需要技术变更时继续 Owner 原生 Windows PowerShell Codex；**当前 G2A 只要 Owner 浏览器操作**。
 
 ## CURRENT_ROLLBACK_STATUS
-G1I 已验证仅 `karakeep-local down` 不带 `-v` 成功：3 个 target 容器、target 网络和监听已移除，2 项目卷/3 官方镜像保留；其他容器/网络无变化，20/0/11 与以前一致；卷总数 14。后续继续以项目 down 非破坏恢复为真实已测试方法，业务数据异机备份/Secret 恢复仍 UNVERIFIED。
+G1I 本项目仅 `down` 不带 `-v` 停止/保留卷的效果已读回；G1J 无需回滚且最后验证三个目标容器仍运行。真实数据及 Secret 跨机器恢复未验证；项目数据备份/实际恢复需独立后续 Gate，不因本次技术 PASS 自动放行。
 
 ## UNRESOLVED
-Karakeep 已下载 Web release 镜像的真实 Worker/CDP 浏览器连接状态在 G1I 未被验证。官方 main 代码已具备 hostname→IP 处理，但当前 release 镜像是否具备以及真实 CDP 能否工作尚 UNKNOWN。当前没有运行服务。
+网页首次注册及中文界面实测、真实书签/浏览器抓取 E2E、数据和 Secret 离机备份/恢复、restart persistence/长时间运行。Worker 没有独立 success log、Web OCI revision 缺失，但 G1J 可交叉证实浏览器 CDP 可用，不作为重复阻断的前置条件。
 
 ## NEXT_STEP
-Owner 将 G1J 一次授权指令下发本机 Codex，复用原配置无更改再启动，优先按实际工作进程浏览器连接验收；真正通过则让项目保持运行。Reviewer 审核最新 G1J Evidence 判定首装 PASS 或最小返工。旧 Docker Hub/代理问题已解决。
+Owner 首先直接打开 `http://localhost:3000`，可选本机账户注册/登录并查看中文 UI。反馈页面可访问/是否成功注册/界面语言三项非敏感事实。然后 Reviewer 依据 Owner 结果决定备份/恢复和单个可丢弃测试书签的最小下一阶段，不开展额外镜像、Chrome、代理建设。
 
 ## OWNER_ACTION_REQUIRED
-Owner 把包含本次 G1J 明确启动授权的 Relay 交本机 Codex。无需 Owner 手动操作 Docker、下载镜像、改 Clash/VPN 或提供任何密钥。
+Owner 浏览器访问 `http://localhost:3000`；不要提供账号密码。若能进入页面，可直接由本人注册一个本地测试账号，但**暂勿导入重要收藏或真实文档**，直到完成备份/恢复核验。
 
 ## EVIDENCE_POINTERS
-G1I `karakeep-local/EXECUTION_EVIDENCE.md` commit `e760ea202fe2e46560dd0692218a8fe8178a8bac` blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`; 历史 G0–G1H 保持原 append-only。官方依据 Web upstream `karakeep-app/karakeep` `apps/workers/workers/utils/browser.ts` blob `96192428e232c375680d989a49abb58bb897a6fb`、admin 检查 blob `393114942bd4cc1c6778d12489068db6215d767f`、官方 Compose blob `865bb147cef972926d5dc32e50645876fd110555`。不是目标镜像内部源码已验证证据。
+- G1J `main:karakeep-local/EXECUTION_EVIDENCE.md`：commit `b801c2b629b303f730d05329c958cffca61686b3`，blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，本轮 Reviewer 已实际读取。
+- G1I 镜像拉取/项目回滚：commit `e760ea202fe2e46560dd0692218a8fe8178a8bac`，blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`，历史保留。
+- Governance `entropy-student/spike.skill` main v0.2.7 `vps-project-governance/VNEXT.md`；官方 Chrome Worker 源 `karakeep-app/karakeep` `apps/workers/workers/utils/browser.ts` main blob `96192428e232c375680d989a49abb58bb897a6fb`，不与 Web frozen image revision 混淆。
