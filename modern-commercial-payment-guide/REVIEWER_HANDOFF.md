@@ -92,19 +92,17 @@
 - **当前main精简：** `docs/`仅两篇正文、V6冻结框架及现行索引。历史P1结构审查、P3归属计划和此前返修稿/Reviewer历史报告均从main现行树退出，但可依固定Git历史恢复。根目录只保留`REVIEWER_HANDOFF.md`、`DECISION_LOG.md`、`EXECUTION_EVIDENCE.md`。
 - **内容边界：** Owner选择了原稿的表达与可读性，但这不意味着稿件所有金融、法务、技术细节已被审核为准确。核对意见只供外部Agent验证，允许驳回错的建议；修订候选即使交付也不自动成为正式版。
 
-## 六、当前执行Gate：只读Review与外部Agent交接
+## 六、当前执行Gate：外部Agent三文档返修的Reviewer复核
 
-- **GATE_ID：** `MCPG-CH1-CH2-FROZEN-READONLY-REVIEW-AGENT-RELAY-20261016`
-- **OBJECTIVE：** 在完全冻结两篇用户原稿的前提下，审查明显数学/金融/法律/技术错漏和实质深广度缺口，形成一份独立核验修订提示词供Owner转交外部Agent。
-- **MAX_ENDPOINT_THIS_ROUND：** 删除已分类且证实可恢复的无效文档、建立可验证冻结状态与项目记录、只读审查两个完整Markdown、生成**单份外部Agent提示词**；不得在本轮执行/直接提交两篇修订正文，不进行真实付款/退款/测试，不进入③–⑦和HTML。
-- **PREFLIGHT：** 已从GitHub main和Library校验两个原稿的SHA256/Git Blob；已读取治理v0.2.7及Closeout要求；五份旧Library文件备份经过每文件SHA256+ZIP CRC核对；历史main文件存在Git提交可恢复。
-- **REQUIRED_EVIDENCE：** 清理白名单和计数、主文冻结Git Blob+SHA256、正式框架Blob、提示词全文与SHA256、官方来源/日期及核验边界、Library/GitHub最终回读。
-- **ACCEPTANCE：** 两篇冻结Markdown与原上传**字节一致且未改变**；V6问题块原文未变；现行Docs无候选/过期Gate；提示词明确每一条Reviewer建议须由外部Agent独立核验、可以驳回；外部Agent仅产出**两篇完整修订Markdown+一篇独立执行记录**，ZIP内恰好三个文件、校验可解压；此轮不声称外部Agent已执行。
-- **MANDATORY_REVIEW_STOP：** `YES`；停在已完成冻结/审核交接，不越界触碰原稿。
-- **ROLLBACK：** 文件库ZIP与Git固定提交均可恢复被清理文档，保留历史，不reset/force；冻结正文无需回滚（未修改）。
-- **OWNER_ONLY_ACTIONS：** Owner将提示词及两篇原始Markdown交外部Agent；收到三文件成果ZIP后决定是否采用任何修改。任何对冻结原稿的正式修改都需要Owner**再次明确解除冻结/授权**。
-- **REVIEWER_TO_EXECUTOR_RELAY：** 外部Agent收到两篇原始Markdown和本会话提供的提示词，先核验意见是否成立，再做最小且可读的候选修订，在单独的执行记录逐项接受/拒绝/UNKNOWN，最后打包三文件ZIP交Owner；禁止写GitHub或覆盖冻结正文。
-- **EXECUTOR_TO_REVIEWER_RELAY：** 交出ZIP+三文件完整性证明、修改意见核验表、金融事实条件、未解决UNKNOWN；停止，不自颁独立Reviewer/Owner PASS。
+- **GATE_ID：** `MCPG-CH1-CH2-AGENT-ZIP-INDEPENDENT-REVIEW-20261016`
+- **OBJECTIVE：** 独立审核外部Agent提交的两篇候选与执行记录，比较冻结原稿、官方金融技术来源及可读性；不代替Owner决定是否采纳。
+- **MAX_ENDPOINT_THIS_ROUND：** 仅只读审查候选、报告问题并更新Reviewer证据与Handoff；禁止改动两篇正式冻结正文、V6问题、生产支付或第三章之后内容。
+- **PREFLIGHT/INPUT：** 完整ZIP `现代商业支付系统_前两部分_独立核验修订成果.zip` SHA256 `ca8ce3987fa294cc6eaeb7e9ee14639b6d6be5739c9b48d2b06bab0130f2315b`，CRC OK，恰好三篇MD；两篇候选及执行记录哈希校验与记录一致；①②冻结正文与正式V6框架Git指纹无漂移。
+- **REVIEW_RESULT：** `STRUCTURE_AND_DELIVERY_PASS / RETURN_TARGETED_FIX`。已有正确数学更正与部分技术修补；第二部分仍保留Live 1 USD测试/统一HMAC的高风险残句，以及正文引文编号指错平台；另有图表/检查清单与正文冲突、Paddle数字品类过度断言、Webhook持久化与EU数字内容法律条件未补齐。
+- **EVIDENCE：** [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)当轮Reviewer复核条目，用户已收到独立Markdown评审结论与原稿具体行号/官方链接。Reviewer只检验候选，未把外部作者自检视为独立PASS。
+- **ACCEPTANCE_CRITERIA_FOR_NEXT_CANDIDATE：** 修复P0全部残项，跨章节/正文/附录统一引用，纠正P1主要不实断言和业务失败恢复逻辑；禁止引入对可读性的系统性重写；两个修订稿与独立执行记录打包三文档ZIP、给出准确SHA。届时Reviewer复核并由Owner决定是否解冻采纳。
+- **ROLLBACK/OWNER_ONLY：** 两篇原文Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、`0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`仍冻结且未动；第三方Agent不得直接修改GitHub；Owner另行明确指令才可解冻。
+- **NEXT_STEP：** 用户可将本轮Reviewer定向返修结论交外部Agent局部修复，无需重做全篇；未收到新修订版前状态`RETURN_TARGETED_FIX`。
 
 ## 七、阶段总览
 
@@ -112,9 +110,9 @@
 P0 正式7/29/42问题框架                 PASS｜冻结
 P1 第一部分①用户上传原文               FROZEN / NO EDIT
 P2 第二部分②用户上传原文               FROZEN / NO EDIT
-P3 独立核验修订意见与Agent交接          PROMPT READY
+P3 独立核验修订候选三文件               RETURN｜仅需定向返修
 P4 ③–⑦其余章节                         PENDING
 P5 单文件HTML整合                       PENDING
 ```
 
-后续除Owner明确批准外，不得自动解冻或覆盖①②。当前最小Owner动作：向外部Agent发送**两篇原始Markdown+一份评审提示词**；由Agent返回三文件ZIP。
+后续除Owner明确批准外，不得自动解冻或覆盖①②。Agent已交三文件ZIP并获得Reviewer RETURN；最小下一步仅返修已定位问题，重新交完整三文件ZIP，不重做全文。
