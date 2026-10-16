@@ -37,3 +37,9 @@ Owner新增硬规则：**同一个原始视频素材禁止二次使用**。项�
 Owner纠正另造12种分镜母版的路线，决定以原有13种Mac Window Motion Kit动作承接A真实视频、B科研/档案图像、C真实录屏、D科学图解、E AI生图、F多素材复合六类；F是A–E复合展示而非新的真实来源。理论13×6=78格，只对格子逐项判断适用性、排除不合适项，最后留下少量能直接换素材的组合；不用另造78套动画、无需为了套模板在每一节出现Mac窗口。
 
 **目前确认的是矩阵筛选法，不是任何具体格子的推荐结论或正式效果许可。** Reviewer的详细建议见[13×6候选适配大表](VISUAL_MW13_X_6_COMBINATION_MATRIX_DISCUSSION_2026-10-16.md)，状态仅DRAFT。独立HTML Demo未自动集成成片；正式3+1仍禁AI生图，需未来Owner明确裁决才修订，旧R3视觉RETURN/G1/G2/HOLD/NO_PUBLISH/R4未授权不变。本轮仅项目文档记录及进入讨论。
+
+## 2026-10-16｜Owner精简为13×3，并指示复用已验收imagegen路径
+
+A素材视频（包含真实录屏）、B现有素材图片（论文/照片/研究图表等）、C AI生成静态图片（经事实审核的示意/概念/插画）。固定13个已有MW动作，理论13×3=39组合、排除不适配项；不重新发明分镜和素材类别，旧13×6仅历史讨论。C类作为将来合法的图像解释手段，局部替代过去绝对禁止AI静态生图的方向；AI生成真实实验/视频仍禁止。C的实际执行、付费、制片和发布仍需独立Gate。
+
+GitHub已核实`entropy-student/spike.skill/comic-narrative`的`part4_5/ASSET_REUSE_LIBRARY.md`提供优先查已验收图片→直接复用/旧图编辑/参考/再生成流程；`tools/imagegen-fast-path/README.md`与R2R1V已验收Codex内置生图并发2、output_hint结果路径直接复制、hash/尺寸/QA，不传送大图stdin/TTY/base64、native画幅像素差异不自动重生。以上并不包含可量化的“最低Token使用量”，CWS尚未移植。

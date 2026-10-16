@@ -105,3 +105,10 @@
 - VERIFIED_REPO_FACTS：13个MW存在于现有Kit清单；MW06/MW08/MW09是储备设计，MW04仅UI Demo，MW11/MW12/MW13有独立HTML QA KEEP候选，MW07后续局部优化为技术KEEP候选；这些不等于所有动作已接入正式Remotion渲染。
 - PRESERVATION：R3视觉RETURN、R4未授权、G1/G2/HOLD/NO_PUBLISH继续；旧AI生成禁令未改；不修改既有证据、历史媒体、来源库或本机。
 - ACCEPTANCE：仅CWS文档及讨论稿进入GitHub main；回读决策、矩阵DRAFT与当前Handoff指针，避免误认格子已批准。
+
+## EVIDENCE 2026-10-16｜A/B/C决策与漫画叙事生图复用（纯文档）
+
+- OWNER_REPORTED：Owner明确仅三类A视频/B已有图片/C AI生图，并要求查阅旧AI寓言故事项目或相关Skill的高效率低Token路线。
+- DIRECT_READBACK：`entropy-student/spike.skill/main`的`comic-narrative/REVIEWER_HANDOFF.md`明确生图executor reliability PASS/CLOSED且并发2；`tools/imagegen-fast-path/README.md`规定output_hint直接结果路径→拷贝→SHA/尺寸/QA、不经TTY/base64搬运图、Native像素不匹配不单独重生；`part4_5/ASSET_REUSE_LIBRARY.md`规定直接复用/基于旧图修改/仅作参考/新生图四分支。
+- LIMITATIONS：工具链在源项目已验收，不代表CWS已集成；没有逐图Token用量或费用最小化实测。本轮没有任何生图调用、付费、代码执行、视频合成、R4/公开发布授权。
+- PRESERVATION：旧13×6提案降为历史；正式R3视觉RETURN、R4未授权、G1/G2/HOLD/NO_PUBLISH不变，视频同源全项目只用一次的规则不变。

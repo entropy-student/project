@@ -1,4 +1,6 @@
 <!-- CWS-AUTHORITATIVE-ENTRY-20261016-OWNER-VISUAL-RETURN -->
+> **Owner最新A/B/C分类（2026-10-16）**：A视频/B已有图片/C AI静态生图，与原有13种MW动作最多39理论组合、再删不适配项。旧六类和13×6表仅历史。C用于审核后的机制示意/概念插画，不得伪造科研证据；生图运行、成本、正式制片仍需有界Gate。既有`spike.skill/comic-narrative/tools/imagegen-fast-path`双并发/直存/QA和Part4.5图片复用可参考，CWS尚未验证移植、无最低Token实测。
+<!-- CWS-AUTHORITATIVE-ENTRY-20261016-OWNER-VISUAL-RETURN -->
  > **Owner最新视觉框架（2026-10-16）**：不新增分镜母版；以现有MW-01至MW-13窗口动作×A真实视频/B科研图/C真实录屏/D科学图解/E AI图/F多素材复合形成78种理论格子，排除不适配项得到有限可替换素材的组合库；F是前五类的复合，不是新增素材源。**只有框架获Owner确认，任何具体格子仍未裁决**，见[13×6大表讨论稿](docs/VISUAL_MW13_X_6_COMBINATION_MATRIX_DISCUSSION_2026-10-16.md)。旧AI禁令、Demo正式片权限、R3视觉RETURN及R4未授权继续。
 
  > **Owner新增确认（2026-10-16）**：②采用多源并行检索、统一去重及抽帧真实预览、相关性排序、缺口定向补搜，不反复做全量遍历；**一个原始视频素材项目级只用一次**（同片一个连续使用段、禁止同源拆片多次穿插、禁止跨期再用；换URL/文件名/裁切/镜像不算新源）。R3既有两条视频记录视为已用，后续不再用于新片。③视觉兜底与⑤13个MW窗口模板建议同一智能视觉编排系统下的素材选择/模板调用两个模块，但具体集成和AI启用权限仍待裁决，本轮无执行授权。见[决策登记](docs/VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。
