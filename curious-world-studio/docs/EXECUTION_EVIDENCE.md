@@ -89,3 +89,10 @@
 - OWNER_DIRECT_IN_CHAT：①匹配阶段文案锁定；⑦方案确定后执行human-writing/humanizer与事实复核；④目前不限制素材类型时长占比；⑥不采取因素材缺口或数值预算自动停止制作的内容机制。②广泛搜索如何实施、③兜底类型/制作、⑤既有13个窗口模板与正式2/4/6如何应用仍待讨论。
 - ACTUAL_CHANGES：同步[裁决登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)与现行状态、交接、配音文案润色工作流，以及修正旧3+1合同与STYLE_LOCK中可擅自改变文案或自动停止的冲突建议；不修改源码、历史视频/媒体、正式R3结论或Governance。
 - VALIDATION_REQUIREMENT：确保不把此前60/40等数字、固定五类兜底、单次搜索上限、AI生图和Mac 13模板集成当成生效规则。R3整体仍`RETURN_OWNER_VISUAL_STORYFIT`；G1/G2/HOLD/NO_PUBLISH与R4未授权持续有效；GitHub合并后需回读文件。
+
+## EVIDENCE 2026-10-16｜Owner确认②高效遍历及原始视频素材不可二次使用（仅文档）
+
+- AUTHORIZATION：Owner聊天直接提出“问题1确定请记录，同时同一个视频素材禁止二次使用”；并请求讨论③分层兜底和⑤模板是否合并解决。本轮只有GitHub项目文档记录许可，无素材下载、API付费、Windows Codex、视频合成、R4或发布授权。
+- OWNER_DIRECT_IN_CHAT：高效检索原则继承刚确认的上一轮方案：多来源并行搜集、抽帧预览与去重、相关性排序、只对未解决视觉缺口定向补搜；明确不反复全量遍历。新增原始视频源“一次性使用”：一源单期单连续区间，全项目不得跨期重复；衍生版本、不同URL不绕过同源判定。
+- EXPECTED_FUTURE_VALIDATION：执行前通过项目级源身份+视频感知相似判定+使用台账查重；本轮**没有验证任何已用台账自动化系统已经实现**。原R3的Pexels #854959/Pixabay #2793作为历史已使用记录保留，不能将旧失败镜头重新塞入新片。
+- OPEN_ITEMS：③视觉兜底与AI图片、⑤13个MW候选及正式2/4/6如何合并编排，仍只是设计建议；旧AI禁令未被本次确认检索策略而解除。R3整体RETURN/G1/G2/HOLD/NO_PUBLISH及R4未授权不变。
