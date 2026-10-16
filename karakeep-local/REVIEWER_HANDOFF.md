@@ -1,103 +1,98 @@
 # Karakeep Local · Reviewer Handoff
 
-> 2026-10-16 · 当前状态：`NOT_DEPLOYED / G1E_READONLY_RECONCILIATION`
-> 治理：`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
-> 角色：本文件由 Reviewer 维护；`EXECUTION_EVIDENCE.md` 保持 append-only。
+> 2026-10-16 · STATUS=`NOT_DEPLOYED`
+> GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
+> CURRENT_GATE=`KARAKEEP-WIN-G1F-MEILI-PULL-AND-DEPLOY-20261016`
+> Authority: 本 Handoff 仅为当前项目状态与 Gate；历史执行事实 `EXECUTION_EVIDENCE.md` append-only。
 
 ## PROJECT_GOAL
-在 Owner 实体 Windows 11 本机，用官方原版 Docker Compose 最小改动部署 Karakeep（Web、Chrome、Meilisearch），Web 仅 `http://127.0.0.1:3000`。首次账户、中文设置、真实收藏、AI/Codex 接入都不属于当前 Gate。保护其他 Docker 项目、不更改全局代理/网络/系统、不泄露 Secret。
+在 Owner 实体 Windows 11 本机使用官方 Docker Compose 原版部署 Karakeep，Web 仅 `http://127.0.0.1:3000` 可用。目标先验证登录页、Web/Chrome/Meilisearch 依赖，不改业务源码、不接 AI API、不注册/导入真实收藏，不操作已有其他 Docker 项目及全局代理/VPN/证书/WSL 设置。
 
 ## PROJECT_STAGE
-- **当前：G1E 只读状态核对，绝对不允许部署/恢复/重建。** 目前仍 `NOT_DEPLOYED`。
-- 历史 G0/G1/G1R/G1N/G1C 的事实和正式 RETURN 保留于 Evidence，不重跑。G1R 曾在 Windows USERPROFILE 下创建受保护 `KarakeepLocal/docker-compose.yml` 和 `.env`（两个独立随机 Secret）；G1C 成功拉取并验证两个官方 GHCR 镜像。
-- **G1D Reviewer 审核**：已检查最新 main `karakeep-local/EXECUTION_EVIDENCE.md`，blob `8585ff6de1d4b2912f964a6a4409d417be588f6c`（commit `a65f685bfde15482c83b0b6203f2768f82733f67`）。接受 G1D 的只读结果与 RETURN：原预期位置找不到 Compose/.env、Windows Internet proxy 启用状态与上轮不同、非目标 Docker network ID 集合在本轮读数间变化、Docker Hub Host 路径无法连通而 Desktop proxy 路径未验证；这次没有 Docker /本机文件写入或 pull。
-- Reviewer 判断：**配置/Secret 在历史中存在 != 当前仍可恢复或可以重建**；不能未经调查覆盖/再次生成。仅 Docker network ID 变化不自动证明非目标业务受损，但其归属/影响需要确定；Windows proxy 模式差异是读数事实，不归因 Codex。本轮优先缩小文件位置和网络状态故障域。
+**G1E Reviewer 判定：PASS（read-only reconciliation），但项目整体 NOT_DEPLOYED。**
+- Reviewer 已实际检查 `main:karakeep-local/EXECUTION_EVIDENCE.md` G1E 段落（commit `754f3745d6744e1bfaae1a1145965806470eb9bd`，blob `c04540e5bfd29c34744f46c23733f1d31a833370`）。
+- **G1E PASS 范围**：已接受的 USERPROFILE `KarakeepLocal` 目录和原 Compose/.env **当前确实存在且安全可读**；Compose SHA-256 与 G1R 的已接受值完全一致；.env 有四个受控键，两 Secret 的当前格式与互异性、安全 ACL 均通过；未发生本机写入。当前网络 11 个（3 默认、8 自定义），间隔 15 秒的两次只读快照对象身份/元数据一致、全部无 attached endpoints。两个 GHCR 镜像身份仍在。
+- **历史事实不重写**：G1D 当时报告目录缺失、网络 ID 变化；具体时间/原因仍 UNKNOWN。G1E 的历史 Secret 字节连续性没有对照证据，明确 `UNVERIFIED`；初装尚无用户、数据库、收藏，也无运行实例依赖旧密钥，因此 **Reviewer 接受现存受保护密钥作为首次安装配置**，不把它宣称为已证明与 G1R 的原始字节相同，**不允许重复生成或覆盖**。
+- 原有 Docker 网络历史差异无法追溯 ID，但新近两次快照稳定且无 endpoint；不因此无限阻断隔离的新项目。Windows Internet proxy 先后不同，原因仍未知，只把本轮当前设置当 fresh state，不修改宿主代理。
+- 仅余 Meilisearch Docker Hub 拉取问题；下一轮在一个 Gate 内执行有诊断价值的单次受限拉取，成功则条件部署，失败精确 RETURN 并输出可行动阻塞，不再循环旧的泛化前置诊断。
 
 ## SYSTEM_MAP
-- HOST：Owner Windows 11，PowerShell 7.6.5，Docker Desktop Linux Engine 29.7.2 / Compose v5.4.0 / `desktop-linux`（G1D）；执行时重新验证身份与当前用户 profile 同源。
-- ACCEPTED_TARGET：`$env:USERPROFILE\KarakeepLocal`；G1R/G1C 已验证其下 `docker-compose.yml` SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`，`.env` 有 `KARAKEEP_VERSION` / `NEXTAUTH_SECRET` / `MEILI_MASTER_KEY` / `NEXTAUTH_URL`。G1D 该目录下目标文件未找到。其实际当前文件/Secret 状态为 **UNKNOWN/MISSING_AT_ACCEPTED_TARGET**；不得凭旧值重建。
-- HISTORICAL_ALTERNATES：早期曾讨论 `$env:LOCALAPPDATA\KarakeepLocal` 和 `$env:APPDATA\KarakeepLocal`，但 G1R 实际选择 USERPROFILE。只允许把这两个作为**有限的只读路径排除项**；不能改父/子目录 ACL。G1D 已排除文档/OneDrive Docs/当前工作区的等价候选，不再重复全盘找寻。
-- IMAGES：已下载并在 G1D 读回：
-  - `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`
-  - `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`
-  缺失官方 `getmeili/meilisearch:v1.41.0`；G1D 未 pull，Docker Hub Host 直连 registry/auth/layer 443 超时；Desktop Engine proxy 真实拉取路径尚未证明。
-- PROJECT_SCOPE：`karakeep-local` Compose 隔离；预期只发布 `127.0.0.1:3000`；两个 named volumes `karakeep-local_data` 和 `karakeep-local_meilisearch`，G1D 均不存在；无 Karakeep 容器、网络/卷、账号及真实收藏。
-- NON_TARGET_DOCKER：G1D 为 20 容器（1 created、19 exited、0 running）、12 existing volumes、11 networks；Windows 容器/卷快照前后相同，网络 **数量相同但 ID 快照变化**，原因 UNKNOWN。原 WordPress CLI/Web/MariaDB 停止状态与旧 MariaDB unhealthy 均属非目标，不启动/更改。
-- PROXY：G1C 读 Windows Internet proxy 为 enabled，G1D 为 disabled；WinHTTP direct、Engine 配置内部 alias（Windows Host 无法解析，不证明 Docker Desktop 内部 alias 故障）。不更改任何代理或证书。
-- RESOURCES：G1D 可用 RAM 2249 MiB、C: 余约 185 GiB；没有固定空闲 RAM 启动门槛，实际 OOM/系统稳定性才作为风险信号；在 G1E 只观察。
-- AUTH/RECOVERY：两 Secret 历史只存在于本机 `.env`，从未输出或提交；**当前原始文件找不到且没有已验证的另一处 Secret 恢复副本**。禁止声明已泄露/已丢失/已恢复；禁止自动生成、轮换或恢复。正式安装前必须重新明确 Secret 保管/恢复边界。
-- EXECUTION：本机 PowerShell Codex 为已接受默认渠道；云端 Reviewer 没有直接读写 Owner 本地文件能力。
+- HOST：Owner Windows 11，PowerShell 7.6.5；Docker Desktop Linux Engine 29.7.2 / Compose 5.4.0 / context `desktop-linux`（最近 G1E），每次执行新鲜核验目标与 Engine 可达即可。
+- CONFIG：`$env:USERPROFILE\KarakeepLocal\docker-compose.yml`，本地 SHA-256 `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`；官方 Compose Git blob `865bb147cef972926d5dc32e50645876fd110555`。该目录 `.env` 受保护且有 `KARAKEEP_VERSION / NEXTAUTH_SECRET / MEILI_MASTER_KEY / NEXTAUTH_URL`；两个 64-hex Secret 格式有效，不显示、不再造、不复制/上传、不 hash Secret；没有 AI API key。G1E 目录和文件 owner/DACL 通过。
+- PROJECT：Compose `-p karakeep-local`，官方服务 web/chrome/meilisearch；web Host port 仅 `127.0.0.1:3000:3000`，其他服务不发布 Host 端口。计划持久卷 `karakeep-local_data` 与 `karakeep-local_meilisearch`（G1E 尚不存在）；无项目容器/账号/真实数据。
+- IMAGES_ACCEPTED：`ghcr.io/karakeep-app/karakeep:release` RepoDigest `sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`，`ghcr.io/karakeep-app/karakeep-chrome:release` RepoDigest `sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`；G1E 再次 readback，通过。**不要重拉这两个镜像**。
+- IMAGE_MISSING：仅 `getmeili/meilisearch:v1.41.0`（官方原版配置对应 Docker Hub）；G1C 单次 Docker pull 失败 UNKNOWN。G1D Windows Host `registry-1.docker.io`、`auth.docker.io`、layer CDN TCP/443 timeout；Engine 配置 Docker Desktop 内部代理 alias，其 daemon image-pull 到 Docker Hub 的准确错误阶段尚未证明；不得将 Host timeout 当成 daemon 错误根因。
+- NON_TARGET：G1E 20 容器（1 created/19 exited）、12 既有卷、11 networks（3 default/8 custom、0 endpoints）；现有 WordPress CLI/Web、MariaDB 等保持当前退出状态。MariaDB 的历史 unhealthy、容器 Exit 137 原因 UNKNOWN；不启动、不清理、不改非目标对象。部署时以新的 read-only ID/state baseline 前后比较。
+- RESOURCE：C: 最近约 185 GiB 空闲，Docker Desktop overlay/volumes 同域空间 G1R 已可信验证，安装前轻量更新。Owner 已取消 2 GiB/0.8 GiB 任意固定剩余 RAM 门槛；记录实际可用内存、OOM/restart、Windows/非目标 Docker 运行稳定性即可。
+- RECOVERY：首装无真实业务数据；启动失败时仅允许经身份验证的 `docker compose -p karakeep-local down`（绝不 `-v`），保留两个命名卷与原配置、Secret、已下载镜像；无清理/全局 prune。真实收藏/Secret 离机备份及恢复仍 `UNVERIFIED`，进入真正收藏前另作备份 Gate。
+- EXECUTION：Owner Windows 本机原生 PowerShell Codex；云端 Reviewer 不直接修改此 Windows 本机。
 
 ## CURRENT_ACCEPTED_STATE
-- G1D 经本机直接读取：Owner profile 匹配 Windows canonical profile，且非 reparse；实际 accepted target 内 Compose 与 `.env` 均未找到，无法核对 ACL/哈希/Secret。当前是否整个目录不存在、叶子 ACL 拒绝/隐藏、误移到别处、磁盘/保护软件影响等均 UNKNOWN，绝不假设删除因果。
-- Docker info/version/system df 正常；两 GHCR 镜像 digest 匹配；Meili 不存在；本轮无拉取和启动。
-- Windows proxy mode 与 G1C 不同；Host 443 到 Docker Hub 及 auth、CDN timeout；Engine Desktop 内部 proxy 可用性仍 UNKNOWN。
-- Docker network IDs 在 G1D 入口与最终观测存在不一致，且末尾连续两次相同。是否临时系统网络更替、监测/对象语义差异、他项目调整或 Docker Desktop 内部维护 UNKNOWN。绝不因差异自动变更非目标项目。
-- **REVIEWER_DECISION**：G1D RETURN 正确。停止所有新的本机配置/Secret/Docker/网络修改；本轮设计独立 G1E read-only reconciliation，防止在未分类既有 Secret/网络状态时重建/启动。
+- G1E **正式 PASS：**当前受保护 Compose 和 .env 安全存在；Compose fingerprint 匹配；两 Secret 当前格式有效但历史字节连续性 UNVERIFIED（不影响尚无用户资料的首装）。历史缺失原因 UNKNOWN，当前无需重建。
+- Docker Engine 最近可用，20 既有容器 /12 卷 /11 无 endpoint 的网络两次快照稳定；不认为此前未归因的 network ID 漂移可证明业务受损。
+- Web/Chrome 官方两镜像已拉取且 digest 验证。Meilisearch v1.41.0 仍缺，Docker Hub 网络及 Desktop proxy 的确切失败层待下一 Gate 诊断。Karakeep 没有运行。
+- G1E `PASS_CANDIDATE` 被 Reviewer **接受为本轮 G1E PASS**，不是项目部署 PASS。
 
 ## CURRENT_GATE
-**GATE_ID**：`KARAKEEP-WIN-G1E-MISSING-CONFIG-NETWORK-READONLY-20261016`
+**GATE_ID**：`KARAKEEP-WIN-G1F-MEILI-PULL-AND-DEPLOY-20261016`
 
-**OBJECTIVE**：以最小只读证据识别已接受配置路径为何找不到文件、现存 Secret 可恢复状态，以及 Docker network ID 变化的类别；只记录当前代理模式，不擅自修复。
+**OBJECTIVE**：以最小、可审计的 Docker Desktop 镜像拉取诊断处理唯一缺失的 Meilisearch 镜像；若拉取成功，使用原 Compose/Secrets、现有另两镜像立即启动 Karakeep 并验证本地登录页。
 
 **MAX_ENDPOINT_THIS_ROUND**：
-1. 仅在 Owner 本机原生 PowerShell / 当前授权用户 session 进行只读核对；验证 OS/user/profile 正确映射、Windows canonical USERPROFILE、path-provider、已接受相对路径大小写/拼接、目标文件和目录的存在/可访问/重解析/隐藏属性与 owner/DACL *元数据*；区分 `PATH_CONTEXT_MISMATCH | ABSENT | ACCESS_DENIED | REPARSE_OR_REDIRECTION | UNKNOWN`，不要将 `Test-Path=False` 直接等同已删除。
-2. 仅针对 accepted target `USERPROFILE\KarakeepLocal` 和两个曾被提出的候选 `LOCALAPPDATA\KarakeepLocal`、`APPDATA\KarakeepLocal` 做目录级存在/条目名/ACL 元数据检查，不展开无关文件内容、Documents/OneDrive 不重复扫。若找到同名 Compose/.env，**先验证文件所在目录的安全性和原用户权限**；不得打印或复制内容、Secret 或 hash。Compose 非敏感时可仅核对 SHA-256 是否等于接受值；`.env` 只在已验证保护边界内检查四个**键名与格式**（不输出值/hash），区分 `EXACT_CANDIDATE | UNVERIFIED | COLLISION`。有非已接受路径下的候选不能直接作为新运行目录或启动依据，后续由 Reviewer 决策。
-3. 可选最小 Windows 安全/文件系统**元数据**诊断：只在能识别与 `KarakeepLocal` 精确目录相关且无秘密泄露时检查事件记录的存在与时间戳/类别（例如 Defender 隔离记录或文件创建/移动事件若系统本来就有）；无事件即 `UNKNOWN`，不得推断“无删除”。不运行恢复工具、递归全盘搜索、回收站还原、文件挪动/删除，不读取或输出 Secret-bearing 事件原文。
-4. 对 Docker 网络仅执行两次间隔适中的**只读**命名空间/ID/driver/scope/labels/created-at/attached endpoint 汇总；必要时仅 `inspect` 本轮实际变化所涉及的 network 元数据，不进入容器，不读 env/log/挂载数据。先区分 Docker 系统默认网络动态 ID、label/项目级命名对象、探针本身观测口径差异；不能从 G1D 只记录的计数重建不存在的旧 ID。若要确认与非目标服务的关系，只读检查这些网络是否承载既有容器 endpoint；不改动网络。
-5. 网络与 Windows Internet proxy mode 仅做当前只读采样、与 G1C/G1D 书面事实对照；没有新授权不得触碰系统代理、Desktop Containers proxy、VPN/Clash、daemon/WSL、证书、registry、任何已有镜像/容器/卷/网络。
-6. **不允许** `docker pull`、`compose up/down`、任何本机文件创建/写入/复制/移动/删除、Secret 新建或轮换、ACL 修改、Docker network repair/recreate、代理设置变更。唯一允许写入是 GitHub 该项目的脱敏 Evidence append。
+1. 只读最小 preflight：真 Owner Windows 本机身份、Docker Desktop Engine/context、已接受路径 Compose SHA/ACL 和 `.env` 四键/两 Secret 格式（仅本机受保护进程内检测）、端口 3000 空闲、项目镜像/容器/卷无碰撞，两个已下载的 GHCR digest，Docker 后端磁盘余量无明显退化、非目标对象 baseline 与实际内存状态。**不重复 G1E 文件丢失历史调查、其他容器停机原因或旧 network ID 追溯。**
+2. 在不更改任何系统设置前提下，结合本机可用的 Docker Desktop settings/Engine metadata、registry endpoint 受限探测，冻结一份**可真正分类错误**的诊断方案：仅针对 `getmeili/meilisearch:v1.41.0`，在本机受保护内存中捕获拉取产生的 stdout/stderr，并当场以安全白名单归类失败阶段：`DNS | TCP_TIMEOUT | PROXY_CONNECT | PROXY_AUTH | TLS_CERT_VERIFY | TLS_HANDSHAKE | REGISTRY_HTTP_401_OR_403 | RATE_LIMIT | IMAGE_TAG | LAYER_DOWNLOAD_OR_EXTRACT | OTHER_NONSECRET | UNKNOWN`；按实际检查结果如实分类，绝不输出原始日志、URL、凭据、用户信息或 Secret。先用人工合成的无敏感 fixture 验证分类器和 native exit-code 捕捉确实工作；控制拉取时限与次数，杜绝静默吞错变 UNKNOWN。
+3. Owner 在本轮明确授权后，允许**一次**带该诊断机制的同官方 tag `docker pull getmeili/meilisearch:v1.41.0`。这**本身是一个受限单故障域诊断探针**，无需先宣称 Docker Hub Host 已恢复或将过去的 UNKNOWN 捏造成已明确分类。不可再拉 Web/Chrome、不换源/tag、不使用无 TLS 镜像镜像站、不自动改代理/证书/daemon/Clash/VPN/DNS。若失败，根据现场 error code 只记录脱敏阶段与修复需要，立即 RETURN；禁止当轮再试/自动进行全局修复。
+4. 如果 Meilisearch image 下载成功，执行 `docker image inspect` 读取官方 RepoDigest/本机身份，复核另两镜像及受保护配置/loopback-only 发布、项目非目标对象快照、Docker Engine 活性和实际 OOM/系统稳定性。均通过时允许以已检验的 Compose CLI `docker compose -p karakeep-local up -d --pull never` （确认本机版本支持）仅启动 Karakeep 三容器。检查服务本身、Meilisearch、Chrome 内部依赖，Web `http://127.0.0.1:3000` 登录页、本机 127.0.0.1-only 发布与 LAN/公网不可达负面边界、项目卷身份及非目标对象未变。首轮不注册任何账户、不添加收藏/AI Key。
+5. 发生服务异常/实际 OOM/非目标服务退化，仅按预定项目范围停止 `karakeep-local` 并保留卷与 Secret；若目标不明则不 destructive 清理并精确 RETURN。
+6. 如拉取失败原因指向必须更改 Docker Desktop Containers proxy、Windows 代理、VPN、系统证书/daemon 等全局配置，**停在 Reviewer**，说明唯一需要的下一步授权类型。不可更改设置，不自行加入其他镜像源/架构，也不进入无限重试。
 
-**MANDATORY_REVIEW_STOP**：执行 G1E 后不论发现何种结果，追加脱敏 Evidence，commit/read-back 后停 Reviewer；**不能**条件部署、不能私自进下一 Gate。
+**MANDATORY_REVIEW_STOP**：本 Gate 在失败或完成候选后追加 Evidence、提交 `main`、再读回，必须停 Reviewer，不自动注册/正式用。
 
-**TARGET_AND_SCOPE**：Owner 实体 Windows 11 本机。文件仅上述 3 个确知候选目录及路径映射/限定相关事件元数据；Docker 仅 network 对象元数据、目标镜像存在性和项目碰撞做只读核对；非目标容器内部、业务数据/Secrets 一律不读。
+**TARGET_AND_SCOPE**：Windows Owner 实体本机、现有 `USERPROFILE\KarakeepLocal` 受保护文件、三个官方镜像、`karakeep-local` Compose project/new isolated named volumes。其它 Docker 资源/全局代理/Clash/VPN/证书/WSL/daemon 全部只读且不得改。
 
 **APPLICABLE_CRITICAL_CONSTRAINTS**：
-- 此为失踪 Secret/config 的状态核对，不是修复 Gate。出现不明/冲突目录或潜在数据丢失时应原样保留，精确 RETURN。
-- 绝不向 Evidence/聊天输出用户姓名路径、SID、Secret 值/摘要、代理 URL/IP/token、非目标网络/容器私有 ID/名称；只输出经脱敏汇总、归属分类和“是否安全候选”。
-- 不把一个 Host 路径可达/不可达推断成 Docker Desktop 内部 proxy 路径；网络拉取问题保持 pending。
-- 不因静态空闲 RAM 值低于任意数值而改变本轮结论；出现真实不稳定仅记录，不在此 Gate 操作 Docker。
-- 任何发现可能影响其他项目或存在未解释 Secret / 数据去向的迹象，停止进一步扩大检查；不得为了让安装继续而“补建”路径或密钥。
+- 不更改、重生或输出现有 Secret；不能证实旧 Secret 字节相等不是阻断首装的硬前提，因初装无历史运行状态依赖；文件当前 ACL、格式、应用有效性和保护才是本次前提。
+- 不存在新固定 RAM 限制；必须监测真实 OOM/持续重启/Windows 崩溃迹象与非目标状态。
+- 已证实的 GHCR 镜像绝不重复拉取；缺失镜像一次有诊断价值的指定官方 pull 失败后即停止。错误本机脱敏不意味着信息完全丢失：保留可行动**阶段、错误类别、pull 时长区间、native exit code、是否开始 layer 下载**，但不可保留敏感原文/凭据/Host 本机个人标识。
+- 非目标已有 20 容器退出不是本项目问题，不自动恢复；无 attached endpoints 的 11 网络稳定是最近 G1E read-back，不再无原因停顿。只对新发生的真实状态变化做精准 RETURN。
+- Secret/代理 URL/IP、原始 Docker logs、数据库内容不可进 GitHub/聊天。
+- 仅 localhost:3000；不 `prune`、不 `down -v`、不停止或更改其他项目。
 
-**PREFLIGHT**：从当前 Gate 和 G1D 最小证据读取，证实 Owner 本机、只读工具/权限可用；本轮所有诊断不需要容器写入、Admin 提权或本机文件创建；任何环境/权限不允许的探针直接标 `UNVERIFIED`，不请求 Owner 手工进行多步排错。
+**PREFLIGHT**：确认 Owner Windows 本机 + Docker Engine 可用、受保护配置与目录现存及 SHA/ACL 正确、目标无现有对象冲突、官方两镜像 read-back、port 3000 空闲、磁盘可用、明确本轮 Owner 有条件拉取/初装授权、错误分类器及本机受保护日志捕获经无秘密 fixture 验证。静态空闲 RAM 数值只记录。
 
-**REQUIRED_EVIDENCE**：
-- `karakeep-local/EXECUTION_EVIDENCE.md` 追加 G1E：AUTHORIZED_GATE、PREFLIGHT_FACTS、ACTUAL_CHANGES（明确本机 0）、OBJECTIVE_READBACK、VALIDATION、ANOMALIES、EVIDENCE_ARTIFACTS_AND_PURPOSE、ROLLBACK_EFFECT、RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT、EXECUTOR_RESULT。
-- 记录路径/文件状态、局部候选与 ACL/read-back 分类（无路径/Secret）、旧记录与新事实边界、是否检测到可审核的失踪原因、网络分类与时间观测口径、代理开关当前状态、已下载两镜像是否存在、仍 `NOT_DEPLOYED`。
-- GitHub main append-only，执行后读回 blob SHA；不改本 Handoff（Reviewer only）。
+**REQUIRED_EVIDENCE**：项目 `EXECUTION_EVIDENCE.md` 追加 G1F 的 AUTHORIZED_GATE / PREFLIGHT_FACTS / ACTUAL_CHANGES / OBJECTIVE_READBACK / VALIDATION / ANOMALIES / EVIDENCE_ARTIFACTS_AND_PURPOSE / ROLLBACK_EFFECT / RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT / EXECUTOR_RESULT，包含：配置与 existing image digest 结果、拉取次数与捕获机制、Meili 成功 digest 或失败的安全分类和具体阶段、Host vs Engine 路径界限、内存与对象快照、服务/依赖/loopback 安全验证及 project-only rollback、是否本机真实部署。仅脱敏文字提交 GitHub main 并读回；原始错误输出不离开受保护本机进程、Secret 不入 Evidence。
 
 **ACCEPTANCE_CRITERIA**：
-- 精确说明 `KarakeepLocal` 是否真正不存在、访问受限、仅候选错位或仍未知；若可见文件须能安全证明属于 accepted source/secret custody 或明确 `UNVERIFIED`。不要求证明删除因果，未知如实保留。
-- 网络差异至少区分默认/项目自定义与活跃 endpoint、两次当前快照是否稳定；不能观察到历史 ID 时不编造。
-- 不改变任何 Windows 文件/设置/Secret/Docker 对象；没有 `pull`/`up`，所有 Evidence 脱敏且 main 可读回。
-- 诊断结束仍交 Reviewer 判下一 Gate；不把现有两个镜像称作已部署。
+- 诊断完成分支：精准说明 Docker Desktop **本次** Meili pull 成败与失败所处域，若无法分类如实 `UNKNOWN` 但必须说明本轮分类器/观察限制；明确下一步是否需要 Owner 授权全局代理等设置。不可把 Host direct TCP timeout 说成 Docker Engine 拉取失败根因。
+- 部署分支：三镜像官方身份 read-back、无额外 pull、Karakeep web/chrome/meilisearch 依赖正常、login page 实际可达、web 只监听 127.0.0.1、无 Chrome/Meili host 映射、项目卷可识别、其他项目状态未因本轮变化、宿主实际稳定无 OOM、无 Secret 泄露，GitHub Evidence 有效读回；Executor `PASS_CANDIDATE` 待 Reviewer 正式 PASS。
+- 如果失去已有受保护配置或非目标资源发生实际高风险故障，精确 RETURN，不创造新密钥绕过。
 
-**ROLLBACK_STATUS_OR_PLAN**：仅只读本机，无运行环境回滚；GitHub 追加证据不删除。后续若真的必须重建，先由 Reviewer 把恢复与原 Secret 去向分类后另开授权 Gate；在本 Gate 不授权新 Secret 写入。
+**ROLLBACK_STATUS_OR_PLAN**：pull 未成功只保留可重复使用的官方两镜像和已有 Secret；若上层启动失败，只对本项目 `docker compose -p karakeep-local down` 且绝不 `-v`，保留卷/Secret，记录剩余状态；不触及其它 Docker/Windows 项目，禁止 prune。数据备份/异机恢复 `UNVERIFIED`，真实数据前后续另做 Backup Gate。
 
-**OWNER_ONLY_ACTIONS**：本 Gate 不需 Owner 提供 Secret，也不需修改任何系统设置；Owner 仅转交只读 Gate 给可访问本机的 Codex。若之后需要在原路径重建/替换 Secret，另做明确 Owner 授权和恢复策略。
+**OWNER_ONLY_ACTIONS**：Owner 转交本 Gate 时授权仅 `getmeili/meilisearch:v1.41.0` 官方镜像一次受限拉取及通过后 `karakeep-local` 独立初装；不授权修改 Docker Desktop/Windows 全局代理/证书/DNS/WSL/系统设置或非目标项目；不需提供 Secret。
 
 **REVIEWER_TO_EXECUTOR_RELAY**：
-> 你是 Owner Windows 本机 Codex Executor。读取 `entropy-student/project` 最新 main `karakeep-local/REVIEWER_HANDOFF.md` 的 CURRENT_GATE / CURRENT_ACCEPTED_STATE / SYSTEM_MAP / CRITICAL_CONSTRAINTS，以及 `karakeep-local/EXECUTION_EVIDENCE.md` **仅最新 G1D 小节**。执行 `KARAKEEP-WIN-G1E-MISSING-CONFIG-NETWORK-READONLY-20261016`，专注三个已知候选目录的只读路径/ACL/文件存在性与此前 Secret 是否可验证复用，以及非目标 Docker network ID 变化的最低限度元数据鉴别。不要扫描全盘、打印 Secret、探查其他业务数据或历史 Docker 容器日志。只观察当前 Host proxy 模式，不修改代理/网络。**本 Gate 禁止任何 pull、up、配置/密钥重建或系统变更。** 将脱敏结果 append 到 `EXECUTION_EVIDENCE.md` 并提交 main、读回，严格按 Executor 固定格式返回，停在 Reviewer。
+> 你是 Owner 实体 Windows 11 本机的 Codex Executor。仅读 `entropy-student/project` 最新 `main:karakeep-local/REVIEWER_HANDOFF.md` 的 CURRENT_GATE、CURRENT_ACCEPTED_STATE、SYSTEM_MAP、CRITICAL_CONSTRAINTS，并只读最近 `karakeep-local/EXECUTION_EVIDENCE.md` 的 G1E 段落。执行 `KARAKEEP-WIN-G1F-MEILI-PULL-AND-DEPLOY-20261016`。Reviewer 已接受 G1E 为 PASS：原受保护 Compose/.env 当前存在/校验通过，11 个网络当前稳定且无 endpoint；历史 Secret 字节连续性无法证明但首装尚无真实数据依赖，不再重复旧路径/网络调查。复用这套配置、现有两个 GHCR 镜像，不重新生成 Secret、不重复 pull。按当前 Gate 用预先验证的脱敏分类工具对 `getmeili/meilisearch:v1.41.0` 做**本轮仅一次**有意义的 Docker Desktop 拉取诊断；若成功且 fresh preflight 合格，就只用冻结 Compose 启动 `karakeep-local` 并验证 `127.0.0.1:3000` /三服务/非目标基线与安全边界。若失败记录安全错误阶段和下一步唯一阻碍，绝不自动改代理/VPN/证书/其它 Docker 项目、不盲目重试。按固定 Executor 完成格式追加脱敏 Evidence 到 GitHub main 并读回，停在 Reviewer。
 
 **EXECUTOR_TO_REVIEWER_RELAY**：结果；改动；验证；问题；回滚；请 Reviewer 检查；Owner 转交。
 
 ## CRITICAL_CONSTRAINTS
-真实本机身份、Secret 保密与恢复边界、只读核对、不改系统/代理/其它 Docker 项目、禁止覆盖失踪 Secret、禁止未确认的原路径重建、证据不带隐私/Secret、无固定 RAM 数值门槛、Reviewer 停点。
+Windows Owner 本机、现有安全 Compose 与 Secret 复用、不拉已成功 GHCR 镜像、仅一次 Meili 官方 pull 诊断、不动其它 Docker 项目、不改宿主网络全局设置；无静态可用 RAM 门槛，实际稳定性检查；仅回环地址 Web、无账户/真实资料，失效精准 RETURN。
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner Windows 本机 PowerShell Codex（本机执行身份需要新鲜证明）。
+Owner Windows 本机原生 PowerShell Codex。
 
 ## CURRENT_ROLLBACK_STATUS
-Karakeep 尚无容器/卷/用户收藏。两个官方 GHCR 镜像保留；历史受保护 Compose/Secret 当前找不到且没有可信异地恢复材料；本轮只有只读诊断无回滚。本项目后续恢复能力仍 `UNVERIFIED`。
+G1E 无本机写入、无现有 Karakeep runtime/volumes；保留两 GHCR 镜像和受保护配置。G1F 如启动失败只做 Karakeep project-only `down` 保留卷；真正数据/Secret 离机恢复 `UNVERIFIED`。
 
 ## UNRESOLVED
-原创建的 Compose/.env 是被移动、隐藏、访问拒绝、路径错配还是删除；是否仍有可受信任的 Secret 副本；Docker networks ID 变化的作用范围、Windows proxy 模式变化原因；Docker Hub 经 Desktop proxy 的真实访问仍未知。
+Meilisearch Docker Hub 镜像拉取时 daemon/Containers proxy 的确切网络故障域仍 UNKNOWN；历史 G1D 文件可见性差异及网络 identity 漂移原因 UNKNOWN（当前状态稳定，均不独立阻止初装）；Windows host 直连 Hub timeout 可能持续但不是 daemon 网络故障证据。
 
 ## NEXT_STEP
-Owner 将 G1E 只读核对指令转交本机 Codex；Reviewer 在 Evidence 读回后判断是否能恢复既有 Secret，或是否必须发起新的 Owner 授权安装恢复 Gate。Meilisearch pull 暂缓。
+Owner 转交 G1F 给本机 Codex；使用经无秘密测试的错误捕获/分类执行一次 Meili pull。成功立即条件启动 Karakeep，失败带可行动诊断返 Reviewer，不修改系统代理。
 
 ## OWNER_ACTION_REQUIRED
-转交当前 G1E 只读 Gate，无需新增授权、无需提供任何 Secret，也无需恢复旧容器。
+Owner 通过本轮转交明确授权官方单次 Meili pull 与条件启动 Karakeep；无需重新提供/生成两个 Secret，也无需恢复其他 Docker 容器。
 
 ## EVIDENCE_POINTERS
-当前 G1D Evidence：`karakeep-local/EXECUTION_EVIDENCE.md`，commit `a65f685bfde15482c83b0b6203f2768f82733f67`，blob `8585ff6de1d4b2912f964a6a4409d417be588f6c`。历史 G1C 及更早记录保持原样。
+G1E `EXECUTION_EVIDENCE.md` commit `754f3745d6744e1bfaae1a1145965806470eb9bd` blob `c04540e5bfd29c34744f46c23733f1d31a833370`；历史 G0–G1D 保持不改。
