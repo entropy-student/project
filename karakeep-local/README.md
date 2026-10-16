@@ -4,6 +4,7 @@
 > 原本机安装实施 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED`；Karakeep 保留运行。
 > **最新状态**：G2B R2 已尝试、在 Computer Use 无法确认浏览器目标 URL 时安全停止；Canary 未执行、删除 0、Executor 未提交 G2B Evidence。Reviewer 判 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，**等待下一次 Owner 指令，当前没有可执行的新 Gate**。
 > 以后项目事实以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一当前状态权威；本文件是索引，不替代 Handoff。
+> **Owner 最新需求**：电脑上项目文件分布不清，先计划防误删的本机资产盘点；详见 [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md)。**计划尚未执行，不授权移动/删除；当前没有可执行的新 Gate。**
 
 ## 一、所有项目文档的统一目录
 
@@ -12,6 +13,7 @@
 | 文件 | 用途 |
 |---|---|
 | [README.md](./README.md) | 文档入口、本机配置/数据位置、日常启动命令 |
+| [LOCAL_ASSET_ARCHIVE_PLAN.md](./LOCAL_ASSET_ARCHIVE_PLAN.md) | **Windows 本机文件归档与防误删计划**：只读盘点→分类→另行授权操作；尚未执行 |
 | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) | 唯一当前状态、正在授权的 Gate、后续 Reviewer 交接 |
 | [DECISION_LOG.md](./DECISION_LOG.md) | Owner 决定、Gate 调整及理由；历史决策保留 |
 | [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) | 原安装实施正式 Close 的结项报告及其后补充说明 |
@@ -60,3 +62,9 @@ if ($LASTEXITCODE -eq 0) {
 - Owner 已明确：**不做备份、恢复演练、迁移、Windows/Docker Desktop 重启测试、长期监控**。旧版包含备份的 G2B 已 `SUPERSEDED_UNEXECUTED`，不能执行。
 - 现有账户/收藏/搜索数据只存电脑上，`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；电脑故障或 Docker 存储损坏可能永久丢失收藏。不能将这个风险写成已解决或将 GitHub 文档视为恢复材料。
 - **已审计的最后一轮 Executor GitHub Evidence 仍是 G1J PASS**；G2B 的本机只读报告由 Owner 转交、未持久化到 Executor Evidence。Owner 先前成功登录并找到语言设置入口；是否已切换简体中文仍 `UNVERIFIED`。
+
+## 五、本机文件整理：先做什么
+
+整理 Karakeep 前，**不要先删除疑似根目录 `sass` / `saas` 或 Docker 目录**。其完整路径、是否存在未提交资料或被项目引用仍 `UNKNOWN`。推荐顺序：Owner 未来另行确认后，仅执行一次**只读资产盘点**，确定运行配置、Docker 两卷和疑似旧工作区的归属与引用；由 Reviewer 分类哪些必须原位保留、哪些是无引用可再生文件；最后**仅在 Owner 批准具体路径后**才考虑精确清理。
+
+[完整归档方案](./LOCAL_ASSET_ARCHIVE_PLAN.md) 不要求重新部署、迁移收藏、备份、重启或浏览器操作。历史 G2B 仍 RETURN，安装实施已 CLOSE、服务保留。
