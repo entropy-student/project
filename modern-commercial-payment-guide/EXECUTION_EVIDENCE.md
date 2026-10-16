@@ -205,3 +205,13 @@
 - **静态数值复算：** 14/14 个数值计算一致（整数/小数精度容许误差小于 `1e-8`）；新样稿保留 4.40%、0.30、USD 150、USD 35、3–7 工作日、双协议及企业账户限制。**未给出银行实际到账金额**；银行/中转费、汇兑、税款、经营成本、真实账户准入均 `UNKNOWN`；大陆自然人不能照搬企业账户费率或自动获得合法提现路径。
 - **文件不变性：** 首版 `P2_HUMAN_WRITING_SAMPLE.md` Blob `b05dfdc45e03649927a25be0db0380f40a681ba6` 保持；Reviewer 已通过的 `P2_REWRITE_CANDIDATE.md` Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 保持；不更改冻结 7/29/42、P1、main、Gate、Handoff，不进入 P3–P5、HTML、第三轮或任何真实支付。
 - **未验证与回滚：** 没有真实付款、提现、银行资金验证、用户完读率或营销效果；可单独移除第二稿/回退本轮新增提交，其他两稿及历史证据不受影响。**RESULT=PASS_CANDIDATE / STOP_AT_REVIEWER**。
+
+---
+
+# 结构保留型重跑 Gate｜阶段 A 安全撤回旧短篇（2026-10-16）
+
+- **GATE_ID：** `MCPG-P2-ROLLBACK-AND-HUMAN-WRITING-STRUCTURED-RERUN-20261016`，Gate Blob `f3a761a0d56c4b85df5006dbfbd3131e5afa4266`。
+- **ROLLBACK_COMPLETED：** 仅在 `mcp-p2-independent-rewrite-20261016` 分支精确删除 `docs/P2_HUMAN_WRITING_SAMPLE.md`（删除前 Blob `b05dfdc45e03649927a25be0db0380f40a681ba6`；删除 Commit `969e28709ea23ced31dc1c91861028c0db4d43c1`）和 `docs/P2_COPY_EDITING_SAMPLE.md`（删除前 Blob `9a4bdd2971ac1a4307e82582a3ae1d9ab413d3e5`；删除 Commit `701e1b1b7f8fe2740c9ee7f7605c1ca5cd72acc4`）。没有 force/reset/改写历史。两个文件仅是上一轮在 PR 分支新增的孤立短篇，非已审正文或共享依赖。
+- **DIRECT_READBACK：** 删除后按完整路径分别 fetch_file，均得到 `NOT_FOUND`；旧实验文件可从 Commit `d0f000e95554e530d3d52ce49acb85a0d1b4825e` 和 `c3341053cdd3f67cb78a2e8d8ad1dba9b3e8b15c` 读出相同 Blob（恢复能力验证）。原完整 `docs/P2_REWRITE_CANDIDATE.md` Blob 仍为 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`（原审提交 `17ea75adec7448a8bbe6387788b5bfe321ff68f6`）；旧 Evidence Blob `686e7f2dc070decc8a7076c92cfd3a8841099c93` 未删、未复原覆盖。
+- **PR 状态：** 删除后 head `701e1b1b7f8fe2740c9ee7f7605c1ca5cd72acc4`；Open / Draft / 未合并；当前 PR 仅余已审 P2 完整稿与执行证据两份 MD 的差异。当前分支**不等于**旧原审提交（审计历史保留）。
+- **权限和下一步：** 阶段 A 已读回满足 Gate，允许阶段 B；本记录 append-only，旧两轮执行记录仍存。新稿必须只用原完整 P2 全文和指定 human-writing Skill，不得复用已删除短篇作为文字输入。
