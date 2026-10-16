@@ -85,23 +85,23 @@
 ## 五、当前项目状态（2026-10-16｜唯一有效状态）
 
 - **PROJECT_GOAL：** 面向中国大陆个人开发者、独立站经营者及中小商家的通用商业支付科普，回答“怎么收钱、怎么选、怎么用好”；最终为桌面端独立单文件HTML，但当前未授权制作。
-- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS / P3_PLAN_PASS / P4_CHAPTER2_OWNER_WRITER_RELAY_PENDING / P5_PENDING`。
+- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS / P3_PLAN_PASS / P4_CHAPTER2_OWNER_PACKAGE_READY / P5_PENDING`。
 - **SYSTEM_MAP：** 纯内容项目；GitHub main保存权威框架、Owner接受正文、P3知识分配、治理交接及审计记录，外部写作Agent只处理Owner上传的脱敏离线ZIP；无生产网站/数据库/Secrets/支付账号、无服务器或真实资金动作。
 - **CURRENT_ACCEPTED_STATE：** V6全书7一级/29二级/42三级问题正式冻结（[完整框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`）；①《收款方案选择》Owner已明确**正式通过**经纠错的外部Agent稿（[现行全文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`）。此为Owner正式内容接受，**不冒充独立Reviewer对本修订稿的PASS或真人试读通过**。P1结构覆盖已通过，P3知识融入/去重方案已规划完成（[P3计划](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)，Blob `322b2220f6a23a247f337f430a68d086306d8b2f`）。
-- **CURRENT_GATE：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`（**OWNER_RELAY_PENDING**；P4第二部分正文尚未开始），完整定义见第六节。
+- **CURRENT_GATE：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`（**OWNER_PACKAGE_READY / EXTERNAL_MD_PENDING**；资料ZIP与提示词已交当前Owner会话，外部Agent尚未产生第二章候选），完整定义见第六节。
 - **CRITICAL_CONSTRAINTS：** ①V6 7/29/42问题原文、归属和顺序未经Owner授权不改；②重点面向新手能懂与熟手有深度，具体订单/直接答案/通用决策方法优先；③必须标明真实主体、商品、地区、产品、费率核验日期，未知权限/到账记UNKNOWN；④不向读者承诺开户、资金实到或免税，不进行真实付款/开户/退款；⑤新文章默认**仅输出完整UTF-8 Markdown**，由Owner最终认可后才归入main；⑥**不再使用human-writing、copy-editing、humanizer三轮写作Skill**，plain-language也非强制；⑦历史PR/旧内容为审计，不允许自动恢复覆盖；⑧没有Owner新授权不制作HTML、不发布。
 - **DEFAULT_EXECUTION_CHANNEL：** 第一部分已用的外部独立写作Agent工作方式：**Reviewer准备完整离线资源ZIP与一份提示词→当面发给Owner→Owner转交外部Agent→Agent只交一份Markdown→Reviewer复核→Owner接受→main归档**。外部Agent无需GitHub仓库权限，且不向外部提供个人账号、识别信息、Secrets。
 - **CURRENT_ROLLBACK_STATUS：** 当前①正文Git Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；清理前main快照commit `f6d3aa43785e1c0671bef4fce2807aa739f0689e`可复原旧正文/实验Gate；旧①Owner冻稿Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；不reset/force。文件库历史4文件以ZIP形式存于 `/项目历史归档/现代商业支付系统_清理前历史文档备份_20261016.zip`，检验SHA256 `5744fd26d6dd89eb1f3b2b5f36524a596621d7677337f6027ce6b89d54019d87`。
 - **UNRESOLVED：** ②–⑦正文尚未编写；新的①虽已Owner通过，真实读者理解与个人商户资格/支付实际闭环尚未验证，出版前应对新近变化的费用/政策做重新核验。原P4最终内容完成度仍仅①已通过。
-- **NEXT_STEP：** 为②《收款开通与接入》生成脱敏的**真正含全文ZIP**与单独提示词并交Owner；Owner将其交给外部Agent写一份MD，候选返回后执行金融事实和知识覆盖Review，不预先要求外部Agent加入GitHub。
-- **OWNER_ACTION_REQUIRED：** 下一次写文章时只需接收ZIP与提示词并转发给选定外部Agent；当前无其他资金、安装或运维动作。
+- **NEXT_STEP：** 已准备并校验②《收款开通与接入》的**真实全文ZIP**和独立提示词，已交Owner本会话。Owner可将两文件交外部Agent写单份MD；收到候选后再做事实/覆盖Review，不要求外部Agent加入GitHub。
+- **OWNER_ACTION_REQUIRED：** **转交本对话的②章ZIP与提示词给外部Agent**（若暂不打算写，可保留文件而无需采取其他动作）；完成后的MD再交Reviewer。
 - **EVIDENCE_POINTERS：** [DECISION_LOG.md](DECISION_LOG.md)（Owner最终通过、三Skill退役、快照恢复），[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)（main清理证据），[P1结构审查归档](docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md)，[P3知识归属方案](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)，[旧PR #132](https://github.com/entropy-student/project/pull/132)（已关闭未合并，历史Evidence留在Git固定提交），[现行文档索引](docs/CURRENT_DOCUMENT_INDEX.md)。
 
 ## 六、当前受限Gate与对外写作交接
 
 - **GATE_ID：** `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`
 - **OBJECTIVE：** 以第二部分“②收款开通与接入”为题，完成一份从账户准入与收款能力、链接/插件/自开发接入、支付与发货/到账衔接、上线前测试的中文教学正文，复用①的表达优点，但不照抄其表格和具体费率。
-- **MAX_ENDPOINT_THIS_ROUND：** 仅准备完整资料ZIP、一次提示词并交Owner转发；外部Agent返回后最多进入**②章MD候选审查**，未获Owner明确认可不写入正式main。不得进入③–⑦正文、制作HTML、真实商户申请或支付测试。
+- **MAX_ENDPOINT_THIS_ROUND：** 本轮完成完整资料ZIP、一次提示词交Owner；外部Agent返回后最多进入**②章MD候选审查**，未获Owner明确认可不写入正式main。不得进入③–⑦正文、制作HTML、真实商户申请或支付测试。
 - **MANDATORY_REVIEW_STOP：** `YES; STOP_AT_REVIEWER`。外部Agent不能自我宣布Review通过，Reviewer不代写本章。
 - **TARGET_AND_SCOPE：** 以本Handoff§二–四正式V6框架中的②（4二级/5三级）为唯一标题及知识覆盖基线；阅读①已正式通过的正文和P3知识主归属规则；收款产品/商户准入等事实以最新适用的官方材料为准，不将中国大陆个人/企业混为一体。
 - **APPLICABLE_CRITICAL_CONSTRAINTS：** 无三写作Skill强制流水线；不提供旧PR/失效Gate；不含任何真实识别信息/Secret；仅文章，无在线帐号或软件实施。
