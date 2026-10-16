@@ -80,3 +80,15 @@
 - **ACCEPTED QUALITY：** 完整4H2/5H3覆盖与连贯叙事、决策框架及工具清单；`STRUCTURE_PASS / FACT_AND_SAFETY_RETURN`，不以篇幅作为PASS依据。尚无执行方返修文件。
 - **PERSISTENCE：** 完整原稿、Reviewer评审及返修提示词已上传文件库 `/现代商业支付系统/` 分离保存；Reviewer回执本身已新增至main `docs/P4_CHAPTER2_REVIEWER_RETURN_20261016.md`，首写commit `0c471d04c13a9ffc368f48030f7a22a101b9ba2a`；main Handoff更新下一Gate `MCPG-P4-CH2-EXTERNAL-REVISION-OWNER-RELAY-20261016`。上传原稿未写main正式正文。
 - **ROLLBACK/STOP：** 只修改Reviewer报告/项目治理记录，未触碰①全文或V6冻框，未启动真实支付/退款、服务器配置或HTML；`REVIEWER_RETURN_FACTUAL_TECHNICAL_SAFETY`，Owner最小转交两份返修材料给原作者。
+
+
+## MCPG-P4-CH2-DIRECT-OWNER-AUTHORIZED-REVISION-20261016
+
+- **Owner authorization:** 用户明确要求“直接给我一整段提示词吧，或者你直接修改完成即可。”本轮采取其允许的直接修改路线，不再要求Owner转交返修提示词。
+- **Input source:** 用户本轮上传完整原始第二部分 `现代商业支付系统_第二部分_独立重写稿(1).md`，25,274字符、483行，SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`；依据此前已归档的5类P0和P1评审内容。
+- **Output file:** `docs/P4_CHAPTER2_DIRECT_REVISED_FOR_OWNER_20261016.md`；UTF8、23,620字符、507行、57,604字节；SHA256 `6c5af94853154c9f303275f385bdd1a169d608dbcc89b7fce92133b3a796ca58`；Git blob `f89193e29f296ac8ce5e88ab0b58632786540669`。此Git Blob经回读与本地文件一致。
+- **Edit scope:** ①29美元合成案例修正为软件交付适用的证据；②经营主体/KYC-KYB/受益人/住址与网站义务、产品和结算规则条件化；③支付链接/插件/API比较去掉不支持的固定上线时长和成功率；④Stripe与PayPal专属Webhook验签、权威交易状态核对；⑤event_id投递去重、支付对象与订单业务幂等、持久化队列/失败恢复；⑥PCI DSS外包仍有商户责任；⑦沙盒先行/杜绝强制真实Live刷卡；⑧退款权益和银行实际到账分层；⑨增加软件商户完整经营案例、三类集成案例、受款咨询八问、模拟场景、上线15项检查；⑩原8项参考入口增为17项。
+- **Source checks:** [Stripe Testing](https://docs.stripe.com/testing)（不在Live用真实方式测试）、[Stripe Webhooks](https://docs.stripe.com/webhooks)（事件重复/乱序/签名）、[PayPal REST Webhooks](https://developer.paypal.com/api/rest/webhooks/rest/)（证书/RSA或Verify API）、[PCI SSC FAQ 1092](https://www.pcisecuritystandards.org/faqs/1092/)及[1588](https://www.pcisecuritystandards.org/faqs/1588/)（第三方职责和SAQ适用）、[Stripe refunds](https://docs.stripe.com/refunds)（退款到达时间）、[EU消费者权利指令](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02011L0083-20260927)（数字内容撤回权例外）。其他产品与地区要求不得从单一服务商直接泛化。
+- **Mechanical QA:** 4个正式H2+5个正式H3各一次、全部原文字一致；15项新上线清单编号完备；17项附录文献；原稿严重错误的“生产强制1美元真实刷卡”“绝对零PCI负担”“统一HMAC和7级制度”等已清除。验证的是文章结构与部分原始来源，不代表具体商户资格或真实支付/退款已获批准。
+- **Persistence:** 直接修订稿已保存至文件库 `/现代商业支付系统/现代商业支付系统_第二部分_定向返修完整稿.md`（原输入与旧审核分开保留）；GitHub main新增待Owner确认的完整修订稿，commit `b9eab02113837710be99dc1a10e227f0f37a53ef`，随后补齐与源稿一致的末尾换行commit `563ba38c7deeb700050074b21f0c68b0d3a12021`。旧原始稿、旧审核记录未覆盖。
+- **Status / Gate:** `DIRECT_REVISION_COMPLETE / SELF_QA_PASS / OWNER_ADOPTION_PENDING`；因编辑与本轮自检由同一执行者完成，**不声称独立Reviewer再次PASS**。不向Owner要求重新联系外部写作Agent。V6 7/29/42权威框架及第一部分正式Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`均保持不变；无真实开户、支付、退款、服务器或HTML行为。
