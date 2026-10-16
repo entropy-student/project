@@ -60,3 +60,13 @@
 - **MECHANICAL PROOF（LOCAL）**：对逐行Text差异跑序列比对，9项diff操作**全部为insert**、无replace/delete；V6①五正式H2与九H3标题逐字保留各一处；原S01–S18条目及原费用/案例/决策画布均保留；GitHub读取新Blob与本地Git Blob完全一致，旧主稿与冻结框架Blob均未变。
 - **ACCEPTANCE / REVIEW BOUNDARY**：`EXPANSION_WRITING_COMPLETE / SELF_QA_PASS / INDEPENDENT_REVIEW_PENDING / OWNER_ADOPTION_PENDING`。本轮文案编写及自检不等于另一名独立Reviewer批准，也不代表原①Owner接受基线已被替换；正式修订需独立事实/覆盖/可读性评审，再由Owner确认采用。真实读者测试与具体账户资质仍UNVERIFIED。
 - **ROLLBACK / PRODUCTION DELTA**：正式①主稿不变、V6框架不变；候选为独立新文件，删除新文件即可撤掉候选；无真实账户、支付、服务器、HTML、其它章节修改。②外部Agent提示词已发送的事实继续维持 `OWNER_RELAY_SENT/EXTERNAL_MD_RESULT_PENDING`。
+
+
+## CH1-MERGE-EXPANSION-OWNER-20261016
+
+- Authorization: explicit Owner instruction to merge expansion directly into the existing Chapter 1 source.
+- Preflight: official old blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`; candidate blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`; frozen V6 framework blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`.
+- Integrity: every original line appears in the new text in original order; formal 5 H2 / 9 H3 headings preserved; 7,582 characters added without removing source passages.
+- Execution: updated official file in main (commit `f9d8bb8cf2d7fa1d2416fd8e4d963b6a4974baf2`), read back exact content equality with candidate, then deleted duplicate candidate in main (commit `ad5c570a87123600456f7b1350165b1cf2c61810`).
+- Library: overwrote `/现代商业支付系统/现代商业支付系统_第一部分_采纳修订版.md` with the exact new bytes; local Git-blob digest matches new official file blob.
+- Result: `OWNER_MERGE_COMPLETE`; existing V6 framework unchanged, old source fully recoverable from Git history, no claim of additional independent financial-review PASS; Chapter 2 externally dispatched task remains in progress awaiting a Markdown response.
