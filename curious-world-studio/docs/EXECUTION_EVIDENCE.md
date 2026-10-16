@@ -68,3 +68,17 @@
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：Reviewer仅本sandbox媒体解码；Windows费用/内存、旧配置实际状态未由Reviewer实测。
 - EXECUTOR_RESULT：`PASS_CANDIDATE`；REVIEWER_RESULT：`PARTIAL_AUDIO_LISTEN_UNVERIFIED`（其他R3返修项PASS）。
 - NEXT：Owner可一次性确认音色、清楚度、自然语速和整体审美；不再开Codex返修任务，除非发现实质问题。批准完整草片R4为另一个Owner Gate。
+
+## EVIDENCE 2026-10-16｜Owner观看否决R3整体视觉内容（高优先级新事实，保留旧技术验收）
+
+- AUTHORIZED_GATE：原PROD-R3内部55.367秒样片Reviewer/Owner复核；无新制作权限。
+- PREFLIGHT_FACTS：Reviewer只读核对本聊天已上传的最终MP4和返修ZIP，不登录或改变Owner电脑。本条不重放Codex任务。
+- ACTUAL_CHANGES：只有Reviewer裁决/长期视觉要求变化及项目文档更新，无新音视频或运行配置变更。
+- OBJECTIVE_READBACK：Reviewer对 `/mnt/data/r3_revision_review/video/CW0005_internal_av_sample.mp4` 实际按3秒间隔抽取18帧，并直接读取上传ZIP `tables/shot_timeline_final.csv`，总12行剪辑记录：Pexels #854959视频占20.223秒（36.5%）、Pixabay #2793占25.726667秒（46.5%）、单张纯文字机制说明卡占5.849秒（10.6%）、片尾文字1.961秒；另外片头约1.5秒。两条独立库存源合计45.949667/55.366667秒（83.0%）；各文件内部时码虽不重复，但同锅/同题材画面持续占据绝大多数时长。原版及返修版均未解决整体视觉多样性问题。
+- VALIDATION：用户实际观看并明确表示“素材都是重复的”“还有那种文字的介绍”“作为视频肯定是不合格的”；此为Owner对作品质量的**直接审美否决**，Reviewer依据抽帧、镜头台账独立支持其事实基础。正式R3裁决 `RETURN_OWNER_VISUAL_STORYFIT`，取代先前“仅待真人试听”的整体状态；ZIP校验、H264/AAC全片解码、局部S05字幕可读性等子项仍技术PASS，不等于内容PASS。
+- ANOMALIES：过去将**可播放/分镜行数/字幕可读**错误提升为“视频观感通过”，忽略项目 `STYLE_LOCK v1.2` 明确的“研究内容优先、不使用PPT主体”和Owner不露脸但拒绝PPT的设计边界。原镜头表实际来源两条不足以承担全片视觉叙事；不应再通过更换字幕样式或重切同一素材修补。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：已有最终R3修订ZIP SHA `84ddaac6b21279a1a77a46a5a85f71e5528b7d5f0a21274918aeb9bf07c919e0`、其 `tables/shot_timeline_final.csv`、最终MP4和本轮抽帧总览（当前聊天工作区）；没有重新产生需Owner转交的媒体包。
+- ROLLBACK_EFFECT：无本机Codex/素材更动；Git文档范围内作权威现状更新并回读。历史失败及技术PASS事实保持在Evidence，不篡改。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：无新增TTS/素材检索、购买、部署、发布或视频渲染。
+- EXECUTOR_RESULT：历史PASS_CANDIDATE；REVIEWER_RESULT：`RETURN_OWNER_VISUAL_STORYFIT`（Owner质量否决，优先于此前`PARTIAL_AUDIO_LISTEN_UNVERIFIED`）。
+- NEXT：先形成有目的的镜头变化/视觉解释方案，在不同场景、动作、可引用研究图像和现有视频之间自然切换；禁止以重复素材和大段文字卡凑时长。质量方案审核后由Owner决定是否授权同一主线新制作Gate，R4和发布没有放行。
