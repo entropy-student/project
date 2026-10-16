@@ -504,3 +504,4 @@ Stripe 官方明确要求测试卡配合测试密钥，且禁止使用真实支�
 - **[S15] Stripe 退款及银行时效**：https://docs.stripe.com/refunds 。**边界**：退款申请与发卡银行最终入账并非同一时间点，常见约 5–10 工作日，还可能冲正或失败。
 - **[S16] 欧盟消费者权利指令 2011/83/EU，数字内容例外**：https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02011L0083-20260927 。**边界**：数字内容撤回权例外可能要求事先明确同意、承认丧失撤回权及合同确认，且须考虑实际适用的法律与修订版本。
 - **[S17] Stripe Checkout 付款成功与异步处理示例**：https://docs.stripe.com/payments/existing-customers?platform=web&ui=stripe-hosted 。**边界**：Checkout 完成事件与延迟支付成功/失败事件应按具体付款方式分别处理，不能直接用回跳作履约依据。
+
