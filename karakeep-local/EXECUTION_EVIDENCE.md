@@ -313,3 +313,59 @@ No Karakeep image, container, volume, network, account, or business-data write w
 
 ### EXECUTOR_RESULT
 `RETURN_CONFIG_NOT_FOUND_AT_ACCEPTED_TARGET + RETURN_DOCKER_HUB_ROUTE_UNVERIFIED + RETURN_HOST_PROXY_MODE_DRIFT + RETURN_NON_TARGET_NETWORK_IDENTITY_DRIFT` — do not pull or start Karakeep in this Gate. Reviewer should reconcile the missing reusable project files, unattributed Windows proxy-mode change, and network identity drift, then decide the smallest next Gate. No stage advancement.
+
+## G1E — Read-only path and Docker network reconciliation — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+GATE_ID=KARAKEEP-WIN-G1E-MISSING-CONFIG-NETWORK-READONLY-20261016
+SCOPE=Read-only reconciliation of the accepted local config path, Secret custody state, Docker network metadata, and current proxy mode. Local checks only; no deployment actions authorized or taken.
+
+### PREFLIGHT_FACTS
+- GITHUB_BASELINE: DIRECT_READBACK latest main Handoff blob b8464d485fb7a8ef27c136e1aa05c045f3e9963e; prior G1D Evidence blob 8585ff6de1d4b2912f964a6a4409d417be588f6c; canonical Governance v0.2.7 blob 3917c88a7f36df7a53758b3879a92703d659ef9d.
+- TARGET_IDENTITY: DIRECT_READBACK native Windows PowerShell session; current profile maps to the Windows canonical profile and the accepted target uses the FileSystem provider. No private absolute path, user name, or SID is recorded.
+- ACCEPTED_TARGET: DIRECT_READBACK the accepted KarakeepLocal directory and exact docker-compose.yml and .env filenames are present and accessible. Directory and files are not hidden or reparse points; current-user ownership and protected DACLs were verified, with zero untrusted ACEs. Historical LOCALAPPDATA and APPDATA candidate directories are absent. No Documents, OneDrive, workspace, or wider-disk search was repeated.
+- CONFIG_READBACK: DIRECT_READBACK Compose SHA-256 equals the accepted value cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16. Within the validated directory boundary, .env was read only in process to verify the four expected key names and that the two secret fields each have the expected 64-hex format and are distinct. No Secret value or hash was output, copied, or recorded. Current file classification is an exact secure path/config candidate; historical Secret-value continuity remains UNVERIFIED because no prior value or fingerprint exists for comparison.
+- FILE_METADATA: DIRECT_READBACK directory and Compose creation/last-write metadata were approximately 2026-10-16 04:12:45Z; .env creation metadata was approximately 04:12:45Z and last-write metadata approximately 04:13:57Z. These are current filesystem timestamps, not a recovered G1D probe time.
+- DOCKER_INVENTORY: DIRECT_READBACK read-only Docker metadata queries succeeded. 20 containers (1 created, 19 exited, 0 running), 12 volumes, no Karakeep project container/volume, and no port-3000 listener or published mapping. Existing container and volume summaries remained stable across the local observation interval.
+- NETWORK_SNAPSHOTS: DIRECT_READBACK two metadata-only snapshots separated by 15 seconds both showed 11 networks: 3 system defaults and 8 custom. Both snapshots had zero attached endpoints and zero networks with endpoints; no target-project network or Compose-project-labeled network was present. Eight custom networks had labels; private names, IDs, and label values were not emitted. Aggregate driver/scope counts were bridge/local=9, host/local=1, null/local=1. Snapshot IDs and metadata were stable: zero added, removed, or changed objects. Aggregate Created-at range was 2026-09-01T00:33:19Z through 2026-10-16T05:04:19Z.
+- IMAGES_AND_PROXY: DIRECT_READBACK both previously accepted GHCR image digests remain present and matching; the Meilisearch tag remains absent. Current Windows Internet proxy mode is disabled and WinHTTP is direct; Docker Engine HTTP/HTTPS/NO_PROXY presence flags are set. No proxy address or value was recorded.
+
+### ACTUAL_CHANGES
+- LOCAL_WRITES=0. No local file/config/ACL/Secret, Docker object, proxy, or system setting was created or changed. The only local access to .env was the bounded in-process key/format check after verifying its directory security.
+- No Docker pull, Compose up/down, image change, network repair, or container start occurred.
+- The only durable write for this Gate is this append-only sanitized Evidence record on GitHub main.
+
+### OBJECTIVE_READBACK
+- The exact accepted target now contains an accessible, protected Compose file whose hash matches the historical accepted fingerprint, plus a protected .env with the expected key set and valid distinct Secret formats. This establishes current presence and shape, not that the Secret bytes are the same as those previously created.
+- G1D recorded the files absent, while this G1E read found them present. Current metadata timestamps precede the G1D Evidence commit timestamp, but that repository commit time is not the G1D local probe time and does not prove what existed during that probe. No causal evidence establishes whether the earlier result reflected timing, visibility, or another condition; cause remains UNKNOWN.
+- Current network state is classified as 3 defaults and 8 custom objects, with no attached endpoints and no changes between the two G1E snapshots. G1D did not persist the exact earlier network IDs, so the identity of the historically differing object and its cause cannot be reconstructed; historical cause remains UNKNOWN.
+- Current Windows proxy mode is disabled, consistent with the G1D read and different from G1C's enabled reading. This Gate made no change and establishes no cause.
+- Both accepted GHCR images remain; Meilisearch is absent. Karakeep remains NOT_DEPLOYED.
+
+### VALIDATION
+- Latest main Handoff, prior G1D Evidence, and canonical Governance were read through the GitHub connector before this append. The G1E Gate ID was rechecked immediately before writing.
+- Exact accepted Compose hash, protected directory/file metadata, .env key/format shape, bounded alternate-path absence, and Docker/network/proxy/image summaries were read back locally. No secret-bearing value or digest was recorded.
+- Two Docker network snapshots 15 seconds apart had identical IDs/metadata summaries and no endpoints. No container internals, business data, environment, mounts, logs, or private object identities were read.
+- No Windows event metadata was queried; no deletion/move cause is claimed. No pull, up/down, file write, ACL change, or system/proxy change occurred.
+- This Evidence append was read back from GitHub main and compared with the exact appended text; the existing G0–G1D prefix was preserved.
+
+### ANOMALIES
+- RETURN_CONFIG_VISIBILITY_HISTORY_UNKNOWN: the accepted target was reported absent in G1D and is present now. File timestamps alone do not explain the discrepancy, and the exact prior probe time or event evidence is unavailable.
+- SECRET_CONTINUITY_UNVERIFIED: the current .env is protected and format-valid, but its Secret bytes cannot be compared with a historical value or fingerprint.
+- RETURN_HISTORICAL_NETWORK_IDENTITY_CAUSE_UNKNOWN: G1E current network metadata was stable and no endpoints were attached, but G1D's exact identity set was not retained in Evidence and cannot be reconstructed.
+- PROXY_MODE_HISTORY_UNRESOLVED: current mode remains disabled; the G1C/G1D difference is not attributed to this Executor.
+- No event-log query, filesystem recovery, broad search, or service operation was performed.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1E entry: sanitized path/security/config-shape, Docker network, image, and proxy readbacks; no private path, user/SID, Secret value/hash, proxy endpoint, raw logs, private network/container identity, or unrelated business data.
+- Handoff baseline: blob b8464d485fb7a8ef27c136e1aa05c045f3e9963e. Prior G1D Evidence baseline: blob 8585ff6de1d4b2912f964a6a4409d417be588f6c. Canonical Governance: blob 3917c88a7f36df7a53758b3879a92703d659ef9d.
+- No local diagnostic artifact was created.
+
+### ROLLBACK_EFFECT
+No local runtime or system change occurred; no rollback is needed. The GitHub Evidence record is append-only. No cleanup or repair action occurred.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+No Karakeep service, project volume/network, account, bookmark, or business data was created. Existing Docker containers and volumes were not changed; the two accepted GHCR images remain and no new image was pulled. No fixed RAM threshold or runtime-stability test was applied because this Gate remained read-only and no service ran.
+
+### EXECUTOR_RESULT
+PASS_CANDIDATE — G1E read-only scope and required path/network classifications are complete. The accepted Compose is present and fingerprint-matched; current Secret format is safely verified, while historical Secret continuity remains UNVERIFIED. Current Docker networks are classified and stable across two snapshots, but the exact historical changed identity/cause remains UNKNOWN. No local mutation or deployment occurred. Stop here for Reviewer acceptance and next-Gate decision.
