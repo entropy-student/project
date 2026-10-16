@@ -215,3 +215,40 @@
 - **DIRECT_READBACK：** 删除后按完整路径分别 fetch_file，均得到 `NOT_FOUND`；旧实验文件可从 Commit `d0f000e95554e530d3d52ce49acb85a0d1b4825e` 和 `c3341053cdd3f67cb78a2e8d8ad1dba9b3e8b15c` 读出相同 Blob（恢复能力验证）。原完整 `docs/P2_REWRITE_CANDIDATE.md` Blob 仍为 `f8bb110f07ef654df2f5b4b9285540e89261b1f7`（原审提交 `17ea75adec7448a8bbe6387788b5bfe321ff68f6`）；旧 Evidence Blob `686e7f2dc070decc8a7076c92cfd3a8841099c93` 未删、未复原覆盖。
 - **PR 状态：** 删除后 head `701e1b1b7f8fe2740c9ee7f7605c1ca5cd72acc4`；Open / Draft / 未合并；当前 PR 仅余已审 P2 完整稿与执行证据两份 MD 的差异。当前分支**不等于**旧原审提交（审计历史保留）。
 - **权限和下一步：** 阶段 A 已读回满足 Gate，允许阶段 B；本记录 append-only，旧两轮执行记录仍存。新稿必须只用原完整 P2 全文和指定 human-writing Skill，不得复用已删除短篇作为文字输入。
+
+---
+
+# 结构保留型重跑 Gate｜阶段 B 完整 P2 改稿与核验（2026-10-16）
+
+## 本轮结果与固定来源
+
+- **GATE_ID**：`MCPG-P2-ROLLBACK-AND-HUMAN-WRITING-STRUCTURED-RERUN-20261016`，**EXECUTOR_RESULT = `PASS_CANDIDATE`，`STOP_AT_REVIEWER`**；不得当作 Reviewer PASS 或 Owner 已接受。
+- **阶段 A 已完成且严格前置**：参见上节 `ROLLBACK_COMPLETED`。仅精确删除两份失效短篇（删除提交 `969e28709ea23ced31dc1c91861028c0db4d43c1` 与 `701e1b1b7f8fe2740c9ee7f7605c1ca5cd72acc4`）；当前 PR 路径读回 NOT_FOUND，历史原短文可按 `d0f000...` / `c334105...` 恢复；原完整 P2 Blob 保持不变。阶段 A Evidence 追加提交 `11c23fdabacec01ea850419900b10500aa0de3e4`。
+- **唯一知识及写作底稿**：已获 Reviewer 内容 PASS 的 `docs/P2_REWRITE_CANDIDATE.md`，原始 commit `17ea75adec7448a8bbe6387788b5bfe321ff68f6`，全文 Blob **`f8bb110f07ef654df2f5b4b9285540e89261b1f7`**，原文 19,986 JS 字符。逐字读取原全文；**两份撤销短篇仅核对 SHA/恢复能力，没有用于写新稿**，最早废弃 P2 未读取。
+- **唯一使用的 Skill**：[KKKKhazix/human-writing](https://github.com/KKKKhazix/human-writing/blob/main/human-writing/SKILL.md)，v1.1.0，主 Blob `76bbf86ef49504628e356555f4da7cc6cbac3b7c` 与 Gate 完全相同。按顺序实际读取 `references/forum-prose.md` Blob `8bbc5fc0e7dccc1a6fa13dd457166e7eded303d4`、`references/reality.md` Blob `844e9c9236826cf29de9ccd9c7248eb970a15e02`；先编辑并提交独立**初稿** `92e895f635d02ba69b38bd898cfbc85a2660f0a4`、Blob `a104ced44d7317031e7103d5f252d9c3e0b2ee74`，**然后才读取** `references/revision.md` Blob `2a884689c52b42a23df757ae7060b1fbaa50ae4f` 并对全文修订。未使用 copy-editing、其他写作 Skill、广告文案或虚构亲历。
+- **独立全章新稿**：[docs/P2_HUMAN_WRITING_STRUCTURED_CANDIDATE.md](./docs/P2_HUMAN_WRITING_STRUCTURED_CANDIDATE.md)。初稿精确完成 42 处定向段落改写（章开场与九小节都有改动），修订 8 处可读性、禁用表达和金融限定。最终稿提交 `ead44cfdf2cc00559368b4b8e13754af1d3fd192`，Blob `7924e80634f1f09a5628a78458c43a90d5019fd1`，21,126 JS 字符。GitHub `fetch_file` **DIRECT_READBACK** 与写入内容一致。
+
+## 逐节保留矩阵（知识与用途，不依赖标题数量）
+
+| 原节点 | 原稿已有知识及本次保留项 | 新稿的阅读改进与可实际回答的问题 |
+|---|---|---|
+| **1.1** | 七维订单画像（销售责任人、主体、商品、客群地区、渠道、交易结构、资金终点），29 美元软件/实物与 5000 美元企业单例；七维表完整 | 从“大陆个人能否用 Stripe”的具体问法出发，沿订单画像推导业务差异；读者能写出大陆企业 Shopify、月100单、14天用款的同一条件句 |
+| **1.2** | 必须符合的主体/品类/合同/结算/退款条件，费用与支付体验优化，YES/NO/UNKNOWN 三态及决策前置卡 | 先说哪类申请该排除，再说哪些优化才值得比较；区分未申请的 UNKNOWN 与规则明确 NO，读者可先筛资格而不贸然比价 |
+| **2.1** | 平台控制结账、直接商户、软件 MoR、B2B 合同银行四种商业安排的权责和表格；境内自营、跨境平台、实体独立站、SaaS、B2B 五种经营类型 | 从“订单和收据谁是卖家”入手，保持四模式对照表和五类场景的选择理由，不把支付宝、Amazon、Paddle、银行放同层 |
+| **2.2** | 面向顾客的合同/付款链、商家资金/责任链、反向退款链；卡网络/钱包/支付服务商/销售平台/MoR/受款账户角色区分和 Shopify 两条资金路径表 | 在两个链条前各增一段读者问题，说明为什么一笔付款从完成交易到实际可用要经过不同责任方，最后要求明确账户名义和币种 |
+| **3.1** | 六类经营主体/业务资格矩阵；Stripe HK 与大陆资格差异、PayPal CN 双协议、Shopify 中国受邀+WorldFirst 的限制 | 把实质经营主体、禁止品类与合法资金终点作为筛选，读者可将“不合格”直接排除、把未审核候选记 UNKNOWN |
+| **3.2** | 从付款受理到银行可用货币的六节点核验；PayPal USD150/3–7工作日、企业USD35；Lemon Squeezy 结算条件；可验证/条件/不可用三态 | 以“成功订单为何仍无法采购”解释六节点的使用时机，将企业电汇的适用范围紧靠数值标出，读者能写出每站账户与退款责任 |
+| **4.1** | G/T/A/B 四层金额表；PayPal/Stripe HK/Paddle 三种不同主体费率示范；PayPal 企业1/5/6/10/100单完整提现表；相同主体 PayPal 两支付产品 4.40%和获批4.10%对照；Shopify 同店 A/B 两公式、2%仅为假设演算；软件自收单与 MoR 费用/税务责任比较 | 先问“交易额与银行可用款为何不同”，把六单174→164.52→129.52的可解释差异提前；仍完整保留四层表、三种费率表、批次表、合格支付产品表、两条公式和软件 MoR 条件 |
+| **4.2** | 付款覆盖、资金时间、退款/拒付、渠道切换四成本；100次意向付款多3单→销售额上限87美元的纯灵敏度推演；同口径净现金比较单 | 让读者把每个成本关联到能否备货与按时成交；数字讲出对选择的实际影响，未捏造订单成功率 |
+| **5.1** | 四轮主备算法、自然人美国数字模板29美元/月5→100单、大陆企业实物29美元/月100单两完整情景与各自平台/独立站分支、Shopify A/B 对照、三类额外业务表、主备与停止规则 | 四轮改成先做什么/需查什么的白话，分别完整推演自然人的条件主选和数字商品平台备选、企业的 Amazon/Shopify 主备；自然人表中特别改掉把**企业账户35美元**当成个人费率的含混表达，保留 UNKNOWN 和合法提款条件 |
+
+## 标题、表格、数字与来源核验
+
+- **标题结构逐字级别/顺序对照**：对 `^#{1,3} ` 提取两稿 Markdown 标题，数组完全一致。共 **16 个**（H1=1、H2=6，其中第六个是来源附录，因此经营问题 H2=5、H3=9）；原有七个 `####` 子标题亦按原文、级别和顺序全部保留。无遗漏 1.1–5.1 子节，没有移动到附录。
+- **表格核验**：原稿 93 行 Markdown 表行，新稿仍 **93 行**；其中 **92 行全文逐字相同**，唯一一行改动为 §5.1 自然人 PayPal 候选的资金一栏，明确 `USD35` 来自**特定企业账户**、不适用于未核实的个人账户。两案例和额外三类经营结论表完整。
+- **官源核验**：原稿 **S01–S15 共15条来源行、全部官方 URL 仍存在**，正文中的业务范围限制维持。2026-10-16 复核 [PayPal CN S02](https://www.paypal.com/c2/business/paypal-business-fees?locale.x=zh_C2)（指定中国跨境双协议，国际4.40% + USD0.30，另需获批高级在线卡国际4.10% + USD0.30，**企业账户大陆美元电汇35美元/笔**）、[PayPal 提现 S05](https://www.paypal.com/c2/cshelp/article/how-do-i-withdraw-funds-from-my-paypal-account-help394)（USD150最低、通常3–7工作日、可审核）与 [Shopify 中国版](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/china) / [资格](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/china/requirements)（受邀、大陆企业跨境、WorldFirst验证）。[Stripe HK](https://stripe.com/en-hk/pricing)与[Paddle](https://www.paddle.com/pricing)公开示范价亦复核。其他个别商户费率、银行最终到账、退款率和真实开通资格保持 `UNKNOWN`。
+- **计算静态复核**：`29×4.40%+0.30=1.576→1.58`，交易费后 `27.42`；五单 `137.10` 未达150；六单 `164.52` 达门槛，扣一笔企业35美元后 `129.52`；十单已知两层扣费后 `239.20`；百单 `2707.00`、企业电汇费均摊每单 `0.35`；Stripe HK USD 国际卡费按例示 `1.43`、余 `27.57`；PayPal 需获批在线卡费 `1.49`、与标准差 `0.09`；Paddle MoR `1.95`、余 `27.05`、十单 `270.50`；Shopify `2%` 仅数学假设对应 `29×0.02=0.58`。**13/13 数值表达计算匹配**，仅为具体规则下举例，非实收或净利润。
+- **事实保护**：PayPal 35美元严格限定企业账户；个人实际合同、提现费用和法定收汇权限 `UNKNOWN`；没有把香港 Stripe 定价推广到大陆；Shopify 第三方附加费是否适用看店铺规则，不虚构具体中国账户费率；软件 MoR 与自售责任不同。用户支付成功 ≠ 可提余额 ≠ 银行到账。
+- **正文审阅**：依 Skill 改掉冗余的“不是...而是”翻案提醒和资格段反复；保留原标题、表格、来源/公式中的必要标点、技术术语和“NO/UNKNOWN”等合规警示，优先级遵照 Gate。没有虚构亲历、企业真实开户、支付成功或转账。
+- **无权限越界**：仅删除 Gate 指定两短篇、新建一份独立全章候选、向本 Evidence 追加。原已审P2正文/P1/7-29-42/当前 Gate/main/其他项目均未修改；不触碰支付账户、生产或 Secret；不合并、不进入 P3/P4/P5/HTML。
+- **残余与恢复**：新候选的阅读吸引力属于 Reviewer / Owner 评判，未做用户阅读完读率、实际付费及真实汇兑验证。旧短篇可从 `d0f000...` 与 `c334105...` 的 Git 历史恢复；本轮新稿可单独删除，不会影响已审正文与 append-only 证据。**RESULT=PASS_CANDIDATE；STOP_AT_REVIEWER。**
