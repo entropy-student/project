@@ -1,9 +1,10 @@
 # Karakeep Local · Windows 本机资产地图与整理计划
 
 > 计划日期：2026-10-16
-> STATUS=`PLAN_ONLY_NOT_EXECUTED`
+> STATUS=`PHASE_A_OWNER_APPROVED_NOT_EXECUTED`（只读盘点已获 Owner 批准，等待本机 Codex 执行）
+> PHASE_A_GATE=`G3A_LOCAL_ASSET_READONLY_GATE.md` / `KARAKEEP-WIN-G3A-LOCAL-ASSET-INVENTORY-READONLY-20261016`
 > 适用范围：仅 Owner 电脑上 `karakeep-local` 的配置、Docker 存储和可能遗留的项目工作区；不涉及其它产品。
-> **本文件是待执行前审阅的方案，不代表已经完成本机目录盘点，也不授权任何移动、删除、停机、备份或恢复。**
+> **Owner 已批准阶段 A 仅本机只读盘点**，未实际执行。任何移动、删除、停机、备份或恢复仍未获授权。
 > 权威项目状态：`REVIEWER_HANDOFF.md`；所有项目管理文档统一 `https://github.com/entropy-student/project/tree/main/karakeep-local`。
 
 ## 1. 为什么不能直接删一个“项目根目录”
@@ -23,7 +24,7 @@ Karakeep 不是把全部文件都放在同一个 Windows 文件夹的普通本�
 
 ## 2. 推荐的三步实施路径
 
-**阶段 A — 一次只读发现，先得到完整“在哪里”清单**（只有 Owner 将来明确授权执行时才开始）：
+**阶段 A — 一次只读发现，先得到完整“在哪里”清单**（Owner 已于 2026-10-16 明确批准；按现行 `G3A_LOCAL_ASSET_READONLY_GATE.md` 执行，尚未实际运行）：
 
 1. 在**真实 Windows PowerShell** 中只读确认 `$env:USERPROFILE\KarakeepLocal` 及其文件名/类型、`docker compose config --services` 是否会暴露 Secret（如有风险则跳过此命令）、`docker inspect` 目标容器 Mounts/Compose labels、`docker volume inspect` 两项目卷、Docker Desktop UI 中数据盘目录。仅输出非敏感元数据；不读取、打印、hash、复制 `.env`，不扫描数据库内容或 VHDX。
 2. 在用户已知的普通文件位置（Desktop、Documents、Downloads、已知开发根路径）**有界发现疑似 `sass`/`saas` 工作区**。记录完整路径（若其中包含私密用户标识则用环境变量表达）、目录层级、受控空间与尺寸、最近改动时间、git root/remote、`git status` 的非敏感分类及未推送/未跟踪文件是否存在。**不要递归遍历整个 C 盘、不要打开文件正文、不要读取隐藏密钥/数据库**。
@@ -54,6 +55,6 @@ Karakeep 不是把全部文件都放在同一个 Windows 文件夹的普通本�
 
 ## 4. 执行与验收边界
 
-当前状态仅 `PLAN_ONLY_NOT_EXECUTED`，没有本机新增 Evidence。若 Owner 批准阶段 A，Reviewer 另行建立**只读发现 Gate**并下发本机 PowerShell Codex；需要的结果只有：可审核的非秘密文件路径/目录归属、当前运行引用、候选目录的安全分类和明示不确定项、无副作用证明、GitHub 项目内脱敏证据。完成后停 Reviewer；**没有自动“顺便删除”权限**。
+当前状态是 `PHASE_A_OWNER_APPROVED_NOT_EXECUTED`，没有本机新增 G3A Evidence。Reviewer 已建立 `G3A_LOCAL_ASSET_READONLY_GATE.md`，Owner 将其提示词交本机 PowerShell Codex 才会开始；需要的结果只有：可审核的非秘密文件路径/目录归属、当前运行引用、候选目录的安全分类和明示不确定项、无副作用证明、GitHub 项目内脱敏证据。完成后停 Reviewer；**没有自动“顺便删除”权限**。
 
 使用入口（Docker Desktop Engine 就绪时）：`http://localhost:3000`。当前机器未有经验证的离机恢复方案：`BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`。如果用户只想节省空间，应先估算可弃候选体积，而不是清理被共享的 Docker 磁盘。
