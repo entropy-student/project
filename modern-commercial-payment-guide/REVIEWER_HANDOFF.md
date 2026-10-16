@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1 结构审查 PASS；旧 P2 Owner 否决且不得复用；[PR #132](https://github.com/entropy-student/project/pull/132) 第二轮修订已获 Reviewer 内容样板 `PASS`，**等待 Owner Review**。PR 不合并、P3–P5 不启动。
+**当前闸门：** P1结构审查 PASS；PR #132 第二轮P2知识内容 Reviewer PASS，尚待 Owner 接受阅读体验。Owner已授权 [human-writing 单技能表达实验 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_EXPERIMENT_GATE.md)；此轮只新建独立阅读样稿，等待独立 Executor；不得覆盖已审核正文、自动调用第二 Skill、合并或推进 P3。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_REVIEWER_PASS_OWNER_REVIEW_PENDING`（PR #132 第二轮内容通过 Reviewer，待 Owner 决策；不合并、不进入 P3）。
+- **PROJECT_STAGE：** `P2_HUMAN_WRITING_EXPERIMENT_GATE_RELEASED`（P2知识内容 Reviewer PASS；阅读样稿尚未执行；Owner体验确认待定）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
 - **CURRENT_ACCEPTED_STATE：** P1 `PASS`（Owner于2026-10-16确认，仅结构覆盖层）；7/29/42问题暂时冻结。此前 P2 样板 `REJECTED_NOT_BASELINE`，仅保留历史证据。
-- **CURRENT_GATE：** `MCPG-P2-CHAPTER1-INDEPENDENT-REWRITE-20261016`，第二轮内容 Reviewer PASS，当前停在 Owner Review；[Gate 原文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_REWRITE_GATE.md)。
+- **CURRENT_GATE：** `MCPG-P2-HUMAN-WRITING-READABILITY-PILOT-20261016`；[独立样稿 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_EXPERIMENT_GATE.md)。原 `MCPG-P2-CHAPTER1-INDEPENDENT-REWRITE-20261016`已完成第二轮内容 Reviewer PASS，不回退/复做。
 - **CRITICAL_CONSTRAINTS：** 不改最高准则、7/29/42冻结框架；不以旧 P2 为底稿；P1不重跑；先怎么做再为什么；来源可核验；不建百科/计算器、不进入 P3/HTML。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** 内容型写入；保留旧 P2 为已否决历史证据，新稿写入独立候选文件；不删改已接受的冻结框架及 P1。
-- **UNRESOLVED：** 第二轮已通过方法论、同条件对比、提现计算及费率协议范围检查；正文演练 A 的自然人身份与企业 PayPal 的 $35 电汇费示例需在出成品时进一步紧邻提示（非阻断）。零散问题如何呈现仍开放。
-- **NEXT_STEP：** Owner 审阅 PR #132 第二轮第一板块内容样板，决定接受或给出具体调整。未经 Owner 决定不合并、不推进 P3。
-- **OWNER_ACTION_REQUIRED：** 阅读 [PR #132 第二轮候选正文](https://github.com/entropy-student/project/blob/17ea75adec7448a8bbe6387788b5bfe321ff68f6/modern-commercial-payment-guide/docs/P2_REWRITE_CANDIDATE.md)，反馈是否认可该样板内容与风格；不要求执行 GitHub 操作。
-- **EVIDENCE_POINTERS：** P1 证据在文件库实施文档第二节；旧 P2 在第三节仅作废弃历史。PR #132 第二轮 head `17ea75adec7448a8bbe6387788b5bfe321ff68f6` 的候选正文及追加证据；第一轮 RETURN `6198541590`，第二轮 Reviewer PASS `6205810637`。
+- **UNRESOLVED：** Owner认为第二轮稿内容丰富但读不下去；待 human-writing 样稿与原稿对照后判断是否改善阅读动力，是否需要另启 copy-editing；金融事实核验及个人/企业提现费用界限仍须守住。
+- **NEXT_STEP：** 独立 Executor 从 GitHub 读取当前 Gate 与真实 human-writing Skill，对 PR #132 已审核第①章中的 $29 收款场景生成约1500字独立阅读样稿并提交原 PR；Reviewer随后评估并决定是否需要 copy-editing。
+- **OWNER_ACTION_REQUIRED：** 将 [实验 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_EXPERIMENT_GATE.md) 转给独立 Codex/Agent 执行；结果返回后本对话 Reviewer 复核。当前会话没有可调用的独立 Executor，不能自称已完成改稿/复核。
+- **EVIDENCE_POINTERS：** PR #132 第二轮 head `17ea75adec7448a8bbe6387788b5bfe321ff68f6` 为已审内容基线；Reviewer PASS 评论 `6205810637`；实验仅有 Gate，未有生成样稿与执行证据，结果为 PENDING。P1实施证据与初版废弃P2仍维持既有位置。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -150,3 +150,12 @@
 - **独立复核范围：** 5/5二级及9/9三级、销售/收款/结算关系与五类经营场景、两条条件化业务决策演练、同口径费用对比与 $29 批次提现实算、PayPal合同及账户适用性、Shopify中国版与叠加第三方费、Paddle品类等官方资料。未验证真实商户账户/真钱提现。
 - **非阻断编辑提示：** 个人卖家案例引用 US$35 提现费必须继续明示其源自特定企业PayPal账户费率，不能外推自然人账户；Shopify第三方交易费有产品和支付方式配置例外。
 - **后续边界：** Owner 对内容质量与风格作最终体验确认；未经 Owner 确认，不合并 PR 或进入 P3；P1 PASS、7/29/42冻结、最初 P2 废弃均不变。
+
+
+## 十二、human-writing 阅读表达实验（2026-10-16）
+
+- **Owner 新决定：** 先单独使用 [human-writing](https://github.com/KKKKhazix/human-writing/blob/main/human-writing/SKILL.md) 完成一次受限样稿；由本对话 Reviewer 评估改写质量，再决定是否有必要使用 `copy-editing`。Reviewer不得冒充独立 Executor。
+- **实验 Gate：** [P2_HUMAN_WRITING_EXPERIMENT_GATE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_EXPERIMENT_GATE.md)；试验点为已有正文 $29 到款解释，不覆盖原 P2，通过样稿 A/B 对照检查阅读吸引力、信息密度、理解成本和金融准确性。
+- **已审固定基线：** PR #132 commit `17ea75adec7448a8bbe6387788b5bfe321ff68f6`、正文 blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`。原知识模型及来源仍为 Reviewer 内容 PASS，Owner 不满意表达吸引力不意味着P1或事实审核作废。
+- **当前结果：** `GATE_RELEASED; EXECUTOR_PENDING`；本会话只完成技能源码与适用参照阅读、Gate设计和权威记录；**没有新表达稿，也没有进行改写后的 Reviewer PASS**。第二 Skill 尚未调用。
+- **后续停点：** Executor 提交新样稿+append-only证据→Reviewer复核、对照读感与金融事实→出 `PASS/RETURN` 并决定是否需要第二 Skill；未获进一步授权不进入后续内容阶段。
