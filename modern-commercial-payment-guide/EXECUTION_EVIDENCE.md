@@ -103,3 +103,11 @@
 - Chapter1 replaced directly in existing canonical `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md`, commit `251ebd28aba888a6420b456a64137cbf740fd848`, blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`. Exact text and Git blob read back.
 - Library: the five earlier edited/review documents were moved to `/项目历史归档/现代商业支付系统_旧修订与评审/`; original chapter2 library document renamed back to its original upload name; original chapter1 uploaded to project folder under its original name. Neither original file was changed for readability, accuracy or formatting.
 - Scope: documentation-only change; no payment account, production merchant, environment, or real-money operations. Review concerns previously identified in original versions remain historical evidence and must not be described as resolved by restoration.
+
+
+## POST-RESTORE-FINAL-READBACK-20261016
+
+- GitHub main final read-back: Chapter 1 `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`, Chapter 2 `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`, V6 framework `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`. Handoff and current document index point only to these two active chapters.
+- Retired duplicate second-chapter edited file from main, commit `6286e4111b14465c7f2533147764f22c14692e87`; moved historical Reviewer return from main, commit `987dabbdabcbc198ac0726f3eae650a736d02847`. Neither was erased from Git history.
+- Library final read-back: `/现代商业支付系统/` contains exactly the two originally named files, both materialized and compared byte-for-byte with the user's original uploads. SHA256 for chapter1 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`; chapter2 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`. Five prior corrected/review files remain in `/项目历史归档/现代商业支付系统_旧修订与评审/`.
+- Final result: `OWNER_ORIGINALS_RESTORED / GITHUB_AND_LIBRARY_EXACT_MATCH / NO_EDITED_ARTICLE_ACTIVE`. Restoration is content-fidelity verification, not new factual-validation PASS.
