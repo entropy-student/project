@@ -1,6 +1,6 @@
 # 现代商业支付系统｜唯一交接文档
 
-> **本文件为唯一交接与决策基线。** 最高准则已确认，V4一级及二级问题、V5三级问题暂时冻结，未经用户明确授权不得修改。详细研究与内容成果存放于独立工作文档。
+> **本文件为唯一交接与决策基线。** 最高准则已确认，**Owner正式冻结V6的7个一级、29个二级、42个三级问题**，并将第一部分现有V6正文作为保留冻结版；两者未经Owner另行明确授权不得修改。**当前有效文件与失效历史入口**见 [CURRENT_DOCUMENT_INDEX.md](docs/CURRENT_DOCUMENT_INDEX.md)；独立Executor任务以CURRENT_GATE为准，Reviewer不得写正文。
 
 ## 一、项目最高准则（已确认）
 
@@ -105,17 +105,17 @@
 | 阶段 | 工作范围 | 当前状态 | 具体成果位置 |
 |---|---|---|---|
 | P1 | 内容覆盖审查 | **PASS（Owner已确认，仅结构层）**；不代表全文答案通过 | 《现代商业支付系统_实施与内容工作文档.md》P1章节 |
-| P2 | ①收款方案选择的完整文字样板 | 旧V5稿内容/金融事实Reviewer PASS；**V6框架正式改稿后，现等待V6第一部分完整重跑，Owner未冻结正文** | [PR #132](https://github.com/entropy-student/project/pull/132)，当前原完整稿V5+Humanizer及历史证据 |
+| P2 | ①收款方案选择的完整文字样板与新手教学重构 | **已审V6全文获Owner冻结作保留版**；Reviewer越权R1已撤回；**独立Executor重构Gate已释放，等待新的全文候选**，再由Reviewer审核、Owner决定替换 | [main冻结V6全文](docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)、[唯一新Gate](docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)、[PR #132](https://github.com/entropy-student/project/pull/132) |
 | P3 | 零散支付知识如何融入主线 | 未启动；形式仍开放 | 未来写入工作文档 |
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** Owner明确纠正Reviewer越权编写教学候选的行为，要求删除该文档并按治理规范推进。PR #132当前树中原Reviewer自写 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md` **已删除**（Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`）；Evidence已append-only记录撤销事实。旧R1 Gate `MCPG-P2-V6-PEDAGOGICAL-R1-20261016` 因角色冲突**VOID / SUPERSEDED**，不得再执行。[独立Codex Executor唯一新Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)已发布，任务是从[Owner已冻结的原V6正文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)全新创建不同路径的完整教学候选；Reviewer只负责Gate、证据与独立审核，**不撰写正文**。冻结V6及全7/29/42框架保持不变。PR Open/Draft/未合并，无P3–P5。
+**当前闸门：** **Reviewer越权R1已从当前PR分支删除**，仅留append-only事故证据；main已归集当前有效V6框架、Owner冻结全文、P1有效结构审查、Reviewer理解门槛诊断及唯一独立Executor Gate，完整见[现行有效文档索引](docs/CURRENT_DOCUMENT_INDEX.md)。Owner现行要求继续适用，PR #132当前树中原Reviewer自写 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md` **已删除**（Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`）；Evidence已append-only记录撤销事实。旧R1 Gate `MCPG-P2-V6-PEDAGOGICAL-R1-20261016` 因角色冲突**VOID / SUPERSEDED**，不得再执行。[独立Codex Executor唯一新Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)已发布，任务是从[Owner已冻结的原V6正文](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md)全新创建不同路径的完整教学候选；Reviewer只负责Gate、证据与独立审核，**不撰写正文**。冻结V6及全7/29/42框架保持不变。PR Open/Draft/未合并，无P3–P5。
 
 ## 八、文件分工和更新规则
 
-1. **本交接文档：** 只记录最高准则、冻结问题原文、关键决策、项目进展、开放问题、交付文件索引及下一步。禁止附入完整研究报告、正文、网页源代码。
-2. **《现代商业支付系统_实施与内容工作文档.md》：** P1、P2及后续P3–P5的执行计划、研究证据、评审材料、正文样板和过程成果；后续过长时允许进一步拆分独立成果，并在此工作文档维护链接。
+1. **本交接文档：** main唯一有效项目状态、最高准则、冻结V6问题原文、关键决策、当前Gate、回滚与下一步；[CURRENT_DOCUMENT_INDEX.md](docs/CURRENT_DOCUMENT_INDEX.md)只是导航索引，不得取代本Handoff。禁止附入完整研究报告、正文、网页源代码。
+2. **P1与内容工作记录：** 已通过的P1结构覆盖审查已抽取归档至main [P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md](docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md)；文件库《现代商业支付系统_实施与内容工作文档.md》包含旧**已废弃P2**，**仅作历史档案、不可作为新写作底稿或现行状态**。有效P2正文与Reviewer诊断、Gate分别见[当前文档索引](docs/CURRENT_DOCUMENT_INDEX.md)；PR执行证据留在未合并分支，不得擅自移入main声称合并。
 3. **HTML及其他最终产物：** 按文件类型独立存储，例如最终 `.html` 文件及需要的非内嵌素材（若有）；交接文档仅记录状态和路径。
 4. **冻结约束：** 7个一级板块、29个二级问题、42个三级问题未经 Owner 明确授权不变；新工作内容不得偷偷改变既定框架。
 5. **唯一权威：** 上述两份文件职责不同；“唯一交接文档”仍只有本文件，不制造两个相互冲突的项目状态来源。
@@ -133,9 +133,9 @@
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
 - **CURRENT_ROLLBACK_STATUS：** Reviewer越权R1文件已从PR当前树删除（删除Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`，无force/reset），Owner冻结V6参考文件/PR原正文均Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`不变；旧R1 Git历史仍可检索但非现行PR文件，旧Evidence不抹除，只append 2026-10-16角色违规纠错，当前Evidence Blob `f91872fd8b47cded080fdaf48b456ea14145b555`。新独立Executor Gate将从PR当前head `2321737cd65aca50a80c68bca1dc34784e8de9a6`单独新建目标，失败只撤回新目标并追加证据，不改变冻结原文。
 - **UNRESOLVED：** 尚无独立Executor提交的教学重构全文候选，也无独立Reviewer PASS、Owner新旧全文替代决定或真实读者验证。原Gate错误允许Reviewer直接写正文，已VOID；残留的历史R1 Git commit/旧执行证据只是审计记录，**不得恢复、引用为新文写作输入或声称R1仍在PR当前树**。正式V6正文冻结用于保留比较，并不意味着读者理解达到终极目标。
-- **NEXT_STEP：** 独立Codex Executor严格按[新Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)工作，以main冻结版V6全文为唯一写作底稿，读取正式V6第①标题及新手理解诊断，**不用Reviewer已撤回的R1历史稿**，新建 `docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md` 和append-only Evidence。提交Commit SHA后停Reviewer独立审查，再由Owner决定是否替代现冻结版；未授权PR合并或后续板块。
+- **NEXT_STEP：** 交独立Codex Executor执行唯一有效[教学重构Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)；Executor只从main冻结V6全文重新撰写完整候选，不得引用已删除的Reviewer R1。PR预检head `2321737cd65aca50a80c68bca1dc34784e8de9a6`；完成后append-only提交Evidence/新SHA，停Reviewer。Reviewer核验结构、概念先后、金融事实与读者理解文本代理，再请Owner决定**保留原V6还是批准新版替代**。禁止Reviewer自行编写正文、未获批准合并PR或推进其他章节。
 - **OWNER_ACTION_REQUIRED：** 将[唯一有效独立Executor Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md)交给独立Codex执行并回传新稿链接、Commit SHA。冻结V6无需再次确认，也无需现在读已删除的R1文稿。
-- **EVIDENCE_POINTERS：** Owner指令“你是reviewer，按项目管理规范推进，删除这篇文档”；PR #132已删除R1 `docs/P2_V6_PEDAGOGICAL_R1_CANDIDATE.md`，删除Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`；PR现行head `2321737cd65aca50a80c68bca1dc34784e8de9a6` Open/Draft，现 `EXECUTION_EVIDENCE.md` Blob `f91872fd8b47cded080fdaf48b456ea14145b555`（含append-only纠错），旧违规Gate `docs/P2_V6_PEDAGOGICAL_R1_REWRITE_GATE.md`已标VOID，新唯一Gate `docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md` Blob `3256b2598ae255b31fdaf483e103b3d49a6ea1f8`。冻结全文Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`、冻结结构快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，新Executor稿未生成。
+- **EVIDENCE_POINTERS：** 唯一有效项目文件清单 [CURRENT_DOCUMENT_INDEX.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/CURRENT_DOCUMENT_INDEX.md) Blob `b3fb9c514c12c941de520a15a2317bb33a465b5c`；main [P1结构审查历史归档](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md) Blob `619d443c5dc3cc3e37f7ab274134474c2235f749`；正式V6题名快照Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`、Owner已冻结第①正文Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；当前唯一Executor Gate Blob `3256b2598ae255b31fdaf483e103b3d49a6ea1f8`；PR #132 head `2321737cd65aca50a80c68bca1dc34784e8de9a6`、Evidence Blob `f91872fd8b47cded080fdaf48b456ea14145b555` 仅在PR分支，审核可追；已撤回R1文件仅保留历史、旧Gate VOID。不包含任何实际商户账户/密钥。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -350,3 +350,13 @@
 - **冻结资产不变：** main `docs/P2_V6_OWNER_FROZEN_REFERENCE_20261016.md`和PR历史原V6完整文稿Blob均 `777c5ab45e4f2d748c45a1e524bf172fca467967`；正式V6 7/29/42继续有效，尚无Owner确定替换旧正文的决定。
 - **Gate纠正：** 旧 `MCPG-P2-V6-PEDAGOGICAL-R1-20261016` 文件加`VOID / SUPERSEDED`告示，仅供事故归档，绝不可作为允许Reviewer再次写稿的依据。**唯一新Gate** [P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_V6_PEDAGOGICAL_EXECUTOR_ONLY_GATE.md) ID `MCPG-P2-V6-PEDAGOGICAL-INDEPENDENT-EXECUTOR-20261016`，Blob `3256b2598ae255b31fdaf483e103b3d49a6ea1f8`：只许独立Codex Executor从正式冻稿独立重新创作，禁止复用撤销R1草稿/历史全文；新目标为 `docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md`，Evidence append-only、停止于Reviewer。
 - **当前阶段：** `P2_V6_FROZEN_REVIEWER_ROLE_BREACH_CORRECTED_EXECUTOR_GATE_RELEASED`。Reviewer不直接再改正文，独立Executor尚未执行；PR仍Open/Draft/未合并、P3–P5和HTML均未开始。
+
+
+## 三十三、最终交接清理与main有效文档索引（2026-10-16）
+
+- **本轮Owner要求**：清除Reviewer越权产生的新正文，按Governance整理所有有效文件尤其main，移交下一位独立Reviewer，防止状态和内容遗漏以及敏感资料外泄。
+- **核验结果**：R1已不在当前PR树，删除Commit `70fa71556099c260c139717fc4a06f5aeeb58dff`；**无需且不得重复删除**。PR当前head `2321737cd65aca50a80c68bca1dc34784e8de9a6`，相对于已审原V6 Commit `dd40ca89ecdffff195f43e3d00c84fa3dee2ada8`，仅 `EXECUTION_EVIDENCE.md` append-only增加60行、0删除；其余正式P2正文未改。
+- **有效文件归集**：[CURRENT_DOCUMENT_INDEX.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/CURRENT_DOCUMENT_INDEX.md)，索引Owner冻结V6 7/29/42、V6第①完整冻稿、P2诊断、先前独立Reviewer内容复核、唯一待独立Codex执行Gate、历史VOID和V4/V5归档。原文件库已接受的**P1结构审查全文**特地单独抽取为main的`docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md`，并明确当时题名是历史版本；未把早期被Owner否决的P2全文复制到main冒充有效稿。
+- **权威澄清**：GitHub main本Handoff仍是**唯一**项目状态；索引仅导航，Gate约束独立Executor；main冻结正文是Owner已认可的**保留基线**，不是已经满足新手阅读目标的最终发表稿。PR内部append-only Evidence/审计历史保留在未合并分支，禁止未经授权合并到main。其它六章和最终HTML未开启。
+- **敏感数据最小化**：接手只传项目GitHub链接、Commit SHA、文档哈希、阶段与抽象教学示例；**不传任何真实用户或商家识别信息、支付账户、银行卡、密钥、Cookie/Token、订单详情和凭据**。GitHub历史中撤销文件仍可能被有权限的人访问；“从当前树删除”不代表Git历史已物理抹除。
+- **唯一下一步**：另一个独立Codex Executor根据`MCPG-P2-V6-PEDAGOGICAL-INDEPENDENT-EXECUTOR-20261016`从Owner冻结稿新建`docs/P2_V6_PEDAGOGICAL_EXECUTOR_CANDIDATE.md`；执行完附证据停Reviewer，由**下一位独立Reviewer**做内容/事实/教学质量审核，Owner最后决定是否替换冻结V6。Reviewer不得直接撰文。
