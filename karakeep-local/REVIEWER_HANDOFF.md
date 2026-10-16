@@ -5,13 +5,14 @@
 > LAST_GATE_ID=`KARAKEEP-WIN-G2B-FUNCTION-SAFE-CLEANUP-20261016`
 > LAST_GATE_REVISION=`R2_STORAGE_LAYOUT_NO_MIGRATION`
 > GATE_STATUS=`RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`
-> NEXT_GATE_ID=`NONE_WAIT_OWNER_INSTRUCTION`（不能自主重试）
+> NEXT_GATE_ID=`NONE_PLAN_REVIEW_ONLY`（只规划本机资产归档，不自主运行/删除）
+> LOCAL_ARCHIVE_PLAN=`LOCAL_ASSET_ARCHIVE_PLAN.md` / STATUS=`PLAN_ONLY_NOT_EXECUTED`
 > CANONICAL_GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7 / blob `3917c88a7f36df7a53758b3879a92703d659ef9d`
 > DOCUMENT_HOME=`https://github.com/entropy-student/project/tree/main/karakeep-local`
 > `README.md` 为索引，**本 Handoff 为唯一当前状态权威**；`DECISION_LOG.md` 为决策及本轮 Reviewer 对中止报告的整理；`EXECUTION_EVIDENCE.md` 仍只包含历次 Executor 已成功提交的执行证据。
 
 ## PROJECT_GOAL
-在 Owner 实体 Windows 11 本机运行官方 Karakeep，用于本人收藏网页，登录界面可用且仅 `127.0.0.1:3000` 暴露。**安装实施已于 2026-10-16 正式 CLOSE，运行资源和账户保留**。之后 Owner 限定一次 G2B R2：只读核对 Docker 实际存储、测试最多一条可丢弃公开网页收藏、清理能证明无引用的本项目临时文件；**不备份、不恢复、不迁移、不重启、不监控**。本轮被浏览器目标识别阻碍中止；Owner 最新指令是**记录未完成并等待下一次 Owner 指令**。
+在 Owner 实体 Windows 11 本机运行官方 Karakeep，用于本人收藏网页，登录界面可用且仅 `127.0.0.1:3000` 暴露。**安装实施已于 2026-10-16 正式 CLOSE，运行资源和账户保留**。之后 Owner 限定一次 G2B R2：只读核对 Docker 实际存储、测试最多一条可丢弃公开网页收藏、清理能证明无引用的本项目临时文件；**不备份、不恢复、不迁移、不重启、不监控**。本轮被浏览器目标识别阻碍中止。**Owner 最新要求是制定一份本机文件归档与防误删计划**：`LOCAL_ASSET_ARCHIVE_PLAN.md` 仅作方案，不是重试 G2B 或本地盘点/移动/删除的授权。
 
 ## PROJECT_STAGE
 - **G0–G1I 历史**：Windows/Docker Desktop、受保护本机 Compose/.env、三份官方镜像最终就绪。此前 Meili 下载异常已经克服；G1I 裸 `Host:chrome` 500 是 Chromium Host 安全限制、与真正 Worker CDP 连接不能简单等同，经过独立研究后不再作为失败依据。G1I 的 project-only `down`（无 `-v`）曾停止目标容器并保留两卷，**不是用户数据灾备证明**。
@@ -44,6 +45,8 @@
 - **备份风险**：Owner 明确 `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`，电脑/磁盘/Docker 虚拟磁盘损坏可造成永久数据丢失；不把用户数据“留本机”当成恢复证据。
 
 ## CURRENT_ACCEPTED_STATE
+**2026-10-16 最新规划层更新**：Owner 想整理电脑上的 Karakeep 文件但不知道完整本机分布，尤其不确定所说 `sass` 目录是否为可清理开发工作区。已新增 `LOCAL_ASSET_ARCHIVE_PLAN.md`（`PLAN_ONLY_NOT_EXECUTED`）：推荐先仅本机只读盘点、分类，再由 Owner 单独授权明确目标的整理/删除；**没有新增本机操作，也没有新 Gate 授权**。目前 `sass` 完整路径/内容/引用状态 `UNKNOWN`；不可宣布可删除。
+
 **安装实施仍 CLOSED / G1J PASS；G2B R2 正式 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED`，不得判 PASS。** 当前可引用的 G2B 报告事实仅是 Owner 转交的 Executor 完成包，其“本机直接读回”未由 Reviewer 独立检视及持久化到 `EXECUTION_EVIDENCE.md`；禁止标为 `DIRECT_READBACK` by Reviewer。保留其可用事实供下次**有界复核**，避免无意义的安装检查重做：
 `STORAGE_PATHS_REPORTED`；`CLEANUP_CANDIDATES=0_REPORTED`、`FILES_DELETED=0`；`CANARY_ADDED=0`、`CANARY_CRAWL/SEARCH/PREVIEW=NOT_RUN`；`HTTP_RECHECK=NOT_RUN`；`RUNNING_SERVICES=REPORTED_ONLY`；`G2B_EXECUTION_EVIDENCE=NOT_PERSISTED`。**没有证据显示 Karakeep 应用损坏或因 Browser CDP 失败**，工具无法确认浏览器 URL 不等同应用故障。
 
@@ -76,12 +79,13 @@
 G2B R2 Canary 未执行；本轮最终 HTTP 未重新检查；无 G2B Evidence append/readback；底层 Windows VHDX 文件名/路径仍未知。历史语言设置最终保存状态未知；重启/长期运行和备份由 Owner 明确排除，**不是下一位 Reviewer 要擅自推进的事项**。
 
 ## NEXT_STEP
-`WAIT_OWNER_INSTRUCTION`。Reviewer 本次只把中止判断和 Owner 转交的事实写入 main Handoff / Decision、保持 `EXECUTION_EVIDENCE.md` 历史不动，并读回核验。**不创建下一 Gate、不发下一执行提示词、不自行处理浏览器或执行手动 Canary**。如 Owner 将来请求继续，首先用已保存现状设计最小新 Gate，确认浏览器目标/会话安全后再做剩余单条 Canary，避免重跑已核对的整个安装链路。
+`PLAN_REVIEW_ONLY`：Owner 已要求**先规划本机归档**，见 `LOCAL_ASSET_ARCHIVE_PLAN.md`。推荐的下一操作是 Owner 确认后单独开启**只读本机资产清单 Gate**：不碰浏览器、不删/移动任何文件，核实 `sass` 归属与 Git/运行引用，输出 `LOCAL_ASSET_INVENTORY` 脱敏清单供 Reviewer 分类。**目前没有获准执行的本机 Gate；本轮只写 GitHub 项目计划并读回。** G2B R2 仍为 RETURN，保留安装 Close。后续真正归档/删除须再次明确授权，绝不自动推进。
 
 ## OWNER_ACTION_REQUIRED
-`NONE_NOW`。仅等待 Owner 未来是否希望继续此功能测试。无需新密码、Cookie、Secret、备份介质或本机操作。
+`NONE_NOW_FOR_PLANNING`。如 Owner 希望启动下一阶段，只需确认“按计划先做**只读本机资产盘点**”，即可由 Reviewer 设计独立 Gate 并下发本机 Codex；无需提供密码/Secret。疑似 `sass` 路径如果只读有界搜索找不到，再请 Owner 单独提供一个完整目录地址。不做删除、备份、迁移或恢复。
 
 ## EVIDENCE_POINTERS
+- **新增无执行权限的资产归档计划**：`LOCAL_ASSET_ARCHIVE_PLAN.md`；Owner 2026-10-16 本轮提出本机文件归档、防误删问题，Reviewer 仅产出 GitHub 文档。决策见 `DECISION_LOG.md` 的 `D-20261016-LOCAL-ARCHIVE-PLAN`。
 - **本次 G2B 中止的事实源**：2026-10-16 本轮 Owner 转交 Executor 未完成报告，具体摘要记录 `DECISION_LOG.md#d-20261016-g2b-r2-stop--浏览器目标无法确认未完成并停在-reviewer`（`OWNER_REPORTED`）；**未提交 Executor G2B Evidence / Commit SHA**。
 - **历史最后 G1J Executor Evidence**：`main:karakeep-local/EXECUTION_EVIDENCE.md` blob `71c26e6e9665e10bb87ab14e0d1514be7e7f24a4`，commit `b801c2b629b303f730d05329c958cffca61686b3`。后续若此 blob 变化需核对是否有人重新 append，不能擅自推测本轮已补全。
 - **正式 Closeout**：`CLOSEOUT_REPORT.md`；**Storage/no migration**：`README.md` 和 `DECISION_LOG.md` 中 `D-20261016-G2B-R2`；Governance `entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7。
