@@ -2,6 +2,16 @@
 
 > 2026-10-16｜**已确认事项与开放讨论清单**。本文不是最终兜底方案、视频制作授权或新Gate。当前实际状态见 [CURRENT_STATE](CURRENT_STATE.md)。
 
+## 2026-10-16｜Owner最新分类：A视频 / B图片 / C AI生图（替代旧六类）
+
+**仅保留三种素材类别**：A=已有素材视频（含真实录屏），B=已有素材图片（含论文图片、真实照片、现存图解），C=AI生成的静态图片（插画、概念/科学示意）。复合/对照属于已有MW模板中的展示关系，不另建类别。
+
+**现有13个MW窗口动作 × 3种素材 = 39个理论候选格子**，再删除不适配项，绝不新造分镜母版或制作39套独立动画。此前13×6、六类大表仅为历史讨论，不再作为现行框架；39格的适配结论尚待审核。
+
+**Owner对C的方向授权**：可在未来正式视觉方案中使用经过核实、明确标注的AI静态示意/情境插画；不得冒充论文原图或研究录像。原绝对禁AI生图的内容方向被本决定替代，但实际生图调用、收费及正式制作/发布仍须未来单独Gate。AI生视频及伪造实验仍禁止。
+
+**经过核验的跨项目实施参考**：`entropy-student/spike.skill/comic-narrative` 的[Part4.5图片库复用](https://github.com/entropy-student/spike.skill/blob/main/comic-narrative/part4_5/ASSET_REUSE_LIBRARY.md)优先搜索既有已验收图、直接复用/编辑/参考、确有缺口才生新图；[imagegen-fast-path](https://github.com/entropy-student/spike.skill/tree/main/comic-narrative/tools/imagegen-fast-path)在Codex内置生图环境已验证并发2、官方output_hint直达路径、复制保存+哈希/尺寸/QA、不要stdin/TTY/base64中转图片、Native像素差异不单独触发重生。**没有实测证明“最低Token用量”**；CWS也未完成技术移植或实拍验证。
+
 ## 已确认的决策
 
 | 原七点编号 | Owner裁决 | 适用边界 |

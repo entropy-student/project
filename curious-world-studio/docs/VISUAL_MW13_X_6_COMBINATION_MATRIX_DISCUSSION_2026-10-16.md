@@ -1,5 +1,7 @@
 # CWS｜现有13个MW窗口动作 × 六类素材：分镜适配大表
 
+> **HISTORICAL_SUPERSEDED_2026-10-16**：Owner当前仅允许讨论A素材视频、B素材图片、C AI生图的13×3（39个理论格子）；本13×6大表只存历史候选，不再具有现行分镜分类效力。详见[裁决登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。
+
 > **DRAFT_FOR_OWNER_DISCUSSION / NOT_APPROVED_FOR_EXECUTION｜2026-10-16**。Owner已确认13×6筛选方法，**下列78个格子的判断仅为Reviewer讨论建议**，不是13种动作已正式集成视频，也不代表AI生图解禁。已确认决策见[七点裁决登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。
 
 ## 一、固定六列，不再发明新的分镜母版

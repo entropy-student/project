@@ -8,6 +8,8 @@
 
 > **讨论中的分镜框架**：Owner确认只从现有13个MW窗口动作×六种素材/呈现方式筛选实用组合，不另造12种母版或78套动画；每格推荐/排除目前只是[讨论大表](docs/VISUAL_MW13_X_6_COMBINATION_MATRIX_DISCUSSION_2026-10-16.md)的Reviewer建议，未获Owner逐格批准。旧正式素材、AI生成及版权Gate不变。
 
+> **Owner现行三类**：A素材视频、B素材图片、C AI生图；沿用13种MW模板，理论最多39格，旧六类历史保留。C只可用于审查后的示意/概念/情境，不是假科研实拍；实际生图与正式制片另需Gate。源项目可复用方法见[comic-narrative imagegen-fast-path](https://github.com/entropy-student/spike.skill/tree/main/comic-narrative/tools/imagegen-fast-path)，尚未证明CWS兼容或最低Token用量。
+
 ## 权威入口（按顺序）
 
 - **[当前整体项目进展与下一步](docs/CURRENT_STATE.md)** — 唯一事实源
