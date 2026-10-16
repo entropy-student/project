@@ -1,5 +1,11 @@
 # CWS｜下一位Reviewer完整现行交接（2026-10-16）
 
+## 2026-10-16 Owner新增：13种已有MW模板 × 六类素材，筛选而非另造
+
+- **已确认方法**：固定MW-01～MW-13为现有动作模板库；六类承接对象为A真实视频/B科研图像/C实际录屏/D科学图解/E AI生图/F多素材复合（F不是新的来源）；理论78格，先排除无叙事价值、物理不适配或不合规的组合，剩余有限项直接替换素材、共用原动画；无实际窗口需要时沿用B全幅播放器。
+- **明确未决**：所有格子目前只是[13×6大表讨论稿](VISUAL_MW13_X_6_COMBINATION_MATRIX_DISCUSSION_2026-10-16.md)中的Reviewer建议，并未得到Owner逐格批准。部分MW仍是独立HTML Demo或储备设计，AI生图仍受现行3+1合同限制；本轮没有新制作权限，R3 RETURN、R4未授权、G1/G2/HOLD/NO_PUBLISH不变。
+- **NEXT_STEP**：先就大表各格是否推荐、条件使用、排除以及对应的资料呈现方式进行Owner讨论，必要时再考虑修改正式视觉合同与后续开发Gate。
+
 ## 最新Owner七点裁决（2026-10-16，覆盖旧的自动改稿与自动终止建议）
 
 - **已确认**：①素材匹配/兜底时文案不得修改；⑦视觉方案确定后才执行 `human-writing v1.1.0 → humanizer v3.1.0 → Reviewer事实与口播复核`，再配音。④当前不实行静态/动态/兜底时长占比硬限制；⑥不采用“缺素材就自动停机”的内容策略。
@@ -26,7 +32,7 @@
 | DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex → 脱敏ZIP与SHA → ChatGPT Reviewer独立验收，Owner仅转交与必要授权 |
 | CURRENT_ROLLBACK_STATUS | Git文档修改使用隔离分支PR可回退；R3本机回滚尚待运行前预检，旧媒体/工作树不得覆盖 |
 | UNRESOLVED | 两条库存素材占全片约83%且内容高度相似；核心机制由5.849秒纯文字卡替代，视觉故事性不合格；实际观感已被Owner否决，不再等待音色反馈；版权与正式Story-Fit/发布仍HOLD |
-| NEXT_STEP | ②高效遍历和同源视频禁止复用已确认；继续讨论③素材兜底与⑤模板应用的统一编排结构、具体候选权限与影像效果；未获新执行授权前不得渲染/进入R4 |
+| NEXT_STEP | 13×6筛选方法已确认；下步逐格讨论推荐/条件/排除及示例，厘清AI图片及MW HTML Demo许可；未获新授权前不得渲染或进入R4 |
 | OWNER_ACTION_REQUIRED | 本轮不用转交Codex；下一次继续讨论②③⑤，是否启动制作另行授权 |
 | EVIDENCE_POINTERS | [R2生效稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)、[执行证据](EXECUTION_EVIDENCE.md)、[决策](DECISION_LOG.md)、下文历史ZIP/SHA |
 

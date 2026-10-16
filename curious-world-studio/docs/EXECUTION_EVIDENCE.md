@@ -96,3 +96,12 @@
 - OWNER_DIRECT_IN_CHAT：高效检索原则继承刚确认的上一轮方案：多来源并行搜集、抽帧预览与去重、相关性排序、只对未解决视觉缺口定向补搜；明确不反复全量遍历。新增原始视频源“一次性使用”：一源单期单连续区间，全项目不得跨期重复；衍生版本、不同URL不绕过同源判定。
 - EXPECTED_FUTURE_VALIDATION：执行前通过项目级源身份+视频感知相似判定+使用台账查重；本轮**没有验证任何已用台账自动化系统已经实现**。原R3的Pexels #854959/Pixabay #2793作为历史已使用记录保留，不能将旧失败镜头重新塞入新片。
 - OPEN_ITEMS：③视觉兜底与AI图片、⑤13个MW候选及正式2/4/6如何合并编排，仍只是设计建议；旧AI禁令未被本次确认检索策略而解除。R3整体RETURN/G1/G2/HOLD/NO_PUBLISH及R4未授权不变。
+
+## EVIDENCE 2026-10-16｜13×6分镜组合方法确认（仅文档）
+
+- AUTHORIZED_SCOPE：Owner在当前聊天明确要求按GitHub Governance记录13个既有MW模板×六类素材的有限选择方法，并进入大表讨论。仅文档写入许可，非素材下载、AI图片生成、MW源码改造、视频渲染或发布授权。
+- OWNER_REPORTED_DIRECT_IN_CHAT：Owner不希望重新发明12种分镜母版，要求直接对已有13个窗口模板与6种素材/呈现类型做理论13×6适配矩阵，排除不适合的组合，让最终有限模板能替换素材。
+- REVIEWER_PROPOSAL：新增[13×6讨论矩阵](VISUAL_MW13_X_6_COMBINATION_MATRIX_DISCUSSION_2026-10-16.md)为DRAFT_FOR_OWNER_DISCUSSION，仅列出暂时建议的优先、条件与排除；全部格子未获得Owner逐格认可。
+- VERIFIED_REPO_FACTS：13个MW存在于现有Kit清单；MW06/MW08/MW09是储备设计，MW04仅UI Demo，MW11/MW12/MW13有独立HTML QA KEEP候选，MW07后续局部优化为技术KEEP候选；这些不等于所有动作已接入正式Remotion渲染。
+- PRESERVATION：R3视觉RETURN、R4未授权、G1/G2/HOLD/NO_PUBLISH继续；旧AI生成禁令未改；不修改既有证据、历史媒体、来源库或本机。
+- ACCEPTANCE：仅CWS文档及讨论稿进入GitHub main；回读决策、矩阵DRAFT与当前Handoff指针，避免误认格子已批准。
