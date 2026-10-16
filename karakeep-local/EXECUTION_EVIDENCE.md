@@ -211,3 +211,55 @@ No Karakeep runtime or business-data delta. No Docker images or objects were add
 
 ### EXECUTOR_RESULT
 `RETURN_PREFLIGHT_DRIFT_EXISTING_CONTAINERS_STOPPED + RETURN_REGISTRY_HOST_TIMEOUT` — stop before image pull or service startup. Reviewer should reconcile the unexpected stopped workloads and define whether/when the bounded Docker Desktop image-pull diagnosis may proceed. Do not treat this as a PASS candidate or advance the stage.
+
+
+## G1C — Windows Docker Engine/container reconciliation and conditional pull RETURN — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1C-EXISTING-STATE-AND-PULL-20261016`
+`OWNER_AUTHORIZATION=OWNER_REPORTED` Owner authorized a bounded pull of the three official Karakeep images and project-only startup when Gate conditions pass. Reuse the existing protected Compose and Secrets; no fixed free-RAM threshold; do not restore other containers or change proxy, certificates, daemon, WSL, or global settings.
+
+### PREFLIGHT_FACTS
+- `TARGET_IDENTITY`: `DIRECT_READBACK` Windows PowerShell host; Docker context `desktop-linux`; Engine 29.7.2; Compose 5.4.0.
+- `ENGINE_STATUS`: `DIRECT_READBACK` `docker info`, `docker version`, and `docker system df` all exited 0 before and after pulls. Docker root remains `/var/lib/docker`, driver `overlayfs`; Docker Desktop backend process was present. The Windows host last boot and Desktop backend start both predate the three recorded container exits; available timestamps do not explain their stop.
+- `STOPPED_CONTAINER_CAUSE`: `DIRECT_READBACK` only the three previously running non-target containers were inspected. WordPress CLI: exited, code 137, `OOMKilled=false`, restart count 0, restart policy `no`, State.Error empty. WordPress Web: exited, code 0, `OOMKilled=false`, restart count 0, restart policy `no`, State.Error empty. MariaDB: exited, code 137, `OOMKilled=false`, restart count 0, restart policy `no`, State.Error empty; last retained health status `unhealthy`. No container contents, database data, or raw logs were read. Bounded container-specific Docker event queries returned no records. Stop cause is `UNKNOWN`; no OOM, repeated restart, or Docker Engine failure was observed. The three services were not restored.
+- `NON_TARGET_BASELINE`: `DIRECT_READBACK` at Gate entry Docker had 20 containers: one `created`, 19 `exited`, zero running. The three named in the previous accepted baseline were the only matching WordPress CLI, WordPress Web, and MariaDB containers. Container ID/state snapshot, 12-volume names, and 11-network identities were held locally and matched after image pulls. The additional created object was not inspected or changed. No private container name or ID is recorded.
+- `PROJECT_CONFIG`: `DIRECT_READBACK` existing Compose SHA-256 matches accepted value `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`; Compose `config --quiet` passed with the exact project file. Services and image refs match the frozen official Compose; only web publishes `127.0.0.1:3000`. Existing four env keys and two distinct 64-hex Secret formats match; directory and both files remain current-user-owned, DACL-protected, with zero untrusted ACEs. No Secret value or hash was emitted.
+- `STORAGE_AND_RESOURCES`: `DIRECT_READBACK` current C: free space was 188.3 GiB before pulling and 185 GiB afterward. Docker root/driver and accepted G1R data-disk mapping remain unchanged; `docker system df` succeeded. Host RAM was 2,167 MiB before pull and 1,036 MiB after. These RAM readings are observation only; no fixed threshold was applied. No OOM or visible host instability was observed.
+- `NETWORK_DIAGNOSTICS`: `DIRECT_READBACK` host proxy modes and Docker Engine proxy-presence flags were checked without retaining values. Host GHCR DNS/TCP/TLS succeeded and unauthenticated `/v2/` returned expected HTTP 401. Host DNS for `registry-1.docker.io` succeeded, but its TCP/443 and host `/v2/` request timed out. The Engine's official-image pull was tested separately below; no host or Engine proxy change was made.
+- `TARGET_COLLISIONS`: `DIRECT_READBACK` no Karakeep project container, either project volume, or target image tag existed before pull. Port 3000 had no listener or published mapping.
+
+### ACTUAL_CHANGES
+- Pulled each frozen official target image once. The two GHCR pulls succeeded:
+  - `ghcr.io/karakeep-app/karakeep:release` — RepoDigest `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`.
+  - `ghcr.io/karakeep-app/karakeep-chrome:release` — RepoDigest `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`.
+- The single pull of `getmeili/meilisearch:v1.41.0` exited 1. The in-process allowlist classifier returned `UNKNOWN`; raw Docker output was not retained or displayed. No retry or alternate image source was used.
+- No Compose `up` was run because the required third image did not pull successfully. No project container, network, or volume was created. No config, Secret, non-target Docker object, or global setting was changed.
+
+### OBJECTIVE_READBACK
+- Post-pull `docker image inspect` confirmed the two GHCR RepoDigests above; the Meilisearch tag remains absent.
+- All 20 pre-existing container ID/state pairs, 12 volumes, and 11 networks matched the Gate-entry snapshot. No Karakeep container or project volume exists; port 3000 remains free.
+- Deployment remains `NOT_DEPLOYED`; no account, AI key, or real collection data was created.
+
+### VALIDATION
+- Latest `REVIEWER_HANDOFF.md` and latest G1N Evidence were read from GitHub `main` before local work. Current Gate permits an `EXISTING_EXITED_BASELINE` after the limited inspect when Engine is available and no actual high-risk system/OOM/restart/data fault is found; other containers were not restarted.
+- Local configuration and protected Secret shape were read without printing content. Only the three identified prior containers received `docker inspect`; no business data or raw logs were opened.
+- Registry endpoint tests and Docker pull errors were classified locally; proxy values and raw errors were not retained.
+- The pull outcome and non-target inventory were re-read after the failure; no unexpected project objects or non-target state changes were found.
+
+### ANOMALIES
+- `RETURN_PULL_FAILURE_UNKNOWN`: the one authorized Meilisearch pull failed with an unclassified Docker error. Host Docker Hub TCP/443 and HTTP probes also timed out, but this does not establish the daemon-side root cause. Reviewer should decide whether a new bounded diagnostic Gate is needed.
+- `STOP_CAUSE_UNKNOWN`: the three non-target containers exited with the metadata recorded above; Docker event history and available host/backend timestamps did not identify the cause. MariaDB's retained last health status was unhealthy. Its data was not inspected, and it remains stopped as the accepted non-target baseline.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1C section records the accepted stopped-container baseline, Docker Engine status, sanitized registry findings, official image pull results/digests, and the exact deployment stop point.
+- Source remains official Compose blob `865bb147cef972926d5dc32e50645876fd110555`; no raw logs, private paths, container names/IDs, proxy values, or Secrets are attached.
+
+### ROLLBACK_EFFECT
+No rollback was needed because no Karakeep service or project volume was created. The two successfully pulled official images are retained for Reviewer-directed continuation; no prune or cleanup ran. All non-target containers, volumes, and networks matched their entry snapshot. Existing Secrets and Compose remain unchanged; real-data backup/restore remains `UNVERIFIED`.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+Two official GHCR images were added to the local Docker image store; the third pull failed and may have left reusable partial layers. No container/network/volume or business data changed. Host free RAM moved from 2,167 MiB before pulling to 1,036 MiB after; no fixed RAM threshold or OOM occurred. C: free space remained 185 GiB after pulls.
+
+### EXECUTOR_RESULT
+`RETURN_PULL_FAILURE_UNKNOWN` — two official GHCR images were pulled and identified by RepoDigest; the single Meilisearch Docker Hub pull failed, so deployment did not start. Stop here for Reviewer assessment; do not retry the failed image or advance the stage in this Gate.
