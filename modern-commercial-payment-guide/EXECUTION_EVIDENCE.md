@@ -168,3 +168,40 @@
 - **阅读质量自检：** 有 9 组具体可追材料，先写 29 美元五单的用钱疑问，再算手续费、解释为什么差在最低额、发现六单过门槛与每批固定费用，最后给低单量或高单量的选择条件和读者具体核验动作。正文没有抽象五步法起篇、假造本人支付经历/对话/商家个案；来源与原稿映射留文末。句长、段落长短和金融判断可由 Reviewer 独立对照。
 - **修订痕迹：** 首稿完成后加载 revision，删去无依据的“六个月内”说法改为“这一批订单”，并加强首段商品/交易仅为审核通过的设定及企业电汇的前提。人工检查正文无破折号、引导性冒号、翻案式固定句型、硬性商业黑话；实际阅读效果交 Reviewer。
 - **范围与回滚：** 只新增一份阅读样稿、append-only 本证据。未修改已审核 P2 候选、冻结 7/29/42、P1、原 Gate/main、Reviewer Handoff、生产/账户/支付/Secret；未做 HTML 或启动第二 Skill。Reviewer 如 RETURN，可撤回样稿和本轮追加证据。**STOP_AT_REVIEWER**。
+
+---
+
+# P2 copy-editing 单技能独立编辑实验｜2026-10-16
+
+## Gate、原始材料和 Skill 版本
+
+- **GATE_ID：** `MCPG-P2-COPY-EDITING-READABILITY-PILOT-20261016`，`EXECUTOR_RESULT=PASS_CANDIDATE`，**`STOP_AT_REVIEWER=YES`**。结果并非 Reviewer 对第二稿的最终接受或实际完读率证据。
+- **前置直接读取：** 主干 Gate `docs/P2_COPY_EDITING_EXPERIMENT_GATE.md` Blob `175af8960329b4b05dab6cd8c15fa7077d360f75`；主干 `REVIEWER_HANDOFF.md` Blob `8663123233ad444bb48b7dd52b0f2ecc43479f64`；[human-writing 评审正式评论](https://github.com/entropy-student/project/pull/132#issuecomment-6208144581)，结果第一实验执行 `PASS`、阅读吸引力 `PARTIAL`。
+- **改稿前 PR #132：** `state=open`、`draft=true`、`merged=false`，head `d0f000e95554e530d3d52ce49acb85a0d1b4825e`（与 Gate 固定值匹配）；原 P2 正文 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`；第一版 `P2_HUMAN_WRITING_SAMPLE.md` Blob `b05dfdc45e03649927a25be0db0380f40a681ba6`；此前 Evidence Blob `4cbc212684e30c52315cc180b731ba97c28ddea6`。
+- **本轮唯一使用的编辑 Skill：** [coreyhaines31/marketingskills copy-editing](https://github.com/coreyhaines31/marketingskills/blob/main/skills/copy-editing/SKILL.md)，版本 `2.2.0`，主 `SKILL.md` Blob `e5fdc0e70e0a2b3d17c1f7761b00b6c51e1e0ac0`，**与 Gate 指定 SHA 完全相同**；真实读取 [references/checklist.md](https://github.com/coreyhaines31/marketingskills/blob/main/skills/copy-editing/references/checklist.md) Blob `1f33b2100a1d49db4858987e4b6bcbbd783d5b79`。无源版本漂移；**没有调用 human-writing 作为本次编辑 Skill，也没有调用任何其他写作 Skill**。
+- **采用的编辑模式：** checklist 模式 B（原文已有完整清晰观点，保留事实、表达、论证线）。针对既有中文非营销科普稿，检查清晰度、声调一致、读者关心点、证据、具体性、顺读体验及诚实风险说明。Skill 原本用于营销文案，促销 CTA、FOMO、虚构证言、无依据保证或情绪刺激均**不适用且没有采用**。一轮定向编辑，不展开营销测试、专家评分或继续二次改稿。
+- **公开来源实核：** [S02 PayPal CN 商家费率](https://www.paypal.com/c2/business/paypal-business-fees?locale.x=zh_C2) 2025-06-18 页面更新、2026-10-16 重新查看，适用 `PayPal中国跨境支付服务用户协议` + `PayPal全球服务条款` 的 CN 账户，排除按另一 `PayPal支付服务用户协议` 开立的账户；国际 CN 商业美元收款 4.40% + USD 0.30；`从企业PayPal账户提出余额` 对中国大陆银行电汇每笔 USD 35。[S05 中国大陆提现帮助](https://www.paypal.com/c2/cshelp/article/how-do-i-withdraw-funds-from-my-paypal-account-help394) 美元电汇最低 USD 150、一般 3–7 工作日、提现须经过审核及银行规则。均非具体账户成功获批或真实打款证据。
+
+## 交付文件与四项以上编辑对照
+
+- **ACTUAL_CHANGE 1：** 仅新增 [`docs/P2_COPY_EDITING_SAMPLE.md`](./docs/P2_COPY_EDITING_SAMPLE.md)，正文约 **1337 个汉字**，含 Markdown/链接的文件合计 2375 个 JS 字符。写入 Commit `0c5d018d39db0e2fe88b296dd651659b7d4e6d70`，Blob `9a4bdd2971ac1a4307e82582a3ae1d9ab413d3e5`，GitHub `fetch_file` 读回写入内容逐字一致。
+- **ACTUAL_CHANGE 2：** 当前证据仅追加于 `EXECUTION_EVIDENCE.md` 末尾；历史记录不可覆盖。
+
+| 第一版对应表达 | 第二版处理 | 编辑目的（保留事实） |
+|---|---|---|
+| 首段先写五单 145 USD，再说明无法提现；后文才出现六单 129.52 USD | 第一段直接显示六单总额 174、费后 164.52、扣一笔 35 后 129.52 和差额 44.48 | 先出现最有用的金融差异，立即解释它与经营资金的关系，非营销悬念 |
+| 原文第7行长段连写双协议、企业身份、资格、产品差异与 35 USD 限制 | 一段短算例后独立限制段，事实不删除；35 USD 的企业账户限制再紧贴费额说明 | 限制仍可见，但不再阻断开头、且费率适用与提现定价分开 |
+| 原文多段重复提示未获准、未到账、退款未知 | 在假设句一次声明获准；129.52 出现处集中解释未到账、银行费/汇率/税/余额调整和实际舍入未知；结尾注记核对条款 | 保留各项 UNKNOWN 又减少多次类似免责声明 |
+| 原文五单到六单的两次乘法分占较多篇幅 | 五单 137.10 与六单 164.52 连在一个段落，强调是否跨越 150 美元提款额门槛 | 数值承载一项具体新的商家决定，降低同质计算感 |
+| 原文十单、百单两次总额解释和另段重复固定费用摊薄 | 一段并列保留 10 单 274.20/239.20、100 单 2742/2707 与每单分摊 3.50/0.35 | 数字完整、节奏压缩，直接衔接低频与高频如何选择 |
+| 原文尾段为四步核验清单及重复警告 | 先给最低必要的核验方法，再以单量、每批固定费和需要用钱的日期收束 | 保留行动性，避免结尾回到报告式复述 |
+
+## 金融事实保留和算术校验
+
+- **固定场景：** 符合特定 PayPal CN 双协议的中国大陆**企业**，已经按假设获得对应商品/国际 USD 商业交易收款及大陆银行美元电汇提现资格；单价 USD 29；批次内均成功，没有退款、拒付、风险预留、其他余额扣减。实际账户资格仍未知。
+- **交易费：** `29×0.044 + 0.30 = 1.576`，示例逐单先按美分约 `1.58`，余额约 `27.42`；不冒充 PayPal 的实际舍入实现。
+- **五、六单与提现门槛：** 五单扣交易费后 `137.1` 低于 USD 150；六单顾客共付 `174`，扣交易费后 `164.52` 达到门槛；**仅对应的企业电汇一次扣 USD 35** 后约 `129.52`；总已知费差 `44.48`。
+- **十单/百单：** 十单交易费后 `274.2`，扣一次电汇后 `239.2`，电汇费均摊 `3.5`；百单顾客合计付 USD 2900，交易费后 `2742`，扣一次电汇后 `2707`，均摊 `0.35`。
+- **静态数值复算：** 14/14 个数值计算一致（整数/小数精度容许误差小于 `1e-8`）；新样稿保留 4.40%、0.30、USD 150、USD 35、3–7 工作日、双协议及企业账户限制。**未给出银行实际到账金额**；银行/中转费、汇兑、税款、经营成本、真实账户准入均 `UNKNOWN`；大陆自然人不能照搬企业账户费率或自动获得合法提现路径。
+- **文件不变性：** 首版 `P2_HUMAN_WRITING_SAMPLE.md` Blob `b05dfdc45e03649927a25be0db0380f40a681ba6` 保持；Reviewer 已通过的 `P2_REWRITE_CANDIDATE.md` Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 保持；不更改冻结 7/29/42、P1、main、Gate、Handoff，不进入 P3–P5、HTML、第三轮或任何真实支付。
+- **未验证与回滚：** 没有真实付款、提现、银行资金验证、用户完读率或营销效果；可单独移除第二稿/回退本轮新增提交，其他两稿及历史证据不受影响。**RESULT=PASS_CANDIDATE / STOP_AT_REVIEWER**。
