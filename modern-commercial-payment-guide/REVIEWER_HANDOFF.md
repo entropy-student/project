@@ -1,6 +1,6 @@
 # 现代商业支付系统｜唯一交接文档
 
-> **唯一结构基线：** 第二至第四节为Owner已冻结的V6全书7/29/42正式问题框架。第一、二部分的用户上传原稿同时**内容冻结**；仅允许在外部副本中制作待核验的修订候选，不允许覆写此仓库现行正文。旧稿与审查材料只在Git历史或受检备份中追溯。
+> **唯一结构基线：** 第二至第四节为Owner已冻结的V6全书7/29/42正式问题框架。第一、二部分已获Owner于2026-10-17明确授权进行定向修复并正式替换；现行正文以最新Git Blob为准。未经后续Owner新授权，不再次改写。旧稿与审查材料只在Git历史或受检备份中追溯。
 
 ## 一、项目最高准则（已确认）
 
@@ -82,36 +82,33 @@
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **3. 怎么判断现在的收款方式好不好用？** | 3.1 付款成功率、手续费、到账时间和拒付率，应该怎么看？ |
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **4. 生意变化了，什么时候要调整收款方式？** | 4.1 什么变化意味着应该调整或增加收款渠道？<br>4.2 换收款服务商真的更划算吗？切换时会遇到什么麻烦或风险？ |
 
-## 五、现行状态与双稿冻结令｜2026-10-16
+## 五、当前状态｜两篇正文Owner授权定向修订并正式替换（2026-10-17）
 
-- **Owner最新授权：** 删除其余失效与过期文档；把①、②两篇用户上传Markdown设为**内容冻结**，Review只提出明显错误和确有价值的深广度增补建议；Owner将提示词交外部独立Agent核验执行。**禁止任何执行者在当前Round覆写GitHub main或文件库里的冻结正文。** 内容冻结是项目授权约束，不是GitHub管理员写权限的技术锁。
-- **第一部分①唯一权威正文：** [docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) = 上传文件 `现代商业支付系统_第一部分_独立重写稿.md`；SHA256 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`；Git Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`。
-- **第二部分②唯一权威正文：** [docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) = 上传文件 `现代商业支付系统_第二部分_独立重写稿(1).md`；SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`；Git Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`。
-- **V6结构冻结：** 七个一级、29个二级、42个三级问题原文和顺序以本Handoff§二–四为准；快照 [docs/FROZEN_FRAMEWORK_V6_20261016.md](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
-- **现行项目文件库：** `/现代商业支付系统/` 仅两篇用户原始稿；五份助手旧修改及Reviewer材料已在ZIP确认内容完整后**从文件库移至回收区**，备份在 `/项目历史归档/现代商业支付系统_历史修订文档恢复备份_20261016.zip`，SHA256 `93fee77cf398ef32ea606075cab83140960e13bd805e020508b2328b80099b90`。历史备份是恢复手段，不是现行有效正文。
-- **当前main精简：** `docs/`仅两篇正文、V6冻结框架及现行索引。历史P1结构审查、P3归属计划和此前返修稿/Reviewer历史报告均从main现行树退出，但可依固定Git历史恢复。根目录只保留`REVIEWER_HANDOFF.md`、`DECISION_LOG.md`、`EXECUTION_EVIDENCE.md`。
-- **内容边界：** Owner选择了原稿的表达与可读性，但这不意味着稿件所有金融、法务、技术细节已被审核为准确。核对意见只供外部Agent验证，允许驳回错的建议；修订候选即使交付也不自动成为正式版。
+- **Owner明确指令：**“这些小问题请你直接修改然后替换现有的第一部分第二部分吧。”此前两篇正文的不可写冻结因本轮明确授权而在此限额内解除。已按第二轮外部Agent完整候选稿最小定向修复并更新GitHub main与Library，**新版正式正文已获Owner替换授权**；未开展新的独立出版前全量审计。
+- **①唯一正式正文：**[docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，新Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，83,440字节。其底本是第二轮候选 `01_第一部分_核验修订完整稿.md`，本轮仅修正PayPal中国大陆国际小额付款费率为6%+$0.05、预批准与USD4算例。正式替换提交 `a201606312f510ab11aa47f26f9bd34f51329d75`。
+- **②唯一正式正文：**[docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，新Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，67,885字节。其底本是第二轮候选 `02_第二部分_核验修订完整稿.md`，本轮仅定向修复Stripe[S11]、PCI SAQ与FAQ对应、七级模型案例用词、履约时限过度保证及简短案例。正式替换提交 `4c8075d17371ee4bbf30fb1744f5b58bc2e1241b`。
+- **仍维持官方V6结构冻结：**七个一级、29二级、42三级问题的原文、归属和顺序未变；[V6权威快照](docs/FROZEN_FRAMEWORK_V6_20261016.md) Git Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。本轮最终稿①保留5H2/9H3，②保留4H2/5H3；额外案例/工具节不计入正式V6二级问题。
+- **项目文件库唯一路径：** `/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`、`/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`，这两个**历史命名保持不变、文件内容已替换为最新版**；stable Library IDs未变。暂不另存重复正式稿。
+- **历史恢复：**替换前①原稿Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、②原稿Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`依然可从Git历史恢复；第二轮候选ZIP与此前原稿保留在会话文件中。此前Reviewer RETURN只针对已取代的旧候选/稿件，不能笼统套用于新正式稿。
+- **事实边界：**本轮已核实直接改动的官方收费/PCI/Stripe Testing规则，未声称整部作品所有服务商政策在2026-10-17都全面验证，也未进行生产支付、退款、银行卡/账户操作。
 
-## 六、当前执行Gate：第二轮三文件修订候选Reviewer复核
+## 六、当前Gate与完成状态
 
-- **GATE_ID：** `MCPG-CH1-CH2-SECOND-AGENT-ZIP-REVIEW-20261017`
-- **OBJECTIVE：** 对外部Agent第二轮三文件ZIP做只读审查，比对上一轮RETURN、核验与冻结原文/V6框架的保真性以及新补金融/技术来源。
-- **PRE-FLIGHT：** ZIP `现代商业支付系统_前两部分_独立核验修订成果(1).zip`，SHA256 `abc27b962e2189b80c3c9283d3bf9babf1c91b2ee169ce82445ca1a1f428e9e5`，三文件/CRC通过；两篇候选行数709和523；现行冻结第一部分Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、第二部分Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`，V6框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
-- **RESULT：** `DELIVERY_AND_STRUCTURE_PASS / RETURN_NARROW_FACT_AND_EVIDENCE_FIX`。上轮Live支付禁测与Webhook/持久ACK改进已落地；**新发现第一部分PayPal C2国际小额费率被写成5%+$0.05（官方6%+$0.05）**。第二部分Stripe测试来源仍标[S01]而非[S11]。执行记录误用历史非V6问题标题，却宣称逐字对应；其余涉及PCI SAQ A绝对推断/最高转化率、FAQ标签错位、教学案例层级与15分钟交付保证等定向问题。
-- **MAX_ENDPOINT：** 仅写Reviewer结论/本项目交接与append-only Evidence；不得修改、解冻或自动替换①②正式正文；不进入第③–⑦篇、HTML、收款账号与真实支付。
-- **EVIDENCE：** [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)中`MCPG-CH1-CH2-SECOND-AGENT-ZIP-REVIEW-20261017`条目；交付Owner完整 `现代商业支付系统_前两部分_第二轮Reviewer复核结论_20261017.md`，内列逐行、官方来源、最小返修。
-- **ACCEPTANCE_FOR_NEXT_CANDIDATE：** 新候选先独立核对每项修订建议，修正PayPal费率与示例、引文[S11]、V6执行核对表；收敛PCI/转化率等不可靠断言及案例的可核验性。文章保持原貌不扩大重写；仍交付两篇完整Markdown + 一篇执行记录、三文件ZIP；下一轮Review后由Owner单独裁决解冻。
-- **ROLLBACK / OWNER_ONLY：** 冻结①②现行正文及V6结构原封不动，历史Git与Library可恢复；本Round未获得采用候选的Owner权限，不准直接合并main。外部Agent不得覆盖冻结正文。
+- **GATE_ID：** `MCPG-CH1-CH2-OWNER-AUTHORIZED-TARGETED-ADOPTION-20261017`
+- **RESULT：** `OWNER_AUTHORIZED_REPLACEMENT_COMPLETE / TARGETED_QA_PASS`。两篇现行GitHub文件和Library同名文件已替换；Git Blob与本轮修订全文逐字回读一致；V6框架未动。
+- **OBJECTIVE：** 对此前Reviewer定位的少量P0/P1错误进行最小修补，替换第一、二部分正式唯一正文，不损害原稿风格。
+- **MAX_ENDPOINT：** 两章正式替换、正文/参考资料定向核验、内容索引与决策/证据更新，交付三文件ZIP（第一部分、第二部分、执行记录）；不修改③–⑦或HTML，不执行支付/退款/开户等真实操作。
+- **PREFLIGHT：** 已验证原main两篇Git Blob与Library文件，修正前的两轮Agent候选及Review报告可读取；原冻结正文仍留Git历史可恢复。
+- **ACCEPTANCE：** 两篇正式正文Git Blob分别为`bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、`51dab57d0ed5d5458b14422040297ebfbcebe676`；现行Library内容与它们一致；V6框架Blob与5H2/9H3、4H2/5H3逐字不变；本轮修补证据记录于[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)。
+- **NEXT_STEP：** Owner不需要再把上一轮小问题返修要求交给外部Agent。若要继续写③《顾客付款》或出版前全面金融事实校验，另行制定适当的下一Gate。①②为现行权威正文，**后续未经Owner新授权不得随意改写**。
+- **OWNER_ACTION_REQUIRED：** NONE。
 
-## 七、阶段总览
+## 七、全书阶段
 
 ```text
-P0 正式7/29/42问题框架                 PASS｜冻结
-P1 第一部分①用户上传原文               FROZEN / NO EDIT
-P2 第二部分②用户上传原文               FROZEN / NO EDIT
-P3 独立核验修订候选三文件               RETURN｜第二轮仍需少量事实/证据修复
-P4 ③–⑦其余章节                         PENDING
-P5 单文件HTML整合                       PENDING
+P0  V6全书7/29/42结构           FROZEN / VERIFIED
+P1  ①收款方案选择               OWNER ADOPTED / UPDATED
+P2  ②收款开通与接入             OWNER ADOPTED / UPDATED
+P3  ③–⑦其它五章                PENDING
+P4  单文件HTML成品与出版事实复核 PENDING
 ```
-
-后续除Owner明确批准外，不得自动解冻或覆盖①②。外部Agent已提交第二轮三文件ZIP，Reviewer核验仍有可定位的金融费率、引文及执行记录问题；只需再做局部纠正，不得重写全文。
