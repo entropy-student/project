@@ -56,3 +56,12 @@
 - **Unknowns**：`sass`/`saas` 的完整绝对路径、Git 状态/未提交文件、是否被别的项目引用 **UNKNOWN**；不可根据目录名称宣布可删。Docker VHDX 文件级绝对路径未证实，也不需要为整理强行访问或移动。
 - **Carry forward limits**：此前 G2B R2 因浏览器目标 URL 识别不明安全 STOP，不作为本地文件盘点的阻碍；此新计划完全不接触 Computer Use/浏览器、不重试 Canary。Owner 曾明确取消备份/恢复/迁移/重启/长期监控，继续沿用；当前本地唯一收藏资料无验证备份，进一步要求谨慎处理删除。
 - **Status and next authorization**：历史安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 不变；G2B R2 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED` 不变；未来若 Owner 需要真正开始，先明确批准**只读资产盘点**，由 Reviewer 起新 Gate，再让 Codex 输出脱敏清单并停止；归档/清理另行决定。
+
+## D-20261016-G3A-OWNER-AUTHORIZED — 开始只读 Windows 本机资产盘点
+
+- **Owner authorization**：2026-10-16 Owner 在审阅 `LOCAL_ASSET_ARCHIVE_PLAN.md` 的阶段 A 后确认“我没问题，开始吧”；这是**只读资产盘点许可**，**不是删除/归档/备份/迁移或操作浏览器的许可**。
+- **New Gate**：`KARAKEEP-WIN-G3A-LOCAL-ASSET-INVENTORY-READONLY-20261016`；独立执行说明在 `G3A_LOCAL_ASSET_READONLY_GATE.md`，`REVIEWER_HANDOFF.md` 当前 Gate 已更新至 G3A。之前 G2B R2 的 `RETURN_BROWSER_TARGET_UNVERIFIED_AND_EVIDENCE_NOT_PERSISTED` 原样有效，不重新尝试浏览器 Canary。
+- **Target/scope**：Owner 原生 Windows PowerShell Codex 有界只读查询 `KarakeepLocal` 配置文件名称/引用、`karakeep-local_data` 和 `karakeep-local_meilisearch` 卷与三个容器元数据、Docker Desktop disk location 目录、`sass/saas` 在已知用户开发路径的候选目录元数据及 Git 未跟踪/未推送有无。无关项目不能深入扫描。
+- **Deliverables / stop**：仅在 GitHub 项目目录创建脱敏 `LOCAL_ASSET_INVENTORY.md` 和对 `EXECUTION_EVIDENCE.md` 追加 G3A Evidence，提交 main/readback 后停 Reviewer；**Windows/Docker 上零写入、零移动、零删除、零备份**。目前这两份 G3A 结果**尚未产生**，不能判 PASS。
+- **Safety classification**：项目活跃配置/密钥、真实用户卷和共享 Docker 磁盘绝不因整理而移动或删除；`sass/saas` 绝对路径/是否为 Karakeep/独有未提交内容仍 `UNKNOWN`，未查证前禁止断言可删。
+- **Project status**：原安装 `CLOSED_IMPLEMENTATION_RUNTIME_RETAINED` 及保留运行不变；没有离机备份 `BACKUP_NOT_REQUESTED / RESTORE_UNVERIFIED`；G3A 不打开浏览器、不重启服务或电脑、不更改 Compose/Secret。
