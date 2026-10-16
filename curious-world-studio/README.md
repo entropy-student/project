@@ -1,6 +1,6 @@
 # Curious World Studio · 世界有点意思（名称暂定）
 
-> **项目状态（2026-10-16）**：选题、叙事、Mac Aqua→QuickTime视觉规范与本机素材获取能力已经建立，PR#129/#131已合并main，但还没有获批准的完整成片。Owner最新要求**画面相关即可，不需逐帧精准或每句配研究实录**；科学表述和素材许可仍须单独核验。R6L/R7L历史`PARTIAL_ASSET_GAP`不触发新搜片。最新事实看[CURRENT_STATE](docs/CURRENT_STATE.md)，接手看[完整Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
+> **项目状态（2026-10-16）**：选题、叙事、Mac Aqua→QuickTime视觉规范与本机素材获取能力已经建立，PR#129/#131已合并main，PROD-R2编辑审核PASS，PROD-R3内部音画小样已获Owner授权但尚未执行；仍没有完整成片。Owner最新要求**画面相关即可，不需逐帧精准或每句配研究实录**；科学表述和素材许可仍须单独核验。R6L/R7L历史`PARTIAL_ASSET_GAP`不触发新搜片。最新事实看[CURRENT_STATE](docs/CURRENT_STATE.md)，接手看[完整Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
 
 频道编辑原则：**知识小众，问题大众；行为具体，过程有趣；证据真实，承诺兑现**。频道名/Logo未最终确定；B站主阵地，不强制把每期凑到固定分钟数。
 
@@ -8,6 +8,7 @@
 
 - **[当前整体项目进展与下一步](docs/CURRENT_STATE.md)** — 唯一事实源
 - **[最新Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)** — 实验证据/责任与保护边界
+- **[R2已验收稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)**、**[唯一R3 Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)**、[关键执行证据](docs/EXECUTION_EVIDENCE.md)、[决策记录](docs/DECISION_LOG.md)
 - [MEDIA架构与阶段映射](docs/MEDIA_PIPELINE_ARCHITECTURE_AND_ROADMAP.md)
 - [AGENTS / Codex入口](AGENTS.md)
 - [研究与选题库36条](research/topic-bank/BOARD_V1.md) · [工作流](research/topic-bank/WORKFLOW_V1.md)
@@ -28,13 +29,13 @@
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
 | 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
 | MEDIA-R6L/R7L | **已完成试跑**：两条现有爆米花影片可提供相关辅助画面；精确研究原片缺口保留为历史，不再自动要求增加搜片轮次 |
-| PROD制片 | `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`，无成片/发布授权 |
+| PROD制片 | R2文本编辑PASS；R3内部30–60秒音画已授权未执行；正式CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH继续，无完整成片/发布授权 |
 
 ## 当前工作边界
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**下一步建议（未经新执行授权）**：**按现有50–60秒CW-0005剧本与S01–S10分镜，将旁白的科学说明匹配到已有相关实拍和简洁出处文字**；不得冒充原研究实验录像。先处理内容，实际使用前再核具体视频权利；Owner授权后再制作内部30–60秒可听可看的短样片。不再追加R6/R7精准匹配搜索。
+**已授权下一步**：把[已验收R2稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)交给Owner本机Codex，执行[R3内部音画Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)后交一个含真实MP4、配音、字幕与QA证据的ZIP给Reviewer。内部版权调查不再新增轮次，权利仍PARTIAL；不发布、不进入R4、不搜完美实录。
 
 ## 历史报告与许可证
 
