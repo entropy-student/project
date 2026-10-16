@@ -62,3 +62,13 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **待写入的两篇精修全文：** ① SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`；② SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`。
 - **编辑范围：** PayPal中国大陆小额付款6%+$0.05并用$4算例核实；Stripe Testing改[S11]；插件/Elements的SAQ需条件核定；自研API不保证最高转化；PCI 1092/1588/1604名称链接一致；案例不再误用L3/L4；15分钟对账不保证15分钟履约；补齐简短接入选型和上线验收案例。正式V6 7/29/42问题文本保持原文不变；外部Agent旧执行记录错误以本轮独立修订证据取代，不将其旧逐字对照表视为有效验证。
 - **状态约束：** 仅Owner授权的①②正式文稿变更为当前有效；本次修改属于自执行+验证，不冒充另一轮外部独立Reviewer再次PASS。余下③–⑦与HTML依然未授权执行。
+
+
+## 2026-10-17 | 正式封板①②并启动③外部独立写作
+
+- **Owner决定**：“我没什么问题了，第一第二部分正式封板吧。无效文档删除就好~记得同步相关文档，完事之后我们进行下一部分。依旧依据现在的流程进行。”这是对①②现行正式稿的**最终内容封板指令**，不应再触发纠错或增补。任何下一次正文变更都需Owner另行明确授权。
+- **封板版本精确指纹**：① `docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md` Git blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`；② `docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md` Git blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`。两个Git路径沿用历史命名，但最新内容就是封板版。V6全书7/29/42框架继续冻结blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
+- **清理判断**：main/docs只有正式①②、V6快照、现行索引；根目录只有Handoff/Decision/Evidence及docs。Library原来只含两份正式全文，没有无效候选可删。Library历史ZIP是经过核验的恢复资产，按治理保留，**不为表面清爽而删除**。
+- **下一Gate**：③《顾客付款》，核心问题“如何让顾客更方便、更顺利地完成付款？”，正式4H2/5H3均从冻结V6逐字摘录。按旧流程由外部独立Agent先输出**第三部分完整UTF-8 Markdown与单独事实/执行核验记录**（两份MD、一个ZIP），交独立Reviewer审阅，Owner通过后才正式采纳/封板。不得修改已封板①②/全书框架，不进入④–⑦及HTML。
+- **单一写作资料包**：`/现代商业支付系统/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`；内含独立提示词、③冻结标题、①②封板只读全稿、PayPal/Stripe等官方来源索引和校验说明。ZIP通过CRC并核实两篇参考正文与封板SHA256一致。写作作者无GitHub写入权限需求。
+- **实际执行状态**：封板、资料包制作及归档已完成；本轮**尚未委托外部写作Agent、尚未收到③候选稿**，第三章状态保持 `WRITER_PACKET_READY / OWNER_RELAY_PENDING`。其他历史事实仍留在append-only Evidence。
