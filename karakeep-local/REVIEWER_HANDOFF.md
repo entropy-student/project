@@ -67,7 +67,7 @@
 
 **ACCEPTANCE_CRITERIA**：
 - 诊断分支：至少获得较 G1R 更具体、可行动的网络错误类，或清楚说明因缺少哪些证据无法分类；不执行超出 Gate 的配置修复。精确 RETURN。
-- 条件部署分支：只使用已有受保护密钥与冻结 Compose、官方三镜像完整拉取后启动、无实际内存/OOM 故障且 Web 登录页 `http://127.0.0.1:3000` 可达且非 localhost 不可达、Chrome/Meili 仅内部网络、3 个原有容器维持健康；资源阈值达标，元数据重启语义和可恢复性标记诚实。无 Owner 注册/真实数据。
+- 条件部署分支：只使用已有受保护密钥与冻结 Compose、官方三镜像完整拉取后启动、无实际内存/OOM 故障且 Web 登录页 `http://127.0.0.1:3000` 可达且非 localhost 不可达、Chrome/Meili 仅内部网络、3 个原有容器维持健康；磁盘空间要求和实际健康检查通过（不以固定空闲 RAM 门槛判定），元数据重启语义和可恢复性标记诚实。无 Owner 注册/真实数据。
 - Executor 自报 `PASS_CANDIDATE` 仍需 Reviewer 从 GitHub 查看相关 Evidence 才能正式 PASS。
 
 **ROLLBACK_STATUS_OR_PLAN**：如果 pull 失败，不创建容器；保留已下载到的只属于本轮项目镜像供下一轮只读判定，不 prune 或删除其它镜像。若 up 后失败，只对确证 `karakeep-local` 的容器/网络做 `docker compose -p karakeep-local down`（不带 `-v`），保留配置、密钥和两个命名卷；任何未知对象/镜像别动。数据恢复 `UNVERIFIED`，还没真实数据。
