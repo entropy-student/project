@@ -111,3 +111,15 @@
 - Retired duplicate second-chapter edited file from main, commit `6286e4111b14465c7f2533147764f22c14692e87`; moved historical Reviewer return from main, commit `987dabbdabcbc198ac0726f3eae650a736d02847`. Neither was erased from Git history.
 - Library final read-back: `/现代商业支付系统/` contains exactly the two originally named files, both materialized and compared byte-for-byte with the user's original uploads. SHA256 for chapter1 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`; chapter2 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`. Five prior corrected/review files remain in `/项目历史归档/现代商业支付系统_旧修订与评审/`.
 - Final result: `OWNER_ORIGINALS_RESTORED / GITHUB_AND_LIBRARY_EXACT_MATCH / NO_EDITED_ARTICLE_ACTIVE`. Restoration is content-fidelity verification, not new factual-validation PASS.
+
+
+## MCPG-FREEZE-TWO-ORIGINALS-CLEAN-INVALID-DOCS-REVIEW-PROMPT-20261016
+
+- **AUTHORIZED_GATE:** Owner明确要求清理其余无效文档、冻结双原稿、仅审核并交付提示词；不在本轮对正文作任何编辑。
+- **PREFLIGHT_FACTS / DIRECT_READBACK:** main①原文Blob `260e7ecad19ee198e4a9fb12c9e37e6e482cc227`、SHA256 `4214427fc05cfdf16f1a95fc8df435bb5fcd9ea6d85b553fa39d9b569153aece`；main②原文Blob `0c8c7fc9390fbe3751c0208f0c2b6eb3863d2a37`、SHA256 `9cecc986bf9ca7bc0c9e4c873b6140aeda1234cd94b2c9ddf909ff2dbaf8d651`；V6框架Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。用户上传原文与现行内容先前已双重验证，后续冻结不授权写入。
+- **CLEANUP CLASSIFICATION:** main删除目标：`docs/P1_STRUCTURE_COVERAGE_ACCEPTED_ARCHIVE.md`和`docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md`（非现行结构权限文件；Git对象与历史提交均可重建）。Git commits `d35b540d7f7870354b45b46ea6e4930f278cc23b`、`136d769dd649a7fd5ed7090cd05ec86562c62f8c`；未改Git历史。
+- **LIBRARY CLOSEOUT:** 历史目录5文件先materialize并每项SHA256校验完整备份ZIP，ZIP CRC通过。ZIP共5份MD+一份恢复清单，SHA256 `93fee77cf398ef32ea606075cab83140960e13bd805e020508b2328b80099b90`，大小73,146字节；已上传 `/项目历史归档/现代商业支付系统_历史修订文档恢复备份_20261016.zip`。五文件逐个移至回收区，结果均succeeded，最后只读确认原历史文件夹为空后删除空目录。当前项目库根 `/现代商业支付系统/` 仍只有两篇原稿，其它持久库资料不触碰。
+- **CONTENT REVIEW SCOPE:** 第一部分重点①$87×30%=$26.10不抵两通道费用差约$28.57、②不确定商户/资金链路与主备时间、③PayPal/Paddle业务适用与收费、④$1真卡强制测试；第二部分重点①Live真钱测试违反某提供商服务规则、②Stripe与PayPal不同Webhook验签、③业务幂等与事件去重区别、④PCI外包仍有责任、⑤商品准入/退款条件与模型绝对化。Reviewer仅给验证入口，Agent独立判定接受/拒绝/UNKNOWN；不擅自更改两篇正式原文。
+- **PROMPT ARTIFACT:** `/mnt/data/现代商业支付系统_前两部分_外部Agent独立核验修订提示词.md`，14,014字节，SHA256 `9a91f1886d3c07137f79e592303733863494c5cdaaa95d4a6a54549d6df32f77`。含逐项原文行号、官网核验入口、保留可读性的不可越界边界、对12项建议独立接受/拒绝/UNKNOWN与**三篇MD单一ZIP**的验收要求。
+- **NO-SOURCE-WRITE / ROLLBACK:** 本轮两篇正文Blob未变、V6框架Blob未变；所有失效文档均有Git历史或SHA完整ZIP可恢复；本轮未授权实款测试、账号变更、其它章节写作及HTML。后续Agent只能产生候选，并由Owner决定是否正式解冻或修改。
+- **STATUS:** `DOCUMENT_CLEANUP_DONE / TWO_OWNER_ORIGINALS_FROZEN / READONLY_REVIEW_PROMPT_READY / EXTERNAL_AGENT_NOT_STARTED_OR_UNKNOWN`。
