@@ -3,7 +3,7 @@
 > REVIEWER_DATE=2026-10-16
 > PROJECT_STATUS=`NOT_DEPLOYED`
 > NEXT_GATE=`KARAKEEP-WIN-G1I-SCOPED-PROXY-RECOVERY-20261016`
-> GATE_AUTHORIZATION_STATUS=`AWAIT_OWNER_EXPLICIT_AUTHORIZATION`
+> GATE_AUTHORIZATION_STATUS=`OWNER_AUTHORIZED_G1I`
 > GOVERNANCE=`entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7
 > This is the sole Reviewer-accepted current state; execution history is append-only `EXECUTION_EVIDENCE.md`.
 
@@ -17,7 +17,7 @@
 - G1F：官方 `getmeili/meilisearch:v1.41.0` 单次拉取退出码 1（<10秒），归类 `LAYER_DOWNLOAD_OR_EXTRACT` 但无实际下载进度证据，根因 UNKNOWN；未创建目标容器/卷；此 Gate RETURN。
 - G1G：仅只读 Docker Desktop 代理证据审查，Reviewer 正式 PASS（只读范围），不是安装 PASS。既有日志只在推测时段观察到 registry/auth CONNECT，没有已确认 CDN 或失败阶段；Docker Desktop 模式未能从 settings JSON 读出。
 - **G1H Owner UI readback 完成（本轮接收）：** Owner 提供 Docker Desktop → Settings → Resources → Proxies 界面截图，`OWNER_REPORTED` 可读状态：**Docker Desktop proxy = System proxy**；**Containers proxy = Same as host proxy**；Apply 灰色。此行为仅截图/查看，没有报告修改任何设置。**G1H Reviewer 接受为模式检查 PASS**，不能证明 Windows 代理自身有效或 Meilisearch pull 必然成功。
-- **NEXT：G1I scoped proxy recovery**，等待 Owner 明确授权后交本机 Codex 执行。不得把 Owner 发送设置截图视作批准修改设置、pull 或 up。
+- **NEXT：G1I scoped proxy recovery（Owner 已授权，等待本机 Codex Executor）。** 当前 Owner 在本轮明确回复“我没问题，本项目授权一律通过”，Reviewer 据此接受当前 G1I 已具体列明的可逆代理调整/一次指定镜像 pull/条件部署权限。此声明不自动授权未来未定义的不可逆行动或扩大 Gate；原 G1H 截图本身不构成授权。
 
 ## SYSTEM_MAP
 - HOST：Owner Windows 11 native PowerShell 7.6.5、Docker Desktop Linux Engine 29.7.2、Compose v5.4.0、context `desktop-linux`（最近已接受）；本机技术 Executor = Owner PowerShell Codex。
@@ -39,14 +39,19 @@ G1H OWNER_REPORTED UI 两模式已明确（截图当前选择）：`Containers p
 Karakeep NOT_DEPLOYED，两 GHCR 官方镜像成功且可复用，官方 Meilisearch 仍缺，原密钥和受保护配置继续使用。历史 G1F 原始错误没有留存，禁止事后猜测。
 **Reviewer next decision**：避免再来一轮只有泛化只读报告的 Gate；提出**单轮诊断→必要时临时代理修复→单次 Meili pull→条件独立启动→回退代理** 的严格顺序，但 Docker Desktop 代理修改会影响该桌面 Engine 的其它镜像拉取/容器外连规则，必须 Owner 显式授权后才可执行。
 
+## OWNER_AUTHORIZATION_RECORD
+- `OWNER_REPORTED` · 2026-10-16：用户对已提出的 G1I 授权问题回复“我没问题，本项目授权一律通过”。
+- Reviewer 决策：**本轮 G1I 的具体、可逆、有边界的技术操作均已授权**，无须重复索取相同许可。适用范围仅为临时 Containers proxy（恢复 G1H 原值）、一个原版 Meilisearch pull、全部安全条件通过后的独立 Karakeep 首次启动。
+- 敏感或不可逆的新动作、超出 G1I 的其它项目/系统变动不因“一律通过”而自动获得执行权；依正式治理按 Gate 处理。此前尚未实际执行新的 Docker 操作。
+
 ## CURRENT_GATE
 **GATE_ID**：`KARAKEEP-WIN-G1I-SCOPED-PROXY-RECOVERY-20261016`
-**GATE_STATUS**：`DRAFT_AWAIT_OWNER_AUTHORIZATION`。本 Gate 在 Owner 明确下达下面 OWNER_ONLY_ACTIONS 之前**不得执行任何本机技术动作**。
+**GATE_STATUS**：`AUTHORIZED_FOR_EXECUTOR`。Owner 已在当前对话明确授权本项目，Reviewer 仅按 **G1I 已记录的具体 Scope** 接受许可：必要时临时变更并恢复 Docker Desktop Containers proxy、只 pull 一次官方 Meilisearch、前提满足后仅启动 Karakeep。不得将该许可推广到任何本 Gate 之外的新动作。
 
 **OBJECTIVE**：在不改变 Windows 系统代理、Clash/VPN、证书、WSL/daemon、其他 Docker 项目的前提下，识别 Docker Hub 可用的现有 HTTP/HTTPS 代理路径；有必要时**临时、可逆**调整 Docker Desktop `Containers proxy`，仅下载缺失的官方 Meilisearch 镜像；然后恢复先前 Docker Desktop 代理模式并只启动 Karakeep，验证 localhost Web。
 
 **MAX_ENDPOINT_THIS_ROUND**：
-1. 事先确认本轮 Owner 明确授权；新鲜核对 Windows native target、Docker Engine/context、原 Compose SHA/安全 ACL/Secret 格式（仅本机受保护内存、不回传值）、两已有 GHCR image digest、目标缺碰撞、port 3000 空闲、磁盘可用和非目标 Docker 对象快照。当前 Owner UI 接受的两模式是基线，执行前再核实选择是否已改变；无关历史检查不重跑。
+1. 使用本 Handoff 的 `OWNER_AUTHORIZATION_RECORD` 作为当前 Gate 明确授权依据；新鲜核对 Windows native target、Docker Engine/context、原 Compose SHA/安全 ACL/Secret 格式（仅本机受保护内存、不回传值）、两已有 GHCR image digest、目标缺碰撞、port 3000 空闲、磁盘可用和非目标 Docker 对象快照。当前 Owner UI 接受的两模式是基线，执行前再核实选择是否已改变；无关历史检查不重跑。
 2. 在 Owner 本机受保护执行环境中，核验**当前 Windows 系统代理指向的协议与实际可用性**，特别区分 HTTP/HTTPS CONNECT 与仅 SOCKS5；若本机已有的可信 HTTP/mixed 代理可用，以只读方式针对 Docker Hub `registry-1.docker.io`、`auth.docker.io` 和必要的官方 layer CDN 做**小范围无登录、无镜像拉取**的 CONNECT/TLS/HTTP reachability 检查（401 若为 Registry 正常认证挑战）。不新安装软件、不创建代理、不修改 Clash/VPN，也不读取/输出私有凭据/代理地址。若没可信可用的 HTTP 代理直接 RETURN，告知具体阻碍。
 3. **优先无全局修改路径**：只有当现有 Docker Desktop 继承代理对应真实验证的可用 HTTP/HTTPS 路径，而且有新的直接证据支持可成功经过 Docker Desktop，才允许使用**原代理设置**做一次指定 Meili pull。不能把 Host HTTP 检测独自当成 Engine 成功证明；若缺证据可优先走本 Gate 的可逆代理改动分支。
 4. **条件临时设置分支**（需此 Gate 明确 Owner 代理修改授权）：如果确认确有可信、可访问的既有 HTTP/HTTPS 代理，而当前继承链路无效或协议不兼容，允许仅通过 Docker Desktop 官方 UI/API 安全设置途径，将 **Containers proxy** 从 `Same as host proxy` 临时改为 `Manual configuration`，使用经验证的已有 HTTP/HTTPS 代理；保持 `Docker Desktop proxy=System proxy` 不变。修改前在受保护本机记录可回退的非 Secret 模式元数据和必要的**受保护本机私有配置恢复信息**，不得让 URL/凭据离开机内；不得直接编辑 `settings-store.json`/daemon.json。如 GUI 无法可控操作或要求不受控的 Docker Desktop 重启/会影响当前其他用户项目，停并 RETURN，不用 CLI/私自重写代替。
@@ -68,10 +73,10 @@ Karakeep NOT_DEPLOYED，两 GHCR 官方镜像成功且可复用，官方 Meilise
 
 **ROLLBACK_STATUS_OR_PLAN**：Docker Desktop 代理模式恢复先于新应用启动，设置写入前冻结 G1H 原始值：Containers proxy=Same as host proxy，Desktop proxy=System proxy。仅允许项目专用 `down`（无 `-v`）恢复 Karakeep 初装；原项目未运行，原配置/.env/两 GHCR 镜像和可能部分 Meili layers 均保留。若代理恢复失败，立即停止任何后续写入并向 Owner 报告，不擅自重置整个 Docker Desktop。
 
-**OWNER_ONLY_ACTIONS**：Owner 需明确授权：“我授权 G1I 在必要时临时修改并恢复 Docker Desktop Containers proxy（影响 Docker Desktop 共享代理设置），仅拉取官方 Meilisearch 一次，成功后只启动本地 Karakeep；不改 Windows 系统代理/VPN/其他 Docker 项目。”无该授权不得执行此 Gate。Owner 原来的 G1H 截图不构成本授权。
+**OWNER_ONLY_ACTIONS**：本轮已通过 Owner 在 2026-10-16 的文字指示“我没问题，本项目授权一律通过”。Reviewer **限定解释为本 G1I Gate 列明的动作**：①可在确有必要且可控回滚时临时更改 Docker Desktop Containers proxy 并恢复；②官方 `getmeili/meilisearch:v1.41.0` 最多一次 pull；③全部验收前提通过时仅初次启动 `karakeep-local`。不授权修改 Windows 系统代理、VPN、证书/daemon/WSL、其它 Docker 项目、真实账户数据或 Secret，不授权清理/覆写和超 Gate 操作。未来跨越此 Gate 边界的敏感行动，仍需按 Governance 另外评审/授权。
 
 **REVIEWER_TO_EXECUTOR_RELAY**：
-> 你是 Owner Windows 本机 Codex Executor。仅在 Owner 明确授权 G1I 两项边界后执行。读取 GitHub `entropy-student/project` main 的 `karakeep-local/REVIEWER_HANDOFF.md` 中 CURRENT_GATE、SYSTEM_MAP、CURRENT_ACCEPTED_STATE 和 CRITICAL_CONSTRAINTS，及 `EXECUTION_EVIDENCE.md` 最新 G1G 小节。G1H 经 Owner 截图：Docker Desktop proxy=System proxy；Containers proxy=Same as host proxy。首先验证当前 Windows 系统代理是否为真正可用的 HTTP/HTTPS 代理、Docker Hub registry/auth/CDN 是否经该现有代理安全可达；若需且存在合格本机 HTTP proxy，本轮经 Owner 明确授权可**临时只更改 Containers proxy** 为 Manual，其他代理/Windows 系统/Clash/VPN/证书/daemon 不变，安全验证后对官方 `getmeili/meilisearch:v1.41.0` 只 pull 一次；无论成功失败都必须恢复 G1H 原模式并读回，恢复失败严禁继续部署。原两个 GHCR 镜像和受保护 Compose/.env 复用，既有其它 Docker 项目绝不可修改。只有所有三镜像就绪、恢复与状态验证合格，才可只启动 `karakeep-local` 且 Web 仅 127.0.0.1:3000，验证三服务/其它项目不变。若任何条件不满足则精准 RETURN，不盲目重试。G1I Evidence 脱敏 append main/read-back 后停 Reviewer。
+> 你是 Owner Windows 本机 Codex Executor。Owner 已通过当前对话文字明确授权本 G1I 的有界代理调整、一次 Meili pull 和条件启动，授权已由 Reviewer 记录到本 Handoff。读取 GitHub `entropy-student/project` main 的 `karakeep-local/REVIEWER_HANDOFF.md` 中 CURRENT_GATE、SYSTEM_MAP、CURRENT_ACCEPTED_STATE 和 CRITICAL_CONSTRAINTS，及 `EXECUTION_EVIDENCE.md` 最新 G1G 小节。G1H 经 Owner 截图：Docker Desktop proxy=System proxy；Containers proxy=Same as host proxy。首先验证当前 Windows 系统代理是否为真正可用的 HTTP/HTTPS 代理、Docker Hub registry/auth/CDN 是否经该现有代理安全可达；若需且存在合格本机 HTTP proxy，本轮经 Owner 明确授权可**临时只更改 Containers proxy** 为 Manual，其他代理/Windows 系统/Clash/VPN/证书/daemon 不变，安全验证后对官方 `getmeili/meilisearch:v1.41.0` 只 pull 一次；无论成功失败都必须恢复 G1H 原模式并读回，恢复失败严禁继续部署。原两个 GHCR 镜像和受保护 Compose/.env 复用，既有其它 Docker 项目绝不可修改。只有所有三镜像就绪、恢复与状态验证合格，才可只启动 `karakeep-local` 且 Web 仅 127.0.0.1:3000，验证三服务/其它项目不变。若任何条件不满足则精准 RETURN，不盲目重试。G1I Evidence 脱敏 append main/read-back 后停 Reviewer。
 
 **EXECUTOR_TO_REVIEWER_RELAY**：结果；改动；验证；问题；回滚；请 Reviewer 检查；Owner 转交。
 
@@ -79,7 +84,7 @@ Karakeep NOT_DEPLOYED，两 GHCR 官方镜像成功且可复用，官方 Meilise
 仅 Owner 实体 Windows 本机；现有原版 Compose/.env/Secret 与 GHCR 镜像复用；仅官方 Meili；不改其它 Docker 项目、Windows System proxy、Clash/VPN、证书/WSL/daemon；Docker Desktop Containers proxy 只可在明确授权下临时改动且必须复原；无任意 RAM 数值门槛；项目 localhost-only；只提交脱敏证据，严守 Reviewer stop。
 
 ## DEFAULT_EXECUTION_CHANNEL
-Owner Windows 11 本机原生 PowerShell Codex。G1I 仍需 Owner 新一轮明确授权。
+Owner Windows 11 本机原生 PowerShell Codex。G1I 已得到 Owner 当前明确授权，可下发执行。
 
 ## CURRENT_ROLLBACK_STATUS
 Karakeep 未启动、无项目卷或真实资料，现有两 GHCR 镜像/原 Compose/.env 受保护。G1I 计划：代理设置 G1H 原值回退、目标项目级 `down` 不带 `-v`；尚未验证实际回滚功能，状态 `PLAN_ONLY`，不能声称已执行。后续真实数据/Secret 异机恢复仍 UNVERIFIED。
@@ -88,10 +93,10 @@ Karakeep 未启动、无项目卷或真实资料，现有两 GHCR 镜像/原 Com
 当前 System proxy 与 Docker Desktop 实际 pull 路径的 HTTP/SOCKS 协议兼容与外网可达性；Docker Hub Meilisearch 上次失败的具体内层错误；是否能以可逆 Desktop-only 代理覆盖恢复下载。历史 WinINET 变化原因没有证据，暂不单独追究。
 
 ## NEXT_STEP
-等待 Owner 对 G1I 的最小权限明确授权；然后本机 Codex 在一轮内按证据验证 HTTP/HTTPS 代理路径、必要时临时设置 Containers proxy、一次下载官方 Meili、恢复原代理并条件启动 Karakeep。任何原因无法执行则精准 RETURN，不改其它项目。
+Owner 将当前已授权 G1I 直接下发本机 Codex；Codex 在一轮内按证据验证 HTTP/HTTPS 代理路径、必要时临时设置 Containers proxy、一次下载官方 Meili、恢复原代理并条件启动 Karakeep。任何原因无法执行则精准 RETURN，不改其它项目。
 
 ## OWNER_ACTION_REQUIRED
-**授权前不运行 Codex**。Owner 若同意 G1I 共享 Docker Desktop 代理的临时可逆修改及一次目标下载/条件启动，请明确回复授权；未授权时保持 Docker Desktop 当前 System / Same as host 两模式不变，无需提供任何密钥/代理地址。
+**仅需将已授权 G1I 的 Relay 发送到本机 Codex。** 无须再次确认当前 Gate，不必提供代理 URL/密码或项目 Secret；执行完依据新 Evidence 返回 Reviewer。
 
 ## EVIDENCE_POINTERS
 G1G `EXECUTION_EVIDENCE.md` commit `2a2ba90bafe0c68048720b87cbba5ddce77c150b` blob `9c77c352eb2766c308f7dfe1aa7c011fb62a0db4`。Owner G1H 代理模式取自 2026-10-16 当前对话截图（OWNER_REPORTED，只记录两枚模式名称，不上传截图或任何代理值）。历史 G0–G1F 保留原 append-only Evidence。
