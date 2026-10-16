@@ -552,3 +552,67 @@ Executor-to-Reviewer relay:
 回滚：已运行项目级 `docker compose -p karakeep-local down` 无 `-v`；卷和镜像保留，代理设置未动，3000 已释放。
 请 Reviewer 检查：确认 G1I 结果并决定是否创建独立 Chrome 兼容性 Gate。
 Owner 转交：本地服务已停止；当前无可访问地址。等待 Reviewer，不进入下一 Gate。
+
+## G1J — Real browser path revalidation — 2026-10-16 (Asia/Singapore)
+
+### AUTHORIZED_GATE
+`GATE_ID=KARAKEEP-WIN-G1J-REAL-BROWSER-PATH-REVALIDATION-20261016`
+`AUTHORITY=Owner instruction in this session explicitly authorized one project-only restart using existing Compose, .env, secrets, and local official images; keep running on pass, otherwise project-only down without volume removal`
+`SCOPE=G1J preflight, one no-pull start, real Worker/Chrome CDP and service/exposure/stability checks, sanitized Evidence append/readback; no account or bookmark creation`
+
+### PREFLIGHT_FACTS
+- `DIRECT_READBACK` Latest project Handoff from main before execution: blob `94500b8104af5405a56ac710d72da6acedf12eee`; accepted G1I Evidence baseline blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`; canonical Governance v0.2.7 blob `3917c88a7f36df7a53758b3879a92703d659ef9d`.
+- `DIRECT_READBACK` Native Windows 11 PowerShell 7.6.5; Docker Desktop 4.95.0 Personal; Docker Linux Engine 29.7.2; Compose 5.4.0; context `desktop-linux`.
+- `DIRECT_READBACK` Frozen local Compose SHA-256 matched Handoff `cc51edb50dde3b8e921c37bd5fb569f911ead291982e67df385190b1eede2b16`; `docker compose config -q` passed. Protected project/config/.env ACLs and ownership matched the allowlist. `.env` required key names and two distinct 64-hex secret shapes were checked in protected memory only; no value or secret hash was emitted.
+- `DIRECT_READBACK` All three previously accepted official images were already present with expected RepoDigests: Web `ghcr.io/karakeep-app/karakeep@sha256:b069e4307dec06ea06d16989c6861c30a1ff208568be44ed5fb5d422cd3e950c`; Chrome `ghcr.io/karakeep-app/karakeep-chrome@sha256:c51a8c8e6c3c1040a50fa0ecfd0b2fc298401b4229262636552458151f6f18fa`; Meilisearch `getmeili/meilisearch@sha256:860fa4baed04ae1c235de870edab0c8006227546dea1bbb6411fbfc5e27cf1db`.
+- `DIRECT_READBACK` Both existing named volumes were labeled for project `karakeep-local`. Before start: 20 containers / 0 running / 14 volumes / 11 networks; no target container/network and host port 3000 was free. No non-target container was running.
+- `DIRECT_READBACK` C: free space was approximately 188.1 GiB. Available memory varied during observations; no fixed free-memory threshold was used. Docker Desktop proxy modes matched the recorded state (`System proxy` / `Same as host proxy`) and were not changed.
+
+### ACTUAL_CHANGES
+- Started only the existing project once with `docker compose -p karakeep-local up -d --pull never`; exit code 0, start `2026-10-16T07:25:56Z`, completion `2026-10-16T07:25:57Z`. No image pull/build occurred.
+- No Compose, .env, Secret, image, proxy, Windows/Docker setting, or non-target project was modified. No account, real bookmark, or AI key was created.
+
+### OBJECTIVE_READBACK
+- `DIRECT_READBACK` Final sample at `2026-10-16T07:37:55Z`: Web, Meilisearch, and Chrome all running; Web health `healthy`; all restart counts 0 and OOMKilled=false. Expected RepoDigests remained attached to running target containers.
+- `BEHAVIORALLY_VERIFIED` Actual Worker log window from project startup through the ~07:33Z sample contained 91 lines, two `Starting crawler worker` events, one browser connection attempt, and one successful hostname-to-address resolution. It contained zero browser connection failure/retry, disconnect, browserless-mode, or on-demand-mode markers. The Web image has no OCI version/revision labels, so its exact source commit is `UNVERIFIED`; these are actual runtime logs, not proof that the frozen image equals current upstream main.
+- `BEHAVIORALLY_VERIFIED` Read-only CDP check from the Web container used the resolved IPv4 endpoint without disclosing the address: `/json/version` returned HTTP 200, the WebSocket opened, and `Browser.getVersion` returned successfully. Chrome logs included its DevTools listening marker. Combined with the Worker resolution/connection attempt and absence of its explicit failure/retry/disconnect path over the observation window, this supports a live Worker browser connection. The Worker image does not emit a separate explicit success log, so that narrow attribution remains behaviorally verified rather than a direct Worker-state API read.
+- `DIRECT_READBACK` Meilisearch `/health` returned HTTP 200 with `available`. Host root request returned HTTP 307 to the sign-in route; `/signin` returned HTTP 200 with Karakeep and login markers. The browser-facing URL is `http://localhost:3000`.
+- `DIRECT_READBACK` Web was the only service with a host port mapping, bound to loopback port 3000. A connection attempt via a non-loopback host interface to that port was not connected. Meilisearch port 7700 and Chrome CDP port 9222 had no host mappings and remain on the project network.
+- `DIRECT_READBACK` Project totals after startup: 23 containers / 3 running / 14 volumes / 12 networks. Relative to the pre-start snapshot, only three target containers and one target network were added; the two target volumes pre-existed. No non-target container was started or changed.
+
+### VALIDATION
+- Official upstream `apps/workers/workers/utils/browser.ts` blob `96192428e232c375680d989a49abb58bb897a6fb` exactly matches the Handoff reference. That source resolves the configured browser hostname to an IP before `connectOverCDP`; on connection error it logs an explicit failure and schedules a retry, and on disconnect it logs and reconnects. Current upstream `crawlerWorker.ts` blob `c0b08c04d468c3942e2a39907612ba752595300a` awaits browser-environment initialization before starting the crawler worker. This is source behavior provenance, not a claim that the downloaded release image has that exact revision.
+- `DIRECT_READBACK` Independent runtime observations at ~07:27, ~07:31–07:32, ~07:33, and ~07:37 showed all services running, zero restarts/OOM, and Web healthy. Container CPU/memory use remained active but stable in samples; host available RAM varied from roughly 424 MiB in one sample to about 1.9 GiB in later samples. No static memory gate was applied and no instability was observed.
+- `DIRECT_READBACK` Final no-proxy curl probe reached loopback: root redirected to `/signin`, and `/signin` returned 200. Meilisearch health and service state were also re-read at the final sample.
+- `DIRECT_READBACK` Docker Desktop proxy modes were visually read back and unchanged. No proxy restoration was needed.
+- Admin `checkConnections` endpoint returned HTTP 401 without an authenticated account. No account was created. The live CDP handshake and Worker runtime evidence above provide the browser-path evidence without an account.
+
+### ANOMALIES
+- An initial internal CDP probe accidentally formed a doubled slash in the path and returned 404; the corrected read-only probe returned 200 and completed the CDP command. This was probe construction, not an application error.
+- PowerShell `Invoke-WebRequest` reported `HttpRequestException` in a final host probe. A direct `curl.exe --noproxy '*'` loopback probe immediately succeeded and returned the expected sign-in redirect; `/signin` was 200. The exception cause was not established and is not treated as a service failure.
+- The unauthenticated admin status endpoint returned 401; no account was created. The Web release image does not expose OCI revision labels, so exact source revision remains `UNVERIFIED`.
+- No standalone Worker success log exists in this runtime output. Worker success is supported by its actual resolved connection attempt, absence of the source-defined failure/retry/disconnect path over the observation window, and a successful live CDP handshake from the Web container; this distinction is retained for Reviewer assessment.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+- This G1J entry: sanitized preflight, project-only start, running image identity, actual Worker/browser behavior, live CDP, service health, loopback exposure, resource stability, and object-isolation readbacks.
+- G1J Handoff baseline: main blob `94500b8104af5405a56ac710d72da6acedf12eee`. Prior accepted G1I Evidence baseline: blob `c300dc5d422cbbcbacc554a1bf8acdaf92e2a531`. Governance: `entropy-student/spike.skill` main `vps-project-governance/VNEXT.md` v0.2.7 blob `3917c88a7f36df7a53758b3879a92703d659ef9d`.
+- Official upstream source references: browser implementation blob `96192428e232c375680d989a49abb58bb897a6fb`; crawler worker blob `c0b08c04d468c3942e2a39907612ba752595300a`; admin router blob `393114942bd4cc1c6778d12489068db6215d767f`; official Compose blob `865bb147cef972926d5dc32e50645876fd110555`.
+- Raw logs, IP address, WebSocket debugger URL, Secret values/hashes, environment values, proxy endpoints, credentials, and unrelated project details are excluded.
+
+### ROLLBACK_EFFECT
+No rollback was required because the observed project health, Worker/CDP path, Web/login, exposure, and stability checks passed. Karakeep remains running at the loopback-only endpoint. If Reviewer later requires a stop, the documented target-only recovery is `docker compose -p karakeep-local down` without `-v`; it was not executed in G1J. Existing volumes, images, Compose, and .env remain available.
+
+### RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT
+Only three `karakeep-local` containers and one project network were created. Existing two project volumes and all three images were reused. No other container/project, proxy/system setting, external host port, user account, bookmark, or AI key was changed/created. Host memory varied as reported above; no OOM or restart occurred. No fixed RAM threshold was used.
+
+### EXECUTOR_RESULT
+`PASS_CANDIDATE` — G1J startup and runtime checks support that the real Karakeep Worker reached the browser connection path and the live Chrome CDP endpoint works. The three official services are running, Meilisearch and the sign-in page respond, only the Web UI is bound to loopback, and no restart/OOM instability was observed. Exact release source revision and an authenticated admin status read remain `UNVERIFIED`; no account was created. Keep Karakeep running at `http://localhost:3000`; stop here for independent Reviewer adjudication.
+
+Executor-to-Reviewer relay:
+结果：G1J `PASS_CANDIDATE`，项目保持运行。
+改动：仅复用原 Compose/.env/密钥/三镜像/两卷启动 karakeep-local；无 pull、配置或系统代理变更。
+验证：Worker 日志显示浏览器连接路径已解析且未进入失败/重试/断连路径；Web 容器只读 CDP 握手成功；Meilisearch health 200；根地址重定向至登录页且 `/signin` 为 200；三个服务运行、无重启/OOM、Web 仅 loopback 暴露。
+问题：镜像 OCI revision 标签不可用；admin 状态路由因未注册/未登录返回 401；Worker 没有独立成功日志，具体证据限制已记录。
+回滚：未执行，验收候选通过故保持服务运行；若 Reviewer 要求停止，仅使用项目级 down，不带 `-v`。
+请 Reviewer 检查：核查 G1J Evidence，独立裁定浏览器依赖证据是否满足 Gate。
+Owner 转交：Karakeep 保持运行，可访问 `http://localhost:3000`；不注册账户、不添加真实收藏，等待 Reviewer，不进入下一阶段。
