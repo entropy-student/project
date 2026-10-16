@@ -85,17 +85,17 @@
 ## 五、当前项目状态（2026-10-16｜唯一有效状态）
 
 - **PROJECT_GOAL：** 面向中国大陆个人开发者、独立站经营者及中小商家的通用商业支付科普，回答“怎么收钱、怎么选、怎么用好”；最终为桌面端独立单文件HTML，但当前未授权制作。
-- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS + DEPTH_EXPANSION_CANDIDATE_WRITTEN_REVIEW_PENDING / P3_PLAN_PASS / P4_CHAPTER2_OWNER_RELAY_SENT_RESULT_PENDING / P5_PENDING`。第①章拓展稿已写完但**未替代**此前正式通过版。
+- **PROJECT_STAGE：** `P1_PASS / P2_OWNER_FINAL_PASS_WITH_EXPANSION_MERGED / P3_PLAN_PASS / P4_CHAPTER2_OWNER_RELAY_SENT_RESULT_PENDING / P5_PENDING`。第一部分拓展已直接合并至正式源文件。
 - **SYSTEM_MAP：** 纯内容项目；GitHub main保存权威框架、Owner接受正文、P3知识分配、治理交接及审计记录，外部写作Agent只处理Owner上传的脱敏离线ZIP；无生产网站/数据库/Secrets/支付账号、无服务器或真实资金动作。
-- **CURRENT_ACCEPTED_STATE：** V6全书7/29/42问题正式冻结（[框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`）。①《收款方案选择》正式已通过版仍为[Owner接受全文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；**新增完整深广度拓展候选**[P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md](docs/P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md)，Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`，8处重点增量+6项官方来源，原正文只增未删。拓展完成写作和本地自检，但未经另一位独立Reviewer复核、未经Owner裁决为正式替换版。P1结构PASS、P3知识分配PASS。
-- **CURRENT_GATE：** 主要在途Gate `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`：②外部提示词已发，`OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`；**并列待Reviewer评审**的第①章拓展稿 `MCPG-P2-CH1-DEPTH-BREADTH-EXPANSION-20261016` 已 `WRITING_COMPLETE / SELF_QA_PASS / INDEPENDENT_REVIEW_PENDING`。不得自颁Reviewer PASS，不将候选自动替换Owner已通过正式稿。
+- **CURRENT_ACCEPTED_STATE：** V6全书7/29/42正式问题框架保持不变；第一部分完整正式稿为 [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`，41,922字符。Owner已授权将此前拓展候选整体合并原文，原正文全部保留、增量7,582字符；重复候选文档已从main删除，历史仍可恢复。该合并是Owner决定，不冒称另一独立Reviewer审核完毕；P1与P3原结果继续有效。
+- **CURRENT_GATE：** ①拓展合并事项已按Owner授权执行并完成GitHub内容比对；当前在途主Gate仍为 `MCPG-P4-CH2-EXTERNAL-WRITER-OWNER-RELAY-20261016`，状态 `OWNER_RELAY_SENT / EXTERNAL_MD_RESULT_PENDING`。
 - **CRITICAL_CONSTRAINTS：** ①正式V6 7/29/42问题原文、归属和顺序不改；②Owner授权所有章（含①正式通过版）在**确有实质知识深度/广度不足**时增补，新增解释、案例、计算、来源均可，但要经受限增补+事实/覆盖Review后纳入，不能为了字数增加废话；③零基础看得懂、熟手得方法，商家具体判断/案例优先；④主体、品类、地域、时效、费用及税务核验必须条件化，未验证账户资格/到账UNKNOWN；⑤任何补充不承诺开户、资金实到或免税、不进行真实付款/开户/退款；⑥新章默认只交完整UTF-8 Markdown，Owner认可后再进入main；⑦human-writing/copy-editing/humanizer三Skill不再使用，plain-language非强制；⑧旧PR证据只追溯、不恢复覆盖，未经明确授权不制作HTML或发布。
 - **DEFAULT_EXECUTION_CHANNEL：** 第一部分已用的外部独立写作Agent工作方式：**Reviewer准备完整离线资源ZIP与一份提示词→当面发给Owner→Owner转交外部Agent→Agent只交一份Markdown→Reviewer复核→Owner接受→main归档**。外部Agent无需GitHub仓库权限，且不向外部提供个人账号、识别信息、Secrets。
-- **CURRENT_ROLLBACK_STATUS：** 当前①正文Git Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；清理前main快照commit `f6d3aa43785e1c0671bef4fce2807aa739f0689e`可复原旧正文/实验Gate；旧①Owner冻稿Blob `777c5ab45e4f2d748c45a1e524bf172fca467967`；不reset/force。文件库历史4文件以ZIP形式存于 `/项目历史归档/现代商业支付系统_清理前历史文档备份_20261016.zip`，检验SHA256 `5744fd26d6dd89eb1f3b2b5f36524a596621d7677337f6027ce6b89d54019d87`。
-- **UNRESOLVED：** ①深广度拓展稿已完成，尚待独立审核和Owner最终采纳；②–⑦正文尚未完成，②外部Agent是否已开始/完成未知、仍待完整MD。真实读者阅读实验未做，真实商户资格/实际入账亦未测；出版前需复核适用费率/政策。
-- **NEXT_STEP：** 对①[完整拓展候选](docs/P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md)做**独立事实、算术、读者价值、章节边界Review**，复核完成再交Owner决定是否升为正式正文；另保持②外部MD返稿等待，不重复向外部Agent派发旧提示词。
-- **OWNER_ACTION_REQUIRED：** 当前不必重新发送②提示词；①新拓展稿可供Owner直接阅读，正式替换需等独立Reviewer检查后由Owner确认。
-- **EVIDENCE_POINTERS：** [DECISION_LOG.md](DECISION_LOG.md)（Owner授权拓展）、[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)（独立①候选已写完、8增补/源头/数学自检/原稿保真）、[正式①正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)、[①拓展候选](docs/P2_CHAPTER1_DEPTH_BREADTH_EXPANDED_CANDIDATE_20261016.md)、[P3方案](docs/P3_KNOWLEDGE_INTEGRATION_PLAN_20261016.md)、[现行文档索引](docs/CURRENT_DOCUMENT_INDEX.md)。
+- **CURRENT_ROLLBACK_STATUS：** ①现行Blob `2411eea0f8cbdab0d30ecfa4ac7ee1d93f608cf8`；合并前Owner通过正文Blob `a56bca37079972cede6d7201dea3e9fbcb19b39f`；完整旧文件与撤销候选均可用Git固定版本恢复，不做reset/force；文件库历史备份保持原路径。
+- **UNRESOLVED：** ①拓展内容已合并为正式全文，额外独立事实审读和真人阅读仍未进行；②–⑦待写，②已交外部Agent但未收到完整MD，不能推断其执行进度。出版前动态金融事实应再次核验。
+- **NEXT_STEP：** 等待②外部Agent交付完整Markdown后检查V6问题覆盖、实用方法、事实、深广度；不重复派发旧提示词。①现在采用合并后的单一正式文件，后续改动只在发现具体问题时局部修正。
+- **OWNER_ACTION_REQUIRED：** NONE；①已按Owner指令合并，②写作资料仍在外部Agent处，返稿后提交即可。
+- **EVIDENCE_POINTERS：** [DECISION_LOG.md](DECISION_LOG.md)、[EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)、[第一部分唯一正式正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)、[V6正式框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)、[现行索引](docs/CURRENT_DOCUMENT_INDEX.md)。
 
 ## 六、当前受限Gate与对外写作交接
 
@@ -118,7 +118,7 @@
 ```text
 P0 项目目标、V6 7/29/42问题框架           PASS｜Owner冻结
 P1 全书结构覆盖审查                       PASS
-P2 第一部分①收款方案选择                 PASS｜拓展候选已成稿、待独立审
+P2 第一部分①收款方案选择                 PASS｜拓展已并入正式全文
 P3 分散支付知识融入七章/去重方法          PASS｜Reviewer规划完成
 P4 其余六章完整正文                       IN_PROGRESS｜②写作交接已发、待MD
 P5 桌面端单文件HTML整合与发布审核         PENDING
