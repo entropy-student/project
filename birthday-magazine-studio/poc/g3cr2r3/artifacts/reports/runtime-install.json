@@ -1,0 +1,83 @@
+{
+  "gate": "G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY",
+  "wordpress": "7.1.1",
+  "php": "8.3.33",
+  "mariadb": "11.4.7-MariaDB-ubu2404",
+  "blocksy": {
+    "version": "2.1.57",
+    "status": "active",
+    "source": "https://downloads.wordpress.org/theme/blocksy.2.1.57.zip",
+    "sha256": "077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d",
+    "bytes": 3757102,
+    "license": "GPL-2.0-or-later"
+  },
+  "companion": {
+    "version": "2.1.57",
+    "status": "active",
+    "source": "https://downloads.wordpress.org/plugin/blocksy-companion.2.1.57.zip",
+    "sha256": "f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072",
+    "bytes": 3814088,
+    "license": "GPL-2.0-or-later"
+  },
+  "dependencies": [
+    {
+      "slug": "simply-gallery-block",
+      "version": "3.4.3",
+      "status": "active",
+      "source": "https://downloads.wordpress.org/plugin/simply-gallery-block.3.4.3.zip",
+      "sha256": "032d2d60623e57c1a9505ef86d11623049eb400d7521a054d255e6bca195b6e6",
+      "bytes": 2533161,
+      "license": "GPL-2.0"
+    },
+    {
+      "slug": "stackable-ultimate-gutenberg-blocks",
+      "version": "3.20.2",
+      "status": "active",
+      "source": "https://downloads.wordpress.org/plugin/stackable-ultimate-gutenberg-blocks.3.20.2.zip",
+      "sha256": "89a3dcf7989fcc742424b8f1c005fffc4a6e5e1e9932293f4f0bf6c355e96de1",
+      "bytes": 1854965,
+      "license": "GPL-3.0"
+    },
+    {
+      "slug": "wpforms-lite",
+      "version": "2.0.2.1",
+      "status": "active",
+      "source": "https://downloads.wordpress.org/plugin/wpforms-lite.2.0.2.1.zip",
+      "sha256": "29eb30095dcd818037780781b2eb3e9b5aa1df6bc15e61470119c192a1725e19",
+      "bytes": 13674874,
+      "license": "GPL-2.0-or-later"
+    }
+  ],
+  "runtime": {
+    "composeProject": "birthday-magazine-g3cr2r3",
+    "wordpressUrl": "http://127.0.0.1:8187",
+    "phpVersion": "8.3.33",
+    "dockerClient": "29.7.2",
+    "dockerServer": "29.7.2",
+    "compose": "5.4.0"
+  },
+  "passwordPersistedInEvidence": false,
+  "images": [
+    {
+      "license": "WordPress GPL-2.0-or-later",
+      "repoDigest": "wordpress@sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30",
+      "tag": "wordpress:7.1.1-php8.3-apache",
+      "imageId": "sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30",
+      "service": "wordpress"
+    },
+    {
+      "license": "WP-CLI GPL-2.0-or-later",
+      "repoDigest": "wordpress@sha256:46b3add1dbd834018a9c22bb05a2fa9303f6139d8ac7337dc97cf9424072cd77",
+      "tag": "wordpress:cli-php8.3",
+      "imageId": "sha256:46b3add1dbd834018a9c22bb05a2fa9303f6139d8ac7337dc97cf9424072cd77",
+      "service": "wpcli"
+    },
+    {
+      "license": "GPL-2.0 community server",
+      "repoDigest": "mariadb@sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06",
+      "tag": "mariadb:11.4.7",
+      "imageId": "sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06",
+      "service": "mariadb"
+    }
+  ]
+}

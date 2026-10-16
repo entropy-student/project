@@ -1,0 +1,58 @@
+{
+  "gate": "G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY",
+  "capturedAtUtc": "2026-09-30T09:33:37.9162053Z",
+  "composeProject": "birthday-magazine-g3cr2r3",
+  "wordpressLocalUrl": "http://127.0.0.1:8187",
+  "services": [
+    {
+      "service": "db",
+      "project": "birthday-magazine-g3cr2r3",
+      "image": "mariadb:11.4.7",
+      "state": "running",
+      "status": "Up About an hour (healthy)",
+      "health": "healthy",
+      "ports": "3306/tcp"
+    },
+    {
+      "service": "wordpress",
+      "project": "birthday-magazine-g3cr2r3",
+      "image": "wordpress:7.1.1-php8.3-apache",
+      "state": "running",
+      "status": "Up 11 minutes",
+      "health": "",
+      "ports": "127.0.0.1:8187->80/tcp"
+    },
+    {
+      "service": "wpcli",
+      "project": "birthday-magazine-g3cr2r3",
+      "image": "wordpress:cli-php8.3",
+      "state": "running",
+      "status": "Up About an hour",
+      "health": "",
+      "ports": ""
+    }
+  ],
+  "images": [
+    {
+      "tag": "[wordpress:7.1.1-php8.3-apache]",
+      "imageId": "sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30",
+      "repoDigest": "[wordpress@sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30]"
+    },
+    {
+      "tag": "[wordpress:cli-php8.3]",
+      "imageId": "sha256:46b3add1dbd834018a9c22bb05a2fa9303f6139d8ac7337dc97cf9424072cd77",
+      "repoDigest": "[wordpress@sha256:46b3add1dbd834018a9c22bb05a2fa9303f6139d8ac7337dc97cf9424072cd77]"
+    },
+    {
+      "tag": "[mariadb:11.4.7]",
+      "imageId": "sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06",
+      "repoDigest": "[mariadb@sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06]"
+    }
+  ],
+  "wordpressVersion": "7.1.1",
+  "phpVersion": "8.3.33",
+  "mariadbVersion": "11.4.7",
+  "woocommerceVersion": "11.1.2",
+  "blocksyVersion": "2.1.57",
+  "blocksyCompanionVersion": "2.1.57"
+}
