@@ -1,4 +1,6 @@
-# CWS｜MEDIA素材架构与阶段路线（长期规范 · 2026-10-15）
+# CWS｜MEDIA素材架构与阶段路线（长期规范 · 2026-10-16）
+
+> **Owner编辑优先策略**：真实视频画面“相关即可”，不逐句/逐帧精确匹配原研究录像。R6L/R7L试跑`PARTIAL_ASSET_GAP`是历史精准科研实录缺口，不能自动发起新搜索/新模型。按已下载的相关实拍调整旁白/镜头承诺，科研事实准确、版权另审。[唯一当前状态](CURRENT_STATE.md)。
 
 > **2026-10-16 Reviewer最新结果：R6L/R7L轻量试跑已执行，`PARTIAL_ASSET_GAP`**：2条历史库存素材的6帧足以支持普通锅内辅助画面匹配，关键科学S04–S06没有核实的高速实验片，5条搜索链接仅LINK_FOUND；没有权限清理/正式制片GO。不扩展复杂逐帧视觉模型。详见[已完成试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)及[最新Reviewer交接](REVIEWER_HANDOFF_CURRENT.md)。
 
@@ -50,10 +52,10 @@ G2–G4的唯一证据ZIP：`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA
 |---|---|---|
 | **MEDIA-OPERATIONS-INTEGRATION** | 在Codex可调用的`cws_media.py`统一CLI中按需启停Docker搜索、索引/显式ID下载/QA/图库、错误及Ctrl+C清理 | **技术验收`PASS_WITH_UPSTREAM_DEGRADATION`，PR #131已合并main**；浏览器自动测试记录仅在已获许可的隔离实例进行 |
 | **MEDIA-R6L/R7L FAST-MATCH PILOT** | 复用现成CLI；CW-0005仅4个画面需求，每需求先看3–5候选、最多两轮，确认“相关且够用”即止；同轮输出来源/粗略区间/内容与权利状态、缺口 | **已完成`PARTIAL_ASSET_GAP`**；[试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。辅助素材适配初步可行，未证明端到端人工耗时或研究镜头许可；不急于造新代码 |
-| **大规模R6/R7产品化** | 逐帧定位/全库视觉识别/复杂剪辑索引，仅当轻量试验确实证明必要才考虑 | **未授权，不是当前默认路线** |
+| **大规模R6/R7产品化** | 逐帧定位/全库视觉识别/复杂剪辑索引 | **非当前路线，没有必要性证据和Owner授权**，不要为精准研究实录补充新搜索轮次 |
 | **PROD-R1～R4** | 真实选题/证据→剧本与画面→30–60秒音画字幕联调→完整内部草片 | 与MEDIA完全独立，CW-0005 HOLD，未放行新制作 |
 | **发布** | 播放成品、字幕质量、权利和Owner最终批准后发布 | 未授权 |
 
-**原“MEDIA-R4+R5”和“PROD-R4”编号完全不同。** 未来不再为了凑站点数无限遍历PeerTube；先服务真正缺的研究动作。当前不要重复G2 Ubuntu卸载或已经验收的两段Edge技术播放。
+**原“MEDIA-R4+R5”和“PROD-R4”编号完全不同。** 未来不再为凑站点数遍历PeerTube，**也不以精确科研录像缺失为由自动继续搜索**；先从现有相关素材安排真实准确的节目表达。当前不要重复G2 Ubuntu卸载或已经验收的两段Edge技术播放。
 
 [最新状态](CURRENT_STATE.md) · [Reviewer交接](REVIEWER_HANDOFF_CURRENT.md) · [G2-G4原合同](MEDIA_G2_G3_G4_DOCKER_LOCAL_EXECUTION_GATE.md) · [3+1正式素材合同](VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)。

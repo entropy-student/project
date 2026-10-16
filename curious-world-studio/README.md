@@ -1,6 +1,6 @@
 # Curious World Studio · 世界有点意思（名称暂定）
 
-> **项目状态（2026-10-15）**：CWS是不露脸的跨领域真实知识视频项目；素材Windows Docker技术闭环G2–G4已过、Codex统一CLI与Compose经Reviewer技术验收后随[PR #131](https://github.com/entropy-student/project/pull/131)正式合并main，**但精准镜头匹配、素材复用权及完整成片未通过**。唯一现行状态见[CURRENT_STATE](docs/CURRENT_STATE.md)，不要使用历史“待执行G2-G4”的说明作为当前指令。
+> **项目状态（2026-10-16）**：选题、叙事、Mac Aqua→QuickTime视觉规范与本机素材获取能力已经建立，PR#129/#131已合并main，但还没有获批准的完整成片。Owner最新要求**画面相关即可，不需逐帧精准或每句配研究实录**；科学表述和素材许可仍须单独核验。R6L/R7L历史`PARTIAL_ASSET_GAP`不触发新搜片。最新事实看[CURRENT_STATE](docs/CURRENT_STATE.md)，接手看[完整Reviewer交接](docs/REVIEWER_HANDOFF_CURRENT.md)。
 
 频道编辑原则：**知识小众，问题大众；行为具体，过程有趣；证据真实，承诺兑现**。频道名/Logo未最终确定；B站主阵地，不强制把每期凑到固定分钟数。
 
@@ -27,14 +27,14 @@
 | MEDIA获取与QA | [media-pipeline](media-pipeline/README.md)代码已并入main（PR#129），按ID下载、过滤、FFmpeg完整解码、HTML页技术可用 |
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
 | 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
-| MEDIA-R6L/R7L | **2026-10-16试跑已完成：`PARTIAL_ASSET_GAP`**；两条既有锅内素材有限适配，S04–S06关键研究录像/权利缺口未解决；不做逐帧模型 |
+| MEDIA-R6L/R7L | **已完成试跑**：两条现有爆米花影片可提供相关辅助画面；精确研究原片缺口保留为历史，不再自动要求增加搜片轮次 |
 | PROD制片 | `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`，无成片/发布授权 |
 
 ## 当前工作边界
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**当前成果（已完成试跑，待下一项Owner决策）**：[MEDIA-R6L/R7L快速素材匹配小试验](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)已获独立Review`PARTIAL_ASSET_GAP`。无需再打磨逐帧识别；重点不是多找普通锅内画面，而是决定对S04–S06科学关键镜头一次性查原研究附件与权利，还是调整叙事承诺；未经Owner授权不自行切换题目、追加下载或进入制片。
+**下一步建议（未经新执行授权）**：**按现有50–60秒CW-0005剧本与S01–S10分镜，将旁白的科学说明匹配到已有相关实拍和简洁出处文字**；不得冒充原研究实验录像。先处理内容，实际使用前再核具体视频权利；Owner授权后再制作内部30–60秒可听可看的短样片。不再追加R6/R7精准匹配搜索。
 
 ## 历史报告与许可证
 
