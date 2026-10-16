@@ -1,5 +1,68 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3CR2 Phase A dependency ambiguity return
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+LATEST_MAIN_SYNCED_BEFORE_SUBMISSION=f6d733811df0793cf6dd181f6482415e43d5bedc
+INITIAL_EVIDENCE_COMMIT=7a7f4c35b5c4f4f61ef92653a44c7854ff060349
+PR=#60 https://github.com/entropy-student/project/pull/60
+PHASE_A_CATALOG=PASS
+WEDDING_GUTENBERG=VISIBLE
+DEPENDENCY_MAP=AMBIGUOUS
+STARTER_IMPORT=NOT_RUN
+WOO_COMMERCE_CANARY=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PROJECT_CLEANUP=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The live catalog has a Wedding entry and lists Gutenberg, but its single `plugins` field includes both `elementor` and `ht-slider-for-elementor` without mapping dependencies by builder. All catalog-listed base slugs were available as free WordPress.org directory packages; the catalog still does not identify the actual Gutenberg dependency set. The Gate's exact ambiguity return applies. No import or compatibility canary followed.
+
+Reviewer should assess this evidence and decide whether an authoritative builder-specific dependency read-back can be obtained or the current canary should remain returned for Owner/Reviewer direction. Executor did not install Elementor, infer the Gutenberg dependency set, switch builder/template, or start full G3C. Package/catalog evidence and cleanup read-back are under `poc/g3cr2/artifacts/reports/`; the historical source/runtime directories remain untouched. PR #60 is open and unmerged.
+
+## Earlier G3CR2 preflight return — Docker unavailable (historical, superseded)
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_PREFLIGHT_DRIFT
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+INITIAL_EVIDENCE_COMMIT=7a7f4c35b5c4f4f61ef92653a44c7854ff060349
+PR=#60 https://github.com/entropy-student/project/pull/60
+DOCKER_CLIENT=29.7.2
+DOCKER_COMPOSE_CLI=5.4.0
+DOCKER_ENGINE=UNAVAILABLE
+PHASE_A_CATALOG=NOT_RUN
+PHASE_B_IMPORT=NOT_RUN
+PHASE_C_WOOCOMMERCE=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PLUGIN_PURCHASES=0
+ELEMENTOR_INSTALL=0
+GLOBAL_DOCKER_PRUNE=0
+PROJECT_RESOURCE_COUNTS=UNKNOWN_ENGINE_UNAVAILABLE
+CLEANUP=NOT_REQUIRED_NO_RUNTIME_CREATED
+STOP_AT_REVIEWER=YES
+```
+
+Docker client is installed, but Docker API commands failed because the Docker Desktop Linux Engine named pipe was unavailable. Ports 8167/8168 had no local listener. The local Docker daemon is shared with other project resources, so the Executor did not start Docker Desktop. No Compose project or WordPress/database resources were created; Docker-side project counts cannot be asserted while the Engine is unreachable.
+
+Exact sanitized preflight evidence: [poc/g3cr2/artifacts/reports/preflight.json](poc/g3cr2/artifacts/reports/preflight.json). No Blocksy package was downloaded, so Wedding/Gutenberg catalog and dependency results remain unknown. No WooCommerce, account, workspace, payment, or UI testing occurred. G3A/G3B source/runtime was not changed. Reviewer is the next decision point; no alternate template/builder or next Gate is authorized.
+
+---
+
 ## Current Gate — G3BR1 cleanup-only closure
 
 ```text
