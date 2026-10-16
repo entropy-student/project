@@ -133,3 +133,38 @@
 - **声明限制：** 没有进行任何账户认证、生产支付、真实汇兑或提现；案例是**明确前提下的演练**；不触碰 P1、7/29/42 框架、最初被 Owner 废弃 P2、其他模块、HTML、管理规范或生产基础设施。
 - **ROLLBACK：** 本次只有原 PR 分支内两份 Markdown 变化；旧候选版本仍在历史 commit `a7f19031361e7e6327bee98b726a5a0c9c6a91fc`，正文改稿在 `05eec1aa30271b236299f9ba879ff06313df8fd8`，可以由 Reviewer 决定继续修改或回撤；main 与 P1 均不因 PR 更新而改变。
 - **EXECUTOR_RESULT：** `PASS_CANDIDATE`，**STOP_AT_REVIEWER**；本轮覆盖与公开材料、算术自检不能代替 Reviewer 的方法论和写作质量审核。
+
+---
+
+# P2 human-writing 单技能阅读实验｜2026-10-16
+
+## 任务和权限
+- **GATE_ID：** `MCPG-P2-HUMAN-WRITING-READABILITY-PILOT-20261016`。
+- **EXECUTOR_RESULT：** `PASS_CANDIDATE`、`STOP_AT_REVIEWER`。仅为提交审核，不是内容 Reviewer PASS 或 Owner 阅读体验确认。
+- **前置直接读回：** main 的 `modern-commercial-payment-guide/REVIEWER_HANDOFF.md` Blob `8b34ce70415265d1cb975129ba803f75c5944f4c`；当前 Gate Blob `84c2dcc220917911706fc7e97d730c88514c4720`。PR #132 创建样稿前为 `open=true, draft=true, merged=false`，head `17ea75adec7448a8bbe6387788b5bfe321ff68f6`（与 Gate 完全一致）。已审核候选正文 `docs/P2_REWRITE_CANDIDATE.md` Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`。
+- **允许的原文：** 仅上述 P2 已审核版本 §4.1 第 130–172 行与 §5.1 演练 A 第 228–245 行，及官方 S02/S05；未引用被弃用 P2，未启动 P3。
+- **唯一使用的 Skill：** [KKKKhazix/human-writing](https://github.com/KKKKhazix/human-writing) v1.1.0，主 `SKILL.md` Blob `76bbf86ef49504628e356555f4da7cc6cbac3b7c`，与 Gate 固定版本相符。实际依顺序读取 `references/forum-prose.md` Blob `8bbc5fc0e7dccc1a6fa13dd457166e7eded303d4`、`references/reality.md` Blob `844e9c9236826cf29de9ccd9c7248eb970a15e02`；**写完初稿后才读** `references/revision.md` Blob `2a884689c52b42a23df757ae7060b1fbaa50ae4f` 并修改。未使用第二个 Skill（包括 `copy-editing`）。
+
+## 实际变更与直接证据
+1. **仅新增** [`docs/P2_HUMAN_WRITING_SAMPLE.md`](./docs/P2_HUMAN_WRITING_SAMPLE.md)，写入 commit `fb9ce13905f30a71870b08114f887e1fc87c50b9`，Blob `b05dfdc45e03649927a25be0db0380f40a681ba6`；GitHub `fetch_file` 直接读回与写入全文完全相同。正文 **1470 个汉字**，包括附录、Markdown 和链接的全文长度为 **2566 个 JS 字符**；在 Gate 1200–2000 中文字范围。
+2. **仅在本证据文件尾部追加**本节；上一轮所有结果与原始记录原封不动。
+3. **官方规则核对（2026-10-16）：** [PayPal CN 商家费率 S02](https://www.paypal.com/c2/business/paypal-business-fees?locale.x=zh_C2) 页面注明 2025-06-18 最后更新，费率仅适用指定 `PayPal中国跨境支付服务用户协议` + `PayPal全球服务条款` 的 CN 账户，**不适用**按另一 `PayPal支付服务用户协议` 开户的账户；对应国际商业美元款 4.40% + USD 0.30；35 美元单次中国大陆电汇费出自**企业 PayPal 账户**费用表。 [PayPal CN 提现帮助 S05](https://www.paypal.com/c2/cshelp/article/how-do-i-withdraw-funds-from-my-paypal-account-help394) 为该美元电汇路线列出最低 USD 150、通常 3–7 工作日以及审核与银行限制。均非某具体账户获得批准的证据。
+
+## 事实对应和数值复算
+
+| 独立材料 | 原稿/官方对应 | 样稿对应 |
+|---|---|---|
+| 29 美元同一国际 USD 单、合同适用条件 | §4.1 + S02 | 起篇和账户限定 |
+| 4.40% + 0.30，按美分 1.58 美元 | §4.1 + S02；`29×.044+.30=1.576` | 单笔费用计算 |
+| 单笔费后约 USD 27.42 | §4.1 | 单笔余额 |
+| 最低 USD 150；通常 3–7 工作日且受审核 | §4.1 + S05 | 五单提款疑问 |
+| 5 单 USD 137.10 不达门槛，6 单 USD 164.52 达门槛 | §4.1；按单笔 27.42 计算 | 五、六单对比 |
+| 对应企业账户 USD 35/批；6 单只扣该批费用后 USD 129.52 | §4.1 + S02；`164.52−35=129.52` | 六单电汇及费用 |
+| 10 单费后 274.20、单次电汇后 239.20；100 单费后 2742、单次电汇后 2707 | §4.1；`10×27.42−35=239.20`，`100×27.42−35=2707` | 十单/百单 |
+| 大陆自然人的商户/商品/提现资格仍 UNKNOWN，不能照搬企业费 | §5.1 演练 A；S02 条款差异 | 自然人单独核验 |
+| 交易后余额、可提余额、银行实收各不相同 | §4.1 四层金额；S05 | 银行费用/汇率/税费 UNKNOWN |
+
+- **算术自检：** 1.576 USD 按美分演算为费 1.58、单笔余 27.42；五单 137.10、六单 164.52、扣一次企业电汇费 129.52；十单 239.20，百单 2707；每单摊销 35/10=3.50、35/100=0.35。均仅为假设演算，**不等于** PayPal 真实逐笔舍入、账户批准、可即时提现或实际银行收到金额。汇兑、银行中转与入账费、税款、退单/退款、商家成本、商品及自然人资格仍 `UNKNOWN`。
+- **阅读质量自检：** 有 9 组具体可追材料，先写 29 美元五单的用钱疑问，再算手续费、解释为什么差在最低额、发现六单过门槛与每批固定费用，最后给低单量或高单量的选择条件和读者具体核验动作。正文没有抽象五步法起篇、假造本人支付经历/对话/商家个案；来源与原稿映射留文末。句长、段落长短和金融判断可由 Reviewer 独立对照。
+- **修订痕迹：** 首稿完成后加载 revision，删去无依据的“六个月内”说法改为“这一批订单”，并加强首段商品/交易仅为审核通过的设定及企业电汇的前提。人工检查正文无破折号、引导性冒号、翻案式固定句型、硬性商业黑话；实际阅读效果交 Reviewer。
+- **范围与回滚：** 只新增一份阅读样稿、append-only 本证据。未修改已审核 P2 候选、冻结 7/29/42、P1、原 Gate/main、Reviewer Handoff、生产/账户/支付/Secret；未做 HTML 或启动第二 Skill。Reviewer 如 RETURN，可撤回样稿和本轮追加证据。**STOP_AT_REVIEWER**。
