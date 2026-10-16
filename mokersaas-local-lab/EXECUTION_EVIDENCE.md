@@ -28,3 +28,14 @@
 - ANOMALIES: Runtime evidence is relayed, not direct physical host access; no definitive proof of immutable physical machine identity; resource availability varied; final Docker/Node/Postgres readiness unverified.
 - ROLLBACK_EFFECT: NOT_APPLICABLE; read-only target.
 - REVIEWER_DECISION: `PASS` for G0 discovery boundary and risk inventory only; DOES NOT authorize installation, Docker build or payment; next `G0R_RESOURCE_READONLY` due low RAM and runtime resource ambiguity. G1_DEPLOYMENT=BLOCKED_RESOURCE until reviewed subsequent Evidence.
+
+## 2026-10-16 — Owner decision: skip G0R and enter G1
+- EVENT_TYPE: OWNER_DIRECTION_REVIEWER_RECONCILIATION (not Executor output, not runtime verification).
+- OWNER_DECISION: User explicitly requested to remove memory occupancy limitation and advance to next phase.
+- DECISION_ID: `MOKER-D-20261016-NO-RAM-NUMERIC-GATE`; durable rationale in `DECISION_LOG.md`.
+- PRIOR_STATE: G0 PASS (discovery only); G0R_READY not executed; last host RAM reported available 0.81–1.44 GiB.
+- EFFECTIVE_CHANGE: Only the project-specific conservative >=~4 GiB RAM admission line is waived; G0R becomes `SUPERSEDED_NOT_EXECUTED`, never `PASS`. Direct transition G0 -> G1 authorized at bounded scope.
+- SAFETY_RETAINED: actual Docker/Windows OOM or severe runtime failure remains a stop; preserve target proof, no other project changes, localhost-only binding, known admin vulnerability remediation, no real Provider/Stripe/money/email, Secret and rollback Evidence requirements.
+- NEXT_GATE: `MOKER-G1-LOCAL-HARDEN-COMPOSE-SMOKE-20261016`, authorized to have Executor prepare project-isolated source/security/adapter/Compose and only after all safe prerequisites perform one bounded localhost build/start/basic smoke.
+- RUNTIME_MUTATION_THIS_REVIEW: NONE; Reviewer only added/updated canonical GitHub governance-application documents. G1 Executor has NOT started and no Docker images/services are asserted.
+- REVIEWER_RESULT: G0R skipped by Owner scoped decision; G1 READY_FOR_EXECUTOR. Reviewer to verify later Executor Evidence before PASS.
