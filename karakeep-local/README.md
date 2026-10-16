@@ -1,9 +1,10 @@
 # Karakeep Local｜文件在哪里、怎么用、如何交给本机 Codex
 
-> **本文件是 Owner 的唯一日常使用入口。** 技术项目状态的权威记录仍见 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)。  
-> 最后整理：2026-10-16；GitHub：`entropy-student/project` 的 `main/karakeep-local/`。  
-> **原安装已结项、应用及数据原位保留。** G3B 的“只读盘点 PASS”不代表删除授权；没有正在执行的新 Gate。  
-> 这里整合的是**说明和文档入口**，不是将运行数据搬到 GitHub 或把整个本机项目迁移到单一文件夹。
+> **项目正式状态：`CLOSED_PROJECT_RUNTIME_RETAINED`（2026-10-16 Owner 明确决定整体 CLOSE）。**
+> **本文件是 Owner 的唯一日常使用入口。** 项目技术状态权威记录见 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)，正式结项见 [CLOSEOUT_REPORT.md](./CLOSEOUT_REPORT.md) 第 10 节。
+> 文档归档：GitHub `entropy-student/project` 的 `main/karakeep-local/`；**所有已知项目 Markdown 说明归在此 GitHub 目录**，本机没有经证实的额外 Markdown 文档归档目录。
+> **Karakeep 软件、账号、Docker 数据卷和受保护运行配置原位保留。** 不卸载、不停止、不删除；无当前 Gate、无人值守任务或自动后续工作。
+> 限定范围 G3B 只读盘点 PASS；原 G2B/G3A RETURN 及未验证事项如实保留。此次仅文档归档，**不是数据备份/迁移或本机文件整理/清理**。
 
 ## 1. 我所有相关文件现在在哪里？
 
@@ -89,6 +90,6 @@ if ($LASTEXITCODE -eq 0) {
 - **已完成**：官方 Karakeep 的本机安装结项；GitHub 管理文档集中归档；已知本机运行配置及 Docker 卷的位置登记；限定范围只读盘点 G3B PASS。
 - **历史未完成**：G2B 浏览器单条收藏功能测试和 G3A 中止任务；不影响之前已确认的安装状态，也不需要因整理文档而补跑。
 - **不做/不得自行做**：数据迁移、备份/恢复、系统重启测试、全局 Docker 清理、删除任何未证明无引用的项目资产。
-- **目前可删除项：0 个（没有批准的删除目标）**。整理**文档**和清理**正在运行的资料**是两回事。
+- **目前可删除项：0 个（没有批准的删除目标）**。**项目管理已正式 CLOSE，但软件继续使用，运行资料原位保留。** 整理**文档**和清理**正在运行的资料**是两回事。
 
 **记住三个入口：** 文档看 **GitHub README**；要打开 Karakeep 用 **http://localhost:3000**；本机维护任务交给 **Codex 并指向此 README + Handoff**。
