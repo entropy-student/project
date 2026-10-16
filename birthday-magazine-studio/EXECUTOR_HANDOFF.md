@@ -1,5 +1,54 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3CR2R1 Blocksy Wedding Gutenberg Variant Dependency Closure
+
+```text
+GATE=G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE
+RESULT=RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2r1-variant-closure
+BASE_MAIN=36d3bec39b7dc73aea60267bdd236dce9eae2cc4
+LATEST_MAIN_AT_SUBMISSION=f4c2fc6f476f54f71636e240df414f3e66a91a6d
+LATEST_MAIN_MERGE=2bd823715678760aeb0ecbde3b451c8573381943
+INITIAL_EVIDENCE_COMMIT=341e8c522e5c7163c6400ed94dd6132e0a0b5f49
+GITHUB_PR=61_OPEN_UNMERGED
+GITHUB_PR_URL=https://github.com/entropy-student/project/pull/61
+DOCKER_ENGINE=29.7.2
+WORDPRESS=7.1.1
+MARIADB=11.4.7
+BLOCKSY=2.1.57
+BLOCKSY_COMPANION=2.1.57
+EXACT_WEDDING_GUTENBERG_QUERY=RETURNED_BOOLEAN_FALSE
+RETURNED_DEMO=ABSENT
+RETURNED_BUILDER=ABSENT
+RETURNED_PLUGINS=ABSENT
+RETURNED_IS_PRO=ABSENT
+ELEMENTOR_REQUIRED=UNKNOWN
+HT_SLIDER_REQUIRED=UNKNOWN
+PAID_DEPENDENCIES_REQUIRED=UNKNOWN
+WEDDING_GUTENBERG_IMPORT=NOT_RUN_STOPPED_AFTER_PHASE_A
+WOOCOMMERCE_CANARY=NOT_RUN_STOPPED_AFTER_PHASE_A
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN_STOPPED_AFTER_PHASE_A
+PROJECT_RESOURCES_AFTER_CLEANUP=0_CONTAINERS_0_VOLUMES_0_NETWORKS
+UNRELATED_RESOURCE_FINGERPRINT=UNCHANGED
+ELEMENTOR_INSTALL=0
+HT_SLIDER_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+FULL_G3C_IMPLEMENTATION=NOT_STARTED
+G4=NOT_STARTED
+STOP_AT_REVIEWER=YES
+```
+
+The exact Blocksy Companion `fetch_single_demo(['demo'=>'Wedding','builder'=>'gutenberg','field'=>'all'])` method ran twice and returned Boolean `false`; no builder-specific metadata was available. The installed method JSON-decodes Blocksy's remote metadata response and returns false for a falsy body, so the underlying reason remains unknown. The sanitized report explicitly marks all required metadata fields absent/null and dependencies unresolved. The previous merged `wp blocksy demo list` result from PR #60 was not used for this decision.
+
+This Gate stopped before any starter import, WooCommerce install, plugin dependency install, screenshot, product/cart/checkout/account test, or private-workspace regression. Official Blocksy/Companion packages were installed only inside a fresh project-scoped runtime and then removed with their disposable volumes. Temporary ZIPs were removed from the exact guarded ignored `.tmp` path. The unrelated Docker inventory fingerprint matched before/during/after cleanup. Detailed evidence is in [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md) and `poc/g3cr2/artifacts/reports/`.
+
+Await Reviewer. Do not infer a dependency result from PR #60's merged catalog, import Wedding, install Elementor/HT Slider, or enter full G3C/G4.
+
+---
+
 ## Current Gate — G3BR1 cleanup-only closure
 
 ```text

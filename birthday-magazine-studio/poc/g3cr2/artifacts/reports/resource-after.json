@@ -1,0 +1,15 @@
+{
+  "capturedAtUtc": "2026-09-30T06:49:54.5723299Z",
+  "project": "birthday-magazine-g3cr2",
+  "projectResourceCounts": {
+    "containers": 0,
+    "volumes": 0,
+    "networks": 0
+  },
+  "unrelatedResourceCounts": {
+    "containers": 32,
+    "volumes": 78,
+    "networks": 17
+  },
+  "unrelatedResourceFingerprintSha256": "1714129c68bb74ff03bd018e86067179798b2efc432c153b42f499a24b4c678a"
+}
