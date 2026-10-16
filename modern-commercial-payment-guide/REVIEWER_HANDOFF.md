@@ -107,7 +107,7 @@
 | P4 | 七板块完整正文与来源核验 | 未启动 | 未来写入工作文档或按实际需要单独形成内容文件 |
 | P5 | 桌面端单文件 HTML | 未启动 | 未来独立交付 `.html` 文件，不嵌进交接文档 |
 
-**当前闸门：** P1结构审查 PASS、PR #132 P2知识内容 Reviewer PASS；human-writing 与 copy-editing 受限短篇实验各自 Reviewer PASS，**但 Owner 认为短文删掉分层章节结构，暂不采纳为完整 P2 写作模板**。当前 `OWNER_FEEDBACK_STRUCTURE_NOT_PRESERVED`，等待确定保留原有5/9章节结构的表达实验范围。原稿不变、PR不合并、P3–P5不启动。
+**当前闸门：** P1结构覆盖 PASS、PR #132 原完整P2知识内容 Reviewer PASS；Owner已授权**先撤回两份未采纳的短篇实验文件，后仅用human-writing对原完整P2全章按节重跑**。当前已创建 [结构保留型重跑 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md)，状态 `GATE_RELEASED / EXECUTOR_PENDING`。原已审 P2 正文 Blob 完整不变；禁止再次合并5/9小节、合并PR或进入P3–P5。
 
 ## 八、文件分工和更新规则
 
@@ -122,17 +122,17 @@
 
 - **治理依据：** [VPS Project Governance v0.2.7 / VNEXT.md](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，已核对主干 Blob SHA `3917c88a7f36df7a53758b3879a92703d659ef9d`。此处仅引用规范，不修改规范。
 - **PROJECT_GOAL：** 按第一节最高准则，产出注重方法论的商业支付 HTML 指南。
-- **PROJECT_STAGE：** `P2_OWNER_FEEDBACK_STRUCTURE_NOT_PRESERVED`（两轮短篇实验通过各自Gate，Owner未接受其作为整章框架表达方案）。
+- **PROJECT_STAGE：** `P2_ROLLBACK_AND_HUMAN_WRITING_STRUCTURED_RERUN_PENDING`（原完整P2正文原样保留、两短篇撤销未实际执行；结构保留重跑Gate已释放，等待独立Executor）。
 - **SYSTEM_MAP：** 当前为纯研究/写作项目：两份 Markdown 管理及成果文件、独立待开发 HTML；没有受本轮管理的生产服务、服务器、数据库、真实支付或凭据。
 - **CURRENT_ACCEPTED_STATE：** P1 `PASS`（Owner于2026-10-16确认，仅结构覆盖层）；7/29/42问题暂时冻结。此前 P2 样板 `REJECTED_NOT_BASELINE`，仅保留历史证据。
-- **CURRENT_GATE：** 上两轮单技能短篇实验 Gate 均 `Reviewer PASS / CLOSED_FOR_EXPERIMENT`；**当前无新 Executor Gate**。参见 [Owner反馈正式记录](https://github.com/entropy-student/project/pull/132#issuecomment-6208385637)。
-- **CRITICAL_CONSTRAINTS：** 不改最高准则、7/29/42冻结框架；不以旧 P2 为底稿；P1不重跑；先怎么做再为什么；来源可核验；不建百科/计算器、不进入 P3/HTML。
+- **CURRENT_GATE：** `MCPG-P2-ROLLBACK-AND-HUMAN-WRITING-STRUCTURED-RERUN-20261016`；[本轮唯一Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md)。先安全删除两份未采纳短篇的当前树文件、append-only证据，回读通过后才允许新建完整章 human-writing 候选，Reviewer STOP。
+- **CRITICAL_CONSTRAINTS：** 不改变最高准则/P1已冻结7/29/42；**已审P2全文原稿一字不覆盖**；以其原本H1、5个H2、9个H3**逐字、原层级、原顺序保留**为不可退让的验收；所有小节各自保留判断/例子/方法和金融边界；先撤两份短篇后再重跑；仅human-writing；证据append-only、无force push/reset；不触碰支付/生产，不进入P3/HTML。
 - **DEFAULT_EXECUTION_CHANNEL：** Owner 在新对话把当前 Gate 转交给独立 Executor；本对话助手仅作 Reviewer。
-- **CURRENT_ROLLBACK_STATUS：** 内容型写入；保留旧 P2 为已否决历史证据，新稿写入独立候选文件；不删改已接受的冻结框架及 P1。
-- **UNRESOLVED：** 两轮实验以提取单一提现场景的短篇为目标，未检验 P2原有5/9小节可见、知识路径完整前提下的读感。Owner明确不满意框架在样稿中消失；应在原章节层级内改善每节阅读节奏，不能将第二版短文当作已确认的完整文章表达基线。
-- **NEXT_STEP：** Reviewer待 Owner 授权后再设计“保留冻结知识层级 + 单个完整二级组含全部三级小节”的受限表达实验；不再默认新增 Skill、不自动全章覆盖。
-- **OWNER_ACTION_REQUIRED：** 确定是否授权 Reviewer 为“原结构全部保留、只调整各小节正文表达”创建新实验 Gate；目前无需立即给 Codex 分配任务。
-- **EVIDENCE_POINTERS：** [PR Owner反馈记录 #6208385637](https://github.com/entropy-student/project/pull/132#issuecomment-6208385637)；两轮写作实验 Reviewer 评论 `6208144581`、`6208257332`；原 P2 正文 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 完整不变，两个独立样稿在 PR #132 head `c3341053cdd3f67cb78a2e8d8ad1dba9b3e8b15c`。
+- **CURRENT_ROLLBACK_STATUS：** 原已审P2正文仍为 Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`，**其内容层面已处于原版本**；PR当前仍含两份旧实验短篇，精确清理**未执行**，仅Gate已授权。两份各可从历史commit恢复，现有Evidence禁止截断；禁止破坏性reset/force-push。
+- **UNRESOLVED：** 旧独立短篇未获Owner接受，且两份当前树文件尚待撤下；上一轮Gate未强制保留层级导致Owner反馈。新稿必须把完整5/9小节保留且每节有实质内容，写作质量等新稿提交后Reviewer判断；不可声称已回滚或已重跑。
+- **NEXT_STEP：** 独立Executor按本轮Gate顺序执行：严格预检→仅删两个独立短篇并追加回滚证据→回读确认→仅用human-writing在新文件重跑**完整5/9章节**→标题字面/金融事实/内容矩阵验收→提交PR停Reviewer。
+- **OWNER_ACTION_REQUIRED：** 把 [结构保留型重跑 Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md) 转交独立Codex Agent，待结果返回此对话作Reviewer。Owner已授权范围，无需再批准回滚内容。
+- **EVIDENCE_POINTERS：** [本轮结构保留Gate](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md)；PR #132 现行 head `c3341053cdd3f67cb78a2e8d8ad1dba9b3e8b15c`（仅预检基线，后续提交将变化）；原P2正文 `17ea75adec7448a8bbe6387788b5bfe321ff68f6` / Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7`；两份旧短篇目标 SHA `b05dfdc45e03649927a25be0db0380f40a681ba6`、`9a4bdd2971ac1a4307e82582a3ae1d9ab413d3e5`，实验历史仍在Git/Evidence。
 - **文件职责：** 本文件仅作唯一交接与决策看板；成果和证据在工作文档或独立候选稿；HTML将独立交付。GitHub中同名 `REVIEWER_HANDOFF.md` 为治理协作入口；文件库本文件为Owner可下载镜像，治理上以 GitHub 最新经 Reviewer 核对的版本为准，禁止两处形成冲突状态。
 
 ## 十、当前 Reviewer 决定（2026-10-16）
@@ -186,3 +186,12 @@
 - **保护基线：** P1 7/29/42结构与 P2知识正文 Reviewer PASS 不变；源 `docs/P2_REWRITE_CANDIDATE.md` Blob `f8bb110f07ef654df2f5b4b9285540e89261b1f7` 未被覆盖，human-writing、copy-editing 的实验短稿仍仅作参考证据。
 - **后续原则：** 保留原框架的每一级标题及每个小节回答的问题，要求在每个小节**内部**提高读者兴趣、清晰性、实际可执行性与自然叙述；不要消除分类、对照表或跨模式对比来追求“活人感”。如 Owner 后续确认，可针对一个完整二级问题及全部三级小节另立严格结构保留实验 Gate 后交独立 Executor。
 - **记录：** [PR #132 Owner 反馈与纠正说明](https://github.com/entropy-student/project/pull/132#issuecomment-6208385637)；没有继续写稿、启动第三 Skill、合并或推进P3。
+
+
+## 十六、Owner授权：回滚未采纳短篇并保留完整层级重跑（2026-10-16）
+
+- **Owner 明确指令：** “先回滚到原先的版本，然后按照第一个skill和现在的要求进行重跑。不要再触犯这次的问题”；原稿包含 H1、5个H2和9个H3层级，不得被改成单线短文。Reviewer仅设计/核验 Gate，独立Executor执行文件回滚与新稿。
+- **前置事实：** PR #132 的原完整 `docs/P2_REWRITE_CANDIDATE.md` 从 `17ea75...` 以来 Blob 一直为 `f8bb110...`；实际待撤仅两份独立短篇，Evidence按规范保持append-only，提交历史保留。
+- **新 Gate：** [P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md](https://github.com/entropy-student/project/blob/main/modern-commercial-payment-guide/docs/P2_HUMAN_WRITING_STRUCTURED_RERUN_GATE.md)，ID `MCPG-P2-ROLLBACK-AND-HUMAN-WRITING-STRUCTURED-RERUN-20261016`。同一Gate分阶段先安全撤回旧短篇，再由 `KKKKhazix/human-writing` 编辑**原P2完整全章所有小节**，独立新建 `docs/P2_HUMAN_WRITING_STRUCTURED_CANDIDATE.md` 并停 Reviewer。
+- **强制验收：** Gate 明列原H1、5个H2、9个H3及来源附录的确切字符串/顺序/级别，必须逐字对应；不能缩为1500字故事；每节保持实际问题、详细比较、两完整商家案例、S01-S15金融来源和金额计算，同时提高每节的可读性。
+- **当前停点：** `GATE_RELEASED / EXECUTOR_PENDING`，尚**未实际删除**两短篇，尚未生成新结构化稿。所有操作须遵循精确 Git 文件路径和权限边界；不得重置共享分支/擦除证据或宣称已回滚完成。PR Open/Draft/未合并；P3–P5未授权。
