@@ -1,6 +1,8 @@
-# CWS｜当前Reviewer交接（2026-10-15）
+# CWS｜当前Reviewer交接（更新至2026-10-16）
 
-> **本轮新增Owner授权（尚未执行）**：R6L/R7L合并为一次快速素材匹配试跑，CW-0005选4个真实画面需求；限3–5候选/需求，最多两轮搜索，找相关且够用片段并输出素材清单，不做逐帧定位或新模型开发。[执行合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。正式制作/发布与权利审批仍HOLD。
+> **2026-10-16 Reviewer最新交接：`MEDIA_R6L_R7L_PILOT_PARTIAL_ASSET_GAP`，轻量试验结束。** ZIP `CWS_MEDIA_R6L_R7L_FAST_MATCH_PILOT_20261016.zip` SHA256 `81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8`，Reviewer独立核对ZIP CRC、20项SHA、19项manifest大小及6张JPEG，确认单独提供HTML与ZIP版相同，6张嵌入图片字节与证据帧一致。**只直接审到了静态抽帧，没有原MP4全片**；两条媒体的历史SHA及FFprobe/FFmpeg返回0基于执行端日志。SearXNG81 + 4get14，90个去重搜索链接，5个候选均未播放且只为`LINK_FOUND`。Prep/Heat普通锅内辅助画面有限可用，After-pop氛围备选；`Mechanism/S04–S06 = ASSET_GAP_EVIDENCE`，许可为Pexels/Pixabay`PARTIAL`、论文附件/候选`UNKNOWN`。**不再反复扩搜或补基础设施测试；没有记录全部人工耗时，不声称“30秒完成素材匹配”**。等待Owner决定是小范围核原论文附件还是改变脚本承诺；`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`不变。
+
+> **2026-10-15历史执行授权（试跑已完成，勿重复下发）**：R6L/R7L合并为一次快速素材匹配试跑，CW-0005选4个真实画面需求；限3–5候选/需求，最多两轮搜索，找相关且够用片段并输出素材清单，不做逐帧定位或新模型开发。[执行合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。正式制作/发布与权利审批仍HOLD。
 
 > **2026-10-15 Reviewer最终裁决：`MEDIA_OPERATIONS_INTEGRATION_TECHNICAL_PASS_WITH_UPSTREAM_DEGRADATION / MERGED_MAIN`，PR [#131](https://github.com/entropy-student/project/pull/131)已于Owner授权后squash合并main（commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）。** ZIP `CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`，CRC正常、23条SHA/22项manifest均由Reviewer独立核实。Windows60/60回归是执行端日志，Reviewer之前独立复核24个CLI单测。SearXNG video/image各88/110条、4get各15/81条；294查询级记录→190去重候选（93视频/97图片）。**SearXNG上游Google 403、Brave解析错误、Vimeo/Pinterest超时仍为PARTIAL；默认`PARTIAL_SEARCH`返回`ok:false`及exit1符合fail-closed；只有调用方明确`--allow-partial`才接受不完整结果。** 真PTY Ctrl+C执行端证据：活动连接存在、CLI发`INTERRUPTED`、本项目三容器退出码0、两个端口关闭、无关容器IDs未变化；Reviewer独立核查包内证据但未亲手运行Owner Windows。**两个此前待补运行Gate已证实，后续不必再以所有第三方上游完全成功为合并障碍**。Owner本轮已授权并完成合并，合并前检查`mergeable=true / clean`，PR #131仅变动6项CWS media-pipeline文件、此前追加main未触及这些文件。**不要重复G2–G4或本轮集成验收，也不得未经另行授权启动R6/R7/制作或宣称素材许可通过。**正式CW-0005 HOLD不变。
 
@@ -35,9 +37,9 @@
 - 今后技术性浏览器播放由Codex在**获明确授权的隔离浏览器**自动测试`video.play()`、`currentTime`、实际帧和错误/资源回收；不要附着Owner私有Edge窗口，也不能绕过Computer Use明确的安全停止。无法自动运行则写`BROWSER_AUTO_NOT_VERIFIED`，**不要把用户当重复的浏览器单测员**。Owner仍有真实镜头/审美/许可决策权。
 - 所有素材与截图只做`UNKNOWN_TEST_ONLY`技术实验；证据里不得放凭据、Cookie、SSH令牌或私密用户路径，媒体在权限不明时不作为Git附件或发布物。协议的“3+1”例外必须经Owner许可。
 
-## 4. 下一轮（**R6L/R7L轻量小试验已授权；PROD正式制作仍未授权**）
+## 4. 下一步（**R6L/R7L已完成PARTIAL_ASSET_GAP；正式制作仍未授权**）
 
-**`MEDIA-OPERATIONS-INTEGRATION`已完成并合并main。Owner已另行授权`MEDIA-R6L/R7L-FAST-MATCH-PILOT`，尚未实跑**：详见[唯一新合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。仅CW-0005四个画面需求，相关够用即停，最多两轮有界搜索并直接给素材清单。**不为普通镜头逐帧识别、定死精确时间码、遍历80站或新开发视觉模型；关键科学证据必须真实且不混充。** 版权/视频成片Gate独立；无需重做G2-G4。
+**`MEDIA-OPERATIONS-INTEGRATION`已完成并合并main；`MEDIA-R6L/R7L-FAST-MATCH-PILOT`已执行、独立Reviewer裁决`PARTIAL_ASSET_GAP`。** 辅助镜头匹配策略可延用，试验不再重复。S04–S06科学实验画面仍缺，5个标题链接无播放/权利证据，禁止偷换为内容PASS。**只建议Owner在下一轮二选一**：小范围核验2015论文Movie S1/S2实际画面及权利，或不依赖该科研高速画面而调整叙事承诺；必须Owner另行授权。不能自动进入PROD。
 
 **制片轨道**：`PROD-R1→R2→R3→R4`与`MEDIA-R*`独立；只有论文/真实镜头/权利及Owner视觉审查过关后才能恢复正式节目制作。
 

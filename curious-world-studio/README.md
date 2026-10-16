@@ -27,14 +27,14 @@
 | MEDIA获取与QA | [media-pipeline](media-pipeline/README.md)代码已并入main（PR#129），按ID下载、过滤、FFmpeg完整解码、HTML页技术可用 |
 | MEDIA本机整体G2–G4 | Ubuntu-24.04安全备份注销，Windows Docker后端仍在；真实下载/Edge播放/停止服务技术验收通过 |
 | 运行工具化 | [PR #131](https://github.com/entropy-student/project/pull/131)已合并：统一Codex JSON CLI `discover/fetch/catalog/gallery/doctor`、Compose搜索服务按需启动/关闭、Ctrl+C清理 |
-| MEDIA-R6L/R7L | **已授权但尚未实跑**：4个CW-0005画面需求，相关够用即停，形成简单素材清单；不做逐帧模型 |
+| MEDIA-R6L/R7L | **2026-10-16试跑已完成：`PARTIAL_ASSET_GAP`**；两条既有锅内素材有限适配，S04–S06关键研究录像/权利缺口未解决；不做逐帧模型 |
 | PROD制片 | `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED`，无成片/发布授权 |
 
 ## 当前工作边界
 
 **已经能验证的是**：关键词→搜索候选→索引/过滤→人工选定ID→下载→FFprobe/FFmpeg质量检查→本地浏览器播放→本Compose服务停止。该闭环样本来自两个不同PeerTube实例（**同一平台家族**）和一张图片，**不代表爆米花目标动作吻合或可商用**。
 
-**当前下一轮（Owner已授权，待Windows本机实跑）**：[MEDIA-R6L/R7L快速素材匹配小试验](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。不再为了精确动作时间码重复构建新模型；先从CW-0005取4个画面需求，快速筛选相关且够用的真实候选，输出轻量素材清单。现有CLI可用，搜索结果不等于已验证画面或可复用许可；正式制片、付费、删除和发布仍需单独授权。
+**当前成果（已完成试跑，待下一项Owner决策）**：[MEDIA-R6L/R7L快速素材匹配小试验](docs/MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)已获独立Review`PARTIAL_ASSET_GAP`。无需再打磨逐帧识别；重点不是多找普通锅内画面，而是决定对S04–S06科学关键镜头一次性查原研究附件与权利，还是调整叙事承诺；未经Owner授权不自行切换题目、追加下载或进入制片。
 
 ## 历史报告与许可证
 

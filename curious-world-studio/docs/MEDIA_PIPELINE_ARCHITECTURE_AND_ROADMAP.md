@@ -1,6 +1,6 @@
 # CWS｜MEDIA素材架构与阶段路线（长期规范 · 2026-10-15）
 
-> **Owner新规划决定：先做R6L/R7L轻量试跑（已授权，尚未执行）**，不单建逐帧视觉识别系统；镜头相关且够用就停，关键科学事实不能失真。详见[试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。
+> **2026-10-16 Reviewer最新结果：R6L/R7L轻量试跑已执行，`PARTIAL_ASSET_GAP`**：2条历史库存素材的6帧足以支持普通锅内辅助画面匹配，关键科学S04–S06没有核实的高速实验片，5条搜索链接仅LINK_FOUND；没有权限清理/正式制片GO。不扩展复杂逐帧视觉模型。详见[已完成试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)及[最新Reviewer交接](REVIEWER_HANDOFF_CURRENT.md)。
 
 > **最新事实**：Windows本机Docker Desktop按需运行SearXNG+4get的**G2–G4已完成并获`G2_G3_G4_TECHNICAL_ACCEPT`**；旧无Docker、只读恢复、Brave/Exa收费API优先方案不是当前路线。代码PR#129及Codex统一CLI/Compose PR#131**均已合并main**（后者squash commit [`201c39a2`](https://github.com/entropy-student/project/commit/201c39a2b61eae7189cc624d5cb2c18dd671de38)）；运行时上游可部分降级但默认fail-closed。正式视频仍`CW0005_VISUAL_STORYFIT_HOLD`，素材技术通关不能代替权利/内容审查。
 
@@ -15,7 +15,7 @@
 | 探测/指定获取 | Owner或运行端明确选择的视频/图片ID | yt-dlp等验证路径、实际媒体文件、失败状态；不绕登录/DRM |
 | 技术QA | 实际媒体文件 | 旋转/SAR修正后的显示比例、分辨率、帧率、FFmpeg完整解码、SHA及代表帧 |
 | 人类查看 | CWS HTML与Windows本机浏览器 | 本地素材与搜索缩略图区分、真实视频播放；**不代表镜头语义、内容核验或权利许可** |
-| R6L/R7L（下一轮轻量试跑） | 4个真实画面需求+已有检索索引 | 相关即可的候选短名单+大致片段+来源/版权状态/缺口；不要求逐帧精准时间码 |
+| R6L/R7L（2026-10-16已试跑） | 4个真实画面需求+两条现成库存素材+90个搜索索引 | 辅助画面有限相关；研究核心`ASSET_GAP_EVIDENCE`、复用许可未充分核验；**不要求逐帧精准时间码** |
 
 **七项指标必须分别记录**：搜索URL、去重URL、可解析视频、真实下载、技术解码、动作吻合、可复用权利。PeerTube多个实例是多个域名，**不能算多个独立技术平台家族**；CDN不能单独算独立来源。
 
@@ -49,7 +49,7 @@ G2–G4的唯一证据ZIP：`CWS_MEDIA_G2_G3_G4_DOCKER_LOCAL_20261015.zip`，SHA
 | 阶段 | 目的 | 当前状态 |
 |---|---|---|
 | **MEDIA-OPERATIONS-INTEGRATION** | 在Codex可调用的`cws_media.py`统一CLI中按需启停Docker搜索、索引/显式ID下载/QA/图库、错误及Ctrl+C清理 | **技术验收`PASS_WITH_UPSTREAM_DEGRADATION`，PR #131已合并main**；浏览器自动测试记录仅在已获许可的隔离实例进行 |
-| **MEDIA-R6L/R7L FAST-MATCH PILOT** | 复用现成CLI；CW-0005仅4个画面需求，每需求先看3–5候选、最多两轮，确认“相关且够用”即止；同轮输出来源/粗略区间/内容与权利状态、缺口 | **Owner已授权小试验，尚未执行**；[唯一合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。先验证效率，再决定是否需要新代码 |
+| **MEDIA-R6L/R7L FAST-MATCH PILOT** | 复用现成CLI；CW-0005仅4个画面需求，每需求先看3–5候选、最多两轮，确认“相关且够用”即止；同轮输出来源/粗略区间/内容与权利状态、缺口 | **已完成`PARTIAL_ASSET_GAP`**；[试跑合同](MEDIA_R6L_R7L_FAST_MATCH_PILOT_2026-10-15.md)。辅助素材适配初步可行，未证明端到端人工耗时或研究镜头许可；不急于造新代码 |
 | **大规模R6/R7产品化** | 逐帧定位/全库视觉识别/复杂剪辑索引，仅当轻量试验确实证明必要才考虑 | **未授权，不是当前默认路线** |
 | **PROD-R1～R4** | 真实选题/证据→剧本与画面→30–60秒音画字幕联调→完整内部草片 | 与MEDIA完全独立，CW-0005 HOLD，未放行新制作 |
 | **发布** | 播放成品、字幕质量、权利和Owner最终批准后发布 | 未授权 |
