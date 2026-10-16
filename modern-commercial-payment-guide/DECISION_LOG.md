@@ -72,3 +72,14 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **下一Gate**：③《顾客付款》，核心问题“如何让顾客更方便、更顺利地完成付款？”，正式4H2/5H3均从冻结V6逐字摘录。按旧流程由外部独立Agent先输出**第三部分完整UTF-8 Markdown与单独事实/执行核验记录**（两份MD、一个ZIP），交独立Reviewer审阅，Owner通过后才正式采纳/封板。不得修改已封板①②/全书框架，不进入④–⑦及HTML。
 - **单一写作资料包**：`/现代商业支付系统/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`；内含独立提示词、③冻结标题、①②封板只读全稿、PayPal/Stripe等官方来源索引和校验说明。ZIP通过CRC并核实两篇参考正文与封板SHA256一致。写作作者无GitHub写入权限需求。
 - **实际执行状态**：封板、资料包制作及归档已完成；本轮**尚未委托外部写作Agent、尚未收到③候选稿**，第三章状态保持 `WRITER_PACKET_READY / OWNER_RELAY_PENDING`。其他历史事实仍留在append-only Evidence。
+
+
+## 2026-10-17｜③④联合写作替代③单独写作Gate
+
+- **OWNER_REPORTED / AUTHORIZATION：** Owner接前一轮“第三部分独立写作ZIP待转发”明确提出“把第四部分的也写了吧，一块搞。同时记录一下交接文档等信息，避免后续新的reviewer接受不到完整的信息。”结合当前已经确立的外部Agent独立写作→独立Reviewer→Owner决定采纳流程，正式将③《顾客付款》和④《支付处理》**合并为一个写作委托**；不要求本轮Assistant取代外部Agent直接将④写入正式GitHub。后续各章是否正式采纳仍留给Owner。
+- **已封板不变：** ①Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`；②Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`；V6结构Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。所有已封板正文与框架在本轮只读。
+- **输入升级：** 文件库活动任务唯一ZIP `/现代商业支付系统/现代商业支付系统_第三四部分_联合独立写作资料包_20261017.zip`，Library `libfile_5b2fbf5640d881919cb2e02a6cb15f90`；SHA256 `88ae6de6b80417ef95b7ab33bc73040ce064c1bf1703d9a99f37eaeef7800158`，74,112字节。内含联合提示词、③④4H2/5H3原文、两篇①②封板全文只读、官方资料、面向新Reviewer的完整交接快照和文件SHA256清单。已校验解压/CRC和封板稿SHA。
+- **旧任务归档而非并存：** `/现代商业支付系统/现代商业支付系统_第三部分_独立写作资料包_20261017.zip` 移至 `/项目历史归档/现代商业支付系统_第三部分_独立写作资料包_20261017.zip`，原ZIP SHA256 `8d721011f1d0a4c8b5faa8ba252d63308213b9bda8598d326d831372882c8ede`。旧的“③单章、交付两份MD”被新联合任务“③+④、交付三份MD”替代，不构成已完成新章，也不丢失旧包。
+- **唯一交付：** 外部作者须交完整③候选Markdown+完整④候选Markdown+③④共享独立核验/执行记录Markdown，ZIP中恰好三文件；作者自检非Reviewer PASS。文章均不得自动入main，必须Owner确认。
+- **Reviewer完整续接：** 已把当前唯一Gate、历史决策、①②正文Blob/SHA、③④严格V6题文数量及边界、Writer成果文件名、付款状态/验签/幂等审查要点、GitHub/Library位置、未知项、Owner-only动作及下一审查步骤写入 `REVIEWER_HANDOFF.md` §五–七并同步 `docs/CURRENT_DOCUMENT_INDEX.md`。联合ZIP自身亦含离线新Reviewer快照以避免新会话无上下文。
+- **不作推断：** 当前第三、四部分完整候选稿`NOT_RECEIVED`，外部Agent是否已开始`UNKNOWN`；第五至七部分及HTML未启动，也无任何支付服务商或资金交易动作授权。
