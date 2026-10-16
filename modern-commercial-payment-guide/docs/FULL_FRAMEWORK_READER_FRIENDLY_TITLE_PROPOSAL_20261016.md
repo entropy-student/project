@@ -1,5 +1,7 @@
 # 现代商业支付系统｜新手商家视角的二、三级问题标题 V6 候选（2026-10-16）
 
+> **后续已确认（2026-10-16）：** Owner已完整批准此处V6建议，已在GitHub main `REVIEWER_HANDOFF.md` 第二至四节**正式冻结**，同版全文见 [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md)。本文件是当时的**改写对照/审核历史**，不是当前题目权威；以下保留原候选标记以便追踪决策过程。
+
 > **候选状态：`PROPOSAL_ONLY / OWNER_REVIEW_PENDING`。** 按Owner本轮要求重新审视“新手卖家是否看得懂、是否会这样提问”，提出**7个一级不变、29个二级原编号不变、42个三级原编号与归属不变**的标题修订建议。本文**不是新的冻结版本**，不得覆盖原V4/V5或未经Owner同意修改P2正文、关闭/合并PR。历史目标、知识要求、金融事实与来源均继续有效。
 >
 > **原文来源：** `modern-commercial-payment-guide/REVIEWER_HANDOFF.md`（main，复核时 Blob `2c8a2d6d3fb5fe0798fd622bc5886707be527f2c`，第二至第四节）。建议稿可与配套Excel逐行审阅。
