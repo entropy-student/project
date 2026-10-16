@@ -54,3 +54,17 @@
 - ROLLBACK_EFFECT：本次Review仅读取上传ZIP，无Windows变更；旧MP4/源文件保留属于执行端报告。
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：Reviewer无新增费用/本机运行；执行端声称使用既有免费TTS额度。
 - EXECUTOR_RESULT：PASS_CANDIDATE；REVIEWER_RESULT：RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX（技术部分PASS，总体未PASS）。
+
+## EVIDENCE 2026-10-16｜PROD-R3修订返修版独立Review（覆盖旧退回项，不覆盖旧证据）
+
+- AUTHORIZED_GATE：原 `PROD-R3-CW0005-INTERNAL-AV-SAMPLE` 同一Gate的上轮Reviewer授权最小修复；没有新制作/搜索授权。
+- PREFLIGHT_FACTS：本次从用户上传的修订ZIP直接执行本sandbox只读验收；Owner Windows本机执行/保全/没有重配音等事项仍属 `EXECUTOR_REPORTED`，非Reviewer宿主机直接证明。
+- ACTUAL_CHANGES：按照Codex文本记录，S05深色不透明字幕底框，三步说明在成片21.411–27.260秒依次出现；Pixabay #2793 链接指向包含2793的来源页；JSON/JSONL中的本机绝对路径经脱敏。本次Reviewer没有向原视频或Windows写入。
+- OBJECTIVE_READBACK：ZIP `CWS_PROD_R3_CW0005_INTERNAL_AV_SAMPLE_REVISION_20261016.zip` 直接SHA256=`84ddaac6b21279a1a77a46a5a85f71e5528b7d5f0a21274918aeb9bf07c919e0`，CRC PASS、内部`SHA256SUMS.txt` 57/57匹配。最终MP4 `video/CW0005_internal_av_sample.mp4` SHA256=`7b913ef24888257e3e341a690758286af7361b0d1d4db0d719315623bcdac4a5`、40,530,055字节；FFprobe: 55.366667秒、1920x1080、1661帧、30fps H264+AAC24kHz单声道；Reviewer分别完整解码视频和音频零错误。原始WAV 53.76秒、RMS约0.1035（波形非静音），AAC主观发音和自然度**未被独立聆听**。从最终MP4重抽21.55、23.35、24.75秒及12段全片代表帧，S05显示“热板压住脚→淀粉脚弹回→整粒爆米花跳起”，白字具有深色实底，其他镜头仍为相关库存画面并标注辅助/非实验。
+- VALIDATION：**PASS** 视频完整性、画面主题/字幕可读、有限三步骤顺序、来源权利PARTIAL保持。**UNVERIFIED** 真人听感中文发音/语调/整体听声质量；返修版没有浏览器重新播放，旧版隔离浏览器记录仅作为旧版证据。R3整体标`PARTIAL_AUDIO_LISTEN_UNVERIFIED`，不能在没听审情况下自称完整R3正式PASS。
+- ANOMALIES：`evidence/revision_media_qa.json`中旧中间视频SHA=`0736b1b48df21e50bc0e4ae577544801e0354971c42231a260fa44935823302a`、大小40,526,595字节，与当前最终版不同；`manifest.json`、`SHA256SUMS.txt`、`QA_RESULTS.md`、`ffprobe_revised_final.json`和Reviewer直接SHA一致。该不一致记录为**非阻塞陈旧QA元数据**，不为修正元数据再次渲染；若后续需正式封版，可顺手更正来源对齐。Pixabay页面所含id=2793，未由网页访问工具确认页面在线可访问；不宣称实际版权已核实。文本记录与Json/JSONL检查没有发现常见本地绝对用户目录或关键字明文。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：上传返修ZIP（原件在Owner本地，当前sandbox做只读核验）；关键帧 `evidence/s05_review_frames/`，审阅者直接从MP4重抽帧；浏览器记录绑定旧视频，不挪用。
+- ROLLBACK_EFFECT：Reviewer无真实Windows写操作；修订时没有覆盖原媒体/旧ZIP为执行端报告。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：Reviewer仅本sandbox媒体解码；Windows费用/内存、旧配置实际状态未由Reviewer实测。
+- EXECUTOR_RESULT：`PASS_CANDIDATE`；REVIEWER_RESULT：`PARTIAL_AUDIO_LISTEN_UNVERIFIED`（其他R3返修项PASS）。
+- NEXT：Owner可一次性确认音色、清楚度、自然语速和整体审美；不再开Codex返修任务，除非发现实质问题。批准完整草片R4为另一个Owner Gate。

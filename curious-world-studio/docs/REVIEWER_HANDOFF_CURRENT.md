@@ -2,19 +2,22 @@
 
 ## 当前治理看板（覆盖下文历史时态）
 
+> **2026-10-16 最新返修回读**：R3返修ZIP CRC和SHA57/57匹配；最终MP4独立FFmpeg全片音视频解码PASS、S05实际画面高对比底框和“受压→回弹→跳起”三步切换PASS、来源记录和路径脱敏PASS。**当前R3仅剩`PARTIAL_AUDIO_LISTEN_UNVERIFIED`**，Reviewer无法通过工具亲耳试听中文发音、自然度；一次Owner观看与听感审美反馈即可关闭，不再重渲染。QA JSON有一个旧候选SHA元数据矛盾，不影响已由manifest、清单和Reviewer直接哈希关联的最终视频，详见[证据账](EXECUTION_EVIDENCE.md)。正式G1/G2/HOLD/NO_PUBLISH和素材权利PARTIAL继续。
+
+
 | 字段 | 当前有效事实 |
 |---|---|
 | PROJECT_GOAL | 不露脸跨领域“为什么”视频，优先完成第一条可观看、可听的内部作品 |
-| PROJECT_STAGE | PROD-R2编辑PASS；PROD-R3 55.367秒样片已交，Reviewer技术校验PASS、正式总评RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX |
+| PROJECT_STAGE | R2编辑PASS；R3修订样片技术/画面PASS，整体PARTIAL_AUDIO_LISTEN_UNVERIFIED（仅剩实际中文听感/审美确认） |
 | SYSTEM_MAP | 36题库；Mac Aqua短桌面→QuickTime全幅播放器；Owner Windows11本机Codex、OpenMontage/Qwen TTS、Remotion/FFmpeg、按需本地Docker素材工具；非VPS部署 |
 | CURRENT_ACCEPTED_STATE | PR#129/#131已合并main；G2–G4技术链通过；R6L/R7L已完成；R2修订文本/分镜审核通过 |
-| CURRENT_GATE | [PROD-R3-CW0005-INTERNAL-AV-SAMPLE](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md) 同Gate一次最小修正（字幕对比、S05步骤时序、Pixabay ID链接、ZIP本机路径脱敏），再交Reviewer；无R4授权 |
+| CURRENT_GATE | [PROD-R3-CW0005-INTERNAL-AV-SAMPLE](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md) 已完成修订交付，待Owner一次真实声音/整体审美反馈；不需要再修改视频或自动进入R4 |
 | CRITICAL_CONSTRAINTS | CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH；普通画面相关、不能冒充原实验；素材权利PARTIAL |
 | DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex → 脱敏ZIP与SHA → ChatGPT Reviewer独立验收，Owner仅转交与必要授权 |
 | CURRENT_ROLLBACK_STATUS | Git文档修改使用隔离分支PR可回退；R3本机回滚尚待运行前预检，旧媒体/工作树不得覆盖 |
-| UNRESOLVED | 已有55.367秒MP4且可解码；S05机制卡白字底色对比不足、三步画卡与旁白部分错位；Pixabay 2793链接指向37441；部分JSON/JSONL含Owner本机绝对路径；音色真人听感未独立确认；正式版权/Story-Fit/发布仍HOLD |
-| NEXT_STEP | 同一R3 Gate有界小修，复用已有音频和媒体，修复可读性/时序与台账脱敏；返回修正版单一ZIP/视频，不新增素材/模型/开发轮次 |
-| OWNER_ACTION_REQUIRED | 仅转交Reviewer原轮次小修要求给本机Codex、带回修订ZIP；不需要重复授权搜片或R4 |
+| UNRESOLVED | 旧S05显示/时序和链接/路径问题已在返修成片通过；Reviewer缺音频主观试听通道，仅音色/中文发音/整体审美未证实；一个较早候选SHA残留在revision_media_qa.json；正式版权/Story-Fit/发布仍HOLD |
+| NEXT_STEP | 仅请Owner查看返修MP4并确认声音自然、台词易懂和整体观感；如无实质问题即可关闭R3，再另行决定是否授权R4完整内部草片 |
+| OWNER_ACTION_REQUIRED | 只需要一次声音/审美意见：是否接受返修视频的中文旁白发音、语速和整体视觉感受；不让Owner承担哈希/解码技术QA |
 | EVIDENCE_POINTERS | [R2生效稿](CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)、[执行证据](EXECUTION_EVIDENCE.md)、[决策](DECISION_LOG.md)、下文历史ZIP/SHA |
 
 
@@ -56,6 +59,10 @@
 - PR131最终实机：`CWS_MEDIA_PR131_FINAL_RUNTIME_VERIFY_20261015.zip` SHA256 `8881c72b8b9823978080feace136c4dafceee1db6f1731d8867830f046922d30`；Reviewer核23SHA/22manifest；SearXNG 88视频110图片，4get 15视频81图片，190去重候选；真实PTY Ctrl+C，三CWS容器exit(0)、18080/15050释放、无关容器不动。Windows60/60单测为执行端提供的报告。
 - R6L/R7L：`CWS_MEDIA_R6L_R7L_FAST_MATCH_PILOT_20261016.zip` SHA256 `81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8`；Reviewer核CRC、20/20内部SHA、19manifest、六张1920×1080 JPEG与HTML嵌入。两原MP4**不在包内**，Reviewer未重解码全片；搜索+容器清理28.2秒、QA抽帧3.8秒不含完整人工审阅时间。
 - Mac窗口动效/视频工程支线与旧清理审计均是单独历史：MW07 Genie与MW11–13已有人提出KEEP候选但**不能推导Owner最终视觉签收**；9秒/M2技术片亦非成片。其他SHA和状态在[旧交接§7](REVIEWER_HANDOFF_2026-10-12_POST_R2M1_PAUSED.md)；无需重跑或复制大证据进Git。
+
+## R3修订版最新状态说明（后续历史文本不得覆盖）
+
+原版R3 `RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX` 的四项改动已完成并独立核验，无需再次发Codex小修指令。返修ZIP SHA-256 `84ddaac6b21279a1a77a46a5a85f71e5528b7d5f0a21274918aeb9bf07c919e0`。正式R3因Reviewer缺乏音频真人试听渠道而标 `PARTIAL_AUDIO_LISTEN_UNVERIFIED`，这是听感检查缺口，不是音轨缺失、视频无法播放或字幕失败。Owner只作一次节目审美/音色确认，R4仍需新授权。详情见 [EXECUTION_EVIDENCE](EXECUTION_EVIDENCE.md)。
 
 ## 五、当前已决定的下一步（覆盖历史计划）
 

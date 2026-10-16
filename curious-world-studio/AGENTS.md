@@ -1,5 +1,5 @@
 <!-- CWS-AUTHORITATIVE-ENTRY-20261016-R3 -->
-> **当前有效状态（2026-10-16）**：PROD-R2旁白与S01–S10编辑审核PASS；Owner已授权PROD-R3本机30–60秒**内部音画小样**，已有55.367秒内部样片，Reviewer技术检查PASS、整体RETURN_R3_VISUAL_AND_EVIDENCE_MICROFIX（S05可读性和步骤时序、来源索引/日志脱敏），需同Gate最小修复。以[唯一R3 Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)为当前任务，使用[R2已验收稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。旧“尚未授权任何制片”时态已由本次有界许可替代，但CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH正式状态不变。
+> **当前有效状态（2026-10-16）**：PROD-R2旁白与S01–S10编辑审核PASS；Owner已授权PROD-R3本机30–60秒**内部音画小样**，已有55.367秒返修内部样片，Reviewer对文件、音视频解码和S05画面小修独立检查PASS；正式R3仅`PARTIAL_AUDIO_LISTEN_UNVERIFIED`（等待Owner一次中文发音/观感确认），无需继续技术修复或自动进入R4。以[唯一R3 Gate](docs/PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)为当前任务，使用[R2已验收稿](docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md)。旧“尚未授权任何制片”时态已由本次有界许可替代，但CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH正式状态不变。
 > **素材与技术**：普通实拍相关即可，不重搜精确论文实验/建设识别模型。内部样片不另开版权调查；两条库存素材仍PARTIAL、仅作辅助、不可冒充论文实验或发布。PR#129/#131和G2–G4技术闭环已接受，不重跑；禁止触碰VPN/Clash、共享Docker、旧工作树。
 # Curious World Studio｜Agent / Codex 唯一入口
 
