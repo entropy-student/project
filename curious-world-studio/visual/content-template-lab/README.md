@@ -1,3 +1,10 @@
+## V3 30秒动态预览（2026-10-17，最新；覆盖下方旧V2开发状态）
+
+- **GitHub中可复用的无媒体源码**：[storyboard-v3-source.html](storyboard-v3-source.html)：六种模板＋30秒时间轴＋本地媒体槽位＋字幕编辑＋配置导出。默认空素材，必须自行填合法素材。
+- **实际视觉演示**：`CWS_30秒动态知识模板_完整预览.html`（Owner对话私有附件，不在GitHub）；媒体摘自Owner上传的第三方参考视频，只用于内部视觉评审；不具有转发、商用、公开视频权利。
+- **本轮Review**：`V3_VISUAL_DEMO_TECH_PARTIAL / REVIEWER_RETURN_EXACT_STYLE_AND_RIGHTS`。十二个抽帧检查点、T1–T6、T5阶段、字幕修改时视频连续播放、六段配置导出均测；完整30秒自动回归退出超时。Mac外壳使用接近原V2的CSS几何，未做到原V2源码逐帧复用。不能据此合并/生产/发布。
+- **完整Gate/证据与未完成项**：[CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md](../../docs/CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md)。旧V1静态退回和V2候选文档历史保留，以下V2描述仅作历史。
+
 # Curious World Studio — Content Template Lab V2
 
 > **STATUS: V2_REVIEW_CANDIDATE / DRAFT_PR_NOT_MERGED / NOT_PRODUCTION_AUTHORIZED**  
