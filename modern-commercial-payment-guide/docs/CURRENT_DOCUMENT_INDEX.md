@@ -1,43 +1,31 @@
-# 《现代商业支付系统》｜当前唯一有效文档索引（2026-10-17）
+# 《现代商业支付系统》｜当前有效资料索引（2026-10-17）
 
-> **本轮Owner更新**：①②最终封板；③④已采纳但未冻结；**⑤⑥暂不冻结、不落正式正文**（此前“验收通过后自动封板”权限被最新指令暂停）；改由**新的外部Agent独立重写第三部分**。工作包已准备，但还没有新的③候选正文。全书正式V6 7/29/42问题不变。
+> **最新Owner条件决策与独立Reviewer结论：选择新③结构作唯一继续优化候选；旧③正式正文已从main删除并归档可恢复；新③本轮RETURN，尚无第三部分正式全文。** ①②继续封板，④已采纳未封板，⑤⑥仅候选不落库不封板，全书V6 7/29/42仍冻结。
 
-| 项目GitHub正式路径 | 用途与当前地位 |
-|---|---|
-| [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) | **唯一项目交接**：当前Gate、①–④正式指纹、⑤⑥最新暂停状态、新Reviewer接手顺序 |
-| [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md) | 全书7个一级、29个二级、42个三级问题的冻结原文 |
-| [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | ①第一部分正式全文，**FINAL SEALED / READ ONLY** |
-| [P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) | ②第二部分正式全文，**FINAL SEALED / READ ONLY** |
-| [CHAPTER3_OWNER_ADOPTED_20261017.md](CHAPTER3_OWNER_ADOPTED_20261017.md) | ③当前**已采纳、但未封板**的正式全文，仍为新稿通过前唯一有效第三部分 |
-| [CHAPTER4_OWNER_ADOPTED_20261017.md](CHAPTER4_OWNER_ADOPTED_20261017.md) | ④当前**已采纳、但未封板**的正式全文，只读用于③新稿前后衔接 |
-| [CH3_NEW_AGENT_REWRITE_GATE_20261017.md](CH3_NEW_AGENT_REWRITE_GATE_20261017.md) | **当前有效第三部分新Agent独立重写任务**，正式题文、参考、输出约定、停在独立Review的边界 |
-| [CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md](CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md) | 第五六部分最新第二轮Reviewer RETURN：只作为历史/待修订候选依据；本轮不办理封板或采纳 |
-| [CH5_CH6_REVIEWER_RETURN_20261017.md](CH5_CH6_REVIEWER_RETURN_20261017.md) | 第五六部分首次Reviewer报告（历史） |
-| [CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md](CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md) | 原第三四部分Owner采用及修订历史记录（不是第三章新Agent候选） |
-| [CH3_CH4_REVIEWER_RETURN_20261017.md](CH3_CH4_REVIEWER_RETURN_20261017.md) | 原第三四部分早期候选的历史Review（非现行第三部分判定） |
-| [../DECISION_LOG.md](../DECISION_LOG.md) | Owner最新“暂停⑤⑥落库与重写③”及历史决策；只追加 |
-| [../EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md) | 包、文件指纹、回读校验与Gate执行证据；只追加 |
+| 当前 GitHub 文件 | 作用 | 权威地位 |
+|---|---|---|
+| [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) | **唯一完整交接**：项目现状、旧第三退出/恢复点、新第三返修Gate、下一Reviewer接手 | **READ FIRST / ACTIVE** |
+| [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md) | 全书7一级/29二级/42三级冻结题文 | **FROZEN** |
+| [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | 第一部分唯一正式全文 | **FINAL SEALED / NO EDIT** |
+| [P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) | 第二部分唯一正式全文 | **FINAL SEALED / NO EDIT** |
+| [CHAPTER4_OWNER_ADOPTED_20261017.md](CHAPTER4_OWNER_ADOPTED_20261017.md) | 第四部分唯一正式全文 | **OWNER ADOPTED / NOT SEALED** |
+| [CH3_NEW_AGENT_FIRST_REVIEW_RETURN_20261017.md](CH3_NEW_AGENT_FIRST_REVIEW_RETURN_20261017.md) | **现行第三部分唯一Reviewer返修报告**，新旧结构定夺、7P0+8P1定向修改 | **CURRENT REVIEW RETURN** |
+| [CH3_NEW_AGENT_REWRITE_GATE_20261017.md](CH3_NEW_AGENT_REWRITE_GATE_20261017.md) | 旧一轮新作者写作任务与输入要求，已完成首次交稿 | **HISTORICAL WRITER GATE** |
+| [CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md](CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md) | 第五六部分最新待修正结果 | **PAUSED / NOT ADOPTED** |
+| [CH5_CH6_REVIEWER_RETURN_20261017.md](CH5_CH6_REVIEWER_RETURN_20261017.md) | 第五六部分首次历史审查 | **HISTORICAL** |
+| [CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md](CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md) | 历史③④采用证据，其中旧③已经被Owner本轮撤出 | **HISTORICAL** |
+| [CH3_CH4_REVIEWER_RETURN_20261017.md](CH3_CH4_REVIEWER_RETURN_20261017.md) | 更早旧③④候选评审 | **HISTORICAL** |
+| [../DECISION_LOG.md](../DECISION_LOG.md) | Owner最新选择、退出旧第三与新稿返修决定 | **APPEND ONLY** |
+| [../EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md) | 输入ZIP、源码哈希、Review、备份/删除和恢复证据 | **APPEND ONLY** |
 
-## 五份不变的权威指纹
+## 唯一当前返修材料
 
-- ①Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`。
-- ②Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`。
-- ③Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`，SHA256 `52092ab1b9bd9b29013ebff9e67d6ef9885e2cf20dd2d09402f797a597805040`。
-- ④Git Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`，SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759`。
-- V6 Git Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
+- **新稿**：原ZIP `现代商业支付系统_第三部分_全新独立重写成果.zip`，SHA256 `74cc17f834f849ba280cfaf98ebe248ba2e72b72f216c7ec0bc32d50b22bac3e`；2个Markdown、CRC PASS。新全文 SHA256 `99dcd84d71ef950ae0dfa26482d41bcd5a13189dc53e635d27b156eb96311573`，作者执行记录 SHA256 `23edc60b3f97e28851523de7fb0fc19102d3feaa60388606e8f2118b1f0d3d4e`。
+- **唯一有效返修ZIP**：文件库 `/现代商业支付系统/现代商业支付系统_第三部分_新Agent定向返修资料包_20261017.zip`，Library ID `libfile_84995f1060348191b7ab230ec63aaede`，SHA256 `6d7c1dd83fdce545bb7b9f53a41df499ea42459a2301c36f7c3b9001df994cd8`，CRC PASS，恰好三Markdown：原新稿、原QA与本轮Reviewer定向返修清单。原单独候选及报告在Library可追溯，最初新Agent**写作输入**ZIP已经归档，不再作为新当前任务。
+- **第三部分本轮任务**：保留两种经营类型（29美元软件与120美元实物）及筛选方法/完整价格示例/退款失败引导，对7组P0、8组P1做精确返修。外部Agent交**新③完整候选Markdown+独立核验记录Markdown**两文件ZIP，独立Reviewer复审；**Owner需要再次明确决定是否把修订后的新稿正式入库**。
+- **旧③安全退役**：原GitHub位置 `docs/CHAPTER3_OWNER_ADOPTED_20261017.md` 已于提交 `743f7b4c2ee9222ba1149cee7075b401aeeb9293` 删除；原Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`、SHA256 `52092ab1b9bd9b29013ebff9e67d6ef9885e2cf20dd2d09402f797a597805040`，仍可经Git历史提交 `ee56c0c1a38b3488b77f5639bb3186cd698fb28b`及 `/项目历史归档/现代商业支付系统_第三部分_正式采纳稿.md` 完全恢复。**不自动恢复，也不把新稿冒充正式正文**。
 
-## 当前活动工作包（只保留一个有效③新作家入口）
+## 保持不变的正式稿与约束
 
-- Library `/现代商业支付系统/现代商业支付系统_第三部分_新Agent独立重写工作包_20261017.zip`，stable ID `libfile_d64153b80c508191b90184d0d8cc0da4`，ZIP SHA256 `52504b51836f789e8706cf8ba0e19ad456f8ab0a59e1104d69d33177e9d4ee36`，116,366 bytes。根目录**10份UTF-8 Markdown、CRC PASS**，包含：
-  - `00` 独立重写Agent提示词、`01` ③V6冻结题文与跨章边界；
-  - `02–03` 第一、第二部分完整**封板只读原稿**（哈希与main一致）；
-  - `04–05` 第三、第四部分当前已采纳但未冻结的**只读参考**；
-  - `06` 内容质量诊断、`07` 官方核验链接与风险边界、`08` 下任Reviewer离线接手、README成员哈希。
-- **外部新Agent只交付** `现代商业支付系统_第三部分_全新独立完整候选稿.md` 与 `现代商业支付系统_第三部分_独立核验与执行记录.md`，**恰好两个UTF-8 Markdown**打包 `现代商业支付系统_第三部分_全新独立重写成果.zip`。不直接覆盖GitHub正式③；独立Reviewer审核后Owner明确采纳，才考虑替换。
-- 包内已确认的全文SHA与上方权威一致；旧③单章独立写作包/原③④联合写作包已归档不再作为有效输入。
-
-## ⑤⑥只保留候选，不启动本轮采纳
-
-- 第二轮候选Library `/现代商业支付系统/现代商业支付系统_第五六部分_第二轮返修候选_20261017.zip`，SHA256 `de8a7b737509666509486e672be23a6b364d942d76726c204bcd9e7c378634ad`；对应 [最新Reviewer RETURN](CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md)。
-- **Owner最新决定暂不冻结或落库**，不因此前“可自动最小修正后封板”旧指令触发任何第五六部分正式文件写入。未产生⑤⑥正式正文，后续启用须Owner再次指示。
-- ⑦财务与合规经营、最终单文件HTML：PENDING；本轮无生产/真实支付/退款/出款业务操作。
+- 第一部分Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、第二部分Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、第四部分Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、全书V6 Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，本轮未改变。
+- 第五六部分依Owner明确决定暂不正式落库或冻结；第七部分与HTML未启动；本轮无真实支付账户、退款、提现或服务器生产变更。
