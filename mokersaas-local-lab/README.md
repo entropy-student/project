@@ -12,6 +12,10 @@
 
 **Reviewer decision:** SITE_UP_ACCEPTED_FOR_OWNER_LOCAL_EVALUATION. No additional first-boot repair Gate and no need to re-run the successful setup. Formal independently audited Governance PASS is **not attested** because Reviewer has inspected the supplied detailed Owner-forwarded Executor results, not raw native Docker/HTTP artifacts (§7). This limitation does not require another deployment loop merely to browse the site.
 
+## 2026-10-17 — Page & feature inventory before repairs
+
+[Complete 18-page and embedded-module catalogue](MOKERSAAS_PAGE_FUNCTION_INVENTORY_2026-10-17.md) inventories the 18 source-defined page routes, 4 rendered profile tabs, 9 admin tabs, disabled local providers and protected/untested pages. This is a **static source + prior G1X evidence map**, not an authenticated live-browser audit or permission to perform app repairs. User priority: FIRST review all page and feature scope, THEN aggregate login/access/functional issues into one repair plan. The Owner's inability to log in or open admin remains an OPEN experiential blocker despite earlier synthetic auth API smoke; do not claim all frontend/backend usable. No new Executor Gate and no changes to running app/DB from this inventory.
+
 ## Owner — next action
 
 On the **same Windows machine** where Docker Desktop runs, open:
