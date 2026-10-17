@@ -1,6 +1,6 @@
 # SAAS-G1-VH-READONLY-PREFLIGHT-20261017
 
-> STATUS=READY_FOR_OWNER_LOCAL_READONLY_EXECUTION
+> STATUS=HISTORICAL_CLOSED / REVIEWED_RETURN_RESOURCE_HEADROOM_INSUFFICIENT
 > GOVERNANCE=https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md
 > SOURCE_TARGET=https://github.com/velobase/velobase-harness
 > PROJECT_CANONICAL=`entropy-student/project@main:saas-system/`
