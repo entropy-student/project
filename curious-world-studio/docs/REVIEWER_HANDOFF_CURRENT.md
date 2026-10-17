@@ -1,5 +1,13 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+## 2026-10-17｜V4最新接手（覆盖下方V3/V2历史下一步）
+
+- **Owner方向**：一条影片只保留一个Research Aqua桌面/QuickTime播放器；六种B展示模板为独立可复用函数，任何顺序、任何次数，不拆六个播放器。总时间轴贯穿桌面双击打开→播放→鼠标点红灯关闭回桌面，控制内容时长、字幕、素材和播放器进度。不增加模板或从零重绘Mac。
+- **新产物**：Draft [PR#144](https://github.com/entropy-student/project/pull/144)新增[GitHub V4母版](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v4-master.html)，嵌入锁定的G1V-A V2原Canvas源码（原main文件未修改），6个`TEMPLATE_RENDERERS`、7个`EDITORIAL`镜头、T1复用两次、31.06秒统一`compileTimeline`、新增`renderClose`。GitHub版本无第三方媒体；会话内私有近似壳版含样例/参考片，不入Git。
+- **Reviewer status：`V4_ARCHITECTURE_CANDIDATE / LOCAL_BEHAVIOR_PASS / EXACT_SHELL_VISUAL_UNVERIFIED`**。隔离本地Chromium逐时码seek测试15点、7镜头六模块、字幕编辑、播放暂停、结尾已显示回桌面、0 JS异常；长时整31秒1×脚本超时，**不能声明整片一倍速 PASS**。原V2代码与内容overlay已在GitHub层静态回读确认，但Github那一份“真实原版源码”未进行同一浏览器运行验收；不能拿私有近似Mac版视觉替代。
+- **当前Gate及证据**：[V4 Reviewer审查记录](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V4_MODULAR_TIMELINE_REVIEW_2026-10-17.md)、`EXECUTION_EVIDENCE`中V4一节、源仓库PR#144。**NEXT_STEP**：准确运行PR内原V2 Canvas合成版，确认开窗/播放器内容叠层/关闭的连续视觉与1×时序，再评估足够合法的多样实拍资产，决定局部返工或合并；不要自动进入正式影片制作R4。
+- **RollBack**：新文件位于隔离PR，原V1/V2/V3均保留；关闭或回退V4不影响main。正式`R3=RETURN_OWNER_VISUAL_STORYFIT / CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`。**OWNER_ACTION_REQUIRED：NONE**。
+
 ## 2026-10-17｜V3最新交接（覆盖下方V2候选表述）
 
 - **交付**：Owner批准的30秒六模板连续HTML样片已在本次对话以私有附件提供，包含自选/内嵌参考片段（含第三方素材），**不推到公开仓库**；PR#144分支只新增[无媒体V3可编辑源码](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v3-source.html)和[审查证据](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md)。六模板底层共享版式设计，参照Mac研究桌面及QuickTime边到边播放。
