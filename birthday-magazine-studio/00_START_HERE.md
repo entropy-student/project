@@ -4,22 +4,20 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_OWNER_CODEX_CLOUDFLARE_BROWSER_OPEN_2026_10_17` and authoritative G3S4J check scope.
-2. [G3S4J Cloudflare/localhost current Gate](./docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md) — latest Owner browser/screenshot appendix: **Codex's own Cloudflare tab read-only + existing 8189 safety**, one PR64 Evidence, stop.
-3. [Reviewer chosen free Cloudflare named Tunnel route](./docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md) — official HTTPS → local WordPress TEST, no added paid host.
-4. [PR #64 latest prior G3S4H research Evidence](https://github.com/entropy-student/project/blob/b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf/birthday-magazine-studio/docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md) — still no Cloudflare or Stripe operation yet.
-5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — prior milestones.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — top `CURRENT_REVIEWER_G3S4J_PARTIAL_AND_G3S4K_LOCAL_ISOLATED_STAGE_2026_10_17` is latest.
+2. [G3S4J Reviewer partial accept](./docs/REVIEWER_DECISION_G3S4J_ACCEPT_ISOLATED_LOCAL_WOO_ROUTE_2026-10-17.md) — existing 8189 must not be made public; Cloudflare browser URL-confidence failure only affects public zone verification.
+3. [G3S4K isolated local synthetic Woo Stripe TEST Gate](./docs/G3S4K_ISOLATED_LOCAL_STRIPE_TEST_STACK_GATE_2026-10-17.md) — **current local-only build, pending exact Owner permission**, fresh project/DB/volumes and verified localhost port.
+4. [PR #64 G3S4J Evidence](https://github.com/entropy-student/project/blob/9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956/birthday-magazine-studio/docs/evidence/g3s4/G3S4J_CLOUDFLARE_LOCAL_HTTPS_STAGE_2026-10-17.md) — current direct local facts and Cloudflare browser stop.
+5. [G3S4J original Cloudflare feasibility Gate](./docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md) — historical completed read-only check.
+6. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — older milestone records.
 
 ## Current snapshot (2026-10-17)
 
-- **Codex Cloudflare browser now available by Owner report:** screenshot shows `spikersun.com`, `spikewang.ccwu.cc`, `spikspikeapi.dpdns.org`. `stripe-test.spikersun.com` is only a candidate until Codex confirms zone active/DNS slot and Owner explicitly approves publication. Do not create DNS/Tunnel under this read-only Gate.
-
-- **Owner route:** already owns a domain on Cloudflare and prefers local Windows Docker WordPress + **free named Cloudflare Tunnel** HTTPS publishing to enable normal Stripe TEST OAuth/Webhooks. Do not buy WordPress.com for this testing need. Exact safe dedicated subdomain unverified/not published.
-- **Current G3S4J read-only design:** determine whether existing local `127.0.0.1:8189` has only safe synthetic data and can be published with reversible WordPress HTTPS canonical URL; if not, use isolated small local synthetic Woo stack. No public DNS/Tunnel/provider write authorized by feasibility question yet.
-- **Current local plugin:** official Woo Stripe 11.1.0 `active` but gateway disabled, no keys/connection/TEST checkout per PR64 G3S4M evidence. No real payment.
-- **Historical G3S4H:** Reviewer passed WordPress.com Business $40/mo hosting discovery; this is **deferred/not purchased** because Owner has existing Cloudflare domain/local backend.
-- **Security:** exposed local WP admin password private rotation still unverified; required before public route. No old/new VPS access.
-- **PR #64:** open/unmerged, latest Evidence head `b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf`. Accepted local frontend, protected backup/PayPal Sandbox evidence preserved.
+- **G3S4J reviewed PARTIAL:** original `127.0.0.1:8189` WordPress/Woo has one order, 387 uploaded files (contents unverified), loopback canonical URL and an exposed old admin password not confirmed privately rotated. **Do not publicly expose the original site.** Source PR64 latest `9461d5c5...` Evidence only.
+- **Next G3S4K:** new completely isolated synthetic WordPress/Woo/official Stripe local Docker TEST installation, separate project/database/new unique admin, one virtual USD39.99 fixture, new *verified free* localhost port. No new stack yet; exact Owner local build permission needed. The suggested `8190` port is **unverified** and must not be assumed free.
+- **Cloudflare:** Owner screenshot listed `spikersun.com`, but Codex Computer Use URL-confidence check failed; zone DNS/tunnel rights and proposed `stripe-test.spikersun.com` are **UNKNOWN**. This is deferred to later named public routing and **is not a reason to block local test-stack work**. No DNS/Tunnel deployed; no WordPress.com purchase.
+- **Payment:** original Stripe plugin active/gateway disabled/unconnected. No Stripe TEST account/payment/Webhook/refund yet, no real/Live money. Local pay/fulfillment remains disabled in G3S4K; future public HTTPS official OAuth will be separate.
+- **Other:** existing original project and PayPal Sandbox proofs backed up and preserved. Replaced/current VPS untouched; PR #64 open/unmerged.
 
 ## Source-of-truth rule
 
