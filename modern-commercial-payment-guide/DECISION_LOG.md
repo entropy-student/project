@@ -83,3 +83,14 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **唯一交付：** 外部作者须交完整③候选Markdown+完整④候选Markdown+③④共享独立核验/执行记录Markdown，ZIP中恰好三文件；作者自检非Reviewer PASS。文章均不得自动入main，必须Owner确认。
 - **Reviewer完整续接：** 已把当前唯一Gate、历史决策、①②正文Blob/SHA、③④严格V6题文数量及边界、Writer成果文件名、付款状态/验签/幂等审查要点、GitHub/Library位置、未知项、Owner-only动作及下一审查步骤写入 `REVIEWER_HANDOFF.md` §五–七并同步 `docs/CURRENT_DOCUMENT_INDEX.md`。联合ZIP自身亦含离线新Reviewer快照以避免新会话无上下文。
 - **不作推断：** 当前第三、四部分完整候选稿`NOT_RECEIVED`，外部Agent是否已开始`UNKNOWN`；第五至七部分及HTML未启动，也无任何支付服务商或资金交易动作授权。
+
+
+## 2026-10-17｜③④最小修正正式入库并启动⑤⑥
+
+- **OWNER授权原文**：“如有问题请你自行修正并最小化解决。完成后落到GitHub仓库里并记录，然后启动第五和第六部分。”随附第二轮外部Agent返修ZIP；解释为允许Reviewer审核、完成最小事实修正、将③④正式正文纳入GitHub main，并按前序联合写作流程启动⑤⑥联合外部写作输入；**未要求③④本轮另外正式封板**。
+- **正式正文新版本**：③ `docs/CHAPTER3_OWNER_ADOPTED_20261017.md`，Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`、SHA256 `52092ab1b9bd9b29013ebff9e67d6ef9885e2cf20dd2d09402f797a597805040`，提交 `ee56c0c1a38b3488b77f5639bb3186cd698fb28b`；④ `docs/CHAPTER4_OWNER_ADOPTED_20261017.md`，Git Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759`，提交 `a8e42ed68a4b3843d3ff8da9c9033299125dfcf6`。与Owner原封板①②不同，③④状态为`OWNER ADOPTED / NOT YET FORMALLY SEALED`。
+- **原始与整改资产**：本轮新上传的外部返修候选ZIP `现代商业支付系统_第三四部分_联合独立写作成果(1).zip` SHA256 `8cba1846047269cb480d23bfec8846b80f7f7b3ab4bbaec4102617c78ca6d1e4`，归档Library `/项目历史归档/现代商业支付系统_第三四部分_外部返修候选第二轮_20261017.zip`。Reviewer独立最小修正执行记录位于 `docs/CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md`，Git Blob `8a920ee7aae180d622516fc9d5521b2331d4834f`；三文件正式版ZIP SHA256 `c09b8bc9452c87f3f27c22b9db7b04b95eaee8049d6f6eb721d73153e97ff039`，存历史以避免复制出多份当前正文。
+- **不可改动边界**：①Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、②`51dab57d0ed5d5458b14422040297ebfbcebe676`、正式V6 7/29/42问题 `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，全部本轮没有更动。正式③④各4H2/5H3问题原文及顺序未改。
+- **本轮纠错范围**：修正 Apple Pay 非Safari的条件与中国大陆跨浏览器例外、FTC 2024 Click-to-Cancel修订被2025-07-08撤销、过时的独立SOFORT支付方式、3DS挑战/责任边界、支付完成与清算余额区别、Stripe幂等键重试同键与未开始执行不缓存、支付对象失败态不能单凭单笔就重新扣款、PayPal capture多笔与部分金额、PCI SAQ A不一律逐年提交、Webhook延迟及有关无依据固定数字；最小修正，不重新组织两篇叙事。执行记录留有官方参考与剩余条件。
+- **第五、第六部分任务**：新的联合外部写作资料包 `/现代商业支付系统/现代商业支付系统_第五六部分_联合独立写作资料包_20261017.zip`，SHA256 `a125b87a69935034d073cdcb712558bd1713eb277c63f866d4c82b9e9a335201`，共9份Markdown（提示词、⑤⑥V6、①–④正式只读全文、官方来源、Reviewer快照和README）。⑤4H2/5H3、⑥4H2/6H3，要求外部Writer交两个完整新章+一份核验/执行记录组成的三MD ZIP，先Reviewer后Owner决定是否采纳。
+- **阶段边界**：第五第六部分正式正文`NOT_RECEIVED`、已准备写作资料但尚不声称Writer已运行；第⑦部分与最终HTML仍PENDING。本轮没有实际经营支付、提款、退款、商户设置或服务器部署。
