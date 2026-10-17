@@ -2,9 +2,10 @@
 Updated: 2026-10-17
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
 PROJECT_GOAL: 在 Owner 的 Windows 11 本机用 Docker 启动 Paymenter（中文优先），观察真实用户前台、管理员后台、产品/套餐及可用功能；此项目目前仅供私有试用。
-PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS / G2B_R1_SOURCE_CLI_PASS / G2C_SOURCE_RUNTIME_PASS / G2B_AUTHENTICATED_UI_PARTIAL_LANGUAGE_ISSUE_OPEN / REFERRAL_READONLY_RESEARCH
+PROJECT_STAGE: OWNER_AUTHORIZED_G3_SAFE_DECOMMISSION / LOCAL_NOT_EXECUTED / GITHUB_REMOVAL_AWAITS_LOCAL_PROOF
 SYSTEM_MAP: Owner Windows 11 build 26300 + PowerShell 7.6.5 + Docker Desktop Linux (Engine 29.7.2 / Compose v5.4.0) → 项目专属 Compose paymenter_local_lab [Paymenter、MariaDB、Redis] → 127.0.0.1:8187；活跃 MariaDB 数据位于项目命名卷 paymenter_local_lab_database；APP_KEY、Compose、日志、历史失败数据库目录等位于 %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab；未使用 VPS/公网路由。
 CURRENT_ACCEPTED_STATE:
+- OWNER_AUTHORIZED_G3_DECOMMISSION 2026-10-17：Owner 要求将 Paymenter 本机项目安全完整移除，证实后安全移除共享 GitHub 项目仓库内该项目目录。Reviewer 已锁定 G3 清理 Gate 和顺序，当前仅创建仓库任务书，尚未直接操作 Owner Windows，本机卸载/删除 **未执行**，GitHub 子树 **未删除**。本机 fresh 数据/引用/真实宿主检查必须先通过；G1 上一次仅有合成商品/0 订单，不能据此假定当前状态未变。任何共享资源保留。
 - OWNER_REPORTED 2026-10-17（G2C 后真实体验，RECORD_ONLY）：管理员后台无论调整语言仍然英文，也可能没有找到正确设置；前台切换不同语言后仍出现中英文/其他语言混排。此 G2B UX 问题保持 OPEN/UNVERIFIED_ROOT_CAUSE；不以 G2C CLI PASS 覆盖 Owner 使用感受。用户明确要求暂不修复，转向调查 Paymenter 裂变功能。
 - REFERRAL_RESEARCH 2026-10-17：本机 G1 历史确认安装扩展 0、支付网关 0（本轮无新本机读回），优惠券为原生功能且不自动等于推荐关系。第三方 Referrals https://paymenter.org/marketplace/119604-referrals，BuiltByBit 收费 $6.99、closed source、标注英语界面、仅公开标记 Paymenter 1.5.0 兼容（本机 1.5.9 未核实）；可提供个人推荐链接/码、首几张发票折扣、持续佣金、账户余额兑换、佣金等级及管理后台，但插件未购未装，手输邀请码和直接发 SaaS 额度/会员权益尚未确认。
 - Reviewer G2C PASS 2026-10-17: Reviewed complete PR #150 with exact three-source-file incremental patch, replay README, non-secret execution evidence, and official Filament v5.7.6 NavigationGroup/NavigationManager source. Confirmed admin locale allows session values and zh only maps zh_CN, en/fi remain; NavigationGroup Closure lazily resolves label; audit details restore two removed arguments and pass actual in-memory fixture rendering by Executor. Validated reported HTTP Kernel locale probes, data/12 notification template invariants and bidirectional patch checks within scoped trust boundary. Reviewer did not directly log in to Owner Windows; G2B remains PARTIAL. PR #150 squash merged into main 752b4ececf0d58850fc34431db785327add4dc25.
@@ -22,14 +23,14 @@ CURRENT_ACCEPTED_STATE:
 - 中文事实：默认语言已设置 zh；前台、登录页、用户区部分繁体中文；首页及管理员后台仍有英文。未更改翻译文件。此为功能限制，不是 G1 部署阻塞。
 - 源码/镜像：官方 Paymenter 上游 master 1d4c0b92dac0f93f28998b04c4c0e282bf436177；实际 App/MariaDB/Redis 镜像 SHA 与探测细节详见 EXECUTION_EVIDENCE。
 - 启动问题已修复并验证：数据库 readiness 竞态；Windows host bind MariaDB InnoDB 表空间问题。改用独立命名卷，保留首次失败数据目录；未 prune/down -v、未动其他项目。
-CURRENT_GATE: docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md = PARTIAL_AUTHENTICATED_UI_EVIDENCE_PENDING。G2C 源码/请求级 locale/审计详情 runtime 正式 PASS，PR #150 已合并 main (752b4ececf0d58850fc34431db785327add4dc25)；不重复 G1/G2A/R1/G2C。
+CURRENT_GATE: docs/G3_SAFE_DECOMMISSION_GATE.md = OWNER_AUTHORIZED / LOCAL_NOT_EXECUTED；仅针对 Owner Windows 本机 Paymenter 演示实例，先本机 PASS 后 Github-only 移除 paymenter-local-lab 路径。
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 可通过精确 docker compose -p paymenter_local_lab -f <owned-compose> stop 停止试用并保留命名卷及本机文件；这属于停机而不是已验证的全量灾备/恢复，恢复演练未做。
 UNRESOLVED: Owner 在 G2C 后反馈：后台无论如何调整仍英文（也可能尚未找到正确入口），前台切换语言后中英及其他语言混杂；真实 UX 原因未诊断且 G2B 视觉仍 PARTIAL。G2C 仅源码/请求/fixture 范围 PASS，不可抵消使用者报告。原生 DB 商品/分类不会自动翻译，后台芬兰语缺词条时英文 fallback。Stripe/Referrals 未启用（历史证据；非最新直读）。Owner 要求暂记问题，不再推进翻译。
-NEXT_STEP: 暂停继续汉化/G2B 修复（用户主动要求先记录），只说明并评估推荐裂变当前原生优惠券能力与第三方 Referrals 安装后的前后台操作。未来若 Owner 明确授权再评估购买/安装 Referrals，先核对 v1.5.9 兼容、非开源闭源/英语界面、价格、退款/佣金与权限风险，不隐含购买/部署授权。
-OWNER_ACTION_REQUIRED: NONE for record-only/referral explanation. Owner 不必运行 Codex、修语言或安装扩展。如未来要求体验真实裂变功能，则需先明确是否购买付费扩展或优先独立无付费演示，按规范再设执行 Gate。
-EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md（含 G2C Executor 与 Reviewer 实际代码核验/决议）；PR #150 https://github.com/entropy-student/project/pull/150 merged 752b4ececf0d58850fc34431db785327add4dc25；G2C 增量补丁/回滚 localization/g2c/README.md；G2B 后续 Gate docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md；G2A PR #148、R1 PR #149。
+NEXT_STEP: Owner 本机 Codex 按 G3 fresh preflight，证明项目资源/根目录所有权及无新增真实业务数据；逐项移除专属 Compose 容器、卷、网络、本机项目目录并验证无共享资源变化；将无敏感退出证据交 Reviewer。Reviewer 正式接受 LOCAL_PASS 后，清理 GitHub main 的 paymenter-local-lab 子树，不影响 entropy-student/project 其他项目或 Git 历史。
+OWNER_ACTION_REQUIRED: 将 docs/G3_SAFE_DECOMMISSION_GATE.md 单段提示词粘贴到在真实 Windows 上运行的 Codex 执行本机清理，再把简短无敏感输出带回本聊天；不需要 Owner 手动逐项删除。GitHub 清理由 Reviewer 在确认本机退出后执行。
+EVIDENCE_POINTERS: docs/G3_SAFE_DECOMMISSION_GATE.md；既有 EXECUTION_EVIDENCE.md 及所有既有 Paymenter 源码/补丁是本机退出前的远端重建证据；本机 G3 执行结果需后续补充；GitHub main 目录保留直到 LOCAL_DECOMMISSION_PASS 由 Reviewer 复核。
 
 
 ## 2026-10-17 G2C Executor result
