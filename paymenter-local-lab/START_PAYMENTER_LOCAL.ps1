@@ -39,7 +39,9 @@ if (-not (Test-Path $manifest)) {
     if (-not $yaml.Contains('MYSQL_PASSWORD: &db-password "CHANGE_ME"') -or
         -not $yaml.Contains('MYSQL_ROOT_PASSWORD: "CHANGE_ME_TOO"') -or
         -not $yaml.Contains('      - "80:80"') -or
-        -not $yaml.Contains('APP_ENV: "production"')) {
+        -not $yaml.Contains('      - "./database:/var/lib/mysql"') -or
+        -not $yaml.Contains('APP_ENV: "production"') -or
+        -not [regex]::IsMatch($yaml, '(?m)^volumes:\r?\n  app:')) {
         throw 'Upstream Compose differs from reviewed layout; no start.'
     }
     $yaml = $yaml.Replace('MYSQL_PASSWORD: &db-password "CHANGE_ME"',
@@ -47,6 +49,10 @@ if (-not (Test-Path $manifest)) {
     $yaml = $yaml.Replace('MYSQL_ROOT_PASSWORD: "CHANGE_ME_TOO"',
                           ('MYSQL_ROOT_PASSWORD: "' + (RandomHex 20) + '"'))
     $yaml = $yaml.Replace('      - "80:80"', ('      - "127.0.0.1:' + $Port + ':80"'))
+    $yaml = $yaml.Replace('      - "./database:/var/lib/mysql"', '      - "database:/var/lib/mysql"')
+    $newline = [Environment]::NewLine
+    $yaml = [regex]::Replace($yaml, '(?m)^volumes:\r?\n  app:',
+                             ('volumes:' + $newline + '  app:' + $newline + '  database:'), 1)
     $yaml = $yaml.Replace('APP_ENV: "production"',
                           ('APP_ENV: "production"' + [Environment]::NewLine + '      APP_LOCALE: "zh"'))
     $yaml | Set-Content -LiteralPath $manifest -Encoding utf8
@@ -69,14 +75,20 @@ Write-Host '[P2] Validating and starting three containers ...'
 Check-Docker 'compose config'
 & docker compose -p $projectName -f $manifest up -d
 Check-Docker 'compose up'
-Write-Host '[P3] Checking app migrations and initialization ...'
+Write-Host '[P3] Waiting for app database migrations ...'
 $ready = $false
+$migrationStatus = ''
+$migrationExit = 1
 for ($i = 0; $i -lt 36; $i++) {
-    & docker compose -p $projectName -f $manifest exec -T paymenter php artisan about 1>$null 2>$null
-    if ($LASTEXITCODE -eq 0) { $ready = $true; break }
+    $migrationStatus = (& docker compose -p $projectName -f $manifest exec -T paymenter php artisan migrate:status --no-interaction 2>&1 | Out-String)
+    $migrationExit = $LASTEXITCODE
+    if ($migrationExit -eq 0 -and $migrationStatus -notmatch '\bPending\b') { $ready = $true; break }
     Start-Sleep -Seconds 5
 }
-if (-not $ready) { throw 'App init unverified: preserve project data and inspect project-scoped logs.' }
+if (-not $ready) {
+    $pendingCount = [regex]::Matches($migrationStatus, '\bPending\b').Count
+    throw "Migrations not ready (exit=$migrationExit, pending=$pendingCount); preserve project data and inspect project-scoped logs."
+}
 & docker compose -p $projectName -f $manifest exec -T paymenter php artisan app:init 'Paymenter 本机试用' $url
 Check-Docker 'app init'
 & docker compose -p $projectName -f $manifest exec -T paymenter php artisan db:seed --class=CustomPropertySeeder --force
