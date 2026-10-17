@@ -1,3 +1,14 @@
+<!-- CWS_V5_ORIGINAL_ONLY_CURRENT -->
+## V5 原版 Mac 唯一外壳候选（2026-10-17）
+
+**最新入口：** [storyboard-v5-original-shell.html](storyboard-v5-original-shell.html)。这次从[原版Research Aqua V2](../../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html) HTML/Canvas直接改，不再用V3/V4自画的Mac与`#qt`第二套播放器。原版菜单/Dock/鼠标/红黄绿按钮/QuickTime的`qtWindow`均沿用，B内容区调用T1–T6模块；7镜头共用一条Master Clock，T1两个实例独立，结束鼠标关窗回桌面。
+
+**请先检查V5，而不是旧V4或index.html。** 无外部字体/网络/版权参考媒体，不导入素材时显示明确占位；Edge保存单HTML可本地打开，选择本地素材用于私有测试。展示模板不等于可发布电影。
+
+**已验证：** GitHub文件回读、两个script语法、6/6模板函数、单Canvas/无双播放器及受控22时点时轴执行；**未验证：** 真实浏览器全长1×的原版视觉整合、用户本机离线打开、媒体文件连续播放、正式声音与MP4。因此Reviewer只判`PARTIAL`；完整说明见[V5 Review](../../docs/CWS_TEMPLATE_LAB_V5_ORIGINAL_SHELL_REVIEW_2026-10-17.md)。PR仍Draft，R3视觉RETURN/G1/G2/R4/NO_PUBLISH不变。
+
+---
+
 # 当前V4入口（2026-10-17）
 
 > **V4 = 复用原Mac画法 + 六模块/七镜头 + Master Clock + 关闭回桌面；技术局部PASS、整体视觉待验收。** PR#144仍为Draft，R3正式HOLD/NO_PUBLISH均不变。
