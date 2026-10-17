@@ -47,3 +47,11 @@ GitHub已核实`entropy-student/spike.skill/comic-narrative`的`part4_5/ASSET_RE
 ## 2026-10-16｜Owner要求记录C类生图省资源技巧
 
 不另设生图分类与分镜模板。为A视频/B素材图片/C AI生成静态图中的C类，复用`spike.skill/comic-narrative`源项目已验收的完整图素材库判断：先检查兼容成品→直接复用/单图编辑/局部参考/再重新生成；并参考已经实际验证过的Codex内置生图Fast Path，**双并发**、以返回的官方output_hint找真实文件、直接复制保存与SHA/实际像素/QA、避免stdin/TTY/base64搬运、Native像素数值不符时不自动重生。详细参考[AI生图复用与低浪费执行指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)。已明确它能降低无谓调用和返工风险，却没有Token最省百分比或CWS实际运行证据；本轮**只记录技巧**，不执行图片生成、修改正式视频或放行R4。
+
+## 2026-10-17｜Owner确认A方案：6种内容模板共用3布局，先验证再集成
+
+- Owner已明确同意推荐方案A，设计为**视觉编排→选择素材和模板→制作视频**三步的第二部分。内容模板是T1单素材/T2双画面对照/T3实拍+解释/T4证据档案/T5过程演变/T6数据与结论，底层可共用全幅/分栏/序列三种布局；已有Mac窗口动作MW-01～13仅作为必要交互外壳复用，不自动互相组合成39种或另外造出一套Mac系统。
+- V1被Owner明确批评“静态、和原先样式不太一样”；独立Reviewer确认`RETURN_VISUAL_MOTION_AND_STYLE`，要求恢复真正的Mac开窗视觉和按时间自动演出，不以“可以上传素材”替代“可以播放成片”。
+- Owner要求继续推进并同步整理文档，故V2仅在[独立Draft PR#144](https://github.com/entropy-student/project/pull/144)返修与保留证据；正式`CW0005_VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`及R4未授权、原稿锁定、素材权利审查仍有效。
+- V2当前仅`REVIEW_CANDIDATE / PARTIAL_VERIFICATION`，不能因为6模板的行为测试通过就宣称整体视觉质量PASS。真实内容是否优于参考视频，需下一步用多来源实拍/论文图等真实可审核材料进行连续观片比较。
+
