@@ -80,3 +80,10 @@ Read ONLY:
 请 Reviewer 检查：重放真实性、业务状态不变、回调签名和测试阶段收尾。
 Owner 转交：NONE / 一次官方测试事件手动 Resend（如需，不能含账号密钥）。
 ```
+
+
+## 2026-10-17 Reviewer pre-replay acceptance @ 035e55 — ONE Owner TEST dashboard click (LATEST)
+
+**Reviewer formal checkpoint:** [`REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md`](./REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md). Actual PR64 HEAD `035e55ec6af41688b5efc56c638a58c4ebb3122b` OPEN/UNMERGED; **only existing G3S4L Evidence appended**. Codex read-only confirmed original Stripe TEST order `refunded`, Woo one USD39.99 refund, Stripe one succeeded 3999-cent refund livemode=false, owner workspace still denied. Unique TEST `charge.refunded` event `2026-10-17T15:13:23Z` hashed fingerprint `9eab6614ade9`, single active TEST webhook endpoint `https://magazine.spikersun.com/?wc-api=wc_stripe` fingerprint `1cffdfa22f00`, 23 event types, zero pending across 45 TEST Events. No CLI, no browser safety bypass. **This does NOT count as replay.**
+
+**Owner only actionable step:** ordinary authenticated Stripe **Test/Sandbox Dashboard** → **Workbench/Developers → Events** → original `charge.refunded` on 2026-10-17 at **15:13 UTC** (UTC+8 23:13), original $39.99 refund → its existing delivery to `magazine.spikersun.com/?wc-api=wc_stripe` → **Resend ONCE**, not Create/Trigger Event. STOP after one click even if UI uncertain; if missing, screenshot redacted and do not repeat. Reply `已重发一次`. Then Codex via current G3S4M must independently read back actual same-event redelivery and unchanged number/amount/state/denied workspace, append PR Evidence, Reviewer formally closes or defers. Stripe official https://docs.stripe.com/webhooks#manual-retries supports dashboard manual resend 15 days. Keep named Cloudflare Tunnel foreground PowerShell OPEN pending replay and Reviewer final signoff; after accepted phase closure and no pending callback, Owner can Ctrl+C to stop public domain forwarding (not Docker/data). No new order, payment, refund, signing secret, Live or PR merge.
