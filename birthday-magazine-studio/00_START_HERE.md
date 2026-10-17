@@ -4,18 +4,18 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **latest `CURRENT_G3S4L_OWNER_HTTPS_VISIBLE_STYLES_BROKEN_2026_10_17`**: Owner HTTPS screenshot / CSS broken, now public negative access + targeted style repair.
-2. [Current G3S4L Gate latest post-publication CSS/privacy appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md) — no Stripe or new Tunnel setup; Codex autonomously checks public private access, CSS URLs/MIME/mixed-content, reversible WordPress canonical/proxy.
-3. [Prior G3S4L launcher static source Reviewer PASS](./docs/REVIEWER_DECISION_G3S4L_A3AB_STARTER_SOURCE_STATIC_PASS_2026-10-17.md) — completed; no more token or launcher submission.
-4. [PR64 existing G3S4L Evidence](https://github.com/entropy-student/project/blob/a3ab8b6ca06c4b6f6f1902a6d0e85ad4f2bf0467/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md) — last PR source/host prep evidence; latest owner public page screenshots not yet in PR evidence.
-5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — historical context.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **LATEST `CURRENT_G3S4L_92AAC_CSS_ACCEPTED_STRIPE_READINESS_2026_10_17`**, original WordPress HTTPS/CSS repair accepted, next guest checkout and Woo Stripe TEST readiness.
+2. [92aac G3S4L Reviewer PASS scope and next task](./docs/REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md) — no repeat CSS fix, residual visual/per-file and populated checkout gaps explicit.
+3. [Active G3S4L Gate, latest 92aac appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md) — safe guest synthetic cart/checkout and official Woo Stripe TEST readiness then Owner OAuth only if needed.
+4. [PR64 92aac CSS/HTTPS repair evidence](https://github.com/entropy-student/project/blob/92aac96932f1c04ac97b3faeaae68314bfedefb2/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md) — native WP home/siteurl change, 9 CSS/12 JS, route negatives and rollback.
+5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — historical.
 
 ## Current snapshot (2026-10-17)
 
-- **Public canary in progress:** Owner screenshot of `https://magazine.spikersun.com` shows original WordPress/Mira hero and text over HTTPS with **broken CSS/theme/navigation**, following Cloudflare named Tunnel owner-screen Healthy. This is Owner-visible positive only, not full independent reviewer public reachability, private-data security or provider-route proof. Independent Reviewer DNS/GET not available in its runtime.
-- **Next Codex:** immediately test **anonymous public private order/upload/admin/debug denials**, then diagnose CSS asset URLs/HTTP/MIME/mixed-content and original WP `home/siteurl`/trusted `X-Forwarded-Proto`; one proven reversible exact repair, no blind cache/plugin/DNS/schema alteration. Verify styled home/checkout/preview and no loopback redirects. Preserve original data/backup and running connector.
-- **Stripe TEST:** not yet connected, no Webhook/payment/refund; only after public frontend/privacy passes. Owner no further action currently; don't rerun cloudflared login, re-enter Token or rebuild WP.
-- **PR64:** latest Reviewer verified HEAD `a3ab8b6ca06c4b6f6f1902a6d0e85ad4f2bf0467` OPEN/unmerged. No VPS, Live payments, new WordPress or PR merge.
+- **G3S4L latest Reviewer bounded PASS:** PR64 HEAD `92aac96932f1c04ac97b3faeaae68314bfedefb2` OPEN/UNMERGED. Original WordPress site `home/siteurl` corrected from local `http://127.0.0.1:8189` to public `https://magazine.spikersun.com` with WP native option API. All checked CSS/JS HTTP 200/MIME, home/preview/product/cart HTTPS 200, no mixed/loopback in scanned HTML. Prior proxy and Tunnel unchanged.
+- **Privacy:** guest Woo orders API 401, protected Woo directory 403, admin public-login redirect, guest account orders login-only, no sensitive data observed; exact private file URL untested because safe selector unavailable. **Post-fix screenshot and nonempty checkout remain UNVERIFIED**, not blocking further safe preparatory work.
+- **Next Codex:** synthetic guest add existing product → non-empty public `/checkout/` forms/session with no submitted order; read-only Woo Stripe TEST-vs-LIVE connection/plugin and signed native webhook route readiness; one visual check if safe. Then **only Owner official Stripe TEST account login/OAuth when genuinely needed**; no secret sent to chat.
+- **Stripe:** no TEST charge/Webhook/refund, no Live/real transactions. Tunnel foreground/Docker must remain running. No VPS/new WP/PR merge.
 
 ## Source-of-truth rule
 
