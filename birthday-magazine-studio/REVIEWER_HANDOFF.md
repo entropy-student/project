@@ -4,7 +4,19 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (G3S4AR PR64 evidence reviewed; functional credential recovery accepted with secret-transport deviation; next G3S4M read-only local preflight; replacement VPS unverified)
+ > Last reviewed: 2026-10-17 (G3S4M local read-only preflight Reviewer PASS; Stripe TEST webhook transport absent; scoped Stripe CLI compatibility candidate; no Provider writes)
+
+## CURRENT_REVIEWER_G3S4M_PREFLIGHT_PASS_2026_10_17 — LATEST OVERRIDE
+
+**Current authoritative Reviewer decision:** [docs/REVIEWER_DECISION_G3S4M_READONLY_PASS_LOCAL_STRIPE_CLI_ROUTE_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4M_READONLY_PASS_LOCAL_STRIPE_CLI_ROUTE_2026-10-17.md). This supersedes the earlier `G3S4M read-only preflight still pending` next-step descriptions, not their historical validity.
+
+- **PR #64 head:** `5930438afd19af5cf718389ee4356a62fb22e705`; the single new `docs/evidence/g3s4/G3S4M_MANUAL_CHANNEL_AND_STRIPE_TEST_2026-10-17.md` was independently inspected. **G3S4M READ-ONLY PREFLIGHT = PASS**, NOT Stripe payment-Gate PASS.
+- **Original local target:** Windows 11 + Docker WordPress 7.1.1, Woo 11.1.2; virtual product #1113 USD39.99. Three selected backup hashes/sizes match prior accepted recovery records, preserved unchanged. Executor direct local readback; Reviewer did not access machine.
+- **Stripe:** official Woo Stripe 11.1.0 installed but inactive; no active Woo Stripe handler/config/verified signed webhook path, TEST connection/payment/refund not started. **STRIPE_TEST_READY=NO**.
+- **Next technical approach:** official Stripe CLI outbound TEST event forwarding to localhost without any public incoming tunnel is the **preferred candidate, NOT YET PROVEN** compatible with Woo Stripe 11.1.0's TEST account connection and signature secret. Existing **G3S4M Gate** continues with one project-scoped read-only plugin/CLI compatibility check, optionally reversible official CLI binary staging and `--help`/version validation **without Stripe login/listen/provider event or plugin/DB write**, documented to PR64 Evidence. No new Gate per diagnostic.
+- **Owner checkpoints:** exposed WP admin password private rotation still `UNVERIFIED`. A fresh G3S4M Test-write-specific approval remains required before Stripe plugin activation, Stripe Test account/OAuth authentication, events/payment/refund. Do not request it for non-secret CLI feasibility work.
+- **Deployment:** Owner reports VPS replaced. No old or new VPS access, public ingress, Docker recreate, shared infra change or production deployment. Local-first only.
+- **Preserve:** accepted frontend and sandbox proof, source/bind mounts, dirty worktree, protected backups and PR64 unmerged. Read-only preflight is not repeated without material drift.
 
 ## CURRENT_REVIEWER_ENTRY_2026_10_17 — OVERRIDES HISTORICAL RECOVERY SNAPSHOTS
 
@@ -63,7 +75,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4M_READONLY_LOCAL_PREFLIGHT_NO_TEST_WRITES
+CURRENT_GATE=G3S4M_STRIPE_CLI_LOCAL_COMPATIBILITY_PREP_NO_PROVIDER_WRITES
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -110,7 +122,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=4591fb5b6ccb07720771aaa18df91f0070edd953
+PR64_LAST_VERIFIED_HEAD=5930438afd19af5cf718389ee4356a62fb22e705
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -492,11 +504,11 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4M existing local Stripe TEST Gate — read-only local preflight now; no Provider or payment writes yet.** Refer to `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` and the 2026-10-17 Reviewer disposition above. Existing G3S4AR functional credential result is recorded and V1/V2 retries are retired. Owner-private rotation of the exposed password is required before reuse. The project remains on the Owner's local Windows/Docker/WordPress runtime only. Replacement VPS identity and deployment plan are UNKNOWN; no old VPS use.
+**G3S4M existing local Stripe TEST Gate — preflight PASS; next local CLI compatibility/transport staging only.** The authoritative current judgment is `docs/REVIEWER_DECISION_G3S4M_READONLY_PASS_LOCAL_STRIPE_CLI_ROUTE_2026-10-17.md`, based on PR64 head `5930438...`. **Complete payment Gate remains blocked** on a verified signed-test webhook route, credential rotation, Owner Test-write authority and Stripe TEST authentication.
 
-**Exact current allowed endpoint:** one bounded, non-mutating native local readback of G3C runtime, WordPress/Woo product, inactive Stripe plugin/mode, accepted recovery artifacts within previously proven scope, source identity, and safe TEST webhook feasibility; sanitized PR64 Evidence plus Reviewer STOP. No Stripe account connection, plugin activation, order/payment/refund, public route/tunnel, new Docker stack, credential write, VPS action, PR merge or production deployment without separately satisfied Gate preconditions.
+**One bounded next step:** inspect official Woo Stripe 11.1.0 local TEST webhook/signature support and official Stripe CLI outbound listener compatibility; only if supported, stage an official verified CLI binary in a project/private user path and validate CLI local help/version without provider login or listening. Preserve baseline, record sanitized PR64 Evidence (append to G3S4M Evidence) and Reviewer STOP. No plugin activation, WordPress settings/DB, payment, refund, webhook POST, provider account access, public tunnel/ingress, browser automation, prior launcher reuse, Docker recreation, old/replacement VPS or PR merge.
 
-**G3S4AR status:** `PARTIAL_RESULT_ACCEPTED; FUNCTIONAL_RECOVERY_EXECUTOR_EVIDENCE; OWNER_LOGIN_REPORTED; GATE_SECRET_TRANSPORT_NONCOMPLIANT`. Preserve past launcher failures only as incident provenance.
+**Accepted facts:** local WP/Woo and selected backup state are verified by fresh Executor host readback, but cannot imply Stripe connection. Reuse accepted 44-file source and restored-backup evidence where no drift. Earlier G3S4AR credential evidence remains bounded; private rotation confirmation `UNVERIFIED`.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -553,6 +565,9 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **Current G3S4M blocking dependency:** Stripe TEST signed Webhook forwarding channel is absent; prefer official outbound Stripe CLI candidate, not public ingress. Woo Stripe 11.1.0 signed handler/test-secret/Connect compatibility still **UNKNOWN** until narrow verified check.
+- **Current G3S4M stage:** read-only preflight **PASS** at PR64 `5930438...`; neither signed webhook nor Stripe TEST payment/refund executed. Plugin still inactive; no saved Stripe settings.
+
 - **Priority security remediation:** credential submitted through chat/orchestration in G3S4AR is treated as exposed; new private Owner-only WordPress admin password rotation has not been independently confirmed. Do not use old credential in Stripe testing or repeat old reset.
 - **Local TEST phase:** current Woo Stripe plugin installed but inactive; no authenticated TEST-mode connection, signed callback or Test payment/refund proof. G3S4M preflight only now.
 - **Replacement VPS:** Owner reports VPS changed; new host identity, ports, backups, resource envelope, secrets, trusted SSH and deployment manifest are UNKNOWN. Local-first; old-host deployment instructions invalid.
@@ -594,18 +609,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Preserve successful existing WP account recovery; no V1/V2 or direct password reset replay.
-2. Owner independently rotates the now-exposed credential via their own authenticated local WP administrator UI. Do not request or forward a secret; mark confirmation Owner-reported.
-3. Executor executes only G3S4M's **read-only local** target/backup/Stripe plugin/TEST callback feasibility preflight with the existing Docker/WP environment; no account or payment writes. Persist one sanitized PR64 Evidence and stop Reviewer.
-4. After Reviewer inspects fresh local proof and secret rotation, consider the separately scoped G3S4M TEST-only activation/Owner Stripe connection/test checkout/signed webhook/refund checkpoint. Never use old VPS; defer production infrastructure Discovery until actually needed.
+1. Executor performs **one G3S4M narrow local CLI/Woo Stripe compatibility inspection** based on current Reviewer decision; stage only an official integrity-verified reversible CLI binary when clearly feasible, with local version/help checks and no login/events/WordPress mutation.
+2. Persist sanitized G3S4M technical findings to the **existing PR #64 Evidence file** and stop for Reviewer. No redundant preflight/backup restores.
+3. After compatibility is proven and the exposed admin credential privately rotated, request/record **fresh explicit G3S4M TEST-only write approval** for bounded plugin activation, manual Stripe account connection, true native Woo TEST order, signed first/replay/invalid webhook and one TEST refund/revocation. Owner-only browser/account consent.
+4. If local official CLI cannot satisfy Woo Stripe TEST signature/account integration, Reviewer selects a separately approved dedicated HTTPS test environment. No public endpoint or VPS auto-deployment is implied.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Now:** privately rotate the exposed WordPress administrator password in the currently accessible local WordPress UI; only report non-secret completion status. Do not post either password or raw admin cookies/tokens.
-- **No action needed for read-only Executor preflight.** Do not install Git, rerun recovery scripts, rebuild backups, provide new VPS details, or reconnect payment accounts for this read-only step.
-- **Future:** TEST-mode Stripe account consent/synthetic checkout/refund and eventual production deployment require their distinct approved action boundaries.
+- **Now:** privately rotate the exposed WordPress admin password inside the already-accessible local site. Report only that the rotation succeeded; no password or screenshot containing tokens.
+- **No Owner action needed for the next offline/CLI compatibility inspection or non-secret bounded binary staging.** In particular, no VPS details or tunnel/Stripe login now.
+- **Later:** separate explicit scoped approval and Owner-side TEST account/OAuth/buyer steps will be required before any Stripe TEST provider or payment writes.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4M_READONLY_PASS_LOCAL_STRIPE_CLI_ROUTE_2026-10-17.md` — **LATEST formal Reviewer PASS for read-only G3S4M and bounded official Stripe CLI route**.
+0. PR #64 @ `5930438afd19af5cf718389ee4356a62fb22e705`, `docs/evidence/g3s4/G3S4M_MANUAL_CHANNEL_AND_STRIPE_TEST_2026-10-17.md` — accepted read-only target, backup and not-ready evidence.
 
 0. `docs/REVIEWER_DECISION_G3S4AR_CREDENTIAL_RESULT_AND_LOCAL_NEXT_GATE_2026-10-17.md` — **CURRENT** formal credential outcome and read-only G3S4M continuation; GitHub evidence PR64 head `4591fb5...`.
 0. `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` — **CURRENT conditional Gate**; only read-only preflight active, no payment writes.
