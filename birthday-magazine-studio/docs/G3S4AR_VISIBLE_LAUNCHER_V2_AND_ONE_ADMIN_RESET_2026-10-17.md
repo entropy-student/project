@@ -1,7 +1,7 @@
 # G3S4AR — Versioned visible launcher v2, with at most one existing local admin reset
 
 > Date: 2026-10-17
-> Status: **OWNER_AUTHORIZED_CONDITIONAL — NO LOCAL SCRIPT OR CREDENTIAL WRITE YET**
+> Status: **OWNER_AUTHORIZED — EXECUTOR_REPORTS_V2_PREPARED; OWNER_NATIVE_PS51_CANNOT_FIND_FILE; CREDENTIAL_WRITE_NOT_STARTED; REAL_HOST_DELIVERY_HOLD**
 > Parent Reviewer decision: `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`
 > Explicit Owner authorization: `docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` (Owner current direct message; one defined bounded G3S4AR round)
 > Original G3S4A: `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` (STOPPED/RETURNED, not auto-resumed)
@@ -76,3 +76,24 @@ PASS_CANDIDATE_G3S4AR_ADMIN_LOGIN_CONFIRMED
 ## Reviewer follow-up — minimal Governance learning after verified repair
 
 Owner directs rapid resolution of recurring RETURN defects and a **minimal project-management governance record after they are actually solved**. Once G3S4AR has a real owner-host v2 execution/verification result and Reviewer disposition, assess whether the failure taught a new generally reusable rule not already present in Governance v0.2.7 §11B (currently already covers native host readback, path virtualization, masked Secret transport, fail-closed diagnostics). Make only the smallest necessary addition to the canonical `entropy-student/spike.skill` governance `VNEXT.md`, optionally a brief historical incident pointer. Do not add duplicative policy or mark the issue solved before independent proof. This is a post-closure action, not an extra checkpoint or reason to block the currently authorized recovery.
+
+## 2026-10-17 Reviewer interim RETURN: v2 file invisible to actual Owner console
+
+**Actual Owner observation:** Running
+
+```powershell
+& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -File "$env:LOCALAPPDATA\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017\Invoke-G3S4A-AdminRecovery-v2.ps1"
+```
+
+from Owner's independently opened Windows PowerShell returns **`-File ... does not exist`**. This occurs **before the v2 code, Owner `CONFIRM`, secret input, or WordPress update**. No successful password reset is proven or claimed.
+
+**Conflicting Executor report:** the same Codex session says v2 was prepared, digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, Windows PS5.1 syntactic and restrictive ACL checks passed, and 10 isolated, non-secret fixtures passed. That report is **EXECUTOR_REPORTED**, not positive evidence that the **actual Owner-visible Windows PS5.1** can read the file. The previous v1 had this same writer-versus-Owner-host disagreement. Root cause **NOT PROVEN**; packaged Codex `LocalCache\Local` virtualization is a known candidate per Governance §11B and historical 2026-09-29 incident. Do not repeat the exact invocation, declare the file deleted, rebuild v2 based on guesswork, or mark password reset PASS.
+
+**Reviewer minimal delivery repair within this already approved one-admin Gate (no new Owner approval for a non-secret staging substep):**
+
+1. From the Owner's **actual visible, ordinary Windows PowerShell 5.1**, perform one bounded script **path discovery** only in (a) ordinary `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017` and (b) the exact `%LOCALAPPDATA%\Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017` namespaces. Read **no secrets**. Compare candidate file **SHA-256** to the Executor-supplied **v2** digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, distinct from v1's digest. If zero/multiple matching source paths, UNKNOWN, or wrong digest, STOP; no arbitrary full-drive search and no write.
+2. If exactly one verified v2 source is found in package-local storage and the ordinary destination is absent, copy **only those reviewed non-secret v2 bytes** from that exact source to the already-authorized private ordinary Owner directory using that **same independent normal Windows PS5.1** process. Fail on an unexpected existing destination, wrong/insecure directory ACL, reparse points, or source hash mismatch. Never overwrite or delete v1/v2; no password input during this step. Do not need new or broader backup, account/password changes, or Windows-wide ACL/execution policy changes.
+3. **Same-process readback required:** physical ordinary file exists, digest matches expected v2, DACL restricted to current Owner user and SYSTEM (validate actual SIDs/effective allowed identities), no reparse point, Windows PS5.1 parser zero errors. If any fails, `RETURN_REAL_WINDOWS_PS51_READBACK_UNVERIFIED`, no `CONFIRM`. Codex-side “independent PowerShell readback” without Owner-visible context is insufficient.
+4. Only once this physical handoff is proven may the Owner launch the reviewed v2 **once** from their own visible PS5.1 and privately enter `CONFIRM` and two masked passwords. If outcome of any update is unknown, `UNKNOWN_NO_RETRY`, no repeated reset. Then Executor reads back nonsecret WordPress state and commits exactly one sanitized Evidence file in PR #64, mandatory Reviewer stop.
+
+**Learning:** This is a *second recurrence* of v1/v2 premature “Owner-real Windows file exists” claims. Do not add a duplicate v0.2.7 §11B rule now; after real closure, review whether specific positive same-console validation wording would be a genuinely novel minimal norm. Project-specific mismatch remains recorded here and in canonical `REVIEWER_HANDOFF.md`.
