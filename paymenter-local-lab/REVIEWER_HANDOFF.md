@@ -2,9 +2,10 @@
 Updated: 2026-10-17
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
 PROJECT_GOAL: 在 Owner 的 Windows 11 本机用 Docker 启动 Paymenter（中文优先），观察真实用户前台、管理员后台、产品/套餐及可用功能；此项目目前仅供私有试用。
-PROJECT_STAGE: G3_DOCKER_DECOMMISSION_PARTIAL_PASS / G3_OWNER_LOCAL_ROOT_DELETE_CHECKPOINT_PENDING / GITHUB_REMOVAL_DEFERRED
+PROJECT_STAGE: G3_DOCKER_DECOMMISSION_PARTIAL_PASS / G3_OWNER_REPORTED_ROOT_DELETED_READBACK_PENDING / GITHUB_REMOVAL_DEFERRED
 SYSTEM_MAP: Owner Windows 11 build 26300 + PowerShell 7.6.5 + Docker Desktop Linux (Engine 29.7.2 / Compose v5.4.0)；原独占 Compose paymenter_local_lab 的 3 个容器、app/database 2 个命名卷、专属网络已经删除，127.0.0.1:8187 无监听；仅剩 C:\Users\34707\Documents\ChatGPT\Paymenter-Local-Lab 本机专属目录（含项目秘密、旧失败数据库文件、备份），等待 Owner Windows 手动精准删除。其他 35 个容器、22 卷、12 网络、20 镜像不动；未使用 VPS/公网路由。
 CURRENT_ACCEPTED_STATE:
+- OWNER_REPORTED 2026-10-17：Owner 直接回复“已删除”，表示已完成先前要求的 Windows 文件资源管理器专属 Paymenter-Local-Lab 目录人工永久删除。Reviewer 当前没有目标 Windows 主机的实时读回，因此仅将其记录为 Owner report；本机 G3 FULL_PASS 与 Github tree 删除均须等待原本机 Codex read-only 复核。
 - Reviewer G3 PARTIAL_ACCEPTED 2026-10-17：审阅 PR #151 的 Docker 域执行证据，3 项容器、2 项只属于 Paymenter 的命名卷及其唯一项目网络已移除，8187 不再监听，未动 35 其他容器、22 卷、12 网络、20 镜像；旧目录仍含 1,105 个项目文件及秘密和遗留 host 数据库；单路径 PowerShell 递归删除由自动执行策略阻止，未执行且未换工具。PR #151 合并至 main d679f3a0edaf20499e050f118277171522adf7f0；G3 整体未 PASS。根据 Governance 11F，下一步只能将该唯一准确删除动作转为 Owner 原生 Windows GUI 人工 checkpoint，再做只读缺失核验；不可自动换方式绕过。GitHub 目录保持不动。
 - OWNER_AUTHORIZED_G3_DECOMMISSION 2026-10-17：Owner Windows fresh preflight 确认当前只有已知演示账户/虚构商品，无订单、发票、服务、交易或扩展；唯一 Paymenter 容器/网络/两个命名卷已按标签与引用检查后移除，8187 无监听。执行器自动策略拒绝了专属项目根目录递归删除，根目录仍含本地专属文件/秘密，因此结果为 RETURN_PARTIAL_DECOMMISSION。非 Paymenter Docker 清单与镜像 ID 前后摘要完全一致。GitHub 子树未删除；先由 Reviewer 核对部分卸载证据并解决余项。
 - OWNER_REPORTED 2026-10-17（G2C 后真实体验，RECORD_ONLY）：管理员后台无论调整语言仍然英文，也可能没有找到正确设置；前台切换不同语言后仍出现中英文/其他语言混排。此 G2B UX 问题保持 OPEN/UNVERIFIED_ROOT_CAUSE；不以 G2C CLI PASS 覆盖 Owner 使用感受。用户明确要求暂不修复，转向调查 Paymenter 裂变功能。
@@ -24,14 +25,14 @@ CURRENT_ACCEPTED_STATE:
 - 中文事实：默认语言已设置 zh；前台、登录页、用户区部分繁体中文；首页及管理员后台仍有英文。未更改翻译文件。此为功能限制，不是 G1 部署阻塞。
 - 源码/镜像：官方 Paymenter 上游 master 1d4c0b92dac0f93f28998b04c4c0e282bf436177；实际 App/MariaDB/Redis 镜像 SHA 与探测细节详见 EXECUTION_EVIDENCE。
 - 启动问题已修复并验证：数据库 readiness 竞态；Windows host bind MariaDB InnoDB 表空间问题。改用独立命名卷，保留首次失败数据目录；未 prune/down -v、未动其他项目。
-CURRENT_GATE: docs/G3_SAFE_DECOMMISSION_GATE.md = DOCKER_PARTIAL_PASS / OWNER_LOCAL_EXACT_DIRECTORY_CHECKPOINT_PENDING / GITHUB_DELETION_WAITING；自动删除明确 blocked by policy 且未执行，不允许更换自动执行工具规避。
+CURRENT_GATE: docs/G3_SAFE_DECOMMISSION_GATE.md = OWNER_REPORTED_MANUAL_ROOT_DELETED / READ_ONLY_WINDOWS_POSTCHECK_PENDING / GITHUB_DELETION_WAITING；仍需机器只读回读后方可认定 G3 LOCAL_PASS。
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 原应用/数据库专属 Docker 卷已删除，无法保证恢复原演示数据库；旧失败数据库 host 目录未被证明可用于恢复，不能当成可用备份。GitHub 历史代码仍存在；本机 secrets/legacy files 待 Owner 本地精准删除。此 G3 属用户明确授权的最终退役，无完整数据回滚保证。
 UNRESOLVED: Owner 在 G2C 后反馈：后台无论如何调整仍英文（也可能尚未找到正确入口），前台切换语言后中英及其他语言混杂；真实 UX 原因未诊断且 G2B 视觉仍 PARTIAL。G2C 仅源码/请求/fixture 范围 PASS，不可抵消使用者报告。原生 DB 商品/分类不会自动翻译，后台芬兰语缺词条时英文 fallback。Stripe/Referrals 未启用（历史证据；非最新直读）。Owner 要求暂记问题，不再推进翻译。
-NEXT_STEP: Reviewer 已接受 PR #151 Docker-only 清理事实。根据治理 §11F，阻止自动删除后不得换用其它自动方式；只剩 Owner 自己在 Windows 文件资源管理器对唯一准确目录 C:\Users\34707\Documents\ChatGPT\Paymenter-Local-Lab 进行一次 Shift+Delete 永久删除。之后由原本机 Codex **只读**验证该目录不存在、项目容器/网络/卷 0、8187 无监听、其他 Docker 项目未变，返回非敏感结果；Reviewer 核验 LOCAL_PASS 后仅删除共享 GitHub repo/main 的 paymenter-local-lab 子树。
-OWNER_ACTION_REQUIRED: 唯一一次手动操作：Win+E，地址栏粘贴 C:\Users\34707\Documents\ChatGPT，核对 Paymenter-Local-Lab 文件夹，单选它并按 Shift+Delete（永久删除、不进入回收站），确认 Windows 弹窗。该目录包含项目秘密/旧演示数据，无法保证恢复；千万不要删除上层 ChatGPT 或其它目录。然后将“已删除”回复，Reviewer 提供本机 Codex 只读核验口令，后续 GitHub 清理由 Reviewer 完成。
-EVIDENCE_POINTERS: docs/G3_SAFE_DECOMMISSION_GATE.md；EXECUTION_EVIDENCE.md 的 2026-10-17 G3 Executor 仅 Docker 范围清理证据、Reviewer PR #151 部分接受记录；PR #151 squash d679f3a0edaf20499e050f118277171522adf7f0；本机目录仍在，GitHub main 目录待 LOCAL_PASS 后删除。
+NEXT_STEP: Owner 已报告自己在 Windows 文件资源管理器完成专属目录删除（Owner report，非机器核验）。只需原本机 Codex **只读**核实该目录不存在、父目录仍在，Paymenter 容器/卷/网络零残留、8187 无项目监听、其它项目未受影响；回传非敏感结果。Reviewer 接受 LOCAL_PASS 后立即只删除 entropy-student/project 的 paymenter-local-lab GitHub main 子树，保留其他仓库内容和历史。
+OWNER_ACTION_REQUIRED: 已报告人工删除。仅需把 Reviewer 提供的简短只读核验指令发给现有本机 Codex，并把非敏感结果带回；无额外手动删除、无重装或 Docker 资源清理。
+EVIDENCE_POINTERS: docs/G3_SAFE_DECOMMISSION_GATE.md；EXECUTION_EVIDENCE.md 含 PR #151 Docker 部分验收以及 2026-10-17 Owner 已删除报告（只读验证尚缺）。GitHub main 中项目子树在 LOCAL_PASS 前保留，历史 PR 和 commit 不做重写。
 
 
 ## 2026-10-17 G2C Executor result
