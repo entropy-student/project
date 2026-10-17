@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner requests maximum Codex autonomy; G3S4L local prep allowed without repeated approval; Cloudflare dashboard single essential consent if required)
+ > Last reviewed: 2026-10-17 (read full Governance; G3S4L Codex AppData real-host visibility unresolved; Quick Tunnel official no-token one-command option, read-only path proof first)
+
+## CURRENT_REVIEWER_APPDATA_REAL_HOST_QUICK_TUNNEL_2026_10_17 — LATEST
+
+**LATEST OWNER-IDENTIFIED REGRESSION:** User cannot find Codex-reported local AppData files and recalls a few-step public HTTPS path. Full GitHub Governance `spike.skill/vps-project-governance/VNEXT.md` v0.2.7 **609 lines read**, including §11B packaged-app actual owner-host/path proof and §11C public ingress. Prior directly verified incident `spike.skill/vps-project-governance/history/incidents/2026-09-29_PACKAGED_APP_APPDATA_PATH_VIRTUALIZATION.md` identifies Codex `Packages\OpenAI.Codex_*\LocalCache\Local\...` redirect vs ordinary Owner LocalAppData; same failure class documented in this Birthday project G3S4A. **Do not automatically infer the current G3S4L directory was redirected**; its exact physical context is still UNKNOWN.
+
+- **New PR #64 actual head** `bb04c27ba0dca4dd3ea081f265bdedf852090106` OPEN/unmerged, one existing G3S4L Evidence file changed. Executor reports writing an empty connector token file and helper under `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017`, claims packaged PS5.1 ACL checks. **Independent ordinary-owner-Windows read-back ABSENT FROM EVIDENCE**. No nonempty token, Tunnel, DNS, WP canonical change or Stripe TEST. Local prepublication media PASS_CANDIDATE and Owner-reported password rotation remain accepted.
+- **Immediate official Reviewer decision:** [docs/REVIEWER_DECISION_G3S4L_APPDATA_REAL_HOST_AND_QUICK_TUNNEL_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4L_APPDATA_REAL_HOST_AND_QUICK_TUNNEL_2026-10-17.md). Current G3S4L Gate **latest bottom appendix** scopes one **read-only real-host vs packaged Codex AppData reconciliation**, exact known paths only, **NO new AppData files, moves, duplicates, cleanup or token input**. Distinguish `ORDINARY_VISIBLE`, `PACKAGED_REDIRECT_ONLY`, `BOTH_DIFFER`, `MISSING_BOTH`, `UNVERIFIED_CONTEXT`; no same-package shell-only false PASS. If independent normal Windows proof cannot be done automatically, propose just one read-only normal PowerShell checkpoint rather than invent physical location.
+- **Simpler public option found from official Cloudflare:** `cloudflared tunnel --url http://127.0.0.1:8189` gives ephemeral random `https://*.trycloudflare.com` **without Cloudflare account, custom domain/DNS or token/cert**, one command with signed `cloudflared` binary, a short-lived HTTPS public test only. **Not started**. This does not guarantee Woo Stripe TEST OAuth/signed Webhook because the hostname rotates when process stops; do not falsely present as stable production route. Existing static Netlify public frontend remains visual-only and cannot execute WP/Woo/Stripe backend.
+- **NEXT:** first verify real host storage and executable; then consider a separately bounded **Quick Tunnel temporary public HTTPS canary** on original 8189 with earlier privacy/security candidate, observed post-exposure anonymous access negatives, reversible WordPress HTTPS URL/forwarded proxy and stop. **Hold remote-managed Cloudflare named Tunnel/Token-file scaffolding until proven necessary**, do not ask Owner to repeat Cloudflare login/approval or place secrets. No Live, VPS, paid host, second WordPress or PR merge. No canonical Governance change; §11B already directly covers the recurring failure.
+- **Owner action now:** NONE. Codex can perform read-only provenance checks; do not request Owner create files in AppData or copy token.
 
 ## CURRENT_OWNER_AUTONOMOUS_G3S4L_2026_10_17 — LATEST
 
@@ -179,7 +189,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_AUTONOMOUS_LOCAL_PREP_THEN_SINGLE_PROVIDER_OWNER_CONSENT
+CURRENT_GATE=G3S4L_READONLY_OWNER_NATIVE_APPDATA_PATH_RECONCILIATION_THEN_QUICK_TUNNEL_CANDIDATE
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -226,7 +236,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=f05d667c6f47eb43873695756cdffb485ac64aea
+PR64_LAST_VERIFIED_HEAD=bb04c27ba0dca4dd3ea081f265bdedf852090106
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -607,6 +617,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 - Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy and preserved the prior 7 G3C/G3CR6R1 branch commits/evidence. A later Executor correctly returned when unrelated `vpn-network-optimization/` commits moved repository `main`; Reviewer confirmed this was **not Birthday Magazine project drift** and corrected the preflight to project-scoped freshness. The approved PR #64 execution head must descend from the anchor and contain all current-main changes affecting `birthday-magazine-studio/**` or another path explicitly named by the Gate; unrelated monorepo commits do not block.
 
 ## CURRENT_GATE
+
+**Current Owner AppData priority:** BEFORE any more G3S4L host-local writes or public Tunnel, reconcile the real physical location of Codex-reported `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017` vs `%LOCALAPPDATA%\Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017` using a trusted independently normal Windows owner-host path, not just same Codex-packaged PowerShell. Latest PR64 Executor `bb04c27b...` reports a zero-byte placeholder and unexecuted helper, not credential/provider success. See newest top decision and **latest G3S4L Gate appendix**. Historical path virtualization is PROVEN on other projects, current exact redirect is UNKNOWN. No new files/delete/copy/token. Then consider official Quick Tunnel one-command short HTTPS canary (random URL, no account/token/DNS) only after host and privacy/rollback gates; do not falsely count it as stable Stripe OAuth/Webhook PASS.
 
 **Owner 2026-10-17 autonomy override (latest):** Codex proceeds through all feasible **G3S4L project-owned unblocked local non-secret preparation** without returning for repeated permissions: `cloudflared run --token-file` offline help, empty ACL-restricted user-private token-file directory, prepared connector start/stop, original 8189 HTTPS canonical/proxy/rollback plan, post-Tunnel web negative probes. **Do not invoke failing browser automation or retry CLI tunnel login.** If Cloudflare dashboard account creation/connector credential cannot be performed through properly authorized supported means, collect a **single minimum Owner dashboard action**, not many rounds; do not request secret in chat/agent argv. G3S4L Gate latest appendix specifies max scope. Cloudflare and Stripe remain unconnected until this actual consent/readback. No premature WP URL write, DNS/public route or payment on guesswork.
 
