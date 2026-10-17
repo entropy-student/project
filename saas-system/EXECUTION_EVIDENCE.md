@@ -67,3 +67,14 @@
 - `REVIEWER_DECISION`: **`PARTIAL_G2R1_OWNER_CLASSIFICATION_UNKNOWN`**。退出原因有界诊断完成；原 Gate 的旧业务归属/恢复必要性仍未知，不能宣称完整 PASS。**无需重新排查根因**。
 - `ROLLBACK_EFFECT`: 本轮只读，原服务未恢复、原项目数据未删除；Reviewer 仅更新 GitHub 项目文档，可通过 Git 回退。
 - `NEXT`: `CURRENT_GATE=NONE`，等待 Owner 确认是否要恢复这三个原容器；若要则另定旧项目特定恢复 Gate。Velobase 后续先比较独立隔离环境与费用，暂不重启同一 Docker Engine 演示或自动切换第二款。
+
+
+## 2026-10-18 — CROSS_SESSION_HANDOFF_RECONCILIATION
+
+- `PURPOSE`: Owner 要求对话交接前将当前项目进展写入 `entropy-student/project@main` 并交付下一位 Reviewer 可用完整传递材料。
+- `EXISTING_CANONICAL_STATE`: 已在 main 核实此前 Commit `0ae53f9f4b2dfe46742763fb3af7831b2e1bce4d` 包含 G2R1 Reviewer 结论 `PARTIAL_G2R1_OWNER_CLASSIFICATION_UNKNOWN`、`CAUSE_UNKNOWN` 和三原容器仍退出的报告；不重复制造第二套裁定。
+- `GOVERNANCE`: `entropy-student/spike.skill@main:vps-project-governance/VNEXT.md` v0.2.7 已读取；本轮不更改 Governance 或其他项目。
+- `DOCUMENTATION_CHANGES`: 更新本项目 Handoff 中数处 G2 后过时描述（执行目标身份、现有资产/旧负载状态、源码运行证据）；新增 [下一位 Reviewer 完整交接](./docs/NEXT_REVIEWER_RELAY_20261018.md)。G2R1 原 Reviewer 决定、原 Executor Evidence、G2/G1 历史材料原封保留。
+- `EVIDENCE_PROVENANCE`: 本轮直接核验 GitHub 中已归档文档；物理 Windows 容器现状来自 Owner 转交的本机 Codex 报告，后续事实漂移需在同机 read-back，不能把历史退出状态当永久状态。
+- `ACTUAL_HOST_OR_BUSINESS_MUTATIONS`: 0；没有任何容器启动/停止、重试、删卷、支付/退款、账号或外部服务动作。GitHub 仅改本项目文档。
+- `CURRENT_GATE`: NONE；下一步为 Owner 决定三个旧容器是否需要恢复，SaaS 下一测试环境须独立选择/授权。

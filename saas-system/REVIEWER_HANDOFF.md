@@ -16,7 +16,7 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 ## SYSTEM_MAP
 - **GitHub**：当前项目只管理项目状态、方案、Gate 与脱敏 Evidence；候选源码独立上游，不直接复制进入项目主仓库。
 - **候选入口**：`velobase/velobase-harness`（Next.js/Prisma/Postgres/Redis/Worker；`compose.demo.yml`）；`wasp-lang/open-saas`（Wasp/React/Prisma/Postgres；Railway/Fly.io 等部署路线）；`thedevdojo/wave`（Laravel/Filament/Stripe；Herd/常规 PHP 部署路线）。
-- **执行目标**：未来优先 Owner 本地 Windows 11 + Codex，或经 Owner 另行确定的隔离云测试环境。**本轮未有新的环境身份证明，目标主机/项目路径/资源余量均为 UNKNOWN。**
+- **执行目标**：本轮 G2/G2R1 已由 Owner 的真实 Windows 11 家庭版主机 + 本机 Codex 执行，2026-10-18 本机报告已验证运行环境；Reviewer 未直接登录真实主机，所有宿主机状态按 `OWNER_RELAYED_EXECUTOR_REPORT` 记录。今后其他环境需独立证明身份。
 - **存储与服务**：G2 曾创建项目隔离源目录、镜像、Web/Postgres/Redis 容器、两个命名卷与网络；据本机 Codex 回报，G2 的 3 个容器现在 stopped、3003 无监听，卷/镜像/网络保留；其他三旧容器在 G2R1 中再次报告为 exited。现状以 2026-10-18 本机报告为准，后续有漂移时再读回；旧三容器所属业务未知。
 - **外部 Provider**：候选具有 Stripe 相关源代码；没有为本实验授权、绑定或测试任何 Stripe 商户。外部邮件/身份/API/AI 依赖及免费额度视具体候选核实。
 - **依赖与影响**：不得触碰 Paymenter 已结束实验、其他项目工作树、Docker 共享资源、既有数据库、共享 VPS、反代、网络/代理、已使用端口、GitHub 其他子树。
@@ -54,12 +54,12 @@ G2R1 已交 Reviewer 且针对原因的有界只读调查结束；**无新的主
 `OWNER_WINDOWS_LOCAL_CODEX / TARGET_FRESH_PROOF_REQUIRED_BEFORE_WRITE`。G1 已有 Owner 转交的真实本机只读报告，G2 写入前仍需同机核验主机、Git/workspace/Compose 名称/端口状态，不能在 ChatGPT 云端容器代行。
 
 ## CURRENT_ROLLBACK_STATUS
-`G2_EXPERIMENT_STOPPED / ARTIFACTS_RETAINED / ORIGINAL_WORKLOAD_RECOVERY_UNKNOWN`。执行器报告仅停止新 `saasvh-e88e259` 项目，未恢复其他已退出容器；未清除任何镜像、网络或卷。旧负载现状尚需只读核对。
+`G2_EXPERIMENT_STOPPED / ARTIFACTS_RETAINED / THREE_OLD_CONTAINERS_EXITED_AS_OF_G2R1 / RECOVERY_NOT_AUTHORIZED`。本机 Codex G2R1 报告已再次读回三旧容器仍 `exited`，并非完全没有复查；但尚不确定后续是否被其他流程恢复。未重启原业务，也未删除新项目源码、镜像、两卷或网络。
 
 ## UNRESOLVED
 - G2R1 复查确认（来自 Owner 转交的本机 Codex 脱敏报告）：三个旧容器依旧全部 `exited`，分别 137/0/0，且同属一个 Compose 项目；业务类别和恢复必要性 `UNKNOWN`。Docker/Windows 事件不足以证明任何直接因果，不能单凭低内存或退出码判定 OOM。
 - `TARGET_LOCAL_PROOF=OWNER_RELAYED_EXECUTOR_REPORT`；历史空闲 RAM 仅 1.12/1.55 GiB，**不再构成固定前置门槛**。运行时资源影响、Docker 数据盘剩余量和新项目隔离仍需新鲜验证。
-- `G1_CANDIDATE_EXACT_SHA=e88e259b974f883913f68ac74a9b8377765d005d`；上游构建耗时/性能/可访问页面=UNVERIFIED。
+- `G1_CANDIDATE_EXACT_SHA=e88e259b974f883913f68ac74a9b8377765d005d`；G2 已报告构建成功、首页 HTTP 200（当时），但当前 3003 无监听，持续可访问性/登录成功/Admin/Affiliate/后台任务均 `UNVERIFIED`，构建耗时未记录。
 - 本机 pnpm 11.25.0 vs 仓库声明 10.12.1、本机 Node 24 vs Demo Node 22；将来运行时使用项目独立固定工具链，不做系统全局升级。
 - Velobase 部分退款/返佣异常重试；Stripe TEST 联调；现金佣金打款与积分/会员奖励路径=UNVERIFIED。
 - Open SaaS/Wave 与现成免费裂变模块的技术兼容、成本、授权=UNVERIFIED。
@@ -72,4 +72,4 @@ G2R1 已交 Reviewer 且针对原因的有界只读调查结束；**无新的主
 **需要一个决策：原有三个 Docker 容器是否需要恢复运行？** 若需要，先按项目归属与服务影响制定一次有界恢复 Gate；若不需要，记录为有意暂停。无需重复 G2R1、清理 Docker、提供密码或购买服务。SaaS 改为独立环境时另行确认费用与目标。
 
 ## EVIDENCE_POINTERS
-[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
+[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
