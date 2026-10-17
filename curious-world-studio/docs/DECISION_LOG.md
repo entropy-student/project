@@ -73,3 +73,11 @@ V4 [Draft PR#144](https://github.com/entropy-student/project/pull/144)已按此�
 Owner批准继续，Reviewer按前一轮确定的原版唯一外壳规则**实际提交**PR#144 `storyboard-v5-original-shell.html`。技术决策：以原Research Aqua V2整份HTML/Canvas为基准，仅将旧果冻示意画面替换为一个B媒体内容视口；沿用源QT桌面、窗口、鼠标、标题栏/进度条及控制按钮，六T1–T6模板是内容函数，七镜头一个主时轴。V4的`#auth-shell + #qt`双外壳设计已在V5替代（旧源码留档）。
 
 Review独立静态回读确认一个原Canvas、零第二QT元素，两段JS语法PASS；22时点受控执行器证明开场/模板切换/结尾状态机可推进，不等于真实浏览器观看。故结论仅`V5_SOURCE_ARCHITECTURE_OK / OVERALL_PARTIAL / REAL_BROWSER_VISUAL_UNVERIFIED`。下一步对V5同一原版源码整合HTML做真实1×浏览器完整视觉和媒体同步核验，不再次重绘原版Mac；PR仍Draft不合并、正式R3视觉RETURN和R4/G2/发布限制保持。
+
+## 2026-10-17｜Owner 冻结留档 V5.2（模板基线，不是正式视频封板）
+
+Owner对原版Research Aqua V2外壳与六种知识内容模板集成的V5.2样片表示认可其连续播放“视频感”，**同时明确样式仍可调整，但现在先冻结留档**。因此Reviewer决定停止对此版重复精修，不额外增加内容模板，并将 **V5.2 作为当前可恢复的模板技术基线**，而不是将不成熟的具体审美判断升级为最终视觉规范。
+
+完成`main:curious-world-studio/visual/frozen/storyboard-v5-2-20261017.html`的**完全相同源码复制**，Git blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`，来源Draft PR #144 V5.2与main归档版逐字对等；不合并PR，不改原版G1VA V2。冻结版中仅一套Mac QuickTime播放器，6个T模板可重复使用、7镜头与31.06秒总时钟一致，开窗至最终关窗闭环。此版不含第三方参考视频字节，私人观看用媒体附件不进入Git。
+
+**规则**：后续所有样式微调应新建V5.3或之后的版本，禁止覆盖/静默修改V5.2冻结文件；制作4–6分钟真实内容的法律权利、真实分镜、配音/SRT/MP4及正式Story-Fit仍是独立未完成事项。CW0005正式`R3 RETURN / G1 NOT_PASS / G2/R4 NOT_AUTHORIZED / NO_PUBLISH`不因模板冻结放行。详见[冻结与进度全记录](CWS_V52_TEMPLATE_FREEZE_2026-10-17.md)。
