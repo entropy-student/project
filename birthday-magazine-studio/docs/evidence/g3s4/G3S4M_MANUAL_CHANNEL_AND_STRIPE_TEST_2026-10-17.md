@@ -154,70 +154,70 @@ Next decision: Reviewer should confirm whether the existing Gate may use the plu
 
 ---
 
-## G3S4M continuation — official TEST UI and activation checkpoint
+## G3S4M continuation — supported local TEST UI and CLI signing-secret blocker
 
 Date: 2026-10-17  
-Scope: targeted read-only review of the official WooCommerce Stripe 11.1.0 TEST UI and activation behavior, plus activation of the existing official plugin at the Owner's explicit direction. No Stripe/provider connection or payment operation.
+Scope: version-pinned review of WooCommerce Stripe 11.1.0's actual admin rendering, Test OAuth, webhook configuration, and the existing local plugin activation. No Stripe account/provider operation was initiated.
 
-### Owner checkpoint and boundary
+### Owner checkpoint and recorded direction
 
 ```text
 OWNER_PRIVATE_WP_PASSWORD_ROTATION=UNCONFIRMED
-OWNER_INSTRUCTION=PROCEED_WITHOUT_TREATING_ROTATION_AS_BLOCKER (2026-10-17)
-ROTATION_PREWRITE_GATE=NOT_CONFIRMED; OWNER_OVERRIDE_RECORDED_FOR_REVIEW
-PLUGIN_ACTIVATION=PERFORMED_AFTER_OWNER_INSTRUCTION
+OWNER_INSTRUCTION=DO_NOT_TREAT_ROTATION_AS_BLOCKER (2026-10-17)
+ROTATION_PREWRITE_GATE=UNCONFIRMED; OWNER_DIRECTION_RECORDED_FOR_REVIEW
+PLUGIN_ACTIVATION=PERFORMED_AFTER_OWNER_DIRECTION
 STRIPE_ACCOUNT_AUTH_OR_KEY_WRITE=0
 PAYMENT_OR_WEBHOOK_OR_REFUND=0
 PUBLIC_TUNNEL_OR_VPS=0
 ```
 
-The Owner directed the Executor not to block on the password-rotation checkpoint. This Evidence preserves that status as unconfirmed; it does not claim that rotation occurred. Plugin activation therefore proceeded with the documented checkpoint unresolved. Reviewer should assess this deviation against the existing Gate.
+The Owner directed the Executor to proceed without requiring the private password-rotation confirmation. The rotation remains unconfirmed and is not claimed as complete. The official plugin was activated under that direction; Reviewer should assess the unresolved checkpoint against the existing Gate.
 
-### Supported interface and side-effect review
+### Actual official Test UI and side effects
 
-Official WooCommerce Stripe 11.1.0 source review:
+Reviewed the official `woocommerce-gateway-stripe` 11.1.0 source at its version tag:
 
-- The normal unconnected gateway admin page renders the Stripe React settings container and hides the classic Save button through `WC_Stripe_Payment_Gateway::admin_options()` / `render_upe_settings()`; source: [abstract payment gateway](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/abstracts/abstract-wc-stripe-payment-gateway.php).
-- The account modal exposes distinct Live and Test tabs. In Test mode, the supported button is “Create or connect a test account”; it calls the plugin's `wc_stripe_get_oauth_url` flow with `mode=test` and redirects the Owner's browser to the OAuth URL. Source: [account keys modal](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/payment-settings/account-keys-modal.js), [Stripe auth account](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/stripe-auth-account/connect-button.js).
-- The Test mode checkbox is locked until `oauth_connections.test.connected` is true. The Test connection path is distinct from the Live path. The plugin's HTTPS URL rejection in `get_oauth_url()` applies to non-Test mode; the Test flow does not have that source-level HTTPS gate. Local-browser OAuth return/reachability remains runtime-unverified and must be completed by the Owner in the visible local browser. Source: [Test mode control](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/payment-settings/test-mode-checkbox.js), [connect flow](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/connect/class-wc-stripe-connect.php).
-- The legacy PHP settings schema contains separate Test key and Test Webhook Secret fields, with Test mode default `yes` and gateway `enabled` default `no`; it also contains separate Live fields. Those schema/controller fields are not evidence of a visible manual-key workflow in the normal unconnected React settings page. No direct REST/WP option/SQL or key injection was used. Source: [Stripe settings schema](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/admin/stripe-settings.php).
-- Key updates through the REST controller can decommission a configured webhook and synchronize enabled payment methods; that route was not used. Source: [account-keys controller](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/admin/class-wc-rest-stripe-account-keys-controller.php).
+- The normal unconnected gateway admin page calls `render_upe_settings()`, hides the classic save button and renders the React settings container. The legacy PHP schema contains Test/Live credential fields, but the standard unconnected page does not expose them as an ordinary manual-key form. [Admin rendering](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/abstracts/abstract-wc-stripe-payment-gateway.php) · [legacy field schema](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/admin/stripe-settings.php)
+- The official React account modal has separate Live and Test tabs. Its Test control is “Create or connect a test account” and redirects through the plugin's `wc_stripe_get_oauth_url` OAuth flow with `mode=test`. The Test mode switch remains locked until the Test OAuth account is connected. The source-level HTTPS check applies to Live, not Test; local OAuth return behavior was not attempted. [Account modal](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/payment-settings/account-keys-modal.js) · [Connect button](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/stripe-auth-account/connect-button.js) · [Test mode switch](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/payment-settings/test-mode-checkbox.js) · [OAuth handler](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/connect/class-wc-stripe-connect.php)
+- The normal Test account UI does not expose an editable Test Webhook Secret field. Its Test “Configure webhooks” control calls the plugin's configure-webhooks action with the Test mode and account secret, which creates/configures a Stripe-side endpoint and stores the returned secret. This is a provider write and would target the configured site endpoint, not Stripe CLI's local listener secret. It was not clicked or called. [Webhook UI](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/client/settings/stripe-auth-account/configure-webhook-button.js) · [key controller](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/admin/class-wc-rest-stripe-account-keys-controller.php)
+- Stripe CLI local forwarding produces a listener signing secret that must match Woo Stripe's Test Webhook Secret for signature verification. The normal unconnected UI has no supported control to enter that listener secret. Direct REST/controller, SQL, WP option, custom source, and signature-bypass routes are excluded by the existing Reviewer decision.
 
-### Narrow local readback
+**Precise result:** official Test OAuth UI exists, but the supported local manual Test Webhook Secret entry needed to pair the private loopback Woo handler with Stripe CLI is unavailable. Clicking “Configure webhooks” instead would make a Stripe-side endpoint write and would not install the CLI listener's signing secret. Therefore this local signed-CLI path cannot satisfy the Gate through the currently rendered supported UI. Stop with `RETURN_MANUAL_TEST_UI_UNAVAILABLE`; do not connect the account, configure a provider webhook, or run checkout/refund until Reviewer selects a supported route.
 
-Existing accepted target/backup/runtime evidence was reused. No backup, restore, deployment, or broad host scan was repeated.
+### Narrow local readback and activation record
+
+Existing accepted target, runtime, and backup evidence was reused. No backup, restore, deployment, broad host scan, or browser automation was repeated.
 
 ```text
 TARGET=EXISTING_LOCAL_WPCLI_CONTAINER (de9742647e06)
 PLUGIN_STATUS_BEFORE=inactive
 PLUGIN_STATUS_AFTER=active
 STRIPE_OPTION_NAMES_AFTER_ACTIVATION=NONE (woocommerce_stripe*, wc_stripe*)
-PREEXISTING_WC_INBOX_VARIANT_OPTION=present (activation hook does not replace an existing value)
-SOURCE_ACTIVATION_REDIRECT=30-second settings-page transient (source-declared)
+PREEXISTING_WC_INBOX_VARIANT_OPTION=present_before_activation
+ACTIVATION_SOURCE_EFFECT=30-second settings-page redirect transient
 STRIPE_LIVE_OR_TEST_KEYS_READ=NO
 STRIPE_LIVE_OR_TEST_KEYS_WRITTEN=NO
 GATEWAY_ENABLED_OR_MODE_SAVED=NO
 ```
 
-The pre-activation read-only status was `inactive`; `wp option list` returned only its header for both Stripe option-name searches. The existing `woocommerce_inbox_variant_assignment` option was present before activation. The official plugin activation command succeeded; post-activation status was `active`, and the same Stripe option-name searches remained empty. The source-declared activation hooks add the inbox variant only if absent and set a short-lived settings redirect transient. No Stripe setting, account or key was created by the observed activation.
+The pre-activation option-name queries returned no `woocommerce_stripe*` or `wc_stripe*` setting. The existing `woocommerce_inbox_variant_assignment` option was present before activation, so the activation hook's conditional variant write was not needed. The official plugin activation command succeeded; post-activation status is `active`, while both Stripe option-name queries remain empty. Source defaults are gateway `enabled=no` and Test mode `yes` when the Woo settings API first constructs defaults; no setting was saved. The plugin's activation redirect transient is short-lived. No Live payment route or saved Stripe credentials were observed.
 
-### Current execution state
+### Final execution state for this attempt
 
 ```text
 OFFICIAL_PLUGIN_ACTIVATION=PASS
-SUPPORTED_OWNER_VISIBLE_TEST_ROUTE=SOURCE_CONFIRMED_TEST_OAUTH; LOCAL_RUNTIME_RETURN=OWNER_PENDING
+NORMAL_TEST_ACCOUNT_UI=OAUTH_AVAILABLE_SOURCE_CONFIRMED
+LOCAL_CLI_TEST_WEBHOOK_SECRET_INPUT_UI=UNAVAILABLE
 TEST_ACCOUNT_CONNECTION=NOT_STARTED
 STRIPE_CLI_LOGIN_OR_LISTENER=NOT_STARTED
 TEST_ORDER_1113_USD_39_99=NOT_STARTED
 SIGNED_WEBHOOK_FIRST_REPLAY_INVALID=NOT_STARTED
 TEST_REFUND_AND_ENTITLEMENT_REVOCATION=NOT_STARTED
-LIVE_PAYMENT_CONFIGURATION=NO_SAVED_STRIPE_SETTINGS_OBSERVED; GATEWAY_DEFAULT_DISABLED
-OWNER_BROWSER_OR_STRIPE_AUTH_AUTOMATION=0
-NEXT=OWNER_MANUALLY_INSPECTS_TEST_TAB_AND_COMPLETES_TEST_OAUTH_IN_VISIBLE_LOCAL_BROWSER
+LIVE_CONFIGURATION_OR_REAL_PAYMENT=0
+PROVIDER_OR_BROWSER_ACTION=0
+EXECUTOR_RESULT=RETURN_MANUAL_TEST_UI_UNAVAILABLE
+NEXT=REVIEWER_SELECTS_A_SUPPORTED_LOCAL_TEST_WEBHOOK_SECRET_ROUTE_OR_SEPARATE_ISOLATED_HTTPS_TEST_TARGET
+STOP_AT_REVIEWER=YES
 ```
 
-The local account connection, OAuth consent, and any account credentials remain Owner-only. Use only the normal Test tab and the “Create or connect a test account” control at the local WooCommerce Stripe settings page. Do not use Live. If the Test OAuth flow fails or returns to an unreachable local page, stop with the exact sanitized error; do not use a public tunnel or a direct-key REST/option workaround. After the Owner reports only the non-secret result `TEST_ACCOUNT_CONNECTED=YES/NO`, the Executor can continue with the existing approved outbound CLI TEST listener and bounded checkout/webhook/refund sequence.
-
-`EXECUTOR_RESULT=PARTIAL_OWNER_ACTION_REQUIRED`  
-`STOP_BEFORE_PROVIDER_OR_PAYMENT_WRITE=YES`  
-`STOP_AT_REVIEWER=YES`
+No credentials, account identifier, secret, session, raw provider payload, or customer data was read or written. No Stripe CLI login/listener, OAuth, provider webhook, payment, order, refund, entitlement, or source change occurred. Keep the current plugin installed and active with the gateway disabled; do not use a public tunnel, Live, VPS, direct REST/option write, or signature bypass.
