@@ -1,7 +1,10 @@
 # MokerSaaS G1U — 修复已定位的 Secret 挂载问题，并在同一轮完成 localhost 启动与安全验收
 
+> REVIEWER 2026-10-17: G1U proceeded into fallback B and created TWO isolated project synthetic Secret volumes, both checked empty before transfer. The Windows PowerShell/.NET anonymous-stdin handoff then raised `MethodInvocationException` before a receiver container was found; no successful Secret transfer proven, no DB/site started. Reuse existing volumes/Windows Secret files, do not replay this Gate. The **only current READY** Gate is `G1UV_STDIN_PIPE_FIX_AND_LOCALHOST_GATE.md`, which fixes the same transport with a non-secret fixture first. Confirm actual volume state after failed invocation before any retry.
+
+
 > GATE_ID: MOKER-G1U-SECRET-MOUNT-REPAIR-LOCALHOST-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_SECRET_STDIN_PIPE_METHOD_INVOCATION_EXCEPTION — HISTORICAL, NOT EXECUTABLE
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
 > OWNER_APPROVALS: MOKER-D-20261017-APPROVE-G1S-NEW-DB; MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION (see DECISION_LOG.md)
 > MAX_ENDPOINT_THIS_ROUND: diagnose the existing retained Docker audit container; apply exactly one proven minimal G1S-only secure Secret delivery repair (with explicitly authorized fallback if Windows→Linux single-file bind is incompatible); prove DB reader and NextAuth mount separation; launch NEW isolated synthetic Postgres, initialize schema, start 127.0.0.1:3077 app, run safe authentication/admin/provider-negative tests. STOP_AT_REVIEWER=YES.
