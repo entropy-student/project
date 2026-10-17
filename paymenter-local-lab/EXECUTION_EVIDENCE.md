@@ -51,3 +51,12 @@ RATIONALE: The previously authorized acceptance goal—see a functional local st
 SCOPE_EXCLUSIONS: No independent current-time host inspection, screenshot archive, restart persistence proof, backup/restore validation, ACL verification, Stripe connect, checkout, order, email delivery, or referral payout acceptance. These are NOT_APPLICABLE to functional preview or UNVERIFIED for production; no production readiness is inferred.
 RISK_NOTE: Local one-time demo credential was subsequently quoted in Owner chat; do not reuse for external/public deployment. Database named-volume persistence and preserved original host database folder are recorded; neither may be blindly deleted.
 FOLLOW_UP: Owner inspects the running pages to determine product-fit. No re-deploy is required. New Gate needed for any live payment, public exposure, paid extension, or consequential feature change.
+
+
+## 2026-10-17 G2 browser check blocked; Reviewer scope split
+AUTHORIZED_GATE: PAYMENTER-G2-LOCAL-SIMPLIFIED-CHINESE-20261017
+PROVENANCE: OWNER_REPORTED executor result; not independent direct Owner host readback.
+OBSERVATIONS: Paymenter v1.5.9 and Paymenter/MariaDB/Redis reportedly running on local 127.0.0.1:8187; app source in project-specific Docker /app named volume. Browser skill could not reliably establish active page URL; tool explicitly required stopping Computer Use in that attempt.
+ACTUAL_CHANGES: NONE reported; no container restarts, localization modifications, data changes or PR from that attempt. G1 PASS unaffected.
+FAILURE_CLASSIFICATION: RETURN_BROWSER_TOOL_UNAVAILABLE; browser evidence unavailable is not evidence of app failure, and cannot be silently replaced with server-up evidence.
+REVIEWER_DECISION: Split G2 into authorized code/CLI-only G2A then later G2B real UI verification. G2A must honor tool stop, may create/apply scoped translation files based on source and PHP/CLI checks with verified rollback; cannot claim UI or G2 complete. Current Gate: docs/G2A_SOURCE_NO_COMPUTER_USE_GATE.md.
