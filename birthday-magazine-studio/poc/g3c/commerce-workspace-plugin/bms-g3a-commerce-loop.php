@@ -58,17 +58,28 @@ function bms_g3a_bind_workspace_to_order($order_id): void {
 	$order->save_meta_data();
 }
 
+function bms_g3a_user_can_access_workspace($order, $user_id): bool {
+	if (!($order instanceof WC_Order) || (int) $user_id < 1) {
+		return false;
+	}
+
+	$order_total = (float) $order->get_total();
+	if (!$order->is_paid() || $order->has_status(['failed', 'cancelled', 'refunded']) || $order_total <= 0 || (float) $order->get_total_refunded() >= $order_total) {
+		return false;
+	}
+
+	return (string) $order->get_meta('_bms_g3a_workspace_order_id') === (string) $order->get_id()
+		&& (string) $order->get_meta('_bms_g3a_workspace_owner_id') === (string) (int) $user_id
+		&& (int) $order->get_customer_id() === (int) $user_id;
+}
+
 add_action('woocommerce_checkout_order_processed', 'bms_g3a_bind_workspace_to_order', 100, 1);
 add_action('woocommerce_order_status_changed', static function ($order_id) {
 	bms_g3a_bind_workspace_to_order($order_id);
 }, 100, 1);
 
 add_filter('woocommerce_my_account_my_orders_actions', static function ($actions, $order) {
-	if (!$order instanceof WC_Order || get_current_user_id() !== (int) $order->get_customer_id()) {
-		return $actions;
-	}
-
-	if ((string) $order->get_meta('_bms_g3a_workspace_owner_id') !== (string) get_current_user_id()) {
+	if (!bms_g3a_user_can_access_workspace($order, get_current_user_id())) {
 		return $actions;
 	}
 
@@ -93,9 +104,7 @@ add_action('template_redirect', static function () {
 
 	$order = wc_get_order($order_id);
 	$current_user_id = get_current_user_id();
-	$bound_order_id = $order ? (string) $order->get_meta('_bms_g3a_workspace_order_id') : '';
-	$bound_owner_id = $order ? (string) $order->get_meta('_bms_g3a_workspace_owner_id') : '';
-	if (!$order || $bound_order_id !== (string) $order_id || $bound_owner_id !== (string) $current_user_id || (int) $order->get_customer_id() !== $current_user_id) {
+	if (!bms_g3a_user_can_access_workspace($order, $current_user_id)) {
 		status_header(403);
 		nocache_headers();
 		wp_die(esc_html__('This workspace is not available to this account.', 'bms-g3a'), '', ['response' => 403]);
