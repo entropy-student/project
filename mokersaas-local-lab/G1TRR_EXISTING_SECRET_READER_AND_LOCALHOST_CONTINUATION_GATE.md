@@ -1,7 +1,9 @@
 # MokerSaaS G1TRR — Reconcile existing Secret reader and continue isolated localhost smoke
 
+> REVIEWER 2026-10-17: Compound G1TRR successor probe was invoked once with `docker compose run --rm`, exit=0, but required Boolean labels were not saved and the removed container ID could not be retrieved. **All three checks remain UNVERIFIED**, not PASS. No durable resource changes, DB/app not started. Historical Gate DO NOT RERUN. Sole current Gate is `G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md`, which preserves the named audit container and outputs separately attributable evidence.
+
 > GATE_ID: MOKER-G1TRR-EXISTING-SECRET-READER-LOCALHOST-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_EVIDENCE_CAPTURE_LOST — historical / NOT EXECUTABLE
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7
 > OWNER_AUTHORITY: MOKER-D-20261017-APPROVE-G1S-NEW-DB + MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION, in DECISION_LOG.md
 > MAX_ENDPOINT_THIS_ROUND: bounded diagnostic of existing two Secret files from g1s-db with separable non-disclosing Boolean checks, then, **only if safe**, continue existing NEW isolated DB/schema + localhost app/auth/security/provider negative smoke; one current-source migrator build if needed
