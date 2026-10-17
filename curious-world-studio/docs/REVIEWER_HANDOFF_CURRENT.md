@@ -1,4 +1,12 @@
-# CWS｜下一位Reviewer完整现行交接（2026-10-16）
+# CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
+
+## 2026-10-17｜知识内容模板支线最新状态（优先于下方旧“待讨论”时态）
+
+- **最新Owner方向**：已选方案A，六种知识展示用途（T1单素材/T2双画面对照/T3实拍+解释/T4论文档案/T5过程演变/T6数据与结论），底层三布局共用；仍与原有MW-01～MW-13 Mac操作模板分离。这个选择**没有**新增实际AI生图、收费或正式制片许可。
+- **原V1：RETURN**。Owner反馈过于静态且背离既有Mac视觉；Reviewer独立检查V1没有连续时间轴、演示数据/素材为空、字幕编辑打断视频。具体意见见[PR#144 Reviewer评论](https://github.com/entropy-student/project/pull/144#issuecomment-6232004762)。
+- **V2：`V2_REVIEW_CANDIDATE / PARTIAL_VERIFICATION`，仍为[Draft PR#144](https://github.com/entropy-student/project/pull/144)，尚未合并main**。分支候选内嵌原G1V-A V2开窗源码，提供约28.76秒连贯六场景演示、本地素材选择、字幕修改不重启视频及JSON时间轴导出。成功测试的浏览器动态部分有证据，但**最终整合版原Mac源码未在同一浏览器实际观片验证**；真实素材、TTS/SRT、Remotion导出及受众质量也未验证。
+- **Reviewer下一步**：先以PR#144分支的[Gate](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V2_GATE_2026-10-17.md)、[V2 README](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/README.md)和Evidence核验真实单文件HTML，检查V2 Mac动效、六个模板的实际画面价值/播放流畅度，再决定PASS或RETURN；勿未经审核合并。**不能跳过正式项目HOLD**。
+- **OWNER_ACTION_REQUIRED：NONE**；PR可自主审核，下一次审美接受需要Owner时再一次性询问。旧R3正式`RETURN_OWNER_VISUAL_STORYFIT / CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`全部保持。
 
 ## 2026-10-16 生图技巧落档（本轮新增）
 
