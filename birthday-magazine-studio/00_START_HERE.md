@@ -4,19 +4,18 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_G3S4M_STRIPE_TEST_REPLAY_CLOSEOUT_BEFORE_MAGAZINE_DESIGN_2026_10_17`: finish TEST phase, then P1–P12 design.
-2. [CURRENT G3S4M one signed TEST event resend / Stripe phase closeout Gate](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md) — no new purchase/refund, one official same-event redelivery if safely authorized, otherwise document replay unavailability; include cloudflared Ctrl+C condition.
-3. [Accepted G3S4L Reviewer TEST payment/refund/revocation decision](./docs/REVIEWER_DECISION_G3S4L_577BB_STRIPE_TEST_REFUND_REVOKE_PASS_REPLAY_PENDING_2026-10-17.md) — core $39.99 TEST closed loop already PASS, identical signed Webhook replay still pending.
-4. [PR64 last accepted G3S4L Evidence](https://github.com/entropy-student/project/blob/577bb700de71a399bd52780d5a33eaeaca9d33ea/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md) — Woo/Stripe single refund, workspace revoke, invalid signature and missing replay.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **latest `CURRENT_G3S4M_035E55_PREFLIGHT_PASS_ONE_OWNER_STRIPE_TEST_RESEND_2026_10_17`**, one Owner TEST event Resend pending.
+2. [Reviewer formal G3S4M pre-replay PASS at PR64 035e55](./docs/REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md) — original TEST refund and Webhook uniquely matched, no replay yet, one Owner click.
+3. [ACTIVE G3S4M single official signed event resend Gate](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md) — then read-only idempotency/revocation and TEST-only Stripe phase closeout.
+4. [PR64 035e55 pre-replay Evidence](https://github.com/entropy-student/project/blob/035e55ec6af41688b5efc56c638a58c4ebb3122b/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md).
 5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — supporting history.
 
 ## Current snapshot (2026-10-17)
 
-- **Owner's sequence:** Stripe TEST closeout **FIRST**, then P1–P12 magazine design. Future magazine transaction test belongs to later feature Gates, not now.
-- **Stripe core PASS (PR64 `577bb700...` OPEN/UNMERGED):** one $39.99 TEST payment and one genuine full Woo Stripe gateway refund verified both provider/Woo, Woo order refunded, account workspace revoked by server predicate after full refund; invalid webhook signature discarded by app with HTTP 204. No Live payment. Do not repeat.
-- **Only strict TEST callback gap:** identical previously signed `charge.refunded` Webhook event never resent. G3S4M permits one **official** existing TEST event resend via already authorized CLI (30-day) or Owner normal Stripe Dashboard (15-day). If unsafe/unavailable, record `REPLAY_UNAVAILABLE / DEFERRED_NOT_PASS`, not fictitious PASS; then bounded closeout/next design handoff.
-- **Cloudflare PowerShell:** keep dedicated foreground connector running through potential replay and pending callbacks; after Reviewer accepts TEST phase closeout, Owner can **Ctrl+C** to stop. This temporarily takes `magazine.spikersun.com` offline; original Docker, token and DNS route preserved for later public magazine preview.
-- **No PR merge/Live/production activation:** existing website and account remain TEST only. No new WordPress/VPS/paid hosting.
+- **G3S4M Reviewer pre-replay PASS:** PR64 HEAD `035e55ec6af41688b5efc56c638a58c4ebb3122b` OPEN/UNMERGED, new G3S4M Evidence appendix only. Stripe TEST refund remains exactly one 3999-cent succeeded, Woo one $39.99 refund and order refunded, workspace access denied. Unique original TEST `charge.refunded` created 2026-10-17 15:13:23 UTC, active registered magazine webhook, 45 events zero pending. No redelivery yet, so strict replay still NOT TESTED.
+- **NOW Owner one-step:** in ordinary Stripe **Test/Sandbox** dashboard Workbench/Developers → Events, select that existing charge.refunded at 15:13 UTC / $39.99 refund, click `Resend` ONCE to existing `https://magazine.spikersun.com/?wc-api=wc_stripe`. No new charge/refund or event trigger. If unavailable, report and stop.
+- **Then Codex:** read-only actual second signed event delivery/zero duplicate refund, unchanged order/access, append PR Evidence; Reviewer Stripe TEST phase closeout then P1–P12 magazine design Gate.
+- **Cloudflare PowerShell:** leave foreground Tunnel running until final Reviewer closeout/pending callback zero; after explicit closeout may press **Ctrl+C** to temporarily stop public website, preserving original Docker WP and credentials. No Live, PR merge or service install.
 
 ## Source-of-truth rule
 
