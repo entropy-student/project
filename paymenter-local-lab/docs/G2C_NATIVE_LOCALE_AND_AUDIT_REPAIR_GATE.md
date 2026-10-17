@@ -68,3 +68,10 @@ LIMITATION: 未认证 admin 请求为预期 302；未做登录态视觉/交互�
 ROLLBACK: 只反向应用本 Gate 新增 G2C 补丁并清 Blade view cache，回到 G2A+R1；不触碰数据库、命名卷、账号、商品、订单、支付或其他项目。
 
 请 Reviewer 核验 locale 请求语义和 audit 详情无参缺失后验收。
+
+## Reviewer acceptance — 2026-10-17
+STATUS: G2C_SOURCE_REQUEST_RUNTIME_PASS / G2B_UI_VISUAL_PARTIAL
+PR: #150 merged to main commit 752b4ececf0d58850fc34431db785327add4dc25.
+Reviewer directly inspected 3-path patch, README, PR Executor Evidence, original Paymenter v1.5.9 locale middlewares, Filament v5.7.6 NavigationGroup and NavigationManager. Scoped G2C acceptance: admin respects allowed session locale, zh maps to admin zh_CN; en/fi remain their selected locale, navigation groups late-resolve in request; audit detail argument restoration and Executor's fake in-memory Blade runtime successful. No business data or payment changes in patch/Executor reported counts.
+Reviewer has NOT independently logged into Owner Windows browser since G2C. Real authenticated UI and the remaining G2B page coverage stay PARTIAL, not PASS. Normal language selection rejects invalid values; artificially corrupted frontend locale session returned non-200 in Executor extra probe, low-priority follow-up only. Original G2C patch and rollback remain unchanged; no repeat deploy needed.
+NEXT_GATE: docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md. Use Owner screenshots of admin localized languages, user dashboard and product edit/plan only if final UI acceptance is desired. Do not reopen source G2C without new defect evidence.
