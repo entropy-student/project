@@ -1,0 +1,63 @@
+# MokerSaaS G1X — Docker-native synthetic credentials → first working localhost site
+
+> GATE_ID: MOKER-G1X-DOCKER-NATIVE-LOCAL-FIRST-BOOT-20261017
+> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> GOVERNANCE: entropy-student/spike.skill/main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
+> OWNER_AUTHORITY: MOKER-D-20261017-APPROVE-G1S-NEW-DB and MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION; Owner 2026-10-17 direction to simplify the test workflow and complete site startup in a single round. **Scope remains a separate disposable synthetic localhost lab only.**
+> OBJECTIVE: stop fixing Windows→Docker file bind/PowerShell stdin. Generate **new, lab-specific random** DB and NextAuth secrets natively INSIDE isolated Docker volumes, reuse G1P2 image and NEW database volume, initialize schema, open local site, run critical auth/admin/provider negative smoke. No claims of pre-verified runtime success.
+> MAX_ENDPOINT_THIS_ROUND: one guarded G1S-only bootstrap, one new migrator build if needed, first localhost HTTP/auth/security smoke; no real payments, emails, public routing, or G2.
+> MANDATORY_REVIEW_STOP: YES / STOP_AT_REVIEWER=YES
+
+## Accepted facts; stop replaying old diagnostics
+- Owner-local Windows 11 Home 26300 PS7.6.5 Docker Engine 29.7.2 Compose 5.4.0. Pinned `ItusiAI/MokerSaaS` source `c98f68c68de312cc1378130b96f82418e22bd5f3` + **22 uncommitted scoped local edits**; G1P2 app image `sha256:5692813e121e043d15a4dad133e89f32a8574954d0eb12f9ed8f0f622fd10889` already built.
+- Original OLD database `mokersaas-local-lab-db-1` and original volume `mokersaas-local-lab-db-data`/network/images MUST NOT BE TOUCHED. Old DB credential reset was actually tool-policy rejected and is NOT a target or retry. Existing NEW G1S DB data volume `mokersaas-local-lab-g1s-db-data` and internal network `mokersaas-local-lab-g1s-internal` must be reused after exact identity and safe-empty proof.
+- Existing TWO Owner/SYSTEM-restricted WINDOWS file Secrets stay UNCHANGED and are **not consumed** by this simplified lab profile. Existing two G1U Docker Secret-only volumes were empty before failed stdin receiver and no receiver was found; their post-attempt state unknown, so either **reuse only if fresh read-only inventory proves exact project ownership and empty**, OR leave untouched and create exactly TWO fresh, uniquely named G1X-only secret volumes with fail-on-collision and no deletion/overwrite. No ambiguous volume is modified. The old failed audit container `116898e95836d221a07725ad80791d0ac3a9108c49b61a7331b603abdff636ae` remains stopped/preserved.
+- G1U failed in a local `.NET MethodInvocationException` in Windows anonymous stdin; no provider/tool-policy denial established. **DO NOT repair, rerun or replace the stdin/host Secret transport.** New Docker-native generation is an independent Owner-authorized synthetic lab approach, NOT any route to the old password-reset action.
+- Current local `docker-compose.g1s.yml` reportedly already contains `g1s-migrator` service; only matching new migrator image is missing. The old migrator image is incompatible with Drizzle file DB helper.
+
+## Owner-local Executor: single execution plan
+
+### 1. Preserve boundaries / select new lab assets (brief read-only)
+- Verify same Owner local source, exact old DB/container/volume identities, G1P2 image ID, no port 3077 owner, NEW G1S project/volume/network and current migrator service, and both existing Windows files retained. Do not print filenames with private directory paths, Secret contents/hashes or raw inspect/env/logs.
+- Define two independent project-specific secret-only **Docker named volumes** for DB and NextAuth, reusing existing G1U volumes ONLY if directly proven empty and owned by this G1S lab; otherwise freeze unused originals and create **new** collision-free empty volumes. Never write into a nonempty/ambiguous volume. No new data volume for Postgres. No `down -v`, pruning, cleanup, old DB operations, or changes to Docker Desktop global settings/VPN/proxy/firewall.
+- Freeze exactly one temporary initializer container design using a vetted **existing local pinned image**, no public ports, `--network none`, ONLY ONE selected Secret-only volume mounted rw per initializer, no other volume and no original host Secret. Audit exact container name/image/mount before each create, fail on collisions.
+
+### 2. Generate credentials directly inside Docker: NO Windows transfers
+- In each selected empty Secret-only volume independently, use the container's OS CSPRNG `/dev/urandom` (32-byte entropy minimum) and a deterministic local encoding to write **one new unique 64-character ASCII-hex Secret**. Use `umask 077`, non-following/exclusive create (O_EXCL or verified noclobber on fresh empty volume), first file mode 0600. The initializer's argv contains ONLY reviewed script/control text and paths, **no Secret value**; never emit value/hash/digest in stdout, stderr, logs, environment, command arguments, image/build, repo or transcript. No host Windows Secret files read/changed.
+- Set Linux file owner/group to an exact reviewed least-privilege runtime reader for each consumer, with no world-read grants: Postgres entrypoint bootstrap reader, actual Next.js app UID/GID, and migrator reader. Review container UID/GID **before** modifying file modes. Use per-service readonly volume mounting and only required group access (e.g. fresh high isolated groups via Compose `group_add` if appropriate to images); root-only reading is not proof nonroot app works. DB file may be shared read-only with DB, migrator and app. **NextAuth file mounted app only.** All Secret file content stays in precisely two approved new Docker volumes, not in regular DB-data volume. Do not attempt to copy new credentials to Windows or make a second failure-domain recovery copy (Owner disposable-only exception). If permissions cannot be enforced safely, stop without launching DB.
+- Preserve initializer evidence: project-owned container ID/exits, volume file regular/present/nonempty, filename and permission class only, no sensitive bytes/hex/hash.
+
+### 3. One new G1S-only Compose patch and security readback
+- Update only `docker-compose.g1s.yml` and, only where necessary, the existing G1S-only migrator image build declaration. Remove active Windows `file:` Secret grants and Windows host path variables from **this** G1S profile; mount Docker Secret-only **directories** readonly by named volume to non-secret paths, and set `POSTGRES_PASSWORD_FILE`, the actual `lib/local-db-config.ts`-supported DB password-file env, and `NEXTAUTH_SECRET_FILE` to the actual file paths. Keep `LOCAL_LAB=1`, no real Provider keys. Never place values in ordinary ENV or Compose.
+- Verify DB service has DB volume and NOT auth volume; migrator has DB volume and NOT auth volume; app has BOTH; no one sees original OLD DB volume. New DB only isolated network, no host DB port; app ONLY `127.0.0.1:3077:3000`. Reference exact tested G1P2 app image without rebuilding.
+- One bounded **retained and non-disclosing** runtime verification using fixed marker lines/proven container IDs: DB_FILE_PRESENT=PASS; DB_FILE_NONEMPTY_READABLE=PASS; NEXTAUTH_PATH_ABSENT=PASS; NEW_DB_VOLUME_SAFE_EMPTY=PASS. Separately verify app's actual nonroot image UID can read both files and migrator's actual UID can read DB file while lacking auth mount. Distinguish absent/non-file/permission-denied branches. Do not accept Compose static parse or exit=0 as substitute for exact success markers. If any Secret visibility/reader check fails, STOP; no loosening to 0644, no Secret logging, no destructive retries.
+
+### 4. Start website in SAME round, do not create an extra preflight Gate
+- Start **only NEW** isolated `mokersaas-local-lab-g1s` Postgres with existing DB-data volume and generated Docker-local DB Secret file; prove healthy DB AND actual credential-authenticated read of new DB schema, not merely TCP `pg_isready`. No changes to old running DB.
+- Use **existing** `g1s-migrator` service; build only ONE current-source migrator image with patched local DB/Drizzle helper (no Secrets in build). Initialize schema ONCE in the verified new empty DB, read back table/constraint presence. Do not replay an ambiguous migration.
+- Start previously built G1P2 app image with file-backed runtime Secrets, `LOCAL_LAB=1`, no Provider credentials or public routing. Check real host `http://127.0.0.1:3077` HTTP status/content, DB-backed navigation, synthetic local login/session if available without real email, anonymous GET/POST `/api/admin/set-admin` cannot elevate roles, ordinary-user admin deny; verify lab Stripe/OAuth/mail/cron/payout disabled with no real Provider calls. Never invoke uncertain external payment/mail endpoints.
+- **User-visible acceptance priority:** First prove `SITE_UP=YES` with concrete HTTP and container health. Track `DB_READY`, `SCHEMA_READY`, `AUTH_SAFE`, `PROVIDER_SAFE` separately. If site is reachable but some noncritical synthetic features cannot be tested safely, report `SITE_UP_WITH_LIMITATIONS` rather than pretending failure to open website; **security-critical failure still stops unsafe new services** and cannot be called PASS. On success leave site running on Owner localhost for review.
+- Report only one final evidence packet to Reviewer. No intermediate OWNER approval/questions; no separate follow-up diagnostic Gate just for known compatibility issues. `STOP_AT_REVIEWER=YES`: do not enter real Stripe, refunds, automated payouts, production, public binding or G2.
+
+## ACCEPTANCE / STOP
+- PASS_CANDIDATE requires new isolated DB/schema, actual site reachable on owner Windows loopback and minimum safe auth/admin/provider guard validation, correct mount isolation and no old DB delta. The Reviewer judges final PASS; Executor cannot self-certify.
+- Partial site results are explicitly distinguished from source/build/Compose-only. Never assert website up without direct HTTP. If native process, policy, leak, reader isolation, unowned/nonempty persistent asset or privilege escalation introduces genuine risk, immediately STOP and retain resources/evidence; do not bypass via alternative shell/agent/host, rotate/overwrite/delete credentials or destructively reset data. It is not possible to guarantee site startup before local execution.
+- Scope of rollback: original DB/container/volumes/networks/images, 22 local source changes and two original Windows credential files are preserved; existing/new Secret volumes preserved on partial stop, no global prune/down -v/cleanup. Stop only specifically unsafe NEW app if needed.
+
+## REQUIRED_EVIDENCE
+`GATE_ID`; `OWNER_LOCAL_TARGET_AND_SOURCE`; `OLD_DB_VOLUME_NETWORK_PRE_POST`; `TWO_SECRET_VOLUME_SELECTION_AND_INITIAL_EMPTY_PROOF`; `DOCKER_NATIVE_CSPRNG_NO_OUTPUT`; `FILE_OWNER_GROUP_MODE`; `INITIALIZER_CONTAINER_IDS_AND_EXITS`; `COMPOSE_DIFF`; `DB_APP_MIGRATOR_SECRET_MOUNT_ISOLATION`; `FOUR_DB_READER_FLAGS`; `APP_AND_MIGRATOR_READERS`; `NEW_DB_HEALTH_AUTH`; `MIGRATOR_IMAGE_SCHEMA_CONSTRAINTS`; `SITE_UP_HTTP_STATUS`; `AUTH_ADMIN_PROVIDER_NEGATIVES`; `NO_OLD_DB_TOUCH_NO_EXTERNAL_CALLS`; `ACTUAL_SCOPED_CHANGES`; `ROLLBACK`; `EXECUTOR_RESULT`; `STOP_AT_REVIEWER=YES`. Attribute facts as DIRECT_READBACK, OWNER_REPORTED, BEHAVIORALLY_VERIFIED or INFERRED; none of the actual Secret values/hashes/host paths may appear.
+
+## REVIEWER_TO_EXECUTOR_RELAY
+你是 Owner 的 Windows 11 本机 Codex Executor。只执行 `entropy-student/project` 最新 main 的唯一 Gate `mokersaas-local-lab/G1X_DOCKER_NATIVE_LOCAL_FIRST_BOOT_GATE.md`。本轮最终目标是**让 MokerSaaS 网站在 `http://127.0.0.1:3077` 实际打开**，不是继续修 PowerShell stdin 或 Windows 文件共享。
+原有两份 Windows 受保护的合成 Secret、两个旧 G1U Docker Secret 卷、原数据库及原卷/网络、G1S 新 DB 数据卷/网络、22 项源码改动、G1P2 app 镜像都保留。先短范围核对资产身份。复用两个原 Secret 卷只能在证明仍为空时，否则将其原样保留，建立两个新的、不同名的空 G1X Secret 专用卷。**在 Docker 容器内直接用 OS CSPRNG 分别生成新的、独立的 32-byte 随机测试凭证**，写入各自空卷的受限文件；不读取、传输、重生成或覆盖任何原 Windows Secret。完全禁止任何 Secret 明文/hash 进入 ENV/argv/stdout/Git/build/logs。
+只改 G1S Compose，使 Postgres 和现有 g1s-migrator 只读 DB Secret 卷、App 只读 DB+NextAuth 卷，最小 Linux 用户/组权限，真实容器检查文件可读与 NextAuth 不可越权。静态配置不足以判 PASS。
+安全通过后**同一轮继续**：启动独立新 PostgreSQL，使用当前源码构建仅一次新的迁移器并初始化 Schema，复用已有 G1P2 应用镜像启动 `127.0.0.1:3077`，验证真实 HTTP、登录/权限阻断和支付/邮件等本地禁用。禁止动旧库/旧卷、修改 Windows ACL/Docker 全局/VPN，禁止真实支付/邮件/公网。
+一次完整结果交给 Reviewer，既报告 SITE_UP 与 HTTP，也报告安全验证；不为中间的已知兼容性问题再拆新 Gate。若实际产生安全风险或无法可靠确认的持久写入，则安全停止并报告真实原因，不能虚报完成。STOP_AT_REVIEWER=YES。
+
+## EXECUTOR_TO_REVIEWER_RELAY
+结果：PASS_CANDIDATE / SITE_UP_WITH_LIMITATIONS / RETURN_*。
+改动：仅 G1S Docker 原生命成合成凭证的独立 Secret 卷、Compose 修改、必要的迁移器构建、新 DB/schema 和 localhost app。
+验证：2个独立新 Secret 的权限和服务挂载，DB/schema 真结果、127.0.0.1:3077 HTTP，auth/admin/provider negative。
+问题：NONE 或实际剩余故障；不要空泛称环境限制。
+回滚：旧库和旧/新全部数据卷、原 Windows 凭证和镜像/源码保留，无清理。
+Owner 转交：NONE。
