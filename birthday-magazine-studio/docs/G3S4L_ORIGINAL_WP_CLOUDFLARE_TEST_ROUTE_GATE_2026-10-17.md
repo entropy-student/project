@@ -1,7 +1,7 @@
 # G3S4L — existing local WordPress 8189 via Cloudflare Tunnel, official Stripe TEST OAuth
 
 Date: 2026-10-17
-State: `G3S4L_STARTER_SOURCE_STATIC_PASS_A3AB; ORIGINAL_OWNER_WINDOWS_RUNTIME_UNPROVEN; CLOUDLFARE_OWNER_NAMED_TUNNEL_AUTH_PENDING; PUBLIC_HTTPS_NOT_STARTED`
+State: `G3S4L_WP_PUBLIC_HTTPS_NAVIGATION_ACCEPTED; OWNER_STRIPE_TEST_SANDBOX_CONNECTED_SCREENSHOT; WEBHOOK_AND_TEST_PAYMENT_REFUND_NOT_YET_VERIFIED`
 Reviewer decision: `docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md`
 PR #64 G3S4J Evidence baseline: `9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956`
 Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7; §§5–9/11B/11C/11D/11E.
@@ -312,3 +312,29 @@ INDIVIDUAL_PRIVATE_WOO_FILE_SELECTOR=NOT_AVAILABLE;PRIOR_ORDER_DIR_NEGATIVES_ACC
 **After authentic Owner TEST OAuth:** Codex read-only verifies TEST-connected account identity, TEST-only gateway behavior and signed Webhook POST readiness (GET 200 not enough); only after bounded authorization perform one synthetic $39.99 TEST payment, valid/invalid/replay signed event and one matching TEST refund/entitlement revoke. Evidence same PR64 G3S4L and Reviewer decision on actual results. PR not merged. Live and original stored Woo customer orders remain untouched.
 
 Woo official references: https://woocommerce.com/document/stripe/setup-and-configuration/connecting-to-stripe/ ; https://woocommerce.com/document/stripe/customer-experience/testing/ .
+
+
+## 2026-10-17 Owner screenshot — Stripe sandbox TEST connection visible, bounded webhook/payment next (LATEST)
+
+**Latest Owner-provided WordPress admin screenshot** on `https://magazine.spikersun.com` after selecting `Create or connect a test account` and Stripe sandbox authorization. Screenshot shows banner **`Test mode active: All transactions are simulated. Customers can't make real purchases through Stripe.`**, Stripe plugin `Enable Stripe` checked, `Enable test mode` checked, a sandbox account detail card carrying **`Test Mode`**, and notice **`Live mode cannot be enabled before you have connected a live Stripe account.`**. This is **`OWNER_SCREENSHOT` UI-level evidence that TEST account authorization returned successfully**, not an independently authenticated provider callback or webhook signed POST acceptance. Do not copy account email/ID/Token from screenshot to project files, and do not interpret the site's top-toolbar `Live` as Stripe live payments. It means WordPress site visibility.
+
+```text
+LATEST_SCOPE=OWNER_STRIPE_TEST_OAUTH_UI_CHECKPOINT
+STRIPE_TEST_ACCOUNT_CONNECTED=OWNER_SCREENSHOT_INDICATES_YES;CODEX_READBACK_PENDING
+STRIPE_TEST_MODE=OWNER_SCREENSHOT_ACTIVE
+STRIPE_ENABLE_GATEWAY=OWNER_SCREENSHOT_CHECKED;PERSISTED_RUNTIME_READBACK_PENDING
+STRIPE_LIVE_ACCOUNT=NOT_CONNECTED_AS_SHOWN_BY_WOO_NOTICE
+ACTUAL_STRIPE_SIGNED_WEBHOOK_POST=NOT_YET_TESTED
+TEST_ORDER_CHARGE_REFUND=NOT_YET_EXECUTED
+CLOUDFLARE_ORIGINAL_WORDPRESS_NAV_CSS_CART=PREVIOUSLY_ACCEPTED_DO_NOT_REPEAT
+WP_SITE=https://magazine.spikersun.com
+NEXT_EXECUTOR=READONLY_VERIFY_CONNECTED_TEST_ACCOUNT_WEBHOOK_CONFIG_AND_ONE_BOUNDED_TEST_PAYMENT_REFUND_IF_SAFE
+```
+
+**Next Codex scope (Owner does nothing unless a genuine official provider checkpoint arises):**
+1. Reuse G3S4L previously accepted named Cloudflare Tunnel/HTTPS/privacy/9 CSS/15 JS/nonempty cart/zero-loopback navigation. **Do not ask Owner to reconnect Stripe, reauthorize Cloudflare, reconfigure WordPress, or manually supply Stripe credentials.** No blind reread/printed `secret_key`, `publishable_key`, OAuth tokens, webhook secret, account email, customer order data. Safely inspect via Woo official plugin UI/option metadata or supported native APIs **status only**: current sandbox TEST account connection, TEST mode, gateway enable flag, target test account (non-secret masked indicator), Webhook provision/status and `https://magazine.spikersun.com/?wc-api=wc_stripe` route/protection; check no Live account/Live gateway active.
+2. If TEST connection is authenticated, signed Webhook delivery can be observed and preserved, and no material privacy or payment boundary issue exists, **the original Owner-approved G3S4L single synthetic USD39.99 TEST purchase/refund scope remains in effect**: use existing Birthday Magazine product and only Stripe-documented sandbox card/testing method, no real customer/payment card, no Live or production funds, no unrelated orders. Submit **at most one** test Woo order/Stripe test PaymentIntent; inspect its true provider signed Webhook POST and Woo paid-state transition; negative invalid-signature and duplicate/replay handling should be tested using safe provider test delivery/replay only where authorized without dangerous forged real events; no multiple charges after an ambiguous response. Execute **one matching TEST refund** and verify non-excess/refund idempotency and entitlement/revocation as applicable. If correct signed Webhook requires a test event first, do not incorrectly require already-signed-post PASS before initiating the **first** sandbox charge; instead require correct TEST routing/config/signature enforcement readiness and verify genuine delivery afterward.
+3. If true TEST connection is absent, callback registration fails, provider requires Owner reconfirmation or TEST gateway is not safely isolated from Live, **stop only at that exact blocker** and return one small necessary action, not generic RETURN/another architecture. Do not falsely claim full payment closure from the screenshot alone.
+4. Append sanitized actual provider-status, TEST Woo order outcomes, signed POST/invalid/duplicate and TEST refund evidence to **existing** PR64 G3S4L Evidence file, with rollback/status and exact unresolved conditions; no full credentials, raw payment payload, personal emails or full account numbers. STOP Reviewer. PR #64 OPEN/UNMERGED, no VPS/new WordPress/Stripe Live or real payment.
+
+**Previously deferred:** `widget_text-3` dormant old URL values, real visual screenshot and synthetic exact protected file denial; no new pre-test gate absent actual exposure/risk. Do not change them in a provider-only round.
