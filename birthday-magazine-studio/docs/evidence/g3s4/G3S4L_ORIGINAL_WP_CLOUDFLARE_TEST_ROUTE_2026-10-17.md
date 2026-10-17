@@ -158,3 +158,57 @@ Rollback for a future failed HTTPS canary: restore both options to the exact rec
 ### Exact remaining Owner checkpoint
 
 The only current external prerequisite is one Owner-controlled Cloudflare dashboard session: create a remotely managed tunnel dedicated to this test, publish only `stripe-test.spikersun.com` to `http://127.0.0.1:8189`, and privately feed that tunnel's scoped connector token into the prepared hidden-input helper. No token, API key, screenshot, or credential should be sent to Codex. This dashboard action tests the actual zone write authority and creates the hostname route; it does not require repeating the previous CLI account-login flow. Once the private token file is ready, Codex can start and verify the connector and proceed through the existing bounded G3S4L checks. Official Stripe TEST OAuth remains an Owner-only consent only after public HTTPS passes. No Live/real-money action is in scope.
+
+
+## 2026-10-17 G3S4L exact-host path and connector preparation follow-up
+
+This append supersedes the prior AppData **physical-location interpretation** and the former hostname only. It does not change prior project/media/password/backup evidence. The only active hostname is now `magazine.spikersun.com`; `stripe-test.spikersun.com` is superseded and was not used.
+
+```text
+GATE=G3S4L_FIXED_HOST_MAGAZINE_20261017
+HOST=magazine.spikersun.com
+ORIGIN=http://127.0.0.1:8189
+OWNER_LOCALAPPDATA_PROVENANCE=PACKAGED_REDIRECT_CONFIRMED_IN_CODEX_EXECUTION_CONTEXT
+OLD_PACKAGED_CLOUDFLARED=AUTHENTICODE_VALID; SHA256=4D2490E74082C5D48DBFEDAF92576FA5BD1702379AB88EB7FAA0CFBE8DC891B6
+OLD_PACKAGED_TOKEN_PLACEHOLDER=0_BYTES; UNCHANGED; NOT_USED_FOR_NEW_HOST
+OLD_PACKAGED_TOKEN_HELPER=UNCHANGED; NOT_RUN
+OWNER_VISIBLE_NONSECRET_LOCATION=PHYSICAL_DOCUMENTS_CHATGPT_BIRTHDAYMAGAZINESTUDIO_G3S4L_MAGAZINE
+COPIED_CLOUDFLARED=2026.10.1; AUTHENTICODE_VALID; SIGNER_CONTAINS_CLOUDFLARE; SHA256_MATCH
+TOKEN_FILE_FLAG=SUPPORTED_BY_COPIED_BINARY_HELP
+NEW_PRIVATE_TOKEN_DIRECTORY=USERPROFILE\.birthday-magazine-studio\G3S4L-private
+NEW_PRIVATE_TOKEN_FILE=magazine.spikersun.com.connector-token; 0_BYTES
+NEW_PRIVATE_ACL=OWNER_CURRENT_USER_AND_SYSTEM_FULL_CONTROL; PROTECTED; 0_INHERITED; 0_DENY; NO_OTHER_IDENTITIES; NO_REPARSE
+NEW_STARTER=Start-MagazineTunnel.ps1; SHA256=E0C549D6769672B60EE58A72222F0E70387BDB26FECC5A1EAF9353FDE0E27DEC
+NATIVE_POWERSHELL=5.1.26100.9711; PARSER_ERRORS=0
+STARTER_SECRET_HANDLING=HIDDEN_READHOST_SECURESTRING; CLEARS_BSTR_AND_BUFFERS; TOKEN_ONLY_IN_PROTECTED_FILE; NEVER_RUN
+CLOUDFLARE_DOH_A_QUERY=NXDOMAIN_FROM_CLOUDFLARE_AND_GOOGLE
+SPikersun_ZONE_NAMESERVERS=HAYES.NS.CLOUDFLARE.COM; MAGDALENA.NS.CLOUDFLARE.COM
+ZONE_WRITE_PERMISSION=UNVERIFIED
+MAGAZINE_CONTROL_PLANE_DNS_OR_TUNNEL_ROUTE_COLLISION=UNVERIFIED
+CLOUDFLARE_TUNNEL_OR_DNS_WRITE=NOT_STARTED
+PUBLIC_HTTPS=NOT_AVAILABLE_OR_VERIFIED
+WORDPRESS_URL_CONFIG=UNCHANGED; LOCAL_ORIGIN_AND_PRIOR_ACCEPTED_PROXY_COMPATIBILITY_REUSED
+PUBLIC_PRIVACY_NEGATIVE_CHECK=NOT_RUN; NO_PUBLIC_ROUTE
+STRIPE_TEST_OAUTH_PAYMENT_WEBHOOK_REFUND=NOT_STARTED
+STOP_AT_REVIEWER=YES
+```
+
+### Path provenance and local readback
+
+A native Windows PowerShell 5.1 child process read back the exact former `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L` candidates. The ordinary-looking AppData paths resolved via `GetFinalPathNameByHandle` into `Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4L`; the same package-backed targets were visible under both path spellings. The old token placeholder remained zero bytes and was not repurposed, moved, overwritten, or deleted. This proves package redirection in the Codex execution context; it does **not** claim an independent normal Owner PowerShell session read the old AppData paths.
+
+The non-secret binary and runner were copied/prepared in the physical Owner Documents tree outside the active Git working tree. Independent native Windows PowerShell 5.1 readback confirmed the final paths are not under the Codex package cache, the binary hash/signature and `2026.10.1` version, `tunnel run --token-file` help, and zero parser errors. No existing project source or artifact was changed.
+
+A new empty token file and directory were created under the normal user profile (outside AppData and the Git checkout). Native PowerShell 5.1 readback confirmed protected DACLs owned by the current user, explicit FullControl for only that user and SYSTEM, no inherited/deny/other-principal rules, and no reparse points. The token file is still zero bytes. The prepared starter verifies those ACLs and the pinned Cloudflare-signed binary, accepts the connector token only via hidden `Read-Host -AsSecureString`, writes it only to the protected token file, clears temporary buffers, then invokes the foreground connector with `--token-file`. The starter has not run and no Cloudflare credential was entered or stored.
+
+### Exact public-control-plane boundary
+
+Cloudflare and Google DNS-over-HTTPS both returned DNS status 3 (NXDOMAIN) for the public A query for `magazine.spikersun.com`; the parent zone NS query returned Cloudflare nameservers. The machine's configured resolver returned a reserved test-range address and was not treated as authoritative. NXDOMAIN is read-only public DNS evidence only: it does not prove that the Cloudflare account has no unpublished public-hostname route, nor that this account can write DNS or Tunnel configuration. No reliable Cloudflare API/provider tool is connected, and the previously rejected Computer Use URL-confidence route was not retried or bypassed. Therefore no Tunnel/DNS creation or overwrite was attempted.
+
+### Result and next checkpoint
+
+No public URL is active; HTTPS reachability and post-exposure anonymous/private-data denial checks remain unverified. WordPress home/siteurl and plugin/database/order/media state were not changed or rechecked; previously accepted local compatibility and rollback baseline were reused. No Tunnel connector was started, no Stripe authorization/payment/webhook/refund was performed, and no Live/VPS action occurred.
+
+One Owner-controlled Cloudflare dashboard checkpoint remains: verify write access to the `spikersun.com` zone and that `magazine` has no DNS record or existing Tunnel public-hostname route; then create one remotely managed Tunnel with exactly `magazine.spikersun.com → http://127.0.0.1:8189`. Only after that route exists, run the prepared starter from the Owner's visible Windows PowerShell 5.1 and enter the connector token only into its hidden prompt. Do not send the token to chat. After the connector is online, public HTTPS and anonymous privacy checks are still required before any reversible WordPress canonical URL change or later Stripe TEST work.
+
+STOP_AT_REVIEWER=YES
