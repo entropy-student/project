@@ -19,7 +19,7 @@ CURRENT_ACCEPTED_STATE:
 - 中文事实：默认语言已设置 zh；前台、登录页、用户区部分繁体中文；首页及管理员后台仍有英文。未更改翻译文件。此为功能限制，不是 G1 部署阻塞。
 - 源码/镜像：官方 Paymenter 上游 master 1d4c0b92dac0f93f28998b04c4c0e282bf436177；实际 App/MariaDB/Redis 镜像 SHA 与探测细节详见 EXECUTION_EVIDENCE。
 - 启动问题已修复并验证：数据库 readiness 竞态；Windows host bind MariaDB InnoDB 表空间问题。改用独立命名卷，保留首次失败数据目录；未 prune/down -v、未动其他项目。
-CURRENT_GATE: G2C `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`，新增三文件补丁和无敏感证据等待 Reviewer；G2B 登录态视觉总体验收仍 PARTIAL 且保留，G1/G2A/R1 不重跑。
+CURRENT_GATE: G2C `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`，新增三文件补丁和无敏感证据已进入 https://github.com/entropy-student/project/pull/150，等待 Reviewer；G2B 登录态视觉总体验收仍 PARTIAL 且保留，G1/G2A/R1 不重跑。
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 可通过精确 docker compose -p paymenter_local_lab -f <owned-compose> stop 停止试用并保留命名卷及本机文件；这属于停机而不是已验证的全量灾备/恢复，恢复演练未做。
@@ -30,6 +30,7 @@ EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md 包含 Reviewer 的五张截图分析�
 
 
 ## 2026-10-17 G2C Executor result
+PR: https://github.com/entropy-student/project/pull/150
 - 状态：`PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`。
 - 改动：仅 `SetAdminLocale`、Filament admin navigation groups、audit detail Blade 三处；补丁、回滚、验证见 `localization/g2c/` 与本文件关联的 `EXECUTION_EVIDENCE.md`。
 - 语言：前台 zh/en/fi 菜单切换通过；admin zh → zh_CN，en/fi 保持；非法/空/缺失 admin session 回退本机简体默认；Finnish 缺少的管理分组词条回退英文。
