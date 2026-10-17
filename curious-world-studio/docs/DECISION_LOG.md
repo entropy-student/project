@@ -60,3 +60,10 @@ GitHub已核实`entropy-student/spike.skill/comic-narrative`的`part4_5/ASSET_RE
 Owner认可V3连续播放体验但认为外观比已验收Research Aqua原版有所退化；决定**不再扩充模板数量或重造Mac系统**，而是在唯一Aqua桌面→QuickTime主体→点击关闭回桌面的外壳内任意次调用T1～T6。一个模板可在同一视频不同时间用于不同素材；每段只指定镜头表中模板、素材、时长与字幕，统一编排器自动累计镜头起止，播放器进度条/素材/旁白均绑定整片主时钟；不得六份模板各自重置时间。
 
 V4 [Draft PR#144](https://github.com/entropy-student/project/pull/144)已按此方向提交代码候选（从仓库原Research Aqua V2源码复用绘制函数，另增关窗动作），但GitHub原Canvas复用版的一倍速浏览器连续观感未通过验收，当前仅`V4_ARCHITECTURE_CANDIDATE / PARTIAL`。旧V1/V2/V3证据保留；真实素材权利、视频制作R4和发布仍分别授权，不能借此次模板修改解除CW0005正式HOLD。
+
+## 2026-10-17｜Reviewer纠偏：Research Aqua V2是真源，禁止双Mac/双播放器
+
+- **Owner追问与Reviewer事实核验**：用户发现现有样片相较最初选定的Mac样式明显退化。根因不是“原版找不到”，而是开发顺序选择错误：先自绘Mac/QuickTime窗口与六布局，再尝试将原版Canvas叠加进去。GitHub原始HTML在`main:curious-world-studio/p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html`，真实blob `acb0ee80264527bd11160e0ae277ce24528c4a03`；V4仍同时存在`iframe#auth-shell`和`#qt`第二套窗口，不能把嵌入原代码等同已经完整复用原版。**此项作为现有V4视觉整合缺陷，不抹掉V3/V4已完成的可复用模板和全局时间轴局部测试。**
+- **锁定方法**：以原V2 HTML为唯一A Mac+QuickTime容器，最小化替换播放器B区内容。T1–T6保持六个独立可复用展示组件，多个镜头可以重复调用同一T编号；每期一条Master Clock，从桌面点文件到内容展示再到关闭回桌面。无需另造第二套Mac视觉或六台播放器，不新增模板。优先复用V4`TEMPLATE_RENDERERS`/`EDITORIAL`/`compileTimeline`，清除双窗结构；播放器装饰/动作采用原版绘制，内容槽不应覆盖按钮、控制条和字幕安全区。
+- **验收条件**：Reviewer对同一版可离线运行HTML同时确认视觉与行为：原V2桌面、菜单、Dock、鼠标、窗口几何和开窗动作对照；至少6布局/7镜头（T1用两次不同素材）；一倍速整段播放、播放/暂停/拖动/字幕编辑不中断、进度连续、结尾点关闭恢复桌面；同一个浏览器/版本测试，不能拿近似壳版结果证明原版合成通过。第三方参考素材只用于私有试看片，不上传公开Git。通过前状态`INTEGRATION_RETURN / VISUAL_UNVERIFIED`，不是模板最终PASS。
+- **实施和权限边界**：未来仅允许隔离PR#144中开展有界Mac视频模板精修；本轮**只记录、没有修改代码**，不修改既有原版main真源，不合并PR，不启动正式R4、AI生图、外部搜片、付费、发布；`CW0005`正式R3视觉RETURN、HOLD/G1/G2/NO_PUBLISH不变。具体Reviewer接手看[REVIEWER_HANDOFF_CURRENT](REVIEWER_HANDOFF_CURRENT.md)顶部唯一Gate。
