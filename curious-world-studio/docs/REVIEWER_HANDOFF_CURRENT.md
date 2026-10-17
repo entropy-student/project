@@ -1,5 +1,14 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V5_REVIEWER_NEXT_20261017 -->
+## 2026-10-17｜V5实施后最新接手（覆盖下方V4“待执行”）
+
+- **Owner已确认实现路线**：真正复用 main `p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html` 原版视觉（Git blob `acb0ee80264527bd11160e0ae277ce24528c4a03`）作为**唯一**Mac桌面+QuickTime壳，六模板只作为B内容槽，统一Master Clock驱动开场→七镜头→结尾关闭。不要增加第七模板、不要再造Mac外壳或第二套`#qt`、不要每模板单独时钟。
+- **实际V5已提交而非只讨论**：Draft [PR#144](https://github.com/entropy-student/project/pull/144) 的`curious-world-studio/visual/content-template-lab/storyboard-v5-original-shell.html`，blob `752f713eb20975a68431559618d2a3acf84b8225`，真原V2绘图代码+一套`canvas#view`+B内容`#content-viewport`；0–4.76秒原开场、4.76–28.76秒六模板七实例（T1复用两次）、28.76–31.06秒原式关窗。历史果冻实验绘制入口替换为真实可接入媒体槽，原main文件不变。
+- **可声称的验证**：GitHub回读、两段JS源码语法、6/6模板函数、无第二QT窗口、受控DOM/Canvas替身22时点seek（T5分三段、关窗回桌面）通过；参考视频未推到Git、媒体资产仍待本机选择。**不可以声称**准确V5页面实际浏览器一倍速全片视觉、视频播放器真实媒体同步、SRT/TTS、合法科研Story-Fit/MP4已经PASS。Reviewer总结果`V5_PARTIAL / REAL_BROWSER_VISUAL_UNVERIFIED`。
+- **唯一下一步**：对PR中新V5 **同一个blob** 用真实Edge/Chromium完整1×播放与关键帧截图，审开场鼠标双击/窗口开大、各模板内容对齐控制条/单行字幕、T1两次媒体隔离、seek/暂停/视频持续性、结尾红灯关闭并返回同一桌面。只对实际发现的局部错误返修。可随后评审是否需要将模板接口接入正式Remotion渲染，**不自动合并PR/开始R4或正式发布**。
+- **详细Reviewer Gate和验收缺口**：[V5原版整合独立Review](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V5_ORIGINAL_SHELL_REVIEW_2026-10-17.md)。ROLLBACK仅回退PR新V5；原V1-V4和main原版保留。**OWNER_ACTION_REQUIRED=NONE**。正式`R3_RETURN / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`和权利`PARTIAL`原封不动。
+
 <!-- CWS_ORIGINAL_SHELL_ONLY_NEXT_GATE_20261017 -->
 ## 2026-10-17｜最新唯一接手指令：原版Research Aqua V2直接作为唯一Mac外壳（覆盖下方V4旧NEXT_STEP）
 
