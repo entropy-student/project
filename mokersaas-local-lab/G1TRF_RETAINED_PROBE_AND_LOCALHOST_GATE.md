@@ -1,7 +1,10 @@
 # MokerSaaS G1TRF — Persistent, auditable Secret-scope check + ONE local DB/site continuation
 
+> REVIEWER 2026-10-17: Executed and returned after successfully retaining audit container `116898e95836d221a07725ad80791d0ac3a9108c49b61a7331b603abdff636ae`. Four flags: `DB_FILE_PRESENT=FAIL`, `DB_FILE_NONEMPTY_READABLE=FAIL`, `NEXTAUTH_PATH_ABSENT=PASS`, `NEW_DB_VOLUME_SAFE_EMPTY=PASS`; exit 1. The actual database Secret is not visible as the expected regular file inside this container. No DB/app startup. The future repair requires a new reviewed bound; do not rerun this Gate, regenerate credentials or alter old DB. See latest Handoff/Evidence. 
+
+
 > GATE_ID: MOKER-G1TRF-RETAINED-SECRET-PROBE-LOCALHOST-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_DB_SECRET_READER_DENIED — HISTORICAL / NOT EXECUTABLE
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
 > OWNER_AUTHORITY: `MOKER-D-20261017-APPROVE-G1S-NEW-DB` and `MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION` in `DECISION_LOG.md`
 > MAX_ENDPOINT_THIS_ROUND: one uniquely named, retained, non-disclosing real g1s-db-service-mount audit with **durable results**, then, only if PASS, reuse existing independent synthetic Postgres namespace and start database/schema/local app with bounded negative smoke
