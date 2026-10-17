@@ -1,6 +1,8 @@
 # MokerSaaS G1T — Disposable Local Test Database Proposal
+
+> ARCHIVED 2026-10-17: Owner's disposable-only exception is recorded in DECISION_LOG.md. This is a historical proposal; current sole executable Gate is G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md (see REVIEWER_HANDOFF.md).
 > PROPOSAL_ID: MOKER-G1T-DISPOSABLE-LOCAL-DB-20261017
-> STATUS: PENDING_EXPLICIT_OWNER_EXCEPTION_APPROVAL — NOT EXECUTABLE
+> STATUS: HISTORICAL_SUPERSEDED — NOT EXECUTABLE
 > Governance: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7
 > MAX_ENDPOINT_IF_APPROVED: create one **new** disposable synthetic lab PostgreSQL database + protected local credential, initialize empty schema, reuse valid images and run bounded localhost-only app/auth/provider-negative smoke. Original database unchanged. Mandatory STOP_AT_REVIEWER=YES.
 
