@@ -6,9 +6,9 @@
 
 ## 当前正式成果
 
-- ① 收款方案选择：[正式正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，已封板。
-- ② 收款开通与接入：[正式正文](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，已封板。
-- ③ 顾客付款：[正式正文](docs/CHAPTER3_OWNER_ADOPTED_20261017.md)，已封板。
+- ① 收款方案选择：[正式正文](docs/CHAPTER1_FINAL_SEALED.md)，已封板。
+- ② 收款开通与接入：[正式正文](docs/CHAPTER2_FINAL_SEALED.md)，已封板。
+- ③ 顾客付款：[正式正文](docs/CHAPTER3_FINAL_SEALED.md)，已封板。
 - ④ 支付处理：无正式稿；不采纳、不封板。
 - ⑤ 资金结算与到账：无正式稿。
 - ⑥ 售后与资金风险：无正式稿。
