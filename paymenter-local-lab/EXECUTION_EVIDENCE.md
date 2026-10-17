@@ -164,3 +164,35 @@ SOURCE_FINDING_CRITICAL_1: Exact merged G2A patch added app/Http/Middleware/SetA
 SOURCE_FINDING_CRITICAL_2: Exact merged G2A patch under `resources/views/admin/actions/audits.blade.php` replaced the original audit display expressions with `{{ __(str_replace('_', ' ', )) }}` and `{{ __(class_basename()) }}`; source omits required `$audit->event` and `$audit->auditable_type` parameters, a runtime regression likely to fail when that detail view renders despite PHP lint/Blade compile success. The current screenshots only show audit INDEX, not detail. Restore missing original display arguments in a new incremental patch.
 BOUNDARY: No claim frontend locale switching is fully tested beyond observed nav. No claim all admin languages were fully translated before G2A. No DB/category/product translation requested. No changed runtime on Owner Windows by Reviewer.
 REVIEWER_DECISION: Treat G2A source/CLI and R1 historic approvals as bounded, record newly discovered functional regression without replaying old work; prioritize G2C native-locale semantics + audit-view runtime repair. Current Gate docs/G2C_NATIVE_LOCALE_AND_AUDIT_REPAIR_GATE.md, status AUTHORIZED_NOT_EXECUTED. G2B broader visual final acceptance remains PARTIAL and should not be confused with correctness repair.
+
+
+## 2026-10-17 G2C Executor — 源码/CLI 候选通过，视觉待 Reviewer
+GATE_ID: PAYMENTER-G2C-LOCALE-SEMANTICS-AND-AUDIT-RUNTIME-20261017
+RESULT: PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI / PARTIAL_G2C_UI_EVIDENCE_PENDING
+PROVENANCE: Owner Windows PowerShell + 项目限定 Docker CLI + Paymenter PHP/Laravel；只读 loopback HTTP。未使用浏览器或 Computer Use。
+
+PREFLIGHT:
+- Paymenter app、MariaDB、Redis 三个既有项目容器运行；源码 revision `ee729f7d99ac18942625b79f3f93d8d8b21255e8`（v1.5.9）。G2A 主补丁、本机主题 overlay、G2B-R1 补丁 SHA 与已审核记录一致；R1 六个目标文件分别通过反向补丁检查。G2A 原件清单 117 项，其中 96 个原有文件备份逐项 SHA 校验通过，无缺失/哈希不符。
+- `APP_LOCALE` 运行配置为 `zh`；`settings.allowed_languages` 包含 `en`、`fi`、`zh`。本轮前的只读业务基线：users=1、categories=1、products=1、plans=1、orders=0、invoices=0、services=0、extensions=0；notification_templates=12，聚合 SHA-256 `cb9e1d557907079c87da7829c912c03597f4c880cf003b76ef10379f911d91b9`。未读取或记录秘密配置值。
+
+CHANGES:
+- 新增/更新 `app/Http/Middleware/SetAdminLocale.php`：session locale 必须是允许值；`zh` 只映射为后台简体词库 `zh_CN`，`en`、`fi` 保持原值。无效、空或缺失 session 回退本机默认 `zh`；默认不允许时回退英语。
+- `AdminPanelProvider` 的四个导航组使用 `NavigationGroup` 闭包，在请求语言确定后解析标题。资源组 `ProductResource` 的当前语言标签同时在真实请求上下文中验证。
+- `resources/views/admin/actions/audits.blade.php` 恢复事件 `$audit->event` 和模型类型 `$audit->auditable_type` 两个丢失的显示参数。
+- 唯一补丁修改 3 个源码文件，24 insertions / 8 deletions，SHA-256 `089f7a45674f2076eb3aa5c396a8a90b435c5c2af18f71b409fc6148e1bf60c2`。本机原件 SHA 清单在私有 `g2c-before/manifest.json`，不包含在 GitHub。
+
+VALIDATION:
+- `php -l` 两个 PHP 文件通过；Blade 全量 `view:cache` 成功，之后 `view:clear`。
+- `admin.actions.audits` 使用虚构的内存 fixture 完成实际 Blade 渲染，事件名称、模型类型及记录 ID 均出现，无 `ArgumentCountError`；fixture 未入库。
+- Laravel HTTP Kernel 使用加密 session cookie 与仅内存 session 驱动发起请求：`zh` 前台菜单为“首页/商店”，admin locale=`zh_CN`、导航组为“业务管理/业务配置/扩展功能/系统管理”；`en` 前台 Home/Shop、admin locale=`en`、导航组为英文；`fi` 前台 Koti/Kauppa、admin locale=`fi`、导航组原生回退为英文。ProductResource 导航组与当前 admin locale 一致。
+- admin 对空、缺失及非法 session 值均回退 `zh_CN`。上述 admin 路由因未附认证态返回 302，这是预期；测试在请求中间件运行后读取 Panel 分组，不冒称完成登录态视觉验收。
+- 新补丁在干净 scratch 基线上正向 apply、`git diff --check`、反向检查和回滚往返均通过；本机运行源码也通过 G2C 反向补丁检查。
+- 修改后数据计数与通知模板哈希全部与基线相同。只读 HTTP：`/`、`/login`、虚构商品详情均 200；匿名 `/admin`、`/dashboard` 均 302。未重启任何容器、未执行 migration/seed，不涉及其他 Docker 项目。
+
+KNOWN_LIMITATIONS:
+- 未登录后台的真实视觉截图/交互仍待 Reviewer；不能把 CLI/HTTP 检查称为完整 G2B UI PASS。
+- Finnish 的 Filament 管理导航组没有原生芬兰语词条，因此缺词条按框架回退英语；后台 locale 本身未被覆盖。数据库演示商品、分类、品牌和描述保持原值。
+- 额外负向探测发现：人为注入不在允许列表的前台 session locale 时，原版前台 `SetLocale` 请求未返回 200。内置 LocaleSwitch 会拒绝该值；此行为不是正常选择语言路径。按本 Gate 仅修后台非法/空 session 回退，未扩大修改到前台中间件，请 Reviewer 判断是否单列后续范围。
+
+ROLLBACK: 仅反向应用 `localization/g2c/paymenter-g2c-locale-audit-v1.5.9.patch` 并执行 `php artisan view:clear --no-interaction`；恢复到 G2A+R1，不碰 DB/Redis/卷或业务记录。
+REVIEWER_REQUEST: 检查 session allow-list/default/zh 映射、lazy navigation groups、审计详情运行时参数，以及该 3 文件增量补丁和回滚说明。真实登录态视觉证据仍由 Reviewer 正常路径验收。
