@@ -112,3 +112,14 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **①②比较结论：**⑤⑥新知识覆盖完整，但单笔29美元软件案例单一；比①个人/企业两套完整商业选择推演和②多种接入方式比较更缺能让卖家完成真实选择的案例、准入条件与最终费用核验。⑥工程与合规模块过于绝对，对非工程商家知识分层略差。此审查意见详见当前Reviewer报告，仅用于⑤⑥定向修订，不自动修改③④或全书V6。
 - **最新报告** GitHub `docs/CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md` Blob `78a69f811a9bb6310b7ee04d6f26495090fbe501`，SHA256 `ecf53671cb89780392eb744ff83357acf442fb951067ed653a3a6df6ed24353c`，Library ID `libfile_69a10dc1dd9481918739920ab8c71228`。旧⑤⑥首轮候选与旧Reviewer报告完整移入`/项目历史归档/`，没有销毁。
 - **仍然生效的Owner条件权限：** 下一返修⑤⑥若经独立审核所有资金/法规/工程阻断彻底排除，可由Reviewer对剩余极小问题直接安全修正、落库并正式封板；本次未达此Gate门槛，⑤⑥尚无正式正文。①②已封板、③④已采纳但暂不封板、V6结构未修改；⑦和HTML未启动。
+
+
+## 2026-10-17｜停止⑤⑥入库封板并授权新Agent独立重写③
+
+- **OWNER_REPORTED 新指令**：“第五六部分暂不冻结或落库。我计划换一个agent重新撰写第三部分，请你帮我撰写提示词和工作包。允许包含已经冻结的第一二部分以及相关内容，用于保证顺畅度和一致性。已确定的内容记录到GitHub仓库的main当中，保证下一个reviewer能够接受到全部信息。”
+- **优先级与旧决策冲突解除**：本条为Owner更新的更近决定。此前仅在⑤⑥下一轮事实验收达标后可由Reviewer自动落库封板的条件式授权，**在Owner本次“⑤⑥暂不冻结或落库”决定下暂停/被取代**；Reviewer/Executor不得援引旧指令在本阶段自动把⑤⑥写入正式GitHub或封板。⑤⑥第二轮Candidate与Reviewer RETURN证据继续保留，未来要重新采纳或封板须Owner再明确授权。
+- **新范围**：第三部分由一个**新外部Agent独立重新创作**；全书V6第三部分4个正式H2、5个H3原文/顺序仍冻结。已正式封板①②作为完整只读参考；现行已采纳③及④作为只读对照，**③④依旧“已采纳但未冻结”**，本轮不得直接替换。新Agent可重新构思商业案例、自然叙事及实操工具，不以修改旧稿为唯一选项。只有新稿由独立Reviewer审核及Owner另行明确采纳后，才可能替换现有③。
+- **写作质量目标**：应恢复①②具有的经营主体/市场/商品不同情境的完整“条件筛选→费用/资格比较→最终选择→验证/变更”教学闭环；用第三章事实主题讲清付款方式、付款前总价/续订、结账摩擦/必要验证、失败恢复，避免和②接入及④订单真实核验的重复，不为篇幅盲目扩写。
+- **唯一有效新Agent工作包**：`/现代商业支付系统/现代商业支付系统_第三部分_新Agent独立重写工作包_20261017.zip`，stable Library ID `libfile_d64153b80c508191b90184d0d8cc0da4`，ZIP SHA256 `52504b51836f789e8706cf8ba0e19ad456f8ab0a59e1104d69d33177e9d4ee36`，116,366 bytes，10份UTF-8 Markdown，CRC PASS。包含完整①②③④当前正式正文只读及其SHA校验、V6第三部分问题、独立重写提示词、前四章质量基线、官方参考、下任Reviewer离线说明。工作包不是新稿/正式第三章。
+- **正式GitHub流程**：新增 [docs/CH3_NEW_AGENT_REWRITE_GATE_20261017.md](docs/CH3_NEW_AGENT_REWRITE_GATE_20261017.md) 记载工作Gate、来源指纹/参考、交付两MD ZIP、Owner权限与Reviewer停止点；同步 `REVIEWER_HANDOFF.md`、`docs/CURRENT_DOCUMENT_INDEX.md`、`EXECUTION_EVIDENCE.md`。本文仅append决策，不修改任何①–④正式正文或V6冻结问题，亦不编辑⑤⑥候选正文。
+- **当前Owner动作**：将唯一新Agent ZIP转给新Agent，回传`现代商业支付系统_第三部分_全新独立重写成果.zip`，其中恰好第三部分完整候选Markdown与一份独立核验执行记录Markdown；由下轮Reviewer审，不自动发布。⑦和最终HTML不在本轮范围内。
