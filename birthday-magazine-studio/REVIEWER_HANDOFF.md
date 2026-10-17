@@ -4,7 +4,15 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4M @ 035e55: pre-replay read-only PASS, one Owner Stripe TEST Dashboard Resend, no new payments; keep Tunnel PowerShell until Reviewer closeout)
+ > Last reviewed: 2026-10-18 (Owner Stripe TEST original refund event manual retry 200 OK delivered; Codex read-only idempotence verification next, no more Resend)
+
+## CURRENT_G3S4M_OWNER_MANUAL_TEST_RESEND_200_VERIFY_RUNTIME_ONLY_2026_10_18 — LATEST
+
+**NEW Owner Stripe TEST dashboard screenshot 2026-10-18 UTC+8:** existing `v1.charge.refunded` event manual resend to `https://magazine.spikersun.com/?wc-api=wc_stripe` **shows one `手动重试` / HTTP `200 OK` / `已送达` at 2026-10-17 16:08:20 UTC**, with previous original successful delivery. This **Owner-provided provider UI observation** confirms one manual duplicate delivery attempt succeeded at HTTP level; it is **not yet independent durable local business-state verification**. Prior pre-replay Codex Evidence on PR64 `035e55ec6af41688b5efc56c638a58c4ebb3122b` had one $39.99 TEST order refunded, Stripe and Woo one refund each, owner workspace denied and no pending events. **Owner click fulfilled; NEVER ask for another event resend, payment or refund.**
+
+**CURRENT action: Codex final READ-ONLY post-resend proof and Stripe TEST phase closeout Evidence ONLY**, per [G3S4M Gate latest Owner screenshot appendix](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md). Read original Stripe TEST event and endpoint delivery attempt time/status, signed Woo plugin Webhook processed or safely duplicate-ack path and original order/Stripe refund state. Must show Woo order still `refunded`, Woo one $39.99 refund, Stripe TEST one 3999-cent succeeded refund/livemode=false, original owner workspace denied, no new order/charge/job. Signatures not to be copied nor authentication bypassed. If application delivery cannot be independently correlated, state precise limit rather than fabricating dynamic idempotence. Append one sanitized G3S4M Evidence on existing PR64, STOP Reviewer, no source or provider changes, no CLI/Cloudflare setup.
+
+**Cloudflare PowerShell still open:** after Codex returns and Reviewer accepts final Stripe TEST-only closeout with no pending Webhook callbacks, Owner may use **Ctrl+C** in *foreground* `Start-MagazineTunnel.ps1` cloudflared PowerShell; the public website and external webhook will be unavailable until restarting this script, while local Docker WordPress and Stripe TEST remain intact. No site deletion, token disposal, PR64 merge, Stripe Live activation or further testing purchases. Next phase after Reviewer closeout: P1–P12 magazine design only.
 
 ## CURRENT_G3S4M_035E55_PREFLIGHT_PASS_ONE_OWNER_STRIPE_TEST_RESEND_2026_10_17 — LATEST
 
@@ -308,7 +316,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4M_SINGLE_OFFICIAL_TEST_EVENT_REPLAY_PHASE_CLOSEOUT_THEN_MAGAZINE_DESIGN
+CURRENT_GATE=G3S4M_OWNER_MANUAL_STRIPE_TEST_REPLAY_DELIVERED_FINAL_READONLY_VERIFICATION_THEN_DESIGN
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -737,8 +745,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4M @ PR64 `035e55ec...`** read-only pre-replay accepted; original refunded TEST payment and single provider/Woo refund each intact, workspace owner denied, original `charge.refunded` event and original registered Webhook endpoint unique, all 45 TEST events have zero pending Webhooks. **OWNER ONLY NOW: select that existing TEST event 2026-10-17 15:13:23Z / USD39.99 in ordinary Stripe Dashboard, then click `Resend` ONCE to current `https://magazine.spikersun.com/?wc-api=wc_stripe` endpoint**. No Codex Stripe Dashboard browser safety bypass or CLI install. Owner reports only `已重发一次`; Codex then read-only verify same signed event delivery and no duplicate financial/entitlement changes, append PR64 Evidence, Reviewer STOP. If no official safe Resend, report `REPLAY_UNAVAILABLE` and do not falsely certify strict replay. See [formal decision](./docs/REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md) and [current Gate](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md). Keep cloudflared PowerShell open until Reviewer accepted final Stripe TEST phase; then Ctrl+C stops public reachability but not original Docker WP/credentials/DNS. No new purchase/refund or PR merge.
-
+**G3S4M owner manually Resent original `v1.charge.refunded` TEST event to original `https://magazine.spikersun.com/?wc-api=wc_stripe` endpoint ONCE; Stripe Dashboard screenshot shows HTTP 200 `已送达` at 2026-10-17 16:08:20 UTC.** This is provider UI proof; local duplicate side-effect invariants **NOT YET VERIFIED AFTER REPLAY**. No further Owner clicks or payment/refund. Codex must only read back same event attempt/native Woo signed callback evidence and `refunded` order, Woo 1 refund $39.99, Stripe TEST 1 refund 3999c, owner workspace denied, zero extra jobs; append PR64 sanitized G3S4M closeout Evidence and STOP Reviewer. Detailed [G3S4M Gate latest appendix](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md). Then Reviewer phase closes and signals when Owner can Ctrl+C foreground Cloudflare PowerShell (public site becomes unavailable; local Docker data retained). No new payment, refund, resend, Live, app/Cloudflare config or PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -864,14 +871,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner manual **one-time official TEST Dashboard Resend** on original 2026-10-17 15:13:23Z USD39.99 `charge.refunded` event to existing `magazine.spikersun.com/?wc-api=wc_stripe` delivery. Do not trigger another event or disclose IDs/keys.
-2. Codex read-only check true second signed same-event delivery and unchanged one provider/Woo refund, refunded order and denied owner workspace; sanitized Evidence on PR64 then Reviewer STOP. If no Resend available, report `REPLAY_UNAVAILABLE` and formal deferred item.
-3. Reviewer completes TEST-only phase closeout, explicitly authorizes **Ctrl+C in foreground Cloudflare PowerShell only after last callback/pending delivery reconciliation**, activates new P1–P12 magazine design Gate. PR64 remains OPEN/UNMERGED.
+1. Codex **read-only** correlate delivered existing Stripe TEST webhook duplicate from Owner screenshot, source/arrival evidence and check Woo/Stripe no duplicate refund, order stays refunded, original owner remains denied, no new payment or job; append factual G3S4M Evidence to PR64 and STOP Reviewer. **Do not ask Owner to click again**.
+2. Reviewer verifies Evidence and finalizes G3S4M as PASS if actual same-event stable side effects shown, or accurate scoped residual; then announces Cloudflare PowerShell Ctrl+C readiness after pending callbacks are zero.
+3. Next separate Gate is magazine P1–P12 design/product experience; testing magazine purchase deferred by Owner.
 
 ## OWNER_ACTION_REQUIRED
 
-- **ONE CLICK NOW:** Normal signed-in Stripe **TEST** Dashboard → existing `charge.refunded` at `2026-10-17 15:13 UTC` / $39.99 → original magazine Stripe Webhook delivery → `Resend` once. Reply only `已重发一次`; if UI ambiguous, screenshot without account identifiers/secrets, do not click twice.
-- **PowerShell:** keep current foreground Cloudflare connector window running until final Reviewer sign-off; only then **Ctrl+C** to stop public website and external callbacks for local-only design. No uninstall/deletion.
+- **NONE now:** the one official Stripe TEST manual resend is already done and shows 200 OK in Owner screenshot. No repeat, no new testing charges, no secret sharing.
+- **PowerShell remains ON now:** after Codex final proof and Reviewer phase closeout, Owner may stop the foreground Cloudflare Tunnel window by Ctrl+C, losing public access until restart. Local WordPress persists.
 
 ## EVIDENCE_POINTERS
 
