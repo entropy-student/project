@@ -89,3 +89,35 @@ Official sources: https://developers.cloudflare.com/cloudflare-one/networks/conn
 ### Owner interaction ceiling
 
 No permission request for routine offline prepare/validation or setup of empty protected directories in project private user scope. No additional purchases. **Zero Owner steps if an authorized existing connection genuinely suffices; otherwise one essential Cloudflare account action**, and separately one normal Stripe TEST login/consent only when HTTPS is proven. Do not solicit manual DNS guessing, private password rereading, token in tool output, lengthy step-by-step debugging or repeated Owner sign-in.
+
+
+## 2026-10-17 Owner host-path concern — latest Reviewer AppData reconciliation + Quick Tunnel candidate
+
+**Reviewer authoritative decision (supersedes latest remote-managed credential-staging plan):** `docs/REVIEWER_DECISION_G3S4L_APPDATA_REAL_HOST_AND_QUICK_TUNNEL_2026-10-17.md`. Latest actual Executor Evidence PR64 `bb04c27ba0dca4dd3ea081f265bdedf852090106` is one existing G3S4L Evidence file update. Owner reports that their ordinary Windows Explorer cannot find files that Codex says exist under `AppData`; the current work already has a 2026-10-17 G3S4A same-class path mismatch. Canonical Governance §11B **requires proving actual Owner host and packaged-app file path virtualization**, with historical exact corroboration `spike.skill/vps-project-governance/history/incidents/2026-09-29_PACKAGED_APP_APPDATA_PATH_VIRTUALIZATION.md`.
+
+```text
+CURRENT_GATE_SUBPHASE=G3S4L_HOST_LOCAL_APPDATA_PATH_RECONCILIATION_READONLY
+PR64_EVIDENCE_HEAD=bb04c27ba0dca4dd3ea081f265bdedf852090106
+APPDATA_FILE_PROVEN_IN_NORMAL_OWNER_WINDOWS=NO_UNVERIFIED
+PACKAGED_CODEX_LOCALCACHE_PATH=NOT_YET_INSPECTED_FOR_THIS_NEW_G3S4L_ARTIFACT
+CLAIMED_EMPTY_TOKEN_FILE=NO_ACTUAL_SECRET_RECORDED
+NEW_APPDATA_FILE_OR_TOKEN_WRITE=HOLD
+CLOUDFLARE_CLI_LOGIN=DO_NOT_REPEAT
+CLOUDFLARE_REMOTE_MANAGED_TOKEN_FILE=DEFERRED_OPTIONAL_NOT_CURRENT_PREREQUISITE
+CLOUDFLARE_QUICK_TUNNEL=OFFICIAL_ONE_COMMAND_CANDIDATE_NOT_STARTED
+QUICK_TUNNEL_ACCOUNT_TOKEN_DNS=NOT_REQUIRED
+WORDPRESS_PUBLIC_EXTERNAL_ROUTE=NOT_CREATED
+STRIPE_TEST_OAUTH_WEBHOOK=NOT_STARTED
+```
+
+**Executor exact relay now (ONE scoped read-only provenance check):**
+1. Read only main `REVIEWER_HANDOFF.md` top latest block, this Gate latest addendum, and PR64 G3S4L Evidence **latest append** `2026-10-17 G3S4L local autonomous preparation`. Reuse media/privacy PASS_CANDIDATE and Owner-reported password rotation; no repeated scans, backups or Stripe CLI. Do not reread full history or this Governance file.
+2. Prove *real Windows target vs packaged Codex execution* by reporting non-sensitive host identity/runtime context and read-only **presence/absence** at exact two known locations for the newly claimed `remote-managed-tunnel-20261017` folder: ordinary user `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017`, and packaged Codex `%LOCALAPPDATA%\Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017`. Also resolve prior signed `cloudflared-20261017\cloudflared.exe` actual path. Check only metadata, user/SID/ACL and file size/signature, **no actual token or secret content/hash**, no broad host search, no sudo/elevation, no new staging file. Codex PowerShell 5.1 inside the packaged app alone **does not** independently establish normal Owner-path accessibility.
+3. If normal Owner Windows independently launched host shell view cannot be inferred conclusively, do **not** print `HOST_VISIBLE=PASS` from the same packaged execution. Report `RETURN_HOST_NATIVE_PATH_UNVERIFIED` with an optional **single** predesigned read-only Owner-native normal-PowerShell checkpoint, not another AppData write; Reviewer will decide before asking Owner.
+4. Respect unknown partial artifacts. Do NOT duplicate, delete, move, cleanup, overwrite or automatically insert a connector token. After classification, recommend one visible ordinary project tools path for verified non-secret binary/script only; do not move live Secret material. Preserve original 8189 and project backups, PR64 still open/unmerged.
+5. Cloudflare's official **Quick Tunnel** `cloudflared tunnel --url http://127.0.0.1:8189` is the newly identified minimal temporary HTTPS route: **no account, DNS, Cloudflare approval or connector token**; returns random `https://*.trycloudflare.com`; expires when process stops and hostname changes on restart. It is intended for testing, not production; **NOT RUN IN THIS PATH-DIAGNOSTIC STEP**. Do not falsely claim the random host is Owner `stripe-test.spikersun.com` or a stable Stripe TEST Webhook/OAuth endpoint. Real public exposure of original WP requires previously accepted site safety and exact public/private access smoke, reversible canonical URL, no Live and bounded stop.
+6. Submit minimal sanitized path-result appendix to the **same existing G3S4L PR64 Evidence** and STOP Reviewer. A path mismatch is not evidence the files have been lost or the binary needs reinstallation. Do not widen the Gate or request another broad project authorization.
+
+After host path is actually confirmed, Reviewer may authorize one short lived **Quick Tunnel HTTPS public canary** rather than first asking Owner to build a remotely managed Tunnel. Stable Cloudflare named subdomain remains optional only if real Woo Stripe TEST/OAuth callbacks need a persistent hostname. Never begin provider OAuth/refund merely because an ephemeral URL appears.
+
+Official Cloudflare docs: https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/ .
