@@ -1,0 +1,12 @@
+diff --git a/themes_default/default/theme.php b/themes_default/default/theme.php
+--- a/themes_default/default/theme.php
++++ b/themes_default/default/theme.php
+@@ -44,7 +44,7 @@ return [
+             'name' => 'home_page_text',
+             'label' => 'Home Page Text',
+             'type' => 'markdown',
+-            'default' => 'Welcome to Paymenter!',
++            'default' => '欢迎使用 Paymenter 本机试用版！',
+         ],
+         [
+             'name' => 'primary',
