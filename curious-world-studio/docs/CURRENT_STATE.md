@@ -1,5 +1,10 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-17）
 
+<!-- CWS_V531_CAPTION_REFRESH_TESTED_20261017 -->
+> **2026-10-17 V5.3.1最新技术修复**：上一轮外部Reviewer `V5.3 = 7 PASS / 1 PARTIAL` 的唯一遗漏——编辑器选择S01但播放器正在S02时，编辑超长S01字幕没有立即警告——已在Draft [PR#144 V5.3.1](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-3-1-caption-alert.html)实施单行补丁（blob `c74567d1c399d58ab96fb81303cf381250ab2ee2`）。真实Chromium复测当前/异镜头警告、改短清除、导出拦截/恢复全部PASS，原19项回归19/19、JS错误0。**本轮八项技术缺陷自验均PASS**；下一阶段仍须独立审核数据导入⑬、字幕/配音cue⑩、T6泛化⑨；⑤真实资料、⑭故事素材匹配留待制片；⑪显示语义低优先级。**main唯一冻结V5.2仍不变**，不将本次技术自验视为正式4–6分钟MP4、知识/权利或R3/G1/G2/R4/发布通过。证据见[PR评审评论](https://github.com/entropy-student/project/pull/144#issuecomment-6235860650)。
+
+
+
 <!-- CWS_V53_EIGHT_FIXES_EXTERNAL_REVIEW_PENDING_20261017 -->
 > **2026-10-17 最新候选（尚未被外部Reviewer接受）**：Owner仅授权八项有界修复①长片时间边界②T5局部入点③短视频停末帧④T5/T6参数化⑥T2/T3证据contain⑦字幕超长告警⑧T5自定义阶段时长⑫文件名与来源标签。Draft [PR#144 V5.3](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-3-eight-fixes.html)已提交，Git blob `8c3dd9f26dae8f1104082d670a7310dbe9033e47`，**不覆盖当前main V5.2冻结原件**（blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`）。浏览器本轮本地技术自测19/19+4/4，31.06秒全程1×私有样片PASS；隔离5分钟时长扩展第40秒显示正确、短MP4/T5入点复测正确，仍**待原独立Reviewer复核与采纳，不算新正式基线**。私人带参考媒体HTML只在用户会话ZIP中，未入Git；正式节目制片R3视觉RETURN/G1 HOLD/G2和R4未授权/NO_PUBLISH不变。证据见[PR复核邀请](https://github.com/entropy-student/project/pull/144#issuecomment-6235329867)。
 
