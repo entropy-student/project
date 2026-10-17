@@ -1,5 +1,8 @@
 # Birthday Magazine Studio — Document Index
 
+> **2026-10-17 CURRENT ENTRY OVERRIDE:** Read `../REVIEWER_HANDOFF.md` top `CURRENT_REVIEWER_ENTRY_2026_10_17` and `REVIEWER_DECISION_G3S4AR_CREDENTIAL_RESULT_AND_LOCAL_NEXT_GATE_2026-10-17.md` first. G3S4AR actual WP-CLI credential change is recorded in PR #64; earlier “password not changed” and old G3CR6R3C research-Gate labels below are **historical**. Current next work is existing `G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` **read-only local preflight**. Old VPS has been replaced; no remote deployment. Secret rotation Owner-only before reuse.
+
+
 > Purpose: prevent research, historical snapshots and prototypes from competing with the canonical current project truth.
 
 ## 2026-10-17 current Reviewer entry — G3S4AR (authoritative current index)
