@@ -2,7 +2,7 @@
 Updated: 2026-10-17
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
 PROJECT_GOAL: 在 Owner 的 Windows 11 本机用 Docker 启动 Paymenter（中文优先），观察真实用户前台、管理员后台、产品/套餐及可用功能；此项目目前仅供私有试用。
-PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS_WITH_KNOWN_REGRESSION / G2B_R1_SOURCE_CLI_PASS / G2B_VISUAL_PARTIAL / G2C_LOCALE_AND_AUDIT_REPAIR_AUTHORIZED_NOT_EXECUTED
+PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS_WITH_KNOWN_REGRESSION / G2B_R1_SOURCE_CLI_PASS / G2B_VISUAL_PARTIAL / G2C_LOCALE_AND_AUDIT_CLI_CANDIDATE_REVIEWER_PENDING
 SYSTEM_MAP: Owner Windows 11 build 26300 + PowerShell 7.6.5 + Docker Desktop Linux (Engine 29.7.2 / Compose v5.4.0) → 项目专属 Compose paymenter_local_lab [Paymenter、MariaDB、Redis] → 127.0.0.1:8187；活跃 MariaDB 数据位于项目命名卷 paymenter_local_lab_database；APP_KEY、Compose、日志、历史失败数据库目录等位于 %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab；未使用 VPS/公网路由。
 CURRENT_ACCEPTED_STATE:
 - Reviewer G2C SOURCE_DIAGNOSIS 2026-10-17：Owner 新增五张截图证实前台语言选择 Suomi 后菜单变 Koti/Kauppa/Näytä，原本中文商品与分类因源自数据库记录，不随 locale 变换，故前台 UI 切换部分正常；但 G2A 中 admin SetAdminLocale 无条件 zh_CN，确实属于不应存在的强制中文覆盖。源补丁 audit 详情 view 另存在两个缺参调用 `str_replace('_', ' ', )` 与 `class_basename()`，可导致详情页运行时报错，虽截图 audit 列表正常也不能证明详情安全。两项最小修复 G2C 已授权但尚未本机执行；G2B 视觉仍 PARTIAL。
@@ -19,11 +19,20 @@ CURRENT_ACCEPTED_STATE:
 - 中文事实：默认语言已设置 zh；前台、登录页、用户区部分繁体中文；首页及管理员后台仍有英文。未更改翻译文件。此为功能限制，不是 G1 部署阻塞。
 - 源码/镜像：官方 Paymenter 上游 master 1d4c0b92dac0f93f28998b04c4c0e282bf436177；实际 App/MariaDB/Redis 镜像 SHA 与探测细节详见 EXECUTION_EVIDENCE。
 - 启动问题已修复并验证：数据库 readiness 竞态；Windows host bind MariaDB InnoDB 表空间问题。改用独立命名卷，保留首次失败数据目录；未 prune/down -v、未动其他项目。
-CURRENT_GATE: docs/G2C_NATIVE_LOCALE_AND_AUDIT_REPAIR_GATE.md = AUTHORIZED_NOT_EXECUTED（恢复原生多语言与审计详情参数）；G2B 登录态视觉总体验收仍 PARTIAL 且保留，G1/G2A/R1 原有源码/CLI 有界验收不重跑。
+CURRENT_GATE: G2C `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`，新增三文件补丁和无敏感证据等待 Reviewer；G2B 登录态视觉总体验收仍 PARTIAL 且保留，G1/G2A/R1 不重跑。
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 可通过精确 docker compose -p paymenter_local_lab -f <owned-compose> stop 停止试用并保留命名卷及本机文件；这属于停机而不是已验证的全量灾备/恢复，恢复演练未做。
-UNRESOLVED: Owner 的 R1 后截图证实前台切 Suomi 菜单为 Koti/Kauppa/Näytä，演示商品/分类与品牌中文来自已保存内容，属预期；但 G2A 原补丁把 admin 强制 zh_CN，破坏尊重选择语言的语义，且审计详情 Blade 翻译两处丢函数参数，存在运行时报错风险（audit 列表正常不等于详情正常）。R1 通知列表八项中文已实拍，但动态标题仍英文；部分管理员技术列表列名英文；用户 dashboard、商品编辑/套餐和其它交互仍未验收。原生日期占位随浏览器区域设置，Stripe/Referrals 未启用。
-NEXT_STEP: 先执行 G2C 最小正确性修复：使后台尊重允许的用户 session locale、中文仍使用简体翻译、修复审计详情 Blade 函数丢失参数并验证真实运行时；仅新补丁及 CLI/只读回归，交 Reviewer。再继续 G2B 已开展的少量实际 UI 验收，不重复 Docker/G1/G2A/R1。
-OWNER_ACTION_REQUIRED: 把最新 G2C 执行提示词交给原 Windows 本机 Codex；无需手动执行多条命令、重启 Docker、翻译商品数据或再次重复旧截图。G2C 执行证据返回后 Reviewer 审核；是否需额外截图仅在最后验证动态 locale 时再确认。
+UNRESOLVED: G2C locale 中间件和 audit 详情参数已作最小源码/CLI 修复并提交 Reviewer；后台登录态真实视觉仍未验收。另有人工注入非法前台 session locale 时原版 SetLocale 未返回 200 的非正常路径观察；内置 LocaleSwitch 有 allow-list 校验，本 Gate 未改前台中间件，Reviewer 可决定是否另开范围。Owner 的 R1 后截图证实前台切 Suomi 菜单为 Koti/Kauppa/Näytä，演示商品/分类与品牌中文来自已保存内容，属预期。R1 通知列表八项中文已实拍，但动态标题仍英文；部分管理员技术列表列名英文；用户 dashboard、商品编辑/套餐和其它交互仍未验收。原生日期占位随浏览器区域设置，Stripe/Referrals 未启用。
+NEXT_STEP: Reviewer 审查 G2C 三文件增量补丁、请求级 zh/en/fi locale 证据及审计详情 fixture 渲染；若接受，再按正常支持方式补充登录态视觉验收，保持 G2B 总体 PARTIAL 直至其证据完整。不重复 Docker/G1/G2A/R1。
+OWNER_ACTION_REQUIRED: G2C 源码/CLI 执行证据已提交 PR；无本机操作或业务数据变更待 Owner 执行。仅在 Reviewer 要求时，通过正常支持的路径补登录态截图；不绕过浏览器工具限制。
 EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md 包含 Reviewer 的五张截图分析、原版 locale 源码与 G2A audit 缺参核验；当前 Gate docs/G2C_NATIVE_LOCALE_AND_AUDIT_REPAIR_GATE.md；PR #148 G2A 原补丁、#149 R1 增量补丁；G2B 视觉仍见 docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md；修复前状态不变。
+
+
+## 2026-10-17 G2C Executor result
+- 状态：`PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`。
+- 改动：仅 `SetAdminLocale`、Filament admin navigation groups、audit detail Blade 三处；补丁、回滚、验证见 `localization/g2c/` 与本文件关联的 `EXECUTION_EVIDENCE.md`。
+- 语言：前台 zh/en/fi 菜单切换通过；admin zh → zh_CN，en/fi 保持；非法/空/缺失 admin session 回退本机简体默认；Finnish 缺少的管理分组词条回退英文。
+- 审计详情：真实 Blade view 使用非持久化 fixture 渲染通过。
+- 未完成：未认证 admin HTTP 为 302，因此没有登录态真实截图/交互验收；G2B 整体仍 PARTIAL。
+- 数据：G2C 前后业务计数、12 条通知模板聚合哈希不变；无容器重启/迁移/支付变更。
