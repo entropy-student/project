@@ -141,3 +141,10 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **OWNER_INSTRUCTION：** 新Reviewer先读取GitHub main最新交接、索引、V6题文与③首次RETURN；新返修ZIP到来时独立核验7P0/8P1、官方事实、与①②④质量及边界，审后同步四份管理文档。旧Gate失效，不得越权修改①②④或V6、采纳③、落库⑤⑥或开展真实支付部署。
 - **本轮状态：** `MCPG-CH3-REVIEWER-INTAKE-20261017`；接手基线 `ba8ea6cf5db7f42aa768827a96e9ea6c5d80c543`，已核实封板和回滚Git Blob；**尚无新返修ZIP、无新的内容审查判决**。沿用既有 `NEW_STRUCTURE_PREFERRED / CONTENT_RETURN_TARGETED`，而非另行批准稿件；现行唯一返修报告及工作包见Handoff和Index。
 - **NEXT_OWNER_DECISION：** 仅在独立Reviewer对具体新返修稿给出PASS建议后，Owner才决定是否采纳为正式③。此条是Owner任务交接记录，不替代先前Owner批准/暂停决定，也不授予自动采纳权限。
+
+## 2026-10-17｜MCPG-CH3-REVIEWED-ADOPTION-20261017｜第三部分返修审查达标，Owner授权正式采纳，暂不封板
+
+- **最新Owner授权**：返修结果返回后由独立Reviewer“按照最小原则进行修复并落到GitHub仓库中”，同时评估与第一、第二部分的衔接、知识深度广度与总体质量；因此本轮完成验收后正式采用新③，不需要继续等待另一条Owner采纳指令。**此授权并未要求/授予封板第三部分**。
+- **现行版本**：[正式第三部分](docs/CHAPTER3_OWNER_ADOPTED_20261017.md)，Blob `4f56213f307827fbfcd6aec521cdef2fee68374d`、SHA256 `39e05e7238ed543d4ecb9411066235444ca11f598c2892f87d8f3ed50ee70740`；[独立Reviewer审核报告](docs/CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md)，Blob `41bad9e627f21c3d5b9e615f5a0104286914a23a`。结论 `PASS_AFTER_FIX / OWNER_ADOPTED / NOT_SEALED`，7组P0及8组P1完成最小定向修正。
+- **质量判定**：V6第三部分4H2/5H3原文顺序不变；保留29美元软件和120美元实体键盘两组独立推演，先资格筛选后支付方式选择，透明价格与失败导流。第一二章同级对比：深度与商业决策有效性达标、广度不下降，没有明显整体质量下滑。第三章仅解释买家付款路径及体验，第四章保留支付后服务端状态、Webhook与履约机制。
+- **原则/边界**：商户资格、支付方式功能、德国/美国税务、PCI及Apple Pay等只在有官方依据/条件前提下陈述，未实际申请的渠道继续 `UNKNOWN`。①②保持封板，④已采纳未封板不变，V6框架不动；⑤⑥只留候选、不落库不冻结；⑦/最终HTML未启动。旧③历史Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef` 及 Library 快照保持可恢复。
