@@ -229,3 +229,41 @@ KNOWN_LAST_ACCEPTED: Compose project paymenter_local_lab; 127.0.0.1:8187; projec
 CURRENT_RESULT: PREPARED_NOT_EXECUTED. No local containers/files/secrets/volumes have been removed by this ChatGPT Reviewer. No GitHub project subtree has been removed; latest Gate and Handoff were written to main in preparation. Owner must relay bounded G3 to real Windows local Codex and return sanitized evidence for Reviewer decision.
 STOP_CONDITIONS: Any scope uncertainty, actual business data/payment, unknown local unique file, cross-project volume/network reference, symlink outside owned root, or ambiguous partial removal. No global prune, broad recursive cleanup, whole-repo deletion or history rewrite.
 NEXT: Local execution -> nonsecret proof -> Reviewer readback -> GitHub scoped tree removal -> verify all other top-level projects remain.
+
+## 2026-10-17 Owner Windows G3 local decommission execution — partial; Reviewer pending
+
+GATE_ID: PAYMENTER-G3-OWNER-WINDOWS-LOCAL-DECOMMISSION-20261017
+PROVENANCE: Fresh Owner Windows PowerShell, Docker CLI/inspect, Laravel read-only database counts, and exact project-scoped Compose/volume operations. No browser automation was used.
+RESULT: RETURN_PARTIAL_DECOMMISSION / STOP_AT_REVIEWER.
+
+OWNER_WINDOWS_PROOF:
+- Windows 11 Home (Chinese edition), PowerShell 7.6.5, Docker Desktop Linux context desktop-linux; Engine 29.7.2; Compose v5.4.0. Host account and machine identifiers omitted.
+- The canonical owned root matched %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab; ownership marker and Compose file were present; root was a normal directory with no reparse points. Compose config was valid; declared services were paymenter/database/cache, and the build profile was enumerated with no profile container present.
+- Before cleanup, the root contained 1,105 files (164,731,354 bytes) across the project-owned database, extensions, translation work/backups, storage, themes and var areas. No file contents, secret values, environment variables, or database records were uploaded.
+
+FRESH_BUSINESS_DATA_READBACK:
+- users=1 (matched the known disposable demo admin); categories=1; products=1 (matched the known fictional demo product); plans=1.
+- orders=0; invoices=0; services=0; extensions=0; billing_agreements=0; tickets=0; coupons=0; invoice_transactions=0; notification_templates=12.
+- The only settings key matching a payment keyword was the non-encrypted theme setting theme_default_direct_checkout; its value was not read or emitted. No transaction/gateway credentials were exported. No real customer or commerce records were found in the active database.
+
+PROJECT_DOCKER_OBJECTS_BEFORE_AFTER:
+- Before: containers paymenter_local_lab-paymenter-1, paymenter_local_lab-database-1, paymenter_local_lab-cache-1; named volumes paymenter_local_lab_app and paymenter_local_lab_database; network paymenter_local_lab_paymenter_nw.
+- All three containers carried com.docker.compose.project=paymenter_local_lab. The dedicated network attached only to those three containers. The two project-labelled volumes were referenced only by their respective Paymenter/database containers. All bind mounts were within the owned root.
+- After project-scoped `docker compose -p paymenter_local_lab -f <owned-compose> down`: project containers=0, project networks=0, project-labelled named volumes=0; port 8187 has no listener. The two exact project volumes were removed individually after reference checks. Images were retained; no prune/rmi was run.
+
+SHARED_RESOURCES_UNCHANGED:
+- SHA-256 of the pre/post inventory manifest for every non-Paymenter container, volume and network, plus the complete Docker image ID list, is unchanged: DBE3B26420EA9BB37AD6754D2E3FCF02C7C61A140E8000078D7872426CC5EB1E.
+- Pre/post counts in that manifest: 35 other containers, 22 other volumes, 12 other networks, 20 images. Docker context and Engine version are unchanged. No Docker Desktop, WSL, daemon configuration, shared resource, image, or other project was modified.
+
+OWNED_ROOT_BEFORE_AFTER:
+- The exact owned root still existed at the post-check. Immediately before deletion it was re-resolved to the authorized absolute path, confirmed not to be a reparse point, confirmed to have no container bind references, and confirmed that all Paymenter containers/volumes/networks were absent.
+- The execution tool automatically rejected the scoped PowerShell recursive directory-removal command with `blocked by policy`; it did not run. No alternate tool or method was used to bypass that decision. The project root therefore remains, including its project-local secrets/backups and legacy host database files. Their contents were not read or copied to this record.
+
+GITHUB_NOT_TOUCHED:
+- No Paymenter source tree, Git history, or project directory was deleted from GitHub. This PR records only the local execution result and updates the handoff status. GitHub cleanup is not authorized until Reviewer resolves the incomplete local decommission.
+
+UNKNOWN_OR_RESIDUAL:
+- Local owned directory and its project-only files/secrets remain. Active application/database named volumes and containers are gone, so the active demo database is not recoverable from this host. The retained project root is the remaining local Paymenter resource; the three Docker images remain by design.
+
+REVIEWER_REQUEST:
+- Verify the scoped Docker removal and unchanged shared-resource digest. Keep this result at RETURN_PARTIAL_DECOMMISSION; do not perform GitHub project-tree cleanup based on a partial local result.
