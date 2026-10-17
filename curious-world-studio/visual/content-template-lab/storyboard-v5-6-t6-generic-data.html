@@ -1,0 +1,733 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Curious World Studio - G1V-A V2 First-Frame Motion Prototype</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#11294e}canvas{display:block;width:min(100vw,177.777vh);height:auto;max-height:100vh;aspect-ratio:16/9;margin:auto;object-fit:contain}</style><style>
+html,body{height:auto;min-height:100%;overflow:auto;background:#101923;color:#e8f1fa;font-family:Arial,"Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}
+.shell-stage{width:min(100vw,177.777vh);aspect-ratio:16/9;position:relative;margin:0 auto;background:#144D91}
+#view{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain;display:block}
+#content-viewport{position:absolute;overflow:hidden;z-index:2;background:#091a2c;pointer-events:none;visibility:hidden}
+#content-plane{position:absolute;left:0;top:0;width:1920px;height:947px;overflow:hidden;transform-origin:top left;background:#142c3c}
+#shot-holder{position:absolute;inset:0}.shot{position:absolute;inset:0;overflow:hidden}.shot img,.shot video{width:100%;height:100%;object-fit:contain}
+.hero{width:100%;height:100%;object-fit:contain}.cover,.fill{object-fit:cover!important}.fill{position:absolute;inset:0;width:100%;height:100%}
+.visual-empty{height:100%;width:100%;display:grid;place-items:center;background:linear-gradient(145deg,#122a3d,#345068);font-size:32px;color:#d4e7ef}
+.content-cap{position:absolute;z-index:30;left:5%;right:5%;bottom:25px;text-align:center;pointer-events:none}
+.content-cap span{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:55px;font-weight:700;background:#08131ae0;color:white;border-radius:8px;padding:8px 23px}
+.lab-ui{max-width:1400px;margin:0 auto 40px;padding:18px;color:#e8f1fa}.lab-ui .summary{display:flex;justify-content:space-between;gap:15px;color:#c5dbe9;margin-bottom:12px}
+.control{display:flex;align-items:center;gap:11px;padding:12px;background:#172e42;border:1px solid #36526c}
+.control button,.tabs button{cursor:pointer;background:#2b4a63;border:1px solid #547f96;color:#fff;padding:10px 15px;border-radius:5px}.control input{flex:1;accent-color:#53B7E4;min-width:110px}
+.tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:12px}.tabs button{text-align:left;min-height:56px;font-size:12px}.tabs button.active{background:#38789b}
+.editor{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:12px;padding:15px;background:#172d40}.editor label{display:block;font-size:12px;color:#b9d1df;margin:10px 0 5px}
+.editor input[type=text]{width:100%;padding:10px;background:#0c2237;border:1px solid #638396;color:#fff;border-radius:4px}
+.slot-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px;background:#0d2436;margin:7px 0}.slot-row input{max-width:225px}
+.disclaimer{margin-top:12px;font-size:12px;color:#acc2d0;line-height:1.7}
+@media(max-width:800px){.tabs{grid-template-columns:repeat(3,1fr)}.editor{grid-template-columns:1fr}.control{flex-wrap:wrap}}
+.badge-source{position:absolute;top:26px;left:27px;padding:11px 19px;background:#0f3045df;border:1px solid #80a6b959;border-radius:5px;font-weight:650;font-size:21px;color:#e8f7fa;z-index:20}.headline{position:absolute;left:55px;top:92px;color:white;font-size:31px;font-weight:700;text-shadow:0 3px 15px #001b33ae;z-index:10}
+.caption-rail{position:absolute;bottom:22px;width:100%;display:flex;justify-content:center;padding:0 75px;z-index:30;pointer-events:none}.caption-rail span{font-size:55px;font-weight:700;line-height:1.3;color:white;background:#08131ae0;border-radius:9px;padding:9px 23px;white-space:nowrap;text-shadow:0 2px 5px #0007;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.credit-line{position:absolute;bottom:107px;left:36px;padding:6px 12px;background:#061923a1;color:#d6e5eb;font-size:16px;letter-spacing:.04em;z-index:21}
+.duo{height:100%;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:11px 14px 100px}.duo .cell{position:relative;overflow:hidden;background:#122436;border:1px solid #7194a36b}.duo .cell img,.duo .cell video{height:100%;width:100%;object-fit:cover}.duo .name{position:absolute;top:13px;left:15px;background:#dce6ebef;color:#38566b;font-weight:700;padding:7px 12px;font-size:23px}
+.explain{display:grid;grid-template-columns:1.28fr .72fr;height:100%;width:100%;gap:0;padding-bottom:97px}.explain .left{position:relative;overflow:hidden}.explain .left video{width:100%;height:100%;object-fit:cover}.explain .right{background:#dce6ea;color:#2e475c;display:flex;flex-direction:column;justify-content:center;padding:56px 54px;gap:23px}.explain .right .small{letter-spacing:.12em;font-size:19px;color:#58788e}.explain .right strong{font-size:39px;line-height:1.4}.explain .right p{font-size:22px;line-height:1.65;margin:0}.explain .right .rule{display:flex;align-items:baseline;gap:16px;border-top:1px solid #90abb9;padding-top:18px}.explain .right .rule b{font-size:54px;color:#b15d45}.explain .right .rule span{font-size:20px}
+.archive-back{position:absolute;inset:0}.archive-back img{width:100%;height:100%;object-fit:cover;filter:brightness(.42)}.document{position:absolute;top:48px;bottom:155px;left:12%;right:12%;background:#eef0ec;color:#273b4a;display:flex;flex-direction:column;padding:33px 52px;box-shadow:0 17px 45px #000a;border:1px solid #c0c5bd}.document .topline{font-size:18px;letter-spacing:.14em;color:#697d89;border-bottom:1px solid #93a1a5;padding-bottom:15px}.document h2{font-size:41px;margin:21px 0 15px}.document p{font-size:30px;line-height:1.7;margin:7px 0}.document .rule{display:flex;gap:30px;align-items:center;margin-top:17px}.document .rule strong{font-size:64px;color:#9b503a}.document .footer{margin-top:auto;font-size:18px;color:#677e8a}
+.sequence img{width:100%;height:100%;object-fit:cover}.seq-stage{position:absolute;left:38px;top:32px;padding:12px 21px;background:#0d2c42d9;border:1px solid #83a8bb55;font-weight:700;font-size:23px}.seq-bottom{position:absolute;bottom:126px;right:37px;display:flex;gap:8px}.seq-dot{padding:13px 23px;background:#bed1ddbc;border:1px solid #fff8;color:#27435c;font-size:21px;opacity:.7}.seq-dot.active{opacity:1;background:#f4f8fa;font-weight:750}
+.data-photo{position:absolute;inset:0}.data-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.47)}.data-panel{position:absolute;top:100px;left:6%;right:6%;bottom:190px;display:flex;align-items:center;justify-content:center;gap:80px;color:#fff}.bar-col{width:500px;display:flex;flex-direction:column;gap:14px}.bar-col label{font-size:25px}.bar-track{width:100%;height:45px;background:#ffffff3d;border-radius:4px;overflow:hidden}.bar-fill{height:100%;background:#7cc9ed;transition:width .35s linear}.bar-fill.alert{background:#f0be85}.bar-col strong{font-size:56px}.data-panel .divider{height:370px;width:1px;background:#ffffff75}.data-compare{position:absolute;bottom:170px;left:0;width:100%;text-align:center;font-size:25px;color:#f1f5f8}
+/* V5.6 T6: same Aqua shell, data-only layout modes, genuine zero-baseline negatives. */
+.data-panel.t6-many{bottom:235px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);align-items:stretch;justify-content:stretch;gap:16px 35px;top:70px;bottom:270px;left:7%;right:7%}
+.data-panel.t6-many .bar-col{width:100%;min-width:0;max-width:none;gap:5px;justify-content:center;background:#0d283ab8;border:1px solid #acc8d555;border-radius:7px;padding:11px 17px}
+.data-panel.t6-many .bar-col label{font-size:22px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.data-panel.t6-many .bar-col strong{font-size:30px}
+.data-panel.t6-many .bar-track{height:20px}
+.data-panel.t6-derived{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:center;gap:18px 34px;left:11%;right:11%;top:105px;bottom:192px}
+.data-panel.t6-derived .bar-col{width:auto;min-width:0;max-width:none;background:#0e263ab8;border:1px solid #a8cde366;padding:25px;border-radius:9px;align-items:flex-start}
+.data-panel.t6-derived .bar-col label{font-size:25px}
+.data-panel.t6-derived .bar-col strong{font-size:36px}
+.data-panel.t6-derived .bar-track{height:22px}
+.data-panel.t6-derived .t6-result{grid-column:1/-1;text-align:center;background:#08283ecb;border:1px solid #77badd88;border-radius:8px;padding:20px;font-size:50px;font-weight:750}
+.data-panel.t6-derived .t6-result small{display:block;font-size:22px;font-weight:500;color:#bfd9e6;margin-top:8px}
+.t6-zero-track{position:relative}.t6-zero-track:after{content:'';position:absolute;left:50%;height:100%;width:3px;top:0;background:#ffffff9e}
+.t6-zero-track .bar-fill{position:absolute;top:0;border-radius:0}
+.data-compare.t6-note{font-size:20px;bottom:161px;padding:0 8%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.data-photo .visual-empty{font-size:0;position:relative;background:linear-gradient(145deg,#0e2335,#25445c)}
+.data-photo .visual-empty::after{content:"背景素材未关联";position:absolute;left:26px;top:20px;font-size:18px;color:#b7d3e1}
+.t6-source{position:absolute;bottom:125px;left:8%;right:8%;font-size:19px;text-align:center;color:#d1e0ec;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#0924389a}
+
+/* V5.1 self-review: responsive original-window media plane, captions, non-intrusive controls. */
+#content-viewport{background:transparent}
+#content-plane{will-change:transform}
+#subtitle{letter-spacing:0;line-height:1.18}
+#shot-holder .shot{width:100%;height:100%}
+#shot-holder .shot .visual-empty{min-width:0;min-height:0}
+#view{cursor:default}
+.lab-ui .summary strong{font-size:15px}
+
+/* V5.2 visual pass: content remains primary, no oversized fake-paper or redundant headlines. */
+#shot-title{display:none!important}
+#source-badge{left:auto!important;right:30px!important;top:26px!important;font-size:20px!important;padding:7px 12px!important;background:#102a3bd9!important}
+.archive-shot .archive-asset{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#182a39}
+.archive-shot .archive-rail{position:absolute;left:32px;bottom:134px;background:#081926b8;color:#e1edf3;padding:12px 18px;font-size:23px;max-width:65%;border-left:4px solid #a0c7da}
+<style>.caption-warning{color:#ffdc9a;background:#47351b;border:1px solid #cf9b5c;padding:10px;margin-top:10px;font-size:12px}.caption-warning[hidden]{display:none}.slot-row{grid-template-columns:minmax(0,1fr) auto}#shot-holder .shot img,#shot-holder .shot video{max-width:100%;max-height:100%}
+/* V5.4: Data import/asset binding only. Nothing added to the rendered Mac content area. */
+.asset-status,.schema-status{margin-top:8px;font-size:12px;line-height:1.6;color:#b2d9e8;white-space:pre-wrap}
+.schema-status{padding:10px 14px;background:#112b41;border-left:3px solid #63a9cc;border-radius:3px}
+.schema-status.error{border-left-color:#ff958a;color:#ffbfba;background:#451c25}
+.slot-row span{font-size:12px;overflow-wrap:anywhere}
+#batchMedia{width:100%;font-size:12px}
+/* V5.5 editor-only, never overlays the Mac video stage. */
+.cue-rows{display:grid;gap:7px;margin:7px 0}.cue-row{display:grid;grid-template-columns:65px 65px minmax(0,1fr) 42px;gap:6px;align-items:center;background:#102638;padding:7px;border:1px solid #426478;border-radius:4px}.cue-row input{min-width:0;width:100%;background:#091e31;color:#edf6ff;padding:6px;border:1px solid #607c8f}.cue-row button,#addCue{background:#305873;color:#fff;border:1px solid #7294a8;padding:7px;cursor:pointer;border-radius:4px}.cue-row input[type=number]{font-size:12px}#narrationStart{width:130px;max-width:100%;background:#0c2237;color:#fff;padding:9px;border:1px solid #67899b;border-radius:4px}#narrationFile{font-size:12px}#narrationAudio{display:none}@media(max-width:760px){.cue-row{grid-template-columns:54px 54px minmax(0,1fr) 38px}}
+</style></head><body>
+<div class="shell-stage" id="stageframe"><canvas id="view" width="1920" height="1080"></canvas><div id="content-viewport"><div id="content-plane"><div id="shot-holder"></div><div class="badge-source" id="source-badge"></div><div class="headline" id="shot-title"></div><div class="content-cap"><span id="subtitle"></span></div></div></div></div>
+<section class="lab-ui"><div class="summary"><strong>Curious World Studio · 原版 Research Aqua V2</strong><span>V5.5 / 多句字幕 Cue ＋ 配音同步 / 六模板一时轴</span></div>
+<div class="control"><button id="play" type="button">▶ 播放完整样片</button><button id="restart" type="button">↺ 从头播放</button><button id="fullscreen" type="button">全屏</button><input id="seek" type="range" min="0" max="31.06" step=".01" value="0"><span id="outtime">00:00 / 00:31</span><button id="export" type="button">导出JSON</button><button id="importTrigger" type="button">导入分镜JSON</button><input id="importJSON" type="file" accept=".json,application/json" hidden></div>
+<div class="tabs" id="tabs"></div><div class="editor"><div><b id="ed-title">选择镜头</b><label for="captionEdit">首句字幕（旧配置兼容）</label><input id="captionEdit" type="text" maxlength="100"><label>分段字幕 Cue（镜头内秒数）</label><div id="cueRows" class="cue-rows"></div><button id="addCue" type="button">＋ 添加本镜头字幕</button><label for="titleEdit">标题</label><input id="titleEdit" type="text" maxlength="40"><label for="sourceLabelEdit">素材来源标签</label><input id="sourceLabelEdit" type="text" maxlength="24"><div id="captionWarning" class="caption-warning" role="status" hidden></div></div><div><b>素材槽</b><div id="slots"></div><label for="batchMedia">批量关联本地素材（匹配登记文件名，不自动联网）</label><input type="file" multiple id="batchMedia" accept="image/png,image/jpeg,image/webp,video/mp4,video/webm,audio/wav,audio/mpeg,audio/ogg,audio/mp4,audio/x-wav"><label for="narrationFile">旁白音轨（本地 WAV / MP3 / OGG，非自动配音）</label><input id="narrationFile" type="file" accept=".wav,.mp3,.ogg,.m4a,audio/*"><label for="narrationStart">旁白在整片第几秒开始（通常4.76秒）</label><input id="narrationStart" type="number" min="0" step="0.01" value="4.76"><div id="narrationStatus" class="asset-status" role="status"></div><audio id="narrationAudio" preload="metadata"></audio><div id="assetStatus" class="asset-status" role="status"></div><label for="fileNameEdit">桌面视频文件名（全片）</label><input id="fileNameEdit" type="text" maxlength="40" value="QUESTION_01.mov"></div></div>
+<div class="schema-status" role="status" id="schemaStatus">数据接口：CWS_STORYBOARD_V2（可导入V1）。新增多条字幕、旁白音频素材关联，导出只含镜头和素材登记，不包含文件本身。重新打开或导入后需再次选择本机素材。</div><p class="disclaimer">唯一Mac/QuickTime外壳直接来自原V2。下面的操作工具不在最终画面里。视频/图片插槽需要手动选择合法素材；演示文字不是原始研究证据。尚未进行正式MP4或配音输出。</p></section><script>
+(() => {
+const cv = document.getElementById('view'),c = cv.getContext('2d',{alpha:false});
+const W=1920,H=1080,PI=Math.PI;
+const PROTOTYPE_DURATION=31.06, PLAY_START=4.76, ASSET_DURATION=31.06;
+const filmTimeline=()=>window.__CWS_TIMELINE||{contentEnd:28.76,end:31.06,closeDone:30.80};
+const canvasClock=x=>{const n=Math.floor(Math.max(0,x));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')};
+let wallpaperStyle='research'; // Set to 'classic' or call window.setWallpaperStyle('classic') in the preview.
+const rgb={navy:'#144D91',sky:'#75C4EF',silver:'#DAE3E9',border:'#8096A5',text:'#2E475C',aqua:'#53B7E4',yellow:'#F6D28B'};
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const smooth=(x)=>{x=clamp(x);return x*x*(3-2*x)};
+const easeOut=(x)=>1-Math.pow(1-clamp(x),3);
+const mix=(a,b,t)=>a+(b-a)*t;
+function pathRound(x,y,w,h,r=15){let rr=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);c.beginPath();c.roundRect(x,y,w,h,rr)}
+function rect(x,y,w,h,color,r=0){c.fillStyle=color;pathRound(x,y,w,h,r);c.fill()}
+function line(x1,y1,x2,y2,col='#fff',width=2){c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.strokeStyle=col;c.lineWidth=width;c.stroke()}
+function grad(x,y,w,h,stops,hor=false){const g=hor?c.createLinearGradient(x,y,x+w,y):c.createLinearGradient(x,y,x,y+h);for(const [p,col] of stops)g.addColorStop(p,col);return g}
+function txt(str,x,y,size=22,color='#fff',weight=400,align='left',font="'Noto Sans CJK SC', 'Arial'"){c.font=`${weight} ${size}px ${font}`;c.textAlign=align;c.textBaseline='middle';c.fillStyle=color;c.fillText(str,x,y)}
+function ellipse(x,y,rx,ry,color){c.beginPath();c.ellipse(x,y,Math.max(0.1,rx),Math.max(0.1,ry),0,0,2*PI);c.fillStyle=color;c.fill()}
+function strokeR(x,y,w,h,r,color,width=2){pathRound(x,y,w,h,r);c.strokeStyle=color;c.lineWidth=width;c.stroke()}
+function poly(points,color){c.beginPath();c.moveTo(...points[0]);points.slice(1).forEach(p=>c.lineTo(...p));c.closePath();c.fillStyle=color;c.fill()}
+function shadow(blur=20,col='#00152b88',dx=0,dy=10){c.shadowBlur=blur;c.shadowColor=col;c.shadowOffsetX=dx;c.shadowOffsetY=dy}
+function folder(x,y,scale=1,selected=false){
+ c.save();c.translate(x,y);c.scale(scale,scale);
+ if(selected){rect(-20,-15,150,163,'#d7eaff35',16);strokeR(-20,-15,150,163,16,'#b8edffac',2)}
+ shadow(16,'#04326199',2,9);rect(1,13,103,78,grad(0,13,0,80,[[0,'#cbf5ff'],[.18,'#6dc8fa'],[.56,'#2c8ae4'],[1,'#1a6db9']]),13);c.shadowColor='transparent';
+ rect(8,2,52,24,grad(8,2,0,25,[[0,'#e9fcff'],[1,'#87d4fb']]),6);
+ rect(1,24,103,72,grad(0,24,0,70,[[0,'#ddfaff'],[.33,'#72d2f9'],[1,'#358cd7']]),10);
+ line(8,37,97,37,'#ffffff65',2);strokeR(1,13,103,82,12,'#e8fcffb2',2);
+ txt('Research',52,123,20,'#fff',600,'center');c.restore();
+}
+function movieIcon(x,y,scale=1,selected=false,press=false){
+ c.save();c.translate(x,y);c.scale(scale*(press?.96:1),scale*(press?.96:1));
+ if(selected){rect(-17,-18,152,157,'#8ad9ff65',12);strokeR(-17,-18,152,157,12,'#d7f5ffcc',2)}
+ shadow(12,'#042752aa',1,6);
+ rect(11,2,100,92,grad(11,2,0,92,[[0,'#fff'],[1,'#d3e2ec']]),10);c.shadowColor='transparent';
+ rect(20,13,82,58,'#132e47',6);strokeR(20,13,82,58,6,'#75b7d8',2);
+ ellipse(63,43,21,21,'#2e7eaa');poly([[57,29],[57,57],[79,43]],'#e6f9ff');
+ line(27,22,94,22,'#fff7',1);rect(36,81,49,3,'#a6bbcb',2);
+ txt(window.__CWS_FILM?.fileName||'QUESTION_01.mov',62,124,17,'#fff',600,'center');c.restore();
+}
+function drawWallpaperClassic(t){
+ c.fillStyle=grad(0,0,W,H,[[0,'#092c68'],[.38,'#16549c'],[.7,'#408fcb'],[1,'#86c9ed']]);c.fillRect(0,0,W,H);
+ const offset=15*Math.sin(t*.5);
+ c.save();c.globalAlpha=.48;
+ c.beginPath();c.moveTo(-100,735);c.bezierCurveTo(300+offset,500,665,855,1170,568);c.bezierCurveTo(1485,410,1715,530,2010,310);c.lineTo(2010,1150);c.lineTo(-100,1150);c.closePath();c.fillStyle=grad(0,570,1800,500,[[0,'#65c3f2'],[.63,'#3377bc'],[1,'#153f8a']],true);c.fill();
+ c.beginPath();c.moveTo(-50,1020);c.bezierCurveTo(340,730,600,1070,1000,820);c.bezierCurveTo(1510,520,1670,805,1960,565);c.lineTo(1960,1150);c.lineTo(-50,1150);c.closePath();c.fillStyle='#c1edff47';c.fill();
+ c.restore();
+ // faint polished highlight arc
+ c.beginPath();c.moveTo(-120,785);c.bezierCurveTo(360,494,710,905,1320,506);c.strokeStyle='#ffffff27';c.lineWidth=4;c.stroke();
+}
+
+function drawWallpaper(t){
+ if(wallpaperStyle==='classic'){drawWallpaperClassic(t);return}
+ // 'Research Current' wallpaper: restrained custom Aqua atlas waves, no third-party graphic.
+ c.fillStyle=grad(0,0,W,H,[[0,'#071a3f'],[.30,'#103b73'],[.67,'#125f94'],[1,'#6eb6cd']]);c.fillRect(0,0,W,H);
+ c.save();
+ // The gentle radial illumination makes the desktop feel spacious without competing with the file icon.
+ const glow=c.createRadialGradient(1440,390,40,1440,390,1040);
+ glow.addColorStop(0,'#b5e7f53b');glow.addColorStop(.42,'#8bc8e418');glow.addColorStop(1,'#3574b000');
+ c.fillStyle=glow;c.fillRect(0,0,W,H);
+ const flow=9*Math.sin(t*.34);
+ const bands=[
+  {a:.18,y:830,mid:595,c1:'#acddef1c',c2:'#06336e49'},
+  {a:.31,y:900,mid:625,c1:'#78d5ec35',c2:'#041e5e66'},
+  {a:.13,y:1020,mid:710,c1:'#d4f2f945',c2:'#11538f6e'}
+ ];
+ for(const band of bands){
+  c.beginPath();c.moveTo(-150,band.y);
+  c.bezierCurveTo(250,band.mid-60+flow,675,band.y+40,1030,band.mid-25);
+  c.bezierCurveTo(1340,band.mid-180,1590,band.mid+72,2080,band.mid-135);
+  c.lineTo(2080,1190);c.lineTo(-150,1190);c.closePath();
+  c.fillStyle=grad(0,band.mid,0,610,[[0,band.c1],[1,band.c2]]);c.globalAlpha=.95;c.fill();
+ }
+ c.globalAlpha=.46;
+ const trails=[{y:770,dy:550,k:1},{y:835,dy:610,k:2},{y:930,dy:660,k:3}];
+ trails.forEach((p,i)=>{
+  c.beginPath();c.moveTo(-90,p.y);
+  c.bezierCurveTo(380,p.dy-30+flow,665,p.y+45,1175,p.dy-75);
+  c.bezierCurveTo(1475,p.dy-175,1710,p.dy+40,2040,p.dy-125);
+  c.strokeStyle=['#e8fcff6b','#8cdefa6a','#e1f5ff38'][i];c.lineWidth=[2,3,1.5][i];c.stroke();
+ });
+ // Fine field coordinates, with deliberately low contrast (not a scientific data visualization).
+ c.globalAlpha=.12;
+ for(let x=74;x<W;x+=86){for(let y=93;y<710;y+=86){ellipse(x,y,1.45,1.45,'#dcf9ff')}}
+ c.globalAlpha=1;c.restore();
+}
+function drawMenu(t){
+ c.save();shadow(9,'#002a5066',0,2);rect(0,0,W,43,grad(0,0,0,43,[[0,'#f9ffffed'],[.52,'#e5edf6ed'],[1,'#adbccbfa']]));c.restore();
+ txt('●',27,21,22,'#21384a',800);txt('Finder',65,22,19,'#223e51',700);
+ const s=[['File',153],['Edit',224],['View',301],['Go',387],['Window',455],['Help',562]];s.forEach(([v,x])=>txt(v,x,22,17,'#273d4c',500));
+ txt('◉  ☁  ▮▮▮',1660,23,16,'#314e64',500);txt('Sun 10:24',1795,23,16,'#314e64',500);
+}
+function drawDock(t,sel){
+ c.save();shadow(24,'#001c3db5',0,7);rect(560,951,800,111,'#e6f7ff77',23);c.restore();strokeR(560,951,800,111,23,'#ffffffc2',2);
+ line(576,962,1341,962,'#fff9',2);
+ const icons=[{x:653,k:'faces'},{x:770,k:'folder'},{x:887,k:'search'},{x:1004,k:'play'},{x:1120,k:'settings'},{x:1234,k:'bin'}];
+ icons.forEach(item=>{
+  const y=987+((item.k==='play'&&t>1.75)?-5:0);
+  c.save();shadow(12,'#172e4866',0,5);rect(item.x-35,y-14,70,67,grad(item.x-35,y-14,0,70,[[0,'#f1fafe'],[1,'#b9cfde']]),14);c.restore();strokeR(item.x-35,y-14,70,67,14,'#ffffffc2',1.5);
+  if(item.k==='faces'){rect(item.x-27,y-6,27,52,'#6dbff3',8);rect(item.x,y-6,27,52,'#a4f4fb',8);ellipse(item.x-11,y+15,2,3,'#14557a');ellipse(item.x+10,y+15,2,3,'#14557a');}
+  else if(item.k==='folder'){rect(item.x-25,y+10,50,36,'#70c0ef',8);rect(item.x-20,y+4,20,13,'#c6eeff',3)}
+  else if(item.k==='search'){c.beginPath();c.arc(item.x-6,y+14,15,0,2*PI);c.strokeStyle='#608ca5';c.lineWidth=6;c.stroke();line(item.x+5,y+25,item.x+21,y+42,'#608ca5',7)}
+  else if(item.k==='play'){ellipse(item.x,y+20,23,23,'#38739b');poly([[item.x-7,y+5],[item.x-7,y+35],[item.x+17,y+20]],'#fff')}
+  else if(item.k==='settings'){for(let a=0;a<8;a++){let q=a*2*PI/8;line(item.x+Math.cos(q)*11,y+19+Math.sin(q)*11,item.x+Math.cos(q)*24,y+19+Math.sin(q)*24,'#73899d',6)}ellipse(item.x,y+19,12,12,'#bdd1e2')}
+  else {strokeR(item.x-19,y+11,39,37,5,'#8195a9',3);line(item.x-24,y+8,item.x+24,y+8,'#8195a9',4);line(item.x,y+17,item.x,y+41,'#8195a9',3)}
+ });
+ c.fillStyle='#cbeafa';c.beginPath();c.ellipse(1004,1056,3.5,3.5,0,0,2*PI);c.fill();
+}
+function desktop(t,selected){
+ drawWallpaper(t);drawMenu(t);folder(220,270,.95,false);movieIcon(1487,278,1.08,selected,(t>=1.48&&t<1.535)||(t>=1.69&&t<1.735));
+ txt('Curious World / archive',184,438,17,'#d9eeffbf',500);
+ txt('RESEARCH DISK',1715,152,15,'#f6fdffb3',600,'center');
+ c.save();shadow(20,'#062d59a2',0,7);rect(1664,71,98,64,'#f5faffc7',12);c.restore();rect(1673,78,80,45,'#d6e9f5',7);
+ line(1685,95,1739,95,'#9bbbd1',3);
+ drawDock(t,selected);
+}
+function drawCursor(x,y,t,press=false,alpha=1){
+ c.save();c.globalAlpha=alpha; c.translate(x,y);
+ if(press)c.scale(.86,.86);
+ shadow(6,'#071b2c99',1,3);
+ poly([[0,0],[0,34],[9,26],[16,45],[24,40],[15,22],[30,21]],'#fff');
+ c.shadowColor='transparent';c.beginPath();c.moveTo(0,0);c.lineTo(0,34);c.lineTo(9,26);c.lineTo(16,45);c.lineTo(24,40);c.lineTo(15,22);c.lineTo(30,21);c.closePath();c.strokeStyle='#173e56';c.lineWidth=2.8;c.stroke();
+ c.restore();
+}
+function clickRing(x,y,phase){
+ if(phase<0||phase>1)return;c.save();c.globalAlpha=(1-phase)*.68;c.lineWidth=3;c.strokeStyle='#d4f7ff';c.beginPath();c.arc(x,y,13+33*phase,0,2*PI);c.stroke();c.restore();
+}
+function jelly(cx,cy,scale,time,playing){
+ const motion=playing?smooth(time/.3):0;
+ const v=Math.max(0,time);
+ const wob=motion*(Math.sin(v*4.8)*.062+Math.sin(v*7.3)*.012);
+ const bounce=motion*10*Math.sin(v*7);
+ c.save();c.translate(cx,cy+bounce);c.rotate(wob);c.scale(scale,scale);
+ // cylindrical translucent edible jelly, base y=0 / top y=-350
+ c.beginPath();c.moveTo(-162,-314);c.bezierCurveTo(-171,-257,-173,-129,-174,-32);c.bezierCurveTo(-174,26,164,26,174,-32);c.bezierCurveTo(173,-128,172,-261,157,-314);c.bezierCurveTo(96,-357,-106,-363,-162,-314);c.closePath();
+ c.fillStyle=grad(-174,-360,348,380,[[0,'#bfffeeef'],[.12,'#b2efdbed'],[.44,'#73d4bbec'],[.82,'#40a88eec'],[1,'#267d76fa']],true);c.fill();
+ c.lineWidth=4;c.strokeStyle='#c7fff4';c.stroke();
+ c.beginPath();c.ellipse(0,-313,160,47,0,0,PI*2);c.fillStyle='#c9fff2bf';c.fill();c.lineWidth=2;c.strokeStyle='#edffffb2';c.stroke();
+ c.beginPath();c.ellipse(0,-313,134,31,0,0,PI*2);c.strokeStyle='#4c9a8b99';c.lineWidth=3;c.stroke();
+ // inner laminated layers
+ for(let y=-244;y<=-76;y+=49){c.beginPath();c.ellipse(0,y,145-(y+240)*.03,21,0,0,PI);c.strokeStyle='#e8ffed43';c.lineWidth=4;c.stroke()}
+ c.beginPath();c.moveTo(-126,-266);c.bezierCurveTo(-145,-185,-132,-101,-125,-43);c.strokeStyle='#ffffff8b';c.lineWidth=28;c.lineCap='round';c.stroke();
+ c.beginPath();c.moveTo(-93,-295);c.bezierCurveTo(-100,-245,-99,-186,-92,-138);c.strokeStyle='#ffffff68';c.lineWidth=7;c.stroke();
+ // floating translucent bubbles
+ for(let i=0;i<10;i++){
+  const bx=-88+(i*49)%180,by=-66-(i*61)%224-((playing?v*13:0)%13);
+  ellipse(bx,by,5+i%3*3,5+i%3*3,'#dbfff73e');
+ }
+ c.restore();
+}
+function setupIllustration(x,y,w,h,t,playing,opacity=1){
+ c.save();c.globalAlpha=opacity;
+ const scale=Math.min(w/1450,h/800);
+ c.translate(x+w/2,y+h/2);c.scale(scale,scale);
+ const dx=-725,dy=-400;c.translate(dx,dy);
+ // dark studio + subtle cove light, texture grid
+ rect(0,0,1450,800,grad(0,0,1450,800,[[0,'#0d2635'],[.46,'#102f41'],[1,'#142939']]));
+ const g=c.createRadialGradient(725,305,0,725,305,550);g.addColorStop(0,'#3d84966e');g.addColorStop(.4,'#1a6c7770');g.addColorStop(1,'#07172300');c.fillStyle=g;c.fillRect(0,0,1450,800);
+ for(let i=0;i<=12;i++){line(35+i*115,70,35+i*115,670,'#ffffff08',1)}
+ for(let j=0;j<=7;j++){line(0,70+j*80,1450,70+j*80,'#ffffff08',1)}
+ // rear bezel and laboratory bench
+ rect(140,557,1180,11,'#8bb3b52b',4);
+ c.beginPath();c.moveTo(0,591);c.lineTo(1450,591);c.lineTo(1450,800);c.lineTo(0,800);c.closePath();c.fillStyle=grad(0,600,0,200,[[0,'#3d5a65'],[.15,'#263d48'],[1,'#152d3a']]);c.fill();
+ line(0,592,1450,592,'#90b1b570',3);
+ // soft table shadow and pedestal
+ ellipse(755,650,335,73,'#011e2780');
+ ellipse(730,619,262,58,'#84999a');ellipse(730,603,268,58,grad(470,564,0,100,[[0,'#d6e2df'],[.48,'#91aaa7'],[1,'#647f83']]));
+ ellipse(730,609,216,38,'#293c42');ellipse(730,602,201,32,'#8ba9a5');
+ // subtle energy dot-ring when playing
+ const v=Math.max(0,t),mot=playing?smooth(t/.3):0;
+ for(let k=0;k<3;k++){
+  const rad=120+((v*95+k*105)%290);
+  c.beginPath();c.ellipse(735,430,rad,rad*.26,0,0,2*PI);
+  c.strokeStyle=`rgba(102,237,224,${Math.max(0,(1-rad/470)*.21*mot)})`;c.lineWidth=3;c.stroke();
+ }
+ // jelly center
+ jelly(734,602,1,t,playing);
+ // investigation object: approach from right, stays elegant and stylized
+ const approach=mot*smooth((t-1.15)/1.35);
+ const handX=1450-approach*360;
+ c.save();c.translate(handX,352);
+ // pale robot gloved hand entering from right; only when playing
+ c.globalAlpha=mot;
+ shadow(18,'#050d1380',0,12);rect(0,42,440,64,grad(0,42,0,64,[[0,'#bfd0d0'],[.5,'#8ea6aa'],[1,'#536e79']]),33);c.shadowColor='transparent';
+ rect(-23,29,108,90,grad(-23,29,0,90,[[0,'#e8e5d6'],[1,'#aabbb6']]),30);
+ rect(-90,49,100,29,'#d3e0db',16);rect(-115,75,105,25,'#c4d3d3',13);
+ for(let k=0;k<3;k++)line(22+k*23,36,22+k*23,115,'#69889177',2);
+ c.restore();
+ // floating legibility zone
+ txt('SELF-MADE VISUAL  /  NOT EXPERIMENT FOOTAGE',70,86,17,'#b7ced5',600);
+ txt('THE RESPONSIVE JELLY',70,124,25,'#edf9fd',700);
+ txt('SCENE 01 · MOTION STUDY',70,159,14,'#9cbac7',500);
+ // bottom-right animated audio-like playback indicators, but not actual audio
+ for(let i=0;i<11;i++){
+  const vh=5+(playing?Math.abs(Math.sin(v*4.3+i*.76))*28:4);
+  rect(1115+i*13,156-vh/2,7,vh,'#9aeae2bb',4)
+ }
+ c.restore();
+}
+function drawPlaySymbol(x,y,playing,alpha=1){
+ c.save();c.globalAlpha=alpha;
+ if(playing){rect(x-9,y-12,7,24,'#28465d',2);rect(x+4,y-12,7,24,'#28465d',2)}
+ else poly([[x-8,y-13],[x-8,y+13],[x+14,y]],'#28465d');c.restore();
+}
+function qtWindow(g,t){
+ if(!g||g.a<=0)return;
+ let {x,y,w,h,a,full}=g;c.save();c.globalAlpha=a;
+ shadow(36, '#031a2aaf',0,16);rect(x,y,w,h,'#d5dfe7',full?0:17);c.shadowColor='transparent';
+ strokeR(x+1,y+1,w-2,h-2,full?0:17,'#aebdc5',2);
+ // brushed bar
+ c.save();pathRound(x,y,w,h,full?0:16);c.clip();
+ rect(x,y,w,Math.min(h,63),grad(x,y,w,63,[[0,'#f8fcff'],[.46,'#d4dfe6'],[1,'#aebec9']]));
+ for(let q=0;q<23;q++)line(x+2,y+13+q*2,x+w-2,y+13+q*2,'#ffffff16',1);
+ let sz=Math.max(11,Math.min(22,w/59));
+ [ '#e97977','#f2c662','#63c68b'].forEach((col,i)=>{ellipse(x+28+i*25,y+31,Math.min(9,w/100),Math.min(9,w/100),col);c.beginPath();c.arc(x+28+i*25,y+31,Math.min(9,w/100),0,PI*2);c.strokeStyle='#0003';c.lineWidth=1;c.stroke()});
+ if(w>460){txt(window.__CWS_FILM?.fileName||'QUESTION_01.mov',x+w/2,y+32,sz,'#365165',600,'center');txt('QuickTime Player',x+w-28,y+32,Math.max(12,Math.min(16,w/92)),'#6e8594',500,'right')}
+ let top=y+63, footer=full?70:68, innerW=w,innerH=Math.max(0,h-63-footer);
+ // film content
+ c.save();c.beginPath();c.rect(x,top,innerW,innerH);c.clip();
+ rect(x,top,innerW,innerH,'#08151e');
+ // Original V2 QT viewport: media content is rendered by the single #content-viewport DOM layer.
+ c.restore();
+ // controller footer
+ rect(x,y+h-footer,w,footer,grad(x,y+h-footer,w,footer,[[0,'#f1f6f9'],[.42,'#c5d2db'],[1,'#a2b4c1']]));
+ line(x,y+h-footer,x+w,y+h-footer,'#829aad',2);
+ let playX=x+Math.max(38,Math.min(75,w*.06)),playY=y+h-footer/2;
+ ellipse(playX,playY,22,22,grad(playX-21,playY-21,40,45,[[0,'#f2fdff'],[1,'#a7c1d2']]));c.beginPath();c.arc(playX,playY,22,0,2*PI);c.strokeStyle='#88a7ba';c.lineWidth=1.5;c.stroke();
+ drawPlaySymbol(playX,playY,!!window.__CWS_PLAYER_ACTIVE && t>=PLAY_START && t<filmTimeline().contentEnd,1);
+ let progressX=x+Math.max(140,w*.15),progressW=Math.max(75,w*.65);
+ const bh=y+h-footer/2;
+ rect(progressX,bh-5,progressW,11,'#809aaa',6);
+ const clipTime=Math.max(0,Math.min(filmTimeline().end,t));
+ let pr=clamp(clipTime/filmTimeline().end);if(t>=PLAY_START)rect(progressX,bh-5,progressW*pr,11,'#53B7E4',6);
+ ellipse(progressX+progressW*pr,bh,10,10,'#fcffff');
+ if(w>630){txt(canvasClock(clipTime),progressX-50,bh,17,'#325369',600,'center');txt(canvasClock(filmTimeline().end),progressX+progressW+54,bh,17,'#325369',600,'center')}
+ c.restore();c.restore();
+}
+
+function windowGeom(t){
+ if(t>=filmTimeline().closeDone)return null;
+ if(t>=filmTimeline().contentEnd){const k=t-filmTimeline().contentEnd,p=smooth((k-1.22)/.55);return{x:mix(0,390,p),y:mix(0,156,p),w:mix(W,1140,p),h:mix(H,744,p),a:k<1.85?1:1-smooth((k-1.85)/.19),full:1-p};}
+ if(t<1.92)return null;
+ const opening=smooth((t-1.92)/.68),base={x:390,y:156,w:1140,h:744};
+ if(t<=3.23)return{x:mix(1518,base.x,opening),y:mix(335,base.y,opening),w:mix(120,base.w,opening),h:mix(105,base.h,opening),a:smooth((t-1.92)/.15),full:0};
+ const p=smooth((t-3.23)/.52);return{x:mix(base.x,0,p),y:mix(base.y,0,p),w:mix(base.w,W,p),h:mix(base.h,H,p),a:1,full:p};
+}
+function cursorAt(t){
+ const rest=[1170,800],movie=[1534,330],max=[468,187],play=[75,1045];
+ const tween=(a,b,x)=>[mix(a[0],b[0],smooth(x)),mix(a[1],b[1],smooth(x))];
+ if(t<.44)return rest;
+ if(t<1.30)return tween(rest,movie,(t-.44)/.86);
+ if(t<1.95)return movie;
+ if(t<3.05)return tween(movie,max,(t-1.95)/1.1);
+ if(t<3.34)return max;
+ if(t<3.78){let g=windowGeom(t);return [g.x+78,g.y+31]}
+ if(t<4.51)return tween([78,31],play,(t-3.78)/.73);
+ if(t<4.89)return play;
+ return tween(play,[1980,1150],(t-4.89)/.65);
+}
+function render(t){
+ c.clearRect(0,0,W,H);
+ const selected=t>=1.47&&t<=1.96;
+ desktop(t,selected);
+ // avoid icon peeking during fully opened window? covered naturally
+ const g=windowGeom(t);
+ if(g)qtWindow(g,t);
+ // desktop slightly darkens when active fullscreen except small fade after takeover
+ const click=(a,b)=> t>=a&&t<b;
+ const pos=cursorAt(t);
+ if(t<5.25)drawCursor(pos[0],pos[1],t,click(1.48,1.54)||click(1.69,1.75)||click(3.15,3.23)||click(4.66,4.78),t>4.96?1-smooth((t-4.96)/.27):1);
+ if(t>=filmTimeline().contentEnd&&t<filmTimeline().closeDone){const k=t-filmTimeline().contentEnd,v=smooth(k/.92),mx=mix(1130,28,v),my=mix(720,31,v);
+   drawCursor(mx,my,t,k>=1.12&&k<1.27);if(k>=1.18&&k<1.52)clickRing(28,31,(k-1.18)/.28);}
+ clickRing(1534,330,(t-1.48)/.22);clickRing(1534,330,(t-1.69)/.24);
+ if(t>=3.15&&t<3.5)clickRing(468,187,(t-3.15)/.28);
+ if(t>=4.67&&t<5.02)clickRing(75,1045,(t-4.67)/.29);
+ // silent prototype watermark as QA only, not subtitles
+ // No simulated research image or QA watermark.
+}
+window.renderAt=(t)=>render(t);window.__duration=PROTOTYPE_DURATION;window.__cwsWindowGeom=windowGeom;
+window.setWallpaperStyle=(style)=>{wallpaperStyle=(style==='classic'?'classic':'research');render(0)};
+window.prototypeState=(t)=>({phase:t<1.92?'desktop':t<3.75?'player-opening':t<PLAY_START?'first-frame-paused':'asset-playing',assetTimeSeconds:Math.max(0,t-PLAY_START),progress:clamp(Math.max(0,t-PLAY_START)/ASSET_DURATION),wallpaper:wallpaperStyle,firstFrameHeld:t>=1.92&&t<PLAY_START});
+render(0);
+// A self-contained looping preview when this HTML is opened locally or hosted.
+// Offline frame capture runs on about:blank and drives renderAt(t) deterministically.
+if (false) {
+  let epoch = performance.now(), heldAt = 0, paused = false;
+  function previewTick(now){
+    if (!paused) render(((now-epoch)/1000)%PROTOTYPE_DURATION);
+    requestAnimationFrame(previewTick);
+  }
+  window.addEventListener('keydown',(e)=>{
+    if (e.code === 'KeyW') {wallpaperStyle=(wallpaperStyle==='research'?'classic':'research');return;}
+    if (e.code === 'Space') {
+      e.preventDefault();
+      if (!paused) { heldAt=(performance.now()-epoch)/1000; paused=true; }
+      else { epoch=performance.now()-heldAt*1000; paused=false; }
+    }
+  });
+  requestAnimationFrame(previewTick);
+}
+
+})();
+</script><script>
+(()=>{'use strict';
+const DEMO_MEDIA={};
+const INTRO=4.76, OUTRO=2.30;
+const FILM_CONFIG={fileName:'QUESTION_01.mov'};
+window.__CWS_FILM=FILM_CONFIG;
+// Six independently callable template renderers. Shot instances are data: they do NOT own a clock.
+const TEMPLATES={
+ T1:{name:'单素材播放',type:'full',slots:1},
+ T2:{name:'双画面对照',type:'compare',slots:2},
+ T3:{name:'实拍＋解释',type:'explain',slots:2},
+ T4:{name:'证据与档案',type:'archive',slots:1},
+ T5:{name:'过程演变',type:'sequence',slots:3},
+ T6:{name:'数据与结论',type:'data',slots:1}
+};
+const EDITORIAL=[
+ {id:'S01',template:'T1',duration:3.8,assets:['cut'],title:'一块面包，为什么引起税法争议？',caption:'名字叫面包，不一定符合税法定义。',label:'辅助素材'},
+ {id:'S02',template:'T2',duration:3.4,assets:['baker','rolls'],assetOptions:[{fit:'contain'},{fit:'contain'}],title:'名字一样，配方可能不同',caption:'外形和名称，并不能决定税务分类。',label:'辅助素材'},
+ {id:'S03',template:'T3',duration:3.8,assets:['fold','mixing'],assetOptions:[{fit:'contain'},{fit:'contain'}],title:'真正的判断依据是什么？',caption:'法律关注特定原料的重量比例。',label:'辅助素材'},
+ {id:'S04',template:'T4',duration:3.0,assets:['shop'],title:'追溯法律文件',caption:'需回到案件适用的历史法律定义。',label:'示意画面'},
+ {id:'S05',template:'T5',duration:4.4,assets:['mixing','oven','bun'],stages:[{label:'原料',name:'准备原料',duration:1.2,inPoint:0},{label:'过程',name:'处理过程',duration:1.8,inPoint:0},{label:'成品',name:'制作成品',duration:1.4,inPoint:0}],title:'从制作过程回看面包',caption:'制作画面不等于真实配方检测。',label:'辅助素材'},
+ {id:'S06',template:'T1',duration:2.6,assets:['rolls'],title:'再看不同的成品形态',caption:'同一种外形，也可能使用不同配方。',label:'辅助素材'},
+ {id:'S07',template:'T6',duration:3.0,assets:['rollup'],title:'当时案件中的关键比例',caption:'涉案比例10%，当时相关限制为2%。',label:'示意画面',dataMetrics:[{label:'当时条款中对应的上限',value:2,unit:'%'},{label:'涉案产品的配料比例',value:10,unit:'%'}],dataScaleMax:10,dataNote:'示例重排 · 相同计量口径；并非原始论文图'}
+];
+function compileTimeline(instances){
+ let start=INTRO;return instances.map(s=>{
+  if(!TEMPLATES[s.template]||!Number.isFinite(s.duration)||s.duration<=0)throw Error('Invalid shot '+s.id);
+  if(s.assets.length!==TEMPLATES[s.template].slots)throw Error('Asset slot mismatch '+s.id);
+  if(s.template==='T5'&&s.stages){
+   if(s.stages.length!==3||s.stages.some(x=>!Number.isFinite(x.duration)||x.duration<=0))throw Error('Invalid T5 stage '+s.id);
+   const sum=s.stages.reduce((a,x)=>a+x.duration,0);
+   if(Math.abs(sum-s.duration)>.001)throw Error('T5 stage durations must match shot '+s.id);
+  }
+  if(s.template==='T6'&&s.dataMetrics){
+   if(!['bars','delta','ratio','change'].includes(s.dataMode||'bars'))throw Error('Invalid T6 mode '+s.id);
+   if(s.dataMetrics.some(x=>!Number.isFinite(x.value)))throw Error('Invalid T6 metric '+s.id);
+   if((s.dataMode||'bars')!=='bars'&&s.dataMetrics.length!==2)throw Error('T6 derived modes require exactly two values');
+  }
+  const shot={...s,start,end:start+s.duration};start=shot.end;return shot;
+ });
+}
+let scenes=compileTimeline(EDITORIAL.map(s=>({...s,cues:[{start:0,end:s.duration,text:s.caption}]})));let CONTENT_END=scenes.at(-1).end,END=CONTENT_END+OUTRO;
+window.__CWS_TIMELINE={contentEnd:CONTENT_END,end:END,closeDone:CONTENT_END+2.04};
+window.__duration=END;
+const $=id=>document.getElementById(id);let t=0,playing=false,last=0,idx=-1,step=-1,selectedIndex=0;
+const imported=new Map();let videoNodes=[];
+let assetRegistry=new Map();const TRACK_CONFIG={assetId:null,startAt:INTRO};let lastCueText=null;
+function mediaKey(s,k){return s.assets[k]} // v5.4: stable asset IDs shared by shot instances; not array indices
+function slotOptions(s,k){return s.assetOptions?.[k]||{}}
+function mediaUrl(s,k){return imported.get(mediaKey(s,k))?.url||DEMO_MEDIA[s.assets[k]]||''}
+function mediaType(s,k){return imported.get(mediaKey(s,k))?.type||assetRegistry.get(mediaKey(s,k))?.mimeType||((s.assets[k]==='cut'||s.assets[k]==='fold')?'video/mp4':'image/jpeg')}
+function safeEl(tag,klass){const x=document.createElement(tag);if(klass)x.className=klass;return x}
+function photo(s,k,klass=''){let n=safeEl('img',klass);const url=mediaUrl(s,k);if(url)n.src=url;else {n.className+=' missing-image';n.alt='未提供图片';}n.alt='可替换的辅助演示素材';return n}
+function video(s,k,klass=''){let n=safeEl('video',klass);const url=mediaUrl(s,k);if(url)n.src=url;n.muted=true;n.playsInline=true;n.preload='metadata';n.controls=false;n.loop=slotOptions(s,k).endBehavior==='loop';n.dataset.slot=String(k);n.addEventListener('loadedmetadata',()=>{if(n.isConnected)render(t)});n.setAttribute('aria-label','内部演示视频');return n}
+function visual(s,k,klass=''){const url=mediaUrl(s,k);if(!url){const n=safeEl('div','visual-empty '+klass);n.textContent='插入 '+s.id+' 的素材 '+(k+1);return n;}const el=mediaType(s,k).startsWith('video/')?video(s,k,klass):photo(s,k,klass);el.style.setProperty('object-fit',slotOptions(s,k).fit||'contain','important');return el}
+function fillFrom(template,shot,step){return TEMPLATE_RENDERERS[template](shot,step)}
+const TEMPLATE_RENDERERS={
+ T1(s){let root=safeEl('div','shot active');root.append(visual(s,0,'hero'));return root},
+ T2(s){let root=safeEl('div','shot active'),grid=safeEl('div','duo');for(let k=0;k<2;k++){let cell=safeEl('div','cell');cell.append(visual(s,k));let lab=safeEl('div','name');lab.textContent=s.compareLabels?.[k]|| (k===0?'比较对象 A':'比较对象 B');cell.append(lab);grid.append(cell)}root.append(grid);return root},
+ T3(s){let root=safeEl('div','shot active'),grid=safeEl('div','explain'),left=safeEl('div','left'),right=safeEl('div','right');left.append(visual(s,0));const image=visual(s,1);image.style.width='100%';image.style.height='100%';image.style.objectFit=slotOptions(s,1).fit||'contain';right.replaceChildren(image);right.style.padding='0';right.style.background='#172c40';grid.append(left,right);root.append(grid);return root},
+ T4(s){let root=safeEl('div','shot active archive-shot');root.append(visual(s,0,'archive-asset'));let rail=safeEl('div','archive-rail');rail.textContent='研究档案 · 仅作演示，请替换为已核验原始资料';root.append(rail);return root},
+ T5(s,st){let root=safeEl('div','shot active sequence'),stages=stagesFor(s);const e=visual(s,st,'fill');root.append(e);let num=safeEl('div','seq-stage');num.textContent=String(st+1).padStart(2,'0')+' / '+stages[st].name;root.append(num);let row=safeEl('div','seq-bottom');stages.forEach((x,i)=>{const xel=safeEl('div','seq-dot'+(st===i?' active':''));xel.textContent=x.label;row.append(xel)});root.append(row);return root},
+ T6(s){
+  // Data schema is validated during import; renderer also tolerates unchanged historic 2-bar shots.
+  const root=safeEl('div','shot active'),back=safeEl('div','data-photo');back.append(visual(s,0));root.append(back);
+  const metrics=s.dataMetrics||[{label:'数据 A',value:0,unit:''},{label:'数据 B',value:0,unit:''}],mode=s.dataMode||'bars',precision=s.dataPrecision??2;
+  const nf=new Intl.NumberFormat('zh-CN',{useGrouping:true,maximumFractionDigits:precision});
+  const format=(n)=>nf.format(Object.is(n,-0)?0:n);
+  const absMax=Math.max(1,...metrics.map(m=>Math.abs(m.value))),scaleMax=s.dataScaleMax||absMax;
+  const negative=metrics.some(m=>m.value<0);
+  const panel=safeEl('div','data-panel');
+  if(metrics.length>2&&mode==='bars')panel.classList.add('t6-many');
+  if(mode!=='bars')panel.classList.add('t6-derived');
+  metrics.forEach((m,k)=>{
+   if(k&&metrics.length===2&&mode==='bars')panel.append(safeEl('div','divider'));
+   const col=safeEl('div','bar-col'),lab=safeEl('label'),val=safeEl('strong'),track=safeEl('div','bar-track'),fill=safeEl('div','bar-fill'+(k?' alert':''));
+   lab.textContent=m.label;lab.title=m.label;val.textContent=format(m.value)+(m.unit||'');val.title=val.textContent;if(val.textContent.length>13)val.style.fontSize='30px';
+   const width=Math.max(0,Math.min(100,Math.abs(m.value)/scaleMax*100));
+   if(negative){track.classList.add('t6-zero-track');fill.style.width=String(width/2)+'%';fill.style.left=(m.value<0?50-width/2:50)+'%';}
+   else{fill.style.width=width+'%';}
+   track.append(fill);col.append(lab,val,track);panel.append(col);
+  });
+  if(mode!=='bars'){
+   const a=metrics[0],b=metrics[1],raw=mode==='delta'?b.value-a.value:mode==='ratio'?b.value/a.value:(b.value-a.value)/a.value*100;
+   const suffix=mode==='delta'?(a.unit==='%'?' 个百分点':(a.unit||'')):mode==='ratio'?' 倍':'%';
+   const result=safeEl('div','t6-result');result.textContent=(raw>0&&mode!=='ratio'?'+':'')+format(raw)+suffix;
+   const label=safeEl('small');label.textContent=mode==='delta'?'后者－前者（绝对差值）':mode==='ratio'?'后者 ÷ 前者（倍数）':'（后者－前者）÷ 前者（变化率）';
+   result.append(label);panel.append(result);
+  }
+  root.append(panel);
+  const note=safeEl('div','data-compare t6-note');note.textContent=s.dataNote||'';note.title=s.dataNote||'';root.append(note);
+  if(s.dataReference){const ref=safeEl('div','t6-source');ref.textContent='数据来源／口径：'+s.dataReference;ref.title=ref.textContent;root.append(ref);}
+  return root;
+ }
+};
+function sceneIndex(sec){if(sec<INTRO||sec>=CONTENT_END)return -1;return scenes.findIndex(s=>sec>=s.start-1e-5&&sec<s.end-1e-5)}
+function stagesFor(s){return s.stages||Array.from({length:3},(_,i)=>({label:['阶段一','阶段二','阶段三'][i],name:['阶段一','阶段二','阶段三'][i],duration:s.duration/3,inPoint:0}));}
+function stageAt(s,sec){const parts=stagesFor(s);let elapsed=Math.max(0,Math.min(s.duration,sec-s.start)),offset=0;
+ for(let i=0;i<parts.length;i++){const d=parts[i].duration;if(elapsed<offset+d||i===parts.length-1)return{index:i,elapsed:Math.max(0,Math.min(elapsed-offset,d)),start:s.start+offset,duration:d,inPoint:Number(parts[i].inPoint||0)};offset+=d;}
+ throw Error('Invalid T5 stages '+s.id);
+}
+function getStep(s,sec){return s.template==='T5'?stageAt(s,sec).index:0;}
+
+const getShot=(sec)=>sec<INTRO?0:sec>=CONTENT_END?scenes.length-1:sceneIndex(sec);
+$('seek').max=String(END);
+function clock(s){const n=Math.floor(Math.max(0,s));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function captionTooWide(sentence){const ctx=document.createElement('canvas').getContext('2d');ctx.font='700 55px Microsoft YaHei, Arial, sans-serif';return ctx.measureText(sentence).width>1680;}
+function cueAt(s,sec){if(sec<s.start||sec>=s.end||sec<INTRO||sec>=CONTENT_END)return '';const local=sec-s.start;const list=s.cues||[];const cue=list.find(x=>local>=x.start-0.00001&&local<x.end-0.00001);return cue?.text||'';}
+function updateCueDisplay(){const shot=scenes[Math.max(0,idx)];const next=cueAt(shot,t);if(lastCueText!==next){$('subtitle').textContent=next;lastCueText=next;}}
+function cueProblems(s){const problems=[],ordered=[...(s.cues||[])].sort((a,b)=>a.start-b.start);
+ if(ordered.length>80)problems.push('字幕Cue超过80条');
+ ordered.forEach((cue,i)=>{if(!Number.isFinite(cue.start)||!Number.isFinite(cue.end)||cue.start<0||cue.end<=cue.start||cue.end>s.duration+.0001)problems.push('第'+(i+1)+'条时码无效或超出镜头');if(typeof cue.text!=='string'||!cue.text.trim())problems.push('第'+(i+1)+'条无文字');else if(cue.text.length>100||captionTooWide(cue.text))problems.push('第'+(i+1)+'条字幕过长');if(i&&cue.start<ordered[i-1].end-.0001)problems.push('第'+(i+1)+'条Cue与前一条重叠');});
+ return problems;
+}
+function captionHealth(){const bad=scenes.flatMap(s=>cueProblems(s).map(p=>s.id+'：'+p));const warning=$('captionWarning');warning.textContent=bad.length?'字幕配置需修正：'+bad.slice(0,7).join('；')+(bad.length>7?'；以及其他错误':''):'';warning.hidden=!bad.length;return bad.length===0;}
+function textUpdate(){const s=scenes[Math.max(0,idx)];$('shot-title').textContent=s.title;$('source-badge').textContent=s.label;updateCueDisplay();captionHealth();}
+function content(time,force=false){
+ const i=getShot(time),s=scenes[i],stageInfo=s.template==='T5'?stageAt(s,time):null,stage=stageInfo?.index||0;
+ if(i!==idx||stage!==step||force){
+  for(const x of videoNodes)x.pause();idx=i;step=stage;
+  $('shot-holder').replaceChildren(TEMPLATE_RENDERERS[s.template](s,stage));videoNodes=[...$('shot-holder').querySelectorAll('video')];textUpdate();
+ }
+ for(const vid of videoNodes){
+  const slot=Number(vid.dataset.slot||0),option=slotOptions(s,slot),inPoint=stageInfo?(stageInfo.inPoint||0):Number(option.inPoint||0);
+  const local=stageInfo?stageInfo.elapsed:Math.max(0,time-s.start);
+  const duration=Number.isFinite(vid.duration)&&vid.duration>0?vid.duration:null;
+  const looping=option.endBehavior==='loop';
+  const logical=Math.max(0,local+inPoint);
+  const atEnd=duration!==null&&!looping&&logical>=Math.max(0,duration-.045);
+  const target=duration===null?logical:looping?(logical%duration):Math.min(logical,Math.max(0,duration-.055));
+  if(!playing||time<INTRO||time>=CONTENT_END||atEnd){
+   vid.pause();if(duration!==null&&Math.abs(vid.currentTime-target)>.04)try{vid.currentTime=target}catch{}
+  }else{
+   if(duration!==null&&Math.abs(vid.currentTime-target)>.35)try{vid.currentTime=target}catch{}
+   if(vid.paused&&vid.readyState>=1)vid.play().catch(()=>{});
+  }
+ }
+}
+
+function draw(time){
+ window.__CWS_PLAYER_ACTIVE=playing;
+ window.renderAt(time);
+ const g=window.__cwsWindowGeom(time),vp=$('content-viewport');
+ if(!g||g.w<160||g.h<150){vp.style.visibility='hidden';return}
+ const innerH=Math.max(0,g.h-63-(g.full?70:68));
+ vp.style.visibility='visible';vp.style.opacity=String(Math.max(0,g.a));
+ vp.style.left=(g.x/1920*100)+'%';vp.style.top=((g.y+63)/1080*100)+'%';
+ vp.style.width=(g.w/1920*100)+'%';vp.style.height=(innerH/1080*100)+'%';
+ const pixelsPerUnit=$('stageframe').clientWidth/1920;
+ $('content-plane').style.transform='scale('+(pixelsPerUnit*g.w/1920)+','+(pixelsPerUnit*innerH/947)+')';
+}
+function stopNarration(clear=false){const a=$('narrationAudio');a.pause();if(clear){a.removeAttribute('src');a.load();}}
+function narrationDesired(){if(!TRACK_CONFIG.assetId)return null;const item=imported.get(TRACK_CONFIG.assetId);if(!item||!item.type.startsWith('audio/'))return null;return item;}
+function refreshNarrationStatus(){const item=narrationDesired(),n=TRACK_CONFIG.assetId;$('narrationStatus').textContent=n?(item?'旁白已关联：'+item.name+'；由总时轴同步':'旁白缺失：'+n+'（选择本地音频重新关联）'):'尚未配置旁白；仅播放分句字幕。';}
+function syncNarration(){const a=$('narrationAudio'),item=narrationDesired();if(!item){if(a.getAttribute('src')){a.pause();a.removeAttribute('src');a.load()}return;}
+ if(a.getAttribute('src')!==item.url){a.pause();a.src=item.url;a.load();}
+ const active=t>=TRACK_CONFIG.startAt&&t<CONTENT_END,desired=Math.max(0,t-TRACK_CONFIG.startAt),ready=a.readyState>=1&&Number.isFinite(a.duration)&&a.duration>0;
+ if(ready){const target=Math.min(desired,Math.max(0,a.duration-.04));if(Math.abs(a.currentTime-target)>.17){try{a.currentTime=target}catch{}}}
+ if(!playing||!active||!ready||desired>=a.duration-.035){a.pause();return;}
+ if(a.paused)a.play().catch(()=>{a.pause();$('narrationStatus').textContent='浏览器阻止有声播放；请直接点击播放键并检查音频权限。'});
+}
+$('narrationAudio').addEventListener('loadedmetadata',()=>{syncNarration()});
+function render(sec,force=false){t=Math.min(END,Math.max(0,sec));content(t,force);updateCueDisplay();syncNarration();draw(t);$('seek').value=t;$('outtime').textContent=clock(t)+' / '+clock(END);
+ [...$('tabs').children].forEach((b,i)=>b.classList.toggle('active',i===idx));}
+function toggle(){if(t>=END)render(0,true);playing=!playing;last=0;$('play').textContent=playing?'Ⅱ 暂停':'▶ 播放完整样片';if(!playing)videoNodes.forEach(x=>x.pause());render(t)}
+function tick(now){if(playing){if(last)t=Math.min(END,t+(now-last)/1000);last=now;if(t>=END){playing=false;last=0;$('play').textContent='▶ 播放完整样片'}render(t)}requestAnimationFrame(tick)}
+function refreshAssetStatus(message=''){
+ const missing=[...assetRegistry.values()].filter(a=>!imported.has(a.id));
+ $('assetStatus').textContent=(message?message+'\n':'')+'素材登记 '+assetRegistry.size+' 项；本机已关联 '+imported.size+' 项；缺失 '+missing.length+' 项'+(missing.length?'（'+missing.slice(0,10).map(a=>a.id).join('、')+(missing.length>10?' 等':'')+'）':'。');
+}
+function attachLocalAsset(id,file){
+ const meta=assetRegistry.get(id);if(!meta)throw Error('未登记素材ID：'+id);
+ const legal=/^(image\/(png|jpeg|webp)|video\/(mp4|webm)|audio\/(wav|x-wav|mpeg|ogg|mp4|webm))$/;
+ if(!legal.test(file.type))throw Error('不支持的媒体类型：'+file.name);
+ if(meta.mimeType&&meta.mimeType.split('/')[0]!==file.type.split('/')[0])throw Error('素材类型不匹配：'+id+' 需要 '+meta.mimeType);
+ const old=imported.get(id);if(old)URL.revokeObjectURL(old.url);
+ imported.set(id,{url:URL.createObjectURL(file),type:file.type,name:file.name});
+ meta.fileName=file.name;meta.mimeType=file.type;refreshAssetStatus();refreshNarrationStatus();
+}
+function choose(i){
+ selectedIndex=i;const s=scenes[i];$('ed-title').textContent=s.id+' · '+s.template+' '+TEMPLATES[s.template].name;
+ $('captionEdit').value=s.cues?.[0]?.text||s.caption;$('titleEdit').value=s.title;$('sourceLabelEdit').value=s.label;const slot=$('slots');slot.replaceChildren();
+ s.assets.forEach((id,k)=>{const wrap=safeEl('div','slot-row'),lab=safeEl('span'),input=safeEl('input');const meta=assetRegistry.get(id);
+ lab.textContent='槽位 '+(k+1)+' / ID '+id+' / '+(imported.get(id)?.name||meta?.fileName||'未指定文件')+(imported.has(id)?'（已关联）':'（未关联）');
+ input.type='file';input.accept='image/png,image/jpeg,image/webp,video/mp4,video/webm';
+ input.addEventListener('change',()=>{const file=input.files?.[0];if(!file)return;
+  try{attachLocalAsset(id,file);choose(selectedIndex);render(t,true);setStatus('已关联素材 '+id+'，同一素材ID的镜头共享文件。');}catch(e){setStatus(e.message,true)} });
+ wrap.append(lab,input);slot.append(wrap);
+ });renderCueRows();captionHealth();
+}
+function rebuildTabs(){const tabs=$('tabs');tabs.replaceChildren();scenes.forEach((s,i)=>{let b=safeEl('button');b.textContent=s.id+' · '+s.template+' '+TEMPLATES[s.template].name;
+ b.addEventListener('click',()=>{playing=false;last=0;render(s.start,true);choose(i);$('play').textContent='▶ 播放完整样片'});tabs.append(b)})}
+function setStatus(message,isError=false){$('schemaStatus').textContent=message;$('schemaStatus').classList.toggle('error',isError)}
+$('play').addEventListener('click',toggle);$('restart').addEventListener('click',()=>{playing=false;last=0;render(0,true);$('play').textContent='▶ 播放完整样片'});
+$('seek').addEventListener('input',e=>{playing=false;last=0;render(Number(e.target.value),true);$('play').textContent='▶ 播放完整样片'});
+$('fullscreen').addEventListener('click',()=>{if(!document.fullscreenElement)$('stageframe').requestFullscreen?.();else document.exitFullscreen?.()});
+const SCHEMA='CWS_STORYBOARD_V2';const PREVIOUS_SCHEMA='CWS_STORYBOARD_V1';
+const mediaMimeForId=(id)=>((id==='cut'||id==='fold')?'video/mp4':'image/jpeg');
+function safeClone(value){return JSON.parse(JSON.stringify(value))}
+function initialAssetRegistry(){const map=new Map();for(const s of scenes)for(const id of s.assets){
+ if(!map.has(id))map.set(id,{id,fileName:'',mimeType:mediaMimeForId(id),rights:'UNVERIFIED',sourceRef:''});
+ }return map;}
+assetRegistry=initialAssetRegistry();
+function storyboard(){return{schema:SCHEMA,version:2,film:{fileName:FILM_CONFIG.fileName,narration:TRACK_CONFIG.assetId?{assetId:TRACK_CONFIG.assetId,startAt:TRACK_CONFIG.startAt}:null},timeline:{intro:INTRO,outro:OUTRO,total:END},
+ assets:[...assetRegistry.values()].map(a=>({id:a.id,fileName:a.fileName,mimeType:a.mimeType,rights:a.rights,sourceRef:a.sourceRef})),
+ shots:scenes.map(s=>{const x=safeClone(s);delete x.start;delete x.end;return x;})};}
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+function checkedStr(x,max,description,{empty=false}={}){if(typeof x!=='string'||(!empty&&!x.trim())||x.length>max)throw Error(description+'必须是不超过'+max+'字的字符串');return x}
+function dataShape(o,description){if(!o||Array.isArray(o)||typeof o!=='object')throw Error(description+'应为对象');return o}
+function positive(n,description,allowZero=false){if(typeof n!=='number'||!Number.isFinite(n)||(allowZero?n<0:n<=0))throw Error(description+'需为有限'+(allowZero?'非负':'正')+'数字');return n}
+function checkAllowed(o,fields,description){for(const k of Object.keys(o))if(!fields.includes(k))throw Error(description+'包含未知字段 '+k)}
+function validateStory(raw){
+ const root=dataShape(raw,'根节点');checkAllowed(root,['schema','version','film','timeline','assets','shots'],'根节点');
+ const legacy=root.schema===PREVIOUS_SCHEMA&&root.version===1;
+ if(!legacy&&(root.schema!==SCHEMA||root.version!==2))throw Error('配置格式不支持：只接受 CWS_STORYBOARD_V1 / version=1 或 CWS_STORYBOARD_V2 / version=2');
+ const film=dataShape(root.film,'film');checkAllowed(film,legacy?['fileName']:['fileName','narration'],'film');const fileName=checkedStr(film.fileName,40,'文件名');
+ const time=dataShape(root.timeline,'timeline');checkAllowed(time,['intro','outro','total'],'timeline');
+ if(Math.abs(time.intro-INTRO)>.001||Math.abs(time.outro-OUTRO)>.001)throw Error('原版Mac开关窗时长不可修改');
+ if(!Array.isArray(root.shots)||root.shots.length<1||root.shots.length>240)throw Error('shots数量必须在1~240');
+ if(!Array.isArray(root.assets)||root.assets.length>600)throw Error('assets数量超过600');
+ const reg=new Map();for(const [n,original] of root.assets.entries()){
+  const a=dataShape(original,'assets['+n+']');checkAllowed(a,['id','fileName','mimeType','rights','sourceRef'],'素材');
+  const id=checkedStr(a.id,72,'素材ID');if(!/^[A-Za-z0-9][A-Za-z0-9_-]*$/.test(id)||reg.has(id))throw Error('素材ID无效或重复：'+id);
+  const fn=checkedStr(a.fileName,240,'登记文件名',{empty:true});if(/[/\\]/.test(fn))throw Error('登记文件名不允许路径，仅允许文件名');
+  const mime=checkedStr(a.mimeType,32,'MIME');if(!/^(image\/(png|jpeg|webp)|video\/(mp4|webm)|audio\/(wav|x-wav|mpeg|ogg|mp4|webm))$/.test(mime))throw Error('素材MIME不支持：'+id);
+  const rights=checkedStr(a.rights,40,'rights');if(!['UNVERIFIED','LINK_FOUND','CONTENT_VERIFIED','REUSE_RIGHTS_VERIFIED'].includes(rights))throw Error('未知版权状态：'+id);
+  const sourceRef=checkedStr(a.sourceRef,300,'来源注记',{empty:true});
+  reg.set(id,{id,fileName:fn,mimeType:mime,rights,sourceRef});
+ }
+ let narration=null;
+ if(!legacy&&film.narration!=null){const n=dataShape(film.narration,'旁白配置');checkAllowed(n,['assetId','startAt'],'旁白');const assetId=checkedStr(n.assetId,72,'旁白素材ID');if(!reg.has(assetId)||!reg.get(assetId).mimeType.startsWith('audio/'))throw Error('旁白音轨必须引用已登记的音频素材ID');const startAt=positive(n.startAt,'旁白开始时刻',true);narration={assetId,startAt};}
+ const shots=[];const ids=new Set();let total=INTRO;
+ for(const [i,original] of root.shots.entries()){
+  const s=dataShape(original,'shots['+i+']');checkAllowed(s,['id','template','duration','assets','title','caption','label','assetOptions','stages','dataMetrics','dataScaleMax','dataNote','dataMode','dataPrecision','dataReference','compareLabels','cues'],'镜头');
+  const id=checkedStr(s.id,60,'镜头ID');if(ids.has(id)||!/^[A-Za-z0-9_-]+$/.test(id))throw Error('镜头ID无效或重复：'+id);ids.add(id);
+  if(!own(TEMPLATES,s.template))throw Error('无效模板：'+s.template);
+  const duration=positive(s.duration,id+'时长');if(duration>600)throw Error(id+'镜头时长超过600s');total+=duration;if(total>3600)throw Error('总片长超过3600s');
+  if(!Array.isArray(s.assets)||s.assets.length!==TEMPLATES[s.template].slots)throw Error(id+'素材槽位数不符');
+  const refs=s.assets.map(k=>{if(typeof k!=='string'||!reg.has(k))throw Error(id+'引用未登记素材：'+k);return k});
+  const shot={id,template:s.template,duration,assets:refs,title:checkedStr(s.title,80,id+'标题',{empty:true}),caption:checkedStr(s.caption,300,id+'字幕',{empty:true}),label:checkedStr(s.label,30,id+'来源标签',{empty:true})};
+  if(legacy){shot.cues=shot.caption?[{start:0,end:duration,text:shot.caption}]:[]}else{
+   if(!Array.isArray(s.cues)||s.cues.length>80)throw Error(id+' 字幕Cue须为0~80条');
+   shot.cues=s.cues.map((c,k)=>{dataShape(c,id+'字幕'+k);checkAllowed(c,['start','end','text'],'字幕Cue');const start=positive(c.start,id+' Cue start',true),end=positive(c.end,id+' Cue end');const text=checkedStr(c.text,100,id+'字幕Cue');if(end<=start||end>duration+.0001)throw Error(id+' Cue越过镜头时间边界');return{start,end,text};});
+   const ordered=[...shot.cues].sort((a,b)=>a.start-b.start);for(let j=1;j<ordered.length;j++)if(ordered[j].start<ordered[j-1].end-.0001)throw Error(id+'字幕Cue时间重叠');for(const cue of shot.cues)if(captionTooWide(cue.text))throw Error(id+'字幕Cue超出单行安全宽度');
+  }
+  if(s.assetOptions!==undefined){if(!Array.isArray(s.assetOptions)||s.assetOptions.length>refs.length)throw Error(id+'assetOptions长度错误');shot.assetOptions=s.assetOptions.map((input,k)=>{
+   const op=dataShape(input||{},id+'素材选项');checkAllowed(op,['fit','inPoint','endBehavior'],'素材选项');const fit=op.fit===undefined?'contain':op.fit;
+   if(!['contain','cover'].includes(fit))throw Error(id+'fit无效');const inPoint=positive(op.inPoint??0,id+'inPoint',true);
+   if(inPoint>3600)throw Error(id+'素材入点太大');const endBehavior=op.endBehavior??'hold';if(!['hold','loop'].includes(endBehavior))throw Error(id+'素材结束策略错误');const normalized={};if(own(op,'fit'))normalized.fit=fit;if(own(op,'inPoint'))normalized.inPoint=inPoint;if(own(op,'endBehavior'))normalized.endBehavior=endBehavior;return normalized
+  });}
+  if(s.template==='T5'){
+   if(!Array.isArray(s.stages)||s.stages.length!==3)throw Error(id+'必须配置3阶段');
+   shot.stages=s.stages.map((st,k)=>{dataShape(st,id+'阶段'+k);checkAllowed(st,['label','name','duration','inPoint'],'阶段');return {label:checkedStr(st.label,40,'阶段标签'),name:checkedStr(st.name,80,'阶段名称'),duration:positive(st.duration,'阶段时长'),inPoint:positive(st.inPoint??0,'阶段入点',true)}});
+   if(Math.abs(shot.stages.reduce((a,b)=>a+b.duration,0)-duration)>.001)throw Error(id+'阶段时长之和不等于镜头时长');
+  } else if(s.stages!==undefined)throw Error(id+'不应具有stages');
+  if(s.template==='T6'){
+   // Four modes: aligned-value bars, absolute difference, ratio, percent change.
+   const mode=s.dataMode??'bars';if(!['bars','delta','ratio','change'].includes(mode))throw Error(id+'T6未知比较模式');
+   if(!Array.isArray(s.dataMetrics)||s.dataMetrics.length<2||s.dataMetrics.length>8)throw Error(id+'dataMetrics须2~8项');
+   shot.dataMetrics=s.dataMetrics.map(m=>{
+    dataShape(m,'metric');checkAllowed(m,['label','value','unit'],'metric');
+    return {label:checkedStr(m.label,90,'指标名'),value:(()=>{if(typeof m.value!=='number'||!Number.isFinite(m.value)||Math.abs(m.value)>1e12)throw Error(id+'数据须为有限且绝对值不超过1e12的数字');return m.value;})(),unit:checkedStr(m.unit,20,'单位',{empty:true})};
+   });
+   const units=new Set(shot.dataMetrics.map(m=>m.unit.trim()));
+   if(units.size!==1)throw Error(id+'不同单位不可共用同一比较基准，请统一换算单位或拆成多个镜头');
+   if(mode!=='bars'&&shot.dataMetrics.length!==2)throw Error(id+'差值/倍数/增长率必须恰好有两个指标');
+   if((mode==='ratio'||mode==='change')&&shot.dataMetrics[0].value<=0)throw Error(id+'倍数/增长率的第一项基准必须大于0');
+   if(mode==='ratio'&&shot.dataMetrics[1].value<0)throw Error(id+'倍数模式不支持负的后者数值');
+   const scale=s.dataScaleMax===undefined?Math.max(1,...shot.dataMetrics.map(m=>Math.abs(m.value))):positive(s.dataScaleMax,id+'比例基准');
+   if(scale<Math.max(...shot.dataMetrics.map(m=>Math.abs(m.value)))-1e-8)throw Error(id+'比例基准不可小于数据绝对值');
+   shot.dataScaleMax=scale;
+   shot.dataNote=checkedStr(s.dataNote??'',240,'数据注释',{empty:true});
+   if(s.dataMode!==undefined)shot.dataMode=mode;
+   if(s.dataPrecision!==undefined){if(!Number.isInteger(s.dataPrecision)||s.dataPrecision<0||s.dataPrecision>3)throw Error(id+'小数位必须为0~3');shot.dataPrecision=s.dataPrecision;}
+   if(s.dataReference!==undefined)shot.dataReference=checkedStr(s.dataReference,220,'数据来源/计量口径',{empty:true});
+  } else if(s.dataMetrics!==undefined||s.dataScaleMax!==undefined||s.dataNote!==undefined||s.dataMode!==undefined||s.dataPrecision!==undefined||s.dataReference!==undefined)throw Error(id+'不是T6却包含数据字段');
+  if(s.compareLabels!==undefined){if(s.template!=='T2'||!Array.isArray(s.compareLabels)||s.compareLabels.length!==2)throw Error(id+'比较标签仅支持T2两个');shot.compareLabels=s.compareLabels.map(x=>checkedStr(x,50,'比较标签'))}
+  shots.push(shot);
+ }
+ const expected=total+OUTRO;
+ if(!Number.isFinite(time.total)||Math.abs(time.total-expected)>.001)throw Error('timeline.total与镜头时长不一致');
+ if(narration&&narration.startAt>=total)throw Error('旁白开始时间必须在内容结束前');
+ const referenced=new Set(shots.flatMap(s=>s.assets));for(const id of reg.keys())if(!referenced.has(id)&&id!==narration?.assetId)throw Error('存在未被任何镜头引用的素材登记：'+id);
+ return {fileName,shots,registry:reg,total:expected,narration,legacy};
+}
+function doImport(raw){
+ // Atomic commit: reject all invalid content without altering current timeline or media.
+ const normalized=validateStory(raw),compiled=compileTimeline(normalized.shots),ended=compiled.at(-1).end+OUTRO;
+ if(Math.abs(ended-normalized.total)>.001)throw Error('导入后的时间轴总长不一致');
+ stopNarration(true);for(const a of imported.values())URL.revokeObjectURL(a.url);
+ imported.clear();assetRegistry=normalized.registry;scenes=compiled;CONTENT_END=compiled.at(-1).end;END=ended;
+ FILM_CONFIG.fileName=normalized.fileName;TRACK_CONFIG.assetId=normalized.narration?.assetId||null;TRACK_CONFIG.startAt=normalized.narration?.startAt??INTRO;window.__CWS_TIMELINE={contentEnd:CONTENT_END,end:END,closeDone:CONTENT_END+2.04};window.__duration=END;
+ t=0;playing=false;last=0;idx=-1;step=-1;selectedIndex=0;videoNodes.forEach(v=>v.pause());videoNodes=[];
+ $('fileNameEdit').value=FILM_CONFIG.fileName;$('narrationStart').value=String(TRACK_CONFIG.startAt);$('seek').max=String(END);$('play').textContent='▶ 播放完整样片';
+ rebuildTabs();choose(0);render(0,true);refreshAssetStatus();refreshNarrationStatus();
+ setStatus((normalized.legacy?'旧版V1已自动转换为分段字幕。':'')+'导入成功：'+scenes.length+'镜头，'+assetRegistry.size+'个素材登记；文件内容未随JSON导入，请按ID重新选择本地媒体。');
+}
+function exportStory(){if(!captionHealth()){setStatus('存在过长单行字幕，无法导出。请先拆短字幕。',true);return false;}
+ const spec=storyboard();validateStory(spec);let url=URL.createObjectURL(new Blob([JSON.stringify(spec,null,2)],{type:'application/json'})),a=safeEl('a');a.href=url;a.download='CWS_STORYBOARD_V1.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ setStatus('JSON已导出：'+scenes.length+'镜头，'+assetRegistry.size+'个素材ID。文件实体不包含在JSON中。');return true;}
+$('export').addEventListener('click',exportStory);
+$('importTrigger').addEventListener('click',()=>$('importJSON').click());
+$('importJSON').addEventListener('change',async()=>{const file=$('importJSON').files?.[0];if(!file)return;
+ try{if(file.size>2*1024*1024)throw Error('分镜JSON不得大于2MB');const raw=JSON.parse(await file.text());doImport(raw)}
+ catch(e){setStatus('导入失败：'+e.message+'。原镜头和素材状态保持不变。',true)}finally{$('importJSON').value=''}
+});
+$('batchMedia').addEventListener('change',()=>{let changed=0,skipped=[];const selected=[...$('batchMedia').files||[]];
+ for(const file of selected){const matches=[...assetRegistry.values()].filter(a=>a.fileName===file.name&&a.fileName);
+ if(matches.length!==1){skipped.push(file.name+'（文件名无唯一匹配项）');continue}
+ try{attachLocalAsset(matches[0].id,file);changed++}catch(e){skipped.push(file.name+'（'+e.message+'）')}
+ }
+ choose(selectedIndex);render(t,true);refreshAssetStatus();setStatus('批量关联 '+changed+' 项；跳过 '+skipped.length+' 项'+(skipped.length?'：'+skipped.slice(0,5).join('、'):'')+'。'+(skipped.length?'请检查文件名/类型，不会模糊匹配。':''),skipped.length>0);
+ $('batchMedia').value='';
+});
+// The original QuickTime controls live on Canvas: relay click targets to the one master timeline.
+$('view').addEventListener('click',e=>{
+ const r=$('view').getBoundingClientRect(),cx=(e.clientX-r.left)*1920/r.width,cy=(e.clientY-r.top)*1080/r.height;
+ if(t<3.75 || t>=END)return;
+ if(cy>=1009&&cy<=1080){
+   if(cx>=270&&cx<=1580){const fraction=Math.max(0,Math.min(1,(cx-288)/1248));playing=false;last=0;render(fraction*END,true);$('play').textContent='▶ 播放完整样片';return}
+   if(cx<125){toggle();return}
+ }
+ if(cx<=100&&cy<=65&&t>=CONTENT_END-0.5){playing=true;last=0;render(Math.max(t,CONTENT_END));$('play').textContent='Ⅱ 暂停'}
+});
+document.addEventListener('keydown',e=>{if(e.target.closest('input'))return;
+ if(e.code==='Space'){e.preventDefault();toggle()}
+ if(e.code==='ArrowRight'||e.code==='ArrowLeft'){e.preventDefault();playing=false;last=0;render(Math.max(0,Math.min(END,t+(e.code==='ArrowRight'?5:-5))),true);$('play').textContent='▶ 播放完整样片'}
+});
+$('fileNameEdit').addEventListener('input',e=>{FILM_CONFIG.fileName=e.target.value.trim()||'QUESTION_01.mov';render(t)});
+$('sourceLabelEdit').addEventListener('input',e=>{scenes[selectedIndex].label=e.target.value;if(idx===selectedIndex)textUpdate()});
+$('captionEdit').addEventListener('input',e=>{const sh=scenes[selectedIndex];sh.caption=e.target.value;if(!sh.cues.length&&e.target.value)sh.cues=[{start:0,end:sh.duration,text:e.target.value}];else if(sh.cues.length)sh.cues[0].text=e.target.value;renderCueRows();if(idx===selectedIndex){lastCueText=null;updateCueDisplay()}captionHealth()});
+$('titleEdit').addEventListener('input',e=>{scenes[selectedIndex].title=e.target.value;if(idx===selectedIndex)textUpdate()});
+function renderCueRows(){const root=$('cueRows'),s=scenes[selectedIndex];root.replaceChildren();(s.cues||[]).forEach((cue,i)=>{const wrap=safeEl('div','cue-row');const st=safeEl('input'),end=safeEl('input'),tx=safeEl('input'),del=safeEl('button');st.type=end.type='number';st.min=end.min='0';st.step=end.step='0.01';st.value=String(cue.start);end.value=String(cue.end);tx.type='text';tx.maxLength=100;tx.value=cue.text;st.title='开始秒';end.title='结束秒';tx.title='字幕文字';del.type='button';del.textContent='×';del.title='删除Cue';
+ const update=(field,val)=>{cue[field]=val;if(i===0&&field==='text'){$('captionEdit').value=val;s.caption=val;}lastCueText=null;if(idx===selectedIndex)updateCueDisplay();captionHealth();};
+ st.addEventListener('input',()=>update('start',st.value===''?NaN:Number(st.value)));end.addEventListener('input',()=>update('end',end.value===''?NaN:Number(end.value)));tx.addEventListener('input',()=>update('text',tx.value));
+ del.addEventListener('click',()=>{s.cues.splice(i,1);s.caption=s.cues[0]?.text||'';$('captionEdit').value=s.caption;renderCueRows();lastCueText=null;if(idx===selectedIndex)updateCueDisplay();captionHealth()});wrap.append(st,end,tx,del);root.append(wrap)});}
+$('addCue').addEventListener('click',()=>{const s=scenes[selectedIndex],end=s.cues.at(-1)?.end||0;if(end>=s.duration-.05){setStatus('当前镜头没有足够的字幕空档：请先缩短已有Cue。',true);return;}s.cues.push({start:end,end:s.duration,text:'新字幕'});renderCueRows();captionHealth();});
+$('narrationStart').addEventListener('change',()=>{const val=Number($('narrationStart').value);if(!Number.isFinite(val)||val<0||val>=CONTENT_END){$('narrationStart').value=String(TRACK_CONFIG.startAt);setStatus('旁白起始秒数必须在0与内容结束时刻之间。',true);return;}TRACK_CONFIG.startAt=val;render(t);});
+$('narrationFile').addEventListener('change',()=>{const file=$('narrationFile').files?.[0];if(!file)return;try{if(!/^audio\/(wav|x-wav|mpeg|ogg|mp4|webm)$/.test(file.type))throw Error('不支持该音频类型：'+file.type);const existing=TRACK_CONFIG.assetId;let id=existing;
+ if(!id){id='narration_voice';for(let n=2;assetRegistry.has(id);n++)id='narration_voice_'+n;assetRegistry.set(id,{id,fileName:file.name,mimeType:file.type,rights:'UNVERIFIED',sourceRef:''});TRACK_CONFIG.assetId=id;}
+ attachLocalAsset(id,file);render(t);setStatus('旁白关联成功：'+file.name+'。请在镜头Cue中明确标注每句话的起止时间。');}catch(e){setStatus(e.message,true)}finally{$('narrationFile').value=''}});
+assetRegistry=initialAssetRegistry();rebuildTabs();$('narrationStart').value=String(INTRO);refreshNarrationStatus();$('fileNameEdit').value=FILM_CONFIG.fileName;choose(0);render(0,true);refreshAssetStatus();requestAnimationFrame(tick);
+window.__CWS_SEEK=(x)=>{playing=false;last=0;render(x,true)};
+window.__CWS_SOURCE='CWS_V56_T6_GENERIC_DATA_CANDIDATE';
+window.__CWS_SCHEMA=()=>storyboard();
+window.__CWS_IMPORT=(obj)=>doImport(obj);
+window.__CWS_VALIDATE=(obj)=>{try{validateStory(obj);return {ok:true}}catch(e){return {ok:false,error:e.message}}};
+window.__CWS_ASSET_STATUS=()=>({registered:assetRegistry.size,bound:imported.size,missing:[...assetRegistry.keys()].filter(id=>!imported.has(id))});
+window.__CWS_T6_CONFIG=()=>scenes.filter(x=>x.template==='T6').map(x=>({id:x.id,mode:x.dataMode||'bars',metrics:x.dataMetrics,precision:x.dataPrecision??2,source:x.dataReference||''}));
+window.__CWS_CUE_STATUS=()=>({currentTime:t,shot:scenes[idx]?.id,text:$('subtitle').textContent,cueCount:scenes.reduce((sum,x)=>sum+(x.cues?.length||0),0),narrationAsset:TRACK_CONFIG.assetId,narrationReady:$('narrationAudio').readyState,narrationPaused:$('narrationAudio').paused,narrationTime:$('narrationAudio').currentTime,narrationStart:TRACK_CONFIG.startAt});
+window.__CWS_DEBUG=()=>({time:t,playing,shot:scenes[idx]?.id,template:scenes[idx]?.template,step,oneOriginalCanvas:document.querySelectorAll('canvas#view').length,secondMacWindow:!!document.getElementById('qt'),end:END,shotCount:scenes.length,assetCount:assetRegistry.size,missingAssets:[...assetRegistry.keys()].filter(k=>!imported.has(k))});
+})();
+</script></body></html>

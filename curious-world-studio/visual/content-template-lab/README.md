@@ -1,0 +1,76 @@
+<!-- CWS_V5_ORIGINAL_ONLY_CURRENT -->
+## V5 原版 Mac 唯一外壳候选（2026-10-17）
+
+**最新入口：** [storyboard-v5-original-shell.html](storyboard-v5-original-shell.html)。这次从[原版Research Aqua V2](../../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html) HTML/Canvas直接改，不再用V3/V4自画的Mac与`#qt`第二套播放器。原版菜单/Dock/鼠标/红黄绿按钮/QuickTime的`qtWindow`均沿用，B内容区调用T1–T6模块；7镜头共用一条Master Clock，T1两个实例独立，结束鼠标关窗回桌面。
+
+**请先检查V5，而不是旧V4或index.html。** 无外部字体/网络/版权参考媒体，不导入素材时显示明确占位；Edge保存单HTML可本地打开，选择本地素材用于私有测试。展示模板不等于可发布电影。
+
+**已验证：** GitHub文件回读、两个script语法、6/6模板函数、单Canvas/无双播放器及受控22时点时轴执行；**未验证：** 真实浏览器全长1×的原版视觉整合、用户本机离线打开、媒体文件连续播放、正式声音与MP4。因此Reviewer只判`PARTIAL`；完整说明见[V5 Review](../../docs/CWS_TEMPLATE_LAB_V5_ORIGINAL_SHELL_REVIEW_2026-10-17.md)。PR仍Draft，R3视觉RETURN/G1/G2/R4/NO_PUBLISH不变。
+
+---
+
+# 当前V4入口（2026-10-17）
+
+> **V4 = 复用原Mac画法 + 六模块/七镜头 + Master Clock + 关闭回桌面；技术局部PASS、整体视觉待验收。** PR#144仍为Draft，R3正式HOLD/NO_PUBLISH均不变。
+
+- **推荐从这里继续：** [storyboard-v4-master.html](storyboard-v4-master.html)，一份自包含离线HTML，嵌入main上选定的Research Aqua V2原Canvas源码；其六个内容模板为`TEMPLATE_RENDERERS.T1–T6`，实例/素材/时长在`EDITORIAL`，`compileTimeline`统一排时。不含第三方媒体：需要用文件选择按钮填入合法图片/视频。
+- **时间轴：** 0–4.76秒Mac打开文件；4.76–28.76秒七个不同shot（T1两次，媒体互不串扰）；28.76–31.06秒鼠标点红灯关闭播放器回原桌面。包括进度条、字幕、播放器状态与收尾仅用一份时轴。
+- **真实样片预览：** 有第三方参考影片画面及样例图片的私有31秒HTML文件在本轮对话附件，不能发布或推到Git。该私有附件是**V3近似壳**而非上述GitHub原绘制版；两份不能冒充逐帧等价。
+- **Evidence/Review：** [V4 Gate与独立审查](../../docs/CWS_TEMPLATE_LAB_V4_MODULAR_TIMELINE_REVIEW_2026-10-17.md)。本地定时seek/模块化验证通过；GitHub原Canvas完整嵌入版浏览器观感、整条一倍速测试、真实素材权利和MP4渲染仍未验收。不要将`index.html`的V2历史演示误当作V4。
+
+---
+
+## V3 30秒动态预览（2026-10-17，最新；覆盖下方旧V2开发状态）
+
+- **GitHub中可复用的无媒体源码**：[storyboard-v3-source.html](storyboard-v3-source.html)：六种模板＋30秒时间轴＋本地媒体槽位＋字幕编辑＋配置导出。默认空素材，必须自行填合法素材。
+- **实际视觉演示**：`CWS_30秒动态知识模板_完整预览.html`（Owner对话私有附件，不在GitHub）；媒体摘自Owner上传的第三方参考视频，只用于内部视觉评审；不具有转发、商用、公开视频权利。
+- **本轮Review**：`V3_VISUAL_DEMO_TECH_PARTIAL / REVIEWER_RETURN_EXACT_STYLE_AND_RIGHTS`。十二个抽帧检查点、T1–T6、T5阶段、字幕修改时视频连续播放、六段配置导出均测；完整30秒自动回归退出超时。Mac外壳使用接近原V2的CSS几何，未做到原V2源码逐帧复用。不能据此合并/生产/发布。
+- **完整Gate/证据与未完成项**：[CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md](../../docs/CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md)。旧V1静态退回和V2候选文档历史保留，以下V2描述仅作历史。
+
+# Curious World Studio — Content Template Lab V2
+
+> **STATUS: V2_REVIEW_CANDIDATE / DRAFT_PR_NOT_MERGED / NOT_PRODUCTION_AUTHORIZED**  
+> Scope: only PR #144, no effect on mainline `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`.
+
+## What is actually built
+
+Open **`index.html`** directly in the browser. This is now a **single-file offline prototype**: the accepted [G1V-A V2 Research Aqua canvas](../../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html) is embedded as an iframe `srcdoc`, using the exact original drawing logic for Mac desktop, cursor, file-double-click, Genie opening, maximization and QuickTime bars. Only test-media illustration, clip filename, demo duration and autoplay loop were changed; the content viewport is occupied by the V2 template stage.
+
+The index implements 28.76s timed preview: **0–4.76s original Mac opening**, followed by six independent content-use scenes. The stage fills the 16:9 output canvas; editor UI is outside that canvas.
+
+| Template | Role | Span (s) | Media slots |
+|---|---|---|---|
+| T1 | Single footage or image | 4.76–8.00 | 1 |
+| T2 | A/B simultaneous comparison | 8.00–11.80 | 2 |
+| T3 | Action + explanation image | 11.80–16.40 | 2 |
+| T4 | Source evidence / archive | 16.40–19.60 | 1 |
+| T5 | 3-stage picture progression | 19.60–24.60 | 3 |
+| T6 | 3-stage illustrative data comparison | 24.60–28.76 | 0 |
+
+**Behavior:** Play, Pause, Restart and Seek follow one media clock. T5 and T6 auto-progress across three timed states. The user may switch to any scene, insert local photo/video into slots and edit title, subtitles, labels and notes without destroying an active video node. Videos are muted in this visual-only prototype; no automatic media looping. JSON export includes six shot times, stage events, media filenames, unverified provenance/rights fields, and review requirements; it does **not** embed media or authorize publishing.
+
+## What did not happen
+
+- No exact scientific research animation, AI image generation, internet search or video asset downloading.
+- No original reference-video footage was copied into the project.
+- No actual dubbing, soundtrack, SRT alignment, Remotion MP4 export or real research rights verification.
+- Default empty slots remain visibly marked `DEMO ONLY`. The example data values 24/48/76 are **fictional UI test fixtures**.
+- No extra MW-01…13 animation presets were added. The 13 existing Mac interactions are a distinct A-shell concern; this is the separate **B content-template layer**.
+
+## Verification and limitations
+
+**Independent Chromium/Playwright probe in sandbox (2026-10-17):**
+- Six content-scene render states and timeline selectors: **6/6**.
+- T5 automatically advances to stage 2 after ~2s; T6 advances to example 48%.
+- Local six-second machine-generated QA MP4 played, and subtitle editing preserved its source and playback progression (about 1.47s→1.99s), unlike V1.
+- JSON exported six timed scenes with the chosen local filename; page JavaScript errors **0**.
+- The sandbox browser blocks both `file://` and localhost navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`; tests used HTML `set_content` and a **structurally equivalent local stub shell via srcdoc**. Thus **the exact newly embedded original V2 shell was not independently rendered in that browser session**. No Windows double-click test has been performed; visual acceptance remains open.
+- Two attempted whole-suite regressions hit harness timeouts; a bounded single-fault video probe completed and showed working continuity. Treat the shell/render end-to-end as `UNVERIFIED` until reviewer can play the final exact candidate in an appropriate browser environment.
+
+## Current Reviewer boundary
+
+The V1 PR review recorded `RETURN_VISUAL_MOTION_AND_STYLE`; this V2 addresses those design causes **as a candidate**, not a self-declared PASS. The next bounded reviewer should validate the final exact HTML, original Mac motion fidelity, scene timing and real varied content, then confirm whether additional tweaks are needed before considering a merge. Main project R3 remains `RETURN_OWNER_VISUAL_STORYFIT` and R4 and publishing remain unauthorized.
+
+**Rollback:** the PR remains open as draft and can be closed/reverted without touching main. This HTML contains no credentials, data store or production network calls.
+
+See [V2 Gate + Evidence](../../docs/CWS_TEMPLATE_LAB_V2_GATE_2026-10-17.md), [Governance](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md).
