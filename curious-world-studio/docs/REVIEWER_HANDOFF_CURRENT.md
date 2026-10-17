@@ -1,5 +1,17 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V531_CAPTION_REFRESH_NEXT_STAGE_20261017 -->
+## 2026-10-17｜V5.3.1八项技术修复自验完毕（覆盖此前V5.3字幕PARTIAL时态）
+
+- **新候选**：PR #144 Draft [storyboard-v5-3-1-caption-alert.html](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-3-1-caption-alert.html)，blob `c74567d1c399d58ab96fb81303cf381250ab2ee2`。仅在`captionEdit`输入事件无条件调用`captionHealth()`，与V5.3唯一一行不同；其余Mac壳、T1–T6、七镜头/单时间轴全部不动。
+- **复核证据**：独立 Chromium 测试：当前镜头超长、编辑非当前镜头超长、改短清警、导出限制/恢复4个场景全部PASS；原19个技术回归案例19/19 PASS，JS异常0。八项初始返修在技术测试范围内现全部通过；历史 Reviewer 的“7 PASS/1 PARTIAL”仍应作为**补丁前事实**保存，不得改写。
+- **CURRENT_ACCEPTED_STATE**：**main冻结V5.2** `curious-world-studio/visual/frozen/storyboard-v5-2-20261017.html` blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`仍是已归档基线。V5.3.1是Draft PR技术候选，尚未替换基线或发布。
+- **剩余六项来自原14项表**：⑤T4真资料、⑨T6高级数据类型、⑩多字幕cue/配音对齐、⑪QuickTime显示时间语义、⑬可导入JSON/素材ID映射、⑭完整故事素材叙事。推荐顺序**⑬→⑩→⑨**；⑤/⑭留到真实获授权制片验证，⑪低优先级。八项之外不扩Gate。
+- **NEXT_STEP**：Owner选择进入下一阶段时制定新的、隔离的数据导入与资产映射Gate；优先明确机器可读shot schema、时码、素材ID/权利/文件映射与可复原导入，不重做Mac或新增模板。真实4–6分钟声画输出与R3/G1/G2/R4正式Gate及版权仍未批准。
+- **Evidence**：[PR#144 V5.3.1评论](https://github.com/entropy-student/project/pull/144#issuecomment-6235860650)。原冻结/回滚边界、资源和Owner侧动作均保持。
+
+
+
 <!-- CWS_V53_EIGHT_FIXES_EXTERNAL_REVIEW_PENDING_20261017 -->
 ## 2026-10-17｜V5.3 八项候选待原独立Reviewer确认（不覆盖现有V5.2冻结交接）
 
