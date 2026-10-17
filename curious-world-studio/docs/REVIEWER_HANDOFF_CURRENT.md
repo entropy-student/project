@@ -1,5 +1,17 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V52_FROZEN_CANONICAL_HANDOFF_20261017 -->
+## 2026-10-17｜最新唯一交接：V5.2 模板冻结归档（覆盖下方所有 V5/V4 旧NEXT）
+
+- **PROJECT_GOAL / CURRENT_STAGE**：不露脸跨领域知识视频自动制片。视觉模板技术基线现已`V5.2_TEMPLATE_BASELINE_FROZEN`，不是正式影片内容或发行PASS。Owner说“样式还有可以调整的地方，但是这版先冻结留档”：后续无须再为样式问题反复重做本版本。
+- **CURRENT_ACCEPTED_STATE / SOURCE OF TRUTH**：唯一固定入口是[main冻结版单文件HTML](../visual/frozen/storyboard-v5-2-20261017.html)，blob **`f002fd3a3fea24352c8eddb63d8f265014a9e93b`**；它与[PR#144 的 V5.2 源码](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-2-reviewed.html)字节相同，已直接读回。原Research Aqua V2基准blob `acb0ee80264527bd11160e0ae277ce24528c4a03`不变；单Mac桌面/QuickTime播放器+六种B内容渲染器(T1–T6)+七shot(T1重用2次)+31.06秒Master Clock(A→B→A)。PR#144仍Draft，不合并、不覆盖main冻结资产。
+- **CURRENT_GATE**：`CWS-V52-TEMPLATE-BASELINE-FREEZE-20261017` 已结束。合同、验真和内容进度在[唯一冻结记录](CWS_V52_TEMPLATE_FREEZE_2026-10-17.md)；后续视觉微调必须另建V5.3+，而不是直接修改冻结版。冻结源码不含第三方媒体，私人含参考片的HTML不可传公开仓库。
+- **ACCEPTED TECH EVIDENCE**：先前真实Chromium关键帧（T1/T4/T6）、27→31.06秒实速收尾、MP4局部前进/暂停、PNG替换、0 JS错误；**没有证据证明从0到31秒完整连续播放、真实4–6分钟导出、TTS/SRT音画同步或合法来源故事叙事已PASS**。Owner认可“视频感”但并未宣布所有样式最终无须优化。
+- **CRITICAL CONSTRAINTS / UNRESOLVED**：`CW0005 R3_RETURN_OWNER_VISUAL_STORYFIT / CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`；素材权利PARTIAL；同一原视频项目级不可重复；真实脚本/多来源素材映射/正式Remotion成片、旁白字幕同步仍待验证。不得以模板冻结推导正式制片授权。
+- **DEFAULT EXECUTION CHANNEL / SYSTEM_MAP**：GitHub源码、隔离PR、Reviewer证据；视频渲染拟复用既有Remotion/FFmpeg/OpenMontage基础。Owner Windows本机/VPS/容器/公网/代理未在本轮变更，**无需部署**。
+- **NEXT_STEP**：暂停模板重画。若Owner提出具体风格差异，按冻结HTML复制V5.3新候选并有界返修；否则以冻结版为参照另立真实镜头表＋已授权可用素材槽＋统一音轨/字幕＋正式MP4的技术验证 Gate。在批准前不要自动执行R4或任何发布动作。
+- **CURRENT_ROLLBACK / OWNER_ACTION_REQUIRED**：main冻结文件固定不动；未来失败时从main exact blob恢复；此轮无资源删除/停机。Owner无需操作。[冻结凭证及交接](CWS_V52_TEMPLATE_FREEZE_2026-10-17.md)。
+
 <!-- CWS_V52_REVIEWER_RESULT_20261017 -->
 ## 2026-10-17｜V5.2 最新 Reviewer 接手（覆盖下方V5未浏览器验证时态）
 
