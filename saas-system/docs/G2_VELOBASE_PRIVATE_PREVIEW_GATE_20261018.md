@@ -1,6 +1,6 @@
 # SAAS-G2-VH-PRIVATE-DOCKER-PREVIEW-20261018
 
-> STATUS=REVIEWER_AUTHORIZED_GATE / OWNER_LOCAL_EXECUTOR_NOT_YET_EXECUTED
+> STATUS=HISTORICAL_CLOSED / RETURN_EXISTING_WORKLOAD_REGRESSION
 > PROJECT=`entropy-student/project` main:`saas-system/`
 > GOVERNANCE=`entropy-student/spike.skill` main:`vps-project-governance/VNEXT.md` v0.2.7
 > SOURCE_REPOSITORY=https://github.com/velobase/velobase-harness
