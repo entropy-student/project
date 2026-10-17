@@ -1,6 +1,6 @@
 # G2B — Paymenter 简体中文用户界面验收 Gate
 GATE_ID: PAYMENTER-G2B-LOCAL-ZH-HANS-VISUAL-ACCEPTANCE-20261017
-STATUS: AUTHORIZED_PREPARED / NOT_EXECUTED
+STATUS: PARTIAL_G2B_R1_UI_UNVERIFIED / REVIEWER_PENDING
 PARENT_G2_OBJECTIVE: docs/G2_SIMPLIFIED_CHINESE_UI_GATE.md
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7
 BASELINE: G1 本机 Docker/登录 PASS；G2A 源码补丁、CLI/HTTP/仅 paymenter 重启持久性正式 PASS；PR #148 merged commit a5a5f119eedd4cd56bd6e8f7a94865c935ebd7a3。禁止重新执行 G1/G2A。
@@ -69,3 +69,13 @@ OWNER_SUPPLIED_VISUAL_EVIDENCE: 4 original 2048×1028 screenshots supplied in ch
 
 ### Later final visual evidence (minimum to close)
 One authenticated **user dashboard** screenshot, one product **edit/plan options** screenshot, and reinspection of dashboard + notification list after R1 (or equivalent genuine browser observations); verify no navigation/interaction regression. Do not request screenshots of every admin screen when key representative views suffice.
+
+
+### 2026-10-17 Executor G2B R1 source/CLI result — Reviewer pending
+STATUS: PARTIAL_G2B_R1_UI_UNVERIFIED
+PATCH: localization/g2b-r1/paymenter-g2b-r1-v1.5.9.patch (incremental six-file patch on the accepted G2A baseline; SHA-256 cb064cdfc63601f2f9e7f06287a96e4814f09fd182fe2bff7a24e5e397c43fa4).
+FIXED: dashboard Support heading and empty state; product-list Category: group label and Slug presentation label; exact known notification subject display titles; footer Sponsor / Star us on GitHub / Documentation; One Time / Month / Separated / Combined option display text. Notification values only format the list state; stored subjects/bodies/variables and behavior are unchanged. Coupon date placeholder diagnosed as native HTML date input locale output; left untouched.
+VERIFIED: three PHP files lint clean; both JSON catalogs valid (642 original keys unchanged, 16 additions each); 19 Laravel `zh_CN` translation probes pass; Blade view compilation succeeds; read-only DB counts and notification-template hash unchanged; patch applies and reverses cleanly; anonymous read-only local HTTP checks pass.
+NOT VERIFIED: authenticated post-fix dashboard/product/notification UI and user area; no browser automation was used. Anonymous admin/dashboard redirects and CLI/HTTP checks are not visual acceptance. Native date placeholder and dynamic/custom notification titles remain documented limitations.
+ROLLBACK: reverse only the R1 patch; see localization/g2b-r1/README.md. Preserve G2A patch and all named volumes/data.
+NEXT: Reviewer visually rechecks the original screenshot areas; retain PARTIAL until required authenticated user dashboard, plan options and post-R1 dashboard/notification evidence are reviewed.
