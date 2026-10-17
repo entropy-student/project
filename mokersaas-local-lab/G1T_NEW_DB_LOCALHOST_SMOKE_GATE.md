@@ -1,7 +1,9 @@
 # MokerSaaS G1T — Start a New Disposable Local Database and Smoke-Test Site
 
+> HISTORICAL GATE. Original execution stopped before directory/Secret/DB creation. Current sole active Gate is G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md. The relay later in this file must not be followed again.
+
 > GATE_ID: MOKER-G1T-NEW-DB-LOCALHOST-SMOKE-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_UNSUPPORTED_DOTNET_ACL_OVERLOAD — historical/non-executable
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7 (Reviewer-interpreted)
 > OWNER_APPROVAL_REFERENCE: MOKER-D-20261017-APPROVE-G1S-NEW-DB plus MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION in DECISION_LOG.md
 > MAX_ENDPOINT_THIS_ROUND: guarded creation of a **new, separately namespaced, completely synthetic** PostgreSQL database and protected local file secrets; schema creation; app bound solely to 127.0.0.1:3077; bounded login/security/provider-negative smoke. Do not proceed to real payments/referrals.
