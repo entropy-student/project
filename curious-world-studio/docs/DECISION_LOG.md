@@ -55,3 +55,8 @@ GitHub已核实`entropy-student/spike.skill/comic-narrative`的`part4_5/ASSET_RE
 - Owner要求继续推进并同步整理文档，故V2仅在[独立Draft PR#144](https://github.com/entropy-student/project/pull/144)返修与保留证据；正式`CW0005_VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`及R4未授权、原稿锁定、素材权利审查仍有效。
 - V2当前仅`REVIEW_CANDIDATE / PARTIAL_VERIFICATION`，不能因为6模板的行为测试通过就宣称整体视觉质量PASS。真实内容是否优于参考视频，需下一步用多来源实拍/论文图等真实可审核材料进行连续观片比较。
 
+## 2026-10-17｜Owner选择固定Mac外壳、六个可复用B模块、唯一Master Clock
+
+Owner认可V3连续播放体验但认为外观比已验收Research Aqua原版有所退化；决定**不再扩充模板数量或重造Mac系统**，而是在唯一Aqua桌面→QuickTime主体→点击关闭回桌面的外壳内任意次调用T1～T6。一个模板可在同一视频不同时间用于不同素材；每段只指定镜头表中模板、素材、时长与字幕，统一编排器自动累计镜头起止，播放器进度条/素材/旁白均绑定整片主时钟；不得六份模板各自重置时间。
+
+V4 [Draft PR#144](https://github.com/entropy-student/project/pull/144)已按此方向提交代码候选（从仓库原Research Aqua V2源码复用绘制函数，另增关窗动作），但GitHub原Canvas复用版的一倍速浏览器连续观感未通过验收，当前仅`V4_ARCHITECTURE_CANDIDATE / PARTIAL`。旧V1/V2/V3证据保留；真实素材权利、视频制作R4和发布仍分别授权，不能借此次模板修改解除CW0005正式HOLD。
