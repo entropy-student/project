@@ -4,7 +4,19 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner approved bounded G3S4M local Stripe TEST write scope; password rotation not confirmed; local Executor can begin gated execution)
+ > Last reviewed: 2026-10-17 (G3S4M manual Test UI RETURN independently reviewed, local plugin active/gateway disabled, Gate deviation; G3S4H HTTPS staging read-only discovery only)
+
+## CURRENT_REVIEWER_G3S4M_LOCAL_UI_RETURN_2026_10_17 — LATEST OVERRIDE
+
+**Latest formal ruling:** [docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md). Source PR #64 head `3d460070f8eb61f4e47118e41a398fa14cc5b53f`, **open/unmerged**, evidence-only commit. This entry supersedes all older `local manual TEST-key + Stripe CLI next` guidance.
+
+- **G3S4M local TEST outcome = RETURN_MANUAL_TEST_UI_UNAVAILABLE, NOT PASS.** Native Woo Stripe 11.1.0 official unconnected UI offers TEST OAuth but no supported UI to install the Stripe CLI local listener signing secret; built-in webhook management would register Stripe HTTPS provider-side endpoint inaccessible on local loopback. Do not retry local CLI/OAuth or bypass via raw REST/SQL/WP options/plugin patch/signature bypass.
+- **Latest local runtime (Executor direct readback):** existing WordPress/Woo and backups preserved. Official `woocommerce-gateway-stripe` **ACTIVE**, but Stripe payment gateway **DISABLED**, **no saved Stripe options, key, account connection, webhook or checkout/refund**. This status replaces older `installed inactive` snapshots. No real/Live payments. Leave safely-disabled plugin state intact, avoid automatic uninstall/reinstall/rollback.
+- **Gate deviation:** plugin was activated *before* an Owner-private WordPress admin password rotation was confirmed. Evidence reports an Owner direction to proceed without blocking, but the exact Gate safety exception is not independently established. Record as `NONCONFORMING_BOUNDED_WRITE`; do not call full G3S4M PASS, do not assert rotation completed. A prior local TEST approval is not a waiver of compromised-secret handling.
+- **REVIEWER CHOICE:** use a fresh **isolated HTTPS WordPress/WooCommerce TEST staging** for normal Woo TEST OAuth and automatic signed provider webhook, **not** a tunnel and **not** old/replacement VPS by default. Existing Netlify is static visual only, no PHP/Woo payment backend.
+- **CURRENT GATE = G3S4H READ-ONLY HTTPS STAGE DISCOVERY**: [docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md](./docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md). Next Executor selects one feasible minimum WordPress HTTPS stage target, synthetic data/checkout subset, costs/isolation/provider account safety/rollback and exact new Owner-deployment permission. **No provisioning, DNS, payment, OAuth, Stripe/Webhook or public exposure yet.** Only write sanitized plan Evidence on PR64 and stop Reviewer.
+- **Owner checkpoint:** privately rotate exposed local WordPress admin password before any reused credentials/account action; no plaintext in chat or tooling. Old G3S4M localhost authorization does not authorize externally published HTTPS staging. No duplicate request for read-only research.
+- Preserve frozen frontend, historic PayPal Sandbox PASS, local dirty worktree, protected backups and PR #64; avoid repeated already accepted local preflight/CLI staging.
 
 ## CURRENT_OWNER_AUTH_G3S4M_LOCAL_TEST_2026_10_17 — LATEST
 
@@ -95,7 +107,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4M_OWNER_TEST_WRITE_SCOPE_APPROVED_PENDING_PRIVATE_ROTATION
+CURRENT_GATE=G3S4H_HTTPS_WP_STRIPE_TEST_STAGING_READONLY_DISCOVERY
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -142,7 +154,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=5ee2531818b8cdf79f03cca8860f297152ac9d09
+PR64_LAST_VERIFIED_HEAD=3d460070f8eb61f4e47118e41a398fa14cc5b53f
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -524,11 +536,11 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4M existing Stripe TEST Gate — explicit Owner TEST-only authorization RECORDED; execution pending only independent private password rotation and hard technical pre-write guards.** See `docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md` plus `docs/REVIEWER_DECISION_G3S4M_CLI_STAGING_PASS_CONDITIONAL_MANUAL_TEST_ROUTE_2026-10-17.md`. User “我批准开始吧” immediately followed the precise consent request. **Do not ask user to approve identical scope again.**
+**Current G3S4H — separate isolated HTTPS WordPress/Woo Stripe TEST staging READ-ONLY discovery.** Read `docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md` and the `docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md`. **G3S4M localhost TEST attempt RETURN** after supported UI was found insufficient; no local CLI/OAuth retry or unsupported credential injection.
 
-**Approved bounded action:** use existing Owner-local WordPress/Woo Docker `127.0.0.1:8189`; install nothing more and reuse already-staged official Stripe CLI v1.53.1; after Owner confirms password rotated privately, perform exact reviewed Test-only activation and native-supported TEST-key/CLI signing configuration with Owner-private Stripe login, one Woo product #1113 USD39.99 synthetic checkout, real TEST webhook first/negative/replay and one TEST refund/revocation, then sanitized PR64 Evidence/Reviewer STOP. Plugin activation is a database write; verify unique target and no Live/provider negative delta, inspect actual supported UI before Owner supplies test keys. If supported manual Test admin UI unavailable STOP before keys with `RETURN_MANUAL_TEST_UI_UNAVAILABLE` and propose dedicated HTTPS Test stage, no bypass.
+**Accepted local runtime:** Woo Stripe 11.1.0 **plugin active, gateway disabled, settings/account/keys absent** by Executor report. Plugin activation happened without documented private exposed-admin-password rotation -> **bounded Gate deviation**, not a fully conformant PASS. Safe interim disposition is no further local payment writes and no blind deactivation; owner-private credential rotation still required before reuse. No actual Stripe TEST payment or refund.
 
-**Still NOT DONE:** private password rotation is `UNVERIFIED`; Stripe account connection/payment/webhook/refund `NOT_STARTED`; PR64 open/unmerged; no VPS access/deployment. Avoid repeating accepted system/backup/CLI checks absent material drift. No real/Live buyer, public route, plugin patch, direct SQL/WP-option/REST credential injection, login impersonation or secrets in chat/tools/repo. Owner controls private account/password consent.
+**Scope now:** select one concrete short-lived publicly routable HTTPS WordPress staging target with exact verified inventory/cost if available, synthetic Woo TEST checkout/minimal needed project code, TLS/DNS/admin-private & signed webhook route, provider account isolation, negative/live checks and rollback/teardown. No provisioning/paid purchase/public route, provider login, new/old VPS, deploy, migration, local settings mutation or PR merge; a new external deployment/write authorization will follow target approval. Preserve prior frontend/backups and keep PR64 open.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -585,6 +597,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **2026-10-17 local G3S4M:** formal `RETURN_MANUAL_TEST_UI_UNAVAILABLE`. Webhook CLI signature field unsupported in official unconnected UI; plugin is now `active` with gateway `disabled` and zero configured Stripe key/connection. No local TEST payment/refund.
+- **Credential requirement:** private rotation of previously exposed local WordPress admin password `UNCONFIRMED`. Activation without that confirmation is a recorded Gate deviation; later full PASS is not inferred.
+- **G3S4H discovery:** externally hosted isolated HTTPS WordPress Stripe TEST staging **NOT SELECTED, NOT DEPLOYED**. Exact target/cost/domain/certificate/secrets/backups/provider account isolation and separate authorization unresolved. Do not reuse old VPS by default.
+
 - **Latest Review 2026-10-17:** Stripe CLI v1.53.1 offline staged securely on Owner Windows; native Woo TEST signing handler confirmed by plugin source; **runtime manual Test account path and signed Webhook checkout still unproven**. Native key UI must be confirmed *before any configured TEST write*. Standard OAuth HTTP localhost incompatible/uncertain; if no supported UI, use separate HTTPS staging.
 
 - **Current G3S4M blocking dependency:** Stripe TEST signed Webhook forwarding channel is absent; prefer official outbound Stripe CLI candidate, not public ingress. Woo Stripe 11.1.0 signed handler/test-secret/Connect compatibility still **UNKNOWN** until narrow verified check.
@@ -631,19 +647,23 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Approval recorded:** Owner explicitly authorizes the existing G3S4M one-time **local Stripe TEST-only** plugin, account/CLI listener, one synthetic $39.99 Woo payment, signed webhook/replay/negative, one TEST refund/revocation. No new approval for this exact scope.
-2. Start one local Codex scoped sequence with existing Docker G3C, versioned Woo Stripe 11.1.0, staged private official Stripe CLI v1.53.1; read-only inspect native supported Test-only admin UI path and expected negative Live effects (reuse accepted baseline).
-3. Before any plugin/DB/provider/payment mutation, record only the Owner's confirmation that the previously exposed WordPress admin password was **privately rotated**, plus exact host/product/backup/rollback and Test-only guards. If not confirmed, do not mutate. Never ask for or transmit credentials.
-4. Once preconditions satisfied, activate only the official plugin safely, confirm actual Owner-visible manual TEST UI; if unsupported STOP `RETURN_MANUAL_TEST_UI_UNAVAILABLE` without key injection. Otherwise Owner privately authenticates and configures TEST account, Stripe CLI listener to loopback, bounded checkout/webhook/refund Test; sanitize PR64 Evidence and Reviewer STOP.
-5. Old/replacement VPS remains OUT OF SCOPE. Preserve owner-approved frontend/PayPal Sandbox evidence, dirty local checkout and existing recoverable backups.
+1. **G3S4M RETURN reviewed.** Keep local Woo Stripe plugin `active` / gateway `disabled` and no Stripe settings/account connection. Do not rerun local manual TEST key/CLI sign-secret path; no rollback solely to erase a recorded deviation.
+2. Local Codex executes only `G3S4H` **read-only** target/architecture discovery: pick one compatible isolated HTTPS WordPress/Woo TEST staging hosting option, identify concrete costs/domain/TLS/synthetic data/minimal checkout plugin/rollback, and record distinct Provider account/HTTPS webhook/Live-negative precautions. No new VPS/public service/domain/Stripe writes.
+3. Persist bounded design Evidence `docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md` **only in PR #64** and STOP Reviewer; no redundant local backup/CLI/probe.
+4. Once Reviewer accepts one verified target, Owner must approve *external hosting/public HTTPS endpoint and costs if any* separately from their previous localhost-only consent. Owner-private WP admin password rotation remains required before reuse; no secrets in chat or tooling.
+5. Later, normal Woo Stripe TEST OAuth on HTTPS stage -> provider-signed first/replay/negative event -> one synthetic USD39.99 Woo checkout -> bounded TEST refund/entitlement revocation. No real/Live payment or production claim.
 
 ## OWNER_ACTION_REQUIRED
 
-- **No repeated approval:** narrow G3S4M Test-only payment writes **APPROVED** and recorded in `docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md`.
-- **Only remaining password checkpoint:** rotate the previously shared local WordPress administrator password **privately** in WordPress admin (if not already done), and provide only a yes/no completion confirmation to local Executor. Do not submit passwords, API keys or signing secrets to chat, agent arguments, shell argv or repository.
-- **During bounded run:** Owner personally completes official TEST account consent and any official plugin Test UI + Stripe CLI listener signing-secret input in a protected local context; Owner personally authorizes the actual synthetic buyer Test checkout/refund in the already approved scope. No VPS information required.
+- **None for next read-only G3S4H discovery.** No more local TEST UI retries or redundant approval.
+- **Private security:** when possible, independently rotate the previously exposed local WordPress administrator password; only non-secret yes/no report, no password/API key/session copied.
+- **Future external stage:** hosting/domain/public HTTPS deployment, spending and Stripe account OAuth require a separate named target and Owner authorization after Reviewer approves staging design. The earlier Owner approval covered localhost only.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md` — **LATEST Reviewer decision**: return local Stripe path, classify mutation deviation, choose HTTPS TEST staging.
+0. `docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md` — **CURRENT Gate**, read-only external staging feasibility only.
+0. PR #64 @ `3d460070f8eb61f4e47118e41a398fa14cc5b53f`, `docs/evidence/g3s4/G3S4M_MANUAL_CHANNEL_AND_STRIPE_TEST_2026-10-17.md` — latest Executor native plugin activation/state and official UI source evidence.
 
 0. `docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md` — **LATEST** exact Owner scoped Test-only authorization; password-rotation checkpoint remains separate.
 
