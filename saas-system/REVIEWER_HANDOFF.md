@@ -22,6 +22,8 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 - **依赖与影响**：不得触碰 Paymenter 已结束实验、其他项目工作树、Docker 共享资源、既有数据库、共享 VPS、反代、网络/代理、已使用端口、GitHub 其他子树。
 
 ## CURRENT_ACCEPTED_STATE
+**2026-10-18 新主 Reviewer 接手审核：** [独立接手核验与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md) 已核对 main 的 G0/G1/G2/G2R1 历史、项目规范和串行计划；`PASS_DOCUMENTATION_TAKEOVER_ONLY`，不代表本机运行或完整 SaaS 功能通过。G1/G2/G2R1 历史 Gate 的旧“尚未执行”状态标题已修正为结束，**当前 Gate 仍 NONE**，根因/旧业务归属继续 UNKNOWN。只做 GitHub 文档更新，没有本机运行操作。
+
 **G2R1 Reviewer 最新结论（2026-10-18）：** [独立审核](./docs/G2R1_REVIEWER_DECISION_20261018.md) — `PARTIAL_G2R1_OWNER_CLASSIFICATION_UNKNOWN`，原因调查到此停止。三个原容器当前仍报告 `exited`，退出码 137/0/0；处于同一 Compose 项目，5.9 秒内退出，根因 `CAUSE_UNKNOWN`。没有证据证明 Docker 重启、OOM 或 Velobase 的直接因果；旧项目所属业务仍 `UNKNOWN`，因此**不宣称 G2R1 整轮正式 PASS**。没有额外本机写入。下一步需要 Owner 决定旧容器是否需要恢复；不再反复诊断退出原因。
 
 **G2 Reviewer（2026-10-18）：** `RETURN_EXISTING_WORKLOAD_REGRESSION`。已审 [执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；构建/首页 200/登录入口均为 Executor 报告的阶段性进展，Dashboard/Admin/Affiliate/Worker 未完成。既有三个容器相近 6 秒退出（137、0、0，OOMKilled=false）；**时间相关但因果未知**。运行影响已触发 Gate 的停止条件。[决定](./docs/G2_REVIEWER_DECISION_20261018.md)。
@@ -66,10 +68,10 @@ G2R1 已交 Reviewer 且针对原因的有界只读调查结束；**无新的主
 - 真实 Stripe 可开通地区/经营主体/商户权限=OUT_OF_SCOPE，不能由模板支持推定。
 
 ## NEXT_STEP
-不再重复原容器退出原因诊断。等待 Owner 确认旧三个容器是需要恢复、可暂时保留停止，还是有另一优先级；若要求恢复，先在 Owner 本机确定真实 Compose 项目归属及启动影响，**再签发受限的原项目恢复 Gate**。SaaS 后续优先研究**独立于当前 Docker Engine 的临时隔离环境**，经明确费用/账号与启动 Gate 后再完成 Velobase 的 Dashboard/Admin/Affiliate 演示，三候选顺序不变。
+不重复旧三个容器的退出原因诊断；**先区分实际业务重要性与仅已知的 exited 状态**。若 Owner 不能识别三个容器，应先由其本机 Codex 在另行签发的**项目归属/业务必要性只读 Gate** 内识别，绝不启动或触碰 Secret。若属需恢复业务，由对应项目独立 Gate 恢复；若不需要则有意保留停止。Velobase 后续首选评估**独立临时测试 VM + 私有访问**，优先现成闲置独占环境；不得擅自购置/占用共享 VPS。见[接手审查](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)。未批环境及费用前仍 `CURRENT_GATE=NONE`；未来先验收 Dashboard/Admin/Affiliate，再另行验证 Stripe/裂变，之后依序 Open SaaS、Wave。
 
 ## OWNER_ACTION_REQUIRED
-**需要一个决策：原有三个 Docker 容器是否需要恢复运行？** 若需要，先按项目归属与服务影响制定一次有界恢复 Gate；若不需要，记录为有意暂停。无需重复 G2R1、清理 Docker、提供密码或购买服务。SaaS 改为独立环境时另行确认费用与目标。
+**当前只需说明：是否明确知道旧三个 Docker 容器不必恢复？** 若无法判断，先同意下一轮仅识别真实归属和业务重要性的只读任务，而不是猜测或要求立即重启；若确认需要恢复，也必须先识别原项目并由其独立 Gate 操作。暂不要求购买云资源、支付、密码或 Docker 修改。独立 VM 与费用将在候选确认后单独决定。
 
 ## EVIDENCE_POINTERS
-[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
+[2026-10-18 独立接手审核与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)；[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
