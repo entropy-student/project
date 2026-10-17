@@ -2,9 +2,26 @@
 
 > Purpose: prevent research, historical snapshots and prototypes from competing with the canonical current project truth.
 
-## 2026-10-15 Current Reviewer Entry
+## 2026-10-17 current Reviewer entry — G3S4AR (authoritative current index)
 
-These are the **current-stage** documents; historic visual/payment Gates below remain preservation references and do not supersede them.
+| File | Role |
+| --- | --- |
+| `../REVIEWER_HANDOFF.md` | **ONE canonical current project state, full timeline, accepted boundaries, UNKNOWNs and next action** |
+| `REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` | **LATEST FORMAL Reviewer RETURN**; actual Owner Windows PowerShell `-File` cannot find reported v2 launcher; no password write |
+| `G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` | **CURRENT Owner-authorized narrow Gate**; first verify real Owner-shell path, exact SHA/ACL and if necessary copy only non-secret matching v2, then one Owner-private reset |
+| `OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` | Owner explicitly approved current scope; no redundant approval before the same safe Gate's repair |
+| `REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md` | Historical v1 diagnostic RETURN; do not run/overwrite v1 |
+| `REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md` | Prior Stripe TEST browser target RETURN; WP site/source/backup invariants retained within narrow scope |
+| `REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md` | Prior accepted source/selected backup/isolated restore **evidence only**, not payment PASS |
+| `G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` | Next payment **design only** after admin login; Stripe TEST writes not yet under execution, LIVE not permitted |
+| `NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` | **Historic snapshot with 2026-10-17 redirect; not a current Gate** |
+| `MVP_PRODUCT_CONTRACT.md` | Frozen US digital birthday magazine product/flow and privacy contract |
+
+Last checked PR #64 **Open/unmerged**, head `777463995a298118dae0c6763f6c668207a19350`. No G3S4AR PR Evidence yet. v2 Codex-reported SHA-256 `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2` (10 fixture PASS), **not** yet positive Owner-shell file proof. No `CONFIRM`, no WordPress admin password reset, no Stripe action. Native PS5.1 `-File` returned missing expected path before execution. Current fix is **physical Owner-native file discovery/delivery and readback**, not another rewrite of the script or new backup. Governance is `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7 §11B; add minimal new universal rule only **after** successful verified closure and only if existing policy lacks it.
+
+## 2026-10-15 historical Reviewer entry (superseded by 2026-10-17 current entry)
+
+These are **historical 2026-10-15-stage** documents. New Reviewer should first use the 2026-10-17 current-stage index above; older visual/payment Gates remain preservation references.
 
 | Document | Role |
 |---|---|
