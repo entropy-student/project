@@ -4,7 +4,18 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner exact fixed hostname magazine.spikersun.com supersedes former candidate; host path proof still pending; no DNS/Tunnel/Stripe writes)
+ > Last reviewed: 2026-10-17 (G3S4L 73b8 local staging partial accepted; launcher nonsecret code review needed; only one later Owner Cloudflare dashboard session)
+
+## CURRENT_G3S4L_73B8_REVIEWER_LOCAL_PARTIAL_OWNER_CLOUDFLARE_CHECKPOINT_2026_10_17 — LATEST
+
+**LATEST Reviewer readback:** PR #64 HEAD `73b8a896dd0f911feb90b5f5b4d918978375ea4e` OPEN/unmerged, exactly **one existing G3S4L Evidence** modified; no WordPress, DNS, Tunnel or Stripe config writes. Canonical [Reviewer partial-accept decision](./docs/REVIEWER_DECISION_G3S4L_73B8_LOCAL_PREP_PARTIAL_CLOUDFLARE_OWNER_CHECKPOINT_2026-10-17.md), [current G3S4L Gate latest appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md).
+
+- **PARTIAL_ACCEPT local:** old `%LOCALAPPDATA%` resolution reported in Codex packaged `Packages\OpenAI.Codex_*\LocalCache\Local`; old 0-byte token untouched. New signed `cloudflared v2026.10.1` and `Start-MagazineTunnel.ps1` reportedly present in Owner Documents `C:\Users\34707\Documents\ChatGPT\BirthdayMagazineStudio\G3S4L\magazine.spikersun.com\`, PS5.1 native child verified binary signature/hash, `--token-file`, starter SHA/parse. New restricted plaintext token file in user-private `.birthday-magazine-studio\G3S4L-private` **EMPTY**, ACL user+SYSTEM-only Executor-reported. **No independently Owner-launched normal PowerShell path/actual run yet.** Never present Codex-native child as independent Owner-host proof. No re-download/recheck media/backup needed.
+- **Critical narrow outstanding code review:** Nonsecret launcher code is **not in PR and was NOT available to Reviewer**. Its parser/hash and Executor description don't prove Secret safety. **Codex must append the unchanged complete nonsecret `Start-MagazineTunnel.ps1` source into PR64 reviewable evidence/artefact (with hash)** before Owner inputs true Token. No extra Owner work for that. Reviewer review needed for hidden `Read-Host -AsSecureString`, ACL/file safety, argv/env/history/log exclusion and safe first run. Do not ask Owner to enter Token into an unreviewed local-only script.
+- **Cloudflare:** chosen single fixed hostname `magazine.spikersun.com`, original origin `http://127.0.0.1:8189`. Public Cloudflare/Google DoH A records reported NXDOMAIN, no live HTTPS; **NXDOMAIN is not authoritative dashboard write permission or absence of unpublished routes**. Existing `spikersun.com` zone Owner-reported active, `magazine` collision, tunnel/write ability still UNVERIFIED. **No Tunnel or DNS created.**
+- **Next minimum Owner workflow after launcher review:** one already-signed-in Cloudflare dashboard session `Networking > Tunnels > Create a tunnel` (remotely managed); privately obtain scoped connector token, run the reviewed launcher from independently-opened visible **Windows PowerShell 5.1** and enter token at masked prompt (never chat, Codex, shell args/env), wait `Healthy`; then dashboard `Routes > Published application` `magazine` + `spikersun.com` → `http://127.0.0.1:8189`. This is official wizard order, no CLI certificate login or Computer Use safety bypass. Check account/record collisions before publishing. Connector token file remains a restricted local Secret, not a Git/OneDrive backup.
+- **After that:** one external HTTPS + negative private order/upload/admin/guest/Webhook access smoke, reversible original WP `home/siteurl`/proxy/cookie HTTPS, Owner official Stripe TEST OAuth, one synthetic USD39.99 Test paid/Webhook first/replay/invalid/TEST refund/revoke, no Live/real/VPS/new WP. Mandatory Reviewer stop on material risk, PR64 stays open.
+- **Owner action NOW:** NONE. Codex can expose non-secret runner source for Reviewer, without repeating past prep; then Owner does the one unavoidable Cloudflare session and their normal WordPress Stripe Test consent later.
 
 ## CURRENT_OWNER_EXACT_FIXED_DOMAIN_MAGAZINE_2026_10_17 — LATEST
 
@@ -209,7 +220,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_FIXED_MAGAZINE_SPIKERSUN_COM_NAMED_TUNNEL_HOST_PATH_PROOF_FIRST
+CURRENT_GATE=G3S4L_73B8_LOCAL_PARTIAL_REVIEW_NONSECRET_LAUNCHER_THEN_ONE_OWNER_TUNNEL_CHECKPOINT
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -256,7 +267,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=bb04c27ba0dca4dd3ea081f265bdedf852090106
+PR64_LAST_VERIFIED_HEAD=73b8a896dd0f911feb90b5f5b4d918978375ea4e
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -638,13 +649,12 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**Owner-selected magazine.spikersun.com (LATEST):** This is the only current fixed Cloudflare public candidate and supersedes all formerly proposed old hostnames in prior G3S4L records. It is not live; Zone/DNS `magazine` name availability and write permission remain UNVERIFIED. Original WordPress 8189. G3S4L latest appendix and new Reviewer domain-override decision control. Older appendices remain history, not alternate execution targets. Host AppData §11B independent native read-back before files/credentials, then named Tunnel, reversible HTTPS WordPress, real external private negative checks and official Stripe TEST. No Quick Tunnel.
+**LATEST G3S4L @ `73b8a896...`:** Reviewer `PARTIAL_ACCEPT` for **Executor-reported** local non-secret preparation; original WP 8189 safe-prepublic candidate, DNS/Tunnel/public HTTPS/Stripe not enabled. **Single exact hostname:** `magazine.spikersun.com`, no other/Quick Tunnel. Signed cloudflared v2026.10.1 and local starter reported under normal Owner Documents; old Codex AppData path confirmed packaged redirect in Codex context; new user-private connector token EMPTY/ACL restricted. **Independent Owner-native normal PowerShell same-target readback and first script run not yet proven**, avoid claiming full host-local PASS.
 
-**LATEST: Owner selects a FIXED Cloudflare subdomain, not temporary Quick Tunnel.** Sole proposed hostname `magazine.spikersun.com`, exact original WordPress origin `127.0.0.1:8189`. Use the official **dashboard-managed named Cloudflare Tunnel**, whose published-application mapping creates the hostname DNS route subject to verified zone permissions/conflict checks. Owner's selection is an explicit reversal of prior temporary `trycloudflare.com` feasibility proposal; DO NOT RUN Quick Tunnel. See `docs/REVIEWER_DECISION_G3S4L_FIXED_CLOUDFLARE_SUBDOMAIN_OWNER_SELECTION_2026-10-17.md` and current G3S4L Gate latest bottom appendix.
+**BLOCKER BEFORE REAL TOKEN ENTRY:** local-only `Start-MagazineTunnel.ps1` full source not in GitHub/reviewable by Reviewer. Codex must provide exact **nonsecret source** and pinned hash as PR64 reviewable artifact *without changing original runnable bytes* and no actual token. Reviewer performs one narrow static Secret and path safety review, then one Owner-controlled Cloudflare account session (verify zone permission and `magazine` DNS+published route no collision, remotely-managed Tunnel, private scoped connector token into **reviewed** Owner-visible PS5.1 launcher, connector Healthy, then Published application → 8189). Must not use Cloudflare `service install --token`, old CLI login or bypass failed Computer Use safety. Owner path proof is established by this actual independently run checkpoint; no separate reinspection loop.
 
-**First actual technical prerequisite remains §11B**: the current Codex G3S4L Evidence @ `bb04c27ba0dca4dd3ea081f265bdedf852090106` claims a protected **zero-byte** token file and helper in its `%LOCALAPPDATA%` view; no independently normal Windows Owner-host same-file path proof. First read-only compare exact ordinary `BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017` vs exact packaged `Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017`, and actual Cloudflare binary path; **no more AppData creation, move, delete, token entry or false real-host PASS**. Choose verified user-visible nonsecret program location and separate Owner-restricted Secret path only after target verified.
+**Then conditional:** external true HTTPS/protected media/checkout positive-negative, reversible original WP canonical `https://magazine.spikersun.com` and `X-Forwarded-Proto`/cookies, signed native `/?wc-api=wc_stripe` route no Cloudflare challenge, official Owner-only Woo Stripe TEST OAuth, one virtual USD39.99 TEST canary paid/Webhook first/invalid/replay/one refund/revoke, evidence and Reviewer STOP. No real/Live, second WP, VPS/paid hosting or PR merge.
 
-**Later externally authorized phase:** one scoped stable tunnel under verified active, collision-free `spikersun.com` zone maps to existing 8189; DNS, Cloudflare auth, WordPress `home/siteurl` HTTPS, cookies and private-content negative access require real readback and reversible snapshot. Then normal official Owner-only Woo Stripe **TEST** OAuth and one bounded virtual USD39.99 payment/authentic signed webhook/negative/replay/TEST refund/entitlement revoke. Old media check and Owner-reported password rotation remain accepted; original orders/backups preserved. No public route, Provider connection, refund or Live yet; no VPS, new site, paid hosting or PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -770,18 +780,20 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Accept Owner fixed-domain choice; **do not use Quick Tunnel** or static Netlify. Codex checks only actual normal Owner host vs packaged AppData path/binary identity for new G3S4L artifacts under Governance §11B; no new file creation or blind cleanup, no repeat media, backups or old credential rotation.
-2. After path verification, locate a real-owner-visible ordinary project tools path (nonsecret binaries/config), and an independently verified private safe connector Secret location (not blindly AppData/Git). A Cloudflare named Tunnel still needs one actual scoped account authorization and private connector Token; avoid previous failed CLI login/browser automation.
-3. Cloudflare exact zone/unused subdomain and owner permission, fixed named Tunnel route to existing 8189, reversible WordPress HTTPS/proxy then external private/guest/Webhook smoke; official Owner Stripe TEST OAuth and one bounded USD39.99 charge, webhook first/negative/replay, refund/revocation. No real/Live, VPS or PR merge.
-4. Commit actual sanitized G3S4L Evidence to PR64 branch; Reviewer accepts only reviewed proof, not plans or Codex self-report.
+1. **Codex-only, NOW:** preserve accepted original WordPress/media/host prep and submit **unchanged full nonsecret launcher source** `Start-MagazineTunnel.ps1` + pinned SHA256 as reviewed sanitized PR64 artifact; no Token, no new AppData, no repeat scans/backups/install. Reviewer inspects it once before a real credential is entered.
+2. **Owner, ONCE AFTER REVIEW:** one existing Cloudflare browser dashboard session: `Networking > Tunnels` verify `spikersun.com` zone + `magazine` DNS/route unoccupied/permissions; create one remotely managed project Tunnel, retrieve connector token privately; separately launch reviewed `Start-MagazineTunnel.ps1` in ordinary **visible Windows PS5.1**, masked local token input, wait connector Healthy, then `Routes > Published application` `magazine.spikersun.com` → `http://127.0.0.1:8189`. No token in chat/argv/env/log. No need to rerun old `cloudflared tunnel login`.
+3. Codex tests actual public HTTPS, original WordPress/negative Woo private media/auth and guest checkout, reversible WordPress `home/siteurl` + forwarded proxy, native signed Webhook; after Owner official Stripe TEST OAuth test one bounded USD39.99 purchase/refund/revocation. Preserve existing orders/backups and unrelated Cloudflare resources. Evidence PR64, Reviewer STOP.
 
 ## OWNER_ACTION_REQUIRED
 
-- **None in this Reviewer response.** Owner has asked to stop additional manual Cloudflare steps for this round; respect that request. The media review is accepted; WordPress password rotation completion is recorded as Owner-reported, not re-demanded.
-- **Single future Owner-controlled Cloudflare interaction** only when they choose to resume: create a scoped remotely managed named Tunnel in the already signed-in dashboard (active eligible `spikersun.com`, unused `stripe-test` DNS label), privately populate protected connector token file using a local secure input, and confirm exact hostname. The dashboard account session does not automatically authorize the local connector. No need to separately approve a `cloudflared tunnel login` certificate.
-- **Future Stripe TEST:** account sign-in and OAuth consent handled privately by Owner after actual HTTPS/Webhook safety checks. Do not request passwords, tokens or Stripe keys in chat/GitHub.
+- **Now: NONE.** Don't ask Owner to verify file paths separately or repeat media/password/backup checks. Codex first provides unchanged nonsecret local starter script for Reviewer review.
+- **When launcher code PASS:** exact one-account workflow Cloudflare dashboard create remote Tunnel and private local connector-token prompt; see Current Gate latest appendix. Owner must select exact `spikersun.com`/`magazine` and should not overwrite a pre-existing record. Never send credentials to reviewer/Codex/PR. This is not done yet.
+- **Later only:** normal private Stripe TEST OAuth/consent once public HTTPS/Webhook safety is verified. No real funds/Live checkout.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4L_73B8_LOCAL_PREP_PARTIAL_CLOUDFLARE_OWNER_CHECKPOINT_2026-10-17.md` — latest formal partial accept and next one Owner session contract.
+0. `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` in PR64 @ `73b8a896dd0f911feb90b5f5b4d918978375ea4e` — latest path/launcher evidence, no Cloudflare Tunnel.
 
 0. `docs/REVIEWER_DECISION_G3S4L_FIXED_CLOUDFLARE_SUBDOMAIN_OWNER_SELECTION_2026-10-17.md` — latest fixed test hostname decision overrides Quick Tunnel.
 
