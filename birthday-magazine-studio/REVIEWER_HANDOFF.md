@@ -4,7 +4,15 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-18 (G3S4M phase TERMINATED PARTIAL; existing $39.99 refund stable; HKD100 TEST unmapped and plugin replay log unverified; G4D0 magazine design active; cloudflared Ctrl+C permitted)
+ > Last reviewed: 2026-10-18 (Owner paused all magazine-making/design work pending their alternative plan tomorrow; G4D0 HOLD; Stripe TEST phase closed PARTIAL, PR64 open)
+
+## CURRENT_OWNER_PAUSE_MAGAZINE_PRODUCTION_PENDING_ALTERNATE_PLAN_2026_10_18 — LATEST
+
+**Latest Owner decision (2026-10-18):** Owner explicitly states **do not proceed with Reviewer/assistant's proposed magazine making/design method; Owner has a different plan and will discuss it tomorrow**. The proposed [G4D0 P1–P12 design Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) is **HOLD_OWNER_ALTERNATE_PLAN_PENDING / NOT AUTHORIZED FOR EXECUTION**. Do not instruct Codex to discover/design/generate a 12-page prototype under G4D0, invent an alternative, commission assets, or make magazine-production changes until Owner explains their new direction and Reviewer updates the scope. This is a schedule/authority pause, not rejection or erasure of earlier finished work.
+
+**Previous accepted facts unchanged:** Stripe TEST financial core passed in bounded scope; G3S4M phase closed `PARTIAL_WITH_EXCEPTIONS` (unmatched separate HKD100 sandbox success, missing plugin-level signed duplicate ack evidence) and those remain pre-Live audit debts. PR64 last verified `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` OPEN/UNMERGED. No further TEST payment/refund/replay or infrastructure work authorized. Foreground Cloudflare Tunnel PowerShell may be Ctrl+C stopped for offline/non-public work per prior Reviewer closeout, with domain unreachable until restarting; Docker/database retained.
+
+**NEXT OWNER CONVERSATION:** Ask/listen for their separate proposal, then jointly define requirements, output type, and next Gate. No reminder/automation scheduled or requested. No Executor action now.
 
 ## CURRENT_G3S4M_E3D260_PARTIAL_STRIPE_PHASE_CLOSED_G4D0_MAGAZINE_DESIGN_NEXT_2026_10_18 — LATEST
 
@@ -326,7 +334,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G4D0_P1_P12_MAGAZINE_DESIGN_NO_COMMERCE;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
+CURRENT_GATE=HOLD_OWNER_ALTERNATE_MAGAZINE_PRODUCTION_PLAN;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -755,7 +763,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G4D0 P1–P12 MAGAZINE VISUAL DESIGN** via [new Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md), following [G3S4M closed as PARTIAL TEST-only phase](./docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md). Reviewer accepted original $39.99 Stripe TEST payment/refund and workspace revocation with zero duplicate financial side effect after original signed event UI resend to WordPress HTTP 200; strict Woo plugin internal duplicate ack was **NOT RETAINED** and is `UNVERIFIED`, plus distinct HKD100 TEST charge `livemode=false` is not matched to original Woo order and origin UNKNOWN (before resend). Those remain specifically recorded PRE-LIVE/provider reuse audit debts, **not permission to repeat any payment/refund now**. Source proof G2BR3 12-page PDF, prior accepted website and 5-step intake; make isolated navigable/design proof of P1–P12 with synthetic content only. No touching existing Woo orders, customer uploads, Stripe, Cloudflare, DNS, payment or Live. PR64 OPEN/unmerged. REVIEWER AUTHORIZED Owner to stop dedicated foreground Cloudflare PowerShell with **Ctrl+C now** for offline design because 57 TEST events had zero pending callbacks and phase is ended; public WP canonical URL may not work without Tunnel. Restart reviewed connector for actual WP browser preview.
+**PAUSED — no active Codex design/production Gate.** Owner does not want the previously suggested G4D0 approach executed and will discuss their own plan next time. [G4D0 prior draft](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) marked `HOLD_OWNER_ALTERNATE_PLAN_PENDING`. Do not begin source inventory, 12-page candidate HTML/PDF, photo/template or generation work pending Owner direction. G3S4M Stripe TEST closed PARTIAL with explicit separate HKD100 TEST charge/true signed plugin replay audit debts; no new transactions. PR64 OPEN/UNMERGED. Previously authorized Cloudflare foreground PowerShell stop remains optional for public-offline work.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -881,15 +889,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Codex G4D0 DESIGN:** targeted read-only inventory accepted G2BR3 12-page PDF proof and existing P1–P12 source; produce one actual 12-page editorial magazine design candidate with synthetic photos/text and navigable HTML/optional PDF, document page-by-page layout and render gaps. PR64 project-only files and Evidence, Reviewer stop. No payment or official provider activity.
-2. **Separate deferred PRE-LIVE Provider audit** (NOT next task): targeted Stripe TEST request provenance for unrelated HKD100 succeeded charge; signed duplicate-event actual plugin branch/log proof. Neither requires a new charge/refund; do not falsely clear these from release checklist.
-3. Owner may **Ctrl+C in foreground Cloudflare connector PowerShell now** if not using public site. Re-run approved connector for WordPress website visual preview. Preserve Docker/data/public config; no PR merge.
+1. **WAIT for Owner to describe their alternative magazine-making/design plan** in the next conversation; clarify only then and formalize revised Gate if authorized. No automatic Codex execution or new draft design proposals.
+2. Preserve earlier validated website/test payments and G3S4M PARTIAL audit debt; no new payment, refund, webhook resend, or PR merge.
+3. If Owner wishes, Ctrl+C may stop the dedicated Cloudflare foreground PowerShell as already authorized for local/offline design; remember public domain and HTTPS WordPress preview become inaccessible until launcher restart.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE for Stripe.** No more resend, payment, refund, CLI installation, account reauthorization or transaction.
-- **Optional now:** to stop public network forwarding during local magazine design, press **Ctrl+C in the dedicated foreground cloudflared PowerShell**. Do not stop Docker/volumes or delete any Token. Public domain goes offline; 127.0.0.1 browser may redirect to configured public domain, so restart Tunnel for actual WordPress preview.
-- **Later only:** Owner visual approval of P1–P12 design candidate when Codex/Reviewer deliver; no payment test until magazine pipeline warrants a new Gate.
+- **NONE now.** User will supply the new magazine production approach in a later discussion. Do not proactively begin G4D0.
+- Optional previously approved infrastructure pause: Ctrl+C foreground `cloudflared` PowerShell when not using public site; no Docker/data/Stripe deletion, no new setup.
 
 ## EVIDENCE_POINTERS
 
