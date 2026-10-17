@@ -55,6 +55,8 @@ Owner 转交：NONE，除非唯一必需的低成本真实截图。
 
 ## EXECUTOR_TO_REVIEWER_RELAY — 2026-10-17
 
+PR: https://github.com/entropy-student/project/pull/150
+
 RESULT: `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`.
 
 CHANGES: 仅三文件增量补丁 `localization/g2c/paymenter-g2c-locale-audit-v1.5.9.patch`；admin 尊重允许的 session 语言，zh 映射 zh_CN，Filament 分组延迟本地化；审计视图恢复 event/type 参数。补丁 SHA-256 `089f7a45674f2076eb3aa5c396a8a90b435c5c2af18f71b409fc6148e1bf60c2`。
