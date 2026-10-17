@@ -1,5 +1,12 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V52_REVIEWER_RESULT_20261017 -->
+## 2026-10-17｜V5.2 最新 Reviewer 接手（覆盖下方V5未浏览器验证时态）
+
+**最新成果**：Draft [PR#144 V5.2](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-2-reviewed.html)，blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`；本轮成功解决原V5最大响应式BUG（在非1920宽时B层的字幕/布局被裁切）；修复QT状态交互、减少PPT式T4假档案纸张/大标题，保留唯一原版Mac Canvas、六B模块/七镜头/一条全局时间轴、关闭回桌面。PR仍Draft，旧V1-V5未覆盖；原版visual真源blob仍`acb0ee80264527bd11160e0ae277ce24528c4a03`。**Reviewer VERIFIED**：真实Chromium1440视口3个主要镜头截图正常，27→31.06秒实速自动结束、真MP4进度与暂停、S06插入本地PNG、0 JS异常；GitHub代码与本轮附件无媒体版本经长度40074字符及FNV32`ce3ffedd`相关指纹比对一致。**NOT VERIFIED**：Owner审美最终接受、Edge文件实际机器双击、完整4–6分钟TTS/字幕和Remotion MP4、内容科学权利；正式CW0005 R3 RETURN / G1 HOLD / G2/R4未授权 / NO_PUBLISH不变。私有1.3MB带参考视频HTML仅在原会话中，不可上传公共Git。**NEXT**：请Owner只审这轮附件，出现具体视觉问题则最小返修，不再重绘Mac或增加模板；Owner行动除自主观片外NONE。[PR证据评论](https://github.com/entropy-student/project/pull/144#issuecomment-6234099065)。
+
+
+
 <!-- CWS_V5_REVIEWER_NEXT_20261017 -->
 ## 2026-10-17｜V5实施后最新接手（覆盖下方V4“待执行”）
 
