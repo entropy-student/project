@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (formal Reviewer G3S4AR RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND; Codex v2 fixture PASS not Owner-shell delivery PASS; approved narrow host-file handoff only, no password reset; next Reviewer transition verified on GitHub)
+> Last reviewed: 2026-10-17 (G3S4AR read-only ACL acceptance; Owner real child TARGET_CHECK mismatch unresolved; no password reset; PR64 Evidence reviewed)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -72,7 +72,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4AR_FORMAL_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_NO_PASSWORD_RESET
+PROJECT_EXECUTION_STATUS=G3S4AR_READONLY_ACL_ACCEPTED_CHILD_CONTEXT_HOLD_NO_PASSWORD_RESET
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -95,7 +95,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=777463995a298118dae0c6763f6c668207a19350
+PR64_LAST_VERIFIED_HEAD=14bd89cf1e6a471a7f262f38db27c73081af2ba0
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -165,19 +165,19 @@ G3S4AR_VERSIONED_SCRIPT=PREPARED_EXECUTOR_REPORTED_NOT_VISIBLE_IN_OWNER_NATIVE_P
 G3S4AR_ALLOWED_LOCAL_V2_FILE=Invoke-G3S4A-AdminRecovery-v2.ps1_CREATE_NEW_FAIL_IF_EXISTS
 G3S4AR_PASSWORD_RESET=AUTHORIZED_ONLY_AFTER_V2_FAIL_CLOSED_VALIDATION_AND_OWNER_MASKED_INPUT
 G3S4AR_OWNER_AUTH_RECORD=docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md
-G3S4AR_REVIEWER_STATUS=RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_FORMAL
-G3S4AR_V2_FILE=OWNER_NATIVE_WINDOWS_PS51_NOT_FOUND_AFTER_CODEX_CLAIM
+G3S4AR_REVIEWER_STATUS=PARTIAL_ACCEPTED_ACL_READONLY_CHILD_CONTEXT_HOLD
+G3S4AR_V2_FILE=OWNER_VISIBLE_HELPER_V3_HASH_PARSE_READBACK_PASS_AND_V2_STARTED
 G3S4AR_GOVERNANCE_MINIMAL_POSTCLOSE_SCAN=PENDING_VERIFIED_FIX
 G3S4AR_V2_EXPECTED_SHA256=fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2
-G3S4AR_OWNER_NATIVE_PS51_RESULT=FILE_PATH_NOT_FOUND_BEFORE_SCRIPT_START
+G3S4AR_OWNER_NATIVE_PS51_RESULT=V2_STARTED_TARGET_CHECK_ACL_UNSAFE_MUTATION_NOT_STARTED
 G3S4AR_OWNER_PASSWORD_INPUT=NO
 G3S4AR_OWNER_NATIVE_FILE_HANDOFF=REQUIRED_EXACT_HASH_AND_ACL_READBACK
 G3S4AR_FORMAL_DECISION_DOC=docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md
 G3S4AR_REVIEWER_PROVENANCE=OWNER_REAL_CONSOLE_OUTPUT_PLUS_CODEX_RELAY_GITHUB_READBACK
-G3S4AR_SAME_CONSOLE_V2_FILE_DIGEST=NOT_VERIFIED
-G3S4AR_SCRIPT_BODY_STARTED=NO_AT_OWNER_FILE_NOT_FOUND
+G3S4AR_SAME_CONSOLE_V2_FILE_DIGEST=OWNER_HELPER_V3_READBACK_PASS_EXPECTED_DIGEST
+G3S4AR_SCRIPT_BODY_STARTED=YES_TARGET_CHECK_ONLY_NO_CREDENTIAL_WRITE
 G3S4AR_LAUNCHER_PATCH_VERIFIED_BY_OWNER=NO
-G3S4AR_NEXT_ACTION=ONE_OWNER_NATIVE_BOUNDED_READONLY_EXACT_PATH_DIGEST_DISCOVERY_THEN_SAFE_NONSECRET_COPY_ONLY_IF_ABSENT
+G3S4AR_NEXT_ACTION=ONE_EXECUTOR_NONSECRET_V2_CALLSITE_CHILD_CONTEXT_RECONCILIATION
 G3S4AR_OWNER_REAPPROVAL_NEEDED=NO_SAME_SCOPED_GATE_ALREADY_APPROVED
 PROJECT_OWNER_APPROVAL_CADENCE=NO_REDUNDANT_REQUESTS_FOR_BOUNDED_APPROVED_SAME_SCOPE
 PROJECT_STANDING_APPROVAL_LIMIT=NOT_A_WAIVER_OF_HOST_SECRET_LIVE_PROVIDER_DESTRUCTIVE_REVIEW_STOP_CHECKS
@@ -411,6 +411,9 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+- **2026-10-17 current Reviewer judgment — ACL read-only validation accepted, full G3S4AR still HOLD before password:** PR #64 Evidence at `14bd89cf1e6a471a7f262f38db27c73081af2ba0` only changed one sanitized file. Executor's native PS5.1 isolated v2 ACL predicate accepts tested private directory/file and rejects unsafe controls; no code/ACL/password change. It does NOT refute Owner's actual earlier `TARGET_CHECK ACL_UNSAFE MUTATION_STATE=NOT_STARTED` child-process stop. Do not rerun unchanged launcher, repeat accepted file/hash/ACL discovery or create new Gate. Executor next inspects ALL exact `ACL_UNSAFE` call sites/roles and reproduces them read-only in an equivalent native PS5.1 child, fixing only proven actual ACL/predicate defect with isolated fixtures before returning a new verified Owner-private one-time login route. Formal decision: `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md`.
+
+
 - **2026-10-17 Owner-native ACL guard stop, no credential mutation:** one-shot helper v3 passed owner-visible v2 existence/digest/parser/coarse ACL; v2 itself started but stopped `STAGE=TARGET_CHECK ERROR_CLASS=ACL_UNSAFE MUTATION_STATE=NOT_STARTED`. No password entered or WordPress write. Generic wrapper `UNKNOWN_NO_RETRY` is not evidence of ambiguous mutation. Fix the precise mismatch by comparing actual v2 guard and real project-private ACL, then correct unsafe DACL *or* buggy predicate minimally within amended existing G3S4AR Gate, never bypass security; keep no new Gate, one Owner-private actual password write, PR64 Evidence and Reviewer stop.
 
 - **2026-10-17 Owner-native v3 helper result — DELIVERY VERIFIED, RESET NOT STARTED:** Owner independently ran `BMS-G3S4AR-OwnerNative-OneShot-v3.ps1` in real Windows PowerShell 5.1 and pasted `OWNER_NATIVE_V2_READBACK_PASS`, `NO_WORDPRESS_CHANGE_YET`, then entered lowercase `run` and received `RESET_NOT_STARTED`. Inspector review of helper v3 confirms it uses case-sensitive `if ($choice -cne 'RUN') { Write-Host 'RESET_NOT_STARTED'; return }`, so the lower-case response deliberately exited before `SINGLE_V2_INVOCATION`. This is Owner-native evidence for the **bounded v2 delivery/checkpoint success**, not for WP password change or Owner login. Same **unchanged** helper may be rerun from Owner PS5.1, entering uppercase `RUN` and then uppercase `CONFIRM` if requested by the reviewed recovery v2, with both private masked passwords. This remains the **first actual reset attempt**, not a blind retry of a password mutation. If a WP update may start and results become ambiguous, `UNKNOWN_NO_RETRY` applies. Do not create another helper/Gate or redo historical backups/source tests. The prior formal `RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND` is now resolved **for physical delivery only**; full G3S4AR administrative recovery remains pending independent readback/Owner login.
@@ -471,11 +474,9 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4AR formal Reviewer RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND — Owner's real visible Windows PowerShell 5.1 cannot find v2 file:** `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`, last 2026-10-17 Reviewer amendment. Codex reports v2 exists and digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, 10 isolated fixtures/ACL/PS5.1 PASS. Yet Owner's personally launched Windows PS5.1 child `-File` returns non-existing canonical `%LOCALAPPDATA%/BirthdayMagazineStudio/G3S4A-VisiblePS51-20261017/Invoke-G3S4A-AdminRecovery-v2.ps1`. **Pre-execution failure**; no `CONFIRM`, masked secret or WP admin credential update. Last G3S4A v1 had similar error, but historical precise cause **UNKNOWN**; packaged `OpenAI.Codex_*\LocalCache\Local` path redirect is candidate only. Cannot claim independent Owner-host readback when the Owner-native process refutes it. No new PR Evidence; PR #64 last verified Open/head `777463995a298118dae0c6763f6c668207a19350`.
+**G3S4AR remains the only active Owner-authorized Gate; scope-specific Reviewer state: PARTIAL_ACCEPTED_READONLY_ACL_ONLY / HOLD_BEFORE_OWNER_PASSWORD_WRITE.** Formal decision: `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md`; PR #64 Evidence: `14bd89cf1e6a471a7f262f38db27c73081af2ba0`. Owner's visible v2 invocation reached `TARGET_CHECK` but returned `ACL_UNSAFE` with `MUTATION_STATE=NOT_STARTED`. Later native PS5.1 extraction of the ACL predicate reports the private script directory/file both safe and negative controls rejected; this does **not** prove all real v2 callsite arguments/process context were identical during the earlier failure. File delivery/standalone ACL probes do not need replay.
 
-**Scope of minimal fix (already authorized, no new Owner consent):** The only immediate step is file **discovery + non-secret delivery**, under native Owner-visible Windows PS5.1, of reviewed exact **v2** file into original ordinary protected `%LOCALAPPDATA%` project directory (no broad scans). Search only original ordinary path and `Packages/OpenAI.Codex_*\LocalCache\Local` expected path, verify one source against digest above, and copy only to **absent** ordinary v2 target using fail-if-exists. Validate same-process file SHA256, ACL user+SYSTEM, no reparse and PS5.1 parse. If not unambiguous, no write or password prompt. Original v1, backup volumes, dirty source and Stripe 11.1.0 inactive unchanged.
-
-**Only after true real-host proof:** Owner invokes exact v2 script once manually in own visible PowerShell 5.1, privately enters `CONFIRM` and two hidden new password entries. Codex then readbacks target-bound WordPress state, writes single sanitized Evidence to PR #64, and stops for Reviewer. Ambiguous attempted change => `UNKNOWN_NO_RETRY`, no second password reset. The distinct G3S4M Stripe TEST Gate still not in execution. Owner standing direction minimizes repeat approval prompts; it does not override missing-host/Secret boundary STOP.
+**Only remaining immediate task:** Executor's one targeted **non-secret, read-only** static callsite + equivalent native PS5.1 child-process context reconciliation for every `ACL_UNSAFE` guard and its input path roles. No unchanged live v2 replay; fix only proven unsafe project-private DACL or overstrict/misclassified guard, preserve v1/v2, validate a side-by-side corrected candidate by isolated fixtures and actual Owner-native readback before offering one private Owner-run password reset. Existing approved G3S4AR authorization covers this bounded reversible correction. Any write-start ambiguity stops `UNKNOWN_NO_RETRY`. Stripe, backups, unrelated source, PR merge, new Gate and Governance edits stay outside scope.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -568,17 +569,19 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Perform one **owner-visible Windows PS5.1** read-only path and digest discovery for exact v2 filename in ordinary `%LOCALAPPDATA%` and packaged Codex `LocalCache\Local`; compare with Executor v2 SHA256 `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`. If ordinary already matches, no file write; if exactly one package source matches and ordinary absent, stage only reviewed non-secret v2 to already private ordinary directory, fail-on-existing, preserve ACL and all other files. No WordPress or payment change.
-2. From **same independent owner-visible PS5.1**, verify physical ordinary destination hash, ACL/no reparse and syntax; otherwise STOP. Codex's “independent PS5.1 check” cannot substitute for this actual Owner-console result.
-3. On real proof, Owner manually invokes once with hidden password inputs; Codex verifies nonsecret existing admin result, commits one sanitized Evidence PR64 and stops Reviewer. Do not rerun `-File` until host file is proven.
-4. After actual completion and Reviewer PASS, add only genuinely novel non-duplicative Governance §11B learning, else mark existing policy sufficient.
+1. Executor performs one bounded non-secret **callsite and child-process** read-only diagnostic: identify all actual v2 `ACL_UNSAFE` predicates/callers, exact guarded path roles, actual PS5.1 child context, and safe/unsafe effective ACL state. **Do not repeat** existing two-object ACL/hash/directory checks or the unchanged failed reset invocation.
+2. If root cause proven, repair only unsafe project-private DACL or faulty guard with smallest versioned nonsecret amendment and exact Owner-native independent readback; maintain negative/dummy secret/unknown-state fixtures.
+3. Owner alone uses **one** vetted visible PS5.1 reset command with hidden password twice. Executor then checks only nonsecret WP state and updates existing PR64 Evidence; mandatory Reviewer stop. `UNKNOWN_NO_RETRY` if a WP write may have started.
+4. Only after verified closure assess whether Governance §11B needs a truly novel nonduplicative rule. Stripe TEST remains a distinct future Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Do not retry the failed `-File` command.** Owner can run one non-secret, bounded PowerShell 5.1 file-discovery/handoff check in the SAME independently visible terminal to establish true path, expected SHA and safe ACL. No password involved in staging.
-- After the real file has been positively verified on that console, invoke reviewed v2 exactly once and keep secret inputs entirely local. Report sanitized result only.
+- **NONE right now.** Executor must close the exact `TARGET_CHECK` input/context discrepancy with read-only safe diagnostics before asking Owner to launch any other script.
+- Only when a corrected qualified candidate is truly ready: Owner runs one explicit reviewed command from a personally visible Windows PowerShell 5.1 window, enters masked password locally, and reports sanitized outcome; no new authorization is needed inside current G3S4AR.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md` — **LATEST scoped Reviewer decision**: accept PR64 ACL read-only Evidence but hold the real child-process guard mismatch before one private reset; no new Gate or approval.
 
 0. `docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` — **LATEST FORMAL REVIEWER RETURN** for v2 Owner-PS5.1 `-File` missing before any script/secret/password, exact trust classification, complete transition and safe next step.
 0. `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — latest v2 owner-real PS5.1 `-File` missing interim RETURN, non-secret same-console staged delivery and hash/ACL/syntax acceptance; no password reset.
