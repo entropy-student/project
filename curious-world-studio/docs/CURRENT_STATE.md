@@ -1,4 +1,6 @@
-# Curious World Studio｜唯一当前状态（2026-10-16）
+# Curious World Studio｜唯一当前状态（更新至2026-10-17）
+
+> **2026-10-17 新进展（知识内容模板支线，非正式制片）**：Owner同意按方案A开展六种知识内容模板（T1–T6）/三类底层布局，并在指出V1静态、与原Mac外观不一致后授权继续有界返修。现有[Draft PR #144](https://github.com/entropy-student/project/pull/144)提交了V2候选：复用G1V-A V2 Aqua原始开窗源码、约28.76秒统一时间轴、T5/T6自动状态切换、本地素材插槽及JSON配置。**V1=RETURN，V2=REVIEW_CANDIDATE / PARTIAL_VERIFICATION**：本地隔离浏览器验证了六模板动态逻辑/字幕改动不重置视频，但最终嵌入的原Mac外壳尚未实际完整视觉验收；所有示例内容非真实科研证据。正式CW0005仍为R3视觉RETURN、G1/HOLD、G2/R4未授权、NO_PUBLISH。下一个Reviewer先审PR#144和[该分支Gate](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V2_GATE_2026-10-17.md)，勿将模板Demo当成正式成片PASS。
 
  > **2026-10-16 最新Owner工作流裁决（覆盖冲突的旧建议）**：①**素材搜索、匹配、兜底阶段文案锁定，不得修改**；⑦**素材与视觉方案确定后**，再使用 `human-writing v1.1.0 → humanizer v3.1.0 → Reviewer事实复核`，然后TTS。④**目前不设置素材类型占比硬限制**；⑥**没有素材缺口导致的内容自动停机机制**（但不放宽安全、权限和正式制作Gate）。②首次广泛检索方法、③分层兜底种类及制作办法、⑤既有13种窗口模板与2/4/6的正式应用仍然**待讨论、未授权**。详见[七点裁决登记](VISUAL_ASSET_MATCHING_DECISION_REGISTER_2026-10-16.md)。R3视觉RETURN、R4未授权、正式HOLD/NO_PUBLISH均不变。
 
