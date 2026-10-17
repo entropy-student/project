@@ -4,7 +4,18 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4M manual Test UI RETURN independently reviewed, local plugin active/gateway disabled, Gate deviation; G3S4H HTTPS staging read-only discovery only)
+ > Last reviewed: 2026-10-17 (G3S4H read-only discovery PASS, Business $40/mo HTTPS stage candidate, cheaper Personal $9 noted; G3S4I held for new external-spend/public-test-site authorization)
+
+## CURRENT_REVIEWER_G3S4H_READONLY_PASS_2026_10_17 — LATEST
+
+**Independent Reviewer PASS (planning only):** [docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md) following existing PR #64 head `b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf`, OPEN/UNMERGED. GitHub comparison from previous approved `3d460070...` confirms two commits introducing only one G3S4H Evidence Markdown, no application changes.
+
+- **Current accepted stage:** G3S4H **READ-ONLY HOST FEASIBILITY = PASS**, NOT purchase/deployment/Stripe TEST connection. The proposed standalone WordPress.com **Business month-to-month US$40 before tax** is published and technically suitable for plugin-enabled Woo + official Stripe TEST OAuth, hosted HTTPS and one-click backup/restore; exact site URL, Owner site control, subscription billing, external accessibility remain UNKNOWN until the site is created and independently read back.
+- **Important cost choice:** WordPress.com **Personal month-to-month US$9 before tax also supports installing WooCommerce/plugins** but lacks built-in Business backup/restore/staging/SSH/DB access. It is a lower-cost idea, **not currently qualified against the same pre-write recovery Gate**. Do not tell Owner Business is required for Woo or that the $40 plan has already been purchased.
+- **Operational distinction:** select a fresh **standalone synthetic-only Business site used for testing**, not an automatic clone of original production data nor a WordPress.com managed staging subsite with copied real users/keys. Public guest checkout and Stripe signed `?wc-api=wc_stripe` webhook must be accessible after safe temporary publication; Coming Soon/private setting may block them. Public mode is not automatically restricted to product and webhook routes; publish no sensitive data.
+- **Current next Gate `G3S4I`:** [docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md](./docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md), **PREPARED_HOLD_OWNER_EXTERNAL_COST_AND_PUBLIC_HOST_AUTHORIZATION**. No WordPress.com subscription, new public site, provider account authorization, payment or refund is approved merely by G3S4H. A fresh explicit Owner decision on $40 monthly before-tax spending and public TEST site is needed. Previous G3S4M approval was localhost only.
+- **Local baseline unchanged:** Woo Stripe 11.1.0 installed/active but gateway disabled/no account/key, original WordPress/Docker and frozen frontend/PayPal Sandbox preserved, Stripe TEST payment NOT STARTED. Earlier exposed admin password private rotation remains `UNVERIFIED`; do not reuse. Old/replacement VPS out of scope; no PR merge.
+- **Next Owner interaction:** present a concise choice: approve a new Business monthly subscription & temporary public synthetic test site (with actual checkout price/auto-renew disclosed), OR choose cost-optimization first; no repeated original local Stripe UI attempts.
 
 ## CURRENT_REVIEWER_G3S4M_LOCAL_UI_RETURN_2026_10_17 — LATEST OVERRIDE
 
@@ -107,7 +118,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4H_HTTPS_WP_STRIPE_TEST_STAGING_READONLY_DISCOVERY
+CURRENT_GATE=G3S4I_CONDITIONAL_EXTERNAL_WP_BUSINESS_STAGE_HOLD_OWNER_AUTH
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -154,7 +165,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=3d460070f8eb61f4e47118e41a398fa14cc5b53f
+PR64_LAST_VERIFIED_HEAD=b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -536,11 +547,13 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**Current G3S4H — separate isolated HTTPS WordPress/Woo Stripe TEST staging READ-ONLY discovery.** Read `docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md` and the `docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md`. **G3S4M localhost TEST attempt RETURN** after supported UI was found insufficient; no local CLI/OAuth retry or unsupported credential injection.
+**G3S4H read-only external staging discovery Reviewer PASS; G3S4I conditional external hosted Stripe TEST Gate prepared but HOLD for explicit new Owner spend/public-host approval.** Source PR #64 head `b0a2e7cd...` Evidence only. Reviewer decision `docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md`. Conditional next Gate `docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md`.
 
-**Accepted local runtime:** Woo Stripe 11.1.0 **plugin active, gateway disabled, settings/account/keys absent** by Executor report. Plugin activation happened without documented private exposed-admin-password rotation -> **bounded Gate deviation**, not a fully conformant PASS. Safe interim disposition is no further local payment writes and no blind deactivation; owner-private credential rotation still required before reuse. No actual Stripe TEST payment or refund.
+**Candidate:** fresh standalone WordPress.com Business month-to-month **US$40 pre-tax published**, with Woo plugin/official Stripe, hosted HTTPS and automated backup/one-click restore. Not created, not billed, exact assigned hostname/account/checkout amount unknown. **Alternative** Personal **US$9 pre-tax monthly**, also Woo/plugin eligible, but not accepted as recovery-equivalent due to no managed Business backup/staging. Owner may request cheaper alternative design. Site is not original local WordPress; do not clone live users/keys/orders/photos. Verify actual guest HTTPS signed webhook and checkout in temporary public mode; Coming Soon/private blocks guest viewing, public may show every published page, so use synthetic-only data.
 
-**Scope now:** select one concrete short-lived publicly routable HTTPS WordPress staging target with exact verified inventory/cost if available, synthetic Woo TEST checkout/minimal needed project code, TLS/DNS/admin-private & signed webhook route, provider account isolation, negative/live checks and rollback/teardown. No provisioning/paid purchase/public route, provider login, new/old VPS, deploy, migration, local settings mutation or PR merge; a new external deployment/write authorization will follow target approval. Preserve prior frontend/backups and keep PR64 open.
+**Status:** no new host, domain, deployment, purchase, public launch, Stripe TEST OAuth, signed webhook or payment/refund yet. Earlier G3S4M consent is localhost-scoped and cannot authorize a paid external service/public site. Private WordPress admin password rotation still `UNVERIFIED`. Local official Woo Stripe remains plugin **active**, gateway **disabled**, settings absent. PR64 remains open/unmerged, old and replacement VPS untouched.
+
+**Next:** one Owner choice on external $40/month subscription and public synthetic TEST site. If explicitly approved with cost cap, Executor moves via G3S4I conditional Gate, Owner handles billing/account/Stripe consent privately, verifies recovery and public Webhook/TEST isolation before one bounded synthetic checkout/refund. Otherwise no billing or deployment.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -597,6 +610,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **G3S4H completed:** read-only staging recommendation reviewer PASS based on PR64 `b0a2e7cd...`; new standalone WordPress.com Business monthly US$40 pre-tax; site URL, account availability, host SSL/provider callback, test checkout and backups not deployed or proven.
+- **New Owner boundary:** G3S4I is HOLD for explicit external hosting spend, temporary public WordPress.com TEST site and remote Stripe TEST OAuth/endpoint/one fixture checkout/refund. Local G3S4M consent not transferable.
+- **Cost alternative:** WordPress.com Personal US$9 monthly also supports Woo, but lacks same hosted backup/staging/restore level. Requires Reviewer-compatible separate recovery/synthetic fixture strategy if chosen. No automatic price/plan substitution.
+
 - **2026-10-17 local G3S4M:** formal `RETURN_MANUAL_TEST_UI_UNAVAILABLE`. Webhook CLI signature field unsupported in official unconnected UI; plugin is now `active` with gateway `disabled` and zero configured Stripe key/connection. No local TEST payment/refund.
 - **Credential requirement:** private rotation of previously exposed local WordPress admin password `UNCONFIRMED`. Activation without that confirmation is a recorded Gate deviation; later full PASS is not inferred.
 - **G3S4H discovery:** externally hosted isolated HTTPS WordPress Stripe TEST staging **NOT SELECTED, NOT DEPLOYED**. Exact target/cost/domain/certificate/secrets/backups/provider account isolation and separate authorization unresolved. Do not reuse old VPS by default.
@@ -647,19 +664,22 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **G3S4M RETURN reviewed.** Keep local Woo Stripe plugin `active` / gateway `disabled` and no Stripe settings/account connection. Do not rerun local manual TEST key/CLI sign-secret path; no rollback solely to erase a recorded deviation.
-2. Local Codex executes only `G3S4H` **read-only** target/architecture discovery: pick one compatible isolated HTTPS WordPress/Woo TEST staging hosting option, identify concrete costs/domain/TLS/synthetic data/minimal checkout plugin/rollback, and record distinct Provider account/HTTPS webhook/Live-negative precautions. No new VPS/public service/domain/Stripe writes.
-3. Persist bounded design Evidence `docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md` **only in PR #64** and STOP Reviewer; no redundant local backup/CLI/probe.
-4. Once Reviewer accepts one verified target, Owner must approve *external hosting/public HTTPS endpoint and costs if any* separately from their previous localhost-only consent. Owner-private WP admin password rotation remains required before reuse; no secrets in chat or tooling.
-5. Later, normal Woo Stripe TEST OAuth on HTTPS stage -> provider-signed first/replay/negative event -> one synthetic USD39.99 Woo checkout -> bounded TEST refund/entitlement revocation. No real/Live payment or production claim.
+1. **Do not repeat G3S4H discovery.** It passed. Business US$40/mo pre-tax (WordPress.com) is an identified recoverable HTTPS WordPress/Woo Stripe TEST staging candidate, not provisioned. Personal US$9/mo lower-cost alternative lacks equivalent built-in recovery.
+2. **Owner decision** to authorize (or decline) new Business monthly subscription and controlled public synthetic-only hosted site. Confirm actual price/renewal with Owner before billing; do not invoke host/Stripe tools without this authority. If Owner requests lower-cost option, first qualify its backup/restore/test constraints rather than buying Business silently.
+3. If explicit spending/public-host authority arrives, use G3S4I conditional Gate for Owner-private checkout/site creation, exact target/TLS/backup restore, official Woo plugin and TEST OAuth, guest signed callback, one Woo USD39.99 synthetic checkout, replay/invalid, one TEST refund and entitlement revocation, mandatory Reviewer STOP. No real/Live.
+4. Preserve original local WordPress Stripe plugin active/gateway disabled, dirty worktree and backup, old/new VPS unmodified and PR #64 open/unmerged. Old local WP credential remains compromised until Owner privately rotates (never reuse).
 
 ## OWNER_ACTION_REQUIRED
 
-- **None for next read-only G3S4H discovery.** No more local TEST UI retries or redundant approval.
-- **Private security:** when possible, independently rotate the previously exposed local WordPress administrator password; only non-secret yes/no report, no password/API key/session copied.
-- **Future external stage:** hosting/domain/public HTTPS deployment, spending and Stripe account OAuth require a separate named target and Owner authorization after Reviewer approves staging design. The earlier Owner approval covered localhost only.
+- **Single new decision:** whether to approve a **new WordPress.com Business US$40/month excluding tax** subscription and a temporary publicly reachable, synthetic-only WordPress/Woo/Stripe TEST site, with actual checkout price/renewal disclosed and Owner controlling billing, or to pursue a cheaper plan first. No such approval has been given yet.
+- **When proceeding:** Owner alone logs in to hosted WordPress.com/Stripe TEST and approves Provider/hosting actions through their own UI, without sharing secret/token/card.
+- Rotate old exposed local admin password privately before any reuse; confirmation remains `UNVERIFIED`. No repeated local password reset or need to touch VPS for this decision.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md` — latest formal Reviewer PASS for external stage read-only discovery, cost caveats and acceptance limits.
+0. `docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md` — prepared conditional external hosted TEST setup/pay/refund Gate, **not authorized until Owner external purchase/public-site approval**.
+0. PR #64 `docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md` @ `b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf` — source discovery, no external writes.
 
 0. `docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md` — **LATEST Reviewer decision**: return local Stripe path, classify mutation deviation, choose HTTPS TEST staging.
 0. `docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md` — **CURRENT Gate**, read-only external staging feasibility only.
