@@ -1,7 +1,7 @@
 # G3S4L — existing local WordPress 8189 via Cloudflare Tunnel, official Stripe TEST OAuth
 
 Date: 2026-10-17
-State: `G3S4L_WP_PUBLIC_HTTPS_NAVIGATION_ACCEPTED; OWNER_STRIPE_TEST_SANDBOX_CONNECTED_SCREENSHOT; WEBHOOK_AND_TEST_PAYMENT_REFUND_NOT_YET_VERIFIED`
+State: `G3S4L_ONE_STRIPE_TEST_PAYMENT_OWNER_REPORTED; PR64_EVIDENCE_PENDING; ONE_EXISTING_ORDER_REFUND_AND_SERVER_SIDE_ENTITLEMENT_GUARD_NEXT`
 Reviewer decision: `docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md`
 PR #64 G3S4J Evidence baseline: `9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956`
 Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7; §§5–9/11B/11C/11D/11E.
@@ -338,3 +338,26 @@ NEXT_EXECUTOR=READONLY_VERIFY_CONNECTED_TEST_ACCOUNT_WEBHOOK_CONFIG_AND_ONE_BOUN
 4. Append sanitized actual provider-status, TEST Woo order outcomes, signed POST/invalid/duplicate and TEST refund evidence to **existing** PR64 G3S4L Evidence file, with rollback/status and exact unresolved conditions; no full credentials, raw payment payload, personal emails or full account numbers. STOP Reviewer. PR #64 OPEN/UNMERGED, no VPS/new WordPress/Stripe Live or real payment.
 
 **Previously deferred:** `widget_text-3` dormant old URL values, real visual screenshot and synthetic exact protected file denial; no new pre-test gate absent actual exposure/risk. Do not change them in a provider-only round.
+
+
+## 2026-10-17 Reviewer — one TEST payment reported; refund and workspace access gate NEXT (LATEST)
+
+**Authoritative current Reviewer decision:** [`REVIEWER_DECISION_G3S4L_TEST_PAYMENT_REFUND_ACCESS_GAP_2026-10-17.md`](./REVIEWER_DECISION_G3S4L_TEST_PAYMENT_REFUND_ACCESS_GAP_2026-10-17.md). Latest Owner relay: Codex reports Stripe TEST endpoint registered (23 event types), **one** USD39.99 TEST PaymentIntent successful, matched Woo order **`processing`**, one genuine signed callback accepted, no Live. **No new PR64 Evidence/commit** exists; PR64 HEAD remains `728609c54b68ae955150fd4957af93cac2f4d815` OPEN/UNMERGED. These success assertions are **OWNER-RELAYED EXECUTOR REPORT**, must be evidence-matched, not immediately Reviewer PASS. Webhook signature invalid/duplicate and provider TEST refund/entitlement revoke are **NOT DONE**. Computer Use could not safely validate Stripe Dashboard active URL; respect its STOP, do not bypass/try alternate browser automation.
+
+```text
+G3S4L_CURRENT=PARTIAL_PASS_CANDIDATE_ONE_TEST_PAYMENT;REFUND_UNDONE
+OWNER_RELAY_TEST_PI=SUCCEEDED_ONE_PAYMENT_UNVERIFIED_IN_PR
+WOO_TEST_ORDER=PROCESSING_ONE_UNVERIFIED_IN_PR
+VALID_SIGNED_WEBHOOK=OWNER_RELAY_ONLY_NEW_EVIDENCE_PENDING
+SECOND_PAYMENT=FORBIDDEN_DO_NOT_REPEAT
+PENDING=UNIQUE_ORDER_MATCH;ONE_PROVIDER_TEST_REFUND;WEBHOOK_INVALID_AND_REPLAY;PAID_ACCESS_REVOCATION
+CURRENT_ACTIVE_CODE_FINDING=bms-g3a-commerce-loop.php_BOUNDS_OWNER_ONLY_NO_STATUS_REFUND_QUALIFICATION
+BROWSER_DASHBOARD_UNTRUSTED_URL=STOP_FOR_THAT_ADAPTER_ONLY
+OFFICIAL_WOO_STRIPE_REFUND_VIA_GATEWAY=SUPPORTED_BY_PROVIDER_DOCS
+OWNER_ACTION_NOW=NONE
+PR64_OPEN_UNMERGED=YES
+```
+
+**Critical runtime/code scope:** PR branch `poc/g3c/commerce-workspace-plugin/bms-g3a-commerce-loop.php` has `bms_g3a_bind_workspace_to_order` called on checkout and **every status change**, plus workspace MyAccount action and direct `template_redirect` protected only by user/order binding. Current source has **NO paid-status or full-refund eligibility gate**, and `poc/g3c/scripts/provision-workspace-fixture.php` created an on-hold unpaid bound-order fixture historically. This is a source-level risk requiring verification of actual deployed plugin and ownership of the newly TEST-paid order; not proof that this specific payment granted a workspace. **Retain historical binding for audit, but deny workspace/intake/download both in account action and direct route without current paid, non-cancelled, non-fully-refunded eligibility; prevent status callbacks from regrant.** Do not silently equate full refund with deleting ownership metadata. The prior test order might be guest (`customer_id=0`) and have no entitlement; if so, report direct revocation E2E not verifiable on that order, and use existing safe owner fixtures for the access predicate only.
+
+**One bounded Executor continuation, not a new public/infrastructure Gate:** (a) in original WP local runtime read-only identify the **unique existing** TEST Woo order/PaymentIntent/refund state using limited native lookups and masked links; append first the factual sanitized note to the same PR64 G3S4L Evidence. If not unique, STOP. (b) inspect deployed source and implement minimal **server-side** paid-entitlement guard and tests for processing/completed owner allow; unpaid/on-hold/cancelled/failed/fully refunded owner deny; other user/anonymous deny; partial refund policy explicit; replay/status-change no regrant. Edit only existing PR64 code and preserve rollback; no new order. (c) if safe TEST-only, native Woo **gateway** `Refund via Stripe` pathway **once** for the existing TEST order (not manual-refund or status toggle, which are not processor refunds), preferring authorized local WooCommerce interface/API over unsafe Stripe Dashboard tab. Inspect actual provider TEST refund state before *any* retry. (d) after refund read back Stripe TEST status, Woo refund record/order state, direct-route/access denial and bounded original signed webhook replay and negative invalid signature **without weakening plugin verification**. Where safe replay unavailable, report gap precisely; never fake event or count unsigned GET as proof. (e) single sanitized PR64 Evidence, Reviewer STOP. No new TEST checkout, no Live, no app/Cloudflare/VPS changes or full media/cart re-audit. Official refund documentation: https://woocommerce.com/document/stripe/admin-experience/refunding-orders/ and https://woocommerce.com/document/woocommerce-refunds/ .
