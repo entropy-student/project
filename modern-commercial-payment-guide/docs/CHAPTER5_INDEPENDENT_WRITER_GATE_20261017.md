@@ -1,12 +1,13 @@
 # 第五部分《资金结算与到账》｜独立 Writer 完整写作 Gate
 
 - **GATE_ID**：`MCPG-CH5-INDEPENDENT-COMPLETE-DRAFT-20261017`
+- **INPUT_REVISION**：`OFFLINE_WRITER_INPUTS_V2_20261017`
 - **OBJECTIVE**：撰写第五部分完整候选稿并提交独立事实核验与执行记录。
 - **MAX_ENDPOINT_THIS_ROUND**：完整正文 + 核验记录 + ZIP，`STOP_AT_REVIEWER`。
 - **TARGET_AND_SCOPE**：仅第五部分。第一至第四部分封板正文与 V6 框架均只读。
 - **MANDATORY_REVIEW_STOP**：Writer 不得自行封板、合并、进入第六章或制作 HTML。
 - **OWNER_ONLY_ACTIONS**：不涉及真实商户账号、银行或任何支付/退款/结汇操作。
-- **PREFLIGHT**：阅读本 Gate、GitHub main 最新 `REVIEWER_HANDOFF.md`、V6 冻结框架及前四章正式正文；如权威文件不一致，向 Reviewer 返回明确差异。
+- **PREFLIGHT**：解压 Owner 提供的《第五部分_独立Writer离线完整工作包_20261017.zip》；以包内 `01_V6冻结框架_7-29-42完整题目.md`、`02_前三章封板衔接摘要.md`、`03_第四部分已封板正文_全文只读参考.md`、`04_第五部分独立Writer工作Gate_离线版.md` 为必读基线。Writer 无 GitHub 权限，**不得要求访问仓库**；仓库权威核对由 Reviewer 负责。
 - **REQUIRED_EVIDENCE**：官方事实支持、案例口径、具体费用来源/地区、UNKNOWN 与文件大小/哈希。
 - **ROLLBACK**：只交候选，不修改正式章节；没有生产数据迁移。
 
@@ -44,14 +45,20 @@
 5. **异常处置**：capture 成功但余额 pending、payout 拒绝、银行退汇、中间行扣费、FX 汇差、reserve/hold、提现超时与账不平。每种情景说清先核对什么证据、在哪个后台查哪个对象、联系谁、什么情况下禁止重复提现。
 6. **轻量且实用**：包含流程图或资金账本、比较矩阵、逐笔结算对账表和实际故障排查步骤；解释术语后再分析条件；段落自然，不要让例子建立在未经核验的商户资格之上。
 
-## 权威材料（GitHub main）
+## Writer 离线资料（无需 GitHub 权限）
 
-- `modern-commercial-payment-guide/REVIEWER_HANDOFF.md`
-- `docs/FROZEN_FRAMEWORK_V6_20261016.md`
-- `docs/CHAPTER1_FINAL_SEALED.md`
-- `docs/CHAPTER2_FINAL_SEALED.md`
-- `docs/CHAPTER3_FINAL_SEALED.md`
-- `docs/CHAPTER4_FINAL_SEALED.md`
+Owner 将下发 8 文件 ZIP：
+
+- `00_离线阅读说明.md`：整体约束与交付格式。
+- `01_V6冻结框架_7-29-42完整题目.md`：全书 7/29/42 逐字题目；第⑤章冻结 4H2/5H3。
+- `02_前三章封板衔接摘要.md`：前 ①–③ 章面向第五章的内容摘要，**并非全文**；本轮不要求 Writer 获取前三章全文。
+- `03_第四部分已封板正文_全文只读参考.md`：第四章完整封板正文。
+- `04_第五部分独立Writer工作Gate_离线版.md`：自包含执行和验收说明。
+- `05_第五部分独立Writer提示词_离线版.md`：随包可复制使用。
+- `06_官方资料核验清单与提交格式.md`：核验说明。
+- `07_工作包校验清单_SHA256.md`：完整性核验。
+
+**项目 GitHub `main` 仍是 Reviewer 的正式项目真相，不是 Writer 的执行前提。** 原第一至第四章不得修改；Writer 只出第五章候选。公开官方网站可独立访问核实金融规则；若网络限制导致费率/产品/地域/时效无法核实，应在正文和执行记录列为 `UNKNOWN`，不伪称 VERIFIED 或 PASS。
 
 需自行核实一手资料：Stripe Payouts/Balances/定价、PayPal 提现/跨境收费、WorldFirst 官方说明、Wise Business eligibility、中国国家外汇管理局/税务总局/相关银行的适用规则。不能因为网络搜不到就编一个确定数，标记 `UNKNOWN` 并说明实操核验方法。
 
