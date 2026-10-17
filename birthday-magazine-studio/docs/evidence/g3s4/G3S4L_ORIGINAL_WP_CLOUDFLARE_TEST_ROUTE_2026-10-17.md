@@ -4,24 +4,25 @@ Date: 2026-10-17
 Gate: [G3S4L original WordPress Cloudflare TEST route](https://github.com/entropy-student/project/blob/main/birthday-magazine-studio/docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md)  
 Reviewer decision: [G3S4L owner-authorized original-site route](https://github.com/entropy-student/project/blob/main/birthday-magazine-studio/docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md)  
 PR #64 branch: `codex/birthday-magazine-g3c-blocksy-wedding-productization`  
-Pre-update PR head: `9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956`
+PR head before this update: `27b4b5567042502556c0948c9911d7368c6779c4`
 
 ## Result
 
 ~~~text
 GATE=G3S4L_ORIGINAL_LOCAL_WP_CLOUDFLARE_TEST_20261017
-EXECUTOR_RESULT=RETURN_PUBLICATION_SAFETY_NOT_CERTIFIED
+EXECUTOR_RESULT=RETURN_REVIEWER_OWNER_AUTH_BURDEN
 OWNER_REPORTED_PASSWORD_ROTATION=YES
-LOCAL_PUBLICATION_AUDIT=PARTIAL_NO_WRITE
-PUBLICATION_SAFETY=NOT_CERTIFIED
-MEDIA_CONTENT_SENSITIVITY=UNKNOWN
-MEDIA_PIXEL_REVIEW=NOT_COMPLETED_LOCAL_ENDPOINT_EMPTY_REPLY
+LOCAL_PUBLICATION_AUDIT=READ_ONLY_COMPLETE;MEDIA_REVIEW_PASS_CANDIDATE
+PUBLICATION_SAFETY=PREPUBLICATION_CHECKS_COMPLETE;NO_PUBLIC_ROUTE_CREATED
+MEDIA_CONTENT_SENSITIVITY=NO_SENSITIVE_CONTENT_OBSERVED;OWNER_CONFIRMED
+MEDIA_PIXEL_REVIEW=43_RASTER_VISUALLY_REVIEWED;20_SVG_STATIC_AUDIT;PASS_CANDIDATE
 CLOUDFLARE_ZONE_ACTIVE=OWNER_REPORTED_YES
 CLOUDFLARE_ZONE_WRITE_PERMISSION=UNKNOWN
 OWNER_REPORTED_STRIPE_TEST_DNS_RECORD=NONE
 OWNER_REPORTED_NO_TUNNEL=YES
-CLOUDFLARE_OWNER_CONFIRMATION=ACTIVE_ZONE;DNS_LABEL_FREE;NO_TUNNEL_REPORTED
+CLOUDFLARE_OWNER_CONFIRMATION=ACTIVE_ZONE;DNS_LABEL_FREE;NO_TUNNEL_REPORTED;WRITE_PERMISSION_UNKNOWN
 stripe-test.spikersun.com=PROPOSED_ONLY
+CLOUDFLARED_LOGIN=STOPPED_BEFORE_OWNER_APPROVAL
 DNS_OR_TUNNEL_WRITE=NO
 PUBLIC_TUNNEL=NO
 WORDPRESS_URL_OR_DATABASE_WRITE=NO
@@ -29,6 +30,36 @@ STRIPE_OAUTH_WEBHOOK_PAYMENT_OR_REFUND=NOT_STARTED
 PR64_MERGE=NO
 STOP_AT_REVIEWER=YES
 ~~~
+
+
+## Latest G3S4L executor update — 2026-10-17
+
+This update supersedes the earlier statement that media pixel sensitivity remained unknown. The publication route itself remains unconfigured and is stopped for Reviewer decision.
+
+### Completed local read-only classification
+
+The earlier local requests that returned empty responses were retried directly to loopback with proxy bypass; the homepage and media REST endpoint then returned HTTP 200. The 63 existing media entries were reviewed only in a temporary local directory, without uploading any images:
+
+- 26 JPEG, 10 PNG, and 7 WebP images (43 raster images) were visually inspected; no sensitive personal, order, or contact information was observed.
+- 20 SVG files were parsed with DTD processing disabled. They contained no text/title/description, embedded image, external link, script, inline event handler, or email/telephone pattern.
+- The Owner also confirmed that the site has no sensitive pictures or information.
+- The temporary media-review directory and contact sheet were deleted, and their absence was verified. No media was added to GitHub.
+
+This supports a pre-publication privacy PASS_CANDIDATE for the inspected media and the previously recorded anonymous order/admin/private-upload checks. It is not an external HTTPS exposure test and does not certify the Cloudflare route or zone permissions.
+
+### Cloudflare authorization stopped
+
+Official `cloudflared` v2026.10.1 was downloaded to a user-private directory. Its Authenticode signature identified Cloudflare; SHA-256 was `4D2490E74082C5D48DBFEDAF92576FA5BD1702379AB88EB7FAA0CFBE8DC891B6`. The official `cloudflared tunnel login` process was opened in a visible terminal and remained waiting for an Owner browser authorization. On the Owner's instruction to stop and escalate the burden to Reviewer, the process was interrupted before an authorization-success result; it exited with code 1. No credential or certificate contents were read, copied, or recorded. Successful account login was not established.
+
+Owner-reported Cloudflare status remains: zone Active, candidate DNS name unused, no existing Tunnel. Zone write permission is UNKNOWN. No DNS/Tunnel/WordPress/Stripe operation was performed.
+
+### Reviewer request and stop
+
+The Owner considers requiring them to operate a separate terminal/login-link flow unreasonable while already signed in to Cloudflare, and asks not to be burdened with further manual steps in this round. The Executor did not retry the previously failed Computer Use URL check or substitute another browser automation, because the current Gate forbids bypassing that safety stop. The official CLI authorization path still requires an Owner action, so the exact named Tunnel cannot be created without an approved Cloudflare authorization.
+
+Reviewer is asked to assess this interaction cost and provide a less burdensome, explicitly supported path that preserves Cloudflare account consent and avoids browser-automation bypass. If a human action is unavoidable, specify only the single smallest necessary action and its reason. No additional Owner action is requested in this Evidence update.
+
+`STOP_AT_REVIEWER=YES`
 
 Owner reported the previously exposed WordPress password was privately rotated. No password or credential was requested, read, or recorded.
 
