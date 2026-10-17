@@ -50,7 +50,7 @@ if (-not (Test-Path $manifest)) {
                           ('MYSQL_ROOT_PASSWORD: "' + (RandomHex 20) + '"'))
     $yaml = $yaml.Replace('      - "80:80"', ('      - "127.0.0.1:' + $Port + ':80"'))
     $yaml = $yaml.Replace('      - "./database:/var/lib/mysql"', '      - "database:/var/lib/mysql"')
-    $newline = [Environment]::NewLine
+    $newline = if ($yaml.Contains("`r`n")) { "`r`n" } else { "`n" }
     $yaml = [regex]::Replace($yaml, '(?m)^volumes:\r?\n  app:',
                              ('volumes:' + $newline + '  app:' + $newline + '  database:'), 1)
     $yaml = $yaml.Replace('APP_ENV: "production"',
