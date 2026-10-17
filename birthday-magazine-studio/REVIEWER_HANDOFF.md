@@ -4,7 +4,13 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner screenshot confirms original HTTPS frontend visible but unstyled; prioritize immediate public private-route negatives + targeted CSS/proxy/canonical repair; Stripe still pending)
+ > Last reviewed: 2026-10-17 (G3S4L CSS/canonical fix accepted @ 92aac; next synthetic guest cart/checkout + official Stripe TEST readiness; visual and per-file privacy remain untested)
+
+## CURRENT_G3S4L_92AAC_CSS_ACCEPTED_STRIPE_READINESS_2026_10_17 — LATEST
+
+**LATEST Reviewer @ PR64 HEAD `92aac96932f1c04ac97b3faeaae68314bfedefb2` OPEN/UNMERGED:** [Formal review](./docs/REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md) accepts precisely **WordPress HTTPS `home/siteurl` canonical correction and resource-level CSS fix**, not final complete Woo checkout/payment. One G3S4L Evidence appendix reports old `http://127.0.0.1:8189` options changed by native guarded `update_option()` **only** to `https://magazine.spikersun.com`; pre-existing `HTTP_X_FORWARDED_PROTO` handling unchanged. Public Home, preview, product, cart HTTPS 200; first-party CSS 9/9 and JS 12/12 200 correct MIME; no mixed-content/loopback URLs across checked HTML. Anonymous Woo REST orders/privileged users 401; private uploads dir 403; admin redirects to public login; /my-account/orders shows guest login without orders. No private data observed; exact individual protected file not safely tested (selector unavailable), post-fix visual screenshot not captured, and **non-empty `/checkout/` untested** (empty cart redirects by design). The accepted scope is **Codex Executor evidence**, Reviewer cannot independently live-fetch this domain from its network; do not overstate external security/visual PASS.
+
+**CURRENT next execution, still existing G3S4L:** no repeat of CSS/media/backups/Tunnel/Cloudflare auth. Codex: one safe public-page browser screenshot if possible without bypassing Cloudflare admin browser URL guard (or report visual pending), **synthetic anonymous add-to-cart existing product** → non-empty guest public `/checkout/` form/session and HTTPS/redirect/asset checks; **no order or payment submission**. Read-only official Woo Stripe plugin connection/TEST-vs-LIVE status + webhook callback route `https://magazine.spikersun.com/?wc-api=wc_stripe`, preserving signature enforcement and no secrets. Only then smallest **Owner Stripe TEST official account/OAuth action** if needed (prior Owner reported Stripe not yet registered; verify current actual state). Later one USD39.99 synthetic TEST charge, real signed webhook/replay/invalid and ONE TEST refund/revoke under payment Gate; no Live/real money, VPS/new site/PR merge. Add sanitized evidence to same PR64 G3S4L file. Owner action right now: **NONE**, keep Windows Cloudflare connector/Docker running.
 
 ## CURRENT_G3S4L_OWNER_HTTPS_VISIBLE_STYLES_BROKEN_2026_10_17 — LATEST
 
@@ -236,7 +242,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_POST_PUBLICATION_PRIVATE_NEGATIVE_AND_PUBLIC_CSS_LAYOUT_REPAIR
+CURRENT_GATE=G3S4L_POST_CANONICAL_CSS_PASS_GUEST_CART_CHECKOUT_AND_OFFICIAL_STRIPE_TEST_READINESS
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -665,8 +671,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4L Owner screenshots post-connector:** Cloudflare Tunnel **Healthy**, and fixed `https://magazine.spikersun.com` renders recognizable original WordPress HTML/image, **but missing stylesheet/layout**. **Owner screenshot**, not verified full public access/status/control-plane, and no CSS cause proven. Priority immediately **anonymous external Woo-order/private-upload/admin/debug negative checks**, remove only exposed magazine published route if actual unauthorized private data accessible. Else inspect public CSS/JS URLs/responses/CSP/mixed-content, last original WordPress `home/siteurl=http://127.0.0.1:8189`, existing forwarded HTTPS recognition; smallest reversible WordPress-native address/HTTPS or targeted asset/cache repair based on actual error. Test public normal styling, no loopback redirects, guest/preview/checkout, negative private access. **Do not conduct Stripe TEST OAuth/payment/refund this repair round**. Current Gate latest bottom appendix owns work; no Owner clicks/credential re-entry; PR64 Evidence append then Reviewer STOP. No Live, VPS, second WP or PR merge.
-
+**LATEST G3S4L @ `92aac969...` Reviewer:** `PASS_BOUNDED_PUBLIC_HTTPS_CANONICAL_CSS_RESOURCE_REPAIR`. Original WordPress loopback `home/siteurl` changed only by guarded native API to `https://magazine.spikersun.com` with exact rollback values recorded; existing reverse proxy TLS handler unchanged. On executor-host, homepage/preview/product/cart 200 HTTPS, 9/9 CSS 12/12 JS correct MIME, scanned pages zero mixed/loopback; anonymous Woo orders API 401, protected upload directory 403, guest account orders login-only. This **does not independently certify styled screenshot, individual protected file or populated checkout**; no Stripe yet. The current G3S4L Gate **last appendix** and [92aac Reviewer decision](./docs/REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md) supersede earlier "CSS broken / repair next" historical entries. Next Codex safe **guest synthetic cart + non-empty `/checkout/` no-order smoke**, optional browser visual, read-only Woo Stripe TEST/Live/OAuth and signed Webhook routing preflight; then one Owner-only official Stripe TEST account/OAuth checkpoint if actually needed. No Live, real orders/money, repeat media/CSS, Tunnel/DNS changes or PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -792,16 +797,20 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Codex only: inspect actual deployed public `magazine.spikersun.com` anonymous private Woocommerce orders/uploads/admin/debug negative access immediately; if breach remove only this newly published route and stop.
-2. Codex only: read-only CSS asset failures on host HTTPS and compare local; inspect WordPress current `home/siteurl`, URL overrides and existing trusted forwarded HTTPS marker. Apply smallest rollback-ready address/proxy or CSS-specific fix based on proof; verify styled home + representative Woo checkout/previews, no mixed content/loopback redirects, public negatives.
-3. Append objective evidence to PR64 G3S4L and STOP Reviewer for actual public/frontend acceptance; once accepted, next later Owner official Stripe TEST OAuth/one bounded synthetic $39.99 check/refund. No duplicate media backups/Tunnel/token setup.
+1. **Accept current SSL/CSS repair as done** (PR64 `92aac969...`). Codex **does not** repeat the same 9 CSS/12 JS and prior private-route checks unless new drift. Leave Tunnel PowerShell/Docker running.
+2. Codex autonomously add existing test-public product to a **new anonymous guest cart**, show nonempty `/checkout/` session, forms and payment methods, HTTPS/no loopback/signed webhook route, read-only current official Woo Stripe TEST/OAuth readiness. No customer order, charge/refund yet; optionally capture nonsecret browser visual of the actual public homepage; don't bypass Cloudflare admin tab safety limitation.
+3. If official Stripe account registration/TEST consent is missing, report ONE exact Owner account action privately through Woo official UI; no token/passwords in chat. Then verified TEST-only single synthetic $39.99 purchase, real signed webhook replay/invalid and matching TEST refund/revocation remain future bounded payment work. PR64 Evidence append and Reviewer stop at material provider boundary.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NOW: NONE.** Leave existing visible Cloudflare connector PowerShell foreground and original WordPress Docker running. No more login, Tunnel token, AppData or DNS changes needed for public HTML/CSS diagnosis.
-- **Only if later requested:** sanitized before/after screenshot for public styling, not a new secret/account step. Stripe TEST OAuth is separate after public site and private checks PASS.
+- **NONE now:** Public HTTPS/CSS accepted at resource level. Keep existing normal Windows Cloudflare connector window and Docker site available for Codex follow-up. Do not repeat Tunnel OAuth/Token.
+- **Later only:** if actual Woo Stripe TEST is unconnected, Owner must complete its official account registration/login/OAuth in WP admin. Don't require a customer/live transaction or credential in transcript.
+- **Optional:** one real homepage screenshot after Ctrl+F5 for independent visual confidence if Codex cannot safely capture it; do not block guest cart and provider readiness on an unnecessary screenshot approval.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md` — latest canonical Reviewer scope and next safe checkout/Stripe readiness.
+0. `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` PR64 @ `92aac96932f1c04ac97b3faeaae68314bfedefb2` — actual before/after WP HTTPS options, CSS/JS 200, HTTP-negative and rollback.
 
 0. `docs/REVIEWER_DECISION_G3S4L_A3AB_STARTER_SOURCE_STATIC_PASS_2026-10-17.md` — current Reviewer full script-source digest/static Secret handling acceptance + one Owner workflow.
 0. `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` PR64 @ `a3ab8b6ca06c4b6f6f1902a6d0e85ad4f2bf0467` — complete actual source, claimed 4392-byte SHA Independently reproduced in Review.
