@@ -1,7 +1,7 @@
 # G3S4M — Stripe TEST existing signed-event replay and phase closeout (single bounded attempt)
 
 Date: 2026-10-17
-STATUS=ACTIVE_EXECUTOR_GATE; REVIEWER_OWNS_FINAL_PASS_OR_PARTIAL_AND_NEXT_DESIGN_PHASE
+STATUS=SUPERSEDED_BY_FINAL_REVIEWER_PHASE_TERMINATED_PARTIAL; NEXT_G4D0_DESIGN_GATE
 Repo: `entropy-student/project`, PR #64 OPEN/UNMERGED, latest verified HEAD `577bb700de71a399bd52780d5a33eaeaca9d33ea`.
 Owner explicit sequencing: "好的，把stripe先跑通完成收尾，然后我们再转向杂志本身的设计。如果后续要测试杂志的交易，那就后续再测试。记得告诉我一个powershell什么时候能关掉。按照项目管理规范继续推进吧。"
 Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7 §§0–10, triggered 11B (Secret/Windows target), 11C (public Tunnel), 11D (automation/auth), 11E (provider/callback/payment), 11F (phase closeout only); 11A only for shared storage context, no Shared Infra mutation, 11G not triggered. All previous accepted Gates remain stable; this gate grants no LIVE or new payment authority.
@@ -109,3 +109,29 @@ TUNNEL_POWERSHELL=KEEP_OPEN_UNTIL_REVIEWER_FINAL_CLOSEOUT
 ```
 
 **Critical change to execution:** PREVIOUS Owner one-click request is now **FULFILLED**. **DO NOT tell Owner to click Resend again**. Codex must *only* perform a bounded **read-only** verification against the original runtime/provider TEST state, confirming same event redelivery/delivery timestamp/log or attempt identity (no raw secret/event-ID output) and invariants: **one** Woo refund USD39.99, **one** Stripe TEST refund 3999 cents/livemode=false, Woo order `refunded`, owner workspace denied, no additional entitlement/job/charge/refund. A provider UI 200 is NOT proof of idempotent side effects on its own. If plugin logs/event retention cannot independently corroborate same signed event, classify precise `PROVIDER_MANUAL_DELIVERED_RUNTIME_REPLAY_UNVERIFIED`, not PASS. Do not perform further signed/invalid test probes, second redelivery or modify app/provider. Add one sanitized G3S4M closeout Evidence section to PR64 and STOP Reviewer. Reviewer then independently decides final TEST-only phase result, determines when Owner may Ctrl+C the foreground `cloudflared` PowerShell, and activates separate P1–P12 design Gate. Keep all accepted payment/refund/workspace guard frozen and PR64 OPEN/UNMERGED.
+
+
+## 2026-10-18 FINAL REVIEWER DISPOSITION @ e3d260 — TEST phase ended PARTIAL; G4D0 DESIGN NEXT
+
+**Authoritative latest formal decision:** [`REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md`](./REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md). PR #64 independently read back HEAD `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` OPEN/UNMERGED, one Evidence append only. Previous `STOP_UNTIL_REVIEWER` condition is **discharged by explicit Reviewer disposition**; that does **NOT** promote this Gate to strict PASS.
+
+```text
+G3S4M_STATUS=PHASE_TERMINATED_PARTIAL_WITH_EXCEPTIONS
+STRICT_RUNTIME_SIGNED_WEBHOOK_REPLAY=NOT_INDEPENDENTLY_VERIFIED
+OWNER_MANUAL_TEST_EVENT_DELIVERY=ONE_HTTP_200
+WORDPRESS_CONTAINER_SAME_TIMESTAMP_ROUTE_HTTP_200=EXECUTOR_READBACK
+ORIGINAL_USD39_99_STRIPE_TEST_REFUND=ONE_SUCCESS
+ORIGINAL_USD39_99_WOO_REFUND=ONE_SUCCESS;ORDER_REFUNDED
+ORIGINAL_OWNER_WORKSPACE=DENIED
+SEPARATE_TEST_HKD100_SUCCEEDED=EXISTS;UNMAPPED_TO_WOO;ORIGIN_UNKNOWN;BEFORE_REPLAY
+TEST_EVENTS_PENDING_WEBHOOKS=ZERO_OF_57_AT_EXECUTOR_READBACK
+GENERATION_JOB_COUNT=UNVERIFIED
+NO_MORE_STRIPE_TEST_TRANSACTIONS_OR_RESENDS=AUTHORIZED_NONE
+NEXT_ACTIVE_GATE=G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE
+PR64_MERGE=NO
+CLOUDFLARE_FOREGROUND_POWERSHELL_CTRL_C=REVIEWER_AUTHORIZED_FOR_LOCAL_ONLY_WORK
+```
+
+**Interpretation:** The manual replay of the same original `charge.refunded` delivered HTTP 200 to the real WordPress callback and the tested **business invariants** (one Woo/Stripe refund, full refund, denied owner access) did not change. The Woo Stripe plugin log did not retain event-level duplicate branch/acknowledgement: leave **strict plugin-level signed idempotence UNVERIFIED**. A distinct successful HKD100 TEST transaction at 16:01:16 UTC predates the 16:08:20 UTC retry, does not map to current Woo local order, and cannot be attributed without new provider request provenance. It is **not evidence of a second original Woo refund, nor proof of malicious activity**. No refund/disable/secret rotation, no more replay. Preserve both as bounded audit items **before future consequential Stripe TEST reuse / before Live**, not as a reason to hold design.
+
+**Tunnel stop now:** Executor reports 57 TEST events, zero pending callbacks, and Reviewer authorizes **Owner Ctrl+C in the specific foreground `Start-MagazineTunnel.ps1` cloudflared PowerShell**, only when no public website viewing or webhook tests are needed. Public `magazine.spikersun.com` becomes unreachable while original Docker WP/data/domain/test provider configuration remains intact; WordPress public `home/siteurl` may also cause localhost browser redirects until Tunnel restarts. Do not delete/reconfigure anything. Exact phase transfer: [`G4D0` design Gate](./G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md). No Live/no new purchase/refund/PR merge.
