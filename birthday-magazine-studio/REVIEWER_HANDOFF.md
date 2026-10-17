@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner Stripe sandbox TEST OAuth visible connected in Woo settings; next Codex verify provider signed webhook readiness and one bounded simulated paid/refund canary)
+ > Last reviewed: 2026-10-17 (one TEST payment OWNER-REPORTED only, PR evidence absent; existing-order refund and workspace entitlement flaw now bounded next)
+
+## CURRENT_G3S4L_ONE_TEST_PAYMENT_REFUND_ENTITLEMENT_NEXT_2026_10_17 — LATEST
+
+**Latest Owner-relayed Codex status, NOT yet committed to PR:** one $39.99 Stripe **TEST** PaymentIntent reportedly succeeded, Woo order reportedly `processing`, valid signed native Webhook reportedly received; 23 event-type TEST endpoint reported configured, no Live. **Refund, invalid-signature, replay/idempotence and workspace revocation NOT DONE.** PR64 real GitHub HEAD remains `728609c54b68ae955150fd4957af93cac2f4d815` OPEN/unmerged, **no new Evidence or Commit**, so payment success is `OWNER_RELAY_EXECUTOR_REPORT`, not independent Reviewer evidence PASS. Owner's Codex Computer Use stopped at unsafe Stripe Dashboard active-URL confidence; DO NOT bypass that adapter or scrape Browser tokens.
+
+**Reviewer actual source finding:** PR branch `poc/g3c/commerce-workspace-plugin/bms-g3a-commerce-loop.php` binds owner/workspace on checkout and on every Woo order status change, and account workspace link/direct `/birthday-workspace/{order}` currently check **only logged-in ownership/binding**, **not paid status, cancellation or full refund**. This is a concrete access-control design flaw; runtime plugin activation and actual new order owner/entitlement must be read back before claiming it manifested. Unpaid `on-hold` synthetic bound-order fixture also exists in repo. Fix via guarded server-side paid/non-fully-refunded eligibility **on each actual access surface** while preserving audit ownership metadata, and prevent refunded/failed/cancelled status hooks from regranting. Owner may have paid using guest account (`customer_id=0`), so that one order may never have workspace entitlements; if no existing owned entitlement, do not falsely claim E2E revocation, use safe already-existing synthetic fixture tests without a new Stripe purchase.
+
+**Mandatory next existing G3S4L scope:** read [formal Reviewer decision](./docs/REVIEWER_DECISION_G3S4L_TEST_PAYMENT_REFUND_ACCESS_GAP_2026-10-17.md) and [Gate latest bottom addendum](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md). Codex FIRST identify the **unique existing** TEST order↔PaymentIntent↔valid webhook↔refund state in **actual WordPress runtime**, append sanitized real proof to existing PR64 G3S4L Evidence. **NO SECOND CHECKOUT**. Verify deployed plugin and fix access predicate narrowly in PR64 existing code; test paid, unpaid/on-hold, cancelled, fully refunded, other user/anonymous with no real customer orders touched. Official Woo Stripe extension supports native **Refund via Stripe** from WooCommerce orders (no need for Stripe Dashboard); after TEST safety and only if provider refund not already performed, issue ONE gateway TEST refund on same paid order, read back Stripe TEST and Woo refund status, verify remaining access/revoke, and safely test invalid-signed and identical-event replay without disabling signature enforcement or faking PASS. On uncertain result **read back before retry**; no second refund. Append one Evidence result and STOP Reviewer, preserve real orders/data, no Live, Cloudflare, VPS, new WordPress or PR merge. No Owner action now.
+
+**Previously accepted:** fixed `https://magazine.spikersun.com` named Tunnel, WordPress HTTPS/CSS assets, checkout/secure cookies/nav links. Dormant `widget_text-3` old URLs, independent pixel screenshot and per-file private test selector remain deferred. Do not repeat those tests in provider-only round.
 
 ## CURRENT_G3S4L_OWNER_STRIPE_TEST_CONNECTED_PAYMENT_CANARY_NEXT_2026_10_17 — LATEST
 
@@ -270,7 +280,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_OWNER_STRIPE_TEST_CONNECTED_SIGNED_WEBHOOK_ONE_TEST_CHARGE_REFUND_NEXT
+CURRENT_GATE=G3S4L_EXISTING_TEST_ORDER_ONE_REFUND_ENTITLEMENT_CHECK_NO_NEW_PAYMENT
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -699,7 +709,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**LATEST Owner Stripe TEST screenshot 2026-10-17:** Woo Stripe officially connected to a sandbox **Test Mode** account; `Enable Stripe` and `Enable test mode` checked and site banner says all transactions simulated. Woo settings notice Live account is NOT connected. This screenshot is not proof of signed webhook delivery or successful order/refund. Reuse previously accepted G3S4L public HTTPS/privacy/cart/nav, PR64 `728609...`; do not request another Stripe test signup/login or re-run Cloudflare. Codex next verifies persisted TEST account/mode, webhook registration/signature enforcement, no Live, then if ready **one** synthetic $39.99 test checkout, genuine signed webhook delivery/negative replay handling, and **one matching TEST refund/entitlement revocation**, recording sanitized evidence and STOP Reviewer. At most one checkout after ambiguous state; do not invent signed events. If exact provider boundary requires Owner approval, ask only for one specific official UI action. No Live, real customer funds, VPS/new site/PR merge.
+**ACTIVE: G3S4L existing TEST purchase refund/access recovery**, not a new payment round. Owner relay reports exactly one USD39.99 TEST succeeded, order processing and valid signed Woo native Webhook; GitHub PR64 HEAD `728609c5...` still unchanged, so Codex must first append **actual sanitized Woo/Stripe test-order verification**. No new TEST order, no repeated checkout. Current worktree workspace code has **no paid/refund status guard**, and order status change rebinds ownership; confirm deployed version and fix narrowly in PR64 before refund. Differentiate binding meta from actual access authorization, deny unpaid/fully refunded and other users on MyAccount link **and direct endpoint**, idempotently across callbacks. Guest TEST order may lack bound owner; in that case do not fake E2E revocation. Refund **once** through official Woo Stripe gateway refund on same identified TEST order with readbacks to avoid double refund; browser-confidence failure on Stripe Dashboard remains a stop for that browser adapter, not a general ban on Woo native gateway operation. Verify provider refund and Woo order state, safe signature negative/duplicate checks or honestly mark unavailable, and residual account access. One PR64 Evidence and Reviewer STOP. Gate latest appendix and [formal review](./docs/REVIEWER_DECISION_G3S4L_TEST_PAYMENT_REFUND_ACCESS_GAP_2026-10-17.md) control. No Live/real customer writes or PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -825,16 +835,18 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Codex now, no Owner action:** read-only verify real saved Woo Stripe TEST sandbox connection, enabled/test flags and signed webhook route readiness, without exposing credentials. No re-run accepted media/CSS/cart/navigation/Tunnel tests.
-2. **If TEST-only readiness PASS:** make at most one documented synthetic USD39.99 Stripe TEST Woo checkout (no live card/funds), inspect genuine signed callback, duplicate/invalid handling and correct Woo order; one matched TEST refund/revoke, no repeat charges; sanitized PR64 G3S4L Evidence then Reviewer STOP.
-3. If provider tests fail or require Owner UI, stop exactly at one concrete blocker. No Live, real payment, new app/site/hosting or PR merge.
+1. Codex **read-only** unique-match one existing TEST Woo order to Stripe PaymentIntent and valid event; check if refund has already happened, then append sanitized evidence before anything else.
+2. Read active deployed workspace plugin/code identity; minimize PR64-only PHP changes for **actual paid entitlement** and deny unpaid/failed/cancelled/fully refunded direct access and menu action, no regrant after status change. Use existing safe nonpayment fixture for eligibility cases, preserve ownership metadata and original data.
+3. One TEST gateway refund **via Woo Stripe native integration on same order** if confirmed not already refunded. Record Stripe TEST and Woo result. Test safe invalid-signature/duplicate event behavior without misclaiming, no new charge; submit PR64 updated code+Evidence then Reviewer STOP.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE NOW.** Stripe sandbox TEST account connection shown in Owner WordPress screenshot, and test mode/gateway flags are checked. Keep original Windows Tunnel + Docker running. Don't repeat TEST OAuth or share keys.
-- Only one specific later official Stripe action if Codex finds a concrete account/webhook permission blocker, never Live or a real card.
+- **NONE now.** Continue on the original WordPress + Cloudflare Tunnel, no new Stripe Dashboard browser actions or login. Do not send Stripe card/account/private identifiers or API tokens in chat.
+- Only if the legitimate Woo-native Stripe TEST gateway refund is truly unavailable, return **one exact necessary Owner action** on the existing order, not a second purchase or another environment setup.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4L_TEST_PAYMENT_REFUND_ACCESS_GAP_2026-10-17.md` — latest one TEST payment report, no new Evidence, workspace security code finding and one refund plan.
 
 0. `docs/REVIEWER_DECISION_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_AUTH_NEXT_2026-10-17.md` — current bounded navigation PASS and official TEST OAuth checkpoint.
 0. `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` PR64 @ `728609c54b68ae955150fd4957af93cac2f4d815` — exact WP record IDs, guarded before/after and rollback, dormant widget noted.
