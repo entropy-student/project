@@ -112,3 +112,18 @@ G2A_DECISION: PASS for source/CLI/HTTP/restart persistence only. No conditional 
 KNOWN_LIMITATION: Some hard-coded select-option labels remain English in the inspected ProductResource diff (e.g. One Time, Separated, Combined, Month); this is a G2B visual/localized edge-case backlog, not proof of overall translated UI failure. New resource-level traits and forced zh_CN admin locale require interactive regressions. Credentials not repeated or stored here.
 OUT_OF_SCOPE_UNVERIFIED: actual post-translation authenticated /admin and user dashboard visual flow; sidebar/sidebar groups, form labels/select choices, modal dialogs, notification messages, charts, navigation, vendor and extension dynamic content; cannot treat GET 200/302 as G2 complete.
 NEXT_GATE: docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md. Use authorized browser skills if URL safety can be confidently verified; otherwise do not bypass the stop and rely on Owner's voluntary first-person screenshots/manual observation for visible factual UI evidence.
+
+
+## 2026-10-17 G2B first real screenshot review — PARTIAL_G2B_VISIBLE_LANGUAGE_GAPS
+GATE_ID: PAYMENTER-G2B-LOCAL-ZH-HANS-VISUAL-ACCEPTANCE-20261017
+PROVENANCE: OWNER_SUPPLIED_SCREENSHOTS + REVIEWER_DIRECT_VISUAL_INSPECTION of four 2048×1028 images in current chat; no Reviewer control-plane access to Owner Windows, no screenshots uploaded to GitHub.
+VISUAL_CHECKS:
+1. Authenticated admin Dashboard: navigation, Chinese group headers, stats, period/chart legend and column headers are readable simplified Chinese. Visible residuals: "Support" widget title and empty state "暂无 ticket". No obvious truncation or layout corruption in screenshot.
+2. Admin Product LIST: simplified Chinese navigation, main heading, search, edit action and test product row. Residual heading "Category:" and column technical name "Slug". Screenshot does not show Product EDIT or plan selector, hence those remain UNVERIFIED.
+3. Admin Coupon CREATE form: form labels/options/hints/actions appear simplified Chinese. Date input placeholder displays mixed "yyyy/mm/日". Screenshot does not prove submitted/valid date, saving, or other form behavior.
+4. Admin Notification Template LIST: UI chrome/columns/edit buttons simplified Chinese. DB-backed visible notification-template subject strings still English (login/invoice/order/service/ticket reply). Ticket reply subject contains Blade-style template variable expression; should not mutate stored templates to fake translations. Footer still displays English informational links Sponsor, Star us on GitHub, Documentation. This is visible content, not evidence of live mail behavior.
+DIRECTLY_OBSERVED_FUNC: Four distinct authenticated admin pages displayed normally, with no visible blank/error/overflow. No submit/edit/save/delete or user-account UI observed. No proof of full English elimination.
+RESULT: PARTIAL_G2B_VISIBLE_LANGUAGE_GAPS; majority of visible admin UI localized, remaining cosmetic and data-backed English visible. Not a full G2B PASS; G2A PASS unchanged.
+SCOPE_AND_NEXT: Reviewer updated current G2B Gate with a minimal R1 text fix only (Support/empty state, product group/slug label, display-only known notification subject titles, footer and optionally date picker after diagnosis); no new paid plugin, Stripe, account/data mutation or complete source rewrite. Require remaining logged-in user dashboard and product-edit/plan evidence plus post-fix focused screenshots before full G2B claim.
+ACTUAL_CHANGES_THIS_REVIEW: Documentation only in project GitHub main; no Owner-host app/container/database changes and no G2B patch applied.
+ROLLBACK: NONE for review-only round.
