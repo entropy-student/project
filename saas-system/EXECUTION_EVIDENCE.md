@@ -35,3 +35,13 @@
 - `ROLLBACK_EFFECT`: 无本机/Provider 更改，运行时回滚 `NOT_APPLICABLE`；文档变更通过 Git 记录。
 - `RESOURCE_OR_BUSINESS_DELTA`: 仅项目文档修改，无成本、端口、账户、数据库或业务动作。
 - `NEXT`: 等待资源改善后增量复测，或经 Owner 另行指定云端候选并进行只读费用/环境预检；不自动切换项目或修改已有系统。
+
+
+## 2026-10-18 — OWNER_OVERRIDE_AND_G2_PRIVATE_DEMO_GATE_ISSUED
+
+- `OWNER_DECISION`: Owner 明确指示「内存不设为限制条件，继续推进」；这是**取消固定空闲 RAM 作为 Gate 阻塞条件**的授权，不允许忽略实际 OOM/OS 异常/其他项目回归。
+- `PREVIOUS_STATE`: G1 `RETURN_RESOURCE_HEADROOM_INSUFFICIENT` 仍是 2026-10-17 只读报告的历史事实，不删除、不伪改成 PASS。
+- `REVIEWER_ACTION`: 签发 [G2 Velobase 私有演示 Gate](./docs/G2_VELOBASE_PRIVATE_PREVIEW_GATE_20261018.md)，锁定源码 commit `e88e259b974f883913f68ac74a9b8377765d005d` 和本机新 Docker Compose 项目 `saasvh-e88e259`，只做本地 UI/健康验证；动态资源实际异常触发停止，支付动作 0。
+- `ACTUAL_RUNTIME_EXECUTION`: `NOT_STARTED`。本轮 ChatGPT 只操作 GitHub 项目文档，未访问 Owner 物理 Windows，不宣称本地安装/网页可达。
+- `GOVERNANCE`: GitHub 当前 `entropy-student/spike.skill@main:vps-project-governance/VNEXT.md` v0.2.7 已读取，Owner 不要求也未授权修改治理规范。
+- `NEXT`: 本地 Codex 直接执行已审 G2 Gate；结果返回后 Reviewer 依据真实证据判断是否完成首次预览，再进入 Stripe/裂变独立测试。
