@@ -102,3 +102,13 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **NEXT CH5/CH6 WRITER OUTPUT AUTHORITY (CONDITIONAL AND SCOPED):** 下一轮⑤⑥返修三Markdown ZIP交付后，Reviewer有权独立核验首轮 [docs/CH5_CH6_REVIEWER_RETURN_20261017.md](docs/CH5_CH6_REVIEWER_RETURN_20261017.md) 的11 P0、6 P1及新出现的实质问题。仅对残余明确且可验证的小错误自行最小修正、同步算例/正文/附录/执行记录、再次验证V6逐字题文与费用算术、支付及法律官方依据、三文件SHA/CRC；**通过验收可直接将两篇新正文落库GitHub main并同步Library，正式封板，无须就同一已授权范围再向Owner追问**。若存在无法可靠核验的高风险金融/法律断言、重大结构缺陷、错误无法做局部安全修正或产物缺失，则`RETURN`/停止，不能为满足“封板”硬判PASS。③④与封板①②及V6不在本授权的修改范围；⑦/HTML仍待指令。
 - **QUALITY_COMPARISON_FINDING / REVIEWER_INFERENCE (NOT NEW ADOPTION CRITERION):** 完整读过GitHub main现行①–④四篇正文。后两篇并非全面变差：④支付状态机/一致性/异常恢复技术深度强，③顾客失败分流实用；但商业决策示范与多样经营场景较①②有所下降。①含个人原创模板/企业实物出口两套独立完整经营推演（正文约第502–608行），②含支付链接/插件/API取舍及贯穿开通案例；③有四维支付方式矩阵（约94–125行），但只围绕29美元软件订单且缺少完整的地域/账户/方式比较选择；④CAS+Outbox与②约292–354行知识部分重叠（④约257–294行），工程术语占比过高，相对商家操作决策分层弱。③正文有“3秒必流失”“黄金1小时”一类未证明绝对化定量措辞；④正文有“绝不出错”之类非普遍成立的保证。③官方来源标号约8条 vs ①15/②13，单纯来源数量不是错误证明，但其跨境付款方式与续费法务等动态判断更须条件化。此项是**质量评审意见，未获得解封/重新修改③④的Owner指令**，不可据此随意覆写已采用正文。
 - **STATUS CURRENT:** ①② OWNER FINAL SEALED，③④ OWNER ADOPTED BUT NOT SEALED，⑤⑥ FIRST CANDIDATE RETURN WAITING FOR SECOND CANDIDATE；**条件授权仅在新⑤⑥ZIP实际收到且安全验收通过时生效**。无第五第六正式正文文件、未进行实款/退款/出款。
+
+
+## 2026-10-17｜Owner明确③④暂不冻结、⑤⑥第二轮Review结果
+
+- **OWNER_REPORTED：**“第三四部分暂不冻结，第五六部分请你review，依旧复查对比一二部分是否有明显的下降，分点逐项列举。”此决定明确③④仍`OWNER ADOPTED / NOT SEALED`，本轮仅评估⑤⑥新候选，不构成对③④正文的直接编辑授权。
+- **新候选** `现代商业支付系统_第五六部分_联合独立写作成果(2).zip` SHA256 `de8a7b737509666509486e672be23a6b364d942d76726c204bcd9e7c378634ad`。三份UTF-8 MD结构与V6各章正式4H2/5H3、4H2/6H3通过；源文件与对应SHA见 [当前完整Review报告](docs/CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md)。Library活动候选 `/现代商业支付系统/现代商业支付系统_第五六部分_第二轮返修候选_20261017.zip`，stable ID `libfile_ebd49007347c819199983acb6693501d`。
+- **Reviewer最新判定：**`RETURN_FACT_AND_ENGINEERING / OWNER_SEAL_GATE_NOT_MET`。候选已修复部分前轮错误，但⑤遗漏Stripe HK USD Payouts收费1%最低US$5致29美元最终到账示例错；⑥Visa VAMP仍误用旧DTR指标与固定阈值，退款示例对不确定Stripe响应直接回滚本地退款额度预占而可能重复退款；另存有罚金/冻结180天/强制双通道/部分退款等不充分断言。须进一步定向修复，**不可将已授权条件式封板理解为“无论结果如何都必须封板”**。
+- **①②比较结论：**⑤⑥新知识覆盖完整，但单笔29美元软件案例单一；比①个人/企业两套完整商业选择推演和②多种接入方式比较更缺能让卖家完成真实选择的案例、准入条件与最终费用核验。⑥工程与合规模块过于绝对，对非工程商家知识分层略差。此审查意见详见当前Reviewer报告，仅用于⑤⑥定向修订，不自动修改③④或全书V6。
+- **最新报告** GitHub `docs/CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md` Blob `78a69f811a9bb6310b7ee04d6f26495090fbe501`，SHA256 `ecf53671cb89780392eb744ff83357acf442fb951067ed653a3a6df6ed24353c`，Library ID `libfile_69a10dc1dd9481918739920ab8c71228`。旧⑤⑥首轮候选与旧Reviewer报告完整移入`/项目历史归档/`，没有销毁。
+- **仍然生效的Owner条件权限：** 下一返修⑤⑥若经独立审核所有资金/法规/工程阻断彻底排除，可由Reviewer对剩余极小问题直接安全修正、落库并正式封板；本次未达此Gate门槛，⑤⑥尚无正式正文。①②已封板、③④已采纳但暂不封板、V6结构未修改；⑦和HTML未启动。
