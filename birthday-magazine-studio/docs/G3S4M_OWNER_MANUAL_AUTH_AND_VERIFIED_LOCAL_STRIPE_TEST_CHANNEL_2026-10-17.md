@@ -1,7 +1,7 @@
 # G3S4M — Owner-manual login, verified local administration and conditional Stripe TEST-only payment
 
 > Date: 2026-10-17
-> Status: **PREPARED_AWAIT_FRESH_OWNER_TEST_WRITE_AUTHORIZATION**; Owner manual WP login checkpoint can happen independently, but no plugin/provider/payment write is authorized by this file.
+> Status: **READ_ONLY_PREFLIGHT_REVIEWER_PASS; OFFICIAL_STRIPE_CLI_LOCAL_COMPATIBILITY_PREP_NEXT; TEST_WRITES_NOT_AUTHORIZED**. See latest dated Reviewer appendix below.
 > Parent Reviewer RETURN: `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`
 > Retained G3S4R Evidence: PR #64 `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350`
 > Prior backup/restore Evidence: `docs/evidence/g3s4/G3S4E_RETAINED_PREFLIGHT_AND_BACKUP_RECOVERY_2026-10-16.md` at `7397dd3bb7ab5fe62bb8575185d51405391f2c63`
@@ -53,3 +53,15 @@ EXECUTOR_TO_REVIEWER_RELAY=Short packet with PASS_CANDIDATE or precise RETURN, e
 请 Reviewer 检查：是否满足 G3S4M 的真正 Stripe TEST 支付闭环验收。
 Owner 转交：仅本人浏览器登录/必要授权，不传任何密钥。
 ```
+
+## 2026-10-17 Reviewer — preflight PASS and official local forwarding candidate
+
+**Authoritative decision:** `docs/REVIEWER_DECISION_G3S4M_READONLY_PASS_LOCAL_STRIPE_CLI_ROUTE_2026-10-17.md`. PR #64 Evidence at `5930438afd19af5cf718389ee4356a62fb22e705` is accepted for the bounded read-only preflight only. Original local WordPress/Woo #1113 USD39.99 and three selected backup hashes verified from Executor readback; Woo Stripe 11.1.0 is inactive, no signed Webhook channel, Test provider/payment/refund **not started**. The historical G3S4M Gate's authorization and acceptance contract remain in effect; this appendix only clarifies its **next bounded technical preparation step**.
+
+**Preferred candidate:** official Stripe CLI `stripe listen --forward-to` via outbound TEST-mode connection, delivering to `http://127.0.0.1:8189/?wc-api=wc_stripe` after the plugin's supported native webhook handler is enabled in a separately authorized later phase. Stripe official docs explicitly permit local forwarding without registering a public endpoint. Official Woo docs identify `?wc-api=wc_stripe` as its webhook route. This **does not prove** that Woo Stripe **11.1.0** can accept the CLI listener's TEST signing secret or connect its account against a loopback WordPress installation. Confirm actual plugin version-specific support *before* trying to connect or simulate checkout.
+
+**Current allowed endpoint under this existing Gate:** one narrow, read-only source/doc inspection of installed official Woo Stripe 11.1.0 for native TEST webhook signature/event/endpoint/configuration compatibility with official Stripe CLI listener; if clearly compatible, stage official Windows Stripe CLI only in a reversible, project-private Owner user location with pinned release/integrity, no auto-update/global PATH/background service; verify `--version`/`listen --help` offline without displaying any secret. No Stripe CLI `login`/`listen` connection, no Provider operation, plugin activation, WP settings/database write, real webhook POST, business order, public tunnel, VPS access or PR merge. Append sanitized results to the existing G3S4M PR64 Evidence and mandatory Reviewer stop. Existing site/backup source checks are accepted and not replayed absent drift.
+
+**Important caveat:** Stripe CLI outputs a listener-specific signing secret; successful CLI forwarding alone does not prove Woo's test webhook verification or order/fulfilment behavior. Only later with explicit fresh TEST-write consent, credential rotation, exact account/TEST mode proof and supported plugin configuration should Owner alone connect authenticated account and enter any signing secret privately; then test actual native Woo checkout with signed first/replay/negative webhook and bounded TEST refund, not an unrelated synthetic trigger. If Woo cannot safely use CLI listener TEST secret with official supported configuration, STOP to Reviewer for a dedicated, separately authorized HTTPS test environment (no ad-hoc public tunnel).
+
+Official refs: https://docs.stripe.com/webhooks ; https://docs.stripe.com/cli/listen ; https://docs.stripe.com/cli/install ; https://woocommerce.com/document/stripe/setup-and-configuration/stripe-webhooks/ .
