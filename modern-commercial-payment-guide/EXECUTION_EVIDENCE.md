@@ -332,3 +332,13 @@
 - **REVIEWER PATCH**：按Stripe/PayPal官方文档针对PayPal批准/授权、Checkout Session与PaymentIntent、实际订阅账期、Manual Capture条件、银行余额、Environment字段、退款/争议费用与ARN、Stripe Idempotency 24小时窗口等进行事实定向修订，修复损坏的LaTex公式，并改写误导性绝对句；共分40+局部修订，无冻结标题变化。改后候选66,771 bytes/SHA256 `0ea030d3b9db33b2e0609da7a517bb5dd3463953698319b8beef3db15508038e`，4H2/5H3逐字PASS、单H1、12/12引用PASS。
 - **CANDIDATE ARCHIVE & QUALITY**：Library `/现代商业支付系统/现代商业支付系统_第四部分_Reviewer校正候选及审核报告_20261017.zip`，ID `libfile_ca773c072d9881918ee3c50130c365f4`，ZIP29,096 bytes/SHA256 `0658671f39ee5e795b73cab191b2a1875a8cf74dd63e0c5cb77e23dc17b51eee`，2MD/CRC PASS。独立报告Git Blob `401978c7f46264d771fe6abe64123a59fb2fbd3d`；与封板①②③相比技术深度、两行业广度与业务判断达标，文本偏技术密度留到HTML交互展示。
 - **CURRENT STOP**：`REVIEW_PASS_CANDIDATE_AFTER_FIX / OWNER_APPROVAL_PENDING / NO_FORMAL_CH4 / CH5_CH6_RETIRED`。本轮只新增Reviewer报告并更新四份治理文档；禁止修改封板①②③、V6，未进行真实交易、退款或生产环境操作。
+
+## MCPG-CH4-DELEGATED-FINAL-INDEPENDENT-REVIEW-20261017｜第四部分第二轮独立复审、最终SHA与归档
+
+- **OWNERSHIP/AUTH**：Owner授权Reviewer自行review、返工直至达标，不用Owner每次批准；本次仅新增④新的正式正文、终版审核报告与归档清单并更新四份治理文件。未改①②③/V6/⑤⑥/⑦。
+- **BASELINE**：第一部分Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，第二 `51dab57d0ed5d5458b14422040297ebfbcebe676`，第三 `4f56213f307827fbfcd6aec521cdef2fee68374d`，V6 `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`；旧④早已从main删除，原Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`只历史保留。
+- **INPUT & REVIEW**：原独立Writer ZIP SHA256 `ce4ecd984b54701724f5c8eb9d5937b7831135f530fd42b8d50c718a95db9a84`；上一轮Reviewer校正ZIP SHA256 `0658671f39ee5e795b73cab191b2a1875a8cf74dd63e0c5cb77e23dc17b51eee`。本次从其66,771 bytes版本独立再次审核并做局部更正，不覆盖作者原始版。
+- **CROSS-CHECK**：旧候选存在PayPal Approval误标/Order Completed误判、Capture发货顺序错误、重复款一律退款/ARN、Stripe API v1/v2幂等边界、订阅账期出处、无返回ID未知态等；修改后4H2/5H3精准PASS，双场景PASS，13条[S01]—[S13]双向一致，代码围栏配对，Markdown无损坏制表符。最终正文69,419 bytes/559 lines/SHA256 `c1d05a24f42b13642884c46e5e2804fc9796252cb77cbd88596885a12f6d3383`，Git Blob `3509ab65ccc9a7217a17e3b2d761307c5490c21b`。
+- **EVIDENCE**：独立报告8,586 bytes/SHA256 `8727db090edae445941ce2b066be61087f339e95df1c17ca7b19c3efb5a7a246`，Blob `8f0435f2692adc4b48254b64cca2f03bd7f4bedc`；归档清单559 bytes/SHA256 `a30c7be0b8d697915868ba319901e4df3a494f8fa516899a88222df9324931a7`，Blob `038ca437a6f3290c5320909653f987be1a302a97`。
+- **ARCHIVE**：ZIP30,795 bytes/3 files/CRC PASS/SHA256 `7ae396ba7a80eb32b402dcdabada267fde9a3d54e6f2fab35d3e28ce1e864035`，Library `/项目历史归档/现代商业支付系统_第四部分_20261017_正式定稿归档包.zip` ID `libfile_5d0a387b0ef88191aaec3d51eb5b6599`；原文正文Library ID `libfile_a5a94a492dd48191b5f14b872681026e`，Reviewer报告 ID `libfile_353ac577a5f48191b1ab2e7cd66a7805`。
+- **SCOPE/STOP**：质量达标；正式封板 4/7，⑤⑥尚无有效正文/不启动，⑦及HTML未启动；未实际调用任何收单接口、退款、支付卡、账户注册或真实部署。`CH4_FINAL_PASS_ARCHIVED / FIRST_FOUR_SEALED / CH5_CH6_RETIRED`。

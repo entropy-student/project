@@ -91,7 +91,7 @@
 | ① 收款方案选择 | 正式封板，不改 |
 | ② 收款开通与接入 | 正式封板，不改 |
 | ③ 顾客付款 | 正式封存归档，不改 |
-| ④ 支付处理 | **旧正文从main移除，等待独立新稿** |
+| ④ 支付处理 | **新重写稿正式采纳并归档封板；旧第四仅历史备份** |
 | ⑤ 资金结算与到账 | **旧候选退出有效内容，尚未重新启动** |
 | ⑥ 售后与资金风险 | **旧候选退出有效内容，尚未重新启动** |
 | ⑦ 财务与合规经营 | 未启动 |
@@ -99,7 +99,7 @@
 
 ① [正式全文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`；② [正式全文](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`；③ [正式全文](docs/CHAPTER3_OWNER_ADOPTED_20261017.md)，Blob `4f56213f307827fbfcd6aec521cdef2fee68374d`，以及[最终归档登记](docs/CH3_FINAL_ARCHIVE_FREEZE_20261017.md)。V6 [冻结快照](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。上述正文及框架均不准修改。
 
-## 六、唯一有效下一任务：第四部分全新独立重写
+## 六、历史第四部分独立重写（已完成，现行状态见第九节）
 
 - **当前Gate**：[docs/CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md](docs/CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md)。
 - **唯一新工作包**：Library `/现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_清理版_20261017.zip`，stable ID `libfile_566a96bcb4348191a8e88dcb6b0bcb05`，SHA256 `1500537f3b3cfd0ef071076bd85522aa339e14f8903bc2bfdd804cd6055e248b`，107,360 bytes，10份UTF-8 Markdown，CRC PASS。
@@ -123,3 +123,12 @@
 - **质量对比**：技术深度、适用范围、商业可操作性达标，无明显低于封板①②③；专业术语仍比前三篇密集，宜在最终HTML渐进展示。
 - **唯一待Owner决定的候选**：Library `/现代商业支付系统/现代商业支付系统_第四部分_Reviewer校正候选及审核报告_20261017.zip`，stable ID `libfile_ca773c072d9881918ee3c50130c365f4`，ZIP SHA256 `0658671f39ee5e795b73cab191b2a1875a8cf74dd63e0c5cb77e23dc17b51eee`。候选正文SHA256 `0ea030d3b9db33b2e0609da7a517bb5dd3463953698319b8beef3db15508038e`；报告另存 Library ID `libfile_1f5ba37a143481918ff1dd98c6566051`。
 - **本轮有效状态**：`CH4_PASS_CANDIDATE_AFTER_FIX / OWNER_DECISION_PENDING / NO_FORMAL_CH4_TEXT`。原旧④继续历史归档不恢复；①②③正式封板不动，V6不动，⑤⑥不恢复，第⑦与HTML未启动。Owner尚未批准将新稿采纳为正文。
+
+## 九、MCPG-CH4-DELEGATED-FINAL-INDEPENDENT-REVIEW-20261017｜当前最终权威：④独立复审后正式封存
+
+- **Owner最新授权**：“你来review，看深度广度以及是否有明显错误等，如需返工，按照前三部分的模式进行推进，我不介入。”本轮由独立Reviewer再次验证新稿、直接最小事实纠错；已达到与①②③同级标准，因此按前三章流程**正式采纳并归档④**，无需再由Owner逐项批准。但本授权不包括第五六重启、冻结框架修改、任何真实支付或部署。
+- **唯一第四部分正式正文**：[docs/CHAPTER4_REWRITTEN_FINAL_20261017.md](docs/CHAPTER4_REWRITTEN_FINAL_20261017.md)，Git Blob `3509ab65ccc9a7217a17e3b2d761307c5490c21b`，SHA256 `c1d05a24f42b13642884c46e5e2804fc9796252cb77cbd88596885a12f6d3383`，69,419 bytes、559行。V6第四部分4H2/5H3逐字PASS，29美元软件与120美元实物双案例PASS，官方引用[S01]—[S13]双向PASS。
+- **独立最终Reviewer报告**：[docs/CH4_FINAL_INDEPENDENT_REVIEW_AND_ARCHIVE_20261017.md](docs/CH4_FINAL_INDEPENDENT_REVIEW_AND_ARCHIVE_20261017.md)，Blob `8f0435f2692adc4b48254b64cca2f03bd7f4bedc`；[正式归档清单](docs/CH4_FINAL_ARCHIVE_MANIFEST_20261017.md)。上一轮`CH4_NEW_AGENT_INDEPENDENT_REVIEW_AFTER_FIX_20261017.md`及清理版 Writer Gate 均是**历史资料**，不再是采纳阻断；此前`OWNER_DECISION_PENDING/NO_FORMAL_CH4`描述已失效。
+- **第二轮独立审核修正**：发现并纠正工具表错把PayPal`APPROVED`当已授权、错误把PayPal Order`COMPLETED`视为已捕获、实物先发货后核验Capture、重复扣款一律即刻退款提供ARN、Stripe幂等v1/v2混用、订阅发票来源、未知支付ID等事实和判断问题。对①②③横向比较，无知识深度/广度/商业判断的明显下降；技术术语密度较高，终版HTML可以渐进展开，不阻断正式收录。
+- **冗余归档**：Library `/项目历史归档/现代商业支付系统_第四部分_20261017_正式定稿归档包.zip`（ID `libfile_5d0a387b0ef88191aaec3d51eb5b6599`），ZIP SHA256 `7ae396ba7a80eb32b402dcdabada267fde9a3d54e6f2fab35d3e28ce1e864035`，30,795 bytes、3文件、CRC PASS；另有纯文本正文快照ID `libfile_a5a94a492dd48191b5f14b872681026e`；原作者ZIP与早期校正版均可追溯，旧第四历史原稿不恢复。
+- **最新总体状态**：①②③④ `FINAL SEALED / ARCHIVED`（正式封板4/7）；⑤⑥已删除旧有效候选、**新写作尚未授权/启动**；⑦与HTML未启动，V6 7/29/42冻结。下一步建议第五部分独立重写准备，但本轮不自动开始。`

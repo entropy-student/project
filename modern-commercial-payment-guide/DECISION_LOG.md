@@ -171,3 +171,10 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **Owner之前的有效约束**：原第四内容清理，新稿须独立审核后由Owner决定是否采纳；本次收到新稿不是自动正式落库授权。
 - **审核结论**：原ZIP SHA256 `ce4ecd984b54701724f5c8eb9d5937b7831135f530fd42b8d50c718a95db9a84`，独立Reviewer最小修订后 `PASS_CANDIDATE_AFTER_FIX`。4H2/5H3冻结题原文通过，纠正核心支付事实，双案例与前③章深广度对比达标，阅读密度仍有改进空间。报告 [链接](docs/CH4_NEW_AGENT_INDEPENDENT_REVIEW_AFTER_FIX_20261017.md)；校正版唯一候选 Library ID `libfile_ca773c072d9881918ee3c50130c365f4`。
 - **状态保持**：`NOT_OWNER_ADOPTED / NOT_SEALED`；第四部分 `main` 无正式正文，旧第四/第五/第六文件不恢复；第一二三与V6保持冻结；第七HTML未启动。下一动作仅等待Owner对校正版采纳或继续精炼的明确决策。
+
+## 2026-10-17｜MCPG-CH4-DELEGATED-FINAL-INDEPENDENT-REVIEW-20261017｜第四部分由Reviewer委托自主复审、定向修复并封板
+
+- **最新Owner原话**：“你来review，看深度广度以及是否有明显错误等，如需返工，按照前三部分的模式进行推进，我不介入。”该较新委托授权独立Reviewer自行推进④至达标、采纳及归档，替代此前`OWNER_DECISION_PENDING`停点，不授权⑤⑥或生产交易。
+- **客观发现**：上一轮PASS校正版仍把PayPal`APPROVED`误作持卡额度冻结、PayPal Order`COMPLETED`误作Capture成功、实物发货缺Capture确认、重复扣款无条件即时退及ARN承诺、Stripe API v1/v2幂等混用等；本轮全部按官方来源局部校正，补订阅发票、事件乱序、无支付ID未知态与金额条件。无需推翻双案例教学。
+- **正式结果**：④新正文[`docs/CHAPTER4_REWRITTEN_FINAL_20261017.md`](docs/CHAPTER4_REWRITTEN_FINAL_20261017.md) SHA256 `c1d05a24f42b13642884c46e5e2804fc9796252cb77cbd88596885a12f6d3383`、Blob `3509ab65ccc9a7217a17e3b2d761307c5490c21b`；最终报告[`docs/CH4_FINAL_INDEPENDENT_REVIEW_AND_ARCHIVE_20261017.md`](docs/CH4_FINAL_INDEPENDENT_REVIEW_AND_ARCHIVE_20261017.md) Blob `8f0435f2692adc4b48254b64cca2f03bd7f4bedc`；单独归档清单[`docs/CH4_FINAL_ARCHIVE_MANIFEST_20261017.md`](docs/CH4_FINAL_ARCHIVE_MANIFEST_20261017.md)。V6第四4H2/5H3原文顺序和[S01]—[S13]正文/附录双向引用核验通过。知识深度/广度、商业决策和①②③衔接均达标，新手阅读密度略高但不阻断。
+- **状态**：`PASS_AFTER_TARGETED_FIX / CH4_FORMAL_FINAL_ARCHIVE / SEALED`；①②③/V6不动；⑤⑥旧内容继续撤出有效资料，⑦及HTML未启动；旧④仅Git历史而非现行正文。已留ZIP及原文MD双备份。
