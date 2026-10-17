@@ -4,7 +4,16 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (Owner prefers existing local Docker + Cloudflare-domain named Tunnel; paid WordPress.com deferred; G3S4J read-only design, no public/Provider write)
+ > Last reviewed: 2026-10-17 (Owner Cloudflare page open inside Codex; screenshot zones visible; G3S4J read-only browser + localhost publication safety discovery; no public write)
+
+## CURRENT_OWNER_CODEX_CLOUDFLARE_BROWSER_OPEN_2026_10_17 — LATEST
+
+**Owner input (2026-10-17):** current Codex integrated browser is already open to the Cloudflare dashboard; uploaded screenshot displays Domain list `spikersun.com`, `spikewang.ccwu.cc`, `spikspikeapi.dpdns.org`. Screenshot proves a **visible Owner-managed dashboard listing only**, not verified zone write rights, DNS slot or an existing tunnel. Owner instructed to continue under governance; **G3S4J read-only browser/local checks are now the immediate Codex task.**
+
+- **Immediate specific candidate:** `stripe-test.spikersun.com` under displayed `spikersun.com`, only a **proposed** stable test hostname. Check in Codex browser that zone is active, account authorized, no DNS/tunnel name conflict. Do not overwrite, create DNS or deploy just because screenshot shows a domain; subsequent **named public hostname + temporary synthetic-only publication** needs one explicit Owner authorization.
+- **Read-only Codex scope:** inspect non-secret Cloudflare dashboard zone/Tunnel controls, actual local 8189 site's safely-public data and WP canonical HTTPS proxy/Stripe Webhook needs, then update one G3S4J Evidence on PR64 and STOP Reviewer. Owner is already in Codex's browser; do not require a new login or external browser. Do not retrieve/export Cloudflare API tokens, cookies or screenshot account secrets. This Reviewer did not take over Codex/browser.
+- **Security optimization:** publishing the **existing** 8189 website requires proving no customer/personal/private content exposure and privately rotating its previously exposed admin password. If not safe, prefer a **fresh isolated synthetic-only local Woo test site**, which **does not reuse or publish** the old credential/old site; that credential is still recommended for independent rotation but **does not block** exposing a separate clean test instance.
+- **Unchanged:** No Tunnel/DNS/paid hosting/Stripe OAuth/TEST checkout yet. Original official Stripe plugin active with gateway disabled; PR64 head `b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf` OPEN/unmerged, no old/replacement VPS.
 
 ## CURRENT_REVIEWER_G3S4J_LOCAL_CLOUDFLARE_PREFERENCE_2026_10_17 — LATEST OVERRIDE
 
@@ -556,6 +565,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 - Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy and preserved the prior 7 G3C/G3CR6R1 branch commits/evidence. A later Executor correctly returned when unrelated `vpn-network-optimization/` commits moved repository `main`; Reviewer confirmed this was **not Birthday Magazine project drift** and corrected the preflight to project-scoped freshness. The approved PR #64 execution head must descend from the anchor and contain all current-main changes affecting `birthday-magazine-studio/**` or another path explicitly named by the Gate; unrelated monorepo commits do not block.
 
 ## CURRENT_GATE
+
+**Current 2026-10-17 Owner browser checkpoint:** screenshot in current conversation shows Cloudflare account domain listing; use **Codex integrated browser read-only** (not ChatGPT local browser) to verify `spikersun.com` active status, availability of the **candidate only** `stripe-test.spikersun.com`, and Tunnel UI. Parallel narrow local 8189 privacy/HTTPS canonical check; one PR64 G3S4J Evidence and Reviewer STOP. Do not create or publish the hostname yet. If existing site unsafe, propose separate synthetic local stack without reusing exposed old admin credential. See latest appended G3S4J Gate.
 
 **CURRENT G3S4J — Cloudflare Tunnel exposing a local synthetic-only Woo TEST instance, READ-ONLY DESIGN FIRST; no public/write permission yet.** Owner asks to use their own Cloudflare-registered domain and already running Windows Docker WP instead of buying WordPress.com. Reviewer supersedes G3S4I as active route without discarding its historical research. See `docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md` and `docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md`.
 
