@@ -58,6 +58,12 @@ if (-not (Test-Path $manifest)) {
     if (-not $yaml.Contains(('127.0.0.1:' + $Port + ':80'))) { throw 'Port differs from existing trial config.' }
     Write-Host '[P1] Reusing owned project without overwriting data.'
 }
+# Keep Laravel encryption key in the project-owned local .env rather than container logs.
+$appEnvPath = Join-Path $root '.env'
+if (-not (Test-Path -LiteralPath $appEnvPath)) {
+    $appKey = 'base64:' + [Convert]::ToBase64String([System.Security.Cryptography.RandomNumberGenerator]::GetBytes(32))
+    ('APP_KEY=' + $appKey) | Set-Content -LiteralPath $appEnvPath -Encoding utf8
+}
 Write-Host '[P2] Validating and starting three containers ...'
 & docker compose -p $projectName -f $manifest config --quiet
 Check-Docker 'compose config'
@@ -115,7 +121,7 @@ Write-Host '[P5] Checking HTTP frontend ...'
 $webOK = $false
 for ($i = 0; $i -lt 12; $i++) {
     try {
-        $resp = Invoke-WebRequest -Uri $url -MaximumRedirection 5 -TimeoutSec 10
+        $resp = Invoke-WebRequest -Uri $url -NoProxy -MaximumRedirection 5 -TimeoutSec 10
         if ([int]$resp.StatusCode -ge 200 -and [int]$resp.StatusCode -lt 400) { $webOK = $true; break }
     } catch { Start-Sleep -Seconds 3 }
 }
