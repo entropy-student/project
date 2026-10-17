@@ -313,3 +313,65 @@ exit $LASTEXITCODE
 ```
 
 STOP_AT_REVIEWER=YES
+
+
+
+## 2026-10-17 G3S4L public CSS repair and anonymous safety readback
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_CANONICAL_ASSET_REPAIR
+STOP_AT_REVIEWER=YES
+PUBLIC_HOST=magazine.spikersun.com
+TUNNEL_OR_DNS_WRITE=NOT_PERFORMED
+STRIPE_TEST_OR_LIVE=NOT_PERFORMED
+```
+
+### Anonymous pre-repair probes
+
+All requests were unauthenticated, without browser cookies; response bodies and customer identifiers were not emitted or retained.
+
+- `GET /` returned HTTPS 200 HTML. Its first-party CSS/JS URLs used `https://127.0.0.1:8189/`. `/wp-admin/` returned 302 to the loopback `wp-login.php` URL.
+- `/wp-json/wc/v3/orders` returned 401; `/wp-json/wp/v2/users?context=edit` returned 401.
+- `/wp-content/uploads/woocommerce_uploads/` and its `.htaccess` returned 403.
+- `/wp-config.php` returned 403. No order/private-upload payload was returned.
+- A known safe synthetic private-file selector was not present in accepted G3S4L evidence, so no individual protected filename/order-download selector was guessed or probed: `PRIVATE_FILE_SELECTOR=NOT_RUN`.
+
+### Root cause and minimal repair
+
+Before the change, WordPress option `home` and `siteurl` were both exactly `http://127.0.0.1:8189`; neither `WP_HOME` nor `WP_SITEURL` was defined. The existing `wp-config.php` already recognized `HTTP_X_FORWARDED_PROTO=https` and set `HTTPS=on`. The public HTML therefore combined the correct forwarded HTTPS scheme with a loopback hostname. Direct requests to the referenced `https://127.0.0.1:8189` assets failed TLS (curl status 000 / exit 35), while the same local HTTP assets and their correct public HTTPS paths returned 200. Theme/plugin assets were present; no cache or missing-file cause was indicated.
+
+Using WordPress `update_option()`, guarded by exact readback of both original values, changed only:
+
+- `home`: `http://127.0.0.1:8189` → `https://magazine.spikersun.com`
+- `siteurl`: `http://127.0.0.1:8189` → `https://magazine.spikersun.com`
+
+Both new values were immediately read back exactly. No source, theme, plugin, proxy, Cloudflare, DNS, Tunnel, or cache configuration was changed; no cache purge was needed.
+
+### Post-repair HTTP acceptance
+
+Without cookies or TLS bypass, executor-host HTTPS GETs returned 200 for homepage `/`, preview `/make-your-magazine/`, public product `/product/birthday-magazine/`, and `/cart/`. Product permalink was obtained from the public Woo Store API. Empty `/checkout/` correctly returned 302 to the public `/cart/`; no item was added and no populated checkout, order, payment, or refund was attempted.
+
+Across those four HTML pages, observed CSS/JS references had zero `http://` mixed-content URLs and zero loopback hosts. On the homepage, all 9 first-party stylesheets returned 200 with `text/css`, all 12 first-party scripts returned 200 with JavaScript MIME, and the referenced Google Fonts stylesheet returned 200 with `text/css`. The public URLs were HTTPS; representative HTML/CSS/JS response requests used normal certificate validation. This proves resource delivery, not a post-fix visual screenshot.
+
+### Anonymous post-repair checks
+
+- `/wp-admin/`: 302 to the public `/wp-login.php` (no loopback redirect).
+- Woo orders API and privileged REST users context: 401.
+- Woo protected uploads directory and `.htaccess`: 403.
+- `/wp-config.php`: 403; `.env` and `wp-content/debug.log`: 404.
+- Anonymous `/my-account/orders/` returned 200 with the guest login form, no orders table, and zero order rows.
+- Public REST `users?context=embed` returned one public profile without email, capabilities, or roles; no profile values were logged. This is public profile data, not evidence of private order/admin data access.
+
+No unauthorized private order or protected-upload data was observed. A specific protected file remains untested because there was no accepted safe selector to reuse. No customer names, order IDs, file names, response payloads, session cookies, or secrets were placed in this Evidence.
+
+### Rollback and limits
+
+Exact rollback values are preserved above. If the public canonical host must be reverted, the reversible WordPress-native action is:
+
+```powershell
+docker exec birthday-magazine-g3c-wordpress-1 php -r 'require "/var/www/html/wp-load.php"; update_option("home","http://127.0.0.1:8189"); update_option("siteurl","http://127.0.0.1:8189");'
+```
+
+After rollback, verify both options read back as `http://127.0.0.1:8189` and use the retained local HTTP origin. Rollback was not executed. No populated checkout was created; Computer Use was not invoked or bypassed, so no post-fix visual screenshot is claimed. Machine resource delivery and route-level anonymous checks are PASS_CANDIDATE; Reviewer visual assessment and the unavailable individual protected-file selector remain explicit limits.
+
+STOP_AT_REVIEWER=YES
