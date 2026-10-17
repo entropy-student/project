@@ -49,3 +49,12 @@ E. 只读 post-check：项目名匹配容器 0、卷 0、网络 0；项目本机
 回滚：已删除演示 DB/密钥不保证复原；保留 GitHub 既有 commit 用于重新安装源码。
 请 Reviewer 检查：本机全清零且范围正确，并在确认后删 GitHub main 里 paymenter-local-lab 目录。
 Owner 转交：仅本轮运行结果，不包含秘密。
+
+
+## Reviewer G3 partial decision / Owner-local exception checkpoint — 2026-10-17
+Status: `DOCKER_RESOURCE_REMOVAL_PARTIAL_ACCEPTED / ROOT_OWNER_LOCAL_CHECKPOINT_PENDING`.
+The original G3 Executor completed the three Paymenter containers, two named volumes and unique network removal, read back absence/port, and preserved all shared resources; PR #151 was reviewed and merged (d679f3a0edaf20499e050f118277171522adf7f0). The only outstanding Owner-host item is `C:\Users\34707\Documents\ChatGPT\Paymenter-Local-Lab`, containing solely verified project-labelled files and local project secrets/legacy host database/backups per Executor preflight. Automated scoped PowerShell recursive delete returned `blocked by policy`, **did not run**, and was not circumvented.
+
+Per Governance v0.2.7 §11F: **Do not retry via Codex, other terminal/shell/PowerShell/Python, scheduler, GUI automation or another tool.** The irreversible exact-target folder deletion must be done only by Owner manually in ordinary Windows File Explorer. Navigate to the **parent** directory `C:\Users\34707\Documents\ChatGPT`, visually select **only** `Paymenter-Local-Lab`, use `Shift+Delete`, acknowledge permanent-delete prompt. Do not select/delete the `ChatGPT` parent or sibling folders; no image/volume/global Docker action. Permanent deletion removes project secrets/backups too and cannot promise data recovery; Owner's prior explicit request authorizes retired demo data deletion.
+
+After Owner confirms that action, Codex may perform **read-only-only** verification of the exact root absence, original project Docker namespace 0, 8187 no Paymenter listener, and shared resource counts unchanged; return non-secret proof to Reviewer. No delete command may be run by Codex. Reviewer after full LOCAL_PASS performs GitHub scoped subtree cleanup. This addendum supersedes the original Gate's local Executor automatic-root-deletion step (D) due explicit policy block; earlier accepted Docker substeps do not repeat.
