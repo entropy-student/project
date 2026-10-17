@@ -1,3 +1,14 @@
+# 当前V4入口（2026-10-17）
+
+> **V4 = 复用原Mac画法 + 六模块/七镜头 + Master Clock + 关闭回桌面；技术局部PASS、整体视觉待验收。** PR#144仍为Draft，R3正式HOLD/NO_PUBLISH均不变。
+
+- **推荐从这里继续：** [storyboard-v4-master.html](storyboard-v4-master.html)，一份自包含离线HTML，嵌入main上选定的Research Aqua V2原Canvas源码；其六个内容模板为`TEMPLATE_RENDERERS.T1–T6`，实例/素材/时长在`EDITORIAL`，`compileTimeline`统一排时。不含第三方媒体：需要用文件选择按钮填入合法图片/视频。
+- **时间轴：** 0–4.76秒Mac打开文件；4.76–28.76秒七个不同shot（T1两次，媒体互不串扰）；28.76–31.06秒鼠标点红灯关闭播放器回原桌面。包括进度条、字幕、播放器状态与收尾仅用一份时轴。
+- **真实样片预览：** 有第三方参考影片画面及样例图片的私有31秒HTML文件在本轮对话附件，不能发布或推到Git。该私有附件是**V3近似壳**而非上述GitHub原绘制版；两份不能冒充逐帧等价。
+- **Evidence/Review：** [V4 Gate与独立审查](../../docs/CWS_TEMPLATE_LAB_V4_MODULAR_TIMELINE_REVIEW_2026-10-17.md)。本地定时seek/模块化验证通过；GitHub原Canvas完整嵌入版浏览器观感、整条一倍速测试、真实素材权利和MP4渲染仍未验收。不要将`index.html`的V2历史演示误当作V4。
+
+---
+
 ## V3 30秒动态预览（2026-10-17，最新；覆盖下方旧V2开发状态）
 
 - **GitHub中可复用的无媒体源码**：[storyboard-v3-source.html](storyboard-v3-source.html)：六种模板＋30秒时间轴＋本地媒体槽位＋字幕编辑＋配置导出。默认空素材，必须自行填合法素材。
