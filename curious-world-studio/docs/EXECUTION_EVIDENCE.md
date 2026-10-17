@@ -119,3 +119,17 @@
 - DIRECT_GITHUB_READBACK：`entropy-student/spike.skill/main` @ `16e33384dc569629a1527d1c9ec0060823af09ce`；`comic-narrative/part4_5/ASSET_REUSE_LIBRARY.md`区分完整图片直接复用、旧图单一状态编辑、仅做参考及新图生成；`comic-narrative/tools/imagegen-fast-path/README.md`及R2R1V验收证据确认并发2、output_hint解析/直接保存、SHA/尺寸/QA、Native像素差异不单独失败。
 - ACTUAL_CHANGE：新增`docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md`，并在现行裁决登记、Handoff和CURRENT_STATE中引用。该技巧是其他项目已验收能力的**移植参考**，CWS未验证其适配，不得称Token计费实测最低。
 - SCOPE/ROLLBACK：仅CWS项目文档，原有文案/历史13×6表/视频媒体/Remotion代码/AI生成资源与其他项目不修改；文档可经Git版本回滚，历史证据保持追加。
+
+
+## EVIDENCE 2026-10-17｜PR#144内容模板V1 RETURN → V2独立离线返修候选
+
+- AUTHORIZED_GATE：`CWS-TEMPLATE-LAB-V2-OFFLINE-REWORK-20261017`，Owner在看到PR#144的Reviewer RETURN后同意继续，要求整理文档。本轮仅独立PR上的离线HTML/项目文档，不含真实R4制作、账号/成本、素材下载、AI生图或公开发布。
+- PREFLIGHT_FACTS（DIRECT_READBACK）：`main`当前CWS唯一状态与Handoff仍为R3视觉RETURN，`STYLE_LOCK v1.2`及正式3+1/2/4/6素材边界有效；PR#144未合并，局部修改原型归属`curious-world-studio/visual/content-template-lab/`。
+- ACTUAL_CHANGES：PR#144分支已将静态V1换为约28.76秒的六场景时间轴预览；从上游经SHA核实的G1V-A V2原始Canvas动画复制嵌入`iframe srcdoc`（主线源码未变），只调整演示媒体区、文件名、24秒内容时轴与重复播放设置；可选择本地媒体、编辑字幕/说明、自动T5/T6状态推进并导出完整演示配置；已增加新版README、专用Gate。没有生成新的科研场景/人物实体素材。
+- OBJECTIVE_READBACK：浏览器隔离测试6/6模板显示，预览T5推进至第二阶段、T6推进至示例48%状态；本地自制测试MP4由约1.47秒播放至约1.99秒时仍保持同一URL、播放状态`paused=false`，修改字幕不再重置；JSON含6项`timeline`，此为`BEHAVIORALLY_VERIFIED`的本地动态逻辑验证。
+- VALIDATION：**`V2_REVIEW_CANDIDATE / PARTIAL_VERIFICATION`**。上述浏览器使用`set_content`、临时替身shell；GitHub提交的是嵌入真实上游V2源码的自包含最终HTML，实况Mac开窗动效尚未在同一浏览器中完整重播确认。不能据单独外壳源码证明最终合成视觉审美PASS。
+- ANOMALIES：隔离Chromium不支持`file://`或localhost页面导航，不能代表Owner Windows Edge。完整回归脚本连续两次超时后按Governance转为单故障媒体连续性诊断，局部诊断成功；要区分受限验收工具异常与项目运行质量。示例资料/24、48、76数值非研究事实；正式音轨/旁白/MP4导出/权利/视觉内容仍`UNVERIFIED`。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：PR#144新增的`visual/content-template-lab/index.html`、README、`docs/CWS_TEMPLATE_LAB_V2_GATE_2026-10-17.md`；隔离环境测试脚本及截图留在该次临时沙盒，不进入main；原V2源码blob SHA `acb0ee80264527bd11160e0ae277ce24528c4a03`。
+- ROLLBACK_EFFECT：PR保持Draft未合并；可关闭该PR或删除隔离分支，不触及任何历史已验收主线、用户Windows本机、旧媒体/备份。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：没有实际素材购买、外部模型/Provider调用、发布或持久业务数据变更。
+- EXECUTOR_RESULT：`V2_REVIEW_CANDIDATE`；REVIEWER_RESULT：`PARTIAL_VERIFICATION`，需要验真实嵌入V2候选HTML连续视觉效果后方可PASS。
