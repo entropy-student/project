@@ -4,7 +4,15 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4L 728609 native navigation fix accepted, Owner official Stripe TEST account OAuth next; dormant widget old URLs remain nonblocking)
+ > Last reviewed: 2026-10-17 (Owner Stripe sandbox TEST OAuth visible connected in Woo settings; next Codex verify provider signed webhook readiness and one bounded simulated paid/refund canary)
+
+## CURRENT_G3S4L_OWNER_STRIPE_TEST_CONNECTED_PAYMENT_CANARY_NEXT_2026_10_17 — LATEST
+
+**Latest actual Owner WooCommerce Stripe settings screenshot:** After clicking official **Create or connect a test account**, WP `https://magazine.spikersun.com` Stripe screen displays **“Test mode active: All transactions are simulated”**, **Enable Stripe** checked, **Enable test mode** checked, a linked sandbox account with **Test Mode** badge, and notice that **Live mode cannot be enabled until a Live account is connected**. This is **Owner screenshot visual evidence of successful TEST-only OAuth**, with no claim that Stripe signed POST callback, order payment or refund has been verified. Do not record Owner account identifiers/email or request any Stripe/API key/password in Codex/PR. The site admin toolbar **Live** means WordPress site visibility, NOT Stripe Live funds.
+
+**CURRENT NEXT STEP:** existing [G3S4L Gate **latest Owner screenshot/TEST canary appendix**](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md). Codex **autonomously** read-only verifies persisted official Stripe sandbox connection and gateway/test-mode flags, webhook registration/signature enforcement/endpoint `https://magazine.spikersun.com/?wc-api=wc_stripe`, no enabled Live mode; no repeated media/CSS/cart/menu/Tunnel/Cloudflare checks. Then **only if safe** conduct **at most one** sandbox USD39.99 simulated order using documented Stripe test method, observe authentic signed Stripe Webhook POST and Woo order paid-state, safe invalid/replay duplicate handling, and **one** matching TEST refund/revoke. A first genuine signed webhook can only be observed after a real test event; do not demand pre-payment signed-event proof, require correct readiness beforehand. Append only sanitized minimal Evidence to same PR64 G3S4L, STOP Reviewer at payment boundary. If real provider auth/webhook config needs Owner action, ask **one** precise step, not new approval loops. No Live/real card/funds/charges, no second WP/VPS, no PR merge.
+
+**Prior accepted baseline:** PR64 HEAD `728609c54b68ae955150fd4957af93cac2f4d815` OPEN/unmerged as last repository readback, nav/menu/Home/footer/header links zero loopback on sampled pages, public HTTPS/guest checkout/cookie CSS validated, old `widget_text-3` not rendered and nonblocking; no real visual design screenshot or individual private file synthetic URL denial. Do not repeat these before provider testing. Keep original Windows Docker and Cloudflare foreground connector running.
 
 ## CURRENT_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_OAUTH_OWNER_NEXT_2026_10_17 — LATEST
 
@@ -262,7 +270,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_728609_NAVIGATION_PASS_OWNER_STRIPE_TEST_ACCOUNT_OAUTH_NEXT
+CURRENT_GATE=G3S4L_OWNER_STRIPE_TEST_CONNECTED_SIGNED_WEBHOOK_ONE_TEST_CHARGE_REFUND_NEXT
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -691,7 +699,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**LATEST PR64 `728609c54b68ae955150fd4957af93cac2f4d815`, Reviewer `PASS_BOUNDED_NAVIGATION_LINK_REPAIR`:** 11 exact menu URL records, one Home page CTA, three published footer block 1143 links and Blocksy header button link changed with guarded WP APIs; sample checkout + Home/preview/product/My Account actual links **0 loopback**, HTTPS 200 and existing menu fragments present. Test cart cleared, no order/payment. Dormant `widget_text-3` still contains old URLs but was **not rendered on sampled pages**, defer unless actually activated. No visual screenshot/individual protected file negative; functional/site-level CSS and private route checks previously accepted. Provider official Woo Stripe 11.1.0 gateway **OFF**, TEST selector saved but NO TEST account/OAuth/Webhook signature. Next Owner one official **TEST-only signup/login/OAuth** in WP admin via Stripe settings. No Live consent/keys, no Stripe test charge yet. After genuine TEST connection, Codex checks actual identity/signed callback before one strictly bounded test charge+refund/revocation. No repeat current checks/Tunnel/password or PR merge.
+**LATEST Owner Stripe TEST screenshot 2026-10-17:** Woo Stripe officially connected to a sandbox **Test Mode** account; `Enable Stripe` and `Enable test mode` checked and site banner says all transactions simulated. Woo settings notice Live account is NOT connected. This screenshot is not proof of signed webhook delivery or successful order/refund. Reuse previously accepted G3S4L public HTTPS/privacy/cart/nav, PR64 `728609...`; do not request another Stripe test signup/login or re-run Cloudflare. Codex next verifies persisted TEST account/mode, webhook registration/signature enforcement, no Live, then if ready **one** synthetic $39.99 test checkout, genuine signed webhook delivery/negative replay handling, and **one matching TEST refund/entitlement revocation**, recording sanitized evidence and STOP Reviewer. At most one checkout after ambiguous state; do not invent signed events. If exact provider boundary requires Owner approval, ask only for one specific official UI action. No Live, real customer funds, VPS/new site/PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -817,13 +825,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Owner once:** `https://magazine.spikersun.com/wp-admin/` → `WooCommerce > Settings > Payments > Stripe` → select official **TEST** account Connect/Create flow. Only authentic eligible business details; no Live authorization, manual secrets or real charges. If the UI instead offers only Live, stop and show one redacted screenshot/description.
-2. **Codex after Owner test authorization:** read-only verify real TEST account connection/status, webhook signed **POST** configuration, mode/gateway, exact Woo account identity and no Live enabled; append minimal G3S4L Evidence, Reviewer only at material boundary. After explicit bounded payment authorization, one synthetic $39.99 TEST order, valid/invalid/replay webhook and one matching TEST refund/entitlement revoke. No prior nav/CSS/cart/media/Tunnel redo.
+1. **Codex now, no Owner action:** read-only verify real saved Woo Stripe TEST sandbox connection, enabled/test flags and signed webhook route readiness, without exposing credentials. No re-run accepted media/CSS/cart/navigation/Tunnel tests.
+2. **If TEST-only readiness PASS:** make at most one documented synthetic USD39.99 Stripe TEST Woo checkout (no live card/funds), inspect genuine signed callback, duplicate/invalid handling and correct Woo order; one matched TEST refund/revoke, no repeat charges; sanitized PR64 G3S4L Evidence then Reviewer STOP.
+3. If provider tests fail or require Owner UI, stop exactly at one concrete blocker. No Live, real payment, new app/site/hosting or PR merge.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NOW: one official Woo Stripe TEST account authorization** via existing public WP admin. If registration prompts country/business identity, only authentic supported details; never invent another jurisdiction. Keep Live gateway OFF.
-- **No Cloudflare/PowerShell/AppData tasks:** existing Tunnel and Docker remain running. Do not send Stripe login, API keys, webhook secrets or card data to ChatGPT/Codex/PR. If TEST-only option is unavailable, stop precisely at the provider choice.
+- **NONE NOW.** Stripe sandbox TEST account connection shown in Owner WordPress screenshot, and test mode/gateway flags are checked. Keep original Windows Tunnel + Docker running. Don't repeat TEST OAuth or share keys.
+- Only one specific later official Stripe action if Codex finds a concrete account/webhook permission blocker, never Live or a real card.
 
 ## EVIDENCE_POINTERS
 
