@@ -46,3 +46,26 @@ Owner 已授权现有本机试用系统的 UI 汉化和验收；用户自己提�
 回滚：NONE（纯检查）或最小文案补丁恢复。
 请 Reviewer 检查：视觉证据是否足以支持核心路径汉化。
 Owner 转交：NONE / 最少 4 类页面非敏感截图（浏览器受限时）。
+
+
+## 2026-10-17 Reviewer G2B first visual review — PARTIAL and next scoped fix
+STATUS: PARTIAL_G2B_VISIBLE_LANGUAGE_GAPS / G2B_R1_MINIMAL_TEXT_FIX_AUTHORIZED_NOT_EXECUTED
+OWNER_SUPPLIED_VISUAL_EVIDENCE: 4 original 2048×1028 screenshots supplied in chat; images remain in Owner conversation, **not** uploaded to public GitHub. Reviewer directly inspected:
+1. Admin dashboard: left nav/sidebar Administration/Configuration and main Dashboard/Revenue/Tickets/Services/graph labels now Simplified Chinese. Residual widget title `Support`; empty state `暂无 ticket`. Other visible labels readable and layout not visibly broken.
+2. Admin product **list** (not edit): page/title/search/actions/sidebar in simplified Chinese; group header `Category:` English and column `Slug` technical identifier. Do **not** change stored slug or product/category names; translate display labels only, e.g. `分类：`, `网址标识（Slug）`.
+3. Admin **create coupon form** (not saved): inputs/labels/options/buttons in simplified Chinese; date placeholder renders `yyyy/mm/日`, a mixed-format browser/date-picker localization issue (not proof date value corrupt). Diagnose whether native browser UI or Filament; no vendor patch just to change a native input placeholder.
+4. Admin **notification template list**: navigation/columns/buttons in simplified Chinese, but stored template `subject` values remain English: `New login detected`, `New invoice created`, `Invoice paid`, `Invoice payment failed`, `New order created`, `Service activated`, `Service suspended`, `Service terminated`, and a ticket reply template containing Blade variable expressions. Footer shows `Sponsor`, `Star us on GitHub`, `Documentation`; `API 密钥` label can be standardized. Do not modify runtime email subject/body or interpolation merely to make list display Chinese.
+
+### Minimal correction within the same G2B Gate
+- FIRST: widget `Support` => `客服支持`, `暂无 ticket` => `暂无工单`, using Filament compatible heading/empty state API and existing `lang/zh_CN.json` (these mappings already exist). Check title/empty state do not default back to English in actual runtime.
+- SECOND: product list `Category:` => `分类：`, and `Slug` column label => `网址标识（Slug）` (or consistent term). Change only presentation, never database slug/category.
+- THIRD: notification template **list display only** maps known **exact default English subjects** to readable Chinese. Unknown/custom subjects stay unchanged; leave `key`, `subject`, `body`, `in_app_title`, `in_app_body`, Blade placeholders and any outgoing email behavior/data unchanged. Use display-only formatter or accessor scoped to admin list (not application/domain model mutator). Dynamic ticket placeholder must remain original in stored content; if translation cannot safely avoid side effects, retain English and report the limitation.
+- FOURTH: localize admin-footer informational link labels (preserve actual external link URLs, source attribution/branding and icons), optionally normalize `API 密钥` casing. Footer is cosmetic low priority.
+- FIFTH: diagnose `yyyy/mm/日`. Only fix through an officially compatible date display setting with valid date parsing; preserve DB date semantics. If it comes from native browser locale, leave as nonblocking browser/UI limitation, no custom JS monkey patch / vendor edit.
+- Additionally, if quick & safe, fix already identified product/plan display option labels `One Time`, `Month`, `Separated`, `Combined`, preserving option keys. Do not broadly reopen G2A translation coverage.
+- Verify with scoped PHP lint/translation probes, app-only cache clearing/restart **only if required**, readback no data changes. Browser Computer Use prior STOP remains binding on that attempt: no substitute browser automation; re-review visible changes using Owner screenshots or regular supported tooling only when independently URL-safe. Do not claim full G2B PASS without authenticated user front and product/plan edit evidence.
+- Only G2B-R1 **source/UI text** corrections and non-secret Evidence in a GitHub PR. G2A passed patch remains immutable historical baseline; create **incremental** follow-on patch for currently localized Paymenter v1.5.9 and clear reverse/backup steps, not a new 117-file rewrite.
+- STOP_AT_REVIEWER with `PASS_CANDIDATE_G2B_R1_TEXT_FIX` / `PARTIAL_G2B_R1_UI_UNVERIFIED` / specific RETURN. If browser tool still unavailable, submit source/CLI verification without fabricating GUI coverage. Full G2B remains PARTIAL until separately reviewed.
+
+### Later final visual evidence (minimum to close)
+One authenticated **user dashboard** screenshot, one product **edit/plan options** screenshot, and reinspection of dashboard + notification list after R1 (or equivalent genuine browser observations); verify no navigation/interaction regression. Do not request screenshots of every admin screen when key representative views suffice.
