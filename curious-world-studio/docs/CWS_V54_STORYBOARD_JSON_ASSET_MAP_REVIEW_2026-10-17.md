@@ -49,3 +49,12 @@
 - 正常导入完整重建shots+时间轴+素材登记；导出再导入语义、字段完全一致；批量关联通过精确文件名唯一映射；若没有本机字节，页面明确提示“未关联”；错误JSON在验证阶段即拒绝且原媒体对象URL不被释放。
 - 使用Chromium `page.set_content` 验证。**file:// 导航被测试环境安全策略拦截，不能宣称在用户Windows Edge文件浏览器中通过实测。**
 - 代码候选仅在隔离PR#144，main已冻结V5.2不覆盖。状态：`V54_TECHNICAL_CANDIDATE_PASS / OWNER_PRODUCTION_AND_LONG_MOVIE_UNVERIFIED`。
+
+
+## 31.06秒全程一倍速复查
+
+同一 V5.4 HTML 在独立真实 Chromium 中调用页面播放键，从 `t=0` 等待约32.6秒，捕获结果：
+```json
+{"time":31.06,"end":31.06,"playing":false,"shot":"S07","template":"T6","oneOriginalCanvas":1,"secondMacWindow":false,"contentViewportVisibility":"hidden","jsErrors":[],"passed":true}
+```
+本项以无版权媒体的占位槽位执行，**验证的是播放器的整段时间控制、关窗与脚本无异常**；不能替代实媒体填充的31秒观感验收或4–6分钟正式音视频导出。因运行容器单次命令超时，完整测试在同一执行轮通过进程日志读回结果，未将之前超时当作PASS。
