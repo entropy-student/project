@@ -34,6 +34,7 @@
 
 | Project | Purpose | Current-state entry |
 |---|---|---|
+| **Cross-border Business Library** | Five pillars: opportunity, network, payment/tax/entities (frozen), product, acquisition | [Project index](./cross-border-business/README.md) |
 | **Google Trends Market Radar** | Overseas Google search trends, data-quality checks, and market-opportunity research | [Handoff](./google-trends-market-radar/REVIEWER_HANDOFF.md) |
 | **Conversion Leak Audit** | Storefront conversion-leak scanning, Top-3 findings, and fix queue | [Handoff](./conversion-leak-audit/docs/REVIEWER_HANDOFF.md) |
 | **Mini Craft Night Kit** | WordPress/WooCommerce single-product ecommerce and physical-product validation | [Handoff](./mini-craft-night-kit/REVIEWER_HANDOFF.md) |
