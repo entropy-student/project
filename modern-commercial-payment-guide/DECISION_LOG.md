@@ -165,3 +165,9 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **⑤⑥状态：** `OLD_CANDIDATES_RETIRED / NOT_STARTED_ANEW`，暂不启动新创作、采纳或封板。原候选ZIP与Reviewer记录已移至Library历史归档，Git main中旧⑤⑥Reviewer报告退出当前树。
 - **无效文档处理：** 清除旧③④联合采纳/返修文件、已完成的③早期Gate/RETURN和旧⑤⑥Reviewer报告共7个Git文件（含第四旧正文），具体原文件/Blob见最新Execution Evidence；保留必要③最终报告与正式归档证明。原文件仍可通过Git历史恢复，非永久抹除历史。
 - **当前有效范围：** ①②③正式封板，V6 7/29/42不改；④全新独立写作中，⑤⑥重新启动需Owner新指令，第⑦与HTML未启动。最新Handoff、Index、清理版④Gate为唯一现行状态。Decision/Evidence保留旧事件仅为审计，历史授权无效。
+
+## 2026-10-17｜MCPG-CH4-INDEPENDENT-REVIEW-MINIMAL-FIX-20261017｜第四部分独立审核完成（未采纳）
+
+- **Owner之前的有效约束**：原第四内容清理，新稿须独立审核后由Owner决定是否采纳；本次收到新稿不是自动正式落库授权。
+- **审核结论**：原ZIP SHA256 `ce4ecd984b54701724f5c8eb9d5937b7831135f530fd42b8d50c718a95db9a84`，独立Reviewer最小修订后 `PASS_CANDIDATE_AFTER_FIX`。4H2/5H3冻结题原文通过，纠正核心支付事实，双案例与前③章深广度对比达标，阅读密度仍有改进空间。报告 [链接](docs/CH4_NEW_AGENT_INDEPENDENT_REVIEW_AFTER_FIX_20261017.md)；校正版唯一候选 Library ID `libfile_ca773c072d9881918ee3c50130c365f4`。
+- **状态保持**：`NOT_OWNER_ADOPTED / NOT_SEALED`；第四部分 `main` 无正式正文，旧第四/第五/第六文件不恢复；第一二三与V6保持冻结；第七HTML未启动。下一动作仅等待Owner对校正版采纳或继续精炼的明确决策。

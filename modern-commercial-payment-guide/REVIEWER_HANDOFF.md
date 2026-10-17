@@ -115,3 +115,11 @@
 - 禁止真实支付、退款、开户、部署、编辑①②③/V6；第⑦和HTML未启动。
 
 **状态：** `CH1_CH2_CH3_SEALED / CH4_OLD_REMOVED / CH5_CH6_RETIRED / CH4_NEW_WRITER_INPUT_READY`。
+
+## 八、MCPG-CH4-INDEPENDENT-REVIEW-MINIMAL-FIX-20261017｜第四部分新候选独立审核（最新状态）
+
+- **输入**：用户提交`现代商业支付系统_第四部分_全新独立重写成果.zip`，34,376 bytes，SHA256 `ce4ecd984b54701724f5c8eb9d5937b7831135f530fd42b8d50c718a95db9a84`，ZIP CRC PASS、两份UTF-8 Markdown。
+- **审核**：[第四部分独立Reviewer报告](docs/CH4_NEW_AGENT_INDEPENDENT_REVIEW_AFTER_FIX_20261017.md)。新稿V6第四部分4H2/5H3逐字不变；29美元数字服务与120美元实物双案例均保留。最小纠正PayPal APPROVED与授权之别、Stripe Checkout/PaymentIntent对象关联、订阅实际账期、手动捕获前置条件、Stripe/PayPal不同环境字段、重复扣款退款/拒付费用、幂等24小时风险及错误LaTex。初稿的正文引用仅9/12项，校正版改为12/12。
+- **质量对比**：技术深度、适用范围、商业可操作性达标，无明显低于封板①②③；专业术语仍比前三篇密集，宜在最终HTML渐进展示。
+- **唯一待Owner决定的候选**：Library `/现代商业支付系统/现代商业支付系统_第四部分_Reviewer校正候选及审核报告_20261017.zip`，stable ID `libfile_ca773c072d9881918ee3c50130c365f4`，ZIP SHA256 `0658671f39ee5e795b73cab191b2a1875a8cf74dd63e0c5cb77e23dc17b51eee`。候选正文SHA256 `0ea030d3b9db33b2e0609da7a517bb5dd3463953698319b8beef3db15508038e`；报告另存 Library ID `libfile_1f5ba37a143481918ff1dd98c6566051`。
+- **本轮有效状态**：`CH4_PASS_CANDIDATE_AFTER_FIX / OWNER_DECISION_PENDING / NO_FORMAL_CH4_TEXT`。原旧④继续历史归档不恢复；①②③正式封板不动，V6不动，⑤⑥不恢复，第⑦与HTML未启动。Owner尚未批准将新稿采纳为正文。

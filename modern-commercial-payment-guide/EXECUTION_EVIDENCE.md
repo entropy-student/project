@@ -324,3 +324,11 @@
 - **清理版④工作包验收**：`/现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_清理版_20261017.zip`，Library ID `libfile_566a96bcb4348191a8e88dcb6b0bcb05`；实测107,360 bytes、10 UTF-8 Markdown、ZIP CRC PASS，SHA256 `1500537f3b3cfd0ef071076bd85522aa339e14f8903bc2bfdd804cd6055e248b`，成员各自SHA见包内README，完全无旧④⑤⑥正文。提示词 ID `libfile_eda9c3d2a06881919299a3864c48dff8`。
 - **更新范围**：重新精简Handoff和索引、更新唯一④ Gate、按append-only保留/追加决策及执行证据。删除的旧主文与失效文档仍可在Git清理前commit读取，不默认恢复。没有真实支付/退款、开户或生产部署。
 - **结论**：`OLD_CH4_REMOVED / CH5_CH6_RETIRED / STALE_DOCS_REMOVED / CH4_WRITER_PACK_READY`。
+
+## MCPG-CH4-INDEPENDENT-REVIEW-MINIMAL-FIX-20261017｜第四部分独立Reviewer输入、核验与不越权边界
+
+- **INPUT DIRECT ZIP BYTES**：`现代商业支付系统_第四部分_全新独立重写成果.zip` 34,376 bytes，SHA256 `ce4ecd984b54701724f5c8eb9d5937b7831135f530fd42b8d50c718a95db9a84`，CRC PASS，两份UTF-8 Markdown；作者正文63,624 bytes/551 lines/SHA256 `5885d1f4d8e127fac0b263fe32fd19b040c1d89f8931ccefb00af4dcb53847c0`，作者QA25,977 bytes/200 lines/SHA256 `b420a656fddad23b090be06eea8d84fc0bf8c487c5c6a7d472367440c1f3263e`。
+- **AUTHOR QA CORRECTION**：原稿正文9个Sxx引用、附录12个；作者QA写“12/12双向一致”，不成立；QA自身SHA和ZIP CRC仍为待计算但已由Reviewer独立核验。原始字节未覆盖。
+- **REVIEWER PATCH**：按Stripe/PayPal官方文档针对PayPal批准/授权、Checkout Session与PaymentIntent、实际订阅账期、Manual Capture条件、银行余额、Environment字段、退款/争议费用与ARN、Stripe Idempotency 24小时窗口等进行事实定向修订，修复损坏的LaTex公式，并改写误导性绝对句；共分40+局部修订，无冻结标题变化。改后候选66,771 bytes/SHA256 `0ea030d3b9db33b2e0609da7a517bb5dd3463953698319b8beef3db15508038e`，4H2/5H3逐字PASS、单H1、12/12引用PASS。
+- **CANDIDATE ARCHIVE & QUALITY**：Library `/现代商业支付系统/现代商业支付系统_第四部分_Reviewer校正候选及审核报告_20261017.zip`，ID `libfile_ca773c072d9881918ee3c50130c365f4`，ZIP29,096 bytes/SHA256 `0658671f39ee5e795b73cab191b2a1875a8cf74dd63e0c5cb77e23dc17b51eee`，2MD/CRC PASS。独立报告Git Blob `401978c7f46264d771fe6abe64123a59fb2fbd3d`；与封板①②③相比技术深度、两行业广度与业务判断达标，文本偏技术密度留到HTML交互展示。
+- **CURRENT STOP**：`REVIEW_PASS_CANDIDATE_AFTER_FIX / OWNER_APPROVAL_PENDING / NO_FORMAL_CH4 / CH5_CH6_RETIRED`。本轮只新增Reviewer报告并更新四份治理文档；禁止修改封板①②③、V6，未进行真实交易、退款或生产环境操作。
