@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (G3S4R approved by Owner for one safe browser-target-verified Stripe TEST-only continuation round; prior backup accepted as retained evidence with current integrity still to check)
+> Last reviewed: 2026-10-17 (G3S4R RETURN after browser URL verification failure; runtime and preexisting backup hashes independently recorded; G3S4M manual Owner browser plus native TEST channel designed, Owner TEST writes not yet authorized)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Latest Reviewer decision:** G3S4E **PASS Evidence-only** at `docs/REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md`. PR #64 contains the single 76-line retained-result Evidence commit `7397dd3bb7ab5fe62bb8575185d51405391f2c63`. Original G3S4 payment test remains RETURN/STOP: Computer Use could not independently identify the Edge URL, Stripe was not connected. **Current G3S4R Owner-authorized conditional Gate:** `docs/G3S4R_SAFE_LOCAL_TARGET_AND_STRIPE_TEST_CONTINUATION_2026-10-17.md`; approval `docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md`. Start with safe browser target verification and current backup integrity, then only if all guards pass proceed to Stripe TEST; not yet executed. Do not repeat the already-performed backup/export/offline restore by default.
+- **Latest Reviewer decision:** G3S4E **PASS Evidence-only** at `docs/REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md`. PR #64 contains the single 76-line retained-result Evidence commit `7397dd3bb7ab5fe62bb8575185d51405391f2c63`. Original G3S4 payment test remains RETURN/STOP: Computer Use could not independently identify the Edge URL, Stripe was not connected. **G3S4R Reviewer RETURN (browser identity):** `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`. PR #64 current verified head `777463995a298118dae0c6763f6c668207a19350`, one 46-line Evidence file only. Original 44/44 source match, loopback WordPress HTTP200, Stripe 11.1.0 installed **inactive**, 3 protected G3S4 backup hashes match. Computer Use could not identify Windows Edge/native-vs-embedded current URL: no Stripe settings or test orders touched. **Next G3S4M** `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md`: Owner manual WP login plus independently verified local native TEST channel; requires new explicit Owner TEST-write approval before plugin activation, Stripe connection or payments. Do not repeat the already-performed backup/export/offline restore by default.
 - Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3R Executor-host readback**: original DB running/healthy, WordPress running/HTTP 200 when localhost proxy bypass is used, WP-CLI running, Mailpit stopped; this is accepted at the G3S3R stage only. Reviewer has not directly accessed Owner hardware.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4R_OWNER_AUTHORIZED_TEST_ONLY_PREFLIGHT_PENDING
+CURRENT_GATE=G3S4M_MANUAL_WP_LOGIN_CHECKPOINT_TEST_WRITES_OWNER_AUTH_PENDING
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4E_PASS_G3S4R_OWNER_AUTHORIZED_NOT_EXECUTED
+PROJECT_EXECUTION_STATUS=G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_G3S4M_NEXT
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -93,7 +93,7 @@ PUBLIC_STATIC_FRONTEND=https://birthday-magazine-original.netlify.app/
 NETLIFY_VISUAL=ORIGINAL_RESTORED_OWNER_REPORTED
 NETLIFY_ANONYMOUS_ACCESS=NOT_INDEPENDENTLY_VERIFIED
 WORDPRESS_WOO_PUBLIC_PRODUCTION=NOT_DEPLOYED
-PR64_LAST_VERIFIED_HEAD=7397dd3bb7ab5fe62bb8575185d51405391f2c63
+PR64_LAST_VERIFIED_HEAD=777463995a298118dae0c6763f6c668207a19350
 G3S1SVE_COMPLETED_SCOPE=EVIDENCE_ONLY_HOST_MUTATIONS_0_REVIEWER_PASS
 G3S2_REVIEWER=PASS_READONLY_POLICY_RESEARCH_OWNER_ENTITY_UNVERIFIED
 G3S2_OFFICIAL_STRIPE_HK=SUPPORTED_QUALIFYING_HK_BUSINESS_ONLY
@@ -124,7 +124,7 @@ G3S4_OWNER_TEST_MODE_AUTHORIZATION=PRIOR_APPROVED_STOPPED_GATE_NOT_AUTO_REUSABLE
 G3S4_OWNER_AUTH_RECORD=docs/OWNER_AUTHORIZATION_G3S4_STRIPE_TEST_ONLY_2026-10-16.md
 G3S4_STRIPE_TEST_CONNECT=NOT_STARTED_OWNER_REPORTED
 G3S4_TEST_PAYMENT_REFUND_WEBHOOK=NOT_STARTED_OWNER_REPORTED
-G3S4_PREWRITE_FRESH_BACKUP=G3S4E_RETAINED_EXECUTOR_READBACK_OFFLINE_RESTORE_RECORDED_CURRENT_HASH_CHECK_PENDING
+G3S4_PREWRITE_FRESH_BACKUP=G3S4R_THREE_SELECTED_FILES_SHA256_SIZE_MATCH_PRIOR_RETAINED_OFFLINE_RESTORE_PROOF
 G3S4_LIVE_PAYMENT_PERMISSION=NO
 G3S4_REVIEWER_DECISION=RETURN_BEFORE_STRIPE_TEST_BROWSER_TARGET_UNVERIFIED_EVIDENCE_PERSISTED
 G3S4_BROWSER_BLOCK=COMPUTER_USE_URL_IDENTITY_UNRELIABLE_STOP_REQUESTED
@@ -137,13 +137,13 @@ G3S4E_GATE=PASS_EVIDENCE_ONLY_REVIEWER_20261017
 G3S4E_EVIDENCE_COMMIT=7397dd3bb7ab5fe62bb8575185d51405391f2c63
 G3S4E_REVIEWER_DOC=docs/REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md
 G3S4R_GATE=docs/G3S4R_SAFE_LOCAL_TARGET_AND_STRIPE_TEST_CONTINUATION_2026-10-17.md
-G3S4R_OWNER_NEW_TEST_ONLY_AUTH=APPROVED_ONE_ROUND_CONDITIONAL
+G3S4R_OWNER_NEW_TEST_ONLY_AUTH=APPROVED_THEN_CONSUMED_AT_RETURN
 G3S4R_OWNER_AUTH_FILE=docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md
 G3S4R_PR_PERMISSION_SCOPE=NO_MERGE_OR_APP_SOURCE_CHANGES
-G3S4R_COMPUTER_USE=NOT_STRIPE_TECHNICAL_REQUIREMENT_PREVIOUS_BROWSER_URL_STOP_BINDING
-G3S4R_BROWSER_TARGET_CHECK=NOT_ATTEMPTED
+G3S4R_COMPUTER_USE=STOPPED_UNVERIFIABLE_URL_NOT_WOO_OR_STRIPE_OUTAGE
+G3S4R_BROWSER_TARGET_CHECK=COMPUTER_USE_FAILED_URL_IDENTIFICATION_NATIVE_EDGE_VS_EMBEDDED_MISMATCH_POSSIBLE
 G3S4R_PAYMENT_TEST=NOT_ATTEMPTED
-G3S4_FRESH_RECOVERY_POINT=CREATED_20261016_EXECUTOR_RETAINED_REPORT_CURRENT_INTEGRITY_NOT_REVALIDATED
+G3S4_FRESH_RECOVERY_POINT=CREATED_20261016_HASHES_REVALIDATED_G3S4R_PRESERVE_EXISTING
 G3S3R_ALLOWED_RUNTIME_START=CONDITIONAL_DB_WP_WPCLI_EXISTING_IDS_ONLY
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
@@ -343,7 +343,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S4R_OWNER_AUTHORIZED_TEST_ONLY_PREFLIGHT_PENDING
+CURRENT_GATE=G3S4M_MANUAL_WP_LOGIN_CHECKPOINT_TEST_WRITES_OWNER_AUTH_PENDING
 ```
 
 ## SYSTEM_MAP
@@ -364,6 +364,8 @@ CURRENT_GATE=G3S4R_OWNER_AUTHORIZED_TEST_ONLY_PREFLIGHT_PENDING
 - Shared VPS dependency: NONE accepted for current Gate.
 
 ## CURRENT_ACCEPTED_STATE
+
+- **2026-10-17 G3S4R Reviewer RETURN_BROWSER_TARGET_UNVERIFIED:** PR #64 Evidence only commit `777463995a298118dae0c6763f6c668207a19350` (46 lines) reviewed; same G3C local runtime healthy, WP 7.1.1/Woo 11.1.2 active, Stripe 11.1.0 installed inactive, Woo #1113 virtual USD39.99, effective mounted source 44/44 match selected PR head. Old G3S4 selected three protected backups **size/SHA-256 current match retained records**, without export/restore. Current local dirty files 17 deleted/3 modified/180 untracked preserved. Computer Use could only see native Edge and could not verify its URL against reported embedded browser; no payment/plugin activation/Stripe consent occurred. Gate STOP. Decision `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`; new fallback candidate `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` created but **TEST writes not authorized**.
 
 - **2026-10-17 G3S4R Owner authorization:** Owner explicitly says `我批准，继续吧` in direct reply to new separate Test-only G3S4R approval request, asks why Computer Use was used. Documented in `docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md`. Permits one conditional source/current-backup-hash/browser-URL-verified Stripe TEST-only connection/virtual USD39.99 synthetic payment/signed webhook/replay/TEST refund round with Reviewer stop. **No execution result yet**; original Computer Use URL identity stop may not be bypassed by alternate automation. Computer Use is not technically necessary for Stripe payments; it was originally used for interactive Woo admin/Owner OAuth consent.
 
@@ -403,11 +405,13 @@ CURRENT_GATE=G3S4R_OWNER_AUTHORIZED_TEST_ONLY_PREFLIGHT_PENDING
 
 ## CURRENT_GATE
 
-**CURRENT G3S4R — Owner explicitly authorized, NOT YET EXECUTED:** `docs/G3S4R_SAFE_LOCAL_TARGET_AND_STRIPE_TEST_CONTINUATION_2026-10-17.md`. Owner permission: `docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md`. This approval is a single TEST-only round including fresh nonmutating source/runtime inspection, selected protected G3S4 backup file presence/hash readback, trustworthy Owner Windows local WooCommerce admin target and correctly identified Stripe Test account; only after all preconditions pass may the Executor configure Test-only Woo Stripe and exercise bounded synthetic Woo product #1113 USD39.99 payment, authentic signed webhook first/invalid/replay and Test refund/entitlement revocation. Stop for Reviewer. Do not rerun old 58-table/18,109-file isolated restore by default.
+**G3S4R formally RETURN, source/backup preflight retained:** `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md` plus exact PR #64 `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350`. Host test site `127.0.0.1:8189` returned HTTP200, original MariaDB healthy; 44/44 mounted PR source readback match. Protected selected G3S4 backup files remain with same size and SHA-256; prior G3S4E isolated DB/files restore evidence accepted historically. No new backup/export/restore necessary absent material drift. Existing local dirty checkout 17 tracked screenshot deletions, 3 modifications, 180 untracked remains protected (new extra untracked path UNKNOWN). Official Stripe plugin 11.1.0 **installed inactive**, so Woo Settings cannot yet show a live registered Stripe gateway.
 
-**Computer Use design clarification:** Stripe does not require Computer Use. Prior G3S4 Executor chose it for interactive Edge/Woo admin and Owner Stripe OAuth checkpoints, but Computer Use could not verify Edge's active URL and REQUIRED STOP. Owner may open the correct local WooCommerce admin page manually; Executor must **independently satisfy target-URL verification using its permitted controlling tool**. It must not simply switch shell/browser/API to evade the previous URL-policy refusal. If impossible, RETURN before UI/provider writes; a separate Reviewer approval/scope is required to redesign the workflow.
+**Browser control diagnosed; tool STOP retained:** Computer Use enumerated native Windows Edge but could not reliably resolve its active URL; Owner was in a separate embedded browser context according to Executor evidence. Tool mismatch remains a possible root cause, not certain. Even after manually opening a local WP login URL, browser-control eligibility isn't automatically fixed. The user's last message relays a verified redirect to loopback WordPress login page **outside** PR Evidence: treat as Owner-relayed, not direct tool proof. G3S4R earlier Owner permission consumed on STOP. This is not a Stripe provider/payment failure.
 
-**Prior state boundaries:** G3S4E **PASS Evidence-only**, see `docs/REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md` and PR #64 `7397dd3bb7ab5fe62bb8575185d51405391f2c63`. The selected protected G3S4 SQL/WP root/source backup was previously reported and offline restored (58 tables; 1 Woo order; 18,109 WP files; 387 uploads) with specific filenames, sizes, hashes retained, **not presently rehashed or raw-exit-code attested**. G3S3R local runtime PASS preserved. Stripe 11.1.0 was last seen inactive; no Test payment/webhook/refund or Live eligibility proven. Dirty local source/screenshot/untracked items preserved, PR #64 unmerged, PayPal previous Sandbox evidence intact, Netlify public static front end not the Woo backend.
+**CURRENT G3S4M — approved DESIGN, pending fresh Owner TEST-WRITE permission:** `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md`. Owner manually opens `http://127.0.0.1:8189/wp-admin/`, validates loopback origin and logs into own WordPress account (no automated/browser-tool operation, no Secret sharing). A scoped Executor uses independently verified local project-native (e.g. WP-CLI) readback and can perform plugin Test-only activation/configuration only if separately and explicitly Owner-authorized with exact target, preflight+rollback, LIVE fail-closed, and no webhook conflict. Owner personally handles Stripe account TEST OAuth/consent and manual synthetic checkout. The new workflow **does not retry or bypass Computer Use**; it substitutes a reviewed Owner-manual channel and a different target-bound native operation surface. If a provider safety barrier/route remains ambiguous STOP. No new permission to change LIVE, PayPal, Netlify/production or PR merge.
+
+**Separate PENDING:** authentic Stripe TEST purchase, signed first/replay/invalid Webhook and Woo order state + TEST refund/entitlement revocation; server-side 12–25-photo+answer prepayment draft, order binding, paid PDF generation/private delivery, genuine public WordPress backend and real-money payouts. Static Netlify is front-end only.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -449,6 +453,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## CURRENT_ROLLBACK_STATUS
 
+- **2026-10-17 fresh G3S4R proof:** existing selected G3S4 `20261016T153123Z-90703d65` SQL/WP-root/source-bind backup files present and all sizes/SHA-256 match earlier Evidence, protected ACL inherited as expected. Prior G3S4E isolated recovery: 58 DB tables, one existing order, Woo #1113 USD39.99 virtual, 18,109 WP files and 387 uploads. No repeat backup/import/restoration; raw historical command exits remain UNKNOWN. If any test-state DB changes occur in later Gate, current rollback currency/compatibility must be rechecked before writes; preserved historical backup is not an automatic all-state refund undo.
 - G3S4E Evidence records the **historical** Executor-selected new G3S4 protected set (one SQL, WP root archive, source-bind archive with SHA-256 and sizes) and isolated restore: 58 DB tables, 1 order, product #1113 virtual USD39.99, 18,109 WP files/387 uploads. Reviewable recorded fact, not a fresh independent byte read of backup. For G3S4R before TEST write: **verify current three selected file presence, hash and target compatibility**, preserve old/private backups. Do not recreate backup without drift-based separate repair.
 - G3S4 Owner report describes a **new** protected backup and successful offline isolated recovery at `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4\20261016T153123Z-90703d65`. **Reviewer qualification pending preserved Executor evidence**: original native exit/provenance/consistency/checksums/restore readbacks not yet visible in PR. Preserve this directory and old backups exactly; do NOT re-export, import, restore, delete or alter the protected backup in G3S4E. No Stripe provider/checkout writes reportedly occurred.
 - G3S3R original existing-container startup succeeded, including internal MariaDB crash-recovery markers. Prior old backup files still exist but predate this startup, are NOT a fresh qualified Test-write rollback, and cannot guarantee bytewise reversible startup. G3S4 requires **new** selected database+WordPress/files/uploads backup with integrity and restore proof before test/provider writes. No routine reimport/restart required.
@@ -463,6 +468,9 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **G3S4R Computer Use failure now repeat-diagnosed:** native Edge window identification/URL unknown versus embedded browser; stop enforced. Do not rerun same unsafe control interface or change browsers simply to evade the policy. A new Reviewer-approved Owner-manual + host-native target-verified workflow is prepared but payment writes require fresh Owner consent.
+- **Stripe inactive:** although official plugin 11.1.0 is installed, gateway not registered in Woo Settings until separately authorized activation under Test-only guard; WordPress login alone cannot deliver Stripe gateway.
+- **One new local untracked item:** 180 vs 179 prior; exact path/cause UNKNOWN. All dirty source preserved, runtime source 44/44 match G3S4R PR baseline. No clean/reset/stash.
 - G3S4E evidence gap now **FIXED** via one PR file. Original command native exit codes, full per-file hashes, independent file timestamps and Windows device name remain UNKNOWN; do not invent them.
 - G3S4 browser target still unverified: Computer Use refused due inability to identify current Edge URL. G3S4R must use a new safe target verification/Owner checkpoint and stop if same issue remains; no bypass.
 - No Stripe TEST account connection, local payment, signed webhook first/replay, refund or entitlement-revocation evidence. G3S4R requires **fresh explicit Owner TEST-only authorization** separate from stopped prior G3S4.
@@ -493,18 +501,22 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Send G3S4R Gate and its freshly recorded Owner authorization to **Windows-local Codex**. Begin with read-only current project/source/old selected backup hash checks, not recreation, export or restore. Owner manually navigates to real local WooCommerce Stripe admin page only if the controlling tool can safely verify the browser URL; if unrecognized, stop and report, do not switch to a bypass tool.
-2. If all preflight and account/test identity guards are met, Owner completes any required Stripe account login/OAuth consent personally in the authentic TEST context. Executor may then test exactly the bounded synthetic Woo USD39.99 TEST payment, signed webhook first/invalid/replay, fail/cancel and TEST refund/entitlement revocation. No real money, secrets, PayPal removal or PR merge. Save sanitized Evidence on PR #64 and stop at Reviewer.
-3. Reviewer judges G3S4R PASS/RETURN; only after TEST integration is proven continue secure 12–25-photo/answer prepayment server draft, Woo order binding, paid PDF generation/private fulfillment and later WordPress production deployment. Live charges and payout remain future separately authorized gates.
+1. **Owner manual WordPress login checkpoint** (no payment changes): in their own trusted browser on the actual Windows host, manually visit `http://127.0.0.1:8189/wp-admin/`, ensure URL stays on loopback, log in with their own WordPress account, and confirm WP dashboard and WooCommerce navigation. Report only `已登录 WordPress 后台`; no credentials/screenshots/cookies. **Do not click Stripe activation** or set up payments.
+2. Obtain **fresh explicit Owner authorization** for new `G3S4M` Test-only plugin activation, Owner-account Stripe TEST consent, bounded synthetic Woo USD39.99 charge/callback and TEST refund; older G3S4R authorization was consumed at RETURN. Gate already designed and Reviewer approves its distinct verified-native/manual channel versus Computer Use.
+3. Codex executes G3S4M only after authorization and manual account checkpoint, verifies exact existing Docker WP target, current files/mounts and protected backup hashes (prefer reuse of G3S4R proof unless drift); activates only official Stripe plugin under tested TEST-only guard (never LIVE), Owner manually connects account and performs synthetic checkout, Executor performs safe signed webhook/readback/refund assertions. Evidence to PR #64 and mandatory Reviewer STOP. If exact target/native route or test-mode separation fails, RETURN before writes; no bypass.
+4. On independent TEST PASS, implement durable authenticated upload/answer draft, Woo paid order linkage, generation and secure PDF delivery; then public WordPress backend/real-money canary under separate authority. Preserve frozen frontend, Netlify static, historical PayPal evidence and PR64 Open/unmerged.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Authorization completed:** G3S4R TEST-only permission was given in this conversation and recorded at `docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md`; no need to reapprove the same bound. Use current Gate with its safe browser URL stop condition.
-- **When Executor reaches interactive checkpoint:** Owner can open the private local Woo admin URL `http://127.0.0.1:8189` in own Edge, verify WooCommerce Stripe settings, and personally consent to Stripe TEST mode login. Do not transmit keys, passwords, cookies, bank details or identity records.
-- **No current Live/provider write without verified target/preflight:** if Computer Use cannot identify URL, no alternative bypass; preserve backup and report Reviewer RETURN. No public site/provider changes or PR merge now.
+- **Now:** Owner manually logs into the local WordPress admin `http://127.0.0.1:8189/wp-admin/` using their own chosen browser and WordPress credentials; reply `已登录 WordPress 后台` only after dashboard appears. If they have already done so, simply confirm it; no need to log in twice. This does not fix Computer Use URL recognition or enable Stripe itself.
+- **Next consequential authorization:** approve G3S4M TEST-only plugin activation/account connection/synthetic charge/refund when ready. Existing stopped G3S4R approval cannot be silently replayed. No need to repeat old backup validation.
+- **Never share:** login credentials, bank details, 2FA, cookies or Stripe secret values; no manual plugin activation until G3S4M scope is approved.
 
 ## EVIDENCE_POINTERS
 
+0. `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md` — current formal Reviewer RETURN; prior host source/backup hash proof retained, native Edge/embedded browser mismatch identified as possible tool cause.
+0. PR #64 `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350` — one original 46-line sanitized tool stop report, Stripe TEST not begun.
+0. `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` — next combined manual Owner browser and independently verified host-native TEST-only Gate, prepared; **Owner TEST-write approval outstanding**.
 0. `docs/OWNER_AUTHORIZATION_G3S4R_SAFE_TARGET_TEST_ONLY_2026-10-17.md` — explicit fresh Owner permission for bounded, conditional TEST-only G3S4R, no bypass of browser URL safety.
 0. `docs/G3S4R_SAFE_LOCAL_TARGET_AND_STRIPE_TEST_CONTINUATION_2026-10-17.md` — **CURRENT Owner-authorized Gate**, browser target/read-only backup integrity safeguards, then conditional TEST payment with Reviewer stop.
 0. `docs/REVIEWER_DECISION_G3S4E_PASS_EVIDENCE_PRESERVATION_2026-10-17.md` — formal G3S4E Evidence-only PASS with limited provenance.
