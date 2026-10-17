@@ -72,3 +72,81 @@ This round used the existing local Windows/Docker target only. No old or replace
 **Technical blocker:** a safe signed-webhook channel is not presently established. Before any later TEST write, the Gate's fresh Owner payment-write authorization and private credential-rotation confirmation remain required. Keep the test isolated; do not substitute Live, a public tunnel, or another unreviewed route.
 
 `STOP_AT_REVIEWER=YES`.
+
+
+---
+
+## G3S4M continuation — Woo Stripe 11.1.0 / Stripe CLI local forwarding compatibility
+
+Date: 2026-10-17  
+Scope: version-specific source and official-document review, plus reversible offline Stripe CLI staging only. The previously accepted runtime, product, backup, source-bind, and dirty-worktree evidence is reused; those checks were not repeated.
+
+### Installed plugin source and compatibility
+
+```text
+INSTALLED_PLUGIN_HEADER_VERSION=11.1.0
+LOCAL_WEBHOOK_HANDLER_SHA256=e6b1e29d6a5dc6db95d6c8ec059ab329b84b3be19be5f176249ac7079edea7a8
+NATIVE_WEBHOOK_ROUTE=woocommerce_api_wc_stripe -> ?wc-api=wc_stripe
+TEST_SIGNING_SECRET_SETTING=test_webhook_secret
+E2E_SIGNATURE_BYPASS_FLAG=E2E_TESTING
+E2E_SIGNATURE_BYPASS_FLAG_STATE=UNSET
+PLUGIN_SOURCE_OR_SETTINGS_CHANGED=NO
+```
+
+A source-only read of the installed plugin confirmed that the webhook handler chooses `test_webhook_secret` when Woo Stripe Test mode is active, registers `woocommerce_api_wc_stripe`, accepts POST requests to `?wc-api=wc_stripe`, validates the raw request body against `Stripe-Signature` using HMAC-SHA256, and only then dispatches the event. The installed settings source exposes a password-type Test Webhook Secret field. The installed handler has an `E2E_TESTING=true` test-only signature bypass; the non-secret environment flag is currently **unset**, so that bypass is not active. No request was sent.
+
+Stripe CLI's `listen --forward-to` returns its own listener signing secret for the local application. This matches the plugin's supported Test Webhook Secret input and verification code without a source patch or weakened signature check. The local Woo endpoint path is the one Woo documents. Therefore **local transport/signature compatibility is PASS_CANDIDATE**, conditional on a later authorized Owner-only Test configuration using the same Stripe Test account for the Woo Test API keys and CLI listener, and privately entering the CLI listener secret in the Test Webhook Secret field.
+
+The standard Woo OAuth connection path is a separate limitation: Woo documents automatic webhook registration on connection and states that a local or non-HTTPS/unreachable site can prevent the connection. Its automatically configured provider endpoint is an HTTPS site URL, not loopback. This round did not attempt OAuth. The plugin also retains manual API-key/Test Webhook Secret settings, but current Woo guidance favors/requires OAuth re-authentication for merchants; use of manual Test keys on this loopback test target remains a Reviewer decision, not an executed account connection or proof of supported production account onboarding.
+
+Version 11.1.0 release notes include a fix for dropped/double-processed webhooks and skipped pre-order handling when checkout/webhook requests race for the order-payment lock. This is source/release-level evidence only: no authentic event, duplicate/replay, order correlation, entitlement, or refund was run; runtime idempotency remains unverified and must still be exercised in any later authorized TEST phase.
+
+### Official Stripe CLI staging
+
+```text
+CLI_RELEASE=v1.53.1
+CLI_PLATFORM=Windows x86_64
+CLI_PRIVATE_PATH=<LOCALAPPDATA>\BirthdayMagazineStudio\Tools\StripeCLI\1.53.1
+RELEASE_SOURCE=https://github.com/stripe/stripe-cli/releases/tag/v1.53.1
+CHECKSUM_MANIFEST_SHA256=f78a0eaaac6f21e123084c22ff222d8d0d2b41b4a87425af6def74b58e4ab8c7
+WINDOWS_ZIP_SHA256=fa159ae2774d62dcfd0db8f7f8675e3274223ae3e92fae4d182f4c9cfb58fa23
+STRIPE_EXE_SHA256=8e504b941ce1fb49c9275d563143ceb0ea4261d368ae78be298e95b770a38797
+VERSION_COMMAND=PASS (stripe version 1.53.1)
+LISTEN_HELP=PASS (--forward-to present; offline help only)
+DIRECTORY_DACL=PROTECTED; OWNER_CURRENT_USER; ALLOWED_CURRENT_USER_AND_SYSTEM; INHERITED=0; DENY=0; OTHER_IDENTITIES=0; REPARSE=0
+FILES_DACL=INHERIT_ONLY_FROM_PROTECTED_PRIVATE_DIRECTORY; OTHER_IDENTITIES=0; DENY=0; REPARSE=0
+GLOBAL_PATH_SERVICE_OR_PERSISTENT_CONFIG_CHANGE=NO
+STRIPE_LOGIN=NOT_RUN
+STRIPE_LISTENER_CONNECTION=NOT_RUN
+WEBHOOK_SECRET_DISPLAY_OR_EVENT=NOT_RUN
+```
+
+The official GitHub release API's SHA-256 for the Windows checksum asset matched the downloaded manifest; the manifest's Windows x86_64 ZIP digest matched both the official release asset digest and the downloaded ZIP. The executable was extracted only inside the Owner-user-scoped private directory. Verification set `STRIPE_NO_AUTO_UPDATE=1` only in the short-lived verification process. No global PATH, service, login, account authorization, listener, tunnel, provider event, key, or signing secret was created or read.
+
+### Current feasibility and exact remaining blockers
+
+```text
+LOCAL_STRIPE_CLI_FORWARDING_TRANSPORT=PREPARED_NOT_CONNECTED
+LOCAL_WOO_TEST_SIGNATURE_ADAPTER=PASS_CANDIDATE_SOURCE_COMPATIBLE
+STANDARD_WOO_OAUTH_TO_LOOPBACK=NOT_ATTEMPTED_DOCUMENTED_REACHABILITY_BLOCKER
+WOO_TEST_ACCOUNT_CONNECTION=NOT_DONE
+PLUGIN_ACTIVATION_OR_PAYMENT_SETTINGS_WRITE=0
+PAYMENT_WEBHOOK_REFUND=NOT_STARTED
+PUBLIC_INGRESS_OR_VPS=0
+FRESH_G3S4M_TEST_WRITE_AUTH=STILL_REQUIRED_FOR_ANY_PROVIDER_OR_WOO_WRITE
+OWNER_PRIVATE_CREDENTIAL_ROTATION=UNVERIFIED
+STOP_AT_REVIEWER=YES
+```
+
+Next decision: Reviewer should confirm whether the existing Gate may use the plugin's manual Test-key + CLI-listener-secret path on the private loopback site, or requires a separate Owner-controlled HTTPS test target for standard OAuth/webhook provisioning. Only after that decision, the Gate's fresh TEST-write authorization, private credential-rotation checkpoint, and Owner-only authentication may any plugin/account/Test payment or webhook write begin. The CLI is staged and ready for that later bounded step; this Evidence does not claim end-to-end Stripe readiness.
+
+### Official references
+
+- [Stripe CLI local listener and listener signing secret](https://docs.stripe.com/cli/listen)
+- [Stripe CLI installation and auto-update note](https://docs.stripe.com/cli/install)
+- [Official Stripe CLI v1.53.1 release](https://github.com/stripe/stripe-cli/releases/tag/v1.53.1)
+- [WooCommerce Stripe 11.1.0 webhook handler source](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/class-wc-stripe-webhook-handler.php)
+- [WooCommerce Stripe 11.1.0 settings source](https://github.com/woocommerce/woocommerce-gateway-stripe/blob/11.1.0/includes/admin/stripe-settings.php)
+- [WooCommerce Stripe webhook setup and endpoint](https://woocommerce.com/document/stripe/setup-and-configuration/stripe-webhooks/)
+- [WooCommerce Stripe account connection requirements](https://woocommerce.com/document/stripe/setup-and-configuration/connecting-to-stripe/)
+- [WooCommerce Stripe 11.1.0 release notes](https://github.com/woocommerce/woocommerce-gateway-stripe/releases/tag/11.1.0)
