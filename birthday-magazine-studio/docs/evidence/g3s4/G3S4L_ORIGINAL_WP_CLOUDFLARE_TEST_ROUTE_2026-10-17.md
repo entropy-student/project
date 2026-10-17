@@ -570,3 +570,31 @@ INVALID_SIGNATURE=REJECTED;BUSINESS_STATE_UNCHANGED
 IDENTICAL_EVENT_REPLAY=NOT_TESTED;STATIC_REFUND_IDEMPOTENCY_GUARD=VERIFIED
 LIVE_PAYMENT=NONE;PAYPAL_CHANGE=NONE;PR64_MERGE=NO;STOP_AT_REVIEWER=YES
 ```
+
+## G3S4M pre-replay readback — 2026-10-17T15:48Z
+
+Read-only preflight on the original local WordPress/WooCommerce runtime using the existing official Woo Stripe TEST connection. No event resend, order, payment, refund, configuration change, or credential output occurred.
+
+- Woo Stripe mode is TEST; gateway is enabled; TEST credentials are present (values withheld); LIVE key pair is empty.
+- The already-reviewed USD 39.99 order remains `refunded`; Woo has exactly one refund totaling USD 39.99. The bound owner is present and the runtime workspace predicate returns denied after full refund.
+- Stripe reports the matched PaymentIntent succeeded with `livemode=false`; its charge is refunded with 3999 cents refunded. Stripe reports exactly one succeeded refund totaling 3999 cents.
+- The unique matching existing `charge.refunded` TEST event has one-way fingerprint `9eab6614ade9`, created `2026-10-17T15:13:23Z`, and `pending_webhooks=0`. The one matching enabled endpoint has fingerprint `1cffdfa22f00`, `livemode=false`, exactly 23 enabled event types, and target `https://magazine.spikersun.com/?wc-api=wc_stripe`.
+- The TEST account Events list returned 45 events, `has_more=false`, and zero events with pending webhook deliveries. No additional TEST callback is currently pending.
+- The previously checked Owner Windows PowerShell has no Stripe CLI command available. No CLI was installed or authenticated. Dashboard automation was not attempted because the earlier Computer Use active-URL safety check for Stripe stopped; no browser guard was bypassed.
+
+```text
+G3S4M_PRE_REPLAY=READ_ONLY_PREFLIGHT_PASS
+IDENTICAL_EVENT_RESEND=NOT_ATTEMPTED
+REPLAY_RESULT=AWAITING_ONE_OWNER_OFFICIAL_DASHBOARD_RESEND
+NEW_ORDER_PAYMENT_REFUND=NONE
+PENDING_TEST_WEBHOOK_EVENTS=0
+LIVE_OPERATION=NONE
+```
+
+**Single required Owner action to complete dynamic replay:** in the normal Stripe Dashboard, switch to **Test mode**, open **Developers → Events**, select the existing `charge.refunded` event dated 2026-10-17 15:13 UTC (USD 39.99 refund), open its delivery to `magazine.spikersun.com/?wc-api=wc_stripe`, and click **Resend once**. Do not create or trigger another event. Then report only that the single Resend was clicked; no event IDs or secrets are needed. Executor will verify actual delivery and unchanged refund/access state before final closeout.
+
+**Cloudflare connector shutdown:** the current `cloudflared.exe` is a child of the foreground `powershell.exe` process and is not installed as a Windows service. Keep that PowerShell open through the single resend and final delivery readback. After the replay is delivered (or formally deferred), no pending TEST callbacks remain, final Evidence is saved, and Reviewer accepts phase closeout, Owner may press **Ctrl+C in that connector PowerShell window**. Stopping it makes public `magazine.spikersun.com` and future public Stripe callbacks temporarily unable to reach local WordPress; local Docker WordPress remains available. No DNS, provider setting, credential, or container cleanup is needed.
+
+```text
+G3S4M_STATUS=AWAITING_OWNER_RESEND; STRICT_REPLAY=NOT_YET_PASS; STOP_BEFORE_REVIEWER_CLOSEOUT=YES
+```
