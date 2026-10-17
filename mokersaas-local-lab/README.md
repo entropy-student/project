@@ -3,28 +3,28 @@
 > LAST_REVIEWED: 2026-10-17
 > PROJECT_REPOSITORY: entropy-student/project, main:mokersaas-local-lab/
 > CANONICAL_PROJECT_STATUS: [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)
-> SOLE_CURRENT_EXECUTOR_GATE: [G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md](G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md)
+> CURRENT_EXECUTOR_GATE: NONE — last G1TRF RETURN; Reviewer must isolate existing-container Secret mount failure before a new scoped Gate.
 > STOP_AT_REVIEWER=YES
 
 ## New Reviewer — start here
 
 1. Read [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) for accepted status, current Gate, decision boundaries, old/new resource identities, rollback, unresolved items and next steps. This is the **single handoff**; this README is only a navigation pointer.
-2. Read the single current [G1TRF Gate](G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md) and its `REVIEWER_TO_EXECUTOR_RELAY`. This is the only authorized Executor action. No previous Gate is executable merely because its historical text contains an instruction.
+2. Read the [G1TRF returned Gate](G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md) and the last Evidence entry for its four independent flags; it is **historical**, not executable. No active mutating Gate.
 3. Read [DECISION_LOG.md](DECISION_LOG.md) for the two Owner approvals: (a) a NEW side-by-side synthetic DB and guarded localhost smoke; (b) temporary **disposable synthetic only** exemption to independent off-host encrypted credential recovery. No live data or payment credentials.
-4. Read only the latest relevant parts of append-only [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md): G1P2 build PASS, G1T .NET method mismatch, and G1TR partial Secret creation with ambiguous three-in-one reader result; the G1TRF retained audit-probe continuation is current. Retrieve older history only if a conflict requires it.
+4. Read the latest relevant sections of [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md), especially G1TRF retained-container Secret visibility failure and the earlier evidence-tool lessons; inspect older entries only if a conflict requires.
 
 ## Concise status
 
 - **Done:** fixed-source security preparations; PostgreSQL and NextAuth file-backed Secret adapters; G1P2 TypeScript/Next build PASS from Owner-local Codex evidence. Existing G1P2 app image ID is indexed in Handoff.
-- **Last failure:** G1TR successfully created two protected synthetic Secret files and the new network/volume, but its combined reader test exited 1 without branch evidence. G1TRR subsequently ran an `--rm` probe with exit 0 but **lost all independent result labels and container ID**, so DB readable / NextAuth absent remain UNVERIFIED. No security breach proven; no DB service or app is running.
-- **Current Gate:** G1TRF reuses all existing credentials/network/volume. Run ONE fixed-name, retained g1s-db audit container (NEVER `--rm`), capture Docker ID/exit plus four independently logged non-disclosing PASS/FAIL checks: DB Secret present, DB Secret readable, NextAuth absent, NEW DB volume safe empty. On all PASS and mount safety, CONTINUE SAME ROUND into new Postgres/schema (one bounded migrator service/build if missing) and localhost app/login/admin/provider negatives. On true failure stop precisely, no Secret recreation/cleanup.
+- **Last failure:** G1TRF retained the exact audit container and captured 4 independent results: DB_FILE_PRESENT=FAIL; DB_FILE_NONEMPTY_READABLE=FAIL; NEXTAUTH_PATH_ABSENT=PASS; NEW_DB_VOLUME_SAFE_EMPTY=PASS. Expected DB Secret is not visible as a regular file in Linux container. Windows→Docker Desktop file-sharing/target/reader mechanism still UNKNOWN; this is not proof of Windows ACL defect or NextAuth Secret exposure.
+- **Current Gate:** NONE authorized for writes. Reviewer should first use already-retained exited audit container ID `116898e95836d221a07725ad80791d0ac3a9108c49b61a7331b603abdff636ae` and existing host ACL metadata for bounded **read-only** mounted-file type/target/reader diagnosis. Only then issue a single compatible project-only repair+site continuation Gate; do not recreate Secret or touch old DB.
 - **Not yet done:** database has NOT been started or initialized, no app/HTTP/auth tests. Two synthetic secrets DO exist on Owner PC; new internal network and named volume exist; `http://127.0.0.1:3077` was NOT_RUNNING on last Owner-local readback.
 - **Preserve:** original `mokersaas-local-lab-db-1` + `mokersaas-local-lab-db-data` and their project network; existing images; 22 locally patched paths. No password reset, volume deletion or mutation of the original DB. No numeric RAM gate; real failures still stop.
 - **Important provenance:** GitHub `main:mokersaas-local-lab/` stores the **project-control documents**, not the working application's 22 uncommitted modifications or Docker/Secret bytes. Those changes are on the Owner Windows workstation only. The next Reviewer cannot independently inspect their exact bytes via GitHub; request scoped, sanitized local readback if material. Never infer actual machine success from this README or a PASS_CANDIDATE label.
 
 ## Historic records, NOT active
 
-`G1TRR_EXISTING_SECRET_READER_AND_LOCALHOST_CONTINUATION_GATE.md`, `G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md` and `G1T_NEW_DB_LOCALHOST_SMOKE_GATE.md` now record RETURN. `G1S_NEW_TEST_DB_RECOVERY_PROPOSAL.md` and `G1T_DISPOSABLE_LOCAL_LAB_PROPOSAL.md` are superseded planning records. Older G0/G1/G1R/G1S/G1P/G1P2 Gates are historical. Retain rather than delete them to preserve audit trail. Do not replay them.
+`G1TRF_RETAINED_PROBE_AND_LOCALHOST_GATE.md`, `G1TRR_EXISTING_SECRET_READER_AND_LOCALHOST_CONTINUATION_GATE.md`, `G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md` and `G1T_NEW_DB_LOCALHOST_SMOKE_GATE.md` are historical RETURN. Earlier proposals are superseded. Retain audit history, but do not replay.
 
 ## Governance
 
