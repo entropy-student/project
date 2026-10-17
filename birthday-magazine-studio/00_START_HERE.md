@@ -4,23 +4,23 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — start with top `CURRENT_OWNER_AUTH_G3S4M_LOCAL_TEST_2026_10_17` entry.
-2. [Owner G3S4M local Stripe TEST authorization](./docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md) — exact approved scope, rotation still unverified.
-3. [G3S4M Gate](./docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md) — Owner approval appendix, next bounded TEST actions and mandatory Reviewer stop.
-4. [Latest technical Reviewer decision](./docs/REVIEWER_DECISION_G3S4M_CLI_STAGING_PASS_CONDITIONAL_MANUAL_TEST_ROUTE_2026-10-17.md) — conditional manual TEST-key + outbound CLI design and if-unavailable stop.
-5. [PR #64 source Evidence](https://github.com/entropy-student/project/blob/5ee2531818b8cdf79f03cca8860f297152ac9d09/birthday-magazine-studio/docs/evidence/g3s4/G3S4M_MANUAL_CHANNEL_AND_STRIPE_TEST_2026-10-17.md) — accepted local read-only and Stripe CLI staging; no payment yet.
-6. [Credential recovery Reviewer decision](./docs/REVIEWER_DECISION_G3S4AR_CREDENTIAL_RESULT_AND_LOCAL_NEXT_GATE_2026-10-17.md) — private WordPress password rotation mandatory before TEST writes.
-7. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — project history.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_REVIEWER_G3S4M_LOCAL_UI_RETURN_2026_10_17`, authoritative status.
+2. [G3S4M Reviewer RETURN & HTTPS test target decision](./docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md) — explains failed local route and bounded Gate deviation.
+3. [G3S4H — isolated HTTPS staging READ-ONLY discovery Gate](./docs/G3S4H_ISOLATED_HTTPS_STRIPE_TEST_STAGE_DISCOVERY_GATE_2026-10-17.md) — actual next Executor action, no provisioning.
+4. [PR #64 latest G3S4M Evidence](https://github.com/entropy-student/project/blob/3d460070f8eb61f4e47118e41a398fa14cc5b53f/birthday-magazine-studio/docs/evidence/g3s4/G3S4M_MANUAL_CHANNEL_AND_STRIPE_TEST_2026-10-17.md) — existing Woo Stripe plugin active, gateway disabled and unsupported UI.
+5. [Previous Owner local TEST authorization](./docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md) — localhost-only and does **not** authorize new public stage.
+6. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — supporting/historical docs.
 
 ## Current snapshot (2026-10-17)
 
-- **Frontend:** Owner visually frozen; Homepage, browser-local Preview and five-step intake accepted.
-- **WordPress / Woo / Sandbox:** existing local Windows Docker G3C runtime; Woo/account/private workspace and PayPal Sandbox evidence accepted.
-- **Admin:** WP-CLI credential update recorded; Owner login reported successful. Full G3S4AR conformance PARTIAL due exposed password in chat/tool transport. Owner-only private password rotation required before reuse; **no V1/V2 retry**.
-- **Stripe:** G3S4M local read-only and offline CLI 1.53.1 prep **Reviewer PASS** at PR64 `5ee25318...`. **Owner TEST-only write approval is now RECORDED** in `docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md`. Original Woo Stripe 11.1.0 remains inactive; account/payment/webhook/refund not started. A private WP password-rotation confirmation remains outstanding before TEST writes. Supported manual TEST-key + outbound CLI is the conditional local trial; return if no official supported TEST UI.
-- **VPS:** Owner replaced prior VPS; new target details UNKNOWN. No VPS deployment/migration; old deployment recipe invalid.
-- **PR #64:** open, unmerged; latest reviewed G3S4M CLI Evidence head `5ee2531818b8cdf79f03cca8860f297152ac9d09`.
-- **Production/real money:** not authorized or proven.
+- **Frontend:** Owner visually accepted/frozen; homepage, browser-local Preview and five-step intake remain accepted.
+- **WordPress / Woo / Sandbox:** existing local Windows Docker; Woo/account/private workspace and PayPal Sandbox proof accepted, old backups/source preserved.
+- **Admin:** previously exposed password was passed through chat/tool input; Owner-private password rotation remains **UNVERIFIED**. No repeat old reset.
+- **Stripe:** installed official Woo Stripe **11.1.0 now active but payment gateway disabled, no saved Stripe settings, account, webhook, TEST charge/refund**. PR64 G3S4M returned `RETURN_MANUAL_TEST_UI_UNAVAILABLE`. Plugin activation before private rotation proof is a bounded nonconforming Gate action; do not undo blindly or claim full PASS.
+- **New current Gate:** `G3S4H` read-only feasibility/design for isolated publicly reachable HTTPS WordPress/Woo TEST staging. No stage selected or deployed; Owner's prior localhost-only TEST approval cannot authorize public stage or costs.
+- **VPS:** former VPS replaced, replacement unverified; no old/new VPS usage authorized.
+- **PR #64:** open/unmerged, latest reviewed head `3d460070f8eb61f4e47118e41a398fa14cc5b53f`.
+- **Production / real money:** not approved, no commercial checkout or live backend.
 
 ## Source-of-truth rule
 
