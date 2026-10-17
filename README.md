@@ -35,6 +35,7 @@
 | Project | 主要用途 | 当前状态入口 |
 |---|---|---|
 | **Cross-border Business Library｜跨境业务总项目库** | 五板块：市场机会／网络环境／支付税务经营主体（冻结）／产品搭建／获客增长 | [五板块入口](./cross-border-business/README.md) |
+| **SaaS System Lab｜通用 SaaS 系统实验** | 串行验证 Velobase → Open SaaS → Wave；优先快速使用、Stripe、免费裂变及前后台 | [Handoff](./saas-system/REVIEWER_HANDOFF.md) |
 | **Google Trends Market Radar** | 海外 Google 搜索趋势、数据质量校准与商业机会发现 | [Handoff](./google-trends-market-radar/REVIEWER_HANDOFF.md) |
 | **Conversion Leak Audit** | 独立站转化漏损扫描、Top 3 诊断与后续修复队列 | [Handoff](./conversion-leak-audit/docs/REVIEWER_HANDOFF.md) |
 | **Mini Craft Night Kit** | WordPress / WooCommerce 单品电商与跨境实物验证 | [Handoff](./mini-craft-night-kit/REVIEWER_HANDOFF.md) |
