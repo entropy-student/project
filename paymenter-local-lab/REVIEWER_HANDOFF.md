@@ -2,9 +2,11 @@
 Updated: 2026-10-17
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
 PROJECT_GOAL: 在 Owner 的 Windows 11 本机用 Docker 启动 Paymenter（中文优先），观察真实用户前台、管理员后台、产品/套餐及可用功能；此项目目前仅供私有试用。
-PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS / G2B_R1_SOURCE_CLI_PASS / G2C_LOCALE_AUDIT_SOURCE_RUNTIME_PASS / G2B_AUTHENTICATED_UI_PARTIAL
+PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS / G2B_R1_SOURCE_CLI_PASS / G2C_SOURCE_RUNTIME_PASS / G2B_AUTHENTICATED_UI_PARTIAL_LANGUAGE_ISSUE_OPEN / REFERRAL_READONLY_RESEARCH
 SYSTEM_MAP: Owner Windows 11 build 26300 + PowerShell 7.6.5 + Docker Desktop Linux (Engine 29.7.2 / Compose v5.4.0) → 项目专属 Compose paymenter_local_lab [Paymenter、MariaDB、Redis] → 127.0.0.1:8187；活跃 MariaDB 数据位于项目命名卷 paymenter_local_lab_database；APP_KEY、Compose、日志、历史失败数据库目录等位于 %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab；未使用 VPS/公网路由。
 CURRENT_ACCEPTED_STATE:
+- OWNER_REPORTED 2026-10-17（G2C 后真实体验，RECORD_ONLY）：管理员后台无论调整语言仍然英文，也可能没有找到正确设置；前台切换不同语言后仍出现中英文/其他语言混排。此 G2B UX 问题保持 OPEN/UNVERIFIED_ROOT_CAUSE；不以 G2C CLI PASS 覆盖 Owner 使用感受。用户明确要求暂不修复，转向调查 Paymenter 裂变功能。
+- REFERRAL_RESEARCH 2026-10-17：本机 G1 历史确认安装扩展 0、支付网关 0（本轮无新本机读回），优惠券为原生功能且不自动等于推荐关系。第三方 Referrals https://paymenter.org/marketplace/119604-referrals，BuiltByBit 收费 $6.99、closed source、标注英语界面、仅公开标记 Paymenter 1.5.0 兼容（本机 1.5.9 未核实）；可提供个人推荐链接/码、首几张发票折扣、持续佣金、账户余额兑换、佣金等级及管理后台，但插件未购未装，手输邀请码和直接发 SaaS 额度/会员权益尚未确认。
 - Reviewer G2C PASS 2026-10-17: Reviewed complete PR #150 with exact three-source-file incremental patch, replay README, non-secret execution evidence, and official Filament v5.7.6 NavigationGroup/NavigationManager source. Confirmed admin locale allows session values and zh only maps zh_CN, en/fi remain; NavigationGroup Closure lazily resolves label; audit details restore two removed arguments and pass actual in-memory fixture rendering by Executor. Validated reported HTTP Kernel locale probes, data/12 notification template invariants and bidirectional patch checks within scoped trust boundary. Reviewer did not directly log in to Owner Windows; G2B remains PARTIAL. PR #150 squash merged into main 752b4ececf0d58850fc34431db785327add4dc25.
 - Reviewer G2C SOURCE_DIAGNOSIS 2026-10-17：Owner 新增五张截图证实前台语言选择 Suomi 后菜单变 Koti/Kauppa/Näytä，原本中文商品与分类因源自数据库记录，不随 locale 变换，故前台 UI 切换部分正常；但 G2A 中 admin SetAdminLocale 无条件 zh_CN，确实属于不应存在的强制中文覆盖。源补丁 audit 详情 view 另存在两个缺参调用 `str_replace('_', ' ', )` 与 `class_basename()`，可导致详情页运行时报错，虽截图 audit 列表正常也不能证明详情安全。两项最小修复 G2C 已授权但尚未本机执行；G2B 视觉仍 PARTIAL。
 - OWNER_SCREENSHOTS 2026-10-17：R1 后通知模板 8 个默认英文主题已显示简体中文，未知带动态变量主题和 Email verification 仍英文；Audit List/Failed Job List 顶部列标题英文。五张图只证实页面可见，不证实保存/业务运行，也未覆盖用户 dashboard 或套餐编辑。
@@ -24,9 +26,9 @@ CURRENT_GATE: docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md = PARTIAL_AUTHENTICATED_UI_E
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 可通过精确 docker compose -p paymenter_local_lab -f <owned-compose> stop 停止试用并保留命名卷及本机文件；这属于停机而不是已验证的全量灾备/恢复，恢复演练未做。
-UNRESOLVED: G2C admin locale 及 audit 详情缺参已经通过源码+真实 fixture 渲染证据并被 Reviewer 正式接受；后续仍缺真实登录态后台中英文/芬兰语切换及用户 dashboard、套餐编辑视觉回归。人为注入非法前台 session 导致非 200 是原版边界情况，内置选择器拒绝不允许的值；低优先级记录、非 G2C 阻塞；后台芬兰语分组未提供翻译时显示英文是 fallback，非锁定语言。R1 通知列表八项已实拍中文但自定义/动态标题未翻译；日期 input 随浏览器区域设置，Stripe/Referrals 未启用。
-NEXT_STEP: Owner 可继续本机私有试用，按 docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md 提供少量真实已登录后台(默认中文与另一种语言)、用户 dashboard、商品编辑/套餐页的代表性非敏感截图或等价视觉记录，Reviewer 决定整体 G2B PASS/PARTIAL。只有发现具体阻塞才开局部修补，勿重部署、勿重做翻译。
-OWNER_ACTION_REQUIRED: 无需再次运行 Codex 或重启 Docker；如需完成 G2B 整体视觉验收，Owner 可用已有本机浏览器提供管理员中文/英语两种语言示例、用户 dashboard、商品编辑/套餐各一张非敏感截图。当前日常本机试用不阻塞。
+UNRESOLVED: Owner 在 G2C 后反馈：后台无论如何调整仍英文（也可能尚未找到正确入口），前台切换语言后中英及其他语言混杂；真实 UX 原因未诊断且 G2B 视觉仍 PARTIAL。G2C 仅源码/请求/fixture 范围 PASS，不可抵消使用者报告。原生 DB 商品/分类不会自动翻译，后台芬兰语缺词条时英文 fallback。Stripe/Referrals 未启用（历史证据；非最新直读）。Owner 要求暂记问题，不再推进翻译。
+NEXT_STEP: 暂停继续汉化/G2B 修复（用户主动要求先记录），只说明并评估推荐裂变当前原生优惠券能力与第三方 Referrals 安装后的前后台操作。未来若 Owner 明确授权再评估购买/安装 Referrals，先核对 v1.5.9 兼容、非开源闭源/英语界面、价格、退款/佣金与权限风险，不隐含购买/部署授权。
+OWNER_ACTION_REQUIRED: NONE for record-only/referral explanation. Owner 不必运行 Codex、修语言或安装扩展。如未来要求体验真实裂变功能，则需先明确是否购买付费扩展或优先独立无付费演示，按规范再设执行 Gate。
 EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md（含 G2C Executor 与 Reviewer 实际代码核验/决议）；PR #150 https://github.com/entropy-student/project/pull/150 merged 752b4ececf0d58850fc34431db785327add4dc25；G2C 增量补丁/回滚 localization/g2c/README.md；G2B 后续 Gate docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md；G2A PR #148、R1 PR #149。
 
 
