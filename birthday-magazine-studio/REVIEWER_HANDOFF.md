@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (Owner authorizes narrow G3S4A local WordPress administrator discovery and one secure password reset; G3S4M Stripe TEST writes still pending separate Owner approval)
+> Last reviewed: 2026-10-17 (G3S4A preflight Owner-relayed PASS, detached hidden confirm session 12663 canceled without reset; Reviewer issues Owner-visible PowerShell 5.1 checkpoint correction; Stripe TEST scope unaffected)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current G3S4A account recovery Gate:** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md`; explicit Owner authorization `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md`. Only existing G3C administrator discovery and one conditional private/hidden password reset, no Computer Use or Stripe/Woo business configuration. Prior G3S4R Reviewer RETURN and selected backup integrity validation remain accepted; PR #64 last verified `777463995a298118dae0c6763f6c668207a19350`. After accepted recovery and Owner login, next planned G3S4M TEST-only Gate remains **not authorized for Stripe writes**.
+- **Current G3S4A admin recovery (visible console correction):** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` updated 2026-10-17 with Reviewer instruction to stop using hidden detached `CONFIRM` sessions. Owner reports one admin verified, original backup/source checked, PowerShell 5.1 STDIN dummy probe PASS, but detached execution **12663** was canceled before `CONFIRM`, before password input and **without any password reset**. Evidence not yet submitted. Codex must prepare a **non-secret reviewed program** to be run visibly by Owner in their own Windows PowerShell 5.1, then read back result without secrets; exact same one-existing-admin authorized scope, no Stripe permission.
 - Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3R Executor-host readback**: original DB running/healthy, WordPress running/HTTP 200 when localhost proxy bypass is used, WP-CLI running, Mailpit stopped; this is accepted at the G3S3R stage only. Reviewer has not directly accessed Owner hardware.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4A_OWNER_AUTHORIZED_ADMIN_RECOVERY_G3S4M_TEST_PENDING
+PROJECT_EXECUTION_STATUS=G3S4A_PREFLIGHT_RELAY_PASS_HIDDEN_INPUT_CANCELED_VISIBLE_CONSOLE_FIX_PENDING_G3S4M_TEST_PENDING
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -146,9 +146,14 @@ G3S4R_PAYMENT_TEST=NOT_ATTEMPTED
 G3S4A_OWNER_AUTH=APPROVED_ONE_EXISTING_ADMIN_CONDITIONAL
 G3S4A_OWNER_AUTH_DOC=docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md
 G3S4A_GATE=docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md
-G3S4A_ADMIN_ACCOUNT_INVENTORY=NOT_YET_RUN
-G3S4A_PASSWORD_RESET=NOT_YET_RUN
+G3S4A_ADMIN_ACCOUNT_INVENTORY=ONE_EXISTING_ADMIN_OWNER_RELAY_FROM_CODEX_PREFLIGHT
+G3S4A_PASSWORD_RESET=NOT_RUN_HIDDEN_SESSION_12663_INTERRUPTED_BEFORE_CONFIRM_OWNER_RELAY
 G3S4A_OWNER_LOGIN_CONFIRMED=NO
+G3S4A_VISIBLE_OWNER_POWERSHELL_5_1_CHECKPOINT=REQUIRED_NOT_YET_PREPARED
+G3S4A_HIDDEN_WAIT_SESSION_12663=ABORTED_WITHOUT_SECRET_OR_WRITE_OWNER_RELAY
+G3S4A_LOCAL_STDIN_DUMMY_PROBE=PASS_OWNER_RELAY_PS5_1_NOT_EVIDENCE_YET
+G3S4A_EXECUTOR_EVIDENCE_PR64=NONE_AS_OF_20261017_OWNER_RELAY
+G3S4A_REVIEWER_REPAIR=NONSECRET_LAUNCHER_VISIBLE_OWNER_TERMINAL_NOT_CODEX_DETACHED_SESSION
 G3S4A_SECRET_CUSTODY=OWNER_PRIVATE_MASKED_PROMPT_ONLY
 G3S4M_STRIPE_TEST_OWNER_WRITE_AUTH=PENDING_SEPARATE_DECISION
 G3S4_FRESH_RECOVERY_POINT=CREATED_20261016_HASHES_REVALIDATED_G3S4R_PRESERVE_EXISTING
@@ -373,6 +378,8 @@ CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+- **G3S4A checkpoint malfunction, 2026-10-17 (Owner relay from Codex):** read-only preflight allegedly confirmed original single-site WordPress, one administrator, healthy database, preserved local source and 3 protected backup hashes, and dummy no-echo STDIN probe PS5.1 PASS. An invisible detached session 12663 was waiting for `CONFIRM`; Codex panel could not present it (`queued`), and Executor canceled that hidden wait. **No `CONFIRM`, password entry, credential change, Stripe write, or PR Evidence submitted**. Reviewer amended original G3S4A Gate in place to require Owner-visible, independently started Windows PowerShell 5.1 using a reviewed non-secret launcher and once-only reset, then fresh read-only proof. Provenance `OWNER_RELAY_FROM_EXECUTOR`, **not** formal G3S4A PASS.
+
 - **2026-10-17 G3S4A Owner-approved account recovery:** Owner has forgotten local WordPress admin username/password, explicitly authorizes checking the **current** existing G3C admin account(s) and securely resetting one existing password via an Owner-only masked local prompt. Scope documented in `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md`; Gate `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md`. **No credential reset performed yet.** If multiple admins or unsafe secret transport, RETURN without mutation. This does not authorize Stripe plugin activation, Test payment or other Woo changes.
 
 - **2026-10-17 G3S4R Reviewer RETURN_BROWSER_TARGET_UNVERIFIED:** PR #64 Evidence only commit `777463995a298118dae0c6763f6c668207a19350` (46 lines) reviewed; same G3C local runtime healthy, WP 7.1.1/Woo 11.1.2 active, Stripe 11.1.0 installed inactive, Woo #1113 virtual USD39.99, effective mounted source 44/44 match selected PR head. Old G3S4 selected three protected backups **size/SHA-256 current match retained records**, without export/restore. Current local dirty files 17 deleted/3 modified/180 untracked preserved. Computer Use could only see native Edge and could not verify its URL against reported embedded browser; no payment/plugin activation/Stripe consent occurred. Gate STOP. Decision `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`; new fallback candidate `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md` created but **TEST writes not authorized**.
@@ -415,13 +422,11 @@ CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**CURRENT G3S4A — Owner authorized, NOT YET EXECUTED:** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` and `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md`. Owner forgot local WordPress credentials. Codex verifies the **existing real Owner Windows G3C** containers, current WordPress admin ID/role (read-only). If exactly one identified admin, it may offer Owner a secure hidden local password-entry and confirmation checkpoint, and perform **one** target-bound WP-native password change using protected process stdin/memory, never command args/env/history/logs/chat/GitHub. Password/hash/username/email are not written into Evidence. Ambiguous admin identity or unsafe secret transport => STOP. Credential update may invalidate old WP sessions; do not restore entire DB or create new administrator.
+**CURRENT G3S4A narrow account recovery — authorized, hidden input checkpoint canceled, NO PASSWORD RESET:** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` (see final 2026-10-17 Reviewer clarification) and `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md`. Owner reports Codex confirmed one real G3C WP admin, healthy DB, sources/backups unchanged and Windows PowerShell **5.1** masked STDIN dummy fixture working. Interactive confirm was unfortunately in inaccessible Codex execution session `12663`; attempted UI open only queued; Executor canceled without user input or credential mutation. A separately visible integrated PowerShell 7.6.7 displayed only the unrelated `源目录选择` menu. No PR #64 G3S4A Evidence exists yet.
 
-**Existing preflight remains accepted:** G3S4R Reviewer RETURN `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md` and PR #64 Evidence `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350`: original WP 7.1.1/Woo 11.1.2 runtime healthy, local `127.0.0.1:8189` HTTP200, Stripe 11.1.0 installed inactive, 44/44 effective mounted PR source, three selected G3S4 protected backups with matching size/SHA-256 and historical 58-table/18,109-file isolated restore proof. Existing dirty 17 deleted/3 modified/180 untracked retained. Do not repeat the full backup/export/offline restore without material drift.
+**REVIEWER CORRECTION — VISIBLE LOCAL OWNER CONSOLE:** Do not retry/reattach session 12663, launch another detached wait or ask Owner to input `CONFIRM` into the menu/WordPress login/Codex chat. Codex prepares and inspects a **non-secret local PowerShell 5.1 launcher** whose exact original Docker/WP unique administrator target, stdin-mask double-confirmed secret channel, native exit and side-effect assertions are verified. Codex hands Owner exactly one **safe, visible, own Windows PowerShell 5.1 command** to run; Owner alone enters CONFIRM and twice-hidden new password in **that visible terminal**. Codex does not start the interactive waiting prompt itself. After process returns, read back current WordPress state independently, compare account-only change and non-target site/backup/Stripe still safe, commit only sanitized Evidence to PR #64, Reviewer STOP. If ambiguity, secret path unsafe or the original Gate had already formally stopped/returned, RETURN without extra write/permission reuse. This is normal Reviewer repair of interface inside existing **one password reset** authorization, not expansion of account authority.
 
-**Browser/UI boundary:** Computer Use could not identify native Edge URL versus reported embedded-browser surface; it STOPPED G3S4R. G3S4A doesn't use Computer Use and does not automate Owner browser: after credential reset, Owner manually logs in to local `http://127.0.0.1:8189/wp-admin/` in browser of their choice. This is a separate narrowly authorized Owner-local credential recovery method, not bypass of the stopped browser payment action.
-
-**FOLLOW-ON G3S4M — DESIGN ONLY, Stripe TEST writes NOT authorized:** `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md`. Login checkpoint precedes later, separately Owner-authorized official Stripe TEST-mode activation/account consent/synthetic USD39.99 order/signed webhook/TEST refund. No Stripe/PayPal/public site/production/PR merge changes now. Private photo-answer order binding, automatic PDF generation and private delivery remain pending.
+**NEXT G3S4M Stripe TEST gate still NOT authorized for payment writes:** `docs/G3S4M_OWNER_MANUAL_AUTH_AND_VERIFIED_LOCAL_STRIPE_TEST_CHANNEL_2026-10-17.md`. The existing official Woo Stripe 11.1.0 plugin remains inactive as last verified. No Test account, gateway, webhook or refund actions until separate future approval. No Computer Use/browser automation in G3S4A. Browser manual login may occur **only after a real reset**. PR #64 last verified head `777463995a298118dae0c6763f6c668207a19350`, open/unmerged, dirty source preserves 17 deleted/3 modified/180 untracked items. Preserved backup SHA records from G3S4R; no new export, offline restore, or SQL import required without drift.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -513,18 +518,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Relay **G3S4A** Gate and explicit Owner authorization to the Windows-local Codex Executor. It first verifies exact original G3C WordPress target and runs a small **read-only admin inventory**. If one existing admin, Codex provides a private masked Owner password entry/confirm checkpoint and applies one safe password reset via verified process stdin; if multiple admins or secret transport unsafe, STOP with precise RETURN. Store one sanitized Evidence file in PR #64; Reviewer checks one-file diff and post-state. **No new backup, reinstall, unrelated plugin config or Computer Use**.
-2. Once password reset confirmed, Owner logs in manually in own browser at `http://127.0.0.1:8189/wp-admin/` and reports only `已登录 WordPress 后台`. Don't send any username/password/session secret; local Edge or embedded browser are both permissible for Owner manual use.
-3. Then decide separate Owner approval for prepared **G3S4M** TEST-only Stripe plugin activation/account connection/checkout/refund Gate. Prior G3S4R browser automation STOP still applies to that interface, no fallback tool bypass. Full order intake/paid PDF fulfillment and production are later tasks.
+1. Relay current `G3S4A` Gate to **original Windows-local Codex Executor** with Reviewer clarification: no background/hidden interactive session; validate owner-host context/sole admin and no prior update, prepare a reviewed non-secret PowerShell **5.1** launch program targeted to the already-running original G3C WordPress, using dummy STDIN validation and no secret in argv/env/history/logs/temp. It must **not start the password wait itself**. Provide the Owner one clear exact command to invoke in **their own independently visible PowerShell 5.1**. If unable to ensure safe stdin, return `RETURN_OWNER_VISIBLE_SECRET_INPUT_UNAVAILABLE` without mutation.
+2. The Owner opens independent visible Windows PowerShell 5.1, uses only the reviewed launcher command, confirms intended account locally, enters `CONFIRM` and double-masked new password there, waits for genuine exit/result. Report **only** `已在本机终端执行完成` or `本机执行失败`. Do not paste passwords in chat, Codex composer, WordPress login box or the unrelated PowerShell 7.6.7 source-menu terminal.
+3. Codex independently readbacks original WordPress user/site metadata **after** process finishes, submits one sanitized G3S4A Evidence file on PR #64 and stops for Reviewer; do not blindly retry on ambiguous result or repeat full backups.
+4. After Reviewer acceptance, Owner manually logs into `http://127.0.0.1:8189/wp-admin/` and confirms WooCommerce menu. Prepared G3S4M Stripe TEST Gate stays waiting for separate Owner Test-only write approval.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Authorization already given:** no additional permission to examine administrator accounts and reset one uniquely identified existing account via secure local prompt. Owner will need to enter the new password **only on their own Windows console** when Codex shows a verified masked entry; store it privately in password manager. Do not type it into ChatGPT or any Codex response.
-- **If multiple admins:** Codex must stop and ask for Owner's choice of the correct existing account via private local display; no automatic selection or new admin creation.
-- **When successful:** Owner manually logs into the local WordPress backend and reports only login success. Login does not activate Stripe or authorize testing.
+- **Right now:** do not type `CONFIRM` in the previously shown `源目录选择` shell or the Codex chat. Wait for Codex to give one reviewed command and an explicitly **visible personally opened Windows PowerShell 5.1** target. No password reset has happened yet.
+- **At safe Owner checkpoint:** Owner types `CONFIRM` and new password twice *only in their own visible masked prompt*, stores password privately and reports completion without any credential data.
+- **No new authorization just for making the prompt visible** while the original scoped G3S4A execution has not formally returned/stopped and no password update has occurred. If formal stop has occurred, Executor returns to Reviewer rather than quietly reuses prior one-round authority. Stripe TEST writes not included.
 
 ## EVIDENCE_POINTERS
 
+0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — amended current Gate: 2026-10-17 invisible input session 12663 abort Owner-relayed; switch to visible Owner Windows PowerShell 5.1 non-secret launcher with separate readback.
+0. `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md` — one existing local WordPress administrator password recovery only, no Stripe write.
 0. `docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md` — explicit Owner consent for one conditional existing local WP admin password reset, no other service changes.
 0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — **CURRENT Gate**, correct original G3C identity, read-only admin inventory, Owner masked secret input, WP-native targeted reset, Reviewer stop.
 0. `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md` — current formal Reviewer RETURN; prior host source/backup hash proof retained, native Edge/embedded browser mismatch identified as possible tool cause.
