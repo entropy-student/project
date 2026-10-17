@@ -45,3 +45,14 @@
 - `ACTUAL_RUNTIME_EXECUTION`: `NOT_STARTED`。本轮 ChatGPT 只操作 GitHub 项目文档，未访问 Owner 物理 Windows，不宣称本地安装/网页可达。
 - `GOVERNANCE`: GitHub 当前 `entropy-student/spike.skill@main:vps-project-governance/VNEXT.md` v0.2.7 已读取，Owner 不要求也未授权修改治理规范。
 - `NEXT`: 本地 Codex 直接执行已审 G2 Gate；结果返回后 Reviewer 依据真实证据判断是否完成首次预览，再进入 Stripe/裂变独立测试。
+
+
+## 2026-10-18 — G2_REVIEWER_EXISTING_WORKLOAD_REGRESSION
+- `AUTHORIZED_GATE`: `SAAS-G2-VH-PRIVATE-DOCKER-PREVIEW-20261018`
+- `EXECUTOR_EVIDENCE`: [G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md) 已被 Reviewer 直接读取；本文是 `OWNER_RELAYED_EXECUTOR_REPORT`，不是对本机 Windows 的独立直接回读。相关截图尚未在可独立审查的文件中提供。
+- `ACTUAL_CHANGES`: 以固定 SHA 构建/创建 G2 Web/Postgres/Redis、2 命名卷和网络，首页曾 200；三个原容器退出后执行器停止 G2。报告 G2 端口已关闭、源/镜像/卷/网络保留、未触碰旧项目配置。Reviewer 本轮只修改 GitHub 文档。
+- `VALIDATION`: BUILD_CANDIDATE=PASS；UI_LANDING=PARTIAL；SIGNIN=PARTIAL；DASHBOARD/ADMIN/AFFILIATE/WORKER=UNVERIFIED；STRIPE/COMMISSION/REFUND=NOT_TESTED。
+- `ANOMALY`: 三旧容器约 6 秒内退出（137/0/0），OOMKilled=false 且查询时间窗无 OOM event；根因 `UNKNOWN`，不能武断判定为内存/OOM 或直接归咎 Velobase。
+- `REVIEWER_DECISION`: **`RETURN_EXISTING_WORKLOAD_REGRESSION`**；[详细审核](./docs/G2_REVIEWER_DECISION_20261018.md)。
+- `ROLLBACK`: G2 容器停机并留资产；原容器仍退出的事实只限 G2 末次报告，不知现在是否恢复。
+- `NEXT`: [G2R1 只读诊断 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)。禁止重启/恢复现有业务或重试 G2。
