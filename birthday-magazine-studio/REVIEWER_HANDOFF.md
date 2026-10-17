@@ -4,16 +4,18 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (G3S4AR v2 claimed by Codex and fixture-verified, but Owner's actual native PowerShell 5.1 -File path fails NotFound before execution; same-console verification and delivery pending, password still unchanged)
+> Last reviewed: 2026-10-17 (formal Reviewer G3S4AR RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND; Codex v2 fixture PASS not Owner-shell delivery PASS; approved narrow host-file handoff only, no password reset; next Reviewer transition verified on GitHub)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
+
+**2026-10-17 OVERRIDE FOR NEW REVIEWER:** Begin with this current `REVIEWER_HANDOFF.md` + `docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` + current `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`. The dated `NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` is historical, NOT a current execution Gate. Exact Owner-shell v2 `-File` missing result has a formal REVIEWER RETURN; local WordPress password remains not reset. No new Owner approval for the already authorized narrow filename/path staging. See `docs/DOCUMENT_INDEX.md` current-entry banner.
 
 **Start here when this conversation has run out:** `docs/NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md`.
 
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current G3S4AR delivery HOLD:** Original Gate has Owner approval. Codex reports v2 `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, 10 isolated fixtures, Windows PS5.1/ACL PASS; Owner's actually visible PS5.1 child `-File` returned `path does not exist` **before script or password**. Codex writer-context readback is not proof of real Owner-console visibility. See appended `G3S4AR` Gate note for narrow ordinary/%LOCALAPPDATA% vs OpenAI.Codex LocalCache read-only discovery and digest-gated owner-native file handoff, followed by same-console real hash/ACL/PS5.1 readback. No attempt marker or credential write reported; no repeat approval/backup/Stripe.
+- **Formal G3S4AR Reviewer RETURN** (`docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md`): Original Gate has Owner approval. Codex reports v2 `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, 10 isolated fixtures, Windows PS5.1/ACL PASS; Owner's actually visible PS5.1 child `-File` returned `path does not exist` **before script or password**. Codex writer-context readback is not proof of real Owner-console visibility. See appended `G3S4AR` Gate note for narrow ordinary/%LOCALAPPDATA% vs OpenAI.Codex LocalCache read-only discovery and digest-gated owner-native file handoff, followed by same-console real hash/ACL/PS5.1 readback. No attempt marker or credential write reported; no repeat approval/backup/Stripe.
 - Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3R Executor-host readback**: original DB running/healthy, WordPress running/HTTP 200 when localhost proxy bypass is used, WP-CLI running, Mailpit stopped; this is accepted at the G3S3R stage only. Reviewer has not directly accessed Owner hardware.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -70,7 +72,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4AR_V2_CODEX_REPORTED_READY_OWNER_REAL_PS51_FILE_MISSING_NO_PASSWORD_RESET
+PROJECT_EXECUTION_STATUS=G3S4AR_FORMAL_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_NO_PASSWORD_RESET
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -163,13 +165,20 @@ G3S4AR_VERSIONED_SCRIPT=PREPARED_EXECUTOR_REPORTED_NOT_VISIBLE_IN_OWNER_NATIVE_P
 G3S4AR_ALLOWED_LOCAL_V2_FILE=Invoke-G3S4A-AdminRecovery-v2.ps1_CREATE_NEW_FAIL_IF_EXISTS
 G3S4AR_PASSWORD_RESET=AUTHORIZED_ONLY_AFTER_V2_FAIL_CLOSED_VALIDATION_AND_OWNER_MASKED_INPUT
 G3S4AR_OWNER_AUTH_RECORD=docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md
-G3S4AR_REVIEWER_STATUS=RETURN_REAL_WINDOWS_V2_PATH_UNVERIFIED
+G3S4AR_REVIEWER_STATUS=RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_FORMAL
 G3S4AR_V2_FILE=OWNER_NATIVE_WINDOWS_PS51_NOT_FOUND_AFTER_CODEX_CLAIM
 G3S4AR_GOVERNANCE_MINIMAL_POSTCLOSE_SCAN=PENDING_VERIFIED_FIX
 G3S4AR_V2_EXPECTED_SHA256=fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2
 G3S4AR_OWNER_NATIVE_PS51_RESULT=FILE_PATH_NOT_FOUND_BEFORE_SCRIPT_START
 G3S4AR_OWNER_PASSWORD_INPUT=NO
 G3S4AR_OWNER_NATIVE_FILE_HANDOFF=REQUIRED_EXACT_HASH_AND_ACL_READBACK
+G3S4AR_FORMAL_DECISION_DOC=docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md
+G3S4AR_REVIEWER_PROVENANCE=OWNER_REAL_CONSOLE_OUTPUT_PLUS_CODEX_RELAY_GITHUB_READBACK
+G3S4AR_SAME_CONSOLE_V2_FILE_DIGEST=NOT_VERIFIED
+G3S4AR_SCRIPT_BODY_STARTED=NO_AT_OWNER_FILE_NOT_FOUND
+G3S4AR_LAUNCHER_PATCH_VERIFIED_BY_OWNER=NO
+G3S4AR_NEXT_ACTION=ONE_OWNER_NATIVE_BOUNDED_READONLY_EXACT_PATH_DIGEST_DISCOVERY_THEN_SAFE_NONSECRET_COPY_ONLY_IF_ABSENT
+G3S4AR_OWNER_REAPPROVAL_NEEDED=NO_SAME_SCOPED_GATE_ALREADY_APPROVED
 PROJECT_OWNER_APPROVAL_CADENCE=NO_REDUNDANT_REQUESTS_FOR_BOUNDED_APPROVED_SAME_SCOPE
 PROJECT_STANDING_APPROVAL_LIMIT=NOT_A_WAIVER_OF_HOST_SECRET_LIVE_PROVIDER_DESTRUCTIVE_REVIEW_STOP_CHECKS
 G3S4A_OWNER_NATIVE_PS51_RESULT=COMMAND_NOT_FOUND_ON_EXPECTED_LOCALAPPDATA_PATH_BEFORE_SCRIPT_START
@@ -402,6 +411,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+- **2026-10-17 G3S4AR formal Reviewer RETURN after Owner actual native command:** Codex reports prepared v2 digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2` and ten passing isolated fixtures, but Owner's own Windows PowerShell `powershell.exe -File` fails with **the script path does not exist** before any script/`CONFIRM`/secret/WP credential update. Provider/plugin untouched. The same-console native file visibility, source digest, ACL and parser are **NOT verified** even if Codex claimed a separate PS5.1 verification. Formal decision `docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` includes exact command/result, product/state snapshot, Gate authority, trust labels and next bounded staging protocol. This supersedes any stale snapshot claiming v2 is locally executable.
+
 - **2026-10-17 G3S4AR authorization / project Owner cadence:** Owner expressly tells Reviewer `不要再让我批准了……本项目一律审批通过。继续推进` while answering the pending exact G3S4AR approval. This is sufficient positive authorization for the currently defined one new v2 non-secret local launcher + one existing G3C WordPress admin password reset, subject to verified owner-host source, safe masked password transport, fail-closed errors and Reviewer stop. Exact consent and scope are recorded in `docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md`. For subsequent bounded reversible repairs inside approved scope, avoid asking Owner again; do not treat broad direction as permission for undefined destructive, live-money or personal-account operations. Owner additionally directs that repeatedly RETURNing issues be reflected with the **minimum new normative policy only after fixed/proven**, not as premature duplicate §11B prose. v2 not yet created and account password unchanged at this writing.
 
 - **2026-10-17 G3S4A formal Reviewer RETURN (Owner-relayed Executor host readback):** original launcher exists in both ordinary LocalAppData and packaged Codex LocalCache, SHA-256 same `685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1`; PowerShell 5.1 parser 0 errors, restricted user+SYSTEM ACL, original G3C admin and runtime identity verified, no attempt marker, no password update, Stripe untouched. v1 exception handler swallows the sanitized error type/class in violation of §11B, so **never run v1**. Historical initial CommandNotFound root cause UNKNOWN. Decision `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`, new combined `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` PREPARED with **fresh Owner approval pending**, preserves original script and backup, only one new `-v2.ps1` allowed and at most one Owner-private admin reset under renewed authority.
@@ -452,7 +463,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4AR STOP/HOLD — Owner's real visible Windows PowerShell 5.1 cannot find v2 file:** `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`, last 2026-10-17 Reviewer amendment. Codex reports v2 exists and digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, 10 isolated fixtures/ACL/PS5.1 PASS. Yet Owner's personally launched Windows PS5.1 child `-File` returns non-existing canonical `%LOCALAPPDATA%/BirthdayMagazineStudio/G3S4A-VisiblePS51-20261017/Invoke-G3S4A-AdminRecovery-v2.ps1`. **Pre-execution failure**; no `CONFIRM`, masked secret or WP admin credential update. Last G3S4A v1 had similar error, but historical precise cause **UNKNOWN**; packaged `OpenAI.Codex_*\LocalCache\Local` path redirect is candidate only. Cannot claim independent Owner-host readback when the Owner-native process refutes it. No new PR Evidence; PR #64 last verified Open/head `777463995a298118dae0c6763f6c668207a19350`.
+**G3S4AR formal Reviewer RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND — Owner's real visible Windows PowerShell 5.1 cannot find v2 file:** `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`, last 2026-10-17 Reviewer amendment. Codex reports v2 exists and digest `fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2`, 10 isolated fixtures/ACL/PS5.1 PASS. Yet Owner's personally launched Windows PS5.1 child `-File` returns non-existing canonical `%LOCALAPPDATA%/BirthdayMagazineStudio/G3S4A-VisiblePS51-20261017/Invoke-G3S4A-AdminRecovery-v2.ps1`. **Pre-execution failure**; no `CONFIRM`, masked secret or WP admin credential update. Last G3S4A v1 had similar error, but historical precise cause **UNKNOWN**; packaged `OpenAI.Codex_*\LocalCache\Local` path redirect is candidate only. Cannot claim independent Owner-host readback when the Owner-native process refutes it. No new PR Evidence; PR #64 last verified Open/head `777463995a298118dae0c6763f6c668207a19350`.
 
 **Scope of minimal fix (already authorized, no new Owner consent):** The only immediate step is file **discovery + non-secret delivery**, under native Owner-visible Windows PS5.1, of reviewed exact **v2** file into original ordinary protected `%LOCALAPPDATA%` project directory (no broad scans). Search only original ordinary path and `Packages/OpenAI.Codex_*\LocalCache\Local` expected path, verify one source against digest above, and copy only to **absent** ordinary v2 target using fail-if-exists. Validate same-process file SHA256, ACL user+SYSTEM, no reparse and PS5.1 parse. If not unambiguous, no write or password prompt. Original v1, backup volumes, dirty source and Stripe 11.1.0 inactive unchanged.
 
@@ -561,11 +572,11 @@ Protected backend behavior for the current visual/research phase:
 
 ## EVIDENCE_POINTERS
 
+0. `docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` — **LATEST FORMAL REVIEWER RETURN** for v2 Owner-PS5.1 `-File` missing before any script/secret/password, exact trust classification, complete transition and safe next step.
 0. `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — latest v2 owner-real PS5.1 `-File` missing interim RETURN, non-secret same-console staged delivery and hash/ACL/syntax acceptance; no password reset.
 0. `docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` — exact Owner approval of G3S4AR; no redundant approval for same scope, safety and stop retained.
 0. `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — **ACTIVE Owner-authorized Gate** for side-by-side non-secret v2 and one private WordPress admin reset, minimal post-close governance follow-up.
-0. `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md` — latest Reviewer RETURN narrowing only existing v1 fail-closed exception diagnostic defect; SHA, Windows ACL/parser, admin scope and no reset Owner-relayed.
-0. `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — next combined v2 side-by-side repair + one-admin reset, **fresh Owner authorization pending**, no v1 overwrite.
+0. `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md` — prior Reviewer v1 diagnostic RETURN, **superseded as current blocker by G3S4AR Owner-host v2 file-not-found RETURN**, keep for provenance.
 0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — added 2026-10-17 Reviewer path virtualization diagnosis and verified real-host delivery/ACL/hash checkpoint after Owner PS5.1 ObjectNotFound.
 0. Canonical Governance `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` §11B and non-normative historical incident `vps-project-governance/history/incidents/2026-09-29_PACKAGED_APP_APPDATA_PATH_VIRTUALIZATION.md` — path-context mismatch must be ruled out before declaring file missing; original verified `OpenAI.Codex_*\LocalCache\Local` redirection pattern.
 0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — amended current Gate: 2026-10-17 invisible input session 12663 abort Owner-relayed; switch to visible Owner Windows PowerShell 5.1 non-secret launcher with separate readback.
