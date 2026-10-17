@@ -79,3 +79,13 @@ VERIFIED: three PHP files lint clean; both JSON catalogs valid (642 original key
 NOT VERIFIED: authenticated post-fix dashboard/product/notification UI and user area; no browser automation was used. Anonymous admin/dashboard redirects and CLI/HTTP checks are not visual acceptance. Native date placeholder and dynamic/custom notification titles remain documented limitations.
 ROLLBACK: reverse only the R1 patch; see localization/g2b-r1/README.md. Preserve G2A patch and all named volumes/data.
 NEXT: Reviewer visually rechecks the original screenshot areas; retain PARTIAL until required authenticated user dashboard, plan options and post-R1 dashboard/notification evidence are reviewed.
+
+
+### 2026-10-17 Reviewer R1 acceptance — source/CLI scope
+STATUS: G2B_R1_SOURCE_CLI_PASS / G2B_UI_RECHECK_PENDING
+REVIEWED_PR: #149 head 1b1fd289ca55f288280d438746578b6ddb961ba2, merged commit b2dca40ccfdf8c405a1bfce36f248ed74a701e08.
+REVIEW_SCOPE: Applied incremental six-source-file zh-Hans patch, preserved 642 prior catalog entries and added 16 display mappings; notifications subject mapping only in admin-list formatStateUsing, unknown and dynamic remain unchanged; product grouping API and TableWidget heading matched Filament signatures. Executor's static/CLI/HTTP/replay/data readbacks accepted for this small source Gate only, no current Owner runtime session directly inspected by Reviewer.
+DO_NOT_REOPEN: G1, G2A, R1 source patch absent independent material drift.
+NEXT_VISUAL_CHECK: Review real screenshots from authenticated admin dashboard and notification template list after R1, plus logged-in user dashboard and product edit/plan selector (minimum useful coverage). The old four screenshots are **pre-R1**, not proof of new R1 visual effect.
+RETAINED_LIMITATIONS: Native browser date placeholder may remain yyyy/mm/日; ticket dynamic variables and custom notification subjects remain as source string intentionally. Remaining undocumented pages are UNVERIFIED. Do not treat the changed locale code as proof of live save/submission tests.
+STOP: Remain G2B PARTIAL until Reviewer observes sufficient real UI evidence. No new Docker/app restart or more Codex patches solely because visual proof is absent.
