@@ -1,44 +1,57 @@
 # 现代商业支付系统｜唯一项目交接
 
-> **PROJECT_STATUS：HOLD（Owner 2026-10-17 明确暂停）**  
-> **EXECUTION_GATE：NONE**｜**NEXT_STEP：等待 Owner 解除 HOLD**｜**OWNER_ACTION_REQUIRED：NONE**
+> **PROJECT_STATUS：HOLD**（Owner 2026-10-17 暂停本项目）  
+> **EXECUTION_GATE：NONE**｜**OWNER_ACTION_REQUIRED：NONE**｜**HTML：未启动，保持暂停**
 
-## PROJECT_GOAL
+## 项目目标与定位
 
-面向中国大陆个人开发者、独立站经营者和中小跨境卖家的实操型现代商业支付知识指南。**七章 Markdown 正文已完成文稿级封板**；原规划中的最终 HTML 现已被 Owner 暂停，未启动开发、制作或交付。
+面向中国大陆个人开发者、独立站经营者和小微跨境商家的实操型现代商业支付指南。现已形成 **7 章完整 Markdown 正式正文**。原规划的 HTML 知识指南暂不制作；HOLD 不等于项目关闭，未来 Owner 可以提出新增、拆分或重组知识模块，但必须先明确本轮要改变的范围。
 
-- 唯一结构权威：[V6 冻结框架（7 个一级、29 个二级、42 个三级问题）](docs/FROZEN_FRAMEWORK_V6_20261016.md)。
-- 全部正式内容、来源定位和文件分类：[有效文件索引](docs/CURRENT_DOCUMENT_INDEX.md)。
-- 最新七份封板正文合集：[七章独立 ZIP](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)（独立导出分支仅含 7 个 Markdown 文件，已与 main 的正式正文逐项校验）。
+## 唯一有效文档（共 9 份）
 
-## CURRENT_ACCEPTED_STATE
+**结构权威**：[V6 冻结框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，含 7 个一级、29 个二级、42 个三级问题。未经 Owner 另行授权不改变。
 
-| 部分 | 唯一正式正文 | 验收状态 |
+| 部分 | 正式 Markdown | 状态 |
 |---|---|---|
-| ① 收款方案选择 | [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | PASS；包含 Owner 批准的 3.1 经营主体选择与设立专项（任务 B）；[专项证据](docs/CHAPTER1_TASKB_OWNER_ACCEPTANCE_EVIDENCE_20261017.md) |
+| ① 收款方案选择 | [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | PASS，3.1 已含 Owner 批准的任务 B 经营主体选择与设立专题和 J01–J11 法规来源 |
 | ② 收款开通与接入 | [CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | PASS |
 | ③ 顾客付款 | [CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md) | PASS |
-| ④ 支付处理 | [CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | PASS；[R2 审核记录](docs/CHAPTER4_R2_REVIEW_EVIDENCE_20261017.md) |
-| ⑤ 资金结算与到账 | [CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | PASS；[R2 审核记录](docs/CHAPTER5_R2_REVIEW_EVIDENCE_20261017.md) |
-| ⑥ 售后与资金风险 | [CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md) | PASS；[R2 审核记录](docs/CHAPTER6_R2_REVIEW_EVIDENCE_20261017.md) |
-| ⑦ 财务与合规经营 | [CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md) | PASS；[R2 审核记录](docs/CHAPTER7_R2_REVIEW_EVIDENCE_20261017.md) |
+| ④ 支付处理 | [CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | PASS |
+| ⑤ 资金结算与到账 | [CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | PASS |
+| ⑥ 售后与资金风险 | [CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md) | PASS |
+| ⑦ 财务与合规经营 | [CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md) | PASS |
 
-**任务 A（七章语言润色）：`FROZEN_NOT_MERGED`。** 任务 A 的独立语言候选未整体并入 GitHub 正式正文，不能以 Writer 返回包替换正式文件。  
-**任务 B（经营主体专项）：`PASS_OWNER_APPROVED_AND_MERGED`。** 已按 Owner 批准版本最小合入第一章 3.1 与 J01–J11 专项来源附录；其余章节未受影响。  
-**最终 HTML：`HOLD_NOT_STARTED`。** 停止设计、实现、评审与发布；不存在有效的 HTML 执行 Gate。
+加上**本文件**和 **V6 框架**，项目 main 目录仅保留 **9 份文件**。
 
-## HOLD_BOUNDARY / RESUME
+**七章打包下载**：[正式正文独立 ZIP](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)。ZIP 是单独的 GitHub 归档分支、不是第二套编辑源；发布后已核对与 `main` 的七章 Git Blob 对应。今后若修改任何正文，须重检或更新 ZIP，避免旧版本交付。
 
-1. HOLD 期间不启动 HTML，也不主动安排 Writer、Review、扩写、章节改动、金融实操或新的项目 Gate；本次仅允许按 Owner 要求整理状态与索引。
-2. 如 Owner 决定恢复，**先重新核验本 Handoff、V6 框架、七章正文的实际 GitHub 状态，再依据 Owner 当时指定的目标制定新 Gate**。不得把当前 HOLD 当作授权继续制作 HTML。
-3. 历史的 [第⑤章](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_20261017.md)、[第⑥章](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_20261017.md)、[第⑦章](docs/CHAPTER7_INDEPENDENT_WRITER_GATE_20261017.md) 独立 Writer Gate 已结束，只作追溯；任何旧离线 ZIP 或 RETURN 文稿不是当前正式正文。
-4. 七章 ZIP 来自独立的 `payment-guide-seven-sealed-chapters-20261017` 归档分支，**不是** `main` 内的第二套正文；若将来解除封板修订正文，须重新校验/更新 ZIP。
+## 已接受决定
 
-## CRITICAL_CONSTRAINTS / SYSTEM_MAP
+- **任务 A（全书语言编辑）：`FROZEN_NOT_MERGED`**。语言润色候选不整体替换正式七章，也不是当前待执行任务。
+- **任务 B（经营主体专项）：`PASS_OWNER_APPROVED_MERGED`**。经 Owner 正式批准，已将主体选择与设立内容最小合入第一章 3.1，并附 J01–J11 法规参考。其他章节未随之改动。
+- **V6 正式知识结构：`FROZEN`**。目前保留 7/29/42；未来若决定拆分或增设模块，可启动独立结构设计和审核，再由 Owner 决定是否更改已冻结的原有框架。
+- **HTML：`HOLD_NOT_STARTED`**。未启动设计、制作、评审或发布；绝不自动恢复。
+- 七章 PASS 是**文稿级封板**，不等于任何特定商户的金融账户、法律、税务、收款或提现资格获批。
 
-- GitHub `main` 的 `modern-commercial-payment-guide/docs/CHAPTER1_FINAL_SEALED.md` 至 `CHAPTER7_FINAL_SEALED.md` 为唯一正式内容；V6 问题框架和封板章节在新的明确授权前只读。
-- 文稿属于金融、税务和商业合规知识，不代表真实商户账户获批、实际税务申报或法律意见。动态费率、法域和产品准入条件必须按新的使用日期官方材料复核；无法确认记 `UNKNOWN`。
-- 不存在本项目独立部署运行时、数据库、服务端口、生产支付、退款、真实资金操作或已启动的 HTML 系统；相关运行和恢复操作 `NOT_APPLICABLE`。
-- **DEFAULT_EXECUTION_CHANNEL：** 有新授权后由 Reviewer 建 Gate，当前不委派 Executor；不得恢复已结束的 Writer Gate。
-- **ROLLBACK：** 由 GitHub 正式文件 Blob/Commit 历史与七章导出分支定位，保留审核证据；本次文档整理不变更七章正文。
-- **UNRESOLVED：** 未来是否以及如何制作 HTML 由 Owner 另行决定；当前无执行中任务。
+## 精简文件与历史恢复
+
+2026-10-17 按 Owner 明确批准，将**五份已结案审核证据、三份已完成 Writer Gate 和旧文档索引**从 `main` 当前项目目录移除；不再建立历史归档目录，也不将旧文稿标记为正式稿。这些内容仅供未来必要时通过 Git 历史恢复。
+
+- **精简前的完整项目快照**：[`7c20dd8e988a`](https://github.com/entropy-student/project/tree/7c20dd8e988a1b760e9609a201f5445a3a36b44f/modern-commercial-payment-guide)；被移除文件可从这个 Git commit 的 `docs/` 目录精确查看并按需恢复。
+- 当前维护方式：**唯一交接（本文件）+ V6 框架 + 七章正文**。不需要单独的 `CURRENT_DOCUMENT_INDEX.md`。
+- 没有修改或删除任何七章正文、V6 框架、Git 历史、其他项目文件或原来的七章 ZIP。
+
+## HOLD / 后续如何恢复
+
+1. **当前任务：NONE**。不启动 HTML，不改动正文，不自动派发 Writer，也不执行支付、退款、开户或税务申报。
+2. Owner 将来可以说「恢复现代商业支付系统，讨论新增/拆分 XX 模块」或「恢复 HTML 制作」。这是**不同工作范围**：先确认目标及新旧模块映射，再制定最小新 Gate；不可误认为现在已有 HTML 任务。
+3. 新 Reviewer 先读本文件和 V6 框架，再只读 `main` 中必要章节；以当前 GitHub 正式正文为唯一内容权威，不能从历史 Writer ZIP 或语言润色候选自动恢复。
+4. 金融费率、国家规则、平台开户资格及税务判断有时效性，未来引用时必须重新按法域、主体与官方规则核验；未知记 `UNKNOWN`。
+
+## 系统边界与回滚
+
+本项目目前只有知识类 Markdown，无独立部署服务、数据库、付款接口、真实交易和运行时；相关生产回滚、Secrets 与主机运维为 `NOT_APPLICABLE`。Git 历史和上述精简前快照支持恢复删除的文档，七章 Blob/Commit 历史支持逐章回退；任何新的实际修改必须经过 Owner 范围授权与后续 Reviewer 验收。
+
+**DEFAULT_EXECUTION_CHANNEL：** Owner 明确解除 HOLD 并指定范围后，由 Reviewer 建立新 Gate。  
+**UNRESOLVED：** 下轮要拆分哪些模块、是否启动 HTML 均待 Owner 后续决定。  
+**OWNER_ACTION_REQUIRED：NONE**。
