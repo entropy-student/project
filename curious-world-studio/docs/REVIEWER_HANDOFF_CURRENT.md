@@ -1,5 +1,13 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+## 2026-10-17｜V3最新交接（覆盖下方V2候选表述）
+
+- **交付**：Owner批准的30秒六模板连续HTML样片已在本次对话以私有附件提供，包含自选/内嵌参考片段（含第三方素材），**不推到公开仓库**；PR#144分支只新增[无媒体V3可编辑源码](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v3-source.html)和[审查证据](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md)。六模板底层共享版式设计，参照Mac研究桌面及QuickTime边到边播放。
+- **Reviewer判定**：六场景、时间轴、T5动态状态、T6数据展示、编辑视频连续性与配置输出的局部技术证据成立；但原Mac V2 Canvas实际复用与逐帧风格一致性、多合法源叙事、权利、配音同步、真实可发布MP4**未通过**。标记`V3_VISUAL_DEMO_TECH_PARTIAL / RETURN_EXACT_STYLE_AND_RIGHTS`。30秒自动播放测试在关闭环节超时，勿冒充全程PASS。
+- **下一步**：先与已选G1VA V2比较真实视觉，再有限地移植锁定外壳，而非继续造新模板；有合法不同来源的30秒视觉节拍后检查Story-Fit。PR仍Draft未合并。旧CW0005正式`R3=RETURN / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`不变。
+- **OWNER_ACTION_REQUIRED**：NONE（用户如愿意可看本轮私有HTML给外观反馈；不需审批/密码/环境动作）。
+
+
 ## 2026-10-17｜知识内容模板支线最新状态（优先于下方旧“待讨论”时态）
 
 - **最新Owner方向**：已选方案A，六种知识展示用途（T1单素材/T2双画面对照/T3实拍+解释/T4论文档案/T5过程演变/T6数据与结论），底层三布局共用；仍与原有MW-01～MW-13 Mac操作模板分离。这个选择**没有**新增实际AI生图、收费或正式制片许可。
