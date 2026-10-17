@@ -133,3 +133,17 @@
 - ROLLBACK_EFFECT：PR保持Draft未合并；可关闭该PR或删除隔离分支，不触及任何历史已验收主线、用户Windows本机、旧媒体/备份。
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：没有实际素材购买、外部模型/Provider调用、发布或持久业务数据变更。
 - EXECUTOR_RESULT：`V2_REVIEW_CANDIDATE`；REVIEWER_RESULT：`PARTIAL_VERIFICATION`，需要验真实嵌入V2候选HTML连续视觉效果后方可PASS。
+
+
+## EVIDENCE 2026-10-17｜六内容模板V3私有30秒视觉样片
+
+- AUTHORIZED_GATE：`CWS-SIX-CONTENT-TEMPLATES-30S-PRIVATE-VISUAL-QA-20261017`；Owner明确同意完成 Mac 外壳与六种动态内容模板整合并回传 HTML，只限离线私有Demo与评审。
+- PREFLIGHT_FACTS（DIRECT_READBACK）：原Mac视觉基准 `g1va_v2_research_aqua_prototype.html` 的既有仓库版本、PR#144仍Draft；旧R3视觉否决及G1/G2/R4/NO_PUBLISH未解除。
+- ACTUAL_CHANGES：沙盒制作约30秒、六模板、单时间轴的HTML，素材取自Owner上传的第三方参考片段/图片，仅在对话私有附件。另将无媒体源码 `storyboard-v3-source.html` 新增到PR#144；严禁将引用的素材/截图推到GitHub。
+- OBJECTIVE_READBACK（BEHAVIORALLY_VERIFIED）：Chromium检验12个时间点含T1–T6和T5三状态；六段时间轴导出；本地影片播放期间修改字幕仍从1.65s推进至2.22s；无页面JavaScript错误。
+- VALIDATION：`V3_VISUAL_DEMO_TECH_PARTIAL`；一轮较长实时报表曾观察到终点T6/30s，但测试运行在退出阶段超时，无独立完整闭环PASS；无法从截图/编辑控件通过推断长片叙事质量。
+- ANOMALIES：Mac外壳复刻了Research Aqua视觉元素和动作几何，但本Demo是CSS/HTML重建，**尚不是原Canvas V2源码的逐帧一致**；T3解释侧、T4档案页等仍有信息卡感；所有样例来自同一原视频，未检验多源合法素材的自动故事匹配。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：私有对话附件 `CWS_30秒动态知识模板_完整预览.html` SHA256 `21d53390aa8fc75dbb2288437f0ae6be75cdd3335e063ca6eb1c9cfa7c353e93`，含第三方参考素材，不公开/不进Git；PR#144 `visual/content-template-lab/storyboard-v3-source.html`无媒体可替换源码 SHA256 `3ebe0dc5190267e78890174d9327510de13f031739ed0386f8d20289c349adda`；具体问题见 `CWS_TEMPLATE_LAB_V3_REVIEW_2026-10-17.md`。
+- ROLLBACK_EFFECT：所有新公开源码/文档只在Draft PR内；可关闭PR，不碰main业务代码、用户本机工作树或旧项目资源。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：无发布、支付、模型调用或真实账户变更；沙盒本地截取用户提供的参考样片用于私有视觉评测。
+- EXECUTOR_RESULT：`V3_DEMO_DELIVERED`；REVIEWER_RESULT：`REVIEWER_RETURN_EXACT_STYLE_AND_RIGHTS`；正式内容/视觉质量、版权和MP4成片均未PASS。
