@@ -1,7 +1,7 @@
 # G4D0 — Birthday Magazine P1–P12 visual layout discovery and candidate
 
 Date: 2026-10-18
-STATUS=ACTIVE_NEXT_PHASE_GATE; DESIGN_ONLY; NO COMMERCE/STRIPE_TRANSACTION
+STATUS=HOLD_OWNER_ALTERNATE_PLAN_PENDING; DO_NOT_EXECUTE; NO COMMERCE/STRIPE_TRANSACTION
 Authority: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7 §§0–10 and triggered 11C/11D/11E (no consequential provider actions allowed); initial inherited project brief in `birthday-magazine-studio/REVIEWER_HANDOFF.md` `PROJECT_GOAL` and selected accepted design/PDF pointers.
 Prerequisite G3S4M phase is **ENDED AS PARTIAL_WITH_EXCEPTIONS**, NOT strict replay PASS, by [G3S4M reviewer closeout](./REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md). This enables **design**; it does not accept Live payment or clear unmapped provider TEST activity.
 
@@ -52,3 +52,10 @@ EXECUTOR_TO_REVIEWER_RELAY=GOVERNANCE_STANDARD_9_SHORT_PACKET_WITH_LINKS
 请 Reviewer 检查：逐页杂志编辑质感、照片可替换性、可读性及 MVP 输入契合度。
 Owner 转交：NONE（等待设计方向评审时才询问）。
 ```
+
+
+## 2026-10-18 Owner override — G4D0 on HOLD, wait for alternate production/design plan
+
+**Latest direct Owner instruction:** "好的制作这块先不按照你说的方案来，我另有安排，请记录。明天我们再讨论。" Owner declines/defer the assistant-proposed G4D0 magazine-production/visual-design plan and will supply a different approach in the next discussion. **This Gate is now PREPARED HISTORICAL DRAFT / HOLD and is NOT authorized for Codex execution.** No source inventory, P1–P12 HTML, PDF, design asset generation, acceptance tests or other proposed magazine creation should be started under G4D0 until Owner states their alternative and Reviewer issues a new or explicitly revised Gate. Do not construe absence of the new plan as approval of this draft, and do not create a substitute design plan.
+
+Previously accepted Stripe TEST partial closeout, prior payment/refund/source and PR64 state remain unchanged. No payment, Stripe/Webhook/Cloudflare/WooCommerce re-testing. No PR merge. **Next only: discuss Owner's proposed direction when they return.** No automatic reminder/task was requested.
