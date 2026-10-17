@@ -1,7 +1,7 @@
 # G3S4M — Owner-manual login, verified local administration and conditional Stripe TEST-only payment
 
 > Date: 2026-10-17
-> Status: **READ_ONLY_PREFLIGHT_REVIEWER_PASS; OFFICIAL_STRIPE_CLI_LOCAL_COMPATIBILITY_PREP_NEXT; TEST_WRITES_NOT_AUTHORIZED**. See latest dated Reviewer appendix below.
+> Status: **READ_ONLY_AND_CLI_STAGING_REVIEWER_PASS; CONDITIONAL_SUPPORTED_MANUAL_TEST_ROUTE_SELECTED; TEST_PROVIDER_WRITES_AWAIT_EXPLICIT_OWNER_SCOPE_AND_PRIVATE_ROTATION**. See latest Reviewer dated appendix below.
 > Parent Reviewer RETURN: `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`
 > Retained G3S4R Evidence: PR #64 `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350`
 > Prior backup/restore Evidence: `docs/evidence/g3s4/G3S4E_RETAINED_PREFLIGHT_AND_BACKUP_RECOVERY_2026-10-16.md` at `7397dd3bb7ab5fe62bb8575185d51405391f2c63`
@@ -65,3 +65,18 @@ Owner 转交：仅本人浏览器登录/必要授权，不传任何密钥。
 **Important caveat:** Stripe CLI outputs a listener-specific signing secret; successful CLI forwarding alone does not prove Woo's test webhook verification or order/fulfilment behavior. Only later with explicit fresh TEST-write consent, credential rotation, exact account/TEST mode proof and supported plugin configuration should Owner alone connect authenticated account and enter any signing secret privately; then test actual native Woo checkout with signed first/replay/negative webhook and bounded TEST refund, not an unrelated synthetic trigger. If Woo cannot safely use CLI listener TEST secret with official supported configuration, STOP to Reviewer for a dedicated, separately authorized HTTPS test environment (no ad-hoc public tunnel).
 
 Official refs: https://docs.stripe.com/webhooks ; https://docs.stripe.com/cli/listen ; https://docs.stripe.com/cli/install ; https://woocommerce.com/document/stripe/setup-and-configuration/stripe-webhooks/ .
+
+
+## 2026-10-17 Reviewer — CLI staging PASS and conditional local TEST path
+
+**Latest current authority:** `docs/REVIEWER_DECISION_G3S4M_CLI_STAGING_PASS_CONDITIONAL_MANUAL_TEST_ROUTE_2026-10-17.md`, PR #64 head `5ee2531818b8cdf79f03cca8860f297152ac9d09`.
+
+**Reviewed and accepted:** earlier full local read-only preflight plus one subsequent same-file Evidence update containing exact installed official Woo Stripe 11.1.0 native `?wc-api=wc_stripe` TEST signing path and official private Stripe CLI v1.53.1 Windows offline staging/checksum/version. Both bounded technical tasks are **Reviewer PASS**. No listener/login/provider account/TEST payments/webhook/refund or WordPress payment settings mutation has occurred; all source-level functional assertions remain **runtime UNTESTED**.
+
+**Reviewer selects conditional path A for local TEST only, not live/production:** native Woo Stripe 11.1.0 **supported Owner-visible manual TEST-key and TEST webhook signing secret configuration** + official Stripe CLI outbound TEST listener to localhost. This is selected over opening public ingress or using old/replacement VPS. Source contains TEST key/secret fields and a REST account-key controller; Woo's current merchant onboarding requires OAuth and warns that HTTP/loopback will not connect. **Do not assume manual Test UI is exposed merely because REST/settings code exists**; do not set values directly via REST, WP option, SQL, WP-CLI eval, patch plugin or spoof OAuth to get around official UX. If supported Test UI is missing or forces unsafe Live/remote configuration, stop **before credential and payment setting changes** with `RETURN_MANUAL_TEST_UI_UNAVAILABLE`; Reviewer can then authorize isolated HTTPS staging separately.
+
+**Hold for exact preconditions:** Owner confirms existing exposed WP admin password was rotated privately without sending any value, and provides fresh explicit **G3S4M LOCAL TEST-ONLY write approval** covering activate installed official plugin on exact existing local WP, Owner manual TEST connection/key entry, CLI Test listener, one #1113 synthetic virtual USD39.99 Woo checkout, signed first delivery/duplicate/invalid signature verification and one test refund with local revocation. This TEST-only scope does not authorize Live, real money, domain/HTTPS ingress, account region/KYC changes or VPS. Owner-only browser and Provider account auth. Fresh scoped provider/host identity + rollback readback before actual mutation, reusing prior proven backup evidence without redo.
+
+**Runtime acceptance:** must actually prove test account identity matches keys/CLI, event signing and real native Woo order/amount/currency correlation, invalid-signature rejection, first/duplicate ack + no double entitlement/job, TEST refund Provider status and local revocation. Handler source may allow missing account context; don't accept a missing account correlation as proof. Avoid secret values in CLI/tool/chat/Evidence/output or logs. A `stripe trigger` fixture not tied to a genuine Woo checkout is not payment Gate PASS.
+
+**Stop:** after one bounded conditional local TEST execution or precise unmet-precondition RETURN, append sanitized to existing G3S4M Evidence on PR64, mandatory Reviewer stop. Old VPS deployment invalid. Do not re-run accepted preflight/CLI staging unless material drift.
