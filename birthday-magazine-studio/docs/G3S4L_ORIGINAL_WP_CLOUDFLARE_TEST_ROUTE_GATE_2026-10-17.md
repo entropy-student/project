@@ -259,3 +259,30 @@ PR64=OPEN_UNMERGED
 **No refit/rollback now:** 9 CSS/12 JS with correct URLs/MIME and cross-route HTTPS show the former loopback CSS TLS failure has been repaired. Do not re-run the same media/security scan, modify Cloudflare/Tunnel/SSL/DNS, re-enter token, reinstall theme/WordPress, change proxy, rewrite DB globally or restore old URLs while the public route is functional.
 
 **NEXT bounded Executor task, still in G3S4L:** (1) capture nonsecret *real styled screenshot* via permitted owner-public-page browser check if feasible (Cloudflare management browser safety stop still applies to management tab; do not bypass it), otherwise record `VISUAL_PENDING` and move on; (2) create only ephemeral **guest synthetic cart** with existing public Birthday Magazine product using native Woo frontend/Store API, **do not submit a checkout or create an order**; validate non-empty public `/checkout/` HTML/form, cookies/session, no loopback or challenge, no private exposure. Empty-cart redirect previously observed is expected and not a defect. (3) Inspect official installed Woo Stripe provider **read-only**, determine current connection/TEST vs LIVE status, Woo native signed callback route `https://magazine.spikersun.com/?wc-api=wc_stripe` reachability without weakening signature checking; don't invent webhook signatures or treat unsupported-method errors as signed-test success. (4) If Stripe TEST consent/registration absent, ask the Owner for **one essential official provider UI OAuth/login step**, no API secret pastes. Only after verified TEST, authenticated signed Webhook and Owner authorization proceed to one bounded USD39.99 **synthetic** checkout/first/duplicate/invalid event and ONE refund/revocation under existing Gate, not now. Preserve rollback if new HTTPS/cart evidence shows actual failure. (5) Append sanitized cart/checkout/provider-readiness Evidence to same PR64 G3S4L file and STOP at first actual Owner OAuth/material payment boundary, rather than creating another generic environment research loop. No Live or real funds; no second site/VPS/paid hosting/PR merge.
+
+
+## 2026-10-17 d2b91 Reviewer — guest checkout PASS, fix persisted loopback anchors before Stripe (LATEST)
+
+**LATEST Reviewer authority:** [`REVIEWER_DECISION_G3S4L_D2B91_CHECKOUT_PASS_LOOPBACK_LINK_REPAIR_BEFORE_STRIPE_2026-10-17.md`](./REVIEWER_DECISION_G3S4L_D2B91_CHECKOUT_PASS_LOOPBACK_LINK_REPAIR_BEFORE_STRIPE_2026-10-17.md); PR64 HEAD `d2b91e13072fcfd046ef904b0caf5ed73a6f739f`, OPEN/UNMERGED; only Evidence append. Prior appendix's `non-empty checkout untested` and `Stripe state unknown` now **SUPERSEDED**. Source = Codex Executor Evidence; no independent Reviewer live-host fetch.
+
+```text
+LATEST_RESULT=PARTIAL_PASS_GUEST_CART_CHECKOUT_AND_PROVIDER_READINESS
+NONEMPTY_GUEST_CHECKOUT=HTTPS_200;FORM_21_CONTROLS
+GUEST_CART=1_EXISTING_PRODUCT_QTY_1;CLEANUP_ZERO_ITEMS
+COOKIE=SECURE_HTTPONLY
+CHECKOUT_CSS=9_OF_9_200;JS=15_OF_15_200_CORRECT_MIME
+CHECKOUT_FORM_ACTIONS=PUBLIC_HTTPS
+ACTUAL_LOOPBACK_REDIRECTS_OBSERVED=0
+HTML_A_HREF_LOOPBACK=12_OCCURRENCES_10_HOME_1_PRODUCT_1_OTHER
+ACTUAL_LINK_SOURCE=NOT_YET_CLASSIFIED
+RENDERED_SCREENSHOT=UNVERIFIED_NO_BYPASS_ALLOWED
+WOO_STRIPE_PLUGIN=11.1.0_ACTIVE;GATEWAY_DISABLED;TEST_MODE_SELECTED
+STRIPE_TEST_OR_LIVE_OAUTH_KEYS_WEBHOOK_SIGNING=ABSENT
+PUBLIC_WEBHOOK_GET_200=ONLY_ROUTE_REACHABILITY_NOT_SIGNED_POST
+NO_ORDER_NO_PAYMENT_NO_REFUND=YES
+NEXT=PRECISE_PERSISTED_LOOPBACK_ANCHOR_SOURCE_REPAIR_THEN_OWNER_STRIPE_TEST_CONSENT
+```
+
+**Exactly one next Codex iteration, no Owner action now:** Read-only locate all 12 checkout `a[href]` contexts and their **actual persisted source records** (10 home, 1 product, 1 other; 12 occurrences may stem from fewer records). Inspect representative public nav across home/preview/product/cart; use the smallest guarded, reversible **native WordPress API** edit to only the proven menu/block/widget/custom link sources. **No global DB search-replace, theme rebuild, blind cache purge or checkout/payment configuration write**. Demonstrate zero remaining loopback href on rendered checkout HTML and common navigation, exercise only representative 3 destinations, no mix or public-host downgrade. Reuse existing checkout/session/resource PASS; if a temporary guest cart is needed for HTML scan clear it once, no order. Attempt a nonsecret public browser screenshot only through an available legitimate browser path; otherwise mark visual outstanding without another generic RETURN. Evidence append to same G3S4L PR64 then Reviewer stop.
+
+**Provider remains an Owner checkpoint after corrected site navigation:** official WooCommerce Stripe plugin 11.1.0 installed/active, gateway OFF, TEST selector chosen, account unconnected, signing key absent. Only then ask Owner to use Woo official Stripe **TEST** signup/login/OAuth once; Owner credentials never appear in chat/agent/GitHub. A GET 200 to `https://magazine.spikersun.com/?wc-api=wc_stripe` does not demonstrate signed POST or Webhook idempotence. No Live or even TEST purchase/refund in this targeted repair stage. Original real order/private media and old Docker/Tunnel preserved; no VPS, new site, paid hosting or PR64 merge.
