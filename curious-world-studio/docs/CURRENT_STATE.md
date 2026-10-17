@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-17）
 
+<!-- CWS_V53_EIGHT_FIXES_EXTERNAL_REVIEW_PENDING_20261017 -->
+> **2026-10-17 最新候选（尚未被外部Reviewer接受）**：Owner仅授权八项有界修复①长片时间边界②T5局部入点③短视频停末帧④T5/T6参数化⑥T2/T3证据contain⑦字幕超长告警⑧T5自定义阶段时长⑫文件名与来源标签。Draft [PR#144 V5.3](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-3-eight-fixes.html)已提交，Git blob `8c3dd9f26dae8f1104082d670a7310dbe9033e47`，**不覆盖当前main V5.2冻结原件**（blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`）。浏览器本轮本地技术自测19/19+4/4，31.06秒全程1×私有样片PASS；隔离5分钟时长扩展第40秒显示正确、短MP4/T5入点复测正确，仍**待原独立Reviewer复核与采纳，不算新正式基线**。私人带参考媒体HTML只在用户会话ZIP中，未入Git；正式节目制片R3视觉RETURN/G1 HOLD/G2和R4未授权/NO_PUBLISH不变。证据见[PR复核邀请](https://github.com/entropy-student/project/pull/144#issuecomment-6235329867)。
+
+
 <!-- CWS_V52_FROZEN_20261017_OWNER_DECISION -->
 > **2026-10-17｜最新Owner裁决：`V5.2_TEMPLATE_BASELINE_FROZEN / MAIN_ARCHIVED`（覆盖下方一切V5.2“继续返修”的旧建议）**。Owner确认现版本已有连贯的视频感，**虽仍可继续调整样式，但本轮先冻结留档、暂停样式返工**。无媒体精修版已按**原字节**归档到[main固定 HTML](../visual/frozen/storyboard-v5-2-20261017.html)，Git blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`，与Draft PR#144里的V5.2原文件完全一致；不合并PR，不改Mac原版V2或V1–V5历史候选。唯一原版Research Aqua外壳、六可复用内容模块、七镜头/31.06秒统一时轴、桌面开窗与结束关闭回桌面作为当前可复用模板技术基线。浏览器技术子项已通过已列局部验证，但**不代表正式4–6分钟影片、素材权利、音画、MP4输出或最终完整Story-Fit通过**。后续视觉细节请另建V5.3+而不覆盖冻结版；如无新视觉问题，则下个阶段以冻结基线进行真实分镜/合法素材映射/音画自动生产能力验证。完整范围/证据/恢复见[冻结记录](CWS_V52_TEMPLATE_FREEZE_2026-10-17.md)。**CW0005正式`R3=RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`不变**。
 
