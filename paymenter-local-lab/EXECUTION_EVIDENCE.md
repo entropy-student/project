@@ -60,3 +60,42 @@ OBSERVATIONS: Paymenter v1.5.9 and Paymenter/MariaDB/Redis reportedly running on
 ACTUAL_CHANGES: NONE reported; no container restarts, localization modifications, data changes or PR from that attempt. G1 PASS unaffected.
 FAILURE_CLASSIFICATION: RETURN_BROWSER_TOOL_UNAVAILABLE; browser evidence unavailable is not evidence of app failure, and cannot be silently replaced with server-up evidence.
 REVIEWER_DECISION: Split G2 into authorized code/CLI-only G2A then later G2B real UI verification. G2A must honor tool stop, may create/apply scoped translation files based on source and PHP/CLI checks with verified rollback; cannot claim UI or G2 complete. Current Gate: docs/G2A_SOURCE_NO_COMPUTER_USE_GATE.md.
+
+
+## 2026-10-17 G2A Simplified Chinese source and CLI execution — Reviewer pending
+AUTHORIZED_GATE: PAYMENTER-G2A-ZH-HANS-SOURCE-WITHOUT-COMPUTER-USE-20261017
+GOVERNANCE: entropy-student/spike.skill/vps-project-governance/VNEXT.md v0.2.7
+PROVENANCE: DIRECT_READBACK from Owner Windows PowerShell, Docker CLI, Laravel/PHP CLI and loopback HTTP GET. No Computer Use or browser automation was used.
+TARGET:
+- Existing Owner Windows local Paymenter v1.5.9 instance; app source revision ee729f7d99ac18942625b79f3f93d8d8b21255e8.
+- Compose project paymenter_local_lab; app published only at 127.0.0.1:8187. The app source is in the project-owned Docker volume; project bind root remains %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab.
+- Laravel Framework 12.65.0. No redeploy/recreate, database reset, image upgrade, or other Docker project change.
+ACTUAL_CHANGES:
+- Applied the replayable main patch (117 files, 3,208 insertions / 1,213 deletions) covering the 15 existing lang/zh PHP resources in Simplified Chinese, matching lang/zh_CN PHP resources, zh/zh_CN JSON dictionaries (642 strings after additions), Filament admin navigation/resource/field/status/chart labels, common Blade admin views, and the default welcome text.
+- Added a separate one-line runtime theme overlay patch for /app/themes_default/default/theme.php. The Paymenter entrypoint copies /app/themes_default into /app/themes on every startup; both the source theme and startup template are patched and rechecked after restart.
+- Updated only settings.theme_default_home_page_text, after confirming its value was the exact upstream default. Stored the original setting snapshot locally. Cleared only the application Cache key “settings”; no Redis-wide/cache-wide flush.
+- Restarted only the paymenter service. Final app StartedAt 2026-10-17T10:21:38Z; database and cache remained running with their prior StartedAt 2026-10-17T08:49:52Z.
+- The existing app entrypoint automatically invoked “php artisan migrate --seed --force” during restart. No manual migration/initialization command was run; post-restart migrate:status was 71 Ran / 0 Pending.
+DATA_AND_CONFIGURATION:
+- Before/after row counts: users=1, categories=1, products=1, plans=1, orders=0, invoices=0, services=0, extensions=0.
+- Gateway configuration was not modified; G1 accepted readback showed no configured gateway. No payment, checkout, order, or email action was performed.
+STATIC_AND_CLI_VALIDATION:
+- PHP syntax: 115 changed PHP files checked; 0 errors.
+- Translation integrity: all 15 existing PHP language key structures preserved; 460 placeholder-bearing/string entries preserved; Simplified Chinese residual scan returned 0; 11 patched Blade templates compiled.
+- Admin inventory: all 26 resource model/plural/navigation labels loaded as Chinese; 0 label failures. Common admin translation probes: 24/24 translated.
+- Laravel runtime readback: admin locale middleware sets zh_CN; “Dashboard” resolves to “仪表盘”; product/category/ticket labels, auth email, required-field validation and theme helper return Simplified Chinese.
+- Both patches pass git apply --check --reverse after restart; all 117 main-patch paths match the reviewed source-copy SHA-256 values. The local pre-apply backup checked 96 existing files with 0 hash mismatches; the separate runtime theme backup also verifies. Backup manifest SHA-256: 19a798addd58bc43d873a2a9ab86d419b41fd160f94360aee35b57dd18fc3eaa.
+- Main patch SHA-256: 6061f07707ccb45e30a7dd5471692bb54c5682d370b32729b8f73ff52c24966a. Runtime overlay patch SHA-256: 07d05f724a79f3d3c8593b425abf2cb651051497a1d18c428093a1b118d7f4f6.
+READ_ONLY_HTTP_AFTER_FINAL_RESTART:
+- GET / returned 200 and contained the Simplified Chinese welcome/navigation; the old English default welcome was absent.
+- GET /login returned 200 with the Simplified Chinese login label.
+- GET /products/demo-products-fictional/fictional-cloud-vps-demo returned 200 with Simplified Chinese navigation.
+- Anonymous GET /admin and /dashboard returned 302 redirects as expected. No login form was submitted; these redirects do not verify authenticated admin/user UI.
+BACKUP_AND_ROLLBACK:
+- Local source backup: %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab\g2a-work\backup-original; supplemental overlay snapshot and SHA manifest are in the same local-only directory. Original theme setting snapshot is in g2a-work\private-backup. No backup, credentials, database, cookies, logs, or account password was committed.
+- Rollback uses git apply --reverse for the main and runtime-overlay patch, then restores theme_default_home_page_text from the local snapshot only if the current DB value is still the localized value; restart only paymenter. Preserve all named volumes.
+LIMITATIONS:
+- This was source/CLI/HTTP verification only. Authenticated user/admin visual review, secondary-page layouts, charts, modals, clicks, and all remaining dynamic/vendor/extension text are UNKNOWN/UNVERIFIED and remain for G2B browser evidence. Do not infer UI-complete or G2 PASS from HTTP/CLI results.
+- Dynamic customer/product data and third-party/vendor text are not translated by this patch.
+EXECUTOR_RESULT: PASS_CANDIDATE_G2A_APPLIED_CLI_VERIFIED (G2A_SOURCE_AND_CLI_PASS_CANDIDATE). G2B_PENDING_BROWSER_EVIDENCE. STOP_AT_REVIEWER.
+REVIEWER_REQUEST: Verify the patch is replayable and scoped to this local Paymenter source, the runtime theme overlay is required for restart persistence, and the evidence does not overstate UI/browser acceptance. Owner action: NONE.
