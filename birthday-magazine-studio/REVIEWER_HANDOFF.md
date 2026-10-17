@@ -4,9 +4,12 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (G3S4AR read-only ACL acceptance; Owner real child TARGET_CHECK mismatch unresolved; no password reset; PR64 Evidence reviewed)
+> Last reviewed: 2026-10-17 (Owner-relayed missing git.exe prewrite stop; Reviewer allows safer direct WP-CLI method under existing G3S4AR, no password reset, PR Evidence awaiting Executor)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
+
+**2026-10-17 CURRENT ENTRYPOINT OVERRIDE:** For current execution use the `## CURRENT_GATE` section and the latest appended G3S4AR Gate route correction on missing `git.exe`. Prior v2 path/ACL checkpoints are historical, **not** instructions to resume original v2. The reported credential operation is still NOT_STARTED.
+
 
 **2026-10-17 OVERRIDE FOR NEW REVIEWER:** Begin with this current `REVIEWER_HANDOFF.md` + `docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` + current `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`. The dated `NEXT_REVIEWER_BOOTSTRAP_2026-10-15.md` is historical, NOT a current execution Gate. Exact Owner-shell v2 `-File` missing result has a formal REVIEWER RETURN; local WordPress password remains not reset. No new Owner approval for the already authorized narrow filename/path staging. See `docs/DOCUMENT_INDEX.md` current-entry banner.
 
@@ -72,7 +75,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4AR_READONLY_ACL_ACCEPTED_CHILD_CONTEXT_HOLD_NO_PASSWORD_RESET
+PROJECT_EXECUTION_STATUS=G3S4AR_GIT_MISSING_PREWRITE_WPCLI_ROUTE_APPROVED_NO_PASSWORD_RESET
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -165,7 +168,7 @@ G3S4AR_VERSIONED_SCRIPT=PREPARED_EXECUTOR_REPORTED_NOT_VISIBLE_IN_OWNER_NATIVE_P
 G3S4AR_ALLOWED_LOCAL_V2_FILE=Invoke-G3S4A-AdminRecovery-v2.ps1_CREATE_NEW_FAIL_IF_EXISTS
 G3S4AR_PASSWORD_RESET=AUTHORIZED_ONLY_AFTER_V2_FAIL_CLOSED_VALIDATION_AND_OWNER_MASKED_INPUT
 G3S4AR_OWNER_AUTH_RECORD=docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md
-G3S4AR_REVIEWER_STATUS=PARTIAL_ACCEPTED_ACL_READONLY_CHILD_CONTEXT_HOLD
+G3S4AR_REVIEWER_STATUS=RETURN_PREWRITE_TOOL_DEPENDENCY_DIRECT_WPCLI_IN_SCOPE
 G3S4AR_V2_FILE=OWNER_VISIBLE_HELPER_V3_HASH_PARSE_READBACK_PASS_AND_V2_STARTED
 G3S4AR_GOVERNANCE_MINIMAL_POSTCLOSE_SCAN=PENDING_VERIFIED_FIX
 G3S4AR_V2_EXPECTED_SHA256=fd99b00d106adbf706a6b8f560bc63c931cd5596a00d557d71fa4deda35367d2
@@ -177,7 +180,7 @@ G3S4AR_REVIEWER_PROVENANCE=OWNER_REAL_CONSOLE_OUTPUT_PLUS_CODEX_RELAY_GITHUB_REA
 G3S4AR_SAME_CONSOLE_V2_FILE_DIGEST=OWNER_HELPER_V3_READBACK_PASS_EXPECTED_DIGEST
 G3S4AR_SCRIPT_BODY_STARTED=YES_TARGET_CHECK_ONLY_NO_CREDENTIAL_WRITE
 G3S4AR_LAUNCHER_PATCH_VERIFIED_BY_OWNER=NO
-G3S4AR_NEXT_ACTION=ONE_EXECUTOR_NONSECRET_V2_CALLSITE_CHILD_CONTEXT_RECONCILIATION
+G3S4AR_NEXT_ACTION=ONE_OWNER_NATIVE_GUARDED_DOCKER_WPCLI_ADMIN_RESET_AFTER_EQUIVALENT_RUNTIME_IDENTITY_AND_STDIN_FIXTURE
 G3S4AR_OWNER_REAPPROVAL_NEEDED=NO_SAME_SCOPED_GATE_ALREADY_APPROVED
 PROJECT_OWNER_APPROVAL_CADENCE=NO_REDUNDANT_REQUESTS_FOR_BOUNDED_APPROVED_SAME_SCOPE
 PROJECT_STANDING_APPROVAL_LIMIT=NOT_A_WAIVER_OF_HOST_SECRET_LIVE_PROVIDER_DESTRUCTIVE_REVIEW_STOP_CHECKS
@@ -411,6 +414,9 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+- **2026-10-17 latest Owner-relayed executor no-write RETURN: missing `git.exe` at v2 `TARGET_CHECK`.** Reported `CommandNotFoundException` classified `OTHER_EXCEPTION`, Owner native `Get-Command git.exe=MISSING`, no password entered or WP mutation, attempt marker absent; report is not independent Reviewer access to private local source. The previous ACL predicate probe remains accepted but does not resolve all historical child contexts. Reviewer has retired **live retries of original Git-dependent v2**, and appended a minimal in-scope alternate **guarded WP-CLI one-existing-admin recovery** route to active G3S4AR Gate (same Owner consent, no new Gate or Git installation). Exact current Docker+WP site/admin identity and safe masked stdin transport must be proven in native Owner context before one credential write. No fresh PR64 Executor Evidence commit reported; GitHub Reviewer successfully read existing PR64 Evidence by actual branch ref.
+
+
 - **2026-10-17 current Reviewer judgment — ACL read-only validation accepted, full G3S4AR still HOLD before password:** PR #64 Evidence at `14bd89cf1e6a471a7f262f38db27c73081af2ba0` only changed one sanitized file. Executor's native PS5.1 isolated v2 ACL predicate accepts tested private directory/file and rejects unsafe controls; no code/ACL/password change. It does NOT refute Owner's actual earlier `TARGET_CHECK ACL_UNSAFE MUTATION_STATE=NOT_STARTED` child-process stop. Do not rerun unchanged launcher, repeat accepted file/hash/ACL discovery or create new Gate. Executor next inspects ALL exact `ACL_UNSAFE` call sites/roles and reproduces them read-only in an equivalent native PS5.1 child, fixing only proven actual ACL/predicate defect with isolated fixtures before returning a new verified Owner-private one-time login route. Formal decision: `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md`.
 
 
@@ -474,9 +480,11 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4AR remains the only active Owner-authorized Gate; scope-specific Reviewer state: PARTIAL_ACCEPTED_READONLY_ACL_ONLY / HOLD_BEFORE_OWNER_PASSWORD_WRITE.** Formal decision: `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md`; PR #64 Evidence: `14bd89cf1e6a471a7f262f38db27c73081af2ba0`. Owner's visible v2 invocation reached `TARGET_CHECK` but returned `ACL_UNSAFE` with `MUTATION_STATE=NOT_STARTED`. Later native PS5.1 extraction of the ACL predicate reports the private script directory/file both safe and negative controls rejected; this does **not** prove all real v2 callsite arguments/process context were identical during the earlier failure. File delivery/standalone ACL probes do not need replay.
+**Active Gate: G3S4AR (same already-approved local WordPress administrator recovery, not a new Gate).** Latest Executor Owner-relayed result: the existing v2 password recovery launcher failed in `TARGET_CHECK` because `git.exe` command resolution raised `CommandNotFoundException` / `OTHER_EXCEPTION`. Credential mutation `NOT_STARTED`; no newly committed PR64 Evidence. Previous owner-visible hash and isolated ACL validation remain useful but are **not** evidence of completed password recovery. **Do not further re-execute/patch the original live v2 launcher or install Git just for this workflow.**
 
-**Only remaining immediate task:** Executor's one targeted **non-secret, read-only** static callsite + equivalent native PS5.1 child-process context reconciliation for every `ACL_UNSAFE` guard and its input path roles. No unchanged live v2 replay; fix only proven unsafe project-private DACL or overstrict/misclassified guard, preserve v1/v2, validate a side-by-side corrected candidate by isolated fixtures and actual Owner-native readback before offering one private Owner-run password reset. Existing approved G3S4AR authorization covers this bounded reversible correction. Any write-start ambiguity stops `UNKNOWN_NO_RETRY`. Stripe, backups, unrelated source, PR merge, new Gate and Governance edits stay outside scope.
+**Reviewer-approved in-Gate transport correction:** one guarded **native Owner-visible Windows PS5.1 + existing Docker WP-CLI** credential update of exactly one known administrator after fresh, bounded read-only target proof from real Docker container identity/mounts, WP site URL, administrator identity/count and no attempt marker; reuse prior accepted source/backups and don't revalidate full code/restore. Owner password enters twice masked only, no argv/env/history/transcript/temp/output; verify with nonsecret dummy fixture before real write. UNKNOWN after write-start => `UNKNOWN_NO_RETRY`; Owner manually verifies login. Update existing PR64 Evidence and stop. Stripe TEST is a different later phase.
+
+**Current formal Reviewer note:** `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md` (appended superseding Git-dependent runtime decision). The latest Gate implementation appendix overrides earlier dated interim instructions to retry v2 or investigate its ACL context; preserve those as historical fact only.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -569,15 +577,15 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Executor performs one bounded non-secret **callsite and child-process** read-only diagnostic: identify all actual v2 `ACL_UNSAFE` predicates/callers, exact guarded path roles, actual PS5.1 child context, and safe/unsafe effective ACL state. **Do not repeat** existing two-object ACL/hash/directory checks or the unchanged failed reset invocation.
-2. If root cause proven, repair only unsafe project-private DACL or faulty guard with smallest versioned nonsecret amendment and exact Owner-native independent readback; maintain negative/dummy secret/unknown-state fixtures.
-3. Owner alone uses **one** vetted visible PS5.1 reset command with hidden password twice. Executor then checks only nonsecret WP state and updates existing PR64 Evidence; mandatory Reviewer stop. `UNKNOWN_NO_RETRY` if a WP write may have started.
-4. Only after verified closure assess whether Governance §11B needs a truly novel nonduplicative rule. Stripe TEST remains a distinct future Gate.
+1. Executor prepares one small **native Windows PS5.1 + already-present Docker WP-CLI** path under the current G3S4AR Gate. Before Owner password input, positively validate exact local WP target/unique admin/no prior attempt using existing accepted identity and runtime readbacks; do not use the Git-dependent v2 script or install Git.
+2. Validate non-echoing double Owner-only password capture and in-memory/stdin transport with dummy fixtures, and enforce a single WP credential write with explicit mutation-state/exit/read-only reconciliation. No Secret value in command arguments, env, logs, files, or chat.
+3. Once qualified, Owner manually invokes exactly once from a personally visible PowerShell 5.1, then confirms actual WordPress dashboard login. Executor updates the **same** sanitized PR64 Evidence file with the native outcome and stops Reviewer. Never replay an uncertain write.
+4. Stripe TEST remains pending; after successful login only, move to the separately reviewed payment phase. On genuine verified closeout evaluate Governance without adding duplicate §11B text.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE right now.** Executor must close the exact `TARGET_CHECK` input/context discrepancy with read-only safe diagnostics before asking Owner to launch any other script.
-- Only when a corrected qualified candidate is truly ready: Owner runs one explicit reviewed command from a personally visible Windows PowerShell 5.1 window, enters masked password locally, and reports sanitized outcome; no new authorization is needed inside current G3S4AR.
+- **NONE now.** Do not install Git or repeat existing v1/v2/ACL helper commands. Executor must prepare one actual qualified native WP-CLI recovery entry point.
+- When that single safe entry point is ready, Owner alone enters the password twice masked and manually confirms WordPress dashboard login. No further approval required within current bounded authorization.
 
 ## EVIDENCE_POINTERS
 
