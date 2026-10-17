@@ -42,3 +42,12 @@ EVIDENCE_ARTIFACTS_AND_PURPOSE:
 - Runtime image identities, loopback port, service/DB/Redis/migration checks, and business-row counts are direct readbacks from the Owner host.
 ROLLBACK_EFFECT: Exact project-scoped docker compose -p paymenter_local_lab -f %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab\docker-compose.yml stop stops this trial while retaining its named volume and local files; legacy database directory retained. No other Docker project was changed.
 EXECUTOR_RESULT: PASS_CANDIDATE_LOCAL_PREVIEW; STOP_AT_REVIEWER. No Stripe/payment gateway, real payment, order, public route, or paid add-on enabled.
+
+## 2026-10-17 Reviewer decision — G1 PASS local preview
+REVIEW_SCOPE: Source and evidence review of PR #145 at head 0c39f90c270ab7071164bbdf3b17cc7c0db0a3a2; merged as ba556eb3479e13aec92885627ad6df217f40eb0c. No direct access to Owner's local browser from Reviewer; Reviewer assessed Executor's recorded DIRECT_READBACK and BEHAVIORALLY_VERIFIED observations, not a newly repeated runtime test.
+GATE_DECISION: PASS (scoped to disposable private local UI preview only).
+INSPECTED: PR file list (2 project-owned files), full changed patch (readiness wait, named volume, Evidence), local execution evidence (identity/port/container/images, database/Redis/migrations, login to /dashboard and /admin, fictional product, zero commercial actions). No credentials were found in PR's submitted diff or Evidence.
+RATIONALE: The previously authorized acceptance goal—see a functional local storefront, user dashboard, admin dashboard, Chinese coverage, and a demo product—was fulfilled without real payments or third-party paid extensions. Neither incomplete translation nor lack of Stripe/Referrals transactions constitutes an G1 failure.
+SCOPE_EXCLUSIONS: No independent current-time host inspection, screenshot archive, restart persistence proof, backup/restore validation, ACL verification, Stripe connect, checkout, order, email delivery, or referral payout acceptance. These are NOT_APPLICABLE to functional preview or UNVERIFIED for production; no production readiness is inferred.
+RISK_NOTE: Local one-time demo credential was subsequently quoted in Owner chat; do not reuse for external/public deployment. Database named-volume persistence and preserved original host database folder are recorded; neither may be blindly deleted.
+FOLLOW_UP: Owner inspects the running pages to determine product-fit. No re-deploy is required. New Gate needed for any live payment, public exposure, paid extension, or consequential feature change.
