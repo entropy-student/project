@@ -1,57 +1,68 @@
 # 现代商业支付系统｜唯一项目交接
 
-> **PROJECT_STATUS：HOLD**（Owner 2026-10-17 暂停本项目）  
-> **EXECUTION_GATE：NONE**｜**OWNER_ACTION_REQUIRED：NONE**｜**HTML：未启动，保持暂停**
+> **PROJECT_STATUS：CLOSED**（2026-10-17，Owner 授权定向修正、自检通过后正式关闭）  
+> **CURRENT_GATE：NONE**｜**OWNER_ACTION_REQUIRED：NONE**｜**HTML：NOT_STARTED / DEFERRED**
 
-## 项目目标与定位
+## 项目定位与最终成果
 
-面向中国大陆个人开发者、独立站经营者和小微跨境商家的实操型现代商业支付指南。现已形成 **7 章完整 Markdown 正式正文**。原规划的 HTML 知识指南暂不制作；HOLD 不等于项目关闭，未来 Owner 可以提出新增、拆分或重组知识模块，但必须先明确本轮要改变的范围。
+面向中国大陆个人开发者、独立站经营者及小微跨境商家的《现代商业支付系统｜如何收钱更快、更省、更安全？》实操知识指南。已完成 **7 章 Markdown 正式正文**，以 [V6 冻结框架](docs/FROZEN_FRAMEWORK_V6_20261016.md) 的 **7 个一级、29 个二级、42 个三级问题**为正式结构。
 
-## 唯一有效文档（共 9 份）
+**最终 HTML 未启动且不在本次交付与 CLOSE 范围内**；不得把项目关闭等同于 HTML 已交付或生产支付系统已验证。项目以后可由 Owner 明确重开新增/拆分知识模块，不得自动恢复 HTML 或旧 Writer 任务。
 
-**结构权威**：[V6 冻结框架](docs/FROZEN_FRAMEWORK_V6_20261016.md)，含 7 个一级、29 个二级、42 个三级问题。未经 Owner 另行授权不改变。
+## 唯一有效文件（本项目 main 共 9 份）
 
-| 部分 | 正式 Markdown | 状态 |
+| 序号 | 正式文件 | 内容 |
 |---|---|---|
-| ① 收款方案选择 | [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | PASS，3.1 已含 Owner 批准的任务 B 经营主体选择与设立专题和 J01–J11 法规来源 |
-| ② 收款开通与接入 | [CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | PASS |
-| ③ 顾客付款 | [CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md) | PASS |
-| ④ 支付处理 | [CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | PASS |
-| ⑤ 资金结算与到账 | [CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | PASS |
-| ⑥ 售后与资金风险 | [CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md) | PASS |
-| ⑦ 财务与合规经营 | [CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md) | PASS |
+| 0 | [FROZEN_FRAMEWORK_V6_20261016.md](docs/FROZEN_FRAMEWORK_V6_20261016.md) | 七章 7/29/42 冻结结构 |
+| 1 | [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | 收款方案选择；包括已审批任务 B 的经营主体专项、本轮争议时限/责任纠偏与按场景阅读导航 |
+| 2 | [CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | 收款开通与接入 |
+| 3 | [CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md) | 顾客付款；新增订阅续费失败恢复与令牌类型辨析 |
+| 4 | [CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | 支付处理 |
+| 5 | [CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | 资金结算与到账；新增 B2B 合同/发票银行收款六步操作表 |
+| 6 | [CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md) | 售后与资金风险 |
+| 7 | [CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md) | 财务与合规；纠正欧盟 VAT 适用边界及 Mastercard ECP 跨月计算示例 |
 
-加上**本文件**和 **V6 框架**，项目 main 目录仅保留 **9 份文件**。
+另加**本文件**，项目正式目录总共 **9 份文件**。旧评审、旧 Writer Gate 和旧文件索引已依 Owner 要求从项目当前目录精简，不重复建立归档目录。需要时可从 [精简前 Git 快照](https://github.com/entropy-student/project/tree/7c20dd8e988a1b760e9609a201f5445a3a36b44f/modern-commercial-payment-guide) 追溯。
 
-**七章打包下载**：[正式正文独立 ZIP](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)。ZIP 是单独的 GitHub 归档分支、不是第二套编辑源；发布后已核对与 `main` 的七章 Git Blob 对应。今后若修改任何正文，须重检或更新 ZIP，避免旧版本交付。
+**七章最新正式 Markdown ZIP：** [GitHub 独立导出包](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)。此分支只是七章下载出口，不是独立编写源。
 
-## 已接受决定
+## 最近一轮最小修订（2026-10-17）
 
-- **任务 A（全书语言编辑）：`FROZEN_NOT_MERGED`**。语言润色候选不整体替换正式七章，也不是当前待执行任务。
-- **任务 B（经营主体专项）：`PASS_OWNER_APPROVED_MERGED`**。经 Owner 正式批准，已将主体选择与设立内容最小合入第一章 3.1，并附 J01–J11 法规参考。其他章节未随之改动。
-- **V6 正式知识结构：`FROZEN`**。目前保留 7/29/42；未来若决定拆分或增设模块，可启动独立结构设计和审核，再由 Owner 决定是否更改已冻结的原有框架。
-- **HTML：`HOLD_NOT_STARTED`**。未启动设计、制作、评审或发布；绝不自动恢复。
-- 七章 PASS 是**文稿级封板**，不等于任何特定商户的金融账户、法律、税务、收款或提现资格获批。
+**Owner 授权：** “最小化原则进行修正吧。完成之后进行自检。没问题就正式close掉。”
 
-## 精简文件与历史恢复
+- 第一部分 2.2：将争议“统一 120 天、无条件扣款、股东无限兜底”改为区分渠道时限、暂扣与最终判定、商户合同义务和股东有限责任；补三类商家阅读导航。
+- 第三部分 4.1：补上订阅续费失败 → 受控重试/换卡 → 客户通知 → 宽限期/取消与权益同步；区分 PSP Token、Network Token 与跨 PSP 迁移。
+- 第五部分 3.1：补上 B2B 银行/持牌服务商合同发票收款的六步核验及可用余额/银行实际到账判定。
+- 第七部分 2.1、3.1：澄清目的地 VAT 不等于统一标准税率或卖方统一自报；明确 Mastercard **11 月 20 ÷ 10 月 1,000 = 2.0%**、**12 月 5 ÷ 11 月 100 = 5.0%**，但两次示例均未达到当月争议件数门槛。
 
-2026-10-17 按 Owner 明确批准，将**五份已结案审核证据、三份已完成 Writer Gate 和旧文档索引**从 `main` 当前项目目录移除；不再建立历史归档目录，也不将旧文稿标记为正式稿。这些内容仅供未来必要时通过 Git 历史恢复。
+**正文写回 Commit：** [`5515dd4b52f04cb832c9d5974a2e5dc1f5a7d87e`](https://github.com/entropy-student/project/commit/5515dd4b52f04cb832c9d5974a2e5dc1f5a7d87e)。仅修改第一、三、五、七部分；第二、四、六部分保持原 Git Blob。  
+**七章 ZIP 归档 Commit：** [`0c7970c10c5814515c96f7f135f98214d5d31769`](https://github.com/entropy-student/project/commit/0c7970c10c5814515c96f7f135f98214d5d31769)（导出分支，七个文件与 main 的正式正文逐一对应）。
 
-- **精简前的完整项目快照**：[`7c20dd8e988a`](https://github.com/entropy-student/project/tree/7c20dd8e988a1b760e9609a201f5445a3a36b44f/modern-commercial-payment-guide)；被移除文件可从这个 Git commit 的 `docs/` 目录精确查看并按需恢复。
-- 当前维护方式：**唯一交接（本文件）+ V6 框架 + 七章正文**。不需要单独的 `CURRENT_DOCUMENT_INDEX.md`。
-- 没有修改或删除任何七章正文、V6 框架、Git 历史、其他项目文件或原来的七章 ZIP。
+**官方核验入口（按问题）**：
+- [PayPal 争议时限](https://www.paypal.com/us/cshelp/article/dispute-filing-timeframes-help1173)（部分买家保护争议 180 天）。
+- [欧盟 VAT 税率规则](https://europa.eu/youreurope/business/finance-and-tax/vat/vat-rules-rates/indexamp_en.htm) 与 [OSS/IOSS 责任边界](https://vat-one-stop-shop.ec.europa.eu/one-stop-shop_en)。
+- [Braintree / Mastercard ECP 计算和双门槛](https://developer.paypal.com/braintree/articles/risk-and-security/card-brand-monitoring-programs/mastercard-programs/excessive-chargeback-program)。
+- [Stripe Billing 自动重试](https://docs.stripe.com/billing/revenue-recovery/smart-retries)、[订阅事件](https://docs.stripe.com/billing/subscriptions/webhooks)、[Adyen Tokenization](https://docs.adyen.com/online-payments/tokenization/)。
+- [万里汇 B2B 官方快速指南](https://www.worldfirst.com.cn/content/articles/b2b_gbl/quick_guide) 与 [订单关联](https://www.worldfirst.com.cn/content/articles/b2b_gbl_portal/submit_trade_order)。
 
-## HOLD / 后续如何恢复
+## 最终自检及关闭依据
 
-1. **当前任务：NONE**。不启动 HTML，不改动正文，不自动派发 Writer，也不执行支付、退款、开户或税务申报。
-2. Owner 将来可以说「恢复现代商业支付系统，讨论新增/拆分 XX 模块」或「恢复 HTML 制作」。这是**不同工作范围**：先确认目标及新旧模块映射，再制定最小新 Gate；不可误认为现在已有 HTML 任务。
-3. 新 Reviewer 先读本文件和 V6 框架，再只读 `main` 中必要章节；以当前 GitHub 正式正文为唯一内容权威，不能从历史 Writer ZIP 或语言润色候选自动恢复。
-4. 金融费率、国家规则、平台开户资格及税务判断有时效性，未来引用时必须重新按法域、主体与官方规则核验；未知记 `UNKNOWN`。
+- **PASS｜范围**：只有第一、三、五、七章发生定向正文变化；第二、四、六章未修改；整个 GitHub 仓库其他项目路径未被本轮内容修订改变。
+- **PASS｜冻结结构**：四章修订前后现有编号问题标题逐项一致；全部七章仍保有 42 个三级问题，V6 框架 Git Blob 未修改；未新建第八章。
+- **PASS｜格式与引用**：既有 Markdown 代码围栏数量与结构保持一致；原正式参考来源仍在原章附录。第一章取消不恰当的争议费率 [S02] 引用、第七章替换原一刀切 VAT [S07] 引用位置，均补以针对性官方直链；其余旧引用标号保持。
+- **PASS｜计算**：Mastercard 例题 20/1000 = 2.0%、5/100 = 5.0%，并写明低于最低笔数门槛，不能被误解为已触发罚款。
+- **PASS｜GitHub 回读**：七章提交后逐份回读确认 Git Blob；七章独立 ZIP 归档树精确为七份正文，与 main 所有七章 Blob 匹配。
+- **PASS｜项目清理**：只保留唯一交接、V6 框架、七章正文，共 9 个项目文件；不额外保留审核工作包或 HTML。
+- **NOT_APPLICABLE｜生产验收**：本项目是知识文档，无部署实例、数据库、真实支付、退款、Secret 或生产资金操作；本轮未执行任何真实经营业务。
 
-## 系统边界与回滚
+**审阅边界**：以上 PASS 是本轮指定问题的定向材料核验、自检和文稿封板，不是对七章每一项金融法规在未来时点的法律审计。费率、准入、卡组织规则、海外税法、跨境结汇要求应在实际使用时按当期官方资料复核，未证实的信息记 `UNKNOWN`。
 
-本项目目前只有知识类 Markdown，无独立部署服务、数据库、付款接口、真实交易和运行时；相关生产回滚、Secrets 与主机运维为 `NOT_APPLICABLE`。Git 历史和上述精简前快照支持恢复删除的文档，七章 Blob/Commit 历史支持逐章回退；任何新的实际修改必须经过 Owner 范围授权与后续 Reviewer 验收。
+## 冻结决定及恢复方式
 
-**DEFAULT_EXECUTION_CHANNEL：** Owner 明确解除 HOLD 并指定范围后，由 Reviewer 建立新 Gate。  
-**UNRESOLVED：** 下轮要拆分哪些模块、是否启动 HTML 均待 Owner 后续决定。  
+- **任务 A：FROZEN_NOT_MERGED**。此前语言编辑候选未整体替换七章，后续不能当作新正式稿。
+- **任务 B：PASS_OWNER_APPROVED_MERGED**。第一章 3.1 主体设立专项由 Owner 批准封板。
+- **项目阶段：CLOSED**。目前没有活动 Gate、不安排 Writer、Review、HTML 制作或新的内容扩充。
+- **恢复入口**：Owner 明确要求重开并指出具体模块或交付目标 → 读取本交接与 V6 框架 → 只读确认实际 GitHub 七章 → 界定本轮可改章节及回滚范围 → 新 Gate。**不得自动解除 CLOSE 或变更冻结原文**。
+- **恢复手段**：已封板文件 Git 历史及导出 ZIP 可用于版本比对与重新生成；旧审核内容如必需，可通过精简前快照查找。
+
 **OWNER_ACTION_REQUIRED：NONE**。
