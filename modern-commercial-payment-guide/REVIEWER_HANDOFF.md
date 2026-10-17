@@ -119,7 +119,7 @@
 2. 回读校验①Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、②`51dab57d0ed5d5458b14422040297ebfbcebe676`、③`7dc4b456c368ae3974ccaf86b4596c3f125033ef`、④`3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、V6 `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。如有漂移，先只读对账，不盲恢复。
 3. 当前第五六候选在Library路径上述，ZIP SHA `d7dca94d164378894bb32face7408faeae9c3dddf8e7a308caca7a5debe8479f`；完整审查依据在GitHub `docs/CH5_CH6_REVIEWER_RETURN_20261017.md`，后者优先于作者执行记录里的无出处“严格确立”。
 4. 当Owner提交新的第五六修订ZIP，先核对3文件CRC/源哈希，再逐字确认⑤4H2/5H3和⑥4H2/6H3。逐项检查P0/P1修复及新增错误，重点是费用口径/退款幂等/卡组织2026规则/外汇真实主体/账本算术。
-5. 输出独立PASS/RETURN并同步Handoff/Evidence；**只有Owner明确授权**方能把⑤⑥写入main为正式章。尚未完成⑦《财务与合规经营》或最终HTML。
+5. 对新返修ZIP独立给出PASS/RETURN。**Owner本轮已经明确授权**：只要17项返修问题得到正确处理且独立验收通过，就由Reviewer把⑤⑥最小修正后的全文直接落库main和Library并正式封板、记录证据；如仍有重大问题则RETURN并暂停，不能为封板硬判通过。⑦与最终HTML不在本授权范围。
 6. 通用治理见`entropy-student/spike.skill/vps-project-governance/VNEXT.md`（本轮读取v0.2.7，后续须核对新版本）及支付/Closeout触发条款。文本审核不包含资金行动权限。
 
 ## 七点一、四章质量对比审查（只读评估，非解封命令）
