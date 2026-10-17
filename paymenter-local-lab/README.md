@@ -1,22 +1,26 @@
 # Paymenter Local Lab
-Stage: LOCAL_PREVIEW_PREPARED / NOT_YET_DEPLOYED
+Stage: G1_PASS_LOCAL_PREVIEW — 2026-10-17
 
-这是 Owner Windows 11 上的**私有 Docker 试用项目**，用于快速观察真实 Paymenter 用户前台、管理员后台、中文和计费功能，而不是把官网当作客户端。官方源码： https://github.com/Paymenter/Paymenter ，官方安装： https://paymenter.org/docs/installation/docker 。
+本项目是在 Owner Windows 11 本机运行的 Paymenter Docker 私有试用实例，主要用于直观考察官网、用户控制台、管理员后台及商品/套餐能力。G1 的启动、登录、界面检查已经执行并通过 Reviewer 验收；**不要重复运行 G1 作为下一步**。
 
-## 最短执行
-在 **Owner 的 Windows 本机 Codex** 中直接发送下面的指令，无需手动逐条执行：
-> 阅读 [当前 G1 Gate](docs/G1_LOCAL_DOCKER_PREVIEW_GATE.md)，在真实 Windows 本机执行本项目 [START_PAYMENTER_LOCAL.ps1](START_PAYMENTER_LOCAL.ps1)，直接推进到本地浏览器可登录用户前台和管理员后台。若脚本存在只影响试用的错误，在本 Gate 内最小修复、重新验证；不动其他项目。按规范提交非敏感 Evidence 和简短回报，STOP_AT_REVIEWER。管理员登录口令只在本机屏幕显示，不写入 GitHub。
+## 已验收访问入口
+- 前台： http://127.0.0.1:8187
+- 后台： http://127.0.0.1:8187/admin
+- 演示管理员登录邮箱： demo-admin@paymenter.local
+- 演示密码只由 Owner 在本机保管，不提交 GitHub；不得用于公网或正式生产系统。
+- 默认 zh；用户/前台部分中文（主要为繁体），后台仍部分英文。
+- 虚构演示套餐已经创建：无订单、无发票、无真实收款或网关。
+- 官方源码： https://github.com/Paymenter/Paymenter ，Docker 说明： https://paymenter.org/docs/installation/docker
 
-也可在 PowerShell 7 本机运行已审核脚本；确保 Docker Desktop 已启动。脚本会自行下载**指定提交**的官方 Compose，建立独立目录、随机数据库/管理员密码、中文偏好、启动容器并在通过网页检查后打开浏览器。
-
-- 首选试用网址： http://127.0.0.1:8187
-- 管理面板： http://127.0.0.1:8187/admin
-- 管理员邮箱： demo-admin@paymenter.local
-- 密码：第一次运行**实时随机生成并显示**，绝不把演示密码当已成功创建的凭证提前宣传
+## 真实本机资源
+- Compose 项目： paymenter_local_lab
 - 工作目录： %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab
-- Compose 项目： paymenter_local_lab；独立于其他已有项目
-- 语言： zh 中文优先；翻译完整度以实际截图为准
-- 本轮不接 Stripe Live，不购买第三方 Referrals，不开放公网，不重建或清理其他容器
+- 项目数据库命名卷： paymenter_local_lab_database
+- 本机启动器： [START_PAYMENTER_LOCAL.ps1](START_PAYMENTER_LOCAL.ps1)（已随 PR #145 修正，但不要因浏览界面需要重复部署）
+- 不能使用 broad docker prune/down -v 删除。
+- 按需暂停，仅可精确 stop 本项目 Compose，保留数据。
 
-## 路线
-Review source → Owner host read-only preflight → Local Docker up → Local demo account → Browser front/back visible → Reviewer accepts evidence → 再决定该模板是否适用及是否要测第三方裂变扩展。
+## 后续
+Owner 直接浏览现有前台/后台，判断系统是否符合目标。要引入 Referrals、Stripe、中文完善、公开访问等再另开有界 Gate；正式执行状态见 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)，证明见 [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md)。
+
+历史 G1 Gate： [G1_LOCAL_DOCKER_PREVIEW_GATE.md](docs/G1_LOCAL_DOCKER_PREVIEW_GATE.md) 。
