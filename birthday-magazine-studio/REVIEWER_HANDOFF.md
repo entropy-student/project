@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-17 (G3S4A Owner-visible PS5.1 launcher fails ObjectNotFound at ordinary LocalAppData path; packaged Codex LocalCache virtualization suspected per Governance §11B and historical incident; project-scoped real-host file materialization/readback required before password reset)
+> Last reviewed: 2026-10-17 (G3S4A RETURN: both launcher paths now found/hash matched; PS5.1/ACL/admin preflight relay passes; exception handler lacks sanitized error class. G3S4AR versioned v2 repair+one reset Gate prepared, fresh Owner approval pending)
 
 ## NEW_REVIEWER_ENTRYPOINT_2026_10_15
 
@@ -13,7 +13,7 @@
 - The bootstrap is a **snapshot and reading index**, not a new Gate or a replacement for this current Handoff.
 - Latest G3S0 formal decision: `docs/REVIEWER_DECISION_G3S0_PASS_READINESS_WITH_RUNTIME_UNKNOWN_2026-10-15.md`.
 - G3S0 Owner-relayed report and provenance: `docs/evidence/g3s0/OWNER_RELAY_AND_REVIEW_COVERAGE_2026-10-15.md`.
-- **Current G3S4A real-host launcher path repair:** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` updated with §11B packaged-app AppData path virtualization diagnosis. Owner ran exact launcher from normal Windows PowerShell 5.1 and got `CommandNotFoundException` **before execution**; prior Codex file-created claim is not Owner-host file proof. Check exact canonical `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017\Invoke-G3S4A-AdminRecovery.ps1` and scoped `%LOCALAPPDATA%\Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017\...` candidates, review real program, materialize only that **non-secret** file from independent native Owner PS5.1 to ordinary path and positively readback hash/ACL/visibility **before any password prompt**. No reset yet; account and Stripe unchanged.
+- **CURRENT Reviewer RETURN and prepared Gate:** `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md` reviewed the Owner-relayed Executor readback: both ordinary and packaged Codex launcher copies now present, same SHA-256 `685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1`, PS5.1 native parsing 0 errors, ACL user+SYSTEM, unique existing admin, no reset attempt. **Failure** is original v1 catch handler swallowing sanitized exception type/class; original path error historical cause UNKNOWN. **Next** `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`, prepared **pending fresh Owner approval**, creates only a protected non-secret **new `-v2.ps1` sibling** after code review and fixture fail-closed proof, then at most one Owner-visible hidden password reset. **Never overwrite/run v1**; no Stripe permission.
 - Confirm current PR #64 and `main` before consequential future steps. **Latest G3S3R Executor-host readback**: original DB running/healthy, WordPress running/HTTP 200 when localhost proxy bypass is used, WP-CLI running, Mailpit stopped; this is accepted at the G3S3R stage only. Reviewer has not directly accessed Owner hardware.
 - G3S0 historical PASS was **readiness classification only**, later superseded for local WordPress and inactive Stripe plugin by G3S1R and G3S1SV bounded PASS. **Stripe account existence is now OWNER_REPORTED registered**; legal entity/country, Stripe KYC/activation, HTTPS callback, payouts and real/Test payment remain unverified.
 - Owner has accepted/frozen frontend visuals; payment integration may proceed without new UI rework; do not silently close pending independent final-source technical check.
@@ -46,7 +46,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
+CURRENT_GATE=NONE_G3S4AR_VERSIONED_V2_RESET_PREPARED_AWAIT_FRESH_OWNER_AUTH
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -70,7 +70,7 @@ G3S1SR_PR64=d13b27fd8290d0575bd3ac7733f3f3039b415a21
 G3S1SR_DIAGNOSTIC_PROCESS_STARTED=NO
 G3S1SR_DB_IMPORT=NOT_RUN
 CODEX_LOCAL_DB_DIAG_RETRY=NOT_AUTHORIZED
-PROJECT_EXECUTION_STATUS=G3S4A_REAL_HOST_LAUNCHER_PATH_MISSING_SUSPECT_APPDATA_VIRTUALIZATION_REPAIR_PENDING_G3S4M_TEST_PENDING
+PROJECT_EXECUTION_STATUS=G3S4A_RETURN_DIAGNOSTIC_CATCH_G3S4AR_V2_GATE_PREPARED_AWAIT_OWNER_APPROVAL
 G3S1SV_OWNER_REPORTED_IMPORT=EXIT_0_58_OF_58
 G3S1SV_SOURCE_AND_ISOLATION=EXECUTOR_EVIDENCE_REVIEWER_ACCEPTED_WITH_SCRATCH_ID_UNRETAINED
 G3S1SV_FORMAL_RESTORE_PASS=BOUNDED_REVIEWER_ACCEPTED_FOR_INACTIVE_INSTALL_ONLY
@@ -143,21 +143,30 @@ G3S4R_PR_PERMISSION_SCOPE=NO_MERGE_OR_APP_SOURCE_CHANGES
 G3S4R_COMPUTER_USE=STOPPED_UNVERIFIABLE_URL_NOT_WOO_OR_STRIPE_OUTAGE
 G3S4R_BROWSER_TARGET_CHECK=COMPUTER_USE_FAILED_URL_IDENTIFICATION_NATIVE_EDGE_VS_EMBEDDED_MISMATCH_POSSIBLE
 G3S4R_PAYMENT_TEST=NOT_ATTEMPTED
-G3S4A_OWNER_AUTH=APPROVED_ONE_EXISTING_ADMIN_CONDITIONAL
+G3S4A_OWNER_AUTH=HISTORICAL_ONE_ROUND_CONSUMED_AT_EXECUTOR_RETURN
 G3S4A_OWNER_AUTH_DOC=docs/OWNER_AUTHORIZATION_G3S4A_WORDPRESS_ADMIN_CREDENTIAL_RECOVERY_2026-10-17.md
 G3S4A_GATE=docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md
 G3S4A_ADMIN_ACCOUNT_INVENTORY=ONE_EXISTING_ADMIN_OWNER_RELAY_FROM_CODEX_PREFLIGHT
-G3S4A_PASSWORD_RESET=NOT_RUN_HIDDEN_SESSION_12663_INTERRUPTED_BEFORE_CONFIRM_OWNER_RELAY
+G3S4A_PASSWORD_RESET=NOT_RUN_OWNER_RELAY_NO_CONFIRM_NO_ATTEMPT_MARKER
 G3S4A_OWNER_LOGIN_CONFIRMED=NO
 G3S4A_VISIBLE_OWNER_POWERSHELL_5_1_CHECKPOINT=REQUIRED_NOT_YET_PREPARED
 G3S4A_HIDDEN_WAIT_SESSION_12663=ABORTED_WITHOUT_SECRET_OR_WRITE_OWNER_RELAY
 G3S4A_LOCAL_STDIN_DUMMY_PROBE=PASS_OWNER_RELAY_PS5_1_NOT_EVIDENCE_YET
 G3S4A_EXECUTOR_EVIDENCE_PR64=NONE_AS_OF_20261017_OWNER_RELAY
+G3S4A_V1_SHA256=685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1_OWNER_RELAY
+G3S4A_V1_SCRIPT_ORDINARY_AND_PACKAGE_PATH=EXISTS_SAME_DIGEST_OWNER_RELAY
+G3S4A_FAILURE=EXCEPTION_HANDLER_SWALLOWS_SANITIZED_ERROR_CLASS
+G3S4A_FORMAL_REVIEW=RETURN_G3S4A_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS
+G3S4AR_NEXT_GATE=docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md
+G3S4AR_FRESH_OWNER_APPROVAL=PENDING
+G3S4AR_VERSIONED_SCRIPT=NOT_CREATED_OR_VERIFIED
+G3S4AR_ALLOWED_LOCAL_V2_FILE=Invoke-G3S4A-AdminRecovery-v2.ps1_CREATE_NEW_FAIL_IF_EXISTS
+G3S4AR_PASSWORD_RESET=NOT_AUTHORIZED_UNTIL_FRESH_OWNER_APPROVAL
 G3S4A_OWNER_NATIVE_PS51_RESULT=COMMAND_NOT_FOUND_ON_EXPECTED_LOCALAPPDATA_PATH_BEFORE_SCRIPT_START
-G3S4A_PACKAGE_PATH_VIRTUALIZATION=LIKELY_BUT_UNPROVEN_CHECK_PACKAGES_OPENAI_CODEX_LOCALCACHE_LOCAL
-G3S4A_REAL_OWNER_PATH_MATERIALIZATION=NOT_YET_VERIFIED
-G3S4A_NATIVE_SAME_TARGET_READBACK=REQUIRED_TEST_PATH_HASH_ACL
-G3S4A_LAUNCHER_CORRECTION=GATE_AMENDED_20261017_BY_REVIEWER
+G3S4A_PACKAGE_PATH_VIRTUALIZATION=HISTORICAL_CAUSE_UNKNOWN_BOTH_SCRIPTS_NOW_PRESENT_MATCH_HASH
+G3S4A_REAL_OWNER_PATH_MATERIALIZATION=EXISTS_OWNER_RELAY_CURRENT_PS51_READBACK
+G3S4A_NATIVE_SAME_TARGET_READBACK=REPORTED_PASS_BOTH_COPIES_MATCH_SHA256_ACL_PS51_0_PARSE_ERRORS
+G3S4A_LAUNCHER_CORRECTION=V1_DIAGNOSTIC_EXCEPTION_HANDLER_UNSAFE_FORMAL_RETURN
 G3S4A_REVIEWER_REPAIR=NONSECRET_LAUNCHER_VISIBLE_OWNER_TERMINAL_NOT_CODEX_DETACHED_SESSION
 G3S4A_SECRET_CUSTODY=OWNER_PRIVATE_MASKED_PROMPT_ONLY
 G3S4M_STRIPE_TEST_OWNER_WRITE_AUTH=PENDING_SEPARATE_DECISION
@@ -361,7 +370,7 @@ OWNER_G3C_LOCAL_RECOVERY_REQUEST=YES_CONDITIONAL_PRESERVE_DATA
 OWNER_CLEANUP_CAUSE=UNVERIFIED_CLEANUP_REPORTED_ONLY
 G3S1D_MISSING_RESOURCE_DIAG=READ_ONLY_CURRENT
 G3S1D_POLICY_BYPASS=FORBIDDEN
-CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
+CURRENT_GATE=NONE_G3S4AR_VERSIONED_V2_RESET_PREPARED_AWAIT_FRESH_OWNER_AUTH
 ```
 
 ## SYSTEM_MAP
@@ -382,6 +391,8 @@ CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
 - Shared VPS dependency: NONE accepted for current Gate.
 
 ## CURRENT_ACCEPTED_STATE
+
+- **2026-10-17 G3S4A formal Reviewer RETURN (Owner-relayed Executor host readback):** original launcher exists in both ordinary LocalAppData and packaged Codex LocalCache, SHA-256 same `685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1`; PowerShell 5.1 parser 0 errors, restricted user+SYSTEM ACL, original G3C admin and runtime identity verified, no attempt marker, no password update, Stripe untouched. v1 exception handler swallows the sanitized error type/class in violation of §11B, so **never run v1**. Historical initial CommandNotFound root cause UNKNOWN. Decision `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`, new combined `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` PREPARED with **fresh Owner approval pending**, preserves original script and backup, only one new `-v2.ps1` allowed and at most one Owner-private admin reset under renewed authority.
 
 - **G3S4A Owner-host path mismatch, 2026-10-17:** Owner actually ran the non-secret launcher invocation from normal Windows PowerShell (Windows PowerShell 5.1), but `CommandNotFoundException/ObjectNotFound` identified no file at ordinary `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4A-VisiblePS51-20261017\Invoke-G3S4A-AdminRecovery.ps1`. Execution failed **before script body**, CONFIRM and password input; no credential reset caused by this attempt. Codex earlier claimed a file existed with syntax/ACL checks, likely in a different packaged runtime but **not yet proven**. Canonical Governance §11B and historical `spike.skill/vps-project-governance/history/incidents/2026-09-29_PACKAGED_APP_APPDATA_PATH_VIRTUALIZATION.md` document precisely this failure class and resolution. Reviewer appended a scoped discovery/verified native Owner-host materialization/readback correction to the existing Gate, without reopening payment activity.
 
@@ -429,11 +440,11 @@ CURRENT_GATE=G3S4A_LOCAL_WP_ADMIN_PASSWORD_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**CURRENT G3S4A — RETURN_TARGET_PATH_NOT_VERIFIED within same authorized account recovery boundary, script DID NOT EXECUTE:** `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md`. Owner ran normal Win PS5.1 launcher command and got `ObjectNotFound` on canonical user-local file path. This is actual Owner-host readback contradicting Codex's earlier file-write/ACL PASS. Do not infer script deletion or false file content; packaged Codex app may redirect its `%LOCALAPPDATA%\BirthdayMagazineStudio` write into package-local `LocalCache\Local\BirthdayMagazineStudio`. Governing canonical §11B requires writer/runtime identity and redirected-path check. Historical verified recurrence in MiniCraft and VPN points to `%LOCALAPPDATA%\Packages\OpenAI.Codex_*\LocalCache\Local\...`; the **specific G3S4A location is not yet proven**.
+**G3S4A RETURN — Launcher exception diagnostics unsafe (source: Owner-relayed Executor readback):** `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`. Real ordinary Windows PS5.1 file now visible; packaged cache and ordinary `Invoke-G3S4A-AdminRecovery.ps1` same SHA-256 `685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1`, restricted ACL and zero parse errors. One existing G3C WP admin uniquely verified, old attempt marker absent. BUT script catches exceptions into generic phase token and omits sanitized error class/type, violating canonical Governance v0.2.7 §11B. Historical CommandNotFound cause cannot be reconstructed; do not declare virtualization proven or copy/overwrite v1. **No password reset happened** and no G3S4A PR Evidence submitted.
 
-**Narrow authorized resolution (no credential mutation until proven):** Executor performs bounded read-only exact path search for the launcher in both ordinary Owner LocalAppData and matching Codex package-local LocalCache namespace, validates actual non-secret script bytes/PowerShell 5.1 code against reviewed source, intended unique admin+container target and dummy no-echo stdin behavior. If located in packaged storage, **materialize only the reviewed non-secret file** through an independent personally visible Owner-host PS5.1 process to the ordinary canonical directory (fail on unexpected existing contents), set/review exact restrictive script/dir ACL, then verify physical path `Test-Path`, `Get-Item`, `Get-FileHash SHA256`, `Get-Acl` in the **same ordinary Windows PS5.1 context**. If source not found/ambiguous, stop with precise RETURN; no arbitrary search/copy. No full backup, no WordPress DB write, no plugin enabling or Stripe. After verified readback, Owner runs one visible CONFIRM/twice masked password reset **only once**. Codex independently checks existing WordPress credential update and Evidence for PR #64, Reviewer STOP.
+**NEXT G3S4AR — prepared, NEW OWNER AUTHORIZATION REQUIRED:** `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`. New combined Gate contains a minimal **side-by-side new non-secret launcher v2** and at most **one** verified existing administrator password change in personally visible PS5.1. Refuse overwrite of either original script or existing v2 path. Executor must **read exact v1 source locally and review v1→v2 diff**; no Reviewer has read those private host script bytes. For every failure, output safe stage, sanitized error class/type, whether WP mutation NOT_STARTED/MAY_HAVE_STARTED/VERIFIED_SUCCESS and nonzero native exit, never raw error message/stderr or Secret; ambiguous attempted mutation => `UNKNOWN_NO_RETRY`. Test syntactic and failure branches with dummy fixtures, verify v2 in **real ordinary Windows** with hash/ACL/PS5.1 readback before Owner input. Fresh Owner consent must be relayed **before** any owner-host file creation or WordPress credential mutation. Original G3S4A Owner one-round approval expired at formal Executor RETURN.
 
-**Prior non-writing state:** detached wait session 12663 canceled before Owner input; original G3S4A read-only preflight Owner-relayed: one unique admin, existing G3C runtime, backup 3 hashes match, original PS5.1 dummy stdin probe passed. New Owner shell command failed before invocation. **Neither event performed reset**. PR #64 last verified `777463995a298118dae0c6763f6c668207a19350` Open/unmerged; no G3S4A evidence yet. G3S4M Stripe TEST writes remain NOT authorized. The prior browser Computer Use stop remains binding for that UI.
+**Other unchanged gates:** G3S4M Stripe TEST plugin/payment/write permission remains outstanding, official Woo Stripe 11.1.0 last seen inactive; no Stripe connection, webhook, transaction or refund. Existing G3S4 protected old DB/WP/source backup and dirty local worktree preserved, PR #64 last verified `777463995a298118dae0c6763f6c668207a19350` open/unmerged. Computer Use browser safety STOP remains outside this credential gate. No production/Netlify/PayPal/real funds.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -490,6 +501,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **G3S4A RETURN now narrowed to unsafe diagnostics:** original v1 exists (both locations same digest) but catch swallows sanitized error class. No reason for broad new AppData scan, backup rebuild or admin reinventory. Need locally reviewed v1→v2 side-by-side fail-closed patch with proper error classification and native exit; fresh Owner approval prior to new host writes/credential reset. Historical earlier CommandNotFound exact cause UNKNOWN.
 - **G3S4A login not yet recovered:** actual administrator account count and identity unknown; password reset not performed, Owner cannot yet log in. Query existing G3C admins first and use protected local secret entry; never guess `admin` from older stages. Password reset may invalidate old sessions.
 - **G3S4M payment still blocked:** Stripe plugin installed inactive, old Computer Use URL stop remains for automated browser operation, and new TEST-only payment/activation authorization is not included in G3S4A.
 - **G3S4R Computer Use failure now repeat-diagnosed:** native Edge window identification/URL unknown versus embedded browser; stop enforced. Do not rerun same unsafe control interface or change browsers simply to evade the policy. A new Reviewer-approved Owner-manual + host-native target-verified workflow is prepared but payment writes require fresh Owner consent.
@@ -525,18 +537,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Relay updated existing G3S4A Gate **last section** (AppData virtualization, actual Owner-host path mismatch) to original Codex. Bounded read-only find of actual exact non-secret launcher path in Codex packaged `Packages/OpenAI.Codex_*/LocalCache/Local` vs ordinary `%LOCALAPPDATA%`, with writer process identity. If absent or ambiguous, RETURN; do not claim past Codex file created PASS was physical Owner-host proof.
-2. If a single reviewed safe script exists, Codex provides a **one-command Owner-visible native Windows PowerShell 5.1 staging/checkpoint** to materialize only the script into true ordinary Owner `%LOCALAPPDATA%` and verify it via `Test-Path/Get-FileHash/Get-Acl` there. Do not perform password reset as part of staging or turn on execution policy. Confirm exact byte digest, namespace, ACL and target before supplying later launch command; any failure stops without mutation.
-3. Only after successful independent ordinary-Windows path readback, Owner manually launches validated script in own visible PowerShell 5.1 with `CONFIRM` and two masked new password entries, and Codex reads back post-reset nonsecret WordPress state, commits one scrubbed PR Evidence and stops for Reviewer. Old backup/root/source not modified; plugin Stripe stays inactive.
-4. Upon completed G3S4A and Owner manual backend login, separately decide Owner authorization for G3S4M Stripe TEST native plugin connection/checkout/refund, without Computer Use bypass.
+1. Obtain explicit Owner approval for **new combined G3S4AR** Gate `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md`, scoped to one new non-secret local `-v2.ps1` and at most one existing WordPress admin password update. **Do not reuse stopped original Gate approval**. At present there is no permission to write the v2 script or change WordPress credentials.
+2. After Owner approves, original Codex reads the actual v1 script at verified ordinary Windows path and creates only the **new** `Invoke-G3S4A-AdminRecovery-v2.ps1` sibling (fail if exists), preserving both original v1 copies. Minimal reviewed change only: safe stage/type/mutation-start error handling, fail-closed nonzero exit, attempt marker and no unconditional PASS. Test PS5.1 syntax, dummy fixture fail paths and protected masked STDIN; verify v2 via independent ordinary Windows Test-Path/Get-FileHash/Get-Acl. If any proof fails, RETURN before password input.
+3. Only when v2 preconditions PASS does Owner invoke it **once** from their personally visible Windows PS5.1, enter `CONFIRM` and password twice hidden. Executor reads back nonsecret WordPress result, submits a single scrubbed Evidence commit to PR #64 and stops for Reviewer; ambiguous mutation => `UNKNOWN_NO_RETRY` and no blind retry.
+4. After formal Reviewer credential recovery PASS and Owner dashboard login, separately authorize G3S4M Stripe TEST gateway and synthetic payment. Preserve existing backups/source/PayPal/Netlify; no real payments.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Now:** no need for another password or `CONFIRM` entry. Tell Codex the normal Owner Windows PowerShell reported `CommandNotFoundException` for the **ordinary** expected `%LOCALAPPDATA%` launcher. Ask it to apply updated Gate's packaged-app virtualization diagnostic and **native materialization**, not blindly regenerate/execute.
-- **Owner checkpoint later:** only after Codex proves script exists in the real Windows location and is byte-for-byte reviewed, run the one vetted command in a personally opened PS5.1 and enter password twice masked. Do not paste any password into chat. If actual source cannot be located/validated, return a precise blocker, no fallback password write.
+- **Current action:** decide whether to approve the **new G3S4AR** scope (one protected non-secret v2 launcher file plus at most one Owner-private existing G3C WordPress administrator password reset). This is one authorization, not separate approvals for launcher and password.
+- **Until approval:** do not run original `Invoke-G3S4A-AdminRecovery.ps1`; it failed error handling review. Do not supply `CONFIRM` or password. Do not ask Codex to overwrite/delete v1, redo backup, reset credentials or change Stripe.
+- **After v2 reviewed and placed at a new path:** Owner uses their personally opened PowerShell 5.1 for one masked input session and never relays Secrets in chat/GitHub.
 
 ## EVIDENCE_POINTERS
 
+0. `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md` — latest Reviewer RETURN narrowing only existing v1 fail-closed exception diagnostic defect; SHA, Windows ACL/parser, admin scope and no reset Owner-relayed.
+0. `docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — next combined v2 side-by-side repair + one-admin reset, **fresh Owner authorization pending**, no v1 overwrite.
 0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — added 2026-10-17 Reviewer path virtualization diagnosis and verified real-host delivery/ACL/hash checkpoint after Owner PS5.1 ObjectNotFound.
 0. Canonical Governance `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` §11B and non-normative historical incident `vps-project-governance/history/incidents/2026-09-29_PACKAGED_APP_APPDATA_PATH_VIRTUALIZATION.md` — path-context mismatch must be ruled out before declaring file missing; original verified `OpenAI.Codex_*\LocalCache\Local` redirection pattern.
 0. `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` — amended current Gate: 2026-10-17 invisible input session 12663 abort Owner-relayed; switch to visible Owner Windows PowerShell 5.1 non-secret launcher with separate readback.
