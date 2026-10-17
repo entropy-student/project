@@ -1,5 +1,24 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_ORIGINAL_SHELL_ONLY_NEXT_GATE_20261017 -->
+## 2026-10-17｜最新唯一接手指令：原版Research Aqua V2直接作为唯一Mac外壳（覆盖下方V4旧NEXT_STEP）
+
+**项目目标**：形成可复制知识视频生产系统：Mac Tiger Aqua桌面点开一期研究文件，QuickTime 7大播放器内按照镜头表展示知识素材；观众看到的是完整视频而非编辑器/PPT。内容来源、音频/TTS、正式MP4为另一阶段。
+
+**Owner已作决定**：
+1. **视觉真源只能是** `curious-world-studio/p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html`，main Git blob `acb0ee80264527bd11160e0ae277ce24528c4a03`。其桌面、菜单、壁纸、Dock、Finder文件图标、鼠标轨迹、双击、QuickTime窗口及控制条**直接复用**，不要再画第二套外壳。风格规则在`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`；`visual/retro-mac-v1.2/preview/index.html`是补充参考、不是另一个可随意改色的原版。原始示意果冻只供历史视觉测试，**不得作为科研实录或正式节目画面**。
+2. **固定结构**：一条片 = A原版桌面双击文件→原版开窗最大化→B播放器内部连续播放→影片结束鼠标点击关闭→回到同一Mac桌面。收尾关窗可复用已存在MW-01点击行为但需保证和原V2外壳同风格；新效果必须通过视觉核验。
+3. **六个模板保持** `T1`单素材、`T2`双画面对照、`T3`实拍+解释图、`T4`真实研究/档案、`T5`过程三阶段、`T6`数据/结论。它们是B内容的可复用函数/布局，不是六套播放器；允许按镜头表任意排列、重复，素材`shot_id:slot`独立。T1重复两个镜头是验收例子。**暂不增加第七种**。
+4. **一条Master Clock**：累计所有镜头的开始/结束、媒体时间、播放暂停/seek、画面变换、字幕、整体QuickTime进度及结尾行为；各模板不得独自重置整体进度。播放器下方进度代表整条视频，不是每个模板的时长。
+
+**为什么先前没达标（REVIEWER核实的失败原因）**：V3以自画Mac壳先行，连续视频节奏已被Owner认可但外观偏离；V4 Draft `visual/content-template-lab/storyboard-v4-master.html`虽静态包含原版绘制源码，代码中**同时保留`iframe#auth-shell`和`#qt`第二套播放器**，导致两个窗口叠加/不一致风险，不得据此宣称已“完整原版复用”。上轮仅本地近似壳版行为局部PASS，真实GitHub V4整合版的全片1×视觉仍未完成验收。**不要改掉已认可的内容节奏，也不要从零重做六模板**。
+
+**项目目前资产**：[原V2](../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html)为视觉唯一真源；[PR#144](https://github.com/entropy-student/project/pull/144) Draft未合并，其V1/V2/V3/V4候选保留作实现/反例资料；V3私有带第三方参考片的HTML只存在原会话附件，不能公开复制到Git；V4纯源码用于提取复用`TEMPLATE_RENDERERS`/`EDITORIAL`/`compileTimeline`逻辑。MW01–13库是候选/部分独立DEMO，不代表已全量正式集成。既有正式`CW0005` R3视觉RETURN、HOLD/G1/G2/R4未授权及NO_PUBLISH不变。
+
+**下一轮唯一执行Gate（未执行、勿自称PASS）**：`CWS-ORIGINAL-RESEARCH-AQUA-SHELL-ONLY-INTEGRATION`。在PR#144隔离分支建立**一个由原版V2为底的HTML候选**：只替换原`qtWindow`媒体内容绘制区为真正可用的B内容插槽，保留原桌面/窗口/标题栏/进度条绘制；六布局函数在内容层运行；单Master Clock控制A→B→A与seek/字幕/素材。先通过原版与新片关键帧对照及一倍速完整连续播放、暂停/跳转/字幕修改不中断、T1复用、6/6布局、关窗返回同原桌面验收；若不符按最小修改修复。不要擅自修改main真源、不直接合并PR或进入制片R4。
+
+**默认权限与资源**：隔离离线源码/Reviewer测试，不安装大模型、不采集/购买第三方素材、不公开reference影片、不碰Owner本机/共享VPS/支付/代理。回滚关闭或回退PR候选即可。**OWNER_ACTION_REQUIRED=NONE**，正式电影制作/费用/发布需单独决定。详细进度以[CURRENT_STATE](CURRENT_STATE.md)顶部2026-10-17段为准，背景R3具体原因见既有Evidence，切勿拿旧Handoff下方“下一步”覆盖本段。
+
 ## 2026-10-17｜V4最新接手（覆盖下方V3/V2历史下一步）
 
 - **Owner方向**：一条影片只保留一个Research Aqua桌面/QuickTime播放器；六种B展示模板为独立可复用函数，任何顺序、任何次数，不拆六个播放器。总时间轴贯穿桌面双击打开→播放→鼠标点红灯关闭回桌面，控制内容时长、字幕、素材和播放器进度。不增加模板或从零重绘Mac。
