@@ -212,3 +212,104 @@ No public URL is active; HTTPS reachability and post-exposure anonymous/private-
 One Owner-controlled Cloudflare dashboard checkpoint remains: verify write access to the `spikersun.com` zone and that `magazine` has no DNS record or existing Tunnel public-hostname route; then create one remotely managed Tunnel with exactly `magazine.spikersun.com → http://127.0.0.1:8189`. Only after that route exists, run the prepared starter from the Owner's visible Windows PowerShell 5.1 and enter the connector token only into its hidden prompt. Do not send the token to chat. After the connector is online, public HTTPS and anonymous privacy checks are still required before any reversible WordPress canonical URL change or later Stripe TEST work.
 
 STOP_AT_REVIEWER=YES
+
+
+## 2026-10-17 G3S4L launcher source for Reviewer review
+
+The following is the **complete, unmodified local** `Start-MagazineTunnel.ps1` source. It was read as ASCII bytes from the Owner-visible project directory. Targeted secret-pattern scans and manual inspection found no actual Cloudflare/Stripe token, password, private-key material, or credential literal. The source contains only a prompt for a future hidden token entry, the private file path, and the pinned public cloudflared executable SHA-256. No credential file is included or referenced by content here.
+
+```text
+SOURCE_FILE_BYTES=4392
+SOURCE_ENCODING=ASCII
+SOURCE_LINE_ENDINGS=LF
+SOURCE_FINAL_NEWLINE=NO
+SOURCE_SHA256=E0C549D6769672B60EE58A72222F0E70387BDB26FECC5A1EAF9353FDE0E27DEC
+SECRET_SCAN_STRIPE_SECRET_PREFIX=NO_MATCH
+SECRET_SCAN_WEBHOOK_SECRET_PREFIX=NO_MATCH
+SECRET_SCAN_CLOUDFLARE_TOKEN_LITERAL=NO_MATCH
+SECRET_SCAN_PASSWORD_LITERAL=NO_MATCH
+SECRET_SCAN_PRIVATE_KEY=NO_MATCH
+CREDENTIAL_FILE_INCLUDED=NO
+TOKEN_INPUT_OR_TUNNEL_LAUNCH=NOT_PERFORMED
+DNS_OR_CLOUDFLARE_WRITE=NOT_PERFORMED
+```
+
+The code block below preserves every source line and character. The local file has no trailing newline; when reconstructing bytes from this Markdown block for hash verification, omit the single Markdown separator LF after the final source line.
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$expectedHash = '4D2490E74082C5D48DBFEDAF92576FA5BD1702379AB88EB7FAA0CFBE8DC891B6'
+$exePath = Join-Path $PSScriptRoot 'cloudflared.exe'
+$privateRoot = Join-Path $env:USERPROFILE '.birthday-magazine-studio\G3S4L-private'
+$tokenPath = Join-Path $privateRoot 'magazine.spikersun.com.connector-token'
+$identitySid = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+$systemSid = 'S-1-5-18'
+function Assert-PrivateAcl([string]$Path) {
+    $item = Get-Item -LiteralPath $Path -Force
+    if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'PRIVATE_PATH_REPARSE_POINT' }
+    $acl = Get-Acl -LiteralPath $Path
+    $ownerSid = $acl.GetOwner([Security.Principal.SecurityIdentifier]).Value
+    if ($ownerSid -ne $identitySid -or -not $acl.AreAccessRulesProtected) { throw 'PRIVATE_ACL_OWNER_OR_INHERITANCE' }
+    $rules = @($acl.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier]))
+    $allowed = @($identitySid, $systemSid)
+    foreach ($rule in $rules) {
+        if ($rule.IsInherited -or $rule.AccessControlType -ne [Security.AccessControl.AccessControlType]::Allow -or $rule.IdentityReference.Value -notin $allowed) { throw 'PRIVATE_ACL_UNEXPECTED_RULE' }
+    }
+    foreach ($principalSid in $allowed) {
+        $hasFullControl = $false
+        foreach ($rule in $rules) {
+            if ($rule.IdentityReference.Value -eq $principalSid -and $rule.AccessControlType -eq [Security.AccessControl.AccessControlType]::Allow -and ([int]$rule.FileSystemRights -band [int][Security.AccessControl.FileSystemRights]::FullControl) -eq [int][Security.AccessControl.FileSystemRights]::FullControl) { $hasFullControl = $true }
+        }
+        if (-not $hasFullControl) { throw 'PRIVATE_ACL_REQUIRED_RIGHT_MISSING' }
+    }
+}
+if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) { throw 'CLOUDFLARED_MISSING' }
+$signature = Get-AuthenticodeSignature -LiteralPath $exePath
+if ($signature.Status -ne 'Valid' -or -not $signature.SignerCertificate.Subject.Contains('Cloudflare') -or (Get-FileHash -LiteralPath $exePath -Algorithm SHA256).Hash -cne $expectedHash) { throw 'CLOUDFLARED_SIGNATURE_OR_HASH' }
+if (-not (Test-Path -LiteralPath $privateRoot -PathType Container) -or -not (Test-Path -LiteralPath $tokenPath -PathType Leaf)) { throw 'PRIVATE_TOKEN_PATH_MISSING' }
+Assert-PrivateAcl $privateRoot
+Assert-PrivateAcl $tokenPath
+$tokenItem = Get-Item -LiteralPath $tokenPath
+if ($tokenItem.Length -eq 0) {
+    $secureToken = Read-Host 'Enter the Cloudflare connector token (hidden; never send it to chat)' -AsSecureString
+    $bstr = [IntPtr]::Zero
+    $chars = $null
+    $bytes = $null
+    $stream = $null
+    $written = $false
+    try {
+        $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureToken)
+        $charCount = [int]([Runtime.InteropServices.Marshal]::ReadInt32($bstr, -4) / 2)
+        if ($charCount -lt 40 -or $charCount -gt 8192) { throw 'TOKEN_LENGTH_INVALID' }
+        $chars = New-Object char[] $charCount
+        for ($index = 0; $index -lt $charCount; $index++) {
+            $chars[$index] = [char][Runtime.InteropServices.Marshal]::ReadInt16($bstr, $index * 2)
+            if ([int]$chars[$index] -lt 33 -or [int]$chars[$index] -gt 126) { throw 'TOKEN_FORMAT_INVALID' }
+        }
+        $bytes = [Text.Encoding]::UTF8.GetBytes($chars)
+        $stream = [IO.File]::Open($tokenPath, [IO.FileMode]::Open, [IO.FileAccess]::Write, [IO.FileShare]::None)
+        if ($stream.Length -ne 0) { throw 'TOKEN_FILE_CHANGED' }
+        $stream.Write($bytes, 0, $bytes.Length)
+        $stream.Flush($true)
+        if ($stream.Length -ne $bytes.Length) { throw 'TOKEN_WRITE_READBACK_MISMATCH' }
+        $written = $true
+    }
+    finally {
+        if ($stream) {
+            if (-not $written) { try { $stream.SetLength(0); $stream.Flush($true) } catch {} }
+            $stream.Dispose()
+        }
+        if ($bytes) { [Array]::Clear($bytes, 0, $bytes.Length) }
+        if ($chars) { [Array]::Clear($chars, 0, $chars.Length) }
+        if ($bstr -ne [IntPtr]::Zero) { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+        if ($secureToken) { $secureToken.Dispose() }
+    }
+}
+if ((Get-Item -LiteralPath $tokenPath).Length -eq 0) { throw 'TOKEN_FILE_EMPTY' }
+Assert-PrivateAcl $privateRoot
+Assert-PrivateAcl $tokenPath
+& $exePath tunnel run --token-file $tokenPath
+exit $LASTEXITCODE
+```
+
+STOP_AT_REVIEWER=YES
