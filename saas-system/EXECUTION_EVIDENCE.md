@@ -56,3 +56,14 @@
 - `REVIEWER_DECISION`: **`RETURN_EXISTING_WORKLOAD_REGRESSION`**；[详细审核](./docs/G2_REVIEWER_DECISION_20261018.md)。
 - `ROLLBACK`: G2 容器停机并留资产；原容器仍退出的事实只限 G2 末次报告，不知现在是否恢复。
 - `NEXT`: [G2R1 只读诊断 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)。禁止重启/恢复现有业务或重试 G2。
+
+## 2026-10-18 — G2R1_REVIEWER_CAUSE_UNKNOWN_AND_OWNER_CLASSIFICATION_PENDING
+
+- `AUTHORIZED_GATE`: `SAAS-G2R1-EXISTING-WORKLOAD-READONLY-20261018`，仅 Owner 本机只读检查。
+- `EXECUTOR_EVIDENCE`: Owner 通过当前对话转交本机 Codex 全文结果，`READONLY_SIDE_EFFECT_COUNT=0`，没有启动/修改/清理；本 Reviewer 无法直接读取个人电脑 Docker control-plane 原始数据。保留脱敏结论于 [G2R1 Reviewer 决定](./docs/G2R1_REVIEWER_DECISION_20261018.md)。
+- `OBJECTIVE_READBACK`: 三原容器仍 `exited`，退出码 `137,0,0`，UTC FinishedAt `16:32:30.385 / 16:32:33.652 / 16:32:36.264`（2026-10-17），均 `OOMKilled=false`，restart policy no / count 0；同一匿名化 Compose 项目，但业务类别 `UNKNOWN`。
+- `DIAGNOSTIC_SCOPE`: Docker 事件历史当前查询 0 但覆盖率 UNKNOWN；Windows 窄窗无有关直接记录，相关 WSL/Hyper-V 部分通道不可用，G2 无当时 Engine ID，无法支持 Engine 重启/OOM/Velobase 直接致因推论。根因 `CAUSE_UNKNOWN`。
+- `G2_RESIDUAL`: G2 Velobase Web/Postgres/Redis stopped、3003 无监听；两个卷/镜像/网络保留，无支付。
+- `REVIEWER_DECISION`: **`PARTIAL_G2R1_OWNER_CLASSIFICATION_UNKNOWN`**。退出原因有界诊断完成；原 Gate 的旧业务归属/恢复必要性仍未知，不能宣称完整 PASS。**无需重新排查根因**。
+- `ROLLBACK_EFFECT`: 本轮只读，原服务未恢复、原项目数据未删除；Reviewer 仅更新 GitHub 项目文档，可通过 Git 回退。
+- `NEXT`: `CURRENT_GATE=NONE`，等待 Owner 确认是否要恢复这三个原容器；若要则另定旧项目特定恢复 Gate。Velobase 后续先比较独立隔离环境与费用，暂不重启同一 Docker Engine 演示或自动切换第二款。
