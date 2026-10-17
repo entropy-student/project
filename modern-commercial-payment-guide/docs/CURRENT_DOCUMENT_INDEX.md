@@ -29,3 +29,8 @@
 
 - 第一部分Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、第二部分Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、第四部分Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、全书V6 Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，本轮未改变。
 - 第五六部分依Owner明确决定暂不正式落库或冻结；第七部分与HTML未启动；本轮无真实支付账户、退款、提现或服务器生产变更。
+
+## 本轮Reviewer接手标记（2026-10-17）
+
+- `MCPG-CH3-REVIEWER-INTAKE-20261017`：已在 `main` 基线 `ba8ea6cf5db7f42aa768827a96e9ea6c5d80c543` 上读回交接、索引、V6冻结框架及第三部分7P0/8P1报告，并确认①②④与V6 Blob、旧③历史恢复点；完整读回证据见 [EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md)。
+- **文件清单没有新增候选或新Gate。** 原定向返修ZIP仍是唯一活跃输入；尚未收到新Agent返修ZIP，故不存在本轮新的审核PASS/RETURN或可供正式采纳的第三章。

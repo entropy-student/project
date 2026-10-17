@@ -126,3 +126,10 @@ V6 7/29/42 FROZEN
 ⑦ 财务与合规经营 PENDING
 HTML PENDING
 ```
+
+## 九、独立Reviewer本轮接手读回（2026-10-17）
+
+- **INTAKE_ID:** `MCPG-CH3-REVIEWER-INTAKE-20261017`；以本轮读取的 `main` 基线 `ba8ea6cf5db7f42aa768827a96e9ea6c5d80c543` 为准，未启用任何历史失效Gate。
+- **只读核对通过：** ① Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、② Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`、④ Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、V6 Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`、当前③返修报告 Blob `425d24c59c895dd82b5ea0382422de0945f364ba` 均与已记录指纹一致；旧③已从main移除、历史 Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef` 可读取。
+- **本轮无新返修ZIP。** 现存新③首次候选哈希、7P0/8P1 RETURN及唯一返修工作包沿用第六节和当前索引，均非本轮重新验收的结果。新稿复审尚未启动；不得标记PASS、采纳或封板。
+- **下一步：** 收到新Agent两Markdown返修ZIP后，依现行Reviewer报告逐项校验SHA256/CRC、4H2/5H3、7P0+8P1、官方来源、①②④质量与边界；独立PASS后也只向Owner建议采纳。其他冻结/暂停/禁止事项不变。本条仅记录Reviewer接手，不产生额外修改权限。

@@ -135,3 +135,9 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **NEW CANDIDATE SNAPSHOT**：Owner上传新Agent交付 `现代商业支付系统_第三部分_全新独立重写成果.zip`，ZIP SHA256 `74cc17f834f849ba280cfaf98ebe248ba2e72b72f216c7ec0bc32d50b22bac3e`，45933字节，CRC PASS、2MD：完整新稿89752字节SHA256 `99dcd84d71ef950ae0dfa26482d41bcd5a13189dc53e635d27b156eb96311573`、QA记录25849字节SHA256 `23edc60b3f97e28851523de7fb0fc19102d3feaa60388606e8f2118b1f0d3d4e`。作者自报核验不等于独立PASS。
 - **CURRENT EXTERNAL FIX PACK**：`/现代商业支付系统/现代商业支付系统_第三部分_新Agent定向返修资料包_20261017.zip`，stable Library ID `libfile_84995f1060348191b7ab230ec63aaede`，SHA256 `6d7c1dd83fdce545bb7b9f53a41df499ea42459a2301c36f7c3b9001df994cd8`，53078字节，3个Markdown（新③全文、作者记录、Reviewer清单），CRC PASS。先前新Agent输入工作包已移到历史归档，不再启动重写Gate。
 - **OWNER_ACTION / NEXT REVIEW**：把上述最新**返修**ZIP交回同一新Agent，围绕7P0/8P1独立核对并修正，不重写新稿结构；Agent仅交两份Markdown（新③完整稿、执行核验记录）及ZIP，下一Reviewer先检查V6/事实/与①②④衔接，PASS后仍须Owner明确授权采纳新的③并可考虑封板。⑤⑥依Owner更近决议`CANDIDATE_ONLY / NO FORMAL ADOPTION / NO SEAL`，④已采用未封板，⑦/HTML未启动。未授权真实支付/退款等资金行为。
+
+## 2026-10-17｜Owner指定新一任第三部分独立Reviewer（仅接手，不改变正文决策）
+
+- **OWNER_INSTRUCTION：** 新Reviewer先读取GitHub main最新交接、索引、V6题文与③首次RETURN；新返修ZIP到来时独立核验7P0/8P1、官方事实、与①②④质量及边界，审后同步四份管理文档。旧Gate失效，不得越权修改①②④或V6、采纳③、落库⑤⑥或开展真实支付部署。
+- **本轮状态：** `MCPG-CH3-REVIEWER-INTAKE-20261017`；接手基线 `ba8ea6cf5db7f42aa768827a96e9ea6c5d80c543`，已核实封板和回滚Git Blob；**尚无新返修ZIP、无新的内容审查判决**。沿用既有 `NEW_STRUCTURE_PREFERRED / CONTENT_RETURN_TARGETED`，而非另行批准稿件；现行唯一返修报告及工作包见Handoff和Index。
+- **NEXT_OWNER_DECISION：** 仅在独立Reviewer对具体新返修稿给出PASS建议后，Owner才决定是否采纳为正式③。此条是Owner任务交接记录，不替代先前Owner批准/暂停决定，也不授予自动采纳权限。
