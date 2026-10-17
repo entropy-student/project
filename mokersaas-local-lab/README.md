@@ -3,7 +3,7 @@
 > LAST_REVIEWED: 2026-10-17
 > CANONICAL_HANDOFF: [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)
 > G1X_REVIEW_DECISION: [G1X_REVIEWER_ACCEPTANCE_2026-10-17.md](G1X_REVIEWER_ACCEPTANCE_2026-10-17.md)
-> CURRENT_EXECUTOR_GATE: NONE (G1X operationally complete, not executable again)
+> SOLE_CURRENT_EXECUTOR_GATE: [G1Y_OWNER_ACCESS_AND_FULL_UI_WALKTHROUGH_GATE.md](G1Y_OWNER_ACCESS_AND_FULL_UI_WALKTHROUGH_GATE.md) — READY (G1X installation remains complete)
 > STOP_AT_REVIEWER=YES; G2 / real payments / production NOT AUTHORIZED
 
 ## Current result
@@ -15,6 +15,10 @@
 ## 2026-10-17 — Page & feature inventory before repairs
 
 [Complete 18-page and embedded-module catalogue](MOKERSAAS_PAGE_FUNCTION_INVENTORY_2026-10-17.md) inventories the 18 source-defined page routes, 4 rendered profile tabs, 9 admin tabs, disabled local providers and protected/untested pages. This is a **static source + prior G1X evidence map**, not an authenticated live-browser audit or permission to perform app repairs. User priority: FIRST review all page and feature scope, THEN aggregate login/access/functional issues into one repair plan. The Owner's inability to log in or open admin remains an OPEN experiential blocker despite earlier synthetic auth API smoke; do not claim all frontend/backend usable. No new Executor Gate and no changes to running app/DB from this inventory.
+
+## 2026-10-17 — Owner user/admin access delivery in progress
+
+**G1Y is the only READY local Codex Gate**: [Owner's working login and admin experience](G1Y_OWNER_ACCESS_AND_FULL_UI_WALKTHROUGH_GATE.md). Existing G1X HTTP/API smoke did not give Owner usable credentials or an admin identity; do not mistake prior login-test success for personal access. G1Y will create TWO lab-only synthetic identities, securely hand off their credentials locally, verify true user/admin sessions and all the [18 pages + 4 user tabs + 9 admin tabs](MOKERSAAS_PAGE_FUNCTION_INVENTORY_2026-10-17.md), and collect errors into one grouped report. **No actual G1Y local execution yet.** G1X running site/DB and prior acceptance remain valid. No public anonymous admin promotion, real Stripe/mail, or old DB changes.
 
 ## Owner — next action
 
@@ -34,10 +38,10 @@ Use only synthetic data. Leave the local app/database running for browsing. No n
 
 ## New Reviewer — exact reading order
 
-1. [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) — unique current state, old/new resources and no active Gate.
+1. [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) — unique current state, existing site/assets and sole G1Y access Gate.
 2. [G1X_REVIEWER_ACCEPTANCE_2026-10-17.md](G1X_REVIEWER_ACCEPTANCE_2026-10-17.md) — review disposition, evidence-by-acceptance matrix, limitations.
 3. [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md) — read latest G1X section and only earlier relevant historical incidents.
-4. [DECISION_LOG.md](DECISION_LOG.md) — Owner synthetic new DB, disposable-only Secret-recovery and simplified native Docker first-boot decisions. [G1X first-boot Gate](G1X_DOCKER_NATIVE_LOCAL_FIRST_BOOT_GATE.md) is completed history, NOT executable.
+4. [MOKERSAAS_PAGE_FUNCTION_INVENTORY_2026-10-17.md](MOKERSAAS_PAGE_FUNCTION_INVENTORY_2026-10-17.md) — full static page/function scope before G1Y actual UI traversal. [DECISION_LOG.md](DECISION_LOG.md) — synthetic lab decisions; [G1X first-boot Gate](G1X_DOCKER_NATIVE_LOCAL_FIRST_BOOT_GATE.md) is completed history.
 
 ## Governance
 
