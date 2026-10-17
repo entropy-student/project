@@ -82,51 +82,55 @@
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **3. 怎么判断现在的收款方式好不好用？** | 3.1 付款成功率、手续费、到账时间和拒付率，应该怎么看？ |
 | 持续经营 | **⑦ 财务与合规经营** | 如何长期、低成本、合规地管理收款业务？ | **4. 生意变化了，什么时候要调整收款方式？** | 4.1 什么变化意味着应该调整或增加收款渠道？<br>4.2 换收款服务商真的更划算吗？切换时会遇到什么麻烦或风险？ |
 
-## 五、最新接收状态与正式版本（2026-10-17）
+## 五、项目当前唯一权威状态（2026-10-17）
 
-- **项目权威：** 仓库 `entropy-student/project`、`main/modern-commercial-payment-guide`；全书《现代商业支付系统｜如何收钱更快、更省、更安全？》，面向中国大陆个人开发者、跨境独立站和中小商家，最终单文件桌面HTML尚未开始。本Handoff第二至四节是V6 7一级/29二级/42三级问题唯一权威，冻结快照 [FROZEN_FRAMEWORK_V6_20261016.md](docs/FROZEN_FRAMEWORK_V6_20261016.md)，Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
-- **第一部分①：OWNER FINAL SEALED / NO EDIT**。[唯一正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，Library `/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`。虽文件名旧，内容为最新版封板正文；不得改。
-- **第二部分②：OWNER FINAL SEALED / NO EDIT**。[唯一正文](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，Library `/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`。禁止额外润色或覆盖。
-- **第三/四部分联合候选已实际收到：** Owner上传 `现代商业支付系统_第三四部分_联合独立写作成果.zip`，SHA256 `57adb9b0c0d10e64278a6a94e7ec151a933f116a347544be7f26dd57bf7e8f16`。ZIP CRC `PASS`，仅三份UTF-8 MD：③候选48,326字节/SHA256 `a97bea1da9a24231546b062899b67e8e38ba51b7cd626d7587d3842dbd67b815`、④候选52,810字节/SHA256 `f7959437753af24000b411d61b6bf1cf084d6cd67284cf9fa59ca90ff72e8c16`、共同执行记录19,645字节/SHA256 `619115326a0974430a29a87b36d258a01a7c4093e7855dffc35061c2e5ef69a9`。
-- **候选持久位置：** `/现代商业支付系统/现代商业支付系统_第三四部分_候选待返修_20261017.zip`，Library ID `libfile_5edd05e8c42481918e132bc173b76485`；这只是原封未修改的候选，不是正式正文。此前有效的联合写作**输入**包仍在同目录 `现代商业支付系统_第三四部分_联合独立写作资料包_20261017.zip`，SHA256 `88ae6de6b80417ef95b7ab33bc73040ce064c1bf1703d9a99f37eaeef7800158`。更早的③单章包已移历史归档且失效，不应重启。
-- **Reviewer首轮结论：** `STRUCTURE_AND_DELIVERY_PASS / RETURN_FACT_SAFETY_TARGETED / OWNER_ADOPTION_NOT_AUTHORIZED`。③4正式H2/5正式H3、④4正式H2/5正式H3均逐字通过，案例、文章深度及表达基本可保留；但多处支付、法律、PCI与系统失败恢复的断言或建议确有错误，不能采纳为正式章。
-- **本轮有效返修说明：** [docs/CH3_CH4_REVIEWER_RETURN_20261017.md](docs/CH3_CH4_REVIEWER_RETURN_20261017.md)，Git Blob `38b3d8cf2cc8922f5ad64261c835a0b73d0f83c7`，同文在Library `/现代商业支付系统/现代商业支付系统_第三四部分_Reviewer首轮复核与定向返修_20261017.md`，ID `libfile_16298758d2088191b8f88ba2ccfe69af`，SHA256 `9590a05149b7032d7ad79db6dbc1b61b8a311604114fe799a2439479d16b41a2`。
-- **阻断问题概览：** ③ Apple Pay只能Safari（2024起可用其它浏览器等方式）、3DS责任转移并非绝对、FTC负面选项/2024修订规则现行性、明文邮件发送账号初始密码/卡号字段误导；④ 800ms固定清算/不可撤销落袋、Stripe幂等缓存严格24小时、CAS受影响0即ACK及孤儿支付无归属补录发货、无条件提交SAQ A。正文和图表附录/执行记录必须同步修正，另有P1见正式审核报告。
-- **编辑权限：** ①②及V6原文仍封板；③④均处于候选返修而不是Owner采纳。审核意见供外部Agent**独立验证**，可以驳回有反证的意见，不可盲改；需要最小定向修订，不能牺牲可读性或重新写两个章节。没有任何真实支付/退款/部署权限。
+- **项目目标**：《现代商业支付系统｜如何收钱更快、更省、更安全？》，面向中国大陆跨境独立站商家/个人开发者/中小卖家，优先回答“怎么做及为什么”并形成可用于判断的实操科普；最终桌面端单文件HTML尚未开始。GitHub主线：`entropy-student/project` 的 `main/modern-commercial-payment-guide`；现行文件入口：[docs/CURRENT_DOCUMENT_INDEX.md](docs/CURRENT_DOCUMENT_INDEX.md)。
+- **Owner最新有效指令**：“如有问题请你自行修正并最小化解决。完成后落到GitHub仓库里并记录，然后启动第五和第六部分。”本轮已把第三/四部分新返修候选独立核验并最小纠错后作为正式正文写入main；第五/六部分依前序联合外部写作流程准备一份资料包。**没有Owner要求第三/四部分在此刻封板**，故它们是正式采纳而尚未宣布正式封板。
+- **① FIRST CHAPTER / OWNER FINAL SEALED / NO EDIT**：[第一部分唯一正式正文](docs/P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md)，Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`，Library `/现代商业支付系统/现代商业支付系统_第一部分_独立重写稿.md`（旧文件名里存的是新封板版）。
+- **② SECOND CHAPTER / OWNER FINAL SEALED / NO EDIT**：[第二部分唯一正式正文](docs/P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md)，Git Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`，SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`，Library `/现代商业支付系统/现代商业支付系统_第二部分_独立重写稿(1).md`（旧文件名里存的是新封板版）。
+- **③ THIRD CHAPTER / OWNER ADOPTED / NOT FORMALLY SEALED**：[第三部分唯一正式正文](docs/CHAPTER3_OWNER_ADOPTED_20261017.md)，Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`，SHA256 `52092ab1b9bd9b29013ebff9e67d6ef9885e2cf20dd2d09402f797a597805040`，51,753字节，Git提交 `ee56c0c1a38b3488b77f5639bb3186cd698fb28b`，Library `/现代商业支付系统/现代商业支付系统_第三部分_正式采纳稿.md`，稳定ID `libfile_c6f6758a911c81919d4bc47b7de21ce1`。
+- **④ FOURTH CHAPTER / OWNER ADOPTED / NOT FORMALLY SEALED**：[第四部分唯一正式正文](docs/CHAPTER4_OWNER_ADOPTED_20261017.md)，Git Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`，SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759`，59,086字节，Git提交 `a8e42ed68a4b3843d3ff8da9c9033299125dfcf6`，Library `/现代商业支付系统/现代商业支付系统_第四部分_正式采纳稿.md`，稳定ID `libfile_04a95924a060819183b080613630148d`。
+- **全书V6正式问题框架**：本Handoff第二至第四节是7个一级/29个二级/42个三级问题的唯一权威；[V6快照](docs/FROZEN_FRAMEWORK_V6_20261016.md) Git Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，问题归属和原文未经Owner新指示不能改动。③/④分别完整保留4H2/5H3；⑤4H2/5H3、⑥4H2/6H3尚未写成正文。
+- **前一轮审查及修复证据**：③④首轮候选Review RETURN历史件 [CH3_CH4_REVIEWER_RETURN_20261017.md](docs/CH3_CH4_REVIEWER_RETURN_20261017.md)；本轮最小修正记录 [CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md](docs/CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md)，Git Blob `8a920ee7aae180d622516fc9d5521b2331d4834f`；最新原外部Agent第二轮候选ZIP SHA256 `8cba1846047269cb480d23bfec8846b80f7f7b3ab4bbaec4102617c78ca6d1e4`，归档Library `/项目历史归档/现代商业支付系统_第三四部分_外部返修候选第二轮_20261017.zip`。Reviewer出具的正式三文件ZIP `现代商业支付系统_第三四部分_正式稿及执行记录_20261017.zip` SHA256 `c09b8bc9452c87f3f27c22b9db7b04b95eaee8049d6f6eb721d73153e97ff039`，已转历史归档。原第三四部分第一次提交及首轮RETURN旧证据在Library/Git历史可溯，但不得继续当作当前文章。
+- **知识边界**：①方案选择与开户可用性；②开通/插件/API/Webhook接入与测试；③买家支付方式、价格/续订披露、结账摩擦与失败处理；④授权/捕获、订单可信关联、履约与重复支付；⑤资金可用、结算汇兑/提现与银行到账；⑥退款/争议/欺诈/冻结；⑦收入税务/长期评价。不要为了跨章衔接而修改前四章正式正文。
+- **事实边界**：③④已纠正Apple Pay跨浏览器/地区、FTC 2024修订法院撤销、SOFORT独立方式退出、3DS责任例外、Capture和提现区分、Stripe幂等24小时及同键安全重试、疑似孤儿支付不能盲发、PCI SAQ适用条件；属于**定向纠错复核，不是所有地区金融/法律实时100%验证**。任何经营账户、真实支付、退款、银行操作均未授权且未发生。
 
-## 六、唯一当前Gate：③④候选首轮Review RETURN与定向返修
+## 六、唯一当前Gate：第五、六部分联合外部写作
 
-- **GATE_ID：** `MCPG-CH3-CH4-FIRST-INDEPENDENT-REVIEW-RETURN-20261017`
-- **OBJECTIVE：** 对Owner交来的联合ZIP做独立Reviewer核查，明确PASS/RETURN及具体事实缺陷，将候选与返修报告持久保存并完成下一Reviewer交接；**并不自行替外部Agent编辑候选**。
-- **MAX_ENDPOINT：** 只读审核③/④/执行记录、官方来源核验、归档输入与报告、更新当前项目文档；不得写③④正式正文、改封板①②、改V6框架、进入⑤–⑦或HTML、进行任何账号/实款操作。
-- **PREFLIGHT / REQUIRED_EVIDENCE：** 当前GitHub封板三Blob回读、外部ZIP SHA256/CRC/三文件字节与执行记录核验、冻结③④各4H2/5H3、原始候选存放位置、官方来源与行号对应、正式审核结论持久记录。
-- **ACCEPTANCE：** `PASS`仅指三文件交付及V6结构；整体 `RETURN_FACT_SAFETY_TARGETED`，两篇文章不能自动正式入库。下轮只针对报告P0/P1与修复中新引入的错误复核。
-- **MANDATORY_REVIEW_STOP：** `YES`，停在Owner转发返修意见与外部Agent定向修订，不自动开展第二轮写作、正式采纳或改变原封板文章。
-- **ROLLBACK：** 已封板Git Blob不变；两个新增Library记录（候选ZIP、报告）均独立于正式正文；如果变更报告引用，Git历史可恢复；不reset/rebase/force。
-- **OWNER_ONLY_ACTIONS：** Owner把现有候选与审核报告交给原外部Agent，要求仅定向修改并回传第三完整稿、第四完整稿及独立核验与执行记录这三份Markdown组成的ZIP。收到后由Reviewer再次复核；仅Owner可批准正式采纳。
-- **REVIEWER_TO_EXECUTOR_RELAY：** “以原联合成果ZIP为底本，阅读 [docs/CH3_CH4_REVIEWER_RETURN_20261017.md](docs/CH3_CH4_REVIEWER_RETURN_20261017.md)，逐项确认P0/P1有无反证后最小修正（包括所有图表/附录/执行记录），不得重写①②和V6；交新的恰好三文件ZIP、准确SHA256及UNKNOWN；不用GitHub写权限。”
-- **EXECUTOR_TO_REVIEWER_RELAY：** “提交最新③/④完整候选及联合独立核验记录的ZIP；提供SHA256、每项P0/P1的采纳/驳回与官方来源、V6逐字校验和未决UNKNOWN，请Reviewer独立复核并停在Owner采纳前。”
-- **CURRENT_STATUS：** `CANDIDATE_RECEIVED / REVIEW_RETURN_FACT_SAFETY_TARGETED / OWNER_RELAY_PENDING`。
+- **GATE_ID：** `MCPG-CH5-CH6-JOINT-INDEPENDENT-WRITER-20261017`
+- **OBJECTIVE**：由外部写作Agent一次完成⑤《资金结算与到账》、⑥《售后与资金风险》两篇独立完整候选；为Owner交付可一次转发的ZIP，保留四篇正式正文的只读引用。
+- **MAX_ENDPOINT_THIS_ROUND**：已完成③④最小事实修复及正式GitHub/Library入库、文件索引/Evidence同步、⑤⑥联合写作资料包准备与归档。**本轮不自行生成第五六章正文，不正式采纳第五六章，不修改①②封板或V6，不推进⑦/HTML/实际金融交易**。
+- **TARGET_AND_SCOPE**：第五正式4H2/5H3，问题：平台余额与银行真实到账、到账时间/费用、结算汇兑和收款账户、少到账/晚到账排查。第六正式4H2/6H3，问题：各类资金风险、退款与拒付、冻结欺诈及证据防护。正式题文逐字见Handoff§三–四与ZIP内`01_第五六部分V6冻结问题与边界.md`。两章共8H2/11H3，全部按Owner V6冻题写，不得改。
+- **AUTHORITATIVE_WRITER_INPUT**：`/现代商业支付系统/现代商业支付系统_第五六部分_联合独立写作资料包_20261017.zip`，Library ID `libfile_f15cb1b96c588191bbfcf8ad90e862e6`，ZIP SHA256 `a125b87a69935034d073cdcb712558bd1713eb277c63f866d4c82b9e9a335201`，112,006字节，9个根目录UTF-8 Markdown，CRC通过。内含00联合写作提示词、01冻结题文与边界、02–05四篇现行正式全文只读、06官方资料核验入口、07新Reviewer交接快照、README各成员SHA清单。**它是唯一有效⑤⑥任务输入；上一轮③④写作包已转历史归档**。
+- **APPLICABLE_CRITICAL_CONSTRAINTS**：作者不得虚构跨境收款合法资格、银行支持国/币种、固定汇差费率、资金到银行的速度、可退费金额与期限、拒付赢面或卖家保护的全球适用性；必须分清交易捕获/平台可用余额/支付机构出款/银行到账；退款部分/累计与唯一Provider退款ID、业务权益撤销和争议证据可用条件；引用官方实时条件。保持已有文章的案例与可读性，不变成纯技术清单。
+- **PREFLIGHT & REQUIRED_EVIDENCE**：GitHub ①`bf6b310f...`、②`51dab57d...`、③`7dc4b456...`、④`3ff19d...`、V6`8c7e1d...`均为当前读回基线。ZIP成员SHA/CRC、Library存档、最终索引和本Evidence需验证。早期③④候选ZIP与首轮Review仅是历史材料。
+- **ACCEPTANCE_CRITERIA**：外部Agent交**三文件ZIP，根目录恰好三份UTF-8 Markdown**：`现代商业支付系统_第五部分_完整候选稿.md`、`现代商业支付系统_第六部分_完整候选稿.md`、`现代商业支付系统_第五六部分_独立核验与执行记录.md`；内有⑤4H2/5H3与⑥4H2/6H3逐字对照、案例费用算术核对、来源适用边界/UNKNOWN及与①–④的去重声明。打包CRC与正文SHA必须可回读。Agent自检不等于Reviewer PASS；候选在独立Reviewer审核和Owner采纳前不得进main。
+- **MANDATORY_REVIEW_STOP**：`YES`，Owner转交ZIP并收回第五六章联合候选后才由下一个Reviewer发起新Gate核验，不跨进第七部分或实际收款/退款。
+- **ROLLBACK_STATUS_OR_PLAN**：正式①②Git历史与封板SHA完整；③④新提交完整、变更前外部候选原ZIP与修订证据可溯；⑤⑥资料ZIP如被取代可移入历史，不影响正式稿。没有业务数据/Secret变更。
+- **OWNER_ONLY_ACTIONS**：Owner只需把唯一⑤⑥联合写作ZIP交外部Agent，得到三MD成果ZIP后回传ChatGPT Reviewer。Owner独占正式采纳/封板与任何真实资金账户操作决定权。
+- **REVIEWER_TO_EXECUTOR_RELAY**：只让写作Agent打开联合包，从00任务提示词、01冻结题文开始，参照四篇正式只读全文与06官方来源，分别写完⑤和⑥、生成一篇独立执行/核验记录，ZIP三文件；不要在GitHub更新正式文章，也不要沿用已废弃的第三四章返修Gate。
+- **EXECUTOR_TO_REVIEWER_RELAY**：提供⑤完整候选Markdown、⑥完整候选Markdown、共享独立核验记录Markdown、三文件ZIP及解压CRC/SHA、V6逐字校验、可靠来源及UNKNOWN、前章只读承诺；请Reviewer审核后停在Owner采纳前。
+- **RESULT_THIS_ROUND**：`CH3_CH4_OWNER_ADOPTED / CH5_CH6_WRITER_PACKET_READY / OWNER_RELAY_PENDING / CH5_CH6_NOT_AUTHORED`。
 
-## 七、新Reviewer最小续接路径（防止丢失上下文）
+## 七、新Reviewer完整续接路线
 
-1. 先读GitHub `main/modern-commercial-payment-guide/REVIEWER_HANDOFF.md` 当前Gate（本节）与 `docs/CURRENT_DOCUMENT_INDEX.md`，不要把历史③单独包、旧PR #132或作者执行记录中的PASS当权威。
-2. 校验①`bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、②`51dab57d0ed5d5458b14422040297ebfbcebe676`、V6`8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`，不准修改。
-3. 读取当前完整审核报告 [CH3_CH4_REVIEWER_RETURN_20261017.md](docs/CH3_CH4_REVIEWER_RETURN_20261017.md)，再按需读取Library的原始候选 ZIP；用户若上传新返修ZIP，以新ZIP为唯一待核验候选，并与原稿做局部对比。
-4. 验证ZIP成员/CRC/SHA、③与④各自**4个H2/5个H3**逐字、金融事实、ApplePay/3DS/FTC/Stripe idempotency/PayPal capture/SAQ资格，以及来源与执行记录自证是否真实；重点保护两章可读性，避免不断加无关审查条文。
-5. 输出明确的独立PASS/RETURN，精确至原稿行号，只追踪P0/P1修复与新增问题。更新Handoff/Evidence和索引，不把候选正文堆入交接文档。
-6. 仅在Owner另行明确授权时把③/④正式全文独立写入main。后续⑤资金结算、⑥售后风险、⑦财务合规和HTML均未授权。
+1. 从GitHub **main** 当前[REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)第五至七节与[有效文档索引](docs/CURRENT_DOCUMENT_INDEX.md)入手。不要从旧PR #132、旧第三四章首轮RETURN反推现行事实。
+2. GitHub回读比对⑤⑥封装的四篇只读全文与当前Git blob：①`bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、②`51dab57d0ed5d5458b14422040297ebfbcebe676`、③`7dc4b456c368ae3974ccaf86b4596c3f125033ef`、④`3ff19d7188b7d61d47d83c0daed67681e1ba88f0`；V6快照`8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。如有差异先只读对账，不得自动恢复/替换。
+3. 第五、六部分输入仅用联合ZIP `现代商业支付系统_第五六部分_联合独立写作资料包_20261017.zip`；候选未收到时保持`NOT_RECEIVED`。Owner带回三文件成果ZIP时先检验ZIP CRC、三个成员SHA与声明、两篇逐字冻结问题。
+4. Review 聚焦⑤平台/支付余额到银行的层级区分、各费用FX的真实依据、币种算术和主体提现资格；⑥欺诈/退款/拒付差异、部分退款累计防超额、Provider状态和唯一退款单号、撤销权益、冻结/卖家保护证据。严肃检查动态政策，禁止“全世界统一”；但不要为文风反复重写整章。
+5. 明确独立`PASS/RETURN`及具体修订位置，Owner未明确授权前不把外部作者自评PASS当作正式采用。只在`EXECUTION_EVIDENCE.md`追加本次Reviewer证据，更新Handoff/Index而不复制整篇正文。
+6. 治理权威：`entropy-student/spike.skill` 的 `vps-project-governance/VNEXT.md`（目前v0.2.7；下轮先确认有无更新）及触发的支付/关闭条款。Writer不可进行真实支付、退款或账号变更；Reviewer不能代Owner决定解除封板。
 
-## 八、项目进度
+## 八、当前全书进度
 
 ```text
-全书V6 7/29/42问题框架       FROZEN
-① 收款方案选择               OWNER FINAL SEALED / NO EDIT
-② 收款开通与接入             OWNER FINAL SEALED / NO EDIT
-③ 顾客付款                   CANDIDATE RECEIVED / REVIEW RETURN
-④ 支付处理                   CANDIDATE RECEIVED / REVIEW RETURN
-⑤ 资金结算与到账             PENDING
-⑥ 售后与资金风险             PENDING
-⑦ 财务与合规经营             PENDING
-桌面端单文件HTML             PENDING
+V6全部7 / 29 / 42正式问题       FROZEN
+①收款方案选择                 OWNER FINAL SEALED / NO EDIT
+②收款开通与接入               OWNER FINAL SEALED / NO EDIT
+③顾客付款                     OWNER ADOPTED / NOT SEALED
+④支付处理                     OWNER ADOPTED / NOT SEALED
+⑤资金结算与到账               JOINT WRITER PACK READY / NO DRAFT
+⑥售后与资金风险               JOINT WRITER PACK READY / NO DRAFT
+⑦财务与合规经营               PENDING
+最终桌面端单文件HTML           PENDING
 ```
