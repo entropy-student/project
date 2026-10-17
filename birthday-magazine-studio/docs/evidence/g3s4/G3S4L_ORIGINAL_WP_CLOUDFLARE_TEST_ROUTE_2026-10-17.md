@@ -15,7 +15,10 @@ OWNER_REPORTED_PASSWORD_ROTATION=YES
 LOCAL_PUBLICATION_AUDIT=PARTIAL_NO_WRITE
 PUBLICATION_SAFETY=NOT_CERTIFIED
 MEDIA_CONTENT_SENSITIVITY=UNKNOWN
-CLOUDFLARE_ZONE_ACTIVE_OR_PERMISSION=UNKNOWN_OWNER_MANUAL_CHECK_REQUIRED
+CLOUDFLARE_ZONE_ACTIVE=OWNER_REPORTED_YES
+CLOUDFLARE_ZONE_WRITE_PERMISSION=UNKNOWN
+OWNER_REPORTED_STRIPE_TEST_DNS_RECORD=NONE
+TUNNEL_ROUTE_COLLISION=UNKNOWN
 stripe-test.spikersun.com=PROPOSED_ONLY
 DNS_OR_TUNNEL_WRITE=NO
 PUBLIC_TUNNEL=NO
@@ -46,13 +49,13 @@ Status-only unauthenticated requests used no browser session, cookies, WooCommer
 
 A metadata-only filesystem count found 389 upload files, including two in WooCommerce’s protected upload directory. The earlier accepted backup inventory recorded 387; the two-file difference was not investigated further. No names, paths, customer values, order ID, response body, password, or secret are included here.
 
-The public attachment endpoint is expected to serve site media, but this bounded check did not inspect the media contents. It therefore does **not** prove every publicly reachable image is non-personal. The anonymous users endpoint also returns a limited profile. Publication safety is consequently **not certified**; this evidence does not claim a private-data leak was proven.
+A follow-up anonymous read-only check retrieved metadata for all 63 REST media entries and sent HEAD requests to their source URLs: all 63 returned HTTP 200. Attachment descriptions had 215 broad email-pattern matches across 32 entries; every match was within image filename/URL suffixes, with zero matches in text after HTML stripping and zero telephone-pattern matches. No actual address values or image bodies were recorded. A metadata filename scan found zero private/customer/order/person filename tokens. These checks do not inspect image pixels, so they do **not** prove every publicly reachable image is non-personal. The anonymous users endpoint also returns a limited profile. Publication safety is consequently **not certified**; this evidence does not claim a private-data leak was proven.
 
 Previously accepted G3S4M evidence remains the source for Stripe’s current state: official WooCommerce Stripe 11.1.0 is installed/active while the payment gateway is disabled; no connected Stripe account, saved payment configuration, webhook, payment, or refund was recorded. No Live or PayPal change was made in this round.
 
 ## Cloudflare confirmation and boundary
 
-The required manual Owner values were not received: zone `spikersun.com` Active/account permission, whether the exact `stripe-test` DNS label is unused, and whether a matching Tunnel hostname route exists. The proposed hostname remains unverified. The prior Computer Use failure happened before reading a Cloudflare page; its root cause remains UNKNOWN. No automated browser retry or alternate automation was used.
+Owner manually reports that `spikersun.com` is Active and no `stripe-test` DNS record exists. Zone write permission and whether any Tunnel has a matching public hostname route remain unverified. No Cloudflare page was read by automation; the prior Computer Use failure happened before page inspection and its root cause remains UNKNOWN. No automated browser retry or alternate automation was used.
 
 No DNS record or Tunnel was created. WordPress `home/siteurl`, plugin state, database, existing orders/uploads, and backups were not changed. No Stripe login, OAuth, payment, webhook, refund, public exposure, or VPS action occurred.
 
