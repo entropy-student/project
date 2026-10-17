@@ -97,20 +97,21 @@
 - **无授权动作**：①②封板、③④正式版、全书V6均本轮只读；没有任何⑤⑥正式正文GitHub文件，亦无真实支付/退款/提现/外汇交易/账户或网站部署操作。作者自检PASS绝不替代独立Reviewer。
 - **后续⑦与HTML**：均PENDING。⑥售后法务与⑤提现是有条件的金融内容，不能按统一国家/产品或固定费率书写。
 
-## 六、当前有效Gate：⑤⑥联合初稿独立Review RETURN
+## 六、当前Gate：⑤⑥返修结果独立核验→最小纠错→条件式正式封板
 
-- **GATE_ID：** `MCPG-CH5-CH6-FIRST-CANDIDATE-INDEPENDENT-REVIEW-RETURN-20261017`。
-- **OBJECTIVE：** 验证收到的第五、第六部分三文件ZIP，核对V6结构、融资结算/退款规则与真实算术，得出可复核的PASS或RETURN，保存完整候选与Reviewer清单并完成接手。
-- **MAX_ENDPOINT_THIS_ROUND：** 仅只读审查/官方来源核验/报告保存、项目Handoff/Index/Evidence状态更新；禁止将⑤⑥不合格候选采纳为正式正文、改写前四章、变更V6、进入⑦/HTML或操作任何资金。
-- **APPLICABLE_CRITICAL_CONSTRAINTS：** 正式四篇Git Blob与V6快照如上，复核动态金融规则必须注明具体市场/产品/时间；差异无法验证为UNKNOWN，而非默认正确。已提交候选修复采取最小范围，不为文风无限返工。
-- **PREFLIGHT / REQUIRED_EVIDENCE：** 原上传ZIP3文件CRC/SHA/UTF-8及两章各4个正式H2与5/6个H3逐字通过；官方出款/卡组织/外管/退款API来源已独立核对；原始ZIP在Library、审核报告在GitHub与Library可读；四篇正式文稿与V6无漂移。
-- **ACCEPTANCE：** 目前仅`DELIVERY_AND_STRUCTURE_PASS`；金融/法律/技术事实`RETURN_FACT_AND_MONEY_SAFETY`。要求下一候选独立核查Reviewer意见，可接受/部分接受/拒绝并陈列反证，定向修复P0与P1并同步示意表、附录和执行记录，仍交**第五完整MD+第六完整MD+独立核验记录MD**，ZIP恰好3个UTF-8文件且SHA与CRC对上。由Reviewer再次复核；Owner单独决定正式采纳。
-- **MANDATORY_REVIEW_STOP：** `YES`。当前停在已提供Owner审核报告与返修素材；外部新候选未收到时状态不能宣称完成。
-- **ROLLBACK_STATUS_OR_PLAN：** 新增Reviewer报告GitHub文件及独立Library ZIP可追溯；无正式⑤⑥正文变更可回滚，①–④与V6原Blob保持不变。历史联合写作包已归档可恢复。
-- **OWNER_ONLY_ACTIONS：** Owner将现行候选ZIP和本轮独立Reviewer报告交外部原Agent，要求**仅最小定向修改**；收到修订三文件ZIP再转Reviewer。不能由Agent擅自修改GitHub或真实支付账户。
-- **REVIEWER_TO_EXECUTOR_RELAY：** “从现行第五六候选ZIP和`docs/CH5_CH6_REVIEWER_RETURN_20261017.md`开始；独立核对11个P0/6个P1，有官方反证的意见可以驳回但要记录；重点更新Stripe HK/PayPal提款/SAFE个人跨境电商/Visa VAMP/退款并发/CE3/净亏损账本，连同图表公式和执行记录一起更正；不重写全文，不修改①–④/V6/真实资金，交三MD ZIP与SHA。”
-- **EXECUTOR_TO_REVIEWER_RELAY：** “返修后提交⑤完整候选MD、⑥完整候选MD、独立核验执行记录MD及唯一ZIP；附逐项接受/拒绝及官方来源、更新前后数字账本、V6标题逐字、文件哈希与UNKNOWN；Reviewer审完才由Owner采纳。”
-- **RESULT_THIS_ROUND：** `CH5_CH6_CANDIDATE_RECEIVED / RETURN_FACT_AND_MONEY_SAFETY / OWNER_RELAY_PENDING`。
+- **GATE_ID：** `MCPG-CH5-CH6-SECOND-REVIEW-MINIMAL-FIX-FINAL-SEAL-20261017`
+- **OBJECTIVE：** Owner明确指示：第五、第六部分下一轮成果送达后，Reviewer如发现少量问题自行最小修复，审核通过直接提交GitHub main和文件库，**正式冻结两篇文章**，同一范围无需再次询问Owner。
+- **STATE / PREFLIGHT：** 目前只有首轮候选ZIP `现代商业支付系统_第五六部分_候选待返修_20261017.zip` 和 [首轮11 P0 / 6 P1审核](docs/CH5_CH6_REVIEWER_RETURN_20261017.md)；**新的返修ZIP尚未送达，尚无⑤⑥正式文章**。收到新ZIP后先验证三份Markdown、CRC/SHA、执行记录、⑤4H2/5H3与⑥4H2/6H3的V6冻结题文，再与首轮候选逐段比较。
+- **MAX_ENDPOINT / TARGET_SCOPE：** 只处理⑤《资金结算与到账》和⑥《售后与资金风险》的完整新候选与伴随执行记录；可在验证后新增两篇唯一正式全文与修订/证据记录、同步Library、归档旧活动候选、更新Handoff/Index/Decision/Evidence，完成两章正式封板。不能改动①–④现行正文、V6 7/29/42问题、真实支付账户/退款/提款、⑦或HTML。
+- **APPLICABLE_CRITICAL_CONSTRAINTS：** ①Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`，②`51dab57d0ed5d5458b14422040297ebfbcebe676`，③`7dc4b456c368ae3974ccaf86b4596c3f125033ef`，④`3ff19d7188b7d61d47d83c0daed67681e1ba88f0`，V6`8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`；全部只读。根据官方来源核验Stripe HK费用/PayPal Payouts与提款/SAFE个人结汇/Visa VAMP与CE3.0/拒付净额及退款异步、并发幂等/公式控制字符等问题。作者自检PASS不能代替Reviewer。
+- **REQUIRED_EVIDENCE：** 新ZIP哈希、三文件指纹/CRC、11P0+6P1逐项`ACCEPT/PARTIAL/REJECT_WITH_EVIDENCE/UNKNOWN`与官方出处、费用与净亏损重新核算、业务退款状态与唯一单号/退款超额保护、正文/图表/附录/记录一致性及最小diff、⑤⑥V6标题对照、①–④/V6不变指纹、正式Git Blob/提交SHA和Library读回。
+- **ACCEPTANCE_CRITERIA：** 无未解决的重大金融、法律或代码误导，二篇可读的完整正式稿保持各自4个H2和5/6个H3全文准确；可验证小错经Reviewer定向修复，提交后全文回读与Library一致，才认定`CH5_CH6_FINAL_SEALED`。如存在材料缺失、不可独立核验的高风险断言、重大新缺陷或无法最小修复的结构问题，**RETURN并停止，不得为了封板强行认定PASS**。
+- **MANDATORY_REVIEW_STOP：** `YES`；不合格在RETURN停止，合格在⑤⑥正式封板及证据回读后停止，不主动写⑦/HTML。
+- **ROLLBACK / RECOVERY：** 保留两轮候选原始ZIP与固定SHA在Library/历史归档，不reset/force；正式入库前记录当前main状态，入库后读回正文及审计证据，失败时只读核对后按历史提交进行恢复。
+- **OWNER_ONLY_ACTIONS：** Owner已提前授予**仅针对⑤⑥本次新返修的最小纠错、正式落库和封板权限**。任何其它范围及真正资金行为仍须另行授权。
+- **REVIEWER_TO_EXECUTOR_RELAY：** “读取本Gate、[CH5_CH6_REVIEWER_RETURN_20261017.md](docs/CH5_CH6_REVIEWER_RETURN_20261017.md)与新返修三文件ZIP；独立复核17组返修意见，必要时最小修正全文与案例/附录/执行记录；通过才提交⑤⑥正式全文、记录与Library，正式冻结；不合格RETURN；禁止碰①–④/V6。”
+- **EXECUTOR_TO_REVIEWER_RELAY：** “报告二篇完整MD与共同执行记录、ZIP/SHA/CRC、V6逐字对照、全部P0/P1和新问题复核、最小变更diff、官方证据、正式Git/Library读回或RETURN原因。”
+- **RESULT_NOW：** `CH5_CH6_FIRST_CANDIDATE_RETURN / NEXT_REVISED_ZIP_NOT_RECEIVED / CONDITIONAL_OWNER_AUTHORIZATION_RECORDED`。
 
 ## 七、新Reviewer续接路线（不用重读整个聊天）
 
@@ -120,6 +121,12 @@
 4. 当Owner提交新的第五六修订ZIP，先核对3文件CRC/源哈希，再逐字确认⑤4H2/5H3和⑥4H2/6H3。逐项检查P0/P1修复及新增错误，重点是费用口径/退款幂等/卡组织2026规则/外汇真实主体/账本算术。
 5. 输出独立PASS/RETURN并同步Handoff/Evidence；**只有Owner明确授权**方能把⑤⑥写入main为正式章。尚未完成⑦《财务与合规经营》或最终HTML。
 6. 通用治理见`entropy-student/spike.skill/vps-project-governance/VNEXT.md`（本轮读取v0.2.7，后续须核对新版本）及支付/Closeout触发条款。文本审核不包含资金行动权限。
+
+## 七点一、四章质量对比审查（只读评估，非解封命令）
+
+- **整体判断**：③④知识体系并未全面退步：③的五类结账失败分流有价值，④的支付状态、幂等与异常处理深度较强；但**商业方案比较和贯穿案例的多样性、读者分层下降**。
+- **具体位置**：①约502–608行有自然人数字设计模板及企业实物出口两套完整选择推演，②约186–260行有链接/插件/API实际取舍；③约94–125行虽有四维支付矩阵，却少从地区、经营主体、买家支付与资费准入推到最终选择的完整示范，主要沿用29美元软件单例；④约257–294行CAS/Outbox与②约292–354行Webhook/状态机/Outbox有重叠，且SQL术语密集，对非程序员卖家缺少先讲业务判断的桥接。③约322、366行的固定响应时间/“黄金一小时”以及④约291行“绝不出错”属表述可信度风险。
+- **处理权限**：上述仅是Owner要求的质量诊断，**不授权自动重写或修改已采用③④**，本轮优先只处理收到后⑤⑥返修合格再封板的目标。
 
 ## 八、全书进度
 
