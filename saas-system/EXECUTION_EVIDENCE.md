@@ -22,3 +22,16 @@
 - `CONCURRENT_UPDATE_RECONCILED`: readback 时 main 为 `744f11f290ce50ea5cec291126af826a77f6d2e1`，GitHub compare 表明这是本项目初始化 commit 的后继，新增内容仅是 `birthday-magazine-studio/` 独立文档；不归属、不修改或回滚那个项目。
 - `VALIDATION`: 6/6 路径成功回读；项目原不存在，新建后未触碰其他项目内容；G1 仍为只读预检，串行实验尚未进入运行。
 - `ROLLBACK`: 文档级 Git 回退可恢复；不涉及任何运行资源、Secret、支付或业务数据。
+
+## 2026-10-17 — G1_VELOBASE_LOCAL_PREFLIGHT_REVIEWED_RETURN_RESOURCE
+
+- `AUTHORIZED_GATE`: `SAAS-G1-VH-READONLY-PREFLIGHT-20261017`，只读。
+- `PREFLIGHT_FACTS`: Owner 在会话转交本机 Codex 报告，Windows 11 Home build 26300、PS 7.6.5、非管理员；可用内存 1.12/1.55 GiB，磁盘余量 169.70 GiB；Docker 9 个项目/35 容器，运行中 3 个；端口 3003/54333/56380 未见冲突。**来源为 OWNER_RELAYED_EXECUTOR_REPORT，非本 Reviewer 对真实主机的直接读回**。
+- `SOURCE_DIRECT_READBACK`: Reviewer 经 GitHub 读取固定 SHA `e88e259b974f883913f68ac74a9b8377765d005d`，核对 MIT、Compose、Dockerfile、Demo 脚本、退款处理、Affiliate 事件模块。
+- `ACTUAL_CHANGES`: 本机 Codex 报告 `OWNER_SIDE_EFFECT_COUNT=0`；无下载、安装、构建、启动、服务停止、支付或运行时修改。GitHub 本轮仅追加文档结论与更新 Handoff。
+- `VALIDATION`: 静态源码结果确认，但 `RUNTIME_PASS=NOT_TESTED`；Web `mem_limit: 8g` 为上限非最低；Node/pnpm 版本需隔离匹配。
+- `ANOMALIES`: 少量 RAM 导致本轮预检无法安全进入演示。源码部分退款整笔置 `REFUNDED`、事件错误仅记录日志存在后续风险；未实测。
+- `REVIEWER_DECISION`: **`RETURN_RESOURCE_HEADROOM_INSUFFICIENT`**，接受已取得的 G1 事实，不批准新的运行 Gate；详见 [Reviewer 决定](./docs/G1_REVIEWER_DECISION_20261017.md)。
+- `ROLLBACK_EFFECT`: 无本机/Provider 更改，运行时回滚 `NOT_APPLICABLE`；文档变更通过 Git 记录。
+- `RESOURCE_OR_BUSINESS_DELTA`: 仅项目文档修改，无成本、端口、账户、数据库或业务动作。
+- `NEXT`: 等待资源改善后增量复测，或经 Owner 另行指定云端候选并进行只读费用/环境预检；不自动切换项目或修改已有系统。
