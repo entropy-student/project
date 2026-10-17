@@ -534,3 +534,39 @@ STOP_AT_REVIEWER=YES
 - The active plugin source still checked only account/order binding on the My Account link and direct workspace route. It did not check paid status, cancellation/failure, or full refund. No refund or code mutation had yet occurred.
 
 RECONCILIATION=UNIQUE_EXISTING_TEST_ORDER;PI_SUCCEEDED_TEST_ONLY;SIGNED_EVENT_STATE_CORRELATED;WOO_AND_PROVIDER_REFUNDS_ZERO;WORKSPACE_OWNER_BINDING_PRESENT
+
+
+## 2026-10-17 TEST refund, workspace entitlement guard, and webhook negative check
+
+### Narrow source repair
+
+PR #64 commit dcb10c560215194d8f0ea2e58949f2cf8b873f24 changes only the existing commerce workspace plugin source. The deployed plugin was active and bind-mounted from that exact project file; PHP lint passed and WordPress loaded the new shared predicate. The updated file Git blob is 30c7d928916f686aa4aeff6c26615b43783344dd; runtime file SHA-256 is 9FE3093E4D1ADBE1DE237A819822A048A5D5A20154E556B19BAF4A69AC11A348.
+
+The new server-side bms_g3a_user_can_access_workspace predicate is shared by the My Account action and direct workspace route. It requires a paid order, non-failed/non-cancelled/non-refunded status, positive total, refunded total below the order total, and exact customer/order/owner binding. Partial refunds retain access; a full refund revokes it. Existing binding metadata remains intact for audit; it is not treated as entitlement. No other source, plugin, site option, Cloudflare setting, or unrelated workspace file was changed by the PR update.
+
+Scoped verification passed: the paid existing TEST owner initially qualified and saw the My Account link; an actual other site account and user 0 were denied and saw no link; the existing bound on-hold fixture remained unpaid and was denied. In-memory only failed, cancelled, and fully-refunded cases were denied; an in-memory partial-refund case remained allowed. These synthetic cases were not saved. After the actual refund, the bound owner was denied by the shared predicate and the account link was absent. An unauthenticated public direct-route GET returned HTTP 403. The source file's rollback anchor is the prior Git blob 33ee82dd1c79c8e5f0c6ff85855b3a3537520b8c / prior SHA-256 E971D02BE42E4DBB01B1CC1C614CD49D76991AD1DF2F253CEC80825F0B9823D2; do not restore the ownership-only implementation while bound unpaid/refunded orders exist unless an equivalent guard remains.
+
+### One matching TEST refund, read back without retry
+
+A single native WooCommerce refund request used refund_payment=true through the enabled official Stripe gateway in saved TEST mode, for the unique existing USD 39.99 order only; restocking was disabled. The first post-call summary attempted an unsupported read-only method on WC_Order_Refund and terminated after the refund call. The outcome was treated as uncertain; no refund was reissued. Immediate read-only reconciliation then confirmed:
+
+- Stripe TEST PaymentIntent remained succeeded and livemode=false; its charge reports refunded=true and amount_refunded=3999 USD cents with livemode=false.
+- Stripe TEST API reports exactly one refund, status succeeded, 3999 USD cents; WooCommerce has exactly one completed refund record for USD 39.99. Provider refund ID, per-refund Woo metadata, and parent order refund metadata matched without exposing IDs.
+- The same order is now refunded with total_refunded=39.99; owner workspace access is false. No other order was selected or modified and no new payment was submitted.
+- One matching charge.refunded TEST event was found, livemode=false and pending_webhooks=0; its created timestamp equals the Woo Stripe runtime last-success timestamp. The official handler validates Stripe-Signature before processing and writes last-success only afterward. This supports receipt of the signed refund event.
+
+### Invalid signature and replay status
+
+A preliminary malformed-body negative probe and then one syntactically valid minimal synthetic event with a current timestamp and deliberately invalid HMAC were sent to the original callback. The valid-JSON probe returned the Woo plugin's HTTP 204 invalid-signature response; runtime last-error reason states the signature did not match the expected signing secret. Afterward, order remained refunded, Woo/provider refund counts remained one, and workspace access remained denied. No signing secret was read or emitted; signature enforcement and the E2E bypass were not changed (E2E_TESTING remains undefined).
+
+The official Woo handler's refund path locks the order and returns when the received Stripe refund ID equals the stored refund ID; the actual provider ID is persisted on the single matching Woo refund record and order. This source guard and correlation were verified, but an identical provider event was not replayed: REPLAY_NOT_TESTED. The configured PowerShell session did not resolve a stripe CLI command, and no Dashboard/browser safety stop was bypassed. Stripe's Events API exposes event retrieval and listing rather than a resend action ([retrieve event](https://docs.stripe.com/api/events/retrieve), [list events](https://docs.stripe.com/api/events/list)); therefore no duplicate-delivery PASS is claimed.
+
+```text
+EXISTING_TEST_PAYMENT=ONE;NO_SECOND_CHECKOUT
+TEST_REFUND=ONE_NATIVE_WOO_GATEWAY_REQUEST;STRIPE_SUCCEEDED;WOO_COMPLETED
+WORKSPACE_OWNER_AFTER_FULL_REFUND=DENIED
+OTHER_USER=DENIED;ANONYMOUS=DENIED;PUBLIC_DIRECT_ROUTE=403;UNPAID_BOUND_FIXTURE=DENIED
+INVALID_SIGNATURE=REJECTED;BUSINESS_STATE_UNCHANGED
+IDENTICAL_EVENT_REPLAY=NOT_TESTED;STATIC_REFUND_IDEMPOTENCY_GUARD=VERIFIED
+LIVE_PAYMENT=NONE;PAYPAL_CHANGE=NONE;PR64_MERGE=NO;STOP_AT_REVIEWER=YES
+```
