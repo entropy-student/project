@@ -286,3 +286,29 @@ NEXT=PRECISE_PERSISTED_LOOPBACK_ANCHOR_SOURCE_REPAIR_THEN_OWNER_STRIPE_TEST_CONS
 **Exactly one next Codex iteration, no Owner action now:** Read-only locate all 12 checkout `a[href]` contexts and their **actual persisted source records** (10 home, 1 product, 1 other; 12 occurrences may stem from fewer records). Inspect representative public nav across home/preview/product/cart; use the smallest guarded, reversible **native WordPress API** edit to only the proven menu/block/widget/custom link sources. **No global DB search-replace, theme rebuild, blind cache purge or checkout/payment configuration write**. Demonstrate zero remaining loopback href on rendered checkout HTML and common navigation, exercise only representative 3 destinations, no mix or public-host downgrade. Reuse existing checkout/session/resource PASS; if a temporary guest cart is needed for HTML scan clear it once, no order. Attempt a nonsecret public browser screenshot only through an available legitimate browser path; otherwise mark visual outstanding without another generic RETURN. Evidence append to same G3S4L PR64 then Reviewer stop.
 
 **Provider remains an Owner checkpoint after corrected site navigation:** official WooCommerce Stripe plugin 11.1.0 installed/active, gateway OFF, TEST selector chosen, account unconnected, signing key absent. Only then ask Owner to use Woo official Stripe **TEST** signup/login/OAuth once; Owner credentials never appear in chat/agent/GitHub. A GET 200 to `https://magazine.spikersun.com/?wc-api=wc_stripe` does not demonstrate signed POST or Webhook idempotence. No Live or even TEST purchase/refund in this targeted repair stage. Original real order/private media and old Docker/Tunnel preserved; no VPS, new site, paid hosting or PR64 merge.
+
+
+## 2026-10-17 Reviewer 728609 — navigation PASS; Stripe TEST Owner authorization NEXT (LATEST)
+
+**Authoritative latest decision:** [`REVIEWER_DECISION_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_AUTH_NEXT_2026-10-17.md`](./REVIEWER_DECISION_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_AUTH_NEXT_2026-10-17.md), PR64 HEAD `728609c54b68ae955150fd4957af93cac2f4d815`, OPEN/UNMERGED. Previous d2b91 navigation repair request is **COMPLETE**, not a fresh blocker. Actual repo delta: **one Evidence appendix only**. Runtime changes described by Executor were WordPress native updates to 11 exact custom-menu URL records, Home page 858 one product CTA, reusable footer block 1143 three links, and Blocksy header button one theme mod, each guard+rollback scoped. Final public checkout/home/preview/product/My Account HTML **0 loopback anchor hrefs**, HTTPS 200, menu fragments exist, temporary checkout cart cleaned; no order/charge, no payment/cloud changes. Source is Executor evidence, not independent Reviewer direct browser/proxy inspection.
+
+```text
+STATUS=PASS_BOUNDED_NAVIGATION_LINK_REPAIR
+NEXT=ONE_OWNER_OFFICIAL_WOO_STRIPE_TEST_ACCOUNT_AUTH
+STRIPE_GATEWAY=DISABLED
+TEST_SELECTOR=SAVED_ONLY;NO_CONNECTED_TEST_ACCOUNT_YET
+WEBHOOK_SIGNING=ABSENT_UNTESTED
+LIVE_OR_REAL_PAYMENT=PROHIBITED
+DORMANT_WIDGET=widget_text-3_IN_ct-footer-sidebar-3_STILL_HAS_OLD_LOOPBACK_LINKS
+DORMANT_WIDGET_RENDER_ON_SAMPLED_PAGES=NO;NOT_A_BLOCKER_FOR_TEST_OAUTH
+VISUAL_BROWSER_SCREENSHOT=NOT_CAPTURED;DO_NOT_CLAIM_PIXEL_PASS
+INDIVIDUAL_PRIVATE_WOO_FILE_SELECTOR=NOT_AVAILABLE;PRIOR_ORDER_DIR_NEGATIVES_ACCEPTED
+```
+
+**Do NOT repeat:** navigation/menu/checkout/CSS tests, Cloudflare token/Tunnel/DNS staging, or re-run approved media scans. The unrendered `widget_text-3` is a bounded dormant URL-debt item; if it becomes live on a public page, fix that specific WordPress widget first, not globally. Do not claim all database URLs are normalized.
+
+**Owner now:** `https://magazine.spikersun.com/wp-admin/` → `WooCommerce > Settings > Payments > Stripe` → official **Test** account connect/signup, selecting **Create or connect a test account** as offered. The Woo Stripe official documentation confirms TEST and LIVE account connections are separate. Use only honest eligible account details; no Live OAuth, Live gateway, false jurisdiction, manually pasted keys/secret, or real charge. If the only authorization UI offers LIVE, STOP at that account step and ask one clear narrow question. No more Codex task is required *before* Owner official TEST authorization.
+
+**After authentic Owner TEST OAuth:** Codex read-only verifies TEST-connected account identity, TEST-only gateway behavior and signed Webhook POST readiness (GET 200 not enough); only after bounded authorization perform one synthetic $39.99 TEST payment, valid/invalid/replay signed event and one matching TEST refund/entitlement revoke. Evidence same PR64 G3S4L and Reviewer decision on actual results. PR not merged. Live and original stored Woo customer orders remain untouched.
+
+Woo official references: https://woocommerce.com/document/stripe/setup-and-configuration/connecting-to-stripe/ ; https://woocommerce.com/document/stripe/customer-experience/testing/ .
