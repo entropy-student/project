@@ -1,4 +1,0 @@
-# Codex private on-device working notes, inputs and zipped handoffs.
-# Git-tracked source of truth remains in docs/, research/, visual/, p4-g1/.
-# Do not ignore or delete the project source directories themselves.
-/.local/
