@@ -267,3 +267,14 @@ UNKNOWN_OR_RESIDUAL:
 
 REVIEWER_REQUEST:
 - Verify the scoped Docker removal and unchanged shared-resource digest. Keep this result at RETURN_PARTIAL_DECOMMISSION; do not perform GitHub project-tree cleanup based on a partial local result.
+
+
+## 2026-10-17 Reviewer PR #151 partial acceptance — exact Owner-local checkpoint required
+GATE_ID: PAYMENTER-G3-OWNER-WINDOWS-LOCAL-DECOMMISSION-20261017
+PR: https://github.com/entropy-student/project/pull/151 ; merged squash d679f3a0edaf20499e050f118277171522adf7f0
+PROVENANCE: REVIEWER_DIRECT_READBACK GitHub PR #151 exact 2-file diff and Execution Evidence; HOST_PROBES were executed/reported by real Owner Windows Executor (not Reviewer direct host access).
+ACCEPTED_PARTIAL: 3 Paymenter-labelled containers, 2 exclusively Paymenter-labelled named volumes and one network removed; no listener on 127.0.0.1:8187, the other 35 containers/22 volumes/12 networks and 20 image IDs have same pre/post serialized inventory SHA-256 per Executor. Only demo data in fresh pre-deletion DB readback. No image deletion/global Docker prune. This is **not** LOCAL_DECOMMISSION_PASS because local folder is still present.
+SAFETY_POLICY_BOUNDARY: Exact recursive PowerShell deletion of project-owned C:\Users\34707\Documents\ChatGPT\Paymenter-Local-Lab returned 'blocked by policy'; command was NOT run, no partial folder deletion, Executor did not switch shell/language/tools. Governance v0.2.7 §11F explicitly requires not bypassing policy; the only remaining irreversible operation moves to explicit Owner-person Windows-local checkpoint.
+OWNER_CHECKPOINT: Owner manually uses Windows File Explorer, navigate to C:\Users\34707\Documents\ChatGPT, select only Paymenter-Local-Lab, Shift+Delete once to permanently delete. Parent ChatGPT and siblings remain; this contains old failed database directory, project-only backups, configuration and Secrets; original live demo DB was already deleted and no restoration guarantee remains.
+POSTCHECK_REVIEW: After Owner confirms local action, Executor via read-only Windows/Docker inspection confirms project root absent, original project containers/volumes/network absent, 8187 no Paymenter listener and unrelated resources unchanged. No autonomous delete tool may be used for that folder. GitHub directory deletion deferred until Reviewer accepts full local result and then removes only paymenter-local-lab main subtree, preserving history and other projects.
+REVIEWER_RESULT: PARTIAL_ACCEPTED_DOCKER_ONLY / RETURN_OWNER_LOCAL_FOLDER_CHECKPOINT; G3 remains open. The actual Owner folder delete was NOT performed by Reviewer or any tool in this round.
