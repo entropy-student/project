@@ -263,7 +263,7 @@ GITHUB_NOT_TOUCHED:
 - No Paymenter source tree, Git history, or project directory was deleted from GitHub. This PR records only the local execution result and updates the handoff status. GitHub cleanup is not authorized until Reviewer resolves the incomplete local decommission.
 
 UNKNOWN_OR_RESIDUAL:
-- Local owned directory and its project-only files/secrets remain. Active application/database named volumes and containers are gone, so the active demo database is not recoverable from this host. The retained project root is the remaining local Paymenter resource; the three Docker images remain by design.
+- Local owned directory and its project-only files/secrets remain. Active application/database named volumes and containers are gone, so the active database has no verified recovery path; the retained legacy host database directory is not a verified backup. The retained project root is the remaining local Paymenter resource; the three Docker images remain by design.
 
 REVIEWER_REQUEST:
 - Verify the scoped Docker removal and unchanged shared-resource digest. Keep this result at RETURN_PARTIAL_DECOMMISSION; do not perform GitHub project-tree cleanup based on a partial local result.
