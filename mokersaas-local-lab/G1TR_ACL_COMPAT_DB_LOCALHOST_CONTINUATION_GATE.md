@@ -1,7 +1,9 @@
 # MokerSaaS G1TR — ACL-compatible secret creation + resume NEW local DB/site smoke
 
+> REVIEWER 2026-10-17: This Gate already created TWO protected local synthetic Secret files and the new G1S network/volume, then stopped on combined reader probe exit 1 without predicate discrimination. DO NOT rerun or regenerate Secrets. The **sole current active Gate** is `G1TRR_EXISTING_SECRET_READER_AND_LOCALHOST_CONTINUATION_GATE.md`. The execution relay below is historic.
+
 > GATE_ID: MOKER-G1TR-ACL-COMPAT-DB-LOCALHOST-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_DB_SECRET_CONTAINER_READER_UNVERIFIED — historical / NOT EXECUTABLE
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7
 > AUTHORITY: Owner already approved `MOKER-D-20261017-APPROVE-G1S-NEW-DB` and `MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION`; the second waives ONLY off-host encrypted recovery copy for a NEW disposable synthetic test credential.
 > MAX_ENDPOINT_THIS_ROUND: correct the single Windows/.NET ACL creation API mismatch, then continue G1T's SAME authorized target through new DB/schema, private localhost app, basic auth/admin/provider-negative smoke.
