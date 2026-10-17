@@ -67,3 +67,9 @@ V4 [Draft PR#144](https://github.com/entropy-student/project/pull/144)已按此�
 - **锁定方法**：以原V2 HTML为唯一A Mac+QuickTime容器，最小化替换播放器B区内容。T1–T6保持六个独立可复用展示组件，多个镜头可以重复调用同一T编号；每期一条Master Clock，从桌面点文件到内容展示再到关闭回桌面。无需另造第二套Mac视觉或六台播放器，不新增模板。优先复用V4`TEMPLATE_RENDERERS`/`EDITORIAL`/`compileTimeline`，清除双窗结构；播放器装饰/动作采用原版绘制，内容槽不应覆盖按钮、控制条和字幕安全区。
 - **验收条件**：Reviewer对同一版可离线运行HTML同时确认视觉与行为：原V2桌面、菜单、Dock、鼠标、窗口几何和开窗动作对照；至少6布局/7镜头（T1用两次不同素材）；一倍速整段播放、播放/暂停/拖动/字幕编辑不中断、进度连续、结尾点关闭恢复桌面；同一个浏览器/版本测试，不能拿近似壳版结果证明原版合成通过。第三方参考素材只用于私有试看片，不上传公开Git。通过前状态`INTEGRATION_RETURN / VISUAL_UNVERIFIED`，不是模板最终PASS。
 - **实施和权限边界**：未来仅允许隔离PR#144中开展有界Mac视频模板精修；本轮**只记录、没有修改代码**，不修改既有原版main真源，不合并PR，不启动正式R4、AI生图、外部搜片、付费、发布；`CW0005`正式R3视觉RETURN、HOLD/G1/G2/NO_PUBLISH不变。具体Reviewer接手看[REVIEWER_HANDOFF_CURRENT](REVIEWER_HANDOFF_CURRENT.md)顶部唯一Gate。
+
+## 2026-10-17｜Reviewer接受V5单原版结构为候选、正式视觉PASS待验收
+
+Owner批准继续，Reviewer按前一轮确定的原版唯一外壳规则**实际提交**PR#144 `storyboard-v5-original-shell.html`。技术决策：以原Research Aqua V2整份HTML/Canvas为基准，仅将旧果冻示意画面替换为一个B媒体内容视口；沿用源QT桌面、窗口、鼠标、标题栏/进度条及控制按钮，六T1–T6模板是内容函数，七镜头一个主时轴。V4的`#auth-shell + #qt`双外壳设计已在V5替代（旧源码留档）。
+
+Review独立静态回读确认一个原Canvas、零第二QT元素，两段JS语法PASS；22时点受控执行器证明开场/模板切换/结尾状态机可推进，不等于真实浏览器观看。故结论仅`V5_SOURCE_ARCHITECTURE_OK / OVERALL_PARTIAL / REAL_BROWSER_VISUAL_UNVERIFIED`。下一步对V5同一原版源码整合HTML做真实1×浏览器完整视觉和媒体同步核验，不再次重绘原版Mac；PR仍Draft不合并、正式R3视觉RETURN和R4/G2/发布限制保持。
