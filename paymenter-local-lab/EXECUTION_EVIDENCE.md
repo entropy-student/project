@@ -169,6 +169,7 @@ REVIEWER_DECISION: Treat G2A source/CLI and R1 historic approvals as bounded, re
 ## 2026-10-17 G2C Executor — 源码/CLI 候选通过，视觉待 Reviewer
 GATE_ID: PAYMENTER-G2C-LOCALE-SEMANTICS-AND-AUDIT-RUNTIME-20261017
 RESULT: PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI / PARTIAL_G2C_UI_EVIDENCE_PENDING
+PR: https://github.com/entropy-student/project/pull/150
 PROVENANCE: Owner Windows PowerShell + 项目限定 Docker CLI + Paymenter PHP/Laravel；只读 loopback HTTP。未使用浏览器或 Computer Use。
 
 PREFLIGHT:
