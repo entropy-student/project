@@ -1,41 +1,38 @@
-# 《现代商业支付系统》｜当前有效文档索引（2026-10-17）
+# 《现代商业支付系统》当前有效文件索引（2026-10-17）
 
-> **现在的唯一工作：第五、第六部分联合候选已交付，独立Reviewer首轮判定`RETURN_FACT_AND_MONEY_SAFETY`。** 两篇原稿结构与交付合格，但现行费率、Visa制度、个人外汇结算、退款系统安全及账本案例存在错误，尚未正式采纳。下一位Reviewer先从[唯一交接文档](../REVIEWER_HANDOFF.md)第五至七节开始。
+> **唯一当前结果：⑤⑥第二轮完整候选 ZIP 已收到，Reviewer验收结构PASS，事实和退款资金安全RETURN，均未正式采纳或封板。** ①②最终封板不动；③④**正式采纳、Owner明确暂不冻结**；V6全书题文冻结。
 
-| GitHub文件 | 用途 | 状态 |
+| GitHub路径 | 用途 | 当前状态 |
 |---|---|---|
-| [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) | **唯一完整交接**：已采纳正文、封板、⑤⑥当前Review Gate及新Reviewer接手步骤 | **ACTIVE / READ FIRST** |
-| [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md) | 全书7一级/29二级/42三级正式V6框架 | **FROZEN** |
-| [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | ①收款方案选择唯一正文 | **OWNER FINAL SEALED / NO EDIT** |
-| [P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) | ②收款开通与接入唯一正文 | **OWNER FINAL SEALED / NO EDIT** |
-| [CHAPTER3_OWNER_ADOPTED_20261017.md](CHAPTER3_OWNER_ADOPTED_20261017.md) | ③顾客付款唯一正文 | **OWNER ADOPTED / NOT SEALED** |
-| [CHAPTER4_OWNER_ADOPTED_20261017.md](CHAPTER4_OWNER_ADOPTED_20261017.md) | ④支付处理唯一正文 | **OWNER ADOPTED / NOT SEALED** |
-| [CH5_CH6_REVIEWER_RETURN_20261017.md](CH5_CH6_REVIEWER_RETURN_20261017.md) | ⑤⑥**当前唯一Reviewer返修意见**，11组P0+6组P1、原稿位置和官方来源 | **CURRENT REVIEW RETURN** |
-| [CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md](CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md) | ③④先前最小更正、正式采用的执行证明 | **ACCEPTED EVIDENCE** |
-| [CH3_CH4_REVIEWER_RETURN_20261017.md](CH3_CH4_REVIEWER_RETURN_20261017.md) | ③④历史旧候选的首轮RETURN，与现在正式采用稿无冲突 | **HISTORICAL REVIEW ONLY** |
-| [DECISION_LOG.md](../DECISION_LOG.md) | Owner关于①②封板及③④采纳、⑤⑥写作的决策 | **APPEND ONLY** |
-| [EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md) | 状态变动、文件指纹、核验、恢复边界 | **APPEND ONLY** |
+| [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) | 唯一权威接手、⑤⑥当前Gate、第三四部分非封板状态 | **ACTIVE / READ FIRST** |
+| [FROZEN_FRAMEWORK_V6_20261016.md](FROZEN_FRAMEWORK_V6_20261016.md) | 7一级/29二级/42三级完整问题 | **FROZEN** |
+| [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | ①收款方案选择 | **OWNER FINAL SEALED / NO EDIT** |
+| [P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) | ②收款开通与接入 | **OWNER FINAL SEALED / NO EDIT** |
+| [CHAPTER3_OWNER_ADOPTED_20261017.md](CHAPTER3_OWNER_ADOPTED_20261017.md) | ③顾客付款 | **OWNER ADOPTED / NOT SEALED** |
+| [CHAPTER4_OWNER_ADOPTED_20261017.md](CHAPTER4_OWNER_ADOPTED_20261017.md) | ④支付处理 | **OWNER ADOPTED / NOT SEALED** |
+| [CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md](CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md) | **⑤⑥第二轮唯一当前Reviewer报告**，含上一轮11P0/6P1复查、新安全阻断及①②质量逐项对比 | **CURRENT RETURN** |
+| [CH5_CH6_REVIEWER_RETURN_20261017.md](CH5_CH6_REVIEWER_RETURN_20261017.md) | ⑤⑥第一轮原候选报告 | **HISTORICAL REVIEW** |
+| [CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md](CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md) | 第三四部分正式采用的历史执行记录 | **KEEP** |
+| [CH3_CH4_REVIEWER_RETURN_20261017.md](CH3_CH4_REVIEWER_RETURN_20261017.md) | 第三四部分最初未采用候选的评审记录 | **HISTORICAL** |
+| [../DECISION_LOG.md](../DECISION_LOG.md) | Owner决策与条件式封板授权 | **APPEND ONLY** |
+| [../EXECUTION_EVIDENCE.md](../EXECUTION_EVIDENCE.md) | 文件指纹、独立核验、历史恢复和结果证据 | **APPEND ONLY** |
 
-## 正式正文与冻结框架指纹
+## 只读正式正文指纹
 
-- ① Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`；SHA256 `c476f1eb15adc58c98a047334daa13542521758de8bcf56b560524650fa9a6db`。
-- ② Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`；SHA256 `c9c14717104e9d5666b8007c82ffca4448c2598f2d59eed1c9ab3ce1505993f9`。
-- ③ Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`；SHA256 `52092ab1b9bd9b29013ebff9e67d6ef9885e2cf20dd2d09402f797a597805040`。
-- ④ Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`；SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759`。
-- V6冻结快照 Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。
-- 本轮①②③④正文以及V6框架均未写入；第五、第六部分在GitHub **尚无正式全文**。
+- ①Git Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`；②Blob `51dab57d0ed5d5458b14422040297ebfbcebe676`；
+- ③Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`；④Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`；
+- V6冻结结构Blob `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。本轮全部未修改。
 
-## 第五、第六部分当轮资产
+## ⑤⑥唯一待返修候选与当前报告
 
-- **上传原候选唯一版本**：`/现代商业支付系统/现代商业支付系统_第五六部分_候选待返修_20261017.zip`，ZIP SHA256 `d7dca94d164378894bb32face7408faeae9c3dddf8e7a308caca7a5debe8479f`，stable Library ID `libfile_e40ca3ebac588191b92363b7b04aad36`。含完整⑤、完整⑥及作者独立执行记录三MD，CRC通过；它只是**候选**。
-- **必须先用的返修审查**：[CH5_CH6_REVIEWER_RETURN_20261017.md](CH5_CH6_REVIEWER_RETURN_20261017.md)，SHA256 `0d8427f5fe5c8e6939c388f0ef9567acaddc90c0906b4f83d543cd065a25100a`，Library `/现代商业支付系统/现代商业支付系统_第五六部分_Reviewer首轮复核与定向返修_20261017.md`，stable ID `libfile_6fe280ff0c1c8191ba2c8865324372a8`。
-- **旧联合写作输入**：`现代商业支付系统_第五六部分_联合独立写作资料包_20261017.zip`已移动至`/项目历史归档/`，不再启动旧的全文写作流程；原稿和旧包仍可按需恢复。
-- **交付下一轮**：先由外部Agent逐条独立核验P0/P1，可附反证驳回；只做最小修补，含⑤⑥正文、表格、例子和执行记录；下一ZIP根目录恰好三份UTF-8 Markdown，验CRC/SHA后由独立Reviewer二次审核；**Owner已明确预先授权**：若17组P0/P1及新增风险通过，Reviewer可仅作最小修正后直接将⑤⑥落库并正式封板，GitHub和Library回读同步；若重大问题不能局部修复则RETURN，不得强行封板。
+- 最新第二轮候选ZIP `/现代商业支付系统/现代商业支付系统_第五六部分_第二轮返修候选_20261017.zip`，Library `libfile_ebd49007347c819199983acb6693501d`，SHA256 `de8a7b737509666509486e672be23a6b364d942d76726c204bcd9e7c378634ad`，三UTF-8 MD、CRC PASS。
+- 当前Reviewer完整报告 `/现代商业支付系统/现代商业支付系统_第五六部分_第二轮Reviewer审核与跨章质量对比_20261017.md`，Library `libfile_69a10dc1dd9481918739920ab8c71228`，SHA256 `ecf53671cb89780392eb744ff83357acf442fb951067ed653a3a6df6ed24353c`。**报告包含质量评估，第三四部分未因评估而修改。**
+- 第一轮候选ZIP与第一轮Reviewer MD已移至 `/项目历史归档/`，保留用于只读对比；旧联合写作资料包也在历史归档，不得用其替代当前候选/报告。
+- **主要阻断：** ⑤Stripe香港USD payout 1%最低US$5被漏算，账面美元到账不成立，FX与现金流表口径交叉矛盾；⑥Visa VAMP 2026核心指标错误，退款 API 网络异常直接释放额度可能重复退款，部分退款/绝对处罚/3DS举证仍不严谨。作者执行记录全部标为FIXED不代表独立PASS。
+- **下一步：** 原Agent以本最新ZIP为底本，在本报告定位范围内小改⑤/⑥两篇全文和一份执行记录，交唯一三MD ZIP；Reviewer再次独立查账与核验，只有实际合格才依据Owner已授权的条件落库封板。**当前没有正式⑤⑥正文。**
 
-## 四章质量对比（不触发正文修改）
+## 质量对比简述
 
-①②在商业方案比较、两个经营主体完整案例、费用与开通决策闭环上更充分；③结账方法具有价值但缺少完整商家选择推演且以软件29美元案例为主；④支付工程深度较高，却与②的Webhook/CAS/Outbox知识存在一定重复，对非程序员读者缺少商业解释过渡。③少数固定时限以及④绝对可靠性用语缺乏充分证据。**这只是Reviewer诊断，Owner没有批准改写③④，保持现行正式正文不变。**
+①②拥有完整独立经营主体案例与筛选决策法；⑤⑥虽内容覆盖丰富，但偏向单笔29美元软件订单，商业场景广度、真实跨境方案的比较过程、数字/监管证据、普通商家可理解性下降；⑤⑥需优先修准事实，再适度借鉴①的YES/NO/UNKNOWN分流。详见上述第二轮全文报告，不据此改写已采用③④。
 
-## 未启动
-
-第⑦章《财务与合规经营》和单文件HTML均PENDING。没有任何真实支付、提现、退款、开户、网站或服务器变更权限。
+⑦财务与合规经营、最终单文件HTML仍等待新Owner指令。无真实收付款/退款或商户账户操作。
