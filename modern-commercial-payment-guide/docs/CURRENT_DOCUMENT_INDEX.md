@@ -17,4 +17,4 @@
 - [第七部分 R2 Reviewer 审核记录](CHAPTER7_R2_REVIEW_EVIDENCE_20261017.md)
 - [第七部分原 Writer 工作 Gate](CHAPTER7_INDEPENDENT_WRITER_GATE_20261017.md)（已完成阶段）
 
-第一至第七部分均已文稿级封板；最终 HTML 未启动。七份正式正文单独合集：`../releases/现代商业支付系统_七部分正式正文_20261017.zip`。旧候选、旧评审不作为当前正式正文。
+第一至第七部分均已文稿级封板；最终 HTML 未启动。七份正式正文单独合集：[七章独立 ZIP（GitHub Archive）](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)。旧候选、旧评审不作为当前正式正文。
