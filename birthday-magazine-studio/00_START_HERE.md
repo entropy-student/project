@@ -4,18 +4,18 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_G3S4L_D2B91_GUEST_CHECKOUT_PASS_LOOPBACK_ANCHOR_FIX_NEXT_2026_10_17`.
-2. [G3S4L d2b91 Reviewer: guest checkout PASS, 12 loopback links targeted fix](./docs/REVIEWER_DECISION_G3S4L_D2B91_CHECKOUT_PASS_LOOPBACK_LINK_REPAIR_BEFORE_STRIPE_2026-10-17.md) — precise persisted WP menu/navigation source, reversible edit.
-3. [Current G3S4L Gate latest d2b91 appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md) — no repeat accepted cart/CSS/media; repair anchor hrefs before official Stripe TEST OAuth.
-4. [PR64 latest checkout and Stripe readiness Evidence](https://github.com/entropy-student/project/blob/d2b91e13072fcfd046ef904b0caf5ed73a6f739f/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md) — 21 checkout controls, 12 loopback href occurrences, Stripe account disconnected.
-5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — historical.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_OAUTH_OWNER_NEXT_2026_10_17`.
+2. [Reviewer 728609 — bounded navigation PASS, Stripe TEST Owner next](./docs/REVIEWER_DECISION_G3S4L_728609_NAVIGATION_PASS_STRIPE_TEST_AUTH_NEXT_2026-10-17.md).
+3. [Active G3S4L Gate last appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md) — no more nav/cart/CSS/Tunnel tasks; official Stripe TEST-only OAuth first.
+4. [PR64 latest link-fix Evidence](https://github.com/entropy-student/project/blob/728609c54b68ae955150fd4957af93cac2f4d815/birthday-magazine-studio/docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md) — 11 menu IDs + home/footer/header, zero rendered checkout loopback hrefs, rollback.
+5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — historical context.
 
 ## Current snapshot (2026-10-17)
 
-- **Reviewer d2b91 scoped checkout PASS:** PR64 `d2b91e13072fcfd046ef904b0caf5ed73a6f739f` OPEN/UNMERGED. Guest product add-to-cart, cart/nonempty checkout HTTPS 200, 21 controls, Secure+HttpOnly cookie; checkout CSS 9/9 and JS 15/15 correct 200/MIME; session cleared to 0 items; no order/payment. WordPress original site and Cloudflare Tunnel unchanged.
-- **Needs one targeted fix:** 12 checkout-page `a[href]` occurrences to loopback address (10 root/home, 1 product, 1 other); no actual redirects observed. Identify persisted menu/widget/content source and repair only affected records using native WP APIs, then verify checkout/global nav zero loopback; no global DB replace, no accepted tests repeated. Visual screenshot remains unverified.
-- **Stripe status:** WooCommerce Stripe 11.1.0 active, gateway disabled; TEST selected but NO OAuth/account/TEST/LIVE credentials or webhook signing key. Webhook GET 200 proves route only, **not signed POST**. After link repair Reviewer PASS, Owner only needs one official Woo Stripe TEST signup/login/OAuth. No Live or real payments.
-- **Private data:** previous public order API 401 and protected upload dir 403 accepted; specific individual private file not tested (no safe synthetic selector). PR64 stays open/unmerged, no VPS or second WP.
+- **Reviewer G3S4L navigation PASS:** PR64 HEAD `728609c54b68ae955150fd4957af93cac2f4d815` OPEN/unmerged. WP native guarded updates only: 11 menu custom URL records, Home CTA, reusable footer block 1143 (3), Blocksy header button (1). Actual checked public home/preview/product/my-account/nonempty checkout now have zero loopback hrefs over HTTPS 200. Old URL rollback values recorded, guest cart cleaned, no order/payment.
+- **Deferred nonblocking URL:** `widget_text-3` in `ct-footer-sidebar-3` stores old localhost links but was NOT rendered on the sampled public pages. Fix only if/when activated; no unnecessary global DB replace. Rendered screenshot still unverified, not a blocker for TEST account registration.
+- **Stripe status:** Official Woo Stripe 11.1.0 active; gateway disabled, TEST selector saved, NO test account/OAuth/test/live keys or Webhook signing secret. GET 200 to `/?wc-api=wc_stripe` is route only. **Next action is Owner-only official Woo Stripe TEST account signup/login/OAuth** via `https://magazine.spikersun.com/wp-admin/` → WooCommerce Payments/Stripe; TEST-only separate from Live. Real/Live payment forbidden.
+- **After OAuth:** Codex read-only verifies connected TEST identity, Stripe TEST webhook signed POST and status before one narrowly authorized $39.99 simulated payment/webhook/refund/entitlement revoke; no new infrastructure, backup, repeated scans, VPS or merge.
 
 ## Source-of-truth rule
 
