@@ -1,7 +1,10 @@
 # MokerSaaS G1UV — Repair SAME .NET stdin pipe, reuse synthetic Secret volumes, start localhost
 
+> SUPERSEDED 2026-10-17 before any G1UV execution: Owner prioritized a single simplified local site-start attempt over further Windows/.NET stdin repair. **Do not execute this previous relay.** Current G1X_DOCKER_NATIVE_LOCAL_FIRST_BOOT_GATE.md uses NEW Docker-local CSPRNG credentials in isolated existing-empty-or-fresh project-only volumes, preserving the original protected Windows files and all data. The old G1U MethodInvocationException remains historical; G1UV itself did not run.
+
+
 > GATE_ID: MOKER-G1UV-STDIN-PIPE-COMPAT-AND-LOCALHOST-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: SUPERSEDED_BY_OWNER_ONE_ROUND_DOCKER_NATIVE_BOOT — HISTORICAL / NOT EXECUTABLE
 > AUTHORITY: Owner decisions `MOKER-D-20261017-APPROVE-G1S-NEW-DB` and `MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION` (already recorded, no new approval)
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7; §§5,6,7,10,11B,11C
 > MAX_ENDPOINT: reconcile prior partial Secret-only volumes; correct **same .NET ProcessStartInfo redirected stdin call** with an end-to-end NON-SECRET fixture and retained sanitized native exception evidence; if safe, transfer existing synthetic credentials into their existing distinct isolated volumes, verify per-service mount/reader scope, launch NEW independent Postgres/schema and loopback app with negative security smoke.
