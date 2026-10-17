@@ -1,7 +1,10 @@
 # MokerSaaS G1X — Docker-native synthetic credentials → first working localhost site
 
+> REVIEWER 2026-10-17: Owner-local Executor reported first operational localhost HTTP 200, new PostgreSQL healthy, schema 17 tables/155 constraints, credential auth and negative admin/payment Provider smoke. **G1X execution is complete for local-first-boot; do NOT execute this Gate again.** Reviewer accepted SITE_UP for Owner local evaluation. Formal independent-audited Governance PASS is not asserted because raw primary on-host Docker/HTTP records were not provided to Reviewer (§7). Nonblocking record: isolated App bridge (IP masquerade off) required for host loopback publishing, npm registry downloaded pinned pnpm during new migrator build, one verified-empty anonymous audit volume retained. See `G1X_REVIEWER_ACCEPTANCE_2026-10-17.md`, `REVIEWER_HANDOFF.md`, `EXECUTION_EVIDENCE.md`.
+
+
 > GATE_ID: MOKER-G1X-DOCKER-NATIVE-LOCAL-FIRST-BOOT-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: PASS_CANDIDATE_REVIEWED__SITE_UP_ACCEPTED__COMPLETED_NOT_EXECUTABLE
 > GOVERNANCE: entropy-student/spike.skill/main:vps-project-governance/VNEXT.md v0.2.7 ACTIVE_PROVISIONAL
 > OWNER_AUTHORITY: MOKER-D-20261017-APPROVE-G1S-NEW-DB and MOKER-D-20261017-DISPOSABLE-RECOVERY-EXCEPTION; Owner 2026-10-17 direction to simplify the test workflow and complete site startup in a single round. **Scope remains a separate disposable synthetic localhost lab only.**
 > OBJECTIVE: stop fixing Windows→Docker file bind/PowerShell stdin. Generate **new, lab-specific random** DB and NextAuth secrets natively INSIDE isolated Docker volumes, reuse G1P2 image and NEW database volume, initialize schema, open local site, run critical auth/admin/provider negative smoke. No claims of pre-verified runtime success.
