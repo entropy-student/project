@@ -228,3 +228,34 @@ STRIPE_TEST=NOT_STARTED
 This post-publication visual defect does not invalidate the previously accepted Cloudflare connector-code static audit. Do not ask Owner to re-enter tunnel token, redo token folder/installer, create a new Tunnel or re-run old `cloudflared tunnel login`. If Cloudflare route shows external drift, diagnose exact new route only; do not overwrite unrelated DNS/Cloudflare apps.
 
 Sources for design: https://developer.wordpress.org/reference/functions/is_ssl/ and https://developer.wordpress.org/advanced-administration/security/https/ ; https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/ .
+
+
+## 2026-10-17 Reviewer accepted @ 92aac969 — HTTPS CSS resource PASS; next guest-cart and Stripe TEST readiness (LATEST)
+
+**CURRENT Reviewer authority and promotion:** [`REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md`](./REVIEWER_DECISION_G3S4L_92AAC_HTTPS_CSS_PASS_CHECKOUT_STRIPE_TEST_NEXT_2026-10-17.md) accepts **the exact bounded WordPress home/siteurl repair**, not full final payment Gate. PR64 HEAD `92aac96932f1c04ac97b3faeaae68314bfedefb2` OPEN/UNMERGED; one existing G3S4L Evidence file appended, no application Git change. Prior G3S4L paragraphs saying CSS repair has not occurred are **HISTORICAL, superseded by this latest entry**. All source/asset/security conclusions below are based on Codex's evidence; Reviewer independent live host fetch was unavailable.
+
+```text
+CURRENT_STATE=G3S4L_PUBLIC_HTTPS_CSS_RESOURCE_REPAIR_ACCEPTED
+OWNER_FIXED_HOST=magazine.spikersun.com
+ORIGINAL_WP_HOME_SITEURL_BEFORE=http://127.0.0.1:8189
+ORIGINAL_WP_HOME_SITEURL_NOW=https://magazine.spikersun.com
+METHOD=GUARDED_WORDPRESS_NATIVE_UPDATE_OPTION_TWO_KEYS_ONLY
+EXISTING_FORWARDED_HTTPS_HANDLER=UNCHANGED
+HTTPS_HOME_PREVIEW_PRODUCT_CART=200_EXECUTOR_REPORTED
+CSS=9_OF_9_200_CORRECT_MIME
+JS=12_OF_12_200_CORRECT_MIME
+SCANNED_ASSET_MIXED_CONTENT_OR_LOOPBACK=0
+GUEST_ORDERS_PRIVILEGED_USERS=401
+GUEST_PRIVATE_UPLOADS_DIRECTORY=403
+GUEST_MY_ACCOUNT_ORDERS=LOGIN_FORM_NO_ORDERS
+PRIVATE_FILE_EXACT_SELECTOR=UNAVAILABLE_NOT_TESTED
+CHECKOUT_NONEMPTY_CART=NOT_YET_TESTED
+POST_REPAIR_VISUAL_SCREENSHOT=NOT_YET_TESTED
+STRIPE_TEST_OAUTH_PAYMENT_WEBHOOK_REFUND=NOT_STARTED
+ROLLBACK=EXACT_WP_HOME_SITEURL_OLD_VALUES_DOCUMENTED
+PR64=OPEN_UNMERGED
+```
+
+**No refit/rollback now:** 9 CSS/12 JS with correct URLs/MIME and cross-route HTTPS show the former loopback CSS TLS failure has been repaired. Do not re-run the same media/security scan, modify Cloudflare/Tunnel/SSL/DNS, re-enter token, reinstall theme/WordPress, change proxy, rewrite DB globally or restore old URLs while the public route is functional.
+
+**NEXT bounded Executor task, still in G3S4L:** (1) capture nonsecret *real styled screenshot* via permitted owner-public-page browser check if feasible (Cloudflare management browser safety stop still applies to management tab; do not bypass it), otherwise record `VISUAL_PENDING` and move on; (2) create only ephemeral **guest synthetic cart** with existing public Birthday Magazine product using native Woo frontend/Store API, **do not submit a checkout or create an order**; validate non-empty public `/checkout/` HTML/form, cookies/session, no loopback or challenge, no private exposure. Empty-cart redirect previously observed is expected and not a defect. (3) Inspect official installed Woo Stripe provider **read-only**, determine current connection/TEST vs LIVE status, Woo native signed callback route `https://magazine.spikersun.com/?wc-api=wc_stripe` reachability without weakening signature checking; don't invent webhook signatures or treat unsupported-method errors as signed-test success. (4) If Stripe TEST consent/registration absent, ask the Owner for **one essential official provider UI OAuth/login step**, no API secret pastes. Only after verified TEST, authenticated signed Webhook and Owner authorization proceed to one bounded USD39.99 **synthetic** checkout/first/duplicate/invalid event and ONE refund/revocation under existing Gate, not now. Preserve rollback if new HTTPS/cart evidence shows actual failure. (5) Append sanitized cart/checkout/provider-readiness Evidence to same PR64 G3S4L file and STOP at first actual Owner OAuth/material payment boundary, rather than creating another generic environment research loop. No Live or real funds; no second site/VPS/paid hosting/PR merge.
