@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4H read-only discovery PASS, Business $40/mo HTTPS stage candidate, cheaper Personal $9 noted; G3S4I held for new external-spend/public-test-site authorization)
+ > Last reviewed: 2026-10-17 (Owner prefers existing local Docker + Cloudflare-domain named Tunnel; paid WordPress.com deferred; G3S4J read-only design, no public/Provider write)
+
+## CURRENT_REVIEWER_G3S4J_LOCAL_CLOUDFLARE_PREFERENCE_2026_10_17 — LATEST OVERRIDE
+
+**Owner route preference:** use existing Windows/Docker WordPress **plus their own Cloudflare-registered domain and Cloudflare Tunnel**, not an extra US$40/month WordPress.com subscription. Formal decision: [docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md). This supersedes the previously held G3S4I paid WordPress.com candidate as the immediate next path; past G3S4H research PASS remains historical/valid.
+
+- **Technical model:** Owner-approved stable Cloudflare-zone subdomain HTTPS → outbound-only named Cloudflare Tunnel → local Docker WordPress HTTP on `127.0.0.1:8189` **only if public exposure and WordPress URL handling are safe**, else a separately isolated synthetic local Woo stack. Woo Stripe official TEST OAuth requires reachable HTTPS. Its normal TEST provider webhook uses `https://<test-host>/?wc-api=wc_stripe`, **not** local CLI listener-secret input. Free Tunnel does not require another hosting purchase; existing domain costs remain.
+- **CURRENT GATE = G3S4J read-only safe preflight/design**: [docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md](./docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md). Identify exact non-secret domain/subdomain choice, check original 8189 synthetic/public safety, WordPress canonical URL and HTTPS proxy behavior, Admin/access and webhook accessibility; output one bounded PR64 Evidence. No public tunnel, DNS, WordPress settings or Stripe write until distinct **named public host Owner authorization**. User asked feasibility, not yet explicit internet publication consent.
+- **Current verified baseline:** PR #64 head `b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf` open/unmerged, last source Evidence G3S4H read-only discovery. Original local official Woo Stripe 11.1.0 plugin `active` with Stripe gateway `disabled`, no configured key/account/payment/refund; previous local-only sign-secret UI `RETURN`. The old local WP admin password exposed in chat must be rotated privately before publishing; `UNVERIFIED` at last report. Do not expose secrets or reuse credentials.
+- **No purchase/VPS:** WordPress.com Business $40/mo and Personal $9/mo **deferred**; replaced/new VPS unused. Cloudflare Pages is not PHP/Woo hosting. Protect private site/admin; Cloudflare Access/bot challenges on the entire hostname could block guest checkout/Stripe webhook. Local laptop running is a TEST-only availability condition, not a production uptime claim.
+- Do not repeat full accepted local backup/CLI preflight, reset project, merge PR64 or attempt unsupported Woo manual TEST REST/SQL key injection. Owner alone authorizes Cloudflare route / Stripe account login/consent; later bounded TEST payments only after route verified.
 
 ## CURRENT_REVIEWER_G3S4H_READONLY_PASS_2026_10_17 — LATEST
 
@@ -118,7 +128,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4I_CONDITIONAL_EXTERNAL_WP_BUSINESS_STAGE_HOLD_OWNER_AUTH
+CURRENT_GATE=G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_READONLY
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -547,13 +557,11 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4H read-only external staging discovery Reviewer PASS; G3S4I conditional external hosted Stripe TEST Gate prepared but HOLD for explicit new Owner spend/public-host approval.** Source PR #64 head `b0a2e7cd...` Evidence only. Reviewer decision `docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md`. Conditional next Gate `docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md`.
+**CURRENT G3S4J — Cloudflare Tunnel exposing a local synthetic-only Woo TEST instance, READ-ONLY DESIGN FIRST; no public/write permission yet.** Owner asks to use their own Cloudflare-registered domain and already running Windows Docker WP instead of buying WordPress.com. Reviewer supersedes G3S4I as active route without discarding its historical research. See `docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md` and `docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md`.
 
-**Candidate:** fresh standalone WordPress.com Business month-to-month **US$40 pre-tax published**, with Woo plugin/official Stripe, hosted HTTPS and automated backup/one-click restore. Not created, not billed, exact assigned hostname/account/checkout amount unknown. **Alternative** Personal **US$9 pre-tax monthly**, also Woo/plugin eligible, but not accepted as recovery-equivalent due to no managed Business backup/staging. Owner may request cheaper alternative design. Site is not original local WordPress; do not clone live users/keys/orders/photos. Verify actual guest HTTPS signed webhook and checkout in temporary public mode; Coming Soon/private blocks guest viewing, public may show every published page, so use synthetic-only data.
+**Preferred transport** = free official named Cloudflare Tunnel publishing one **stable, chosen** subdomain of Owner's Cloudflare zone via HTTPS to existing local `127.0.0.1:8189` if safe/reversible. If local WP contains private data or canonical HTTPS host change would break original site, choose separately isolated synthetic local Docker Woo stack rather than exposing the original. Check WordPress TLS proxy forwarded proto, cookies/nonce/site URLs, local test product, guest public access and exact Woo Stripe TEST webhook. No Cloudflare Access challenge in front of Stripe POST. Local computer/Docker/tunnel must stay on throughout Test callback/retries. Do not confuse this with actual production hosting.
 
-**Status:** no new host, domain, deployment, purchase, public launch, Stripe TEST OAuth, signed webhook or payment/refund yet. Earlier G3S4M consent is localhost-scoped and cannot authorize a paid external service/public site. Private WordPress admin password rotation still `UNVERIFIED`. Local official Woo Stripe remains plugin **active**, gateway **disabled**, settings absent. PR64 remains open/unmerged, old and replacement VPS untouched.
-
-**Next:** one Owner choice on external $40/month subscription and public synthetic TEST site. If explicitly approved with cost cap, Executor moves via G3S4I conditional Gate, Owner handles billing/account/Stripe consent privately, verifies recovery and public Webhook/TEST isolation before one bounded synthetic checkout/refund. Otherwise no billing or deployment.
+**State**: no Tunnel/DNS/new hostname/Stripe TEST connection/payment created. Local Woo Stripe 11.1.0 is plugin ACTIVE, gateway DISABLED, options/keys/account absent at last Executor readback. Existing password rotation still UNVERIFIED and required before internet publication/reuse; no secret in chat. Public hostname route/DNS and Stripe Provider actions are outside earlier localhost-only Owner approval, so need one **exact subdomain and temporary public synthetic site** Owner authority only once technical route checked. No subscription needed, no old/replacement VPS and no PR64 merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -610,6 +618,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## UNRESOLVED
 
+- **Latest route selection:** Owner Cloudflare-registered domain supports official **named Tunnel** publicly routing HTTPS to local WP without new WordPress.com cost; chosen exact domain/subdomain and Owner Cloudflare permissions `NOT_YET_VERIFIED`. G3S4J design only, no public hostname created.
+- **Original local exposure safety and WP URL**: pending synthetic-data/private-assets assessment, proper HTTPS forwarded proxy and cookie/OAuth validation. Select existing 8189 only if safe and reversible; otherwise minimal separate localhost synthetic Woo instance.
+- **Public-route permission:** Owner asked feasibility; separate explicit named subdomain and temporary public ingress/Stripe TEST setup must be recorded before changing DNS/Tunnel/site/provider. Previous local-only authorization does not automatically confer this.
+
 - **G3S4H completed:** read-only staging recommendation reviewer PASS based on PR64 `b0a2e7cd...`; new standalone WordPress.com Business monthly US$40 pre-tax; site URL, account availability, host SSL/provider callback, test checkout and backups not deployed or proven.
 - **New Owner boundary:** G3S4I is HOLD for explicit external hosting spend, temporary public WordPress.com TEST site and remote Stripe TEST OAuth/endpoint/one fixture checkout/refund. Local G3S4M consent not transferable.
 - **Cost alternative:** WordPress.com Personal US$9 monthly also supports Woo, but lacks same hosted backup/staging/restore level. Requires Reviewer-compatible separate recovery/synthetic fixture strategy if chosen. No automatic price/plan substitution.
@@ -664,18 +676,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Do not repeat G3S4H discovery.** It passed. Business US$40/mo pre-tax (WordPress.com) is an identified recoverable HTTPS WordPress/Woo Stripe TEST staging candidate, not provisioned. Personal US$9/mo lower-cost alternative lacks equivalent built-in recovery.
-2. **Owner decision** to authorize (or decline) new Business monthly subscription and controlled public synthetic-only hosted site. Confirm actual price/renewal with Owner before billing; do not invoke host/Stripe tools without this authority. If Owner requests lower-cost option, first qualify its backup/restore/test constraints rather than buying Business silently.
-3. If explicit spending/public-host authority arrives, use G3S4I conditional Gate for Owner-private checkout/site creation, exact target/TLS/backup restore, official Woo plugin and TEST OAuth, guest signed callback, one Woo USD39.99 synthetic checkout, replay/invalid, one TEST refund and entitlement revocation, mandatory Reviewer STOP. No real/Live.
-4. Preserve original local WordPress Stripe plugin active/gateway disabled, dirty worktree and backup, old/new VPS unmodified and PR #64 open/unmerged. Old local WP credential remains compromised until Owner privately rotates (never reuse).
+1. **Stop further WordPress.com spend planning**: Business US$40/mo candidate was research-only; user prefers **local + Cloudflare Tunnel** and no additional hosting subscription. Old G3S4I hosted Gate is shelved.
+2. Execute current G3S4J **read-only** review in local Codex: exact non-secret Cloudflare zone/hostname plan (Owner may privately choose), minimal existing 8189 exposure/synthetic data/admin safety, proper official named Tunnel HTTP origin and WordPress HTTPS canonical return URL, guest webhook/TEST endpoint. Reuse prior full preflight and protected backups.
+3. Record one sanitized PR64 G3S4J Evidence, Reviewer stop. No DNS/Tunnel/public internet, local WP settings or TEST Provider mutation in this Gate.
+4. With a concrete route and published content inventory, obtain **single named Owner approval** to expose the selected temporary synthetic-only test subdomain; independently confirm private old WP credential rotated before exposure. Then bounded official HTTPS Woo Stripe TEST OAuth, provider-signed webhook, one synthetic $39.99 checkout and TEST refund/revoke; no real/Live, no VPS.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Single new decision:** whether to approve a **new WordPress.com Business US$40/month excluding tax** subscription and a temporary publicly reachable, synthetic-only WordPress/Woo/Stripe TEST site, with actual checkout price/renewal disclosed and Owner controlling billing, or to pursue a cheaper plan first. No such approval has been given yet.
-- **When proceeding:** Owner alone logs in to hosted WordPress.com/Stripe TEST and approves Provider/hosting actions through their own UI, without sharing secret/token/card.
-- Rotate old exposed local admin password privately before any reuse; confirmation remains `UNVERIFIED`. No repeated local password reset or need to touch VPS for this decision.
+- **No hosting purchase.** No Owner action needed for immediate read-only Cloudflare/local feasibility.
+- Before DNS/Tunnel publication: select and approve exact dedicated Cloudflare test subdomain and short-lived public synthetic-only site exposure. Owner controls Cloudflare dashboard and Stripe TEST OAuth privately; no API credentials, tunnel token or signing secret supplied in chat/agent arguments.
+- Privately rotate the previously shared local WordPress admin password before the site is ever exposed; last confirmation remains UNVERIFIED, not a reason to repeat old credential reset tools.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md` — latest Reviewer selected free local Cloudflare named Tunnel rather than monthly WordPress.com.
+0. `docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md` — **CURRENT read-only Gate** for exact hostname and safe WordPress/public HTTPS OAuth/Stripe webhook design.
 
 0. `docs/REVIEWER_DECISION_G3S4H_READONLY_PASS_BUSINESS_STAGE_CANDIDATE_2026-10-17.md` — latest formal Reviewer PASS for external stage read-only discovery, cost caveats and acceptance limits.
 0. `docs/G3S4I_CONDITIONAL_HOSTED_HTTPS_STRIPE_TEST_STAGE_2026-10-17.md` — prepared conditional external hosted TEST setup/pay/refund Gate, **not authorized until Owner external purchase/public-site approval**.
