@@ -148,3 +148,12 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **现行版本**：[正式第三部分](docs/CHAPTER3_OWNER_ADOPTED_20261017.md)，Blob `4f56213f307827fbfcd6aec521cdef2fee68374d`、SHA256 `39e05e7238ed543d4ecb9411066235444ca11f598c2892f87d8f3ed50ee70740`；[独立Reviewer审核报告](docs/CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md)，Blob `41bad9e627f21c3d5b9e615f5a0104286914a23a`。结论 `PASS_AFTER_FIX / OWNER_ADOPTED / NOT_SEALED`，7组P0及8组P1完成最小定向修正。
 - **质量判定**：V6第三部分4H2/5H3原文顺序不变；保留29美元软件和120美元实体键盘两组独立推演，先资格筛选后支付方式选择，透明价格与失败导流。第一二章同级对比：深度与商业决策有效性达标、广度不下降，没有明显整体质量下滑。第三章仅解释买家付款路径及体验，第四章保留支付后服务端状态、Webhook与履约机制。
 - **原则/边界**：商户资格、支付方式功能、德国/美国税务、PCI及Apple Pay等只在有官方依据/条件前提下陈述，未实际申请的渠道继续 `UNKNOWN`。①②保持封板，④已采纳未封板不变，V6框架不动；⑤⑥只留候选、不落库不冻结；⑦/最终HTML未启动。旧③历史Git Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef` 及 Library 快照保持可恢复。
+
+## 2026-10-17｜第三部分最终归档、第四部分独立重写启动（MCPG-CH4-NEW-AGENT-INDEPENDENT-REWRITE-20261017）
+
+- **Owner最新明确指示**：“参考第三部分的步骤，开始第四部分的重写。第三部分正式归档留存。”
+- **③正式封存**：已完成审核并正式采纳的 [第三部分正文](docs/CHAPTER3_OWNER_ADOPTED_20261017.md) 原Blob `4f56213f307827fbfcd6aec521cdef2fee68374d`、SHA256 `39e05e7238ed543d4ecb9411066235444ca11f598c2892f87d8f3ed50ee70740` 保持不变；现按Owner本轮指令 `FINAL_ARCHIVED / READ_ONLY / SEALED`，新授权前不再改字节。[登记](docs/CH3_FINAL_ARCHIVE_FREEZE_20261017.md)及Library冗余备份（ZIP SHA256 `dfbe035354446a10ab904b7208267e89a7178d4d692e236d96b7721ad0743d5b`，CRC PASS）均可恢复；旧第三历史版也不删除。
+- **④新独立写作**：[现行Gate](docs/CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md)，输入 `/现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_20261017.zip`，Library ID `libfile_1eb81a8e7b7481918628198e6131ce61`，SHA256 `0ca4924b4fc7c9a5dd181d6ed9dcb1592f28e0458155fadb1d0e11120f4f0b93`；其中完整①②③、旧④仅作只读质量参考。Agent独立新构思④“支付处理”4H2/5H3，不沿用旧稿架构的强制约束；新稿两MD ZIP由下一任Reviewer独立检查。
+- **④正式状态边界**：当前已采纳的④ `docs/CHAPTER4_OWNER_ADOPTED_20261017.md` 原文 Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`，SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759` 不变，`ADOPTED / NOT SEALED`；本轮不删旧④、不发表新候选；待新稿独立Review并取得Owner后续明确正式采纳指令才可决定更替/封板。
+- **其余禁止**：①②正式封板，V6 7/29/42冻结，③只读封存，⑤⑥候选暂停落库，⑦/HTML未启动；无真实交易、退款、商户开户或部署操作。
+- **结果**：`CH3_FINAL_ARCHIVED / CH4_WRITER_PACK_READY / CH4_CANDIDATE_NOT_RECEIVED`。

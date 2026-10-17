@@ -1,6 +1,6 @@
 # 《现代商业支付系统》｜当前有效资料索引（2026-10-17）
 
-> **最新状态（2026-10-17）**：③新稿经独立Reviewer对7P0/8P1最小修复，Owner授权正式落库，**已采纳但未封板**。①②封板，④采纳未封板，⑤⑥候选不落库，第⑦/HTML未启动，全书V6冻结。
+> **最新Owner决定（2026-10-17）：③正式归档留存、只读封存；④现行已采纳未封板不动，启动独立Agent重新写作④候选。** ①②封板，V6 7/29/42冻结，⑤⑥候选不落库，⑦/HTML未启动。
 
 | 当前 GitHub 文件 | 作用 | 权威地位 |
 |---|---|---|
@@ -9,7 +9,9 @@
 | [P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md](P2_CHAPTER1_OWNER_ADOPTED_REWRITE_20261016.md) | 第一部分唯一正式全文 | **FINAL SEALED / NO EDIT** |
 | [P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md](P4_CHAPTER2_OWNER_UPLOADED_ORIGINAL_20261016.md) | 第二部分唯一正式全文 | **FINAL SEALED / NO EDIT** |
 | [CHAPTER4_OWNER_ADOPTED_20261017.md](CHAPTER4_OWNER_ADOPTED_20261017.md) | 第四部分唯一正式全文 | **OWNER ADOPTED / NOT SEALED** |
-| [CHAPTER3_OWNER_ADOPTED_20261017.md](CHAPTER3_OWNER_ADOPTED_20261017.md) | 第三部分正式正文，29美元软件与120美元实体产品双案例 | **ADOPTED / NOT SEALED** |
+| [CHAPTER3_OWNER_ADOPTED_20261017.md](CHAPTER3_OWNER_ADOPTED_20261017.md) | 第三部分最终归档正式正文，留存 GitHub main | **FINAL ARCHIVED / SEALED** |
+| [CH3_FINAL_ARCHIVE_FREEZE_20261017.md](CH3_FINAL_ARCHIVE_FREEZE_20261017.md) | 第三部分新正式版本字节、哈希、Library双备份及旧版恢复锚点 | **FINAL ARCHIVE MANIFEST** |
+| [CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md](CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md) | 第四部分新Agent离线独立重写Gate、资料包、交付与下一轮审核 | **ACTIVE WRITER GATE** |
 | [CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md](CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md) | 最新独立审核7P0/8P1、事实修复、质量横向对比 | **CURRENT PASS_AFTER_FIX** |
 | [CH3_NEW_AGENT_FIRST_REVIEW_RETURN_20261017.md](CH3_NEW_AGENT_FIRST_REVIEW_RETURN_20261017.md) | 旧一轮第三部分返修报告 | **HISTORICAL** |
 | [CH3_NEW_AGENT_REWRITE_GATE_20261017.md](CH3_NEW_AGENT_REWRITE_GATE_20261017.md) | 旧一轮新作者写作任务与输入要求，已完成首次交稿 | **HISTORICAL WRITER GATE** |
@@ -43,3 +45,10 @@
 - **最新Reviewer报告**：[CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md](CH3_REVISED_INDEPENDENT_REVIEW_PASS_AFTER_FIX_20261017.md) Blob `41bad9e627f21c3d5b9e615f5a0104286914a23a`，7P0/8P1 PASS_AFTER_FIX，第一二章质量与第四章边界复核合格。
 - **来源ZIP**：本轮输入ZIP SHA256 `93b190b35b95002e41b6499ba0966ed3c631b1023c1bde6ebbcf2381d402c4c9`，CRC PASS，两份Markdown。正式正文在 Library 备份 `/现代商业支付系统/现代商业支付系统_第三部分_正式采纳稿_20261017.md`，stable ID `libfile_91ef605a746881918b73be16b62750d3`；报告备份 stable ID `libfile_7280bb5b6dd48191afaea071dba067ea`。
 - **历史恢复**：旧第三历史Blob `7dc4b456c368ae3974ccaf86b4596c3f125033ef`、历史提交 `ee56c0c1a38b3488b77f5639bb3186cd698fb28b` 与Library历史备份仍在；不自动恢复。历史章节“第三部分无正式稿”和“等待返修”的描述已失效。
+
+## MCPG-CH4-NEW-AGENT-INDEPENDENT-REWRITE-20261017｜最新执行索引
+
+- **③最终归档**：正文 `docs/CHAPTER3_OWNER_ADOPTED_20261017.md`，Git Blob `4f56213f307827fbfcd6aec521cdef2fee68374d`、SHA256 `39e05e7238ed543d4ecb9411066235444ca11f598c2892f87d8f3ed50ee70740` 未变。Library `/项目历史归档/现代商业支付系统_第三部分_20261017_最终封存包.zip`（ID `libfile_8cd9283767648191b7902a5e47b5a428`，ZIP SHA256 `dfbe035354446a10ab904b7208267e89a7178d4d692e236d96b7721ad0743d5b`）及逐字正文备份（ID `libfile_d610d7a2b9d481918bdbebce8f2e1329`）；完整见 [归档清单](CH3_FINAL_ARCHIVE_FREEZE_20261017.md)。
+- **④当前唯一有效写作输入**：`/现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_20261017.zip`，Library ID `libfile_1eb81a8e7b7481918628198e6131ce61`，SHA256 `0ca4924b4fc7c9a5dd181d6ed9dcb1592f28e0458155fadb1d0e11120f4f0b93`，129,078 bytes，11 Markdown，CRC PASS；参见 [现行Gate](CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md)。
+- **④旧现行正文**：`docs/CHAPTER4_OWNER_ADOPTED_20261017.md`，Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`、SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759`，**已采纳未封板，绝不能未经Owner决定就替换/删除**。新④稿仅候选，尚未到达。
+- 旧索引中关于“③已采纳未封板”或“③等待返修”的段落均为历史记录；当前以上述条目为准。①②、V6、⑤⑥、第⑦/HTML不变。
