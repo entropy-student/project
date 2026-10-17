@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4J partial accept: do not publish 8189; Cloudflare URL-confidence block isolated; next G3S4K separate synthetic local test stack pending exact Owner write scope)
+ > Last reviewed: 2026-10-17 (Owner explicitly chooses original 8189 Cloudflare publication; Codex Computer Use URL-confidence failure cause unknown; G3S4L bounded safety and manual Cloudflare route)
+
+## CURRENT_OWNER_ORIGINAL_WP_PUBLICATION_CLOUDFLARE_2026_10_17 — LATEST
+
+**Owner explicit current choice:** “原网站可以公开继续走cloudfare的方案” — use the **existing original local Docker WordPress `127.0.0.1:8189`** via a Cloudflare named Tunnel and official Woo Stripe TEST OAuth; **do not automatically create a second WordPress/DB.** Current Reviewer re-scope: [docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md](./docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md). Active combined Gate: [docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md). This newer Owner instruction **supersedes the earlier G3S4K reviewer preference for a new local test stack** (the old Gate remains preserved as historical/fallback).
+
+- **Why Codex couldn't identify Cloudflare:** G3S4J Computer Use adapter failed its active browser tab URL-confidence safety check **before reading any Cloudflare page**, despite Owner screenshot showing an open `dash.cloudflare.com` UI. Exact adapter/root cause UNKNOWN. This is **not** evidence of wrong Cloudflare domain/credentials/Owner browser action. Do not retry with a different browser automation to defeat the tool's safety stop.
+- **Owner manual route instead:** In their already-open Cloudflare page, Owner can **manually** check `spikersun.com` zone Active/control and candidate `stripe-test.spikersun.com` unused, then perform a supported manual Tunnel/route step or authorize official cloudflared owner-browser login. Codex can prepare local secure compatibility and guide single manual clicks; no Cloudflare API key, tunnel token, session or password passed to chat/agent. Subdomain candidate is unverified, DNS still unmodified.
+- **Owner's publication decision ≠ verified privacy security:** original 8189 has one Woo order and 387 existing uploads of unknown content; previously exposed admin password rotation UNVERIFIED, canonical `home/siteurl` still loopback. FIRST do one narrow no-write anonymous exposure audit and Owner-private admin password rotation. If actual private data would be publicly accessible, stop *that specific route* until a small control fixes it; **do not categorically prohibit exposing the existing site merely because it has records**, and do not create a duplicate site by default.
+- **State:** PR #64 latest `9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956` OPEN/unmerged. Original Woo Stripe 11.1.0 plugin active but gateway disabled, no account, webhook, order TEST/refund; original local project backed up/preserved; no DNS/Tunnel/Stripe connection yet. No paid WordPress.com, Live/real money or VPS.
+- **Execution priority:** current G3S4L Gate (one bounded prepublicity → Owner manual Cloudflare zone+host → named Tunnel/HTTPS WP reverse-proxy → Owner official TEST OAuth → one $39.99 TEST checkout/Webhook/replay/negative/refund), with mandatory Reviewer stop on material risk and one sanitized PR64 Evidence. No repeated full backups/old password-reset scripts, no new local stack as first resort, no generic new user approval for same intent.
 
 ## CURRENT_REVIEWER_G3S4J_PARTIAL_AND_G3S4K_LOCAL_ISOLATED_STAGE_2026_10_17 — LATEST
 
@@ -148,7 +158,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4K_NEW_SYNTHETIC_LOOPBACK_WOO_STACK_PREPARED_AWAIT_OWNER_WRITE_SCOPE
+CURRENT_GATE=G3S4L_ORIGINAL_WORDPRESS_CLOUDFLARE_TUNNEL_TEST_AFTER_SECURITY_AND_EXACT_ZONE
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -577,11 +587,13 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**Current: G3S4K local-only isolated synthetic Woo Stripe TEST site, Gate PREPARED / local Docker write awaiting Owner explicit target approval.** Latest Reviewer decision: `docs/REVIEWER_DECISION_G3S4J_ACCEPT_ISOLATED_LOCAL_WOO_ROUTE_2026-10-17.md`; actual Gate `docs/G3S4K_ISOLATED_LOCAL_STRIPE_TEST_STACK_GATE_2026-10-17.md`. Source PR64 `9461d5c5...`. G3S4J local original 8189 privacy/safety assessment accepted negative; Cloudflare URL-confidence block classified narrowly as public-domain ownership unknown, **not a reason to RETURN safe loopback setup**.
+**G3S4L — Owner explicitly chooses original local `127.0.0.1:8189` WordPress via Cloudflare named Tunnel, NOT default new isolated WP.** This is a later Owner override than earlier G3S4K recommendation. Read `docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md` and `docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md`. Existing PR64 G3S4J Evidence @ `9461d5c5...` contains no public/Provider writes.
 
-**Future executable once Owner grants local new-stack authority:** create only **new isolated** Docker WP/Woo/official Stripe source with project-specific volumes+DB, new secret admin, one synthetic USD39.99 virtual product, generation and gateway disabled, localhost bound on **verified free port (NOT automatically 8190)**, no copy of original WP orders/uploads/credentials. Read back local 200/version/isolation/non-target 8189 negative delta, submit one PR64 G3S4K Evidence and STOP Reviewer. Zero Stripe login/Cloudflare tunnel/public ingress. Owner-private credential entry, no secret output.
+**Browser cause:** screenshot shows Cloudflare `dash.cloudflare.com` in Codex internal UI. Codex's Computer Use tool returned **active-tab URL verification uncertainty** before reading Cloudflare, exact technical reason unknown. Do NOT blame user's UI or pretend Cloudflare account is broken. Do not bypass prohibited Computer Use by another browser automation. Official **Owner-manual** Cloudflare UI confirmation/steps, or separately supported owner-authenticated `cloudflared tunnel login` on Windows, is the viable alternative.
 
-**Later external stage (separate material boundary):** one exact eligible Cloudflare zone and dedicated candidate `stripe-test.spikersun.com` checked by Owner's trusted own dashboard if Codex browser confidence fails, named Tunnel to new local origin and reversible HTTPS WP URL, publicly reachable guest checkout and signed native `/?wc-api=wc_stripe`, verified TEST OAuth before single TEST order/refund. No WordPress.com purchase, production/Live payments, old/new VPS or PR merge. The compromised **original** 8189 admin password is a rotation concern but never read/reused in the separate new stack, so old rotation confirmation is not a prerequisite to a truly isolated new site.
+**Security prerequisites before original WP publication:** narrow audit that real old order/387 uploads do not become anonymously accessible, old exposed WP admin password is privately rotated (boolean confirmation only), admin/auth/debug protected, Live gateways/auto-fulfillment disabled, original site data/backups and rollback preserved. Stop if an actual private-data leak cannot be contained by minimal access controls. No need to assume all existing records are public; inspect access behavior, not just record counts.
+
+**Tunnel and Stripe path:** owner-verified `spikersun.com` Active/authority + collision-free `stripe-test.spikersun.com` -> official outbound named Tunnel to local `127.0.0.1:8189` -> controlled canonical WordPress HTTPS/proxy/cookie/checkout public readback -> normal official Woo Stripe TEST OAuth via Owner-only browser -> signed TEST webhook `/?wc-api=wc_stripe` + one virtual $39.99 product charge/negative/replay/refund/revoke. No unnecessary separate WP/DB, no WordPress.com, VPS, real/Live payment. DNS/Tunnel/site settings/publication **not yet executed**; safe prepublication checks first, precise Cloudflare zone/host confirmation before DNS write and private password rotation before original site exposure. PR64 unmerged.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -637,6 +649,10 @@ Protected backend behavior for the current visual/research phase:
 - PR #64 branch-only G3C/G3CR6R1 evidence is a preservation requirement during source-baseline repair; do not reset/drop it merely to match `main`.
 
 ## UNRESOLVED
+
+- **Latest Owner site-publication choice:** existing original 8189 Cloudflare Tunnel is the preferred project route; earlier G3S4K new local site Gate shelved. Need public-specific negative readback of existing order/upload/private routes and private rotation of compromised old admin credential before publication.
+- **Codex Computer Use failure:** could not machine-verify controlled active tab URL, although Owner can visibly see Cloudflare UI. Root cause UNDETERMINED; owner-manual Cloudflare zone and hostname confirmation permitted. Active zone, write permission, DNS collision, Tunnel creation all UNKNOWN until manual confirmed.
+- **Current Cloudflare candidate:** `stripe-test.spikersun.com` not yet created/verified; exact zone and empty hostname must be read back before public DNS/Tunnel. WordPress `home/siteurl` still loopback, provider OAuth and Webhook TEST NOT STARTED.
 
 - **G3S4J Evidence @ 9461d5:** original 8189 has one order, 387 unexamined uploads, old exposed admin password status UNVERIFIED and loopback canonical URL -> not safe to publish. New fully separate project synthetic localhost stack selected; no actual local new stack yet.
 - **Cloudflare browser failure:** Codex Computer Use unable to confidently identify current URL; no UI actions. Owner screenshot shows `spikersun.com`, but live zone Active/write/tunnel/DNS conflict `UNKNOWN`, deferred to future public route. Do not treat as a current local G3S4K blocker.
@@ -700,18 +716,22 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Reviewer accepts G3S4J evidence result in narrow scope (original website publication rejected; browser Cloudflare zone unverified); no more repeat of browser URL-confidence failure or old 8189 preflight.
-2. Request **one specific Owner permission** to create a separate project-scoped **localhost-only** synthetic Docker WordPress/Woo Stripe TEST environment (verified free port, unique DB/network/secret and one virtual USD39.99 fixture), preserving original 8189. Owner may simultaneously approve later temporary public `stripe-test.spikersun.com` named Tunnel + official Stripe TEST-only canary, but publication remains subject to separate G3S4L-style boundary, proof and exact zone ownership.
-3. Then Codex executes `docs/G3S4K_ISOLATED_LOCAL_STRIPE_TEST_STACK_GATE_2026-10-17.md` ONLY; if permission absent may plan but not create. Once approved, do local actual build/readback, commit one sanitized G3S4K Evidence to PR64 and STOP Reviewer.
-4. Future distinct public-phase checklist: Owner verifies `spikersun.com` zone/unused dedicated subdomain in their Cloudflare dashboard, review security and HTTPS canonical path; create named Tunnel to isolated localhost site only with written scope, then Owner TEST OAuth and single $39.99 synthetic payment/refund/webhook tests. No public exposure or payment in G3S4K.
+1. Start **G3S4L**. Executor does one narrow original site `8189` public data/order/upload/admin access inspection; reuse accepted project backups/CLI/containers and record only redacted booleans, no raw data. No default new WP install.
+2. Owner privately rotates previously exposed original WP admin password before public exposure and gives only completion status; protect backend while allowing Stripe signed callback and public checkout.
+3. Since the Codex Computer Use URL-confidence gate failed, **do not retry/bypass that browser tool**. Guide Owner manually within their already-open Cloudflare dashboard to confirm `spikersun.com` zone Active/authority and no conflicting `stripe-test.spikersun.com`; or use officially supported owner-authorized `cloudflared tunnel login` with secret kept private. Do not claim screenshot itself proves account permissions.
+4. After security/zone/rollback preconditions, scoped dedicated named Tunnel -> reversible existing WP HTTPS canonical/forwarded proxy -> stable external guest and webhook checks -> Owner-only official Stripe TEST OAuth -> bounded virtual USD39.99 order/signed duplicate-invalid Webhook/refund/revoke. Stop only on actual material boundary, record sanitized PR64 Evidence, mandatory Reviewer stop.
+5. Preserve original data, PayPal Sandbox, source/backups and PR64 unmerged. No new WordPress.com hosting/VPS or real/Live money.
 
 ## OWNER_ACTION_REQUIRED
 
-- **One actionable approval now:** permit a new isolated **local-only** WordPress/Woo/Stripe TEST Docker stack, synthetic USD39.99 product, new unique administrator credential, isolated network/volumes and loopback-only host port. Do not modify or expose original `127.0.0.1:8189`.
-- Optional same-message prospective approval of later dedicated `stripe-test.spikersun.com` named Tunnel/temporary public synthetic test site and official Stripe TEST-only order/webhook/refund, conditional on proof of Cloudflare zone control, TLS, guest/signed endpoint and successful G3S4K local test; no real/Live. Do not presume these writes are yet authorized from current report.
-- No old WP password requested: Owner should eventually privately rotate previously exposed old administrator password but it is **not re-used** by the new independent stack. New passwords/token/Stripe details must never be provided in chat.
+- **Original-site Cloudflare publication direction already given** by Owner; no repeated generic request for the same route. The public site must still pass a narrow access/privacy preflight.
+- Owner privately rotates the old WordPress admin password **before internet exposure**, only confirms completion, never supplies any value.
+- Owner in their existing browser confirms `spikersun.com` zone Active and `stripe-test.spikersun.com` label unused, then performs only the exact reviewed Cloudflare Tunnel/Owner login step. Exact hostname may need Owner's final choice if candidate not free; no secrets sent to ChatGPT/Codex. Owner privately authorizes Stripe TEST account login/consent in the normal official Woo UI when ready.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md` — latest Owner original-site instruction and true bounds of Codex browser URL safety failure.
+0. `docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md` — **CURRENT combined Gate** for publication safety, Owner-manual Cloudflare Tunnel, HTTPS original WP and official Stripe TEST.
 
 0. `docs/REVIEWER_DECISION_G3S4J_ACCEPT_ISOLATED_LOCAL_WOO_ROUTE_2026-10-17.md` — latest bounded G3S4J partial acceptance: original 8189 unsafe for publication, Cloudflare browser confidence issue not a local-stage blocker.
 0. `docs/G3S4K_ISOLATED_LOCAL_STRIPE_TEST_STACK_GATE_2026-10-17.md` — current new **loopback-only** synthetic Docker/Woo TEST build Gate, requires exact Owner write authority.
