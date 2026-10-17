@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (G3S4L local media audit accepted; Owner reported WP password privately rotated; CLI login stopped on burden; select dashboard-managed remotely managed Cloudflare Tunnel + private token file, no additional Owner action now)
+ > Last reviewed: 2026-10-17 (Owner requests maximum Codex autonomy; G3S4L local prep allowed without repeated approval; Cloudflare dashboard single essential consent if required)
+
+## CURRENT_OWNER_AUTONOMOUS_G3S4L_2026_10_17 — LATEST
+
+**Owner's latest direction:** “尽量减少我的操作，让codex自己实现。继续推进吧。” **No further generic Owner approvals or repeated previous preflight for G3S4L.** [Current Gate — latest autonomy appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md).
+
+- **Codex executes unblocked work NOW:** original existing localhost WordPress `127.0.0.1:8189` only. Offline verify already staged signed `cloudflared v2026.10.1` supports **`tunnel run --token-file`**; stage empty restricted user-private credential directory and ready commands without storing/showing secrets; prepare reversible existing WordPress HTTPS `home/siteurl`/trusted proxy/cookie change **without prematurely applying it**; ready external guest/Woo private route/OAuth/Webhook checks. Do not repeat accepted media 43+20, prior WP private/order route checks, original backups, password rotation (Owner-reported rotated) or install a second WP.
+- **Cloudflare connection:** previous locally-managed `cloudflared tunnel login` stopped at Owner request; Computer Use could not validate active tab URL. These tools' safety constraints must be respected, **not bypassed**. Reviewer still selects **remotely managed Tunnel created in already signed-in Owner Cloudflare dashboard**. No Cloudflare API/tunnel token/cookie provided to chat/agent. If legitimate provider account authorization cannot be done automatically, request only **one concise necessary Owner dashboard action** to create dedicated `stripe-test.spikersun.com` route and privately provision protected token file (exact zone and no conflict checked); do NOT restart failed login or demand pasted token in chat.
+- **After verified Cloudflare control/public ingress and negative privacy tests:** within existing bounded TEST-only Owner direction, Codex handles Tunnel origin on original 8189 and reversible WP HTTPS; Owner alone completes official Woo Stripe **TEST** OAuth, then one $39.99 synthetic Woo payment/signed webhook first/replay/negative/one TEST refund/revoke, no Live/real money.
+- **Actual state:** G3S4L local prepublication PASS_CANDIDATE (no sensitive observed in 43 raster and 20 SVG), Owner reported old admin password privately rotated, Cloudflare zone ACTIVE and empty DNS label OWNER_REPORTED, write authority not proven. No remote Tunnel, DNS, public URL, Stripe account, signed Webhook or TEST money yet. PR #64 HEAD `f05d667c6f47eb43873695756cdffb485ac64aea` OPEN/UNMERGED. No WordPress.com subscription, VPS, second local WordPress.
+- **Proof/stop:** same existing G3S4L PR64 Evidence, no new Gate or Code review ping between harmless local prep steps. If account consent cannot be completed, stop **only at essential Owner authorization** and preserve all completed safe local prep. Never imply Codex controls the Owner's local browser from this ChatGPT session.
 
 ## CURRENT_REVIEWER_G3S4L_MEDIA_PASS_DASHBOARD_TUNNEL_2026_10_17 — LATEST
 
@@ -169,7 +179,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_ORIGINAL_WP_MEDIA_PASS_DASHBOARD_MANAGED_TUNNEL_PENDING_OWNER_ACCOUNT_ACTION
+CURRENT_GATE=G3S4L_AUTONOMOUS_LOCAL_PREP_THEN_SINGLE_PROVIDER_OWNER_CONSENT
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -597,6 +607,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 - Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy and preserved the prior 7 G3C/G3CR6R1 branch commits/evidence. A later Executor correctly returned when unrelated `vpn-network-optimization/` commits moved repository `main`; Reviewer confirmed this was **not Birthday Magazine project drift** and corrected the preflight to project-scoped freshness. The approved PR #64 execution head must descend from the anchor and contain all current-main changes affecting `birthday-magazine-studio/**` or another path explicitly named by the Gate; unrelated monorepo commits do not block.
 
 ## CURRENT_GATE
+
+**Owner 2026-10-17 autonomy override (latest):** Codex proceeds through all feasible **G3S4L project-owned unblocked local non-secret preparation** without returning for repeated permissions: `cloudflared run --token-file` offline help, empty ACL-restricted user-private token-file directory, prepared connector start/stop, original 8189 HTTPS canonical/proxy/rollback plan, post-Tunnel web negative probes. **Do not invoke failing browser automation or retry CLI tunnel login.** If Cloudflare dashboard account creation/connector credential cannot be performed through properly authorized supported means, collect a **single minimum Owner dashboard action**, not many rounds; do not request secret in chat/agent argv. G3S4L Gate latest appendix specifies max scope. Cloudflare and Stripe remain unconnected until this actual consent/readback. No premature WP URL write, DNS/public route or payment on guesswork.
 
 **Current G3S4L: original WordPress `127.0.0.1:8189` via Cloudflare, local prepublication check REVIEWER PASS_CANDIDATE, public Tunnel and Stripe TEST still NOT STARTED.** Latest authoritative Review `docs/REVIEWER_DECISION_G3S4L_MEDIA_PRECHECK_PASS_DASHBOARD_TUNNEL_2026-10-17.md`, same Gate latest appendix, PR #64 Evidence `f05d667c...`. 43 raster visually + 20 SVG statically reviewed with no sensitive content observed, 63 REST media; historical order/private upload/admin anonymous denial readbacks reused. Owner private WP password rotation is now **OWNER_REPORTED_YES**. Narrow external negative checks after Tunnel, no repeat media/rotation without drift.
 
