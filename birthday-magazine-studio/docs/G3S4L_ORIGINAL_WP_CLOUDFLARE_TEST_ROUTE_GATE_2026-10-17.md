@@ -1,7 +1,7 @@
 # G3S4L — existing local WordPress 8189 via Cloudflare Tunnel, official Stripe TEST OAuth
 
 Date: 2026-10-17
-State: `G3S4L_MEDIA_PREPUBLICATION_PASS_CANDIDATE; OWNER_REPORTED_PASSWORD_ROTATED; DASHBOARD_MANAGED_TUNNEL_CHOSEN; CLOUDFLARE_CONNECTOR_PENDING_OWNER_ACTION`
+State: `OWNER_FIXED_SUBDOMAIN_SELECTED; CLOUDLFARE_NAMED_REMOTE_TUNNEL_PENDING_ZONE_CONTROL; APPDATA_OWNER_NATIVE_PATH_PROOF_FIRST; NO_PUBLICATION_YET`
 Reviewer decision: `docs/REVIEWER_DECISION_G3S4L_OWNER_AUTH_ORIGINAL_WP_CLOUDFLARE_RESCOPING_2026-10-17.md`
 PR #64 G3S4J Evidence baseline: `9461d5c5f8fa3c7b1bb570dc8f2f810e9bf67956`
 Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7; §§5–9/11B/11C/11D/11E.
@@ -121,3 +121,30 @@ STRIPE_TEST_OAUTH_WEBHOOK=NOT_STARTED
 After host path is actually confirmed, Reviewer may authorize one short lived **Quick Tunnel HTTPS public canary** rather than first asking Owner to build a remotely managed Tunnel. Stable Cloudflare named subdomain remains optional only if real Woo Stripe TEST/OAuth callbacks need a persistent hostname. Never begin provider OAuth/refund merely because an ephemeral URL appears.
 
 Official Cloudflare docs: https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/ .
+
+
+## 2026-10-17 Owner fixed-domain choice — LATEST ROUTE OVERRIDE
+
+**Current Owner choice:** "直接用一个固定域名吧。" This **supersedes the earlier Quick Tunnel temporary `trycloudflare.com` suggestion**, including the preceding read-only AppData/Quick Tunnel appendix's optional ephemeral canary. Canonical Reviewer decision: `docs/REVIEWER_DECISION_G3S4L_FIXED_CLOUDFLARE_SUBDOMAIN_OWNER_SELECTION_2026-10-17.md`. The rest of G3S4L's original bounded existing-WordPress HTTPS/Stripe TEST contract remains in force.
+
+```text
+GATE_ID=G3S4L_ORIGINAL_LOCAL_WP_CLOUDFLARE_TEST_20261017
+ACTIVE_ROUTE=STABLE_NAMED_CLOUDFLARE_TUNNEL
+FIXED_TEST_HOST_CANDIDATE=stripe-test.spikersun.com
+CLOUDFLARE_QUICK_TUNNEL=DISABLED_BY_OWNER_SELECTION_DO_NOT_RUN
+ORIGIN=EXISTING_LOCAL_WORDPRESS_127.0.0.1_8189
+CLOUDFLARE_ZONE_AUTH_AND_DNS_SLOT=OWNER_REPORTED_ONLY;DIRECT_PROVIDER_WRITE_PROOF_PENDING
+REAL_OWNER_WINDOWS_HOST_APPDATA_PATH=UNVERIFIED_REQUIRES_11B_RECONCILIATION
+NEW_APPDATA_LOCAL_WRITES=STOP_UNTIL_TARGET_PROVEN
+NAMED_TUNNEL_TOKEN=NO_VALID_TOKEN_YET
+DNS_TUNNEL_WORDPRESS_PUBLIC_OR_STRIPE_TEST_WRITE=NOT_DONE
+MANDATORY_REVIEW_STOP=YES
+```
+
+### Narrow actionable Executor route
+
+1. **Read only canonical Handoff newest top block + this latest addendum + the Reviewer fixed-host decision + latest G3S4L PR64 Evidence**, no full historical repeats. Already accepted WordPress/media/security/Owner-reported WP credential rotation, Docker 8189 status and saved rollback stay accepted absent verified drift.
+2. **Correct the path-proof deficiency first, not the design:** read-only prove Codex packaged execution path vs actual ordinary Owner Windows host `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017` and exact known `Packages\OpenAI.Codex_*\LocalCache\Local\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017` alternative; signed `cloudflared.exe` actual location. No new AppData files/copies/delete/token until §11B exact Owner-native readback. Then choose a verified Owner-visible nonsecret executable/config path and separate verifiably private connector-Secret path without the known alias collision; never commit secrets. Do not report a same-package PowerShell self-check as owner native. If impossible automatically, isolate a single lightweight Owner-native read-only verification as a clearly described checkpoint, not repeated long scripts.
+3. **After verified actual host and scoped Cloudflare Owner authority**, prefer one **remotely managed** named Tunnel in Cloudflare dashboard, using already-logged-in Owner account where available; exact route `stripe-test.spikersun.com` → `http://127.0.0.1:8189`. Cloudflare can create corresponding DNS mapping through the Published application route. Do not overwrite pre-existing DNS, change apex/other zones, leak tunnel connector token or bypass the blocked browser safety tool. Prior `cloudflared tunnel login` remains cancelled. Only one human Cloudflare account/connector authorization if truly necessary, explaining its reason in one short sentence.
+4. Reversibly enable existing WordPress HTTPS canonical address after connected/public route verification with owner-safe credential/rollback and privacy negative checks; no blanket challenge on checkout and native signed Stripe `/?wc-api=wc_stripe`. Then official Owner TEST OAuth plus one exact synthetic USD39.99 checkout/real signed webhook first/replay/invalid and one TEST refund/revoke. No Live or other services.
+5. Append actual evidence to the existing PR64 G3S4L file. Quick Tunnel may be mentioned as historical suggestion but **must not be executed** after the Owner's fixed-host choice. Stop at Reviewer only at the current material authority/safety boundary, preserving completed local proof.
