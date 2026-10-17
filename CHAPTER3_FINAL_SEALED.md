@@ -574,6 +574,22 @@
 - **提供一键恢复结账短链（One-Click Recovery Link）**：
   邮件内附带包含安全令牌的短链，买家点击后可直接恢复其先前的购物车内容与优惠码，减少重复选择。
 
+#### SaaS 订阅续费失败：如何把付款、客户通知与会员权益连起来？
+
+自动续费失败不是买家正在填写收银台时的即时失败。首先按订阅账单和服务商的真实事件核实**当前账单是否已支付**，再决定重试与权益处理，不能仅凭前端提示或一个超时回执立即停权。
+
+| 情况 | 商家的下一步 |
+|:---|:---|
+| 首次续费失败 | 记录账单 ID、订阅 ID、失败原因与事件去重标识；区分银行明确拒绝和结果未决，不创建重复账单 |
+| 可恢复的软拒绝 | 在该 PSP/订阅产品允许的次数、间隔及授权范围内使用受控重试；不得无限循环扣款 |
+| 丢卡、撤销授权等硬拒绝 | 停止自动重试；通过安全的托管页面请客户更新支付方式或完成必要认证 |
+| 卡片到期或换卡 | 先查询服务商是否支持 **Account Updater** 自动更新或卡组织 **Network Token**；若不可用，引导客户重新授权 |
+| 已付款／仍欠费／取消订阅 | 以经校验的账单与订阅事件同步会计记录、宽限期及会员权限；按已公布的条款通知客户，最终欠费时停权或取消，防止重复撤权 |
+
+**不要混淆三类令牌**：PSP 存储的付款方式 Token 通常只在对应商户账户和产品内有效；卡网络发放的 Network Token 可能在卡片更新后继续有效，但以发卡行和服务商支持为前提；更换 PSP 时的付款资料迁移则需经双方支持的安全程序，**不能直接复制原 Token，也不应自行保存 CVV**（第七部分 4.2 另有迁移说明）。
+
+例如 Stripe Billing 有可配置的失败账单重试和 `invoice.payment_failed` 等事件，但**不能推断每种支付方式、国家或其他 PSP 都支持 Smart Retries**。参考：[Stripe 自动重试](https://docs.stripe.com/billing/revenue-recovery/smart-retries)、[Stripe 订阅事件](https://docs.stripe.com/billing/subscriptions/webhooks)、[Adyen 令牌与卡片更新](https://docs.adyen.com/online-payments/tokenization/)、[Adyen 网络令牌](https://docs.adyen.com/online-payments/network-tokenization/)。
+
 ## 5. 结账排查工具与异常分流指引
 
 为帮助出海商家在搭建和优化收银台时拥有具体的操作抓手，本节提供三套排查工具：
