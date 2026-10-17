@@ -1,48 +1,47 @@
-# Curious World Studio — Content Template Lab V1
+# Curious World Studio — Content Template Lab V2
 
-> STATUS: **DEMO_ONLY / DRAFT_PR / NOT_PRODUCTION_AUTHORIZED**  
-> GATE_ID: `CWS_TEMPLATE_LAB_V1_OFFLINE_DEMO_20261017`  
-> Boundary: New additive `visual/content-template-lab/` files only. No R3/R4 production, AI image generation, asset downloads, public publishing, video rendering or modifications to accepted source. No changes to old `preview/index.html` or 13 MW motion demos.
+> **STATUS: V2_REVIEW_CANDIDATE / DRAFT_PR_NOT_MERGED / NOT_PRODUCTION_AUTHORIZED**  
+> Scope: only PR #144, no effect on mainline `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH`.
 
-## Purpose
+## What is actually built
 
-Validate the Owner-selected **pick template → fill media and data → review** workflow. The lab is a **single standalone HTML file** using Mac Tiger Aqua / QuickTime visual tokens; it does not claim to be an Apple application or a production video renderer.
+Open **`index.html`** directly in the browser. This is now a **single-file offline prototype**: the accepted [G1V-A V2 Research Aqua canvas](../../p4-g1/visual-reference/g1va_v2_research_aqua_prototype.html) is embedded as an iframe `srcdoc`, using the exact original drawing logic for Mac desktop, cursor, file-double-click, Genie opening, maximization and QuickTime bars. Only test-media illustration, clip filename, demo duration and autoplay loop were changed; the content viewport is occupied by the V2 template stage.
 
-The six content uses share three underlying layouts:
+The index implements 28.76s timed preview: **0–4.76s original Mac opening**, followed by six independent content-use scenes. The stage fills the 16:9 output canvas; editor UI is outside that canvas.
 
-| ID | Visual use | Layout | User-fillable media slots |
-|---|---|---|---:|
-| T1 | Single asset playback | Full | 1 |
-| T2 | Two-source comparison | Split | 2 |
-| T3 | Real action + explanation image | Split | 2 |
-| T4 | Research/archive document | Full | 1 |
-| T5 | Three-stage progression | Sequence | 3 |
-| T6 | Data/classification conclusion | Sequence | 0 (editable values) |
+| Template | Role | Span (s) | Media slots |
+|---|---|---|---|
+| T1 | Single footage or image | 4.76–8.00 | 1 |
+| T2 | A/B simultaneous comparison | 8.00–11.80 | 2 |
+| T3 | Action + explanation image | 11.80–16.40 | 2 |
+| T4 | Source evidence / archive | 16.40–19.60 | 1 |
+| T5 | 3-stage picture progression | 19.60–24.60 | 3 |
+| T6 | 3-stage illustrative data comparison | 24.60–28.76 | 0 |
 
-All media placeholders are neutral non-evidence demo objects, not synthesized real entities or research actions. Numeric and archive content is demonstrative and **must not be used as scientific evidence**. Uploaded local images/videos are previews only; they remain in the browser session and are not embedded in the exported JSON configuration.
+**Behavior:** Play, Pause, Restart and Seek follow one media clock. T5 and T6 auto-progress across three timed states. The user may switch to any scene, insert local photo/video into slots and edit title, subtitles, labels and notes without destroying an active video node. Videos are muted in this visual-only prototype; no automatic media looping. JSON export includes six shot times, stage events, media filenames, unverified provenance/rights fields, and review requirements; it does **not** embed media or authorize publishing.
 
-## Usage
+## What did not happen
 
-Open `index.html` in a local Chromium-family browser, select T1–T6 in the left sidebar, choose local photos or MP4/WebM in the right sidebar, edit subtitles, labels and explanatory text, navigate T5/T6 steps and export a JSON configuration. No server, Docker, plugin, API key, audio model, remote services or network access is required.
+- No exact scientific research animation, AI image generation, internet search or video asset downloading.
+- No original reference-video footage was copied into the project.
+- No actual dubbing, soundtrack, SRT alignment, Remotion MP4 export or real research rights verification.
+- Default empty slots remain visibly marked `DEMO ONLY`. The example data values 24/48/76 are **fictional UI test fixtures**.
+- No extra MW-01…13 animation presets were added. The 13 existing Mac interactions are a distinct A-shell concern; this is the separate **B content-template layer**.
 
-The lab deliberately **does not auto loop video**. Existing `A→B` desktop animation and the separate MW-01…MW-13 interaction experiments are not recreated or silently approved for formal content use. The B-player visual tokens refer to `visual/retro-mac-v1.2/docs/STYLE_LOCK.md`; demo interface does not constitute exact pixel equivalence with the locked V2 implementation.
+## Verification and limitations
 
-## Bounded test evidence (2026-10-17)
+**Independent Chromium/Playwright probe in sandbox (2026-10-17):**
+- Six content-scene render states and timeline selectors: **6/6**.
+- T5 automatically advances to stage 2 after ~2s; T6 advances to example 48%.
+- Local six-second machine-generated QA MP4 played, and subtitle editing preserved its source and playback progression (about 1.47s→1.99s), unlike V1.
+- JSON exported six timed scenes with the chosen local filename; page JavaScript errors **0**.
+- The sandbox browser blocks both `file://` and localhost navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`; tests used HTML `set_content` and a **structurally equivalent local stub shell via srcdoc**. Thus **the exact newly embedded original V2 shell was not independently rendered in that browser session**. No Windows double-click test has been performed; visual acceptance remains open.
+- Two attempted whole-suite regressions hit harness timeouts; a bounded single-fault video probe completed and showed working continuity. Treat the shell/render end-to-end as `UNVERIFIED` until reviewer can play the final exact candidate in an appropriate browser environment.
 
-- Browser execution: Chromium, Playwright, offline HTML loaded through `set_content` because this isolated runner blocks `file://` direct navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`. **Owner Windows file-open route remains unverified**.
-- Six template selectors: **6/6 success**, one active viewport per template; T1/T2/T3/T4/T5/T6 media slot counts **1/2/2/1/3/0**.
-- Local image upload: first slot of T2 updated, new image rendered.
-- Editable subtitle: immediate stage update.
-- Step navigation: T5 advanced to stage 2 of 3.
-- Editable demo data: T6 `23,48,76` reflected stage 2 as `48%`.
-- JSON export: T6 demo manifest filename and values verified; media bytes not present.
-- Page JavaScript runtime errors: **0** in the test.
-- No Windows deployment, actual image generation, research-material permissions, real spoken-audio sync or Remotion MP4 export verified here.
+## Current Reviewer boundary
 
-## Acceptance and next boundary
+The V1 PR review recorded `RETURN_VISUAL_MOTION_AND_STYLE`; this V2 addresses those design causes **as a candidate**, not a self-declared PASS. The next bounded reviewer should validate the final exact HTML, original Mac motion fidelity, scene timing and real varied content, then confirm whether additional tweaks are needed before considering a merge. Main project R3 remains `RETURN_OWNER_VISUAL_STORYFIT` and R4 and publishing remain unauthorized.
 
-**This Gate's maximum endpoint** is a draft offline visual prototype + independent browser checks and a PR for review. The existing Owner visual judgement on the failed 55.367-second R3, `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / NO_PUBLISH` and rights `PARTIAL` remain in force.
+**Rollback:** the PR remains open as draft and can be closed/reverted without touching main. This HTML contains no credentials, data store or production network calls.
 
-Before production integration: (1) Owner reviews whether six visual uses are attractive and useful using real candidate materials; (2) Reviewer checks exact scope/2-4-6 visual license compatibility for sequencing/data behavior; (3) a separately authorized bounded integration Gate addresses shared manifest, A→B shell, Remotion, audio/SRT, source identity, no repeat use and full video QA.
-
-**Rollback**: close the unmerged PR/delete its isolated branch; the accepted main files and local project environment are unchanged.
+See [V2 Gate + Evidence](../../docs/CWS_TEMPLATE_LAB_V2_GATE_2026-10-17.md), [Governance](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md).
