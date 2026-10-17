@@ -147,3 +147,17 @@
 - ROLLBACK_EFFECT：所有新公开源码/文档只在Draft PR内；可关闭PR，不碰main业务代码、用户本机工作树或旧项目资源。
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：无发布、支付、模型调用或真实账户变更；沙盒本地截取用户提供的参考样片用于私有视觉评测。
 - EXECUTOR_RESULT：`V3_DEMO_DELIVERED`；REVIEWER_RESULT：`REVIEWER_RETURN_EXACT_STYLE_AND_RIGHTS`；正式内容/视觉质量、版权和MP4成片均未PASS。
+
+
+## EVIDENCE 2026-10-17｜V4六模板复用 + Research Aqua原壳 + 全局时间轴
+
+- AUTHORIZED_GATE：`CWS-TEMPLATE-LAB-V4-EXACT-SHELL-MODULAR-TIMELINE-20261017`；Owner在30秒V3初步肯定后批准Mac原开场+内容模块+结尾关闭+统一时间轴的有界开发。PR#144隔离，未获正式制片/公开授权。
+- PREFLIGHT_FACTS（DIRECT_READBACK）：GitHub main原Research Aqua V2 Canvas blob `acb0ee80264527bd11160e0ae277ce24528c4a03`、Style Lock与R3正式RETURN读取；PR仍Draft；改动仅CWS独立PR文件与项目状态证据；媒体来源权利仍PARTIAL。
+- ACTUAL_CHANGES：提交`visual/content-template-lab/storyboard-v4-master.html`，真正内嵌原画法并引入closing renderer，不改原HTML；新增`TEMPLATE_RENDERERS.T1…T6`、`compileTimeline`和7个镜头实例（T1在S01/S06中使用两次且素材不同），所有素材/字幕/进度共用一个Master Clock；0–4.76s开场、4.76–28.76s内容、28.76–31.06s收尾。单独私有本地有媒体预览HTML交Owner，GitHub仅纯源码/零第三方媒体。
+- OBJECTIVE_READBACK（BEHAVIORALLY_VERIFIED）：隔离Chromium`page.set_content`运行私有近似Mac外壳版，15个时间点seek检查覆盖4状态；7个shot/6个模板，T1双实例、S01字幕编辑、S06播放/暂停、31.06s回桌面均符合；page JS exceptions 0。GitHub原版母版直接读取显示Canvas原source函数、closing函数、Master Clock和无第三方媒体数据。
+- VALIDATION：`V4_ARCHITECTURE_CANDIDATE / LOCAL_BEHAVIOR_PASS / EXACT_SHELL_VISUAL_UNVERIFIED`；Github**真原版源**合成后的可视化浏览器全过程尚未直接执行，不能把静态源查阅等同视觉PASS。私有样片31s一倍速自动脚本超时，未通过整段实时验收；确定性逐时码seek PASS仅证明状态函数行为。
+- ANOMALIES：原本本地V3壳与GitHub真V2源融合产物不是相同字节，不可将私有近似壳观感代表真V2合成结果；参考素材仍受第三方权利限制，原语境的旧图库等不允许外部公开/合并。两次类似全片长时间自动测试受环境限制，后续应先做单层时码/浏览器栈单故障诊断，不盲重跑。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：[V4详细审查](CWS_TEMPLATE_LAB_V4_MODULAR_TIMELINE_REVIEW_2026-10-17.md)、[GitHub V4无媒体母版](../visual/content-template-lab/storyboard-v4-master.html)、本轮对话的离线私有完整样片和关键帧截图。没有嵌入第三方媒体于Git。
+- ROLLBACK_EFFECT：旧V1/V2/V3主文件保留，PR未合并；撤掉V4新文件即可恢复PR上轮状态，main无需业务回滚。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：没有付费、生图、录音、对外下载/发布、生产写入、账户或主机变更。
+- EXECUTOR_RESULT：`V4_ARCHITECTURE_CANDIDATE`；REVIEWER_RESULT：`PARTIAL`；Owner relay：`NONE`；需后续对相同GitHub母版做真实连续视觉审核。
