@@ -6,7 +6,7 @@ PROJECT_GOAL：面向中国大陆个人开发者、独立站经营者和中小�
 
 ## CURRENT_ACCEPTED_STATE
 
-- ① 收款方案选择：[正式正文](docs/CHAPTER1_FINAL_SEALED.md)，已封板。
+- ① 收款方案选择：[正式正文](docs/CHAPTER1_FINAL_SEALED.md)，原正文已封板；2026-10-17 Owner 明确批准任务 B，经 Reviewer 最小化合入 3.1 经营主体选择与设立专题及 J01–J11 附录并正式再封板；[审核证据](docs/CHAPTER1_TASKB_OWNER_ACCEPTANCE_EVIDENCE_20261017.md)。任务 A 的其余语言润色候选保持冻结、未合入。
 - ② 收款开通与接入：[正式正文](docs/CHAPTER2_FINAL_SEALED.md)，已封板。
 - ③ 顾客付款：[正式正文](docs/CHAPTER3_FINAL_SEALED.md)，已封板。
 - ④ 支付处理：[正式正文](docs/CHAPTER4_FINAL_SEALED.md)，2026-10-17 按 Owner 指示经 Reviewer R2 修订及文稿级核验后封板；[核验记录](docs/CHAPTER4_R2_REVIEW_EVIDENCE_20261017.md)。
@@ -17,7 +17,7 @@ PROJECT_GOAL：面向中国大陆个人开发者、独立站经营者和中小�
 
 ## CURRENT_GATE / NEXT_STEP
 
-V6 全七部分已完成文稿级封板（非金融生产验收）。**当前没有获批 HTML 制作 Gate**；最终 HTML 待 Owner 单独授权。已封板正文的唯一权威仍为 GitHub main 中 `docs/CHAPTER1_FINAL_SEALED.md` 至 `docs/CHAPTER7_FINAL_SEALED.md`。七章正式正文合集 ZIP 位于 [七章独立 ZIP（GitHub Archive）](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)（仅包含七章，不含旧候选和审核资料）。
+V6 全七部分已完成文稿级封板（非金融生产验收）；**任务 B 由 Owner 批准并已完成第一章 3.1 专项补充封板，任务 A 冻结、不在本轮应用**。**当前没有获批 HTML 制作 Gate**；最终 HTML 待 Owner 单独授权。已封板正文的唯一权威仍为 GitHub main 中 `docs/CHAPTER1_FINAL_SEALED.md` 至 `docs/CHAPTER7_FINAL_SEALED.md`。七章正式正文合集 ZIP 位于 [七章独立 ZIP（GitHub Archive）](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)（仅包含七章，不含旧候选和审核资料）。
 
 ## CRITICAL_CONSTRAINTS / SYSTEM_MAP
 
