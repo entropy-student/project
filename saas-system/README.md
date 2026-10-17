@@ -1,6 +1,6 @@
 # SaaS System Lab｜通用 SaaS 系统实验
 
-> 当前状态：**G0 项目文档初始化完成（待 GitHub 回读确认）／G1 Velobase 只读预检为下一执行 Gate**。无 SaaS 候选的本机安装或生产部署已验收。
+> 当前状态：**G0 项目文档初始化已通过 GitHub 回读／G1 Velobase 只读预检为下一执行 Gate**。无 SaaS 候选的本机安装或生产部署已验收。
 > 项目仓库：`entropy-student/project` → `saas-system/`。唯一动态状态：[REVIEWER_HANDOFF](./REVIEWER_HANDOFF.md)。
 
 ## 目标
