@@ -13,6 +13,8 @@
 - [第六部分原独立 Writer 工作 Gate](CHAPTER6_INDEPENDENT_WRITER_GATE_20261017.md)（已完成阶段）
 - [第六部分正式正文](CHAPTER6_FINAL_SEALED.md)（文稿级封板）
 - [第六部分 R2 Reviewer 核验记录](CHAPTER6_R2_REVIEW_EVIDENCE_20261017.md)
-- [第七部分离线独立 Writer 工作 Gate](CHAPTER7_INDEPENDENT_WRITER_GATE_20261017.md)（当前写作任务，非正式正文）
+- [第七部分正式正文](CHAPTER7_FINAL_SEALED.md)（文稿级封板）
+- [第七部分 R2 Reviewer 审核记录](CHAPTER7_R2_REVIEW_EVIDENCE_20261017.md)
+- [第七部分原 Writer 工作 Gate](CHAPTER7_INDEPENDENT_WRITER_GATE_20261017.md)（已完成阶段）
 
-当前第一至第六部分已文稿级封板；第七部分已开启离线独立写作、无正式稿；最终 HTML 未启动。旧候选、旧评审及已删除记录不再作为当前资料。
+第一至第七部分均已文稿级封板；最终 HTML 未启动。七份正式正文单独合集：`../releases/现代商业支付系统_七部分正式正文_20261017.zip`。旧候选、旧评审不作为当前正式正文。
