@@ -157,3 +157,11 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **④正式状态边界**：当前已采纳的④ `docs/CHAPTER4_OWNER_ADOPTED_20261017.md` 原文 Blob `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`，SHA256 `5e567a4de0818165ce3c2093c1b8ea0aa3c4dc92f573f2e5f1d39ad5701c7759` 不变，`ADOPTED / NOT SEALED`；本轮不删旧④、不发表新候选；待新稿独立Review并取得Owner后续明确正式采纳指令才可决定更替/封板。
 - **其余禁止**：①②正式封板，V6 7/29/42冻结，③只读封存，⑤⑥候选暂停落库，⑦/HTML未启动；无真实交易、退款、商户开户或部署操作。
 - **结果**：`CH3_FINAL_ARCHIVED / CH4_WRITER_PACK_READY / CH4_CANDIDATE_NOT_RECEIVED`。
+
+## 2026-10-17｜Owner要求清理旧④⑤⑥全部当前内容及无效文档（MCPG-CH4-CH6-CLEAR-OLD-DOCS-20261017）
+
+- **Owner原话**：“删除原先四五六部分全部内容，以及其他无效文档，汇报目前项目进展。”该较新明确决定取代原“第四部分已采纳但尚未封板、暂不允许删除”的历史状态；旧第四正文从GitHub main退出。原⑤⑥在main中本无正式正文，相关返修/审核和活跃Library候选全部退出有效资料。
+- **④状态：** `OLD_FORMAL_TEXT_REMOVED / NO_FORMAL_CH4 / INDEPENDENT_REWRITE_IN_PROGRESS`。当前唯一输入为清理版离线包（SHA256 `1500537f3b3cfd0ef071076bd85522aa339e14f8903bc2bfdd804cd6055e248b`），**没有原④⑤⑥正文**。旧④主文只保留在Git历史和Library历史归档。
+- **⑤⑥状态：** `OLD_CANDIDATES_RETIRED / NOT_STARTED_ANEW`，暂不启动新创作、采纳或封板。原候选ZIP与Reviewer记录已移至Library历史归档，Git main中旧⑤⑥Reviewer报告退出当前树。
+- **无效文档处理：** 清除旧③④联合采纳/返修文件、已完成的③早期Gate/RETURN和旧⑤⑥Reviewer报告共7个Git文件（含第四旧正文），具体原文件/Blob见最新Execution Evidence；保留必要③最终报告与正式归档证明。原文件仍可通过Git历史恢复，非永久抹除历史。
+- **当前有效范围：** ①②③正式封板，V6 7/29/42不改；④全新独立写作中，⑤⑥重新启动需Owner新指令，第⑦与HTML未启动。最新Handoff、Index、清理版④Gate为唯一现行状态。Decision/Evidence保留旧事件仅为审计，历史授权无效。

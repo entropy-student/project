@@ -307,3 +307,20 @@
 - **④WRITER_PACK:** ZIP 129,078 bytes，SHA256 0ca4924b4fc7c9a5dd181d6ed9dcb1592f28e0458155fadb1d0e11120f4f0b93，根目录11 UTF-8 Markdown，CRC PASS，README列每个成员的SHA。包含任务+4H2/5H3、①②③全文只读、现行④只读、第三部分Reviewer报告、第四部分重写基线、官方核验入口与离线交接。Library路径 /现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_20261017.zip，ID libfile_1eb81a8e7b7481918628198e6131ce61。独立提示词文件 ID libfile_bae8c7cc4cdc8191b1c2a490c96fca99。
 - **GIT_SCOPE:** 新增 docs/CH3_FINAL_ARCHIVE_FREEZE_20261017.md 与 docs/CH4_NEW_AGENT_INDEPENDENT_REWRITE_GATE_20261017.md，只对 Handoff/Index/Decision/Evidence 做增量更新。未修改正式①②③④正文、V6和⑤⑥候选，也未进行真实支付、退款、部署。
 - **STOP:** CH3_FINAL_ARCHIVED / CH4_WRITER_PACK_READY / EXISTING_CH4_RETAINED / NEW_CH4_CANDIDATE_PENDING。Owner转发离线包给新Agent；新Agent交2MD ZIP，Reviewer检查后Owner再决定替换旧④。
+
+## MCPG-CH4-CH6-CLEAR-OLD-DOCS-20261017｜GitHub精确删除、Library清理和可恢复证据
+
+- **Owner直接指令**：删除旧第四、第五、第六部分所有当前有效内容及其他无效文档；不执行强制改写Git历史或不可恢复的Library永久删除。
+- **GitHub main待精确删除文件（7个，原Git Blob均已从清理前树列出）**：
+- `docs/CHAPTER4_OWNER_ADOPTED_20261017.md` — `3ff19d7188b7d61d47d83c0daed67681e1ba88f0`
+- `docs/CH5_CH6_REVIEWER_RETURN_20261017.md` — `04bb569aed4ada359c869a91156feef54bc7ceee`
+- `docs/CH5_CH6_SECOND_REVIEW_QUALITY_RETURN_20261017.md` — `78a69f811a9bb6310b7ee04d6f26495090fbe501`
+- `docs/CH3_CH4_OWNER_ADOPTION_EXECUTION_20261017.md` — `8a920ee7aae180d622516fc9d5521b2331d4834f`
+- `docs/CH3_CH4_REVIEWER_RETURN_20261017.md` — `38b3d8cf2cc8922f5ad64261c835a0b73d0f83c7`
+- `docs/CH3_NEW_AGENT_FIRST_REVIEW_RETURN_20261017.md` — `425d24c59c895dd82b5ea0382422de0945f364ba`
+- `docs/CH3_NEW_AGENT_REWRITE_GATE_20261017.md` — `f1a0027442a3c7e1518b0210c6dcc5b500f5c9d9`
+- **不受影响**：①正式 Blob `bf6b310f5bba3c6fd9aed5a70d74e441bb681505`、② `51dab57d0ed5d5458b14422040297ebfbcebe676`、③ `4f56213f307827fbfcd6aec521cdef2fee68374d`、V6 `8c7e1d20c4c423cb07a26fca1868b3f3821c3c62`。③最终封存证据和最终独立Reviewer PASS报告保留。
+- **Library结果**：原活跃目录10件过期或重复资料（旧④正文和旧④离线包/提示词、旧⑤⑥候选/报告、早期③返修/候选、③终版重复副本）已成功移动到 `/项目历史归档`，不物理销毁。活跃目录保留①②参考文档及新④清理包/提示词。
+- **清理版④工作包验收**：`/现代商业支付系统/现代商业支付系统_第四部分_独立重写工作包_清理版_20261017.zip`，Library ID `libfile_566a96bcb4348191a8e88dcb6b0bcb05`；实测107,360 bytes、10 UTF-8 Markdown、ZIP CRC PASS，SHA256 `1500537f3b3cfd0ef071076bd85522aa339e14f8903bc2bfdd804cd6055e248b`，成员各自SHA见包内README，完全无旧④⑤⑥正文。提示词 ID `libfile_eda9c3d2a06881919299a3864c48dff8`。
+- **更新范围**：重新精简Handoff和索引、更新唯一④ Gate、按append-only保留/追加决策及执行证据。删除的旧主文与失效文档仍可在Git清理前commit读取，不默认恢复。没有真实支付/退款、开户或生产部署。
+- **结论**：`OLD_CH4_REMOVED / CH5_CH6_RETIRED / STALE_DOCS_REMOVED / CH4_WRITER_PACK_READY`。
