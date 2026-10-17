@@ -76,3 +76,12 @@ Owner directive: **avoid repeated approvals for already defined scoped project w
 ## Reviewer handoff protocol
 
 Before a formal next PASS/RETURN, refresh `main`/PR #64 exact head, current Gate and recent Evidence; read required sections of Governance v0.2.7, separate `EXECUTOR_REPORTED`, `OWNER_ACTUAL_CONSOLE` and `GITHUB_REVIEWED` facts. Record a scoped formal decision on `main` plus update the canonical Handoff; verify GitHub readback. Stop after review. Do not rerun previously accepted payments or backup/restores to regenerate evidence; the pre-execution `-File` failure is the immediate issue, not a reason for new Payment/Computer Use work.
+
+
+## Incoming Reviewer independent GitHub recheck — 2026-10-17
+
+- Independent GitHub readback: `main=4cfd710f9504f82fa4777e6efa2c9df68370f667` at intake; PR #64 **Open, unmerged**, `head=777463995a298118dae0c6763f6c668207a19350`, and `mergeable=false`. Branches are divergent; no merge/rebase/source reconciliation is authorized in this recovery round.
+- The exact planned `docs/evidence/g3s4/G3S4AR_VISIBLE_LAUNCHER_AND_ADMIN_RESET_2026-10-17.md` was **404/not present at the inspected PR head**. No post-RETURN Executor evidence has been accepted.
+- Re-read current Handoff, this formal RETURN, current G3S4AR Gate, Owner authorization and Governance v0.2.7 §§5–7, 10, 11B/11E; no fresh real Owner-Windows evidence is available to supersede the Return. Formal status **continues** `RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND`, not PASS.
+- **Authorized next action, no new Gate/approval:** one atomic non-secret Owner-native Windows PowerShell 5.1 bounded v2 discovery; verify exact expected SHA-256; only if ordinary target absent and a single safe, matching package-local candidate exists, fail-if-existing delivery into the protected ordinary directory; same-console hash/ACL/reparse/parser positive readback. A mismatch/ambiguous candidate returns before execution. Then at most one Owner-private `CONFIRM`/double-masked invocation; uncertain WP mutation means `UNKNOWN_NO_RETRY`.
+- Do not recreate v2 without locating it, rerun prior backup/restore/source inspections, use v1, touch Stripe, merge PR #64, or edit shared Governance before independently proven closure. This is an intake continuation of the **existing** formal RETURN, not an assertion of repaired Owner-host state.
