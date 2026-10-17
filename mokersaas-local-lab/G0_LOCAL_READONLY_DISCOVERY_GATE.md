@@ -1,6 +1,8 @@
 # MokerSaaS — G0 LOCAL READ-ONLY DISCOVERY
+
+> HISTORICAL: G0 discovery-only PASS already accepted; DO NOT execute old relay. Current sole active Gate: G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md; see REVIEWER_HANDOFF.md.
 > GATE_ID: MOKER-G0-LOCAL-READONLY-DISCOVERY-20261013
-> STATUS: READY_FOR_EXECUTOR
+> STATUS: REVIEWER_PASS_DISCOVERY_ONLY — HISTORICAL_NOT_EXECUTABLE
 > MAX_ENDPOINT_THIS_ROUND: local environment/source compatibility read-only findings, chat-only sanitized completion relay
 > MANDATORY_REVIEW_STOP: YES
 > Governance: vps-project-governance/VNEXT.md v0.2.7; Reviewer interpreted, Executor must NOT reread all Governance
