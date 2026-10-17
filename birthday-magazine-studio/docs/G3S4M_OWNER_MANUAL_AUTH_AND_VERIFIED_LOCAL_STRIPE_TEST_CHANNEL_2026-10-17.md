@@ -1,7 +1,7 @@
 # G3S4M — Owner-manual login, verified local administration and conditional Stripe TEST-only payment
 
 > Date: 2026-10-17
-> Status: **READ_ONLY_AND_CLI_STAGING_REVIEWER_PASS; CONDITIONAL_SUPPORTED_MANUAL_TEST_ROUTE_SELECTED; TEST_PROVIDER_WRITES_AWAIT_EXPLICIT_OWNER_SCOPE_AND_PRIVATE_ROTATION**. See latest Reviewer dated appendix below.
+> Status: **OWNER_LOCAL_TEST_WRITE_SCOPE_APPROVED; PRIVATE_PASSWORD_ROTATION_UNVERIFIED; EXECUTOR_MAY_BEGIN_GATED_LOCAL_CHECKS**. See latest authorization appendix.
 > Parent Reviewer RETURN: `docs/REVIEWER_DECISION_G3S4R_RETURN_BROWSER_TARGET_UNVERIFIED_2026-10-17.md`
 > Retained G3S4R Evidence: PR #64 `docs/evidence/g3s4/G3S4R_BROWSER_TARGET_RETURN_2026-10-17.md` at `777463995a298118dae0c6763f6c668207a19350`
 > Prior backup/restore Evidence: `docs/evidence/g3s4/G3S4E_RETAINED_PREFLIGHT_AND_BACKUP_RECOVERY_2026-10-16.md` at `7397dd3bb7ab5fe62bb8575185d51405391f2c63`
@@ -80,3 +80,14 @@ Official refs: https://docs.stripe.com/webhooks ; https://docs.stripe.com/cli/li
 **Runtime acceptance:** must actually prove test account identity matches keys/CLI, event signing and real native Woo order/amount/currency correlation, invalid-signature rejection, first/duplicate ack + no double entitlement/job, TEST refund Provider status and local revocation. Handler source may allow missing account context; don't accept a missing account correlation as proof. Avoid secret values in CLI/tool/chat/Evidence/output or logs. A `stripe trigger` fixture not tied to a genuine Woo checkout is not payment Gate PASS.
 
 **Stop:** after one bounded conditional local TEST execution or precise unmet-precondition RETURN, append sanitized to existing G3S4M Evidence on PR64, mandatory Reviewer stop. Old VPS deployment invalid. Do not re-run accepted preflight/CLI staging unless material drift.
+
+
+## 2026-10-17 Owner — G3S4M TEST-only write approval recorded
+
+**Owner's direct instruction in the current conversation:** “我批准开始吧”, immediately after the explicit request for authorization to activate the installed official Woo Stripe plugin on the existing local G3C WordPress, connect only the Owner's Stripe TEST account, perform one USD39.99 product #1113 synthetic checkout/signed Webhook first-replay-negative and one Test refund/revocation. This is the **fresh scoped write authorization requested by the existing Gate**. Durable scope: `docs/OWNER_AUTHORIZATION_G3S4M_LOCAL_STRIPE_TEST_2026-10-17.md`. **Do not repeat this approval request.**
+
+**Separate condition (not yet fulfilled):** prior WordPress admin password passed through chat/tool input remains compromised. Owner-only private rotation completion `UNVERIFIED`; require a non-secret confirmation **before plugin/account/Provider/payment writes**. The local Executor may begin read-only UI/side-effect readiness checks without this rotation.
+
+**Chosen execution:** existing Owner-local Docker/WordPress `127.0.0.1:8189`, official installed Woo Stripe 11.1.0, official private Stripe CLI 1.53.1; reuse accepted protected backups/source proof without repeating full backup/restore/CLI installation. Once private rotation is confirmed and fresh project identity/Live isolation/rollback checked, activate only the reviewed plugin if its expected changes are controlled, then have Owner inspect genuine official TEST-only key/admin configuration. **Do not inject keys using direct SQL, raw WP option edit, WP-CLI eval, custom REST impersonation or source patch** merely to avoid OAuth restrictions. If the normal supported manual TEST UI is unavailable, STOP `RETURN_MANUAL_TEST_UI_UNAVAILABLE` before entering keys or further gateway/provider writes; Reviewer will resolve separate HTTPS staging instead of improvising a public tunnel. Owner account OAuth, TEST keys, webhook signing secret and CLI account sign-in are Owner-private operations only, without secrets in logs, code, tools or chat.
+
+**Acceptance remains unchanged:** real native Woo TEST-created order #1113 USD39.99, matching Test merchant/account/amount/currency, authentic signed first Webhook, invalid-signature rejection, same-event replay without duplicate paid entitlement/job, bounded corresponding TEST refund and local revocation, negative Live/unrelated-provider/port checks, sanitized Evidence on current open PR #64, mandatory Reviewer STOP. No real/Live payments, old/replacement VPS, public ingress or PR merge. Secret rotation and actual payment results **must not be presumed from the Owner approval alone**.
