@@ -375,3 +375,66 @@ docker exec birthday-magazine-g3c-wordpress-1 php -r 'require "/var/www/html/wp-
 After rollback, verify both options read back as `http://127.0.0.1:8189` and use the retained local HTTP origin. Rollback was not executed. No populated checkout was created; Computer Use was not invoked or bypassed, so no post-fix visual screenshot is claimed. Machine resource delivery and route-level anonymous checks are PASS_CANDIDATE; Reviewer visual assessment and the unavailable individual protected-file selector remain explicit limits.
 
 STOP_AT_REVIEWER=YES
+
+
+## 2026-10-17 G3S4L synthetic guest checkout and Stripe TEST readiness
+
+~~~text
+GATE=G3S4L
+EXECUTOR_RESULT=PARTIAL_PASS_CANDIDATE_GUEST_CHECKOUT_AND_STRIPE_READINESS
+STOP_AT_REVIEWER=YES
+PUBLIC_HOST=magazine.spikersun.com
+VISUAL_SCREENSHOT=NOT_CAPTURED_SAFE_PUBLIC_TAB_UNAVAILABLE
+VISUAL_RENDERING=UNVERIFIED
+PRODUCT_PAGE_GET=HTTPS_200
+STANDARD_GUEST_ADD_TO_CART=HTTPS_200
+GUEST_CART=ONE_LINE_ONE_EXISTING_PRODUCT_QTY_1
+CART_PAGE=HTTPS_200_NONEMPTY
+CHECKOUT=HTTPS_200_NONEMPTY_FORM_PRESENT
+CHECKOUT_FORM_CONTROLS=21
+CHECKOUT_FORM_ACTIONS=HTTPS
+GUEST_SESSION_COOKIE=SECURE_AND_HTTPONLY
+CHECKOUT_CSS=9_OF_9_200_TEXT_CSS
+CHECKOUT_JS=15_OF_15_200_CORRECT_JAVASCRIPT_MIME
+LOOPBACK_REDIRECTS=0_OBSERVED
+CHECKOUT_LOOPBACK_ANCHOR_HREFS=12 (10_HOME,1_PRODUCT,1_OTHER)
+CHECKOUT_LOOPBACK_FORM_ACTIONS=0
+ORDER_SUBMITTED=NO
+PAYMENT_SUBMITTED=NO
+TEMP_CART_CLEANUP=PASS_STORE_CART_ITEMS_COUNT_ZERO
+STRIPE_PLUGIN=ACTIVE_11.1.0
+STRIPE_GATEWAY=DISABLED
+STRIPE_TESTMODE_SETTING=SELECTED
+STRIPE_TEST_CREDENTIALS=ABSENT
+STRIPE_LIVE_CREDENTIALS=ABSENT
+STRIPE_ACCOUNT_OAUTH_LINK=ABSENT
+STRIPE_WEBHOOK_SECRET=ABSENT
+PUBLIC_WEBHOOK_ROUTE_GET=HTTPS_200_NO_BODY
+SIGNED_WEBHOOK_ACCEPTANCE=NOT_TESTED
+STRIPE_EVENT_OR_PAYMENT=NOT_SENT
+WORDPRESS_TUNNEL_DNS_PLUGIN_SETTINGS=UNCHANGED
+~~~
+
+### Synthetic guest storefront validation
+
+A fresh in-memory anonymous HTTPS session visited the existing Birthday Magazine product page, used the normal WooCommerce add-to-cart route, then requested the cart and non-empty /checkout/. The public product, add-to-cart response, cart, and checkout returned HTTPS 200. WooCommerce Store API readback showed one line for the requested product at quantity one. Checkout rendered a form with 21 input/select/textarea controls; form actions were HTTPS. The observed Woo guest-session cookie was Secure and HttpOnly. No order was created and no payment method was submitted.
+
+After the checkout readback, the synthetic item was removed through the Store API and the same session read back items_count=0. The cookie handler and cart nonce remained in process memory only and were discarded; no cookie values or nonce were recorded.
+
+Checkout-only first-party resource checks found 9/9 stylesheets returning 200 text/css and 15/15 scripts returning 200 with JavaScript MIME. The exercised navigation/add-to-cart/checkout redirects stayed on the HTTPS public host; no loopback redirect occurred. A separate href-only scan found 12 checkout-page anchor links still targeting loopback (10 root links, 1 product link, 1 other path). These anchors were not followed. No loopback checkout form action or stylesheet/script URL was observed. This is a remaining navigation defect/limitation; the accepted WordPress canonical/CSS repair was not changed or repeated.
+
+No rendered screenshot was captured. The available in-app browser was on the Cloudflare management route, and the earlier active-URL safety guard was respected; no browser switch or alternate automation path was used. HTTP resource checks do not establish rendered visual appearance.
+
+### Read-only Stripe and callback status
+
+The official WooCommerce Stripe plugin is active at 11.1.0. The gateway remains disabled, the saved mode selector is TEST, and no TEST or LIVE key material, connected-account OAuth material, or webhook signing secret is configured. No setting was modified and no secret value was emitted.
+
+A no-cookie, no-body HTTPS GET to the native callback URL https://magazine.spikersun.com/?wc-api=wc_stripe returned 200 under normal TLS validation. This confirms route reachability only; it does not establish Cloudflare behavior for POST, Stripe signature verification, webhook delivery, or replay handling. No webhook event was sent.
+
+### Boundary and next checkpoint
+
+Current result is a bounded guest checkout/provider-readiness candidate, not visual acceptance or payment readiness. Reviewer should assess the 12 loopback anchor links and the unavailable rendered screenshot before promotion. Stripe TEST remains unconnected. If Reviewer accepts the storefront evidence, the single minimal Owner-only next step is to complete account login/creation and the official WooCommerce Stripe TEST OAuth consent from the WooCommerce Payments/Stripe settings page; do not paste keys into chat or enable Live. Any later payment/webhook/refund phase remains outside this execution.
+
+No Cloudflare Tunnel/DNS, WordPress setting, theme/plugin setting, order, payment, backup, or production configuration was changed.
+
+STOP_AT_REVIEWER=YES
