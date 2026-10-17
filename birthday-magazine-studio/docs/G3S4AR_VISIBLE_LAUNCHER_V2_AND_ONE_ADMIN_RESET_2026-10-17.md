@@ -1,12 +1,13 @@
 # G3S4AR — Versioned visible launcher v2, with at most one existing local admin reset
 
 > Date: 2026-10-17
-> Status: **PREPARED — AWAIT_FRESH_OWNER_AUTHORIZATION; NO LOCAL SCRIPT OR CREDENTIAL WRITE**
+> Status: **OWNER_AUTHORIZED_CONDITIONAL — NO LOCAL SCRIPT OR CREDENTIAL WRITE YET**
 > Parent Reviewer decision: `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`
+> Explicit Owner authorization: `docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` (Owner current direct message; one defined bounded G3S4AR round)
 > Original G3S4A: `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` (STOPPED/RETURNED, not auto-resumed)
 > Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7 §11B
 > PR #64 previous head: `777463995a298118dae0c6763f6c668207a19350`, verify fresh before any later Evidence commit
-> **Owner authentication/passphrase only in a separate personally visible Windows PowerShell 5.1 window.** This Gate is not authorization until relayed with a fresh Owner approval.
+> **Owner authentication/passphrase only in a separate personally visible Windows PowerShell 5.1 window.** Owner approval is now recorded for this exact round; Executor relay must include it. All safety preconditions and STOP remain in force.
 
 ## Gate contract
 
@@ -15,7 +16,7 @@ GATE_ID=G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_20261017
 OBJECTIVE=Repair ONLY original non-secret launcher exception diagnostics with a side-by-side versioned v2 file and, after real-host safety validation, let Owner perform at most one private password reset of the verified unique G3C WordPress administrator.
 MAX_ENDPOINT_THIS_ROUND=Read-only original v1 and current host/unique-admin/attempt-marker proofs -> if freshly Owner-approved, create exactly one NEW non-secret side-by-side v2 launcher and test fail-closed with dummy fixtures in verified Windows PS5.1 -> independent ordinary Owner-host path/hash/ACL/PS51 readback -> Owner alone invokes once in visible PS5.1 with CONFIRM and twice-masked chosen password -> Executor read-only WordPress outcome verification -> exactly one sanitized PR64 Evidence file -> Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-OWNER_AUTHORIZATION=FRESH_EXPLICIT_G3S4AR_APPROVAL_REQUIRED_BEFORE_ANY_HOST_FILE_OR_CREDENTIAL_WRITE
+OWNER_AUTHORIZATION=APPROVED_G3S4AR_BY_OWNER_CURRENT_DIRECT_MESSAGE
 TARGET=Same original Windows 11 G3C existing WordPress/WP-CLI/MariaDB Docker project, Woo #1113 virtual USD39.99, localhost 127.0.0.1:8189; one already-proven WordPress site administrator only.
 EXISTING_SCRIPT=%LOCALAPPDATA%/BirthdayMagazineStudio/G3S4A-VisiblePS51-20261017/Invoke-G3S4A-AdminRecovery.ps1
 EXISTING_SCRIPT_SHA256_REPORTED=685cc5fab1ecefffbc30368f888ec2b0662937cd5256cd307b331f6043ae8fe1
@@ -24,12 +25,12 @@ MUST_BE_NEW_FILE_FAIL_IF_EXISTS=YES
 ORIGINAL_NORMAL_AND_PACKAGED_CACHE_SCRIPTS=READONLY_NO_OVERWRITE_DELETE_RENAME
 PR64_EVIDENCE_ONLY=docs/evidence/g3s4/G3S4AR_VISIBLE_LAUNCHER_AND_ADMIN_RESET_2026-10-17.md
 APPLICABLE_CRITICAL_CONSTRAINTS=No unverified exception message/stack/unfiltered stdout/stderr, Secret values/hash/cookies in output or argv/env/history/scripts/temp/logs/chat/repo; no account creation/privilege/email mutation, other user password changes, Woo order or source mutation, Stripe/plugin activation/payment, PayPal/Netlify, Docker recreate, DB restore/export, preexisting backup deletion, browser Computer Use, PR64 merge. Owner password entry ONLY in independently visible Windows PowerShell 5.1.
-PREFLIGHT=Fresh relayed Owner authorization; original v1 exact SHA-256 plus protected ACL/path/PS51 context and code contents actually reviewed; original reset attempt marker absent, no prior ambiguous credential update, uniquely proven admin role/ID and original project Docker context/loopback/source/backup state unchanged. Historical CommandNotFound cause remains UNKNOWN, no need to recopy v1. If any identity/code/marker mismatch stop before v2 creation.
+PREFLIGHT=Fresh Owner authorization for this exact G3S4AR is recorded in docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md and must be relayed in Executor prompt; original v1 exact SHA-256 plus protected ACL/path/PS51 context and code contents actually reviewed; original reset attempt marker absent, no prior ambiguous credential update, uniquely proven admin role/ID and original project Docker context/loopback/source/backup state unchanged. Historical CommandNotFound cause remains UNKNOWN, no need to recopy v1. If any identity/code/marker mismatch stop before v2 creation.
 REQUIRED_EVIDENCE=Original vs new exact allowlisted script diff in protected local evidence (no embedded credentials or account identifiers); original and v2 hash/ACL/existence and ordinary Windows PS51 readback; sanitized stage/error class and mutation-start state; native exit nonzero on failure; parser/static/fixture paths proving fail closed before/after simulated mutation and no unconditional PASS; masked double Owner input+stdin no argv/env/history/log exposure; exactly one selected admin credential write if executed; nonsecret WordPress post-write readback and untouched source/backups/Stripe; only one sanitized evidence file on PR64; STOP.
 ACCEPTANCE_CRITERIA=Prepared v2 is verified on real Owner host and optionally one authenticated password reset was safely completed on exactly one existing admin with Owner-only secret handling, or exact RETURN at blocker. Distinguish PREPARED_ONLY from ADMIN_PASSWORD_CHANGED and OWNER_LOGIN_CONFIRMED; no inferred success, Stripe acceptance, or commercial readiness.
 ROLLBACK=Preserve v1, both prior matching locations, protected existing G3S4 backup and all dirty worktree. New v2 file must fail-on-existing, allowlist exact path/ACL, protect no password or hash in file. Do not restore database to roll back a password reset. Once a remote WP password mutation MAY_HAVE_STARTED, unknown result => no blind retry; Reviewer reconciles before further credential action.
-OWNER_ONLY_ACTIONS=Owner first explicitly approves this new G3S4AR local v2 creation+one existing WordPress admin password reset; later enters CONFIRM and twice-masked new password solely via their own visible Windows PS5.1 window and saves it in their password manager. No secrets in chat. All other steps by Executor with exact scope and mandatory Reviewer stop.
-REVIEWER_TO_EXECUTOR_RELAY=Read this Gate plus parent Reviewer RETURN and original v1 actual code on exact verified Owner host. Do NOT infer safe v2 code merely from SHA/ACL, and do not read raw secret data. If fresh Owner approval missing, read-only plan/review ONLY; no local writes. If approved, minimal versioned repair and one Owner-visible checkpoint, no unrelated G3S4A reruns.
+OWNER_ONLY_ACTIONS=Owner has explicitly approved this new G3S4AR local v2 creation+one existing WordPress admin password reset; Owner later enters CONFIRM and twice-masked new password solely via their own visible Windows PS5.1 window and saves it in their password manager. No secrets in chat. All other steps by Executor with exact scope and mandatory Reviewer stop.
+REVIEWER_TO_EXECUTOR_RELAY=Read this Gate plus parent Reviewer RETURN and original v1 actual code on exact verified Owner host. Do NOT infer safe v2 code merely from SHA/ACL, and do not read raw secret data. Owner approval is now present in the named record and actual relay; do not ask it again for the same scope. If actual relay omits authorization, return before host writes. Perform minimal versioned repair and one Owner-visible checkpoint, no unrelated G3S4A reruns.
 EXECUTOR_TO_REVIEWER_RELAY=Brief result including real-host source+v2 digest readbacks, error-class fail-closed fixture validation, attempt/credential mutation state and one PR evidence link/SHA or precise RETURN; mandatory stop.
 ```
 
@@ -41,7 +42,7 @@ EXECUTOR_TO_REVIEWER_RELAY=Brief result including real-host source+v2 digest rea
 2. Verify no password change was attempted and no attempt marker exists in the selected target. Admin count is **exactly one** as last reported; freshly verify without exposing username/email or changing DB. Verify same Docker WP target/loopback and no material drift. If any existing script/target mismatch, STOP before staging.
 3. Retain historic virtualization diagnosis as UNKNOWN. The ordinary Owner PS5.1 path is currently reported as visible, so do not duplicate or overwrite v1 or rehash entire backups without drift.
 
-### Phase B — minimal v2 repair and source integrity, ONLY after fresh Owner approval
+### Phase B — minimal v2 repair and source integrity, under recorded Owner approval and mandatory preflight
 
 1. Create one entirely **new** non-secret sibling script `Invoke-G3S4A-AdminRecovery-v2.ps1` in the already protected user-local directory; **fail if that filename exists** (even if similar). Original `Invoke-G3S4A-AdminRecovery.ps1` and the packaged-cache copy remain untouched. Use a native ordinary Owner-host file creation route proven not subject to packaged-app AppData virtualization. No global execution policy, shell configuration, or unrelated ACL changes. Review the exact v1↔v2 source diff: limit to necessary exception diagnostics, mutation-status bookkeeping and associated fail-closed branches; preserve existing verified target-binding and protected masked-secret transport. Unexpected nontrivial algorithm/target changes => RETURN.
 2. The v2 error path must report `STAGE` (fixed nonsecret enum: `TARGET_CHECK|OWNER_CONFIRM|MASKED_INPUT|BEFORE_WP_UPDATE|WP_UPDATE|POST_VERIFY`), `ERROR_CLASS` (a safe allowlisted exception category or inspected CLR type name without full messages), and `MUTATION_STATE` (`NOT_STARTED|MAY_HAVE_STARTED|VERIFIED_SUCCESS`), plus proper **nonzero native exit** on error. Avoid arbitrary exception messages/stack traces and raw stdout/stderr, as those may contain secret-bearing content. If native WP password update was invoked and exit/response is ambiguous, emit `UNKNOWN_NO_RETRY` and leave the attempt marker for read-only reconciliation. A static PASS marker after catch is forbidden. A PASS marker is reachable only when update's native exit and independent necessary post-update checks actually succeed.
@@ -58,7 +59,7 @@ EXECUTOR_TO_REVIEWER_RELAY=Brief result including real-host source+v2 digest rea
 ## Return codes
 
 ```text
-RETURN_OWNER_AUTHORIZATION_REQUIRED
+RETURN_OWNER_AUTHORIZATION_REQUIRED (only if new execution relay lacks the existing explicit authorization)
 RETURN_ORIGINAL_LAUNCHER_IDENTITY_DRIFT
 RETURN_ADMIN_IDENTITY_OR_ATTEMPT_AMBIGUOUS
 RETURN_V2_FILE_ALREADY_EXISTS
@@ -71,3 +72,7 @@ PASS_CANDIDATE_G3S4AR_V2_PREPARED_OWNER_RESET_PENDING
 PASS_CANDIDATE_G3S4AR_ONE_ADMIN_RESET_OWNER_LOGIN_PENDING
 PASS_CANDIDATE_G3S4AR_ADMIN_LOGIN_CONFIRMED
 ```
+
+## Reviewer follow-up — minimal Governance learning after verified repair
+
+Owner directs rapid resolution of recurring RETURN defects and a **minimal project-management governance record after they are actually solved**. Once G3S4AR has a real owner-host v2 execution/verification result and Reviewer disposition, assess whether the failure taught a new generally reusable rule not already present in Governance v0.2.7 §11B (currently already covers native host readback, path virtualization, masked Secret transport, fail-closed diagnostics). Make only the smallest necessary addition to the canonical `entropy-student/spike.skill` governance `VNEXT.md`, optionally a brief historical incident pointer. Do not add duplicative policy or mark the issue solved before independent proof. This is a post-closure action, not an extra checkpoint or reason to block the currently authorized recovery.
