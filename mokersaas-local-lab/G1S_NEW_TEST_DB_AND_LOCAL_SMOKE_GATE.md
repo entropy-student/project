@@ -1,6 +1,8 @@
 # MokerSaaS G1S — New Isolated Synthetic DB + Guarded Localhost Smoke
+
+> REVIEWER STATUS: G1S stopped before all writes (no new DB/Secret/app). New-target command policy permission was UNKNOWN, not actually rejected during G1S; independently recoverable encrypted Secret destination absent. The relay below is retired. Current executable Gate: `G1P_CODE_ONLY_SECRET_SEAM_GATE.md`, code-only preparation. Do not rerun this G1S Gate.
 > GATE_ID: MOKER-G1S-NEW-SYNTHETIC-DB-AND-SMOKE-20261017
-> STATUS: READY_FOR_OWNER_LOCAL_EXECUTOR
+> STATUS: RETURN_PRECONDITIONS_UNSATISFIED — G1S 2026-10-17 did NOT create a new DB or Secret; historical, not executable
 > OWNER_APPROVAL: MOKER-D-20261017-APPROVE-G1S-NEW-DB (explicit 2026-10-17 approval, `DECISION_LOG.md`)
 > GOVERNANCE: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7, Reviewer interpreted
 > MAX_ENDPOINT_THIS_ROUND: one policy-permitted side-by-side NEW synthetic Postgres with protected recoverable Secret, schema init, exact localhost app startup, bounded synthetic UI/auth/security negative smoke
