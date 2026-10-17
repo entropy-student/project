@@ -101,3 +101,60 @@ A follow-up pixel review could not run: direct anonymous requests to the local h
 **Current disposition:** `RETURN_PUBLICATION_SAFETY_NOT_CERTIFIED`. Keep the original site local-only. Do not create DNS/Tunnel or begin Stripe TEST until media content can be classified and the exact Cloudflare write permission is established.
 
 STOP_AT_REVIEWER=YES
+
+## 2026-10-17 G3S4L local autonomous preparation
+
+This append records local non-secret preparation under the latest Owner-autonomy appendix and Reviewer remote-Tunnel decision. Prior accepted media, password-rotation, backup, and anonymous order/admin/private-upload evidence was reused; no duplicate backup, media review, plugin install, or local stack survey was performed.
+
+```text
+GATE=G3S4L_ORIGINAL_LOCAL_WP_CLOUDFLARE_TEST_20261017
+LOCAL_AUTOMATED_PREP=PASS_CANDIDATE
+CLOUDFLARED=2026.10.1; AUTHENTICODE_VALID; SIGNER_CLOUDFLARE_INC
+TUNNEL_RUN_TOKEN_FILE_FLAG=SUPPORTED_BY_INSTALLED_HELP
+CREDENTIAL_DIRECTORY=%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017
+TOKEN_FILE=%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017\stripe-test.spikersun.com.connector-token
+TOKEN_FILE_EMPTY=YES
+TOKEN_DIRECTORY_AND_FILES=PROTECTED_DACL; OWNER_CURRENT_USER; ONLY_CURRENT_USER_AND_SYSTEM; 2_ALLOW_RULES; 0_DENY; 0_OTHER_IDENTITIES; NO_REPARSE
+TOKEN_INPUT_HELPER=LOCAL_ONLY; HIDDEN_SECURESTRING_PROMPT; NO_SECRET_OUTPUT; NOT_RUN; NOT_COMMITTED
+POWERSHELL_51=5.1.26100.9711; HELPER_PARSE_ERRORS=0; EXECUTION_POLICY=RemoteSigned
+WORDPRESS_BINDING=127.0.0.1:8189->80/tcp
+CURRENT_HOME_AND_SITEURL=http://127.0.0.1:8189 (read-only REST index readback)
+FORWARDED_HTTPS=HTTP_X_FORWARDED_PROTO_CONFIG_MARKER_PRESENT; /wp-login.php GET WITH X-FORWARDED-PROTO HTTPS RETURNED 200 AND SECURE TEST COOKIE
+WORDPRESS_CANONICAL_CHANGE=NOT_APPLIED
+TUNNEL_OR_DNS_OR_PUBLIC_HTTPS=NOT_CREATED_OR_VERIFIED
+STRIPE_OAUTH_PAYMENT_WEBHOOK_REFUND=NOT_STARTED
+ROLLBACK_BASELINE_HOME_SITEURL=http://127.0.0.1:8189
+ROLLBACK_PLAN=RESTORE_EXACT_LOOPBACK_URLS; REMOVE_ONLY_ANY_NEW_PROXY_DELTA; DISABLE_ONLY_NEW_TUNNEL_HOST_ROUTE; PRESERVE_EXISTING_SITE_AND_BACKUPS
+OWNER_CLOUDFLARE_ACTION=NEEDED_FOR_REMOTE_TUNNEL_AND_SCOPED_CONNECTOR_TOKEN
+ZONE_ACTIVE_DNS_FREE_NO_TUNNEL=OWNER_REPORTED; WRITE_PERMISSION=UNVERIFIED
+STOP_AT_REVIEWER=YES
+```
+
+### Cloudflare connector runtime and protected token path
+
+The already staged binary was read back as `cloudflared version 2026.10.1 (built 2026-10-15T09:15 UTC)`; Authenticode remained `Valid`, signer `Cloudflare, Inc.`, SHA-256 `4D2490E74082C5D48DBFEDAF92576FA5BD1702379AB88EB7FAA0CFBE8DC891B6`. Offline `cloudflared tunnel run --help` confirms `--token-file`.
+
+Created a new user-local directory at `%LOCALAPPDATA%\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017`, an empty connector-token file at the path above, and a local-only helper `Set-StripeTestTunnelToken.ps1`. Native Windows PowerShell 5.1 readback confirmed the directory, token file, and helper have protected DACLs, current-user owner, exactly two FullControl allow rules (current user and SYSTEM), no inherited/unexpected/deny rules, and no reparse point. The token file remained zero bytes; its SHA-256 was the empty-file digest. The helper was parser-checked under Windows PowerShell 5.1 and has zero parser errors. It accepts a token only via hidden `Read-Host -AsSecureString`, writes it to the pre-created file without replacing its ACL, prints only a status boolean, and clears its byte buffer/BSTR in `finally`. It has not been run; no token has been entered or stored.
+
+After the Owner-controlled dashboard step, the local connector is ready to run in a visible PowerShell terminal using only the private file path:
+
+```powershell
+& "$env:LOCALAPPDATA\BirthdayMagazineStudio\G3S4L\cloudflared-20261017\cloudflared.exe" tunnel run --token-file "$env:LOCALAPPDATA\BirthdayMagazineStudio\G3S4L\remote-managed-tunnel-20261017\stripe-test.spikersun.com.connector-token"
+```
+
+Stop the foreground connector with Ctrl+C. No Windows service, tunnel, DNS record, certificate, Cloudflare credential, or public route was created. The stopped locally-managed `cloudflared tunnel login` flow was not repeated.
+
+### WordPress HTTPS readiness and rollback
+
+The exact target container still publishes only `127.0.0.1:8189->80/tcp`. A direct no-proxy read of the WordPress REST index returned both `home` and `url` equal to `http://127.0.0.1:8189`. The WordPress configuration contains an `HTTP_X_FORWARDED_PROTO` marker. A no-cookie direct GET to `/wp-login.php` with `X-Forwarded-Proto: https` returned HTTP 200 and a Secure WordPress test cookie; no login, database write, or setting change occurred. An in-container WP-CLI read attempt returned command-not-found (127); no CLI was installed. The REST index provided the needed non-sensitive current URL readback.
+
+Ready-to-apply canonical values, deliberately not applied:
+- Before: `home=siteurl=http://127.0.0.1:8189`
+- After only when the exact public HTTPS route is live and verified: `home=siteurl=https://stripe-test.spikersun.com`
+- Keep the existing forwarded-proto handling; do not add a duplicate proxy block without a new readback.
+
+Rollback for a future failed HTTPS canary: restore both options to the exact recorded loopback values, remove only any proxy-config delta newly introduced for that canary, verify local HTTP/admin access, then disable only the new test hostname route and stop its connector. Preserve existing database, orders, uploads/media, PayPal state, and backups. No rollback was needed or executed this round because no WordPress write occurred.
+
+### Exact remaining Owner checkpoint
+
+The only current external prerequisite is one Owner-controlled Cloudflare dashboard session: create a remotely managed tunnel dedicated to this test, publish only `stripe-test.spikersun.com` to `http://127.0.0.1:8189`, and privately feed that tunnel's scoped connector token into the prepared hidden-input helper. No token, API key, screenshot, or credential should be sent to Codex. This dashboard action tests the actual zone write authority and creates the hostname route; it does not require repeating the previous CLI account-login flow. Once the private token file is ready, Codex can start and verify the connector and proceed through the existing bounded G3S4L checks. Official Stripe TEST OAuth remains an Owner-only consent only after public HTTPS passes. No Live/real-money action is in scope.
