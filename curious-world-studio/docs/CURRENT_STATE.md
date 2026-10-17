@@ -1,5 +1,8 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-17）
 
+<!-- CWS_V52_FROZEN_20261017_OWNER_DECISION -->
+> **2026-10-17｜最新Owner裁决：`V5.2_TEMPLATE_BASELINE_FROZEN / MAIN_ARCHIVED`（覆盖下方一切V5.2“继续返修”的旧建议）**。Owner确认现版本已有连贯的视频感，**虽仍可继续调整样式，但本轮先冻结留档、暂停样式返工**。无媒体精修版已按**原字节**归档到[main固定 HTML](../visual/frozen/storyboard-v5-2-20261017.html)，Git blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`，与Draft PR#144里的V5.2原文件完全一致；不合并PR，不改Mac原版V2或V1–V5历史候选。唯一原版Research Aqua外壳、六可复用内容模块、七镜头/31.06秒统一时轴、桌面开窗与结束关闭回桌面作为当前可复用模板技术基线。浏览器技术子项已通过已列局部验证，但**不代表正式4–6分钟影片、素材权利、音画、MP4输出或最终完整Story-Fit通过**。后续视觉细节请另建V5.3+而不覆盖冻结版；如无新视觉问题，则下个阶段以冻结基线进行真实分镜/合法素材映射/音画自动生产能力验证。完整范围/证据/恢复见[冻结记录](CWS_V52_TEMPLATE_FREEZE_2026-10-17.md)。**CW0005正式`R3=RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`不变**。
+
 <!-- CWS_V52_BROWSER_QA_20261017 -->
 > **2026-10-17 V5.2最新进展**：已在Draft [PR#144](https://github.com/entropy-student/project/pull/144)提交[原版Research Aqua V5.2精修源码](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-2-reviewed.html)（blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`），仍仅一个原版Canvas，不存在第二Mac播放器。修复1440分辨率下媒体视口缩放不正确致字幕裁切、真假播放器状态不匹配、T4虚构文献大卡过度遮挡、重复大标题遮挡；六模板7镜头及全局31.06秒时轴不变。**真实Chromium**已通过T1/T4/T6截图、关键帧/关窗、27秒起1×播至31.06秒自动结束、MP4时间进展与暂停、本地PNG槽导入，JS异常0。*仅模板技术集成PASS；Owner视觉满意度、正式4–6分钟节目、合法媒体、配音/SRT/MP4导出未验证*。公开Git仅有无媒体源码；含参考视频的1.3MB私有HTML仅交付本轮会话。详情见[PR Reviewer备注](https://github.com/entropy-student/project/pull/144#issuecomment-6234099065)。CW0005 R3视觉RETURN、G1/HOLD、G2/R4未授权、NO_PUBLISH不变。
 
