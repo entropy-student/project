@@ -1,9 +1,25 @@
 # Birthday Magazine Studio — Next Reviewer Bootstrap
 
-> Updated: 2026-10-16
+> Original historical snapshot updated: 2026-10-16; superseded as current-state entry by 2026-10-17 canonical Handoff
 > Purpose: sufficient handoff for a NEW Reviewer when chat context runs out
 > Canonical truth: **current** `birthday-magazine-studio/REVIEWER_HANDOFF.md` + **current Gate** on GitHub `main`. This file is a concise locator/status snapshot and never overrides them.
 > Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md`, v0.2.7 ACTIVE_PROVISIONAL.
+
+## 2026-10-17 current-stage redirect — read before historical sections
+
+**This 2026-10-15 bootstrap is a historical snapshot. Its G3S2 / G3S1SV "current Gate" and "await merchant" instructions are no longer authoritative.**
+
+For the next Reviewer, use this ordered, current project-scoped set on GitHub `main`:
+
+1. `birthday-magazine-studio/REVIEWER_HANDOFF.md` — complete current and historical project state, accepted scope, UNKNOWNs, backups, PR refs and next steps.
+2. `birthday-magazine-studio/docs/REVIEWER_DECISION_G3S4AR_RETURN_OWNER_NATIVE_PS51_FILE_NOT_FOUND_2026-10-17.md` — **latest formal Reviewer RETURN**, actual Owner PS5.1 `-File` reports the v2 script path missing before execution; distinguish from Executor's v2 SHA/10 fixture PASS claim, neither password nor Stripe changed.
+3. `birthday-magazine-studio/docs/G3S4AR_VISIBLE_LAUNCHER_V2_AND_ONE_ADMIN_RESET_2026-10-17.md` — current already Owner-approved Gate, appended minimal **Owner-visible exact-path discovery + digest-gated non-secret v2 delivery/readback**, then one Owner-private admin reset only if safe; don't repeat failed `-File` invocation, demand new approval or start a new Gate.
+4. `birthday-magazine-studio/docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` — Owner approval; no redundant request within same scope.
+5. `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7, all applicable universal and triggered specialist rules (§11B target/secret Windows primary).
+
+Latest GitHub PR #64 head last reviewed `777463995a298118dae0c6763f6c668207a19350`, **Open/unmerged**. No G3S4A/G3S4AR Evidence commit. Historical 2026-10-16 G3S4E backup/source Evidence and 2026-10-17 G3S4R browser RETURN are accepted within their narrow scopes; Stripe plugin **installed inactive**, Stripe TEST payment/refund/webhook and full-intake paid delivery NOT DONE. Always refresh PR/main before next formal decision. Original static Netlify is not WooCommerce production backend. Keep all dirty worktree and protected backups intact.
+
+Continue historical context below for reference **only**; it does not supersede the current Handoff/Gate.
 
 ## Operating roles / mandatory protocol
 
