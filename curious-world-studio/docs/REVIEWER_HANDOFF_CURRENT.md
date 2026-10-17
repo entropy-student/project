@@ -1,5 +1,11 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V53_EIGHT_FIXES_EXTERNAL_REVIEW_PENDING_20261017 -->
+## 2026-10-17｜V5.3 八项候选待原独立Reviewer确认（不覆盖现有V5.2冻结交接）
+
+Owner仅授权现有八项模板/时钟缺陷有界修复，已在Draft [PR#144](https://github.com/entropy-student/project/pull/144)新增无媒体[单文件V5.3](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-3-eight-fixes.html)，blob `8c3dd9f26dae8f1104082d670a7310dbe9033e47`。修复项目：①长片动态边界、②T5分段媒体本地时间、③短MP4停末帧、④T5/T6从镜头配置取内容、⑥T2/T3 contain、⑦单行字幕超限可见报警+禁止导出、⑧T5不等分阶段、⑫文件名/来源标签可编辑。Chromium自测19/19基础+4/4跨题材、私有31.06秒1×全程PASS、延长镜头至约4:41时第40秒保留播放器；结果**仅EXECUTOR/主Reviewer技术自验，独立原Reviewer尚未给出接受结论**。附用户会话私有ZIP（含源码、V5.2冻结对照、私有示例、合成MP4、可复现脚本），私人素材不推Git。**CURRENT_ACCEPTED_STATE仍是main V5.2冻结原件** Git blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`，原Research Aqua V2也未改；V5.3外部复核结果出来前不可合并或替换冻结资产。R3_RETURN/G1 HOLD/G2/R4未授权/NO_PUBLISH及第三方复用限制持续。**NEXT_STEP**：原Reviewer只读核实八项及回归，向Owner返回PASS/PARTIAL/RETURN；然后再决定是否推进。详见[PR证据](https://github.com/entropy-student/project/pull/144#issuecomment-6235329867)。
+
+
 <!-- CWS_V52_FROZEN_CANONICAL_HANDOFF_20261017 -->
 ## 2026-10-17｜最新唯一交接：V5.2 模板冻结归档（覆盖下方所有 V5/V4 旧NEXT）
 
