@@ -10,6 +10,9 @@
 - [第五部分正式正文](CHAPTER5_FINAL_SEALED.md)（文稿级封板）
 - [第五部分 R2 Reviewer 核验记录](CHAPTER5_R2_REVIEW_EVIDENCE_20261017.md)
 - [第五部分原 Writer 工作 Gate](CHAPTER5_INDEPENDENT_WRITER_GATE_20261017.md)（已完成阶段，非当前任务）
-- [第六部分离线独立 Writer 工作 Gate](CHAPTER6_INDEPENDENT_WRITER_GATE_20261017.md)（当前写作任务，非正式正文）
+- [第六部分原独立 Writer 工作 Gate](CHAPTER6_INDEPENDENT_WRITER_GATE_20261017.md)（已完成阶段）
+- [第六部分正式正文](CHAPTER6_FINAL_SEALED.md)（文稿级封板）
+- [第六部分 R2 Reviewer 核验记录](CHAPTER6_R2_REVIEW_EVIDENCE_20261017.md)
+- [第七部分离线独立 Writer 工作 Gate](CHAPTER7_INDEPENDENT_WRITER_GATE_20261017.md)（当前写作任务，非正式正文）
 
-当前第一至第五部分已封板；第六部分已开启离线独立写作、无正式稿；第七部分与 HTML 未启动。旧候选、旧评审及已删除记录不再作为当前资料。
+当前第一至第六部分已文稿级封板；第七部分已开启离线独立写作、无正式稿；最终 HTML 未启动。旧候选、旧评审及已删除记录不再作为当前资料。
