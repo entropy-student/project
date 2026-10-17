@@ -2,9 +2,10 @@
 Updated: 2026-10-17
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7 (ACTIVE_PROVISIONAL)
 PROJECT_GOAL: 在 Owner 的 Windows 11 本机用 Docker 启动 Paymenter（中文优先），观察真实用户前台、管理员后台、产品/套餐及可用功能；此项目目前仅供私有试用。
-PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS_WITH_KNOWN_REGRESSION / G2B_R1_SOURCE_CLI_PASS / G2B_VISUAL_PARTIAL / G2C_LOCALE_AND_AUDIT_CLI_CANDIDATE_REVIEWER_PENDING
+PROJECT_STAGE: G1_PASS_LOCAL_PREVIEW / G2A_SOURCE_CLI_PASS / G2B_R1_SOURCE_CLI_PASS / G2C_LOCALE_AUDIT_SOURCE_RUNTIME_PASS / G2B_AUTHENTICATED_UI_PARTIAL
 SYSTEM_MAP: Owner Windows 11 build 26300 + PowerShell 7.6.5 + Docker Desktop Linux (Engine 29.7.2 / Compose v5.4.0) → 项目专属 Compose paymenter_local_lab [Paymenter、MariaDB、Redis] → 127.0.0.1:8187；活跃 MariaDB 数据位于项目命名卷 paymenter_local_lab_database；APP_KEY、Compose、日志、历史失败数据库目录等位于 %USERPROFILE%\Documents\ChatGPT\Paymenter-Local-Lab；未使用 VPS/公网路由。
 CURRENT_ACCEPTED_STATE:
+- Reviewer G2C PASS 2026-10-17: Reviewed complete PR #150 with exact three-source-file incremental patch, replay README, non-secret execution evidence, and official Filament v5.7.6 NavigationGroup/NavigationManager source. Confirmed admin locale allows session values and zh only maps zh_CN, en/fi remain; NavigationGroup Closure lazily resolves label; audit details restore two removed arguments and pass actual in-memory fixture rendering by Executor. Validated reported HTTP Kernel locale probes, data/12 notification template invariants and bidirectional patch checks within scoped trust boundary. Reviewer did not directly log in to Owner Windows; G2B remains PARTIAL. PR #150 squash merged into main 752b4ececf0d58850fc34431db785327add4dc25.
 - Reviewer G2C SOURCE_DIAGNOSIS 2026-10-17：Owner 新增五张截图证实前台语言选择 Suomi 后菜单变 Koti/Kauppa/Näytä，原本中文商品与分类因源自数据库记录，不随 locale 变换，故前台 UI 切换部分正常；但 G2A 中 admin SetAdminLocale 无条件 zh_CN，确实属于不应存在的强制中文覆盖。源补丁 audit 详情 view 另存在两个缺参调用 `str_replace('_', ' ', )` 与 `class_basename()`，可导致详情页运行时报错，虽截图 audit 列表正常也不能证明详情安全。两项最小修复 G2C 已授权但尚未本机执行；G2B 视觉仍 PARTIAL。
 - OWNER_SCREENSHOTS 2026-10-17：R1 后通知模板 8 个默认英文主题已显示简体中文，未知带动态变量主题和 Email verification 仍英文；Audit List/Failed Job List 顶部列标题英文。五张图只证实页面可见，不证实保存/业务运行，也未覆盖用户 dashboard 或套餐编辑。
 - G2B R1 REVIEWER SOURCE_CLI_PASS 2026-10-17：Reviewer 审核 PR #149 六文件增量补丁、README、CLI/只读 HTTP/业务计数证据并核对 Filament TableWidget heading 和 Group 对象 API，确认八个默认通知标题仅管理员列表精确显示映射，动态变量/自定义模板、数据库及实际发送功能不变；商品与套餐选项仅翻译显示标签。PR #149 squash 合并至 main b2dca40ccfdf8c405a1bfce36f248ed74a701e08。R1 本机补丁由 Executor 应用并通过其 CLI/静态检查，但 Reviewer 未独立登入本机验证修改后的页面；G2B 总体 PARTIAL。
@@ -19,14 +20,14 @@ CURRENT_ACCEPTED_STATE:
 - 中文事实：默认语言已设置 zh；前台、登录页、用户区部分繁体中文；首页及管理员后台仍有英文。未更改翻译文件。此为功能限制，不是 G1 部署阻塞。
 - 源码/镜像：官方 Paymenter 上游 master 1d4c0b92dac0f93f28998b04c4c0e282bf436177；实际 App/MariaDB/Redis 镜像 SHA 与探测细节详见 EXECUTION_EVIDENCE。
 - 启动问题已修复并验证：数据库 readiness 竞态；Windows host bind MariaDB InnoDB 表空间问题。改用独立命名卷，保留首次失败数据目录；未 prune/down -v、未动其他项目。
-CURRENT_GATE: G2C `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`，新增三文件补丁和无敏感证据已进入 https://github.com/entropy-student/project/pull/150，等待 Reviewer；G2B 登录态视觉总体验收仍 PARTIAL 且保留，G1/G2A/R1 不重跑。
+CURRENT_GATE: docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md = PARTIAL_AUTHENTICATED_UI_EVIDENCE_PENDING。G2C 源码/请求级 locale/审计详情 runtime 正式 PASS，PR #150 已合并 main (752b4ececf0d58850fc34431db785327add4dc25)；不重复 G1/G2A/R1/G2C。
 CRITICAL_CONSTRAINTS: 仅本机 loopback；不使用真实 Stripe、不产生真实交易、不购买/安装推荐扩展、不公开网络、不触碰其他 Docker 项目/VPS；不要把账号口令、DB Secret、Cookie 写到 GitHub。一次性演示密码曾在本次对话出现，禁止当作未来正式系统的可信凭据复用。
 DEFAULT_EXECUTION_CHANNEL: Owner Windows 本地 Codex（已通过真实主机 G1 行为验证）；Reviewer 管理仓库文档与 Gate。
 CURRENT_ROLLBACK_STATUS: 可通过精确 docker compose -p paymenter_local_lab -f <owned-compose> stop 停止试用并保留命名卷及本机文件；这属于停机而不是已验证的全量灾备/恢复，恢复演练未做。
-UNRESOLVED: G2C locale 中间件和 audit 详情参数已作最小源码/CLI 修复并提交 Reviewer；后台登录态真实视觉仍未验收。另有人工注入非法前台 session locale 时原版 SetLocale 未返回 200 的非正常路径观察；内置 LocaleSwitch 有 allow-list 校验，本 Gate 未改前台中间件，Reviewer 可决定是否另开范围。Owner 的 R1 后截图证实前台切 Suomi 菜单为 Koti/Kauppa/Näytä，演示商品/分类与品牌中文来自已保存内容，属预期。R1 通知列表八项中文已实拍，但动态标题仍英文；部分管理员技术列表列名英文；用户 dashboard、商品编辑/套餐和其它交互仍未验收。原生日期占位随浏览器区域设置，Stripe/Referrals 未启用。
-NEXT_STEP: Reviewer 审查 G2C 三文件增量补丁、请求级 zh/en/fi locale 证据及审计详情 fixture 渲染；若接受，再按正常支持方式补充登录态视觉验收，保持 G2B 总体 PARTIAL 直至其证据完整。不重复 Docker/G1/G2A/R1。
-OWNER_ACTION_REQUIRED: G2C 源码/CLI 执行证据已提交 PR；无本机操作或业务数据变更待 Owner 执行。仅在 Reviewer 要求时，通过正常支持的路径补登录态截图；不绕过浏览器工具限制。
-EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md 包含 Reviewer 的五张截图分析、原版 locale 源码与 G2A audit 缺参核验；当前 Gate docs/G2C_NATIVE_LOCALE_AND_AUDIT_REPAIR_GATE.md；PR #148 G2A 原补丁、#149 R1 增量补丁；G2B 视觉仍见 docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md；修复前状态不变。
+UNRESOLVED: G2C admin locale 及 audit 详情缺参已经通过源码+真实 fixture 渲染证据并被 Reviewer 正式接受；后续仍缺真实登录态后台中英文/芬兰语切换及用户 dashboard、套餐编辑视觉回归。人为注入非法前台 session 导致非 200 是原版边界情况，内置选择器拒绝不允许的值；低优先级记录、非 G2C 阻塞；后台芬兰语分组未提供翻译时显示英文是 fallback，非锁定语言。R1 通知列表八项已实拍中文但自定义/动态标题未翻译；日期 input 随浏览器区域设置，Stripe/Referrals 未启用。
+NEXT_STEP: Owner 可继续本机私有试用，按 docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md 提供少量真实已登录后台(默认中文与另一种语言)、用户 dashboard、商品编辑/套餐页的代表性非敏感截图或等价视觉记录，Reviewer 决定整体 G2B PASS/PARTIAL。只有发现具体阻塞才开局部修补，勿重部署、勿重做翻译。
+OWNER_ACTION_REQUIRED: 无需再次运行 Codex 或重启 Docker；如需完成 G2B 整体视觉验收，Owner 可用已有本机浏览器提供管理员中文/英语两种语言示例、用户 dashboard、商品编辑/套餐各一张非敏感截图。当前日常本机试用不阻塞。
+EVIDENCE_POINTERS: EXECUTION_EVIDENCE.md（含 G2C Executor 与 Reviewer 实际代码核验/决议）；PR #150 https://github.com/entropy-student/project/pull/150 merged 752b4ececf0d58850fc34431db785327add4dc25；G2C 增量补丁/回滚 localization/g2c/README.md；G2B 后续 Gate docs/G2B_VISUAL_UI_ACCEPTANCE_GATE.md；G2A PR #148、R1 PR #149。
 
 
 ## 2026-10-17 G2C Executor result
