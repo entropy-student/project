@@ -4,7 +4,15 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-17 (PR64 a3ab launcher actual source reviewed SHA PASS; next one Owner Cloudflare dashboard + protected native PowerShell connection; no public HTTPS yet)
+ > Last reviewed: 2026-10-17 (Owner screenshot confirms original HTTPS frontend visible but unstyled; prioritize immediate public private-route negatives + targeted CSS/proxy/canonical repair; Stripe still pending)
+
+## CURRENT_G3S4L_OWNER_HTTPS_VISIBLE_STYLES_BROKEN_2026_10_17 — LATEST
+
+**Latest new runtime observation — Owner browser screenshot (2026-10-17):** `https://magazine.spikersun.com` visibly serves original Birthday Magazine HTML/hero from a public browser but navigation links/menu are unstyled and theme CSS/layout clearly broken. Earlier Owner screenshot showed Cloudflare named Tunnel `birthday-magazine-local-test` **Healthy**, 1 connected `cloudflared 2026.10.1`, and separate subsequent route creation UI `magazine.spikersun.com` → `http://127.0.0.1:8189`. This is **OWNER_SCREENSHOT** evidence of tunnel/backend likely reachable, **not** independent Reviewer control-plane readback, full public DNS/HTTPS/security PASS or a confirmed CSS root cause. Reviewer tool's own network could not resolve/fetch this public hostname, so don't falsely claim independent external success. Original `home/siteurl` last verified `http://127.0.0.1:8189` before route; might generate broken CSS asset origins/mixed-content, but actual current config and CSS response status UNKNOWN.
+
+**Next current G3S4L subphase:** existing [G3S4L Gate latest post-publication CSS/public-safety appendix](./docs/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_GATE_2026-10-17.md). **Codex autonomously executes one bounded real-host post-publication task**: immediate **anonymous public negative checks** (Woo orders/private uploads/admin/debug) before any further exposure changes; if actual unauthorized private access, remove only published `magazine` route/stop connector and RETURN. Then classify failed CSS stylesheet script URLs/HTTP status/content type/mixed content/redirect, verify WordPress home/siteurl and existing proxy X-Forwarded-Proto truth, fix one proven layer with exact rollback for any WordPress setting. No reinstall, new Tunnel/Token entry, extra AppData paths, global DB replace, blind Cloudflare SSL changes, VPS or new WP. Acceptance is normal public styled navigation/hero/CTA and checkout/previews plus real CSS requests 200/no mixed content/loopback redirects, public private negative PASS, one minimal PR64 evidence/Reviewer STOP. **Stripe TEST must remain untouched until public HTTPS/styling/safety passes.**
+
+**Project snapshot:** PR64 latest previously verified `a3ab8b6ca06c4b6f6f1902a6d0e85ad4f2bf0467` OPEN/unmerged; local starter static code SHA PASS, connector on Owner computer visibly Healthy, fixed HTTPS original content externally visible in Owner screenshot; stylesheet/HTTPS canonical and public privacy verification IN_PROGRESS, Stripe OAuth/Webhook/Test checkout/refund PENDING. Owner needs **NONE** now, leave foreground PowerShell and Docker running while Codex tests. Never request connector Token in chat, screenshot, PR or env.
 
 ## CURRENT_G3S4L_A3AB_LAUNCHER_STATIC_PASS_CLOUDFLARE_OWNER_ACTION_2026_10_17 — LATEST
 
@@ -228,7 +236,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4L_A3AB_LAUNCHER_STATIC_PASS_ONE_OWNER_NAMED_TUNNEL_AND_REAL_HOST_RUN
+CURRENT_GATE=G3S4L_POST_PUBLICATION_PRIVATE_NEGATIVE_AND_PUBLIC_CSS_LAYOUT_REPAIR
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -657,9 +665,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4L Reviewer static code PASS @ PR64 `a3ab8b6ca06c4b6f6f1902a6d0e85ad4f2bf0467`:** actual launcher source FULLY reviewable in Evidence, independent SHA256 4,392 bytes match `E0C549D6769672B60EE58A72222F0E70387BDB26FECC5A1EAF9353FDE0E27DEC`. Private protected file and masked input flow static accepted; **runtime and owner-native file identity must still be proven by Owner's first normal PS5.1 launch guarded with this file hash**. No more Codex source submission or local setup gate needed. Specific Owner one-session command/steps in `docs/REVIEWER_DECISION_G3S4L_A3AB_STARTER_SOURCE_STATIC_PASS_2026-10-17.md`.
+**G3S4L Owner screenshots post-connector:** Cloudflare Tunnel **Healthy**, and fixed `https://magazine.spikersun.com` renders recognizable original WordPress HTML/image, **but missing stylesheet/layout**. **Owner screenshot**, not verified full public access/status/control-plane, and no CSS cause proven. Priority immediately **anonymous external Woo-order/private-upload/admin/debug negative checks**, remove only exposed magazine published route if actual unauthorized private data accessible. Else inspect public CSS/JS URLs/responses/CSP/mixed-content, last original WordPress `home/siteurl=http://127.0.0.1:8189`, existing forwarded HTTPS recognition; smallest reversible WordPress-native address/HTTPS or targeted asset/cache repair based on actual error. Test public normal styling, no loopback redirects, guest/preview/checkout, negative private access. **Do not conduct Stripe TEST OAuth/payment/refund this repair round**. Current Gate latest bottom appendix owns work; no Owner clicks/credential re-entry; PR64 Evidence append then Reviewer STOP. No Live, VPS, second WP or PR merge.
 
-**Actual single fixed route:** new official remotely managed Cloudflare named Tunnel `magazine.spikersun.com` -> original `http://127.0.0.1:8189`; Cloudflare `spikersun.com` write permission, `magazine` DNS/published-route collision and actual connector credentials unverified. Owner's Cloudflare dashboard creates Tunnel, Owner's native PowerShell starts reviewed helper with hidden token input (token path only in argv) and waits Healthy, then dashboard publishes the exact application hostname. No automatic login bypass, no token bearing Windows service-install command, no new AppData path. Following public site needs immediate private/guest positive-negative checks, reversible WP home/siteurl HTTPS/cookies then official Stripe **TEST** one synthetic USD39.99 charge/webhook first/invalid/replay/refund/revoke. No Live, VPS, second WP, paid host or PR merge.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -785,15 +792,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **Reviewer HAS accepted complete unchanged local launcher source (a3ab). Do not re-send Codex the same prompt, re-download, rescan or request a new source artifact.**
-2. **Owner one-time Cloudflare dashboard/normal PowerShell 5.1 session, when ready:** check only `spikersun.com` zone and exact `magazine` DNS/published routes no collision and right to write; create dedicated remotely managed Tunnel; extract connector token privately from Windows install command but **do not run service-install command**; open fresh independent Windows PowerShell 5.1, verify source SHA256 `E0C549D6769672B60EE58A72222F0E70387BDB26FECC5A1EAF9353FDE0E27DEC` using decision's one-shot guard, run script, token into hidden prompt, wait tunnel Healthy, add Published application `magazine.spikersun.com` → `http://127.0.0.1:8189`. Never send token to agent/chat/Git or screenshot.
-3. Once public HTTPS truly exists, Codex safe external positive+negative/private checks and reversible WordPress canonical URL / official Stripe TEST (normal Owner sign-in), one bounded synthetic $39.99 payment+signed webhook+refund. PR64 evidence, Reviewer STOP, no Live/real.
+1. Codex only: inspect actual deployed public `magazine.spikersun.com` anonymous private Woocommerce orders/uploads/admin/debug negative access immediately; if breach remove only this newly published route and stop.
+2. Codex only: read-only CSS asset failures on host HTTPS and compare local; inspect WordPress current `home/siteurl`, URL overrides and existing trusted forwarded HTTPS marker. Apply smallest rollback-ready address/proxy or CSS-specific fix based on proof; verify styled home + representative Woo checkout/previews, no mixed content/loopback redirects, public negatives.
+3. Append objective evidence to PR64 G3S4L and STOP Reviewer for actual public/frontend acceptance; once accepted, next later Owner official Stripe TEST OAuth/one bounded synthetic $39.99 check/refund. No duplicate media backups/Tunnel/token setup.
 
 ## OWNER_ACTION_REQUIRED
 
-- **Source review already PASS; Owner only if they choose to establish public HTTPS now:** one Cloudflare official dashboard + Owner-native visible Windows PowerShell 5.1 session as above. The already logged-in browser session can be used; no separate `cloudflared login` certificate auth. Real Cloudflare connector Token is a private local prompt entry only, not chat.
-- **On any actual portal permission / collision / local SHA / ACL error:** stop only affected action, report sanitized error and no Secret; do not retry blindly.
-- **Later:** normal official Stripe TEST provider login/consent after stable HTTPS and private-data checks. No Live money.
+- **NOW: NONE.** Leave existing visible Cloudflare connector PowerShell foreground and original WordPress Docker running. No more login, Tunnel token, AppData or DNS changes needed for public HTML/CSS diagnosis.
+- **Only if later requested:** sanitized before/after screenshot for public styling, not a new secret/account step. Stripe TEST OAuth is separate after public site and private checks PASS.
 
 ## EVIDENCE_POINTERS
 
