@@ -598,3 +598,37 @@ LIVE_OPERATION=NONE
 ```text
 G3S4M_STATUS=AWAITING_OWNER_RESEND; STRICT_REPLAY=NOT_YET_PASS; STOP_BEFORE_REVIEWER_CLOSEOUT=YES
 ```
+
+## G3S4M post-resend read-only reconciliation — 2026-10-18
+
+Scope was limited to read-only reconciliation after the Owner's one official Stripe TEST Dashboard resend. No new resend, order, payment, refund, webhook probe, configuration change, or credential read/output was performed by this Executor.
+
+### Existing refund event and callback
+
+- The Owner-reported official Dashboard delivery shows the original `charge.refunded` event manually retried once to the registered `magazine.spikersun.com/?wc-api=wc_stripe` destination and delivered `200 OK` at `2026-10-17T16:08:20Z`. No second click was requested or performed.
+- Stripe TEST readback still returns the same original event fingerprint `9eab6614ade9` (event created `2026-10-17T15:13:23Z`, `livemode=false`) and the same unique enabled endpoint fingerprint `1cffdfa22f00` (`livemode=false`, 23 event types, exact target URL).
+- The original WordPress Docker container access log independently contains one request to the Stripe callback route at `2026-10-17T16:08:20.325Z`, HTTP 200, matching the Dashboard retry time. The available Woo Stripe log did **not** contain the original event fingerprint or a later replay receipt; its last timestamp was `2026-10-17T15:15:26Z`. Therefore local endpoint receipt/HTTP response is corroborated, but a plugin-level signed-event/duplicate-ack record is not independently retained. Do not treat the HTTP 200 alone as full runtime idempotence proof.
+
+### Original order invariants and unexpected TEST account activity
+
+- The original Woo order remains `refunded`, USD 39.99; Woo has one refund totaling USD 39.99. Its bound owner still fails the runtime workspace-access predicate.
+- The original Stripe TEST PaymentIntent remains succeeded with `livemode=false`; its charge remains fully refunded for 3999 cents. Stripe still has one succeeded refund totaling 3999 cents. The existing charge.refunded event has `pending_webhooks=0`.
+- The current Stripe TEST Events list contains 57 events, no more pages, and zero events with pending webhook deliveries. The original endpoint remains the only exact URL match. The local Woo Stripe order count remains one.
+- **Unexpected state requiring Reviewer attention:** the current TEST account also contains a separate succeeded PaymentIntent and charge for **HKD 100.00**, created `2026-10-17T16:01:16Z` (`livemode=false`), with one-way fingerprints `abbca7dfbf24` / `1cb2cba449ed`. It does not match the original Woo order, has no matching Stripe-linked Woo order in the local store, and shows zero refunded amount. This provider payment predates the Owner's 16:08:20Z resend and appeared after the previous 15:48Z pre-replay readback; its origin is unknown. It is TEST-only (no Live funds), but it is an additional successful TEST charge outside this Gate's authorized transaction scope. No attempt was made to refund, reverse, or otherwise alter it.
+- Generation-job counter options are absent in the current runtime readback; therefore a numeric fulfillment-job count is **UNVERIFIED**. No additional Stripe-linked Woo order or matching fulfillment task was identified in the bounded readback.
+
+```text
+SAME_ORIGINAL_EVENT=PROVIDER_FINGERPRINT_MATCH;OWNER_DASHBOARD_MANUAL_RETRY_200;LOCAL_CALLBACK_ROUTE_HTTP_200
+PLUGIN_LEVEL_REPLAY_RECEIPT=NOT_RETAINED;STRICT_RUNTIME_IDEMPOTENCE=UNVERIFIED
+ORIGINAL_WOO_ORDER=REFUNDED;WOO_REFUNDS=1_X_USD_39.99;STRIPE_TEST_REFUNDS=1_X_USD_39.99
+ORIGINAL_OWNER_WORKSPACE_ACCESS=DENIED;PENDING_TEST_WEBHOOKS=0
+UNEXPECTED_SEPARATE_TEST_PAYMENT=HKD_100.00_SUCCEEDED;LIVEMODE_FALSE;ORIGIN_UNKNOWN;NO_MATCHING_WOO_ORDER
+FULFILLMENT_JOB_COUNT=UNVERIFIED
+NO_EXECUTOR_TRANSACTION_OR_CONFIGURATION_WRITE=YES
+RESULT=RETURN_UNEXPECTED_STATE;STOP_FOR_REVIEWER
+PR64=OPEN_UNMERGED;NO_MERGE
+```
+
+### Tunnel shutdown readiness
+
+The latest Handoff requires the foreground Cloudflare PowerShell to remain open until Reviewer accepts final Stripe TEST closeout with no pending callbacks. That acceptance has **not** occurred; this return also contains the unexpected separate TEST payment and the unverified plugin-level replay record. Keep the connector window open pending Reviewer disposition. After Reviewer accepts a final closeout and no callback is pending, Owner may press `Ctrl+C` in the foreground `Start-MagazineTunnel.ps1` PowerShell. This temporarily makes public `magazine.spikersun.com` and external webhook callbacks unable to reach local WordPress; local Docker WordPress and data remain available.
