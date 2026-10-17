@@ -161,3 +161,17 @@
 - ROLLBACK_EFFECT：旧V1/V2/V3主文件保留，PR未合并；撤掉V4新文件即可恢复PR上轮状态，main无需业务回滚。
 - RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：没有付费、生图、录音、对外下载/发布、生产写入、账户或主机变更。
 - EXECUTOR_RESULT：`V4_ARCHITECTURE_CANDIDATE`；REVIEWER_RESULT：`PARTIAL`；Owner relay：`NONE`；需后续对相同GitHub母版做真实连续视觉审核。
+
+
+## EVIDENCE 2026-10-18｜V5.6 ⑨ T6数据类型与比较方式
+
+- **AUTHORIZED_GATE:** `CWS-V56-T6-DATA-GENERALIZATION-20261018`；Owner仅授权原问题⑨，完成即停；绝不擅自进入制片。
+- **PREFLIGHT_FACTS:** 主线V5.2冻结blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`，隔离V5.5父候选blob `bbc6f40c1dd6bf1cc4b1c8ab4f55f49e0a13881f`，PR#144 Open/Draft；Mac独立原版SVG/Canvas及T1～T5不改。
+- **ACTUAL_CHANGES:** 仅新增`visual/content-template-lab/storyboard-v5-6-t6-generic-data.html`（blob `a0213f7991968fabd3f36be99363310d27324422`）。T6 bars/delta/ratio/change模式、负值零轴、2～8同口径指标、单位/小数位、来源注明、同比百分比变化 vs 百分点差；JSON `CWS_STORYBOARD_V2`可继续用旧配置。非法单位、零基数、非有限值、刻度不足和未知比较模式均事务式拒绝。
+- **OBJECTIVE_READBACK:** 新HTML已从GitHub回读，blob与本地最终字节一致；单Mac Canvas，无额外Qt窗口，main冻结SHA无变化。所有样例数据均为虚构，不包含外部图像/视频。
+- **VALIDATION:** Chromium真实浏览器`page.set_content`模式下46/46专项用例PASS；涵盖V1/V2导入与导出、V5.5双Cue、数据类型、8项布局、非法请求数据原子失败。原Research Aqua原生Canvas在8个时间点与V5.5原始Canvas像素级一致（使用Canvas.toDataURL直接像素；原截图比对混入新T6内容层，属于测量方法假阳性）。浏览器异常0。
+- **ANOMALIES:** 测试容器禁止通过`file://`直接导航，改用DOM已解析单HTML进行实测。之前V5.6版本从0实速播放至31.06秒显示playing=false且回原桌面，但仅最后一个差值%→百分点文字修改之后尝试再跑完整31s时，运行器超时；**不得声称最终字节重新完成了全程1×实时验收**。4–6分钟真实配音、MP4与素材权利均UNVERIFIED。
+- **EVIDENCE_ARTIFACTS_AND_PURPOSE:** [V5.6 Review详情](CWS_V56_T6_GENERIC_DATA_REVIEW_2026-10-18.md)，对应本轮对话的离线HTML、六份可导入V2分镜样例、46项测试日志/PNG与ZIP。
+- **ROLLBACK:** 直接忽略/撤回PR的新V5.6文件即可；main冻结V5.2不改，旧V5.5和V5.4完整保留。
+- **RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT:** 无模型下载、对外素材、支付、服务、真实制作和发布成本。
+- **EXECUTOR_RESULT:** `V56_TECHNICAL_PASS_CANDIDATE`；**REVIEWER_STATUS:** `COMPONENT_TEST_PASS / FULL_FINAL_REALTIME_UNVERIFIED / PRODUCTION_HOLD`。**OWNER_ACTION_REQUIRED:** NONE，等待Owner决定后续方向。
