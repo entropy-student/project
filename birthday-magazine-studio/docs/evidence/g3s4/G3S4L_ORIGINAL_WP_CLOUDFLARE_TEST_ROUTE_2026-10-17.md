@@ -509,3 +509,28 @@ Anonymous HTTPS page reads returned 200 for home, /make-your-magazine/, /product
 No rendered screenshot was captured because the available in-app tab remained on the Cloudflare management route and the active-tab safety guard was not bypassed. Visual appearance remains unverified. No Stripe, Cloudflare, DNS, Tunnel, CSS/JS, plugin, WordPress home/siteurl, customer/order, or backup state was changed.
 
 STOP_AT_REVIEWER=YES
+
+
+## 2026-10-17 existing TEST order reconciliation — before any refund or code mutation
+
+**Gate:** G3S4L existing-order refund and workspace entitlement closure. **PR #64 remained OPEN/UNMERGED** at the readback head above. This appendix records the actual local runtime before this continuation's writes; no order was created or changed during reconciliation.
+
+### Runtime/source identity
+
+- Existing Docker WordPress and WP-CLI targets were running. The workspace plugin was active and its route function loaded in WordPress.
+- The active plugin source was bind-mounted from the existing project working tree. Its Git blob SHA-1 matched PR #64 source blob 33ee82dd1c79c8e5f0c6ff85855b3a3537520b8c; scoped SHA-256 before repair was E971D02BE42E4DBB01B1CC1C614CD49D76991AD1DF2F253CEC80825F0B9823D2. The plugin file itself had no pre-existing local diff. Other existing workspace modifications/deletions were left untouched.
+- Exact order, PaymentIntent, and event fingerprints (first 12 hex chars of SHA-256) are 77523aa0395b, 944f3127f738, and 517f7974ad20. No customer email, name, account ID, PaymentIntent ID, event ID, card detail, or credential is recorded.
+
+### Unique payment and refund readback
+
+- A bounded native Woo query found exactly one USD 39.99 Stripe order with a PaymentIntent; it is the existing fingerprinted order. Woo state: processing; an existing customer account is bound, order/owner binding metadata matches, PaymentIntent metadata is present.
+- Stripe API read through the plugin's currently selected TEST mode returned PaymentIntent succeeded, USD 3999 cents, livemode=false. Exactly one matching payment_intent.succeeded event was returned and its livemode=false.
+- Before any refund: Woo refund records 0, Woo refunded total 0; Stripe TEST refunds query succeeded and returned 0 records. No refund request was made in this reconciliation.
+- Woo Stripe runtime settings: TEST mode yes, gateway enabled yes; test secret and test webhook signing-secret presence were checked as booleans only; live secret and live webhook-secret fields were empty. The provider TEST API read succeeded. Stripe TEST returned one enabled callback for https://magazine.spikersun.com/?wc-api=wc_stripe, with 23 enabled event types.
+
+### Signed event correlation and code finding
+
+- The official handler calls validate_request() before processing and sets last_webhook_success_at only after processing; E2E_TESTING is not defined. The matched event created timestamp exactly equals the runtime success timestamp (1792247923); latest failure timestamp is 0, reason No error. This is consistent with the one actual signed TEST event accepted by the running plugin; it does not rely on a synthetic signature or a GET request.
+- The active plugin source still checked only account/order binding on the My Account link and direct workspace route. It did not check paid status, cancellation/failure, or full refund. No refund or code mutation had yet occurred.
+
+RECONCILIATION=UNIQUE_EXISTING_TEST_ORDER;PI_SUCCEEDED_TEST_ONLY;SIGNED_EVENT_STATE_CORRELATED;WOO_AND_PROVIDER_REFUNDS_ZERO;WORKSPACE_OWNER_BINDING_PRESENT
