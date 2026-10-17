@@ -1,6 +1,6 @@
 # G2C — 恢复 Paymenter 原生多语言语义并修复审计详情运行时问题
 GATE_ID: PAYMENTER-G2C-LOCALE-SEMANTICS-AND-AUDIT-RUNTIME-20261017
-STATUS: OWNER_REPORT + REVIEWER_DIRECT_SOURCE_CONFIRMATION / EXECUTOR_AUTHORIZED_NOT_EXECUTED
+STATUS: EXECUTOR_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI / REVIEWER_PENDING; G2B_UI_REMAINS_PARTIAL
 GOVERNANCE: entropy-student/spike.skill@main:vps-project-governance/VNEXT.md v0.2.7
 RELEVANT_ACCEPTED_BASELINE: G1 本机 Docker/登录 PASS；G2A PR #148 主补丁已本机部署（仍是源码/CLI 范围 PASS）；G2B-R1 PR #149 增量补丁已本机部署（源码/CLI 范围 PASS）；完整 G2B 多页 UI 保持 PARTIAL。禁止因这个 Gate 重放 G1/G2A/R1。
 TARGET: Owner 真正 Windows 11 本机；仅项目 Docker Compose paymenter_local_lab 中的 paymenter app 源码 /app（项目命名卷）及项目本地非秘密补丁。http://127.0.0.1:8187；DB MariaDB、Redis 与命名卷均保留。
@@ -51,3 +51,18 @@ D. 保留现有 G2A/R1 用户界面翻译、通知映射、品牌、商品、优
 回滚：仅 G2C 补丁反向应用与 view:clear，不回退 G2A/R1。
 请 Reviewer 检查：跨语言请求语义与审计显示变量无损。
 Owner 转交：NONE，除非唯一必需的低成本真实截图。
+
+
+## EXECUTOR_TO_REVIEWER_RELAY — 2026-10-17
+
+RESULT: `PASS_CANDIDATE_G2C_LOCALE_AND_AUDIT_CLI` / `PARTIAL_G2C_UI_EVIDENCE_PENDING`.
+
+CHANGES: 仅三文件增量补丁 `localization/g2c/paymenter-g2c-locale-audit-v1.5.9.patch`；admin 尊重允许的 session 语言，zh 映射 zh_CN，Filament 分组延迟本地化；审计视图恢复 event/type 参数。补丁 SHA-256 `089f7a45674f2076eb3aa5c396a8a90b435c5c2af18f71b409fc6148e1bf60c2`。
+
+VALIDATION: PHP lint、Blade cache 编译与虚构 fixture 详情运行时渲染通过；zh/en/fi 的实际 HTTP Kernel session 回归和 admin 导航组/资源分组标签通过；非法/空/缺失 admin locale 回退通过；新补丁重放/反向往返通过。数据行数与通知模板哈希不变，loopback HTTP 200/302 符合预期。
+
+LIMITATION: 未认证 admin 请求为预期 302；未做登录态视觉/交互验收。Finnish 管理分组缺少芬兰语词条时使用英文 fallback。人工注入非法前台 session locale 的额外负向探测未返回 200；正常 LocaleSwitch 会阻止非法值写入。本 Gate 未扩大改写前台 SetLocale，交 Reviewer 决定是否开后续修复。G2B 全面 UI 状态仍 PARTIAL。
+
+ROLLBACK: 只反向应用本 Gate 新增 G2C 补丁并清 Blade view cache，回到 G2A+R1；不触碰数据库、命名卷、账号、商品、订单、支付或其他项目。
+
+请 Reviewer 核验 locale 请求语义和 audit 详情无参缺失后验收。
