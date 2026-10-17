@@ -1,13 +1,15 @@
 # G3S4AR — Versioned visible launcher v2, with at most one existing local admin reset
 
 > Date: 2026-10-17
-> Status: **OWNER_AUTHORIZED — EXECUTOR_REPORTS_V2_PREPARED; OWNER_NATIVE_PS51_CANNOT_FIND_FILE; CREDENTIAL_WRITE_NOT_STARTED; REAL_HOST_DELIVERY_HOLD**
+> Status: **OWNER_AUTHORIZED — V2 OWNER FILE DELIVERY VERIFIED; OWNER V2 TARGET_CHECK ACL_UNSAFE NOT_STARTED; READONLY ACL PREDICATE PASSES TESTED PATHS; CHILD CONTEXT HOLD**
 > Parent Reviewer decision: `docs/REVIEWER_DECISION_G3S4A_RETURN_LAUNCHER_FAIL_CLOSED_DIAGNOSTICS_2026-10-17.md`
 > Explicit Owner authorization: `docs/OWNER_AUTHORIZATION_G3S4AR_VERSIONED_LOCAL_ADMIN_RECOVERY_2026-10-17.md` (Owner current direct message; one defined bounded G3S4AR round)
 > Original G3S4A: `docs/G3S4A_LOCAL_WP_ADMIN_DISCOVERY_AND_PASSWORD_RESET_2026-10-17.md` (STOPPED/RETURNED, not auto-resumed)
 > Governance: `entropy-student/spike.skill/main/vps-project-governance/VNEXT.md` v0.2.7 §11B
-> PR #64 previous head: `777463995a298118dae0c6763f6c668207a19350`, verify fresh before any later Evidence commit
+> PR #64 latest Reviewer-inspected head: `14bd89cf1e6a471a7f262f38db27c73081af2ba0`; verify fresh before any later Evidence commit
 > **Owner authentication/passphrase only in a separate personally visible Windows PowerShell 5.1 window.** Owner approval is now recorded for this exact round; Executor relay must include it. All safety preconditions and STOP remain in force.
+
+**CURRENT REVIEWER DISPOSITION (supersedes earlier interim file-not-found notes):** `docs/REVIEWER_DECISION_G3S4AR_PARTIAL_ACL_RECONCILIATION_TARGET_CHECK_CONTEXT_HOLD_2026-10-17.md`. The real Owner-visible v2 entered `TARGET_CHECK` and returned `ACL_UNSAFE` / `NOT_STARTED`. Later separate ACL predicate readback passed only tested path roles; all callsite arguments and child-process context are not yet correlated. Next: ONE bounded nonsecret exact-callsite + native child-process reconciliation, correct only proven defects, qualify independent Owner-native entry before a single private reset. Do not replay the unchanged failing invocation. No new Gate or Owner reapproval.
 
 ## Gate contract
 
