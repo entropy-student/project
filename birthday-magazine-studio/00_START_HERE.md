@@ -4,14 +4,15 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Current read order (2026-10-17)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_REVIEWER_G3S4J_LOCAL_CLOUDFLARE_PREFERENCE_2026_10_17`, authoritative active route.
-2. [G3S4J Reviewer decision — local Docker + Cloudflare Tunnel](./docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md) — no new paid hosting; official HTTPS test design.
-3. [G3S4J current read-only Gate](./docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md) — inspect public exposure/WordPress URL/owner zone before any Tunnel/DNS write.
-4. [PR #64 G3S4H accepted historical Evidence](https://github.com/entropy-student/project/blob/b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf/birthday-magazine-studio/docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md) — WordPress.com Business $40 study shelved; no purchase.
-5. [G3S4M local unsupported CLI signing-key UI](./docs/REVIEWER_DECISION_G3S4M_RETURN_MANUAL_UI_SELECT_HTTPS_STAGE_2026-10-17.md) — local plugin active/gateway disabled, use normal HTTPS OAuth instead.
-6. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — historical docs.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — latest `CURRENT_OWNER_CODEX_CLOUDFLARE_BROWSER_OPEN_2026_10_17` and authoritative G3S4J check scope.
+2. [G3S4J Cloudflare/localhost current Gate](./docs/G3S4J_CLOUDFLARE_TUNNEL_LOCAL_STRIPE_TEST_DESIGN_GATE_2026-10-17.md) — latest Owner browser/screenshot appendix: **Codex's own Cloudflare tab read-only + existing 8189 safety**, one PR64 Evidence, stop.
+3. [Reviewer chosen free Cloudflare named Tunnel route](./docs/REVIEWER_DECISION_G3S4J_PREFER_CLOUDFLARE_TUNNEL_LOCAL_HTTPS_2026-10-17.md) — official HTTPS → local WordPress TEST, no added paid host.
+4. [PR #64 latest prior G3S4H research Evidence](https://github.com/entropy-student/project/blob/b0a2e7cd0d2488fde87eb9f0db4f3b20738394bf/birthday-magazine-studio/docs/evidence/g3s4/G3S4H_HTTPS_STAGE_DISCOVERY_2026-10-17.md) — still no Cloudflare or Stripe operation yet.
+5. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — prior milestones.
 
 ## Current snapshot (2026-10-17)
+
+- **Codex Cloudflare browser now available by Owner report:** screenshot shows `spikersun.com`, `spikewang.ccwu.cc`, `spikspikeapi.dpdns.org`. `stripe-test.spikersun.com` is only a candidate until Codex confirms zone active/DNS slot and Owner explicitly approves publication. Do not create DNS/Tunnel under this read-only Gate.
 
 - **Owner route:** already owns a domain on Cloudflare and prefers local Windows Docker WordPress + **free named Cloudflare Tunnel** HTTPS publishing to enable normal Stripe TEST OAuth/Webhooks. Do not buy WordPress.com for this testing need. Exact safe dedicated subdomain unverified/not published.
 - **Current G3S4J read-only design:** determine whether existing local `127.0.0.1:8189` has only safe synthetic data and can be published with reversible WordPress HTTPS canonical URL; if not, use isolated small local synthetic Woo stack. No public DNS/Tunnel/provider write authorized by feasibility question yet.
