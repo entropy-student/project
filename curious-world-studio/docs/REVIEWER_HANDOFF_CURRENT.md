@@ -1,5 +1,15 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V55_ISSUE10_CUE_NARRATION_TECH_CANDIDATE_20261018 -->
+## 2026-10-18｜V5.5 ⑩多字幕与旁白同步：技术候选待独立Review
+
+- **目标 / Gate**：仅原问题⑩，不重做Research Aqua、六内容模板、素材入库系统；`CWS-V55-ISSUE10-MULTICUE-NARRATION-TIMELINE-20261018` 已执行并局部验收。V5.4 `CWS_STORYBOARD_V1`及其测试为基础。
+- **新候选（PR#144 Draft）**：[storyboard-v5-5-cues-narration.html](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-5-cues-narration.html)，Git blob `bbc6f40c1dd6bf1cc4b1c8ab4f55f49e0a13881f`。每镜头0～80条独立`cues:[{start,end,text}]`，本镜头局部秒数、全局时钟驱动单行显示；film旁白`{assetId,startAt}`引用本地音频，与总时轴同步播放、暂停、seek。导出`CWS_STORYBOARD_V2/version=2`，旧V1导入迁移成覆盖镜头的Cue。缺失音频会报告，JSON无媒体字节或自动读取本机路径。
+- **独立自检（技术，非正式影片）**：Chromium新34/34、旧V5.4回归43/43、真实MP4/T5安全回归6/6、Mac画布在9个时码与V5.4像素一致；0→31.06s一倍速正常结束并回桌面，JS异常0。11s合成WAV检验seek/暂停/播放差值。用户Edge`file://`未实测。实际4–6分钟旁白音质、自动强制对齐、SRT或MP4、科学Story-Fit/真实权利仍未验收。
+- **SOURCE / RECOVERY**：main唯一冻结V5.2 `visual/frozen/storyboard-v5-2-20261017.html` blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`不变；PR#144保持Draft且未合并；V5.4无媒体版本留存；正式CW0005 R3视觉RETURN/G1 HOLD/G2/R4未授权/NO_PUBLISH和版权PARTIAL继续生效。
+- **Review / NEXT**：[V5.5详细Gate和测试](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V55_CUE_NARRATION_REVIEW_2026-10-18.md)及[PR评论](https://github.com/entropy-student/project/pull/144#issuecomment-6236496020)。下一阶段**须另立有界Gate**做⑨T6通用数据/比较展示。⑤真实档案/⑭故事素材需正式制片验证，⑪播放器时码语义低优先级。Owner无需操作，除非自主决定是否发原Reviewer复核。
+
+
 <!-- CWS_V54_ISSUE13_REVIEWER_RELAY_20261017 -->
 ## 2026-10-17｜最新Reviewer接手：⑬已实施V5.4数据导入候选，不要重做六模板
 
