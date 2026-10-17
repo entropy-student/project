@@ -197,3 +197,16 @@ KNOWN_LIMITATIONS:
 
 ROLLBACK: 仅反向应用 `localization/g2c/paymenter-g2c-locale-audit-v1.5.9.patch` 并执行 `php artisan view:clear --no-interaction`；恢复到 G2A+R1，不碰 DB/Redis/卷或业务记录。
 REVIEWER_REQUEST: 检查 session allow-list/default/zh 映射、lazy navigation groups、审计详情运行时参数，以及该 3 文件增量补丁和回滚说明。真实登录态视觉证据仍由 Reviewer 正常路径验收。
+
+## 2026-10-17 Reviewer decision — G2C SOURCE/REQUEST/RUNTIME PASS, G2B VISUAL PARTIAL
+GATE_ID: PAYMENTER-G2C-LOCALE-SEMANTICS-AND-AUDIT-RUNTIME-20261017
+PR_REVIEWED: https://github.com/entropy-student/project/pull/150
+HEAD_REVIEWED: 297db1708b437a411f130961be86d6a700547351
+MERGED_SQUASH_COMMIT: 752b4ececf0d58850fc34431db785327add4dc25
+PROVENANCE: REVIEWER_DIRECT_READBACK via GitHub for PR and entire nested 3-file patch, replay README, Executor Evidence, original Paymenter v1.5.9 source, and Filament 5.7.6 NavigationGroup and NavigationManager source. Runtime probe results are EXECUTOR_DIRECT_READBACK from Owner Windows per PR evidence; Reviewer did not independently access host or login state.
+REVIEWER_FINDINGS: SetAdminLocale now permits only settings.allowed_languages string session values, falling back to configured valid APP_LOCALE or English, and maps 'zh' only to admin dictionary 'zh_CN'. 'en'/'fi' no longer forced Chinese. NavigationGroup::make(Closure) and getLabel() lazy evaluation supported at locked Filament 5.7.6; NavigationManager matches translated nav group labels and sorts based on current request. Audit detail view now calls str_replace with $audit->event and class_basename with $audit->auditable_type; untrusted DB content continues display-only and source patch does not mutate audit records.
+ACCEPTED_EXECUTOR_EVIDENCE: PHP lint, Blade cache compilation, actual in-memory fake audit Blade rendered (not merely syntax), Laravel HTTP Kernel with in-memory encrypted locale cookie flow for zh/en/fi and invalid/empty/missing admin session, admin grouping/translation in request context; own project patch apply/reverse roundtrip, immutable DB row counts and twelve notification template aggregate hash, site public GET 200 and anonymous protected routes 302. No restarted containers, migrations, gateway changes or product data edits reported.
+DECISION: G2C_PASS scoped to source patch / simulated request / real fixture runtime / non-destructive readback and rollback. G2B authenticated visual UI testing remains PARTIAL. Do NOT extrapolate simulated authless HTTP to actual logged-in Filament interaction, and do not rerun G1/G2A/R1/G2C.
+RESIDUAL: Nonstandard deliberately injected illegal frontend session value caused non-200 in upstream SetLocale; LocaleSwitch prevents normal users choosing illegal value. Track as low-priority defensive resilience issue, not blocker of this Gate and not a request to modify frontend in G2C. Finnish lacks admin group translations so framework renders fallback English while active app locale fi remains. Stored Chinese demo products/brand are author-managed DB content, not locale keys.
+NEXT: Optionally collect Owner's short screenshot proof of post-fix admin zh/en menu, user dashboard, product-edit plan. No automatic browser bypass, live payments, public route, destructive changes.
+ROLLBACK: Only G2C reverse patch + view:clear per localization/g2c/README.md, keeping G2A/R1 and project data.
