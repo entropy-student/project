@@ -438,3 +438,74 @@ Current result is a bounded guest checkout/provider-readiness candidate, not vis
 No Cloudflare Tunnel/DNS, WordPress setting, theme/plugin setting, order, payment, backup, or production configuration was changed.
 
 STOP_AT_REVIEWER=YES
+
+
+## 2026-10-17 G3S4L targeted loopback navigation repair
+
+~~~text
+GATE=G3S4L
+EXECUTOR_RESULT=PASS_CANDIDATE_TARGETED_NAVIGATION_REPAIR
+STOP_AT_REVIEWER=YES
+HOST=magazine.spikersun.com
+REPAIR_SCOPE=11_CUSTOM_MENU_URL_META;HOME_PAGE_858_ONE_CTA;WP_BLOCK_1143_THREE_LINKS;BLOCKSY_HEADER_BUTTON_ONE_THEME_MOD
+WORDPRESS_HOME_SITEURL=UNCHANGED
+STRIPE_CLOUDFLARE_DNS_TUNNEL=UNCHANGED
+GLOBAL_SEARCH_REPLACE=NOT_USED
+CSS_JS_PAYMENT_CONFIG=UNCHANGED
+BEFORE_CHECKOUT_LOOPBACK_HREFS=12
+AFTER_CHECKOUT_LOOPBACK_HREFS=0
+AFTER_HOME_PREVIEW_PRODUCT_MYACCOUNT_LOOPBACK_HREFS=0
+FRAGMENT_TARGETS_PRESENT=HOW_IT_WORKS,FAQ,PREVIEW,SAMPLES,WHAT_YOU_GET
+DESTINATION_STATUS=HOME_PREVIEW_PRODUCT_MYACCOUNT_HTTPS_200
+TEMP_CART_FOR_CHECKOUT_LINK_READBACK=CLEARED_ITEMS_COUNT_ZERO
+ORDER_OR_PAYMENT=NOT_SUBMITTED
+VISUAL_SCREENSHOT=NOT_CAPTURED_ACTIVE_TAB_GUARD_RESPECTED
+~~~
+
+### Persisted source identification
+
+The 12 checkout links matched the following stored sources, rather than 12 distinct pages: eight rendered custom-menu links, one Blocksy header CTA, and three anchors in published reusable footer block 1143. The home page also had one separate product CTA. WordPress permalink APIs already returned the public HTTPS product and My Account URLs; those two loopback links came from the saved footer block.
+
+The 11 affected custom menu records were post IDs 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1103, 1104, and 1105. Their stored _menu_item_url values shared the old origin http://127.0.0.1:8189 and these preserved suffixes:
+
+~~~text
+1094 /#how-it-works
+1095 /
+1096 /#faq
+1097 /#preview
+1098 /#samples
+1099 /#what-you-get
+1100 /#how-it-works
+1101 /
+1103 /#what-you-get
+1104 /#faq
+1105 /#preview
+~~~
+
+Only the origin changed to https://magazine.spikersun.com; paths and fragments were preserved. The other proven stored links were:
+
+| WordPress source | Link label | Original URL | Updated URL |
+| --- | --- | --- | --- |
+| Page 858 (Home) | Make their birthday magazine | http://127.0.0.1:8189/product/birthday-magazine/ | https://magazine.spikersun.com/product/birthday-magazine/ |
+| Reusable block 1143 | Free preview | http://127.0.0.1:8189/#preview | https://magazine.spikersun.com/#preview |
+| Reusable block 1143 | The magazine | http://127.0.0.1:8189/product/birthday-magazine/ | https://magazine.spikersun.com/product/birthday-magazine/ |
+| Reusable block 1143 | My account | http://127.0.0.1:8189/my-account/ | https://magazine.spikersun.com/my-account/ |
+| Blocksy theme mod header_placements.sections.0.items.1.values.header_button_link | Header CTA | http://127.0.0.1:8189/#preview | https://magazine.spikersun.com/#preview |
+
+A separate widget_text-3 option assigned to ct-footer-sidebar-3 contained older links but did not render in the sampled checkout, home, preview, product, or My Account HTML. It was left unchanged because it was not a source of the reported or sampled rendered links. Other Blocksy background-image URL values were not anchor sources and were not changed.
+
+### Guarded native repair and rollback
+
+The repair used WordPress native APIs only: update_post_meta for the 11 exact custom-menu _menu_item_url fields; wp_update_post for only the identified anchor hrefs in page 858 and reusable block 1143; and set_theme_mod for the single nested Blocksy header button link. Each write required an exact expected old value, expected item ID and, for content, an exact anchor label+href match. Readback confirmed all targeted values now use the public HTTPS origin. No theme source, database-wide content, settings beyond the named theme mod, CSS/JS, cache, payment or Cloudflare configuration was changed.
+
+The rollback values are preserved in the mapping above. Restore only those records through the same APIs: set the listed menu item _menu_item_url values to the old origin plus their exact suffixes; change the four content anchors on page 858/block 1143 back to their listed original URLs; and restore the header_button_link to http://127.0.0.1:8189/#preview with set_theme_mod. Guard each rollback by checking the current value still equals its recorded updated value. No rollback was required.
+
+### Post-repair verification
+
+A new independent WordPress read-only process confirmed all 11 menu records had the public HTTPS origin, with zero menu loopback values; the targeted Home/footer anchor sources had zero loopback hrefs and the Blocksy CTA read back as https://magazine.spikersun.com/#preview.
+
+Anonymous HTTPS page reads returned 200 for home, /make-your-magazine/, /product/birthday-magazine/, and /my-account/. Rendered anchor scans found zero 127.0.0.1 or localhost hrefs on each. Home contained all five targets used by the menu fragments: how-it-works, faq, preview, samples, and what-you-get. A single temporary anonymous cart was created solely to render checkout for the targeted href scan; checkout returned HTTPS 200 with zero loopback anchor hrefs, then the same Store API session confirmed items_count=0. No order or payment was submitted.
+
+No rendered screenshot was captured because the available in-app tab remained on the Cloudflare management route and the active-tab safety guard was not bypassed. Visual appearance remains unverified. No Stripe, Cloudflare, DNS, Tunnel, CSS/JS, plugin, WordPress home/siteurl, customer/order, or backup state was changed.
+
+STOP_AT_REVIEWER=YES
