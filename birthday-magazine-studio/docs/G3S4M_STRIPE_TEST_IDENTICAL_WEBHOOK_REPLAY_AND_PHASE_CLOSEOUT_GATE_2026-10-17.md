@@ -87,3 +87,25 @@ Owner 转交：NONE / 一次官方测试事件手动 Resend（如需，不能含
 **Reviewer formal checkpoint:** [`REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md`](./REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md). Actual PR64 HEAD `035e55ec6af41688b5efc56c638a58c4ebb3122b` OPEN/UNMERGED; **only existing G3S4L Evidence appended**. Codex read-only confirmed original Stripe TEST order `refunded`, Woo one USD39.99 refund, Stripe one succeeded 3999-cent refund livemode=false, owner workspace still denied. Unique TEST `charge.refunded` event `2026-10-17T15:13:23Z` hashed fingerprint `9eab6614ade9`, single active TEST webhook endpoint `https://magazine.spikersun.com/?wc-api=wc_stripe` fingerprint `1cffdfa22f00`, 23 event types, zero pending across 45 TEST Events. No CLI, no browser safety bypass. **This does NOT count as replay.**
 
 **Owner only actionable step:** ordinary authenticated Stripe **Test/Sandbox Dashboard** → **Workbench/Developers → Events** → original `charge.refunded` on 2026-10-17 at **15:13 UTC** (UTC+8 23:13), original $39.99 refund → its existing delivery to `magazine.spikersun.com/?wc-api=wc_stripe` → **Resend ONCE**, not Create/Trigger Event. STOP after one click even if UI uncertain; if missing, screenshot redacted and do not repeat. Reply `已重发一次`. Then Codex via current G3S4M must independently read back actual same-event redelivery and unchanged number/amount/state/denied workspace, append PR Evidence, Reviewer formally closes or defers. Stripe official https://docs.stripe.com/webhooks#manual-retries supports dashboard manual resend 15 days. Keep named Cloudflare Tunnel foreground PowerShell OPEN pending replay and Reviewer final signoff; after accepted phase closure and no pending callback, Owner can Ctrl+C to stop public domain forwarding (not Docker/data). No new order, payment, refund, signing secret, Live or PR merge.
+
+
+## 2026-10-18 Owner Stripe UI screenshot — SAME TEST event manual resend 200 OK; read-only verification NEXT (LATEST)
+
+**Owner screenshot supplied in chat** after manually operating the normal Stripe **Sandbox/Test** Workbench Events page. The selected original `v1.charge.refunded` event shows Webhook destination `https://magazine.spikersun.com/?wc-api=wc_stripe`; one entry marked **`手动重试` (manual retry)** under that destination, with HTTP **`200 OK`** and `已送达` (delivered), timestamp **2026-10-17 16:08:20 UTC (2026-10-18 00:08:20 UTC+8)**. Prior original delivery also `200 OK`. The screenshot shows **one manual-retry attempt**, not a new Stripe payment or refund. **Evidence provenance=`OWNER_SCREENSHOT_PROVIDER_UI`**, not independently queried endpoint/order truth.
+
+```text
+G3S4M_OWNER_MANUAL_RESEND=SCREENSHOT_REPORTED_EXECUTED
+ORIGINAL_EVENT=v1.charge.refunded
+TARGET=https://magazine.spikersun.com/?wc-api=wc_stripe
+MANUAL_RETRY_DELIVERY=200_OK_DELIVERED
+MANUAL_RETRY_PROVIDER_UI_TIMESTAMP_UTC=2026-10-17T16:08:20Z
+IDENTICAL_TEST_EVENT_REPLAY_RUNTIME_BUSINESS_INVARIANTS=NOT_YET_READ_BACK
+STRIPE_TEST_ORDER=PREVIOUSLY_ONE_REFUNDED_ORDER
+STRIPE_AND_WOO_REFUND_COUNT=PREVIOUSLY_ONE_EACH
+NEXT_EXECUTOR=READ_ONLY_RECONCILE_THIS_ALREADY_SENT_DUPLICATE_EVENT_ONCE
+NO_MORE_OWNER_CLICKS=YES
+NO_NEW_PAYMENT_REFUND_EVENT_RESEND=YES
+TUNNEL_POWERSHELL=KEEP_OPEN_UNTIL_REVIEWER_FINAL_CLOSEOUT
+```
+
+**Critical change to execution:** PREVIOUS Owner one-click request is now **FULFILLED**. **DO NOT tell Owner to click Resend again**. Codex must *only* perform a bounded **read-only** verification against the original runtime/provider TEST state, confirming same event redelivery/delivery timestamp/log or attempt identity (no raw secret/event-ID output) and invariants: **one** Woo refund USD39.99, **one** Stripe TEST refund 3999 cents/livemode=false, Woo order `refunded`, owner workspace denied, no additional entitlement/job/charge/refund. A provider UI 200 is NOT proof of idempotent side effects on its own. If plugin logs/event retention cannot independently corroborate same signed event, classify precise `PROVIDER_MANUAL_DELIVERED_RUNTIME_REPLAY_UNVERIFIED`, not PASS. Do not perform further signed/invalid test probes, second redelivery or modify app/provider. Add one sanitized G3S4M closeout Evidence section to PR64 and STOP Reviewer. Reviewer then independently decides final TEST-only phase result, determines when Owner may Ctrl+C the foreground `cloudflared` PowerShell, and activates separate P1–P12 design Gate. Keep all accepted payment/refund/workspace guard frozen and PR64 OPEN/UNMERGED.
