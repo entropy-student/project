@@ -1,5 +1,16 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-17）
 
+<!-- CWS_V54_ISSUE13_REVIEWER_RELAY_20261017 -->
+## 2026-10-17｜最新Reviewer接手：⑬已实施V5.4数据导入候选，不要重做六模板
+
+- **OBJECTIVE / DONE**：Owner批准仅⑬，已在Draft PR#144新增[storyboard-v5-4-import-asset-map.html](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-4-import-asset-map.html)，blob `b7b880db77d42a9e35dcf3a833a68924cd4ef4df`。从V5.3.1衍生：新增`CWS_STORYBOARD_V1`读写、素材ID/文件名/MIME/权利状态登记、镜头完整往返及全局动态时间轴重建。原版Research Aqua外壳/六T渲染器及已批准的八项修复不变。
+- **BEHAVIORAL_QA**：真实Chromium`page.set_content`：43/43 JSON/时间轴/校验/批量选文件UI测试PASS，另6/6真实MP4及恶意字段等测试PASS；原Mac Canvas在八个时点与V5.3.1像素完全一致。浏览器安全策略阻止`file://`直接导航，**不宣称Owner设备Edge实测已PASS**。所有文件仅在用户选择后通过本会话Blob URL读入；JSON不含媒体字节或可自动读取的绝对路径，重新导入后素材状态明确缺失/可按唯一文件名手动批量重新选择。严禁把`sourceRef`误当授权凭证或自动下载路径。
+- **SOURCE_AND_ROLLBACK**：`main/visual/frozen/storyboard-v5-2-20261017.html` blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`仍唯一冻结资产；PR Draft未合并。正式CW0005 R3视觉RETURN、G1/HOLD、G2/R4未授权/NO_PUBLISH、素材权利PARTIAL继续生效。回退只需要忽略V5.4新文件，没有线上/服务/支付变更。
+- **CURRENT_GATE_STATUS**：`V54_TECHNICAL_CANDIDATE_PASS / LONG_MOVIE_AV_AND_OWNER_ACCEPTANCE_UNVERIFIED`；详见[接口说明与证据](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V54_STORYBOARD_JSON_ASSET_MAP_REVIEW_2026-10-17.md)，[PR回读与评论](https://github.com/entropy-student/project/pull/144#issuecomment-6236127083)。
+- **NEXT_STEP / OPEN ISSUES**：原14项中的⑬实现了配置导入及素材映射候选；余⑩多字幕Cue/配音同步、⑨更灵活数据图表需下一有界Gate；⑤真实档案素材、⑭完整知识叙事留到正式制片测试；⑪QT播放器时间语义低优先级。不覆盖V5.2、不重复制作Mac、不在本轮启动R4/付费或公开视频。
+
+
+
 <!-- CWS_V531_CAPTION_REFRESH_NEXT_STAGE_20261017 -->
 ## 2026-10-17｜V5.3.1八项技术修复自验完毕（覆盖此前V5.3字幕PARTIAL时态）
 
