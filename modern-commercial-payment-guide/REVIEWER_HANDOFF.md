@@ -17,7 +17,7 @@ PROJECT_GOAL：面向中国大陆个人开发者、独立站经营者和中小�
 
 ## CURRENT_GATE / NEXT_STEP
 
-第五部分：`MCPG-CH5-INDEPENDENT-COMPLETE-DRAFT-20261017`。Writer 先核对本交接、V6 冻结框架与前四章正式正文，完成第五章完整候选和独立事实核验记录，打包 ZIP 后 **STOP_AT_REVIEWER**。第五章未经 Reviewer PASS 不得自行封板、修改 main、推进第六章或制作 HTML。
+第五部分：`MCPG-CH5-INDEPENDENT-COMPLETE-DRAFT-20261017`。Owner 已明确 Writer **无 GitHub 仓库访问权限**。本轮通过《第五部分_独立Writer离线完整工作包_20261017.zip》提供完整 V6 题目、前三章封板衔接摘要（非正文全文）、第四章封板全文及离线工作 Gate。Writer 只阅读 ZIP 内材料、完成第五章完整候选和独立事实核验记录，打包 ZIP 后 **STOP_AT_REVIEWER**；Reviewer 负责 GitHub 权威版本核对。第五章未经 Reviewer PASS 不得自行封板、修改 main、推进第六章或制作 HTML。
 
 ## CRITICAL_CONSTRAINTS / SYSTEM_MAP
 
