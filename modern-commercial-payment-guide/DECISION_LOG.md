@@ -94,3 +94,11 @@ Owner expressly chose the readability of the two independently written Markdown 
 - **本轮纠错范围**：修正 Apple Pay 非Safari的条件与中国大陆跨浏览器例外、FTC 2024 Click-to-Cancel修订被2025-07-08撤销、过时的独立SOFORT支付方式、3DS挑战/责任边界、支付完成与清算余额区别、Stripe幂等键重试同键与未开始执行不缓存、支付对象失败态不能单凭单笔就重新扣款、PayPal capture多笔与部分金额、PCI SAQ A不一律逐年提交、Webhook延迟及有关无依据固定数字；最小修正，不重新组织两篇叙事。执行记录留有官方参考与剩余条件。
 - **第五、第六部分任务**：新的联合外部写作资料包 `/现代商业支付系统/现代商业支付系统_第五六部分_联合独立写作资料包_20261017.zip`，SHA256 `a125b87a69935034d073cdcb712558bd1713eb277c63f866d4c82b9e9a335201`，共9份Markdown（提示词、⑤⑥V6、①–④正式只读全文、官方来源、Reviewer快照和README）。⑤4H2/5H3、⑥4H2/6H3，要求外部Writer交两个完整新章+一份核验/执行记录组成的三MD ZIP，先Reviewer后Owner决定是否采纳。
 - **阶段边界**：第五第六部分正式正文`NOT_RECEIVED`、已准备写作资料但尚不声称Writer已运行；第⑦部分与最终HTML仍PENDING。本轮没有实际经营支付、提款、退款、商户设置或服务器部署。
+
+
+## 2026-10-17｜⑤⑥下一轮最小修正后直接采纳封板授权与①②/③④质量对比
+
+- **OWNER_REPORTED:** 用户指令：“几个任务，本轮结果返回后如有问题请自行按照最小原则进行修正，完成后进行落库正式冻结。然后现在需要帮我看的是对比第一二部分，第三四部分的质量是否存在明显下降，如存在请分点列举并告知。”
+- **NEXT CH5/CH6 WRITER OUTPUT AUTHORITY (CONDITIONAL AND SCOPED):** 下一轮⑤⑥返修三Markdown ZIP交付后，Reviewer有权独立核验首轮 [docs/CH5_CH6_REVIEWER_RETURN_20261017.md](docs/CH5_CH6_REVIEWER_RETURN_20261017.md) 的11 P0、6 P1及新出现的实质问题。仅对残余明确且可验证的小错误自行最小修正、同步算例/正文/附录/执行记录、再次验证V6逐字题文与费用算术、支付及法律官方依据、三文件SHA/CRC；**通过验收可直接将两篇新正文落库GitHub main并同步Library，正式封板，无须就同一已授权范围再向Owner追问**。若存在无法可靠核验的高风险金融/法律断言、重大结构缺陷、错误无法做局部安全修正或产物缺失，则`RETURN`/停止，不能为满足“封板”硬判PASS。③④与封板①②及V6不在本授权的修改范围；⑦/HTML仍待指令。
+- **QUALITY_COMPARISON_FINDING / REVIEWER_INFERENCE (NOT NEW ADOPTION CRITERION):** 完整读过GitHub main现行①–④四篇正文。后两篇并非全面变差：④支付状态机/一致性/异常恢复技术深度强，③顾客失败分流实用；但商业决策示范与多样经营场景较①②有所下降。①含个人原创模板/企业实物出口两套独立完整经营推演（正文约第502–608行），②含支付链接/插件/API取舍及贯穿开通案例；③有四维支付方式矩阵（约94–125行），但只围绕29美元软件订单且缺少完整的地域/账户/方式比较选择；④CAS+Outbox与②约292–354行知识部分重叠（④约257–294行），工程术语占比过高，相对商家操作决策分层弱。③正文有“3秒必流失”“黄金1小时”一类未证明绝对化定量措辞；④正文有“绝不出错”之类非普遍成立的保证。③官方来源标号约8条 vs ①15/②13，单纯来源数量不是错误证明，但其跨境付款方式与续费法务等动态判断更须条件化。此项是**质量评审意见，未获得解封/重新修改③④的Owner指令**，不可据此随意覆写已采用正文。
+- **STATUS CURRENT:** ①② OWNER FINAL SEALED，③④ OWNER ADOPTED BUT NOT SEALED，⑤⑥ FIRST CANDIDATE RETURN WAITING FOR SECOND CANDIDATE；**条件授权仅在新⑤⑥ZIP实际收到且安全验收通过时生效**。无第五第六正式正文文件、未进行实款/退款/出款。
