@@ -1,6 +1,8 @@
 # MokerSaaS G1S — New Isolated Synthetic DB + Local Smoke (PROPOSAL)
+
+> ARCHIVED 2026-10-17: Owner's decision has been recorded. Do not execute this planning proposal. The sole live execution Gate is G1TR_ACL_COMPAT_DB_LOCALHOST_CONTINUATION_GATE.md; see REVIEWER_HANDOFF.md.
 > PROPOSAL_ID: MOKER-G1S-NEW-SYNTHETIC-DB-AND-SMOKE-20261017
-> STATUS: PENDING_EXPLICIT_OWNER_APPROVAL — **DO NOT EXECUTE**
+> STATUS: HISTORICAL_SUPERSEDED — **NOT EXECUTABLE**
 > Governance: entropy-student/spike.skill main:vps-project-governance/VNEXT.md v0.2.7; no Governance amendment
 > Source baseline: ItusiAI/MokerSaaS c98f68c68de312cc1378130b96f82418e22bd5f3 + 18 uncommitted Owner-local lab changes
 > MAX_ENDPOINT_IF_APPROVED: one policy-permitted Owner-local checkpoint to create a fresh separately named synthetic DB credential + test DB volume, guarded schema bootstrap, app localhost-only start and small negative smoke. No old DB mutation.
