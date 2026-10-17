@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-18 (Owner Stripe TEST original refund event manual retry 200 OK delivered; Codex read-only idempotence verification next, no more Resend)
+ > Last reviewed: 2026-10-18 (G3S4M phase TERMINATED PARTIAL; existing $39.99 refund stable; HKD100 TEST unmapped and plugin replay log unverified; G4D0 magazine design active; cloudflared Ctrl+C permitted)
+
+## CURRENT_G3S4M_E3D260_PARTIAL_STRIPE_PHASE_CLOSED_G4D0_MAGAZINE_DESIGN_NEXT_2026_10_18 — LATEST
+
+**Owner goal achieved as a phase transition, with explicit NOT-PASS gaps:** Reviewer independently fetched PR64 HEAD `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` (OPEN, UNMERGED), source append only; existing full USD39.99 Stripe TEST gateway refund remains one successful Stripe and one Woo refund, original Woo order `refunded`, workspace owner denied after full refund. Official Stripe manual original signed event retry and one WordPress callback both HTTP 200 at 2026-10-17 16:08:20 UTC; **no duplicate refund or owner access restored** after re-delivery. **However Woo Stripe plugin-level identical-signed-event branch/ack log NOT retained, so strict internal dynamic idempotence is UNVERIFIED.** Another distinct **HKD100 succeeded `livemode=false` TEST PaymentIntent/charge** occurred at 16:01:16 UTC, BEFORE retry, no corresponding local Woo Stripe order, origin **UNKNOWN**, no refund. Generation-job count **UNVERIFIED**, NOT zero. Provider TEST 57 events zero pending Webhooks at Executor readback. No new transaction/config write in last round. No speculative malicious attribution or payment manipulation.
+
+**FORMAL decision:** [G3S4M TEST-only partial closeout Reviewer](./docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md). `G3S4M=PHASE_TERMINATED_PARTIAL_WITH_EXCEPTIONS`, *not* strict PASS, not Live/production-ready. Preserve earlier accepted payment/refund/entitlement work; **no further provider transaction / event replay / Stripe CLI installation**. Exactly two separate audit obligations before consequential provider reuse or Live: (1) one bounded read-only Stripe Sandbox request/metadata provenance audit of unmatched HKD100 charge; (2) improve actual signed duplicate event instrumentation/isolated safe proof without further refunds. No Live until reconciled and later owner-authorized.
+
+**NEXT ACTIVE project Gate:** [G4D0 magazine P1–P12 editorial visual design/source discovery and reviewable 12-page candidate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md). User wants magazine creative design **now**, not to recreate or retest payment/refund. English-first, 12-page digital PDF, photos + answered intake, existing frozen storefront/free preview/intake, existing G2BR3 12-page solution proof. Design only with synthetic noncustomer data and no server payment/order/provider action, PR64 project-scoped candidate+evidence, STOP Reviewer for Owner art direction. No PR64 merge.
+
+**CLOUDFLARE TUNNEL FOREGROUND POWERSHELL: NOW MAY STOP for local/offline design.** Following accepted PARTIAL phase termination and 57 TEST events with zero pending Webhooks, the old keep-window-open prerequisite is DISCHARGED by explicit Reviewer classification. Owner can **press Ctrl+C in the specific foreground PowerShell window running `Start-MagazineTunnel.ps1` / `cloudflared`** once ready to forgo public access. Public `https://magazine.spikersun.com` and external Webhooks will be unavailable until rerunning approved launcher; original Docker WordPress/database/files, Stripe TEST provider account and Tunnel DNS/token stay. WordPress `home/siteurl` points to public hostname, so browser navigation to `127.0.0.1:8189` can redirect to unavailable public site, *not* guaranteed usable while Tunnel stopped. Design source/isolated preview is independent; restart Tunnel to do public WordPress visual preview, without changing canonical URLs. If Owner wants external site view, keep the PowerShell running instead.
 
 ## CURRENT_G3S4M_OWNER_MANUAL_TEST_RESEND_200_VERIFY_RUNTIME_ONLY_2026_10_18 — LATEST
 
@@ -316,7 +326,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=G3S4M_OWNER_MANUAL_STRIPE_TEST_REPLAY_DELIVERED_FINAL_READONLY_VERIFICATION_THEN_DESIGN
+CURRENT_GATE=G4D0_P1_P12_MAGAZINE_DESIGN_NO_COMMERCE;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -745,7 +755,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**G3S4M owner manually Resent original `v1.charge.refunded` TEST event to original `https://magazine.spikersun.com/?wc-api=wc_stripe` endpoint ONCE; Stripe Dashboard screenshot shows HTTP 200 `已送达` at 2026-10-17 16:08:20 UTC.** This is provider UI proof; local duplicate side-effect invariants **NOT YET VERIFIED AFTER REPLAY**. No further Owner clicks or payment/refund. Codex must only read back same event attempt/native Woo signed callback evidence and `refunded` order, Woo 1 refund $39.99, Stripe TEST 1 refund 3999c, owner workspace denied, zero extra jobs; append PR64 sanitized G3S4M closeout Evidence and STOP Reviewer. Detailed [G3S4M Gate latest appendix](./docs/G3S4M_STRIPE_TEST_IDENTICAL_WEBHOOK_REPLAY_AND_PHASE_CLOSEOUT_GATE_2026-10-17.md). Then Reviewer phase closes and signals when Owner can Ctrl+C foreground Cloudflare PowerShell (public site becomes unavailable; local Docker data retained). No new payment, refund, resend, Live, app/Cloudflare config or PR merge.
+**G4D0 P1–P12 MAGAZINE VISUAL DESIGN** via [new Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md), following [G3S4M closed as PARTIAL TEST-only phase](./docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md). Reviewer accepted original $39.99 Stripe TEST payment/refund and workspace revocation with zero duplicate financial side effect after original signed event UI resend to WordPress HTTP 200; strict Woo plugin internal duplicate ack was **NOT RETAINED** and is `UNVERIFIED`, plus distinct HKD100 TEST charge `livemode=false` is not matched to original Woo order and origin UNKNOWN (before resend). Those remain specifically recorded PRE-LIVE/provider reuse audit debts, **not permission to repeat any payment/refund now**. Source proof G2BR3 12-page PDF, prior accepted website and 5-step intake; make isolated navigable/design proof of P1–P12 with synthetic content only. No touching existing Woo orders, customer uploads, Stripe, Cloudflare, DNS, payment or Live. PR64 OPEN/unmerged. REVIEWER AUTHORIZED Owner to stop dedicated foreground Cloudflare PowerShell with **Ctrl+C now** for offline design because 57 TEST events had zero pending callbacks and phase is ended; public WP canonical URL may not work without Tunnel. Restart reviewed connector for actual WP browser preview.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -871,16 +881,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Codex **read-only** correlate delivered existing Stripe TEST webhook duplicate from Owner screenshot, source/arrival evidence and check Woo/Stripe no duplicate refund, order stays refunded, original owner remains denied, no new payment or job; append factual G3S4M Evidence to PR64 and STOP Reviewer. **Do not ask Owner to click again**.
-2. Reviewer verifies Evidence and finalizes G3S4M as PASS if actual same-event stable side effects shown, or accurate scoped residual; then announces Cloudflare PowerShell Ctrl+C readiness after pending callbacks are zero.
-3. Next separate Gate is magazine P1–P12 design/product experience; testing magazine purchase deferred by Owner.
+1. **Codex G4D0 DESIGN:** targeted read-only inventory accepted G2BR3 12-page PDF proof and existing P1–P12 source; produce one actual 12-page editorial magazine design candidate with synthetic photos/text and navigable HTML/optional PDF, document page-by-page layout and render gaps. PR64 project-only files and Evidence, Reviewer stop. No payment or official provider activity.
+2. **Separate deferred PRE-LIVE Provider audit** (NOT next task): targeted Stripe TEST request provenance for unrelated HKD100 succeeded charge; signed duplicate-event actual plugin branch/log proof. Neither requires a new charge/refund; do not falsely clear these from release checklist.
+3. Owner may **Ctrl+C in foreground Cloudflare connector PowerShell now** if not using public site. Re-run approved connector for WordPress website visual preview. Preserve Docker/data/public config; no PR merge.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE now:** the one official Stripe TEST manual resend is already done and shows 200 OK in Owner screenshot. No repeat, no new testing charges, no secret sharing.
-- **PowerShell remains ON now:** after Codex final proof and Reviewer phase closeout, Owner may stop the foreground Cloudflare Tunnel window by Ctrl+C, losing public access until restart. Local WordPress persists.
+- **NONE for Stripe.** No more resend, payment, refund, CLI installation, account reauthorization or transaction.
+- **Optional now:** to stop public network forwarding during local magazine design, press **Ctrl+C in the dedicated foreground cloudflared PowerShell**. Do not stop Docker/volumes or delete any Token. Public domain goes offline; 127.0.0.1 browser may redirect to configured public domain, so restart Tunnel for actual WordPress preview.
+- **Later only:** Owner visual approval of P1–P12 design candidate when Codex/Reviewer deliver; no payment test until magazine pipeline warrants a new Gate.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md` — current formal Stripe TEST phase PARTIAL termination with HKD100 anomaly and plugin replay blindspot, Tunnel stop permission.
+0. `docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md` — current next magazine design-only Gate.
+0. PR64 `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` — actual read-only post-replay data and HKD100 test charge discovery.
 
 0. `docs/REVIEWER_DECISION_G3S4M_035E55_PREFLIGHT_PASS_OWNER_RESEND_NEXT_2026-10-17.md` — current Reviewer accepted read-only preflight and one Owner Resend instruction.
 0. PR64 `035e55ec6af41688b5efc56c638a58c4ebb3122b` `docs/evidence/g3s4/G3S4L_ORIGINAL_WP_CLOUDFLARE_TEST_ROUTE_2026-10-17.md` — actual verified baseline before identical event replay.
