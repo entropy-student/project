@@ -1,5 +1,10 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-17）
 
+<!-- CWS_V52_BROWSER_QA_20261017 -->
+> **2026-10-17 V5.2最新进展**：已在Draft [PR#144](https://github.com/entropy-student/project/pull/144)提交[原版Research Aqua V5.2精修源码](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-2-reviewed.html)（blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`），仍仅一个原版Canvas，不存在第二Mac播放器。修复1440分辨率下媒体视口缩放不正确致字幕裁切、真假播放器状态不匹配、T4虚构文献大卡过度遮挡、重复大标题遮挡；六模板7镜头及全局31.06秒时轴不变。**真实Chromium**已通过T1/T4/T6截图、关键帧/关窗、27秒起1×播至31.06秒自动结束、MP4时间进展与暂停、本地PNG槽导入，JS异常0。*仅模板技术集成PASS；Owner视觉满意度、正式4–6分钟节目、合法媒体、配音/SRT/MP4导出未验证*。公开Git仅有无媒体源码；含参考视频的1.3MB私有HTML仅交付本轮会话。详情见[PR Reviewer备注](https://github.com/entropy-student/project/pull/144#issuecomment-6234099065)。CW0005 R3视觉RETURN、G1/HOLD、G2/R4未授权、NO_PUBLISH不变。
+
+
+
 <!-- CWS_V5_ORIGINAL_SHELL_EXECUTION_20261017 -->
 > **2026-10-17 V5执行进度（覆盖下方V4状态）**：Owner要求直接执行原版唯一Mac外壳整合。现Draft [PR#144](https://github.com/entropy-student/project/pull/144)新增[V5单外壳HTML](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-original-shell.html)：以原始V2 Canvas blob `acb0ee80264527bd11160e0ae277ce24528c4a03`直接修订，仅原播放器内部媒体视口承载既有六布局、七镜头与全局时钟，结尾同源鼠标点红灯回原桌面；**不再有V4的双QT窗口**。PR新V5源blob `752f713eb20975a68431559618d2a3acf84b8225`；2个script语法PASS、单canvas/无`#qt`、22个受控时点的时轴状态/六模板/关窗逻辑部分PASS。**同一V5 HTML真实浏览器完整1×视觉播放尚未验收，整体只可判`V5_PARTIAL / REAL_BROWSER_VISUAL_UNVERIFIED`，不能封板。** [Reviewer完整记录](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_TEMPLATE_LAB_V5_ORIGINAL_SHELL_REVIEW_2026-10-17.md)。正式CW0005 R3视觉RETURN、G1/HOLD、G2/R4未授权、NO_PUBLISH、素材权利PARTIAL不变。
 
