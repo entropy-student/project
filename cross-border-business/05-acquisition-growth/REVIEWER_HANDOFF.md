@@ -5,10 +5,19 @@
 > **CHAPTER2：《我该怎么找到客户？》FINAL_SEALED（9二级/22三级，2.2无三级）**  
 > **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
 > **CHAPTER4：《找客户到底划不划算？》FINAL_SEALED（6二级/12三级）**  
-> **CHAPTER5：《怎么让老客户再买、带来新客？》INDEPENDENT_WRITER_GATE_RELEASED / WRITER_NOT_STARTED（5二级/11三级）**  
+> **CHAPTER5：《怎么让老客户再买、带来新客？》WRITER_R1_DELIVERED / STRUCTURE_PASS_5_11 / REVIEW_RETURN / R2_FULL_REPAIR_PACKET_READY / NOT_SEALED**  
 > **CHAPTER6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **OWNER_ACTION_REQUIRED：转交第五章13文件完整Writer离线ZIP与提示词；收Writer全章正文及事实核验ZIP送Reviewer。**
+> **CURRENT_GATE：CB05-CH5-WRITER-R2-DIRECTED-REPAIR-20261019**  
+> **OWNER_ACTION_REQUIRED：转发第五章Writer R2完整返修ZIP与直接提示词；回收R2全章正文及完整事实核验ZIP交Reviewer复核。**
+
+## 最新执行节点｜第五章Writer R1 Review RETURN（2026-10-19）
+
+- **[第五章R1独立Review：RETURN](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)**。冻结5个二级/11个三级全部逐字同序PASS，正文知识主体具实操性；但仍有**B01–B08八项实质阻断、N01–N03三项顺手修订**。最重要的是：美国FTC2024 Click-to-Cancel修订于2025-07-08被法院撤销、2026-02恢复旧版；FTC Part465并未直接全面禁止所有只向满意客户征评行为；Google Maps/Amazon禁评价奖励比部分FTC情形更严；UK PECR/EU GDPR/CAN-SPAM须区分营销目的。**第⑤章NOT_SEALED，第⑥章未启动**。
+- Writer R1原ZIP：`第五部分_第五章_独立Writer交付.zip`，**30,895字节**，SHA256 `c63b66a78bc94e07fa5d540f03a5e70efbac1c24ba103a427d72984a19536e84`，CRC PASS。原正文**35,861字节/384行**，SHA256 `f484d11f6f53cb8396717541317df0b405c083ed220aea4e2479403faaf1faa7`；原核验**27,298字节/173行**，SHA256 `9d7c9a8e6d9300647b94dc06de73a958568224c10aab89ce6b5561569ae1ecc5`。
+- 自检需要独立返修：五板块被错误改名为“经营准备/海外工作环境/域名与邮箱”等；正文的**30天/第17–20天**与自检**60天/第43天**不一致；原正文推荐奖励**$15+$15**与自检另一组**$18+$20**不一致，自检公式`102×50%−20=31`又误接到`22`（须同一商品成本口径）。
+- **R2完整离线返修ZIP**：`第五部分_第五章_R1独立审核与R2完整返修包_20261019.zip`，**43,329字节**，SHA256 `b9854639f3c5cb4e6f61b6d0ff4d37e0bed1b297ea2e84f42cc9c06a1ffd2caf`，7份Markdown，CRC/逐文件比对PASS。包含R1**完整正文与完整自检原件**、详细Reviewer报告、精确B01–B08/N01–N03任务、核对来源、可复制提示词与Manifest。ZIP二进制只交当前对话Owner，**未上传GitHub**。
+- **当前唯一下一步**：Owner转发R2包和话术给无仓库权限的独立Writer → Writer保留正确正文，完成R2全章正文与逐项事实核验两文件ZIP，`STOP_AT_REVIEWER` → Reviewer独立复核 → Owner决定封板。第一至四章唯一正文及正式V2完整题树保持不变。
+- 以下第五章最初Writer Gate/13文件首稿包仍保留历史基线，**不能误称Writer还未交首稿**。
 
 ## 一、唯一现行权威与成果
 
@@ -24,7 +33,7 @@
 | 第五章完整离线工作包清单 | [CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md) | 13个完整Markdown，附前四章Git blob验证全文 |
 | 本板块状态与导航 | [README.md](README.md) / **本文件** | 以本交接与正式Gate恢复最新执行 |
 
-**第五章目前没有Writer首稿、没有Reviewer PASS、更没有封板。第六章正文尚未启动。**
+**第五章已有Writer R1完整首稿，独立Review RETURN；尚无正式封板正文。第六章正文尚未启动。**
 
 ## 二、第四章R1→R2→Owner直接修复→FINAL_SEALED的真实历史
 
@@ -52,4 +61,4 @@
 - 未操作真实客户数据、付费营销、支付/银行或服务器账户；未改任何在线产品、代码或HTML。Markdown更改均有Git历史。
 - 历史任何Writer R1/R2的RETURN、原稿ZIP与最初Gate仅供审计；新Reviewer以本文件和明确的新Gate为当前唯一执行节点。
 
-**NEXT_STEP：** Owner转发第五章13文件Writer ZIP及提示词 → Writer完整交稿与事实核验ZIP → Reviewer独立审 → Owner决定是否封板。
+**NEXT_STEP：** Owner转发第五章R2完整定向返修ZIP与提示词 → Writer在R1全文上修复B01–B08及N01–N03并交完整R2正文/核验ZIP → Reviewer独立复核 → Owner决定是否封板。
