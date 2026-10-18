@@ -10,7 +10,7 @@
 顺序实测 **Velobase Harness → Open SaaS → Wave**，挑选能够长期复用、迅速部署/体验且免费开源的 SaaS 模板。前台、用户中心、平台 Admin、Stripe、客户裂变与奖励回撤是主要判断标准。**Docker 是可选方式，不是硬性要求**。优先用原生功能，其次评估可靠的免费开源扩展，最后才考虑付费服务或自研。
 
 ## PROJECT_STAGE
-`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_REVIEWED_RETURN_EXISTING_WORKLOAD_REGRESSION / G2R1_REVIEWED_PARTIAL_CAUSE_AND_OWNER_UNKNOWN / OWNER_DEFERRED_OLD_CONTAINER_RECOVERY / G2I1_READY_NOT_EXECUTED`。
+`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_REVIEWED_RETURN_EXISTING_WORKLOAD_REGRESSION / G2R1_REVIEWED_PARTIAL_CAUSE_AND_OWNER_UNKNOWN / OWNER_DEFERRED_OLD_CONTAINER_RECOVERY / G2I1_CLOSED_OWNER_REJECTED / G2L1_READY_NOT_EXECUTED`。
 G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Redis 曾启动且首页短时可用；因原先三个运行中容器异常退出，G2 按 Gate 停止，容器/卷/网络/镜像及源码保留。**G2 未达到完整验收；G2R1 上次本机回报时 3003 不可访问，并非本轮实时探测。**
 
 ## SYSTEM_MAP
@@ -22,9 +22,11 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 - **依赖与影响**：不得触碰 Paymenter 已结束实验、其他项目工作树、Docker 共享资源、既有数据库、共享 VPS、反代、网络/代理、已使用端口、GitHub 其他子树。
 
 ## CURRENT_ACCEPTED_STATE
+**2026-10-18 Owner 最新明确决策：** “我拒绝这个方案，现在不是已经部署在我自己的电脑上了吗？”Owner 拒绝任何 Codespaces 新环境；确认继续从既有本机 Velobase 资产开展实验。G2I1 Codespaces Gate `CLOSED_OWNER_REJECTED / NOT_EXECUTED`，禁止沿用。新 Gate [G2L1 本机现有实例恢复与 UI 验收](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md) 已签发 `REVIEWER_READY / NOT_EXECUTED`。仅允许 Owner Windows 本机 Codex 在新鲜核实原三容器/镜像/两卷/端口后复用现有服务，**无需重新安装或构建**；旧其他项目容器保持原样，若新发生工作负载回退则只停新实验。G2/G2R1 历史根因依然 `CAUSE_UNKNOWN`，没有来自本轮的实时 Docker 证据。
+
 **2026-10-18 Owner 最新后续指示：** “我手动暂定的貌似是，请你继续下一步，不要因此暂停。”Reviewer 按**可能是 Owner 手动暂停旧容器**理解；该事实未经本机核实，绝不认定三容器退出根因已发现。Owner 已明确要求 SaaS **不再因这三容器暂时停止推进**；本轮将旧业务恢复决策归为 `OWNER_DEFERRED_RECOVERY / NO_RESTORE_REQUESTED`，不启动、不删除旧资源，保留 `CAUSE_UNKNOWN`。下一轮直接转 Velobase 独立测试环境。
 
-**G2I1 后续执行 Gate 已形成（未执行）：** [Codespaces 免费配额内私有 UI 演示 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)。首选独立 Codespaces 4 核环境（规格与零费用须在 Owner 账户真实预检，绝非已可用），部署固定 Velobase SHA，验证浏览器 localhost 认证/全功能页面；不会把 GitHub 私有转发端口称为绝对离线环境。
+**G2I1 历史记录（已撤销且从未执行）：** [Codespaces 原 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；云部署建议被 Owner 明确拒绝，不再视为候选当前方案。
 
 **2026-10-18 新主 Reviewer 接手审核：** [独立接手核验与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md) 已核对 main 的 G0/G1/G2/G2R1 历史、项目规范和串行计划；`PASS_DOCUMENTATION_TAKEOVER_ONLY`，不代表本机运行或完整 SaaS 功能通过。G1/G2/G2R1 历史 Gate 的旧“尚未执行”状态标题已修正为结束，**当时 Gate 仍 NONE（现已签发 G2I1）**，根因/旧业务归属继续 UNKNOWN。只做 GitHub 文档更新，没有本机运行操作。
 
@@ -44,8 +46,8 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 5. 原 Paymenter 试验已结束，不得未经独立授权重建。
 
 ## CURRENT_GATE
-`G2I1 — SAAS-G2I1-VELOBASE-CODESPACES-ZERO-BILLING-PRIVATE-PREVIEW-20261018 / REVIEWER_READY / NOT_EXECUTED`。
-[G2I1 新 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md) 仅容许**确认个人免费配额、零新增收费**后，在新隔离 Codespace 做一次界内 Demo 和私有 UI 验收；不能把仅“方案通过”说成已开通环境。GitHub Codespaces 账户侧是否满足前提、Docker-in-Docker、4 核资源、浏览器 `localhost:3003` 均 `UNKNOWN`，任一不可证立即 RETURN。历史 G2/G2R1 Gates 已关闭；**原旧容器/共享 Docker、付费云资源、公网端口、Stripe TEST/Live 仍无执行许可**。
+`G2L1 — SAAS-G2L1-LOCAL-EXISTING-DEMO-RESUME-20261018 / REVIEWER_READY / NOT_EXECUTED`。
+[当前唯一 G2L1 本机实验 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)：只准 Owner Windows 本机 Codex 验证并**启动已有** `saasvh-e88e259` 三个容器（如已健康运行则仅测试），复用已经构建成功的固定 SHA 与两卷，不准重新拉取/构建/迁移/创建/清理、触碰旧容器或 Docker 全局配置。出现实际其他项目异常则只停止本轮 Velobase 实验。**历史 G2/G2R1、被拒 G2I1 不能复用授权**；Stripe TEST/Live、公网与新费用都未授权。
 
 ## CRITICAL_CONSTRAINTS
 - 项目顺序固定 Velobase → Open SaaS → Wave；不并行安装，不因候选失败立刻切换并部署。
@@ -60,12 +62,12 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 `OWNER_WINDOWS_LOCAL_CODEX / TARGET_FRESH_PROOF_REQUIRED_BEFORE_WRITE`。G1 已有 Owner 转交的真实本机只读报告，G2 写入前仍需同机核验主机、Git/workspace/Compose 名称/端口状态，不能在 ChatGPT 云端容器代行。
 
 ## CURRENT_ROLLBACK_STATUS
-**G2I1 仅 Gate 已签发，尚无新环境的创建/费用/部署/回滚事实**；历史本机 G2 已停机及保留资产继续按旧记录，不能从本轮评估推断 Docker 实时状态。
+**G2I1 Codespaces 已由 Owner 拒绝，从未创建云端资源；G2L1 本机现有实例 Gate 仅签发未执行。** G2 上次本机报告显示实验容器 stopped、镜像/源码/卷和网络保留；必须由本机 Codex 新鲜核验后才能恢复，不能将历史状态当作实时事实。
 `G2_EXPERIMENT_STOPPED / ARTIFACTS_RETAINED / THREE_OLD_CONTAINERS_EXITED_AS_OF_G2R1 / RECOVERY_NOT_AUTHORIZED`。本机 Codex G2R1 报告已再次读回三旧容器仍 `exited`，并非完全没有复查；但尚不确定后续是否被其他流程恢复。未重启原业务，也未删除新项目源码、镜像、两卷或网络。
 
 ## UNRESOLVED
 - 旧容器的业务归属及 2026-10-17 退出原因均 `UNKNOWN`；Owner 表达可能由自己手动暂停且本轮不需恢复，记录为 `OWNER_DEFERRED_RECOVERY`，不是经核实的退出机制。
-- 新 Codespaces 免费配额余额/预算、能否获得 4vCPU/8GiB、Compose 嵌套运行、认证私有 localhost 端口转发和服务 UI 都未实测；不能声称部署成功或无额外支出已证。
+- 本机 G2L1 需要的新鲜事实：原实验容器是否仍存在/停止、所属 Compose 和卷/镜像匹配、3003 是否空闲、现有其他业务是否健康。无需再调查三旧容器退出根因，也不安排云环境。
 - G2R1 复查确认（来自 Owner 转交的本机 Codex 脱敏报告）：三个旧容器依旧全部 `exited`，分别 137/0/0，且同属一个 Compose 项目；业务类别和恢复必要性 `UNKNOWN`。Docker/Windows 事件不足以证明任何直接因果，不能单凭低内存或退出码判定 OOM。
 - `TARGET_LOCAL_PROOF=OWNER_RELAYED_EXECUTOR_REPORT`；历史空闲 RAM 仅 1.12/1.55 GiB，**不再构成固定前置门槛**。运行时资源影响、Docker 数据盘剩余量和新项目隔离仍需新鲜验证。
 - `G1_CANDIDATE_EXACT_SHA=e88e259b974f883913f68ac74a9b8377765d005d`；G2 已报告构建成功、首页 HTTP 200（当时），但当前 3003 无监听，持续可访问性/登录成功/Admin/Affiliate/后台任务均 `UNVERIFIED`，构建耗时未记录。
@@ -75,10 +77,10 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 - 真实 Stripe 可开通地区/经营主体/商户权限=OUT_OF_SCOPE，不能由模板支持推定。
 
 ## NEXT_STEP
-旧三个容器的恢复暂时不在 SaaS 当前关键路径；Owner 希望继续，原因保持 `CAUSE_UNKNOWN`。**直接执行 G2I1**：先在 Owner 的个人 GitHub Codespaces 界面核对免费剩余额度/零增量计费，再由 Owner 的 Codespaces/本机 Codex 按[新 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md) 在唯一隔离云端环境进行 Velobase 固定 SHA 的 Demo UI 验证。优先 4vCPU/8GiB 作为试验规格，未验证前不假设免费或可用。不在本机重复构建、不使用共享 VPS、不启用公开 Demo。UI 通过后再设支付/裂变独立 Gate；后续 Open SaaS → Wave 顺序不变。
+**直接执行本机 G2L1**：[当前 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)。Owner Windows 本机 Codex 新鲜核实 G2 保留的项目源码、三个现成容器/镜像/两卷、原项目资源及 3003；在不下载/重新构建的前提下只启动已有 Velobase Postgres/Redis/Web；按真实浏览器行为验收 登录 → Dashboard → 平台 Admin 正负权限 → Affiliate，分层核实 Worker/资源/其他已运行工作负载。真实异常则只停止 Velobase 本轮启动服务，旧项目保留停止且不触碰。UI Gate 之后再单独推进 Stripe/裂变；Open SaaS → Wave 顺序不变。**不再建议 Codespaces 或新购云资源。**
 
 ## OWNER_ACTION_REQUIRED
-旧三容器已记录为本轮**暂不恢复**，无需再就此回复。**新阶段只有不可代办的 GitHub 账户侧操作**：在个人账户查看 Codespaces 免费余额/费用上限；若确有足够配额且零新增付费，按 G2I1 创建一个 4 核 Codespace（如需浏览器点击 Code → Codespaces），交给 Codex 执行已有 Gate。额度不明、可能计费或资源不足就 RETURN，不需要添加支付方式或另行购买 VPS，也不需要提供 Stripe Key/密码。
+**只需把当前 G2L1 Gate 链接交给你电脑上的 Codex；其余动作由 Codex 按已授权 Gate 执行。** 不需要新账户/云费用/密码/Stripe Key，也不需要再批复是否恢复旧三个不相关容器。若本机 Docker 或历史资源已变化，由 Codex 给出具体阻塞证据，Reviewer 再决定最小修复。
 
 ## EVIDENCE_POINTERS
-[G2I1 Codespaces 隔离 UI 执行 Gate（2026-10-18）](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[2026-10-18 独立接手审核与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)；[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
+[最新 G2L1 本机现有实例恢复与 UI 验收 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)；[已拒绝的 G2I1 Codespaces 历史 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[G2I1 Codespaces 隔离 UI 执行 Gate（2026-10-18）](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[2026-10-18 独立接手审核与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)；[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
