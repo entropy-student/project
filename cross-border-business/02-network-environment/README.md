@@ -1,25 +1,28 @@
 # 02｜网络环境搭建
 
-> **PROJECT_STAGE：CHAPTER2_INDEPENDENT_WRITER_PENDING（2026-10-18）**  
-> **FRAMEWORK：8一级/44二级/93三级 — Owner冻结（三级暂时冻结）**  
-> **第①章：OWNER_AUTHORIZED_FINAL_SEALED**｜**第②章：WRITER_GATE_RELEASED**｜**③–⑧：NOT_STARTED**｜**HTML：NOT_STARTED**
+> **FRAMEWORK：8一级/44二级/93三级（Owner冻结；三级暂时冻结）**  
+> **CHAPTERS ①②：FINAL_SEALED / OWNER_APPROVED**  
+> **CURRENT：第③章《域名与邮箱》独立Writer Gate已发布，尚未收到候选正文**  
+> **HTML：NOT_STARTED**
 
 **唯一核心问题：如何搭建靠谱的跨境经营环境？**
 
-按照经营准备→海外工作环境→域名邮箱→网站与程序运行→安全防护→客户访问→故障与恢复→成本升级的阅读路径组织技术知识。不是所有业务都需要自有域名、独立服务器或所有云服务。
+按卖家的认知路径：①经营准备→②海外工作环境→③域名与邮箱→④网站与程序运行→⑤安全防护→⑥客户访问→⑦故障恢复→⑧成本与升级。不是所有商家都要自建全套设备、域名、邮箱、服务器和CDN。
 
-## 正式文档与当前交付
+## 本板块权威成果
 
-- [唯一正式冻结框架（8/44/93）](docs/FROZEN_FRAMEWORK_V5_20261018.md)
-- **[第一章正式封板正文｜经营准备](docs/CHAPTER1_FINAL_SEALED.md)**
-- [第一章Owner授权修订与封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)
-- **[第二章独立Writer首稿Gate](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)**
-- **[第二章完整8文件离线Writer ZIP](docs/CHAPTER2_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)**
-- [长期Writer—Reviewer—Owner协作流程](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)
+- **[一/二/三级正式冻结框架8/44/93](docs/FROZEN_FRAMEWORK_V5_20261018.md)**（所有冻结原文的唯一来源）
+- **[第一章正式封板正文《经营准备》](docs/CHAPTER1_FINAL_SEALED.md)**
+- [第一章封板修订证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)
+- **[第二章正式封板正文《海外工作环境》](docs/CHAPTER2_FINAL_SEALED.md)**
+- [第二章Reviewer R2定向修订/Owner封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)
+- **[第三章独立Writer Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**
+- **[第三章完整8文件离线Writer ZIP](docs/CHAPTER3_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)**
+- [长期Writer→Reviewer→Owner流程（RETURN必须同时提供返修ZIP和传递提示词）](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)
 - [唯一交接](REVIEWER_HANDOFF.md)
 
-第二章冻结一级问题：**人在国内，怎么稳定使用海外网站和账号？** 包含7个二级和15个三级问题。Writer**没有GitHub仓库访问权限**，只需Owner转交完整离线ZIP；稿件返回后由Reviewer独立审核。返修时强制同时交付返修ZIP与可直接转发的提示词。
+**第③章当前唯一任务：** 独立Writer依据完整离线ZIP撰写5个二级/10个三级问题对应的完整中文正文，另交事实核验记录和ZIP；Writer没有本项目GitHub访问权限，不自封板、不启动第四章或HTML。
 
-**状态说明：** 本轮只按Owner明确授权封板第①章并启动第②章的外部Writer工作；未撰写第②章正文，未生成HTML，不修改已关闭的第三板块。
+第三板块《现代商业支付系统》保持CLOSED/FROZEN，未改动。①②章正文内容封板不代表真实账号、跨境网络部署或全部法律适用已经实测。
 
-[返回跨境业务总项目](../README.md)
+[返回五板块总项目](../README.md)
