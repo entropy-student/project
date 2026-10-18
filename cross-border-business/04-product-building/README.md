@@ -2,13 +2,15 @@
 
 > **状态（2026-10-18）：CORE_L1_OWNER_APPROVED_FROZEN（核心1/一级7） / L2_FROZEN（45） / L3_CANDIDATE_REVIEW_PENDING（118） / BODY_NOT_STARTED**  
 > **唯一冻结核心问题：产品怎么做、怎么交付？**  
-> **当前工作停点：Owner/Reviewer 审核二级45题；不自动冻结或启动三级。**
+> **当前工作停点：Owner/Reviewer审核三级118题；不自动冻结三级或启动正文。**
 
 ## 唯一正式上级和候选文件
 
-- **[唯一正式冻结快照｜核心1 + 一级7](FROZEN_FRAMEWORK_CORE_L1_20261018.md)**：Owner 于 2026-10-18 批准。原文、编号、顺序和归属不得自行修改。
-- **[二级问题候选 V1｜45题](FRAMEWORK_L2_CANDIDATE_20261018.md)**：七章分布 **4/5/6/7/9/6/8**；包括拆分理由、知识覆盖、去重、场景和跨板块检查；**尚未获 Owner PASS**。
+- **[唯一正式冻结快照｜核心1 + 一级7 + 二级45](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)**：经Owner批准、二级复核PASS；原文、编号、顺序及归属不再自行修改。
+- **[三级问题候选 V1｜118题](FRAMEWORK_L3_CANDIDATE_20261018.md)**：七章分布 **10/13/15/17/28/15/20**；含知识范围和去重说明；**未获Owner批准或冻结**。
+- [旧核心+一级冻结阶段快照](FROZEN_FRAMEWORK_CORE_L1_20261018.md) 与 [历史二级候选45题](FRAMEWORK_L2_CANDIDATE_20261018.md)：留存比对，不取代正式完整冻结。
 - **[Owner 决策、执行证据与 Reviewer 交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：当前状态、治理 Gate、原文冻结轨迹、下一步与停止边界。
+- [二级PASS及三级结构自检](docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：明确复核证据及三级候选状态。
 - [五板块问题框架设计规范](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md) · [第四板块原独立任务书（历史需求说明）](../docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
 
 ## 七个一级问题（只读导航，原文以冻结快照为准）
@@ -29,8 +31,8 @@
 
 ## 交接与下一步
 
-**本轮已完成：** 已批准的核心及7个一级写入 GitHub `main` 并核验；45道二级题保留候选；交接和导航同时维护。
+**本轮已完成：** 核心1、一级7、二级45正式冻结并核验；三级118题作为候选归档。
 
-**下一步：** Owner/Reviewer 审核二级候选的真实价值、独立性、缺漏、语言长度与边界；只有 Owner 明确通过，才单独生成二级正式冻结快照并启动三级拆分。三级、正式知识正文、HTML和真实产品开发均未启动。
+**下一步：** Owner/Reviewer审核三级118题，必要时最小返修；获Owner明确批准后再创建正式三级冻结快照。正文、HTML和真实产品开发均未启动。
 
 [返回五板块总项目库](../README.md)
