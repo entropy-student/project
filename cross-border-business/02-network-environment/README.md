@@ -1,7 +1,7 @@
 # 02｜网络环境搭建
 
 > **PROJECT_STAGE：LEVEL3_DRAFT_REVIEW**（2026-10-18）  
-> **总核心问题：CONFIRMED**｜**L1：8_FROZEN**｜**L2：44_FROZEN**｜**L3：95_DRAFT_NOT_FROZEN**｜**正文：NOT_STARTED**｜**HTML：NOT_STARTED**
+> **总核心问题：CONFIRMED**｜**L1：8_FROZEN**｜**L2：44_FROZEN**｜**L3：93_REVISED_DRAFT_NOT_FROZEN**｜**正文：NOT_STARTED**｜**HTML：NOT_STARTED**
 
 ## 这部分解决什么
 
@@ -27,7 +27,7 @@
 
 - **[一级/二级正式冻结V4](docs/FROZEN_FRAMEWORK_L1_L2_V4_20261018.md)**：8个一级、44个二级，问题原文与归属正式冻结；保留知识范围提示。
 - **[写作标准与标注规范V4](docs/WRITING_STANDARDS_V4_20261018.md)**：通俗化不降深度、术语处理、跨章去重、三级拆分和正文研究的审核标准。
-- **[三级问题 V1 待审核](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md)**：95个新起草三级问题，未获通过、未冻结。
+- **[三级问题 V1 待审核](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md)**：93个经审核修订的三级候选问题，未获通过、未冻结。
 - **[唯一交接](REVIEWER_HANDOFF.md)**：唯一项目状态、冻结决定及权限。
 
 旧73题V3讨论稿和旧八章候选从main当前目录退出，仅由Git历史追溯；此前按Owner要求删除的100题三级草案并未恢复。第三板块《现代商业支付系统》继续CLOSED/FROZEN；本轮不写正式教学正文、不做HTML、不操作真实服务器、网络或账号。
