@@ -1,5 +1,9 @@
 # CWS｜CW0005素材搜索与下载流程合规审计Gate（2026-10-18）
 
+<!-- CWS_AUDIT_GATE_DEFERRED_FOR_INFLIGHT_DELIVERY_20261018 -->
+> **【最新纠偏：`DEFERRED_NOT_DISPATCHED`，不可打断正在交付的视觉返修】** Owner已经澄清“本轮Codex还在执行；本只读流程审计提示词没有下发”。在Owner发出这条消息时，原已获授权的[定向视觉返修Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)正在Owner Windows本机实际运行，并已生成两次59.93秒MP4、图片和素材，只有**PR/ZIP证据交付**尚未完成。Reviewer在执行途中把本文写成当前唯一Gate属于错误的中途切换，不构成对已执行行动的追溯撤销。**因此本审计Gate只保留为以后Owner需要额外本机取证时的备选任务，不能要求当前Codex停止交付或另起流程审计PR。**当前正确顺序：原视觉Gate仅限完成现有结果的PR/ZIP/安全MP4交接（不再第三次渲染/额外搜片/生图）→Reviewer依据Owner已要求的**流程合规预设RETURN**与现有结果进行独立审查→若客观证据确实缺失，才考虑是否下发本Gate的独立只读取证任务。本文下方“唯一新Gate/立即取证”均为误置到执行途中的旧表述，受此条覆盖，未经另行下发不得执行。
+
+
 > **OWNER_DECISION: PRELOCKED_RETURN_PROCESS_COMPLIANCE**。本轮流程审计结论已由Owner明确提前锁定为`RETURN`，原因是**流程合规**而非质量审美。Reviewer已全文读取GitHub权威Governance v0.2.7及CWS项目159/159份文本/文档类文件，项目文档覆盖证明见[159文件/指纹全量清单](reviews/CWS_FULL_PROJECT_DOCUMENT_COVERAGE_MANIFEST_2026-10-18.md)，并记录[独立流程审计与缺口](reviews/CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_COMPLIANCE_RETURN_2026-10-18.md)。此前的视觉返修Gate**尚未向Codex下发**，现改为等待本轮流程审计结果，严禁先渲染新片。
 >
 > **唯一上位规范**：`entropy-student/spike.skill/main:vps-project-governance/VNEXT.md` v0.2.7；已核§0–13与触发矩阵，当前涉及Owner Windows、项目内既有搜索索引与历史可复核日志，不触发新的外部公开部署/付费/关闭项目。**本次由Reviewer完成全量文档解释；Codex不得为了执行再通读所有历史文件。**
