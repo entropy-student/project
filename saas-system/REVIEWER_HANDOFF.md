@@ -22,6 +22,8 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 - **依赖与影响**：不得触碰 Paymenter 已结束实验、其他项目工作树、Docker 共享资源、既有数据库、共享 VPS、反代、网络/代理、已使用端口、GitHub 其他子树。
 
 ## CURRENT_ACCEPTED_STATE
+**Owner 补充授权（2026-10-18；未执行）：** 用户表示可能刚刚关闭 Docker Desktop，准许本机 Codex 如确认程序正常关闭，先正常启动现有 Docker Desktop 一次，再检查 Engine 和其他业务状态。不得重置引擎、重启 WSL、修改全局配置或自行操作其他容器。新授权详见当前 G2L1 Gate；若共享 Engine 启动带来其他业务意外变化，停止继续本轮 SaaS 启动并报告。
+
 **2026-10-18 Owner 最新明确决策：** “我拒绝这个方案，现在不是已经部署在我自己的电脑上了吗？”Owner 拒绝任何 Codespaces 新环境；确认继续从既有本机 Velobase 资产开展实验。G2I1 Codespaces Gate `CLOSED_OWNER_REJECTED / NOT_EXECUTED`，禁止沿用。新 Gate [G2L1 本机现有实例恢复与 UI 验收](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md) 已签发 `REVIEWER_READY / NOT_EXECUTED`。仅允许 Owner Windows 本机 Codex 在新鲜核实原三容器/镜像/两卷/端口后复用现有服务，**无需重新安装或构建**；旧其他项目容器保持原样，若新发生工作负载回退则只停新实验。G2/G2R1 历史根因依然 `CAUSE_UNKNOWN`，没有来自本轮的实时 Docker 证据。
 
 **2026-10-18 Owner 最新后续指示：** “我手动暂定的貌似是，请你继续下一步，不要因此暂停。”Reviewer 按**可能是 Owner 手动暂停旧容器**理解；该事实未经本机核实，绝不认定三容器退出根因已发现。Owner 已明确要求 SaaS **不再因这三容器暂时停止推进**；本轮将旧业务恢复决策归为 `OWNER_DEFERRED_RECOVERY / NO_RESTORE_REQUESTED`，不启动、不删除旧资源，保留 `CAUSE_UNKNOWN`。下一轮直接转 Velobase 独立测试环境。
