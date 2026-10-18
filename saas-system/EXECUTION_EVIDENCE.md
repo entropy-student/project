@@ -92,3 +92,14 @@
 - `ROLLBACK`: GitHub 文档可按提交恢复；运行环境没有更改。新云端资源保留/清理操作必须在后续实测和单独授权边界执行。
 - `REVIEWER_RESULT`: `PASS_G2I1_GATE_PREPARATION_ONLY`，`CURRENT_GATE=G2I1_REVIEWER_READY_NOT_EXECUTED`；后续执行结果仍须 Reviewer 独立审核。
 - `REFERENCE_URLS`: [官方 Codespaces 计费](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces)，[官方私有端口转发](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace)，[上游启动器](https://github.com/velobase/velobase-harness/blob/e88e259b974f883913f68ac74a9b8377765d005d/services/demo/start.mjs)。
+
+## 2026-10-18 — OWNER_REJECTS_CODESPACES_AND_G2L1_LOCAL_ASSETS_GATE_ISSUED
+
+- `OWNER_DECISION`: Owner 明确说“我拒绝这个方案，现在不是已经部署在我自己的电脑上了吗？”；正式拒绝 Codespaces 方案，要求复用本机已有 Velobase。上轮“旧容器可能是自己手动暂停”的表述仍非已证实因果；`CAUSE_UNKNOWN` 保留。
+- `G2I1_CANCELLED`: [Codespaces Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md) 顶部状态改为 `CLOSED_OWNER_REJECTED / NOT_EXECUTED`；无 Codespace 创建、计费、Docker 或数据/公网变更。保留 Gate 正文仅供历史审计，禁止按其执行。
+- `PRIOR_LOCAL_EVIDENCE`: 依 [G2 原始执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md) 的 Owner 本机回报，Velobase SHA `e88e259b974f883913f68ac74a9b8377765d005d` 已在 `%USERPROFILE%/Documents/ChatGPT/Velobase-Harness-e88e259` 构建，独立 `saasvh-e88e259` 的 Web/Postgres/Redis 曾运行、首页 200；随后按原 Gate 仅停止实验容器，源码、镜像、两卷、网络保留。该事实截至 G2R1 的本机报告，**非这次接手的实时本机直接读回**。
+- `DECISION`: 本机优先，签发 [G2L1 现有 Demo 复用与 UI 验收 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)。先新鲜核实真实 Windows 主机/旧 project/三容器/两卷/镜像/端口与当前其他运行中负载，然后只用 `docker compose ... start` 顺序恢复**已有** Postgres/Redis/Web，不重新 clone、不重新 build、不 up/create/recreate、不重置 DB；登录、Dashboard、Admin 正反例、Affiliate 与 Web/DB/Redis/Worker 健康为验收目标。
+- `SHARED_WORKLOAD_BOUNDARY`: 其他三个历史旧容器仍不在当前恢复范围；重新启动 Velobase 不能被解释为已经诊断旧容器事故。出现本轮实际新工作负载回退，精确停止本轮 Velobase 服务，记录而不触碰旧业务。Owner 已取消硬性空闲 RAM 最低门槛，不取消真实资源故障 STOP。
+- `ACTUAL_CHANGES`: 仅编辑 GitHub `saas-system/` 下历史 Gate 状态、唯一 Handoff、创建 G2L1 Gate、追加本记录；**未操作 Owner Windows、Docker、任何 VPS/云服务、Provider、账号、用户数据或真实支付**。
+- `REVIEWER_RESULT`: `PASS_G2L1_GATE_PREPARATION_ONLY`，`CURRENT_GATE=G2L1_REVIEWER_READY_NOT_EXECUTED`。需要 Owner Windows 本机 Codex 执行后转交新的 Evidence 才能得出运行 PASS。
+- `ROLLBACK`: 此轮仅 GitHub 文档级写入，Git 提交可审可恢复；无真实业务运行变动。新 Gate 的运行回滚限定于 Velobase 自身既有容器，不能删除数据卷。
