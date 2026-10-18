@@ -1,6 +1,6 @@
 # 04｜产品搭建
 
-> **状态（2026-10-18）：CORE_L1_OWNER_APPROVED_FROZEN（核心1/一级7） / L2_CANDIDATE_REVIEW_PENDING（45） / L3_NOT_STARTED / BODY_NOT_STARTED**  
+> **状态（2026-10-18）：CORE_L1_OWNER_APPROVED_FROZEN（核心1/一级7） / L2_FROZEN（45） / L3_CANDIDATE_REVIEW_PENDING（118） / BODY_NOT_STARTED**  
 > **唯一冻结核心问题：产品怎么做、怎么交付？**  
 > **当前工作停点：Owner/Reviewer 审核二级45题；不自动冻结或启动三级。**
 
