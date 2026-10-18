@@ -22,7 +22,7 @@
 ## 2. 决策和真实执行历史（按时间顺序）
 
 1. 2026-10-18：Owner批准将本板块唯一框架冻结为**核心1、一级9、二级48、三级117**，此前1/7/45/118等不同版本为历史比较，不作为写作合同。Reviewer先前未经独立Writer代写4.1初稿，Owner要求从main删除；已执行，历史只保留普通Git记录。
-2. 第4.1章：独立Writer V1、R2交付后Reviewer独立审查，R2有B01–B06残留。Owner特别授权Reviewer直接在**完整R2**上修订、QA后正式封板，5? 不，**4二级10三级**未变，**不存在Writer R3**。唯一正文及审计见上。
+2. 第4.1章：独立Writer V1、R2交付后Reviewer独立审查，R2有B01–B06残留。Owner特别授权Reviewer直接在**完整R2**上修订、QA后正式封板，**4二级10三级**未变，**不存在Writer R3**。唯一正文及审计见上。
 3. 第4.2章：Writer V1及R2各自独立审查，R2仍有B01–B04（预算、PCI、首次必要性、异步付款）。Owner同样授权Reviewer在完整R2上定向修补，形成**4二级10三级正式封板正文**，**没有Writer R3**。
 4. 第4.3章：独立Writer V1、R2交付；V1审查为`RETURN_CH3_V1_LICENSE_INTEGRATION_AND_DECISION_ACCURACY`（B01–B08），R2为`RETURN_CH3_R2_RESIDUAL_INTEGRATION_AND_EVIDENCE_ERRORS`（C01–C04）。Owner后明确特别授权：“这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中。记得记录相关文档。完成之后开启下一个1级问题的部分。” Reviewer基于Writer R2全文，定向修C01–C04：
    - C01付款Webhooks验签/类型→订单/金额币种/风险与履约资格→可靠记录待办→动作级幂等、失败重试与人工接管，不把事件去重写成“保证不会被重复扣款”；不强制自建队列。
