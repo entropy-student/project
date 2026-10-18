@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED (2026-10-18)：本文件为一、二级独立征稿历史任务书，已完成使命；当下核心、一级8题和二级34题已冻结。本轮只扩展三级候选，须以 [`FROZEN_FRAMEWORK_L1_L2_20261018.md`](../01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md) 为准。请勿照本旧任务书重新创作一级/二级。**
+
 # 板块①「机会挖掘与市场判断」｜离线独立Agent任务书（核心问题已冻结版）
 
 > STATUS：CORE_FROZEN / L1_L2_INDEPENDENT_DRAFT_REQUESTED / L3_DEFERRED（2026-10-18）
