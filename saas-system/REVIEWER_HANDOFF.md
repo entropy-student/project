@@ -10,8 +10,10 @@
 顺序实测 **Velobase Harness → Open SaaS → Wave**，挑选能够长期复用、迅速部署/体验且免费开源的 SaaS 模板。前台、用户中心、平台 Admin、Stripe、客户裂变与奖励回撤是主要判断标准。**Docker 是可选方式，不是硬性要求**。优先用原生功能，其次评估可靠的免费开源扩展，最后才考虑付费服务或自研。
 
 ## PROJECT_STAGE
-`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_REVIEWED_RETURN_EXISTING_WORKLOAD_REGRESSION / G2R1_REVIEWED_PARTIAL_CAUSE_AND_OWNER_UNKNOWN / OWNER_DEFERRED_OLD_CONTAINER_RECOVERY / G2I1_CLOSED_OWNER_REJECTED / G2L1_REVIEWED_RETURN_LOGIN_UI_MISSING / G2L2_READY_NOT_EXECUTED`。
-G2L1 已由 Owner Windows 本机 Codex 复用旧 Velobase Web/Postgres/Redis 容器恢复运行；据执行报告三个容器仍 running、首页 HTTP 200、两服务 healthy，未重新构建。**正式 G2L1 功能结论仍为 RETURN：本地管理员入口缺失，Dashboard/Admin/Affiliate 未完成验收。**
+
+`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_HISTORICAL_RETURN_EXISTING_WORKLOAD / G2R1_CAUSE_UNKNOWN_CLOSED / G2I1_OWNER_REJECTED_NEVER_EXECUTED / G2L1_REVIEWED_RETURN_LOGIN_UI_MISSING / G2L2_REVIEWED_RETURN_AFFILIATE_BLANK_AND_HTTP_000 / G2L3_READY_NOT_EXECUTED`。
+
+Velobase 固定 SHA `e88e259b974f883913f68ac74a9b8377765d005d` 已在 Owner Windows 本机既有 Docker 中实际恢复并经 G2L2 使用原生 UI 登录本地管理员，打开 Dashboard 和 Admin Users；Affiliate 空白且 Web 随后出现 HTTP 000，持续可访问性尚未证实。历史三个未知旧容器暂不恢复。后续 Open SaaS → Wave 仍待本候选阶段收束。
 
 ## SYSTEM_MAP
 - **GitHub**：当前项目只管理项目状态、方案、Gate 与脱敏 Evidence；候选源码独立上游，不直接复制进入项目主仓库。
@@ -23,19 +25,21 @@ G2L1 已由 Owner Windows 本机 Codex 复用旧 Velobase Web/Postgres/Redis 容
 
 ## CURRENT_ACCEPTED_STATE
 
-**最新 G2L1 审核（2026-10-18）：** [正式 Reviewer 决定](./docs/G2L1_REVIEWER_DECISION_20261018.md) `RETURN_LOCAL_DEMO_LOGIN_UI_MISSING`；[本机执行证据](./docs/G2L1_EXECUTION_EVIDENCE_20261018.md) 证明的范围限于 Owner 转交的 Codex 实测：Docker Desktop/Engine 原已正常运行（未重新启动），现有 Velobase Web/Postgres/Redis 原容器已通过 `compose start` 恢复，首页实测 HTTP 200，Postgres/Redis healthy，Web 约 4.42 GiB、系统可用 RAM 约 0.99 GiB，未观察到其他容器状态回退。当前服务在报告时保留运行，未经本 Reviewer 直接访问 Owner 电脑复核。
+**2026-10-18 G2L2 Reviewer 正式裁定：** [独立审核](./docs/G2L2_REVIEWER_DECISION_20261018.md) `RETURN_AFFILIATE_BLANK_AND_WEB_HTTP_EMPTY_REPLY`。Owner 转交本机 Codex 的 [G2L2 Evidence](./docs/G2L2_EXECUTION_EVIDENCE_20261018.md) 表明 desktop viewport 1280×900 时真实本地管理员按钮可见、正常 UI 登录成功，Dashboard 和 Admin 用户管理页读屏通过（33 条演示数据）；因此 G2L1 的 **登录入口问题已解决并且不再是阻塞**。
 
-**功能阻塞：** 登录弹窗只有 Google/GitHub/Email，没有本地管理员 Demo 入口；Dashboard/Admin 正例、普通用户 Admin 负例未验收，Affiliate 登录后功能未验收，匿名 `/account/affiliate` 空白且 Next.js 提示 Issue（具体异常类别未知）。Worker 启动标记已见，但未测试队列任务；Stripe/支付/退款/佣金均未触碰。
+**仍有关键故障：** `/account/affiliate` 登录后空白并跳走，安全化日志仅报告 Next.js console-error，错误类型/栈 UNKNOWN；`/affiliate` 导向首页。随后三个以上 Windows 回环 curl 请求报 HTTP 000/空响应，**Web 当时可用性失败但不能证明进程 crash**。Web/Postgres/Redis 容器仍 running，DB/Redis healthy，Web CPU 曾达到约 289.77% 后回落、内存约 5.208 GiB，未报告 OOM 或其它项目状态回退；Worker 任务与普通用户 Admin 反例仍 UNVERIFIED。Stripe/佣金/真实支付从未执行。
 
-**新静态源码证据：** 固定 Velobase SHA 的 Desktop 登录组件有 `NEXT_PUBLIC_LOCAL_DEMO` 控制的本地 Demo 按钮，而 Mobile 登录组件没有；视口小于 768px 时切 Mobile。G2L1 未报告浏览器 CSS viewport，不能认定客户端开关错误或直接重建镜像。已签发 [G2L2](./docs/G2L2_LOCAL_DESKTOP_AUTH_AND_UI_RECHECK_GATE_20261018.md)，先用 ≥1024px 桌面视口无构建复测，再按 UI 结果决定下一步。
+**镜像真实性独立交叉核对：** G2L2 运行 Web 实际 Image ID 为 `sha256:9ab2468decb483e8941b18ce99570a1cf51677b3bb4c0c11024c1d6ea79364ef`，G2L1 此镜像的 SHA256 再摘要截断 `1552F1BBB39573BA` 已独立计算一致，因此实际运行镜像跨轮稳定；Compose `com.docker.compose.image` 标签 88bb... 的差异仅说明元数据不匹配，确切成因未知，不授权据此重建。
 
-**不变决策：** Owner 明确拒绝 Codespaces（从未执行），选择原 Windows 本机；Owner 暂不恢复历史旧容器，不再调查历史退出原因（`CAUSE_UNKNOWN`）。G0 文档初始化已 PASS，G1 历史资源 RETURN 已由 Owner 撤销固定 RAM 门槛；G2 历史 `RETURN_EXISTING_WORKLOAD_REGRESSION` 保留；不影响按 Velobase → Open SaaS → Wave 的顺序实验。完整历史证据保存在 [EXECUTION_EVIDENCE](./EXECUTION_EVIDENCE.md) 与原 G1/G2/G2R1/G2L1 决策中。
+**固定源码风险：** Affiliate 页面 `src/app/account/affiliate/page.tsx` 在 render 内调用 `router.push('/404')` 且 `return null`，属于潜在客户端副作用问题，但尚无堆栈证实即此次空白原因。Web `services/demo/start.mjs` 每次启动会触发 `prisma db push --skip-generate` 和基于标记的可选初始化，因此并非可盲目反复重启。
+
+**Owner 明确决策与边界：** Codespaces 被拒绝、从未运行；继续使用本机现有实例，不重装，不调查旧三容器退出旧案。G0/G1/G2/G2R1/G2I1/G2L1/G2L2 的历史证据保留原判定，已完成的 UI 验收成果不重来。Windows/Docker/浏览器状态为 `OWNER_RELAYED_EXECUTOR_REPORT` 而非 Reviewer 真机直接读回。
 
 ## CURRENT_GATE
 
-`G2L2 — SAAS-G2L2-LOCAL-DESKTOP-LOGIN-AND-UI-RECHECK-20261018 / REVIEWER_READY / NOT_EXECUTED`。
+`G2L3 — SAAS-G2L3-LOCAL-WEB-AFFILIATE-TARGETED-RECOVERY-20261018 / REVIEWER_READY / NOT_EXECUTED`。
 
-[唯一当前 G2L2 Gate](./docs/G2L2_LOCAL_DESKTOP_AUTH_AND_UI_RECHECK_GATE_20261018.md)：仅以已经运行的原 Velobase 容器，检查登录 Desktop/Mobile 渲染分支及 ≥1024px 视口；如本地 Demo 按钮可见，则通过正常 UI 登录并测试 Dashboard/Admin/Affiliate；如按钮仍不存在，则只读比较公开 provider IDs 和 Demo 开关元数据，形成明确诊断并 RETURN。禁止重建、改源码/数据库、重启 Docker、操作旧业务容器或支付。G2L1 及之前 Gate 全部历史关闭，不可复用授权。
+[唯一当前 G2L3 Gate](./docs/G2L3_LOCAL_WEB_AFFILIATE_TARGETED_RECOVERY_GATE_20261018.md)：先用 Windows `curl.exe --noproxy "*"` 与容器内独立 Node HTTP 对照，确定 HTTP 000 的错误类别和故障域；读取窄范围脱敏 Next.js/Worker 信息。**仅当 Web 进程双通路持续不响应且原 Demo auth-secret/seed markers、镜像、容器与数据卷完全核实安全时**，允许至多一次同一个现存 Web 容器的受控 restart；该启动脚本可能进行原隔离 Demo 数据库 schema sync，不得误称为纯只读。然后再复测 Web 稳定访问、Dashboard/Admin 和 Affiliate 错误类。绝不重新构建、改源码/共享 Docker、启动旧容器或支付。历史 G2L2 Gate 已关闭。
 
 ## CRITICAL_CONSTRAINTS
 - 项目顺序固定 Velobase → Open SaaS → Wave；不并行安装，不因候选失败立刻切换并部署。
@@ -51,26 +55,27 @@ G2L1 已由 Owner Windows 本机 Codex 复用旧 Velobase Web/Postgres/Redis 容
 
 ## CURRENT_ROLLBACK_STATUS
 
-`G2L1_RUNTIME_RECOVERED / EXISTING_WEB_POSTGRES_REDIS_RUNNING_AS_OF_G2L1 / ORIGINAL_IMAGES_VOLUMES_NETWORK_RETAINED / NO_ROLLBACK_EXECUTED / NO_OTHER_WORKLOAD_DELTA_OBSERVED`。
+`G2L2_WEB_POSTGRES_REDIS_RUNNING_AS_REPORTED / HTTP_NOT_HEALTHY_AT_LAST_PROBE / DB_REDIS_HEALTHY / NO_ROLLBACK_PERFORMED / OTHER_WORKLOAD_COUNTS_UNCHANGED`。
 
-G2L1 只恢复其已有项目容器，没有源码/镜像重建；Executor 报告仍保持运行供 Owner 查看。G2L2 以无持久业务写入的 UI/健康复测为主，默认保留运行。如本轮新增实际系统/其他项目健康回退，只允许精准停止 Velobase 本身，保留旧项目、Docker Engine 与全部卷。历史三旧容器身份连续性与 G2 退出根因仍 UNKNOWN。
+G2L2 结束时 Executor 保留三目标容器 running，Web 对宿主 HTTP 请求没有有效响应，DB/Redis healthy。两命名卷、现有镜像、网络保留，无其他 Docker 项目主动变更。G2L3 允许的可选 Web-only 重启前先收集日志、核实不可用及原 Demo 数据状态标记；若不满足条件不能重启。真实新异常只能停本项目 Web，绝不停止 Docker Desktop/WSL/其它项目。
 
 ## UNRESOLVED
 
-- 登录弹窗缺本地 Demo 入口：固定上游 Desktop 组件有对应按钮，Mobile 组件没有，浏览器 CSS viewport 和实际渲染分支 **UNKNOWN**；客户端编译环境是否一致也 UNKNOWN。新 Gate 优先先验视口。
-- Dashboard / Admin 正向、普通用户 Admin 负例、Affiliate 登录后功能尚未完成；匿名 Affiliate 空白及 Next.js "1 Issue" 的具体堆栈 UNKNOWN。Worker 只有启动证据，后台任务处理没有运行。
-- G2L1 资源采样 Web 约 4.42 GiB，主机可用 RAM 结束约 0.99 GiB；未发现本轮 OOM/其它项目状态回退，但仍需持续记录实际运行代价，不以硬阈值阻断。
-- 原三个历史容器所属业务及退出机制 `CAUSE_UNKNOWN`；Owner 认为可能手动停止且暂不要求恢复，身份连续性未知，不是当前 SaaS 实验的阻塞项。
-- 固定 SHA `e88e259b974f883913f68ac74a9b8377765d005d` 的退款部分回撤、佣金重试/幂等、Stripe TEST、现金佣金提现及额外服务适配仍 UNVERIFIED。Open SaaS / Wave 尚未运行。
-- 本机状态由 OWNER_RELAYED_EXECUTOR_REPORT 支持，Reviewer 未直接操作 Windows；最新物理状态有漂移时由 Codex 做有界新鲜读回。
+- **Web HTTP 000**：未提供 curl 的退出码、禁代理直连结果、连接/TTFB/超时阶段和容器内请求对照；根因 UNKNOWN，G2L3 优先定位。
+- **Affiliate 空白/跳转**：已认证时发生，Next.js 错误类别未取得；源码存在 render 期 `router.push('/404')` 潜在问题，关联但无证明；需捕获脱敏错误类与资格状态。
+- **Admin 权限与 Worker**：普通用户角色 Admin 负例 UNVERIFIED；Worker 进程/队列任务实证 UNVERIFIED。不得将 Admin UI 可读误等同授权矩阵或全 SaaS PASS。
+- **资源与持久化**：Web 一次 5.208 GiB/CPU 289.77%，无实测 OOM，继续关注真实运行压力；原 Demo 三个持久化密钥/seed marker 是否满足安全重启条件要在 G2L3 读取存在性（不读值）。
+- **Compose 镜像标签**：旧标签 88bb... 与实际 ImageID 9ab... 不一致，但 G2L1→G2L2 实际 Web 镜像摘要已一致；元数据演变原因 UNKNOWN，不作为重建依据。
+- **历史三旧容器**：归属/身份连续性与历史 G2 退出机制 UNKNOWN，Owner 本轮不恢复、不诊断；无需阻塞 SaaS。
+- **项目未完**：Stripe TEST、佣金/积分、提现、退款/幂等、客户裂变闭环与 Open SaaS/Wave 实际功能仍 UNVERIFIED；在当前 UI 稳定之前不接支付。
 
 ## NEXT_STEP
 
-**继续 G2L2 桌面登录与页面复测：** [当前 Gate](./docs/G2L2_LOCAL_DESKTOP_AUTH_AND_UI_RECHECK_GATE_20261018.md)。本机 Docker 已报告运行，不重复启动、下载、构建。通过 ≥1024px 浏览器验证本地 Demo 按钮，正常登录后验收 Dashboard、Admin 权限与 Affiliate；若桌面仍缺入口只采最小可审差异，下一轮再针对确证原因进行单点修复。Stripe/裂变结算留待 UI 可操作后另设 Gate；Open SaaS、Wave 按既定串行次序。
+让 Owner 的**本机 Codex 直接执行** [G2L3 Web 000 / Affiliate 定向诊断与条件恢复 Gate](./docs/G2L3_LOCAL_WEB_AFFILIATE_TARGETED_RECOVERY_GATE_20261018.md)。先区分禁代理 Host 与容器内连接情况，不盲目重启；确认应用本身挂起且隔离 Demo 安全标记俱全时仅一次现有 Web 单容器恢复，随后验收稳定性并收集 Affiliate 精确报错。必要时再做单点源码补丁 Gate，**不得先进行整站重建或切换 Codespaces/VPS**。
 
 ## OWNER_ACTION_REQUIRED
 
-将当前 G2L2 Gate 链接交给本机 Codex 执行即可；不需要新的账户、付款、Stripe Key、Docker 重启或额外审批。
+只需将 [G2L3 当前 Gate](./docs/G2L3_LOCAL_WEB_AFFILIATE_TARGETED_RECOVERY_GATE_20261018.md) 转交本机 Codex；无需逐命令审批、密码、云端部署、Docker 全局修改或 Stripe 信息。
 
 ## EVIDENCE_POINTERS
-[当前 G2L2 Gate](./docs/G2L2_LOCAL_DESKTOP_AUTH_AND_UI_RECHECK_GATE_20261018.md)；[G2L1 正式审核](./docs/G2L1_REVIEWER_DECISION_20261018.md)；[G2L1 Executor 证据](./docs/G2L1_EXECUTION_EVIDENCE_20261018.md)；[最新 G2L1 本机现有实例恢复与 UI 验收 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)；[已拒绝的 G2I1 Codespaces 历史 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[G2I1 Codespaces 隔离 UI 执行 Gate（2026-10-18）](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[2026-10-18 独立接手审核与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)；[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
+[G2L3 当前 Gate](./docs/G2L3_LOCAL_WEB_AFFILIATE_TARGETED_RECOVERY_GATE_20261018.md)；[G2L2 Reviewer 正式裁定](./docs/G2L2_REVIEWER_DECISION_20261018.md)；[G2L2 本机 Evidence](./docs/G2L2_EXECUTION_EVIDENCE_20261018.md)；[当前 G2L2 Gate](./docs/G2L2_LOCAL_DESKTOP_AUTH_AND_UI_RECHECK_GATE_20261018.md)；[G2L1 正式审核](./docs/G2L1_REVIEWER_DECISION_20261018.md)；[G2L1 Executor 证据](./docs/G2L1_EXECUTION_EVIDENCE_20261018.md)；[最新 G2L1 本机现有实例恢复与 UI 验收 Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md)；[已拒绝的 G2I1 Codespaces 历史 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[G2I1 Codespaces 隔离 UI 执行 Gate（2026-10-18）](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)；[2026-10-18 独立接手审核与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md)；[下一位 Reviewer 完整交接（2026-10-18）](./docs/NEXT_REVIEWER_RELAY_20261018.md)；[G2R1 Reviewer 审核](./docs/G2R1_REVIEWER_DECISION_20261018.md)；[G2R1 已结束的只读 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G2 执行证据](./docs/G2_EXECUTION_EVIDENCE_20261018.md)；[G2 Reviewer 决定](./docs/G2_REVIEWER_DECISION_20261018.md)；[G2R1 Gate](./docs/G2R1_EXISTING_WORKLOAD_READONLY_GATE_20261018.md)；[G1 Reviewer 决定与回报摘要](./docs/G1_REVIEWER_DECISION_20261017.md)；[EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) 记录 G0；实验路线 [SERIAL_EXPERIMENT_PLAN.md](./docs/SERIAL_EXPERIMENT_PLAN.md)。上游基线链接： [Velobase](https://github.com/velobase/velobase-harness) / [Open SaaS](https://github.com/wasp-lang/open-saas) / [Wave](https://github.com/thedevdojo/wave)。
