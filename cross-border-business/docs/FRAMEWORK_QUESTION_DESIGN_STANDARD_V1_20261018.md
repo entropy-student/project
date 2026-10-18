@@ -100,6 +100,6 @@
 ## 八、外部Agent权限与版本管理
 
 - 默认**无仓库权限**。用Owner提供的本规范及该板块独立任务书；不要求读取GitHub，不把“看仓库再写”设为启动前提。
-- ①已`CORE_L1_L2_L3_FROZEN / BODY_NOT_STARTED`（1/8/34/83均Owner批准），历史一级暂时认可、7/32候选及99/64三级草案均为旧版；④⑤仍为`PLANNED / FRAMEWORK_DRAFT_REQUESTED`。外部Agent的候选不等于冻结，**不能自行写回父项目main**、改第二板块的8/44/93冻结文件或第三板块支付成果。
+- ①已`CORE_L1_L2_L3_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_PENDING`（1/8/34/83均Owner批准），历史一级暂时认可、7/32候选及99/64三级草案均为旧版；④⑤仍为`PLANNED / FRAMEWORK_DRAFT_REQUESTED`。外部Agent的候选不等于冻结，**不能自行写回父项目main**、改第二板块的8/44/93冻结文件或第三板块支付成果。
 - Owner收到各Agent的候选后交给独立Reviewer比较广度/深度、递进与表达，再定向修改；正式PASS/FROZEN由Owner另行确认。
 - 本规范是**跨板块通用参考V1**，不是对第二/第三板块的追溯性修改，也不继承已冻结的问题数量或技术专有知识。

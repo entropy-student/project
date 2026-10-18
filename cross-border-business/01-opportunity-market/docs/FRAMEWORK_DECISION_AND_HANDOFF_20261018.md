@@ -1,6 +1,6 @@
 # 第一部分｜框架决定与Reviewer交接（截至2026-10-18）
 
-> **CURRENT_STATE：FRAMEWORK_FROZEN / BODY_NOT_STARTED / HTML_NOT_STARTED**  
+> **CURRENT_STATE：FRAMEWORK_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_GATE_RELEASED / HTML_NOT_STARTED**  
 > GitHub：`entropy-student/project` · 目录：`cross-border-business/01-opportunity-market/`
 
 ## 正式冻结对象及唯一权威
@@ -13,7 +13,7 @@
 | 一级问题 | 8 | FROZEN |
 | 二级问题 | 34 | FROZEN |
 | 三级问题 | 83 | FROZEN |
-| 正文已正式封板 | 0章 | NOT_STARTED |
+| 正文已正式封板 | 第①章（1/8） | FINAL_SEALED |
 
 **冻结边界**：问题原文、顺序、编号和归属，及8.2不细拆安排；问题下的知识范围提示不是经过实证的法律或市场结论。
 
@@ -30,9 +30,9 @@
 
 - **先读正式V1**。旧候选的REVIEW_PENDING或RETURN不是当前状态，不得以历史版本重新判断框架。
 - 未经Owner新授权，不改变任何已冻结问题树，也不因需要“凑足三级”给8.2补题。
-- 第一板块**尚无已审定正式正文**，不能把框架冻结等同于内容完成或产品部署验证；后续逐章 Writer→Reviewer→Owner 才封板正文。
-- 第①章起草如需离线Writer，提供完整冻结框架、写作标准与五板块边界；Writer不能访问GitHub时，交付包必须自包含，返修按Owner指定流程另提供返修包和传递提示词。
+- 第一板块**已有第①章正式封板正文**，不能把框架冻结等同于内容完成或产品部署验证；后续逐章 Writer→Reviewer→Owner 才封板正文。
+- 后续章节起草如需离线Writer，提供完整冻结框架、写作标准与五板块边界；Writer不能访问GitHub时，交付包必须自包含，返修按Owner指定流程另提供返修包和传递提示词。
 - ②《网络环境搭建》既有8/44/93正式冻结及各章正文进展保持原状；③《现代商业支付系统》7/29/42已封板，现有九份文件及七章正文保持只读；④⑤由各自项目入口管理。
 - 跨国法规、资格、成本、市场事实须未来正文独立核验，框架题目不是现行事实的证明；不得预先启动HTML。
 
-**当前下一步：** 待Owner另行决定是否启动第一章Writer。没有新的开放框架审核、改题或补三级Gate。
+**当前下一步：** 第①章已依据Owner特别授权直接修订并封板（[正文](CHAPTER1_FINAL_SEALED.md)、[封板证据](CHAPTER1_SEAL_EVIDENCE_20261018.md)），第②章已发布独立Writer [Gate](CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md) 与[离线包清单](CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)；等待Writer交完整候选。不改变已冻结的问题框架。
