@@ -1,10 +1,10 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接（2026-10-18）
 
-> **PROJECT_STATUS：V2_FRAMEWORK_FROZEN / CH1_CH2_CH3_FINAL_SEALED / CH4_WRITER_GATE_RELEASED**  
+> **PROJECT_STATUS：V2_FRAMEWORK_FROZEN / CH1_CH2_CH3_FINAL_SEALED / CH4_V1_RETURN_R2_WRITER_PENDING**  
 > **FRAMEWORK：核心1、一级9、二级48、三级117；唯一核心：产品怎么做、怎么交付？**  
 > **CURRENT_GATE：CB04-CH4-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **CURRENT_STOP：CH4_OFFLINE_WRITER_PENDING / NO_CH4_BODY / NO_HTML**  
-> **OWNER_ACTION_REQUIRED：** 将本轮第4.4章离线ZIP及可复制提示词发外部Writer；交回完整正文、自检Markdown和ZIP后再交Reviewer。
+> **CURRENT_STOP：CH4_V1_CONTENT_RETURN / R2_WRITER_PENDING / NO_SEALED_CH4_BODY / NO_HTML**  
+> **OWNER_ACTION_REQUIRED：** 将第4.4章Writer V1独立Review的完整R2返修ZIP及提示词发外部Writer；交回R2完整正文、逐项核验记录和ZIP后再交Reviewer。
 
 ## 1. 新Reviewer接手必须依序阅读的权威材料
 
@@ -34,6 +34,9 @@
 5. 本轮已按Owner要求开启下一一级**4.4《怎么让客户顺利购买和使用？》**，冻结**6二级/13三级**；Reviewer只发布完整独立Writer Gate及8文件离线包，**没有4.4正文，不自行代写**。旧第4.3章Writer Gate与其ZIP登记已退出main当前目录，正常Git历史仍可查。
 
 ## 3. 第4.4章冻结任务纲要
+**CURRENT_REVIEW（2026-10-19）**：Writer V1原ZIP已交并CRC PASS、正文6/6二级13/13三级严格通过；独立Reviewer结论`RETURN_CH4_V1_TRANSACTION_ACCESS_LEGAL_SOURCE_ERRORS`，8组实质问题：欧盟数字内容撤回权、订单号+邮箱伪双因素、Client Secret与API幂等混同/前台成功即交付、S3预签名URL被误称天然限次、防上传恶意文件绝对化、个人信息缓存和全强制账户/邮件服务、移动Web触控标准及夏令时、核验来源VERIFIED错配。详见[Writer V1独立审核历史和当前R2工作包](docs/CHAPTER4_WRITER_V1_REVIEW_RETURN_20261019.md)。Owner附件R2 ZIP SHA256 `03219cf282793a77b48953563cf762518529a60badcab6d25ed625b1ed05191f`，49,656 bytes，8文件（含原V1全文/原自检）；**4.4当前没有正式封板正文，不启动4.5或HTML**。
+
+
 
 - **4.4.1 购买前哪些商品信息必须说清楚？**（1个三级：买前明确内容/时间/限制）
 - **4.4.2 规格、套餐和定制选项怎么让客户选对？**（2个三级：价格/库存/交付关联、非法组合纠正）
@@ -52,13 +55,13 @@ Writer有完整的内容创作自由，须逐字保留冻题，全面回答，�
 ## 5. 当前治理面板
 
 - **PROJECT_GOAL：** 产品怎么做、怎么交付？
-- **PROJECT_STAGE：** 1/9/48/117框架FROZEN，4.1/4.2/4.3三章已FINAL_SEALED，4.4独立Writer首稿待交，4.5–4.9未启动正文，HTML未启动。
+- **PROJECT_STAGE：** 1/9/48/117框架FROZEN，4.1/4.2/4.3三章已FINAL_SEALED，4.4 Writer V1已交并Review RETURN、R2返修待交，4.5–4.9未启动正文，HTML未启动。
 - **SYSTEM_MAP：** GitHub main存冻题、唯一封板正文、封板证据、Gate和交接；Owner本轮对话给离线Writer ZIP，不需要平台授权。
 - **CURRENT_ACCEPTED_STATE：** 3个已封板完整章节；4.4无正文，4.5–4.9无正文。
 - **CURRENT_GATE：** `CB04-CH4-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018`。
 - **CURRENT_ROLLBACK_STATUS：** Git提交可回滚，历史R1/R2 RETURN和旧Gate不丢失；无源码/付款/真实资源改动。
-- **UNRESOLVED：** 4.4 Writer首稿尚未返回，所有需实测的商城流程、支付和客户上传权限均不得凭教材自动视为验收通过。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner下载第四章ZIP+提示词发独立Writer→Writer完成全章正文/核验及ZIP，停在`STOP_AT_REVIEWER`→Reviewer独立审核→Owner决定是否封板。
-- **MANDATORY_STOP：** `CH4_WRITER_PENDING`；不提前写4.4、不写4.5、不制作HTML。
+- **UNRESOLVED：** 4.4 Writer R2完整返修尚未返回，所有需实测的商城流程、支付和客户上传权限均不得凭教材自动视为验收通过。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner下载第四章R2完整返修ZIP+提示词发独立Writer→Writer在V1基础上完成全章R2正文/逐项核验及ZIP，停在`STOP_AT_REVIEWER`→Reviewer独立审核→Owner决定是否封板。
+- **MANDATORY_STOP：** `CH4_R2_WRITER_PENDING`；不提前写4.4、不写4.5、不制作HTML。
 
 [返回第四部分README](README.md)
