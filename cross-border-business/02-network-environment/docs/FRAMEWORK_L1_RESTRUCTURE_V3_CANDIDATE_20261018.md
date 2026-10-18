@@ -1,7 +1,7 @@
 # 网络环境搭建｜一级问题顺序重构 V3（候选）
 
 > **STATUS：L1_RESTRUCTURE_CANDIDATE_NOT_FROZEN**（2026-10-18）  
-> **L1：8 个新候选，未冻结**｜**L2：历史 50 题已解冻，待重编**｜**L3：工作树已删除、未启动**  
+> **L1：8 个新候选，未冻结**｜**L2：历史50题已解冻；新73题草案待审**｜**L3：工作树已删除、未启动**  
 > **唯一状态：** [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)。
 
 ## 核心问题
@@ -51,12 +51,12 @@
 | 源站防护 | 新⑤描述系统防护底线；新⑥描述边缘回源的实测验收 |
 | 费用 | 新①起步预算；新⑤资源被盗用的风险；新⑧日常费用和扩容优化 |
 
-**原有 50 个二级问题全部解除冻结。** 本轮不按旧九章编号硬迁移、不以 50 作为新数量上限或下限。旧二级问句可从 [历史版本](https://github.com/entropy-student/project/blob/f936cd9d0c951008b8d25e0d16f64f6ab554d89d/cross-border-business/02-network-environment/docs/FROZEN_FRAMEWORK_L1_L2_V2_20261018.md)逐条参考；这是非权威的历史快照，不能当成当前冻结状态。
+**原有 50 个二级问题全部解除冻结。** 最新二级重构已另成 [完整73题V1草案](LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md)，非正式冻结稿；不按旧九章编号硬迁移，也不以50为数量上限或下限。旧二级问句可从 [历史版本](https://github.com/entropy-student/project/blob/f936cd9d0c951008b8d25e0d16f64f6ab554d89d/cross-border-business/02-network-environment/docs/FROZEN_FRAMEWORK_L1_L2_V2_20261018.md)逐条参考；这是非权威的历史快照，不能当成当前冻结状态。
 
 **三级问题：** 100题草案按Owner指令从当前main删除，不创建新副本、不开始新三级拆解；标准Git历史仍可追溯，不重写共享仓库历史。
 
 ## 四、下一步
 
-Owner先审阅一级八章候选：章节数量、先后、合并幅度和问句是否适合卖家。经确认后，再基于新版一级框架改写二级问题并独立审核，未经明确授权不重新冻结、不编写正式正文或HTML。
+Owner和Reviewer审阅一级八章候选及已形成的二级73题草案，重点看递进、合并、重复、遗漏与易读性；未经明确授权不重新冻结、不启动三级、正文或HTML。
 
 第三板块《现代商业支付系统》保持CLOSED/FROZEN不动。
