@@ -10,7 +10,7 @@
 - **[第4.1章《我该把产品做成什么形式？》正式封板全文](docs/CHAPTER1_FINAL_SEALED.md)**（4个二级/10个三级）；[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)，Writer R2经Owner授权Reviewer直修后封板。
 - **[第4.2章《第一版先做哪些东西？》正式封板全文](docs/CHAPTER2_FINAL_SEALED.md)**（4个二级/10个三级）；[封板证据及B01–B04修复矩阵](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)，Writer R2经Owner特别授权Reviewer直修后封板；**没有Writer R3**。
 - **[第4.3章《怎么用最省事的方式把产品搭出来？》当前独立Writer首稿Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：**5个二级/11个三级，4.3.4直接成节**；独立Writer不必访问GitHub。
-- [第4.3章独立Writer完整离线ZIP清单及SHA256](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：8份Markdown，SHA256 `9acaf201bd64508c0ef648ab3e6afc32a206de30c0f8729b690cfbeeb22eabe0`；由Owner在本轮对话下载转交。
+- [第4.3章独立Writer完整离线ZIP清单及SHA256](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：8份Markdown，SHA256 `c9bd19e9729fba4364641ea3537535281dc61fed0c152c8151aa523089d804ae`；由Owner在本轮对话下载转交。
 - **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**：优先以此文及本页恢复阶段与角色。
 - [第二部分长期Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：Writer独立完整正文；Reviewer冷读复核/必要返修包；Owner批准后封板。
 
