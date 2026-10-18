@@ -43,20 +43,20 @@
 - **PROJECT_STAGE：** 核心、L1、L2正式冻结；L3候选待审核；正文未启动。
 - **SYSTEM_MAP：** 纯 Markdown 文档项目；无独立服务器、网站、后台、数据库、真实客户数据、Secret、支付网关或 Docker 运行时；GitHub `main` 是唯一持久化目标。
 - **CURRENT_ACCEPTED_STATE：** [唯一完整冻结快照](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)；三级候选非 accepted。
-- **CURRENT_GATE：** `04-L2-OWNER-REVIEW-20261018`。目标：审核二级45题的表达、独立性、广度、去重和跨板块边界；最大终点为 Owner 作出 PASS / 返修决定，不进行自动冻结或下级写作。
-- **CRITICAL_CONSTRAINTS：** 上级7题原文及核心冻结不可更改；①1/8/34/83与②8/44/93冻结不动；③ CLOSED/FROZEN 不动；不写网络配置、支付金融、获客增长教程；不凭候选目录断言现实产品具备特定功能。
+- **CURRENT_GATE：** `04-L3-OWNER-REVIEW-20261018`。目标：审核三级118题的必要性、去重、广度及跨板块边界；最多形成Owner审核结果，未批准不冻结或写正文。
+- **CRITICAL_CONSTRAINTS：** 核心1/一级7/二级45均已冻结，不可擅改；①1/8/34/83与②8/44/93冻结不动；③ CLOSED/FROZEN 不动；不写网络配置、支付金融、获客增长教程；不凭候选目录断言现实产品具备特定功能。
 - **DEFAULT_EXECUTION_CHANNEL：** GitHub 连接器操作 `entropy-student/project` 的 `main`，纯文档小范围读写；下一轮默认 Reviewer 审核，未授权修改其他项目目录。
 - **CURRENT_ROLLBACK_STATUS：** 文档变更可由 Git 历史按具体 Commit 和路径进行新的逆向提交；不强制重置/改写共享 `main` 历史；本轮无生产状态或数据恢复需求。
-- **UNRESOLVED：** 45道候选是否保留/合并/改写仍待 Owner 审查；不同国家法律、平台商业许可及具体服务商细则留待未来正文章节核验，不能从题目断言已符合。
-- **NEXT_STEP：** Owner/Reviewer 审核 L2 → 必要的最小返修 → Owner 明确批准 → 单独建立正式 L2 冻结快照 → 才开始 L3 候选。
-- **OWNER_ACTION_REQUIRED：** 审核 [二级45题](../FRAMEWORK_L2_CANDIDATE_20261018.md) 并决定通过或指出需改之处；无需工具安装或转交材料。
+- **UNRESOLVED：** 三级118题是否需要合并或改写仍待Owner审查；不同国家法律、平台商业许可及具体服务商细则留待未来正文章节核验，不能从题目断言已符合。
+- **NEXT_STEP：** Owner审核三级118题 → 按需最小返修 → 正式批准后创建三级冻结快照 → 再安排正文。
+- **OWNER_ACTION_REQUIRED：** 审核 [三级118题](../FRAMEWORK_L3_CANDIDATE_20261018.md) 并决定通过或指出需改之处；无需工具安装或转交材料。
 - **EVIDENCE_POINTERS：** 上述 Commit/SHA、冻结文件、候选文件及此交接；项目父/子 README 仅负责导航，不构成另一套状态原文。
 
 ## 四、恢复工作顺序与重点复核
 
-**Reviewer 必读顺序：** ① [本板块 README](../README.md) → ② [冻结快照](../FROZEN_FRAMEWORK_CORE_L1_20261018.md) → ③ [L2 候选](../FRAMEWORK_L2_CANDIDATE_20261018.md) → ④ [通用标准](../../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md) → ⑤ 本交接。
+**Reviewer 必读顺序：** ① [本板块README](../README.md) → ② [唯一1/7/45冻结](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) → ③ [L3候选](../FRAMEWORK_L3_CANDIDATE_20261018.md) → ④ [复核自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md) → ⑤ [通用标准](../../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)。
 
-**Reviewer 优先复核：** 4.5九题的拆分是否必要；4.4与第五板块成交问题的界限；4.3/4.7两类成本、迁移题是否重复；实体、数字、SaaS、服务是否都能用这套目录完成真正可交付的产品；首版人工处理与自动化是否都有清晰的质量和失败边界。
+**Reviewer 优先复核：** 重点审查4.5下28个三级的独立性、4.4/⑤营销边界、4.5/③支付资金边界，以及实体、SaaS、数字、服务与人工履约的覆盖。
 
 ## 五、Gate / 风险 / 停点
 
