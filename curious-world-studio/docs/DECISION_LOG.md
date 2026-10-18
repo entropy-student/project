@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR155_INDEPENDENT_RETURN_PROCESS_COMPLIANCE_20261018 -->
+## 2026-10-18｜PR#155最终交付独立Review：流程RETURN、技术PASS、视觉明显改善
+
+Owner上传完整真实ZIP，SHA=`9d81ff112bd634f7418b5ec568a731847246a84995dfd918a62960e67e6027dd`，66成员/65 SHA全部核对，包含两版59.933秒实际MP4。最终影片SHA=`acd29f628d5fb83ac3bf817cc522b7e0ad1b5183c38ea21634ef6c887011ca24`，Reviewer独立FFprobe及FFmpeg完整解码PASS；全片采样实看已显示原Mac从桌面开窗到回桌面，T6温度17/50 vs48/50、T5三个不同AI静态淀粉脚、T6声学100ms/106ms和T2结果/假说，解决前轮“单条锅内实拍当背景”的主要视觉结构问题。当前只作`VISUAL_IMPROVED_OWNER_NOT_VERIFIED`；AI三图SHA吻合、官方output_hint/不重试/双并发有Executor记录但源真实调用未由Reviewer复现，`IMAGEGEN_PARTIAL_PASS/TOKEN_SAVING_NOT_MEASURED`。**流程RETURN**：Pexels #7677397下载素材的来源/规格/局部画面可验证，但项目已确认的多平台搜索候选、各站比对/作品级去重、查询和7层状态计数缺证据，不能把候选产出后成功下载视作整体流程已遵守，也不能谎称其它搜索引擎绝未使用。Owner此前提前锁定的`RETURN_PROCESS_COMPLIANCE`保持，不因视频质量改善改判。PR#155仅真实脱敏报告，**保持Open不合并**；[Reviewer报告](reviews/CW0005_PR155_MEDIA_PROCESS_AND_VISUAL_INDEPENDENT_REVIEW_RETURN_2026-10-18.md)已落库。原视觉返修工作完成，不准重复第三次渲染；后续流程取证Gate仍待实际派发，不得自动启动。现行`NO_PUBLISH/G1/G2/R4/RIGHTS_PARTIAL`全不变。
+
+
 <!-- CWS_INFLIGHT_DELIVERY_PRIORITY_FIX_20261018 -->
 ## 2026-10-18｜Owner确认视觉返修已在途，Reviewer撤销错误的中途Gate抢占
 
