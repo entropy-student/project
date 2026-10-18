@@ -1,5 +1,7 @@
 # 第五部分｜获客与用户增长｜唯一当前Owner决定与Reviewer交接（2026-10-18）
 
+> **历史交接存档提示（2026-10-18后续Owner批准）：** 本文件记录的是V2尚待Owner审核时的旧阶段，**已不再作为当前权威交接**。Owner现已正式批准V2完整1/6/35/78框架，并启动第①章离线Writer流程。现行状态和Gate请读 [唯一当前REVIEWER_HANDOFF](../REVIEWER_HANDOFF.md)，正式原题请读 [FROZEN_FRAMEWORK_V2_20261018.md](FROZEN_FRAMEWORK_V2_20261018.md)。以下旧状态仅供历史追溯，切勿按其`OWNER_REVIEW_PENDING`继续执行。
+
 > **CURRENT_STATE：CORE_FROZEN / L1_L2_TEMP_REOPEN / REVIEWER_V2_6_35_78_CANDIDATE_READY / OWNER_REVIEW_PENDING**
 > **GATE_ID：CB-05-REVIEWER-DIRECT-REVISION-V2**
 > **项目：** `entropy-student/project/cross-border-business/05-acquisition-growth/`
