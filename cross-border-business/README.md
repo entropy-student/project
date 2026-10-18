@@ -100,8 +100,8 @@
 
 **状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①②③④章正文已封板，第⑤章Writer待交。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级独立Writer首稿待交；⑤正式V2核心1/一级6/二级35/三级78保持冻结，第一至四章全部正式封板；第五章《怎么让老客户再买、带来新客？》5/11 Writer Gate及离线完整包已发布，等待首稿。
 
-- **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[修订证据](02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
-- **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板证据](02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
+- **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
+- **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
 
 ## 第三板块：已封板的正式子项目
 
