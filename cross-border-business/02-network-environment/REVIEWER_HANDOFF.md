@@ -9,11 +9,19 @@
 > **CHAPTER5：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
 > **CHAPTER6：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
 > **CHAPTER7：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
-> **CURRENT_STAGE：CHAPTER8_OFFLINE_WRITER_PACKET_READY / WRITER_PENDING**  
-> **CURRENT_GATE：CB02-CH8-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018（RELEASED）**  
-> **OWNER_ACTION_REQUIRED：将第⑧章完整8文件独立Writer离线ZIP及提示词转交Writer；回收完整正文、研究记录和ZIP供独立Reviewer审核。**
+> **CHAPTER8：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
+> **CURRENT_STAGE：ALL_8_CHAPTERS_FINAL_SEALED / OWNER_DECISION_PENDING_FOR_NEXT_PHASE**  
+> **CURRENT_GATE：NONE（第⑧章已完成）**  
+> **OWNER_ACTION_REQUIRED：如需全板块综合复核/HTML排版，请单独指示；当前不启动下一阶段。**
 
-## 最新｜第⑦章Owner授权直修正式封板 / 第⑧章Writer Gate发布（2026-10-18）
+## 最新｜第⑧章Owner授权Reviewer直修正式封板（2026-10-19）
+
+- Owner 明确授权 Reviewer 以**第⑧章 Writer R2 完整原稿**为基础，自主修复 R2-01—R2-09 后正式冻结并写入 GitHub main；这是**Reviewer 直修**，**不存在 Writer R3**。
+- 第⑧章唯一正式正文：[CHAPTER8_FINAL_SEALED.md](docs/CHAPTER8_FINAL_SEALED.md)，SHA-256 `3657823340a6dea59a7f27fd279415cb0c2ab65e40475a24a6d8d6eb75787551`；完整范围、九组修复、官方来源、原 Writer R2 指纹及未实测限制见：[CHAPTER8_SEAL_EVIDENCE_20261019.md](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。
+- 保留第⑧章 **1H1/5H2/11H3** 冻结原题、顺序、层级。重点修复云服务计费与免费层、RDS 多可用区规格、Shopify 中国区邀请制、Stripe 事件幂等、数据迁移双写、SLA、CPU Credit、密码迁移和邮件认证边界。所有演示均为静态/模型验证，**未访问生产环境、真实账单或支付**。
+- 已完成第⑧章旧 Gate 与离线 Writer ZIP 退出当前 `main` 目录，Git 历史保留。**第二板块 8/8 章正式封板**；HTML **NOT_STARTED**，下一阶段必须 Owner 另行授权。前①–⑦章、8/44/93 冻结框架、第三板块与其他项目不变。
+
+## 历史｜第⑦章Owner授权直修正式封板 / 第⑧章Writer Gate发布（2026-10-18）
 
 - Owner明确授权Reviewer基于第⑦章Writer R2完整稿定向修复R2-01–R2-07并正式封板；不代表后续章节可以自动封板。
 - **第⑦章唯一正式正文：**[CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md)，61,973 UTF-8 bytes / 569行，SHA-256 `c758d09b46c72eb00a98b3cb2b411c22b6910e709a14f2a3ae93d3697fde7efa`。**封板证据：**[CHAPTER7_SEAL_EVIDENCE_20261018.md](docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。Writer R2原件58,091字节，SHA256 `7d7e47fd70f9fd318edd74e97be34e8bc9e3d806215046ac4f5f16bd717aa2dc`。**不存在Writer R3**；演练脚本仅完成隔离档案预检反例，未宣称生产恢复成功。
@@ -54,8 +62,8 @@
 | ⑥ R2→Owner授权直修证据 | [docs/CHAPTER6_SEAL_EVIDENCE_20261018.md](docs/CHAPTER6_SEAL_EVIDENCE_20261018.md) | R2-01–07七项修订、官方来源与全文自检 |
 | ⑦ 故障与恢复正式正文 | [docs/CHAPTER7_FINAL_SEALED.md](docs/CHAPTER7_FINAL_SEALED.md) | **FINAL_SEALED** |
 | ⑦ Owner授权直修封板证据 | [docs/CHAPTER7_SEAL_EVIDENCE_20261018.md](docs/CHAPTER7_SEAL_EVIDENCE_20261018.md) | R2-01–07已定向修正 |
-| ⑧ 独立Writer首稿Gate | [docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261018.md) | **RELEASED / WRITER_PENDING** |
-| ⑧ 完整8文件离线ZIP | [docs/CHAPTER8_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER8_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | Writer完全离线 |
+| ⑧ 成本与升级唯一正式正文 | [docs/CHAPTER8_FINAL_SEALED.md](docs/CHAPTER8_FINAL_SEALED.md) | **FINAL_SEALED** |
+| ⑧ Owner授权Reviewer直修封板证据 | [docs/CHAPTER8_SEAL_EVIDENCE_20261019.md](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md) | R2-01—R2-09定向修复 |
 | 长期独立审核流程 | [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | 生效；每次RETURN强制提供返修ZIP+提示词 |
 | 目录导航/唯一交接 | [README.md](README.md) / 本文件 | 当前状态权威 |
 
@@ -96,14 +104,14 @@
 5. **第五章正式状态：`FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS`**。本轮没有Writer R3交付，不能把Reviewer本人执行的事实更正称作“独立Writer R3已验收”。没有任何真实服务器防火墙、云安全组、账单、生产数据或账户凭据被操作。
 6. ⑤旧Writer Gate及ZIP从main当前目录退出，仅保留Git历史，不与正式正文混放；前三/前四章正式正文、唯一冻结8/44/93框架及第三业务板块支付指南不改动。
 
-## 第⑦章封板结果与第⑧章当前职责
+## 第⑦⑧章封板结果与当前职责
 
-第⑦章Writer R2经独立Reviewer R2结论RETURN后，Owner特别授权Reviewer最小化修复并封板。修复矩阵、原R2指纹、Bash四组反例以及生产未实测边界，以[第⑦章封板证据](docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)为准。没有Writer R3；封板是知识正文质量决定，不代表实际站点已恢复。
+第⑦章按Owner授权由Reviewer在Writer R2上修复并正式封板，无Writer R3；已完成的第⑧章也经Owner新授权由Reviewer以Writer R2为基线定向修复九组问题并封板，**无Writer R3**。两章的封板正文和独立审计证据见上方正式成果表。
 
-第⑧章冻结**5二级11三级**，聚焦成本预算、免费商用限制、按量费率、费用异常、技术升级与跨供应商迁移。Gate/ZIP完整发布；首稿无任何正文候选。Writer自主决定篇幅、案例、工具和表达结构，交全文与事实核验记录和ZIP后`STOP_AT_REVIEWER`；不访问GitHub。Reviewer如RETURN同轮给完整返修包与转交话术，Owner决定是否封板。第三板块与前七章只读。
+目前八章正文均已封板；冻结框架为唯一8/44/93版本。**未启动HTML**，未做真实生产迁移、云账单购买或任何支付测试。后续如需综合复核或HTML，须Owner另行明确要求。第三板块支付项目和其他四板块不修改。
 
 ## 文件最小化与下一步
 
-每章正式正文只保留一份；冻结框架唯一，唯一交接持续更新；已完成的第⑦章Writer Gate/旧离线ZIP退出main当前目录，Git历史可追溯。第⑧章有效Gate与离线ZIP暂存，待Writer完成并审核后清退。HTML未启动、生产环境无操作。
+每章正式正文只保留一份；冻结框架唯一，唯一交接持续更新；已完成的第⑦⑧章Writer Gate/旧离线ZIP退出main当前目录，Git历史可追溯。HTML未启动、生产环境无操作。
 
-**NEXT_STEP：Owner转交第⑧章8文件离线ZIP及提示词→Writer提交第⑧章完整正文+研究记录+ZIP→Reviewer独立Review（必要时RETURN完整返修包）→Owner决定是否封板。**
+**NEXT_STEP：第二板块8/8正文已全部正式封板，当前停在Owner，等待是否开展全板块综合复核或HTML排版的独立新决定。**
