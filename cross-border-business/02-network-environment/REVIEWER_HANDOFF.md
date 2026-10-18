@@ -1,7 +1,7 @@
 # 网络环境搭建｜唯一项目交接
 
 > **PROJECT_STAGE：LEVEL3_DRAFT_REVIEW**（2026-10-18）  
-> **CORE_QUESTION：CONFIRMED**｜**L1：8_FORMALLY_FROZEN**｜**L2：44_FORMALLY_FROZEN**｜**L3：88_DRAFT_NOT_FROZEN**  
+> **CORE_QUESTION：CONFIRMED**｜**L1：8_FORMALLY_FROZEN**｜**L2：44_FORMALLY_FROZEN**｜**L3：95_DRAFT_NOT_FROZEN**  
 > **CURRENT_GATE：NONE**｜**正文：NOT_STARTED**｜**HTML：NOT_STARTED**｜**OWNER_ACTION_REQUIRED：审阅三级候选**
 
 ## 一、项目唯一目标与受众
@@ -16,7 +16,7 @@
 2. 经Reviewer压缩为8/46并再次联合润色，形成**8个一级/44个二级V4候选**。最终版侧重卖家真实提问、保留专业知识在“知识范围/正文”而非标题；改进了④选型问题和⑦监控/告警问题的重复性，并恢复②合法账号/地区准入这一关键知识点。
 3. Owner明确要求：「我没问题，一级二级问题正式pass冻结，撰写标注也请记录保存，然后开始撰写三级问题。」**该决定正式冻结V4 8/44**。唯一精确原文见[一级/二级V4正式冻结全文](docs/FROZEN_FRAMEWORK_L1_L2_V4_20261018.md)，不再引用V3/73作为正式框架。
 4. **撰写标准和标注要求已记录**于[写作标准](docs/WRITING_STANDARDS_V4_20261018.md)，包含通俗标题、专业内容不能删减、递进/去重、术语正文解释、业务场景分流、限制与事实核验、三级编号和权限边界。冻结文件同时逐题保留了**44条核心知识覆盖提示**，供后续展开。
-5. 以冻结44题为父级，已独立新写 **88 个三级候选问题 V1**，文件见[三级草案](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md)。**此批三级没有通过Reviewer质量审查或Owner冻结，不代表正式问题框架的第三层已完成。**
+5. 以冻结44题为父级，已独立新写 **95 个三级候选问题 V1**，文件见[三级草案](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md)。**此批三级没有通过Reviewer质量审查或Owner冻结，不代表正式问题框架的第三层已完成。**
 6. 未进行基础设施部署、付费、账户更改、知识正文编写或HTML制作。
 
 ## 三、一级模块的拆分逻辑（Owner已要求长期保存）
@@ -58,7 +58,7 @@
 | [README.md](README.md) | 导航、阶段说明 |
 | **[docs/FROZEN_FRAMEWORK_L1_L2_V4_20261018.md](docs/FROZEN_FRAMEWORK_L1_L2_V4_20261018.md)** | **唯一正式冻结原文**，8/44及知识范围提示；变更须Owner新授权 |
 | [docs/WRITING_STANDARDS_V4_20261018.md](docs/WRITING_STANDARDS_V4_20261018.md) | Owner批准的写作与标注规范，可在不修改冻结范围下细化 |
-| [docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md) | 88个新三级问题，**DRAFT_REVIEW_PENDING**；尚未封板 |
+| [docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md](docs/LEVEL3_FRAMEWORK_V1_DRAFT_20261018.md) | 95个新三级问题，**DRAFT_REVIEW_PENDING**；尚未封板 |
 | **REVIEWER_HANDOFF.md（本文件）** | 唯一现行状态交接、权限和文件索引 |
 
 **清退旧文件：** `docs/FRAMEWORK_L1_RESTRUCTURE_V3_CANDIDATE_20261018.md`、`docs/LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md` 从GitHub main当前树删除，避免与已正式冻结版本并列。以前的100题三级文件曾经删除，本轮不恢复旧文件，另起新的独立草案路径。Git历史正常可追溯，不进行破坏性历史改写。
@@ -67,7 +67,7 @@
 
 - **第三板块** [支付、税务与经营主体](../03-payment-tax-entity/README.md)及其[正式《现代商业支付系统》项目](../../modern-commercial-payment-guide/REVIEWER_HANDOFF.md) **CLOSED/FROZEN，禁止本任务编辑、移动、重建或修改其九份正式成果**。
 - 第四板块负责产品业务逻辑和订单履约；第五板块负责获客与增长；本板块负责技术基础环境及与平台账号正常使用相关的准入核查，不提供通过技术伪装绕过资格的方案。
-- **CURRENT_ACCEPTED_STATE：** 8/44正式冻结；三级88题仅新起草、未审；原73题不再有效；正式正文/HTML未开始。
+- **CURRENT_ACCEPTED_STATE：** 8/44正式冻结；三级95题仅新起草、未审；原73题不再有效；正式正文/HTML未开始。
 - **CURRENT_GATE：** NONE；不自动进入知识正文。
 - **NEXT_STEP：** 独立审核三级草案的独立价值、父子归属、重复性、知识遗漏和卖家可读性；有问题在三级草案内返修，禁止以此修改冻结原文。完成后向Owner报告，不得自动冻结三级。
 - **CURRENT_ROLLBACK_STATUS：** Git普通历史保留旧草案和本轮文本的可重建快照。GitHub main为唯一权威，不使用本地副本作权威。
