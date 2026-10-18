@@ -2,10 +2,18 @@
 
 > **PROJECT_STAGE：ACTIVE_WRITING / FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78**（2026-10-18）  
 > **CHAPTER1：《我的客户在哪里？》FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
-> **CHAPTER2：《我该怎么找到客户？》OFFLINE_WRITER_GATE_RELEASED / WRITER_NOT_STARTED**  
+> **CHAPTER2：《我该怎么找到客户？》WRITER_R1_DELIVERED / STRUCTURE_PASS / REVIEW_RETURN / R2_PACKET_READY / NOT_SEALED**  
 > **CHAPTER3–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH2-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **OWNER_ACTION_REQUIRED：转交第二章10文件自包含Writer ZIP和话术；收回第二章完整正文+核验记录ZIP供Reviewer审查。**
+> **CURRENT_GATE：CB05-CH2-WRITER-R2-DIRECTED-REPAIR-20261018**  
+> **OWNER_ACTION_REQUIRED：转交第二章R2完整返修ZIP和话术；收回Writer R2完整正文及核验ZIP供Reviewer复审。**
+
+## 最新：第二章独立Writer R1审核与R2返修停点
+
+- **[第二章独立Reviewer R1审核：RETURN](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)**。全部冻结问题**9个二级/22个三级逐字、层级、顺序PASS**；2.2直接成节。知识覆盖广，但营销硬阈值、跨法域直销、广告统计与利润模型、平台算法和官方来源范围有**B01–B12**阻断。
+- 原始Writer ZIP：`第五部分_第二章_独立Writer交付.zip`，34,348字节，SHA256 `bb47b758cd911ebf63f5213536a61749ad9f0176a56e8a6f3d0c38c01ace4402`；完整正文572行、50,440字节，自检134行、22,490字节。
+- R2完整返修ZIP：`第五部分_第二章_R1独立审核与R2完整返修工作包_20261018.zip`，46,486字节，SHA256 `032b9899280d7817f8cd7de71ecceae2904a2e7d2a9cd76e75d8b898b9a03078`，含Writer R1两份完整原稿、Reviewer审核报告、定向R2指令、官方依据和文件校验清单；已在当前对话交Owner，**不声称二进制ZIP已上传GitHub**。
+- **当前唯一下一步：** Owner转发R2包+可直接复制话术 → Writer保持9/22冻结题原文，逐项最小修复B01–B12并交完整R2全文、核验记录和ZIP → Reviewer独立复核 → Owner决定是否封板。Writer无GitHub权限，第二章尚未封板，第三章未开始。
+- 第一章`CHAPTER1_FINAL_SEALED.md`及完整V2 1/6/35/78问题树**仍正式冻结不动**。
 
 ## 一、当前唯一权威与文件结构
 
@@ -14,7 +22,7 @@
 | 完整冻结框架 | **[docs/FROZEN_FRAMEWORK_V2_20261018.md](docs/FROZEN_FRAMEWORK_V2_20261018.md)** | **OWNER_FROZEN** 核心1/一级6/二级35/三级78（2.2直接成节） |
 | 第一章唯一正式正文 | **[docs/CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md)** | **FINAL_SEALED，1一级/4二级/8三级** |
 | 第一章封板审计 | [docs/CHAPTER1_SEAL_EVIDENCE_20261018.md](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md) | Owner授权、Writer R2基线指纹、B01–B04与N01–N03最小修复、官方资料边界、正式正文指纹 |
-| 第二章首稿Gate | **[docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)** | **RELEASED / WRITER_NOT_STARTED，1一级/9二级/22三级** |
+| 第二章首稿Gate | **[docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)** | **历史首稿Gate，R1已交付并Review RETURN，1一级/9二级/22三级** |
 | 第二章离线资料指纹 | [docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) | ZIP在本轮对话交付Owner；10文件已校验 |
 | 工作状态与导航 | [README.md](README.md) / **本文件** | 当前权威 |
 | 第二板块长期协作规范 | [../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | 只读参考，应用Writer→Reviewer→Owner流程 |
@@ -40,11 +48,11 @@
 - **首稿自由**：Writer自主决定篇幅、案例、工具品牌、表格和图示；不得要求固定字数或指定获客结论。不预设所有商家需要SEO、广告或B2B主动联系，也不得冒称使用真实广告账户、测试市场已成功。
 - **事实与风险**：广告政策/账号资质/平台免费功能、国家营销同意/退出规定、现金预算与工时、合规触达/客户隐私等必须注明实际支持来源及日期/地区，无法证实标`UNKNOWN`，案例假设标`MODEL_ASSUMPTION`。
 - **交付**：完整第②章正文Markdown + 事实/自检Markdown + 两者ZIP → Owner转交 → 独立Reviewer核9/22原文/知识深广/实操/官方事实。若RETURN，**同轮必须向Owner提供完整上一版正文+审核意见的返修ZIP，以及可直接转发的提示词**；Owner审批后才正式封板。
-- **当前状态**：`GATE_RELEASED / WRITER_NOT_STARTED / STOP_AT_REVIEWER`，没有第二章正文，不进入第三章、HTML、真实营销。
+- **当前状态**：Writer R1已交稿，Review RETURN，R2返修包待Owner转发。尚无第二章正式封板正文；不进入第三章、HTML、真实营销。
 
 ## 四、文档与权限边界
 
 - ①机会挖掘与市场判断、②网络环境搭建、③支付税务经营主体、④产品搭建的冻结正文/问题树**本次全部未修改**；第五板块只负责获客与增长的知识正文。
 - 本轮只处理GitHub Markdown与对话ZIP；没有源码、服务器、账号、客户记录、营销广告、支付服务和个人数据操作。Git提交可追溯恢复。
-- **OWNER_ACTION_REQUIRED：** 下载第二章完整离线ZIP并复制Writer转交话术；独立Writer返全章候选ZIP后回传本Reviewer。
-- **NEXT_STEP：** Writer独立完成第二章 → Reviewer审（RETURN需全量返修包+话术） → Owner决定是否封板第二章。
+- **OWNER_ACTION_REQUIRED：** 转交第二章R2定向返修ZIP和话术；独立Writer回交完整R2候选ZIP供Reviewer复核。
+- **NEXT_STEP：** Writer完成第二章R2 → Reviewer复核B01–B12与新风险 → Owner决定是否封板。
