@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
+> **【2026-10-18 最新有效Owner授权：失败后定向视觉返修一次】** Owner在[PR#153独立技术PASS/视觉RETURN报告](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)后批准“我没问题”，新签发[PR#153后定向修复Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)：一次连续`Storyboard关键帧预检→以冻结V5.6.2原Mac壳/T6真实温度样本/T5脚形成压缩回弹三态/T2声学事件作主体→一条30–60秒内部MP4→QA→隔离PR`。**`CURRENT_GATE=CWS-CW0005-POST-PR153-TARGETED-VISUAL-STORYFIT-REPAIR-20261018`，`OWNER_AUTHORIZED/EXECUTOR_NOT_STARTED/REVIEW_PENDING`**；其余历史“旧Gate未执行”均被此记录覆盖。保留已PASS音画编码/WAV/SRT/脚本及失败样片。旧Pexels #854959、Pixabay #2793与PR#153的Pexels #1796141/#35876717均已有历史作品使用记录，新片不得违反项目级原视频一次性使用规则。新Gate需来源明确、免费合法、无误导；**不允许未清权研究影像发布、付费、正式R4、4–6分钟完整制片、PR自动合并**。V5.6.2冻结blob `33aabc3ff2e48877493277eb1a86274818e3c769`不变；`RETURN_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`未解除。
+
+
 <!-- CWS_PR153_INDEPENDENT_STORYFIT_REVIEW_RETURN_20261018 -->
 > **【2026-10-18 CW0005真实样片独立Reviewer结果】** [PR #153](https://github.com/entropy-student/project/pull/153)的脱敏执行报告已按“可合并即合并”授权归档main；55.266667秒实际MP4由Owner上传、Reviewer实算SHA `be48565792f94fccdebb95229d8744d044b1edf47a1cdbfa9015dc37e0ebda6c`且FFmpeg全解码PASS，技术视频已打通。**但视觉总体RETURN**：42.966s（约77.7%）同一锅内素材覆盖S01–S08，S05仅右下小幅AI概念图且可能传递喷气感，温度/跳跃/声学核心科学画面缺少真正可读的T4/T5/T6主体表达，Aqua开头与原冻结版差距明显。真实Figure1/3a/6和补充研究视频未使用，论文/股票素材权利PARTIAL/UNKNOWN。独立具体证据见[PR#153正式Reviewer报告](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)，结论`CW0005_55S_MP4_TECHNICAL_PASS / RETURN_VISUAL_STORYFIT`，**不提升⑤⑭/G1/G2/R4/NO_PUBLISH，不算Owner审美验收**。下方旧`EXECUTOR_NOT_STARTED`为已过时的执行前状态；下一步仅定向视觉编排返修，重制需新有界授权，不能重复整套媒体基建。
 
