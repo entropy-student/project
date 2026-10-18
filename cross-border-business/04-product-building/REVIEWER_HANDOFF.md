@@ -1,53 +1,71 @@
 # 第四部分《产品搭建》｜唯一 Reviewer 交接（2026-10-18）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CHAPTER1_FULL_DRAFT_REVIEW_PENDING**
-> **唯一冻结问题树：1核心 / 9一级 / 48二级 / 117三级**  
-> **本轮章节：4.1《我该把产品做成什么形式？》4二级 / 10三级，已生成完整正文候选，尚未正式封板**  
-> **当前执行Gate：CB04-CH1-INDEPENDENT-REVIEW-20261018 / READ_ONLY_REVIEW**  
-> **OWNER_ACTION_REQUIRED：** 本章审核后若推荐PASS，Owner决定是否封板；目前无需提供任何外部账户、工具或密钥。
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CHAPTER1_WRITER_GATE_RELEASED / WRITER_PENDING / BODY_NOT_STARTED**  
+> **唯一正式问题树：核心1/一级9/二级48/三级117；核心“产品怎么做、怎么交付？”仍冻结。**  
+> **第4.1章：4二级/10三级；无现行正文初稿，无正式封板。**  
+> **CURRENT_GATE：CB04-CH1-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
+> **OWNER_ACTION_REQUIRED：** 将本章离线ZIP和可复制提示词转发独立Writer；收到完整两文档交付后再提交Reviewer。
 
-## 当前项目事实
+## 当前权威与最短恢复顺序
 
-| 对象 | 权威文件 | 状态 |
+1. **[正式V2冻结框架](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：1/9/48/117全文，原字、编号、顺序、归属不可更改。
+2. **[本章首稿Gate](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：唯一现行执行约束，4/10全部冻结原题和Writer边界。
+3. [离线ZIP发布清单及校验](docs/CHAPTER1_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：ZIP已在本轮对话产生并校验，SHA256 `cf475ecb78117270e24194ccba7d85f37ea75d1e2c49bfb52dd95a34c451a4b0`；未上传二进制到GitHub。
+4. **[第二部分长期协作规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)**：Reader面向读者、Writer独立完整首稿、Reviewer冷读/定向返修、Owner批准封板。
+5. [本板块V1→V2框架修订验收](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)：仅负责框架QA，旧草稿已经撤销。
+6. [本板块README](README.md)和[父项目总入口](../README.md)：状态导航。
+
+## Owner新决定（优先于先前由Reviewer代写正文）
+
+Owner明确要求“**删除一级问题：正文初稿，以及相关文档。重新完整阅读第二部分记录的规范以及要求等信息，我们开始撰写第一个1级问题的环节，请注意你是reviewer。**”
+
+精确实现：
+- 已从`main`删除 `docs/CHAPTER1_FULL_DRAFT_V1_20261018.md`（原Reviewer代写正文）及 `docs/CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md`（该正文专属自检）。Git提交历史自然保留；**不得声称当前仍有正文候选**。
+- 保留V2正式1/9/48/117问题树及其合法QA证据；Owner没有要求解冻或改写问题框架。
+- 正文首稿由**离线独立Writer**撰写，Reviewer不得提前代写整章、给固定数量案例或把预设的答案强加给Writer。Owner决定是否封板。现在实际状态是 `WRITER_PENDING`，不是 `CHAPTER1_REVIEW_PENDING`。
+- 只有本章成功完成Writer→Reviewer→Owner流程后才考虑启动第4.2章；不自动写HTML或下一章。
+
+## 第4.1章冻结问题（首稿唯一任务）
+
+**4.1 我该把产品做成什么形式？**：4道二级、10道三级。依正式V2及本章Gate：
+
+| 二级 | 原题 | 三级数量 |
+|---|---|---:|
+| 4.1.1 | 平台开店还是自己开网站？ | 3 |
+| 4.1.2 | 做软件该做网页、App还是桌面版？ | 3 |
+| 4.1.3 | 卖数字文件或会员内容，要用专门平台吗？ | 2 |
+| 4.1.4 | 卖实物或服务，怎么安排接单入口？ | 2 |
+
+Writer必须完整回答全部4/10题，不改冻结标题字面/顺序/层级；不只写概念摘要或一份提纲。
+
+## 第二部分规范对应的工作流程
+
+| 顺序 | 职责 | 当前落实 |
 |---|---|---|
-| 核心、一级、二级、三级正式问题原文 | [V2完整冻结框架](docs/FROZEN_FRAMEWORK_V2_20261018.md) | **FROZEN 1/9/48/117** |
-| 直接修订及冻结授权、Writer新旧比较 | [V2验收决定](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md) | REVIEWER_QA_PASS / OWNER授权 |
-| 第4.1章完整初稿 | [CHAPTER1_FULL_DRAFT_V1_20261018.md](docs/CHAPTER1_FULL_DRAFT_V1_20261018.md) | **DRAFT / NOT_SEALED** |
-| 第4.1章结构及来源检查 | [CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md](docs/CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md) | STRUCTURE_PASS / CONTENT_REVIEW_PENDING |
-| 旧框架与独立Writer V1 | [旧1/7/45快照](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[旧118三级](FRAMEWORK_L3_CANDIDATE_20261018.md)、[Writer V1审核与修订来源](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md) | HISTORICAL / NOT_CURRENT |
-| 旧Owner解冻/离线盲写决定 | [旧Gate与交接](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md) | HISTORICAL / SUPERSEDED_BY_NEW_OWNER_AUTHORIZATION |
+| 1 | Owner确认冻结题目 | DONE，V2完整问题树已冻结 |
+| 2 | Reviewer准备自包含离线首稿包/Gate | DONE，8文件ZIP、SHA和Gate已备 |
+| 3 | Owner发送给独立Writer | **NEXT_OWNER_ACTION** |
+| 4 | Writer独立研究、完整写正文及事实核验记录后停下 | **WRITER_PENDING** |
+| 5 | Reviewer冷读原题4/10、知识系统性/深度/准入/事实来源与读者实操价值 | NOT_STARTED |
+| 6 | Reviewer给PASS_CANDIDATE或精确RETURN；RETURN必须同轮给返修ZIP+话术 | NOT_STARTED |
+| 7 | Owner决定是否最终封板 | NOT_STARTED |
+| 8 | 封板后清退旧Gate，启动后续章节 | NOT_AUTHORIZED |
 
-## 沿革与授权边界
+**Writer自主决定**案例、图表、段落结构、篇幅、工具、品牌、实操示例；不把Reviewer心中的“好答案”当成Gate硬性要求。事实引用优先一手官方来源，费用/资格/许可带时间与条件；不可验证标 `UNKNOWN`，模拟示例为 `MODEL_ASSUMPTION`；不声称已完成真实部署/交易/账户批准。
 
-1. Owner初次批准核心1/一级7/二级45；118个三级只是候选。随后Owner暂时解冻旧一级和二级，以便独立Writer从零重写。
-2. 独立Writer V1实际8/34/60，作者将三级误报为52。Reviewer独立报告为 `RETURN_STRUCTURE_AND_CONTENT`，提出技术安全、机械拆题、过长标题、产品经营闭环遗漏等具体问题；未修改原稿。
-3. Owner **2026-10-18最新直接授权**“直接完成修改，完成之后请复查，没问题就落库……开始撰写第一个1级问题”。
-4. Reviewer保留Writer的后台订单/分类履约/交付异常分章优势，吸收旧版商家语言及售后闭环，直接修订为9/48/117，结构、父题、问句、关键安全边界通过QA，形成正式V2冻结问题树。历史文件不删、不反向改写。
-5. 参照[第二部分Writer→Reviewer→Owner协作流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)编写首章完整初稿。正文只有结构自检，**没有进行独立内容审核或Owner最终封板**，不得声称 `CHAPTER1_FINAL_SEALED`。
+## Governance 当前面板
 
-## 治理状态字段
+- **PROJECT_GOAL：** 中国大陆个人开发者及跨境商家从产品形式到订单、交付、上线与售后的实用知识体系。
+- **PROJECT_STAGE：** 框架已正式冻结；第4.1章Writer首稿Gate发布、Writer未交；4.2–4.9未启动正文；HTML未启动。
+- **SYSTEM_MAP：** Markdown问题体系、离线ZIP；无部署、数据库、客户资料、支付操作或密钥。
+- **CURRENT_ACCEPTED_STATE：** V2 1/9/48/117问题框架，正文正式封板章节为0。
+- **CURRENT_GATE：** `CB04-CH1-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018`，最大终点Writer首稿交付并停在Reviewer，Reviewer不代写首稿。
+- **CRITICAL_CONSTRAINTS：** 核心和全部V2标题冻结；①机会市场、②网络环境、③资金/税务/主体、⑤获客增长各有正式边界且保持只读。
+- **DEFAULT_EXECUTION_CHANNEL：** GitHub `main`存冻结框架/Gate/唯一交接；Owner从聊天附件转发离线ZIP给Writer，Writer没有仓库权限。
+- **CURRENT_ROLLBACK_STATUS：** 已删除的历史初稿保存在正常Git历史而不是main工作树，若需要恢复应先有新的Owner批准；不重写main历史。
+- **UNRESOLVED：** Writer何时提交、正文结论与参考资料质量、目标平台的具体地区资格均UNKNOWN。
+- **NEXT_STEP：** Owner转交Writer包→收回完整正文、事实核验记录和ZIP→Reviewer独立审核→Owner考虑封板。
+- **EVIDENCE_POINTERS：** Gate、ZIP SHA及文件清单、V2冻结框架、README；第二部分长期规范及第①—④章封板记录说明正常流程和特别授权边界。
+- **MANDATORY_STOP：** `WRITER_PENDING`，不写正文、不自行宣布封板、不启动第二个一级问题。
 
-- **PROJECT_GOAL：** 面向中国大陆个人开发者、独立站和平台中小商家讲清“产品怎么做、怎么交付？”，从形态、首版范围、低成本复用到客户购买、订单、交付、异常、安全验收与维护。
-- **PROJECT_STAGE：** 正式框架完成；第4.1章完整正文候选待独立审核；4.2–4.9尚未写正文；HTML未启动。
-- **SYSTEM_MAP：** GitHub纯Markdown文档项目；不涉及真实站点、服务器、支付账户、客户数据、运行时、密钥或共享基础设施。
-- **CURRENT_ACCEPTED_STATE：** [V2正式题目1/9/48/117](docs/FROZEN_FRAMEWORK_V2_20261018.md)，已通过一次框架QA；正文尚无任何正式封板章。
-- **CURRENT_GATE：** `CB04-CH1-INDEPENDENT-REVIEW-20261018`；独立核对4二级/10三级逐字归属、知识广度/深度、读者判断能力、来源真伪、现实适用条件与跨板块边界；输出PASS_CANDIDATE或精确RETURN，不提前发布封板。
-- **CRITICAL_CONSTRAINTS：** 唯一核心与V2所有问题原文冻结。不得修改其他板块的冻结正文/规则。第二板块管环境和基础设施；第三板块管收款/退款资金/主体/税务；第五管获客；第一管机会与市场。官方规则与价格应按时间、国家、资格核对。
-- **DEFAULT_EXECUTION_CHANNEL：** GitHub连接器仅修改 `cross-border-business/04-product-building/` 和父项目入口第四板块导航；文档提交main前精确读回当前文件SHA，避免覆盖并发其他项目更新。
-- **CURRENT_ROLLBACK_STATUS：** 仅Git可逆文档，保留历史；如需撤回，采用新逆向提交，不重置共享main。
-- **UNRESOLVED：** 第4.1章正文实际可读性、事实来源和深度需新的独立Reviewer审核。具体平台地区/类目资格及客户使用实测为UNKNOWN。
-- **NEXT_STEP：** 审核第4.1章→必要时提供定向修订/核验→经Owner明确批准后封板第4.1章→才开始第4.2章。
-- **OWNER_ACTION_REQUIRED：** 目前NONE；待Reviewer报告后决定是否封板。
-- **EVIDENCE_POINTERS：** 新V2冻结树、V2 QA报告、4.1完整候选、4.1初步结构/来源自检；前代文档只做历史证据。
-
-## 当前章接手检查清单
-
-按照第二部分规范：
-1. 把4.1的二级4题和三级10题与[V2正式框架](docs/FROZEN_FRAMEWORK_V2_20261018.md)严格逐字比对，同序对应。
-2. 审内容是否真正区分平台/自有站、Web/App/桌面、数字下载/持续会员、实物/服务接单；能否给出真实的选择方法和案例反例。
-3. 核验官方网站对“功能”与“经营主体/支付资格”的不同约束；如查到2026-10-18后规则变化，应标注新增日期。
-4. 查是否将临时下载链接等同单次使用、靠可猜订单信息恢复权益、声称所有地区必然开通商户。支付金融及域名/CDN部署知识不可重复跨章铺开。
-5. `MODEL_ASSUMPTION`不能冒充真实客户或真实收入；若RETURN明确到节和错误并提交最小修复建议（如果要求外部Writer返修，还须同时提供返修ZIP+提示词）。
-6. **DO NOT** 把作者自检当独立Reviewer PASS，不自动写下章或封板。
-
-[返回本板块README](README.md)
+[返回第四部分README](README.md)
