@@ -1,15 +1,17 @@
 # 01｜机会挖掘与市场判断
 
-> **状态（2026-10-18）：CORE_FROZEN / L1_FROZEN(8) / L2_FROZEN(34) / L3_DRAFTING**  
+> **状态（2026-10-18）：CORE_FROZEN / L1_FROZEN(8) / L2_FROZEN(34) / L3_CANDIDATE_99_SELF_REVIEWED**  
 > **唯一核心问题：什么跨境生意值得做？**
 
 ## 权威文件
 
 1. **[核心与一级、二级正式冻结框架](FROZEN_FRAMEWORK_L1_L2_20261018.md)**：唯一有效的冻结问题树；8个一级、34个二级，编号与原文禁止擅改。
-2. [历次决定与交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：记录旧7/32候选、独立Agent 8/32、综合版8/34及Owner冻结决定；第三层仍未审批。
-3. [2026-10-18旧7/32候选存档](FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：仅历史比对，不再作为项目当前框架。
-4. [通用问题设计标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：三级问题撰写和审核可用；不影响其他板块冻结状态。
-5. [旧版离线独立Agent任务书](../docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：曾用于一、二级独立征稿，当前任务结束，仅供历史参考。
+2. **[三级候选 V1：99题](FRAMEWORK_L3_CANDIDATE_20261018.md)**：覆盖全部34个二级；自检完成，**尚未Owner批准或冻结**。
+3. [三级候选自检报告](docs/L3_SELF_REVIEW_20261018.md)：检查编号、父题归属、语义边界、覆盖及潜在争议。
+4. [历次决定与交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：记录旧7/32候选、独立Agent 8/32、综合版8/34及Owner冻结决定；第三层仍未审批。
+5. [2026-10-18旧7/32候选存档](FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：仅历史比对，不再作为项目当前框架。
+6. [通用问题设计标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：三级问题撰写和审核可用；不影响其他板块冻结状态。
+7. [旧版离线独立Agent任务书](../docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：曾用于一、二级独立征稿，当前任务结束，仅供历史参考。
 
 ## 职责边界
 

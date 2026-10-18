@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CORE_L1_L2_FROZEN_L3_DRAFTING / 02_FRAMEWORK_FROZEN / 03_CLOSED**（2026-10-18）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CORE_L1_L2_FROZEN_L3_REVIEW_PENDING / 02_FRAMEWORK_FROZEN / 03_CLOSED**（2026-10-18）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 ## 项目目标
@@ -13,7 +13,7 @@
 
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
-| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心+8个一级+34个二级 FROZEN；三级撰写中** |
+| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心+8个一级+34个二级 FROZEN；三级99题候选已自检** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架与Writer流程](02-network-environment/README.md) · **8/44/93 FROZEN；第①章正式封板；第②章Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [规划入口](04-product-building/README.md) · PLANNED |
@@ -23,13 +23,15 @@
 
 - [通用问题设计与审核标准](docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：适用于①④⑤的独立候选框架；不规定数量，也不触及②③冻结成果。
 - [① 正式冻结框架（8/34）](01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md)：核心、一/二级冻结原文；本轮开始撰写三级问题候选。
+- [① 三级候选99题](01-opportunity-market/FRAMEWORK_L3_CANDIDATE_20261018.md)：已完成编制与自检，`L3_REVIEW_PENDING`，未冻结。
+- [① 三级自检报告](01-opportunity-market/docs/L3_SELF_REVIEW_20261018.md)：34/34二级覆盖、99题归属核对和跨板块审查。
 - [① 历史离线独立Agent任务书](docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：历史参考，L1/L2征稿任务已结束。
 - [① 已淘汰的历史7/32候选](01-opportunity-market/FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：保留用于审查回溯；不得替代已冻结的8/34。
 - [① 决策与交接记录](01-opportunity-market/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：版本与Owner批准轨迹。
 - [④ 产品搭建 · 离线Agent任务书](docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
 - [⑤ 获客与用户增长 · 离线Agent任务书](docs/05_GROWTH_FRAMEWORK_AGENT_BRIEF_20261018.md)
 
-**状态优先级：** ①核心问句、8个一级、34个二级已由Owner正式批准并冻结；三级候选撰写与审核中、未冻结。④⑤状态不变。
+**状态优先级：** ①核心问句、8个一级、34个二级已由Owner正式批准并冻结；三级99题候选已完成自检、待Owner审核、未冻结。④⑤状态不变。
 
 ## 第三板块：已封板的正式子项目
 
@@ -49,7 +51,7 @@
 1. **整体结构由本文件导航**，各板块留在各自目录；不跨板块复制正文。
 2. 第二板块8/44/93正式/暂时冻结框架、第三板块CLOSED/FROZEN保持原状。
 3. 第三板块的已有正式文件、路径及历史提交禁止本任务编辑、重命名、删除。
-4. 本轮①核心、8个一级、34个二级正式冻结；三级已获准撰写候选，需自检和Owner后续批准；正文未启动。
+4. 本轮①核心、8个一级、34个二级正式冻结；三级99题候选已完成自检，尚需Owner批准；正文未启动。
 5. ①离线资料无需仓库权限；④⑤仍使用原独立任务书。项目所在GitHub路径为 `entropy-student/project/cross-border-business/`，不操作其他业务源码仓库。
 
-**当前下一步：** ①以8/34冻结框架撰写三级候选并自检，等待Owner确认；②第①章已封板，进入第②章独立Writer首稿；③维持封板；④⑤各自待独立规划。
+**当前下一步：** ①三级99题候选已完成并自检，等待Owner确认，禁止提前开展正文；②第①章已封板，进入第②章独立Writer首稿；③维持封板；④⑤各自待独立规划。
