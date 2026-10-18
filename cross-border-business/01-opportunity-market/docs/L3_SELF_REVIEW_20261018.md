@@ -1,3 +1,5 @@
+> **2026-10-18后续复查优先：** 本报告仅保留当时的结构编号检查。作者内容复查认为31/34父题恰好拆三题属于机械拆分，整体内容结论现为`RETURN_STRUCTURE`；详见[后续复查](L3_AUTHOR_RECHECK_RETURN_STRUCTURE_20261018.md)。
+
 # 第一部分｜三级问题 V1 自检报告
 
 > **SELF_REVIEW_PASS_WITH_NOTES / L3_REVIEW_PENDING / NOT_OWNER_FROZEN**  
