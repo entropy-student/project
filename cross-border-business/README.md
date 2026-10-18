@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_CH2_CH3_CH4_SEALED_CH5_WRITER_RELEASED / 02_FRAMEWORK_FROZEN / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_CH2_SEALED_CH3_V1_RETURN_R2_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_CH2_SEALED_CH3_R2_RETURN_R3_READY**（2026-10-18）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_CH2_CH3_CH4_SEALED_CH5_WRITER_RELEASED / 02_CH1_CH7_SEALED_CH8_WRITER_RELEASED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_CH2_SEALED_CH3_V1_RETURN_R2_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_CH2_SEALED_CH3_R2_RETURN_R3_READY**（2026-10-18）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 ## 项目目标
@@ -14,7 +14,7 @@
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
 | 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①②③④章已正式封板；第⑤章Writer Gate已发布、首稿待交** |
-| 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架及第⑦章Writer工作包](02-network-environment/README.md) · **8/44/93 FROZEN；第①–⑥章正式封板；第⑦章独立Writer工作包已发布** |
+| 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架及第⑧章Writer工作包](02-network-environment/README.md) · **8/44/93 FROZEN；第①–⑦章正式封板；第⑧章独立Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [V2正式框架及逐章正文](04-product-building/README.md) · **1/9/48/117已FROZEN；第4.1及4.2章正文正式封板；第4.3章5/11 Writer V1已交并独立Review RETURN，R2完整返修ZIP已提供** |
 | 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [第五部分现行审稿](05-acquisition-growth/README.md) · **1/6/35/78正式FROZEN；第一二章正式封板；第三章6/14 Writer R2审核RETURN，R3最小返修包已交Owner** |
@@ -85,7 +85,8 @@
 
 **状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①②③④章正文已封板，第⑤章Writer待交。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1及4.2完整正文均已Owner正式封板，4.3章5二级/11三级独立Writer Gate发布；⑤问题框架1/6/35/78保持冻结，第一二章仍正式封板；第三章Writer R2已完整交稿并独立Review RETURN，R3最小返修包已备。
 
-- **[② 第⑥章《客户访问》独立Writer R1 Review：RETURN](02-network-environment/docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261018.md)**：本轮最新结论，冻结5/10结构PASS、B01–B10技术与来源需定向修订，离线R2返修包已交Owner。
+- **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[修订证据](02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
+- **[② 第⑧章独立Writer首稿Gate与ZIP](02-network-environment/docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：冻结5H2/11H3，离线包[ZIP](02-network-environment/docs/CHAPTER8_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)，尚无Writer候选正文。
 
 ## 第三板块：已封板的正式子项目
 
@@ -108,4 +109,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章Writer V1已交并独立Review RETURN，R2待返修；⑤第五部分第①、②章正式封板；第③章Writer R2已交且Review RETURN，需按B01–B04/N01–N03定向修复，不得擅自封板或写第四章。项目路径为 `entropy-student/project/cross-border-business/`，不操作其他源码仓库。
 
-**当前下一步：** ①第①②③④章正文已封板，第⑤章独立Writer Gate与离线资料包已发布；待Owner转交并收回第⑤章Writer完整候选稿；②第①②③④⑤⑥章已封板，启动第⑦章独立Writer首稿；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11 V1独立审核RETURN；R2完整返修ZIP与转交指令已交Owner，等待Writer回交R2；⑤Owner转发第三章R3完整最小返修ZIP及提示词给Writer，交R3全文及核验记录ZIP后由Reviewer复查。
+**当前下一步：** ①第①②③④章正文已封板，第⑤章独立Writer Gate与离线资料包已发布；待Owner转交并收回第⑤章Writer完整候选稿；②第①②③④⑤⑥⑦章已封板，第⑧章独立Writer首稿Gate/ZIP已发布；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11 V1独立审核RETURN；R2完整返修ZIP与转交指令已交Owner，等待Writer回交R2；⑤Owner转发第三章R3完整最小返修ZIP及提示词给Writer，交R3全文及核验记录ZIP后由Reviewer复查。
