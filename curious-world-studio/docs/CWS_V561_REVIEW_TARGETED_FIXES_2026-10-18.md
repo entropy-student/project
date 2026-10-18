@@ -43,3 +43,10 @@
 ## 项目边界
 
 本轮Owner授权仅修R-01～R-05。冻结V5.2不动，PR#144保持Draft、未合并。正式CW0005 `R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`与素材权利`PARTIAL`不变。真实4–6分钟知识片的旁白制作、SRT/MP4导出与版权审查仍没有执行和验收。
+
+## 主 Reviewer 补充独立验证（相同 V5.6.1 最终字节）
+
+- **源码身份**：Git blob `3cd8b040a9f106ca7d0876b55b34ab71088af175`、SHA-256 `44319df40d2b6e14400f720b97d4a34161ae0cef89c9d9e3a7b5c54e5b8fa213`；测试的是与本 PR GitHub 提交**同一字节**的本地副本。
+- **独立 Chromium 回归**：`27/27 PASS, pageerror=0`。R-01含空格`% `→`+35 个百分点`、数值单位trim后JSON导出一致；R-03正负0.000001%不显示为零；R-04极小值自动柱长10%/100%、显式尺度1%/10%、全零回退；R-02批量精确MIME拒绝并维持原状态、逐槽手动取消保持原状态、确认后才允许由video/webm更新为video/mp4；R-05 UI与V2下载命名；V1配置迁移V2、非法异单位导入原子拒绝、Mac Canvas与V5.6十个时码像素完全相等。
+- **完整播放复查**：0秒启动，等待超过31.06秒；读取到播放器`time=31.06`、`playing=false`、`contentViewportVisibility=hidden`，无第二Mac窗口、JS异常0；结果已写为`INDEPENDENT_V561_FULLPLAY.json`。测试命令在结果输出**之后**因浏览器关闭进程超时退出，因此不把进程自然结束计为PASS；时间轴和关窗状态已直接验证。
+- **证据包**：本轮用户会话提供V5.6/V5.6.1 HTML、对照Patch脚本、独立Playwright脚本、27项与全程播放JSON、Readme组成独立ZIP。测试脚本未在Git仓库落地（无二进制媒体或隐私资料上传）。本项是主Reviewer补充复核，**不是另一个外部独立Reviewer最终验收**；保持`PASS_CANDIDATE / INDEPENDENT_EXTERNAL_REVIEW_PENDING`。
