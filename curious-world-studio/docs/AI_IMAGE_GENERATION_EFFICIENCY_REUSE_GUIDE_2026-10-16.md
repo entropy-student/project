@@ -1,5 +1,24 @@
 # CWS｜C类AI生图：复用与低浪费执行技巧（2026-10-16）
 
+<!-- CWS_IMAGEGEN_HIGHEST_PROJECT_PRIORITY_20261018 -->
+> **【Owner最新决策，2026-10-18：项目级最高优先执行准则之一 / MANDATORY】** 此文档原为“实施参考”，现提升为**CWS所有获授权AI静态生图任务的项目级强制执行规则**，适用于CW0005及后续各题/每轮Gate。顺位：明确Owner决定与仓库权威`vps-project-governance/VNEXT.md`优先于本项目准则；本准则约束CWS生图策略、预算/素材复用与证据，**不修改跨项目Governance、不自动授权无Gate生图/付费/发布**。遇到现行Gate写法较旧的“推荐/可参考”，一律由本条强制流程补齐。原指南下文历史“本轮不授权生图”指2026-10-16的旧阶段，**不能否认2026-10-18已经单独由Owner授权的返修Gate**。
+
+## 最高优先强制准则：在科学准确前提下以最少调用完成最快合格图
+
+对每一个候选C类静态图片，Reviewer或已授权Gate**先锁定具体画面任务**（`beat_id`、需要看见的物理状态、透视/画幅、已知科学依据、禁止误导、输出用途）；Executor只执行任务，不自行发明额外图片或为生图改旁白。优先级依次为：
+
+1. **先查CWS已有图片和已审核完整图/目录；实际打开候选核对画面、物理机制、授权与可读性。** 可完全适配则`EXACT_FRAME`零生成；可保留POV/主体几何、只需一处主要状态变化则`DERIVE_EDIT`；仅作为构图参考记`REFERENCE`（仍计新生成）；不合用才`GENERATE`。不许为了省调用将科学错误图片硬凑进镜头。**不得把已用视频的“全项目一次性禁复用”规则错误应用到静态图片**。
+2. **先最小化图数，再最小化生成次数。** 对S04–S06评估能否用已有许可图或兼容编辑覆盖“形成→受压→回弹”，实际需要1/2/3张就做1/2/3张，不为了配额固定生成3张；多状态须在视觉上真正区分。批准范围内先一次批量编译所有不可复用图的完整任务要求，减少边生成边改意图导致返工。
+3. **调用路径必须复用`spike.skill/comic-narrative/tools/imagegen-fast-path`已验收实现**，不新造缓存扫描脚本/图片传输协议：`imagegen -> 官方output_hint -> consume_output_hint.ps1 -> official_hint_parser.ps1 -> 明确SourcePath -> local_copy.ps1 -> hash/尺寸/视觉QA`。当前本机版本需在执行前做**只读接口/路径/兼容预检**；如源版本接口发生实际漂移，以最小兼容修复和有界零图片夹具校验为先，**不为验证流程额外生成试验图片**，不能直接把原项目PASS冒称CWS已验证。
+4. **并发最多2**；对2张及以上独立任务采用2路流水并行，某一路进入保存/QA就可填充下一个任务；单张图只执行1路，**不要为了“双并发”制造不必要第二张图**。不运行3路或以上；不以并发数推断单张模型Token降低。
+5. **输出只能用真实官方hint获得的路径**，源/目标sha256验证一致并检查文件存在、可解码、实际尺寸与科学含义；既定输出目录`<run_root>/outputs/<task_id>/<task_id>.png`、QA记录位于`<run_root>/qa/`。禁止通过stdin/TTY/base64在会话中搬运大图，禁止扫描cache按“最新生成文件”猜素材来源。目标成片1920×1080，不要求原生PNG精确1920×1080；宽高或比例/可读性真正不合格才修订，**不得仅因native像素不匹配重生**。
+6. **每张图先QA，再决定重试**：重点查“是否画成蒸汽火箭喷射”“形成/压缩/回弹有无物理区分”“是否冒充研究录像/论文原图”“16:9裁切/字幕安全区/文字伪造”。失败记录具体原因，同类失败2次停止该策略、RETURN给Reviewer；不能无限换prompt/重复付费。仅真正合格图才登记到可复用索引；失败版与替代版保留执行溯源但不算正式素材。
+7. **逐图登记可核验节省与效率数据**：`beat_id, mode, existing_asset_id, reuse_reason, generated_call_count, edit_call_count, retry_count, concurrency_peak, provider/model_if_known, output_hint_seen, source_path_verified, source_sha256, output_sha256, native_dimensions, QA_status, estimated_or_verified_cost(if_available), elapsed(if_measured)`；生成量=0时也记录`NO_MODEL_CALL`。区分`EXECUTOR_REPORTED`与Reviewer直接验证。没有真实Token账单/独立基线时写`TOKEN_SAVING_NOT_MEASURED`，**禁止宣称绝对最快、最低Token或虚构节省百分比**。
+8. **有界授权**：图片生成/编辑不得擅自升级付费模型、超过本期许可数量或输出给公开视频；任何额外付费/材料授权/发布需相应Owner权限。整个项目的成功标准仍是**最少不必要调用、最小等待和可复现QA，同时科学/视觉品质达标**。
+
+**适用读入**：所有CWS Gate涉及C类图像时，`REVIEWER_TO_EXECUTOR_RELAY`必须显式指向**本文件顶部最新强制规则**，并随Gate保留项目原有其他视觉真实性与版权约束。源技术规则的权威取自上位`VNEXT.md §11G`，具体平台Fast Path可用性须检查而不得猜测。
+
+
 > **用途**：已确认的CWS C类「AI生成静态图片」执行准备参考；不增加素材分类，不扩展13种MW模板，也不授权本轮实际生图、付费、正式R4或发布。**源项目已验收 ≠ CWS集成已验收**。没有经核对的逐图Token/价格基准，不能称「实测最低Token」。
 
 ## 1. 生成前先省掉不必要的调用（最重要）
