@@ -1,77 +1,50 @@
-# 第四部分｜产品搭建｜框架决定、证据与 Reviewer 交接（2026-10-18）
+# 第四部分《产品搭建》｜当前Reviewer交接（2026-10-18）
 
-> **CURRENT_STATE：CORE_L1_L2_OWNER_APPROVED_FROZEN / L3_CANDIDATE_REVIEW_PENDING / BODY_NOT_STARTED**  
-> **仓库：** `entropy-student/project` · **目录：** `cross-border-business/04-product-building/`  
-> **唯一冻结范围：** 核心1题 + 一级7题 + 二级45题的原文、编号、顺序与归属；唯一权威是 [完整冻结文件](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)。  
-> **本轮最大终点：** 原文冻结二级45题，并起草三级118题候选；停在Owner对三级的审核，不自行冻结三级。
+> **CURRENT_STATE：CORE_FROZEN / L1_L2_OWNER_TEMP_REOPEN / L3_HISTORICAL_CANDIDATE / BLIND_WRITER_PACKET_READY / WRITER_PENDING**  
+> **唯一当前Gate：** [Owner临时解冻决定和Writer盲写工作包](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)  
+> **本文件是当前状态面板；既往已经过的PASS、旧框架原文、Commit和证明保留在历史快照及上轮审查报告。**
 
-## 一、当前状态与唯一权威入口
+## 一、当前项目真相
 
-| 对象 | 数量 | 状态 | 唯一入口 |
+| 层级 | 旧数量 | 当前状态 | 文件 |
 |---|---:|---|---|
-| 核心问题 | 1 | **FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
-| 一级问题 | 7 | **FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
-| 二级问题 | 45 | **OWNER_APPROVED / REVIEWER_PASS / FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
-| 三级问题 | 118 | **CANDIDATE / OWNER_REVIEW_PENDING** | [三级候选](../FRAMEWORK_L3_CANDIDATE_20261018.md) |
-| 正式知识正文 | 0章 | NOT_STARTED | NONE |
-| HTML/产品开发/真实订单 | 0 | NOT_AUTHORIZED / NOT_STARTED | NONE |
+| 核心问题「产品怎么做、怎么交付？」 | 1 | **FROZEN，仍有效** | [原完整框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
+| 一级问题旧版 | 7 | **OWNER_TEMPORARILY_REOPENED** | [历史对照](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
+| 二级问题旧版 | 45 | **OWNER_TEMPORARILY_REOPENED** | 同上 |
+| 三级问题旧版 | 118 | **CANDIDATE / NOT_FROZEN** | [旧候选](../FRAMEWORK_L3_CANDIDATE_20261018.md) |
+| 独立Writer全新一级—三级 | UNKNOWN | **NOT_SUBMITTED / WRITER_PENDING** | 待Owner转交 |
+| 正文 / HTML / 实际产品 | 0 | NOT_STARTED / NOT_AUTHORIZED | NONE |
 
-**冻结核心：** 产品怎么做、怎么交付？
+**特别注意：** 旧文件标题中的 `FROZEN` 准确记录历史审批，但最新Owner明确授权一级、二级暂时解冻。旧一级/二级原文不再对本轮独立重写施加编辑限制；所有旧快照保持只读以便未来对照。核心问题没有解冻。
 
-**冻结一级原文（导航仅引用，不构成另一个编辑入口）：**
-1. 我要做网站、软件，还是直接开店？
-2. 第一版先做到什么程度？
-3. 用现成工具，还是自己开发？
-4. 怎么让客户顺利购买和使用？
-5. 客户下单后，怎么确保交付到位？
-6. 产品上线前，要检查什么？
-7. 上线后，怎么维护和改进？
+## 二、决策证据和项目背景
 
-## 二、Owner 决策与可核验执行证据
+- 2026-10-18，Owner最初批准核心、一级7题和二级45题，二级经Reviewer复核PASS；118道三级一直仅候选。
+- 2026-10-18，Owner最新明确要求“一级问题和二级问题暂时解冻”并委托无GitHub权限的Writer独立设计一级至三级，回来后跟旧稿比较。
+- 最新授权细节、对比文件、离线包指纹及任务要求全部见 [本轮唯一Gate](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)。
+- 上次PASS证据见 [二级PASS与三级自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)；它只解释旧稿历史为何成立，不意味着新稿已被审核或旧稿必然更优。
 
-- **2026-10-18 · OWNER_REPORTED**：原 V1 核心和一级句子过长，Owner 要求改为更像商家会问的问题。
-- **2026-10-18 · OWNER_REPORTED**：V2 的七个一级问题经 Owner 明确批准可以冻结；V3 把核心缩短为「产品怎么做、怎么交付？」时仍仅为候选。
-- **2026-10-18 · OWNER_REPORTED**：Owner 本轮明确决定「核心问题和1级问题正式冻结并落库」，并要求「开始撰写2级问题同样的要求」。因此 V3 核心改为正式冻结，且一级不再修改。
-- **2026-10-18 · DIRECT_READBACK**：冻结文件已写入 `main`，Commit `1029e0dffcef3b3376c58825e6c771b164a4ffcb`，回读核实核心原文及七条 L1 原文存在；冻结文件 Git blob SHA 为 `fbc2b296041aca76827110825510742f7307fc22`。
-- **2026-10-18 · DIRECT_READBACK**：二级候选已写入 `main`，Commit `e925896944aef7d39a71df0aa16f8df70fd44dfb`，回读核实45个不同编号，分布 **4/5/6/7/9/6/8**，文件 Git blob SHA 为 `50b588b2b942c3321d717ba4dc5e45867913a02e`。
-- **适用规范 · DIRECT_READBACK**：[五板块问题框架通用标准](../../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)、[第四板块独立任务书](../../docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)、[VPS Project Governance v0.2.7](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)。
-- **新增/更新后的导航验收**：以 [本板块 README](../README.md) 和 [父项目 README](../../README.md) 的 GitHub `main` 最新回读为准；此条不预先宣称已完成。
+## 三、治理状态字段
 
-- **2026-10-18 · OWNER_REPORTED：** Owner批准二级经复核PASS后正式冻结，并要求开始三级候选。
-- **2026-10-18 · DIRECT_READBACK：** 1/7/45正式冻结Commit `e8e3789504ae2b572be1d1f6a293d39220cb6881`；三级118题候选Commit `2e370228766b872909f158623f699112cd4a2280`。核实45个父题原文一致、118道三级编号唯一。见 [独立复核及三级自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)。
+- **PROJECT_GOAL：** 为中国大陆跨境卖家、个人开发者形成“产品怎么做、怎么交付？”的系统化知识问题框架。
+- **PROJECT_STAGE：** 核心继续冻结；一级二级暂时解冻；三级旧版候选保留；独立盲写Writer工作包已准备。
+- **SYSTEM_MAP：** 纯Markdown文档与会话ZIP，不部署任何服务，无VPS、网络、数据库、客户资料、Secret或真实支付操作。
+- **CURRENT_ACCEPTED_STATE：** 仅固定核心原文继续有效。旧L1/L2是历史PASS比较基线，旧L3是候选比较基线。
+- **CURRENT_GATE：** `04-INDEPENDENT-WRITER-BLIND-FRAMEWORK-REWRITE-20261018`；参见 [详细任务](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)。
+- **CRITICAL_CONSTRAINTS：** 核心不得更改；Writer不看旧问题树、不需仓库权限、只能交候选；①②③⑤保持只读，第三板块CLOSED；不进行正文、软件、HTML及真实商业行为。
+- **DEFAULT_EXECUTION_CHANNEL：** GitHub连接器记录项目决定与状态；Writer离线ZIP由Owner转交。仅第四板块文档与父项目README第四板块导航可修改。
+- **CURRENT_ROLLBACK_STATUS：** 全部是版本化文档，历史快照完整保留，若需撤销当前文档状态则按精确Git历史追加逆向提交，不破坏共享main。
+- **UNRESOLVED：** Writer具体题量、提交日期、所用模型与新稿质量均UNKNOWN；没有收到新稿，不能做新旧比较。
+- **NEXT_STEP：** Owner把本轮ZIP与提示词发给独立Writer → 返回新框架与审核说明 → Reviewer先独立审核新稿，再与旧7/45/118逐层比对 → Owner决定取舍与是否重新冻结。
+- **OWNER_ACTION_REQUIRED：** 将离线ZIP转发Writer，收到其完整ZIP后交给Reviewer；其他行动NONE。
+- **EVIDENCE_POINTERS：** 本轮Owner决定Gate、历史完整冻结问题树、历史118候选、先前复核报告及仓库 `main` 最新README；包SHA256详见Gate。
 
-## 三、治理状态面板
+## 四、Writer交付与比较停点
 
-- **PROJECT_GOAL：** 帮助中国大陆独立开发者和跨境卖家回答如何选择产品形态、快速搭建、可靠购买/交付、测试上线及维护；最终产出系统化知识框架及后续教程。
-- **PROJECT_STAGE：** 核心、L1、L2正式冻结；L3候选待审核；正文未启动。
-- **SYSTEM_MAP：** 纯 Markdown 文档项目；无独立服务器、网站、后台、数据库、真实客户数据、Secret、支付网关或 Docker 运行时；GitHub `main` 是唯一持久化目标。
-- **CURRENT_ACCEPTED_STATE：** [唯一完整冻结快照](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)；三级候选非 accepted。
-- **CURRENT_GATE：** `04-L3-OWNER-REVIEW-20261018`。目标：审核三级118题的必要性、去重、广度及跨板块边界；最多形成Owner审核结果，未批准不冻结或写正文。
-- **CRITICAL_CONSTRAINTS：** 核心1/一级7/二级45均已冻结，不可擅改；①1/8/34/83与②8/44/93冻结不动；③ CLOSED/FROZEN 不动；不写网络配置、支付金融、获客增长教程；不凭候选目录断言现实产品具备特定功能。
-- **DEFAULT_EXECUTION_CHANNEL：** GitHub 连接器操作 `entropy-student/project` 的 `main`，纯文档小范围读写；下一轮默认 Reviewer 审核，未授权修改其他项目目录。
-- **CURRENT_ROLLBACK_STATUS：** 文档变更可由 Git 历史按具体 Commit 和路径进行新的逆向提交；不强制重置/改写共享 `main` 历史；本轮无生产状态或数据恢复需求。
-- **UNRESOLVED：** 三级118题是否需要合并或改写仍待Owner审查；不同国家法律、平台商业许可及具体服务商细则留待未来正文章节核验，不能从题目断言已符合。
-- **NEXT_STEP：** Owner审核三级118题 → 按需最小返修 → 正式批准后创建三级冻结快照 → 再安排正文。
-- **OWNER_ACTION_REQUIRED：** 审核 [三级118题](../FRAMEWORK_L3_CANDIDATE_20261018.md) 并决定通过或指出需改之处；无需工具安装或转交材料。
-- **EVIDENCE_POINTERS：** 上述 Commit/SHA、冻结文件、候选文件及此交接；项目父/子 README 仅负责导航，不构成另一套状态原文。
+**Writer所见：** 唯一核心问题、五板块边界、典型商家场景、独立设计标准、知识覆盖自查、两份Markdown加ZIP的交付要求；**不提供历史框架及数量**。
 
-## 四、恢复工作顺序与重点复核
+**Writer返回：** 一份完整问题树、一份设计/去重/覆盖自检报告，均为CANDIDATE；无需任何GitHub登录。
 
-**Reviewer 必读顺序：** ① [本板块README](../README.md) → ② [唯一1/7/45冻结](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) → ③ [L3候选](../FRAMEWORK_L3_CANDIDATE_20261018.md) → ④ [复核自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md) → ⑤ [通用标准](../../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)。
+**Reviewer比较流程：** 先验收新稿自身的独立价值、结构、题目语言和知识范围，再依主题映射对比旧一级7/二级45/三级118；给出保留旧版、采用新版或综合的理由。如需返修，提供完整独立返修ZIP和提示词。
 
-**Reviewer 优先复核：** 重点审查4.5下28个三级的独立性、4.4/⑤营销边界、4.5/③支付资金边界，以及实体、SaaS、数字、服务与人工履约的覆盖。
-
-## 五、当前 Gate 与停点
-
-- **GATE_ID：** `04-L3-OWNER-REVIEW-20261018`。
-- **OBJECTIVE：** 对三级118题独立审查，必要时提出最小修改建议。
-- **MAX_ENDPOINT_THIS_ROUND / MANDATORY_REVIEW_STOP：** 最多得到Owner的审查决定；未经明确批准，不自动冻结三级或开始正文。
-- **TARGET_AND_SCOPE：** 第四板块纯文档；父项目README仅负责导航；其他板块只读。
-- **PREFLIGHT：** 核对[完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[三级候选](../FRAMEWORK_L3_CANDIDATE_20261018.md)及归属。
-- **REQUIRED_EVIDENCE：** 45个父题、118个子题的映射、去重、知识范围、独立性与跨板块边界。
-- **ACCEPTANCE_CRITERIA：** 三级真实、有必要且读者可理解；不可机械凑数；不改变任何冻结父题。
-- **ROLLBACK_STATUS_OR_PLAN：** 纯文档，可用追加逆向提交恢复，不重写共享main历史。
-- **OWNER_ONLY_ACTIONS：** 三级正式PASS及已冻结上级的任何改动。
-- **REVIEWER_TO_EXECUTOR_RELAY：** NONE。
-- **EXECUTOR_TO_REVIEWER_RELAY：** L2已正式PASS；L3仅是结构自检候选。
-- **STOP：** 不开始正式知识正文、HTML或实际产品开发。
+**MANDATORY_REVIEW_STOP：** Writer未交付前停在 `WRITER_PENDING`；即便Writer返回，也不能在Owner尚未批准时擅自重新冻结或编写知识正文。
