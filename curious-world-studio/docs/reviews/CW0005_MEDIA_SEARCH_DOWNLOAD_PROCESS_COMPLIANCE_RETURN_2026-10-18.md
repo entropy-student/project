@@ -1,6 +1,6 @@
 # CWS｜CW0005素材搜索与下载流程独立审计（2026-10-18）
 
-**Owner预先裁决并正式保留：`RETURN_PROCESS_COMPLIANCE`。** 本轮只处理素材生产方法是否遵循现行项目合同与证据，不重新评价已经通过的MP4编码技术、固定模板，也不把这次RET​​URN描述为画面审美FAIL。先前单独判定的`RETURN_VISUAL_STORYFIT`作为历史视觉事实并行保留，但**此次原因是流程**。
+**Owner预先裁决并正式保留：`RETURN_PROCESS_COMPLIANCE`。** 本轮只处理素材生产方法是否遵循现行项目合同与证据，不重新评价已经通过的MP4编码技术、固定模板，也不把这次RETURN描述为画面审美FAIL。先前单独判定的`RETURN_VISUAL_STORYFIT`作为历史视觉事实并行保留，但**此次原因是流程**。
 
 ## 一、完整读入和证据身份
 
