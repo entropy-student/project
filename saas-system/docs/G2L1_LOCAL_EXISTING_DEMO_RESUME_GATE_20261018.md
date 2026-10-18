@@ -16,7 +16,7 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 
 ## MAX_ENDPOINT_THIS_ROUND
 
-只能在 **现有** `%USERPROFILE%\Documents\ChatGPT\Velobase-Harness-e88e259` 和 **现有** Compose project `saasvh-e88e259` 上操作；允许验证资源确实完整后，**仅一次**顺序启动现成 `postgres/redis/web` 容器，检查本机 `http://127.0.0.1:3003` 的完整 UI、认证和资源状态。若明确属于项目内轻微可逆兼容问题，允许最多一次不涉及支付/数据库重置/Secret 的定向小修复和复测，改动前先记录原始状态和回滚方式。若问题需要 Docker 重建镜像、镜像下载、迁移数据、删卷、重置 Demo 或全局环境修改，本轮停止并交 Reviewer 判定下一局部 Gate；不能为了减少 RETURN 任意扩权。
+只能在 **现有** `%USERPROFILE%\Documents\ChatGPT\Velobase-Harness-e88e259` 和 **现有** Compose project `saasvh-e88e259` 上操作；允许验证资源确实完整后，**仅一次**顺序启动现成 `postgres/redis/web` 容器，检查本机 `http://127.0.0.1:3003` 的完整 UI、认证和资源状态。若识别出需修改应用源码或启动配置的兼容问题，仅记录最小修复建议，**本轮不实施**：G2 的 Web 代码已打入现有镜像，修改 Windows 工作树不会自动更新容器镜像。若问题需要 Docker 重建镜像、镜像下载、迁移数据、删卷、重置 Demo 或全局环境修改，本轮停止并交 Reviewer 判断下一局部 Gate；不能为了减少 RETURN 任意扩权。
 
 **禁止**：对旧三个容器或其他 Compose 项目做 start/stop/restart/删除；`docker compose up --build`、`down -v`、`docker system prune`、清空/更换数据库、全局改 Docker Desktop/WSL、占用共享 VPS、购买外部资源、公开端口、Stripe TEST/Live 或其它 Provider 行为。
 
