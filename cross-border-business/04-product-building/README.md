@@ -1,6 +1,6 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_V1_RETURN / R2_WRITER_PENDING**  
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_R2_RETURN / R3_WRITER_PENDING**  
 > **冻结问题：核心1 / 一级9 / 二级48 / 三级117**  
 > **唯一核心：产品怎么做、怎么交付？**  
 > **HTML / 真实系统：NOT_STARTED**。
@@ -11,7 +11,8 @@
 - **[第一章《我该把产品做成什么形式？》正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)**：4个二级/10个三级，经Writer R2+独立Review，Owner特别授权Reviewer直修B01–B06后正式封板。不是Writer R3。
 - [第一章R2定向修复与Owner封板审计记录](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：完整R2原始指纹、六组问题矩阵、官方核验、结构自检与权限边界。
 - **[第二章《第一版先做哪些东西？》独立Writer首稿Gate](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：冻结4个二级/10个三级；V1交付后Review为RETURN。
-- **[第4.2章 Writer V1独立Review RETURN记录](docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)**：R01–R08阻断、N01–N03非阻断、官方一手来源；完整R2返修离线ZIP已交Owner。
+- **[第4.2章 Writer V1独立Review RETURN记录](docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)**：历史R01–R08；V1全稿返修。
+- **[第4.2章 Writer R2独立Review RETURN记录](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)**：当前B01–B04四组残留，已向Owner交付包含R2全文、核验记录、Reviewer报告的R3完整离线ZIP。
 - [第二章离线Writer包清单与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：8份Markdown完整离线包，ZIP SHA256 `b0095450264f34012105260b913f0b2fce4c87c97fc770fc4033018c0bee268c`；本轮对话下载转交。
 - **[当前唯一Reviewer交接](REVIEWER_HANDOFF.md)**：决策、来源、当前Gate和下一步。
 - [第二部分长期Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：Reviewer不预写Writer首稿；RETURN同轮提供完整ZIP和传递提示词；Owner决定封板。
@@ -21,7 +22,7 @@
 | 编号 | 冻结一级问题 | 正文状态 |
 |---|---|---|
 | 4.1 | 我该把产品做成什么形式？ | **FINAL_SEALED / OWNER_APPROVED** |
-| 4.2 | 第一版先做哪些东西？ | **V1已交并审核RETURN；R2待Writer定向返修；无正式封板正文** |
+| 4.2 | 第一版先做哪些东西？ | **R2已交并独立审核RETURN；R3待Writer定向返修；无正式封板正文** |
 | 4.3 | 怎么用最省事的方式把产品搭出来？ | NOT_STARTED |
 | 4.4 | 怎么让客户顺利购买和使用？ | NOT_STARTED |
 | 4.5 | 商品、库存和订单怎么管清楚？ | NOT_STARTED |
@@ -41,6 +42,6 @@
 
 本板块仅做产品形态、首版范围、复用实现、购买使用、订单、交付、安全验收和售后维护；①机会市场、②网络部署、③主体/支付税务（CLOSED）、⑤获客增长继续只读。不得提前预写4.2正文，不要求固定案例或工具。
 
-**NEXT_STEP：** Owner将第4.2章R2完整返修ZIP和可复制提示词交独立Writer→Writer在V1全文基线上定向修复R01–R08并交完整R2正文+核验记录+ZIP、`STOP_AT_REVIEWER`→Reviewer复审→Owner决定是否封板。
+**NEXT_STEP：** Owner将第4.2章R3完整返修ZIP和可复制提示词交独立Writer→Writer在R2全文基线上定向修复B01–B04并交完整R3正文+核验记录+ZIP、`STOP_AT_REVIEWER`→Reviewer复审→Owner决定是否封板。
 
 [返回跨境业务总项目](../README.md)
