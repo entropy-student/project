@@ -1,5 +1,12 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_V561_MAIN_INDEPENDENT_REVIEW_AND_SUCCESSOR_LINK_20261018 -->
+## 2026-10-18｜下一位Reviewer先读这里：V5.6.1主Reviewer精简交接已在main归档
+
+- **唯一完整证据与接手索引**：[CWS_V561_MAIN_REVIEW_AND_SUCCESSOR_RELAY_2026-10-18.md](reviews/CWS_V561_MAIN_REVIEW_AND_SUCCESSOR_RELAY_2026-10-18.md)；含V5.2/V5.3.1/V5.4/V5.5/V5.6/V5.6.1的作用、各源Git blob、R-01～R-05、原ZIP SHA-256、主Reviewer新跑27/27及既有1×播放证据边界、独立复核清单。下面较早条目仍供历史追溯，**以上精简交接优先，避免旧NEXT和旧PARTIAL混入现行判断**。
+- **最新状态**：最终V5.6.1 `3cd8b040a9f106ca7d0876b55b34ab71088af175` 为`TECHNICAL_PASS_CANDIDATE / EXTERNAL_REVIEW_PENDING`。本轮实际重新执行的27项Chromium专项全PASS；额外重跑31秒测试超时未获得新结果，保留同SHA ZIP里已有成功证据，不误称本轮新一次1×PASS。原媒体7项测试未再次执行，属既有报告。**等待下一位独立Reviewer复核后再决定是否接受/冻结**。
+- **不能变化的边界**：Draft PR#144未合并，main冻结V5.2 blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b`未变；正式CW0005 R3 RETURN / G1 HOLD / G2/R4未授权 / NO_PUBLISH / 版权PARTIAL。不得无授权继续⑤⑪⑭或启动正式制片。
+
 <!-- CWS_V561_MAIN_REVIEWER_INDEPENDENT_REGRESSION_20261018 -->
 ## 2026-10-18｜V5.6.1 主Reviewer补充独立复核（不改变待外部Reviewer验收状态）
 
