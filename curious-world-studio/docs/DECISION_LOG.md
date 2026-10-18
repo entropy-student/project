@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_MEDIA_SEARCH_PROCESS_RETURN_20261018 -->
+## 2026-10-18｜Owner将CW0005下一轮锁定为素材搜索下载流程合规RETURN
+
+Owner发现最新样片似乎只有Pexels一个实际来源，要求Reviewer**完整读取项目管理规范与CWS项目文件，不跳读**，并明确“本轮结果提前锁定为RETURN；非画面质量而是流程合规”。Reviewer已从GitHub读取VNEXT.md v0.2.7全部609行、递归清点CWS185文件、逐份获取其中159份Markdown/配置/HTML/JSON文本Blob核指纹，另读MEDIA搜源/下载实现，并提供[覆盖清单](reviews/CWS_FULL_PROJECT_DOCUMENT_COVERAGE_MANIFEST_2026-10-18.md)与[审计结果](reviews/CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_COMPLIANCE_RETURN_2026-10-18.md)。当前真实矛盾是：Owner确认按视觉需求**多平台并行候选发现→去重→实看→定向下载**，实际PR#153仅记录1页Pexels结果、3条Pexels详情/下载，缺其它平台候选的实际数量、失败/降级、跳过理由及搜索/下载/内容/许可分层证据；但不能凭无记录证明其Windows从未触发聚合搜索，亦不能把“3+1”误读成每期必须从三路各选一条。本次`RETURN_PROCESS_COMPLIANCE`与MP4技术PASS并行、原视觉RETURN保留。此前Reviewer制定联合Gate时没有把多来源候选比较和七层计数写成严格证据门槛，需由Reviewer补缺，不把责任全推给Codex。**尚未下发**的视觉返修Gate转`DISPATCH_HOLD`；下一轮仅凭[新的只读流程审计Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)追溯现存本机素材索引/日志并归类错误，不得为补历史重新搜片/下载/生图/渲染。后续按审计结果合并新的合规检索与真正视觉修复，仍需新的有界真实媒体动作授权。
+
+
 <!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
 ## 2026-10-18｜Owner将C类AI静态图片最省调用/快速执行设为CWS项目级强制准则
 
