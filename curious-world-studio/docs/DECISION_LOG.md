@@ -1,5 +1,10 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_V562_OWNER_FROZEN_PASS_20261018 -->
+## 2026-10-18｜Owner批准V5.6.2模板技术PASS并冻结至main
+
+Owner阅读V5.6.2独立Reviewer PASS报告和主Reviewer复核后明确要求**正式冻结PASS**。已按原字节将源码归档到`main/curious-world-studio/visual/frozen/storyboard-v5-6-2-20261018.html`，blob `33aabc3ff2e48877493277eb1a86274818e3c769`，SHA-256 `47dbe555b297153bab7520b7b1b716fa8403ed32c237b3b2603e283829c2fb84`。旧V5.2不覆盖，PR#144保持Draft/未合并。独立实测41/41边界、9/9媒体、3/3 Canvas、31.06秒1×播放PASS且无新P0/P1/P2。原因：N-01百分号语义与N-02极小值刻度缺陷均已修正；无需继续修改已冻结六模板。**仅模板技术PASS，生产/视觉Story-Fit/素材权利/发布HOLD不变**。下一步详见[冻结决议](reviews/CWS_V562_OWNER_FREEZE_TECHNICAL_PASS_2026-10-18.md)和[七轮后续规划](CWS_POST_V562_FREEZE_TO_AUTOMATED_VIDEO_ROADMAP_2026-10-18.md)，规划不自动赋权。
+
 > 仅记录项目方向、Owner授权和独立Reviewer裁决的**原因与适用边界**；此文档不能创建第二套状态或修改[VPS Project Governance](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)。现行状态以[CURRENT_STATE](CURRENT_STATE.md)、[当前Handoff](REVIEWER_HANDOFF_CURRENT.md)及[当前Gate](PROD_R3_CW0005_INTERNAL_AV_SAMPLE_GATE_2026-10-16.md)为准。
 
 ## 2026-10-16｜Owner：内容优先、画面相关即可
