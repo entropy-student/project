@@ -1,5 +1,14 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_V561_MAIN_REVIEWER_INDEPENDENT_REGRESSION_20261018 -->
+## 2026-10-18｜V5.6.1 主Reviewer补充独立复核（不改变待外部Reviewer验收状态）
+
+- **同一候选指纹**：Draft PR#144 `storyboard-v5-6-1-targeted-review-fixes.html` Git blob `3cd8b040a9f106ca7d0876b55b34ab71088af175`，SHA-256 `44319df40d2b6e14400f720b97d4a34161ae0cef89c9d9e3a7b5c54e5b8fa213`，确认由V5.6仅12处差分得到，**无需再次从零实现**。
+- **独立技术复核**：Chromium 27/27项目通过：R-01单位规范化与百分点；R-02批量MIME拒绝、手动取消/确认两支；R-03极小非零±增长率；R-04小数动态比例和显式比例及全零；R-05版本与V2文件名；旧V1→V2和非法JSON事务拒绝；原Mac Canvas 10时码逐像素一致。JS异常0。最终HTML实速0→31.06s终点 `playing=false`、内容隐藏；仅浏览器关闭进程在结果输出后超时，不代表播放失败。测试使用默认无版权媒体占位；真实4–6分钟有声MP4、用户Edge file://未验收。
+- **Evidence**：[PR主Reviewer复查评论](https://github.com/entropy-student/project/pull/144#issuecomment-6245399496)及[PR执行报告](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V561_REVIEW_TARGETED_FIXES_2026-10-18.md)。会话内独立ZIP附确切HTML、回归与全程播放JSON、测试脚本（不上传Git）。
+- **当前权威决定**：`TECHNICAL_PASS_CANDIDATE / EXTERNAL_REVIEW_PENDING / FORMAL_PRODUCTION_HOLD`；main V5.2冻结版不变，PR#144仍Draft/未合并。不要自动开始⑤⑪⑭或真实制片。下一步仅待Owner决定外部独立Review和后续Gate。
+
+
 <!-- CWS_V561_R01_R05_TARGETED_REPAIR_CANDIDATE_20261018 -->
 ## 2026-10-18｜最新唯一接手：V5.6.1 五项修复完成技术自检，独立 Reviewer 待验收
 
