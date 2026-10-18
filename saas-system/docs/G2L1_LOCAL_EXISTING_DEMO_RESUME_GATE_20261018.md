@@ -43,9 +43,9 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 ## PREFLIGHT / EXECUTION
 
 1. **真实目标与 Git**：Owner 本机 Codex 只读识别当前 Windows 主机、用户权限、PowerShell/Docker、工作目录，确认 `%USERPROFILE%\Documents\ChatGPT\Velobase-Harness-e88e259` 与上游完整固定 SHA，工作树有唯一未提交数据则保留并避免覆盖；不得重做已经完成的全栈构建。
-2. **现状先查**：记录本轮起始 `docker compose -p saasvh-e88e259 -f compose.demo.yml ps -a`、所属 Labels、现有服务、镜像、网络、两卷、`127.0.0.1:3003` 占用。核对已有三容器真实存在且只属于本项目。捕获其他运行中容器**脱敏**基线及关键健康状态；记录三个历史旧容器现状但不猜测它们的归属，不用它们必须恢复为开始条件。
+2. **启动 Engine 前的最低限度核验**：先用 Windows 主机层只读信息核实 Docker Desktop 是否已安装、是否正在运行、`127.0.0.1:3003` 是否有其他进程占用、Owner 本机项目路径是否存在；不要在 Engine 已关闭时硬性要求 `docker compose ps` 成功。对于 Engine 关闭前的旧容器真实状态，只能采用历史 Evidence 并标 `STALE`，不能当成当前容器读回。
 3. **Docker Desktop 可能关闭（Owner 已授权 Codex 自行正常打开）**：先只读检查 Windows 上已安装的 Docker Desktop 应用、当前进程及 `docker info` 连通性，区分 `APP_CLOSED`、`ENGINE_STARTING`、`ENGINE_ERROR`，并记录启动前可见的其他业务/宿主资源状态。如果 Engine 已可用，不重新打开也不重启。如果明确只是 Docker Desktop 正常关闭，**仅一次**通过已安装的 Docker Desktop 正规入口启动该应用（可用已核实的应用可执行文件或原生启动方法），等待 Engine 正常就绪并验证 `docker info`、Docker Compose 可用性；**不得**改 Docker Desktop 配置、重启/重置 Engine 或 WSL、触发维修/升级/自动拉取镜像。若发现异常、正常启动后仍不可用，精确 RETURN，不以重装或改全局配置修复。启动 Engine 后只读记录容器实际状态，注意共享 Engine 的其他项目可能按自己的重启策略自动恢复；若有意外既有负载变化，**不要进一步启动 Velobase，也不要停止其他容器或整个 Engine**，将现状与影响报 Reviewer。
-4. **资源边界与基线**：在 Engine 正常就绪后，采样 Windows/Docker 内存、CPU、磁盘，检查其他运行中的工作负载状态、项目隔离、`127.0.0.1:3003`。不要用固定空闲 RAM 阈值拒绝操作。如果仍不可达，`RETURN_SHARED_DOCKER_ENGINE_UNAVAILABLE`。
+4. **现状复查与资源边界**：在 Engine 正常就绪后，记录 `docker compose -p saasvh-e88e259 -f compose.demo.yml ps -a`、已有服务的 Compose Labels/镜像身份、两卷/网络、端口，以及其他运行容器的脱敏状态基线。核对历史旧三个容器状态但不诊断因果、不恢复；尤其识别启动 Engine 时是否自动拉起其他业务。然后采样 Windows/Docker 内存、CPU、磁盘。**不要**用固定空闲 RAM 阈值拒绝操作。如果仍不可达，`RETURN_SHARED_DOCKER_ENGINE_UNAVAILABLE`。
 5. **已有 Demo 实例顺序恢复**：如 G2 三容器全是 stopped、镜像/卷身份无变化且端口空闲，**仅启动既有实例**。优先执行与下列语义等效的项目限定命令，在旧 DB/Redis 确认 ready 后再启动旧 Web：
    ```powershell
    Set-Location "$env:USERPROFILE\Documents\ChatGPT\Velobase-Harness-e88e259"
