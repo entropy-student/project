@@ -2,12 +2,21 @@
 
 > **PROJECT_STAGE：ACTIVE_WRITING / FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78**（2026-10-18）  
 > **CHAPTER1：《我的客户在哪里？》FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
-> **CHAPTER2：《我该怎么找到客户？》WRITER_R1_DELIVERED / STRUCTURE_PASS / REVIEW_RETURN / R2_PACKET_READY / NOT_SEALED**  
+> **CHAPTER2：《我该怎么找到客户？》WRITER_R2_DELIVERED / STRUCTURE_PASS / REVIEW_RETURN / R3_MINIMAL_PACKET_READY / NOT_SEALED**  
 > **CHAPTER3–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH2-WRITER-R2-DIRECTED-REPAIR-20261018**  
-> **OWNER_ACTION_REQUIRED：转交第二章R2完整返修ZIP和话术；收回Writer R2完整正文及核验ZIP供Reviewer复审。**
+> **CURRENT_GATE：CB05-CH2-WRITER-R3-MINIMAL-REPAIR-20261018**  
+> **OWNER_ACTION_REQUIRED：转交第二章R3最小返修ZIP和话术；收回Writer R3完整正文及核验ZIP供Reviewer复审。**
 
-## 最新：第二章独立Writer R1审核与R2返修停点
+## 当前：第二章独立Writer R2复审RETURN（2026-10-18）
+
+- **[最新R2独立Review报告](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)**：R2全文/核验均已交，**9二级/22三级逐字同序PASS，2.2直接成节**；大部分R1的B01–B12问题修复有效。但仍有**4项必修B01–B04及3项顺手小修N01–N03**，正式结论`RETURN_R2_RESIDUAL_BUSINESS_AND_COMPLIANCE_RISKS`，第②章不得封板。
+- 上传的R2 ZIP：`第五部分_第二章_Writer_R2完整交付.zip`，36,674字节，SHA256 `0a5379edab39d17ccc993145699165cf7c99b0662c6d274a72787a3c46a92e0b`，CRC正常；全文52,976字节/583行、来源自检26,901字节/148行。
+- 必修四组：**B01** Google Ads日预算不能保证$225测试总额硬封顶；**B02** 专业答疑“不会触发反垃圾”、首评链接没有平台许可边界；**B03** GDPR客户联系人共享合法依据与“必须知情同意”混同；**B04** 高客单≠高毛利，SQL成本和真实CAC混算。N01教学开发信资质、N02社交广告定向资格、N03搜索词报告覆盖请顺带处理。
+- R3完整离线ZIP：`第五部分_第二章_R2独立审核与R3最小返修工作包_20261018.zip`，46,255字节，SHA256 `587653d8f731d2aebcf653b466e1b9ac6045654502b0bc11b91e111d80837a9c`，7个Markdown文件，含Writer R2**两份完整基线**、审核报告、定向任务、官网核对、可转发话术和校验清单。**仅在本轮对话交Owner，不声称ZIP二进制已落GitHub**。
+- Owner当前只需把R3包和提示词转给无仓库权限Writer → 收R3整章正文及核验记录ZIP → Reviewer独立复核 → Owner决定封板；**第一章已封板文件与第五板块完整冻结题树未更改，第三章未启动**。
+- 以下R1状态与文件仍可追溯，但已是**历史阶段，绝不能把R2当成未提交**。
+
+## 历史：第二章独立Writer R1审核与R2返修停点
 
 - **[第二章独立Reviewer R1审核：RETURN](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)**。全部冻结问题**9个二级/22个三级逐字、层级、顺序PASS**；2.2直接成节。知识覆盖广，但营销硬阈值、跨法域直销、广告统计与利润模型、平台算法和官方来源范围有**B01–B12**阻断。
 - 原始Writer ZIP：`第五部分_第二章_独立Writer交付.zip`，34,348字节，SHA256 `bb47b758cd911ebf63f5213536a61749ad9f0176a56e8a6f3d0c38c01ace4402`；完整正文572行、50,440字节，自检134行、22,490字节。
@@ -48,11 +57,11 @@
 - **首稿自由**：Writer自主决定篇幅、案例、工具品牌、表格和图示；不得要求固定字数或指定获客结论。不预设所有商家需要SEO、广告或B2B主动联系，也不得冒称使用真实广告账户、测试市场已成功。
 - **事实与风险**：广告政策/账号资质/平台免费功能、国家营销同意/退出规定、现金预算与工时、合规触达/客户隐私等必须注明实际支持来源及日期/地区，无法证实标`UNKNOWN`，案例假设标`MODEL_ASSUMPTION`。
 - **交付**：完整第②章正文Markdown + 事实/自检Markdown + 两者ZIP → Owner转交 → 独立Reviewer核9/22原文/知识深广/实操/官方事实。若RETURN，**同轮必须向Owner提供完整上一版正文+审核意见的返修ZIP，以及可直接转发的提示词**；Owner审批后才正式封板。
-- **当前状态**：Writer R1已交稿，Review RETURN，R2返修包待Owner转发。尚无第二章正式封板正文；不进入第三章、HTML、真实营销。
+- **历史状态**：Writer R1曾交稿，Review RETURN，R2已实际提交并再次独立Review。尚无第二章正式封板正文；不进入第三章、HTML、真实营销。
 
 ## 四、文档与权限边界
 
 - ①机会挖掘与市场判断、②网络环境搭建、③支付税务经营主体、④产品搭建的冻结正文/问题树**本次全部未修改**；第五板块只负责获客与增长的知识正文。
 - 本轮只处理GitHub Markdown与对话ZIP；没有源码、服务器、账号、客户记录、营销广告、支付服务和个人数据操作。Git提交可追溯恢复。
-- **OWNER_ACTION_REQUIRED：** 转交第二章R2定向返修ZIP和话术；独立Writer回交完整R2候选ZIP供Reviewer复核。
-- **NEXT_STEP：** Writer完成第二章R2 → Reviewer复核B01–B12与新风险 → Owner决定是否封板。
+- **OWNER_ACTION_REQUIRED：** 转交第二章R3最小返修ZIP和话术；独立Writer回交完整R3候选ZIP供Reviewer复核。
+- **NEXT_STEP：** Writer完成第二章R3最小修复 → Reviewer复核B01–B04/N01–N03及新风险 → Owner决定是否封板。
