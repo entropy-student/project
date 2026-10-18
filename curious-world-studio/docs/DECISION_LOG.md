@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR155_MEDIA_VALIDATION_NEXT_GATE_OWNER_20261018 -->
+## 2026-10-18｜Owner推进PR#155后最小流程修正：合并历史取证＋多来源真实Canary
+
+Owner在PR#155被独立判定`TECHNICAL_VIDEO_PASS / RETURN_PROCESS_COMPLIANCE / VISUAL_IMPROVED_OWNER_UNVERIFIED`之后表示“请继续下一步”。Reviewer认为不应为同一素材流程再串行下发“读旧日志→设计候选表→另批检索→另批下载”四轮，依Governance §5将**小范围旧事实只读取证与新的前瞻流程真实验证合并**到[一个有界Gate](CWS_CW0005_MEDIA_PROVENANCE_AND_BOUNDED_MULTISOURCE_VALIDATION_GATE_2026-10-18.md)。限制当前爆米花S01“爆裂或起跳”镜头、最多2检索语义、现成SearXNG/4get与可用OpenMontage合法渠道、按原网站身份合并去重/实看候选、只有确认更贴合且合法未用才最多下载一条≤80MB视频并做FFprobe/FFmpeg/SHA，不强制下载、不新渲染、不再生图、不配音、不改任何正式代码/冻结文件、不改别的Docker/网络或支付、不发布。优先保存真实关键词/引擎/原始域名/失败情况及七层状态的脱敏证据，历史缺失明记`UNKNOWN`，**新Canary PASS不能倒推PR#155曾执行同样流程**。下发前GitHub`AGENTS.md`中长期堆叠的多个相互冲突“当前唯一Gate”已按最小原则删除旧banner，仅保留一份有效入口与稳定角色/技术约束；所有历史授权事实保留在Decision Log/既有Review/Git历史。旧[只读历史流程Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)未曾实际下发，现由新合并Gate覆盖为`SUPERSEDED_NOT_EXECUTED`。
+
+
 <!-- CWS_PR155_INDEPENDENT_RETURN_PROCESS_COMPLIANCE_20261018 -->
 ## 2026-10-18｜PR#155最终交付独立Review：流程RETURN、技术PASS、视觉明显改善
 
