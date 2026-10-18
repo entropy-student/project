@@ -1,5 +1,13 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_V562_OWNER_FROZEN_PASS_20261018 -->
+## 【首先读取·现行唯一入口】2026-10-18 V5.6.2技术冻结PASS，转入七轮成片闭环规划
+
+- **Owner已正式接受**V5.6.2独立Reviewer技术PASS，并将[原字节HTML冻结于main](../visual/frozen/storyboard-v5-6-2-20261018.html)；Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`，SHA-256 `47dbe555b297153bab7520b7b1b716fa8403ed32c237b3b2603e283829c2fb84`。旧V5.2冻结原件保留，PR#144仍Draft不合并。**不得引用下面旧“待验收/仅V5.2冻结”作为现行事实。**
+- **证据先读**：[Owner正式冻结与边界](reviews/CWS_V562_OWNER_FREEZE_TECHNICAL_PASS_2026-10-18.md) → [独立Reviewer完整原字节报告](reviews/CWS_V562_INDEPENDENT_REVIEW_PASS_2026-10-18.md)（41/41正反例、9/9媒体、3/3 Canvas、31.06秒1×实速播放）；历史V5.6.1 R-01/R-04曾PARTIAL但V5.6.2反例已修复独立PASS，不要重复催修。
+- **完整最新计划**：[从技术冻结到完整自动制片七轮路径](CWS_POST_V562_FREEZE_TO_AUTOMATED_VIDEO_ROADMAP_2026-10-18.md)；原14项11项技术关账，⑤真实科研档案与⑭视觉故事仍待首轮Story-Fit验证，⑪时间显示低优先级暂缓。下一步先R1，不主动开始R2–R7或实际制作。
+- **仍未获准**：完整4–6分钟真实成片、声学对齐/SRT/MP4输出、素材商业权利和发布；正式`CW0005 R3_RETURN / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`、权利`PARTIAL`持续。上一轮55.367秒R3视觉已被Owner否决。任何新操作只依据新一轮明确的Owner Gate。
+
 <!-- CWS_V562_EXECUTOR_REPAIR_NOT_INDEPENDENT_ACCEPTANCE_20261018 -->
 > **2026-10-18｜V5.6.2 两项边界补修完成，待独立Reviewer验收**：Owner授权仅修此前V5.6.1独立Review发现的N-01全角百分号语义与N-02极小数值低刻度漏检。新的[PR#144候选V5.6.2](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-6-2-percent-scale-edge-fixes.html) Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`，SHA-256 `47dbe555b297153bab7520b7b1b716fa8403ed32c237b3b2603e283829c2fb84`。**执行者自测**：36/36核心、28/28边界、3/3长时轴/素材保存、12/12原Mac像素及31.06秒实速完整播放PASS，JS异常0；不可当作新的独立验收。权威[最小交接及完整边界](reviews/CWS_V562_EXECUTOR_REPAIR_AND_SUCCESSOR_STATUS_2026-10-18.md)；[PR详细执行报告](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V562_N01_N02_TARGETED_REPAIR_AND_TESTS_2026-10-18.md)。**状态：`EXECUTOR_SELF_TEST_PASS / INDEPENDENT_REVIEW_PENDING / FORMAL_PRODUCTION_HOLD`**。原V5.6.1与main冻结V5.2均未覆盖，PR Draft/未合并；CW0005 R3 RETURN/G1 HOLD/G2/R4未授权/NO_PUBLISH和素材权利PARTIAL不变。下一步只等独立Reviewer复核和Owner决定。
 
