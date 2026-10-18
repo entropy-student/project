@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
+## 2026-10-18｜Owner将C类AI静态图片最省调用/快速执行设为CWS项目级强制准则
+
+Owner询问生图是否遵循项目管理规范中最快、最低Token/最少无谓调用的路径，要求如执行尚无强制约束则升为“本项目最高准则之一”，并说明上一轮Codex提示词尚未下发、需要修改。Reviewer独立核`spike.skill/vps-project-governance/VNEXT.md §11G`（最大双并发、复用/编辑优先、official`output_hint` direct SourcePath、本地复制/QA、同因2次失败停止），与`comic-narrative/tools/imagegen-fast-path/README.md`及R2R1V真实双任务成功验收，也核对CWS原[AI生图低浪费指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)。结论：规则本身已存在且别项目验证过，但CWS本轮Gate并未强制交付逐图零调用复用决策/官方hint证据；PR#153仅报告曾生1张AI图，实际执行Fast Path**无法验证**，不虚构对旧图的负面定性。现已将CWS指南与`AGENTS.md`升级为CWS项目高优先强制执行规范，补完[未下发的CW0005返修Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)。**速度与成本优化是少走无效调用路径，双并发省时不等于单图少Token；不存在可靠的全局最低Token实测结论，禁止夸大节省。** 不修改跨项目Governance v0.2.7、不扩大计费/发布权限、不放宽科学事实与研究真实性。
+
+
 <!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
 ## 2026-10-18｜Owner批准PR#153视觉RETURN后的单轮定向返修
 
