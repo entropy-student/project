@@ -1,5 +1,13 @@
 # CWS｜CW0005 PR#153之后：定向视觉Story-Fit修复及一次内部样片Gate（2026-10-18）
 
+<!-- CWS_INFLIGHT_VISUAL_EXECUTION_DELIVERY_RECONCILIATION_20261018 -->
+> **【最新执行冲突纠正｜原已启动的视觉Gate仅完成交付】** Owner明确补充：**本轮Codex实际已在执行视觉返修**，此前“新的流程审计提示词我没有下发”，仅要求**等当前执行结果提交之后**按素材搜索下载流程规范独立Review。执行者现报告：发现仓库新锁之前已在本机隔离`.local`生成概念图、获取Pexels素材并**完成两次59.93秒MP4渲染**，独立Edge/FFprobe/FFmpeg由其报告通过，但**尚未创建PR/ZIP，未改正式源码/main**。此为`EXECUTOR_REPORTED`，尚非Reviewer实际验收。
+>
+> **正确权限解释**：此Gate在Owner早前已明确批准并已实际开始（即使本轮有补充文案尚未发送），**原授权不因Reviewer在执行中途更新main为下轮流程审计而被追溯撤销**。因此把本Gate状态改为 **`IN_FLIGHT_WORK_ALREADY_DONE / DELIVERY_ONLY_AUTHORIZED / NO_FURTHER_RENDER`**：Codex应保留所有原有图片、视频、检索与QA现场，允许完成**原Gate既定交付**——生成脱敏证据/可重复审查的源资产+分镜映射、必要本轮源代码差异说明、PR与ZIP、Commit SHA及Owner通过当前对话上传真实MP4的方式，然后停独立Reviewer。**累计已渲染2次，达到最大次数：禁止第三次完整渲染。无需为补证据重新联网搜片、下载、生图或重新运行大测试。**本轮Review会检查其真实已执行流程、AI生图效率、素材来源、权利和完整画面；发现合规缺口即继续`RETURN_PROCESS_COMPLIANCE`，不会因为技术成功而升为流程PASS。
+>
+> [MEDIA搜索下载只读取证Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)**仍是后续候选/辅助取证合同，尚未下发、不抢占当前已在执行工作的交付阶段**；之前标记`DISPATCH_HOLD / NOT_SENT`只是Reviewer对提示词下发状态的误判，不能解释成对已启动的Codex工作追溯否决。依Governance，**已有本机后果不重演、先保护现场并交审**。旧`NO_PUBLISH/G1/G2/R4/RIGHTS_PARTIAL`等边界保持，PR不得自行合并。
+
+
 <!-- CWS_PROCESS_RETURN_DISPATCH_HOLD_20261018 -->
 > **【2026-10-18 Owner最新覆盖：DISPATCH_HOLD / NOT_SENT / PROCESS_COMPLIANCE_RETURN】** Owner已明确“下一轮审计素材搜索及下载是否遵循要求”“当前轮次RETURN，原因是流程而非画面质量”，且本Gate的Codex提示词**尚未下发**。本视觉返修Gate先冻结在**未执行且暂停派发**状态，新的唯一可执行入口是[MEDIA搜索下载流程只读取证Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)。Codex**不得根据下方原Owner授权段落直接继续生图、搜新素材、下载或渲染**，否则绕过最新RETURN。已授权的视觉返修目标和已验收技术能力保留，待本轮历史流程取证独立Reviewer接受后另行协调一次合规的有界执行边界。本条为最新优先指令，不删除历史文字/证据。
 
