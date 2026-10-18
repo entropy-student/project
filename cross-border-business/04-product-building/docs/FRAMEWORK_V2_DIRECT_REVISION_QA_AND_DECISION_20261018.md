@@ -2,8 +2,8 @@
 
 > **RESULT：PASS_FRAMEWORK / OWNER_AUTHORIZED_FREEZE / DRAFT_CHAPTER1_OPEN**
 > **唯一正式框架：** [V2 1/9/48/117](FROZEN_FRAMEWORK_V2_20261018.md)
-> **当前正文：** [4.1章完整初稿（尚未封板）](CHAPTER1_FULL_DRAFT_V1_20261018.md)
-> **Scope：** 纯 Markdown 知识项目的作者修订、QA、框架落库与首章草稿；没有部署、商家账号、真实数据或金融动作。
+> **当前正文：** NONE / NOT_STARTED。第4.1章上一轮由Reviewer代写的正文初稿及其自检文件已按Owner最新指令从main删除；该撤销不改变本报告框架QA事实。
+> **Scope：** 纯 Markdown 知识项目的框架修订、QA及封存。上一轮首章草稿行为已经撤销；没有部署、商家账号、真实数据或金融动作。
 
 ## 1. Owner授权与版本保全
 
@@ -14,7 +14,7 @@ Owner明确授权Reviewer“直接完成修改，完成之后请复查，没问�
 | 旧版自主框架 | 7一级/45二级/118三级候选，历史核心及一级二级曾获批准 | 原始文件保留，现不是现行权威 |
 | 独立Writer V1 | 8一级/34二级/60三级，原作者误报52三级 | 原始交付ZIP及上轮Reviewer报告保持历史证据；不冒称Writer出了R2稿 |
 | Reviewer综合V2 | 9一级/48二级/117三级 | 最小限度保留Writer的后台、分业态交付、异常处理结构，并合并旧版的商家语言和售后闭环；本轮QA后冻结 |
-| 4.1正文 | 先前无 | 本轮首次撰写完整草稿，**不封板** |
+| 4.1正文 | 历史上曾由Reviewer直接撰写、未经独立审核 | **Owner已明确要求删除，现已删除正文及专属自检；新一轮由独立Writer承担首稿** |
 
 ## 2. V1→V2的结构映射（不是逐题编号机械对照）
 
@@ -56,18 +56,17 @@ Owner明确授权Reviewer“直接完成修改，完成之后请复查，没问�
 - **业务形式差异：** 站点、App、文件、会员、实物仓配和人工服务分别需要不同工具及许可条件；目录没有把任一供应商、某个特定国家或自动化当必要前提。
 - **真实能力UNKNOWN：** 未操作任何平台注册或真实付款；合同、价格、国家政策、工具版本随时间变化，框架完成不代表现时商业可行、产品已部署或适用法律已核验。
 
-## 5. 第二部分规范如何用于第一章
+## 5. 第二部分规范对第一章的现行约束（Owner纠偏）
 
-参考第二部分[长期Writer→Reviewer→Owner合同](../../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)及其[第①章正式正文](../../02-network-environment/docs/CHAPTER1_FINAL_SEALED.md)：
-1. **先有正式冻结问题树**，正文必须逐字同序回答二/三级（4.1本章为4/10）。
-2. **教学内容不以字数、表格数或固定案例数为通过条件**；必须讲明机制、选型条件、决策方法、步骤、例外及对不同经营形态的适用范围。
-3. **官方来源优先、具体平台准入/费用/规则标日期和限制**；案例用 `MODEL_ASSUMPTION`，不冒充实测。
-4. **正文与审核分离**：本轮只形成4.1章完整初稿，独立审查后方能建议PASS；即便Reviewer自检合格，未获Owner明确批准也**不是FINAL_SEALED**。
-5. **后续RETURN**：若需外部Writer返修，必须同轮提供包含完整原稿、来源记录、精确问题、返修提示词的离线ZIP，避免要求Owner自己重组工作包。
+- **框架V2已冻结**：仅允许Reviewer维护冻结原文与项目状态，Writer必须逐字同序回答4.1的4二级/10三级。
+- **首稿由独立Writer撰写**，Reviewer不得在Writer前抢写完整知识正文、决定案例或固定工具方案。此约束来自第二板块长期[Writer→Reviewer→Owner流程](../../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
+- **Author/Reviewer/Owner职责清楚**：Writer正文候选+核验记录+ZIP → Reviewer独立冷读并给出PASS_CANDIDATE或RETURN → Owner最终决定封板。任何返修同轮交完整返修ZIP与可转发提示词。
+- **已撤销的初稿**：`CHAPTER1_FULL_DRAFT_V1_20261018.md`、`CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md`均已从GitHub main删除；Git历史仍保留，不作为现行正文或Writer参考材料。
+- **新当前Gate**：以 [第4.1章独立Writer首稿Gate](CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md) 与[唯一Reviewer交接](../REVIEWER_HANDOFF.md)为准。
 
 ## 6. 停点与回滚
 
 - **框架：** `PASS / FROZEN (1/9/48/117)`。唯一正式原文是 [FROZEN_FRAMEWORK_V2_20261018.md](FROZEN_FRAMEWORK_V2_20261018.md)；V2候选保留创作来源。
-- **第4.1章正文：** `FULL_DRAFT / REVIEW_PENDING / NOT_SEALED`；内容仅是作者候选，后续按第二部分标准独立Reviewer冷读，不先下PASS。
+- **第4.1章正文：** `NOT_STARTED / WRITER_PENDING`；前一次由Reviewer代写的草稿已按Owner指令撤回，当前无正文候选。
 - **不触及：** ①②③⑤的仓库文件、线上产品与基础设施、真实支付和资料。Git文档可以使用新逆向提交恢复，不重写共享main历史。
-- **NEXT_STEP：** 审核4.1正文事实与教学深度 → 精确返修（如有）→ Owner审批封板 → 才进入下一章4.2。
+- **NEXT_STEP：** Owner转交4.1离线Writer首稿包 → Writer提交全文与独立核验记录ZIP → Reviewer审查/必要返修 → Owner决定是否封板。
