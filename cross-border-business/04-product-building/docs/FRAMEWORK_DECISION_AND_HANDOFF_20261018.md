@@ -2,17 +2,17 @@
 
 > **CURRENT_STATE：CORE_L1_L2_OWNER_APPROVED_FROZEN / L3_CANDIDATE_REVIEW_PENDING / BODY_NOT_STARTED**  
 > **仓库：** `entropy-student/project` · **目录：** `cross-border-business/04-product-building/`  
-> **唯一冻结范围：** 核心1题 + 一级7题的原文、编号、顺序与归属。  
-> **本轮最大终点：** 已冻结的上级落 `main`，生成二级候选与交接文件；停在 Owner/Reviewer 审查，不再自动拆三级。
+> **唯一冻结范围：** 核心1题 + 一级7题 + 二级45题的原文、编号、顺序与归属；唯一权威是 [完整冻结文件](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)。  
+> **本轮最大终点：** 原文冻结二级45题，并起草三级118题候选；停在Owner对三级的审核，不自行冻结三级。
 
 ## 一、当前状态与唯一权威入口
 
 | 对象 | 数量 | 状态 | 唯一入口 |
 |---|---:|---|---|
-| 核心问题 | 1 | **OWNER_APPROVED / FROZEN** | [核心与一级冻结原文](../FROZEN_FRAMEWORK_CORE_L1_20261018.md) |
-| 一级问题 | 7 | **OWNER_APPROVED / FROZEN** | [核心与一级冻结原文](../FROZEN_FRAMEWORK_CORE_L1_20261018.md) |
-| 二级问题 | 45 | **CANDIDATE / REVIEW_PENDING** | [45题二级候选及自检](../FRAMEWORK_L2_CANDIDATE_20261018.md) |
-| 三级问题 | 0 | NOT_STARTED | NONE |
+| 核心问题 | 1 | **FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
+| 一级问题 | 7 | **FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
+| 二级问题 | 45 | **OWNER_APPROVED / REVIEWER_PASS / FROZEN** | [完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md) |
+| 三级问题 | 118 | **CANDIDATE / OWNER_REVIEW_PENDING** | [三级候选](../FRAMEWORK_L3_CANDIDATE_20261018.md) |
 | 正式知识正文 | 0章 | NOT_STARTED | NONE |
 | HTML/产品开发/真实订单 | 0 | NOT_AUTHORIZED / NOT_STARTED | NONE |
 
@@ -40,9 +40,9 @@
 ## 三、治理状态面板
 
 - **PROJECT_GOAL：** 帮助中国大陆独立开发者和跨境卖家回答如何选择产品形态、快速搭建、可靠购买/交付、测试上线及维护；最终产出系统化知识框架及后续教程。
-- **PROJECT_STAGE：** 核心与L1已冻结；L2候选待审；L3和正文未启动。
+- **PROJECT_STAGE：** 核心、L1、L2正式冻结；L3候选待审核；正文未启动。
 - **SYSTEM_MAP：** 纯 Markdown 文档项目；无独立服务器、网站、后台、数据库、真实客户数据、Secret、支付网关或 Docker 运行时；GitHub `main` 是唯一持久化目标。
-- **CURRENT_ACCEPTED_STATE：** [冻结快照](../FROZEN_FRAMEWORK_CORE_L1_20261018.md)；二级候选非 accepted。
+- **CURRENT_ACCEPTED_STATE：** [唯一完整冻结快照](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)；三级候选非 accepted。
 - **CURRENT_GATE：** `04-L2-OWNER-REVIEW-20261018`。目标：审核二级45题的表达、独立性、广度、去重和跨板块边界；最大终点为 Owner 作出 PASS / 返修决定，不进行自动冻结或下级写作。
 - **CRITICAL_CONSTRAINTS：** 上级7题原文及核心冻结不可更改；①1/8/34/83与②8/44/93冻结不动；③ CLOSED/FROZEN 不动；不写网络配置、支付金融、获客增长教程；不凭候选目录断言现实产品具备特定功能。
 - **DEFAULT_EXECUTION_CHANNEL：** GitHub 连接器操作 `entropy-student/project` 的 `main`，纯文档小范围读写；下一轮默认 Reviewer 审核，未授权修改其他项目目录。
