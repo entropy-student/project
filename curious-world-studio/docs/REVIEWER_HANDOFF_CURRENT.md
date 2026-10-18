@@ -1,5 +1,9 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
+> **【新增必遵守项目级生图原则，2026-10-18】** Owner核验项目管理规范后要求：所有CWS任务的C类静态图片必须将[AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)最新版强制条款与上位Governance §11G作为当前执行规范；在高风险科技视觉上科学准确性优先于“省图”。当前唯一Gate：[PR#153后定向视觉返修](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)已**在提示词下发前**补充：`EXACT_FRAME/DERIVE_EDIT/REFERENCE/GENERATE`检查，必要时0–3张，多图最多2并发，现成`imagegen-fast-path`的官方`output_hint→SourcePath→local_copy→SHA/尺寸/QA`，不准缓存扫描/base64/单因像素重生；同因2次失效停策略；逐图记录实际调用/重试/并发与成本证明；没有实测Token账单不可报告“最低Token”。PR#153只证明1张已生成，之前是否符合快路径`UNVERIFIED`。**前次Owner批准返修仍有效且未下发Codex**；`CURRENT_GATE`、冻结V5.6.2、视觉RETURN、NO_PUBLISH等原样。Executor从最新Gate中的更新版`REVIEWER_TO_EXECUTOR_RELAY`读取本原则，无需广泛重读历史。
+
+
 <!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
 > **【唯一当前执行入口2026-10-18】** `CURRENT_GATE=CWS-CW0005-POST-PR153-TARGETED-VISUAL-STORYFIT-REPAIR-20261018`，已由Owner“我没问题”授权失败后**一次**有界视觉返修：新[Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)，Codex从该Gate的`REVIEWER_TO_EXECUTOR_RELAY`启动，不要求Owner转包或分别批StoryBoard/剪辑/QA。**首步必须实际预检**原冻结Mac桌面开窗、T6温度17/50对48/50、T5三阶段弹性淀粉脚、T2/6声学100ms与106ms以及尾段回桌面；前置科学/图像失败停在Storyboard，不盲渲；符合要求后制作**一条30–60秒**真实MP4并交独立Reviewer/Owner看。可复用R2文案/WAV/SRT和已通过的编码链，不得变更V5.6.2冻结文件。历史四条实拍源#854959/#2793/#1796141/#35876717均计原作品已用，需新候选或合法未用原始源，不因重命名例外；科研论文图/电影权利仍PARTIAL/UNKNOWN。**现行确认：V562_TEMPLATE_TECH_PASS + INVENTORY_AUDIT_PASS + 55S_AV_TECH_PASS / VISUAL_RETURN**。PR#153仅证据已合并main；不意味着⑤⑭PASS。正式`G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH`持续。`NEXT_STEP=Codex执行本新Gate→新PR+独立可看MP4`；`OWNER_ACTION_REQUIRED=NONE（到Owner实看新片为止）`。
 
