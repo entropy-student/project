@@ -1,5 +1,10 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR153_INDEPENDENT_STORYFIT_REVIEW_RETURN_20261018 -->
+## 2026-10-18｜Reviewer真实看过PR#153样片：技术PASS、视觉RETURN
+
+Owner上传真实55.266667秒CW0005 MP4供独立Reviewer检查。实际文件SHA-256与Codex报告一致、FFmpeg全解码通过、1920×1080@30fps，完成技术可运行证明。独立按约1秒间隔取画面和关键帧发现：新Pexels #1796141连续42.966秒覆盖主体77.7%，S02样本统计、S05淀粉脚形成/压缩/回弹和S07–09声学证据主要仍是同一锅内背景+文字/小插画；S05插画有喷气/火箭意象误导风险，1.5s开头是简化标题卡而非原V5.6.2完整Mac桌面与开窗，复发了R3此前视觉RETURN核心原因。比率77.7%仅描述本片具体情况，不新增素材时长硬阈值。当前结论`TECHNICAL_VIDEO_PASS / RETURN_VISUAL_STORYFIT / NO_PUBLISH / RIGHTS_PARTIAL`，真实论文图/研究电影未核验复用，不可发布；V5.6.2冻结不动。依Owner“能合并即合并”，[PR#153](https://github.com/entropy-student/project/pull/153)**仅执行历史报告**合并main，最终合并Commit `65f079f68fac74ee2bd3abc3df58d39469eb07c5`，并不意味着⑤⑭通过。独立报告：[CW0005 PR#153 Reviewer Return](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)。下一步只需复用现有 T6真实数字可视化、T5主体三态概念示意、T2声学事件比较与锁定Aqua原壳，保证各段画面语义递进；不可重新进行完整素材基建/重造模板。失败制片之后新候选需单独有界授权。
+
 <!-- CWS_CW0005_OWNER_MERGED_STORYFIT_GATE_20261018 -->
 ## 2026-10-18｜Owner统一授权合并视觉Story-Fit执行Gate（未执行）
 
