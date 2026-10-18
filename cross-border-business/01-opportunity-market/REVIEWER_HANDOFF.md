@@ -1,29 +1,29 @@
 # 第一部分《机会挖掘与市场判断》｜唯一Reviewer交接
 
-> **FRAMEWORK：OWNER_FROZEN（核心1 / 一级8 / 二级34 / 三级83；8.2直接成节）**  
-> **CHAPTERS 1–3：FINAL_SEALED / OWNER_APPROVED**  
-> **CHAPTER4：OFFLINE_WRITER_PACKET_RELEASED / WRITER_PENDING**  
-> **CURRENT_GATE：CB01-CH4-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **BODY：3/8 CHAPTERS SEALED · HTML：NOT_STARTED** · 2026-10-18
+> **FRAMEWORK：OWNER_FROZEN / CORE 1 / L1 8 / L2 34 / L3 83；8.2直接成节**
+> **CHAPTERS 1–4：FINAL_SEALED / OWNER_APPROVED**
+> **CHAPTER5：OFFLINE_WRITER_PACKET_RELEASED / WRITER_PENDING**
+> **CURRENT_GATE：CB01-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**
+> **BODY：4/8 CHAPTERS SEALED；HTML：NOT_STARTED** · 2026-10-18
 
-## 唯一当前权威
-- [完整Owner冻结1/8/34/83题树](docs/FROZEN_FRAMEWORK_V1_20261018.md)：标题/编号/归属不许随意改；8.2无三级、直接成节。该冻结文件的“正文NOT_STARTED”是冻结时的历史状态，**现行进度以本交接为准**。
-- [第①章正式正文](docs/CHAPTER1_FINAL_SEALED.md)及[证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：4H2/9H3，Owner授权定向封板。
-- [第②章正式正文](docs/CHAPTER2_FINAL_SEALED.md)及[证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：4H2/8H3，Owner授权定向封板。
-- **[第③章正式正文](docs/CHAPTER3_FINAL_SEALED.md)**、[Reviewer校订核验记录](docs/CHAPTER3_FINAL_RESEARCH_RECORD.md)及[Owner封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)：4H2/9H3，由独立Writer R2（原有8项阻断解决）经独立Reviewer`PASS_CANDIDATE_OWNER_REVIEW`后由Owner特别授权仅修5类非阻断小项。**没有虚构Writer R3**。
-- **[第④章Writer Gate](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)**（5H2/11H3）及[离线包清单、指纹](docs/CHAPTER4_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：**本轮唯一活动Gate**。
-- [永久Writer→Reviewer→Owner工作标准](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)、[框架决策历史](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
+## 唯一现行权威文档
+- [全套Owner正式冻结问题树](docs/FROZEN_FRAMEWORK_V1_20261018.md)：原文、编号、归属、排序与8.2直接成节不动；冻结文件中“正文尚未开始”只是当时的历史备注，现行状态以本交接为准。
+- [第①章正式正文](docs/CHAPTER1_FINAL_SEALED.md)及[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：4H2/9H3。
+- [第②章正式正文](docs/CHAPTER2_FINAL_SEALED.md)及[封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：4H2/8H3。
+- [第③章正式正文](docs/CHAPTER3_FINAL_SEALED.md)、[核验记录](docs/CHAPTER3_FINAL_RESEARCH_RECORD.md)、[封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)：4H2/9H3。
+- **[第④章正式正文](docs/CHAPTER4_FINAL_SEALED.md)**、[Reviewer正式核验记录](docs/CHAPTER4_FINAL_RESEARCH_RECORD.md)、[Owner授权封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)：5H2/11H3。
+- **[第⑤章独立Writer首稿Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261018.md)**、[离线包清单与SHA256](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：5H2/15H3；本轮唯一活动Gate。
+- [长期Writer→Reviewer→Owner协作规范](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)及[框架历史冻结记录](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
 
-## 已经确定的Owner授权与实施事实
-1. 原框架核心1/一级8/二级34/三级83均2026-10-18由Owner正式冻结，不因写作改题。
-2. 第①②章均在Owner单章明确授权下由Reviewer基于独立Writer完整R2修订并封板。第③章Writer R1首稿经独立Reviewer R1 RETURN后提交完整R2，独立Reviewer R2确认原8项阻断全部实质修复（`PASS_CANDIDATE_OWNER_REVIEW`）；仍有5类无阻断的编辑建议。
-3. Owner随后明确指示Reviewer负责小修第三章、冻结、入库并开启下一章。Reviewer定向修饰无来源账期、绝对句、核验行号、算式转义和JTBD/Amazon政策适用范围，留下原始R2与正式稿的SHA256/差异证据，**正式第三章不是Writer R3的作品**。
-4. 第④章离线工作包含完整8/34/83题树和其余必要资料，ZIP已CRC与SHA256校验。**Gate发布不等于Writer已交稿，也不等于第④章正式正文已开始或封板**。
+## 第④章审查、Owner授权与事实边界
+1. 第④章独立Writer R1首次提交完整稿及资料，Reviewer R1结论RETURN（9组）；Writer R2在完整原稿上修订，独立Reviewer R2确认结构、12组计算、国别打分通过，但**六组事实与证据问题**仍需修复，审查结论`RETURN_R2_RESIDUAL_POLICY_EVIDENCE_AND_DECISION_INTEGRITY`。
+2. **Owner于2026-10-18明确授权Reviewer直接完成该章修订、正式冻结入库、然后启动第⑤章**。Reviewer基于Writer R2全文纠正：Shopify百万美元**终身**而非年度重置门槛、2026-10-08美国海关文件仅是**拟议规则**、GPSR及欧盟数字内容撤回权的适用要件、LUCID免费注册和可能有费系统参与、Giropay/Sofort已停用、三档市场交易额口径与模拟商业结论越界、Tier2/3未实际观察样本降为`RESEARCH_LEAD / UNKNOWN`。
+3. 完整R2原稿/记录、逐字节SHA256、Reviewer修订后SHA256和官方来源的匹配关系详见第四章封板证据；**不存在Writer R3交稿**，不得用原Writer R2的“已核验”表述覆盖正式证据。第①②③章正文未改。
+4. 教学市场规模、利润假设、国别评分不等于真实市场调查、项目成交或合规资格；这些真实性边界在正式正文及核验中均有说明。
+5. 第⑤章独立Writer工作包包含完整1/8/34/83题树，不需要GitHub权限。**Gate发布不代表Writer已提交或Reviewer已PASS**。
 
 ## 当前唯一下一步
-Owner将本轮会话中的`第一部分_第四章_独立Writer离线资料包_V1_20261018.zip`及提示词交给没有GitHub权限的独立Writer。Writer交`第一部分_第四章_独立Writer完整候选稿.md`（全文）、`第一部分_第四章_资料核验与执行记录.md`（完整来源/假设及公式验证）、包含两者的ZIP，并停于`CANDIDATE_FOR_REVIEW / STOP_AT_REVIEWER`。Reviewer独立检查冻题5H2/11H3、深度、数据/法规时效性与可执行判断；如RETURN必须同轮完整返修ZIP和转交提示词；只有Owner批准才能将第④章升级为正式封板。
+Owner将本对话中的`第一部分_第五章_独立Writer离线资料包_V1_20261018.zip`（及本包07提示词）交给独立Writer。Writer返回**完整第五章Markdown**、**完整核验/公式/UNKNOWN Markdown**和**两者ZIP**，停于`CANDIDATE_FOR_REVIEW / STOP_AT_REVIEWER`。Reviewer检查冻结5H2/15H3、经济学口径、真实性和实操；如RETURN必须同轮给完整返修ZIP及转交词。Owner批准才可封板并开始第⑥章。
 
-## 不触碰与归档边界
-- 第一板块第①②③章已封板、只读；过期第③章Gate及离线包manifest退出当前main，仅Git历史追溯。R1/R2 Writer原稿可从Owner收到的会话ZIP找回，非当前正文。
-- 第二板块网络环境8/44/93和已有封板章、第三板块已关闭的支付体系7/29/42不受本轮影响；其他④⑤由各自项目维护。
-- 没有启动第⑤章、制作HTML、真实市场试销或改变跨境支付/财税设置。
+## 保护
+②网络环境及③支付系统已冻结内容不碰；④产品与⑤增长板块由各自项目维护。本轮仅更新①及父README中其对应状态，未启动第⑥章或HTML。旧第④章Writer Gate与manifest本次从当前main撤下、Git历史保留。
