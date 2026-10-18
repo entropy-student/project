@@ -3,10 +3,19 @@
 > **PROJECT_STAGE：ACTIVE_WRITING / FRAMEWORK_V2_OWNER_FROZEN_1_6_35_78**（2026-10-18）  
 > **CHAPTER1：《我的客户在哪里？》OWNER_FINAL_SEALED（4二级/8三级）**  
 > **CHAPTER2：《我该怎么找到客户？》OWNER_FINAL_SEALED（9二级/22三级；2.2直接成节）**  
-> **CHAPTER3：《客户来了，怎么让他下单？》OFFLINE_WRITER_GATE_RELEASED / WRITER_NOT_STARTED（6二级/14三级）**  
+> **CHAPTER3：《客户来了，怎么让他下单？》WRITER_R1_DELIVERED / STRUCTURE_PASS_6_14 / REVIEW_RETURN / R2_FULL_PACKET_READY / NOT_SEALED**  
 > **CHAPTER4–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH3-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **OWNER_ACTION_REQUIRED：转发第三章完整11文件Writer离线ZIP与提示词；回收第三章完整正文/核验记录ZIP给Reviewer。**
+> **CURRENT_GATE：CB05-CH3-WRITER-R2-DIRECTED-REPAIR-20261018**  
+> **OWNER_ACTION_REQUIRED：转发第三章R2完整返修ZIP及提示词；回收Writer R2完整正文/核验记录ZIP供Reviewer复查。**
+
+## 当前最新：第三章R1独立Reviewer审核RETURN与R2返修停点
+
+- **当前唯一审核报告**：[CHAPTER3_WRITER_R1_REVIEW_RETURN_20261018.md](docs/CHAPTER3_WRITER_R1_REVIEW_RETURN_20261018.md)。结构上1个一级、6个二级、14个三级问题原文和顺序PASS；正文知识覆盖完整，但B01–B08法律、行业统计、经营决策及自检错误导致**RETURN_CH3_R1_FACTUAL_COMPLIANCE_AND_DECISION_METHODS**，不得封板。
+- Writer R1原ZIP：`第五部分_第三章_独立Writer交付.zip`，29,528字节，SHA256 `24d2cbbd7f1050e889223c686197c990bcbf0b447fcf80d599cc159af64de9b7`；完整正文37,296字节/400行，事实核验21,542字节/164行，CRC通过。
+- R2返修ZIP：`第五部分_第三章_R1独立审核与R2完整返修包_20261018.zip`，**41,541字节**、SHA256 `f89c76f611a4696c6af90608e16f1b86620216c43d1365334a138501a5b1a19b`、7个Markdown。包含上一版完整正文及核验、详细B01–B08/N01–N04审核、精确指令、官方核查、提示词与SHA256。**二进制包仅当前对话交Owner，GitHub存Review与指针。**
+- 关键修订：DDU不属Incoterms 2020正式条款；欧盟14天撤回及数字内容豁免条件、弃购营销邮件许可与录屏个人信息保护、虚假耐久保证与回报承诺、Baymard排名及百分比支持范围、付款故障证据、套餐/演示非绝对规则；自检错误五板块结构及美国800美元免税政策旧状态。
+- **现行下一步**：Owner转发R2返修ZIP和可复制话术→Writer以完整R1为基线**定向修**并交完整R2正文/事实记录ZIP，`STOP_AT_REVIEWER`→Reviewer独立复审→Owner决定是否封板。**不启动第四章**。
+- 第一、二章正式封板正文、第五板块所有正式冻结问题题干与其它四大板块均不改。
 
 ## 一、正式唯一权威文件（按当前状态排序）
 
@@ -16,7 +25,7 @@
 4. **[第三章独立Writer首稿Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：Owner要转交11文件自包含离线ZIP、独立Writer自行写完6二级/14三级、提交完整正文Markdown+事实核验Markdown+ZIP后`STOP_AT_REVIEWER`。
 5. [第三章离线工作包Manifest和SHA256](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)；[本项目README](README.md)；[第二板块正式Writer→Reviewer→Owner长期合同](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
 
-**第三章当前没有正文，没有Review PASS，尚不可封板；第四到第六章仅框架存在。** 第①和第②章封板正文不可被早期RETURN报告覆盖。
+**第三章现有Writer R1完整候选，但Review RETURN，暂无正式封板正文；第四至第六章仅框架存在。** 第①和第②章封板正文不可被早期RETURN报告覆盖。
 
 ## 二、第②章R1→R2→Owner最小直修→正式封板的事实链
 
@@ -43,4 +52,4 @@
 - 不修改GitHub其它业务源码、不访问/变更真实用户、客户、广告账户、支付账户、服务器、网站代码或HTML。
 - 所有GitHub文档提交可由Git历史复核/恢复；候选稿的旧RETURN由历史报告保留，不与封板正文并列为当前版本。
 
-**NEXT_STEP：** Owner转发第三章11文件ZIP与转交提示词 → Writer交整章完整正文+核验ZIP → Reviewer独立审 → Owner决定是否封板第三章。
+**NEXT_STEP：** Owner转发第三章R2完整返修ZIP及话术 → Writer交完整R2正文+核验ZIP → Reviewer独立复核 → Owner决定是否封板。
