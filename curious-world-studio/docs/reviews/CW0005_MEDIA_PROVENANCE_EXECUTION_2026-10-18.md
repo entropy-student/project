@@ -8,7 +8,7 @@ PARTIAL_SEARCH. Executor started the existing Docker Desktop after the initial d
 - All pinned CWS images were already local; compose pull policy was never; no image was pulled.
 - CWS project cws-media-ops-6b7eb0f402 started by the CLI; SearXNG and 4get health checks returned HTTP 200. CLI cleanup was STOPPED_AND_VERIFIED; final project containers are exited and ports 18080/15050 are free. Docker Desktop remains running. Other projects were not changed.
 - Local cws_media.py and Compose match fetched main blobs. Local imported media_pipeline.py differed; a local-only harness injected the fetched main helper and media_filter without changing tracked sources.
-- Latest main observed: 340c548101f7a008c175e02be35b5d94ad55657e. Current-main helper Git blobs: media_pipeline.py 0204d11569ca64de7ca31c55975859f95c9eaa32; media_filter.py 2407ebe0500acdb8e2e1845d4366e074dc7d7610.
+- Test-time main snapshot: 340c548101f7a008c175e02be35b5d94ad55657e. Current-main helper Git blobs used by the local harness: media_pipeline.py 0204d11569ca64de7ca31c55975859f95c9eaa32; media_filter.py 2407ebe0500acdb8e2e1845d4366e074dc7d7610. The evidence PR branch was separately created from the then-latest main b7dadb901e1ad2466e7fda7aac7322e4a3124b0a.
 
 ## Search
 - S01-A: SearXNG 84 results, UPSTREAM_PARTIAL (brave.videos and google videos errored); 4get 11 results, OK. Latencies 2,750 ms and 1,625 ms. Union: 87 unique source-page URLs, 8 cross-engine URL duplicates, 14 registered domains.
