@@ -35,7 +35,7 @@
 | Writer R2原始完整正文 | 75424 | `00aa3b2f0921cd2ebbaf264da5ffe5f1d4c753d31b24521b3fe9bc80a9349f35` |
 | Writer R2原始核验记录 | 33360 | `346462f706f7207ce4bec9026610fbebcb158eeff477b550d24e92885b2f5d0f` |
 | 本轮正式正文 | 76126 | `398f56c1962df86bd48332b807485c4c8e74e18e62fb9ed15f7bc6afa4a3feb4` |
-| 本轮Reviewer校订核验记录 | 33963 | `b6bf0f99007096c5c497e81fbfea1e54f68a873ebf11843ae6f9209fcdaa8d5d` |
+| 本轮Reviewer校订核验记录 | 34167 | `436a71e114ebbffa35e29462dc21b841795a33f2436f3ee1729a9633b767b82b` |
 | 第④章独立Writer ZIP | 16140 | `720d53f385a5da59a376db0586e8c059de05e9f274ec841d0e184e561d9d3261` |
 
 - 正文正式一级、二级、三级题目共14：H1=1、H2=4、H3=9；**与离线完整冻结1/8/34/83原题逐字同序**。其他H4/H5只用作解释层级。
