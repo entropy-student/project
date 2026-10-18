@@ -1,6 +1,6 @@
 # 第四部分｜产品搭建｜框架决定、证据与 Reviewer 交接（2026-10-18）
 
-> **CURRENT_STATE：CORE_L1_OWNER_APPROVED_FROZEN / L2_REVIEW_PENDING / L3_NOT_STARTED / BODY_NOT_STARTED**  
+> **CURRENT_STATE：CORE_L1_L2_OWNER_APPROVED_FROZEN / L3_CANDIDATE_REVIEW_PENDING / BODY_NOT_STARTED**  
 > **仓库：** `entropy-student/project` · **目录：** `cross-border-business/04-product-building/`  
 > **唯一冻结范围：** 核心1题 + 一级7题的原文、编号、顺序与归属。  
 > **本轮最大终点：** 已冻结的上级落 `main`，生成二级候选与交接文件；停在 Owner/Reviewer 审查，不再自动拆三级。
