@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_MEDIA_SEARCH_PROCESS_RETURN_20261018 -->
+> **【2026-10-18最新Owner流程裁决】`CURRENT_GATE=CWS-CW0005-MEDIA-SEARCH-DOWNLOAD-PROCESS-AUDIT-20261018`; `CURRENT_PROCESS_STATE=RETURN_PROCESS_COMPLIANCE / HISTORICAL_LOCAL_EVIDENCE_PENDING`。** Owner要求首先全文读取Governance和项目文档，已按[159份项目全文文本获取/全量指纹清单](reviews/CWS_FULL_PROJECT_DOCUMENT_COVERAGE_MANIFEST_2026-10-18.md)完成覆盖并重点核读素材当前规则及PR#153；[独立流程RETURN报告](reviews/CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_COMPLIANCE_RETURN_2026-10-18.md)明确此前PR#153**只证明Pexels一页搜索结果+三个Pexels详情/下载**，尚不能证明多平台候选检索、按源去重、七层检索/下载/内容/权利证据齐全；不能仅据未记录就宣称本机绝对没用过SearXNG/4get。现唯一新[只读流程取证Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)，要求Codex核旧本机日志与素材索引、出具脱敏对照与最小修正方案，**不给视频质量新PASS/RETURN，不新搜片、不下载、不生图、不渲染**。此前[已批准但尚未下发的视觉返修Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)暂停派发，等流程取证后再协调。`V562_TEMPLATE_PASS / 55S_MP4_TECH_PASS / RETURN_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`既有状态全部保留。项目`AGENTS.md`与Handoff已指向最新唯一入口。
+
+
 <!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
 > **【2026-10-18最新Owner生图效率裁决】** 经独立复查，`vps-project-governance v0.2.7 §11G`明确两路最大并发、优先现成/编辑、`imagegen→output_hint→SourcePath→local_copy→QA`，CWS原有[AI复用效率指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)也早已记载，但上轮PR#153只记录一张图/SHA，没有足够执行日志证明真正按最快/最低无谓调用流程。Owner要求将该流程升级为**本项目最高优先准则之一**：现已在指南顶部及`AGENTS.md`列为强制执行规则（服从上位Governance、Owner授权及科学事实优先），并将尚未发出的[当前修复Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)更新为必须事先做`EXACT_FRAME/DERIVE_EDIT/REFERENCE/GENERATE`决策、按需0–3图、最多2并发、官方Fast Path解析+hash/尺寸/事实QA、同因2次停策略、调用次数和实测Token成本如实留证。**没有实测模型计费指标时只能声明减少不必要生成，不能称绝对最低Token。** 本条只是本项目执行规范的提升，不改变`CW0005视觉RETURN/G1/G2/R4/NO_PUBLISH/RIGHTS_PARTIAL`；Owner上一条返修授权仍有效，尚未向Codex下发提示词。
 
