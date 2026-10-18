@@ -3,12 +3,20 @@
 > **PROJECT_STAGE：ACTIVE_WRITING / FRAMEWORK_V2_OWNER_FROZEN_1_6_35_78**（2026-10-18）  
 > **CHAPTER1：《我的客户在哪里？》OWNER_FINAL_SEALED（4二级/8三级）**  
 > **CHAPTER2：《我该怎么找到客户？》OWNER_FINAL_SEALED（9二级/22三级；2.2直接成节）**  
-> **CHAPTER3：《客户来了，怎么让他下单？》WRITER_R1_DELIVERED / STRUCTURE_PASS_6_14 / REVIEW_RETURN / R2_FULL_PACKET_READY / NOT_SEALED**  
+> **CHAPTER3：《客户来了，怎么让他下单？》WRITER_R2_DELIVERED / STRUCTURE_PASS_6_14 / REVIEW_RETURN / R3_MINIMAL_PACKET_READY / NOT_SEALED**  
 > **CHAPTER4–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH3-WRITER-R2-DIRECTED-REPAIR-20261018**  
-> **OWNER_ACTION_REQUIRED：转发第三章R2完整返修ZIP及提示词；回收Writer R2完整正文/核验记录ZIP供Reviewer复查。**
+> **CURRENT_GATE：CB05-CH3-WRITER-R3-MINIMAL_FACTUAL_REPAIR-20261018**  
+> **OWNER_ACTION_REQUIRED：转发第三章R3最小返修ZIP及提示词；回收Writer R3完整正文/核验记录ZIP供Reviewer复查。**
 
-## 当前最新：第三章R1独立Reviewer审核RETURN与R2返修停点
+## 当前最新：第三章Writer R2独立审核RETURN与R3最小修订停点（2026-10-18）
+
+- **[最新第三章R2独立Review（RETURN）](docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)**：冻结6二级/14三级原文逐字同序同层级PASS。R1大部分法律/案例错误已修，但4项实质残留：欧盟退货退款14天期限及退运费、英国soft opt-in真实销售洽谈与退订条件、Baymard美国样本误称全球、DAP投保义务和海关归属；另3项顺手措辞修正。结论 **RETURN_R2_EU_REFUND_PECR_SOURCE_SCOPE / CHAPTER3_NOT_SEALED**。
+- Owner上传：`第五部分_第三章_Writer_R2完整交付.zip`，38,393字节，SHA256 `21d466da5bb894925cef6c19d63b8ffbe37fee5d6629c83c2afca8fb611f91f5`，CRC正确；Writer R2完整正文**46,990字节/453行**、完整核验**33,284字节/193行**。
+- **最新R3完整自包含返修包**：`第五部分_第三章_R2独立审核与R3最小返修包_20261018.zip`，46,824字节，SHA256 `49312f7e13a19b6e803d1afe925226b6fdaf304496809d281fa5c00d653bb347`，7份Markdown，含原始两份全文、完整Reviewer报告、最小修复任务、官方核验与可直接转发提示词、MANIFEST；ZIP CRC与原文件逐字节一致。本轮通过对话交Owner，**ZIP二进制没有上传GitHub**。
+- **唯一下一步**：Owner转交该R3包+可复制话术 → 无仓库权限Writer基于R2正文定向修B01–B04及N01–N03，提交完整R3正文+核验记录ZIP并`STOP_AT_REVIEWER` → Reviewer复查 → Owner决定封板。**不修改已封板的第一/二章、正式V2题树，不写第四章**。
+- 下列R1记录与旧首稿Gate保持历史可追溯，但**不是最新审稿状态，不能再认定R2尚未交稿**。
+
+## 历史：第三章R1独立Reviewer审核RETURN与R2返修停点
 
 - **当前唯一审核报告**：[CHAPTER3_WRITER_R1_REVIEW_RETURN_20261018.md](docs/CHAPTER3_WRITER_R1_REVIEW_RETURN_20261018.md)。结构上1个一级、6个二级、14个三级问题原文和顺序PASS；正文知识覆盖完整，但B01–B08法律、行业统计、经营决策及自检错误导致**RETURN_CH3_R1_FACTUAL_COMPLIANCE_AND_DECISION_METHODS**，不得封板。
 - Writer R1原ZIP：`第五部分_第三章_独立Writer交付.zip`，29,528字节，SHA256 `24d2cbbd7f1050e889223c686197c990bcbf0b447fcf80d599cc159af64de9b7`；完整正文37,296字节/400行，事实核验21,542字节/164行，CRC通过。
@@ -52,4 +60,4 @@
 - 不修改GitHub其它业务源码、不访问/变更真实用户、客户、广告账户、支付账户、服务器、网站代码或HTML。
 - 所有GitHub文档提交可由Git历史复核/恢复；候选稿的旧RETURN由历史报告保留，不与封板正文并列为当前版本。
 
-**NEXT_STEP：** Owner转发第三章R2完整返修ZIP及话术 → Writer交完整R2正文+核验ZIP → Reviewer独立复核 → Owner决定是否封板。
+**NEXT_STEP：** Owner转发第三章R3最小返修ZIP及话术 → Writer交完整R3正文+核验ZIP → Reviewer独立复核 → Owner决定是否封板。
