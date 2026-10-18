@@ -2,7 +2,7 @@
 
 > GATE_ID=`SAAS-G2L1-LOCAL-EXISTING-DEMO-RESUME-20261018`
 > STATUS=`REVIEWER_READY / NOT_EXECUTED`
-> OWNER_DECISION=`REJECT_CODESPACES / RESUME_EXISTING_LOCAL_ASSETS`
+> OWNER_DECISION=`REJECT_CODESPACES / RESUME_EXISTING_LOCAL_ASSETS / ALLOW_SINGLE_NORMAL_DOCKER_DESKTOP_LAUNCH_IF_CLOSED`
 > TARGET=`OWNER_WINDOWS_LOCAL_CODEX / EXISTING_VELOBASE_ONLY`
 > UPSTREAM_COMMIT=`e88e259b974f883913f68ac74a9b8377765d005d`
 > CURRENT_EXECUTION_GATE=`G2L1`
@@ -16,9 +16,11 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 
 ## MAX_ENDPOINT_THIS_ROUND
 
+**新增 Owner 明确授权（2026-10-18）：** Owner 反馈“刚才把 Docker 关闭了好像，可能需要 Codex 自己启动一下”。本 Gate 允许本机 Codex 在确认 Docker Desktop 已安装、Docker Engine 尚不可用，且确系该应用正常关闭而非报错/资源故障时，**仅执行一次正常启动已有 Docker Desktop 应用**，使共享 Engine 恢复可用。此授权只涉及正常打开已有桌面软件，不授权重启 Docker/WSL、修复 Engine、改配置、改变其他项目容器状态或自动启动其业务。Docker Desktop 本身管理共享 Engine，开机时可能依据其他容器的重启策略自动恢复既有服务；若观察到意外其他负载变化，应保留真实状态、停止进一步 Velobase 操作并回报 Reviewer，**不可为了回滚而关掉整个 Docker Desktop 或去停止别人的容器**。
+
 只能在 **现有** `%USERPROFILE%\Documents\ChatGPT\Velobase-Harness-e88e259` 和 **现有** Compose project `saasvh-e88e259` 上操作；允许验证资源确实完整后，**仅一次**顺序启动现成 `postgres/redis/web` 容器，检查本机 `http://127.0.0.1:3003` 的完整 UI、认证和资源状态。若识别出需修改应用源码或启动配置的兼容问题，仅记录最小修复建议，**本轮不实施**：G2 的 Web 代码已打入现有镜像，修改 Windows 工作树不会自动更新容器镜像。若问题需要 Docker 重建镜像、镜像下载、迁移数据、删卷、重置 Demo 或全局环境修改，本轮停止并交 Reviewer 判断下一局部 Gate；不能为了减少 RETURN 任意扩权。
 
-**禁止**：对旧三个容器或其他 Compose 项目做 start/stop/restart/删除；`docker compose up --build`、`down -v`、`docker system prune`、清空/更换数据库、全局改 Docker Desktop/WSL、占用共享 VPS、购买外部资源、公开端口、Stripe TEST/Live 或其它 Provider 行为。
+**禁止**：除**一次正常启动既有 Docker Desktop 应用**之外，对 Docker Desktop Engine/WSL 做 reset/restart/repair/reinstall/全局配置变更；对旧三个容器或其他 Compose 项目做 start/stop/restart/删除；`docker compose up --build`、`down -v`、`docker system prune`、清空/更换数据库、全局改 Docker Desktop/WSL、占用共享 VPS、购买外部资源、公开端口、Stripe TEST/Live 或其它 Provider 行为。
 
 ## MANDATORY_REVIEW_STOP
 
@@ -26,7 +28,7 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 
 ## TARGET_AND_SCOPE
 
-- **真机**：Owner Windows 11 Home（历史 build 26300），由 Owner 本机 Codex 新鲜证明主机与 Shell/Docker Engine 身份。ChatGPT GitHub Reviewer 不具备操作 Windows 的能力。
+- **真机**：Owner Windows 11 Home（历史 build 26300），由 Owner 本机 Codex 新鲜证明主机与 Shell/Docker Engine 身份。ChatGPT GitHub Reviewer 不具备操作 Windows 的能力。若 Docker Desktop 已关闭，允许打开**现有**应用一次；避免其他项目因共享 Engine 恢复而自动启动，不得借此修改任何全局设置。
 - **源码**：只使用 G2 既有本地源码位置；`git rev-parse HEAD` 必须与固定 SHA 一致，原始 `compose.demo.yml` 与 `Dockerfile.demo` 存在；新写文件禁止覆盖未知/唯一工作。不存在或与固定 SHA 不符时停止，不能 clone、checkout、reset、重新安装。
 - **容器**：仅 `saasvh-e88e259` 的 `web/postgres/redis`，由 **现有** 容器标签和 G2 留存身份同时核对；如果任何所需容器缺失、不是原实例、正在由其他流程管理或重建才能启动，则 RETURN，不做隐式创建。
 - **持久化**：原 `saasvh-e88e259_preview_data`、`saasvh-e88e259_demo_state` 命名卷和网络按实时容器/Compose 解析核验；不改变挂载、卷/数据、demo state、Seed、admin 密钥，不读取或输出 Secret。
@@ -42,8 +44,9 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 
 1. **真实目标与 Git**：Owner 本机 Codex 只读识别当前 Windows 主机、用户权限、PowerShell/Docker、工作目录，确认 `%USERPROFILE%\Documents\ChatGPT\Velobase-Harness-e88e259` 与上游完整固定 SHA，工作树有唯一未提交数据则保留并避免覆盖；不得重做已经完成的全栈构建。
 2. **现状先查**：记录本轮起始 `docker compose -p saasvh-e88e259 -f compose.demo.yml ps -a`、所属 Labels、现有服务、镜像、网络、两卷、`127.0.0.1:3003` 占用。核对已有三容器真实存在且只属于本项目。捕获其他运行中容器**脱敏**基线及关键健康状态；记录三个历史旧容器现状但不猜测它们的归属，不用它们必须恢复为开始条件。
-3. **资源边界**：采样 Windows 和 Docker 内存/CPU/磁盘实际情况；不要以预设的“至少空闲 N GiB”阻挡操作。若 Docker Engine 不可达，不要自动重置/重装 Docker Desktop 或 WSL；返回 `RETURN_SHARED_DOCKER_ENGINE_UNAVAILABLE`。
-4. **已有 Demo 实例顺序恢复**：如 G2 三容器全是 stopped、镜像/卷身份无变化且端口空闲，**仅启动既有实例**。优先执行与下列语义等效的项目限定命令，在旧 DB/Redis 确认 ready 后再启动旧 Web：
+3. **Docker Desktop 可能关闭（Owner 已授权 Codex 自行正常打开）**：先只读检查 Windows 上已安装的 Docker Desktop 应用、当前进程及 `docker info` 连通性，区分 `APP_CLOSED`、`ENGINE_STARTING`、`ENGINE_ERROR`，并记录启动前可见的其他业务/宿主资源状态。如果 Engine 已可用，不重新打开也不重启。如果明确只是 Docker Desktop 正常关闭，**仅一次**通过已安装的 Docker Desktop 正规入口启动该应用（可用已核实的应用可执行文件或原生启动方法），等待 Engine 正常就绪并验证 `docker info`、Docker Compose 可用性；**不得**改 Docker Desktop 配置、重启/重置 Engine 或 WSL、触发维修/升级/自动拉取镜像。若发现异常、正常启动后仍不可用，精确 RETURN，不以重装或改全局配置修复。启动 Engine 后只读记录容器实际状态，注意共享 Engine 的其他项目可能按自己的重启策略自动恢复；若有意外既有负载变化，**不要进一步启动 Velobase，也不要停止其他容器或整个 Engine**，将现状与影响报 Reviewer。
+4. **资源边界与基线**：在 Engine 正常就绪后，采样 Windows/Docker 内存、CPU、磁盘，检查其他运行中的工作负载状态、项目隔离、`127.0.0.1:3003`。不要用固定空闲 RAM 阈值拒绝操作。如果仍不可达，`RETURN_SHARED_DOCKER_ENGINE_UNAVAILABLE`。
+5. **已有 Demo 实例顺序恢复**：如 G2 三容器全是 stopped、镜像/卷身份无变化且端口空闲，**仅启动既有实例**。优先执行与下列语义等效的项目限定命令，在旧 DB/Redis 确认 ready 后再启动旧 Web：
    ```powershell
    Set-Location "$env:USERPROFILE\Documents\ChatGPT\Velobase-Harness-e88e259"
    docker compose -p saasvh-e88e259 -f compose.demo.yml start postgres redis
@@ -51,17 +54,18 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
    docker compose -p saasvh-e88e259 -f compose.demo.yml start web
    ```
    若三容器并非全停，先判断是否已经由 Owner 其它流程运行：已存在健康 Demo 则直接进入只读 UI 验收，不为“重试”重启；非健康或身份不一致则 RETURN，不擅自 recreate。严禁 `up --build`、`up -d`（可能新建容器）、`pull`、重建、迁移或调整 Docker 全局配额。
-5. **优先验证最重要的页面**：先使用 HTTP 与浏览器检查 `http://127.0.0.1:3003` Landing 及登录弹窗，再点击本地管理员演示入口，确认 session 登录**真的完成**；接着验证真实的 Dashboard、平台 Admin、非管理员不可读写 Admin 路由的负例、Affiliate 页面/保护重定向及账户设置。只报告真实截图/DOM/响应，不以首页 200 或 307 替代业务功能 PASS；测试账户只使用安全的原生 Demo 数据，不伪造真实用户资料。
-6. **健康与性能**：Web/HTTP、Postgres/Redis readiness、Web 中由 `SERVICE_MODE=web,worker` 启动的后台进程/Worker 需分别核实；在短时间连续采样 CPU、内存、请求延时和旧有运行容器差异。若页面仅因为负载超时，明确记录资源/响应而不推断架构缺陷。不得触发真实 Worker 外部业务。
-7. **回滚边界**：若实际触发本轮新异常，先记录当前服务/数据/旧项目状况，然后**仅** `docker compose -p saasvh-e88e259 -f compose.demo.yml stop --timeout 30`，保留源码、两卷、网络、镜像和旧项目现状。不要重启或清理其他项目。若已经成功、确实可持续操作且未影响其他服务，**保留 Velobase 当前运行**供 Owner 直接浏览（不自动停机）。
-8. **结果归档**：把本轮非敏感完整执行 Evidence 写入 GitHub `main:saas-system/docs/` 新文件或让 Owner 转交给 Reviewer，由 Reviewer 审核后更新唯一 Handoff；不能让 Executor 自己宣称正式 PASS。
+6. **优先验证最重要的页面**：先使用 HTTP 与浏览器检查 `http://127.0.0.1:3003` Landing 及登录弹窗，再点击本地管理员演示入口，确认 session 登录**真的完成**；接着验证真实的 Dashboard、平台 Admin、非管理员不可读写 Admin 路由的负例、Affiliate 页面/保护重定向及账户设置。只报告真实截图/DOM/响应，不以首页 200 或 307 替代业务功能 PASS；测试账户只使用安全的原生 Demo 数据，不伪造真实用户资料。
+7. **健康与性能**：Web/HTTP、Postgres/Redis readiness、Web 中由 `SERVICE_MODE=web,worker` 启动的后台进程/Worker 需分别核实；在短时间连续采样 CPU、内存、请求延时和旧有运行容器差异。若页面仅因为负载超时，明确记录资源/响应而不推断架构缺陷。不得触发真实 Worker 外部业务。
+8. **回滚边界**：若实际触发本轮新异常，先记录当前服务/数据/旧项目状况，然后**仅** `docker compose -p saasvh-e88e259 -f compose.demo.yml stop --timeout 30`，保留源码、两卷、网络、镜像和旧项目现状。不要重启或清理其他项目。若已经成功、确实可持续操作且未影响其他服务，**保留 Velobase 当前运行**供 Owner 直接浏览（不自动停机）。
+9. **结果归档**：把本轮非敏感完整执行 Evidence 写入 GitHub `main:saas-system/docs/` 新文件或让 Owner 转交给 Reviewer，由 Reviewer 审核后更新唯一 Handoff；不能让 Executor 自己宣称正式 PASS。
 
 ## REQUIRED_EVIDENCE
 
-`GATE_ID`, `TARGET_LOCAL_PROOF`, `SOURCE_SHA_AND_PATH`, `EXISTING_PROJECT_CONTAINER_VOLUME_IDENTITIES`, `ORIGINAL_WORKLOAD_BASELINE`, `PORT_3003_BINDING`, `DOCKER_ENGINE_READY`, `REUSED_IMAGE_AND_NO_BUILD`, `START_COMMAND_AND_EXIT_CODES`, `DB_REDIS_WEB_WORKER_HEALTH`, `UI_LANDING_SIGNIN_DASHBOARD_ADMIN_AFFILIATE_MATRIX`, `ADMIN_POSITIVE_NEGATIVE_ACCESS`, `BROWSER_DOM_OR_REVIEWABLE_SCREENSHOTS`, `REAL_RESOURCE_SAMPLES`, `EXISTING_WORKLOAD_DELTA`, `RUNNING_END_STATE`, `ROLLBACK_EFFECT`, `SECRET_EXPOSURE_COUNT=0`, `PAYMENT_ACTION_COUNT=0`, `EXECUTOR_RESULT`.
+`GATE_ID`, `TARGET_LOCAL_PROOF`, `DOCKER_DESKTOP_INITIAL_APP_AND_ENGINE_STATE`, `OWNER_AUTHORIZED_SINGLE_DESKTOP_LAUNCH_ACTION_AND_RESULT`, `ENGINE_READINESS_READBACK`, `OTHER_WORKLOAD_AUTO_RESTART_DELTA`,  `SOURCE_SHA_AND_PATH`, `EXISTING_PROJECT_CONTAINER_VOLUME_IDENTITIES`, `ORIGINAL_WORKLOAD_BASELINE`, `PORT_3003_BINDING`, `DOCKER_ENGINE_READY`, `REUSED_IMAGE_AND_NO_BUILD`, `START_COMMAND_AND_EXIT_CODES`, `DB_REDIS_WEB_WORKER_HEALTH`, `UI_LANDING_SIGNIN_DASHBOARD_ADMIN_AFFILIATE_MATRIX`, `ADMIN_POSITIVE_NEGATIVE_ACCESS`, `BROWSER_DOM_OR_REVIEWABLE_SCREENSHOTS`, `REAL_RESOURCE_SAMPLES`, `EXISTING_WORKLOAD_DELTA`, `RUNNING_END_STATE`, `ROLLBACK_EFFECT`, `SECRET_EXPOSURE_COUNT=0`, `PAYMENT_ACTION_COUNT=0`, `EXECUTOR_RESULT`.
 
 ## ACCEPTANCE_CRITERIA
 
+- 若 Docker Desktop 起初关闭，正常启动现有应用至 Engine ready，仅一次、无 Engine/WSL 重置/维修/全局设置更改；如果 Engine 在启动后自动恢复其他工作负载，保留日志证据并评估影响，不能自称全然无副作用。
 - Owner Windows 本机原有镜像/容器/两卷确实被复用，固定源 SHA 未变，重建/拉取/迁移/其它项目操作为零；Web 3003 仅本机监听。
 - Home + 登录完成 + Dashboard + 真正的平台 Admin 都能由 Reviewer 核对到实际页面操作行为，普通用户无法访问管理功能（如果缺少可安全测试的普通演示用户，Admin 负例 `UNVERIFIED`，不能给完整 PASS）。
 - Affiliate 页面/功能及后台 Worker 的健康独立展示，不把静态源码、重定向或进程存在直接升级成已完成资金闭环。
@@ -71,15 +75,15 @@ Owner 明确拒绝 Codespaces；此前 G2I1 Gate 已被撤销并关闭。旧三�
 
 ## ROLLBACK_STATUS_OR_PLAN
 
-精准停止本轮启动的 `saasvh-e88e259` 三容器是项目内运行回滚；保持所有卷、镜像、网络、源码和旧容器现状。若任何共享数据/身份冲突出现，先 STOP 不做修复式操作。历史 G2R1 `CAUSE_UNKNOWN` 保持事实，不再对历史退出事故做试验性复现。
+发生本轮 Velobase 运行异常时精准停止**本轮启动**的 `saasvh-e88e259` 容器是项目内运行回滚；保持所有卷、镜像、网络、源码和旧容器现状。**Docker Desktop 的正常启动不是可自动逆转的独占项目动作：不得把关闭整个 Docker Engine 作为项目回滚；若启动 Engine 自动带起/改变了其他服务，停下 SaaS 的后续动作并如实报告，不直接停止它们或 Desktop。**若任何共享数据/身份冲突出现，先 STOP 不做修复式操作。历史 G2R1 `CAUSE_UNKNOWN` 保持事实，不再对历史退出事故做试验性复现。
 
 ## OWNER_ONLY_ACTIONS
 
-Owner 已明确要求继续并拒绝云部署，不用逐命令再次审批。此 Gate 只能由 **Owner Windows 本机 Codex** 操作已存在的项目容器，GitHub Reviewer 不能代替执行。无需新账号、买云服务器、给出密码或 Stripe Key。
+Owner 已明确要求继续并拒绝云部署，且明确允许 Codex 先**正常启动已安装的 Docker Desktop**（若它确实关闭），不用逐命令再次审批。此 Gate 只能由 **Owner Windows 本机 Codex** 操作已存在的项目容器，GitHub Reviewer 不能代替执行。无需新账号、买云服务器、给出密码或 Stripe Key。
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-你是 Owner Windows 本机 Codex，只执行 `SAAS-G2L1-LOCAL-EXISTING-DEMO-RESUME-20261018`。从 `main:saas-system/docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md` 读取本 Gate，并且只读当前 `REVIEWER_HANDOFF.md` 的 SYSTEM_MAP、CURRENT_GATE、CRITICAL_CONSTRAINTS。本轮不做 G1 源码预检和 G2 镜像重建。核实 Owner 真机和旧 `saasvh-e88e259` 的三容器/两卷/镜像/端口后，仅按受限命令恢复已存在的 Demo Postgres/Redis/Web；依健康顺序实测 Sign in → Dashboard → Admin（含权限反例）→ Affiliate，并同时验证 Worker 与其他工作负载健康。出现真实其他业务回退只停止 Velobase；**不要恢复旧三个陌生容器**。留存非敏感证据，停 Reviewer。GitHub Codespaces Gate 已撤销，不能再使用。
+你是 Owner Windows 本机 Codex，只执行 `SAAS-G2L1-LOCAL-EXISTING-DEMO-RESUME-20261018`。从 `main:saas-system/docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md` 读取本 Gate，并且只读当前 `REVIEWER_HANDOFF.md` 的 SYSTEM_MAP、CURRENT_GATE、CRITICAL_CONSTRAINTS。本轮不做 G1 源码预检和 G2 镜像重建。先查 Docker Desktop/Engine；若 Owner 刚刚关闭了 Desktop，确认是正常关闭状态后只**正常启动已安装的 Docker Desktop 应用一次**并检查 Engine readiness，不得重启/重置 WSL/Engine 或改设置。打开共享 Engine 后须检查是否意外自动恢复其他工作负载，若有非预期变化即停止后续 SaaS 操作并报告，不关闭整台 Docker。再核实 Owner 真机和旧 `saasvh-e88e259` 的三容器/两卷/镜像/端口后，仅按受限命令恢复已存在的 Demo Postgres/Redis/Web；依健康顺序实测 Sign in → Dashboard → Admin（含权限反例）→ Affiliate，并同时验证 Worker 与其他工作负载健康。出现真实其他业务回退只停止 Velobase；**不要恢复旧三个陌生容器**。留存非敏感证据，停 Reviewer。GitHub Codespaces Gate 已撤销，不能再使用。
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
