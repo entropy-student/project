@@ -1,0 +1,198 @@
+{
+  "schema_version": "cws.media-provenance.v1",
+  "gate_id": "CWS-CW0005-MEDIA-PROVENANCE-BOUNDED-MULTISOURCE-VALIDATION-20261018",
+  "run_id": "CWS-CW0005-MEDIA-PROVENANCE-20261018-01",
+  "result": "PARTIAL_SEARCH",
+  "scope": {
+    "episode": "CW-0005",
+    "shot": "S01",
+    "visual_need": "real popcorn kernel popping or pan-jump action",
+    "search_semantics_limit": 2,
+    "download_limit": 1,
+    "download_limit_bytes": 83886080,
+    "downloads_this_run": 0,
+    "download_bytes_this_run": 0
+  },
+  "source_integrity": {
+    "latest_main_observed": "38d6bc58e32e04b937bf6c78cd74c936fa6191b1",
+    "local_head": "0a7becd74a7f627d79286760b1f2938121b1bfdd",
+    "local_worktree": "CLEAN",
+    "cws_media_cli": {
+      "local_blob_sha1": "0eafb5b601956286968f99a2c25d01488ea04e2f",
+      "main_blob_sha1": "0eafb5b601956286968f99a2c25d01488ea04e2f",
+      "status": "MATCH"
+    },
+    "compose": {
+      "local_blob_sha1": "ac20f9a6f23b9caaeac2848b06f665a5859f6007",
+      "main_blob_sha1": "ac20f9a6f23b9caaeac2848b06f665a5859f6007",
+      "status": "MATCH"
+    },
+    "imported_media_pipeline": {
+      "local_blob_sha1": "f14ec17c96efc111726fc84c2e8733abb9a82441",
+      "main_blob_sha1": "0204d11569ca64de7ca31c55975859f95c9eaa32",
+      "status": "MISMATCH"
+    }
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "ytdlp": "2026.08.19",
+    "ffmpeg": "9.0",
+    "ffprobe": "9.0",
+    "docker_cli": true,
+    "compose": "5.4.0",
+    "docker_daemon": false,
+    "free_memory_mb": 2804,
+    "memory_gate_mb": 1664,
+    "free_disk_mb": 176395,
+    "disk_gate_mb": 2048,
+    "ports": {
+      "searxng_18080_listening": false,
+      "fourget_15050_listening": false
+    },
+    "openmontage": "NOT_AVAILABLE_IN_CHECKED_SCOPE"
+  },
+  "search_attempts": [
+    {
+      "event_id": "S01-A",
+      "query": "popcorn kernel popping in pan close-up",
+      "kind": "video",
+      "cli_invocation": "ATTEMPTED",
+      "upstream_requests_sent": 0,
+      "engines": [
+        "searxng",
+        "fourget"
+      ],
+      "status": "BLOCKED_BEFORE_UPSTREAM",
+      "exit_code": 2,
+      "error": "DOCKER_DAEMON_UNAVAILABLE",
+      "raw_results": "NOT_RUN",
+      "latency_ms": null
+    },
+    {
+      "event_id": "S01-B",
+      "query": "popping corn kernels jump stove slow motion",
+      "kind": "video",
+      "cli_invocation": "NOT_RUN",
+      "upstream_requests_sent": 0,
+      "status": "NOT_RUN_SAME_PREREQUISITE_FAILURE"
+    }
+  ],
+  "historical_index": {
+    "scope": "separate 2026-10-15 local media-operations cache; not PR155 lineage",
+    "sha256": "5cb7c0a7bfdabbfd2d8e6d10032656dc6bb0243c85905ba7e85b06c8ab96c693",
+    "query_events": [
+      {
+        "engine": "fourget",
+        "kind": "video",
+        "query": "popcorn popping",
+        "page": 1,
+        "count": 11,
+        "status": "OK",
+        "elapsed_ms": 1500
+      },
+      {
+        "engine": "fourget",
+        "kind": "image",
+        "query": "popcorn popping",
+        "page": 1,
+        "count": 81,
+        "status": "OK",
+        "elapsed_ms": 2094
+      },
+      {
+        "engine": "fourget",
+        "kind": "video",
+        "query": "popcorn popping",
+        "page": 1,
+        "count": 13,
+        "status": "OK",
+        "elapsed_ms": 2234
+      }
+    ],
+    "stored_items": 85,
+    "stored_unique_page_keys": 85,
+    "video_items": 15,
+    "image_items": 70,
+    "popcorn_titled_video_rows": 14,
+    "sum_query_counts": 105,
+    "unreconciled_count_difference": 20,
+    "raw_responses": "NOT_RETAINED"
+  },
+  "historical_candidates": [
+    {
+      "candidate_id": "cached-youtube-FSZd33awqQk",
+      "provider": "YouTube",
+      "title": "Popping Popcorn at 30,000 FPS in Ultra Slow Motion",
+      "original_page_url": "https://www.youtube.com/watch?v=FSZd33awqQk",
+      "link_found": "YES_HISTORICAL_CACHE",
+      "content_verified": "UNKNOWN",
+      "reuse_rights_verified": "UNKNOWN",
+      "format_probe": "UNKNOWN",
+      "preview_attempt": "web open failed to fetch",
+      "decision": "UNVERIFIED_NO_DOWNLOAD"
+    },
+    {
+      "candidate_id": "cached-youtube-9YmLOalA_s8",
+      "provider": "YouTube",
+      "title": "Popcorn Popping (100,000 Frames Per Second) | Beyond Slow Motion",
+      "original_page_url": "https://www.youtube.com/watch?v=9YmLOalA_s8",
+      "link_found": "YES_HISTORICAL_CACHE",
+      "content_verified": "UNKNOWN",
+      "reuse_rights_verified": "UNKNOWN",
+      "format_probe": "UNKNOWN",
+      "preview_attempt": "web open failed to fetch",
+      "decision": "UNVERIFIED_NO_DOWNLOAD"
+    },
+    {
+      "candidate_id": "historical-asonix-regression",
+      "provider": "PeerTube instance video.asonix.dog",
+      "platform_media_id": "9ec1a2bc-7269-49ed-802e-c727004115e3",
+      "title": "popcorn.mp4 — prior verified public test source; current CLI regression seed",
+      "link_found": "YES_HISTORICAL_CACHE",
+      "content_verified": "YES_FRAME_INSPECTED",
+      "visible_action": "captured Reddit text post, no popping action",
+      "relevance_0_to_3": 0,
+      "reuse_rights_verified": "UNKNOWN",
+      "format_probe": "existing catalog QA: 1920x1080, 52.78s, VP9, full decode pass",
+      "decision": "EXCLUDE_UNRELATED_TEST_FIXTURE"
+    },
+    {
+      "candidate_id": "used-pexels-7677397",
+      "provider": "Pexels",
+      "platform_media_id": "7677397",
+      "title": "Flatlay popcorn on table",
+      "original_page_url": "https://www.pexels.com/video/flatlay-popcorn-on-table-7677397/",
+      "link_found": "YES",
+      "content_verified": "YES_HISTORICAL_DECODE_AND_FRAMES",
+      "reuse_rights_verified": "PARTIAL",
+      "format_probe": "H.264, 1920x1080, 25fps, 9.84s",
+      "sha256": "c2600c7ad5fab73e80d96d38469432fa6bec7cb10d270275f7c2622302a74ef6",
+      "project_use_state": "USED_IN_HISTORICAL_INTERNAL_SAMPLE",
+      "decision": "EXCLUDE_ALREADY_USED"
+    }
+  ],
+  "seven_layer": {
+    "SEARCH_URL_FOUND": "NOT_RUN",
+    "URL_DEDUPED": "NOT_RUN",
+    "ORIGINAL_IDENTITY_DEDUPED": "NOT_RUN_FOR_NEW_CANDIDATES",
+    "PROBE_ELIGIBLE": "NOT_RUN_FOR_NEW_CANDIDATES",
+    "CONTENT_PREVIEW_VERIFIED": "0_NEW_CANDIDATES",
+    "DOWNLOADED+FULL_DECODE_PASS": "0_NEW_DOWNLOADS",
+    "REUSE_RIGHTS_VERIFIED": "0_NEW_CANDIDATES"
+  },
+  "acquisition": {
+    "status": "NOT_RUN_NO_ELIGIBLE_NEW_CANDIDATE",
+    "selected_candidate_id": null,
+    "download_attempts": 0,
+    "bytes": 0,
+    "sha256": null,
+    "ffprobe": "NOT_RUN",
+    "ffmpeg_full_decode": "NOT_RUN"
+  },
+  "caveats": [
+    "Cached historical search records are not fresh search.",
+    "Missing PR155 query/candidate evidence stays UNKNOWN.",
+    "No new candidate rights or actual popping motion was verified.",
+    "Formal CW0005 and publication status unchanged."
+  ]
+}
