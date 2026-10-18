@@ -10,8 +10,8 @@
 顺序实测 **Velobase Harness → Open SaaS → Wave**，挑选能够长期复用、迅速部署/体验且免费开源的 SaaS 模板。前台、用户中心、平台 Admin、Stripe、客户裂变与奖励回撤是主要判断标准。**Docker 是可选方式，不是硬性要求**。优先用原生功能，其次评估可靠的免费开源扩展，最后才考虑付费服务或自研。
 
 ## PROJECT_STAGE
-`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_REVIEWED_RETURN_EXISTING_WORKLOAD_REGRESSION / G2R1_REVIEWED_PARTIAL_CAUSE_AND_OWNER_UNKNOWN / OWNER_DECISION_PENDING`。
-G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Redis 曾启动且首页短时可用；因原先三个运行中容器异常退出，G2 按 Gate 停止，容器/卷/网络/镜像及源码保留。**G2 未达到完整验收，当前 3003 不可访问。**
+`G0_PASS / G1_PREFLIGHT_REVIEWED / G2_REVIEWED_RETURN_EXISTING_WORKLOAD_REGRESSION / G2R1_REVIEWED_PARTIAL_CAUSE_AND_OWNER_UNKNOWN / OWNER_DEFERRED_OLD_CONTAINER_RECOVERY / G2I1_READY_NOT_EXECUTED`。
+G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Redis 曾启动且首页短时可用；因原先三个运行中容器异常退出，G2 按 Gate 停止，容器/卷/网络/镜像及源码保留。**G2 未达到完整验收；G2R1 上次本机回报时 3003 不可访问，并非本轮实时探测。**
 
 ## SYSTEM_MAP
 - **GitHub**：当前项目只管理项目状态、方案、Gate 与脱敏 Evidence；候选源码独立上游，不直接复制进入项目主仓库。
@@ -26,7 +26,7 @@ G2 已在 Owner Windows 真机执行：固定 SHA 构建完成，Web/Postgres/Re
 
 **G2I1 后续执行 Gate 已形成（未执行）：** [Codespaces 免费配额内私有 UI 演示 Gate](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)。首选独立 Codespaces 4 核环境（规格与零费用须在 Owner 账户真实预检，绝非已可用），部署固定 Velobase SHA，验证浏览器 localhost 认证/全功能页面；不会把 GitHub 私有转发端口称为绝对离线环境。
 
-**2026-10-18 新主 Reviewer 接手审核：** [独立接手核验与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md) 已核对 main 的 G0/G1/G2/G2R1 历史、项目规范和串行计划；`PASS_DOCUMENTATION_TAKEOVER_ONLY`，不代表本机运行或完整 SaaS 功能通过。G1/G2/G2R1 历史 Gate 的旧“尚未执行”状态标题已修正为结束，**当前 Gate 仍 NONE**，根因/旧业务归属继续 UNKNOWN。只做 GitHub 文档更新，没有本机运行操作。
+**2026-10-18 新主 Reviewer 接手审核：** [独立接手核验与部署建议](./docs/REVIEWER_TAKEOVER_AUDIT_20261018.md) 已核对 main 的 G0/G1/G2/G2R1 历史、项目规范和串行计划；`PASS_DOCUMENTATION_TAKEOVER_ONLY`，不代表本机运行或完整 SaaS 功能通过。G1/G2/G2R1 历史 Gate 的旧“尚未执行”状态标题已修正为结束，**当时 Gate 仍 NONE（现已签发 G2I1）**，根因/旧业务归属继续 UNKNOWN。只做 GitHub 文档更新，没有本机运行操作。
 
 **G2R1 Reviewer 最新结论（2026-10-18）：** [独立审核](./docs/G2R1_REVIEWER_DECISION_20261018.md) — `PARTIAL_G2R1_OWNER_CLASSIFICATION_UNKNOWN`，原因调查到此停止。三个原容器当前仍报告 `exited`，退出码 137/0/0；处于同一 Compose 项目，5.9 秒内退出，根因 `CAUSE_UNKNOWN`。没有证据证明 Docker 重启、OOM 或 Velobase 的直接因果；旧项目所属业务仍 `UNKNOWN`，因此**不宣称 G2R1 整轮正式 PASS**。没有额外本机写入。下一步需要 Owner 决定旧容器是否需要恢复；不再反复诊断退出原因。
 
