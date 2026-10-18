@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_CW0005_STORYFIT_ASSET_AUDIT_ACTIVE_20261018 -->
+> **【现行仅授权的下一Gate，尚未执行】** Owner已确认开启⑤+⑭视觉Story-Fit的前置验证，并明确Codex拥有本仓库独立读写权限、此前ZIP/提示词均未下发。Reviewer已制定 [CW0005已有素材只读盘点Gate](CWS_CW0005_STORYFIT_ASSET_AUDIT_GATE_2026-10-18.md)：仅本机存量科研图、素材台账、S01–S10视觉用途/去重/权利核对；Codex可在**隔离PR**提交脱敏文字证据，Reviewer另行裁决，当前 `EXECUTOR_NOT_STARTED / REVIEW_PENDING`。**不授权下载、AI生图、正式预览制作、R4、PR合并或公开发布**；V5.6.2冻结PASS及R3视觉RETURN、G1/G2/HOLD/NO_PUBLISH和权利PARTIAL保持原状。旧七轮路径仅规划参考。
+
+
 <!-- CWS_CONFIRMED_ONLY_SUCCESSOR_INDEX_20261018 -->
 > **新Reviewer防遗漏索引（2026-10-18）**：[仅已确认事实的完整接手](CWS_CONFIRMED_STATE_REVIEWER_HANDOFF_2026-10-18.md)已归档；包含冻结源码指纹、独立证据边界、原14项现况、R2编辑PASS/R3真实样片视觉RETURN、MEDIA PR#116/#129/#131、素材使用硬约束、既有双轮润色流程、执行权限与必读路径。下方旧R3 Gate的`OWNER_AUTHORIZED_NOT_EXECUTED`属历史初始状态，已在其文件头更正；未来七轮仅规划参考，**未固定/批准任何轮数和新执行Gate**，除已决事实外不得从规划推导实施授权。
 
