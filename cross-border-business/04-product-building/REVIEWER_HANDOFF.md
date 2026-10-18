@@ -1,11 +1,11 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接（2026-10-18）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_SEALED / CH2_SEALED / CH3_V1_RETURN_R2_WRITER_PENDING**  
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_SEALED / CH2_SEALED / CH3_R2_RETURN_R3_WRITER_PENDING**  
 > **FREEZE：核心1/一级9/二级48/三级117；任何正式标题不可擅改。**  
 > **CH1：FINAL_SEALED（4二级/10三级）；CH2：FINAL_SEALED（4二级/10三级）。**  
-> **CH3：WRITER_V1_DELIVERED / INDEPENDENT_REVIEW_RETURN / R2_WRITER_PENDING（5二级/11三级；4.3.4直接成节）。**  
+> **CH3：WRITER_R2_DELIVERED / INDEPENDENT_REVIEW_RETURN / R3_WRITER_PENDING（5二级/11三级；4.3.4直接成节）。**  
 > **CURRENT_GATE：CB04-CH3-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **OWNER_ACTION_REQUIRED：** 把第4.3章完整R2返修ZIP及转交提示词发给外部Writer；收到R2完整Markdown正文、逐项核验记录和ZIP后再交Reviewer。
+> **OWNER_ACTION_REQUIRED：** 把第4.3章完整R3返修ZIP及转交提示词发给外部Writer；收到R3完整Markdown正文、逐项核验记录和ZIP后再交Reviewer。
 
 ## 最短恢复与唯一权威路径
 
@@ -17,11 +17,17 @@
 6. **[第二部分长期Writer→Reviewer→Owner流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)**：独立Writer先自由写全章→Reviewer独立冷审→Owner最终批准封板；RETURN必须同轮完整ZIP及传递话术。
 7. **[第四部分README](README.md)**、[五板块项目总入口](../README.md)：状态导航。
 
-## 4.3章Writer V1独立Reviewer复审状态（当前新增）
+## 4.3章Writer R2独立Reviewer复审状态（当前）
+
+2026-10-18 已收到完整Writer R2正文/核验及ZIP，CRC与**5H2/11H3冻结原题全部PASS**。独立Reviewer结论：**`RETURN_CH3_R2_RESIDUAL_INTEGRATION_AND_EVIDENCE_ERRORS`**；4个阻断C01 Webhook支付与履约流程/幂等保证失真、C02 Writer核验索引混用了旧版标题、C03 TCO和自研及平台费用/合规的通用硬规则、C04 付款/物流真实源直接推导无条件履约。详见[当前R2 Review记录](docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)。
+
+R3完整返修ZIP已经交Owner，SHA256 `304722b630b45744524d9eafb9fdd508dd992b65bb0c08bf28f7862607202a94`，**47,986字节、8文件，包含Writer R2完整原文及完整核验记录**，无需GitHub权限。**4.3尚无封板正文；R3 Writer待交；4.4未启动。**
+
+## 4.3章Writer V1独立Reviewer复审状态（历史）
 
 **2026-10-18 Writer V1已真实交付**（不能再声称Writer尚未交稿）：ZIP CRC PASS，5H2/11H3逐字同序；4.3.4直接成节PASS。
 **内容结论：`RETURN_CH3_V1_LICENSE_INTEGRATION_AND_DECISION_ACCURACY`**，B01–B08包括GPL/AGPL许可证义务、Apache/OFL素材授权、Webhook幂等和验签、SSoT状态仲裁、免费付费合同/SLA、20/80及90/10强制自研比例、外包IP移交/账号归属、核验矩阵误报。
-[独立Reviewer R1审核记录](docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)；R2完整离线返修ZIP已在本轮对话交Owner，SHA256 `8fc6fd99c76a09ba00f3a09eead504c58480de42238c10f2e424cb9c8fec163a`，保全V1完整原稿、原核验、自审报告与定向指令。**Writer R2尚未交，4.3没有正式封板正文；不启动4.4。**
+[独立Reviewer R1审核记录](docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)；R2完整离线返修ZIP已在本轮对话交Owner，SHA256 `8fc6fd99c76a09ba00f3a09eead504c58480de42238c10f2e424cb9c8fec163a`，保全V1完整原稿、原核验、自审报告与定向指令。**该段是Writer V1审核时的历史事实，Writer R2现已交稿并再次RETURN，当前以R2复审记录为准。**
 
 ## Owner决策、审查链与重要历史
 
@@ -52,13 +58,13 @@
 ## Governance当前面板
 
 - **PROJECT_GOAL：** 系统回答中国大陆跨境中小经营者“产品怎么做、怎么交付？”的全链路实际知识。
-- **PROJECT_STAGE：** 正式框架1/9/48/117冻结；4.1与4.2正文封板；4.3 Writer V1已交并独立Review RETURN，R2返修待交；4.4–4.9未启动正文；HTML未启动。
+- **PROJECT_STAGE：** 正式框架1/9/48/117冻结；4.1与4.2正文封板；4.3 Writer R2已交并独立Review RETURN，R3返修待交；4.4–4.9未启动正文；HTML未启动。
 - **SYSTEM_MAP：** GitHub main负责冻结框架、封板正文、Gate/证据和交接；Owner对话负责传独立Writer ZIP。没有改真实网站、系统、付款、数据库或客户数据。
-- **CURRENT_ACCEPTED_STATE：** 4.1+4.2正式正文和对应封板审计记录；4.3已收独立Writer V1候选（仍为RETURN），无封板正文；R2待交，不能误报PASS。
+- **CURRENT_ACCEPTED_STATE：** 4.1+4.2正式正文和对应封板审计记录；4.3已收独立Writer R2候选（仍为RETURN），无封板正文；R3待交，不能误报PASS。
 - **CURRENT_GATE：** `CB04-CH3-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018`。
 - **CURRENT_ROLLBACK_STATUS：** 文档git修改可回滚，历史R1/R2审核留正常Git记录；不重写main历史。
-- **UNRESOLVED：** 4.3 Writer R2完整交付及B01–B08事实复核未出现，任何实际工具资格/运行验收均不因文章封板而自动成立。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner发送4.3完整R2返修ZIP和提示词→Writer基于V1全文交R2完整正文、核验记录和ZIP后STOP_AT_REVIEWER→Reviewer独立审核，必要RETURN同轮完整返修包+提示词→Owner决定4.3是否封板。
-- **MANDATORY_STOP：** CH3_R2_WRITER_PENDING；不预写4.3、不启动4.4或HTML。
+- **UNRESOLVED：** 4.3 Writer R3完整交付及C01–C04事实复核未出现，任何实际工具资格/运行验收均不因文章封板而自动成立。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner发送4.3完整R3返修ZIP和提示词→Writer基于R2全文交R3完整正文、核验记录和ZIP后STOP_AT_REVIEWER→Reviewer独立审核，必要RETURN同轮完整返修包+提示词→Owner决定4.3是否封板。
+- **MANDATORY_STOP：** CH3_R3_WRITER_PENDING；不预写4.3、不启动4.4或HTML。
 
 [返回第四部分README](README.md)
