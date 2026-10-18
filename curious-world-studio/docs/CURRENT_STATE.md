@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_CONFIRMED_ONLY_SUCCESSOR_INDEX_20261018 -->
+> **新Reviewer防遗漏索引（2026-10-18）**：[仅已确认事实的完整接手](CWS_CONFIRMED_STATE_REVIEWER_HANDOFF_2026-10-18.md)已归档；包含冻结源码指纹、独立证据边界、原14项现况、R2编辑PASS/R3真实样片视觉RETURN、MEDIA PR#116/#129/#131、素材使用硬约束、既有双轮润色流程、执行权限与必读路径。下方旧R3 Gate的`OWNER_AUTHORIZED_NOT_EXECUTED`属历史初始状态，已在其文件头更正；未来七轮仅规划参考，**未固定/批准任何轮数和新执行Gate**，除已决事实外不得从规划推导实施授权。
+
+
 <!-- CWS_V562_OWNER_FROZEN_PASS_20261018 -->
 > **【唯一最新】2026-10-18 Owner正式验收并冻结V5.6.2模板技术PASS**：最新受理技术基线为[main原字节V5.6.2 HTML](../visual/frozen/storyboard-v5-6-2-20261018.html)，Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`、SHA-256 `47dbe555b297153bab7520b7b1b716fa8403ed32c237b3b2603e283829c2fb84`；旧V5.2原冻结件仍保留、PR#144仍Draft/未合并。独立Reviewer**41/41边界、9/9媒体、3/3 Mac Canvas、31.06秒实速完整播放PASS**，无新增P0/P1/P2；Owner已明确正式接受技术PASS，不再等待同版独立审核。请按[Owner冻结权威决议](reviews/CWS_V562_OWNER_FREEZE_TECHNICAL_PASS_2026-10-18.md)及[完整独立报告](reviews/CWS_V562_INDEPENDENT_REVIEW_PASS_2026-10-18.md)接手。原14项中**11项技术问题关账、⑤真实档案与⑭视觉Story-Fit未完、⑪时码显示语义低优先级暂缓**。后续整体[七轮生产闭环计划](CWS_POST_V562_FREEZE_TO_AUTOMATED_VIDEO_ROADMAP_2026-10-18.md)从R1真实故事视觉验证开始，**规划不构成自动执行授权**。正式`CW0005 R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`和素材权利`PARTIAL`继续有效；不能把模板PASS当作完整视频/发布PASS。下方历史状态均保留但被本条现行决议覆盖。
 
