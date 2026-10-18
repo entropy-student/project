@@ -1,5 +1,8 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_CW0005_OWNER_MERGED_STORYFIT_GATE_20261018 -->
+> **【2026-10-18最新Owner统一授权】** 已开启新的[CW0005联合Story-Fit Gate：官方研究图/许可→定向新素材→S01–S10匹配→30–60秒连续样片及技术QA](CWS_CW0005_COMBINED_STORYFIT_SOURCE_TO_SAMPLE_GATE_2026-10-18.md)，状态`OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / REVIEW_PENDING`。Owner要求能合并的Gate一律合并、加速推进，Codex可按这**一条**Gate连续完成所有符合前置条件的步骤，无需每个小任务重复审批；只在隔离PR提交可复核的脱敏记录，样片与原媒体留在Owner本机，Review之后才决定视觉PASS。**此条优先于下方旧“下一Gate未授权”描述**。新版权素材不能从PMC论文开放可读或Royal Society“all rights reserved”推断商用许可；旧R3两条素材禁再次使用。V5.6.2冻结blob不变，`CW0005_R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`仍有效。**内部短片试制不等于正式4–6分钟R4授权**。
+
 <!-- CWS_CW0005_STORYFIT_ASSET_AUDIT_ACTIVE_20261018 -->
 > **【2026-10-18最新Reviewer核验】CW0005已有素材盘点 `PASS_EXISTING_ASSET_AUDIT_ONLY`（仅盘点与缺口分类）。** [Reviewer正式验收](reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_REVIEWER_PASS_2026-10-18.md)已在main；[PR #152](https://github.com/entropy-student/project/pull/152)执行者证据仍未合并，Head `907204c306a55af0951a8ddacdd182d7530ae50b`。S01–S10映射齐全；两条历史R3库存视频因项目级已使用不能再用；Codex报告的本机盘点范围未找到论文Figure 1/3a/6。**Reviewer只独立核验GitHub文档/公开论文，未直接查看本机图片/文件；图像内容、许可、T4/T5实际呈现和视觉Story-Fit仍未通过。** 本Gate已结束，下一轮仅建议先核对原论文图/版权与未使用的真实动作素材，**并未授权新素材下载、AI生图、视觉样片渲染或R4**。V5.6.2冻结不变，`R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`持续。
 
