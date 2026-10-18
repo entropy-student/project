@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_FRAMEWORK_FROZEN_BODY_NOT_STARTED / 02_FRAMEWORK_FROZEN / 03_CLOSED**（2026-10-18）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_WRITER_GATE_RELEASED / 02_FRAMEWORK_FROZEN / 03_CLOSED**（2026-10-18）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 ## 项目目标
@@ -13,7 +13,7 @@
 
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
-| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已正式FROZEN；正文未启动** |
+| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①章Writer Gate发布、首稿待交** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架与Writer流程](02-network-environment/README.md) · **8/44/93 FROZEN；第①②章正式封板；第③章独立Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [规划入口](04-product-building/README.md) · PLANNED |
@@ -22,6 +22,8 @@
 ## 第一、第四、第五板块的框架撰写规范
 
 - [通用问题设计与审核标准](docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：适用于①④⑤的独立候选框架；不规定数量，也不触及②③冻结成果。
+- **[① 第①章独立Writer Gate](01-opportunity-market/docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：4二级/9三级，本轮首稿离线包已交付Owner，Writer尚未交稿。
+- [① 当前唯一Reviewer交接](01-opportunity-market/REVIEWER_HANDOFF.md)：Gate、工作包核验、返修流程、停点。
 - **[① 唯一正式完整冻结框架（1/8/34/83）](01-opportunity-market/docs/FROZEN_FRAMEWORK_V1_20261018.md)**：完整问题树，8.2不另设三级，Owner已PASS。
 - [① 历史核心及一二级冻结快照](01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md)：保留原始8/34批准记录。
 - [① 三级综合修订V2原始稿（83题）](01-opportunity-market/FRAMEWORK_L3_INTEGRATED_V2_20261018.md)：已被Owner批准，旧稿原始待审标记仅属历史版本；正式版本以上述完整冻结框架为准。
@@ -58,4 +60,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
 5. ①离线资料无需仓库权限；④⑤仍使用原独立任务书。项目所在GitHub路径为 `entropy-student/project/cross-border-business/`，不操作其他业务源码仓库。
 
-**当前下一步：** ①框架已封板，待Owner指令启动第①章独立Writer工作包/正文；②第①②章已封板，进入第③章独立Writer首稿；③维持封板；④⑤各自待独立规划。
+**当前下一步：** ①框架已封板，第①章独立Writer Gate与离线工作包已发布；待Owner转交并收回Writer完整稿；②第①②章已封板，进入第③章独立Writer首稿；③维持封板；④⑤各自待独立规划。
