@@ -1,6 +1,6 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_WRITER_GATE_RELEASED / CHAPTER1_WRITER_NOT_STARTED / BODY_NOT_STARTED**  
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_WRITER_R1_REVIEW_RETURN / R2_PACKET_READY / BODY_NOT_SEALED**  
 > **冻结唯一核心问题：怎么才能持续有客户下单？**
 
 ## 唯一正式冻结问题框架
@@ -14,14 +14,20 @@
 | 项目 | 当前状态 | 唯一入口 |
 |---|---|---|
 | 本章问题原文 | **FROZEN：4二级、8三级** | [正式V2冻结](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
-| Writer首稿Gate | **RELEASED / WRITER_PENDING** | [第一章独立Writer Gate](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md) |
+| Writer首稿Gate | **R1已交付并Review RETURN**；此Gate退出当前执行阶段 | [首稿Gate历史记录](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md) |
 | Writer离线ZIP | **已生成并在对话交付Owner；ZIP校验通过** | [离线包文件清单与SHA256](docs/CHAPTER1_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) |
-| 当前Reviewer交接 | **CH1_WRITER_NOT_STARTED** | [REVIEWER_HANDOFF](REVIEWER_HANDOFF.md) |
-| 第一章教学正文 | **NOT_STARTED / NOT_SEALED** | NONE |
+| 当前Reviewer交接 | **R1_RETURN / R2返修包已交Owner** | [REVIEWER_HANDOFF](REVIEWER_HANDOFF.md) |
+| 第一章教学正文 | **Writer R1候选已交、审核RETURN；NOT_SEALED** | [R1独立Review报告](docs/CHAPTER1_WRITER_R1_REVIEW_RETURN_20261018.md) |
 | 第二至六章教学正文 | **NOT_STARTED** | NONE |
 | HTML / 真实营销操作 | **NOT_AUTHORIZED** | NONE |
 
 Writer没有仓库权限，因此首稿离线包提供完整正式问题树、当前四二级八三级、受众、五板块范围、事实核验合同、交付条件和可转发提示词。**首稿不限制字数、案例数、表格形式**；Writer须交完整中文正文与事实来源核验记录并打包ZIP，停于Reviewer。若Reviewer要求返修，当轮附完整返修ZIP和独立提示词；Owner决定最终封板。
+
+## 第一章R1审核结论和当前返修包
+
+- **[第一章R1独立Reviewer审核（RETURN）](docs/CHAPTER1_WRITER_R1_REVIEW_RETURN_20261018.md)**：标题结构逐字PASS；关键事实、可复核引用、法律边界与线索筛选方法存在阻断项R01—R10。
+- R2完整返修ZIP已通过解压校验，包含Writer R1全文与核验记录、审核报告、定向修订任务、官方来源核查、传递提示词和SHA256清单。本轮通过ChatGPT对话交Owner；**不声称ZIP二进制已上传GitHub，也不声称Writer已完成R2**。
+- 本章第一轮只判RETURN，不擅自封板。当前权威交接为[REVIEWER_HANDOFF](REVIEWER_HANDOFF.md)，正式问题仍以[冻结V2](docs/FROZEN_FRAMEWORK_V2_20261018.md)为准。
 
 ## 历史记录（不再是当前权威）
 
@@ -37,6 +43,6 @@ Writer没有仓库权限，因此首稿离线包提供完整正式问题树、�
 
 ## 下一步
 
-**Owner转交第一章完整离线ZIP与提示词** → 独立Writer提交第一章完整正文及事实核验记录ZIP → Reviewer审核、必要时RETURN并同步完整返修包+话术 → Owner决定是否封板第一章 → 经授权才启动第二章。
+**Owner转交本轮第一章R2完整返修ZIP与提示词** → Writer基于R1完整全文定向修订并交R2正文+核验记录ZIP → Reviewer复查R01–R10 → Owner决定是否封板第一章。已冻结问题树原文不变，第二章尚未启动。
 
 [返回五板块总项目库](../README.md)
