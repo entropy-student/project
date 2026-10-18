@@ -1,10 +1,10 @@
 # 第四部分《产品搭建》｜唯一当前Reviewer交接（2026-10-19）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_CH2_CH3_CH4_FINAL_SEALED / CH5_WRITER_GATE_RELEASED**  
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_CH2_CH3_CH4_FINAL_SEALED / CH5_V1_RETURN_R2_WRITER_PENDING**  
 > **正式问题树：核心1 / 一级9 / 二级48 / 三级117**（不可擅改）  
 > **CURRENT_GATE：CB04-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **CURRENT_STOP：CH5_WRITER_PENDING / NO_CH5_BODY / NO_HTML**  
-> **OWNER_ACTION_REQUIRED：** 下载本轮4.5离线ZIP并连同Writer话术交独立Writer，收到完整正文、事实核验和ZIP后交Reviewer。
+> **CURRENT_STOP：CH5_V1_REVIEW_RETURN / R2_WRITER_PENDING / NO_SEALED_CH5_BODY / NO_HTML**  
+> **OWNER_ACTION_REQUIRED：** 将4.5 Writer V1独立Reviewer完整R2返修ZIP和提示词交独立Writer；回交R2完整正文、B01–B08逐项核验与ZIP后交Reviewer。
 
 ## 一、必须先读的权威文件
 
@@ -29,7 +29,14 @@
   - C03：Stripe API v1幂等键同请求同参数，至少24小时后可能清理；v2行为不同，跨新PaymentIntent/支付渠道不能保证全局防双重收费。
   - C04：sessionStorage不抗XSS；姓名/住址个人数据不必然是所有法律下特殊类别；PCI v4.x 3.3.1禁止授权后SAD存储并非规定全球只许PSP iframe；WCAG 2.2 AA目标尺寸24×24 CSS有例外，技术标准不等于全球法定规则。正文、Mermaid、尾表同步修改。
   - 4.4正式正文创建commit `178125b7ed5b3371efc9131d5d6c8170f4651c78`，GitHub blob `fa9726576112915afd9ab3bffc577e80f7081aba`，6/6二级13/13三级逐字PASS。正式审计证据见上。原V1和R2审稿记录保持在main并标记历史，不作为当前R3任务；旧4.4首稿Gate/ZIP登记退出当前工作树但Git历史可查。
-- **4.5**：只新建Writer Gate、完整离线ZIP登记、项目进度；未收到Writer正文，没有封板第4.5章；**不得自行启动4.6或HTML**。第四部分以外只允许父项目README的导航更新，没有修改其已封板正文。
+- **4.5**：Writer V1已真实交付并独立审核RETURN，R2完整返修工作包已提供Owner；没有封板第4.5章；**不得自行启动4.6或HTML**。第四部分以外只允许父项目README的导航更新，没有修改其已封板正文。
+
+## 第4.5章Writer V1独立Reviewer审查（2026-10-19，当前任务）
+
+- Writer V1真实交付，原ZIP 26,741bytes，SHA256 `aa08f6442d28417468c8853043fe387b15d46b658bacaf875eb52191131c5f91`，两份完整Markdown，结构5/5二级、12/12三级逐字PASS。
+- **Reviewer独立结论：`RETURN_CH5_V1_PAYMENT_INVENTORY_STATE_AND_EVIDENCE_ERRORS`**，8组实质阻断：B01库存ATS漏Unavailable/数字码强制模式；B02订单单向状态无法容纳部分退款、完结后售后；B03错误Stripe事件字段`event.data.amount_captured`及支付事实；B04`event.id`直接退出导致崩溃漏交付；B05卡密/3PL伪幂等保证；B06三个渠道各展示共享450件无法防超卖；B07客户末四位伪身份核验、GDPR/PCI及审计日志保留范围；B08官方事实VERIFIED与文中实现不符/假设未就地标注。详见[当前审稿记录](docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)。
+- Owner对话离线R2完整返修ZIP `第四部分_第五章_Writer_V1_R2完整定向返修包_20261019.zip`，**42,672bytes**，SHA256 `7d1120e43c8d166c913fefd4efb4ebff6a30fee255090795cdd1ef7eedc3c4a7`；8份UTF-8 Markdown，**原Writer V1完整正文、自检原样保留**，以及Reviewer全报告、R2指令、冻结原题、官方来源与逐文件SHA。文件本体在Owner对话，**未上传GitHub二进制**。
+- **尚无Writer R2，也无4.5正式封板正文**。Reviewer只审不改候选稿；不启动4.6或HTML。
 
 ## 三、4.5章冻结题目与核心知识责任
 
@@ -46,13 +53,13 @@
 ## 四、治理面板与下一步
 
 - **PROJECT_GOAL**：系统回答“产品怎么做、怎么交付？”。
-- **PROJECT_STAGE**：1/9/48/117完整框架冻结；4.1–4.4正式全文已Owner封板；4.5独立Writer首稿待交；4.6–4.9无正文；HTML未启动。
+- **PROJECT_STAGE**：1/9/48/117完整框架冻结；4.1–4.4正式全文已Owner封板；4.5 Writer V1已交并独立Review RETURN、R2定向返修待交；4.6–4.9无正文；HTML未启动。
 - **SYSTEM_MAP**：GitHub main管理正式冻题、唯一封板正文、封板审计、当前Writer Gate与交接。离线ZIP位于Owner本轮对话，不在GitHub binary仓库。
-- **CURRENT_ACCEPTED_STATE**：4篇正式正文及对应证据；5章尚无候选正文。
+- **CURRENT_ACCEPTED_STATE**：4篇正式正文及对应证据；5章已有Writer V1候选但独立审核RETURN，尚无封板正文。
 - **CURRENT_GATE**：`CB04-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019`。
 - **CURRENT_ROLLBACK_STATUS**：Git历史保留，可按提交回滚；无真实业务系统、客户文件、密钥和付款操作。
-- **UNRESOLVED**：4.5 Writer V1尚未交，工具API与真实库存流程未作生产测试。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED**：Owner转交4.5 ZIP+提示词→独立Writer完成全章5/12正文及事实核验Markdown+ZIP，`STOP_AT_REVIEWER`→Reviewer独立冷审，必要时同轮完整返修ZIP+可复制指令→Owner决定封板。
-- **MANDATORY_STOP**：`CH5_WRITER_PENDING`；不预写4.5正文、不启动4.6或HTML。
+- **UNRESOLVED**：4.5 Writer R2尚未交；B01–B08仍待复核，真实库存/付款流程未作生产测试。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED**：Owner转交4.5 R2完整返修ZIP+提示词→独立Writer以V1全文修订，提交R2完整正文及事实核验Markdown+ZIP，`STOP_AT_REVIEWER`→Reviewer独立冷审，必要时同轮完整返修ZIP+可复制指令→Owner决定封板。
+- **MANDATORY_STOP**：`CH5_R2_WRITER_PENDING`；不预写4.5正文、不启动4.6或HTML。
 
 [返回第四部分目录](README.md)
