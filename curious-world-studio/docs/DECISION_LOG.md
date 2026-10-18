@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
+## 2026-10-18｜Owner批准PR#153视觉RETURN后的单轮定向返修
+
+Owner已接受独立Reviewer提出的“保留音画基础设施、仅最小重排科学主画面、恢复真实冻结Mac、先StoryBoard关键帧预检再做一条修正版内部短片”，在2026-10-18回答“我没问题”。此为**上一条综合制片Gate失败之后的新的有界授权**，不是旧Gate失败后无限重试。Reviewer按Governance v0.2.7 §5将Storyboard实际QA→有界返修→**一次正式候选内部MP4**→技术QA→隔离PR合为[一个执行Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)，不对每个低风险子步骤索要Owner授权。数值17/50与48/50作T6事实可视化、脚形成/接触压缩/回弹用T5三态科学准确静态图、100ms→106ms独立声学事实用T2/T6并显著标“作者假说”；以冻结Mac真源整体复用，不重画简化界面。旧R3/PR#153使用的四条视频继续项目级一次性禁复用；冻稿/WAV/SRT/技术QA保留。新片须Reviewer实际审看及Owner审美验收，不解除RIGHTS_PARTIAL/NO_PUBLISH或授权完整R4/第二选题/付费/发布。
+
+
 <!-- CWS_PR153_INDEPENDENT_STORYFIT_REVIEW_RETURN_20261018 -->
 ## 2026-10-18｜Reviewer真实看过PR#153样片：技术PASS、视觉RETURN
 
