@@ -1,5 +1,9 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
+> **【2026-10-18最新Owner生图效率裁决】** 经独立复查，`vps-project-governance v0.2.7 §11G`明确两路最大并发、优先现成/编辑、`imagegen→output_hint→SourcePath→local_copy→QA`，CWS原有[AI复用效率指南](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)也早已记载，但上轮PR#153只记录一张图/SHA，没有足够执行日志证明真正按最快/最低无谓调用流程。Owner要求将该流程升级为**本项目最高优先准则之一**：现已在指南顶部及`AGENTS.md`列为强制执行规则（服从上位Governance、Owner授权及科学事实优先），并将尚未发出的[当前修复Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)更新为必须事先做`EXACT_FRAME/DERIVE_EDIT/REFERENCE/GENERATE`决策、按需0–3图、最多2并发、官方Fast Path解析+hash/尺寸/事实QA、同因2次停策略、调用次数和实测Token成本如实留证。**没有实测模型计费指标时只能声明减少不必要生成，不能称绝对最低Token。** 本条只是本项目执行规范的提升，不改变`CW0005视觉RETURN/G1/G2/R4/NO_PUBLISH/RIGHTS_PARTIAL`；Owner上一条返修授权仍有效，尚未向Codex下发提示词。
+
+
 <!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
 > **【2026-10-18 最新有效Owner授权：失败后定向视觉返修一次】** Owner在[PR#153独立技术PASS/视觉RETURN报告](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)后批准“我没问题”，新签发[PR#153后定向修复Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)：一次连续`Storyboard关键帧预检→以冻结V5.6.2原Mac壳/T6真实温度样本/T5脚形成压缩回弹三态/T2声学事件作主体→一条30–60秒内部MP4→QA→隔离PR`。**`CURRENT_GATE=CWS-CW0005-POST-PR153-TARGETED-VISUAL-STORYFIT-REPAIR-20261018`，`OWNER_AUTHORIZED/EXECUTOR_NOT_STARTED/REVIEW_PENDING`**；其余历史“旧Gate未执行”均被此记录覆盖。保留已PASS音画编码/WAV/SRT/脚本及失败样片。旧Pexels #854959、Pixabay #2793与PR#153的Pexels #1796141/#35876717均已有历史作品使用记录，新片不得违反项目级原视频一次性使用规则。新Gate需来源明确、免费合法、无误导；**不允许未清权研究影像发布、付费、正式R4、4–6分钟完整制片、PR自动合并**。V5.6.2冻结blob `33aabc3ff2e48877493277eb1a86274818e3c769`不变；`RETURN_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`未解除。
 
