@@ -1,5 +1,8 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_PR153_INDEPENDENT_STORYFIT_REVIEW_RETURN_20261018 -->
+> **【2026-10-18 CW0005真实样片独立Reviewer结果】** [PR #153](https://github.com/entropy-student/project/pull/153)的脱敏执行报告已按“可合并即合并”授权归档main；55.266667秒实际MP4由Owner上传、Reviewer实算SHA `be48565792f94fccdebb95229d8744d044b1edf47a1cdbfa9015dc37e0ebda6c`且FFmpeg全解码PASS，技术视频已打通。**但视觉总体RETURN**：42.966s（约77.7%）同一锅内素材覆盖S01–S08，S05仅右下小幅AI概念图且可能传递喷气感，温度/跳跃/声学核心科学画面缺少真正可读的T4/T5/T6主体表达，Aqua开头与原冻结版差距明显。真实Figure1/3a/6和补充研究视频未使用，论文/股票素材权利PARTIAL/UNKNOWN。独立具体证据见[PR#153正式Reviewer报告](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)，结论`CW0005_55S_MP4_TECHNICAL_PASS / RETURN_VISUAL_STORYFIT`，**不提升⑤⑭/G1/G2/R4/NO_PUBLISH，不算Owner审美验收**。下方旧`EXECUTOR_NOT_STARTED`为已过时的执行前状态；下一步仅定向视觉编排返修，重制需新有界授权，不能重复整套媒体基建。
+
 <!-- CWS_CW0005_OWNER_MERGED_STORYFIT_GATE_20261018 -->
 > **【2026-10-18最新Owner统一授权】** 已开启新的[CW0005联合Story-Fit Gate：官方研究图/许可→定向新素材→S01–S10匹配→30–60秒连续样片及技术QA](CWS_CW0005_COMBINED_STORYFIT_SOURCE_TO_SAMPLE_GATE_2026-10-18.md)，状态`OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / REVIEW_PENDING`。Owner要求能合并的Gate一律合并、加速推进，Codex可按这**一条**Gate连续完成所有符合前置条件的步骤，无需每个小任务重复审批；只在隔离PR提交可复核的脱敏记录，样片与原媒体留在Owner本机，Review之后才决定视觉PASS。**此条优先于下方旧“下一Gate未授权”描述**。新版权素材不能从PMC论文开放可读或Royal Society“all rights reserved”推断商用许可；旧R3两条素材禁再次使用。V5.6.2冻结blob不变，`CW0005_R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`仍有效。**内部短片试制不等于正式4–6分钟R4授权**。
 
