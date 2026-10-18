@@ -1,5 +1,8 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_V562_EXECUTOR_REPAIR_NOT_INDEPENDENT_ACCEPTANCE_20261018 -->
+> **2026-10-18｜V5.6.2 两项边界补修完成，待独立Reviewer验收**：Owner授权仅修此前V5.6.1独立Review发现的N-01全角百分号语义与N-02极小数值低刻度漏检。新的[PR#144候选V5.6.2](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-6-2-percent-scale-edge-fixes.html) Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`，SHA-256 `47dbe555b297153bab7520b7b1b716fa8403ed32c237b3b2603e283829c2fb84`。**执行者自测**：36/36核心、28/28边界、3/3长时轴/素材保存、12/12原Mac像素及31.06秒实速完整播放PASS，JS异常0；不可当作新的独立验收。权威[最小交接及完整边界](reviews/CWS_V562_EXECUTOR_REPAIR_AND_SUCCESSOR_STATUS_2026-10-18.md)；[PR详细执行报告](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V562_N01_N02_TARGETED_REPAIR_AND_TESTS_2026-10-18.md)。**状态：`EXECUTOR_SELF_TEST_PASS / INDEPENDENT_REVIEW_PENDING / FORMAL_PRODUCTION_HOLD`**。原V5.6.1与main冻结V5.2均未覆盖，PR Draft/未合并；CW0005 R3 RETURN/G1 HOLD/G2/R4未授权/NO_PUBLISH和素材权利PARTIAL不变。下一步只等独立Reviewer复核和Owner决定。
+
 <!-- CWS_V561_MAIN_INDEPENDENT_REVIEW_AND_SUCCESSOR_LINK_20261018 -->
 ## 2026-10-18｜下一位Reviewer先读这里：V5.6.1主Reviewer精简交接已在main归档
 
