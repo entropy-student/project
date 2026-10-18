@@ -1,5 +1,8 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
+<!-- CWS_V561_MAIN_INDEPENDENT_REVIEW_AND_SUCCESSOR_LINK_20261018 -->
+> **2026-10-18｜主Reviewer确认后的最新交接**：Owner上传的V5.6.1五项返修ZIP已做完整性/指纹校验；最终PR源码Git blob `3cd8b040a9f106ca7d0876b55b34ab71088af175`、SHA-256 `44319df40d2b6e14400f720b97d4a34161ae0cef89c9d9e3a7b5c54e5b8fa213`。本轮再次独立执行Chromium专项`27/27 PASS`、JS错误0、Mac Canvas 10时码一致。ZIP内同版31.06秒实速完成的已有JSON证据通过核对；此次额外重跑测试命令超时、未产生新的完整播放结果，因此不计作新增的1×PASS，也不是播放器FAIL。**权威精简交接、五项修复判断、主证据与后续边界见[主Reviewer V5.6.1 完整接手](reviews/CWS_V561_MAIN_REVIEW_AND_SUCCESSOR_RELAY_2026-10-18.md)**；此前三阶段联合审核PARTIAL仍是修复前历史，新V5.6.1为`TECHNICAL_PASS_CANDIDATE / EXTERNAL_REVIEW_PENDING`，不是新冻结基线。PR#144保持Open/Draft/未合并；main冻结V5.2原件不变，正式制片/发布HOLD。
+
 <!-- CWS_V561_MAIN_REVIEWER_INDEPENDENT_REGRESSION_20261018 -->
 > **2026-10-18｜V5.6.1 完成后主Reviewer追加独立核验**：PR#144 的[最终V5.6.1 HTML](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-6-1-targeted-review-fixes.html) SHA-256 `44319df40d2b6e14400f720b97d4a34161ae0cef89c9d9e3a7b5c54e5b8fa213`，已在隔离Chromium独立复查**27/27 PASS、JS异常0、原Mac Canvas 10时码逐像素一致**；最终源码0→31.06秒实时播放到终点并隐藏内容区，浏览器关闭进程其后超时但结果已客观落盘。证据见[PR评论](https://github.com/entropy-student/project/pull/144#issuecomment-6245399496)与[完整Reviewer技术记录](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V561_REVIEW_TARGETED_FIXES_2026-10-18.md)。**仍为技术候选，外部Reviewer待验收；main冻结V5.2未改，PR Draft未合并，正式制片/发布HOLD。**
 
