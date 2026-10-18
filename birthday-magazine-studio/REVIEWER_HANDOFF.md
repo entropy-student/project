@@ -4,7 +4,17 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-18 (Owner paused all magazine-making/design work pending their alternative plan tomorrow; G4D0 HOLD; Stripe TEST phase closed PARTIAL, PR64 open)
+ > Last reviewed: 2026-10-18 (Owner froze photo+text → six styles × twelve pages image/HTML direction, desk research complete; design and G4D0 remain HOLD; Stripe TEST PARTIAL)
+
+## CURRENT_OWNER_DIRECTION_FROZEN_6X12_PHOTO_TEXT_MAGAZINE_RESEARCH_COMPLETE_NO_DESIGN_2026_10_18 — LATEST
+
+**Owner direction (new and authoritative, 2026-10-18):** customer-uploaded photos and their structured/free-text answers are the input, **~6 style-family prompts × 12 distinct magazine page-role variations** produce customized styled page images or HTML visual results, ultimately English-first 12-page PDF. Concept is **style prompt/visual rules + page-role layout instructions + bound customer variables**; not 72 completely independent prompts. Owner **explicitly approved freezing only the direction**, **NOT actual magazine pages/design/prompts/code**. Style names (fashion person, warm memories, minimalist, vintage news, pop/youth, biography) are *research candidates* not approved final styles, and detailed page roles/content schema are unfrozen. [Owner frozen direction](./docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md).
+
+**New commissioned deep external desk research COMPLETE:** [photo+text → pages / HTML / PDF OSS reuse survey](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md). Investigated direct image reference storybook repos, agent `html-magazine` (MIT, 4 style HTML, Playwright PDF, dependent ui-ux-pro-max), template API `og-image-studio-mvp` (MIT, photo/text variables→PNG), `pagedjs` MIT, `GrapesJS` BSD, photo-layout repositories without root license, legal traps (`beeroniza` custom no-sell; Polotno core commercial SDK, Vivliostyle CLI AGPL), hosted Bannerbear/APITemplate, OpenAI/BFL/Ideogram image editing API sources. This is **source/document/license review, NOT runtime integration proof**. No maintained, proven, permissively licensed end-to-end all-in-one solution confirmed for 12–25 photos+answers→6 styles×12 exact-personalized editorial pages.
+
+**Provisional reuse comparison, NOT IMPLEMENTATION GATE:** (A) minimize changes by reusing existing accepted G2BR3 structured 12-page PDF generator once exact source verified, adapt MIT `html-magazine` editorial/page concepts + deterministic HTML/Paged.js, inject user photo originals and exact user text as layers and generate artistic visual assets through an approved API; (B) OG Image Studio MIT page PNG variable render API if existing layout inadequate; (C) APITemplate paid hosted rendering if privacy/cost allowed. Pure full-page AI raster is an experiment only, risk of face/text change; final choice pending Owner. One chosen style generally generates **12 pages per customer**, not 72 full renders.
+
+**CURRENT AUTHORITY=`RESEARCH_ONLY; NO_EXECUTION`.** Earlier G4D0 P1–P12 candidate creation remains `HOLD_OWNER_ALTERNATE_PLAN_PENDING / DO_NOT_EXECUTE`. Do not launch Codex to design pages, write 72 prompts, make prototypes, install global skills, call image APIs on user photos, upload photos to a provider, change WordPress/Woo/Stripe/Cloudflare or merge PR64. Next Owner conversation: review research choices and authorize a precisely bounded minimal-reuse feasibility Gate if desired. G3S4M Stripe TEST remains `PARTIAL_WITH_EXCEPTIONS`, unmatched separate HKD100 Sandbox and internal plugin duplicate ack unresolved pre-Live. PR64 last checked `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` OPEN/UNMERGED.
 
 ## CURRENT_OWNER_PAUSE_MAGAZINE_PRODUCTION_PENDING_ALTERNATE_PLAN_2026_10_18 — LATEST
 
@@ -334,7 +344,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=HOLD_OWNER_ALTERNATE_MAGAZINE_PRODUCTION_PLAN;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
+CURRENT_GATE=RESEARCH_ONLY_COMPLETE_OWNER_APPROVAL_NEEDED_FOR_FEASIBILITY;G4D0_DESIGN_HOLD;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -763,7 +773,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**PAUSED — no active Codex design/production Gate.** Owner does not want the previously suggested G4D0 approach executed and will discuss their own plan next time. [G4D0 prior draft](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) marked `HOLD_OWNER_ALTERNATE_PLAN_PENDING`. Do not begin source inventory, 12-page candidate HTML/PDF, photo/template or generation work pending Owner direction. G3S4M Stripe TEST closed PARTIAL with explicit separate HKD100 TEST charge/true signed plugin replay audit debts; no new transactions. PR64 OPEN/UNMERGED. Previously authorized Cloudflare foreground PowerShell stop remains optional for public-offline work.
+**RESEARCH COMPLETE; no approved design/implementation execution.** Owner-frozen direction customer photo/text → ~6 styles × 12 page-role generation → page image or HTML/PDF, [source](./docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md); independent desk research [full OSS/SaaS matrix](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md). Owner asked to FIND/COMPARE existing projects to minimize edits, *not* to start creating/prompts/HTML/pages. [Old G4D0 Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) still HOLD. Pending Owner candidate direction/feasibility proof approval; no Codex execution or provider/customer image calls. G3S4M Stripe TEST partial audit debts preserved, PR64 OPEN/UNMERGED.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -889,16 +899,19 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. **WAIT for Owner to describe their alternative magazine-making/design plan** in the next conversation; clarify only then and formalize revised Gate if authorized. No automatic Codex execution or new draft design proposals.
-2. Preserve earlier validated website/test payments and G3S4M PARTIAL audit debt; no new payment, refund, webhook resend, or PR merge.
-3. If Owner wishes, Ctrl+C may stop the dedicated Cloudflare foreground PowerShell as already authorized for local/offline design; remember public domain and HTTPS WordPress preview become inaccessible until launcher restart.
+1. Present/comprehend [full source-verified 2026-10-18 research matrix](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md): html-magazine/OG Image Studio/Paged.js and hosted alternatives; note license limits and identity/text accuracy.
+2. **WAIT for Owner selection** of whether to test full-page raster generation versus generated visual assets + deterministic HTML exact-text/photo layers, and whether OSS/self-hosted vs hosted budget. Do not infer automatic approval from frozen overall approach.
+3. If Owner authorizes, write a separate **minimal feasibility spike Gate** first to locate existing accepted G2BR3 renderer source and prove targeted 2–3 synthetic pages/layout/path with no payment edits, then Reviewer/Owner decide implementation. No 6×12 production upfront. Stripe prior gaps deferred before Live/provider next consequential use.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE now.** User will supply the new magazine production approach in a later discussion. Do not proactively begin G4D0.
-- Optional previously approved infrastructure pause: Ctrl+C foreground `cloudflared` PowerShell when not using public site; no Docker/data/Stripe deletion, no new setup.
+- **NONE now:** the research is completed. Owner reviews candidate comparison and decides next Gate; no proactive design execution.
+- Cloudflare foreground connector Ctrl+C for offline work remains optional, no changes to protected data, WordPress, credentials or Stripe.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md` — Owner-frozen IO/style×page direction only, no design execution.
+0. `docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md` — deep linked OSS/licensing API implementation/reuse desk research, not run-tested.
 
 0. `docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md` — current formal Stripe TEST phase PARTIAL termination with HKD100 anomaly and plugin replay blindspot, Tunnel stop permission.
 0. `docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md` — current next magazine design-only Gate.
