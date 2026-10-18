@@ -1,11 +1,11 @@
 # 第四部分《产品搭建》｜唯一当前Reviewer交接（2026-10-18）
 
-> **PROJECT_STATUS：ACTIVE_WRITING / FRAMEWORK_V2_FROZEN / CH1_FINAL_SEALED / CH2_V1_RETURN_R2_WRITER_PENDING**  
+> **PROJECT_STATUS：ACTIVE_WRITING / FRAMEWORK_V2_FROZEN / CH1_FINAL_SEALED / CH2_R2_RETURN_R3_WRITER_PENDING**  
 > **FREEZE：核心1、一级9、二级48、三级117，完整原文不可改**  
 > **CHAPTER1：4H2/10H3 OWNER_APPROVED_FINAL_SEALED**  
-> **CHAPTER2：4H2/10H3 V1_DELIVERED_AND_REVIEWED_RETURN / R2_WRITER_PENDING**  
+> **CHAPTER2：4H2/10H3 R2_DELIVERED_AND_REVIEWED_RETURN / R3_WRITER_PENDING**  
 > **CURRENT_GATE：CB04-CH2-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **OWNER_ACTION_REQUIRED：** 将第4.2章Writer V1独立Reviewer完整R2返修ZIP及转交话术发送离线Writer；收到R2完整正文/核验记录及ZIP后再交Reviewer。
+> **OWNER_ACTION_REQUIRED：** 将第4.2章Writer R2独立Reviewer完整R3返修ZIP及转交话术发送离线Writer；收到R3完整正文/核验记录及ZIP后再交Reviewer。
 
 ## 唯一权威与恢复顺序
 
@@ -18,6 +18,13 @@
 | 4.2完整离线8文件ZIP登记 | [docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) | 12,111 bytes、SHA256 `b0095450264f34012105260b913f0b2fce4c87c97fc770fc4033018c0bee268c`，ZIP在本轮会话下载 |
 | 角色与审核制度 | [第二部分长期流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | Writer先写、Reviewer独立审、Owner封板 |
 | 当前导航 | [README.md](README.md) | 本文件与README共同维护 |
+
+## 第4.2章 R2 独立Reviewer结论（2026-10-18）
+
+- Owner已上传Writer R2完整ZIP，4二级/10三级逐字/同序/同层级及原始ZIP完整性均PASS。
+- **独立结论：`RETURN_CH2_R2_RESIDUAL_BUDGET_SOURCE_AND_CONSISTENCY_ERRORS`**。只剩4组定向阻断：B01预算计算漏算逐单变动成本及5/10%口径冲突；B02 PCI 3.3条号及FAQ1533误用于卡号聊天传输；B03免费试用/B2B人工与“必须付费/全自助全程序化”逻辑矛盾；B04把前台回跳与异步支付成功通知同时完成当硬性验收条件。
+- 完整Reviewer报告及R3定向返修ZIP已经交Owner，包SHA256 `1df9a5d6803e5984e96c9431ade870b97f65e02bf6cb0391c3689fa81957be12`（8个文件，含Writer R2正文和核验记录原文）。[本轮R2独立审核记录](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)。
+- **CURRENT_STOP：R3_WRITER_PENDING**；本章没有正式封板正文，第一章正式封板不变。
 
 ## 第4.2章 V1 独立Reviewer结论（2026-10-18）
 
@@ -59,10 +66,10 @@ Reviewer随后独立核题目/内容深度广度/准确性/来源/实操安全�
 - **CRITICAL_CONSTRAINTS：** 所有冻结题目不可改。第一板块做市场与需求，第二板块做网络/运行环境，第三板块支付税务主体CLOSED，第五板块获客；不可将它们的教材代写进第四板块或修改其文件。
 - **DEFAULT_EXECUTION_CHANNEL：** GitHub main存权威正文/Gate/交接，Owner通过本对话拿离线ZIP交给无GitHub权限的Writer。
 - **CURRENT_ROLLBACK_STATUS：** 仅新增/删改文档的Git可逆提交；历史稿不破坏Git历史、不重复并列正式版本。
-- **UNRESOLVED：** 4.2 Writer R2未回，R01–R08仍待复审；不得先宣称第②章PASS或封板。
-- **NEXT_STEP：** Owner转交本次4.2 R2完整返修ZIP及提示词→Writer交完整修订正文、逐项核验记录、ZIP→Reviewer复核→Owner是否封板。
-- **OWNER_ACTION_REQUIRED：** 转交R2完整返修ZIP及提示词。
+- **UNRESOLVED：** 4.2 Writer R3未回，B01–B04仍待独立复审；不得先宣称第②章PASS或封板。
+- **NEXT_STEP：** Owner转交本次4.2 R3完整返修ZIP及提示词→Writer交完整修订正文、逐项核验记录、ZIP→Reviewer复核→Owner是否封板。
+- **OWNER_ACTION_REQUIRED：** 转交R3完整返修ZIP及提示词。
 - **EVIDENCE_POINTERS：** 冻结V2、4.1正文/封板证据、4.2当前Gate/包SHA、第二部分规范、总README。
-- **MANDATORY_STOP：** `CH2_R2_WRITER_PENDING`；Reviewer不代写4.2正文、不启动4.3、不做HTML。
+- **MANDATORY_STOP：** `CH2_R3_WRITER_PENDING`；Reviewer不代写4.2正文、不启动4.3、不做HTML。
 
 [返回本板块README](README.md)
