@@ -1,3 +1,6 @@
+<!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
+> **【2026-10-18 Owner确认：CWS AI静态生图项目级最高优先强制准则之一】** 凡本项目Gate涉及生成/编辑C类图片，**必须先读**[AI生图复用/速度/Token低浪费强制规则](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)顶部现行条款，并遵守上位`vps-project-governance/VNEXT.md §11G`。先锁定画面要表达的科学事实→核现成完整图/授权→`EXACT_FRAME`零调用复用、可用则`DERIVE_EDIT`、否则`REFERENCE/GENERATE`；必要时才生图，最多2个同时任务（不是至少2个），不得为凑满3张机制图而额外生成。不重新发明Codex Fast Path：官方`output_hint→SourcePath→local_copy.ps1→SHA/尺寸/事实QA`，禁stdin/TTY/base64图片搬运、扫描cache猜路径、仅因native不等于1920×1080而重生；同类失败2次停策略。**逐图保留调用/重试/并发/复用判定/QA的脱敏证据；未实测Token节省须写UNKNOWN，不得宣传绝对最低Token**。科学真实性/项目授权更高于速度与节约。已批准但尚未下发的[CW0005定向返修Gate](docs/CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)已同步此要求；其他已完成历史任务不得倒推为按新快路径通过。
+
 <!-- CWS_PR153_VISUAL_RETURN_ENTRY_20261018 -->
 
 <!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
