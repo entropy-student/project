@@ -13,7 +13,7 @@
 2. **[第4.1章唯一封板正文](docs/CHAPTER1_FINAL_SEALED.md)**和[对应Owner封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：4二级/10三级；Writer R2基础上Owner授权Reviewer最小定向修正。
 3. **[第4.2章唯一封板正文](docs/CHAPTER2_FINAL_SEALED.md)**和[对应Owner封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：4二级/10三级；Writer R2基础上Owner授权Reviewer最小定向修正B01–B04，没有Writer R3。
 4. **[第4.3章独立Writer首稿Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：唯一当前工作入口，5二级/11三级；4.3.4直接成节。
-5. **[第4.3章离线包清单/ZIP哈希](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)**：`第四部分_第三章_独立Writer完整离线工作包_V1_20261018.zip`，SHA256 `9acaf201bd64508c0ef648ab3e6afc32a206de30c0f8729b690cfbeeb22eabe0`，12,779字节、8个完整UTF-8 Markdown、CRC通过；Owner在本次对话下载，二进制未上传仓库。
+5. **[第4.3章离线包清单/ZIP哈希](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)**：`第四部分_第三章_独立Writer完整离线工作包_V1_20261018.zip`，SHA256 `c9bd19e9729fba4364641ea3537535281dc61fed0c152c8151aa523089d804ae`，12,772字节、8个完整UTF-8 Markdown、CRC通过；Owner在本次对话下载，二进制未上传仓库。
 6. **[第二部分长期Writer→Reviewer→Owner流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)**：独立Writer先自由写全章→Reviewer独立冷审→Owner最终批准封板；RETURN必须同轮完整ZIP及传递话术。
 7. **[第四部分README](README.md)**、[五板块项目总入口](../README.md)：状态导航。
 
