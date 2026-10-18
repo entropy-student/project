@@ -1,6 +1,6 @@
 # 第五部分｜获客与用户增长｜当前Owner决策与Reviewer交接（2026-10-18）
 
-> **CURRENT_STATE：CORE_FROZEN / L1_L2_OWNER_TEMP_REOPEN / L3_OLD_CANDIDATE_ONLY / BLIND_WRITER_PACKET_READY / WRITER_PENDING**
+> **CURRENT_STATE：CORE_FROZEN / L1_L2_OWNER_TEMP_REOPEN / L3_OLD_CANDIDATE_ONLY / WRITER_R1_REVIEW_RETURN / R2_REPAIR_PACKET_READY**
 > **本轮唯一执行Gate：** [暂时解冻决定、盲写包与比较流程](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)
 > **项目目录：** `entropy-student/project/cross-border-business/05-acquisition-growth/`
 
@@ -21,21 +21,23 @@
 
 1. 2026-10-18：Owner正式批准核心1题、一级9题，之后批准二级45题正式冻结；旧三级102题仅候选。
 2. 2026-10-18：Owner最新明确要求**一级和二级暂时解冻**，由仓库外独立Writer重写所有一级至三级，待返回后与我们的旧结构比较；原核心未被要求解冻，因此继续冻结。
-3. 本轮只完成状态及离线写作包交付，不在Writer返回前做新旧比较，也不自动冻结任何新稿。
+3. 外部Writer已提交R1独立候选：**6个一级、23个二级、42个三级**，文档形式与编号完整。
+4. Reviewer已独立评审并与旧9/45/102比较，结论 **RETURN_STRUCTURE_COVERAGE_AND_READABILITY**；详情见[最新Reviewer审核记录](WRITER_R1_INDEPENDENT_REVIEW_RETURN_20261018.md)。主要缺口为渠道适配、付费推广方法、增长实验、LTV与小样本判断，以及用词过长和若干事实风险。
+5. R2定向返修包已生成并由本轮对话交付Owner，**尚无证据证明Owner已转交Writer，也没有R2新稿**。不自行恢复旧冻结或采纳任何候选。
 
 [完整Owner授权、旧稿索引、离线包指纹与Gate](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)是本轮证据；上轮[二级PASS/三级自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)为历史决策背景，不是新Writer的限定条件。
 
 ## Writer离线交付
 
 - **唯一核心问题：** 怎么才能持续有客户下单？
-- **Writer资料：** `第五部分_独立Writer全框架重写工作包_20261018.zip`，SHA256=`99f5376249283fd3a19e4d225ffa4eba5f131c28d4904b76af6d99ba69a0ef1b`。
+- **Writer原盲写资料：** `第五部分_独立Writer全框架重写工作包_20261018.zip`，SHA256=`99f5376249283fd3a19e4d225ffa4eba5f131c28d4904b76af6d99ba69a0ef1b`。**R1已交付并完成Review。**
 - **交付渠道：** 本轮对话中由Owner获取ZIP并转交，不要求访问GitHub。
 - **盲写：** ZIP中只包含五板块边界、读者与场景、三层设计与验收标准、主题覆盖提醒、模板及转交提示词；**没有旧9/45/102题**。
 - **Writer输出：** 完整独立Markdown一级—二级—三级问题树、设计逻辑/去重/遗漏自检、简明数量与文件说明，打包ZIP；只标CANDIDATE。
 - **规则：** Writer可完全改变1—3级数量、标题、先后和归属，不能更改冻结核心，不得自行回写GitHub、不写业务知识正文或营销实操。
-- **状态未知：** Writer是否开始、完成时间、新结构题数全部UNKNOWN；当前没有新稿。
+- **最新Writer状态：** R1已交付并审核为RETURN。R2尚未交付；R2工作包在当前对话提供：`第五部分_独立Writer_R1审核及R2返修包_20261018.zip`，SHA256=`df9c42681ae340d928fabe4a77c9b26daa8c690eed1efeba1bb26f9b97d6eebc`。R2包没有上传GitHub。
 
-## 回来以后Reviewer怎么做
+## Writer R2回来后Reviewer怎么做
 
 1. **先做新稿自评**（语言、独立性、完整性、知识深度、非机械拆分、跨板块边界），不预设旧版优胜。
 2. **再比旧版1/9/45/102的一级—三级**，列出各自独有知识、重合、重叠、空缺及不同业务适配；若Writer大改结构，则按知识责任映射，不机械按编号对号。
@@ -47,8 +49,8 @@
 
 **系统结构：** 纯GitHub Markdown文档和对话ZIP附件；无产品运行时、数据库、服务器、账户与支付操作。  
 **约束：** 其他①②③④板块保持原状态，③CLOSED/FROZEN尤其不得改动。⑤只讨论市场触达、销售转化、留存复购、获客效果与增长，不重写产品源码、支付与税务。  
-**当前端点：** `WRITER_PENDING`，本轮不替Writer执行写作，不进行尚无证据的新旧评价。  
+**当前端点：** `WRITER_R1_REVIEW_RETURN / R2_PACKET_READY`，已完成R1新旧比较，当前不替Writer执行返修。  
 **回滚：** GitHub保留旧正式快照及原候选可完整回查；不得破坏Git历史。  
-**OWNER_ACTION_REQUIRED：** 将本轮ZIP和转交话术发送给独立Writer；回来后发送新稿ZIP供比较。  
-**NEXT_STEP：** 等待外部Writer实际交付（非后台任务；由Owner主动转交）。
+**OWNER_ACTION_REQUIRED：** 将本轮**R2返修ZIP及提示词**转交独立Writer；回来后发送R2新稿ZIP供复核。  
+**NEXT_STEP：** 等待外部Writer提交R2；Reviewer复查返修是否填补R1缺口并给出新旧综合建议（非后台任务）。
 
