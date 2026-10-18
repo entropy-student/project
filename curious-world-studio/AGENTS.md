@@ -1,3 +1,6 @@
+<!-- CWS_CONFIRMED_HANDOFF_20261018 -->
+> **【2026-10-18最新生效】V5.6.2 已由Owner正式冻结为模板技术PASS**：唯一新版HTML在[main冻结路径](visual/frozen/storyboard-v5-6-2-20261018.html)，Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`；旧V5.2冻结HTML仍保留。新Reviewer/Executor**必须先读**[仅已确认事实的完整接手](docs/CWS_CONFIRMED_STATE_REVIEWER_HANDOFF_2026-10-18.md)→[CURRENT_STATE](docs/CURRENT_STATE.md)→[REVIEWER_HANDOFF_CURRENT](docs/REVIEWER_HANDOFF_CURRENT.md)，历史本文件中“R3待执行”“V5.2唯一冻结”等旧阶段描述均已失效。正式CW0005 R3视觉RETURN、G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH、rights PARTIAL仍有效；V5.6.2模板PASS≠真实长片/正式制片PASS。历史七轮规划**仅建议、未冻结也未逐轮授权**。本记录不授予新的执行权。
+
 <!-- CWS-AUTHORITATIVE-ENTRY-20261016-OWNER-VISUAL-RETURN -->
 > **Owner最新A/B/C分类（2026-10-16）**：A视频/B已有图片/C AI静态生图，与原有13种MW动作最多39理论组合、再删不适配项。旧六类和13×6表仅历史。C用于审核后的机制示意/概念插画，不得伪造科研证据；生图运行、成本、正式制片仍需有界Gate。既有`spike.skill/comic-narrative/tools/imagegen-fast-path`双并发/直存/QA和Part4.5图片复用可参考，CWS尚未验证移植、无最低Token实测。
 <!-- CWS-AUTHORITATIVE-ENTRY-20261016-OWNER-VISUAL-RETURN -->
