@@ -1,45 +1,44 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_R2_RETURN_R3_WRITER_PENDING**  
-> **冻结问题：** 核心1 / 一级9 / 二级48 / 三级117；唯一核心：**产品怎么做、怎么交付？**  
-> **当前执行阶段：** 第4.3章 Writer R2 已交且独立审核 RETURN；等待 Writer R3 定向返修。HTML及真实系统未启动。
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_WRITER_GATE_RELEASED**  
+> **冻结：** 核心1 / 一级9 / 二级48 / 三级117；核心问句**产品怎么做、怎么交付？**  
+> **当前停点：** 第4.4章独立Writer首次完整候选待交；HTML/真实系统未启动。
 
-## 唯一当前权威
+## 唯一现行权威和阅读顺序
 
-- **[第四部分正式V2完整冻结框架](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：1/9/48/117所有题目正式原文不可擅改。
-- **[第4.1章《我该把产品做成什么形式？》正式封板全文](docs/CHAPTER1_FINAL_SEALED.md)**（4个二级/10个三级）；[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)，Writer R2经Owner授权Reviewer直修后封板。
-- **[第4.2章《第一版先做哪些东西？》正式封板全文](docs/CHAPTER2_FINAL_SEALED.md)**（4个二级/10个三级）；[封板证据及B01–B04修复矩阵](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)，Writer R2经Owner特别授权Reviewer直修后封板；**没有Writer R3**。
-- **[第4.3章《怎么用最省事的方式把产品搭出来？》当前独立Writer首稿Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：**5个二级/11个三级，4.3.4直接成节**；独立Writer不必访问GitHub。
-- [第4.3章独立Writer完整离线ZIP清单及SHA256](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：8份Markdown，SHA256 `c9bd19e9729fba4364641ea3537535281dc61fed0c152c8151aa523089d804ae`；由Owner在本轮对话下载转交。
-- **[第4.3章Writer V1独立Reviewer RETURN报告与R2返修包登记](docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)**：8组定向阻断，完整原文/自检原件已打包供Writer返修。
-- **[第4.3章 Writer R2独立Reviewer审核RETURN与R3包记录](docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)**：C01–C04四组残留、完整R3修订包SHA及官方核验边界。
-- **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**：优先以此文及本页恢复阶段与角色。
-- [第二部分长期Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：Writer独立完整正文；Reviewer冷读复核/必要返修包；Owner批准后封板。
+1. **[完整冻结问题树V2](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：1/9/48/117，标题、层级和顺序不许擅改。
+2. **[4.1《我该把产品做成什么形式？》正式正文](docs/CHAPTER1_FINAL_SEALED.md)**（4H2/10H3）及[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
+3. **[4.2《第一版先做哪些东西？》正式正文](docs/CHAPTER2_FINAL_SEALED.md)**（4H2/10H3）及[封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。
+4. **[4.3《怎么用最省事的方式把产品搭出来？》正式正文](docs/CHAPTER3_FINAL_SEALED.md)**（5H2/11H3，4.3.4直接成节）及[本章C01–C04修订/封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。本章由Owner特别授权Reviewer基于独立Writer R2全文修订，**不存在Writer R3交付**。
+5. **[4.4《怎么让客户顺利购买和使用？》独立Writer首稿Gate](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：**6H2/13H3**，完整冻题和范围；Writer无需GitHub权限。
+6. [4.4完整离线8文件ZIP登记/SHA256](docs/CHAPTER4_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：ZIP SHA256 `c2285555fdec6dcc6342e07ebf91bd272e8c2b1c68436d29110d0abab5eb81ed`，Owner本轮对话附件下载。
+7. **[当前唯一Reviewer交接](REVIEWER_HANDOFF.md)**及[第二部分长期独立Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
 
-## 当前全部九章的正文进度
+## 当前全部九章进度
 
-| 冻结编号 | 一级题目 | 当前正式状态 |
+| 章节 | 正式冻结一级题目 | 当前状态 |
 |---|---|---|
 | 4.1 | 我该把产品做成什么形式？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.2 | 第一版先做哪些东西？ | **FINAL_SEALED / OWNER_APPROVED** |
-| 4.3 | 怎么用最省事的方式把产品搭出来？ | **Writer R2已交；独立Review RETURN；R3 Writer待返修，正文未封板** |
-| 4.4 | 怎么让客户顺利购买和使用？ | NOT_STARTED |
+| 4.3 | 怎么用最省事的方式把产品搭出来？ | **FINAL_SEALED / OWNER_APPROVED** |
+| 4.4 | 怎么让客户顺利购买和使用？ | **独立Writer Gate和完整离线工作包已发布，尚无正文** |
 | 4.5 | 商品、库存和订单怎么管清楚？ | NOT_STARTED |
 | 4.6 | 怎么把产品交付到客户手里？ | NOT_STARTED |
 | 4.7 | 交付出问题了怎么办？ | NOT_STARTED |
 | 4.8 | 上线前怎么检查？ | NOT_STARTED |
 | 4.9 | 上线后怎么维护和改进？ | NOT_STARTED |
 
-## 已完成审核与历史证据（只读）
+## 历史审核与归档边界
 
-- [第4.2章Writer V1独立Review RETURN](docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)、[第4.2章Writer R2独立Review RETURN](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)是**封板前历史审计**，不是新的待处理Gate；Owner后来明确授权Reviewer直接修R2，实际正式正文以CHAPTER2_FINAL_SEALED为准。
-- [V1→V2冻结框架修订QA](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)、旧7/45、旧三级118候选、早期Writer阶段文件只作历史来源，**不得替换当前冻结V2**。Reviewer早期未经Writer直接代写的4.1草稿已从main删除。
-- 第4.1章、第4.2章已经完结的首稿Gate和ZIP登记退出当前main目录，Git正常提交历史保留，不伪造Writer R3或制造并列正式稿。
+- [4.3 Writer V1独立Review RETURN](docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)、[4.3 Writer R2独立Review RETURN](docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)是**封板前审核历史**，不是当前任务；Owner此后明确授权Reviewer修订R2并完成封板，以唯一`CHAPTER3_FINAL_SEALED.md`为准。
+- [4.2 Writer V1、R2历史审核记录](docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)和[4.2 R2记录](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)同样不是现行正文。
+- 先前V1→V2框架过程与旧候选只作历史：[框架修订QA](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)；早期未经独立Writer的4.1代写草稿曾按Owner指示从main当前目录删除，不得恢复为正式稿。
+- 已完成的4.1、4.2、4.3独立Writer首稿Gate及离线包登记已退出main当前工作树；Git正常历史留痕。R1/R2候选稿不与唯一正式正文并列。
 
-## 工作边界与下一动作
+## 下一步与权限
 
-本板块负责产品形态、首版范围、复用工具/开源/付费技术实现、客户购买、订单、真实交付、异常与长期维护。其它①机会市场、②网络基础环境、③经营主体/支付财税（CLOSED）、⑤获客增长只读。
+Owner只需把本轮**4.4独立Writer离线ZIP+转交提示词**给外部Writer→Writer独立撰写完整6/13正文、来源核验与自检并打包ZIP，`STOP_AT_REVIEWER`→Reviewer独立审核；如RETURN需同轮提供完整返修包和传递话术→Owner明确决定是否封板。
 
-**NEXT_STEP：** Owner把第4.3章**R3完整定向返修ZIP和提示词**转发独立Writer→Writer基于自己R2完整原稿定向修复C01–C04并返回完整R3正文、逐项核验记录及ZIP、`STOP_AT_REVIEWER`→Reviewer复审→Owner决定是否封板。**不提前写4.4或HTML**。
+不得由Reviewer预写4.4正文；不得自行启动4.5或HTML。第二板块/第三板块的已封板内容，以及第一/第五板块其它工作均不因本轮改变。
 
 [返回五板块总项目](../README.md)
