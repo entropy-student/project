@@ -4,7 +4,13 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-18 (Owner froze photo+text → six styles × twelve pages image/HTML direction, desk research complete; design and G4D0 remain HOLD; Stripe TEST PARTIAL)
+ > Last reviewed: 2026-10-18 (Owner requests mature third-party-only production architecture; Reviewer proposal Make + OpenAI + Placid filed but NOT approved; frozen inputs/outputs unchanged; no design execution)
+
+## REVIEWER_THIRD_PARTY_ONLY_PRODUCTION_PROPOSAL_OWNER_UNAPPROVED_2026_10_18
+
+**Latest Owner request:** "重新修改方案，要求不使用我们自己的技术，而使用别人的技术，将别人的技术进行最小改动并拼接起来。重新遍历，重新思考。" This **explicitly excludes G2BR3, own content schema/HTML/PDF renderer, Playwright/pdf-lib as the main magazine production design** (existing Woo/WordPress customer input remains an inherited interface boundary). Reviewer did renewed official-provider source research and filed [third-party-only candidate Make + OpenAI API + Placid](./docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md). Make has maintained Woo/OpenAI and Placid modules; OpenAI handles structured editorial writing and selected reference-image artwork; Placid drag-and-drop dynamic layer templates + **multi-page PDF generation in a single `pages[]` REST call** replaces ALL former custom page renderer/exporter/QA implementations. Canva Pro Autofill (now Pro+ since 2026-09-23) and commercial IMG.LY Photobook remain alternatives; niche projects not chosen as core. **Still one-time page layout authoring, third-party cost, small frontend data persistence/delivery bridge and privacy checks.** Do not claim true no-code completion / end-to-end validation or 72 automatic independent designs. This is **a new REVIEWER PROPOSAL, NOT Owner acceptance**, and does not mutate frozen input/output direction.
+
+**CURRENT PERMISSION:** Research and alternative proposal only; no signups/payment/order transactions, API costs, page design, image gen, Code/Gate execution, Woo app changes or G4D0 activation. Await Owner decision. Existing TEST/Live audit debts retained and PR64 open/unmerged.
 
 ## CURRENT_OWNER_DIRECTION_FROZEN_6X12_PHOTO_TEXT_MAGAZINE_RESEARCH_COMPLETE_NO_DESIGN_2026_10_18 — LATEST
 
