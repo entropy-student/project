@@ -33,7 +33,7 @@
 
 ### 结果解释防误导
 
-`catalog_status=ELIGIBLE`及`queue_status=ALLOW_BOUNDED_FORMAT_PROBE`只代表**搜索URLผ่าน过粗筛、允许下一步受限格式探测**，87条全部`display_* = UNKNOWN`；其中包括短视频/可能竖屏/TikTok等内容，尚未核横屏或License。任何用户可读报告不得说“已拿到87条合格视频”或“14个平台内容都可用”。七层应依次分开：95搜索记录→87去重URL→原作品判重未做→可用格式未证明→实看0→下载及解码0→许可0。
+`catalog_status=ELIGIBLE`及`queue_status=ALLOW_BOUNDED_FORMAT_PROBE`只代表**搜索URL通过粗筛、允许下一步受限格式探测**，87条全部`display_* = UNKNOWN`；其中包括短视频/可能竖屏/TikTok等内容，尚未核横屏或License。任何用户可读报告不得说“已拿到87条合格视频”或“14个平台内容都可用”。七层应依次分开：95搜索记录→87去重URL→原作品判重未做→可用格式未证明→实看0→下载及解码0→许可0。
 
 ## 4. Reviewer裁决、治理和最小下一步
 
