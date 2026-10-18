@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_INFLIGHT_DELIVERY_PRIORITY_FIX_20261018 -->
+## 2026-10-18｜Owner确认视觉返修已在途，Reviewer撤销错误的中途Gate抢占
+
+本次Owner说明：前一条素材搜索下载“只读流程审计”提示词**并未发给Codex**，当时原经Owner批准的视觉返修**仍正在执行**。Agent读到Reviewer提前写入GitHub main的“流程审计为唯一Gate，视觉返修DISPATCH_HOLD”后被迫在PR/ZIP交付前停止；期间本机隔离目录里已产出概念图、Pexels素材、两次59.93秒渲染/QA（均为Agent单方汇报，正式Review待证据）。Reviewer承认混淆“提示词尚未下发”与“原已授权任务尚未启动”导致执行权限碰撞。处理：恢复原视觉Gate当前阶段为`IN_FLIGHT_DELIVERY_ONLY`，允许提交原工作结果的脱敏PR和ZIP、转交可审阅真实MP4，不追加第三次渲染或额外媒体操作；已建立的只读媒体流程审计Gate保持文件但标为`DEFERRED_NOT_DISPATCHED`，不打断本轮交付。Owner要求当前结果返回后按全项目正式素材要求独立Review，**流程`RETURN_PROCESS_COMPLIANCE`结论预锁，和画面/技术结论分开**。原版权与发布HOLD不动。这一修复只校正项目执行顺序和历史事实，不新创大范围付费、发布、媒体生产授权。
+
+
 <!-- CWS_MEDIA_SEARCH_PROCESS_RETURN_20261018 -->
 ## 2026-10-18｜Owner将CW0005下一轮锁定为素材搜索下载流程合规RETURN
 
