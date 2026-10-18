@@ -11,7 +11,7 @@
 - 执行时间：2026-10-18 03:56–04:03 UTC；Windows 11 家庭版，目标目录为 %USERPROFILE%/Documents/ChatGPT/Velobase-Harness-e88e259。
 - 本地源码 HEAD：e88e259b974f883913f68ac74a9b8377765d005d，与 Gate SOURCE_SHA 一致；git status --short 为空。
 - Docker Engine 29.7.2；Compose 标签 5.4.0。saasvh-e88e259 现有 web、postgres、redis 三个容器均 running。
-- Web 容器使用 tag saasvh-e88e259-web；容器实际 Image ID 与该 tag 当前 Image ID 相同：sha256:9ab2468decb483e…；Compose image 标签记录为 sha256:88bb7e47c5fe9442…，与实际 Image ID 不同。此标签差异是本轮只读发现，未更改；需 Reviewer 判断是否为陈旧元数据。
+- Web 容器使用 tag saasvh-e88e259-web；容器实际 Image ID 与该 tag 当前 Image ID 相同：sha256:9ab2468decb483e8941b18ce99570a1cf51677b3bb4c0c11024c1d6ea79364ef；Compose image 标签记录为 sha256:88bb7e47c5fe94421967b98ade9e594e3faa7ebbddc373b9a23b8ab67597ddc4，与实际 Image ID 不同。此标签差异是本轮只读发现，未更改；需 Reviewer 判断是否为陈旧元数据。
 - 端口映射仍为 127.0.0.1:3003。G2L1 当时浏览器 viewport 无历史可读证据，本轮记 UNKNOWN。
 
 ## 桌面登录与 UI 验收
