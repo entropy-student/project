@@ -78,3 +78,17 @@
 - `EVIDENCE_PROVENANCE`: 本轮直接核验 GitHub 中已归档文档；物理 Windows 容器现状来自 Owner 转交的本机 Codex 报告，后续事实漂移需在同机 read-back，不能把历史退出状态当永久状态。
 - `ACTUAL_HOST_OR_BUSINESS_MUTATIONS`: 0；没有任何容器启动/停止、重试、删卷、支付/退款、账号或外部服务动作。GitHub 仅改本项目文档。
 - `CURRENT_GATE`: NONE；下一步为 Owner 决定三个旧容器是否需要恢复，SaaS 下一测试环境须独立选择/授权。
+
+
+## 2026-10-18 — OWNER_DEFERS_OLD_CONTAINERS_AND_G2I1_CODESPACES_GATE_ISSUED
+
+- `OWNER_LATEST_DIRECTION`: “我手动暂定的貌似是，请你继续下一步，不要因此暂停。”Reviewer 仅按「Owner 认为可能是手动暂停且要求无需恢复即可推进」处理，`OWNER_DEFERRED_RECOVERY`；不认为已证明 Docker 三容器当初的具体退出原因，`CAUSE_UNKNOWN` 不改写，旧三个容器无启动/恢复/删除。
+- `ACCEPTED_BOUNDARY`: Velobase 优先继续，不以 G2R1 旧业务归属未识别阻塞 **独立环境的 SaaS 实验**；若未来另有旧业务恢复请求仍需原项目独立 Gate。
+- `RESEARCH_SOURCE_DIRECT_READBACK`: GitHub 读取固定 `velobase/velobase-harness@e88e259b974f883913f68ac74a9b8377765d005d` 的 `compose.demo.yml`/`Dockerfile.demo`/`services/demo/start.mjs`；Demo 是 Web/Postgres/Redis，Web `SERVICE_MODE=web,worker`，`AUTH_URL=http://localhost:3003` 和 `APP_URL=http://localhost:3003`，源启动器有 localhost 硬校验。这一条件是 Codespaces 远程转发浏览器身份来源的新增兼容性风险，需实测而不能默认放开保护。
+- `EXTERNAL_DOCUMENTATION_READBACK`: 2026-10-18 GitHub Docs 的 Codespaces 个人账户月配额 Free 120 core-hour/15 GB-month、Pro 180 core-hour/20 GB-month，计算/存储分别计费；私有转发端口需要 GitHub 身份认证，默认不匿名公开；支持 Docker-in-Docker 但不等于本 Demo 已兼容。用户账户类型、余额、权限、价格暴露和实例规格均 `UNKNOWN`。
+- `DECISION`: **G2I1 Codespaces zero-billing private preview Gate** [已签发](./docs/G2I1_VELOBASE_CODESPACES_PRIVATE_PREVIEW_GATE_20261018.md)。先证实个人账户有零新增收费的免费额度并有足够存储，再限单个隔离 Codespace 和固定源码一次演示；有实际收费可能性立即停在创建动作之前。4vCPU/8GiB 只是资源试验起点，不是最低 RAM 事实。
+- `ACTUAL_CHANGES`: 仅通过 GitHub 为 `saas-system/` 新增 G2I1 Gate，更新唯一 Handoff 与本 append-only Evidence；没有创建 Codespace、构建镜像、启动容器、停止其他项目、改动 Windows、绑定账号、支付/退款或改变 Governance。
+- `VALIDATION`: Gate 文档以及旧容器 Owner 决策将由 GitHub main 独立回读；未获得任何云主机/浏览器运行或费用 0 的真实账号侧证据，`RUNTIME_PASS=NOT_TESTED`。
+- `ROLLBACK`: GitHub 文档可按提交恢复；运行环境没有更改。新云端资源保留/清理操作必须在后续实测和单独授权边界执行。
+- `REVIEWER_RESULT`: `PASS_G2I1_GATE_PREPARATION_ONLY`，`CURRENT_GATE=G2I1_REVIEWER_READY_NOT_EXECUTED`；后续执行结果仍须 Reviewer 独立审核。
+- `REFERENCE_URLS`: [官方 Codespaces 计费](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces)，[官方私有端口转发](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace)，[上游启动器](https://github.com/velobase/velobase-harness/blob/e88e259b974f883913f68ac74a9b8377765d005d/services/demo/start.mjs)。
