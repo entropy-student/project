@@ -4,9 +4,10 @@
 > **FREEZE：8_L1 / 44_L2 / 93_L3；三级Owner暂时FROZEN**  
 > **CHAPTER1：FINAL_SEALED / OWNER_APPROVED**  
 > **CHAPTER2：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
-> **CURRENT_STAGE：CHAPTER3_OFFLINE_WRITER_PACKET_READY / WRITER_NOT_STARTED**  
-> **CURRENT_GATE：CB02-CH3-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018（RELEASED）**  
-> **OWNER_ACTION_REQUIRED：把第③章8文件ZIP与传递话术转给独立Writer；收到其完整正文与核验记录再提交Reviewer。**
+> **CHAPTER3：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
+> **CURRENT_STAGE：CHAPTER4_OFFLINE_WRITER_PACKET_READY / WRITER_NOT_STARTED**  
+> **CURRENT_GATE：CB02-CH4-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018（RELEASED）**  
+> **OWNER_ACTION_REQUIRED：把第④章8文件ZIP与传递话术转给独立Writer；收到其完整正文与核验记录再提交Reviewer。**
 
 ## 项目目标与唯一冻结基线
 
@@ -25,12 +26,14 @@
 | ① 封板证据 | [docs/CHAPTER1_SEAL_EVIDENCE_20261018.md](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md) | 已记录 |
 | ② 海外工作环境 | [docs/CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | **FINAL_SEALED** |
 | ② R2→Owner授权直修证据 | [docs/CHAPTER2_SEAL_EVIDENCE_20261018.md](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md) | 已记录R2-01至R2-07 |
-| ③ Writer首稿Gate | [docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md) | **RELEASED / WRITER_PENDING** |
-| ③ 完整离线8文件ZIP | [docs/CHAPTER3_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER3_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | 已发布，Writer无需GitHub权限 |
+| ③ 域名与邮箱 | [docs/CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md) | **FINAL_SEALED** |
+| ③ R2→Owner授权直修证据 | [docs/CHAPTER3_SEAL_EVIDENCE_20261018.md](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md) | 已记录B01–B07 |
+| ④ Writer首稿Gate | [docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md) | **RELEASED / WRITER_PENDING** |
+| ④ 完整离线8文件ZIP | [docs/CHAPTER4_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER4_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | 已发布，Writer无需GitHub权限 |
 | 长期独立审核流程 | [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | 生效；每次RETURN强制提供返修ZIP+提示词 |
 | 目录导航/唯一交接 | [README.md](README.md) / 本文件 | 当前状态权威 |
 
-第三板块支付指南已CLOSED/FROZEN，绝不更改其正式目录和9份文件。本轮没有更改第①章正式正文，也没有授权HTML、真实网络/账户、生产DNS或支付操作。
+第三板块支付指南已CLOSED/FROZEN，绝不更改其正式目录和9份文件。本轮没有更改第①②章正式正文，也没有授权HTML、真实网络/账户、生产DNS或支付操作。
 
 ## 第②章Owner授权定向修复与封板记录（2026-10-18）
 
@@ -40,18 +43,25 @@
 4. 对照R2完整原稿，以最小原则定向修复7组阻断，额外消除少数同类绝对化说法，**保留全部7个二级/15个三级冻结题目、知识主体与有用工具**，不推倒重写。
 5. 正式核验矩阵、修订文件字节数、SHA256、适用范围与原始证据见[第②章封板记录](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。**本次封板是知识文章质量审核，不是对所有产品及法律现时适用的保证**。旧第②章Writer Gate和ZIP退出当前main，Git历史保留；不将R2的RETURN稿冒充正式正文，也不虚构Writer R3已经完成。
 
-## 第③章《域名与邮箱》正式启动
+## 第③章《域名与邮箱》审核、Owner授权与正式封板
 
-**唯一一级问题：我需要自己的网站地址和工作邮箱吗？** 按冻结V5为**5个二级/10个三级**。范围是域名及注册商选择和账户管理、DNS解析、HTTPS证书、工作邮箱/自动邮件/SPF-DKIM-DMARC；不假定平台卖家全部要买域名与邮箱，不把邮件认证当成必然送达保证。服务器实际部署④、安全治理⑤、客户访问/CDN⑥、备份⑦、成本升级⑧及正式支付税务③其他业务板块均只做必要交叉引用。
+1. 独立Writer R1完整稿由Reviewer审核为 `RETURN_FACTUAL_ACCURACY_AND_IMPLEMENTATION`，12组阻断意见已给返修ZIP和提示词；Writer按原结构回交R2完整稿85,219字节／812行及29,733字节核验记录。
+2. Reviewer R2独立审核结论 `RETURN_R2_FACTUAL_RESIDUALS_AND_SOURCE_MISMATCH`，仅剩B01–B07：ICANN费率已生效、Amazon品牌/Stripe普通商户引用错位、域名赎回金额、RFC5737占位IP、Gmail/Yahoo群发与RFC8058退订、虚构反垃圾阈值、预算算式与来源自检。
+3. **Owner新明确指令（2026-10-18）：**“这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中。记得记录相关文档。完成之后开启下一个1级问题的部分。” 本次是**第③章的限定直修授权**，不能自动推广到后续章节。
+4. Reviewer以Writer R2完整原稿为基线，仅对B01–B07和直接相关技术说法定向修订，完整保留**5个二级/10个三级**冻结原题、编号、层级与顺序，并增加官方引用、示范IP警告和预算核验。
+5. **正式结果：** `CHAPTER3_FINAL_SEALED`；正式正文 [docs/CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md)，修订矩阵、原稿指纹与Owner授权见 [docs/CHAPTER3_SEAL_EVIDENCE_20261018.md](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。本次仅封板教学正文，不声称所有报价、账号资格、真实网站/邮件系统已经验证。**不存在独立Writer R3。**
+6. 已完成的第三章旧Gate和ZIP退出当前main目录，普通Git历史保留，不将旧R2 RETURN稿与正式正文混放。第①②章正式正文及已冻结第三业务板块不变。
 
-**Writer：** 无项目仓库权限，使用[8文件离线包](docs/CHAPTER3_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)和公开官方资料。自由决定正文篇幅、案例、表格与叙述方式，必须原题同序且事实可靠。交完整正文Markdown、核验记录Markdown、两者ZIP，然后`STOP_AT_REVIEWER`，不写第四章及HTML、不自称正式PASS。
+## 第④章《网站与程序运行》正式启动
 
-**Reviewer：** 结构逐字比对，独立审广度、深度、真实性、可操作性、读者可读性及来源条件；若RETURN必须同轮给Owner完整返修ZIP和直接可复制传递词；Reviewer PASS_CANDIDATE之后Owner决定是否正式封板。
+**唯一冻结一级问题：网站、工具和自动化程序应该放在哪里运行？** 本章**6个二级/13个三级**，完整原题见V5框架及当前 [Writer Gate](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)。研究托管平台和自建服务器、地区与配置、首次部署和验证、后台程序、数据库、文件存储；不得把Docker/VPS/数据库视为所有商家的必选项。
 
-**Owner：** 只需转交独立Writer包、回传其交付，以及决定最终封板。
+**独立Writer：** 无仓库权限，从[8文件完整离线ZIP](docs/CHAPTER4_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)出发独立写完整正文、核验记录及交付ZIP。篇幅、案例、技术工具与图表均自主决定，冻结问题不可改；完成后`STOP_AT_REVIEWER`，不写第五章或HTML。
+
+**Reviewer：** 收稿后独立审结构、广度、深度、事实适用性、实践方法和来源。若需返修，**同轮必须提供完整返修ZIP+可直接转交提示词**；未经Owner同意不擅自封板。Owner负责转交和最终验收。
 
 ## 未来归档和下一步
 
-对齐第三板块“一份冻结框架＋逐章正式正文＋唯一交接”的简洁架构。正在执行的Gate和离线ZIP只在本轮有效，使用完成后清出main目录、由Git历史留痕；正式正文和必要封板证据保留。第④–⑧章暂未开始正文、HTML未启动。
+对齐第三板块“一份冻结框架＋逐章正式正文＋唯一交接”的简洁架构。正在执行的Gate和离线ZIP只在本轮有效，使用完成后清出main目录、由Git历史留痕；正式正文和必要封板证据保留。第④章Writer首稿Gate已发布但尚无正文，第⑤–⑧章未开始正文，HTML未启动。
 
-**NEXT_STEP：Owner转交第③章ZIP→Writer独立交全稿+事实记录+ZIP→Reviewer独立审稿/返修→Owner决定封板。**
+**NEXT_STEP：Owner转交第④章ZIP→Writer独立交全稿+事实记录+ZIP→Reviewer独立审稿/返修→Owner决定是否封板④。**
