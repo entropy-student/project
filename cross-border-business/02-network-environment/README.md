@@ -2,7 +2,7 @@
 
 > **FRAMEWORK：8一级/44二级/93三级（Owner冻结；三级暂时冻结）**  
 > **CHAPTERS ①②③④⑤：FINAL_SEALED / OWNER_APPROVED**  
-> **CURRENT：第⑥章《客户访问》独立Writer Gate已发布，尚未收到候选正文**  
+> **CURRENT：第⑥章《客户访问》Writer R1全稿已交 / 结构5/10 PASS / 独立Review RETURN / R2完整返修包已交Owner**  
 > **HTML：NOT_STARTED**
 
 **唯一核心问题：如何搭建靠谱的跨境经营环境？**
@@ -22,12 +22,13 @@
 - [第四章Owner授权修订及封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)
 - **[第五章正式封板正文《安全防护》](docs/CHAPTER5_FINAL_SEALED.md)**
 - [第五章Owner授权修订及封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261018.md)
+- **[第⑥章Writer R1独立Reviewer审核（当前RETURN）](docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261018.md)**：全部5/10冻结题原文PASS；B01—B10技术、安全与来源问题待R2定向修复。
 - **[第六章独立Writer首稿Gate](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261018.md)**
 - **[第六章完整8文件离线Writer ZIP](docs/CHAPTER6_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)**
 - [长期Writer→Reviewer→Owner流程（RETURN必须同时提供返修ZIP和传递提示词）](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)
 - [唯一交接](REVIEWER_HANDOFF.md)
 
-**第⑥章当前唯一任务：** 独立Writer依据完整离线ZIP撰写5个二级/10个三级问题对应的完整中文正文，另交事实核验记录及ZIP；Writer没有本项目GitHub访问权限，不自封板、不启动第七章或HTML。
+**第⑥章当前唯一任务：** Owner将本轮R2完整返修ZIP及独立提示词转交Writer；Writer基于已提交的560行完整R1正文，针对B01—B10最小修订，保留冻结的5个二级/10个三级原题并交整章R2正文、事实核验记录及ZIP。**第⑥章尚未封板**，不可启动第⑦章或HTML，Writer无GitHub权限。
 
 第三板块《现代商业支付系统》保持CLOSED/FROZEN，未改动。①②③④⑤章正文内容封板不代表真实账号、跨境网络部署或全部法律适用已经实测。
 
