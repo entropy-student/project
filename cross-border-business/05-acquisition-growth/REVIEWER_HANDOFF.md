@@ -4,12 +4,20 @@
 > **CHAPTER1：《我的客户在哪里？》FINAL_SEALED（4二级/8三级）**  
 > **CHAPTER2：《我该怎么找到客户？》FINAL_SEALED（9二级/22三级，2.2直接成节）**  
 > **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
-> **CHAPTER4：《找客户到底划不划算？》WRITER_R1_DELIVERED / STRUCTURE_PASS_6_12 / REVIEW_RETURN / R2_FULL_REPAIR_PACKET_READY / NOT_SEALED**  
+> **CHAPTER4：《找客户到底划不划算？》WRITER_R2_DELIVERED / STRUCTURE_PASS_6_12 / REVIEW_RETURN / R3_MINIMAL_PACKET_READY / NOT_SEALED**  
 > **CHAPTER5–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH4-WRITER-R2-DIRECTED-REPAIR-20261019**  
-> **OWNER_ACTION_REQUIRED：转交第四章Writer R2完整返修ZIP与话术，回收R2全章正文及事实核验ZIP供Reviewer复核。**
+> **CURRENT_GATE：CB05-CH4-WRITER-R3-MINIMAL-REPAIR-20261019**  
+> **OWNER_ACTION_REQUIRED：转交第四章Writer R3完整最小返修ZIP与话术，回收R3完整正文及事实核验ZIP供Reviewer复核。**
 
-## 当前最新：第四章Writer R1独立审核RETURN（2026-10-19）
+## 当前最新：第四章Writer R2独立Reviewer审核RETURN与R3最小返修（2026-10-19）
+
+- **[第四章R2独立Review（当前RETURN）](docs/CHAPTER4_WRITER_R2_REVIEW_RETURN_20261019.md)**：全部正式6个二级、12个三级原文逐字、同层级同序PASS；R1的8组阻断大部分已经实质修复。剩余**B01–B03共3项必修**：Visa VAMP 0.9–1%指标/适用范围错误、$100标价的折扣与收入确认口径误写、广告CPA阶段性差额冒称全部营销成本后最终利润；另N01–N03小修涉及硬时间线、LTV公式、月结算时点。**CHAPTER4_NOT_SEALED**。
+- Writer R2 ZIP `第五部分_第四章_Writer_R2完整交付.zip`，**39,524字节**，SHA256 `5dc88259e05ab87e2f142d8a374ecc849b744038914aeba7989931473366434a`，CRC正常。R2全文**47,646字节/467行**，核验**36,789字节/251行**。原来R1退稿为历史审查，不能称Writer R2尚未提交。
+- **本轮交Owner完整R3最小返修ZIP** `第五部分_第四章_R2独立审核与R3最小返修包_20261019.zip`，**51,185字节**，SHA256 `b2198d8d3f607e424dc93ee4aed110036e337d748aa6feb201bcd0bbb6a6bf62`，`testzip()=None`，7份完整文件，包含Writer R2**两份完整未删减稿**、Reviewer复核详细报告、R3定向指令、官网材料、可复制提示词与SHA256清单。ZIP二进制只在本轮对话提供Owner，不声称上传GitHub。
+- **唯一下一步**：Owner将R3包及话术转给无GitHub权限Writer→Writer以完整R2为基线仅修B01–B03及N01–N03，交R3完整正文与核验ZIP，`STOP_AT_REVIEWER`→Reviewer复审→Owner决定是否封板。
+- 第①②③章正式封板、全框架核心1/一级6/二级35/三级78未变；第⑤章仍未启动。下文R1 Review与旧Gate仅为历史证据。
+
+## 历史：第四章Writer R1独立审核RETURN（2026-10-19）
 
 - **[第四章独立Review R1报告（RETURN）](docs/CHAPTER4_WRITER_R1_REVIEW_RETURN_20261019.md)**，冻结**6二级/12三级全部逐字同序同层级PASS**，但单位经济重复计费、无对照组因果归因、支付平台规则误用、归因来源、LTV模型口径与统一止损阈值造成**B01–B08八项必修、N01–N03三项小修**，**CHAPTER4_NOT_SEALED**。
 - Owner原始Writer ZIP `第五部分_第四章_独立Writer交付.zip`，**32,662字节**，SHA256 `309ce4295e3be051ca7233abb2327d47b13e96ba0292661282f698f54eb29df4`，ZIP完整；R1正文**42,221字节/451行**，SHA256 `02544d1f97806d9458269da462c48d032e1d8b925ec9c8afec8ddc6d942f16ed`；核验**25,825字节/226行**，SHA256 `abf0b85ebb8de3deef10f79fa0f6e28c78412776c3ae3d4ea2c6c555c0447643`。
@@ -55,4 +63,4 @@
 - 不访问真实客户、广告/支付账号、服务器/网站生产数据，不写产品实现代码或HTML。
 - Git历史保留R1/R2审核状态；新Reviewer必须以当前唯一交接、Owner最新封板证据和正式正文为准，不让旧`RETURN`覆盖已封板知识。
 
-**NEXT_STEP：** Owner转发第四章R2完整返修ZIP和话术→Writer基于R1全文定向修B01–B08及N01–N03，回交完整R2正文+核验ZIP→Reviewer独立复核→Owner决定是否封板。
+**NEXT_STEP：** Owner转发第四章R3最小返修ZIP和话术→Writer以R2全稿为基线定向修B01–B03及N01–N03，交R3完整正文+核验ZIP→Reviewer独立复核→Owner决定是否封板。
