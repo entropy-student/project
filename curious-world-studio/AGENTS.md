@@ -1,21 +1,21 @@
 <!-- CWS_CURRENT_EXECUTION_ENTRY_SINGLE_AUTHORITY_20261018 -->
 # CWS 当前唯一执行入口｜2026-10-18
 
-**CURRENT_GATE**: `CWS-CW0005-MEDIA-PROVENANCE-BOUNDED-MULTISOURCE-VALIDATION-20261018`  
-**STATUS**: `OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / SINGLE_COMBINED_GATE`  
-**AUTHORITATIVE_GATE**: [历史来源追溯＋有界多来源真实验证](docs/CWS_CW0005_MEDIA_PROVENANCE_AND_BOUNDED_MULTISOURCE_VALIDATION_GATE_2026-10-18.md)。执行者**只读该Gate与REVIEWER_TO_EXECUTOR_RELAY启动**，之后只读明确引用的特定文档/源码。前面PR#153、PR#155、旧流程只读Gate、视觉返修Gate均**历史或未派发**，不得再自动启动，避免再次中途抢占。若GitHub source/运行状态已实质漂移，精确RETURN Reviewer，不擅自重建历史。
+**CURRENT_GATE**: `NONE / REVIEWER_STOP_AFTER_PR156_PARTIAL_SEARCH`  
+**STATUS**: `PR156_EVIDENCE_MERGED / NEW_EXECUTOR_GATE_NOT_AUTHORIZED`
 
-**本轮允许**：本机旧PR#155取材/下载证据小范围只读追溯 → 有界S01多源候选实搜（既有SearXNG/4get/可用OpenMontage）→ 候选真实预览/跨平台去重/逐层状态记录 → 仅存在优质且有合法免费获取权的新原始候选时最多**一条≤80MB**下载/解码/sha核验 → 脱敏新隔离PR停Reviewer。**不需要按每个子步骤暂停求批**，但缺权限/源站报错/资源不足要按Gate停线。
+**当前结果**：Owner上传的[PR#156](https://github.com/entropy-student/project/pull/156)真实ZIP经独立Reviewer核全部34条内部SHA及GitHub九份blob、95条原始搜索记录→87个去重页面URL；只有一组语义发出查询，SearXNG上游部分失败，第二组因内存小于1664MiB停线；4候选没有有效格式验证/实际动作视频画面/合法复用许可；下载0条正确。**正式`PARTIAL_SEARCH`，不是媒体流程PASS；历史PR#155`RETURN_PROCESS_COMPLIANCE`仍然有效。** 原始[PR156 Reviewer报告](docs/reviews/CW0005_PR156_INDEPENDENT_MEDIA_PROCESS_REVIEW_PARTIAL_2026-10-18.md)及[本轮执行Gate（已执行，禁止重跑）](docs/CWS_CW0005_MEDIA_PROVENANCE_AND_BOUNDED_MULTISOURCE_VALIDATION_GATE_2026-10-18.md)。
 
-**本轮禁止**：再渲染完整MP4、再生AI静态图、改旧两条59.93秒视频、改V5.6.2冻结模板、重写R2旁白、修改支付/代理/VPN/其他项目Docker、付费、公开发布、合并任何PR。
+**证据归档**：PR#156仅九份可验证的脱敏报告，已squash merge为`890d52b1c5b767bffa6677eeffafe8be96de5cbb`，合并只表示正式保存`PARTIAL_SEARCH`执行事实，**不等于授权素材再下载/出版或视觉Story-Fit PASS**；PR#155仍Open不合并。
 
-**独立已受理事实**：[PR#155 Reviewer正式报告](docs/reviews/CW0005_PR155_MEDIA_PROCESS_AND_VISUAL_INDEPENDENT_REVIEW_RETURN_2026-10-18.md)：旧59.93秒音画技术`PASS`，旧素材流程`RETURN_PROCESS_COMPLIANCE`，画面有所改善但Owner尚未确认Story-Fit，音频人工听辨未完成，`RIGHTS_PARTIAL/NO_PUBLISH/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED`依然有效。新流程即使通过，也**不能追溯把PR#155历史搜索伪装成合规PASS**。
+**当前禁止**：无新Gate时不再执行旧搜索、重复启动Docker、降低1664MiB内存门槛、绕过`NON_PUBLIC_MEDIA_ADDRESS`、生图/渲染新MP4、修改冻结V5.6.2、改别的项目网络/Docker、付费、公开发布。旧两条59.93秒作品、三张AI图、五条已用历史实拍都保留且各自沿用原指纹、项目级视频源禁复用。
 
-**项目级生图最高执行规则**：[AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)：已有图直接复用→兼容编辑→新生成，最多双并发、官方`output_hint→local_copy→hash/视觉QA`；只有另行授权的生图Gate才触发，此轮生图**禁止**。
+**NEXT_STEP（建议，尚未派发）**：由Reviewer先界定一轮小型**纯只读**Owner Windows诊断：原始四个`ValueError`的精确错误code与DNS地址类别/代理Fake-IP；正常CWS源码导入路径和临时harness来源；Docker Desktop/Compose各自占用及本次资源余量；现有可免Docker复用的OpenMontage候选。**不得白名单绕过私网保护或再次盲重试**。下一轮新Gate需Review后单独有效授权。
 
-**历史保留策略**：过去多次“CURRENT_GATE/最新唯一任务”提示在此入口整理中从AGENTS移出，事实仍保留于[Decision Log](docs/DECISION_LOG.md)、[当前Reviewer报告](docs/reviews/CW0005_PR155_MEDIA_PROCESS_AND_VISUAL_INDEPENDENT_REVIEW_RETURN_2026-10-18.md)与Git提交历史。**不得用旧历史段落覆盖这里的新Gate。**
+**固定限制**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`。本文件下方稳定功能说明中的历史任务提法均不生成新执行权；Executor未来只从更新后的`CURRENT_GATE`和`REVIEWER_TO_EXECUTOR_RELAY`启动。
 
----
+**项目级图片准则**：[AI静态图优先复用/快速保存/最多2并发/QA指南](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)；本次不启动生图。
+
 
 # Curious World Studio｜Agent / Codex 唯一入口
 
