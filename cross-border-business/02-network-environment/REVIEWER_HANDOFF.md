@@ -2,8 +2,8 @@
 
 > **PROJECT_STATUS：ACTIVE_WRITING**（2026-10-18）  
 > **FRAMEWORK：8_L1 / 44_L2 / 93_L3 — OWNER_PASS_FROZEN（L3_PROVISIONAL）**  
-> **CURRENT_STAGE：CHAPTER1_WRITER_CANDIDATE_REVIEW_PENDING**｜**CURRENT_GATE：NONE**｜**HTML：NOT_STARTED**  
-> **OWNER_ACTION_REQUIRED：审阅第一章Writer候选 / Reviewer返修结论**
+> **CURRENT_STAGE：CHAPTER1_OFFLINE_WRITER_PACKET_READY**｜**CURRENT_GATE：NONE**｜**HTML：NOT_STARTED**  
+> **OWNER_ACTION_REQUIRED：将离线8文件ZIP交给独立Writer，待其提交两份Markdown再由Reviewer验收**
 
 ## 项目定位与唯一目标
 
@@ -25,7 +25,9 @@
 | 作用 | 路径及状态 |
 |---|---|
 | 完整冻结框架 | [docs/FROZEN_FRAMEWORK_V5_20261018.md](docs/FROZEN_FRAMEWORK_V5_20261018.md) — OWNER FROZEN 8/44/93 |
-| 第一章候选正文 | [docs/CHAPTER1_WRITER_CANDIDATE_V1_20261018.md](docs/CHAPTER1_WRITER_CANDIDATE_V1_20261018.md) — WRITER_CANDIDATE_REVIEW_PENDING，非最终 |
+| 第一章离线Writer Gate | [docs/CHAPTER1_INDEPENDENT_WRITER_GATE_20261018.md](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_20261018.md) — RELEASED，Writer无仓库权限 |
+| 第一章完整离线ZIP工作包 | [docs/CHAPTER1_WRITER_OFFLINE_PACKAGE_20261018.zip](docs/CHAPTER1_WRITER_OFFLINE_PACKAGE_20261018.zip) — 8文件完整输入，可供Owner下载并交给Writer |
+| 第一章候选正文 | **NOT_RECEIVED / NOT_STARTED**；Writer交回两份Markdown+ZIP后才进入Reviewer审查 |
 | 唯一交接 | **本文件** — 当前状态与Writer/Reviewer/Owner流程 |
 | README | [README.md](README.md) — 父项目导航入口 |
 
@@ -46,6 +48,6 @@
 
 ## 当前执行与下一步
 
-- **CURRENT_ACCEPTED_STATE：** 8/44/93已按Owner暂时PASS并冻结，完整规范入库；准备第一章完整Writer候选，第一章尚未封板，其余章节尚未启动。
-- **NEXT_STEP：** 对第一章候选做独立Reviewer审核，提出具体RETURN/PASS_CANDIDATE，必要时在候选文件定向修改，不改变冻结题目；Owner批准后封第一章，再推进第二章。
+- **CURRENT_ACCEPTED_STATE：** 8/44/93已按Owner暂时PASS并冻结；第一章离线Writer Gate和8文件工作包已准备，**Reviewer尚未撰写正文、Writer尚未交稿**；第一章尚未封板，其余章节尚未启动。
+- **NEXT_STEP：** Owner下载第一章离线ZIP并转交独立Writer；Writer无需仓库权限，只交完整正文、核验记录及ZIP并STOP_AT_REVIEWER；随后Reviewer核验、提出RETURN/PASS_CANDIDATE，Owner确认后才能封第一章。
 - **不得执行：** 本轮不改支付项目与父项目其他板块；不做真实服务注册、网络配置、系统部署或资金操作；不自动生成HTML。

@@ -1,7 +1,7 @@
 # 02｜网络环境搭建
 
 > **FRAMEWORK：8 / 44 / 93（Owner PASS/FROZEN；三级暂时冻结）**  
-> **CURRENT_STAGE：CHAPTER1_WRITER_CANDIDATE_REVIEW_PENDING**｜**HTML：NOT_STARTED**
+> **CURRENT_STAGE：CHAPTER1_OFFLINE_WRITER_PACKET_READY**｜**HTML：NOT_STARTED**
 
 **唯一核心问题：如何搭建靠谱的跨境经营环境？**
 
@@ -10,7 +10,8 @@
 ## 主要文件（参考支付板块“一框架、逐章正文、唯一交接”方式）
 
 - **[完整冻结框架（8/44/93）](docs/FROZEN_FRAMEWORK_V5_20261018.md)**：唯一正式目录、原题、知识覆盖与写作标准。
-- **[第一章 Writer 候选正文](docs/CHAPTER1_WRITER_CANDIDATE_V1_20261018.md)**：第一章五个二级、十个三级的正式写作候选，仍需Reviewer审核。
+- **[第一章独立Writer离线Gate](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_20261018.md)**：Writer任务、全章验收标准与分工。
+- **[第一章8文件离线ZIP工作包](docs/CHAPTER1_WRITER_OFFLINE_PACKAGE_20261018.zip)**：供Owner下载交给没有仓库访问权限的Writer；目前尚未收到Writer正文。
 - **[唯一交接](REVIEWER_HANDOFF.md)**：当前状态、冻结权限和各章进度。
 
 **其余七章均未开始正文；当前无已封板的章节正文。** 旧框架文件及旧评审稿仅Git历史可追溯，不并列作为有效交接。第三板块支付项目持续CLOSED/FROZEN，未修改。
