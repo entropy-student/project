@@ -1,5 +1,9 @@
 # CWS｜CW0005素材搜索与下载流程合规审计Gate（2026-10-18）
 
+<!-- CWS_SUPERSEDED_BY_COMBINED_MEDIA_VALIDATION_20261018 -->
+> **【2026-10-18最新补充：`SUPERSEDED_NOT_DISPATCHED`】** 此只读历史取证Gate此前始终未派发；Owner在PR#155成果独立Review后指示继续推进，Reviewer已将它与有界实际多来源Canary合为[新的当前唯一执行Gate](CWS_CW0005_MEDIA_PROVENANCE_AND_BOUNDED_MULTISOURCE_VALIDATION_GATE_2026-10-18.md)。**不得再单独执行本历史Gate或与新Gate并行**。本文件保留只为记录曾设计过的谨慎取证边界及后来排除的执行冲突；现行任务请读`AGENTS.md`顶部及新Gate。
+
+
 <!-- CWS_AUDIT_GATE_DEFERRED_FOR_INFLIGHT_DELIVERY_20261018 -->
 > **【最新纠偏：`DEFERRED_NOT_DISPATCHED`，不可打断正在交付的视觉返修】** Owner已经澄清“本轮Codex还在执行；本只读流程审计提示词没有下发”。在Owner发出这条消息时，原已获授权的[定向视觉返修Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)正在Owner Windows本机实际运行，并已生成两次59.93秒MP4、图片和素材，只有**PR/ZIP证据交付**尚未完成。Reviewer在执行途中把本文写成当前唯一Gate属于错误的中途切换，不构成对已执行行动的追溯撤销。**因此本审计Gate只保留为以后Owner需要额外本机取证时的备选任务，不能要求当前Codex停止交付或另起流程审计PR。**当前正确顺序：原视觉Gate仅限完成现有结果的PR/ZIP/安全MP4交接（不再第三次渲染/额外搜片/生图）→Reviewer依据Owner已要求的**流程合规预设RETURN**与现有结果进行独立审查→若客观证据确实缺失，才考虑是否下发本Gate的独立只读取证任务。本文下方“唯一新Gate/立即取证”均为误置到执行途中的旧表述，受此条覆盖，未经另行下发不得执行。
 
