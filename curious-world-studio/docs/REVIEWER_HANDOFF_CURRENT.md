@@ -1,7 +1,8 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
 <!-- CWS_CW0005_STORYFIT_ASSET_AUDIT_ACTIVE_20261018 -->
-> **【当前Reviewer→Codex交接：有界只读盘点，未启动】** 当前唯一可执行下一Gate为 [CWS-CW0005已有素材盘点](CWS_CW0005_STORYFIT_ASSET_AUDIT_GATE_2026-10-18.md)，Owner已批准启动视觉Story-Fit的前置验证并澄清Codex有独立仓库读写权；此前工作包和提示词尚未下发，不构成输入。Codex直接读取该Gate，核实Owner本机已有素材，**只在独立分支PR写脱敏证据**，停在Reviewer；Reviewer更新本Handoff，不由Executor自行提升正式状态。`CURRENT_GATE=CWS-CW0005-EXISTING-VISUAL-ASSET-AUDIT-20261018`；`CURRENT_ACCEPTED_STATE=V562_TEMPLATE_TECHNICAL_PASS / R3_RETURN_OWNER_VISUAL_STORYFIT`；`OWNER_ACTION_REQUIRED=NONE`（本Gate）。未授权制片/新下载/素材生图、R4、合并与发布，权利PARTIAL，原HOLD全部保留。
+> **【现行交接2026-10-18】`CURRENT_GATE=CWS-CW0005-EXISTING-VISUAL-ASSET-AUDIT-20261018 [CLOSED_REVIEWER_PASS_SCOPE_ONLY]`。** Codex在[PR #152](https://github.com/entropy-student/project/pull/152)提交了仅文字的S01–S10本机存量盘点、作品去重和Figure缺口证据，独立Reviewer已在[main正式验收](reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_REVIEWER_PASS_2026-10-18.md)；**PR仍未合并**。Reviewer直接查核的是GitHub/论文正文和分类，非本机抽帧或所有本地搜索路径。旧两条R3素材已用不得复用，Figure 1/3a/6本地指定目录无文件的结论仅为Executor报告。 `CURRENT_ACCEPTED_STATE=V562_TEMPLATE_TECHNICAL_PASS + EXISTING_ASSET_AUDIT_PASS_SCOPE_ONLY`，不改变`R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`。 `NEXT_STEP=提议下一独立Gate核对官方论文原图/credit/许可及有界视觉素材补缺`，尚未授权任何新下载、AI生图、试片渲染或R4；`OWNER_ACTION_REQUIRED=新Gate权限另行决定`。此前旧ZIP/提示词未下发，勿重新执行旧Gate。
+
 
 
 <!-- CWS_CONFIRMED_ONLY_SUCCESSOR_INDEX_20261018 -->
