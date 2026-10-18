@@ -1,5 +1,13 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_CW0005_OWNER_MERGED_STORYFIT_GATE_20261018 -->
+## 2026-10-18｜Owner统一授权合并视觉Story-Fit执行Gate（未执行）
+
+Owner明确：“我没问题，一律批准，尽快推进，能合并的gate一律合并。”Reviewer据项目Governance v0.2.7合并原先分开的论文图像查证、短缺实拍定向搜取、视觉编排、30–60秒Mac内测样片与技术QA为**单条**[CWS-CW0005联合Gate](CWS_CW0005_COMBINED_STORYFIT_SOURCE_TO_SAMPLE_GATE_2026-10-18.md)。理由：这些是同一CW0005局部成片、共享原始证据/本机可回滚域，能够以明确条件连续执行，免去对单个小动作反复批准；但原论文明确`All rights reserved`，不能从公开可读推定图像与补充片段已有商用许可。原R3两条视频项目级已用不可复用，旧R3失败亦不重试；优先真实论文Figure1/3a/6、官方movie S1/S2、合法的新实拍，并允许至多两张受审核/标记的静态AI概念图作辅助。素材科研真实性、客观技术与Owner视觉审美仍须分别验收。
+
+**授权终点**：Owner本机合法合规获取/生成一条内部30–60秒连续样片和候选PR，必须停Reviewer/Owner实看；不自动批准付费服务、未知版权的发布、PR合并、4–6分钟全片、第二个题材制片、公开发表、删除或修改冻结V5.6.2。旧库存盘点[Reviewer PASS](reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_REVIEWER_PASS_2026-10-18.md)已被正式接受，新的Gate不重新盘点历史库存，也不宣称⑤/⑭已经PASS。若本Gate顺利，下一轮应考虑**完整4–6分钟＋第二题复用合并验收**，以最少轮数Close，但长片实际行动须在后续有界Gate内执行。
+
+
 <!-- CWS_V562_OWNER_FROZEN_PASS_20261018 -->
 ## 2026-10-18｜Owner批准V5.6.2模板技术PASS并冻结至main
 
