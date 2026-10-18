@@ -1,7 +1,8 @@
 # Curious World Studio｜唯一当前状态（更新至2026-10-18）
 
 <!-- CWS_CW0005_STORYFIT_ASSET_AUDIT_ACTIVE_20261018 -->
-> **【现行仅授权的下一Gate，尚未执行】** Owner已确认开启⑤+⑭视觉Story-Fit的前置验证，并明确Codex拥有本仓库独立读写权限、此前ZIP/提示词均未下发。Reviewer已制定 [CW0005已有素材只读盘点Gate](CWS_CW0005_STORYFIT_ASSET_AUDIT_GATE_2026-10-18.md)：仅本机存量科研图、素材台账、S01–S10视觉用途/去重/权利核对；Codex可在**隔离PR**提交脱敏文字证据，Reviewer另行裁决，当前 `EXECUTOR_NOT_STARTED / REVIEW_PENDING`。**不授权下载、AI生图、正式预览制作、R4、PR合并或公开发布**；V5.6.2冻结PASS及R3视觉RETURN、G1/G2/HOLD/NO_PUBLISH和权利PARTIAL保持原状。旧七轮路径仅规划参考。
+> **【2026-10-18最新Reviewer核验】CW0005已有素材盘点 `PASS_EXISTING_ASSET_AUDIT_ONLY`（仅盘点与缺口分类）。** [Reviewer正式验收](reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_REVIEWER_PASS_2026-10-18.md)已在main；[PR #152](https://github.com/entropy-student/project/pull/152)执行者证据仍未合并，Head `907204c306a55af0951a8ddacdd182d7530ae50b`。S01–S10映射齐全；两条历史R3库存视频因项目级已使用不能再用；Codex报告的本机盘点范围未找到论文Figure 1/3a/6。**Reviewer只独立核验GitHub文档/公开论文，未直接查看本机图片/文件；图像内容、许可、T4/T5实际呈现和视觉Story-Fit仍未通过。** 本Gate已结束，下一轮仅建议先核对原论文图/版权与未使用的真实动作素材，**并未授权新素材下载、AI生图、视觉样片渲染或R4**。V5.6.2冻结不变，`R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`持续。
+
 
 
 <!-- CWS_CONFIRMED_ONLY_SUCCESSOR_INDEX_20261018 -->
