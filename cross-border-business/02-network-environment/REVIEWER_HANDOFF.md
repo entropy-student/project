@@ -69,7 +69,8 @@ Owner要求「目前一二级问题先解冻，要修改。三级问题直接删
 |---|---|
 | [README.md](README.md) | 导航与当前状态 |
 | [docs/FRAMEWORK_L1_RESTRUCTURE_V3_CANDIDATE_20261018.md](docs/FRAMEWORK_L1_RESTRUCTURE_V3_CANDIDATE_20261018.md) | 一级八章候选、合并及边界审查 |
-| [docs/LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md](docs/LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md) | 二级73题待审核草案；不是冻结版，不包含三级问题 |\n| 本 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) | 本板块唯一项目状态 |
+| [docs/LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md](docs/LEVEL2_FRAMEWORK_V3_DRAFT_20261018.md) | 二级73题待审核草案；不是冻结版，不包含三级问题 |
+| 本 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) | 本板块唯一项目状态 |
 
 **已删除当前目录文件：** `docs/FROZEN_FRAMEWORK_L1_L2_V2_20261018.md`、`docs/LEVEL3_DRAFT_V1_20261018.md`。旧二级50题可由[历史提交f936cd9d](https://github.com/entropy-student/project/blob/f936cd9d0c951008b8d25e0d16f64f6ab554d89d/cross-border-business/02-network-environment/docs/FROZEN_FRAMEWORK_L1_L2_V2_20261018.md)只读查询；这不代表恢复冻结。
 
