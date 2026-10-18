@@ -5,7 +5,7 @@
 
 **用户可在本次对话下载的ZIP（不是GitHub main二进制文件）**：`第一部分_第一章_独立Writer离线资料包_V1_20261018.zip`
 
-**SHA256：** `ba7bebb185af1b373808990c640a690d20689991cdfd76d49b42da41706e119a`  
+**SHA256：** `87f15a9ab187c2f3a40bb9a650963fd94790452cda4095cb16bf834e42cb71e8`  
 **包含9个条目**：8份UTF-8 Markdown及一份SHA256SUMS.txt；生成后逐项读取比对、ZIP可无误解压。  
 **冻结源**：[FROZEN_FRAMEWORK_V1_20261018.md](FROZEN_FRAMEWORK_V1_20261018.md)，全文核心1/一级8/二级34/三级83（8.2直接成节）；本章4/9。
 
