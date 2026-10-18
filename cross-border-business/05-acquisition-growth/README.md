@@ -1,6 +1,6 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_WRITER_GATE_RELEASED / CHAPTER5_WRITER_NOT_STARTED**  
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_WRITER_R1_REVIEW_RETURN / R2_FULL_REPAIR_PACKET_READY**  
 > **唯一核心冻结问题：怎么才能持续有客户下单？**
 
 ## 最新正式进度
@@ -12,10 +12,10 @@
 | ②《我该怎么找到客户？》 | 二级9/三级22 | **FINAL_SEALED** | [第二章唯一正式正文](docs/CHAPTER2_FINAL_SEALED.md) |
 | ③《客户来了，怎么让他下单？》 | 二级6/三级14 | **FINAL_SEALED** | [第三章唯一正式正文](docs/CHAPTER3_FINAL_SEALED.md) |
 | ④《找客户到底划不划算？》 | 二级6/三级12 | **FINAL_SEALED** | **[第四章唯一正式正文](docs/CHAPTER4_FINAL_SEALED.md)** |
-| ⑤《怎么让老客户再买、带来新客？》 | 二级5/三级11 | **INDEPENDENT_WRITER_GATE_RELEASED / WRITER_NOT_STARTED** | **[第五章完整首稿Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261019.md)** |
+| ⑤《怎么让老客户再买、带来新客？》 | 二级5/三级11 | **WRITER_R1_DELIVERED / REVIEW_RETURN / NOT_SEALED** | **[第五章最新R1独立审核](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)** |
 | ⑥《有效的获客方法怎么做大？》 | 二级5/三级11 | 仅冻结问题，正文NOT_STARTED | [完整题树](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
 
-**当前正式封板进度4/6章；第五章只是Writer任务发布，不存在Writer首稿或PASS。**
+**当前正式封板进度4/6章；第五章Writer R1已完整交付、独立Review RETURN，尚未封板。**
 
 ## 第四章为何已正式封板
 
@@ -31,7 +31,14 @@
 
 **第一二三章各自正式正文与V2正式题树保持原样，不允许任何后续Writer擅自解冻。**
 
-## 第五章独立Writer完整首稿（当前唯一任务）
+## 第五章Writer R1独立审核（当前最新）
+
+- **[第五章完整R1独立Review：RETURN](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)**。冻结**5二级/11三级原题全部PASS**；正文涵盖不同产品复购、服务沟通、续费增购、评价转介绍与退出。8组实质缺陷：2024 FTC Click-to-Cancel现行状态错误，FTC 2024评价规则禁止范围过宽，Google Maps/Amazon评价奖励平台红线遗漏，营销邮件/服务邮件法律区分混用，自检补货/推荐数字不对应正文、五板块架构被错误更名，未经证据的产品承诺、取消与数据保留要求。另有N01–N03三项措辞/经营口径小修。**不能封板，保留主体定向返修**。
+- **本轮完整R2离线修复ZIP**：`第五部分_第五章_R1独立审核与R2完整返修包_20261019.zip`，**43,329字节**，SHA256 `b9854639f3c5cb4e6f61b6d0ff4d37e0bed1b297ea2e84f42cc9c06a1ffd2caf`，7份文件，ZIP CRC及原文逐字节一致。包含Writer R1**完整384行正文＋173行核验**、Reviewer全文、R2任务/核验资料、提示词/Manifest；ZIP二进制只在Owner对话，不在GitHub。
+- **当前下一步**：Owner将R2包和话术交离线Writer，Writer回完整R2稿/核验/ZIP供Reviewer复核。第①—④章正式封板正文与正式V2冻结框架持续保持不变；第⑥章没有启动。
+- 下文第五章**首稿Gate发布时**的“Writer尚未交稿”已是历史状态，仅供追溯原始任务与资料，不再作为当前停点。
+
+## 第五章独立Writer首稿Gate（历史）
 
 - 章节唯一原标题：**《怎么让老客户再买、带来新客？》**，**5二级/11三级**原题不变。内容涵盖不同商品的续费/补货/非复购价值，买后合法联系，增购与提醒，客户真实评价/介绍、激励披露和尊重取消。
 - **[第五章Writer Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261019.md)**、**[离线工作包Manifest及SHA256](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**已经提交GitHub `main`。
@@ -47,6 +54,6 @@
 - 旧9/45题、102三级和V2批准前候选为历史，正式唯一题树是`docs/FROZEN_FRAMEWORK_V2_20261018.md`。
 - 本轮没有真实营销、客户资料、广告/支付/服务器操作，也没有建站代码或正式HTML更改。
 
-**NEXT_STEP：** Owner转交第五章13文件完整Writer ZIP与话术 → Writer交完整第五章正文及事实核验ZIP → Reviewer独立Review → Owner决定封板。
+**NEXT_STEP：** Owner转交第五章R2完整返修ZIP及话术 → Writer基于R1全文最小修复B01–B08/N01–N03，交R2整章正文/核验ZIP → Reviewer独立复核 → Owner决定是否封板。
 
 [返回五板块总项目库](../README.md)
