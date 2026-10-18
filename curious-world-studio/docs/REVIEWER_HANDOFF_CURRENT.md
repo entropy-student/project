@@ -1,5 +1,9 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_MEDIA_SEARCH_PROCESS_RETURN_20261018 -->
+> **【2026-10-18最新Reviewer→Codex交接：PROCESS RETURN】** Owner提前正式锁定素材搜索下载**流程**`RETURN_PROCESS_COMPLIANCE`，此结果与55秒MP4技术PASS及视觉RETURN完全区分。Reviewer已核Governance全文609行与项目[159/159份文本文件路径/SHA全覆盖](reviews/CWS_FULL_PROJECT_DOCUMENT_COVERAGE_MANIFEST_2026-10-18.md)；有[独立过程差距报告](reviews/CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_COMPLIANCE_RETURN_2026-10-18.md)。**唯一有效新Gate**为[MEDIA素材搜索/下载历史只读取证](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)，`CURRENT_GATE=CWS-CW0005-MEDIA-SEARCH-DOWNLOAD-PROCESS-AUDIT-20261018 / MANDATORY_STOP=RETURN_PROCESS_COMPLIANCE`。前轮PR#153报告只含Pexels一页+三素材选择/下载，缺跨源候选与原MEDIA工具实用日志/或合理跳过原因；未经本机审计不宣称从未运行SearXNG/4get，也不以三种获取渠道全用作为假硬门槛。Codex只核旧run`.local/`日志/索引/源身份/七层计数并在新隔离PR提交脱敏事实和改善合同，停止Reviewer；不调用远程搜片或下载、不生图、不渲染。前一轮尚未下发的[视觉返修Gate](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)标记`DISPATCH_HOLD`，Owner已授权的视觉修复方向保留，但此前“立即执行”历史段落不能覆盖当前新指令。`OWNER_ACTION_REQUIRED=NONE`（本次流程取证）。不改冻结原版V5.6.2、R2脚本及前轮MP4；原`G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH/RIGHTS_PARTIAL`保持。
+
+
 <!-- CWS_IMAGEGEN_MANDATORY_PRIORITY_20261018 -->
 > **【新增必遵守项目级生图原则，2026-10-18】** Owner核验项目管理规范后要求：所有CWS任务的C类静态图片必须将[AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)最新版强制条款与上位Governance §11G作为当前执行规范；在高风险科技视觉上科学准确性优先于“省图”。当前唯一Gate：[PR#153后定向视觉返修](CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)已**在提示词下发前**补充：`EXACT_FRAME/DERIVE_EDIT/REFERENCE/GENERATE`检查，必要时0–3张，多图最多2并发，现成`imagegen-fast-path`的官方`output_hint→SourcePath→local_copy→SHA/尺寸/QA`，不准缓存扫描/base64/单因像素重生；同因2次失效停策略；逐图记录实际调用/重试/并发与成本证明；没有实测Token账单不可报告“最低Token”。PR#153只证明1张已生成，之前是否符合快路径`UNVERIFIED`。**前次Owner批准返修仍有效且未下发Codex**；`CURRENT_GATE`、冻结V5.6.2、视觉RETURN、NO_PUBLISH等原样。Executor从最新Gate中的更新版`REVIEWER_TO_EXECUTOR_RELAY`读取本原则，无需广泛重读历史。
 
