@@ -1,5 +1,9 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_CW0005_STORYFIT_ASSET_AUDIT_ACTIVE_20261018 -->
+> **【当前Reviewer→Codex交接：有界只读盘点，未启动】** 当前唯一可执行下一Gate为 [CWS-CW0005已有素材盘点](CWS_CW0005_STORYFIT_ASSET_AUDIT_GATE_2026-10-18.md)，Owner已批准启动视觉Story-Fit的前置验证并澄清Codex有独立仓库读写权；此前工作包和提示词尚未下发，不构成输入。Codex直接读取该Gate，核实Owner本机已有素材，**只在独立分支PR写脱敏证据**，停在Reviewer；Reviewer更新本Handoff，不由Executor自行提升正式状态。`CURRENT_GATE=CWS-CW0005-EXISTING-VISUAL-ASSET-AUDIT-20261018`；`CURRENT_ACCEPTED_STATE=V562_TEMPLATE_TECHNICAL_PASS / R3_RETURN_OWNER_VISUAL_STORYFIT`；`OWNER_ACTION_REQUIRED=NONE`（本Gate）。未授权制片/新下载/素材生图、R4、合并与发布，权利PARTIAL，原HOLD全部保留。
+
+
 <!-- CWS_CONFIRMED_ONLY_SUCCESSOR_INDEX_20261018 -->
 > **新Reviewer读入升级（2026-10-18）**：直接读取[仅已确认事实的完整接手](CWS_CONFIRMED_STATE_REVIEWER_HANDOFF_2026-10-18.md)以获得不漏项的最终确认事实、源码/证据指纹、R2/R3/素材和权限。旧`PROD_R3...`Gate初始“未执行”字段已明确标为历史，实际R3=55.367秒内部MP4已完成且Owner视觉RETURN。以前整理的**七轮是建议规划而非冻结决议**：不得仅凭该规划开始R1–R7，也不应自动向Owner索取一个固定轮数的执行批复。
 
