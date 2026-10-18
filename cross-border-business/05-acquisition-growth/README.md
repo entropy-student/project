@@ -1,55 +1,42 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_R2_REVIEW_RETURN / R3_MINIMAL_PACKET_READY**  
-> **唯一冻结核心问题：怎么才能持续有客户下单？**
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_WRITER_GATE_RELEASED / CHAPTER3_WRITER_NOT_STARTED**  
+> **唯一核心冻结问题：怎么才能持续有客户下单？**
 
-## 当前正式结果
+## 当前权威与章节进展
 
-| 对象 | 数量 | 当前状态 | 权威文档 |
+| 知识范围 | 冻结问题数 | 当前结果 | 正式文档 |
 |---|---:|---|---|
-| 核心/一级/二级/三级 | **1/6/35/78** | **OWNER_FROZEN**；2.2直接成节 | **[正式冻结完整问题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)** |
-| 第一章《我的客户在哪里？》 | **1一级/4二级/8三级** | **FINAL_SEALED** | **[正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)** |
-| 第一章封板审核 | B01–B04、N01–N03 | **OWNER_AUTHORIZED_DIRECT_CORRECTION / PASS** | [封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md) |
-| 第二章《我该怎么找到客户？》 | **1一级/9二级/22三级** | **WRITER_R2_DELIVERED / REVIEW_RETURN / NOT_SEALED**；2.2无三级 | **[最新R2独立复核](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)** |
-| 第二章Writer离线包 | **10份Markdown** | 原首稿包（历史）；Writer R1已交，已提供完整R2返修包 | [完整性与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) |
-| 当前Reviewer交接 | 1份 | **唯一现行状态及下一步** | [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) |
-| 第三至六章知识正文 | 0 | NOT_STARTED | NONE |
-| HTML与真实营销 | 0 | NOT_AUTHORIZED | NONE |
+| 第五部分整个框架 | 核心1 / 一级6 / 二级35 / 三级78 | **OWNER_FROZEN V2**，其中2.2直接成节无三级 | **[正式冻结完整问题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)** |
+| 第①章《我的客户在哪里？》 | 二级4 / 三级8 | **FINAL_SEALED** | **[第①章唯一正式正文](docs/CHAPTER1_FINAL_SEALED.md)** |
+| 第②章《我该怎么找到客户？》 | 二级9 / 三级22 | **FINAL_SEALED**，2.2直接成节 | **[第②章唯一正式正文](docs/CHAPTER2_FINAL_SEALED.md)** |
+| 第③章《客户来了，怎么让他下单？》 | 二级6 / 三级14 | **WRITER_GATE_RELEASED / WRITER_NOT_STARTED** | **[第③章独立Writer首稿Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)** |
+| 第④章《找客户到底划不划算？》 | 二级6 / 三级12 | 仅框架冻结；正文NOT_STARTED | [全部问题框架](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
+| 第⑤章《怎么让老客户再买、带来新客？》 | 二级5 / 三级11 | 仅框架冻结；正文NOT_STARTED | [全部问题框架](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
+| 第⑥章《有效的获客方法怎么做大？》 | 二级5 / 三级11 | 仅框架冻结；正文NOT_STARTED | [全部问题框架](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
 
-## 第二章Writer R2独立复核（现行状态）
+## 第二章为何正式封板
 
-- **[R2独立Review：RETURN（4项必修、3项顺手）](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)**：冻结原题9/22结构PASS，基础广告数学与多数官网事实已修正。残留Google Ads总预算误解、社区反垃圾保证、客户个人数据共享合法依据、SQL成本与CAC混算，不能封板。
-- **R3最小返修ZIP已在对话交Owner**：包含Writer R2两份完整原稿、复核报告、返修任务、官网链接、转交提示词、SHA256清单。Reviewer承诺只针对具体残留，不推倒重写正确内容。 [唯一当前交接](REVIEWER_HANDOFF.md)。
-- **本轮冻结不动**：问题树1/6/35/78、第一章[正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)、其他四大板块全部原样；第三章未启动。
+第②章Writer R1已有[独立Reviewer RETURN记录](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)；Writer R2完整交付后，[第二轮独立Review](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)确认多数缺陷修好，尚余4组实质问题和3组小修。**2026-10-18 Owner明确授权Reviewer直接完成最后的最小修订、复查、正式冻结和落库**，并开启第③章。
 
-## 第二章Writer R1独立审核（历史）
+最终正文[CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md)仅修复广告平均日预算与总实验预算误解、社区反垃圾与首评引流误导、GDPR合法依据误表述、SQL线索成本与成交CAC混淆，以及开发信、定向权限、搜索词报告和两个小型术语/经营判断问题；保留Writer原有知识广深、完整案例与冻结9/22题。
 
-- **[第二章完整R1 Review：RETURN](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)**，结构9/22逐字PASS、2.2直接成节；正文知识覆盖完整，但存在**营销数值和强制阈值、投放算式、FTC/ICO/ICANN边界、Google/Reddit/平台黑箱引用误用**等B01—B12，正式正文**NOT_SEALED**。
-- 原R1完整正文与核验共两份Markdown。Reviewer已交Owner**R2完整返修工作包**，含原稿全文、完整审核、返修任务与官网依据，ZIP可解压、指纹见[Review报告](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)。Writer无GitHub访问权限，等待Owner转发。
-- 第一章正式封板正文与问题树均无修改；第二章只是Writer R1 RETURN，未授权开始第三章或HTML。
+**[第二章封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)**记录了Owner决定、R1/R2全文指纹、逐项修复、官方来源与正式正文验收。没有独立Writer R3交付；之前R3返修包已是历史，不是下一步。第一章[封板正文](docs/CHAPTER1_FINAL_SEALED.md)及[证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)仍有效、不变。
 
-## 第一章为何已封板
+## 当前唯一任务｜第三章Writer完整首稿
 
-Owner在独立Writer R2经Reviewer发现B01–B04和N01–N03残留后，明确批准由Reviewer**直接最小修复并正式冻结本章**。修改Google/Similarweb来源、欧盟GDPR适用边界、潜客识别误判、社区时效与数量门槛以及Companies House的使用范围，保留原4+8问题与正文主体。实证与指纹见[第一章封板记录](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
+- **[第三章独立Writer Gate](docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：冻结6二级/14三级全部原问句必须逐字、同层级、同顺序；主题是来客后的价值表达、信任、成交疑虑、付款前流失、报价/B2B跟进。区别于第①章“买家在哪”、第②章“怎样获客”。
+- **[第三章完整离线ZIP Manifest](docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)**：11份完整UTF-8 Markdown，含第五部分完整V2冻结框架、第三章全部冻结题与分工、写作合同、事实规范、前两章封板全文（仅可选参考）、Writer可复制提示词和SHA256清单。
+- Owner对话中的可下载ZIP：`第五部分_第三章_客户来了怎么让他下单_独立Writer首稿工作包_V1_20261018.zip`（64,095字节；SHA256 `f452bba5bfe6fd5941d91888dd75d3deb7fa52b2202a842f2d01ce3abba23c12`）；**只在本轮对话交Owner，不声称ZIP二进制上传GitHub**。
+- 独立Writer**不具备也无需GitHub权限**；独立决定篇幅、案例、图表和资料，完成完整正文Markdown + 独立事实核验/逐题记录Markdown + ZIP，并立即`STOP_AT_REVIEWER`，不得自称PASS或写第四章。
+- 独立Reviewer按[第二部分长期流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)审6/14冻结题、广深、实操、可读性、事实与法律边界。若RETURN，同轮交完整原稿/原核验/审核报告/返修指令的**完整ZIP及可直接复制话术**。**仅Owner后续明确批准才能封板第③章**。
 
-**没有独立Writer R3稿**；[Writer R2 RETURN报告](docs/CHAPTER1_WRITER_R2_REVIEW_RETURN_20261018.md)和[R1历史报告](docs/CHAPTER1_WRITER_R1_REVIEW_RETURN_20261018.md)是**修复前历史证据**，其旧`NOT_SEALED`状态不再生效。本次特批不推广到后续章节。
+## 唯一交接及长期边界
 
-## 第二章现在要做什么
+- **[REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)**：第一、二章已封板、第三章当前Gate、历史返修完成链与下一步的现行权威。
+- **历史问题框架**：[最初9/45候选](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[旧102三级](FRAMEWORK_L3_CANDIDATE_20261018.md)与[Owner批准前V2候选](FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)只供版本追溯，不替代正式冻结V2。
+- ①机会挖掘与市场判断、②网络环境搭建、③支付税务经营主体（CLOSED）、④产品搭建的冻结成果**本任务只读不修改**。第五部分正文亦非生产广告、支付、网站源码或业务数据。
 
-**唯一标题：我该怎么找到客户？** 冻结9个二级/22个三级，二级 **2.2「没流量、没预算，先试什么？」直接成节**。主要研究获客渠道选择、低预算起步、主动联系、搜索引流、内容社区、平台内自然曝光、伙伴合作、广告/达人/佣金及首次投放测试。与已封板第一章**发现客户位置/意图/角色**有清晰区分。
+**NEXT_STEP：** Owner转交第三章11文件离线ZIP和提示词给独立Writer → Writer返回第三章全稿/事实核验ZIP → Reviewer独立审核 → Owner决定是否封板。
 
-本章按第二部分的成熟[Writer→Reviewer→Owner流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：Owner转交自包含完整离线ZIP与提示词，Writer无GitHub仓库权限，自由决定篇幅、案例、图表和品牌比较，并提交完整中文正文Markdown+事实核验自检Markdown+ZIP，`STOP_AT_REVIEWER`。Reviewer核实原题完整性、广深、实操/证据和跨国风险；如RETURN同轮交**完整返修ZIP和可复制的提示词**。Owner最终决定是否封板本章，不自动进第三章。
-
-- 当前离线ZIP文件名：`第五部分_第二章_我该怎么找到客户_独立Writer首稿工作包_V1_20261018.zip`
-- ZIP文件SHA256：`e6b4476be6bd2ed1b6b0354fe7c29e204ce54075956f6517f966f1504b363f6e`
-- ZIP含完整1/6/35/78冻结框架、本章9/22原题、五板块边界、事实规则、交付合同、**第一章已封板全文（可选阅读）**、提示词及清单。ZIP在本轮对话提供，**不声称二进制已落GitHub**。
-
-## 历史材料与边界
-
-- [Reviewer综合V2候选](FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)、[旧9/45冻结快照](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[旧102三级](FRAMEWORK_L3_CANDIDATE_20261018.md)、[早期临时解冻Gate](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)：只作历史比较，**正式唯一框架是docs/FROZEN_FRAMEWORK_V2_20261018.md**。
-- 第五板块只讨论获客与增长。①机会验证、②网络环境、③支付税务经营主体、④产品研发/履约技术各有独立冻结成果，**本轮未修改它们**。
-- 本轮所有操作为GitHub Markdown文档和Owner对话离线ZIP，无真实客户数据、广告投放、服务器、账号、财税或线上产品改动。
-
-**NEXT_STEP：** Owner转发本轮R3最小返修ZIP及提示词 → Writer基于R2全文仅修B01–B04及N01–N03并交完整R3正文和核验ZIP → Reviewer复核 → Owner决定是否封板。
-
-[返回跨境业务五板块总库](../README.md)
+[返回跨境业务五板块项目库](../README.md)
