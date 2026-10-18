@@ -103,3 +103,12 @@
 - `ACTUAL_CHANGES`: 仅编辑 GitHub `saas-system/` 下历史 Gate 状态、唯一 Handoff、创建 G2L1 Gate、追加本记录；**未操作 Owner Windows、Docker、任何 VPS/云服务、Provider、账号、用户数据或真实支付**。
 - `REVIEWER_RESULT`: `PASS_G2L1_GATE_PREPARATION_ONLY`，`CURRENT_GATE=G2L1_REVIEWER_READY_NOT_EXECUTED`。需要 Owner Windows 本机 Codex 执行后转交新的 Evidence 才能得出运行 PASS。
 - `ROLLBACK`: 此轮仅 GitHub 文档级写入，Git 提交可审可恢复；无真实业务运行变动。新 Gate 的运行回滚限定于 Velobase 自身既有容器，不能删除数据卷。
+
+## 2026-10-18 — G2L1_OPTIONAL_DOCKER_DESKTOP_NORMAL_START_AUTHORIZED
+
+- `OWNER_INPUT`: Owner reports Docker Desktop may have been manually closed and wants local Codex to start it if necessary.
+- `GATE_SCOPE_CHANGE`: G2L1 now permits one ordinary launch of the already-installed Docker Desktop application when verified closed. After engine readiness, inspect unrelated workloads for automatic restart effects before starting Velobase.
+- `EXCLUSIONS`: No daemon/WSL reset, repair, upgrade, configuration changes, cleanup, other-project container operations, Codespaces, or payment activity. If startup unexpectedly changes unrelated workloads, stop the SaaS sequence without stopping the shared engine.
+- `EXECUTION_STATUS`: DOCUMENTATION_ONLY / NOT_EXECUTED. Docker Desktop state and application health have not been checked from this GitHub Reviewer.
+- `REVIEWER_DECISION`: G2L1 remains the active Gate, owner-local Codex is the execution channel; historic G2/G2R1 cause remains UNKNOWN.
+- `EVIDENCE`: [G2L1 current Gate](./docs/G2L1_LOCAL_EXISTING_DEMO_RESUME_GATE_20261018.md) and [canonical Handoff](./REVIEWER_HANDOFF.md).
