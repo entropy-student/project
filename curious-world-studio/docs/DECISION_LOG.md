@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR156_REVIEWER_PARTIAL_SEARCH_CLOSED_20261018 -->
+## 2026-10-18｜PR#156索引证据归档：确认`PARTIAL_SEARCH`，禁止安全绕过和盲重试
+
+Owner交付真实PR#156及ZIP，Reviewer独立核SHA ZIP及34文件哈希、9份Git文件Git Blob均与相同数据一致。一次S01-A关键词检索得到SearXNG84+4get11、87去重URL；这87条仅是**可进一步探测的网页候选**，并非87段有效视频。SearXNG index query虚标OK但外层命令是`UPSTREAM_PARTIAL`；第二语义因内存685和794MiB低于1664MiB真实止步；四候选探测底层只保留ValueError没有DNS/完整错误字符串，不能真正复现或判断`NON_PUBLIC_MEDIA_ADDRESS`成因。无实际预览/授权/下载，安全停线合理。执行者启动了已装Docker Desktop但结束后只关闭CWS Compose；Desktop仍在运行，不能擅自重启/停止共享Docker。执行者注明本机`media_pipeline.py`差异并在运行时注入main helper，临时harness缺独立可复现证据，必须与标准源码运行PASS区分。**正式`PARTIAL_SEARCH`**。考虑GitHub PR仅9份可验证脱敏执行事实且Reviewer已核，允许并完成[PR#156](https://github.com/entropy-student/project/pull/156)证据性squash merge `890d52b1c5b767bffa6677eeffafe8be96de5cbb`，绝不把merge当流程PASS、也不改变仍Open的PR#155历史流程RETURN。现行`CURRENT_GATE=NONE`，下一轮先做最小只读DNS与代码来源/内存诊断，不重新广泛搜片/下载/生图/渲染，不放开地址安全闸。正式审核：[PR#156独立Review](reviews/CW0005_PR156_INDEPENDENT_MEDIA_PROCESS_REVIEW_PARTIAL_2026-10-18.md)。
+
+
 <!-- CWS_PR155_MEDIA_VALIDATION_NEXT_GATE_OWNER_20261018 -->
 ## 2026-10-18｜Owner推进PR#155后最小流程修正：合并历史取证＋多来源真实Canary
 
