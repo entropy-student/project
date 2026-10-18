@@ -1,6 +1,6 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_GATE_RELEASED / CHAPTER2_WRITER_NOT_STARTED**  
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_R1_REVIEW_RETURN / R2_REPAIR_PACKET_READY**  
 > **唯一冻结核心问题：怎么才能持续有客户下单？**
 
 ## 当前正式结果
@@ -10,11 +10,17 @@
 | 核心/一级/二级/三级 | **1/6/35/78** | **OWNER_FROZEN**；2.2直接成节 | **[正式冻结完整问题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)** |
 | 第一章《我的客户在哪里？》 | **1一级/4二级/8三级** | **FINAL_SEALED** | **[正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)** |
 | 第一章封板审核 | B01–B04、N01–N03 | **OWNER_AUTHORIZED_DIRECT_CORRECTION / PASS** | [封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md) |
-| 第二章《我该怎么找到客户？》 | **1一级/9二级/22三级** | **WRITER_GATE_RELEASED / WRITER_NOT_STARTED**；2.2无三级 | **[独立Writer首稿Gate](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)** |
-| 第二章Writer离线包 | **10份Markdown** | 完整ZIP已在当前对话交Owner，尚无Writer正式交稿 | [完整性与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) |
+| 第二章《我该怎么找到客户？》 | **1一级/9二级/22三级** | **WRITER_R1_DELIVERED / REVIEW_RETURN / NOT_SEALED**；2.2无三级 | **[最新R1审核报告](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)** |
+| 第二章Writer离线包 | **10份Markdown** | 原首稿包（历史）；Writer R1已交，已提供完整R2返修包 | [完整性与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) |
 | 当前Reviewer交接 | 1份 | **唯一现行状态及下一步** | [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) |
 | 第三至六章知识正文 | 0 | NOT_STARTED | NONE |
 | HTML与真实营销 | 0 | NOT_AUTHORIZED | NONE |
+
+## 第二章Writer R1独立审核（当前最新）
+
+- **[第二章完整R1 Review：RETURN](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)**，结构9/22逐字PASS、2.2直接成节；正文知识覆盖完整，但存在**营销数值和强制阈值、投放算式、FTC/ICO/ICANN边界、Google/Reddit/平台黑箱引用误用**等B01—B12，正式正文**NOT_SEALED**。
+- 原R1完整正文与核验共两份Markdown。Reviewer已交Owner**R2完整返修工作包**，含原稿全文、完整审核、返修任务与官网依据，ZIP可解压、指纹见[Review报告](docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)。Writer无GitHub访问权限，等待Owner转发。
+- 第一章正式封板正文与问题树均无修改；第二章只是Writer R1 RETURN，未授权开始第三章或HTML。
 
 ## 第一章为何已封板
 
@@ -38,6 +44,6 @@ Owner在独立Writer R2经Reviewer发现B01–B04和N01–N03残留后，明确�
 - 第五板块只讨论获客与增长。①机会验证、②网络环境、③支付税务经营主体、④产品研发/履约技术各有独立冻结成果，**本轮未修改它们**。
 - 本轮所有操作为GitHub Markdown文档和Owner对话离线ZIP，无真实客户数据、广告投放、服务器、账号、财税或线上产品改动。
 
-**NEXT_STEP：** Owner下载第二章离线包 → 转交独立Writer → 回收第二章全文与核验ZIP → Reviewer独立审 → Owner决定是否封板。
+**NEXT_STEP：** Owner将本轮R2完整返修ZIP及提示词转交Writer → Writer基于R1全文定向修B01–B12并交完整R2正文+核验ZIP → Reviewer复核 → Owner决定是否封板。
 
 [返回跨境业务五板块总库](../README.md)
