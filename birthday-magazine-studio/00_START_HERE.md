@@ -1,23 +1,28 @@
 # Birthday Magazine Studio — START HERE
 
-This file is navigation only. It is **not** a second project truth source.
+This page is **navigation only**, not a competing project truth source. Latest Owner directions outrank former alternatives.
 
 ## Current read order (2026-10-18)
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — current `CURRENT_OWNER_DIRECTION_FROZEN_6X12_PHOTO_TEXT_MAGAZINE_RESEARCH_COMPLETE_NO_DESIGN_2026_10_18`.
-2. [Owner-frozen 6 × 12 photo/text→image/HTML direction](./docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md) — **inputs/outputs only, not 72 approved designs**.
-3. [Deep upstream OSS/SaaS magazine generator reuse and API research](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md) — licensing, code readback, minimal-change ranked options; **not executed**.
-4. [Prior G4D0 design Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) — remains **HOLD / DO NOT EXECUTE** until Owner directs.
-5. [Formal Stripe TEST partial closeout](./docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md) — earlier payment flow audited with pre-Live debts.
-6. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — full supporting history.
+1. [CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md](./docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md) — **latest unified status and Owner decision precedence**, third-party-only generation architecture and what remains unproven.
+2. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — authoritative Reviewer/Architect dashboard, read **first section** (historical appended entries have older "LATEST" titles).
+3. [NEXT_REVIEWER_HANDOFF_PROMPT_2026-10-18.md](./docs/NEXT_REVIEWER_HANDOFF_PROMPT_2026-10-18.md) — copy-ready handoff.
+4. [Owner-frozen photo+text → ~6 styles × 12 page roles](./docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md) — frozen input/output vision **without** approval for page design.
+5. [Third-party-only Make + OpenAI + Placid proposal](./docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md) — **Reviewer recommendation only, NOT Owner-approved**; Canva Autofill / IMG.LY alternatives.
+6. [Older OSS/third-party source survey](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md) — **historical broader candidates; G2BR3-first recommendations are superseded by Owner third-party mandate**.
+7. [Original MVP contract](./docs/MVP_PRODUCT_CONTRACT.md) and [formal Stripe TEST partial closeout](./docs/REVIEWER_DECISION_G3S4M_E3D260_STRIPE_TEST_PHASE_PARTIAL_CLOSEOUT_2026-10-18.md) — accepted product/privacy/commerce constraints; see latest Owner visual overrides.
+8. [Old G4D0 production/design candidate Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) — **HOLD / DO_NOT_EXECUTE**.
+9. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — full historical evidence and governance references.
 
 ## Current snapshot (2026-10-18)
 
-- **Owner FROZEN direction:** inputs = user-uploaded photos + completed form text; desired = approximately **6 styles × 12 page-role visual configurations** producing styled page images or HTML, ultimately 12-page English-first PDF. No particular 12 page layout, exact six prompts, image model/provider, editing architecture or implementation execution authorized.
-- **Deep external RESEARCH desk review COMPLETE:** MIT `html-magazine` is an AI-agent editorial style/layout workflow plus Playwright PDF, NOT a direct API for preserving user portraits; MIT OG Image Studio supports `{{variables}}` photo/text image layers and Puppeteer PNG, not AI/book/page flow; MIT Paged.js supports paginated HTML/PDF; book-creator/photo-layout OSS-like repos often lack an explicit license; Beeroniza custom no-sell, Polotno commercial SDK, Vivliostyle AGPL need different business/licensing treatment. OpenAI/BFL/Ideogram reference image edit APIs exist but photo identity/exact text are NOT proven. Recommended **review existing accepted G2BR3 renderer, reuse minimally**, no end-to-end turnkey product independently verified.
-- **Execution status:** earlier G4D0 remains HOLD. Await Owner's decision after research; no designs/prototypes, 72 page prompts, customer photo API submissions, code changes, Stripe payments or PR64 merge from this study.
-- **Stripe:** G3S4M phase ended PARTIAL with pre-Live gaps (unmatched HKD100 TEST charge, Woo signed duplicate plugin-ack trace); PR64 last checked HEAD `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6` OPEN/UNMERGED. Optional previously approved cloudflared foreground Ctrl+C for offline work.
+- **Owner confirmed:** inputs 12–25 photos + six short-form answers, one chosen style from approximately six, output 12-page US Letter English-first PDF; visual production may use AI art and HTML/image outputs.
+- **Owner latest production restriction:** reuse **mature third-party technology**, minimize modifications and compose existing modules; do not restart production on our **rudimentary G2BR3** custom content/renderer, despite its earlier synthetic technical PDF proof.
+- **Our current best PROPOSAL, not approved:** **Make** (automation) + **OpenAI API** (content and creative image assets) + **Placid** (actual photo/text/template layer rendering and documented multi-template REST PDF). Needs private intake persistence and Woo order bridge, vendor accounts/payment, template art-direction work, 12-page visual QA, provider retention/privacy; no third-party test has been run. Make's native Placid module full multi-page argument support is **UNKNOWN**; REST API supports multi-page.
+- **Already implemented:** WordPress/Woo frontend/free Preview/private workspace and Stripe TEST original refund-entitlement proof; **not implemented:** safe persistent real photo/answers → vendor workflow → high-quality PDF → full customer delivery/retention.
+- **G4D0 still HOLD; no Executor task, templates, 6×12 prompts, third-party account signups, AI image calls, payments or code actions authorized.** PR #64 still OPEN/UNMERGED. G3S4M Stripe TEST is formally PARTIAL (unmatched HKD100 TEST charge and unverified signed duplicate plugin ack); no new financial tests.
+- **Next Reviewer:** verify mature provider fit/documented billing and privacy READ-ONLY, get Owner to select and expressly authorize a small synthetic feasibility Gate if desired.
 
 ## Source-of-truth rule
 
-If any supporting document conflicts with `REVIEWER_HANDOFF.md`, the Handoff wins unless the Owner gives a newer explicit instruction or fresh authoritative evidence requires Reviewer reconciliation.
+If a supporting document conflicts with the newest explicit Owner decision or the current [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md), reconcile rather than treating a historical Gate as active. History remains archived in place; no historical evidence is deleted.
