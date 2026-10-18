@@ -6,9 +6,10 @@
 > **CHAPTER2：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
 > **CHAPTER3：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
 > **CHAPTER4：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
-> **CURRENT_STAGE：CHAPTER5_OFFLINE_WRITER_PACKET_READY / WRITER_NOT_STARTED**  
-> **CURRENT_GATE：CB02-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018（RELEASED）**  
-> **OWNER_ACTION_REQUIRED：把第⑤章8文件ZIP与传递话术转给独立Writer；收到其完整正文与核验记录再提交Reviewer。**
+> **CHAPTER5：FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS**  
+> **CURRENT_STAGE：CHAPTER6_OFFLINE_WRITER_PACKET_READY / WRITER_NOT_STARTED**  
+> **CURRENT_GATE：CB02-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018（RELEASED）**  
+> **OWNER_ACTION_REQUIRED：把第⑥章8文件ZIP与传递话术转给独立Writer；收到其完整正文与核验记录再提交Reviewer。**
 
 ## 项目目标与唯一冻结基线
 
@@ -31,12 +32,14 @@
 | ③ R2→Owner授权直修证据 | [docs/CHAPTER3_SEAL_EVIDENCE_20261018.md](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md) | 已记录B01–B07 |
 | ④ 网站与程序运行 | [docs/CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | **FINAL_SEALED** |
 | ④ R2→Owner授权直修证据 | [docs/CHAPTER4_SEAL_EVIDENCE_20261018.md](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md) | 六组缺陷R2-01–06修正，自检记录 |
-| ⑤ 独立Writer首稿Gate | [docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261018.md) | **RELEASED / WRITER_PENDING** |
-| ⑤ 完整8文件离线ZIP | [docs/CHAPTER5_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER5_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | 已发布，Writer无需GitHub权限 |
+| ⑤ 安全防护 | [docs/CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | **FINAL_SEALED** |
+| ⑤ R2→Owner授权直修证据 | [docs/CHAPTER5_SEAL_EVIDENCE_20261018.md](docs/CHAPTER5_SEAL_EVIDENCE_20261018.md) | 七组缺陷R2-01–07修正、来源及自检 |
+| ⑥ Writer首稿Gate | [docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261018.md) | **RELEASED / WRITER_PENDING** |
+| ⑥ 离线8文件ZIP | [docs/CHAPTER6_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER6_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | 已发布，Writer无需GitHub权限 |
 | 长期独立审核流程 | [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | 生效；每次RETURN强制提供返修ZIP+提示词 |
 | 目录导航/唯一交接 | [README.md](README.md) / 本文件 | 当前状态权威 |
 
-第三板块支付指南已CLOSED/FROZEN，绝不更改其正式目录和9份文件。本轮没有更改第①②③章正式正文，也没有授权HTML、真实网络/账户、生产DNS或支付操作。
+第三板块支付指南已CLOSED/FROZEN，绝不更改其正式目录和9份文件。本轮没有更改第①②③④章正式正文，也没有授权HTML、真实网络/账户、生产DNS或支付操作。
 
 ## 第②章Owner授权定向修复与封板记录（2026-10-18）
 
@@ -64,16 +67,25 @@
 5. **Owner授权正式结果 `CHAPTER4_FINAL_SEALED`**：[正式正文](docs/CHAPTER4_FINAL_SEALED.md)；[修订证据（R2指纹/矩阵/自检）](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)。这属于文稿质量封板，不代表在生产环境真实执行过云、支付、安全操作；未产生Writer R3交付。
 6. 完成的旧④Writer Gate和ZIP退出main当前目录，普通Git历史保留；前①②③章与第三业务板块的正式正文不变。
 
-## 第⑤章《安全防护》正式启动
+## 第⑤章《安全防护》Owner授权直接修订与正式封板
 
-**唯一冻结一级问题：怎样防止账号被盗、网站被攻击或客户资料泄露？** 本章有**6个二级/13个三级**，题干以8/44/93 V5及当前Gate为准。涵盖登录/密码及恢复码、员工/AI/第三方权限、电脑/网站防护、客户资料、云盗用账单和安全事件响应。
+1. 独立Writer R1完整交付后，Reviewer R1给出 `RETURN_R1_SECURITY_AND_COMPLIANCE_ACCURACY` 以及B01–B14修订ZIP和独立Writer提示词。Writer回交R2全稿78,232 UTF-8字节、790行及43,658字节事实核验记录。
+2. Reviewer R2独立核验为 `RETURN_R2_RESIDUAL_SECURITY_AND_COMPLIANCE_ERRORS`，确认大部分R1风险修复，但识别七组残留：PCI SAQ A 2025资格/脚本安全、德国记账凭证保存期及PIPL第57条、防锁死UFW命令与EC2串口条件、AWS配额下调保证、安全组既有连接跟踪和安全事件取证/通知、OWASP现行标准和来源错配、恢复码/Bitwarden/Shopify恢复条件。
+3. **Owner明确于2026-10-18授权**：“这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中。记得记录相关文档。完成之后开启下一个1级问题的部分。” 此为⑤章例外授权定向直修，不代表后章未经审核即可自封板。
+4. Reviewer严格基于Writer R2全稿纠正上述R2-01–07，保留专业知识主体与**6个二级/13个三级**冻结题目逐字同序。新增技术/法规参考[S31]–[S38]并消除原稿未经证实的保障性承诺。正式唯一正文：[CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md)，全套逐项证据、R2指纹、边界：[CHAPTER5_SEAL_EVIDENCE_20261018.md](docs/CHAPTER5_SEAL_EVIDENCE_20261018.md)。
+5. **第五章正式状态：`FINAL_SEALED / OWNER_AUTHORIZED_DIRECT_REPAIR_PASS`**。本轮没有Writer R3交付，不能把Reviewer本人执行的事实更正称作“独立Writer R3已验收”。没有任何真实服务器防火墙、云安全组、账单、生产数据或账户凭据被操作。
+6. ⑤旧Writer Gate及ZIP从main当前目录退出，仅保留Git历史，不与正式正文混放；前三/前四章正式正文、唯一冻结8/44/93框架及第三业务板块支付指南不改动。
 
-**独立Writer：** 无GitHub访问权限，仅凭[8文件完整离线ZIP](docs/CHAPTER5_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)及官方公开资料，自由决定长度、案例、工具、表格与解释方式；完整回答冻结6+13问题，交完整正文、事实核验记录、交付ZIP，完成即`STOP_AT_REVIEWER`，不写第⑥章/HTML。
+## 第⑥章《客户访问》独立Writer首稿已正式启动
 
-**Reviewer：** 对照冻结题目独立审查知识广度、深度、真实规则、实操安全与来源。任何RETURN都必须同时提供**完整返修ZIP和Owner可直接转发提示词**；通过后仍由Owner决定封板。
+**唯一一级问题：怎样让海外客户顺利打开和使用我的网站？** 本章正式冻结**5个二级、10个三级**问题。重点涵盖目标地区真实可达性、网络访问路径、真实用户体验和Core Web Vitals、CDN与缓存加速、源站防护与上线容量验证。
+
+**Writer：** 无本项目GitHub访问权限，使用[第⑥章完整8文件离线ZIP](docs/CHAPTER6_WRITER_OFFLINE_PACKAGE_V1_20261018.zip)及公开官方来源研究，独立组织全文、工具及示例；保留冻结原题5H2/10H3，交完整Markdown正文、事实核验记录及两文件ZIP，完成后`STOP_AT_REVIEWER`，不能自封板/写⑦/制作HTML或进行无授权压测。
+
+**Reviewer：** 需独立核验全稿知识广度、深度、事实、实操安全与一手来源；**每次RETURN同轮必须提供完整返修ZIP和可直接转交提示词**；Owner仍负责最终封板授权。
 
 ## 未来归档和下一步
 
-对齐第三板块“一份冻结框架＋逐章正式正文＋唯一交接”的简洁架构。正在执行的Gate和离线ZIP只在本轮有效，使用完成后清出main目录、由Git历史留痕；正式正文和必要封板证据保留。第⑤章Writer首稿Gate已发布但尚无正文，第⑥–⑧章未开始正文，HTML未启动。
+对齐第三板块“一份冻结框架＋逐章正式正文＋唯一交接”的简洁架构。正在执行的Gate和离线ZIP只在本轮有效，使用完成后清出main目录、由Git历史留痕；正式正文和必要封板证据保留。第⑥章Writer首稿Gate已发布但尚无正文，第⑦–⑧章未开始正文，HTML未启动。
 
-**NEXT_STEP：Owner转交第⑤章ZIP→Writer独立交全稿+核验记录+ZIP→Reviewer独立审核与必要返修→Owner决定是否封板⑤。**
+**NEXT_STEP：Owner转交第⑥章ZIP→Writer独立交全稿+核验记录+ZIP→Reviewer独立审核与必要返修→Owner决定是否封板⑥。**

@@ -14,7 +14,7 @@
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
 | 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①②章已正式封板；第③章Writer Gate发布、首稿待交** |
-| 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架与Writer流程](02-network-environment/README.md) · **8/44/93 FROZEN；第①②③④章正式封板；第⑤章独立Writer工作包已发布** |
+| 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架与Writer流程](02-network-environment/README.md) · **8/44/93 FROZEN；第①②③④⑤章正式封板；第⑥章独立Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [V2正式框架与第一章独立Writer Gate](04-product-building/README.md) · **核心1/一级9/二级48/三级117已FROZEN；4.1章4/10 Writer待交，尚无正文** |
 | 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [已冻结框架与第一章封板、第二章Writer](05-acquisition-growth/README.md) · **1/6/35/78 FROZEN；第一章4/8已正式封板；第二章9/22离线Writer Gate已发布** |
@@ -91,4 +91,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，旧框架、Writer V1及被撤回的Reviewer代写初稿均属历史，本轮独立Writer先完成全文；⑤已正式封板第一章（以`CHAPTER1_FINAL_SEALED.md`为唯一有效正文）；历史Writer R2 RETURN已被Owner授权直修的封板决定取代，第二章9/22已发布离线Writer Gate，尚待Writer交稿。项目路径为 `entropy-student/project/cross-border-business/`，不操作其他源码仓库。
 
-**当前下一步：** ①第①②章正文已封板，第③章独立Writer Gate与离线资料包已发布；待Owner转交并收回第③章Writer完整候选稿；②第①②③④章已封板，进入第⑤章独立Writer首稿；③维持封板；④V2框架正式冻结；4.1章4/10独立Writer首稿Gate已发布，由Owner转交离线包、Writer交稿后再由Reviewer审查；⑤第一章已正式封板并记录证据；Owner转交第二章10文件ZIP和提示词给独立Writer，收回完整正文和核验ZIP后由Reviewer独立审核。
+**当前下一步：** ①第①②章正文已封板，第③章独立Writer Gate与离线资料包已发布；待Owner转交并收回第③章Writer完整候选稿；②第①②③④⑤章已封板，进入第⑥章独立Writer首稿；③维持封板；④V2框架正式冻结；4.1章4/10独立Writer首稿Gate已发布，由Owner转交离线包、Writer交稿后再由Reviewer审查；⑤第一章已正式封板并记录证据；Owner转交第二章10文件ZIP和提示词给独立Writer，收回完整正文和核验ZIP后由Reviewer独立审核。
