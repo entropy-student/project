@@ -4,7 +4,21 @@
 > Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
- > Last reviewed: 2026-10-18 (Owner requests mature third-party-only production architecture; Reviewer proposal Make + OpenAI + Placid filed but NOT approved; frozen inputs/outputs unchanged; no design execution)
+ > Last reviewed: 2026-10-18 (Owner third-party-only production direction latest; Make/OpenAI/Placid proposed only; G4D0 HOLD; Stripe TEST PARTIAL, PR64 unmerged)
+
+## CURRENT_2026_10_18_OWNER_THIRD_PARTY_ONLY_PRODUCTION_AND_NO_DESIGN_GATE — AUTHORITATIVE
+
+**READ THIS FIRST — 2026-10-18 latest Reviewer reconciliation.** The latest Owner instruction **prohibits using our own G2BR3 content/page/HTML/PDF renderer as the primary magazine-production technology**; use **mature third-party products** composed with minimal modifications. The existing WordPress/WooCommerce five-step intake frontend, canonical order and private workspace are retained (not replaced). The previous G2BR3 synthetic 12-page proof stays as historical evidence only. Older Handoff headings marked “LATEST” refer to historical checkpoints; this **first section overrides** contradictory former G2BR3 implementation recommendations and temporary G4 design ideas. **FULL accepted-state and exact chronology:** [CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md](./docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md). **Copy-ready next Reviewer relay:** [NEXT_REVIEWER_HANDOFF_PROMPT_2026-10-18.md](./docs/NEXT_REVIEWER_HANDOFF_PROMPT_2026-10-18.md).
+
+**Owner FROZEN product intention:** existing customer inputs 12–25 pictures and six short stories + identity facts, picks ONE of ~6 styles; output **one English-first 12-page US Letter digital PDF**. 6 styles × 12 page roles are future configuration variants, NOT 72 rendered pages/order and NOT 72 approved templates. Recent Owner intent to use image generation supersedes earlier visual MVP limit (“3 styles; no AI imagery”) **only for current visual direction**. Preserve frozen business/QA/privacy/revision/paid entitlement facts; do not silently declare legacy exact 12-page editorial layout Owner-approved for the new 6×12 variant.
+
+**Reviewer THIRD-PARTY CANDIDATE, NOT Owner-approved stack:** [Make+OpenAI+Placid research proposal](./docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md). Make connects order/workflow; OpenAI text/images generate editorial content and selected creative art; Placid third-party visual layer templates and [multi-page REST PDF generation](https://placid.app/docs/2.0/rest/pdfs) compose original photos/exact text/art without our own PDF renderer. Alternatives Canva Autofill, IMG.LY Photobook commercial SDK; neither selected. **Actual Make Placid Create PDF module's support for complete multi-page `pages[]` is UNKNOWN**; REST is documented, can use Make HTTP module if necessary. Pricing/privacy/permissions/retention/6×12 template authoring/runtime quality UNVERIFIED. No API keys, trials, signups, subscriptions, designs or implementation authorized.
+
+**Current Gate / STOP:** `THIRD_PARTY_ONLY_RESEARCH_RECONCILED; OWNER_PROVIDER_AND_SYNTHETIC_GATE_APPROVAL_PENDING; NO_IMPLEMENTATION; G4D0=HOLD; PR64=OPEN_UNMERGED`. DO NOT ask Executor to use G2BR3 for magazine production; do not launch G4D0, create style prompts/P1–P12 samples, install tooling, alter WordPress/Woo, invoke model vendor with user data, make Stripe transactions/refunds/event replays, or merge PR64. Owner's latest instruction is to **replan with existing third-party technology**, not yet approve the proposed Make/Placid selection.
+
+**Evidence/commerce risk carried forward:** G3S4M Stripe TEST `PARTIAL_WITH_EXCEPTIONS`, not strict PASS: original USD39.99 charge refunded/entitlement denied; unmatched separate HKD100 TEST succeeded charge origin UNKNOWN; Woo plugin exact signed duplicate-event ack/handling UNVERIFIED. Keep two pre-Live read-only provenance / non-financial instrumented duplicate audit obligations; no repeated provider financial write. PR64 head last checked `e3d2608f89afe1da8bfb6b3cb8a8964821ffbeb6`, OPEN/UNMERGED. Owner Windows Docker WP `127.0.0.1:8189` / `magazine.spikersun.com` via optional foreground Cloudflare Tunnel (stopping connector makes public site unavailable). The frontend's full user inputs are largely browser-memory-only, **not securely persisted/production-connected**.
+
+**Next Reviewer action:** read fresh Governance v0.2.7, this Handoff/latest status, MVP contract + Owner visual freeze + proposal + Stripe PARTIAL + PR64; independently compare mature vendors only, report exact gaps/expected cost/development difficulty, ask Owner for explicit selection and a strictly synthetic 1–2-page feasibility Gate. Do not advance it without consent.
 
 ## REVIEWER_THIRD_PARTY_ONLY_PRODUCTION_PROPOSAL_OWNER_UNAPPROVED_2026_10_18
 
@@ -350,7 +364,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PASS_CURRENT_MVP_FRONTEND
-CURRENT_GATE=RESEARCH_ONLY_COMPLETE_OWNER_APPROVAL_NEEDED_FOR_FEASIBILITY;G4D0_DESIGN_HOLD;STRIPE_TEST_G3S4M_PHASE_CLOSED_PARTIAL
+CURRENT_GATE=THIRD_PARTY_ONLY_RESEARCH_RECONCILED_OWNER_PROVIDER_DECISION_PENDING;G4D0_HOLD;STRIPE_TEST_G3S4M_PARTIAL
 G3S1R_REVIEWER=PASS_LOCAL_RUNTIME_RESTORED
 G3S1R_EVIDENCE_PR64=ee03136537fdf9fda9ee36022261f84ba78dca93
 G3C_WORDPRESS=RUNNING_G3S3R_EXECUTOR_READBACK
@@ -713,6 +727,8 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_ACCEPTED_STATE
 
+**READ FIRST:** Current accepted status and newer Owner direction are reconciled at the FIRST Handoff section and [latest snapshot](./docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md). The chronological items below are historical and may contain since-superseded “latest” labels; do not reactivate their Gates.
+
 - **2026-10-17 latest Owner-relayed executor no-write RETURN: missing `git.exe` at v2 `TARGET_CHECK`.** Reported `CommandNotFoundException` classified `OTHER_EXCEPTION`, Owner native `Get-Command git.exe=MISSING`, no password entered or WP mutation, attempt marker absent; report is not independent Reviewer access to private local source. The previous ACL predicate probe remains accepted but does not resolve all historical child contexts. Reviewer has retired **live retries of original Git-dependent v2**, and appended a minimal in-scope alternate **guarded WP-CLI one-existing-admin recovery** route to active G3S4AR Gate (same Owner consent, no new Gate or Git installation). Exact current Docker+WP site/admin identity and safe masked stdin transport must be proven in native Owner context before one credential write. No fresh PR64 Executor Evidence commit reported; GitHub Reviewer successfully read existing PR64 Evidence by actual branch ref.
 
 
@@ -779,7 +795,7 @@ CURRENT_GATE=G3S4AR_VERSIONED_V2_ADMIN_RECOVERY_OWNER_AUTHORIZED
 
 ## CURRENT_GATE
 
-**RESEARCH COMPLETE; no approved design/implementation execution.** Owner-frozen direction customer photo/text → ~6 styles × 12 page-role generation → page image or HTML/PDF, [source](./docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md); independent desk research [full OSS/SaaS matrix](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md). Owner asked to FIND/COMPARE existing projects to minimize edits, *not* to start creating/prompts/HTML/pages. [Old G4D0 Gate](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) still HOLD. Pending Owner candidate direction/feasibility proof approval; no Codex execution or provider/customer image calls. G3S4M Stripe TEST partial audit debts preserved, PR64 OPEN/UNMERGED.
+**NO APPROVED DESIGN/IMPLEMENTATION GATE.** Owner directed mature third-party-only magazine production, NOT own G2BR3 or own HTML/PDF renderer; store frontend retained. Owner-frozen output ~6 style families × 12 page-role variants yielding ONE 12-page PDF/customer. [Consolidated current status](./docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md), [research proposal](./docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md). Make+OpenAI+Placid is only a Reviewer recommendation, not Owner accepted; Placid official REST multi-page is documented but Make native module array exposure unknown. Await Owner provider selection and a bounded synthetic feasibility Gate authorization. [Older G4D0](./docs/G4D0_MAGAZINE_P1_P12_DESIGN_DISCOVERY_AND_VISUAL_CANDIDATE_GATE_2026-10-18.md) remains HOLD / DO_NOT_EXECUTE; Stripe G3S4M PARTIAL, PR64 open/unmerged.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -905,16 +921,20 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Present/comprehend [full source-verified 2026-10-18 research matrix](./docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md): html-magazine/OG Image Studio/Paged.js and hosted alternatives; note license limits and identity/text accuracy.
-2. **WAIT for Owner selection** of whether to test full-page raster generation versus generated visual assets + deterministic HTML exact-text/photo layers, and whether OSS/self-hosted vs hosted budget. Do not infer automatic approval from frozen overall approach.
-3. If Owner authorizes, write a separate **minimal feasibility spike Gate** first to locate existing accepted G2BR3 renderer source and prove targeted 2–3 synthetic pages/layout/path with no payment edits, then Reviewer/Owner decide implementation. No 6×12 production upfront. Stripe prior gaps deferred before Live/provider next consequential use.
+1. Read [2026-10-18 consolidated status and latest Owner decisions](./docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md), this Handoff first section, governance, frozen visual direction, MVP contract, Stripe PARTIAL closeout and [third-party Make/OpenAI/Placid proposal](./docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md). Preserve historical evidence.
+2. **Do read-only Reviewer assessment only.** Compare 3rd-party mature options (Make/OpenAI/Placid versus Canva Autofill and IMG.LY). Identify customer-photo privacy, cost, actual multi-page API, exact text/photo preservation and required front-end-to-vendor bridge. Do NOT propose G2BR3 as production stack, create 6×12 prompt/template assets or modify code.
+3. Ask Owner to choose a stack, budget/provider-data consent and authorize a *new* synthetic (1–2 pages) experimental Gate. No service credentials/trials/installation or any implementation until authorized. Review result before scaling to 12 pages then six styles. 
+4. Keep prior Stripe TEST partial two-item pre-Live backlog separate from magazine generation research; no transaction/refund/replay. No PR64 merge.
 
 ## OWNER_ACTION_REQUIRED
 
-- **NONE now:** the research is completed. Owner reviews candidate comparison and decides next Gate; no proactive design execution.
-- Cloudflare foreground connector Ctrl+C for offline work remains optional, no changes to protected data, WordPress, credentials or Stripe.
+**NOTHING is blocking read-only Reviewer documentation.** Before any trial/API/model call/template design/integration, Owner must explicitly confirm (1) candidate vendor route and acceptable paid/private-photo processing terms; (2) an authorized narrow synthetic feasibility Gate. Owner is not being asked to restart Stripe TEST transactions. The optional previously approved Ctrl+C on the **specific cloudflared foreground PowerShell** remains a separate convenience if public WP access is unneeded.
 
 ## EVIDENCE_POINTERS
+
+0. `docs/CURRENT_PROJECT_STATUS_AND_OWNER_DECISIONS_2026-10-18.md` — latest consolidated Owner precedence, deliverables, scope/risks and third-party production direction.
+0. `docs/NEXT_REVIEWER_HANDOFF_PROMPT_2026-10-18.md` — ready-to-copy complete next Reviewer relay.
+0. `docs/PROPOSAL_THIRD_PARTY_ONLY_MAGAZINE_PIPELINE_MAKE_OPENAI_PLACID_2026-10-18.md` — official-provider grounded Make/OpenAI/Placid third-party proposal (Owner unapproved).
 
 0. `docs/OWNER_FROZEN_DIRECTION_IMAGE_PLUS_TEXT_TO_SIX_STYLES_TWELVE_PAGES_2026-10-18.md` — Owner-frozen IO/style×page direction only, no design execution.
 0. `docs/RESEARCH_PHOTO_TEXT_TO_PERSONALIZED_MAGAZINE_OPEN_SOURCE_REUSE_2026-10-18.md` — deep linked OSS/licensing API implementation/reuse desk research, not run-tested.
