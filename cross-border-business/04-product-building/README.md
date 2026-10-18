@@ -1,38 +1,40 @@
 # 04｜产品搭建
 
-> **状态（2026-10-18）：CORE_L1_OWNER_APPROVED_FROZEN（核心1/一级7） / L2_FROZEN（45） / L3_CANDIDATE_REVIEW_PENDING（118） / BODY_NOT_STARTED**  
-> **唯一冻结核心问题：产品怎么做、怎么交付？**  
-> **当前工作停点：Owner/Reviewer审核三级118题；不自动冻结三级或启动正文。**
+> **CURRENT_STATE（2026-10-18）：CORE_1_FROZEN / L1_L2_OWNER_TEMPORARILY_REOPENED / L3_OLD_CANDIDATE_COMPARISON_ONLY / INDEPENDENT_WRITER_PACKET_READY / WRITER_PENDING**  
+> **唯一核心问题：产品怎么做、怎么交付？**（仍然 FROZEN）  
+> **当前停点：把无仓库权限的盲写工作包交给独立Writer；Writer返回后再审新稿并比旧稿。**
 
-## 唯一正式上级和候选文件
+## 本轮唯一有效决定与Gate
 
-- **[唯一正式冻结快照｜核心1 + 一级7 + 二级45](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)**：经Owner批准、二级复核PASS；原文、编号、顺序及归属不再自行修改。
-- **[三级问题候选 V1｜118题](FRAMEWORK_L3_CANDIDATE_20261018.md)**：七章分布 **10/13/15/17/28/15/20**；含知识范围和去重说明；**未获Owner批准或冻结**。
-- [旧核心+一级冻结阶段快照](FROZEN_FRAMEWORK_CORE_L1_20261018.md) 与 [历史二级候选45题](FRAMEWORK_L2_CANDIDATE_20261018.md)：留存比对，不取代正式完整冻结。
-- **[Owner 决策、执行证据与 Reviewer 交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：当前状态、治理 Gate、原文冻结轨迹、下一步与停止边界。
-- [二级PASS及三级结构自检](docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：明确复核证据及三级候选状态。
-- [五板块问题框架设计规范](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md) · [第四板块原独立任务书（历史需求说明）](../docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
+- **[Owner临时解冻 + 独立Writer盲写任务 / ZIP登记 / 后续比较](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：最新Owner决定的唯一执行边界，**优先于旧冻结文件头部标签**。
+- **[当前Reviewer交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：当前状态、证据、风险及下一步。
 
-## 七个一级问题（只读导航，原文以冻结快照为准）
+## 目前每一级的状态
 
-1. 我要做网站、软件，还是直接开店？
-2. 第一版先做到什么程度？
-3. 用现成工具，还是自己开发？
-4. 怎么让客户顺利购买和使用？
-5. 客户下单后，怎么确保交付到位？
-6. 产品上线前，要检查什么？
-7. 上线后，怎么维护和改进？
+| 对象 | 旧数量 | 当前状态 |
+|---|---:|---|
+| 唯一核心问题 | 1 | **FROZEN**，原文保持 |
+| 原一级问题 | 7 | **TEMPORARILY_REOPENED**，旧文档只作对照 |
+| 原二级问题 | 45 | **TEMPORARILY_REOPENED**，旧文档只作对照 |
+| 原三级问题 | 118 | **CANDIDATE / NOT_FROZEN**，旧文档只作对照 |
+| Writer新一级—三级 | UNKNOWN | **NOT_SUBMITTED / WRITER_PENDING** |
+| 正式教学正文、HTML及真实产品 | 0 | NOT_STARTED / NOT_AUTHORIZED |
 
-## 职责范围与边界
+## 旧版基线（只供Owner和Reviewer比较，不能送Writer）
 
-适用于平台商家、独立站、SaaS、数字商品、实体商品、内容会员及服务：产品形式 → 首版范围 → 现成工具/开发方式 → 客户体验和商家订单/履约 → 上线测试 → 维护与迭代。
+- [旧正式核心1 / 一级7 / 二级45冻结快照](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)：记录过去已通过的原文，**当前一级/二级的约束已由最新Owner决定临时暂停**。
+- [旧三级118题候选](FRAMEWORK_L3_CANDIDATE_20261018.md)：历史候选，从未获正式冻结。
+- [早期核心一级快照](FROZEN_FRAMEWORK_CORE_L1_20261018.md)和[二级旧候选](FRAMEWORK_L2_CANDIDATE_20261018.md)：保留决策历史。
+- [旧二级审核PASS与三级结构自检](docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：当时的评审证据，不作为新Writer的锚定依据。
 
-第一板块负责市场机会，第二板块负责网络/域名/云基础设施，第三板块负责金融支付、主体与财税（**CLOSED/FROZEN**），第五板块负责获客及增长。本板块只讨论产品内部的业务交接，不重写相邻板块完整方案，也不将“网页能打开”视为已经成功交付或合规。
+## Writer离线工作包
 
-## 交接与下一步
+`第四部分_独立Writer全框架重写工作包_20261018.zip` 已在本次ChatGPT对话中生成，SHA256：`7012b8271a5ebc58383827b373a96256dcb120ef9307df2318bdf963b0bd0db5`。七份离线文件提供必要背景、五板块边界、问题标准、知识覆盖、自检与提示词。**没有旧版7/45/118完整题目和旧题数，Writer不需要GitHub权限。**
 
-**本轮已完成：** 核心1、一级7、二级45正式冻结并核验；三级118题作为候选归档。
+## 范围和下一步
 
-**下一步：** Owner/Reviewer审核三级118题，必要时最小返修；获Owner明确批准后再创建正式三级冻结快照。正文、HTML和真实产品开发均未启动。
+本部分研究如何把选定的生意变成能购买、使用、交付并维护的产品；①市场机会、②跨境网络/基础设施、③支付税务和经营主体、⑤获客增长仍各有职责，不因为临时解冻本部分而改动其他板块。
 
-[返回五板块总项目库](../README.md)
+**下一步：** Owner转交ZIP和提示词 → Writer返回完整候选问题树及自检 → Reviewer先审新稿自身、再比较旧版 → Owner决定采用哪一版/整合并是否重新冻结。**Writer交稿前不执行比较，不自动恢复旧冻结。**
+
+[返回五板块总入口](../README.md)
