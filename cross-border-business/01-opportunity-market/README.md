@@ -1,24 +1,26 @@
 # 01｜机会挖掘与市场判断
 
-> **状态（2026-10-18）：CORE_FROZEN / L1_FROZEN(8) / L2_FROZEN(34) / L3_V1_RETURN_STRUCTURE_NEW_AGENT_PENDING**  
+> **状态（2026-10-18）：CORE_FROZEN / L1_FROZEN(8) / L2_FROZEN(34) / L3_INTEGRATED_V2_SELF_REVIEWED_OWNER_PENDING**  
 > **唯一核心问题：什么跨境生意值得做？**
 
 ## 权威文件
 
 1. **[核心与一级、二级正式冻结框架](FROZEN_FRAMEWORK_L1_L2_20261018.md)**：唯一有效的冻结问题树；8个一级、34个二级，编号与原文禁止擅改。
-2. **[三级候选 V1：99题](FRAMEWORK_L3_CANDIDATE_20261018.md)**：覆盖全部34个二级；原稿自检已被后续内容复查推翻，**结构性RETURN，未冻结**。
-3. **[三级V1后续复查](docs/L3_AUTHOR_RECHECK_RETURN_STRUCTURE_20261018.md)**：31/34个父题恰好3题，判定机械拆分，要求独立重写。
-4. [三级候选旧自检报告](docs/L3_SELF_REVIEW_20261018.md)：检查编号、父题归属、语义边界、覆盖及潜在争议。
-5. [历次决定与交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：记录旧7/32候选、独立Agent 8/32、综合版8/34及Owner冻结决定；第三层仍未审批。
-6. [2026-10-18旧7/32候选存档](FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：仅历史比对，不再作为项目当前框架。
-7. [通用问题设计标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：三级问题撰写和审核可用；不影响其他板块冻结状态。
-8. [旧版离线独立Agent任务书](../docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：曾用于一、二级独立征稿，当前任务结束，仅供历史参考。
+2. **[三级综合修订V2（83题）](FRAMEWORK_L3_INTEGRATED_V2_20261018.md)**：在冻结8/34下整合两版，不再按固定2或3题机械拆分；候选未冻结。
+3. **[综合修订自检](docs/L3_INTEGRATED_V2_SELF_REVIEW_20261018.md)**：与旧99题、独立64题比较，检查必要性与知识边界。
+4. [旧三级候选 V1：99题](FRAMEWORK_L3_CANDIDATE_20261018.md)**：覆盖全部34个二级；原稿自检已被后续内容复查推翻，**结构性RETURN，未冻结**。
+5. **[三级V1后续复查](docs/L3_AUTHOR_RECHECK_RETURN_STRUCTURE_20261018.md)**：31/34个父题恰好3题，判定机械拆分，要求独立重写。
+6. [三级候选旧自检报告](docs/L3_SELF_REVIEW_20261018.md)：检查编号、父题归属、语义边界、覆盖及潜在争议。
+7. [历次决定与交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：记录旧7/32候选、独立Agent 8/32、综合版8/34及Owner冻结决定；第三层仍未审批。
+8. [2026-10-18旧7/32候选存档](FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：仅历史比对，不再作为项目当前框架。
+9. [通用问题设计标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：三级问题撰写和审核可用；不影响其他板块冻结状态。
+10. [旧版离线独立Agent任务书](../docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：曾用于一、二级独立征稿，当前任务结束，仅供历史参考。
 
 ## 职责边界
 
 本板块研究：发现机会、识别买家、分析替代与竞争、判断市场与客户可触达性、盈利和现金流、进入前准入门槛、低成本验证、机会取舍与退出。
 只做**机会进入前的准入和可行性判断**；网络环境部署归②，经营主体/支付/税务细节归③，产品设计和交付实现归④，持续获客、转化和复购归⑤。
 
-**最新停点：** 冻结8/34不变，三级V1内容复查RETURN，独立Agent三级重写待交，正式正文尚未启动。
+**最新停点：** 冻结8/34不变，三级V1及独立Agent64题均完成比较；综合修订V2（83题）已提交Owner审核，正式正文尚未启动。
 
 [返回五板块总项目库](../README.md)
