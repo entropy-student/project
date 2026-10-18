@@ -1,0 +1,73 @@
+{
+  "schema_version": "cws.candidate-selection.v1",
+  "gate_id": "CWS-CW0005-MEDIA-PROVENANCE-BOUNDED-MULTISOURCE-VALIDATION-20261018",
+  "run_id": "CWS-CW0005-MEDIA-PROVENANCE-20261018-01",
+  "sampled_candidates": [
+    {
+      "candidate_id": "video-2fdaea45409e20363f34",
+      "provider": "www.youtube.com",
+      "platform_media_id": "FSZd33awqQk",
+      "title": "Popping Popcorn at 30,000 FPS in Ultra Slow Motion",
+      "source_page": "https://www.youtube.com/watch?v=FSZd33awqQk",
+      "format_probe": "BLOCKED_BEFORE_YTDLP: NON_PUBLIC_MEDIA_ADDRESS",
+      "preview": "YouTube navigation timed out; follow-up accessibility state was blank; no frame seen.",
+      "observed_format": "UNKNOWN",
+      "content_verified": "UNKNOWN",
+      "relevance_0_to_3": "NOT_SCORED",
+      "reuse_rights_verified": "UNKNOWN",
+      "decision": "NO_DOWNLOAD"
+    },
+    {
+      "candidate_id": "video-1d79c77fbc9be209fbbb",
+      "provider": "www.dailymotion.com",
+      "platform_media_id": "x8j78sg",
+      "title": "How to Make Stovetop Popcorn",
+      "source_page": "https://www.dailymotion.com/video/x8j78sg",
+      "format_probe": "BLOCKED_BEFORE_YTDLP: NON_PUBLIC_MEDIA_ADDRESS",
+      "preview": "Dailymotion page loaded; embedded player displayed 无法播放媒体; no frame seen.",
+      "observed_format": "UNKNOWN",
+      "content_verified": "UNKNOWN",
+      "relevance_0_to_3": "NOT_SCORED",
+      "reuse_rights_verified": "UNKNOWN",
+      "decision": "NO_DOWNLOAD"
+    },
+    {
+      "candidate_id": "video-23c8443208020eeb7fd1",
+      "provider": "www.youtube.com",
+      "platform_media_id": "I_rWl51NkHo",
+      "title": "Popcorn kernels pop in slow motion",
+      "source_page": "https://www.youtube.com/watch?v=I_rWl51NkHo",
+      "format_probe": "BLOCKED_BEFORE_YTDLP: NON_PUBLIC_MEDIA_ADDRESS",
+      "preview": "No browser playback attempt; format probe was blocked by NON_PUBLIC_MEDIA_ADDRESS.",
+      "observed_format": "UNKNOWN",
+      "content_verified": "UNKNOWN",
+      "relevance_0_to_3": "NOT_SCORED",
+      "reuse_rights_verified": "UNKNOWN",
+      "decision": "NO_DOWNLOAD"
+    },
+    {
+      "candidate_id": "video-f1e16b104b4b4e6052bd",
+      "provider": "video.asonix.dog",
+      "platform_media_id": "9ec1a2bc-7269-49ed-802e-c727004115e3",
+      "title": "popcorn.mp4",
+      "source_page": "https://video.asonix.dog/videos/watch/9ec1a2bc-7269-49ed-802e-c727004115e3",
+      "format_probe": "BLOCKED_BEFORE_YTDLP: NON_PUBLIC_MEDIA_ADDRESS",
+      "preview": "PeerTube page loaded with a play control, but playback was not started; public API metadata was read only.",
+      "observed_format": "Public PeerTube API advertised 53 s, 16:9, 1920x1080 at 30 fps; not extracted or downloaded.",
+      "content_verified": "UNKNOWN",
+      "relevance_0_to_3": "NOT_SCORED",
+      "reuse_rights_verified": "UNKNOWN",
+      "decision": "NO_DOWNLOAD"
+    }
+  ],
+  "catalog_counts": {
+    "raw_records": 95,
+    "unique_page_urls": 87,
+    "registered_domains": 14,
+    "all_dimensions_unknown": true
+  },
+  "content_preview_verified_count": 0,
+  "original_work_identity_dedup": "NOT_RUN",
+  "rights_clear_candidate_count": 0,
+  "decision": "NO_DOWNLOAD"
+}
