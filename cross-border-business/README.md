@@ -44,7 +44,7 @@
 - **[④ 第4.3章独立Writer首稿Gate](04-product-building/docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：5二级/11三级，4.3.4直接成节；[离线ZIP校验清单](04-product-building/docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)。
 - [④ 第4.2章Writer V1审核RETURN记录](04-product-building/docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)：历史8组阻断及R2返修ZIP。
 - [④ 第4.2章Writer R2审核RETURN历史记录](04-product-building/docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)：当时B01–B04审查问题，后来由Owner授权Reviewer直修，**现已封板**。
-- [④ 第4.2章离线8文件工作包校验及SHA256](04-product-building/docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：Owner于本轮对话下载并转交，无仓库权限依赖。
+- [④ 第4.2章Owner封板证据和独立修复记录](04-product-building/docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：记录R2全文来源与B01–B04修复；已完成的Writer Gate及离线包登记保留在Git历史，不是当前入口。
 - [④ V1→V2对比、框架冻结证据及撤回原代写初稿](04-product-building/docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)。
 - **[④ 当前唯一Reviewer交接](04-product-building/REVIEWER_HANDOFF.md)**：当前Gate、进度及停止边界。
 - [④ 历史Owner临时解冻及Writer盲写Gate](04-product-building/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)：旧阶段记录，已被Owner最新授权取代。
