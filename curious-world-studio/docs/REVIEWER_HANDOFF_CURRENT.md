@@ -1,5 +1,15 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-18）
 
+<!-- CWS_V561_R01_R05_TARGETED_REPAIR_CANDIDATE_20261018 -->
+## 2026-10-18｜最新唯一接手：V5.6.1 五项修复完成技术自检，独立 Reviewer 待验收
+
+- **PROJECT_GOAL / CURRENT_STAGE**：不露脸跨领域知识视频的Research Aqua单Mac+QuickTime+六模板自动制片；当前只是模板局部返修，正式CW0005制片仍HOLD，未部署无支付无公网。Owner批准原联合Review缺陷R-01～R-05同轮小修，已执行并停止，**不自动开展原14项其它问题或正式片**。
+- **SOURCE_OF_TRUTH**：前轮联合审核主裁决main：[CWS_V54_V56_MAIN_REVIEW_VERDICT_2026-10-18.md](reviews/CWS_V54_V56_MAIN_REVIEW_VERDICT_2026-10-18.md)；外部报告全文及独立复现：[CWS_V54_V56_EXTERNAL_REPORT_AND_RECHECK_2026-10-18.md](reviews/CWS_V54_V56_EXTERNAL_REPORT_AND_RECHECK_2026-10-18.md)。返修后的隔离Draft PR#144候选：[V5.6.1 HTML](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/visual/content-template-lab/storyboard-v5-6-1-targeted-review-fixes.html)，blob `3cd8b040a9f106ca7d0876b55b34ab71088af175`，SHA256 `44319df40d2b6e14400f720b97d4a34161ae0cef89c9d9e3a7b5c54e5b8fa213`；V5.6父blob `a0213f7991968fabd3f36be99363310d27324422`不修改。
+- **ACTUAL_PATCH**：R-01单位trim一致性（百分点），R-02批量资产强MIME/手动改型确认，R-03非零极小数字与变化率有意义显示，R-04动态小数柱数据尺度与全零回退，R-05页面版本与V2下载名。额外对非有限派生比较结果做安全拒绝。继承六T模板/V5.4素材ID与JSON导入/V5.5多字幕Cue、WAV旁白/单主时钟。**仅新增候选，不重绘Mac或新增第七模板。**
+- **BEHAVIORAL_QA**：真实Chromium`page.set_content`运行同一最终HTML，40/40专项（10/10 Canvas像素对照父V5.6）、7/7合成MP4/WAV（T5局部媒体seek及旁白同钟播/停/跳）、31.06秒从0实速正常关窗，JS脚本异常0；详见[完整Gate/测试证据](https://github.com/entropy-student/project/blob/cws/content-template-lab-v1-20261017/curious-world-studio/docs/CWS_V561_REVIEW_TARGETED_FIXES_2026-10-18.md)及[PR评论](https://github.com/entropy-student/project/pull/144#issuecomment-6244623248)。**Owner Windows Edge直接`file://`、4–6分钟真正配音/字幕/MP4导出仍UNVERIFIED**，完整回归脚本和私有合成媒体交付在本轮会话ZIP，未推Git。
+- **CURRENT_ACCEPTED_STATE / CRITICAL_CONSTRAINTS / ROLLBACK**：唯一已冻结main `curious-world-studio/visual/frozen/storyboard-v5-2-20261017.html` Git blob `f002fd3a3fea24352c8eddb63d8f265014a9e93b` **不变**；PR#144 Open/Draft/未合并；V5.6.1仍`PASS_CANDIDATE / INDEPENDENT_REVIEW_PENDING`，不能代替独立Reviewer结论或将旧联合Review的PARTIAL改写为当时PASS。回滚直接弃用V5.6.1新HTML。正式`CW0005_R3_RETURN_OWNER_VISUAL_STORYFIT / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH`及媒体权利PARTIAL全保留。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED**：`WAIT_OWNER_DECISION`，等Owner决定是否交原独立Reviewer做五项复核，或选择后续独立Gate；不自动合并、不重启节目制作，不碰⑤/⑪/⑭。Owner转交`NONE`。
+
 <!-- CWS_V54_V56_JOINT_INDEPENDENT_REVIEW_VERDICT_20261018 -->
 ## 2026-10-18｜唯一最新接手：V5.4–V5.6 联合独立审核 PARTIAL（覆盖此前V5.6全部技术PASS候选语境）
 
