@@ -1,4 +1,7 @@
-# 第四部分《产品搭建》｜当前Reviewer交接（2026-10-18）
+# 第四部分《产品搭建》｜旧阶段Reviewer交接（历史）
+
+> **SUPERSEDED / HISTORICAL ONLY（2026-10-18）**：本文件记录独立Writer盲写尚未交稿时的历史真实状态。此后Writer V1已经交付、Reviewer审核RETURN、Owner又授权直接修订并按QA落库。**现行项目真相以 [REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md) 为准**，唯一新冻结框架是 [V2 1/9/48/117](FROZEN_FRAMEWORK_V2_20261018.md)，第4.1章完整正文仅为候选。以下内容保留原状用于追溯，不得再解读为当前Writer_PENDING。
+
 
 > **CURRENT_STATE：CORE_FROZEN / L1_L2_OWNER_TEMP_REOPEN / L3_HISTORICAL_CANDIDATE / BLIND_WRITER_PACKET_READY / WRITER_PENDING**  
 > **唯一当前Gate：** [Owner临时解冻决定和Writer盲写工作包](L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)  
