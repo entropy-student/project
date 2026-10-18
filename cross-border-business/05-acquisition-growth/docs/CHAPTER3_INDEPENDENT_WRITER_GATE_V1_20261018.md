@@ -1,5 +1,7 @@
 # 第五部分第三章《客户来了，怎么让他下单？》｜独立Writer首稿Gate V1
 
+> **历史Gate说明（2026-10-18）：** 该首稿Gate已经完成：Writer R1/R2提交并审核，Owner随后授权Reviewer直接最小修复及正式封板第③章。**当前权威为[CHAPTER3_FINAL_SEALED.md](CHAPTER3_FINAL_SEALED.md)及[封板证据](CHAPTER3_SEAL_EVIDENCE_20261018.md)**；下一任务是[第四章独立Writer Gate](CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)。本文旧“WRITER_NOT_STARTED”仅属其发布时状态，不得据此重启第三章。
+
 > **GATE_ID：CB05-CH3-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
 > **STATUS：GATE_RELEASED / WRITER_NOT_STARTED / STOP_AT_REVIEWER**  
 > **FRAMEWORK：** [FROZEN_FRAMEWORK_V2_20261018.md](FROZEN_FRAMEWORK_V2_20261018.md) 正式冻结核心1/一级6/二级35/三级78。  
