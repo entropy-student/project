@@ -1,6 +1,6 @@
 # 第一部分｜框架决定与Reviewer交接（截至2026-10-18）
 
-> **CURRENT_STATE：FRAMEWORK_FROZEN / CHAPTER1_TO_CHAPTER4_FINAL_SEALED / CHAPTER5_WRITER_GATE_RELEASED / HTML_NOT_STARTED**  
+> **CURRENT_STATE：FRAMEWORK_FROZEN / CHAPTER1_TO_CHAPTER5_FINAL_SEALED / CHAPTER6_WRITER_GATE_RELEASED / HTML_NOT_STARTED**  
 > GitHub：`entropy-student/project` · 目录：`cross-border-business/01-opportunity-market/`
 
 ## 正式冻结对象及唯一权威
@@ -13,7 +13,7 @@
 | 一级问题 | 8 | FROZEN |
 | 二级问题 | 34 | FROZEN |
 | 三级问题 | 83 | FROZEN |
-| 正文已正式封板 | 第①②③④章（4/8） | FINAL_SEALED |
+| 正文已正式封板 | 第①②③④⑤章（5/8） | FINAL_SEALED |
 
 **冻结边界**：问题原文、顺序、编号和归属，及8.2不细拆安排；问题下的知识范围提示不是经过实证的法律或市场结论。
 
@@ -35,4 +35,4 @@
 - ②《网络环境搭建》既有8/44/93正式冻结及各章正文进展保持原状；③《现代商业支付系统》7/29/42已封板，现有九份文件及七章正文保持只读；④⑤由各自项目入口管理。
 - 跨国法规、资格、成本、市场事实须未来正文独立核验，框架题目不是现行事实的证明；不得预先启动HTML。
 
-**当前下一步：** 第④章Owner批准封板，见[正文](CHAPTER4_FINAL_SEALED.md)、[正式核验](CHAPTER4_FINAL_RESEARCH_RECORD.md)与[证据](CHAPTER4_SEAL_EVIDENCE_20261018.md)。唯一活动任务第⑤章[Writer Gate](CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261018.md)及[离线包清单](CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)发布，等待独立Writer完整候选。
+**当前下一步：** 第①至⑤章已Owner授权正式封板。第五章见[正文](CHAPTER5_FINAL_SEALED.md)、[正式核验记录](CHAPTER5_FINAL_RESEARCH_RECORD.md)、[封板证据](CHAPTER5_SEAL_EVIDENCE_20261019.md)；第⑥章[Writer Gate](CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)与[离线包清单](CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)已发布，等待Writer完整稿，不解冻任何问题框架。

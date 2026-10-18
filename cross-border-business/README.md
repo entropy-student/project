@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_CH2_CH3_CH4_SEALED_CH5_WRITER_RELEASED / 02_CH1_CH7_SEALED_CH8_WRITER_RELEASED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_CH2_CH3_SEALED_CH4_V1_RETURN_R2_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_CH2_CH3_SEALED_CH4_R2_RETURN_R3_READY**（2026-10-18）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_CH2_CH3_CH4_CH5_SEALED_CH6_WRITER_RELEASED / 02_CH1_CH7_SEALED_CH8_WRITER_RELEASED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_CH2_CH3_SEALED_CH4_V1_RETURN_R2_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_CH2_CH3_SEALED_CH4_R2_RETURN_R3_READY**（2026-10-18）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 ## 项目目标
@@ -13,7 +13,7 @@
 
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
-| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①②③④章已正式封板；第⑤章Writer Gate已发布、首稿待交** |
+| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①②③④⑤章正式封板；第⑥章Writer Gate与完整离线包已发布、首稿待交** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架及第⑧章Writer工作包](02-network-environment/README.md) · **8/44/93 FROZEN；第①–⑦章正式封板；第⑧章独立Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架及逐章正文](04-product-building/README.md) · **1/9/48/117已FROZEN；4.1–4.3正文正式封板；4.4 Writer V1审查RETURN、R2返修待交** |
@@ -118,4 +118,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章V1已交并审查RETURN、R2 Writer待交；⑤第①②③章正式封板不变；第④章Writer R2已交并独立Review RETURN，R3只修B01–B03/N01–N03，未经Owner批准不封板、不启动第五章。项目路径为 `entropy-student/project/cross-border-business/`，不操作其他源码仓库。
 
-**当前下一步：** ①第①②③④章正文已封板，第⑤章独立Writer Gate与离线资料包已发布；待Owner转交并收回第⑤章Writer完整候选稿；②第①②③④⑤⑥⑦章已封板，第⑧章独立Writer首稿Gate/ZIP已发布；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13 V1审稿RETURN、完整R2返修包已交Owner，待Writer回交R2；⑤Owner转发第④章R3最小返修完整ZIP与话术，Writer返回R3全章正文及核验ZIP后，由Reviewer独立复核。
+**当前下一步：** ①第①②③④⑤章正文已正式封板，第⑥章独立Writer Gate与离线包已发布；待Owner转交后收回第⑥章Writer完整首稿与核验记录；②第①②③④⑤⑥⑦章已封板，第⑧章独立Writer首稿Gate/ZIP已发布；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13 V1审稿RETURN、完整R2返修包已交Owner，待Writer回交R2；⑤Owner转发第④章R3最小返修完整ZIP与话术，Writer返回R3全章正文及核验ZIP后，由Reviewer独立复核。

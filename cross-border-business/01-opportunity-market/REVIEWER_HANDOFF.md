@@ -1,29 +1,33 @@
 # 第一部分《机会挖掘与市场判断》｜唯一Reviewer交接
 
-> **FRAMEWORK：OWNER_FROZEN / CORE 1 / L1 8 / L2 34 / L3 83；8.2直接成节**
-> **CHAPTERS 1–4：FINAL_SEALED / OWNER_APPROVED**
-> **CHAPTER5：OFFLINE_WRITER_PACKET_RELEASED / WRITER_PENDING**
-> **CURRENT_GATE：CB01-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**
-> **BODY：4/8 CHAPTERS SEALED；HTML：NOT_STARTED** · 2026-10-18
+> **FRAMEWORK：OWNER_FROZEN / CORE 1 / L1 8 / L2 34 / L3 83；8.2直接成节**  
+> **CHAPTERS 1–5：FINAL_SEALED / OWNER_APPROVED**  
+> **CHAPTER6：OFFLINE_WRITER_PACKET_RELEASED / WRITER_PENDING**  
+> **CURRENT_GATE：CB01-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
+> **BODY：5/8 CHAPTERS SEALED；HTML：NOT_STARTED** · 2026-10-19
 
-## 唯一现行权威文档
-- [全套Owner正式冻结问题树](docs/FROZEN_FRAMEWORK_V1_20261018.md)：原文、编号、归属、排序与8.2直接成节不动；冻结文件中“正文尚未开始”只是当时的历史备注，现行状态以本交接为准。
-- [第①章正式正文](docs/CHAPTER1_FINAL_SEALED.md)及[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：4H2/9H3。
-- [第②章正式正文](docs/CHAPTER2_FINAL_SEALED.md)及[封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：4H2/8H3。
-- [第③章正式正文](docs/CHAPTER3_FINAL_SEALED.md)、[核验记录](docs/CHAPTER3_FINAL_RESEARCH_RECORD.md)、[封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)：4H2/9H3。
-- **[第④章正式正文](docs/CHAPTER4_FINAL_SEALED.md)**、[Reviewer正式核验记录](docs/CHAPTER4_FINAL_RESEARCH_RECORD.md)、[Owner授权封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)：5H2/11H3。
-- **[第⑤章独立Writer首稿Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261018.md)**、[离线包清单与SHA256](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：5H2/15H3；本轮唯一活动Gate。
-- [长期Writer→Reviewer→Owner协作规范](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)及[框架历史冻结记录](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
+## 唯一现行文档
 
-## 第④章审查、Owner授权与事实边界
-1. 第④章独立Writer R1首次提交完整稿及资料，Reviewer R1结论RETURN（9组）；Writer R2在完整原稿上修订，独立Reviewer R2确认结构、12组计算、国别打分通过，但**六组事实与证据问题**仍需修复，审查结论`RETURN_R2_RESIDUAL_POLICY_EVIDENCE_AND_DECISION_INTEGRITY`。
-2. **Owner于2026-10-18明确授权Reviewer直接完成该章修订、正式冻结入库、然后启动第⑤章**。Reviewer基于Writer R2全文纠正：Shopify百万美元**终身**而非年度重置门槛、2026-10-08美国海关文件仅是**拟议规则**、GPSR及欧盟数字内容撤回权的适用要件、LUCID免费注册和可能有费系统参与、Giropay/Sofort已停用、三档市场交易额口径与模拟商业结论越界、Tier2/3未实际观察样本降为`RESEARCH_LEAD / UNKNOWN`。
-3. 完整R2原稿/记录、逐字节SHA256、Reviewer修订后SHA256和官方来源的匹配关系详见第四章封板证据；**不存在Writer R3交稿**，不得用原Writer R2的“已核验”表述覆盖正式证据。第①②③章正文未改。
-4. 教学市场规模、利润假设、国别评分不等于真实市场调查、项目成交或合规资格；这些真实性边界在正式正文及核验中均有说明。
-5. 第⑤章独立Writer工作包包含完整1/8/34/83题树，不需要GitHub权限。**Gate发布不代表Writer已提交或Reviewer已PASS**。
+- [完整冻结问题树](docs/FROZEN_FRAMEWORK_V1_20261018.md)：问句/编号/父题/顺序均不可修改；8.2直接成节。
+- [第①章正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)及[证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)（4H2/9H3）。
+- [第②章正式封板正文](docs/CHAPTER2_FINAL_SEALED.md)及[证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)（4H2/8H3）。
+- [第③章正式封板正文](docs/CHAPTER3_FINAL_SEALED.md)、[正式核验](docs/CHAPTER3_FINAL_RESEARCH_RECORD.md)、[证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)（4H2/9H3）。
+- [第④章正式封板正文](docs/CHAPTER4_FINAL_SEALED.md)、[正式核验](docs/CHAPTER4_FINAL_RESEARCH_RECORD.md)、[证据](docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)（5H2/11H3）。
+- **[第⑤章正式封板正文](docs/CHAPTER5_FINAL_SEALED.md)**、[最终核验记录](docs/CHAPTER5_FINAL_RESEARCH_RECORD.md)与[Owner授权封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)（5H2/15H3）。
+- **[第⑥章Writer首稿Gate](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)**、[完整离线包SHA256清单](docs/CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)（3H2/10H3）：目前唯一活动Gate。
+- [Writer→Reviewer→Owner协作规范](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)、[框架决策记录](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
+
+## 第⑤章封板责任链与证据
+
+1. Writer R1→Reviewer RETURN（10组）；Writer R2→Reviewer RETURN（剩余6组）。
+2. Owner于2026-10-19特别授权Reviewer代为修复R2剩余问题、正式冻结入库，然后开启第⑥章。因此本章由Reviewer直接修订Writer R2，**不存在Writer R3稿**。
+3. 六组财务和政策问题均最小化修复：库存500件当期可售（100+250+150，不误卖700件）、每单现金预算80.50、期末现金10750与低点8750；退货新增损失5.536且不双扣原卡费；Stripe received/countered dispute fee分开；SaaS贡献回本0.48月不等于实际15天入账；Day0→127不是标准CCC；州销售税按各州经济/实物联结及平台代征分别处理。
+4. 5H2/15H3冻题逐字校验、Decimal财务回归测试均通过。原稿SHA256与正式稿SHA256见[证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。旧R2核验结论不得覆盖本正式记录。
 
 ## 当前唯一下一步
-Owner将本对话中的`第一部分_第五章_独立Writer离线资料包_V1_20261018.zip`（及本包07提示词）交给独立Writer。Writer返回**完整第五章Markdown**、**完整核验/公式/UNKNOWN Markdown**和**两者ZIP**，停于`CANDIDATE_FOR_REVIEW / STOP_AT_REVIEWER`。Reviewer检查冻结5H2/15H3、经济学口径、真实性和实操；如RETURN必须同轮给完整返修ZIP及转交词。Owner批准才可封板并开始第⑥章。
 
-## 保护
-②网络环境及③支付系统已冻结内容不碰；④产品与⑤增长板块由各自项目维护。本轮仅更新①及父README中其对应状态，未启动第⑥章或HTML。旧第④章Writer Gate与manifest本次从当前main撤下、Git历史保留。
+Owner把对话附件`第一部分_第六章_独立Writer离线资料包_V1_20261019.zip`及随包提示词发送无GitHub权限的独立Writer。Writer交完整第⑥章正文、独立事实核验/UNKNOWN及执行记录、包含两件的ZIP，停于`CANDIDATE_FOR_REVIEW / STOP_AT_REVIEWER`。Reviewer核对3H2/10H3、知识广度深度、IP/合规事实与国家日期边界；RETURN须同轮完整返修ZIP＋传递词；只有Owner才可封板。
+
+## 项目保护
+
+第一至第五章正式正文不可因第六章研究而擅改；冻结1/8/34/83不解冻。第二板块网络环境、第三板块支付财税以及第四、第五业务板块保持独立。第五章过期Gate和manifest从当前main移除，仅Git历史保留。尚未收到第六章候选，不启动第七章或HTML。
