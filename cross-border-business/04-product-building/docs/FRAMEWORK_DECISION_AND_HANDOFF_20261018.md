@@ -37,6 +37,9 @@
 - **适用规范 · DIRECT_READBACK**：[五板块问题框架通用标准](../../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)、[第四板块独立任务书](../../docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)、[VPS Project Governance v0.2.7](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)。
 - **新增/更新后的导航验收**：以 [本板块 README](../README.md) 和 [父项目 README](../../README.md) 的 GitHub `main` 最新回读为准；此条不预先宣称已完成。
 
+- **2026-10-18 · OWNER_REPORTED：** Owner批准二级经复核PASS后正式冻结，并要求开始三级候选。
+- **2026-10-18 · DIRECT_READBACK：** 1/7/45正式冻结Commit `e8e3789504ae2b572be1d1f6a293d39220cb6881`；三级118题候选Commit `2e370228766b872909f158623f699112cd4a2280`。核实45个父题原文一致、118道三级编号唯一。见 [独立复核及三级自检](L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)。
+
 ## 三、治理状态面板
 
 - **PROJECT_GOAL：** 帮助中国大陆独立开发者和跨境卖家回答如何选择产品形态、快速搭建、可靠购买/交付、测试上线及维护；最终产出系统化知识框架及后续教程。
@@ -58,17 +61,17 @@
 
 **Reviewer 优先复核：** 重点审查4.5下28个三级的独立性、4.4/⑤营销边界、4.5/③支付资金边界，以及实体、SaaS、数字、服务与人工履约的覆盖。
 
-## 五、Gate / 风险 / 停点
+## 五、当前 Gate 与停点
 
-- **GATE_ID：** `04-CORE-L1-FREEZE-AND-L2-CANDIDATE-20261018`
-- **OBJECTIVE：** 归档 Owner 已批准核心及L1，完成L2候选与项目交接。
-- **MAX_ENDPOINT_THIS_ROUND：** `main` 中上级正式冻结 + L2候选 + 项目文档；**MANDATORY_REVIEW_STOP：L2 Owner/Reviewer 审核**。
-- **TARGET_AND_SCOPE：** 仅 `cross-border-business/04-product-building/` 的纯文档，外加父项目 `cross-border-business/README.md` 导航。无其他板块或仓库的写权限。
-- **PREFLIGHT：** 已核对 GitHub 主仓库与目标文件路径、通用标准和相邻第五板块归档实践；无生产部署、账户/Secret/付款/数据操作。
-- **REQUIRED_EVIDENCE：** 正式问题原文、L2完整表格与编号统计、跨板块边界、相关文档 Commit 与 fresh read-back。
-- **ACCEPTANCE_CRITERIA：** 上级逐字冻结，二级有唯一父题且不提前 PASS；导航与状态无矛盾；GitHub `main` 目标文件可回读。
-- **ROLLBACK_STATUS_OR_PLAN：** GitHub 以追加逆向 Commit 恢复目标文档；不破坏共享历史。
-- **OWNER_ONLY_ACTIONS：** L2的正式批准/冻结，以及任何改动既有冻结上级。
-- **REVIEWER_TO_EXECUTOR_RELAY：** NONE（本轮已由当前执行者完成文档设计，不需要另找 Executor）。
-- **EXECUTOR_TO_REVIEWER_RELAY：** 当前 Commit 与目标文件见第二节；L2 状态仅 `PASS_CANDIDATE / REVIEW_PENDING`。
-- **STOP：** 不自动启动三级、知识正文、HTML 或任何实际产品建设。
+- **GATE_ID：** `04-L3-OWNER-REVIEW-20261018`。
+- **OBJECTIVE：** 对三级118题独立审查，必要时提出最小修改建议。
+- **MAX_ENDPOINT_THIS_ROUND / MANDATORY_REVIEW_STOP：** 最多得到Owner的审查决定；未经明确批准，不自动冻结三级或开始正文。
+- **TARGET_AND_SCOPE：** 第四板块纯文档；父项目README仅负责导航；其他板块只读。
+- **PREFLIGHT：** 核对[完整冻结框架](../FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[三级候选](../FRAMEWORK_L3_CANDIDATE_20261018.md)及归属。
+- **REQUIRED_EVIDENCE：** 45个父题、118个子题的映射、去重、知识范围、独立性与跨板块边界。
+- **ACCEPTANCE_CRITERIA：** 三级真实、有必要且读者可理解；不可机械凑数；不改变任何冻结父题。
+- **ROLLBACK_STATUS_OR_PLAN：** 纯文档，可用追加逆向提交恢复，不重写共享main历史。
+- **OWNER_ONLY_ACTIONS：** 三级正式PASS及已冻结上级的任何改动。
+- **REVIEWER_TO_EXECUTOR_RELAY：** NONE。
+- **EXECUTOR_TO_REVIEWER_RELAY：** L2已正式PASS；L3仅是结构自检候选。
+- **STOP：** 不开始正式知识正文、HTML或实际产品开发。
