@@ -1,5 +1,7 @@
 # 第五部分第三章《客户来了，怎么让他下单？》独立Reviewer R2审核
 
+> **历史审核说明（Owner后续授权，2026-10-18）：** 下文`RETURN/CHAPTER3_NOT_SEALED`仅表示Writer R2候选当时的审查结论。Owner随后明确授权Reviewer直接修复B01–B04和N01–N03并正式封板。**现行唯一正式正文：[CHAPTER3_FINAL_SEALED.md](CHAPTER3_FINAL_SEALED.md)**，审核/修改链见[第三章封板证据](CHAPTER3_SEAL_EVIDENCE_20261018.md)，下一执行为[第四章Writer Gate](CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)。**没有独立Writer R3交稿，也不再需要转发旧R3包。**
+
 > **2026-10-18** ｜ **RETURN_R2_EU_REFUND_PECR_SOURCE_SCOPE** ｜ **第三章：结构PASS、内容RETURN、NOT_SEALED**
 > 现行Gate：`CB05-CH3-WRITER-R3-MINIMAL_FACTUAL_REPAIR-20261018`；第五部分完整1/6/35/78框架与前两章正式封板成果保持不变。
 
