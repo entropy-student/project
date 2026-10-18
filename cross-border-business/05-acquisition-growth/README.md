@@ -1,40 +1,40 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-18）：CORE_1_L1_9_L2_45_OWNER_APPROVED_FROZEN / L3_102_CANDIDATE_REVIEW_PENDING / BODY_NOT_STARTED**  
-> **唯一核心问题（冻结）：怎么才能持续有客户下单？**
+> **CURRENT_STATE（2026-10-18）：CORE_1_FROZEN / L1_L2_TEMPORARILY_REOPENED / L3_OLD_CANDIDATE_ARCHIVED_FOR_COMPARISON / INDEPENDENT_WRITER_PENDING**  
+> **唯一核心问题（仍冻结）：怎么才能持续有客户下单？**
 
-## 唯一现行正式框架
+## 本轮任务与唯一当前停点
 
-**[核心1题 + 一级9题 + 二级45题（完整正式冻结原文）](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)**：Owner批准、Reviewer复核PASS。问句、编号、章节先后和唯一父题归属未经再次批准不可修改。
+**[Owner授权一级/二级暂时解冻 + Writer盲写工作包Gate](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：本轮Owner明确开放第五板块的一级、二级问题重新设计，准备无仓库权限的独立Writer工作包，Writer独立重写一级至三级；**返回以后再与旧稿比较，而非立即替换旧版**。
 
-## 待审成果（没有冻结）
+**[当前Owner决定与Reviewer交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：现在的唯一阶段状态、Writer交付要求、比较顺序和后续Owner决策点。
 
-**[三级问题候选V1（102题）](FRAMEWORK_L3_CANDIDATE_20261018.md)**：章内数量9/7/12/11/12/14/11/14/12；45个二级中**⑤-2.4直接成节、不设三级**，其余按实际需要拆分。含三级问题、知识范围、去重与审核争议点。**仅供Owner/独立Reviewer审阅，尚非正式版本。**
+### 当前有效状态
 
-## 决策、审核与历史
+| 对象 | 数量 | 状态 |
+|---|---:|---|
+| 唯一核心问题 | 1 | **FROZEN**（不更改） |
+| 一级问题（旧版） | 9 | **TEMPORARILY_REOPENED**（旧快照只用于对比） |
+| 二级问题（旧版） | 45 | **TEMPORARILY_REOPENED**（旧快照只用于对比） |
+| 三级问题（旧版） | 102 | **CANDIDATE / NOT_FROZEN**（比较基线） |
+| 新一级—三级问题树 | 未知 | **WRITER_PENDING**（未交稿、不预设题数） |
+| 正式知识正文/HTML/运营 | 无 | **NOT_STARTED / NOT_AUTHORIZED** |
 
-- **[最新Reviewer交接与Owner决策](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：现行状态、批准依据、Reviewer下一步及不可修改边界。
-- **[二级正式复核PASS与三级候选自检报告](docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)**：二级完整性检查、相近问题分工和三级102题的编号/归属/数量检查。
-- [原核心+一级阶段冻结快照](FROZEN_FRAMEWORK_CORE_L1_20261018.md)：历史阶段记录；其“二级待审”只对应当时的状态，现行以完整1/9/45冻结树为准。
-- [历史二级45题候选V1](FRAMEWORK_L2_CANDIDATE_20261018.md)：原提交稿保留供逐字比对，原有REVIEW_PENDING不是最新状态。
-- [通用问题设计与审核标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：适用于第五板块的写作与评审参考。
+## 已有旧稿（只读比较资料，**不发送给Writer**）
 
-## 九章（按冻结顺序的导航）
+- [旧核心/一级/二级冻结快照（1/9/45）](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)：**历史批准记录保留完整**；其中一级、二级的冻结约束已被本轮Owner的最新暂时解冻决定暂停，不能再把该文件当作新Writer的改写限制。
+- [旧三级候选102题](FRAMEWORK_L3_CANDIDATE_20261018.md)：历史候选，从未正式冻结。
+- [更早阶段核心/一级冻结快照](FROZEN_FRAMEWORK_CORE_L1_20261018.md)、[原二级候选](FRAMEWORK_L2_CANDIDATE_20261018.md)及[此前二级PASS/三级自检](docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：只读历史证据，不重写。
+- [通用问题设计标准](../docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：参考质量标准。其旧状态说明若与本轮Owner决定冲突，以最新决定为准。
 
-1. 我的客户在哪里？
-2. 我该用什么办法找客户？
-3. 怎么让客户主动找到我？
-4. 怎么主动找到客户？
-5. 要不要花钱打广告？
-6. 客户来了，怎么让他下单？
-7. 怎么让老客户再买、介绍新客户？
-8. 怎么知道推广有没有用？
-9. 有效的获客方法怎么做大？
+## Writer工作包（离线）
 
-## 边界、现状与下一步
+文件名：`第五部分_独立Writer全框架重写工作包_20261018.zip`。本轮在ChatGPT对话中交付，内有背景、边界、质量标准、覆盖检查、交付模板和提示词，无需GitHub访问；**刻意不含旧版9/45/102问题树**，避免对新Writer产生锚定。ZIP SHA256及文件清单见[本轮决策/Gate记录](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)。GitHub中只记录清单和可重建任务要求，不宣称ZIP已上传仓库。
 
-第五板块负责获客渠道、内容/搜索、主动触达、付费推广、成交转化、客户关系、复购推荐、指标和实验；不改写第一板块的机会判断、第二板块网络、第三板块支付财税经营主体与第四板块产品开发。尚无已审定正文、HTML或实际运营效果；不同国家的营销合规性在未来正文阶段核验。
+## 业务边界
 
-**下一步：** Owner/独立Reviewer审核三级102题，允许在三级候选内增删/合并；只有明确PASS后才冻结完整三级问题树及启动后续正文。
+负责持续获客、渠道选择与运营、主动触达、转化、复购推荐、效果衡量和增长。①做市场机会判断；②负责网络运行环境；③经营主体/支付税务（已封板）；④负责产品开发及交付。本轮仅设计问题框架，不写完整正文、不改变其他四个板块。
+
+**下一步：** Owner转交Writer离线包并收回完整新稿ZIP → Reviewer先独立审核新稿，再与历史9/45/102旧稿逐层比较 → Owner决定保留旧版、采用新版或综合修订，并明确重新冻结对象。未完成上述流程前一级、二级继续处于暂时解冻状态。
 
 [返回五板块总项目库](../README.md)
