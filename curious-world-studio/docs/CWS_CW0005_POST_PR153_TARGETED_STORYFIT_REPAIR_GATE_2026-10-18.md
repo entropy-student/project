@@ -6,6 +6,9 @@
 >
 > **已验收可继承**：V5.6.2 6内容模板/唯一Research Aqua原Mac外壳，main冻结HTML git blob `33aabc3ff2e48877493277eb1a86274818e3c769`，旧V5.2保留；CW0005 R2十句旁白、现有WAV/SRT和视频生产/FFmpeg解码技术；前轮55.266667秒MP4 `be48565792f94fccdebb95229d8744d044b1edf47a1cdbfa9015dc37e0ebda6c`只作失败视觉基线，不再提交为合格内容；PR#153执行证据已合并main。**⑤真实证据呈现和⑭视觉故事仍RETURN；G1/G2/R4/NO_PUBLISH/RIGHTS_PARTIAL不变。**
 
+<!-- CWS_IMAGEGEN_MANDATORY_GATE_REVISION_20261018 -->
+> **【尚未下发的Gate修订 / 2026-10-18 Owner批准】** 本Gate的任何C类AI静态图片生成/编辑必须先读并遵守[**CWS项目级强制生图最高优先原则**](AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)顶部最新条款，以及上位Governance §11G。**图数不是配额**：先按真实场景检查已审核完整图，尝试`EXACT_FRAME（0次模型调用）→兼容`DERIVE_EDIT`→仅参考`REFERENCE`→确需才`GENERATE`。本轮上限3张新/编辑图，但实际0–3张由画面必要性决定；只支持本轮已核查的能力，不新付费、不添加为测试而生成的图片。2路只是**最高并发**与多图流水默认，非必须凑两图，也非Token成本实测结论。调用必须优先复用`spike.skill/comic-narrative/tools/imagegen-fast-path`现有脚本/官方output_hint路径→源/目标SHA/尺寸/视觉QA，不准通过stdin/TTY/base64运图片或遍历缓存猜路径；原生输出不恰好1920×1080本身不构成重试理由。相似失败达2次停止该策略。图片最终验收仍以物理正确、状态有别、无“蒸汽火箭”误导为先。生成模式与调用/编辑/重试/并发/实际计费或`TOKEN_SAVING_NOT_MEASURED`必须形成可审计报告。**前次PR#153只证明有一张图，不具备足够日志确认曾完整遵守快路径；不得倒推历史PASS。**
+
 ## 1. Gate合同
 
 - **GATE_ID**：`CWS-CW0005-POST-PR153-TARGETED-VISUAL-STORYFIT-REPAIR-20261018`
@@ -52,6 +55,8 @@
 
 ## 4. 必需证据、验收和回滚
 
+**强制生图效率前置检查及证据**：所有S04–S06 AI静态状态图在第一张调用之前，提交1份局部`IMAGEGEN_DECISION_REGISTER`：每个状态是否有已验收旧图、实际查看结论、`EXACT_FRAME / DERIVE_EDIT / REFERENCE / GENERATE / NO_IMAGE_NEEDED`决策与真实任务说明、最少调用估计；只有必要且已授权的任务进入Fast Path。此检查由Codex按现行Gate直接执行，不另要Owner批准、不全仓重新建立素材库。首次在CWS落地时先做只读兼容/零图片脚本夹具检查，**不增加真实生图测试调用**。每次实际调用保留最小脱敏证据：`image_id, mode, submitted_count, peak_concurrency<=2, retry_count, output_hint_status, direct_source_path_validated, src/dst SHA, native_dimensions, factual_visual_QA, provider/model if available, actual_token_or_cost if known`；缺实际计量写`TOKEN_SAVING_NOT_MEASURED`，不写“最低Token”。图像真实字节留Owner本机忽略目录，Git只保存必要非敏感记录。
+
 **REQUIRED_EVIDENCE**：
 1. 真实源清单/权利与**历史四条视频作品级占用记录**（旧R3两条＋PR#153两条）及新候选合法来源/片段，静态概念图尺寸/SHA/标识；
 2. 视觉Storyboard关键帧按组的直接预检截图与科学核对结论（A完整Mac、T6温度、T5三态、T2/T6声学、结尾桌面），不是一句“布局通过”；
@@ -67,7 +72,7 @@
 
 **仓库**：`https://github.com/entropy-student/project`，目录`curious-world-studio/`；Codex拥有独立读取和隔离分支写入GitHub权限，无需Owner传ZIP。**新且唯一授权Gate**就是此文件，旧2026-10-18联合Gate已执行并被正式视觉RETURN，严禁重复执行。
 
-**只读优先材料**：本Gate；`docs/reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md`（失败事实）；`docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md`；`docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`；`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`；`visual/frozen/storyboard-v5-6-2-20261018.html`（唯一冻结真源）。只为确认现有WAV/SRT/旧编排及新图像调用接口时阅读前次PR#153的`docs/reviews/CW0005_COMBINED_STORYFIT_EXECUTOR_2026-10-18.md`与本机已知输出；无需重读Governance或全仓历史。
+**只读优先材料**：本Gate；**`docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md`（本轮最高优先级生图执行原则，涉及图片必须读）**；`docs/reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md`（失败事实）；`docs/CW0005_R2_ACCEPTED_NARRATION_AND_SHOTS_2026-10-16.md`；`docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md`；`visual/retro-mac-v1.2/docs/STYLE_LOCK.md`；`visual/frozen/storyboard-v5-6-2-20261018.html`（唯一冻结真源）。只为确认现有WAV/SRT/旧编排及新图像调用接口时阅读前次PR#153的`docs/reviews/CW0005_COMBINED_STORYFIT_EXECUTOR_2026-10-18.md`与本机已知输出；无需重读Governance或全仓历史。
 
 **按STEP 1→2→3→4连续执行，确保第1步QA达标才花一次完整渲染成本；不能因为某一个素材缺口重复请求Owner为每个子操作批准，也不能无条件跳过前置质量检查。**
 
