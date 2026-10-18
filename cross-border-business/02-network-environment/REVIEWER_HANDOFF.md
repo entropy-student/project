@@ -2,9 +2,9 @@
 
 > **PROJECT_STATUS：ACTIVE_WRITING / OWNER_AUTHORIZED**（2026-10-18）  
 > **FRAMEWORK：8_L1 / 44_L2 / 93_L3 — OWNER_FROZEN（L3_PROVISIONAL）**  
-> **CURRENT_STAGE：CHAPTER1_V2_OFFLINE_WRITER_PACKET_READY / WRITER_PENDING**  
-> **CURRENT_GATE：CB02-CH1-INDEPENDENT-OFFLINE-FIRST-DRAFT-V2-20261018（RELEASED）**  
-> **OWNER_ACTION_REQUIRED：把本章V2离线ZIP与可复制提示词交给无仓库权限的独立Writer；收到完整候选正文+核验记录后交Reviewer审核**
+> **CURRENT_STAGE：CHAPTER1_REVIEWER_RETURN_R1 / WRITER_REVISION_PENDING**  
+> **CURRENT_GATE：CB02-CH1-REVIEW-R1-20261018（RETURN_CONTENT_ACCURACY_AND_APPLICABILITY）**  
+> **OWNER_ACTION_REQUIRED：将本轮Reviewer R1完整返修ZIP及可直接复制的返修提示词交给独立Writer，收回R2完整正文与核验记录后再交Reviewer复核**
 
 ## 一、项目目标与冻结状态
 
@@ -16,7 +16,7 @@
 
 **Owner决定：先冻结问题框架；Writer在框架内独立写一版，不限定具体内容、表格、案例、篇幅与表达；Reviewer收到后独立审查广度、深度、准确性、系统性、可读性和实际决策价值，提出返修意见；Writer按缺陷定向修订；Owner确认后封板。**
 
-**唯一定义和八章可复用审稿流程：** [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
+**唯一定义和八章可复用审稿流程：** [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。**Owner新增强制规则：每次需要返修时，Reviewer须在同一轮提供「完整返修ZIP＋可直接转交Writer的提示词」，不可只返回问题清单。**
 
 | 角色 | 必须负责 | 权限与限制 |
 |---|---|---|
@@ -39,7 +39,7 @@
 | 本 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) | 当前阶段、权限和Owner决定的唯一交接 |
 | [README.md](README.md) | 父项目导航 |
 
-**第一章《经营准备》：5个二级、10个三级；独立Writer稿尚未收到；Reviewer尚未撰写或审核正文。** 其余七章均未开始正文，HTML未启动。
+**第一章《经营准备》：5个二级、10个三级，Writer首稿已收到并通过结构/文件完整性检查，Reviewer R1结论 `RETURN_CONTENT_ACCURACY_AND_APPLICABILITY`（R01–R14）。** 原正文未封板；本轮返修包已在对话交付（审核报告、原稿、核验记录及转交提示词；未写回项目正式docs以免把被退回稿误作封板稿），等待Writer的R2返修。其余七章未开始正文，HTML未启动。
 
 ## 四、历史澄清与回滚
 
@@ -50,4 +50,6 @@
 
 ## 五、当前下一步
 
-Owner将新的**V2离线8文件ZIP**交给独立Writer，Writer自行研究写完整第①章+核验记录，打包返还并`STOP_AT_REVIEWER`。收到后本Reviewer按长期流程严格评估，提出PASS_CANDIDATE/RETURN并组织必要的返修；**当前尚无第一章正文，不应称为已写完或已通过**。
+**第①章当前为Reviewer R1 RETURN，需Writer定向返修。** Owner把已交付的 `第一部分_经营准备_Reviewer_R1审核与返修包.zip` 和 `04_给Writer的定向返修提示词.md`（或对话内同内容的可复制转述）发给独立Writer。包中包含R01–R14的定位/原因/修复目标、Writer完整原文及核验记录。Writer无GitHub权限，只改定向缺陷，返回**完整R2候选正文、R01–R14逐项核验记录和交付ZIP**，停在Reviewer。Reviewer独立复核，符合条件再报Owner决定是否封板。
+
+**永久规则：** 以后任何Reviewer要求Writer返修时，**都必须同轮给Owner「完整返修ZIP」和「可直接转交的提示词」**，并在交接文档记录状态，详见[流程文档](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。不允许只给Reviewer意见或让Owner自行凑返修包。
