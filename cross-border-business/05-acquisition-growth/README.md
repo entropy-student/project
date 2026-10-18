@@ -1,13 +1,17 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-18）：CORE_1_FROZEN / L1_L2_TEMPORARILY_REOPENED / L3_OLD_CANDIDATE_ARCHIVED_FOR_COMPARISON / WRITER_R1_REVIEW_RETURN_R2_PACKET_READY**  
+> **CURRENT_STATE（2026-10-18）：CORE_1_FROZEN / L1_L2_TEMPORARILY_REOPENED / L3_OLD_CANDIDATE_ARCHIVED_FOR_COMPARISON / REVIEWER_DIRECT_V2_6_35_78_OWNER_REVIEW_PENDING**  
 > **唯一核心问题（仍冻结）：怎么才能持续有客户下单？**
 
 ## 本轮任务与唯一当前停点
 
 **[Owner授权一级/二级暂时解冻 + Writer盲写工作包Gate](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：本轮Owner明确开放第五板块的一级、二级问题重新设计，准备无仓库权限的独立Writer工作包，Writer独立重写一级至三级；**返回以后再与旧稿比较，而非立即替换旧版**。
 
-**[当前Owner决定与Reviewer交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：仍然适用的解冻决定与比较工作规则。**[Writer R1独立审查（RETURN）](docs/WRITER_R1_INDEPENDENT_REVIEW_RETURN_20261018.md)**：最新审核结论、详细缺口、新旧对比和R2返修要求。
+**[当前Owner决定与Reviewer交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)**：仍然适用的解冻决定与比较工作规则。
+
+**[最新综合修订候选V2（核心1/一级6/二级35/三级78）](FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)**：Owner本轮要求Reviewer直接完成修订。**没有冻结**；不是独立Writer的R2返稿。
+
+**[V2校验、差异和待审事项](docs/REVIEWER_DIRECT_REVISION_V2_SELF_REVIEW_20261018.md)**：35个二级、78个三级编号归属校验，R1十项问题的修订位置与跨板块边界。**[Writer R1独立审查（RETURN）](docs/WRITER_R1_INDEPENDENT_REVIEW_RETURN_20261018.md)**：最新审核结论、详细缺口、新旧对比和R2返修要求。
 
 ### 当前有效状态
 
@@ -17,7 +21,8 @@
 | 一级问题（旧版） | 9 | **TEMPORARILY_REOPENED**（旧快照只用于对比） |
 | 二级问题（旧版） | 45 | **TEMPORARILY_REOPENED**（旧快照只用于对比） |
 | 三级问题（旧版） | 102 | **CANDIDATE / NOT_FROZEN**（比较基线） |
-| Writer R1新问题树 | 6/23/42 | **R1_RETURN / COMPARISON_CANDIDATE_ONLY**（已审核、未冻结） |
+| Writer R1新问题树 | 6/23/42 | **R1_RETURN / HISTORY_ONLY**（已审核，留对比） |
+| Reviewer综合修订V2 | 6/35/78 | **NEW_CANDIDATE / OWNER_REVIEW_PENDING / NOT_FROZEN** |
 | 正式知识正文/HTML/运营 | 无 | **NOT_STARTED / NOT_AUTHORIZED** |
 
 ## 已有旧稿（只读比较资料，**不发送给Writer**）
@@ -35,8 +40,8 @@
 
 负责持续获客、渠道选择与运营、主动触达、转化、复购推荐、效果衡量和增长。①做市场机会判断；②负责网络运行环境；③经营主体/支付税务（已封板）；④负责产品开发及交付。本轮仅设计问题框架，不写完整正文、不改变其他四个板块。
 
-**当前Review：** 已收到Writer R1，完成独立审查及旧9/45/102覆盖对比，正式结论是**RETURN（定向返修）**；优势是六章主线/低预算冷启动和跨境成交场景，缺口是渠道适配、付费推广方式、增长实验、长期客户价值和标题冗长。
+**当前Review：** Writer R1被Reviewer定向RETURN后，Owner另行授权**Reviewer直接完成改稿**。已新建V2候选问题树（6/35/78），通过编号/归属与知识覆盖自检；尚未获得Owner批准。
 
-**下一步：** Owner在当前对话获取R2离线返修包后转交Writer → 收到R2完整稿 → Reviewer检查上述缺口并再次对比旧版 → 由Owner决定采用哪一版及重新冻结范围。当前一级、二级**仍暂时解冻**，三级仅候选，不启动正文。
+**下一步：** Owner直接审阅[修订V2完整问题树](FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)，决定PASS/FROZEN或RETURN。独立Writer R2旧返修包暂不需要转交；当前一级、二级**仍暂时解冻**，三级仅候选，不启动正文。
 
 [返回五板块总项目库](../README.md)
