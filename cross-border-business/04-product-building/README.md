@@ -1,44 +1,45 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN（核心1/一级9/二级48/三级117） / CHAPTER1_OFFLINE_WRITER_GATE_RELEASED / WRITER_PENDING / BODY_NOT_STARTED / HTML_NOT_STARTED**  
-> **唯一核心问题：产品怎么做、怎么交付？**  
-> **当前停点：第4.1章由独立Writer完成全文；Reviewer负责审核而不代写；Owner决定封板。**
+> **CURRENT_STATE（2026-10-18）：FRAMEWORK_V2_FROZEN / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_GATE_RELEASED / WRITER_PENDING**  
+> **冻结问题：核心1 / 一级9 / 二级48 / 三级117**  
+> **唯一核心：产品怎么做、怎么交付？**  
+> **HTML / 真实系统：NOT_STARTED**。
 
-## 唯一现行正式框架与当前工作
+## 唯一现行权威文件
 
-- **[唯一现行V2完整冻结框架（1/9/48/117）](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：全部一二三级原文、编号、归属与顺序锁定；旧7/45/118和Writer V1不再是当前框架。
-- **[第4.1章独立Writer完整首稿Gate](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：本章4道二级、10道三级，逐字列出全部冻结原题；Writer无需GitHub权限，自由完成全文及核验记录。
-- **[第4.1章离线ZIP清单、校验与转交说明](docs/CHAPTER1_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)**：8份Markdown，ZIP SHA256 `cf475ecb78117270e24194ccba7d85f37ea75d1e2c49bfb52dd95a34c451a4b0`，由Owner从当前ChatGPT对话下载并转交。
-- **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**：Owner最新纠偏、删除旧初稿、角色分工及下一步。
-- [第二部分长期Writer→Reviewer→Owner流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：每次RETURN必须附完整返修ZIP+传递话术；首稿不强制指定篇幅、案例或固定内容模板。
+- **[完整冻结框架V2（1/9/48/117）](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：唯一一二三级题目原文来源，未经Owner批准不能改。
+- **[第一章《我该把产品做成什么形式？》正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)**：4个二级/10个三级，经Writer R2+独立Review，Owner特别授权Reviewer直修B01–B06后正式封板。不是Writer R3。
+- [第一章R2定向修复与Owner封板审计记录](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：完整R2原始指纹、六组问题矩阵、官方核验、结构自检与权限边界。
+- **[第二章《第一版先做哪些东西？》独立Writer首稿Gate](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：已发布，冻结4个二级/10个三级；Writer独立完成全文、事实核验记录和ZIP。
+- [第二章离线Writer包清单与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：8份Markdown完整离线包，ZIP SHA256 `b0095450264f34012105260b913f0b2fce4c87c97fc770fc4033018c0bee268c`；本轮对话下载转交。
+- **[当前唯一Reviewer交接](REVIEWER_HANDOFF.md)**：决策、来源、当前Gate和下一步。
+- [第二部分长期Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：Reviewer不预写Writer首稿；RETURN同轮提供完整ZIP和传递提示词；Owner决定封板。
 
-## 九个一级问题及正文状态
+## 当前九章进度
 
-| 编号 | 正式冻结一级问题 | 正文 |
+| 编号 | 冻结一级问题 | 正文状态 |
 |---|---|---|
-| 4.1 | 我该把产品做成什么形式？ | **Writer Gate已发布，尚未交稿** |
-| 4.2 | 第一版先做哪些东西？ | 未开始 |
-| 4.3 | 怎么用最省事的方式把产品搭出来？ | 未开始 |
-| 4.4 | 怎么让客户顺利购买和使用？ | 未开始 |
-| 4.5 | 商品、库存和订单怎么管清楚？ | 未开始 |
-| 4.6 | 怎么把产品交付到客户手里？ | 未开始 |
-| 4.7 | 交付出问题了怎么办？ | 未开始 |
-| 4.8 | 上线前怎么检查？ | 未开始 |
-| 4.9 | 上线后怎么维护和改进？ | 未开始 |
+| 4.1 | 我该把产品做成什么形式？ | **FINAL_SEALED / OWNER_APPROVED** |
+| 4.2 | 第一版先做哪些东西？ | **独立Writer Gate已发布，尚无正文** |
+| 4.3 | 怎么用最省事的方式把产品搭出来？ | NOT_STARTED |
+| 4.4 | 怎么让客户顺利购买和使用？ | NOT_STARTED |
+| 4.5 | 商品、库存和订单怎么管清楚？ | NOT_STARTED |
+| 4.6 | 怎么把产品交付到客户手里？ | NOT_STARTED |
+| 4.7 | 交付出问题了怎么办？ | NOT_STARTED |
+| 4.8 | 上线前怎么检查？ | NOT_STARTED |
+| 4.9 | 上线后怎么维护和改进？ | NOT_STARTED |
 
-## 旧资料和纠偏记录（保留历史，非现行正文）
+## 历史追溯（非当前执行入口）
 
-- [V1→V2框架修订验收与Owner新纠偏说明](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)：框架修订的授权和QA保留，代写章节已撤回。
-- [Reviewer V2原候选](FRAMEWORK_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)、[旧1/7/45冻结快照](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[旧118三级候选](FRAMEWORK_L3_CANDIDATE_20261018.md)：历史比较和证据，不与当前正式版本争权。
-- [旧Owner临时解冻与盲写Gate](docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)及[旧阶段交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：历史阶段已结束。
-- **已从main工作树删除**：`docs/CHAPTER1_FULL_DRAFT_V1_20261018.md`（Reviewer此前代写的正文）、`docs/CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md`（其专属自检）。仅保留正常Git历史，不重新引入Writer资料包。
+- [框架从旧版7/45/118到V2冻结的直接修订及复核](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)、[旧7/45快照](FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)、[旧118三级候选](FRAMEWORK_L3_CANDIDATE_20261018.md)均只作历史证据。
+- Reviewer早期未经独立Writer代写的4.1草稿和自检已按Owner指令从main删除，绝不可与当前正式Writer R2修订封板正文混淆。
+- 第4.1章已完成的首稿Gate/ZIP登记文件退出main当前目录，Git历史保留；其后独立Writer R1、R2材料留在Owner实际交付ZIP/历史中，不视为正式正文。
+- [旧框架Writer阶段交接](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)记录的是早期阶段，不能代替本README和唯一交接。
 
-## 质量标准与边界
+## 工作边界与下一个停点
 
-作者必须逐题回答冻结4/10；实用而系统、事实有官方依据、模拟数据标 `MODEL_ASSUMPTION`、未核资料标 `UNKNOWN`。Writer自由选择案例、工具、篇幅、图表；Reviewer冷读后给PASS/RETURN并负责必要返修包；最终由Owner决定 `CHAPTER1_FINAL_SEALED`。
+本板块仅做产品形态、首版范围、复用实现、购买使用、订单、交付、安全验收和售后维护；①机会市场、②网络部署、③主体/支付税务（CLOSED）、⑤获客增长继续只读。不得提前预写4.2正文，不要求固定案例或工具。
 
-①市场机会、②网络与底层基础设施、③收款税务与主体（CLOSED）、⑤获客增长全保持原状态，不重复其完整教程。
+**NEXT_STEP：** Owner把本轮第4.2章离线ZIP与提示词发给独立Writer→Writer完成完整4/10教学正文+核验记录+ZIP后`STOP_AT_REVIEWER`→Reviewer独立审核；如RETURN同轮完整返修ZIP+可转发话术；Owner决定是否封板第4.2章。
 
-**NEXT_STEP：** Owner将离线包+传递提示词交Writer→Writer交完整正文及核验记录ZIP→Reviewer独立审核→Owner考虑封板。**当前没有任何章节正文。**
-
-[返回五板块总项目入口](../README.md)
+[返回跨境业务总项目](../README.md)
