@@ -1,5 +1,9 @@
 # CWS｜CW0005 PR#153之后：定向视觉Story-Fit修复及一次内部样片Gate（2026-10-18）
 
+<!-- CWS_PROCESS_RETURN_DISPATCH_HOLD_20261018 -->
+> **【2026-10-18 Owner最新覆盖：DISPATCH_HOLD / NOT_SENT / PROCESS_COMPLIANCE_RETURN】** Owner已明确“下一轮审计素材搜索及下载是否遵循要求”“当前轮次RETURN，原因是流程而非画面质量”，且本Gate的Codex提示词**尚未下发**。本视觉返修Gate先冻结在**未执行且暂停派发**状态，新的唯一可执行入口是[MEDIA搜索下载流程只读取证Gate](CWS_CW0005_MEDIA_SEARCH_DOWNLOAD_PROCESS_AUDIT_GATE_2026-10-18.md)。Codex**不得根据下方原Owner授权段落直接继续生图、搜新素材、下载或渲染**，否则绕过最新RETURN。已授权的视觉返修目标和已验收技术能力保留，待本轮历史流程取证独立Reviewer接受后另行协调一次合规的有界执行边界。本条为最新优先指令，不删除历史文字/证据。
+
+
 > **状态：OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / ONE_BOUNDED_REPAIR / REVIEW_REQUIRED**。Owner于2026-10-18在收到[独立Reviewer PR#153视觉RETURN](reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)和“只做一轮定向视觉返修”的建议后回答**“我没问题”**；这是**失败后新的实质制作授权**，不是旧联合Gate的无限重试。
 >
 > **规范**：[VPS Project Governance v0.2.7](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md)，Reviewer已核验权威版本与适用§11B/11C/11D/11G（Windows本机状态、隔离浏览器/资源、可选静态AI图）及共享资源保护。本Gate依§5将 storyboard可见性检查→小范围纠偏→单条真实MP4→技术QA**合并**，不逐阶段再次征求Owner同意。
