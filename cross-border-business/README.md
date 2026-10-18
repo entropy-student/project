@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_SEALED_CH2_WRITER_RELEASED / 02_FRAMEWORK_FROZEN / 03_CLOSED / 04_CORE_FROZEN_L1_L2_TEMP_REOPEN_WRITER_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_WRITER_RELEASED**（2026-10-18）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_SEALED_CH2_WRITER_RELEASED / 02_FRAMEWORK_FROZEN / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_DRAFT_REVIEW_PENDING / 05_FRAMEWORK_V2_FROZEN_CH1_WRITER_RELEASED**（2026-10-18）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 ## 项目目标
@@ -16,7 +16,7 @@
 | 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①章已正式封板；第②章Writer Gate发布、首稿待交** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [正式框架与Writer流程](02-network-environment/README.md) · **8/44/93 FROZEN；第①②③④章正式封板；第⑤章独立Writer工作包已发布** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
-| 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [独立Writer盲写及临时解冻](04-product-building/README.md) · **核心仍冻结；旧一级7/二级45暂时解冻；旧三级118候选；独立Writer待交** |
+| 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [V2正式框架与首章完整草稿](04-product-building/README.md) · **核心1/一级9/二级48/三级117已FROZEN；4.1章完整草稿待审** |
 | 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [正式V2框架与第一章Writer](05-acquisition-growth/README.md) · **核心1/一级6/二级35/三级78已FROZEN；第一章4/8离线Writer Gate已发布、首稿未交** |
 
 ## 第一、第四、第五板块的框架撰写规范
@@ -36,11 +36,15 @@
 - [① 已淘汰的历史7/32候选](01-opportunity-market/FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：保留用于审查回溯；不得替代已冻结的8/34。
 - [① 决策与交接记录](01-opportunity-market/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：版本与Owner批准轨迹。
 - [④ 产品搭建 · 离线Agent任务书（历史参考）](docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
-- **[④ Owner一级/二级临时解冻及Writer盲写Gate](04-product-building/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：本轮唯一当前授权与任务停点。
+- **[④ 唯一现行V2冻结框架1/9/48/117](04-product-building/docs/FROZEN_FRAMEWORK_V2_20261018.md)**：Owner授权Reviewer修订并通过QA后落库。
+- **[④ 第4.1章完整知识正文候选（4二级/10三级）](04-product-building/docs/CHAPTER1_FULL_DRAFT_V1_20261018.md)**：待独立审稿与Owner封板。
+- [④ V1→V2对比、复核及冻结证据](04-product-building/docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md) · [首章结构及官方来源初检](04-product-building/docs/CHAPTER1_DRAFT_REVIEW_CHECK_20261018.md)。
+- **[④ 当前唯一Reviewer交接](04-product-building/REVIEWER_HANDOFF.md)**：当前Gate、进度及停止边界。
+- [④ 历史Owner临时解冻及Writer盲写Gate](04-product-building/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)：旧阶段记录，已被Owner最新授权取代。
 - [④ 历史正式1/7/45快照](04-product-building/FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)与[旧三级118题候选](04-product-building/FRAMEWORK_L3_CANDIDATE_20261018.md)：留作Reviewer比较基线，**禁止转发Writer**。
 - [④ 历史核心与一级冻结](04-product-building/FROZEN_FRAMEWORK_CORE_L1_20261018.md)及[历史二级候选](04-product-building/FRAMEWORK_L2_CANDIDATE_20261018.md)：只作版本证据。
 - [④ 二级复核PASS与三级自检](04-product-building/docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：复核与自检证据。
-- [④ 决策记录、执行证据与Reviewer交接](04-product-building/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：冻结权限、当前阶段及后续停点。
+- [④ 原Writer阶段交接（历史）](04-product-building/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：旧阶段事实留存，不作为当前权威。
 - [⑤ 获客与用户增长 · 离线Agent任务书](docs/05_GROWTH_FRAMEWORK_AGENT_BRIEF_20261018.md)
 - **[⑤ 仅核心仍冻结；旧1/9/45成为比较基线](05-acquisition-growth/FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)**：旧正式快照只读保留；Owner最新要求一级/二级暂时解冻，不能拿历史标签限制独立重写。
 - [⑤ 旧三级102题候选（未冻结）](05-acquisition-growth/FRAMEWORK_L3_CANDIDATE_20261018.md)：现作为Writer返回后的比较基线，不立即冻结。
@@ -56,7 +60,7 @@
 - **[⑤ Owner临时解冻决定与盲写Writer工作包记录](05-acquisition-growth/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：离线包指纹、独立重写授权、新旧比较与停点。
 - [⑤ 当前Owner决策与Reviewer交接](05-acquisition-growth/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：现行状态、交付要求、新旧比较与下一步。
 
-**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①章正文已封板，第②章Writer待交。②③保持原有冻结与封板；④核心仍FROZEN，旧一级7/二级45暂时解冻，旧三级118候选，独立Writer盲写待交；⑤现行V2核心1/一级6/二级35/三级78正式FROZEN；首章独立Writer 4/8 Gate已发布、尚无正文。
+**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①章正文已封板，第②章Writer待交。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1章完整正文候选待独立审查；⑤现行V2核心1/一级6/二级35/三级78正式FROZEN；首章独立Writer 4/8 Gate已发布、尚无正文。
 
 ## 第三板块：已封板的正式子项目
 
@@ -77,6 +81,6 @@
 2. 第二板块8/44/93正式/暂时冻结框架、第三板块CLOSED/FROZEN保持原状。
 3. 第三板块的已有正式文件、路径及历史提交禁止本任务编辑、重命名、删除。
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
-5. ①离线资料无需仓库权限；④当前以临时解冻Gate为准，旧1/7/45只作比较基线，三级118候选保留，离线Writer无需仓库权限；⑤核心问题继续冻结，一级和二级暂时解冻；旧9/45/102作为Reviewer比较基线，Writer R1已审RETURN，Owner随后授权Reviewer直接完成V2 6/35/78，现候选待审核，不再以R2返修包为当前Gate。项目所在GitHub路径为 `entropy-student/project/cross-border-business/`，不操作其他业务源码仓库。
+5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，旧框架与Writer V1均属历史，4.1章全文仅为待审核草稿；⑤核心问题继续冻结，一级和二级暂时解冻；旧9/45/102作为Reviewer比较基线，Writer R1已审RETURN，Owner随后授权Reviewer直接完成V2 6/35/78，现候选待审核，不再以R2返修包为当前Gate。项目所在GitHub路径为 `entropy-student/project/cross-border-business/`，不操作其他业务源码仓库。
 
-**当前下一步：** ①第①章正文已封板，第②章独立Writer Gate与离线资料包已发布；待Owner转交并收回第②章Writer完整候选稿；②第①②③④章已封板，进入第⑤章独立Writer首稿；③维持封板；④核心继续冻结、一级二级暂时解冻，Owner转交离线盲写包，Writer返稿后审新旧框架；⑤V2框架已正式冻结，第①章《我的客户在哪里？》4二级/8三级Writer独立首稿Gate与离线ZIP已发布，待Owner转交/收回候选，随后独立Reviewer验收。
+**当前下一步：** ①第①章正文已封板，第②章独立Writer Gate与离线资料包已发布；待Owner转交并收回第②章Writer完整候选稿；②第①②③④章已封板，进入第⑤章独立Writer首稿；③维持封板；④V2框架正式冻结，4.1章4/10完整正文草稿待独立Reviewer审查及Owner封板决定；⑤V2框架已正式冻结，第①章《我的客户在哪里？》4二级/8三级Writer独立首稿Gate与离线ZIP已发布，待Owner转交/收回候选，随后独立Reviewer验收。
