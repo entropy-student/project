@@ -1,4 +1,8 @@
 <!-- CWS_PR153_VISUAL_RETURN_ENTRY_20261018 -->
+
+<!-- CWS_PR153_TARGETED_STORYFIT_REPAIR_AUTH_20261018 -->
+> **【2026-10-18 最新Codex唯一Gate】** [PR#153后目标性Story-Fit视觉返修Gate](docs/CWS_CW0005_POST_PR153_TARGETED_STORYFIT_REPAIR_GATE_2026-10-18.md)已获Owner最新“我没问题”明确授权。Codex直接读取此Gate和其`REVIEWER_TO_EXECUTOR_RELAY`，先检真实Mac开窗、T6温度数据、T5淀粉脚三态、T2/T6声学100ms→106ms及结尾回桌面的**真实可见**Storyboard关键帧，达标后只制作一条30–60秒本机内部样片、做QA、建独立PR停Reviewer。不得执行下方旧综合Gate、重做技术基建、重绘新Mac、使用旧历史四条原视频、改冻结V5.6.2原字节或自行合并/发布。现行`RETURN_VISUAL_STORYFIT/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH/RIGHTS_PARTIAL`仍在；旧PR#153技术PASS/视觉RETURN仍是已接受事实。
+
 > **【2026-10-18当前执行锁】** 前一轮[CW0005联合Story-Fit Gate](docs/CWS_CW0005_COMBINED_STORYFIT_SOURCE_TO_SAMPLE_GATE_2026-10-18.md)已经实际执行，55.267秒MP4经上传与独立Reviewer实查**技术PASS、视觉RETURN**；[最新唯一Reviewer报告](docs/reviews/CW0005_PR153_INDEPENDENT_VISUAL_STORYFIT_REVIEW_RETURN_2026-10-18.md)与[CURRENT_STATE](docs/CURRENT_STATE.md)现行有效。旧Gate开头“EXECUTOR_NOT_STARTED”和本文件下方“Codex直接执行联合Gate”均为**执行前历史，不得再次重跑**。具体失败是42.966秒单一锅内素材占画面主体、S05 AI示意小且有喷气误导风险、核心T4/T5/T6研究视觉未发挥作用、原版Research Aqua界面被简化。已把[PR#153](https://github.com/entropy-student/project/pull/153)的脱敏执行报告单独合并main归档，**不是视觉PASS**。下一步只允许Reviewer定义新的有界视觉编排返修Gate并取得失败后必要的新授权；保留全部技术链路和冻结HTML，不自行继续渲染、开启R4或发布。 `CW0005_VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH/RIGHTS_PARTIAL`全部保留。
 
 <!-- CWS_CW0005_COMBINED_GATE_ENTRY_20261018 -->
