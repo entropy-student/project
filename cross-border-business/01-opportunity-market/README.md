@@ -1,18 +1,20 @@
 # 01｜机会挖掘与市场判断
 
-> **状态（2026-10-18）：FRAMEWORK_OWNER_APPROVED_FROZEN（核心1 / 一级8 / 二级34 / 三级83） / CHAPTER1_WRITER_GATE_RELEASED / WRITER_PENDING / TEXT_NOT_STARTED**  
+> **状态（2026-10-18）：FRAMEWORK_OWNER_APPROVED_FROZEN（核心1 / 一级8 / 二级34 / 三级83） / CHAPTER1_FINAL_SEALED / CHAPTER2_WRITER_GATE_RELEASED / WRITER_PENDING**  
 > **唯一核心问题：什么跨境生意值得做？**
 
 ## 现行权威
 
 **[正式冻结问题框架 V1（1/8/34/83）](docs/FROZEN_FRAMEWORK_V1_20261018.md)**：第一板块唯一现行正式问题树。原文、排序、编号、二三级父题归属及**8.2直接成节**已经Owner批准，未经再次批准不可更改。
 
-## 当前第一章Writer任务
+## 当前章节
 
-- **[第一章独立Writer Gate](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：4个二级/9个三级完整首稿；当前`RELEASED / WRITER_PENDING`。
-- **[本章离线包清单与SHA256](docs/CHAPTER1_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)**：完整冻结8/34/83及Writer转交资料；ZIP本轮对话交付。
-- [长期Writer → Reviewer → Owner审核和返修流程](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：如RETURN同轮必给返修ZIP和传递提示词。
-- **[唯一Reviewer交接](REVIEWER_HANDOFF.md)**：当前权威状态与下一步。
+- **[第①章正式封板正文](docs/CHAPTER1_FINAL_SEALED.md)**：4二级/9三级；Owner授权Reviewer定向修订，现`FINAL_SEALED`。
+- [第①章封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：R1/R2审核、直接修订、官方来源与完整性验证。
+- **[第②章独立Writer Gate](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：4二级/8三级，`RELEASED / WRITER_PENDING`。
+- [第②章完整离线资料包清单与SHA256](docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：本对话下载自包含Writer ZIP，Writer无需GitHub权限。
+- [长期Writer → Reviewer → Owner审核和返修流程](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：只要RETURN，同轮提供返修ZIP和传递提示词。
+- **[唯一Reviewer交接](REVIEWER_HANDOFF.md)**：最新唯一权威交接。
 
 ## 决策和历史文件（仅供追溯）
 
@@ -27,6 +29,6 @@
 
 本板块限于**投入前商业机会判断**：发现机会、买家需求、替代与竞争、市场可达性、盈利现金流、准入初筛、低成本购买验证以及取舍与退出。网络配置属②，经营主体/支付税务细节属③，产品研发与真实交付属④，持续获客/转化复购属⑤。
 
-**下一步：** 第①章Gate和离线资料包已发布，Owner转交独立Writer，待返回整章正文及核验记录再Review；正文尚未完成或封板。第二/第三板块状态未改变。
+**下一步：** 第①章已Owner批准正式封板，勿再启动旧Gate；第②章Writer Gate与完整离线包已发布，待Owner转交、Writer返回整章正文和核验记录后独立Review。第二/第三板块状态未改变。
 
 [返回五板块总项目](../README.md)
