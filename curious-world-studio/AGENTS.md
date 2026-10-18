@@ -1,3 +1,6 @@
+<!-- CWS_CW0005_COMBINED_GATE_ENTRY_20261018 -->
+> **【2026-10-18现行唯一授权的Codex任务】** Owner要求“尽快推进，能合并的Gate一律合并”。直接读取[CW0005联合视觉Story-Fit Gate](docs/CWS_CW0005_COMBINED_STORYFIT_SOURCE_TO_SAMPLE_GATE_2026-10-18.md)的`REVIEWER_TO_EXECUTOR_RELAY`，按条件连续完成原论文Figure1/3a/6与S1/S2验证、合法新素材定向搜集、S01–S10画面绑定和一条30–60秒内部样片QA。Codex可独立读写仓库，**只在隔离PR提交脱敏证据/必需的最小改动，不修改main或冻结V5.6.2**。旧[PR#152库存盘点已Reviewer受理PASS](docs/reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_REVIEWER_PASS_2026-10-18.md)，不得重跑；旧R3 Gate禁重试。**没有素材商用许可不得发布，样片/论文图不上传Git**；R3视觉RETURN、G1/G2/R4/NO_PUBLISH及rights PARTIAL不变。下方历史“下一步/已授权R3”一律受此现行指令覆盖。本轮无需Owner传ZIP或逐步重复审批。
+
 <!-- CWS_CONFIRMED_HANDOFF_20261018 -->
 > **【2026-10-18最新生效】V5.6.2 已由Owner正式冻结为模板技术PASS**：唯一新版HTML在[main冻结路径](visual/frozen/storyboard-v5-6-2-20261018.html)，Git blob `33aabc3ff2e48877493277eb1a86274818e3c769`；旧V5.2冻结HTML仍保留。新Reviewer/Executor**必须先读**[仅已确认事实的完整接手](docs/CWS_CONFIRMED_STATE_REVIEWER_HANDOFF_2026-10-18.md)→[CURRENT_STATE](docs/CURRENT_STATE.md)→[REVIEWER_HANDOFF_CURRENT](docs/REVIEWER_HANDOFF_CURRENT.md)，历史本文件中“R3待执行”“V5.2唯一冻结”等旧阶段描述均已失效。正式CW0005 R3视觉RETURN、G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/NO_PUBLISH、rights PARTIAL仍有效；V5.6.2模板PASS≠真实长片/正式制片PASS。历史七轮规划**仅建议、未冻结也未逐轮授权**。本记录不授予新的执行权。
 
