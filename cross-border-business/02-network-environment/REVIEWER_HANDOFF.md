@@ -1,55 +1,63 @@
 # 网络环境搭建｜唯一项目交接
 
-> **PROJECT_STATUS：ACTIVE_WRITING / OWNER_AUTHORIZED**（2026-10-18）  
+> **PROJECT_STATUS：ACTIVE_WRITING（2026-10-18）**  
 > **FRAMEWORK：8_L1 / 44_L2 / 93_L3 — OWNER_FROZEN（L3_PROVISIONAL）**  
-> **CURRENT_STAGE：CHAPTER1_REVIEWER_RETURN_R1 / WRITER_REVISION_PENDING**  
-> **CURRENT_GATE：CB02-CH1-REVIEW-R1-20261018（RETURN_CONTENT_ACCURACY_AND_APPLICABILITY）**  
-> **OWNER_ACTION_REQUIRED：将本轮Reviewer R1完整返修ZIP及可直接复制的返修提示词交给独立Writer，收回R2完整正文与核验记录后再交Reviewer复核**
+> **CHAPTER1：FINAL_SEALED / OWNER_AUTHORIZED_CORRECTIONS_PASS**  
+> **CURRENT_STAGE：CHAPTER2_OFFLINE_WRITER_V1_RELEASED / WRITER_NOT_STARTED**  
+> **CURRENT_GATE：CB02-CH2-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
+> **OWNER_ACTION_REQUIRED：下载第②章8文件ZIP转交独立Writer，待收到完整正文+核验记录再交Reviewer审核；无须开放GitHub权限。**
 
-## 一、项目目标与冻结状态
+## 一、任务目标及冻结状态
 
-第二板块属于[五板块跨境业务总项目](../README.md)，面向中国大陆个人开发者、独立站经营者和中小跨境卖家。**唯一核心问题：如何搭建靠谱的跨境经营环境？**
+本板块是[跨境业务五板块总项目](../README.md)的第二部分，面向中国大陆个人开发者、独立站经营者和中小跨境商家，解决“**如何搭建靠谱的跨境经营环境？**”。
 
-**唯一冻结全文：[docs/FROZEN_FRAMEWORK_V5_20261018.md](docs/FROZEN_FRAMEWORK_V5_20261018.md)**。8个一级/44个二级正式PASS/FROZEN，93个三级经Owner暂时PASS/FROZEN。未经Owner明确授权，任何Writer/Reviewer都不可改问题原文、数量、顺序和归属。经营准备→海外工作环境→域名邮箱→网站程序→安全→客户访问→故障恢复→成本升级，按卖家的认知和行动顺序推进；不是所有卖家都必须自建全套设施。
+**唯一冻结框架：** [docs/FROZEN_FRAMEWORK_V5_20261018.md](docs/FROZEN_FRAMEWORK_V5_20261018.md)。8一级、44二级正式PASS/FROZEN；93三级Owner暂时PASS/FROZEN；标题、层级、数量、顺序和父子归属都不可擅改。
 
-## 二、Owner指定的Writer—Reviewer流程（长期有效）
+**八章经营顺序：** ①经营准备→②海外工作环境→③域名与邮箱→④网站与程序运行→⑤安全防护→⑥客户访问→⑦故障与恢复→⑧成本与升级。顺序是读者路径，不代表所有业务必须建全套技术设施。
 
-**Owner决定：先冻结问题框架；Writer在框架内独立写一版，不限定具体内容、表格、案例、篇幅与表达；Reviewer收到后独立审查广度、深度、准确性、系统性、可读性和实际决策价值，提出返修意见；Writer按缺陷定向修订；Owner确认后封板。**
+## 二、当前正式成果、唯一有效文件与角色
 
-**唯一定义和八章可复用审稿流程：** [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。**Owner新增强制规则：每次需要返修时，Reviewer须在同一轮提供「完整返修ZIP＋可直接转交Writer的提示词」，不可只返回问题清单。**
-
-| 角色 | 必须负责 | 权限与限制 |
-|---|---|---|
-| **Reviewer（本对话）** | 读取main冻结基线、离线工作包与Gate、独立审核、事实核查、RETURN+返修包、Owner通过后封板并读回 | 不代写独立首稿；不得把偏爱的案例/表格强制变成首稿交付 |
-| **Writer（独立Agent）** | 不访问本仓库，依据完整离线包自主撰写第一稿；交完整正文和研究核验记录给Owner转回Reviewer | 保留冻结标题，真实事实可查；不修改main、不自称Reviewer PASS、不自封板 |
-| **Owner（用户）** | 决定正式框架、转交工作包、最终验收并批准封板 | 不是Writer或Reviewer的技术执行人 |
-
-**Writer最低约束：** ①原文/层级/顺序/归属不变且每题有实质回答；②对中国大陆卖家可理解、深度和完整性不能缩水；③现行法/平台准入/商用套餐/费用等需要官方出处与UNKNOWN；④不编造账号许可或真实运行；⑤只写当章、停在Reviewer。**Writer创作自由：** 内容选材、案例数量、品牌、行文长度、表格和图、叙述方式完全自决。包内材料是事实与框架输入，不是Reviewer写好的文章脚手架。
-
-**Reviewer审查并反馈：** 结构与题目逐字一致、知识广度/深度、跨业务模式适用性、技术和政策准确度、专业原理、读者是否能真正选择/执行、叙事自然程度、证据质量、重复/遗漏/越界。返修意见需有章节定位、证据、严重程度和明确修订目标，不只说“更多内容”。Writer首稿的`PASS_CANDIDATE`不等于正式通过。非Writer代写，除非Owner之后明确单独授权最小修订。
-
-## 三、当前有效文件
-
-| 文件 | 权威角色及状态 |
+| 文件 | 状态/用途 |
 |---|---|
-| [docs/FROZEN_FRAMEWORK_V5_20261018.md](docs/FROZEN_FRAMEWORK_V5_20261018.md) | 唯一8/44/93冻结问题、知识范围 |
-| [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | **长效Writer—Reviewer首稿/审核/返修/封板流程** |
-| [docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V2_20261018.md](docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V2_20261018.md) | 第一章**V2**独立自由首稿Gate，已发布 |
-| [docs/CHAPTER1_WRITER_OFFLINE_PACKAGE_V2_20261018.zip](docs/CHAPTER1_WRITER_OFFLINE_PACKAGE_V2_20261018.zip) | 完整8文件自包含输入，Writer不需仓库权限 |
-| 本 [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) | 当前阶段、权限和Owner决定的唯一交接 |
-| [README.md](README.md) | 父项目导航 |
+| [docs/FROZEN_FRAMEWORK_V5_20261018.md](docs/FROZEN_FRAMEWORK_V5_20261018.md) | **唯一一二三级冻结原文与知识范围** |
+| [docs/CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | **第一章正式正文**，Owner授权Reviewer定向修订R2后冻结 |
+| [docs/CHAPTER1_SEAL_EVIDENCE_20261018.md](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md) | Writer R2 SHA、Reviewer B01–B07 修复矩阵、官方来源、封板验证及边界 |
+| [docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | **长期Writer—Reviewer—Owner流程**，每次RETURN同时给返修ZIP与转交提示词 |
+| [docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md) | 第②章独立自由首稿Gate，7H2/15H3 |
+| [docs/CHAPTER2_WRITER_OFFLINE_PACKAGE_V1_20261018.zip](docs/CHAPTER2_WRITER_OFFLINE_PACKAGE_V1_20261018.zip) | **独立8文件离线工作包**，含全部8/44/93冻结框架；Writer不需要仓库 |
+| [README.md](README.md) | 本子项目阅读导航 |
+| [REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md) | **本文件：唯一阶段状态、权限与恢复指针** |
 
-**第一章《经营准备》：5个二级、10个三级，Writer首稿已收到并通过结构/文件完整性检查，Reviewer R1结论 `RETURN_CONTENT_ACCURACY_AND_APPLICABILITY`（R01–R14）。** 原正文未封板；本轮返修包已在对话交付（审核报告、原稿、核验记录及转交提示词；未写回项目正式docs以免把被退回稿误作封板稿），等待Writer的R2返修。其余七章未开始正文，HTML未启动。
+**对齐第三板块的存储原则：** 永远只有一套正式冻结框架；每个已批准章节独立一个`CHAPTERN_FINAL_SEALED.md`；唯一交接保持简洁和准确。正在执行的Gate/ZIP可暂存，完成后从main当前工作目录清退，Git历史留痕。其他章未封板稿不与正式正文并列。
 
-## 四、历史澄清与回滚
+## 三、第一章R1/R2与Owner授权封板记录
 
-- 旧第一章Gate `CHAPTER1_INDEPENDENT_WRITER_GATE_20261018.md` 和旧ZIP `CHAPTER1_WRITER_OFFLINE_PACKAGE_20261018.zip` **因强制指定三个案例、多种表格及固定写作顺序，被Reviewer审查为`RETURN_GATE_OVERCONSTRAINED`**；本轮正式由V2替代，旧文件退出main，Git历史保留；**请不要再发送V1离线ZIP**。
-- 本项目最初的9/50、8/73和100题旧草案，以及V4/V1中间框架，只在Git历史追溯，不与正式冻结V5并列。
-- 支付板块《现代商业支付系统》已CLOSED/FROZEN，此处只借鉴离线Writer工作流程和独立审查经验，**不改其任何正式九份文件**；第四板块产品、第五板块获客同理不编辑。
-- 任一Writer正文只有在Reviewer独立核验并由Owner批准后，才能落库`CHAPTERN_FINAL_SEALED.md`。章内候选不冒充最终稿。无真实网络/服务器部署、账户注册、支付、客户信息处理等授权。
+- 初版独立Writer遵循离线ZIP模式，交完整正文与核验记录，Reviewer R1发现多项强制买技术/事实偏差，RETURN并提供完整返修包及转交提示词。
+- Writer R2在原稿上修订后，再经Reviewer独立复核，结论`RETURN_R2_FACTUAL_RESIDUALS_AND_SCOPE`，列为B01–B07：技术必要项、PCI证据、AWS Free Tier、预算口径、平台责任、平台账号/隐私条件、来源可追溯性。
+- **Owner新指令（2026-10-18）：** “好的，这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中，嗯，注意要仿照着第三部分的架构。记得记录相关文档。完成之后开启第二个1级问题的部分。” 这是**本轮第一章的明确例外授权**，允许Reviewer直接完成定向事实修订与封板，不意味着后续章节取消独立Writer机制。
+- Reviewer依据R2全文和R2审核意见定向修改，**保留冻结的5H2/10H3原文和知识结构**，逐项消除B01–B07主要阻断，新增官网出处索引与教学习假设。具体核验见[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
+- **正式决定：** `CHAPTER1_FINAL_SEALED`。这只代表经Owner授权的教学内容封板，**不代表实际商户服务已获批、支付或云系统已真实部署、所有法律问题得到全面核实**。
+- R1、R2 Writer原始包及Reviewer历史返修包保留在Owner此前对话附件及正常Git历史所载证据，不作为main并列正式正文。本轮不需要再请Writer写R3。
 
-## 五、当前下一步
+## 四、第二章独立Writer约束与审核职责
 
-**第①章当前为Reviewer R1 RETURN，需Writer定向返修。** Owner把已交付的 `第一部分_经营准备_Reviewer_R1审核与返修包.zip` 和 `04_给Writer的定向返修提示词.md`（或对话内同内容的可复制转述）发给独立Writer。包中包含R01–R14的定位/原因/修复目标、Writer完整原文及核验记录。Writer无GitHub权限，只改定向缺陷，返回**完整R2候选正文、R01–R14逐项核验记录和交付ZIP**，停在Reviewer。Reviewer独立复核，符合条件再报Owner决定是否封板。
+**本章正式核心问题：** 人在国内，怎么稳定使用海外网站和账号？
 
-**永久规则：** 以后任何Reviewer要求Writer返修时，**都必须同轮给Owner「完整返修ZIP」和「可直接转交的提示词」**，并在交接文档记录状态，详见[流程文档](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。不允许只给Reviewer意见或让Owner自行凑返修包。
+**7个二级、15个三级问题**原文、层级、顺序详见冻结框架和Gate。内容重点是境外网站连通性、IP与平台识别的作用及局限、直连/VPN/代理/远程工作环境/专线的适用方式和验证、设备与浏览器、真实身份与平台地区资格、团队账号管理、网络与账号故障恢复。
+
+**Writer：** 没有GitHub权限；仅凭V1离线ZIP+公开资料独立撰写**完整候选正文Markdown、核验记录Markdown、交付ZIP**。自由选案例、篇幅、表格与表达；不以IP变更/身份伪装代替真实资格；动态规则附来源与UNKNOWN。完成后`STOP_AT_REVIEWER`，不自称PASS，不写第③章或HTML。
+
+**Reviewer：** 审广度、深度、真实准确性、合规适用边界、具体判断与实践验证、可读性以及7H2/15H3逐字同序。若需要返修，**同时给Owner完整返修ZIP及可直接转发的提示词**。任何Writer自评通过不等于Reviewer PASS；通过后仍需Owner决定是否封板。
+
+**Owner：** 只负责把ZIP转发给Writer、将交付回传Reviewer、决定后续是否冻结和推进。
+
+## 五、历史与安全边界
+
+- 第①章旧离线Writer Gate V2及输入ZIP已被第①章正式封板成果取代，本轮从当前main目录清退（Git正常历史保留），避免Agent收到旧任务。不得删除正式CH1。
+- 原9/50、8/73和旧100题等历史候选均非现行冻结框架，不得恢复作为权威。
+- 第三板块《现代商业支付系统》CLOSED/FROZEN；当前提交严禁更改其9份正式成果、目录或Git分支。
+- 未获授权启动真实 VPN/代理部署、服务商账户注册、支付/税务操作、生产网站修改或用户数据处理；本轮不生成正式HTML。
+
+## 六、下一步
+
+**Owner 将第②章Writer ZIP交给独立Agent → Writer返回完整正文+核验记录+ZIP → Reviewer独立审核 → 若有阻断则出返修包+提示词，Writer定向返修 → Reviewer复核、Owner接受后方可封板②。** 第③–⑧章未启动正文、HTML未启动。
