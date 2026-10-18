@@ -4,10 +4,18 @@
 > **CHAPTER1：《我的客户在哪里？》FINAL_SEALED（4二级/8三级）**  
 > **CHAPTER2：《我该怎么找到客户？》FINAL_SEALED（9二级/22三级，2.2直接成节）**  
 > **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
-> **CHAPTER4：《找客户到底划不划算？》INDEPENDENT_WRITER_GATE_RELEASED / WRITER_NOT_STARTED（6二级/12三级）**  
+> **CHAPTER4：《找客户到底划不划算？》WRITER_R1_DELIVERED / STRUCTURE_PASS_6_12 / REVIEW_RETURN / R2_FULL_REPAIR_PACKET_READY / NOT_SEALED**  
 > **CHAPTER5–6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH4-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261018**  
-> **OWNER_ACTION_REQUIRED：转交第四章12文件Writer离线ZIP与提示词，回收完整正文/核验Markdown及ZIP供Reviewer复核。**
+> **CURRENT_GATE：CB05-CH4-WRITER-R2-DIRECTED-REPAIR-20261019**  
+> **OWNER_ACTION_REQUIRED：转交第四章Writer R2完整返修ZIP与话术，回收R2全章正文及事实核验ZIP供Reviewer复核。**
+
+## 当前最新：第四章Writer R1独立审核RETURN（2026-10-19）
+
+- **[第四章独立Review R1报告（RETURN）](docs/CHAPTER4_WRITER_R1_REVIEW_RETURN_20261019.md)**，冻结**6二级/12三级全部逐字同序同层级PASS**，但单位经济重复计费、无对照组因果归因、支付平台规则误用、归因来源、LTV模型口径与统一止损阈值造成**B01–B08八项必修、N01–N03三项小修**，**CHAPTER4_NOT_SEALED**。
+- Owner原始Writer ZIP `第五部分_第四章_独立Writer交付.zip`，**32,662字节**，SHA256 `309ce4295e3be051ca7233abb2327d47b13e96ba0292661282f698f54eb29df4`，ZIP完整；R1正文**42,221字节/451行**，SHA256 `02544d1f97806d9458269da462c48d032e1d8b925ec9c8afec8ddc6d942f16ed`；核验**25,825字节/226行**，SHA256 `abf0b85ebb8de3deef10f79fa0f6e28c78412776c3ae3d4ea2c6c555c0447643`。
+- **本轮已交Owner完整R2离线返修包**：`第五部分_第四章_R1独立审核与R2完整返修包_20261019.zip`，**43,359字节**、SHA256 `b84e797a4e9b44a73b7588d00e8f1ff1a54b9ddc2dcfedbac8613f223164d81f`，7份文件，包含Writer R1两份**全文原件**、详细Reviewer报告、精确R2指令、官方来源、可复制提示词和SHA256清单，校验通过。**ZIP二进制仅在对话提供，非GitHub附件**。
+- 现行唯一下一步是Owner把R2包及提示词转给**无GitHub权限的独立Writer**，回交R2完整正文+核验记录ZIP并`STOP_AT_REVIEWER`，再Reviewer独立复核。**第一二三章仍正式封板；冻结框架1/6/35/78不变；第四章未封板，第五章未启动。**
+- 下文第三章封板审计及第四章**最初Writer Gate**是历史/正式成品指针，勿把首稿Gate的“尚未收到首稿”当成当前真实状态。
 
 ## 一、现行权威与正式成品
 
@@ -18,11 +26,11 @@
 | 第二章正式全文 | [CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | **FINAL_SEALED** |
 | 第三章正式全文 | **[CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md)** | **FINAL_SEALED** |
 | 第三章Owner直修封板证据 | **[CHAPTER3_SEAL_EVIDENCE_20261018.md](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)** | B01—B04及N01—N03修复、官方来源与全文SHA |
-| 第四章现行Writer首稿Gate | **[CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)** | **RELEASED / WRITER_NOT_STARTED**，6二级/12三级 |
+| 第四章现行Writer首稿Gate | **[CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md](docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)** | **历史首稿Gate，R1已交稿并独立Review RETURN**，6二级/12三级 |
 | 第四章离线包清单 | [CHAPTER4_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md](docs/CHAPTER4_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md) | 完整12文件ZIP及指纹（对话交Owner；ZIP二进制不在main） |
 | 项目状态 | [本板块README](README.md)及本交接 | 仅本交接+正式状态表代表当前执行节点 |
 
-**本板块目前已有三个正式封板正文，第四章仍只有冻结题及Writer Gate，不能自称第四章已交或封板。**
+**本板块目前已有三个正式封板正文；第四章R1完整候选已经交付、结构PASS但独立Review RETURN，仍无封板正文。**
 
 ## 二、第三章：Writer R1→R2→Owner授权直修封板证据链
 
@@ -47,4 +55,4 @@
 - 不访问真实客户、广告/支付账号、服务器/网站生产数据，不写产品实现代码或HTML。
 - Git历史保留R1/R2审核状态；新Reviewer必须以当前唯一交接、Owner最新封板证据和正式正文为准，不让旧`RETURN`覆盖已封板知识。
 
-**NEXT_STEP：** Owner转发第四章完整12文件离线ZIP和提示词→Writer回交第四章全文+核验ZIP→Reviewer独立Review→Owner决定是否封板。
+**NEXT_STEP：** Owner转发第四章R2完整返修ZIP和话术→Writer基于R1全文定向修B01–B08及N01–N03，回交完整R2正文+核验ZIP→Reviewer独立复核→Owner决定是否封板。
