@@ -11,7 +11,7 @@
 - **[正式冻结问题框架 V1（1/8/34/83）](docs/FROZEN_FRAMEWORK_V1_20261018.md)**
 - [第1章《我该从哪里找到值得做的生意？》正式正文](docs/CHAPTER1_FINAL_SEALED.md)
 - [第2章《谁会买我的东西，为什么愿意花钱？》正式正文](docs/CHAPTER2_FINAL_SEALED.md)
-- [第3章《已有竞争对手，我还有机会吗？》正式正文](docs/CHAPTER3_FINAL_SEALED.md)
+- [第3章《别人已经在卖了，我还有机会吗？》正式正文](docs/CHAPTER3_FINAL_SEALED.md)
 - [第4章《这个市场有多大，还能做多久？》正式正文](docs/CHAPTER4_FINAL_SEALED.md)
 - [第5章《这门生意到底能赚多少钱？》正式正文](docs/CHAPTER5_FINAL_SEALED.md)
 - [第6章《这门生意有哪些不能忽视的门槛？》正式正文](docs/CHAPTER6_FINAL_SEALED.md)
