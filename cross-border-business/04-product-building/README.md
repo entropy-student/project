@@ -7,6 +7,7 @@
 ## 当前唯一现行版本｜G5/G6补强后九章再次冻结
 
 - **[Owner批准A+B最小化补强统一封板证据](docs/G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md)**：完整记录9章各自旧/新Git Blob、R01–R13及R17、R22的实际执行边界、CN22/CN23官方资料冲突判定、9/48/117冻题逐字比对、63张Mermaid围栏与原代码围栏静态检查。**该统一封板证据中的最新Blob优先于原有各章历史封板指纹。**
+- **[G7已校验的独立Reviewer工作包登记（含ZIP指纹和9章完整正文取得方式）](docs/G7_EDITORIAL_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**：ZIP二进制由Owner在对话中取得，正式九章全文按固定GitHub commit和Blob获取；此包不伪装为内嵌九章完整正文。
 - **[当前G7独立语言与连贯性只读审核Gate](docs/G7_EDITORIAL_INDEPENDENT_REVIEW_GATE_V1_20261019.md)**：只检查文章软性质量，不改核心内容、冻题、引用、算式、代码图逻辑、GitHub及正式封板正文；待Owner审报告后另行决定。
 - 最新正式正文仍只认以下九份`CHAPTER*_FINAL_SEALED.md`，但文件内容已含Owner批准的G5/G6 A+B最小补强；旧报告只用于历史溯源。
 
