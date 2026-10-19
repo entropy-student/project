@@ -7,7 +7,7 @@
 
 ## 冻结批准与版本来源
 
-- Owner在2026-10-18审核[Reviewer综合修订V2完整候选](../FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)后明确指示：“我没问题，正式通过落库吧，然后请你参考第二部分记录的规范以及要求等信息，我们开始撰写第一个1级问题。”
+- Owner在2026-10-18审核[Reviewer综合修订V2完整候选](https://github.com/entropy-student/project/blob/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)后明确指示：“我没问题，正式通过落库吧，然后请你参考第二部分记录的规范以及要求等信息，我们开始撰写第一个1级问题。”
 - 本文件仅提取该V2候选的**核心与全部问题树、统计、章间边界**，保留问题原文，不将候选稿历史的“未冻结”状态沿用为当前状态。原候选保持只读供版本追溯。
 - 旧9/45/102、独立Writer R1 6/23/42仍仅供历史比对；本文件**替代所有先前冻结快照作为唯一现行问题权威**。
 - 未获Owner再次明确授权，不得更改任何现行冻结问题题干、归属、顺序、数量或“2.2直接成节”约定。正文可以自主组织知识与案例，但须覆盖全部冻结题。
