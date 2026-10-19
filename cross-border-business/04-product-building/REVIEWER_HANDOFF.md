@@ -1,18 +1,18 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接
 
 > **UPDATED：2026-10-19**  
-> **PROJECT_STATUS：V2_1_9_48_117_FROZEN / CH1_TO_CH8_FINAL_SEALED / CH9_R2_RETURN_R3_WRITER_PENDING**  
-> **CURRENT_GATE：CH9-WRITER-R2-REVIEW-RETURN-R3-REPAIR-20261019**  
-> **CURRENT_STOP：CH9_R2_REVIEW_RETURN / R3_WRITER_PENDING / NO_SEALED_CH9_BODY / HTML_NOT_STARTED / BOARD_NOT_CLOSED**  
-> **OWNER_ACTION_REQUIRED：** 下载第4.9章Writer R2独立Reviewer的完整R3定向返修ZIP与提示词交独立Writer；Writer基于完整R2修复R2-N01–N07，交完整R3正文、自检和ZIP后再复审。4.1–4.8只读，第4.9章暂不封板。
+> **PROJECT_STATUS：V2_1_9_48_117_FROZEN / CH1_TO_CH9_FINAL_SEALED / POST_CHAPTER_G5_PENDING**  
+> **CURRENT_GATE：NONE / CHAPTER_WRITING_COMPLETE / NEXT_G5_PENDING_OWNER_DECISION**  
+> **CURRENT_STOP：ALL9_FINAL_SEALED / G5_G8_NOT_COMPLETED / HTML_NOT_STARTED / BOARD_NOT_CLOSED**  
+> **OWNER_ACTION_REQUIRED：** 九章逐章正文已Owner正式封板；依[统一SOP](../PROJECT_WORKFLOW_SOP.md)下一步是G5深度广度与外部知识体系对照，后续独立盲审、文字连贯性润色及最终CLOSE需逐Gate审查和Owner决策。**不自动解冻正文、不制作HTML、不宣称板块CLOSE。**
 
-## 当前最新执行结论｜Writer R2独立复审 RETURN（2026-10-19）
+## 最新正式结论｜第4.9章Owner授权Reviewer修订R2并封板（2026-10-19）
 
-- **CURRENT_VERDICT：** `RETURN_CH9_R2_RESIDUAL_PAYMENT_RECONCILIATION_MIGRATION_REFUNDS_RETENTION`；唯一当前操作报告：[4.9 Writer R2独立Reviewer复审与R3完整返修包指纹](docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)。**以下V1报告和V1→R2原Gate是历史依据，不再作为当前执行任务。**
-- 原Writer R2 ZIP：`第四部分_第九章_独立Writer交付_R2.zip`，48,513 bytes、SHA256 `62cb26a4c26b2af0f74ccac6ce9deb458af60252c0a320c322d10569a1e46025`；R2完整正文59,511 bytes/670行 SHA256 `10832afadf1edd64da6ffb1a6eb74c2a731a9d28d8f84cff1cac7cce18d6bd67`；R2完整核验44,939 bytes/136行 SHA256 `20791b8edb19394ca0822ec6d9040127212d840aca9261c173c11db619cf9622`；CRC PASS。
-- 本轮**冻题1/8/17全部逐字同序PASS；9张Mermaid围栏、章末4列/9项NOT_RUN静态PASS；八域知识覆盖基本充分**。独立审查剩 **R2-N01–N07七组阻断**：Stripe状态与核身、异步迟达对账、3PL人工发运去重、Stripe/Shopify费率、美国CAN-SPAM/迁移、停业退款、德国HGB/GDPR保留销毁。另有S01–S05顺修。**不整章重写**。
-- **R3完整无损离线ZIP：** `第四部分_第九章_Writer_R2_R3完整定向返修包_20261019.zip`，96,163 bytes、SHA256 `4f41fc546f3a87c765c2d9b7852c7bb57cf777beec3c188f382032cc0a98c496`；10个UTF-8 Markdown，含完整原R2两稿、Reviewer报告、V2冻题、4.8正式全文、R3指令/官方来源/话术/逐SHA；CRC与原稿字节一致性PASS。二进制**仅Owner聊天附件**，未上GitHub。**Writer R3未交付**。
-- **NEXT：** Owner转交完整R3 ZIP与提示词→独立Writer提交完整R3全文+完整核验+ZIP (`STOP_AT_REVIEWER`)→Reviewer独立复查→Owner最终决定封板。4.1–4.8正式正文只读，4.9无正式正文、HTML未启动、第四部分未CLOSE。
+- **当前唯一正式正文：** [CHAPTER9_FINAL_SEALED.md](docs/CHAPTER9_FINAL_SEALED.md)，**67,484 bytes／661行**，SHA256 `556735767b3e0f8d3740b55908e9ad8aa6e4a1198652779cfac8ec50030ae2bd`；Git blob `97f3cf5f27ac0abda546acb1825e5cb5f6fccc7a`；正文原创建commit `e52898a6a5128e982397deb41080eebcfa32183d`。
+- **唯一Owner直修封板审计：** [CHAPTER9_SEAL_EVIDENCE_20261019.md](docs/CHAPTER9_SEAL_EVIDENCE_20261019.md)；Owner本次明确授权Reviewer直接修改R2并冻结落库。**没有独立Writer R3交付**；R3返修ZIP仅为已经退出当前流程的历史准备物。
+- **R2原始基线：** 原Writer ZIP `第四部分_第九章_独立Writer交付_R2.zip` 48,513 bytes SHA256 `62cb26a4c26b2af0f74ccac6ce9deb458af60252c0a320c322d10569a1e46025`，原正文59,511 bytes/670行 SHA256 `10832afadf1edd64da6ffb1a6eb74c2a731a9d28d8f84cff1cac7cce18d6bd67`，原核验44,939 bytes/136行 SHA256 `20791b8edb19394ca0822ec6d9040127212d840aca9261c173c11db619cf9622`。历史[R2独立Reviewer RETURN](docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)包含R2-N01–N07和S01–S05；本次直接定向解决，均在审计证据中有映射。
+- **静态QA：** V2冻题1/8/17原字词、顺序和层级一致，26个标题PASS；Mermaid 9个围栏、18个栅栏边界静态检查通过（**没有独立实际渲染的证明**）；9项商户业务实测均维持`NOT_RUN`；费用算术及章节相互校核PASS。**教材封板不代表真实生产系统已通过支付/灾备/合规测试**。
+- **整个板块：** 4.1–4.9 **9/9章正式封板**；冻结问题树核心1/一级9/二级48/三级117不变；G5外部研究/深广度复核、G6独立盲审、G7语言润色、G8最终验收归档未由本轮执行；HTML未启动，**BOARD_NOT_CLOSED**。
 
 ## 1. 唯一权威入口和先读顺序
 
@@ -20,7 +20,7 @@
 2. [本板块README](README.md)：九章实际进度和文档导航。
 3. [唯一冻结V2完整问题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)：**核心1/一级9/二级48/三级117**，所有原题编号、文字、层级、父题、顺序均已正式冻结；**4.3.4直接作为二级章节，无三级问题**。
 4. [第4.8唯一正式全文](docs/CHAPTER8_FINAL_SEALED.md)及[2026-10-19 Owner授权直修审计](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)：上一章正式正文，只读。
-5. **[第4.9独立Writer历史V1首稿Gate](docs/CHAPTER9_INDEPENDENT_WRITER_GATE_V1_20261019.md)**、[完整离线8文件ZIP与SHA256登记](docs/CHAPTER9_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：仅为历史V1原始写作合同，**当前执行入口为4.9 Writer V1 RETURN后的R2完整返修**。
+5. **[第4.9独立Writer历史V1首稿Gate](docs/CHAPTER9_INDEPENDENT_WRITER_GATE_V1_20261019.md)**、[完整离线8文件ZIP与SHA256登记](docs/CHAPTER9_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：仅为历史V1原始写作合同；4.9当前唯一正式版本是上方封板正文与证据。
 6. [五板块父项目README](../README.md)：父级导航，仅本板块部分可更新。
 
 ## 2. 章节真实状态（已核对GitHub main）
@@ -35,7 +35,7 @@
 | 4.6 怎么把产品交付到客户手里？ | 6/16 | **FINAL_SEALED / OWNER_APPROVED** | [正文](docs/CHAPTER6_FINAL_SEALED.md)·[证据](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md) |
 | 4.7 交付出问题了怎么办？ | 5/14 | **FINAL_SEALED / OWNER_APPROVED** | [正文](docs/CHAPTER7_FINAL_SEALED.md)·[证据](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md) |
 | 4.8 上线前怎么检查？ | 5/14 | **FINAL_SEALED / OWNER_APPROVED** | [正文](docs/CHAPTER8_FINAL_SEALED.md)·[证据](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md) |
-| 4.9 上线后怎么维护和改进？ | 8/17 | **WRITER R2 REVIEW RETURN / R3 PENDING** | [最新独立Reviewer R2报告](docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)；[历史V1审稿](docs/CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md)(docs/CHAPTER9_INDEPENDENT_WRITER_GATE_V1_20261019.md) |
+| 4.9 上线后怎么维护和改进？ | 8/17 | **FINAL_SEALED / OWNER_APPROVED** | [正式全文](docs/CHAPTER9_FINAL_SEALED.md)·[封板证据](docs/CHAPTER9_SEAL_EVIDENCE_20261019.md) |
 
 ## 3. 第4.8章真实版本与Owner决策（新Reviewer不得漏）
 
@@ -49,17 +49,9 @@
 
 前七章亦按Owner特殊授权以既有完整Writer R2为基础做Reviewer定向修订后封板；**没有Writer R3实际交付**，以对应各章审计为准。第4.7最新blob SHA `986ef28cd18e422ddd324090cb4cf8b219872974`，已封板只读。
 
-## 4. 历史第4.9章Writer V1独立审核RETURN（2026-10-19，已进入R2复审）
+## 4. 第4.9章真实历史审稿（已结束，不作为现行Gate）
 
-- **原ZIP交付：** `第四部分_第九章_独立Writer交付_V1.zip`，**40,987 bytes**、SHA256 `4262c484baec3793ed2eb53fbff7399e83d13e1895feebd346a6ab9f028364d5`；CRC PASS；完整正文58,782 bytes / 657行，SHA256 `e6ea3c7320f7bbd9ac5ea2f69928bf337374cf1873ccd66fbc678477ca60d43b`；完整核验26,554 bytes / 130行，SHA256 `2ad113c3f8dd549011d092d09e01282e30eec53813ea0c31a4e2410ab3d9e6c8`。
-- **最新独立Reviewer报告：** [CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md](docs/CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md)。冻题一级1/1、二级8/8、三级17/17全原文同序PASS；**R01–R12十二组实质阻断**包括支付/查单核身、异步对账、PII日志、3PL错误完成状态与数据库恢复、平台费用、单客户高风险事件排序、性能绝对化、支付及域名“无缝迁移”、停业后免鉴权永久数字链接、GDPR删除义务和Mermaid/表格/实测证据。S01–S06随手同步修正。**不需要重写整章**。
-- **当前R2完整无损离线ZIP：** `第四部分_第九章_Writer_V1_R2完整定向返修包_20261019.zip`，**94,540 bytes**、SHA256 `b39ef4d16ae1c58a966ef1c7f22f0a92ddc23e3c82aad52ba59bd5b9285a9336`；含**10个UTF-8 Markdown**、原Writer V1正文与原自检**原字节不变**、Reviewer全报告、4.9正式冻结题目、4.8正式封板全文、R2定向返修及官方来源/提示词、逐文件SHA256清单。CRC和逐成员比较全部PASS。**二进制仅在Owner对话附件，未上传GitHub**。
-- **历史V1→R2路径已执行完成：** 原V1 RETURN已由独立Writer R2完整交付承接；R2再次经独立Reviewer RETURN，现行任务是本文件开头的**R3完整定向返修**；第4.9章尚无正式封板正文，不启动全书后期复审、润色、HTML或CLOSE。
-
-## 5. 历史第4.9独立Writer V1首稿合同与边界
-
-**4.9《上线后怎么维护和改进？》：8个二级/17个三级**。职责：持续漏单/服务异常监测、客户求助排障、第三方故障与恢复、持续成本、反馈优先级、扩量、平台迁移与正式停业的客户权益/数据处置。只承接4.8发布前验收，不重复前章；资金争议归③、基础网络专项归②、获客归⑤。
-
-- 原Writer V1首稿离线包：`第四部分_第九章_独立Writer完整离线工作包_V1_20261019.zip`，40,270 bytes、SHA256 `c85e5a2cf2af3dfa259a639ca839ecc9af2daf1c8d96925baafc7706fd6a6fa0`，含上一章正式全文；仅作历史原首稿任务基线，**不可再要求Writer重做V1**。
-- 第4.1–4.8正式封板正文仍只读；冻结题目1/9/48/117不变。Writer无需仓库权限，审稿RETURN需同轮完整无损返修ZIP和可转交提示词；Owner始终拥有最终封板权限。
-
+- Writer V1原ZIP `第四部分_第九章_独立Writer交付_V1.zip`，40,987 bytes SHA256 `4262c484baec3793ed2eb53fbff7399e83d13e1895feebd346a6ab9f028364d5`；[独立Reviewer V1 RETURN R01–R12](docs/CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md)。
+- Writer R2原ZIP，48,513 bytes SHA256 `62cb26a4c26b2af0f74ccac6ce9deb458af60252c0a320c322d10569a1e46025`；[独立Reviewer R2 RETURN N01–N07](docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)。
+- 先前的完整R3返修ZIP `第四部分_第九章_Writer_R2_R3完整定向返修包_20261019.zip`，96,163 bytes SHA256 `4f41fc546f3a87c765c2d9b7852c7bb57cf777beec3c188f382032cc0a98c496` 仅为当时拟交Writer的准备稿；Owner在Writer R3实际交付前**授权Reviewer直接修订R2正文并封板**。**不存在Writer R3**，不得误把早先R2 RETURN当作当前未解决阻断。
+- 4.1–4.9已封板，正常Writer流程停点完结；下一步需Owner决定统一SOP G5–G8跨章研究、盲审、语言润色和最终验收；本轮未启动。
