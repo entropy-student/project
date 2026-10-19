@@ -1,8 +1,8 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER6_FINAL_SEALED / CHAPTER7_V1_RETURN_R2_WRITER_PENDING**  
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER6_FINAL_SEALED / CHAPTER7_R2_RETURN_R3_WRITER_PENDING**  
 > **问题框架：核心1/一级9/二级48/三级117（冻结）。核心问句：产品怎么做、怎么交付？**  
-> **CURRENT_GATE：CH7-WRITER-V1-REVIEW-RETURN-R2-REPAIR-20261019**，第4.7章Writer V1已交并独立Review RETURN，R2完整返修待交；4.8–4.9、HTML均未启动。
+> **CURRENT_GATE：CH7-WRITER-R2-REVIEW-RETURN-R3-REPAIR-20261019**，第4.7章Writer R2已交并独立Review RETURN，R3完整返修待交；4.8–4.9、HTML均未启动。
 
 ## 冻结正文、审核与当前任务的唯一路径
 
@@ -14,8 +14,9 @@
 6. **[4.5《商品、库存和订单怎么管清楚？》正式正文](docs/CHAPTER5_FINAL_SEALED.md)**（5/12），[封板审计](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。
 7. **[4.6《怎么把产品交付到客户手里？》正式正文](docs/CHAPTER6_FINAL_SEALED.md)**（6/16），[C01–C06 Owner授权Reviewer修订与正式封板审计](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。**以Writer R2完整稿为基线，Reviewer特别授权直修；无Writer R3交付。**
 8. **[4.7《交付出问题了怎么办？》独立Writer当前Gate](docs/CHAPTER7_INDEPENDENT_WRITER_GATE_V1_20261019.md)**（5H2/14H3），[完整8文件离线ZIP及SHA256登记](docs/CHAPTER7_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)；Owner从本轮对话下载转交Writer，无需仓库权限。
-   - **[第4.7章Writer V1独立Reviewer RETURN及完整R2返修包登记](docs/CHAPTER7_WRITER_V1_REVIEW_RETURN_20261019.md)**：5/14标题PASS；B01–B10定向阻断；R2离线ZIP包含V1完整原稿与核验原字节，已交Owner。**本记录是当前有效返修入口，首次Writer Gate是只读背景。**
-9. **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**；[第二板块长期独立Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
+   - **[第4.7章Writer V1独立Reviewer RETURN及完整R2返修包登记](docs/CHAPTER7_WRITER_V1_REVIEW_RETURN_20261019.md)**：5/14标题PASS；B01–B10定向阻断；R2离线ZIP包含V1完整原稿与核验原字节，已交Owner。**此V1记录已成为历史；当前R2 Reviewer记录是唯一有效返修入口。首次Writer Gate是只读背景。**
+9. **[第4.7章Writer R2独立Reviewer RETURN及完整R3返修包登记](docs/CHAPTER7_WRITER_R2_REVIEW_RETURN_20261019.md)**：结构5/14严格PASS；C01–C07七组阻断，9份Markdown离线包已交Owner。
+10. **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**；[第二板块长期独立Writer→Reviewer→Owner规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
 
 ## 九章完整进度
 
@@ -27,7 +28,7 @@
 | 4.4 | 怎么让客户顺利购买和使用？ | **FINAL_SEALED** |
 | 4.5 | 商品、库存和订单怎么管清楚？ | **FINAL_SEALED** |
 | 4.6 | 怎么把产品交付到客户手里？ | **FINAL_SEALED / OWNER_APPROVED** |
-| 4.7 | 交付出问题了怎么办？ | **Writer V1已交，独立审核RETURN；R2待返修；无封板正文** |
+| 4.7 | 交付出问题了怎么办？ | **Writer R2已交，独立审核RETURN；R3待返修；无封板正文** |
 | 4.8 | 上线前怎么检查？ | NOT_STARTED |
 | 4.9 | 上线后怎么维护和改进？ | NOT_STARTED |
 
@@ -38,7 +39,7 @@
 
 ## 现行交付链与STOP
 
-**NEXT_STEP**：Owner转交4.7 Writer V1独立Review的**R2完整定向返修ZIP和提示词**→独立Writer在完整V1正文及原核验基础上修B01–B10，交完整R2正文、独立事实核验与逐项返修记录和ZIP，`STOP_AT_REVIEWER`→Reviewer独立复核→Owner明确批准才正式封板。
+**NEXT_STEP**：Owner转交4.7 Writer R2独立Review的**R3完整定向返修ZIP和提示词**→独立Writer在完整R2正文及原核验基础上修C01–C07，交完整R3正文、独立事实核验与逐项返修记录和ZIP，`STOP_AT_REVIEWER`→Reviewer独立复核→Owner明确批准才正式封板。
 
 不得由Reviewer预写4.7正文，禁止提前启动4.8/HTML。①机会、②网络、③主体支付税务、⑤获客各板块保持各自状态，本轮除五板块导航外不修改。
 
