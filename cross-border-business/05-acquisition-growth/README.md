@@ -19,7 +19,7 @@
 - [指标、术语与动态来源索引（T8）](docs/SOURCE_REGISTER_AND_TERMS_20261019.md)
 - **[唯一项目交接：Owner决定、G7最终PASS、正式指纹、历史证据入口](REVIEWER_HANDOFF.md)**
 
-六章正文G7语言润色与定点纠偏已由Owner授权直修、独立复查并正式PASS；题树与全部知识主体不变。当前目录保留**11份文件（本README、唯一交接、框架、6章正文、实操附录、来源索引）**，历史Writer、Reviewer、Gate和执行证据已从当前目录精简，可从[精简前固定Git快照](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth)完整追溯。
+六章正文G7语言润色与定点纠偏已由Owner授权直修、独立复查并正式PASS；题树与全部知识主体不变。目标目录保留**11份正式文件**；历史Writer、Reviewer、Gate和执行证据仍待从当前目录清退，可从[精简前固定Git快照](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth)完整追溯。
 
 **G7正文冻结完成，但第五板块行政尚未CLOSED。** 后续G8总验收、HTML或整体CLOSE均未启动，需Owner单独明确授权；精简不等于实测营销/平台准入/财税规则。其它四板块保持独立。
 
