@@ -1,10 +1,10 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接（2026-10-19）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_TO_CH5_FINAL_SEALED / CH6_V1_RETURN_R2_WRITER_PENDING**  
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_TO_CH5_FINAL_SEALED / CH6_R2_RETURN_R3_WRITER_PENDING**  
 > **冻结：** 核心1／一级9／二级48／三级117（全部题目不可改）  
-> **CURRENT_GATE：CH6-WRITER-V1-REVIEW-RETURN-R2-REPAIR-20261019**  
-> **CURRENT_STOP：CH6_V1_RETURN / R2_WRITER_PENDING / NO_SEALED_CH6_BODY / NO_HTML**  
-> **OWNER_ACTION_REQUIRED：** 从本轮对话下载4.6 Writer V1独立Review的**R2完整返修ZIP**并连同Writer话术交独立Writer。Writer返回完整R2正文、R01–R09逐项核验记录和ZIP后，再交独立Reviewer。
+> **CURRENT_GATE：CH6-WRITER-R2-REVIEW-RETURN-R3-REPAIR-20261019**  
+> **CURRENT_STOP：CH6_R2_RETURN / R3_WRITER_PENDING / NO_SEALED_CH6_BODY / NO_HTML**  
+> **OWNER_ACTION_REQUIRED：** 从本轮对话下载4.6 Writer R2独立Review的**R3完整返修ZIP**并连同Writer话术交独立Writer。Writer返回完整R3正文、C01–C06逐项核验记录和ZIP后，再交独立Reviewer。
 
 ## 先读：唯一有效正文和 Gate
 
@@ -37,7 +37,14 @@
    - **正式4.5全文创建Commit `57a9a192b178d7f3fc8c6647df3db07699e591e6`**，GitHub正式blob SHA `d370401cf78c27984350bfaaa9b39b5534ac2636`。独立回读**5/5二级、12/12三级**与V2完全一致，五组关键探针PASS。[详细封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。**没有Writer R3交稿**，之前准备的R3 ZIP不是Writer R3候选，更不是当前任务。
 7. **现在4.6**：Writer V1已交并由Reviewer独立审为RETURN，完整R2返修包已准备；4.7–4.9和HTML均尚未启动。已完成的4.5 Writer首稿Gate与旧ZIP登记退出main当前目录，保留Git历史；Writer V1/R2 Reviewer RETURN记录留在main并显著标“历史”，不是当前Gate。
 
-## 第4.6章 Writer V1 独立Review（当前阶段）
+## 第4.6章 Writer R2 独立Reviewer复审（2026-10-19，当前任务）
+
+- **R2已真实交付**：`第四部分_第六章_独立Writer交付_R2.zip`，47,499 bytes、SHA256 `4b7718493853a9f2bcf8c6aefaf09248bdf0db60c90692d0612417c61a13b353`。全文64,854 bytes SHA256 `0065e4483acd7ce78e3474057dda732a2535251c93d20530d07e5aae5fb1c896`；原核验36,699 bytes SHA256 `596fd0d67c37e71eb51eced40aa3632bd230658e05175a5f5d85f46d9f0b8130`。CRC PASS。
+- **结构6H2/16H3逐字同序同级PASS；正式Review `RETURN_CH6_R2_RESIDUAL_PAYMENT_FULFILLMENT_AND_COMPLIANCE_ERRORS`**：R01–R09大多数已改善，C01订阅字段2025 Basil迁移/旧事件错授权；C02 Outbox重复任务/3PL外部动作幂等；C03 FTC普通第三方信用卡退款7工作日与卖方授信1账单周期混淆；C04美国2025-08低值免税暂停与EU CE适用范围误述；C05承运扫描、质检及工期通用硬规则；C06模型数字2%强制阈值与自检不一致。
+- [**当前R2 Reviewer完整审核及R3完整包登记**](docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)。Owner本轮对话R3 ZIP `第四部分_第六章_Writer_R2_R3完整定向返修包_20261019.zip`：**71,579 bytes、9份UTF-8 Markdown、SHA256 `cbffc039cd1377c1c5587e043c0b80614823f7c4544d3a5c36e47b567de3df0d`**，含Writer原R2全部正文、原核验及两轮报告，原字节保存且CRC PASS。**二进制未上传GitHub**。
+- **R3 Writer尚未交稿，4.6未正式封板。4.1–4.5均保持原封板。** 旧V1及其R2工作包是完整历史，不能再作为当前任务转发。
+
+## 第4.6章 Writer V1 独立Review（历史阶段）
 
 - **Writer V1确已交稿**，ZIP `第四部分_第六章_独立Writer交付_V1.zip` 37,653 bytes，SHA256 `35d60b4b0034f42c89f8f703bd01cd57fdc8049f6b5f4d60605cad6d932b7c3e`；正文57,327 bytes，SHA256 `227c0ca676594abf51faa8a23cbddacd5b8c4018c67c34c625a49c10883548cc`；核验19,883 bytes，SHA256 `b35d7e03d3519aa39a29bc21cd7f0c74bc5c2fbed202d3e6be47e0f3f1d2ffcc`，ZIP CRC PASS。
 - **正式冻题一级1/1、二级6/6、三级16/16原文、同序、同级PASS**；六大知识领域均有完整教学主体。
@@ -66,10 +73,10 @@
 - **PROJECT_STAGE：** 1/9/48/117冻结；4.1–4.5五章正式全文封板；4.6 Writer V1独立Review RETURN，R2返修待交；4.7–4.9/HTML未启动。
 - **SYSTEM_MAP：** GitHub main存正式问题树/封板正文/审核证据/Gate/交接；Owner对话交独立Writer ZIP；无真实业务系统或客户数据改动。
 - **CURRENT_ACCEPTED_STATE：** 5份正式教材，5组封板证据；4.6尚无**正式封板**全文。
-- **CURRENT_GATE：** `CB04-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019`。
+- **CURRENT_GATE：** `CH6-WRITER-R2-REVIEW-RETURN-R3-REPAIR-20261019`。
 - **CURRENT_ROLLBACK_STATUS：** Git版本可回滚，历史RETURN和过期Gate保留提交记录。
-- **UNRESOLVED：** 4.6 Writer V1已有候选但审核RETURN、R2未交，具体仓配/收款/文件权限未实际测试。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner将4.6完整R2返修ZIP和提示词给独立Writer；Writer基于V1完整稿交完整R2正文、R01–R09核验Markdown与ZIP后`STOP_AT_REVIEWER`→Reviewer独立Review（RETURN同轮自包含返修ZIP＋转交指令）→Owner决定封板。
-- **MANDATORY_STOP：** `CH6_R2_WRITER_PENDING`。Reviewer不得代写第4.6章、启动4.7或HTML。
+- **UNRESOLVED：** 4.6 Writer R2已有候选但审核RETURN、R3未交，具体仓配/收款/文件权限未实际测试。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner将4.6完整R3返修ZIP和提示词给独立Writer；Writer基于R2完整稿交完整R3正文、C01–C06核验Markdown与ZIP后`STOP_AT_REVIEWER`→Reviewer独立Review（RETURN同轮自包含返修ZIP＋转交指令）→Owner决定封板。
+- **MANDATORY_STOP：** `CH6_R3_WRITER_PENDING`。Reviewer不得代写第4.6章、启动4.7或HTML。
 
 [返回第四部分README](README.md)
