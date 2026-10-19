@@ -1,3 +1,4 @@
+> **状态**：`G7_EDITORIAL_PASS / OWNER_AUTHORIZED_FINAL_POLISH / 2026-10-19`
 # 怎么让老客户再买、带来新客？
 
 > **适用读者**：中国大陆面向海外的个人开发者、Micro-SaaS 创作者、跨境独立站初创经营者、小微外贸制造与定制出海商家  
@@ -193,6 +194,9 @@ flowchart TD
 6. **退订永久免费**：严禁向退订用户收取任何手续费，严禁要求其提供除邮箱以外的任何多余个人隐私。
 - **注意渠道差异**：CAN-SPAM 的上述 10 工作日与实体地址规则专门针对商业电子邮件，海外短信（SMS）与电话呼叫则受美国《电话消费者保护法》（TCPA）及运营商 CTIA 准则管辖，退订要求通常更为严苛（如必须支持回复“STOP”立即生效）。
 
+> **实操指引｜T6**：营销触达触发条件、退订抑制和故障控制。见 [共用经营实操附录 T6](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
+
 ---
 
 ## 5.3 怎么促成续费和再次购买？
@@ -354,7 +358,7 @@ flowchart TD
 客户停止续费或不再复购，背后隐藏着完全不同的商业事实。经营者必须通过数据排查与轻量回访，精准界定流失的真实归因：
 
 ```mermaid
-pie title MODEL_ASSUMPTION：示意流失原因分配，非真实调查数据
+pie title 示意流失原因构成（教学假设模型）
     "阶段性任务完成 (自然毕业)" : 35
     "隐性不满与体验摩擦" : 25
     "竞对替代与预算紧缩" : 25
@@ -417,7 +421,7 @@ pie title MODEL_ASSUMPTION：示意流失原因分配，非真实调查数据
 
 ---
 
-**本章自检与落地行动清单**
+**【本章自检与落地行动清单】**
 
 在开展老客维护、设计复购与转介绍流程时，请对照以下六项标准进行系统自检：
 
@@ -428,6 +432,6 @@ pie title MODEL_ASSUMPTION：示意流失原因分配，非真实调查数据
 5. [ ] **评价征集与转介绍合规红线**：我是否在合理的使用或服务完成节点，公平邀请所有符合资格的客户留下真实评价，而不是只向预计会好评的人索评？我是否核对转介绍奖励的合理性、未来兑换预算、每单贡献空间及实际成交来源？我是否严格遵守了 FTC 16 CFR Part 465 规则，彻底杜绝了“好评返现”、“条件式好评奖励”及违法门控？我的转介绍链接是否附带了实质性利益披露与反垃圾保护？
 6. [ ] **流失原因诊断与体面放手**：当老客户不再购买时，我是否能客观区分其是需求自然终结、预算紧缩还是体验受挫？当客户心意已决时，我是否区分订阅取消、账号关闭及法定数据删除申请，并依法处理可适用的保留例外？我是否明确知晓商业放手绝不免除法定保修与召回责任？
 
-**终审勘误与适用来源（2026-10-19）**
+**【动态规则核验与适用来源说明】**
 
 本章涉及的Visa VAMP风控不等于统一“拒付率红线”，请以[Visa VAMP官方说明](https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf)及实际收单账户规则核对。公开索评应遵循[FTC索评指引](https://www.ftc.gov/business-guidance/resources/soliciting-paying-online-reviews-guide-marketers)及目标平台规则，避免仅向预期好评者发起邀请。欧盟委员会明确[个人数据删除权有法定例外](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)。上文涉及的优惠券、物流和利润均为教学假设；必须以实际交易、当期监管及合同核实。
