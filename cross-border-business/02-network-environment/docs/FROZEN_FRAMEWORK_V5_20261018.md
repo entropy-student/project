@@ -2,7 +2,7 @@
 
 > **STATUS：OWNER_PASS_PROVISIONALLY_FROZEN（2026-10-18）**  
 > **总核心问题：CONFIRMED**｜**L1：8_FROZEN**｜**L2：44_FROZEN**｜**L3：93_PROVISIONALLY_FROZEN**  
-> **本文件为全部冻结问题原文与知识范围标注的唯一有效基线。** Writer/Reviewer 的执行分工与首稿创作自由，以[独立写作与审核流程（已归档的固定 Git 历史）](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)为权威；流程文件不能更改本文件任何冻结问题。 此前 V4 8/44、V1 三级93题和 V4 写作规范的内容均在此整合；不把旧文件作为平行有效版本。项目最新状态见 [唯一交接](../REVIEWER_HANDOFF.md)。
+> **本文件为全部冻结问题原文与知识范围标注的唯一有效基线。** Writer/Reviewer 的执行分工与首稿创作自由，以[现行统一项目SOP](../../PROJECT_WORKFLOW_SOP.md)为权威；流程文件不能更改本文件任何冻结问题。 此前 V4 8/44、V1 三级93题和 V4 写作规范的内容均在此整合；不把旧文件作为平行有效版本。项目最新状态见 [唯一交接](../REVIEWER_HANDOFF.md)。
 
 ## 项目定位与问题层级
 
@@ -392,7 +392,7 @@
 ## 五、原稿对照与当前权限
 
 - 本文件为**8/44/93唯一现行冻结全文**：一级、二级正式冻结，三级由Owner暂时PASS/FROZEN。V4的8/44、V1的93题以及此前8/73均只留Git历史，不在main当前目录并列。
-- 长期流程：[独立Writer—Reviewer—Owner流程](WRITER_REVIEWER_WORKFLOW_V1_20261018.md)；第一章Gate：[首稿V2](CHAPTER1_INDEPENDENT_WRITER_GATE_V2_20261018.md)。这些仅规范协作，不另建第二份冻结框架。
+- 当前通用流程：[PROJECT_WORKFLOW_SOP.md](../../PROJECT_WORKFLOW_SOP.md)；历史证据：[早期Writer—Reviewer—Owner流程](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)与[第一章首稿V2 Gate](https://github.com/entropy-student/project/blob/aa61d0663713274cd96aaee160ade0278fa9baf3/cross-border-business/02-network-environment/docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V2_20261018.md)。这些仅供协作与审计追溯，不另建第二份冻结框架。
 - 最新项目状态：[唯一交接](../REVIEWER_HANDOFF.md)。
 
 ## 四、决策、冻结边界与未来文件规则
