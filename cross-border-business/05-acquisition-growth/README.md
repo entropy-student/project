@@ -1,6 +1,6 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_FINAL_SEALED / CHAPTER6_WRITER_R1_REVIEW_RETURN / R2_COMPLETE_PACKET_READY**  
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_FINAL_SEALED / CHAPTER6_WRITER_R2_REVIEW_RETURN / R3_SINGLE_REPAIR_PACKET_READY**  
 > **核心冻结问题：怎么才能持续有客户下单？**
 
 ## 六章进度与唯一正式文件
@@ -13,7 +13,7 @@
 | ③《客户来了，怎么让他下单？》 | 二级6/三级14 | **FINAL_SEALED** | [第三章唯一正文](docs/CHAPTER3_FINAL_SEALED.md) |
 | ④《找客户到底划不划算？》 | 二级6/三级12 | **FINAL_SEALED** | [第四章唯一正文](docs/CHAPTER4_FINAL_SEALED.md) |
 | ⑤《怎么让老客户再买、带来新客？》 | 二级5/三级11 | **FINAL_SEALED** | **[第五章唯一正式正文](docs/CHAPTER5_FINAL_SEALED.md)** |
-| ⑥《有效的获客方法怎么做大？》 | 二级5/三级11 | **WRITER_R1_DELIVERED / STRUCTURE_PASS_5_11 / REVIEW_RETURN / NOT_SEALED** | **[R1独立Reviewer报告](docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261019.md)** |
+| ⑥《有效的获客方法怎么做大？》 | 二级5/三级11 | **WRITER_R2_DELIVERED / STRUCTURE_PASS / REVIEW_RETURN_ONE_BLOCKER / NOT_SEALED** | **[最新R2独立Review](docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)** |
 
 **当前：五章正式封板，最后第六章独立Writer首稿已启动但尚无正文。第五部分整体仍不CLOSED。**
 
@@ -25,7 +25,13 @@
 - **[第五章Owner授权最小修订封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)**：Owner授权、Writer原稿指纹、修改矩阵、官方来源与最终正式全文SHA；**并不存在独立Writer R3交稿**，上轮R3包已经成为历史。
 - 第一到四章唯一封板正文仍原样不变。完整V2问题树没有解冻或变更。
 
-## 第六章Writer R1独立Review（现行RETURN）
+## 第六章Writer R2独立Review（当前RETURN，仅一个实质阻断）
+
+- **[Writer R2最新独立Review](docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)**：冻结5/11问题及知识结构PASS；R1各项主要统计、法域、Visa/PayPal、正式五板块与渠道风险均已修复。**唯一阻断**是6.4扩量日广告预算、CAC、订单数与增量贡献不自洽（图D日耗600美元/CAC50应为12单，正文自检却用10单；最小方案B→D增量贡献改为**−150美元**而非−250美元），并纠正模型差额冒称已发生现金亏损。
+- Owner最新R3单项自包含ZIP：`第五部分_第六章_R2独立审核与R3单项最小返修包_20261019.zip`，**46,853字节**，SHA256 `a429a11c2d55934a5ac115dea807c044980f9220eb7bb66b2acace0884c7a9c7`。包含**R2完整405行正文＋218行事实核验**、独立Review、精确R3指令、官方资料、Writer提示词及SHA256；ZIP解压与逐文件字节一致性已通过。二进制在对话交Owner，GitHub存报告/指纹。
+- 第①—⑤章正式正文和正式V2 1/6/35/78框架均保持冻结；第⑥章未封板、整个第五部分未CLOSED。**下一步仅把R3包转给独立Writer，最小修一项后回交完整R3正文/核验ZIP。**
+
+## 历史：第六章Writer R1独立Review（RETURN）
 
 - **[第六章Writer R1独立Reviewer报告](docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261019.md)**：正式5个二级/11个三级问题原文、顺序及层级PASS，知识覆盖及SOP有价值；但**B01–B08八项必修/N01–N03三项小修**阻碍封板，包括样本量/统计显著性与统一测试周期、扩量图表财务口径、CAN-SPAM/PECR误用、Visa/PayPal旧风控、五板块错误、自有许可客户名单与站外引流的限制，以及无来源硬阈值/必然营销结果。
 - Owner R1完整ZIP `第五部分_第六章_独立Writer交付.zip`，32,892字节、SHA256 `428af0b96c86705cfa02cb23ca38e381f4f42cae2d3a86986d6843cd391ec014`，含Writer R1正文38,872字节/405行、事实核验28,000字节/184行。
@@ -46,6 +52,6 @@
 - 五板块①机会市场、②网络环境、③支付税务经营主体（CLOSED）、④产品搭建各有独立权威，**本轮不修改**；第五部分的旧候选框架与早期Review只作历史存档。
 - 任何HTML合成、真实营销/支付、网站/服务器修改本轮均不执行。全板块正式框架1/6/35/78及前五章正文需要Owner批准才能解冻。
 
-**NEXT_STEP：** Owner转交第六章R2完整返修ZIP及提示词 → Writer最小修B01–B08与N01–N03、提交R2完整正文/核验ZIP → Reviewer复审 → Owner决定是否封板第六章及第五部分后续状态。
+**NEXT_STEP：** Owner转发第六章R3单项最小返修ZIP及提示词 → Writer以R2全文为基线只修6.4模型一致性、提交完整R3正文和核验ZIP → Reviewer复审 → Owner决定是否封板第六章和整个第五部分。
 
 [返回五板块总库](../README.md)
