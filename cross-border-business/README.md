@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_TO_CH7_SEALED_CH8_WRITER_RELEASED / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH6_SEALED_CH7_WRITER_RELEASED / 05_FRAMEWORK_V2_FROZEN_ALL6_CHAPTERS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_TO_CH7_SEALED_CH8_WRITER_RELEASED / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH6_SEALED_CH7_V1_RETURN_R2_PENDING / 05_FRAMEWORK_V2_FROZEN_ALL6_CHAPTERS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 **统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
@@ -18,7 +18,7 @@
 | 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①至⑦章正式封板；第⑧章Writer Gate与完整离线包已发布，首稿待交（8.2直接成节）** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [八章唯一正式正文及冻结框架](02-network-environment/README.md) · **8/44/93冻结问题不变；第①–⑧章语言与连贯性R1定向修订复核PASS，最终封板，HTML未启动** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
-| 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.6六章正式封板；4.7章5/14独立Writer Gate与完整离线ZIP已发布** |
+| 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.6六章正式封板；4.7 Writer V1独立审核RETURN、R2完整定向返修待交** |
 | 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [第五部分六章正式封板与最新停点](05-acquisition-growth/README.md) · **核心1/一级6/二级35/三级78 FROZEN；6/6章FINAL_SEALED，正文建设已完成；无第7章，跨章软性Review及Owner板块CLOSE待决定** |
 
 ## 第一、第四、第五板块的框架撰写规范
@@ -49,6 +49,7 @@
 - **[④ 第4.5章唯一正式封板正文](04-product-building/docs/CHAPTER5_FINAL_SEALED.md)**：5/12，基于Writer R2由Owner特许Reviewer修C01–C05并封板；[封板证据](04-product-building/docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。
 - **[④ 第4.6章正式封板正文](04-product-building/docs/CHAPTER6_FINAL_SEALED.md)**：6/16，Owner授权Reviewer基于Writer R2全文定向修C01–C06；[封板证据](04-product-building/docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。
 - **[④ 第4.7章独立Writer当前Gate](04-product-building/docs/CHAPTER7_INDEPENDENT_WRITER_GATE_V1_20261019.md)**：5二级/14三级完整冻题；[8文件离线ZIP及SHA256登记](04-product-building/docs/CHAPTER7_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)。
+- **[④ 第4.7章Writer V1独立Reviewer审核RETURN及R2完整离线包登记](04-product-building/docs/CHAPTER7_WRITER_V1_REVIEW_RETURN_20261019.md)**：冻题5/14PASS，B01–B10事实/权限/法规阻断；Writer R2待返修，4.8未启动。
 - [④ 第4.6章Writer V1历史独立Reviewer RETURN与R2返修包记录](04-product-building/docs/CHAPTER6_WRITER_V1_REVIEW_RETURN_20261019.md)：R01–R09首次审稿历史，Writer R2已交。
 - [④ 第4.6章Writer R2独立Reviewer历史RETURN与未执行R3返修包记录](04-product-building/docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)**：曾有C01–C06六组残留，Owner随后授权Reviewer直接修R2封板；R3返修任务已不执行。
 - [④ 第4.5章Writer V1独立审核历史RETURN](04-product-building/docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)：历史B01–B08已进入后续R2与Owner封板修复链。
