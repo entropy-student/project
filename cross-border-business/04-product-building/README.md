@@ -1,8 +1,13 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER9_G5G6_A_B_RESEALED / G7_EDITORIAL_PENDING**  
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER9_G5G6_A_B_RESEALED / G7_ORIGINAL_RETURN_CORRECTED_CANDIDATE**  
 > **正式问题树：1核心／9一级／48二级／117三级（冻结）**  
 > **CURRENT_GATE：CB04-G7-INDEPENDENT-EDITORIAL-READ-ONLY-REVIEW-V1-20261019**。G5深广度调研与G6独立盲审已经完成并经Owner同意A+B最小补强，九章正文已回归检查并再次正式冻结；**G7独立软性审稿尚待执行**，G8未启动、HTML未制作，整个板块尚未CLOSE。
+
+## G7候选独立复核结果（尚未正式发布）
+
+- **[G7独立Reviewer复核RETURN与最小修正记录](docs/G7_INDEPENDENT_REVIEW_RETURN_CORRECTED_CANDIDATE_20261019.md)**：原优化ZIP存在两项涉及法域及消费者权利的实质措辞漂移，另有技术/逻辑与错误自检信息。Reviewer已修成完整九章**离线**候选包，239,997 bytes SHA256 `9b3a9c4d53f425bfcd576236ed48b0ccb84f1b19a30009d3dd873bde5aea37e5`，仅Owner当前对话附件交付。
+- **真实现状**：G5/G6 A+B九章正文仍为GitHub `main`唯一正式冻结正文。G7修正候选**没有**覆盖九章文件，尚未做GitHub新正文落库及字节回读；**G7未PASS、G8未启动、第四部分未CLOSE**。
 
 ## 当前唯一现行版本｜G5/G6补强后九章再次冻结
 
