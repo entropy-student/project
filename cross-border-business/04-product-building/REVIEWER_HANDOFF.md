@@ -1,10 +1,10 @@
 # 第四部分《产品搭建》｜唯一当前Reviewer交接（2026-10-19）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_CH2_CH3_CH4_FINAL_SEALED / CH5_V1_RETURN_R2_WRITER_PENDING**  
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_CH2_CH3_CH4_FINAL_SEALED / CH5_R2_RETURN_R3_WRITER_PENDING**  
 > **正式问题树：核心1 / 一级9 / 二级48 / 三级117**（不可擅改）  
 > **CURRENT_GATE：CB04-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **CURRENT_STOP：CH5_V1_REVIEW_RETURN / R2_WRITER_PENDING / NO_SEALED_CH5_BODY / NO_HTML**  
-> **OWNER_ACTION_REQUIRED：** 将4.5 Writer V1独立Reviewer完整R2返修ZIP和提示词交独立Writer；回交R2完整正文、B01–B08逐项核验与ZIP后交Reviewer。
+> **CURRENT_STOP：CH5_R2_REVIEW_RETURN / R3_WRITER_PENDING / NO_SEALED_CH5_BODY / NO_HTML**  
+> **OWNER_ACTION_REQUIRED：** 将4.5 Writer R2独立Reviewer完整R3返修ZIP和提示词交独立Writer；回交R3完整正文、C01–C05逐项核验与ZIP后交Reviewer。
 
 ## 一、必须先读的权威文件
 
@@ -31,12 +31,19 @@
   - 4.4正式正文创建commit `178125b7ed5b3371efc9131d5d6c8170f4651c78`，GitHub blob `fa9726576112915afd9ab3bffc577e80f7081aba`，6/6二级13/13三级逐字PASS。正式审计证据见上。原V1和R2审稿记录保持在main并标记历史，不作为当前R3任务；旧4.4首稿Gate/ZIP登记退出当前工作树但Git历史可查。
 - **4.5**：Writer V1已真实交付并独立审核RETURN，R2完整返修工作包已提供Owner；没有封板第4.5章；**不得自行启动4.6或HTML**。第四部分以外只允许父项目README的导航更新，没有修改其已封板正文。
 
-## 第4.5章Writer V1独立Reviewer审查（2026-10-19，当前任务）
+## 第4.5章Writer V1独立Reviewer审查（2026-10-19，历史）
 
 - Writer V1真实交付，原ZIP 26,741bytes，SHA256 `aa08f6442d28417468c8853043fe387b15d46b658bacaf875eb52191131c5f91`，两份完整Markdown，结构5/5二级、12/12三级逐字PASS。
 - **Reviewer独立结论：`RETURN_CH5_V1_PAYMENT_INVENTORY_STATE_AND_EVIDENCE_ERRORS`**，8组实质阻断：B01库存ATS漏Unavailable/数字码强制模式；B02订单单向状态无法容纳部分退款、完结后售后；B03错误Stripe事件字段`event.data.amount_captured`及支付事实；B04`event.id`直接退出导致崩溃漏交付；B05卡密/3PL伪幂等保证；B06三个渠道各展示共享450件无法防超卖；B07客户末四位伪身份核验、GDPR/PCI及审计日志保留范围；B08官方事实VERIFIED与文中实现不符/假设未就地标注。详见[当前审稿记录](docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)。
 - Owner对话离线R2完整返修ZIP `第四部分_第五章_Writer_V1_R2完整定向返修包_20261019.zip`，**42,672bytes**，SHA256 `7d1120e43c8d166c913fefd4efb4ebff6a30fee255090795cdd1ef7eedc3c4a7`；8份UTF-8 Markdown，**原Writer V1完整正文、自检原样保留**，以及Reviewer全报告、R2指令、冻结原题、官方来源与逐文件SHA。文件本体在Owner对话，**未上传GitHub二进制**。
-- **尚无Writer R2，也无4.5正式封板正文**。Reviewer只审不改候选稿；不启动4.6或HTML。
+- **这段为Writer V1审核时历史状态；现已收到R2且独立复审RETURN，仍无4.5封板正文**。Reviewer只审不改候选稿；不启动4.6或HTML。
+
+## 第4.5章Writer R2独立Reviewer复审（2026-10-19，当前任务）
+
+- **Writer R2完整ZIP已交并完整解压**：32,598 bytes，SHA256 `3847e571be5b0cac38c5f6b8b4a196bfb3aa5d4cb9609646ca00717101ab5950`；完整正文42,946 bytes（SHA256 `74ab7ce8b7e18535bebcb433ef5e8fd664a5cc9e3ad5c6ea0cefa423b0ada3d6`），完整核验24,879 bytes（SHA256 `3cd6ebe20b60e6f26a56525d9b44f5349f405b9ac4c857720c5e58d73a224e2d`）。**5H2/12H3题目原文、同序、同级PASS。**
+- **当前Reviewer正式判定 `RETURN_CH5_R2_RESIDUAL_CONCURRENCY_PAYMENT_STATE_AND_RETENTION_ERRORS`**。已改善大部分B01–B08，但剩C01卡密SQL跨行NOT EXISTS无业务唯一约束（并发仍可能一订单分配多卡）、C02把Checkout Session的`client_reference_id`误用于PaymentIntent、C03库存临时锁与已付款双扣/状态不能全局只进不退、C04静态渠道配额被夸大为100%防超卖、C05审计例子完整门牌号与数据保留期绝对化。
+- **[本轮完整独立R2审核与R3包指纹](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)**。Owner对话完整R3返修包 `第四部分_第五章_Writer_R2_R3完整定向返修包_20261019.zip`，**50,991 bytes**，SHA256 `34551c1755259b662e212a9ca6015c9f40f783da34cf1be1f622f67ef3f1d9cf`；9份UTF-8 Markdown，R2完整正文/核验原字节保留，CRC和逐文件SHA通过；**二进制未上传GitHub**。
+- **当前R3 Writer未交稿，第4.5章没有正式封板正文。4.1–4.4封板保持不变。** 下列V1审稿内容仅供历史追溯，不应依历史R2工作包误发任务。
 
 ## 三、4.5章冻结题目与核心知识责任
 
@@ -53,13 +60,13 @@
 ## 四、治理面板与下一步
 
 - **PROJECT_GOAL**：系统回答“产品怎么做、怎么交付？”。
-- **PROJECT_STAGE**：1/9/48/117完整框架冻结；4.1–4.4正式全文已Owner封板；4.5 Writer V1已交并独立Review RETURN、R2定向返修待交；4.6–4.9无正文；HTML未启动。
+- **PROJECT_STAGE**：1/9/48/117完整框架冻结；4.1–4.4正式全文已Owner封板；4.5 Writer R2已交并独立Review RETURN、R3定向返修待交；4.6–4.9无正文；HTML未启动。
 - **SYSTEM_MAP**：GitHub main管理正式冻题、唯一封板正文、封板审计、当前Writer Gate与交接。离线ZIP位于Owner本轮对话，不在GitHub binary仓库。
 - **CURRENT_ACCEPTED_STATE**：4篇正式正文及对应证据；5章已有Writer V1候选但独立审核RETURN，尚无封板正文。
 - **CURRENT_GATE**：`CB04-CH5-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019`。
 - **CURRENT_ROLLBACK_STATUS**：Git历史保留，可按提交回滚；无真实业务系统、客户文件、密钥和付款操作。
-- **UNRESOLVED**：4.5 Writer R2尚未交；B01–B08仍待复核，真实库存/付款流程未作生产测试。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED**：Owner转交4.5 R2完整返修ZIP+提示词→独立Writer以V1全文修订，提交R2完整正文及事实核验Markdown+ZIP，`STOP_AT_REVIEWER`→Reviewer独立冷审，必要时同轮完整返修ZIP+可复制指令→Owner决定封板。
-- **MANDATORY_STOP**：`CH5_R2_WRITER_PENDING`；不预写4.5正文、不启动4.6或HTML。
+- **UNRESOLVED**：4.5 Writer R3尚未交；C01–C05仍待独立复核，真实库存/付款流程未作生产测试。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED**：Owner转交4.5 R3完整返修ZIP+提示词→独立Writer以R2全文修订，提交R3完整正文及事实核验Markdown+ZIP，`STOP_AT_REVIEWER`→Reviewer独立冷审，必要时同轮完整返修ZIP+可复制指令→Owner决定封板。
+- **MANDATORY_STOP**：`CH5_R3_WRITER_PENDING`；不预写4.5正文、不启动4.6或HTML。
 
 [返回第四部分目录](README.md)
