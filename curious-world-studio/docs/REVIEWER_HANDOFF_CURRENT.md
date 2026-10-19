@@ -1,5 +1,9 @@
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-19）
 
+<!-- CWS_TUN_FAKEIP_FIXTURE_OWNER_GO_20261019 -->
+> **【当前交接（2026-10-19）】** `CURRENT_GATE=CWS-MEDIA-TUN-FAKEIP-PROXY-COMPAT-20261019`; `CURRENT_GATE_STATUS=OWNER_AUTHORIZED_EXECUTOR_NOT_DISPATCHED`。前次PR#157已经独立Review `PARTIAL_SAFE_ADDRESS_GUARD / RIGHTS_UNKNOWN`，证明CWS `_validate_public_url`对混合Fake-IP安全拒绝正确，但在Clash TUN+Fake-IP生效的宿主仍无法安全完成媒体下载。Owner明确同意按已分析修复路线推进，现建立唯一[受限代理兼容Gate](CWS_MEDIA_TUN_FAKEIP_PROXY_COMPATIBILITY_REPAIR_GATE_2026-10-19.md)：先从现有本机当前代理协议/端口和历史成功的yt-dlp显式代理方式对照，使用Blender公开可信小MP4作**仅技术测试**，仅最新main隔离CWS媒体模块最小变更与恶意DNS/重定向负例，CWS自身代理通道合规才≤10MB实际下载＋整片解码/哈希；单独yt-dlp成功不得作为CWS PASS。禁止修改VPN/TUN/系统DNS、禁私网防线或泛域名绕过、开放任意未知URL、再次海量搜素材、碰旧影片/发布/合并PR。旧PR#155历史流程RETURN、PR#156 PARTIAL_SEARCH、PR#157安全拒绝回归可接受（未合并）及59.93秒影片技术PASS保留；`NO_PUBLISH/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/RIGHTS_PARTIAL`不变。`NEXT_STEP=Owner转发唯一Codex提示词→受控代码PR/真实测试ZIP→Reviewer独立核实际路径和负例`；`OWNER_ACTION_REQUIRED=转发提示词`，无须关TUN。下方旧Gate/尚未授权描述均已过时，以此段为准。
+
+
 <!-- CWS_PR157_REVIEWED_MEDIA_E2E_PARTIAL_20261019 -->
 > **【2026-10-19最新Reviewer交接：PR#157 `PARTIAL_SAFE_ADDRESS_GUARD / RIGHTS_UNKNOWN`】** [真实交付审查报告](reviews/CW0005_PR157_INDEPENDENT_MEDIA_E2E_REVIEW_PARTIAL_20261019.md)已签发。Owner上传ZIP验证29成员/28 SHA全部一致；6条引擎×媒体类型查询行累计414原始记录、274候选（146视频/128图片）、历史重合54/新220；SearXNG3个UPSTREAM_PARTIAL而4get3个OK，所有274候选权利UNKNOWN、只部分目视1页YouTube、0实际下载/新QA，`E2E_CANARY_NOT_PASS`。Windows报告当前内存最低1997MiB、`media_pipeline.py`与main一致；DNS有私有和Fake-IP，原`NON_PUBLIC_MEDIA_ADDRESS`按设计安全停线但未创建受信出口合法下载路径。PR#157仅测试新增8行混合DNS拒绝负例、执行日志60基线/61分支通过，**Review只接受局部防护回归，不宣布网络访问已修复**。PR#157保持Open、未合并；[10-19原联合Gate](CWS_MEDIA_END_TO_END_BLOCKER_REPAIR_AND_REAL_ASSET_CANARY_GATE_2026-10-19.md)已执行结束，不得根据其仍含Owner授权文字重跑。当前`CURRENT_GATE=NONE / NEXT_EXECUTOR_NOT_DISPATCHED`，等待Owner决定是否继续一条**有版权和安全目标端点的Licensed-provider-first小验证**，不再跑海量泛检索。当前CW0005技术与封板边界不变。
 
