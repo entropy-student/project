@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR158_FIXTURE_PASS_ACCEPTED_20261019 -->
+## 2026-10-19｜PR #158受限Clash/Fake-IP代理下载兼容性通过独立Review
+
+上一轮Owner明确授权按项目治理修复TUN/Fake-IP与CWS下载器的冲突。Codex交付[PR #158](https://github.com/entropy-student/project/pull/158)仅3个媒体项目文件最小改动，专设**不接收任何用户URL的固定Blender HTTPS测试MP4命令**，通过当前实际loopback HTTP代理请求，不改变系统TUN/Clash/DNS，也未放宽泛用`_validate_public_url`或其私网/Fake-IP拒绝逻辑。独立Reviewer核对真实ZIP SHA、21项清单、Windows执行日志、GitHub真实PR diff和实际上传的MP4，独立FFprobe+FFmpeg验证4,372,373 B，854×480/24fps/52.208333s、1253帧、SHA`b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`。正式`PASS_FIXTURE_PROXY_COMPAT`，**不等于泛用`CWS_GENERIC_MEDIA_DOWNLOADER_PASS`**；独立yt-dlp本轮仅拿元数据无可用format，实际成功是CWS专用固定夹具路径。交付ZIP的`source-diff.patch`为空，GitHub源码diff补足Reviewer核查，记非阻塞。完整[独立Reviewer报告](reviews/CW0005_PR158_TUN_FAKEIP_FIXTURE_PROXY_COMPAT_INDEPENDENT_PASS_20261019.md)，PR#158 Open未合并、PR#157 Open未合并。当前Gate完成`CURRENT_GATE=NONE`，无下一轮自动执行权；节目StoryFit、素材实际可用权和发布仍HOLD，用户VPN/TUN完全保持不变。
+
+
 <!-- CWS_TUN_FAKEIP_FIXTURE_OWNER_GO_20261019 -->
 ## 2026-10-19｜Owner授权一次性解决CWS与TUN/Fake-IP的代理兼容问题
 
