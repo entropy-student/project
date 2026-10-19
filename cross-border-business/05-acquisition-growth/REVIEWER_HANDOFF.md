@@ -1,46 +1,43 @@
-# 第五部分《获客与用户增长》｜唯一当前Reviewer交接
+# 第五部分《获客与用户增长》｜唯一当前Reviewer交接（Owner补强后正式冻结版）
 
-> **PROJECT_STAGE：ALL_6_CHAPTERS_FINAL_SEALED / CONTENT_COMPLETE / BOARD_NOT_ADMINISTRATIVELY_CLOSED（2026-10-19）**  
-> **OFFICIAL_FRAMEWORK：OWNER_FROZEN_V2_CORE1_L1_6_L2_35_L3_78 / UNCHANGED**  
-> **CHAPTER1：《我的客户在哪里？》FINAL_SEALED（4二级/8三级）**  
-> **CHAPTER2：《我该怎么找到客户？》FINAL_SEALED（9二级/22三级；2.2不设三级）**  
-> **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
-> **CHAPTER4：《找客户到底划不划算？》FINAL_SEALED（6二级/12三级）**  
-> **CHAPTER5：《怎么让老客户再买、带来新客？》FINAL_SEALED（5二级/11三级）**  
-> **CHAPTER6：《有效的获客方法怎么做大？》FINAL_SEALED（5二级/11三级）**  
-> **CURRENT_GATE：NONE；不存在第⑦章；第⑤板块六章内容正式完成，但跨章软性Review/Owner板块结项尚未执行。**  
-> **OWNER_ACTION_REQUIRED：若要进一步处理，Owner选择是否开展跨六章连贯性/语言可读性联合Review或直接办理第五板块行政CLOSE；未经授权不得解冻任何正文。**
+> **PROJECT_STAGE：SIX_CHAPTERS_OWNER_AUGMENTED_FINAL_SEALED / COMPANION_SEALED / CORE_1_6_35_78_FROZEN / SOFT_REVIEW_NEXT / BOARD_NOT_CLOSED（2026-10-19）**
+> **Owner批准：** “全部接受，最小化改动原则进行修正吧。完成暂时全部冻结。我下一步计划让另一个agent帮我们review下这几章文章连贯性与语言可读性等软性信息，核心内容不变动。”
+> **CURRENT_GATE：SIX_CHAPTERS_INDEPENDENT_SOFT_REVIEW_20261019；独立Agent只读报告，不改稿、不提交仓库。**
 
-## 一、所有现行权威文件（按优先级）
+## 一、唯一现行权威
 
-| 权威 | 当前文件 | 说明 |
-|---|---|---|
-| Owner唯一正式问题树 | **[FROZEN_FRAMEWORK_V2_20261018.md](docs/FROZEN_FRAMEWORK_V2_20261018.md)** | 核心1 / 一级6 / 二级35 / 三级78，正式题干不变 |
-| 第一章唯一正式正文 | [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md) | 4/8，正式封板 |
-| 第二章唯一正式正文 | [CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md) | 9/22，正式封板，2.2直接成节 |
-| 第三章唯一正式正文 | [CHAPTER3_FINAL_SEALED.md](docs/CHAPTER3_FINAL_SEALED.md) | 6/14，正式封板 |
-| 第四章唯一正式正文 | [CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md) | 6/12，正式封板 |
-| 第五章唯一正式正文 | [CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md) | 5/11，正式封板 |
-| 第六章唯一正式正文 | **[CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md)** | **5/11，Owner授权Reviewer直修后正式封板** |
-| 第六章最终核验与审计 | [CHAPTER6_FINAL_REVIEWER_FACTCHECK_20261019.md](docs/CHAPTER6_FINAL_REVIEWER_FACTCHECK_20261019.md)／[CHAPTER6_SEAL_EVIDENCE_20261019.md](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md) | 整章来源、唯一6.4模型修复、SHA与权限链 |
-| 本板块最新索引 | [README.md](README.md) | 六章已封板；交接以本文件及上列正式文档为准 |
+- 第五部分正式冻结框架： [V2](docs/FROZEN_FRAMEWORK_V2_20261018.md)，核心1/一级6/二级35/三级78，2.2没有三级；该文件仅更新了早期误导性的实施状态字样，题目表没有改。
+- **六章正式全文**：
+  - 第1章 [我的客户在哪里？](docs/CHAPTER1_FINAL_SEALED.md)，冻结二级/三级4/8，**现行补强后Owner正式冻结版**。
+  - 第2章 [我该怎么找到客户？](docs/CHAPTER2_FINAL_SEALED.md)，冻结二级/三级9/22，**现行补强后Owner正式冻结版**。
+  - 第3章 [客户来了，怎么让他下单？](docs/CHAPTER3_FINAL_SEALED.md)，冻结二级/三级6/14，**现行补强后Owner正式冻结版**。
+  - 第4章 [找客户到底划不划算？](docs/CHAPTER4_FINAL_SEALED.md)，冻结二级/三级6/12，**现行补强后Owner正式冻结版**。
+  - 第5章 [怎么让老客户再买、带来新客？](docs/CHAPTER5_FINAL_SEALED.md)，冻结二级/三级5/11，**现行补强后Owner正式冻结版**。
+  - 第6章 [有效的获客方法怎么做大？](docs/CHAPTER6_FINAL_SEALED.md)，冻结二级/三级5/11，**现行补强后Owner正式冻结版**。
+- [Owner批准的共用经营实操附录](docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md)：T2—T7新增的统一教学工作流与表格，均为假设示例，不代表真实业务。标题不纳入正式6/35/78题树。
+- [动态来源与统一术语索引](docs/SOURCE_REGISTER_AND_TERMS_20261019.md)：主要法律/平台来源、术语分母及更新触发，T8成果。
+- [Owner31项逐条裁决后正式实施映射](docs/OWNER_APPROVED_MINIMAL_REVISION_RECORD_20261019.md)：T1原文三处纠偏与T2—T8归属，标注R30仅进入下一轮只读软性审查。
+- [第五板块README](README.md)：六章目录及唯一下一步。
 
-## 二、第六章R1→R2→Owner授权直修的完整证据链
+## 二、Owner批准最小修订，哪些改了、哪些保持不动
 
-1. 独立Writer R1经[Reviewer R1 RETURN](docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261019.md)发现统计硬阈值、扩量图和财务口径、营销许可、平台规则、五板块边界等八组问题，保留原始Review和自包含R2修复ZIP历史。
-2. Writer R2完整ZIP：`第五部分_第六章_Writer_R2完整交付.zip`，**37,392字节**、SHA256 `9e25509f9f17906b97b830333b30238be399a7da4a3b41579182b2cecf99358c`。原R2正文**39,954字节/405行**、SHA256 `55cf916a04cb6a28334a3a396f31dcbd63ca395cbb5f479b0bda33dbbaa50c13`；原R2核验**40,946字节/218行**、SHA256 `62a21e369000215135df70487973f4a6b0d762fc3fd0b5aab368a21949a9b25f`。
-3. [R2独立Review的历史RETURN](docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)：**冻结5/11结构PASS**、R1重要问题均实质修复，仅剩§6.4阶段D日广告费$600、CAC$50图示对应12单，但正文核验错误按10单，导致−$250而非−$150的唯一阻断。
-4. **Owner在本轮明确授权**“这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中。记得记录相关文档。完成之后开启下一个1级问题的部分。”Reviewer基于Writer R2**完整原稿**仅修§6.4图表/正文与核验的单位和收益口径，核对全部冻结标题后**直接正式封板**。**没有独立Writer R3交付**；旧R3 ZIP已成为历史中间包，不再等待Writer R3。
-5. **最终算式【MODEL_ASSUMPTION】**：每天一新客户一首单、每单实收$100、直接履约$50；B阶段日预算$100/CAC$20对应5单，已列贡献$150；D阶段日预算$600/CAC$50对应12单，已列贡献$0；B→D新增**7单、$700收入、$350变动成本、$500广告费**，贡献差额**−$150**。它不是实际现金净亏损，亦非包含全部支出的净利润。图仍按15/20/35/50（CAC）与35/30/15/0（单均已列贡献），0—60纵轴保留原样。
-6. **最终正文** `docs/CHAPTER6_FINAL_SEALED.md`：**40,336字节**，SHA256 `250cfdb7d4b96eda49af53cd7f1a7d8ff439c6ad5a0162754f2122c2b23199ab`，Git blob `67cd0845c330250ef7a310d4da36c48d2a26bb2e`，commit `be36fe320dd55fb15c8e186c9070ad20be714317`，已main提交并完整读回一致。正式结构**H1×1/H2×5/H3×11逐字同序同父题，10组代码围栏配对**；章节6.4之前及6.4.2之后与Writer R2原文一致。
-7. **Reviewer最终事实核验** `docs/CHAPTER6_FINAL_REVIEWER_FACTCHECK_20261019.md`：42,587字节，SHA256 `680d8196f1bc7f074c1b0f1e6519e42c755666cf5e71bd0d0a75a9768d4f37f6`、Git blob `137c3ba3854a94b4ded48216e964cd28aeb15aaf`，包含R2核验全文、修订模型及独立Reviewer勘误。详见[唯一封板审计](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。
+1. **T1正文精确纠偏**：第四章4.3.1 CPA由“广告支出÷全部订单”改为按**事先定义的购买/注册/询盘转换动作**的广告成本；第五章5.4.3评价激励强调**平台先许可、法律再核**；第五章5.5.1将扣款失败定义为可能的非自愿流失，不再推断商家倒闭。另5.1.2一个敏感金融案例换成普通生产设备维护工具。
+2. **T2—T7新经营内容主要集中于一份共用附录**：三个读者场景、测量口径及回顾/未来双账、激活/商机、平台和AI搜索、实验与合法触达、本地买家付款走查。**不改六章题目、原章节次序或原来的经营模型。**
+3. **T8**：已创建来源索引与术语统一表；正式V2和第二章只修历史阶段元信息。后续第①—④章存在的额外引言/小结H2是软性排版Review的议题，不意味着原题缺失；由下一位Agent**提出意见**，未经Owner批准不改。
+4. 31项决策中R30**还未实际进行跨六章软性审核**，是本轮启动的新独立Reviewer任务。禁止使用“全部接受”来假称“语言审核已经通过”。
+5. 第①③⑥章正式正文与上轮封板原文完全不变；第②④⑤章仅元信息/定点事实/小示例有变化。所有历史Writer R1/R2 RETURN和封板SHA继续作为历史审计，不能拿旧版本覆盖现在的文件。
 
-## 三、第五部分此后怎么推进
+## 三、新Reviewer唯一任务与停点
 
-- **已确认完成：** 六章正式正文均FINAL_SEALED，第五部分的完整框架及所有一级问题均有正式全文；没有第7个一级问题，也没有理由擅自新增第7章。
-- **可供Owner决定、尚未开展的后续阶段：** 组织一次**六章联合软性Review**（标题承接、重复、术语口径、语言可读性、图表/案例相互引用、读者导航），原则是只提意见，不擅自改已封板正文；或由Owner直接确认整个第五板块行政结项。若要建立六章索引/HTML/出版版式，也须明确新的任务/授权。
-- **板块状态：** `CONTENT_COMPLETE / SIX_CHAPTERS_FINAL_SEALED / BOARD_NOT_CLOSED`。**不能把尚未进行的跨章软性Review写成已PASS，也不能因为没有第七章就凭空启动Writer**。
-- **权限：** 第一至第六章正式冻结，Writer/Reviewer未经Owner进一步批准不得解冻正文；任何候选R1/R2和RETURN文件只作历史审计，当前版本以六份`FINAL_SEALED`为准。
-- **保护边界：** 完整V2框架、第一至五章正式正文和其余①机会、②网络环境、③支付税务经营主体、④产品搭建板块的正式成果全部不动；不触碰生产网站、真实营销、客户数据、支付、服务器、HTML。
+- **[独立软性Reviewer Gate](docs/SIX_CHAPTERS_INDEPENDENT_SOFT_REVIEW_GATE_20261019.md)**（全部阅读并遵守）；Owner将在对话提供一个ZIP，包含六章最新完整正文和Reviewer提示词、正式冻结树的离线原题副本、决策映射及SHA256。
+- 审核目标：章节衔接、术语首见、表达精炼、表格/图示可理解性、专业措辞、冗余、各种读者路线、附录导航。**只审，不执行改稿**。疑似法律/计算错误单列`OUT_OF_SCOPE_FACT_CHECK`等待Owner决策，不能顺手改核心。
+- 交付一份完整Markdown审查报告（逐章和跨章，原文定位、优先级、可复制最小编辑建议、不应动的部分），交Owner后`STOP_AT_OWNER_DECISION`；Owner再转主Reviewer交叉复核。
+- 本轮不新增长期一级题目、不启动第七章、六章全部暂冻、整个第五板块仍**行政NOT_CLOSED**。
 
-**NEXT_STEP：** 等待Owner决定六章联合软性Review或直接正式CLOSE第五板块；此时不存在下一个一级问题。
+## 四、GitHub和其他业务边界
+
+- 仓库：`https://github.com/entropy-student/project`；目录：`cross-border-business/05-acquisition-growth/`。
+- 第①—④其它业务板块文档与状态不能被第五板块更新覆盖；不碰真实广告/CRM/支付/网站运行环境及源码。
+- 动态来源/支付法域限制见来源索引；工具在技术板块实现，第五部分只讲经营者应检查什么。
+
+**NEXT_STEP：** Owner交下一位独立Agent只读软性审稿提示词和工作包→新Agent只交Markdown报告→Owner转回本Reviewer做交叉审核→Owner决定是否允许最小语言润色和正式CLOSE第五部分。
