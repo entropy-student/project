@@ -33,4 +33,4 @@
 
 - 保留**一份唯一正式冻结问题树**、每章已封板正文、有效当前Gate、唯一交接与必要证据；废弃Gate及离线ZIP用Git历史追溯，不让其与现行正式正文并列。
 - 每次发离线包须可解压、包含完整冻结题目和本章问题、可复制提示词、交付规定、必要边界与文件SHA256；独立Writer无须访问仓库。
-- 第①至⑦章均经Owner逐章明确授权，以独立Writer候选为基线由Reviewer定向修订后正式封板；第⑦章保留Writer R2原稿指纹、Owner授权直修六组事实/模型残留，不存在Writer R3交付。当前第⑧章`GATE_RELEASED / WRITER_PENDING / CHAPTER_TEXT_NOT_STARTED`（4H2/7H3，8.2直接成节）。前七章Owner特例不改变第⑧章独立Writer首稿责任。
+- 第①至⑧章均经Owner逐章明确授权，以独立Writer候选为基线由Reviewer定向修订后正式封板。第⑧章Writer R2之后仅剩两项阻断，由Owner特别授权Reviewer直修并封板；**不存在Writer R3交付**。当前`ALL_CHAPTERS_FINAL_SEALED / NO_ACTIVE_WRITER_GATE / HTML_NOT_STARTED / WAIT_OWNER`；未经Owner下一次决定不得自动启动HTML、联审或下一阶段。

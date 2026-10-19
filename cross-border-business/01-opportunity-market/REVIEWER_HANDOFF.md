@@ -1,25 +1,25 @@
 # 第一部分《机会挖掘与市场判断》｜唯一Reviewer交接
 
-> **FRAMEWORK：OWNER_FROZEN / CORE1–L1 8–L2 34–L3 83；8.2直接成节**  
-> **CHAPTERS 1–7：FINAL_SEALED / OWNER_APPROVED**  
-> **CHAPTER8：WRITER_PACKET_RELEASED / WRITER_PENDING**  
-> **CURRENT_GATE：CB01-CH8-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **BODY：7/8 CHAPTERS SEALED；HTML：NOT_STARTED** · 2026-10-19
+> **CURRENT_STATUS：BOARD_BODY_8_OF_8_FINAL_SEALED / OWNER_APPROVED / WAIT_OWNER**  
+> **FRAMEWORK：CORE1 / L1 8 / L2 34 / L3 83 / 8.2直接成节（FROZEN）**  
+> **CURRENT_WRITER_GATE：NONE**  
+> **HTML：NOT_STARTED** · 2026-10-19
 
-## 当前唯一权威
-- [正式冻结问题树1/8/34/83](docs/FROZEN_FRAMEWORK_V1_20261018.md)（不得改动，8.2直接成节不设三级）。
-- 第①至⑥章均已Owner批准 `FINAL_SEALED`，正式正文和审核证据从[本板块README](README.md)访问，本轮未改任何旧章字节。
-- **[第⑦章正式封板正文](docs/CHAPTER7_FINAL_SEALED.md)**、[最终核验记录](docs/CHAPTER7_FINAL_RESEARCH_RECORD.md)、[封板证据](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)、[可执行回归脚本](docs/CHAPTER7_SELFTEST_20261019.py)：5H2/14H3严格同序，R2剩余六组已直接修订。
-- **[第⑧章唯一Writer Gate](docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261019.md)**与[离线资料包SHA256/清单](docs/CHAPTER8_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：4H2/7H3，8.2完整二级节，Writer首稿待交。
-- [长期Writer→Reviewer→Owner规范](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)和[Owner问题框架决策记录](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
+## 现行唯一权威
 
-## 第⑦章封板责任链与审核重点
-1. Writer R1→Reviewer RETURN（12组）；Writer R2→Reviewer RETURN（剩余六组）。Owner 2026-10-19明确授权Reviewer直接修正、正式冻结并落库，开启下一一级。**没有Writer R3独立交付**。
-2. Reviewer以Writer R2原始完整正文为基线，保留全部20个冻结标题和主体案例。六组定向修复：自检脚本漏检及LaTeX转义、SaaS两层漏斗分母/B2B预计贡献与PO效力、Visa商户/收单机构层级、GDPR合法处理依据、FTC退款触发与规则适用范围。
-3. 第⑦章自检**实际运行**：正确目录20/20标题及8组算术PASS（exit 0）；正文不存在时真实报错（exit 2）。此脚本只验证结构与算术，不可替代法律、真实成交证据核验。详细来源及回归日志均保存在第⑦章**最终核验记录第八节**。
-4. 所有教学测试金额和订单数字为`MODEL_ASSUMPTION`，不构成真实市场订单、执照、预售完成或法律意见。
+- [冻结问题框架V1](docs/FROZEN_FRAMEWORK_V1_20261018.md)：原题、层级、顺序、父题关系、8.2不设三级不得擅改。框架文件内“内容未开始”是2026-10-18冻结时的历史快照，**不代表现在正文仍未开始**。
+- **第①至⑧章全部正式正文均已Owner明确授权封板，统一入口为[本板块README](README.md)**。正文权威文件：`docs/CHAPTER1_FINAL_SEALED.md`至`docs/CHAPTER8_FINAL_SEALED.md`，每章封板/核验依各章记录追溯。
+- **第⑧章正文**：[CHAPTER8_FINAL_SEALED.md](docs/CHAPTER8_FINAL_SEALED.md)，[最终研究核验](docs/CHAPTER8_FINAL_RESEARCH_RECORD.md)，[封板证据](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)，[可复现自检](docs/CHAPTER8_SELFTEST_20261019.py)。
+- [Writer→Reviewer→Owner协作规范](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)与[框架决定和历史](docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
 
-## 第⑧章Writer下一步
-Owner转交本次对话的`第一部分_第八章_独立Writer离线资料包_V1_20261019.zip`和提示词。Writer离线完成《好几个方向都不错，我究竟该做哪个？》整章中文正文Markdown、完整来源/计算/UNKNOWN/冻题覆盖记录Markdown及ZIP；不需GitHub权限，交稿停`CANDIDATE_FOR_REVIEW / STOP_AT_REVIEWER`，不得自行封板或生成HTML。Reviewer独立检验完整内容，如RETURN同轮给完整上一版返修ZIP及提示词。由Owner最终批准是否封板。
+## 第⑧章版本责任链与证据
 
-第⑦章旧Writer Gate及离线指纹清单仅在Git历史追溯，从当前main撤下，唯一有效Gate切换第⑧章。本轮不触动其余四业务板块；HTML未启动。
+1. Writer R1→Reviewer R1 RETURN（8组）；Writer R2→Reviewer R2 RETURN（剩余2组：虚假模型自检PASS、Sarasvathy样本夸大）。
+2. **Owner于2026-10-19明确授权Reviewer直接最小修订、正式冻结、项目库归档，完成后等待Owner。** 在**完整Writer R2原稿**上仅作6处文本定向修改，修改两项阻断及少数不阻断措辞；**不存在独立Writer R3交付**，旧原稿指纹见[封板证据](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。
+3. 第⑧章仍保持1H1/4H2/7H3逐字同序；**8.2直接为完整二级节**，无三级。学术研究原样本**27位专家创业者**，不是“数百位”，来源一手论文 <https://journals.aom.org/doi/10.5465/apbpp.2001.6133065>。
+4. 真实执行Python自动验收：原稿exit0，缺稿exit2；权重、预算分项、X得分、试错比例四组蓄意改错正文均exit1。程序从Markdown正文**实际提取参数**，验证六维MCDA得分X=5.75/Y=6.85、预算上下限180/540美元以及20%/30%轮次；不能代替法律合规或市场真实成交证据。脚本执行：`python CHAPTER8_SELFTEST_20261019.py CHAPTER8_FINAL_SEALED.md`。
+5. 已通过GitHub main进行逐文件提交与回读，正式封板资产不得被后续稿件覆盖。第⑧章旧独立Writer Gate及离线包指纹索引从main撤下，历史仅通过Git追溯，不存在下一章Writer Gate。
+
+## 交接停止线
+
+**全8章正文已正式冻结，当前阶段暂停并等待Owner选择下一步。** 未授权不自动制作HTML、不启动深度联审、不创建第⑨章、不修改五板块其它模块，也不重开已封板正文。Owner决定是否另开新任务后才继续。

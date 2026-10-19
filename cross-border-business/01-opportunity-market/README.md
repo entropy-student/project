@@ -1,6 +1,6 @@
 # 01｜机会挖掘与市场判断
 
-> **状态（2026-10-19）：FRAMEWORK_OWNER_APPROVED_FROZEN（核心1 / 一级8 / 二级34 / 三级83） / CHAPTER1_TO_CHAPTER7_FINAL_SEALED / CHAPTER8_WRITER_GATE_RELEASED / WRITER_PENDING**  
+> **状态（2026-10-19）：FRAMEWORK_OWNER_APPROVED_FROZEN（核心1 / 一级8 / 二级34 / 三级83） / CHAPTER1_TO_CHAPTER8_FINAL_SEALED / ALL_CHAPTERS_SEALED / WAIT_OWNER**  
 > **唯一核心问题：什么跨境生意值得做？**
 
 ## 现行权威
@@ -21,8 +21,8 @@
 - **[第⑥章正式封板正文](docs/CHAPTER6_FINAL_SEALED.md)**：3个二级/10个三级，Owner授权Reviewer定向修订并正式封板。
 - [第⑥章正式核验记录](docs/CHAPTER6_FINAL_RESEARCH_RECORD.md)与[封板证据](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。
 - **[第⑦章正式封板正文](docs/CHAPTER7_FINAL_SEALED.md)**：5二级/14三级，Owner授权Reviewer基于Writer R2定向修订六组问题；[最终核验记录](docs/CHAPTER7_FINAL_RESEARCH_RECORD.md)、[封板证据](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)及[可复现自测脚本](docs/CHAPTER7_SELFTEST_20261019.py)。
-- **[第⑧章独立Writer Gate](docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261019.md)**：4二级/7三级，8.2直接成节；Writer首稿待交。
-- [第⑧章离线ZIP清单/SHA256](docs/CHAPTER8_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：完整ZIP由Owner在本对话转交。
+- **[第⑧章正式封板正文](docs/CHAPTER8_FINAL_SEALED.md)**：4二级/7三级（8.2直接成节），Owner授权Reviewer基于Writer R2定向修订并封板，`FINAL_SEALED`。
+- [第⑧章正式核验记录](docs/CHAPTER8_FINAL_RESEARCH_RECORD.md)、[封板证据](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)、[可复现自检脚本](docs/CHAPTER8_SELFTEST_20261019.py)：含4组反例纠错验证及研究样本核验。
 - [长期Writer → Reviewer → Owner审核和返修流程](docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)：只要RETURN，同轮提供返修ZIP和传递提示词。
 - **[唯一Reviewer交接](REVIEWER_HANDOFF.md)**：最新唯一权威交接。
 
@@ -39,6 +39,6 @@
 
 本板块限于**投入前商业机会判断**：发现机会、买家需求、替代与竞争、市场可达性、盈利现金流、准入初筛、低成本购买验证以及取舍与退出。网络配置属②，经营主体/支付税务细节属③，产品研发与真实交付属④，持续获客/转化复购属⑤。
 
-**下一步：** 第①至⑦章正式封板（7/8）；第⑧章独立Writer Gate及离线工作包已发布，等待Writer完整首稿与核验记录回交后独立Review。8.2直接成节，未启动HTML。
+**当前状态：** 全部8个一级章节的正式正文已由Owner逐章批准并封板（8/8）。唯一冻结问题树1/8/34/83不变，8.2继续直接成节。**没有活动Writer Gate**，HTML仍`NOT_STARTED`；停止执行，等待Owner决定后续是否进行全章联审、阅读体验评估或其他任务，任何后续工作未获授权不得启动。
 
 [返回五板块总项目](../README.md)

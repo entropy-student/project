@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_TO_CH7_SEALED_CH8_WRITER_RELEASED / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH6_SEALED_CH7_R2_RETURN_R3_PENDING / 05_FRAMEWORK_V2_FROZEN_ALL6_CHAPTERS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_ALL8_SEALED_WAIT_OWNER / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH6_SEALED_CH7_R2_RETURN_R3_PENDING / 05_FRAMEWORK_V2_FROZEN_ALL6_CHAPTERS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 **统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
@@ -15,7 +15,7 @@
 
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
-| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①至⑦章正式封板；第⑧章Writer Gate与完整离线包已发布，首稿待交（8.2直接成节）** |
+| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；第①至⑧章正式封板（8/8）；无活动Writer Gate；HTML未启动，等待Owner决定下一步** |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [八章唯一正式正文及冻结框架](02-network-environment/README.md) · **8/44/93冻结问题不变；第①–⑧章语言与连贯性R1定向修订复核PASS，最终封板，HTML未启动** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.6六章正式封板；4.7 Writer R2独立审核RETURN、R3完整定向返修待交** |
@@ -120,7 +120,7 @@
 - **[⑤ Owner临时解冻决定与盲写Writer工作包记录](05-acquisition-growth/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：离线包指纹、独立重写授权、新旧比较与停点。
 - [⑤ 当前Owner决策与Reviewer交接](05-acquisition-growth/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：现行状态、交付要求、新旧比较与下一步。
 
-**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑦章正文均正式封板，第⑧章Writer待交。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Writer R2已审查RETURN，R3返修待交；⑤正式1/6/35/78问题树和第①至⑥章全部FINAL_SEALED，第⑥章Owner授权Reviewer直修完成，剩余跨六章软性Review及板块CLOSE为Owner后续决策，不存在第七章。
+**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章正式封板（8/8），无活动Writer Gate，等待Owner下一步。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Writer R2已审查RETURN，R3返修待交；⑤正式1/6/35/78问题树和第①至⑥章全部FINAL_SEALED，第⑥章Owner授权Reviewer直修完成，剩余跨六章软性Review及板块CLOSE为Owner后续决策，不存在第七章。
 
 - **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
 - **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
@@ -146,4 +146,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；正文未启动。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Writer R2已审查RETURN，R3返修待交；⑤六章均FINAL_SEALED，Writer R1/R2的RETURN是Owner后续授权直修前的历史；框架V2 1/6/35/78保持冻结；第六章为最后一个一级问题，无第七章。未经Owner新授权不进行跨章改稿、HTML或行政CLOSE。项目路径为 `entropy-student/project/cross-border-business/`，不操作其他源码仓库。
 
-**当前下一步：** ①第①至⑦章正文已正式封板；第⑧章独立Writer Gate及离线资料包已发布，等待Writer完整首稿与核验记录（8.2无三级）；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14 Writer R2已审查RETURN，R3完整返修包已交Owner，等待Writer R3；⑤第①至⑥章正式正文全部封板，Owner决定是否开展六章联合软性连贯性/可读性Review，及何时正式CLOSE第五板块；不存在下一个一级问题。
+**当前下一步：** ①第①至⑧章全部正式封板（8/8），唯一Reviewer交接已记录第⑧章最终修订证据；无活动Writer Gate、HTML未启动，等待Owner决定下一步；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14 Writer R2已审查RETURN，R3完整返修包已交Owner，等待Writer R3；⑤第①至⑥章正式正文全部封板，Owner决定是否开展六章联合软性连贯性/可读性Review，及何时正式CLOSE第五板块；不存在下一个一级问题。
