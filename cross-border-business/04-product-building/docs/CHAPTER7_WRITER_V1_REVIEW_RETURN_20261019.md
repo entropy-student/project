@@ -1,5 +1,7 @@
 # 第四部分4.7章｜Writer V1独立Reviewer完整审核RETURN及R2离线返修登记
 
+> **HISTORICAL_REVIEW_ONLY / SUPERSEDED_BY_OWNER_SEAL（2026-10-19）**：本文件是当时独立Reviewer对该版Writer候选的真实RETURN审核记录，**当前不再执行此返修Gate**。Owner随后明确授权Reviewer基于完整Writer R2直接修C01–C07并正式封板。[唯一正式4.7正文](CHAPTER7_FINAL_SEALED.md)及[审计证据](CHAPTER7_SEAL_EVIDENCE_20261019.md)为最终版本。**没有Writer R3交付**，旧R3完整返修ZIP未执行；当前继续4.8独立Writer首稿。
+
 > **DATE：2026-10-19**  
 > **VERDICT：RETURN_CH7_V1_LEGAL_ACCESS_REFUND_AND_EVIDENCE_ERRORS**  
 > **CURRENT_STATUS：CHAPTER7_V1_REVIEW_RETURN / WRITER_R2_PENDING / NO_SEALED_CH7_BODY**  
