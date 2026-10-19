@@ -75,63 +75,11 @@
 - [④ 历史核心与一级冻结](04-product-building/FROZEN_FRAMEWORK_CORE_L1_20261018.md)及[历史二级候选](04-product-building/FRAMEWORK_L2_CANDIDATE_20261018.md)：只作版本证据。
 - [④ 二级复核PASS与三级自检](04-product-building/docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：复核与自检证据。
 - [④ 原Writer阶段交接（历史）](04-product-building/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：旧阶段事实留存，不作为当前权威。
+- **[⑤ 获客与用户增长｜唯一正式导航（六章G7 PASS）](05-acquisition-growth/README.md)**：1/6/35/78冻结；六章正文、共用附录及术语索引均保留；BOARD_NOT_CLOSED。
+- **[⑤ 唯一项目交接与Owner决定、G7验收、历史档案入口](05-acquisition-growth/REVIEWER_HANDOFF.md)**：11份正式文件目标；历史流程记录由固定Git快照追溯。
 - [⑤ 获客与用户增长 · 离线Agent任务书](docs/05_GROWTH_FRAMEWORK_AGENT_BRIEF_20261018.md)
-- **[⑤ 仅核心仍冻结；旧1/9/45成为比较基线](05-acquisition-growth/FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)**：旧正式快照只读保留；Owner最新要求一级/二级暂时解冻，不能拿历史标签限制独立重写。
-- [⑤ 旧三级102题候选（未冻结）](05-acquisition-growth/FRAMEWORK_L3_CANDIDATE_20261018.md)：现作为Writer返回后的比较基线，不立即冻结。
-- [⑤ 原核心+一级阶段冻结快照](05-acquisition-growth/FROZEN_FRAMEWORK_CORE_L1_20261018.md)及[历史45道二级候选](05-acquisition-growth/FRAMEWORK_L2_CANDIDATE_20261018.md)：保留版本证据，非当前完整权威。
-- [⑤ 复核PASS及三级自检](05-acquisition-growth/docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：二级完整审核与三级结构自查。
-- **[⑤ 唯一正式完整冻结问题树V2（1/6/35/78）](05-acquisition-growth/docs/FROZEN_FRAMEWORK_V2_20261018.md)**：Owner已正式批准；此前候选已完成验收。
-- **[⑤ 第①章独立Writer首稿Gate（4二级/8三级）](05-acquisition-growth/docs/CHAPTER1_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：首稿合同发布；Writer无仓库权限。
-- [⑤ 第一章离线9文件Writer包清单及SHA256](05-acquisition-growth/docs/CHAPTER1_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：ZIP本轮对话交付，需Owner转发。
-- **[⑤ 第①章唯一正式封板正文](05-acquisition-growth/docs/CHAPTER1_FINAL_SEALED.md)**：Owner授权Reviewer以Writer R2为底稿最小修复、正式封板（4/8题）。
-- [⑤ 第①章Owner授权直修封板证据](05-acquisition-growth/docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)：B01–B04/N01–N03证据、来源/指纹与历史授权。
-- **[⑤ 第②章唯一正式封板正文](05-acquisition-growth/docs/CHAPTER2_FINAL_SEALED.md)**：Owner授权Reviewer在Writer R2基础上修复并正式封板（9/22题，2.2直接成节）。
-- [⑤ 第②章封板审计证据](05-acquisition-growth/docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：7组R2残留/额外终审自检、官方材料与全文指纹。
-- **[⑤ 第③章唯一正式封板正文](05-acquisition-growth/docs/CHAPTER3_FINAL_SEALED.md)**：6/14原题不变，Owner授权Reviewer最小修复并正式封板。
-- [⑤ 第③章直修封板证据](05-acquisition-growth/docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)：R2审计/4+3修复、事实来源与正式正文指纹。
-- **[⑤ 第④章唯一正式封板正文](05-acquisition-growth/docs/CHAPTER4_FINAL_SEALED.md)**：6/12题目原文保持、Owner授权Reviewer最小事实修复后正式封板。
-- [⑤ 第④章正式封板审计/来源证据](05-acquisition-growth/docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)：Visa VAMP、收入确认、贡献利润与完整SHA。
-- **[⑤ 第⑤章唯一正式封板正文](05-acquisition-growth/docs/CHAPTER5_FINAL_SEALED.md)**：Owner授权Reviewer直接修复R2残留，5/11正式题干逐字不变。
-- [⑤ 第⑤章直修封板证据及来源](05-acquisition-growth/docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)：Visa VAMP、索评公正性、储值金会计现金区别、GDPR删除权等及全文SHA。
-- **[⑤ Owner批准全部31项审查建议的八组合并执行记录](05-acquisition-growth/docs/OWNER_APPROVED_MINIMAL_REVISION_RECORD_20261019.md)**：正文3项定点纠偏，其余共用附录/动态来源索引，已暂时冻结。
-- **[⑤ 新共用经营实操附录 T2–T7](05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md)**：DTC/SaaS/B2B、事件、激活、AI搜索、实验自动化和跨境本地化。
-- [⑤ 统一术语与动态来源索引](05-acquisition-growth/docs/SOURCE_REGISTER_AND_TERMS_20261019.md)：经营口径及法域/平台资格核验入口。
-- **[⑤ 下一位独立软性Reviewer只读Gate](05-acquisition-growth/docs/SIX_CHAPTERS_INDEPENDENT_SOFT_REVIEW_GATE_20261019.md)**：审核六章连贯性、语言质量，不修改内容。
-- [⑤ 独立软性Reviewer ZIP Manifest](05-acquisition-growth/docs/SIX_CHAPTERS_SOFT_REVIEW_OFFLINE_PACKET_MANIFEST_20261019.md)：六章现行Git blob完整正文、提示词及31项决策。
-- **[⑤ 第⑥章正式封板唯一正文](05-acquisition-growth/docs/CHAPTER6_FINAL_SEALED.md)**：Owner授权Reviewer修正6.4唯一剩余模型矛盾，5/11原题保持，正式封板。
-- [⑤ 第⑥章Owner直修封板证据](05-acquisition-growth/docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)：R2溯源、完整验算、正文SHA及审计。
-- [⑤ 第⑥章Reviewer最终核验与勘误](05-acquisition-growth/docs/CHAPTER6_FINAL_REVIEWER_FACTCHECK_20261019.md)：模型同步修复，不存在独立Writer R3。
-- **[⑤ 六章全部正式封板／无下一个一级问题](05-acquisition-growth/REVIEWER_HANDOFF.md)**：正文6/6完成，跨章语言连贯性Review与板块CLOSE仍待Owner决定。
-- [⑤ 第⑥章Writer R2 Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)：5/11结构PASS，6.4图D阶段CAC50对应12单却被按10单复算，唯一阻断需修正；R3完整离线ZIP已提供Owner。
-- [⑤ 第⑥章Writer R1独立Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261019.md)：冻结5/11题PASS、8项必修和3项小修；完整R2返修ZIP含原稿全文已交Owner。
-- **[⑤ 第⑥章独立Writer首稿Gate（5/11）](05-acquisition-growth/docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)**：已发布，Writer尚未交完整候选。
-- [⑤ 第⑥章14文件离线包与SHA256](05-acquisition-growth/docs/CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：包含前五章正式全文、正式冻结框架、Writer合同和提示词。
-- [⑤ 第⑤章Writer R2独立Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)：冻结问题5/11均在，额外H2待降级，6组实质残留、3组小修，R3全量离线返修ZIP已交Owner。
-- [⑤ 第⑤章Writer R1独立Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)：冻结5/11结构PASS，B01–B08法规、评价平台与自检问题，完整R2返修包及提示词已提供。
-- [⑤ 第⑤章独立Writer首稿Gate（历史）](05-acquisition-growth/docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261019.md)：已提交并完成R1 Review。：尚无Writer候选正文。
-- [⑤ 第⑤章13文件离线Writer工作包与SHA256](05-acquisition-growth/docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)：前四章正式全文、完整问题树、独立流程与法规事实核验。
-- [⑤ 第④章Writer R2 Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER4_WRITER_R2_REVIEW_RETURN_20261019.md)：结构6/12 PASS，Visa VAMP、折扣/收入确认及最终利润口径3项必修，R3最小完整返修ZIP已提供Owner。
-- [⑤ 第④章Writer R1独立Review（历史）](05-acquisition-growth/docs/CHAPTER4_WRITER_R1_REVIEW_RETURN_20261019.md)：6/12结构PASS、8组事实/经济性阻断、3项顺手小修，R2完整离线返修ZIP已交Owner。
-- **[⑤ 第④章独立Writer首稿Gate（6二级/12三级）](05-acquisition-growth/docs/CHAPTER4_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：已发布，Writer尚未交稿。
-- [⑤ 第④章12文件离线包Manifest](05-acquisition-growth/docs/CHAPTER4_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：含前三章正式全文、完整冻结框架、Writer提示词与ZIP SHA256。
-- [⑤ 第③章Writer R2独立Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)：6二级14三级PASS，4项实质问题与3项小修，R3完整返修包交Owner。
-- [⑤ 第③章Writer R1审核（历史RETURN）](05-acquisition-growth/docs/CHAPTER3_WRITER_R1_REVIEW_RETURN_20261018.md)：6/14冻结题PASS，8项阻断与4项顺手修复；已交完整R2返修ZIP和提示词。
-- **[⑤ 第③章独立Writer完整首稿Gate（6/14）](05-acquisition-growth/docs/CHAPTER3_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：独立Writer无GitHub权限，第三章首稿尚未交。
-- [⑤ 第③章11文件Writer离线包清单与SHA256](05-acquisition-growth/docs/CHAPTER3_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：对话ZIP由Owner转发，含前两章封板全文（可选参考）。
-- [⑤ 第②章独立Writer R2 Review（历史RETURN）](05-acquisition-growth/docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)：9/22结构PASS，4项必修与3项小修；完整R3返修包已交Owner。
-- [⑤ 第②章Writer R1 Review（历史）](05-acquisition-growth/docs/CHAPTER2_WRITER_R1_REVIEW_RETURN_20261018.md)：结构9/22 PASS、B01—B12内容返修；已提供完整R2离线返修包和转交提示词。
-- **[⑤ 第②章独立Writer首稿Gate（9/22）](05-acquisition-growth/docs/CHAPTER2_INDEPENDENT_WRITER_GATE_V1_20261018.md)**：2.2直接成节；独立Writer无仓库权限。
-- [⑤ 第②章自包含离线ZIP清单/SHA256](05-acquisition-growth/docs/CHAPTER2_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261018.md)：Owner在对话下载，等待Writer首稿。
-- **[⑤ Writer R2 RETURN（历史）](05-acquisition-growth/docs/CHAPTER1_WRITER_R2_REVIEW_RETURN_20261018.md)**：4个必修残留与3个小修，已提供完整R3返修ZIP/提示词。
-- **[⑤ 第①章Writer R1独立Review（RETURN）](05-acquisition-growth/docs/CHAPTER1_WRITER_R1_REVIEW_RETURN_20261018.md)**：结构4/8 PASS，事实来源/法律/线索筛选等R01—R10须返修；已在对话提供完整返修ZIP及提示词。
-- **[⑤ 唯一当前Reviewer交接](05-acquisition-growth/REVIEWER_HANDOFF.md)**：现行状态、Owner决定、第一章Gate与停点。
-- [⑤ 已批准V2原候选（历史，非现行状态）](05-acquisition-growth/FRAMEWORK_L1_L2_L3_REVIEWER_REVISED_V2_CANDIDATE_20261018.md)：保留形成过程，不作为冻结原题权威。
-- [⑤ V2修订验证与审核停点](05-acquisition-growth/docs/REVIEWER_DIRECT_REVISION_V2_SELF_REVIEW_20261018.md)：编号归属与知识补缺自检。
-- **[⑤ Writer R1独立审核RETURN、旧新版对比与R2建议](05-acquisition-growth/docs/WRITER_R1_INDEPENDENT_REVIEW_RETURN_20261018.md)**：首轮Writer独立稿6/23/42有亮点但需定向返修。
-- **[⑤ Owner临时解冻决定与盲写Writer工作包记录](05-acquisition-growth/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)**：离线包指纹、独立重写授权、新旧比较与停点。
-- [⑤ 当前Owner决策与Reviewer交接](05-acquisition-growth/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：现行状态、交付要求、新旧比较与下一步。
 
-**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章正式封板（8/8），无活动Writer Gate，等待Owner下一步。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级Writer V1已交并审核RETURN、R2待交；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30语言与连贯性独立软性Review已发布只读Gate、待Agent报告；第五板块行政NOT_CLOSED。
+**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章正式封板（8/8），无活动Writer Gate，等待Owner下一步。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级Writer V1已交并审核RETURN、R2待交；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
 
 - **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
 - **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
@@ -157,4 +105,4 @@
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；八章正文已再封板，G7软性审查包已发布。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Owner授权Reviewer在R2上直修正式封板，第4.8章Owner授权Reviewer以R2全文直修正式封板；第4.9章Writer V1审核RETURN、R2待交；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review属于下一步，不能预先宣称PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
 
-**当前下一步：** ①第①至⑧章全部正式封板（8/8），唯一Reviewer交接已记录第⑧章最终修订证据；无活动Writer Gate、HTML未启动，等待Owner决定下一步；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Writer V1独立审核RETURN，已向Owner提供完整无损R2定向返修ZIP与提示词，等待完整R2交付；⑤Owner把包含六章最新全文的13文件软性Reviewer ZIP与提示词交新Agent，Agent只返回Markdown编辑审核报告，Owner与主Reviewer交叉评价后再决定是否允许文字修改、何时正式CLOSE第五部分。
+**当前下一步：** ①第①至⑧章全部正式封板（8/8），唯一Reviewer交接已记录第⑧章最终修订证据；无活动Writer Gate、HTML未启动，等待Owner决定下一步；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Writer V1独立审核RETURN，已向Owner提供完整无损R2定向返修ZIP与提示词，等待完整R2交付；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。
