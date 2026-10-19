@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_TUN_FAKEIP_FIXTURE_OWNER_GO_20261019 -->
+## 2026-10-19｜Owner授权一次性解决CWS与TUN/Fake-IP的代理兼容问题
+
+Owner复盘并采纳诊断：“我同意，看起来目前的阻塞点只有这一个了，按照项目管理规范继续推进吧”。Reviewer从[10-11 Blender显式代理真实下载PASS](P4_YTDLP_EXPLICIT_PROXY_DIRECT_DOWNLOAD_PASS_REVIEW_2026-10-11.md)与[PR#157独立报告](reviews/CW0005_PR157_INDEPENDENT_MEDIA_E2E_REVIEW_PARTIAL_20261019.md)确认：**此前可通过正确Clash HTTP代理yt-dlp下载，新的CWS DNS守卫在yt-dlp网络请求前就拒绝了本机Fake-IP或非全局IP**；这是两个不同应用请求路径，不能推断Fake-IP是近期才出现。新[Gate](CWS_MEDIA_TUN_FAKEIP_PROXY_COMPATIBILITY_REPAIR_GATE_2026-10-19.md)聚焦最小可修事项：**Clash TUN/Fake-IP保留现状**，通过真实本机协议/监听器只读预检，在固定可信Blender公共小MP4上对照“独立yt-dlp显式代理”与“CWS现有DNS拦截”，只对CWS媒体模块以隔离PR实施必要的代理感知安全适配及私网/混合DNS/重定向负例回归；有充分安全边界后，由CWS项目实际取得最多1条≤10MB公开技术夹具视频并独立FFprobe/FFmpeg/SHA、ZIP回审。**不修改系统VPN/Clash/TUN/DNS或削弱任何未知URL安全门槛**；若只能Standalone yt-dlp成功，输出`PARTIAL_EXISTING_YTDLP_ONLY`，不谎称CWS修复。Owner对素材搜索版权优先级的调整仅适用测试下载验证：不要求清查274个未知许可网页阻断本轮；正式商用/内容版权和`CW0005_VISUAL_STORYFIT_HOLD / NO_PUBLISH`仍另行处理。当前`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED`，尚待Owner把提示词传给Codex。旧Gate已完成，PR#157仅测试仍Open未合并。
+
+
 <!-- CWS_PR157_REVIEWED_MEDIA_E2E_PARTIAL_20261019 -->
 ## 2026-10-19｜PR#157真实审阅：Fake-IP安全拒绝通过，但媒体Canary仍未形成
 
