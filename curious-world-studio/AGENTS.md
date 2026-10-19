@@ -1,20 +1,16 @@
-<!-- CWS_GENERIC_FAKEIP_PROXY_GATE_OWNER_AUTH_20261019 -->
+<!-- CWS_PR159_REVIEWER_PARTIAL_SAFE_EGRESS_20261019 -->
 # CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**：`CWS-MEDIA-GENERAL-FAKEIP-SAFE-PROXY-EGRESS-20261019`  
-**STATUS**：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / SINGLE_BOUNDED_GATE`
+**CURRENT_GATE**：`NONE / PR159_REVIEWER_PARTIAL_SAFE_PROXY_EGRESS`  
+**STATUS**：`REVIEWER_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED / PR159_OPEN_UNMERGED`
 
-**唯一执行Gate**：[一般素材网址的Fake-IP安全代理出口与动态下载验证](docs/CWS_MEDIA_GENERAL_FAKEIP_SAFE_PROXY_EGRESS_GATE_2026-10-19.md)。Owner在PR#158仅固定Blender夹具技术PASS后明确“我同意，继续吧”，正式授权**通用候选网址安全校验/条件式最小代码修复/有界动态视频下载Canary**。Codex仅依本Gate `REVIEWER_TO_EXECUTOR_RELAY`列出的具体文件启动；先前TUN固定夹具Gate已执行Review封板，**不能重跑**。
+**最新正式结论**：[PR #159独立审核报告](docs/reviews/CW0005_PR159_GENERAL_SAFE_PROXY_EGRESS_INDEPENDENT_PARTIAL_20261019.md)｜`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`。真ZIP SHA `2effd016b53667d6c6dd4156bf312cf6bfb252142d86c4eb98b07a2cefadfe07`，14项/13 manifest哈希PASS、实有非空50,729B source diff；Reviewer从PR同字节重建新增安全代理模块并独立重跑11项单元测试PASS，执行方Windows 80项/6模块AST PASS有日志但Reviewer未在Owner Windows直接重跑。公网DNS/CNAME校验→数字公网IP CONNECT→原hostname TLS/SNI验证，NASA响应200但`Content-Length=87,626,655` >30MB，CWS在正文前`SAFE_RESPONSE_SIZE_LIMIT`；JPL响应301而不跟随。**没有新下载视频，也没有FFprobe/FFmpeg/SHA媒体QA，不能报通用素材下载PASS**。一般网页yt-dlp分段媒体路径仍独立未验收。
 
-**已证明的能力**：[PR #158](https://github.com/entropy-student/project/pull/158) 仅受限固定Blender官方测试片`PASS_FIXTURE_PROXY_COMPAT`，真实ZIP/下载MP4/FFprobe/FFmpeg已由Reviewer复核；但它**尚未合并main**。旧[PR #157](https://github.com/entropy-student/project/pull/157)也仍未合并。新隔离代码必须辨认实际main源码与PR#158候选Head `ff613307e1ee67846786c00e42fa0a48719fcc52`，必要时清晰移植接受的测试夹具实现，**不得因Reviewer审过就认为代码已在main**；也不得让Codex擅自合并旧PR。
+**代码审查需补两处最小问题，PR暂缓合并**：①`fetch --safe-direct`调用`cached_result`早于模式分流，未校验旧缓存的`transport`，可能以普通旧文件缓存返回`CACHED/CLI成功`但未执行安全代理路径；②正文读取仅限制socket单次等待超时，未保证整个持续滴流下载的总耗时上限。应只在下一次Owner明确授权的微型修复Canary中补这两个负例与策略；**不得凭本轮有限连接成功宣称已达到正式媒体下载Pass**。
 
-**本轮唯一焦点**：Windows真机保留TUN/Fake-IP、Clash与系统DNS/代理配置不变，借真实已验证的本机回环HTTP CONNECT代理让**从catalog动态选出的非硬编码、非Blender新素材直链/可支持页面**经安全公网目的IP绑定、TLS原域名验证、防恶意跳转与嵌套URL检查后受限探测，安全允许才下载最多**1份≤30MB**，FFprobe/FFmpeg全解码/SHA、负例测试、独立PR+脱敏ZIP交Reviewer。选自**已有**274目录或受控免费原始源，最多2个不同来源做小对照，不重启Docker/SearXNG/4get、不增加几百条搜索结果。
+**历史Gate边界**：旧`CWS-MEDIA-GENERAL-FAKEIP-SAFE-PROXY-EGRESS-20261019`已执行、已Review、**不可再自动启动**。PR#159 `59f427d37591d2c6c8aa67033ddc4cfe401a933a`保持OPEN/未合并。PR#158固定Blender测试夹具`PASS_FIXTURE_PROXY_COMPAT`、PR#157测试局部审、PR#156搜索PARTIAL、PR#155旧素材流程RETURN保持。不更改Clash/TUN/DNS/全局Docker/冻结视频，不允许跳过SSRF、301、额度、任意域名受信门槛。
 
-**核心安全硬边界**：原一般`_validate_public_url`非公网/混合Fake-IP拒绝仍有效。**若代理不能将真实CONNECT目的地锁定到已验证公网IP并保留原Host/SNI/TLS证书，不能仅因HTTP CONNECT正常或DoH回答公网就跳过安全校验**，应`RETURN_PROXY_EGRESS_PINNING_UNAVAILABLE`；未知yt-dlp页面的跳转/manifest/CDN子URL若不可逐跳验证，只声明动态安全直链`PARTIAL_EXTRACTOR_UNVERIFIED`，不可宣称全站通用成功。绝不修改Clash/TUN/DNS/系统代理、添加特权常驻服务、关闭安全防护、付费、登录、修改别的Docker/VPS/项目、清理旧原片/重做Blender或59.93秒正式样片。
-
-**历史接受状态**：固定Blender夹具PASS；旧PR#155素材流程`RETURN_PROCESS_COMPLIANCE`、PR#156`PARTIAL_SEARCH`、PR#157安全负例独立受理但未合并；V5.6.2冻结HTML、CW0005 59.93秒样片技术PASS保持。`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`继续。不能倒推正式制片/版权/发布权限。
-
-**读写规则**：项目治理 v0.2.7由Reviewer解析；Executor无需反复全仓回读。所有正式代码只进隔离新PR，不能自行merge；当前Gate内连续完成安全前置合格的步骤，无须逐步请求Owner批准，风险边界不合则精准PARTIAL/RETURN。
+**节目仍冻结**：59.933秒内部样片技术PASS，V5.6.2 HTML冻结SHA`33aabc3ff2e48877493277eb1a86274818e3c769`。CW0005`VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`继续。下一步**尚未授权**，如Owner同意则先修两个小防线，再用官方来源≤30MB、无跳转单文件完成首次非Blender动态CWS下载及全片QA；不重搜几百链接。
 
 ---
 
