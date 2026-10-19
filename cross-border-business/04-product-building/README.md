@@ -1,45 +1,43 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_2_3_4_FINAL_SEALED / CHAPTER5_R2_RETURN_R3_WRITER_PENDING**  
-> **正式问题：** 核心1 / 一级9 / 二级48 / 三级117；核心问题“产品怎么做、怎么交付？”  
-> **当前工作：** 第4.5章《商品、库存和订单怎么管清楚？》Writer R2已交并独立Review RETURN，**R3定向返修待交（5二级/12三级）**。HTML/真实系统未启动。
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_2_3_4_5_FINAL_SEALED / CHAPTER6_WRITER_GATE_RELEASED**  
+> **正式问题树：** 核心1/一级9/二级48/三级117。核心问句：**产品怎么做、怎么交付？**  
+> **当前唯一任务：** 第4.6章《怎么把产品交付到客户手里？》独立Writer完整首稿待交（6二级/16三级），无4.6正文、无HTML。
 
-## 当前唯一权威文件
+## 当前权威与导航
 
-- **[V2唯一正式冻结问题树1/9/48/117](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：一二三级题目原文、编号、层级、顺序不可擅改。
-- **[4.1《我该把产品做成什么形式？》正式全文](docs/CHAPTER1_FINAL_SEALED.md)**（4/10）；[Owner封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
-- **[4.2《第一版先做哪些东西？》正式全文](docs/CHAPTER2_FINAL_SEALED.md)**（4/10）；[Owner封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。
-- **[4.3《怎么用最省事的方式把产品搭出来？》正式全文](docs/CHAPTER3_FINAL_SEALED.md)**（5/11，4.3.4直接成节）；[Owner封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。
-- **[4.4《怎么让客户顺利购买和使用？》正式全文](docs/CHAPTER4_FINAL_SEALED.md)**（6/13）；[Owner授权Reviewer修C01–C04及封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)。以完整独立Writer R2为底稿直接修正，不存在Writer R3。
-- **[4.5《商品、库存和订单怎么管清楚？》独立Writer首稿Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261019.md)**（5/12）；[8份Markdown离线ZIP/SHA256登记](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)。Owner直接下载本轮对话ZIP转交Writer。
-- **[4.5 Writer V1独立审核RETURN及R2完整返修包登记](docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)**：冻结5/12标题PASS，B01–B08需修；Owner对话已交完整原稿+自检+报告的8文件R2返修ZIP。
-- **[4.5 Writer R2独立审核RETURN及R3完整返修包登记](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)**：5/12冻题PASS；C01–C05剩余阻断；本轮9文件R3完整离线包含R2全部原文与核验记录。
-- **[唯一现行Reviewer交接](REVIEWER_HANDOFF.md)**，含项目来源链、当前停点与角色边界。[第二板块长期Writer→Reviewer→Owner制度](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
+- **[V2正式完整冻结问题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)**：1/9/48/117不可擅改。
+- **[4.1《我该把产品做成什么形式？》正式正文](docs/CHAPTER1_FINAL_SEALED.md)**（4/10）及[封板证据](docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
+- **[4.2《第一版先做哪些东西？》正式正文](docs/CHAPTER2_FINAL_SEALED.md)**（4/10）及[封板证据](docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。
+- **[4.3《怎么用最省事的方式把产品搭出来？》正式正文](docs/CHAPTER3_FINAL_SEALED.md)**（5/11；4.3.4直接成节）及[封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。
+- **[4.4《怎么让客户顺利购买和使用？》正式正文](docs/CHAPTER4_FINAL_SEALED.md)**（6/13）及[封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)。
+- **[4.5《商品、库存和订单怎么管清楚？》正式正文](docs/CHAPTER5_FINAL_SEALED.md)**（5/12）及[Owner授权Reviewer C01–C05修复、独立题目索引及封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。Writer R2基线；**不存在Writer R3交付**。
+- **[4.6《怎么把产品交付到客户手里？》独立Writer当前首稿Gate](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)**（6/16）；[完整8文件离线ZIP与SHA256登记](docs/CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)。Owner对话下载转交，无GitHub权限依赖。
+- **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**；[第二板块长期独立Writer→Reviewer→Owner制度](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
 
-## 九章进度
+## 九章正文进度
 
-| 冻结题号 | 正式一级问题 | 正文状态 |
+| 冻结章节 | 一级问题 | 当前有效状态 |
 |---|---|---|
 | 4.1 | 我该把产品做成什么形式？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.2 | 第一版先做哪些东西？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.3 | 怎么用最省事的方式把产品搭出来？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.4 | 怎么让客户顺利购买和使用？ | **FINAL_SEALED / OWNER_APPROVED** |
-| 4.5 | 商品、库存和订单怎么管清楚？ | **Writer R2已交/Review RETURN；R3待Writer定向返修；无封板正文** |
-| 4.6 | 怎么把产品交付到客户手里？ | NOT_STARTED |
+| 4.5 | 商品、库存和订单怎么管清楚？ | **FINAL_SEALED / OWNER_APPROVED** |
+| 4.6 | 怎么把产品交付到客户手里？ | **独立Writer首稿Gate、8文件ZIP已发布；尚无Writer正文** |
 | 4.7 | 交付出问题了怎么办？ | NOT_STARTED |
 | 4.8 | 上线前怎么检查？ | NOT_STARTED |
 | 4.9 | 上线后怎么维护和改进？ | NOT_STARTED |
 
-## 历史审核与不能误读的版本
+## 旧审核证据与唯一版本
 
-- 4.4 Writer [V1 RETURN](docs/CHAPTER4_WRITER_V1_REVIEW_RETURN_20261019.md)、[R2 RETURN](docs/CHAPTER4_WRITER_R2_REVIEW_RETURN_20261019.md)为**历史审核事实**，不是当前未处理事项。Owner后来特别授权Reviewer直接修R2并正式封板；旧第4.4章Writer Gate和离线包清单退出当前工作树，Git正常提交历史保留。**没有Writer R3交付**。
-- 4.3 [V1](docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)、[R2](docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)和4.2 [V1](docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)、[R2](docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)审核均为历史，正式正文以各自`CHAPTER*_FINAL_SEALED.md`为准。
-- 旧1/7/45/118框架及早期未经Writer的4.1代写草稿不再有效；[V2冻结QA及过程](docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)仅作历史档案。
+- 第4.5章[Writer V1独立RETURN](docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)、[Writer R2独立RETURN](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)均为**封板前的真实历史审稿**，已由Owner特别授权Reviewer直接修订R2并封板的后续决策覆盖。此前R3返修包仅准备未执行，**不能声称存在Writer R3**。旧4.5首稿Gate及其ZIP登记退出当前main目录，常规Git历史保留。
+- 4.1–4.4的Writer历史RETURN材料不是当前任务；正式正文一律以上列唯一`CHAPTER*_FINAL_SEALED.md`为准。此前旧框架/非独立Writer候选只作历史，不得恢复为正式稿。
 
-## 章间边界与下一步
+## 下一步和角色边界
 
-本板块沿产品形态→首版范围→复用实现→购买使用→后台订单/库存→真实交付→异常恢复→上线检查→在营维护逐章撰写。①市场机会、②网络环境、③经营主体/支付资金税务（CLOSED）、⑤获客增长由各自板块负责，本轮不改。
+**NEXT_STEP：** Owner转交4.6独立Writer离线ZIP+提示词→Writer以完整6/16冻题独立研究、交完整Markdown正文及事实核验/自检Markdown和ZIP，`STOP_AT_REVIEWER`→Reviewer独立复核；RETURN同轮完整返修ZIP+可复制话术；**只有Owner批准后封板4.6**。
 
-**NEXT_STEP**：Owner转交本轮4.5章**R3完整返修ZIP+提示词**→独立Writer基于R2全文修C01–C05，并交完整R3正文、逐项事实核验和ZIP，`STOP_AT_REVIEWER`→Reviewer独立复核；如RETURN同轮提供完整返修包与可转交提示词→仅Owner最终批准封板。**不代写4.5、不启动4.6或HTML**。
+本章阶段不得由Reviewer代写4.6正文，不启动4.7/HTML。其它①机会、②网络、③主体/支付财税CLOSED、⑤获客增长保持各自正式状态，只读。
 
-[返回五板块父项目](../README.md)
+[返回跨境业务五板块总目录](../README.md)
