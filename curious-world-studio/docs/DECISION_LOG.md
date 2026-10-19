@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_OWNER_E2E_MEDIA_REPAIR_AUTH_20261019 -->
+## 2026-10-19｜Owner预留内存并授权一次完成MEDIA安全阻塞修复与真实素材Canary
+
+Owner表示“这次内存我预留好了，继续推进下一步吧。最好本轮一次性解决掉”。基于PR#156 `PARTIAL_SEARCH`的三大阻塞：1664MiB内存线（之前685/794MiB）、四候选探测`ValueError`（需核真实DNS/Fake-IP分类，不能把报告`NON_PUBLIC_MEDIA_ADDRESS`当已经查到安全成因）、本机`media_pipeline.py`导入版本偏离main且使用临时harness，Reviewer遵循Governance §5将**host preflight/只读诊断→必要的项目隔离分支最小源码兼容修补＋负例→尽量利用免Docker合法提供方复用前87页索引→最多2种语义跨提供方定向搜索→实际科学相关动作预览/版权/横屏/源身份核查→条件满足最多1条≤80MB真实视频下载/FFmpeg全解码/源SHA→脱敏PR/ZIP**合成[唯一联合Gate](CWS_MEDIA_END_TO_END_BLOCKER_REPAIR_AND_REAL_ASSET_CANARY_GATE_2026-10-19.md)。Owner已授权这一个闭环内的普通最小有界实搜及修正，不授权改全局Clash/DNS/VPN/共享Docker、绕过私网地址防护、降低内存线、付费、正式视频/AI生图、公开发布。若合法路径暂不可行，依据精确`PARTIAL/RETURN`停线，不为了“本轮解决掉”捏造许可/实际画面/可用视频。`CURRENT_GATE=CWS-MEDIA-END-TO-END-BLOCKER-REPAIR-REAL-ASSET-CANARY-20261019`；已更新根`AGENTS.md`唯一入口、状态与Reviewer Handoff。旧PR#155素材历史`RETURN_PROCESS_COMPLIANCE`、PR#156 `PARTIAL_SEARCH`以及视频技术PASS全部保持，真正E2E PASS必须由下一独立Reviewer对实物+执行日志另行批准。
+
+
 <!-- CWS_PR156_REVIEWER_PARTIAL_SEARCH_CLOSED_20261018 -->
 ## 2026-10-18｜PR#156索引证据归档：确认`PARTIAL_SEARCH`，禁止安全绕过和盲重试
 
