@@ -1,12 +1,21 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接
 
 > **UPDATED：2026-10-19**  
-> **PROJECT_STATUS：V2_1_9_48_117_FROZEN / CH1_TO_CH9_FINAL_SEALED / POST_CHAPTER_G5_PENDING**  
-> **CURRENT_GATE：NONE / CHAPTER_WRITING_COMPLETE / NEXT_G5_PENDING_OWNER_DECISION**  
-> **CURRENT_STOP：ALL9_FINAL_SEALED / G5_G8_NOT_COMPLETED / HTML_NOT_STARTED / BOARD_NOT_CLOSED**  
-> **OWNER_ACTION_REQUIRED：** 九章逐章正文已Owner正式封板；依[统一SOP](../PROJECT_WORKFLOW_SOP.md)下一步是G5深度广度与外部知识体系对照，后续独立盲审、文字连贯性润色及最终CLOSE需逐Gate审查和Owner决策。**不自动解冻正文、不制作HTML、不宣称板块CLOSE。**
+> **PROJECT_STATUS：V2_1_9_48_117_FROZEN / G5_G6_OWNER_A_B_RESEALED / G7_EDITORIAL_REVIEW_PENDING**  
+> **CURRENT_GATE：CB04-G7-INDEPENDENT-EDITORIAL-READ-ONLY-REVIEW-V1-20261019**  
+> **CURRENT_STOP：ALL9_RESEALED_AFTER_G5_G6_A_B / G7_REPORT_PENDING / G8_NOT_STARTED / HTML_NOT_STARTED / BOARD_NOT_CLOSED**  
+> **OWNER_ACTION_REQUIRED：** Owner已决定接受G5+G6中A+B最小补强，九章修订、回读复查并再次冻结。将G7独立语言审稿Gate与本轮对话中的工作ZIP交给独立Agent，只收一份只读Markdown审稿意见；Owner再决定软性文字是否允许修改。**G7未执行、G8未启动、HTML未制作、BOARD_NOT_CLOSED。**
 
-## 最新正式结论｜第4.9章Owner授权Reviewer修订R2并封板（2026-10-19）
+## 最新唯一现行结论｜九章G5/G6 A+B补强与再次冻结（2026-10-19）
+
+- **当前唯一最新封板审计：** [G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md](docs/G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md)，保留全部原作者与旧封板审核作为真实历史版本。修改范围仅限A组R01–R07、R12及官方冲突核证后的R22；B组R08–R11、R13、R17；C组除已有轻量交叉内容外均暂缓。**不解冻9/48/117题树，不新增第十章。**
+- **当前九章唯一正式正文：** [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md)至[CHAPTER9_FINAL_SEALED.md](docs/CHAPTER9_FINAL_SEALED.md)；最新Git Blob指纹在上述统一封板证据中。原各章seal evidence历史哈希不能替代最新指纹。
+- **核验结果：** 9/48/117原文原编号同层同序**全部PASS**；63张Mermaid围栏加原代码围栏通过静态配对；第4.6章更正Range无条件“必须”、对CN22/CN23新旧官方口径冲突采取按运营商条件核证。**未执行真实支付、物流、产品安全与编译渲染测试**；所有\`NOT_RUN\`保持真实状态。
+- **下一步唯一当前G7只读审核Gate：** [G7_EDITORIAL_INDEPENDENT_REVIEW_GATE_V1_20261019.md](docs/G7_EDITORIAL_INDEPENDENT_REVIEW_GATE_V1_20261019.md)。仅审九章连贯性、自然度、术语解释、读者路径、图文顺序和重复表达，**不得改核心内容与GitHub、不得重新封板或制作HTML**。Agent需返回一份完整Markdown审稿报告并`STOP_AT_OWNER_REVIEW`。本板块未CLOSE。
+
+## 已结束的历史节点（仅供溯源，不作为当前执行Gate）
+
+## 历史记录｜第4.9章最初Owner授权Reviewer修订R2封板（已被后续G5+G6版本覆盖）
 
 - **当前唯一正式正文：** [CHAPTER9_FINAL_SEALED.md](docs/CHAPTER9_FINAL_SEALED.md)，**67,484 bytes／661行**，SHA256 `556735767b3e0f8d3740b55908e9ad8aa6e4a1198652779cfac8ec50030ae2bd`；Git blob `97f3cf5f27ac0abda546acb1825e5cb5f6fccc7a`；正文原创建commit `e52898a6a5128e982397deb41080eebcfa32183d`。
 - **唯一Owner直修封板审计：** [CHAPTER9_SEAL_EVIDENCE_20261019.md](docs/CHAPTER9_SEAL_EVIDENCE_20261019.md)；Owner本次明确授权Reviewer直接修改R2并冻结落库。**没有独立Writer R3交付**；R3返修ZIP仅为已经退出当前流程的历史准备物。
@@ -47,11 +56,11 @@
 - **正式封板文件：** `docs/CHAPTER8_FINAL_SEALED.md`；创建commit `d9499ba644f90998a6b3fa0adc5ec4af8d22f200`；Git Blob `9c03a2a6d1a6890e20d66d899e8da62b8b6cc4d5`；SHA256 `9d7e9a7da11205076a98f5af5be6b121d89c4fdc5549c3233a93edcbecb9d796`；67,363 bytes/582行。题目**1/5/14原文逐字同层同序**，14个围栏成对，6个Mermaid，9个现场验收格默认NOT_RUN。完整修复矩阵及边界在[独立封板证据](docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。
 - **封板含义**：知识正文已审核；未实际做Stripe支付、3PL交运、真实数据库恢复、法律资质或部署验收。这些不能冒称商家生产系统`LIVE_PASS`。历史V1/R2 RETURN已被Owner特别授权并完成的正式修订所覆盖，不得重新将旧RETURN当作现行Gate。
 
-前七章亦按Owner特殊授权以既有完整Writer R2为基础做Reviewer定向修订后封板；**没有Writer R3实际交付**，以对应各章审计为准。第4.7最新blob SHA `986ef28cd18e422ddd324090cb4cf8b219872974`，已封板只读。
+前七章亦按Owner特殊授权以既有完整Writer R2为基础做Reviewer定向修订后封板；**没有Writer R3实际交付**，以对应各章审计为准。第4.7在历史首次封板时的Git blob为 `986ef28cd18e422ddd324090cb4cf8b219872974`；最新修订后的指纹以本文件开头G5+G6统一封板证据为准。
 
 ## 4. 第4.9章真实历史审稿（已结束，不作为现行Gate）
 
 - Writer V1原ZIP `第四部分_第九章_独立Writer交付_V1.zip`，40,987 bytes SHA256 `4262c484baec3793ed2eb53fbff7399e83d13e1895feebd346a6ab9f028364d5`；[独立Reviewer V1 RETURN R01–R12](docs/CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md)。
 - Writer R2原ZIP，48,513 bytes SHA256 `62cb26a4c26b2af0f74ccac6ce9deb458af60252c0a320c322d10569a1e46025`；[独立Reviewer R2 RETURN N01–N07](docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)。
 - 先前的完整R3返修ZIP `第四部分_第九章_Writer_R2_R3完整定向返修包_20261019.zip`，96,163 bytes SHA256 `4f41fc546f3a87c765c2d9b7852c7bb57cf777beec3c188f382032cc0a98c496` 仅为当时拟交Writer的准备稿；Owner在Writer R3实际交付前**授权Reviewer直接修订R2正文并封板**。**不存在Writer R3**，不得误把早先R2 RETURN当作当前未解决阻断。
-- 4.1–4.9已封板，正常Writer流程停点完结；下一步需Owner决定统一SOP G5–G8跨章研究、盲审、语言润色和最终验收；本轮未启动。
+- 4.1–4.9初次封板与V1/R2 Writer历史审核真实存在，**G5/G6 A+B最小补强后九章已重新冻结**；下一轮现行执行路径已提升为开头的G7只读语言审稿，G8仍未启动。
