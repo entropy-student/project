@@ -1,6 +1,6 @@
 # 第一部分《机会挖掘与市场判断》｜唯一Reviewer交接
 
-> **CURRENT_STATUS：BOARD_BODY_8_OF_8_FINAL_SEALED / OWNER_APPROVED / WAIT_OWNER**  
+> **CURRENT_STATUS：BOARD_BODY_8_OF_8_FINAL_SEALED / G5_G6_OWNER_MINIMAL_RESEAL / G7_SOFT_REVIEW_NEXT / BOARD_NOT_CLOSED**  
 > **FRAMEWORK：CORE1 / L1 8 / L2 34 / L3 83 / 8.2直接成节（FROZEN）**  
 > **CURRENT_WRITER_GATE：NONE**  
 > **HTML：NOT_STARTED** · 2026-10-19
@@ -23,3 +23,9 @@
 ## 交接停止线
 
 **全8章正文已正式冻结，当前阶段暂停并等待Owner选择下一步。** 未授权不自动制作HTML、不启动深度联审、不创建第⑨章、不修改五板块其它模块，也不重开已封板正文。Owner决定是否另开新任务后才继续。
+
+## 2026-10-19 最新：G5/G6综合审查后Owner授权最小修订再封板
+
+Owner明确接受合并建议并授权最小修正；现行8章已进行局部事实更正、指标口径统一与最少实操卡补强，1/8/34/83原题及8.2直接成节全部不变。**本轮版本指纹和27项逐条处理证据**： [G5/G6最小修订再封板记录](docs/G5_G6_OWNER_MINIMAL_RESEAL_20261019.md)。先前第8章Writer R2与旧封板文件SHA均是**历史版本证据**，不能作为当前正式字节版本。
+
+**当前目标：G7全书软性连贯性/可读性独立审查**。独立Agent不得修改GitHub，只交Markdown报告与（如Owner允许）完整润色候选；即使Agent自评PASS，也须总控对比本轮固定Commit并由Owner决定是否采纳。**CURRENT_WRITER_GATE: NONE / HTML: NOT_STARTED / BOARD_CLOSED: NO**。本次静态结构通过不等于Python新反例或现实法律/交易全面重验。
