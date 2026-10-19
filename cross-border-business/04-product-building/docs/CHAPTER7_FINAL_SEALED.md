@@ -254,7 +254,7 @@ BEGIN;
 INSERT INTO refunds_applied(provider,refund_id,order_id,amount,currency,status)
 VALUES (:provider,:refund_id,:order_id,:amount,:currency,'succeeded')
 ON CONFLICT (provider,refund_id) DO NOTHING;
--- 若INSERT未插入新行，表明重复业务事实：不再执行下面的状态/撤权动作。
+-- 若INSERT未插入新行，表明重复业务事实：必须由程序在此检查并中止状态/撤权动作。
 -- 仅首次成功插入时，锁订单/受影响单位并基于已成功退款重新核实累计金额。
 UPDATE orders SET refunded_amount=:recalculated_amount,
  payment_status=:trusted_payment_state, updated_at=NOW()
@@ -265,10 +265,12 @@ INSERT INTO entitlement_revoke_outbox
  (business_action_key,order_id,order_item_id,unit_no,refund_id,status)
 VALUES (:stable_action_key,:order_id,:order_item_id,:unit_no,:refund_id,'PENDING')
 ON CONFLICT (business_action_key) DO NOTHING;
+-- 这里还有一道不可省的程序分支：
+-- IF 本次refund INSERT受影响行数 != 1: 只读回已处理事实、COMMIT并退出；
+-- ELSE: 才能锁定订单行项/单位，并执行后面的UPDATE与Outbox INSERT。
 COMMIT;
 ```
-此例表达**先核实、先持久去重、再在同一事务中决定订单事实与撤权意图**，其中“仅在INSERT新增时继续”必须在生产代码中真正作影响行数判断；SQL仅为教学骨架，需补充外键、可信授权、行锁/并发、异常回滚及业务金额约束。**外部许可证撤权不属于本地ACID事务**：Worker按稳定动作键执行、核对下游结果/重复请求并可人工补偿。全额或部分退款不能用整订单/整行项一条UPDATE盲目撤所有码。
-```
+**注意：代码是分步骤的教学草图，不是单段可直接执行的完整SQL。** 正式实现须在数据库事务/受信任程序中落实“**只有本次退款事实新增成功才继续**”的分支，处理并发争用、原币种累计金额上限、合法撤权依据和异常回滚。**外部许可证撤权不属于本地ACID事务**：Worker按稳定动作键核对下游结果并执行可重试撤权，未知时人工补偿。全额或部分退款均不得用整订单/整行项一条UPDATE盲目撤所有码。
 
 #### 实物退货的库存回滚红线：验货前严禁直接入库
 在实物退货场景中，初级运营人员常犯的错误是：**前台一点击“同意退货”，系统库存自动加上 1**。
