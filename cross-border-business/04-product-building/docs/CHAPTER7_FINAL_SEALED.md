@@ -469,4 +469,4 @@ flowchart LR
 
 > **正式状态与封板溯源（2026-10-19 / G7语言润色：2026-10-19）**：
 > - **正式状态**：`CHAPTER7_FINAL_SEALED / G7_EDITORIAL_OPTIMIZED`
-> - **说明**：以独立Writer R2完整正文为底稿，Reviewer经Owner特别授权直接修复C01–C07及直接相关SQL、Mermaid和核查清单；**没有Writer R3交付**。全文冻结5/14题目核验及原稿指纹见[CHAPTER7_SEAL_EVIDENCE_20261019.md](CHAPTER7_SEAL_EVIDENCE_20261019.md)。文稿封板不是支付退款、外部仓库、身份核验或法律合规生产环境的实测证明。
+> - **说明**：以独立Writer R2完整正文为底稿，Reviewer经Owner特别授权直接修复C01–C07及直接相关SQL、Mermaid和核查清单；**没有Writer R3交付**。全文冻结5/14题目核验及原稿指纹见[CHAPTER7_SEAL_EVIDENCE_20261019.md](https://github.com/entropy-student/project/blob/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building/docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)。文稿封板不是支付退款、外部仓库、身份核验或法律合规生产环境的实测证明。

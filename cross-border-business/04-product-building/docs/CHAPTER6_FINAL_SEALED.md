@@ -744,4 +744,4 @@ $$t_{\text{sleep}} = \text{UniformRandom}\left(0, \; t_{\text{cap}}\right)$$
 
 > **正式状态与封板溯源（2026-10-19 / G7语言润色：2026-10-19）**：
 > - **正式状态**：`CHAPTER6_FINAL_SEALED / G7_EDITORIAL_OPTIMIZED`
-> - **说明**：以独立Writer R2全文为基线，Reviewer依Owner特别授权最小修复C01–C06及直接相关SQL、Mermaid、表格和结尾检查；**未收到Writer R3交付**。完整审计与冻结6H2/16H3题目校验见[CHAPTER6_SEAL_EVIDENCE_20261019.md](CHAPTER6_SEAL_EVIDENCE_20261019.md)。知识文稿封板不等于真实支付、3PL、海关或生产服务已实测或取得法定资质。
+> - **说明**：以独立Writer R2全文为基线，Reviewer依Owner特别授权最小修复C01–C06及直接相关SQL、Mermaid、表格和结尾检查；**未收到Writer R3交付**。完整审计与冻结6H2/16H3题目校验见[CHAPTER6_SEAL_EVIDENCE_20261019.md](https://github.com/entropy-student/project/blob/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building/docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。知识文稿封板不等于真实支付、3PL、海关或生产服务已实测或取得法定资质。

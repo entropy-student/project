@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_CLOSED_G8_FINAL_PASS / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_G7_FINAL_PASS_ALL9_SEALED_NO_ACTIVE_GATE / 05_ALL6_G7_EDITORIAL_PASS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CLOSED_G8_FINAL_PASS / 02_CH1_CH8_SEALED / 03_CLOSED / 04_G8_FINAL_PASS_12_FILES_CLOSED / 05_ALL6_G7_EDITORIAL_PASS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 **统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
@@ -18,7 +18,7 @@
 | 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [第一部分11份唯一正式资料](01-opportunity-market/README.md) · **CLOSED / G8_FINAL_PASS**；核心1/一级8/二级34/三级83冻结，八章正文封板，HTML未启动 |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [八章唯一正式正文及冻结框架](02-network-environment/README.md) · **8/44/93冻结问题不变；第①–⑧章语言与连贯性R1定向修订复核PASS，最终封板，HTML未启动** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
-| 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.9全部经G5/G6知识补强与G7语言修正正式PASS封板，知识正文阶段完成；无活动Gate，HTML未启动** |
+| 04 | **产品搭建** | 选型、产品搭建、购买体验、订单、交付与维护 | [九章正式正文及唯一交接](04-product-building/README.md) · **1/9/48/117 FROZEN；G7/G8最终PASS；12份唯一正式文件；知识正文CLOSED；HTML未启动** |
 | 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [第五部分六章G7软性润色正式PASS版](05-acquisition-growth/README.md) · **1/6/35/78原题全冻结，六章Owner授权G7软性润色与定点修复正式PASS并停止本轮内容返修；T2—T7实操附录、T8术语来源索引均保留；BOARD_NOT_CLOSED（G8/HTML/CLOSE尚未启动）** |
 
 ## 第一、第四、第五板块的框架撰写规范
@@ -28,48 +28,13 @@
 - **[① 唯一冻结问题框架（1/8/34/83）](01-opportunity-market/docs/FROZEN_FRAMEWORK_V1_20261018.md)**：标题与层级全部保留。
 - **[① 唯一Reviewer交接、原始SHA256与历史审计](01-opportunity-market/REVIEWER_HANDOFF.md)**：含28份已清退过程文件的不可变Git恢复入口。
 - [④ 产品搭建 · 离线Agent任务书（历史参考）](docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
-- **[④ 唯一现行V2冻结框架1/9/48/117](04-product-building/docs/FROZEN_FRAMEWORK_V2_20261018.md)**：Owner授权Reviewer修订并通过QA后落库。
-- **[④ 第4.1章正式封板正文](04-product-building/docs/CHAPTER1_FINAL_SEALED.md)**：4/10题，Writer R2经Owner授权Reviewer定向修正B01–B06后封板；[封板证据](04-product-building/docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
-- **[④ 第4.2章唯一正式封板正文](04-product-building/docs/CHAPTER2_FINAL_SEALED.md)**：4/10，Writer R2由Owner授权Reviewer定向修B01–B04并封板；[封板证据](04-product-building/docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。
-- **[④ 第4.3章唯一正式封板正文](04-product-building/docs/CHAPTER3_FINAL_SEALED.md)**：5H2/11H3，4.3.4直接成节；[Owner封板与Reviewer独立证据](04-product-building/docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。
-- **[④ 第4.4章正式封板正文](04-product-building/docs/CHAPTER4_FINAL_SEALED.md)**：6二级/13三级，Owner授权Reviewer在Writer R2基础上定向修C01–C04后封板；[对应审计](04-product-building/docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)。
-- **[④ 第4.5章唯一正式封板正文](04-product-building/docs/CHAPTER5_FINAL_SEALED.md)**：5/12，基于Writer R2由Owner特许Reviewer修C01–C05并封板；[封板证据](04-product-building/docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。
-- **[④ 第4.6章正式封板正文](04-product-building/docs/CHAPTER6_FINAL_SEALED.md)**：6/16，Owner授权Reviewer基于Writer R2全文定向修C01–C06；[封板证据](04-product-building/docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)。
-- **[④ 第4.7章唯一正式封板正文](04-product-building/docs/CHAPTER7_FINAL_SEALED.md)**：5二级/14三级，Owner授权Reviewer基于Writer R2直接修C01–C07；[封板证据](04-product-building/docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)。
-- **[④ 第4.8章独立Writer原V1首稿Gate（历史）](04-product-building/docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261019.md)**：5二级/14三级完整冻题；[8文件离线ZIP与SHA256登记](04-product-building/docs/CHAPTER8_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)。
-- **[④ 第4.8章唯一正式封板正文](04-product-building/docs/CHAPTER8_FINAL_SEALED.md)**（5/14）和**[Owner授权Reviewer直接修订R2正式封板审计](04-product-building/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)**，保存原始ZIP指纹、N01–N08修复、20标题/14围栏/6图审核与NOT_RUN实测边界。
-- **[④ 九章G5/G6 Owner批准A+B补强历史再封板审计](04-product-building/docs/G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md)**：九章新旧Blob对照、冻题9/48/117 PASS、63张Mermaid围栏和代码围栏静态检查PASS、CN22/23冲突审慎处理；此文档为G7之前的历史基线；当前正式正文指纹以以下G7最终PASS审计为准。
-- **[④ G7最终PASS与九章最新正式正文版本指纹](04-product-building/docs/G7_FINAL_PASS_AND_RESEAL_EVIDENCE_20261019.md)**：Owner特别授权Reviewer纠正G7润色中的法域边界、文字及4.6表格/4.8代码排版，九章均正式封板；问题树1/9/48/117同题同序PASS，63 Mermaid未删，知识正文不再主动修改。
-- **[④ 第4.9章唯一正式封板正文](04-product-building/docs/CHAPTER9_FINAL_SEALED.md)**（8/17）与**[Owner授权Reviewer以R2原稿定向修订正式封板审计](04-product-building/docs/CHAPTER9_SEAL_EVIDENCE_20261019.md)**；本条记录的是第4.9章**首次封板历史正文指纹**；G5/G6 A+B已追加最小补强，**九章当前最新版见G7最终PASS审计**；当前无活动语言审稿任务。
-- **[④ 第4.9章Writer R2独立Reviewer复审RETURN历史与未执行R3返修](04-product-building/docs/CHAPTER9_WRITER_R2_REVIEW_RETURN_20261019.md)**：8/17题PASS，R2-N01–N07已被Owner授权Reviewer直修R2正式封板覆盖；完整原R2正文和核验文件保留于R3定向返修包（96,163 bytes SHA256 `4f41fc546f3a87c765c2d9b7852c7bb57cf777beec3c188f382032cc0a98c496`，仅Owner附件）；第九章目前已正式封板，R3 Writer从未实际交付。
-- **[④ 第4.9章Writer V1独立Reviewer RETURN历史与R2返修登记](04-product-building/docs/CHAPTER9_WRITER_V1_REVIEW_RETURN_20261019.md)**：8二级/17三级原题精确PASS，R01–R12事实与安全阻断；原V1 ZIP 40,987 bytes SHA256 `4262c484baec3793ed2eb53fbff7399e83d13e1895feebd346a6ab9f028364d5`；R2自包含返修ZIP **94,540 bytes** SHA256 `b39ef4d16ae1c58a966ef1c7f22f0a92ddc23e3c82aad52ba59bd5b9285a9336`（含原Writer正文/核验原字节，二进制Owner对话附件），此段仅为历史V1审核，现已有正式封板正文。
-- **[④ 第4.9章历史独立Writer V1 Gate](04-product-building/docs/CHAPTER9_INDEPENDENT_WRITER_GATE_V1_20261019.md)**（8/17）和**[8文件离线ZIP登记](04-product-building/docs/CHAPTER9_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**，Writer V1已经交稿且审核RETURN，此前Gate仅为历史资料。
-- **[④ 第4.8章Writer R2独立Reviewer RETURN历史及未执行R3返修包](04-product-building/docs/CHAPTER8_WRITER_R2_REVIEW_RETURN_20261019.md)**：N01–N08原阻断已在Owner特别授权Reviewer基于R2直修封板中处理；没有Writer R3实际交付。
-- **[④ 第4.8章Writer V1独立Reviewer RETURN与R2完整返修包登记](04-product-building/docs/CHAPTER8_WRITER_V1_REVIEW_RETURN_20261019.md)**：5/14冻题PASS，B01–B10线上试买、支付/安全、外部履约、备份回滚等10组阻断，完整无损R2离线包已交Owner。
-- [④ 第4.7章Writer V1独立Reviewer历史RETURN及R2离线包登记](04-product-building/docs/CHAPTER7_WRITER_V1_REVIEW_RETURN_20261019.md)：历史B01–B10，Writer R2已交并独立审查。
-- [④ 第4.7章Writer R2独立Reviewer历史RETURN及未执行R3返修包登记](04-product-building/docs/CHAPTER7_WRITER_R2_REVIEW_RETURN_20261019.md)**：当时C01–C07存在阻断；Owner后来授权Reviewer以R2全文直接修复并封板，未执行Writer R3。
-- [④ 第4.6章Writer V1历史独立Reviewer RETURN与R2返修包记录](04-product-building/docs/CHAPTER6_WRITER_V1_REVIEW_RETURN_20261019.md)：R01–R09首次审稿历史，Writer R2已交。
-- [④ 第4.6章Writer R2独立Reviewer历史RETURN与未执行R3返修包记录](04-product-building/docs/CHAPTER6_WRITER_R2_REVIEW_RETURN_20261019.md)**：曾有C01–C06六组残留，Owner随后授权Reviewer直接修R2封板；R3返修任务已不执行。
-- [④ 第4.5章Writer V1独立审核历史RETURN](04-product-building/docs/CHAPTER5_WRITER_V1_REVIEW_RETURN_20261019.md)：历史B01–B08已进入后续R2与Owner封板修复链。
-- [④ 第4.5章Writer R2独立审核历史RETURN](04-product-building/docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)：当时C01–C05阻断，后来Owner授权Reviewer修订R2并正式封板。
-- [④ 第4.4章Writer V1独立Review历史RETURN](04-product-building/docs/CHAPTER4_WRITER_V1_REVIEW_RETURN_20261019.md)：历史R01–R08，后由Writer R2及Owner授权直修解决。
-- [④ 第4.4章Writer R2独立Review历史RETURN](04-product-building/docs/CHAPTER4_WRITER_R2_REVIEW_RETURN_20261019.md)：旧C01–C04阻断后来经Owner特别授权Reviewer直接修复并正式封板。
-- [④ 第4.3章Writer V1独立Reviewer RETURN与R2返修包历史记录](04-product-building/docs/CHAPTER3_WRITER_V1_REVIEW_RETURN_20261018.md)：B01–B08历史阻断。
-- [④ 第4.3章Writer R2历史审稿RETURN](04-product-building/docs/CHAPTER3_WRITER_R2_REVIEW_RETURN_20261018.md)：C01–C04当时的阻断，后来经Owner授权Reviewer定向修订并正式封板。
-- [④ 第4.2章Writer V1审核RETURN记录](04-product-building/docs/CHAPTER2_WRITER_V1_REVIEW_RETURN_20261018.md)：历史8组阻断及R2返修ZIP。
-- [④ 第4.2章Writer R2审核RETURN历史记录](04-product-building/docs/CHAPTER2_WRITER_R2_REVIEW_RETURN_20261018.md)：当时B01–B04审查问题，后来由Owner授权Reviewer直修，**现已封板**。
-- [④ 第4.2章Owner封板证据和独立修复记录](04-product-building/docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)：记录R2全文来源与B01–B04修复；已完成的Writer Gate及离线包登记保留在Git历史，不是当前入口。
-- [④ V1→V2对比、框架冻结证据及撤回原代写初稿](04-product-building/docs/FRAMEWORK_V2_DIRECT_REVISION_QA_AND_DECISION_20261018.md)。
-- **[④ 当前唯一Reviewer交接](04-product-building/REVIEWER_HANDOFF.md)**：当前Gate、进度及停止边界。
-- [④ 历史Owner临时解冻及Writer盲写Gate](04-product-building/docs/L1_L2_TEMP_REOPEN_WRITER_BLIND_REWRITE_20261018.md)：旧阶段记录，已被Owner最新授权取代。
-- [④ 历史正式1/7/45快照](04-product-building/FROZEN_FRAMEWORK_CORE_L1_L2_20261018.md)与[旧三级118题候选](04-product-building/FRAMEWORK_L3_CANDIDATE_20261018.md)：留作Reviewer比较基线，**禁止转发Writer**。
-- [④ 历史核心与一级冻结](04-product-building/FROZEN_FRAMEWORK_CORE_L1_20261018.md)及[历史二级候选](04-product-building/FRAMEWORK_L2_CANDIDATE_20261018.md)：只作版本证据。
-- [④ 二级复核PASS与三级自检](04-product-building/docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：复核与自检证据。
-- [④ 原Writer阶段交接（历史）](04-product-building/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：旧阶段事实留存，不作为当前权威。
+- **[④ 第四部分唯一导航（G8正文归档CLOSED，12份正式文件）](04-product-building/README.md)**：9章正文、1份V2冻结框架、README及交接。
+- **[④ 第四部分唯一交接、Owner冻结决定、最终Git指纹与清理前完整历史恢复入口](04-product-building/REVIEWER_HANDOFF.md)**：精简前固定Git快照可追溯43份已清退历史文件。
+- **[④ 第四部分正式冻结问题树1/9/48/117](04-product-building/docs/FROZEN_FRAMEWORK_V2_20261018.md)**：九章原题同层同序未改。
 - **[⑤ 获客与用户增长｜唯一正式导航（六章G7 PASS）](05-acquisition-growth/README.md)**：1/6/35/78冻结；六章正文、共用附录及术语索引均保留；BOARD_NOT_CLOSED。
 - **[⑤ 唯一项目交接与Owner决定、G7验收、历史档案入口](05-acquisition-growth/REVIEWER_HANDOFF.md)**：当前恰好11份正式文件；45份历史过程文件从main清退，固定Git快照可恢复。
 
-**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章Owner授权G8最终验收PASS并CLOSED（8/8、目录11份），无活动Writer Gate；HTML另行授权。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级已Owner授权Reviewer基于R2直修正式封板；G5/G6深广度与独立审核均已完成并执行Owner批准A+B最小补强、九章再封板，G7语言与连贯性审核已由Owner授权Reviewer直修并正式PASS；九章知识正文已冻结，G8历史资料物理精简未执行；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
+**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章Owner授权G8最终验收PASS并CLOSED（8/8、目录11份），无活动Writer Gate；HTML另行授权。②③保持原有冻结与封板；④第四部分九章G7/G8全部PASS、1/9/48/117冻题不变，正式12份文件、知识正文CLOSED、无活动Gate；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
 
 - **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
 - **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
@@ -93,6 +58,6 @@
 2. 第二板块8/44/93正式/暂时冻结框架、第三板块CLOSED/FROZEN保持原状。
 3. 第三板块的已有正式文件、路径及历史提交禁止本任务编辑、重命名、删除。
 4. 第一板块1/8/34/83问题树完整冻结，八章G8最终PASS，目录清理为11份并正式CLOSED；历史记录由唯一交接的固定Git快照恢复。
-5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Owner授权Reviewer在R2上直修正式封板，第4.8章Owner授权Reviewer以R2全文直修正式封板；第4.9章Owner授权Reviewer直修R2正式封板；G5/G6 A+B最小补强已完成并再次冻结，G7语言质量审核已正式PASS且无后续改稿任务，G8行政精简未执行；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review与G7定点复查已经正式PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
+5. ①离线资料无需仓库权限；④第四部分九章G7/G8全部PASS、1/9/48/117冻题不变，正式12份文件、知识正文CLOSED、无活动Gate；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review与G7定点复查已经正式PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
 
-**当前下一步：** ①G8最终PASS、知识正文CLOSED，正式11文件、无活动Gate、HTML未启动（另行授权）；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Owner授权Reviewer直修R2正式封板，已入唯一正文和封板证据；九章经G5/G6 Owner批准A+B补强后再次封板，G7正式PASS并停止知识正文改稿；G8行政精简及HTML未执行；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。
+**当前下一步：** ①G8最终PASS、知识正文CLOSED，正式11文件、无活动Gate、HTML未启动（另行授权）；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④第四部分九章G7/G8全部PASS、1/9/48/117冻题不变，正式12份文件、知识正文CLOSED、无活动Gate；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。

@@ -662,4 +662,4 @@ flowchart TD
 
 > **正式状态与封板溯源（2026-10-19 / G7语言润色：2026-10-19）**：
 > - **正式状态**：`CHAPTER4_FINAL_SEALED / G7_EDITORIAL_OPTIMIZED`
-> - **说明**：本章以独立Writer R2完整稿为基线，Reviewer依Owner本轮特别授权直接修复C01–C04及相应图表、自检表错误，**未曾收到Writer R3**。审计依据、真实来源及完整冻结6/13题目一致性证明见[CHAPTER4_SEAL_EVIDENCE_20261019.md](CHAPTER4_SEAL_EVIDENCE_20261019.md)。本文封板是知识正文验收，并非真实支付、文件上传下载、安全、无障碍或法律合规系统实测。
+> - **说明**：本章以独立Writer R2完整稿为基线，Reviewer依Owner本轮特别授权直接修复C01–C04及相应图表、自检表错误，**未曾收到Writer R3**。审计依据、真实来源及完整冻结6/13题目一致性证明见[CHAPTER4_SEAL_EVIDENCE_20261019.md](https://github.com/entropy-student/project/blob/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building/docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)。本文封板是知识正文验收，并非真实支付、文件上传下载、安全、无障碍或法律合规系统实测。

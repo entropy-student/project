@@ -519,4 +519,4 @@ flowchart LR
 
 > **正式状态与封板溯源（2026-10-19 / G7语言润色：2026-10-19）**：
 > - **正式状态**：`CHAPTER5_FINAL_SEALED / G7_EDITORIAL_OPTIMIZED`
-> - **说明**：本章基于独立Writer R2完整稿，由Reviewer依Owner特别授权修复C01–C05及直接关联SQL、图、清单；**没有Writer R3交付**。审计、来源和冻结5/12题目QA见[CHAPTER5_SEAL_EVIDENCE_20261019.md](CHAPTER5_SEAL_EVIDENCE_20261019.md)。文稿验收不等于真实并发、支付、仓储、隐私合规实测。
+> - **说明**：本章基于独立Writer R2完整稿，由Reviewer依Owner特别授权修复C01–C05及直接关联SQL、图、清单；**没有Writer R3交付**。审计、来源和冻结5/12题目QA见[CHAPTER5_SEAL_EVIDENCE_20261019.md](https://github.com/entropy-student/project/blob/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building/docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。文稿验收不等于真实并发、支付、仓储、隐私合规实测。

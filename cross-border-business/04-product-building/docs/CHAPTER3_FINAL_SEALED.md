@@ -406,4 +406,4 @@ flowchart LR
 > - **核心命题**：**产品怎么做、怎么交付？**  
 > - **本章定位**：聚焦于技术实施路线的高效落地——如何检索并甄别现成模板、科学评估开源与付费方案、可靠拼装多元工具、决断自研门槛，以及把控源码采购与外包验收。  
 > - **服务受众**：中国大陆个人开发者、跨境独立站/平台卖家、中小跨境企业（涵盖零代码、轻量研发到技术型创客团队）。  
-> 详见[封板审计记录](CHAPTER3_SEAL_EVIDENCE_20261018.md)。此文稿质量审核不意味着真实支付、Webhook、物流或部署已经实测通过。
+> 详见[封板审计记录](https://github.com/entropy-student/project/blob/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building/docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。此文稿质量审核不意味着真实支付、Webhook、物流或部署已经实测通过。
