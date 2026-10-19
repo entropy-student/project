@@ -10,7 +10,7 @@
 - Writer V1原文与核验已交，Reviewer [V1独立RETURN](CHAPTER7_WRITER_V1_REVIEW_RETURN_20261019.md)指出B01–B10。
 - Writer R2交付ZIP `第四部分_第七章_独立Writer交付_R2.zip`：**37,549 bytes**，SHA256 `5de2b0eeaa8e176b41240be2f5874781239777c2e360d76e735baaba79c7f326`，CRC PASS。独立Writer完整R2正文44,483 bytes、SHA256 `4e7767f291f6cd950c3b89250ae3ba7f87fe68498cbc0ece57f0ffd9fc1a837f`；独立Writer完整R2自检35,874 bytes、SHA256 `5a9017ef06b400ff0847fd5f817168b4802daf526345889043fe9c86b6f806ce`。
 - [R2独立Reviewer RETURN](CHAPTER7_WRITER_R2_REVIEW_RETURN_20261019.md)仍有C01–C07。Owner明示：“这部分内容暂时由你来修改完成之后嗯，正式冻结，然后填入我们的项目库当中。记得记录相关文档。完成之后开启下一个1级问题的部分。”
-- Reviewer直接在完整Writer R2正文上修订C01–C07并跨核SQL/流程图/结尾表，正式文件创建commit `494056aa49c6e830dfbe2a57c8d52a2f007ef1bf`；补充修正代码围栏和数据库业务去重条件的更新commit `27c09ee4f219349aba1d58f26ea28daea30e190e`；**最终GitHub blob SHA `ec11dc81a7ccdecd66ce0a64882fa25ba275183f`**。全部5/14冻结题目原文逐字、层级、排序通过。
+- Reviewer直接在完整Writer R2正文上修订C01–C07并跨核SQL/流程图/结尾表，正式文件创建commit `494056aa49c6e830dfbe2a57c8d52a2f007ef1bf`；补充修正代码围栏和数据库业务去重条件的更新commit `27c09ee4f219349aba1d58f26ea28daea30e190e`；同步更正补发Mermaid与库存/会计正文一致性的更新commit `cbb7fec1393583f2c36d8a1e269c1ddf69356333`；**最终GitHub blob SHA `986ef28cd18e422ddd324090cb4cf8b219872974`**。全部5/14冻结题目原文逐字、层级、排序通过。
 - **不存在独立Writer R3版本**，此前准备的R3离线返修ZIP作为未执行的历史审稿资料，不能冒充Writer成果。本轮封板决定覆写“等待R3”的当前Gate，不修改真实Git历史。
 
 ## 2. C01–C07逐项修复及事实边界
