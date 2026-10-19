@@ -1,3 +1,4 @@
+> **状态**：`G7_EDITORIAL_PASS / OWNER_AUTHORIZED_FINAL_POLISH / 2026-10-19`
 # 有效的获客方法怎么做大？
 
 > **适用读者**：中国大陆面向海外的个人开发者、Micro-SaaS 创作者、跨境独立站初创经营者、小微外贸制造与定制出海商家  
@@ -87,6 +88,9 @@ flowchart LR
 
 **SOP 沉淀的核心价值**：SOP 的目的在于将个人灵感转化为组织资产。哪怕创始人临时需要处理突发事务，将这份文档交付给有一定基础的团队成员，对方依照规范也能执行出稳定水准的结果。如果某项获客动作完全依赖创始人的“即兴发挥”而无法形成文字逻辑，它就暂时还不具备做大的基础。
 
+> **实操指引｜T6**：可重复执行的轻量内容与获客作业 SOP。见 [共用经营实操附录 T6](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
+
 ---
 
 ## 6.2 怎么通过小测试改进效果？
@@ -171,6 +175,9 @@ flowchart TD
 3. 产生该结果可能的买家心理或业务动因是什么？
 4. 后续测试应规避哪些假设陷阱？  
 持续积累真实的实验记录，能够帮助团队逐步建立起贴合自身品类的获客认知壁垒。
+
+> **实操指引｜T6**：一页实验卡：假设、观察窗口、指标与撤回条件。见 [共用经营实操附录 T6](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
 
 ---
 
@@ -324,6 +331,9 @@ flowchart TD
     C1 & C2 & C3 & C4 -- "评估准备充分" --> Scale["分阶段小步追加投入 (如按步长逐步测试)"]
     C1 & C2 & C3 & C4 -- "存在明显短板" --> Stop["暂停盲目追加，优先补齐运营短板"]
 ```
+
+> **实操指引｜T6**：扩量前的贡献、交付、现金与回退门槛。见 [共用经营实操附录 T6](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
 
 ---
 
