@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR159_INDEPENDENT_PARTIAL_REVIEW_20261019 -->
+## 2026-10-19｜PR#159一般素材公网IP固定代理连接部分验收，不合并
+
+Owner交付实际PR #159及真实ZIP。独立Reviewer验ZIP外层SHA`2effd016b53667d6c6dd4156bf312cf6bfb252142d86c4eb98b07a2cefadfe07`、13成员SHA、非空Git diff、GitHub六文件内容，重建新`safe_proxy.py`比对Git blob与官方PR一致并独立重跑其11项测试PASS。实现将Clash回环代理CONNECT目的地固定为公开DoH校验出的数字公网IP、以原域名进行TLS SNI/证书验证，避免系统Fake-IP被当远端真实IP；普通yt-dlp安全地址守卫不削弱。NASA SVS返回正常媒体头但长度87.6MB超过30MB，CWS在正文前`SAFE_RESPONSE_SIZE_LIMIT`；JPL返回301被拒绝，无任何视频文件下载/FFprobe/FFmpeg/SHA。正式`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`。代码额外查出两个真实最小差距：`safe-direct`在验证模式前复用未标传输类型的旧缓存，可能产生CLI成功误报；流式下载只有socket单次timeout没有总耗时deadline。需要修后才讨论将PR#159合并，保持`MERGE_HOLD_MINIMAL_CORRECTIONS`；下一次仅做上述两点与已有官方≤30MB/HTTP200/no-redirect单段直链技术Canary，不提高30MB上限，不重复旧Blender或海量搜索。独立报告：[PR#159 Review](reviews/CW0005_PR159_GENERAL_SAFE_PROXY_EGRESS_INDEPENDENT_PARTIAL_20261019.md)，[PR#159](https://github.com/entropy-student/project/pull/159)。旧Gate完结，`CURRENT_GATE=NONE`；Owner决定新一轮前不再执行。原CW0005 G1/G2/StoryFit/版权/发布HOLD不变。
+
+
 <!-- CWS_GENERIC_PROXY_MEDIA_NEXT_OWNER_AUTH_20261019 -->
 ## 2026-10-19｜Owner授权一般候选素材网址的TUN/Fake-IP安全代理下载修复
 
