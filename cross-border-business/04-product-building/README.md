@@ -1,8 +1,8 @@
 # 04｜产品搭建
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER7_FINAL_SEALED / CHAPTER8_WRITER_GATE_RELEASED**  
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_V2_FROZEN / CHAPTER1_TO_CHAPTER7_FINAL_SEALED / CHAPTER8_V1_RETURN_R2_WRITER_PENDING**  
 > **正式问题树：核心1／一级9／二级48／三级117（全部冻结）**  
-> **CURRENT_GATE：CB04-CH8-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**；当前只等第4.8章独立Writer首稿，4.9与HTML均未启动。
+> **CURRENT_GATE：CH8-WRITER-V1-REVIEW-RETURN-R2-REPAIR-20261019**；第4.8章Writer V1已交并被独立Review判定RETURN，完整R2定向返修待交；第4.9章和HTML未启动。
 
 ## 唯一正式框架、正文与审计
 
@@ -15,6 +15,7 @@
 - **[4.6《怎么把产品交付到客户手里？》正式正文](docs/CHAPTER6_FINAL_SEALED.md)**（6/16） · [审计](docs/CHAPTER6_SEAL_EVIDENCE_20261019.md)
 - **[4.7《交付出问题了怎么办？》正式正文](docs/CHAPTER7_FINAL_SEALED.md)**（5/14） · **[本轮Owner特别授权Reviewer定向修复C01–C07、正式封板审计](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)**。以独立Writer**R2原完整正文**为基线定向修订，**不存在Writer R3交付**。
 - **[4.8《上线前怎么检查？》当前独立Writer首稿Gate](docs/CHAPTER8_INDEPENDENT_WRITER_GATE_V1_20261019.md)**（5/14） · **[完整8 Markdown离线ZIP和SHA256登记](docs/CHAPTER8_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**。Owner本轮对话下载ZIP，Writer无需仓库权限。
+- **[4.8 Writer V1独立Reviewer RETURN与R2完整无损返修包登记](docs/CHAPTER8_WRITER_V1_REVIEW_RETURN_20261019.md)**：5/14冻题PASS，B01–B10技术/安全/跨境/证据阻断；原Writer完整正文+核验及Reviewer全报告已打包。**当前实际任务是R2返修，而不是重新写V1。**
 - **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**；[Writer→Reviewer→Owner长期协作规范](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)。
 
 ## 九章进度
@@ -28,7 +29,7 @@
 | 4.5 | 商品、库存和订单怎么管清楚？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.6 | 怎么把产品交付到客户手里？ | **FINAL_SEALED / OWNER_APPROVED** |
 | 4.7 | 交付出问题了怎么办？ | **FINAL_SEALED / OWNER_APPROVED** |
-| 4.8 | 上线前怎么检查？ | **独立Writer Gate与8文件离线ZIP已发布，尚无Writer候选正文** |
+| 4.8 | 上线前怎么检查？ | **Writer V1已交，独立Review RETURN；R2待交；无正式封板正文** |
 | 4.9 | 上线后怎么维护和改进？ | **NOT_STARTED** |
 
 ## 旧审核版本真实性
@@ -38,7 +39,7 @@
 
 ## 当前执行与必须停止的边界
 
-**NEXT_STEP**：Owner把4.8完整离线ZIP及转交话术交独立Writer→Writer独立完成**5个二级/14个三级**完整中文教材、事实核验与逐题自检Markdown及ZIP，`STOP_AT_REVIEWER`→Reviewer独立Review（RETURN同轮完整原文/原核验/Reviewer反馈及定向指令ZIP）→**只有Owner正式批准才能封板4.8**。
+**NEXT_STEP**：Owner把**第4.8章Writer V1独立Reviewer的R2完整定向返修ZIP＋提示词**交独立Writer，基于V1完整全文修B01–B10；Writer交**R2完整正文、B01–B10逐项核验与自检Markdown、ZIP**，`STOP_AT_REVIEWER`→Reviewer独立复审→**只有Owner批准才能封板4.8**。
 
 本轮Reviewer不得预写4.8正文、不启动4.9或HTML。其它四板块均由各自目录负责，不修改其已冻结正文。
 
