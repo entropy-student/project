@@ -1,6 +1,6 @@
 # 02｜网络环境搭建
 
-> **STATUS：CLOSED / 8章正文正式封板（Owner批准）**  
+> **STATUS：CLOSED / 8章正文定向修订后再封板（Owner批准，2026-10-19）**  
 > **FREEZE：8一级 / 44二级 / 93三级（三级暂时冻结）**  
 > **CURRENT_GATE：NONE**｜**HTML：NOT_STARTED**
 
@@ -19,7 +19,7 @@
 - [第8章《成本与升级》正式正文](docs/CHAPTER8_FINAL_SEALED.md)
 - **[唯一项目交接：封板决定、版本指纹、历史证据入口](REVIEWER_HANDOFF.md)**
 
-八章 Markdown 正文均已封板，当前目录共**11份正式文件**（本README、唯一交接、冻结框架、八章正文）。原8份封板证据及Writer/Reviewer流程已从当前目录清退，但可由[精简前 Git 快照](https://github.com/entropy-student/project/tree/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment)完整追溯。
+八章 Markdown 正文经独立Review建议20项与体系化补点最小修订、QA通过，再次正式封板；详细矩阵见唯一交接。当前目录共**11份正式文件**（本README、唯一交接、冻结框架、八章正文）。原8份封板证据及Writer/Reviewer流程已从当前目录清退，但可由[精简前 Git 快照](https://github.com/entropy-student/project/tree/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment)完整追溯。
 
 **HTML没有制作**，后续任何新任务、内容解冻或真实系统操作都需要Owner单独授权。本板块封板不等于生产技术/合同/平台规则已实测。第三支付板块继续CLOSED/FROZEN，本次未修改。
 

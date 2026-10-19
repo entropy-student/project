@@ -2,7 +2,7 @@
 
 > **STATUS：OWNER_PASS_PROVISIONALLY_FROZEN（2026-10-18）**  
 > **总核心问题：CONFIRMED**｜**L1：8_FROZEN**｜**L2：44_FROZEN**｜**L3：93_PROVISIONALLY_FROZEN**  
-> **本文件为全部冻结问题原文与知识范围标注的唯一有效基线。** Writer/Reviewer 的执行分工与首稿创作自由，以[独立写作与审核流程](WRITER_REVIEWER_WORKFLOW_V1_20261018.md)为权威；流程文件不能更改本文件任何冻结问题。 此前 V4 8/44、V1 三级93题和 V4 写作规范的内容均在此整合；不把旧文件作为平行有效版本。项目最新状态见 [唯一交接](../REVIEWER_HANDOFF.md)。
+> **本文件为全部冻结问题原文与知识范围标注的唯一有效基线。** Writer/Reviewer 的执行分工与首稿创作自由，以[独立写作与审核流程（已归档的固定 Git 历史）](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)为权威；流程文件不能更改本文件任何冻结问题。 此前 V4 8/44、V1 三级93题和 V4 写作规范的内容均在此整合；不把旧文件作为平行有效版本。项目最新状态见 [唯一交接](../REVIEWER_HANDOFF.md)。
 
 ## 项目定位与问题层级
 
