@@ -2,7 +2,7 @@
 
 > **PROJECT_STATUS：G7_EDITORIAL_PASS / SIX_CHAPTERS_FINAL_SEALED / CORE_1_6_35_78_FROZEN / BOARD_NOT_CLOSED（2026-10-19）**  
 > **CURRENT_GATE：NONE（G7已完成；G8未获单独授权）**｜**HTML：NOT_STARTED**  
-> **清理规则：** 目标只保留11份正式文件；历史文件清退尚未完成，目前仍可在main找到旧Gate和证据。本次先将唯一正式入口与历史恢复点记录到位，不将旧版当现行执行要求。
+> **清理规则：** 当前main仅保留11份正式文件；45份历史过程文件已从当前目录清退，通过固定Git快照追溯，旧版不得作为现行执行要求。
 
 ## 一、项目定位、当前结论和权限
 
@@ -12,7 +12,7 @@
 
 **权限顺序：** Owner最新针对性决定 > 正式冻结题树及正文 > [项目唯一通用SOP](../PROJECT_WORKFLOW_SOP.md) > 历史Gate和候选记录。未经Owner新授权，不得修改冻结题干、顺序、归属、内容/模型，不得发起新的Writer任务或实际营销/付款/系统操作。
 
-## 二、唯一有效文件（正式11份；目录物理精简待执行）
+## 二、唯一有效文件（当前目录共11份）
 
 | 文件 | 唯一作用 |
 |---|---|
@@ -76,10 +76,10 @@ Owner后续授权：独立Agent先审读并交六章完整润色候选，主Revi
 
 **精简前全量Git固定快照（本轮的权威恢复点）：** [`577fa3d38ac9` 的第五部分完整目录](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth)。
 
-该快照仍包含早期9/45/102和6/23/42框架比较稿、Writer R1/R2材料、逐章Gate与离线ZIP清单、章末封板证据、Owner 31项原始决策、六章软性审查Gate和最终G7验收报告。**计划清理仅从当前main工作树移除过程文件，保留历史Commit和原始Git文件可由固定快照查询；目前旧过程文件仍在main，尚未完成物理清退。对话附件中的ZIP如从未提交Git，则不能冒称Git有二进制原包。**
+该快照仍包含早期9/45/102和6/23/42框架比较稿、Writer R1/R2材料、逐章Gate与离线ZIP清单、章末封板证据、Owner 31项原始决策、六章软性审查Gate和最终G7验收报告。**本次仅从当前main工作树移除45份历史过程文件，Git历史和原始Git文件仍可从固定快照查询。对话附件中的ZIP如从未提交Git，则不能冒称Git有二进制原包。**
 
-- [Owner批准31条建议完整历史映射](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/docs/OWNER_APPROVED_MINIMAL_REVISION_RECORD_20261019.md)
-- [G7原始独立验收全文](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/docs/G7_OWNER_AUTHORIZED_EDITORIAL_PASS_20261019.md)
+- [Owner批准31条建议完整历史映射](https://github.com/entropy-student/project/blob/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/docs/OWNER_APPROVED_MINIMAL_REVISION_RECORD_20261019.md)
+- [G7原始独立验收全文](https://github.com/entropy-student/project/blob/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/docs/G7_OWNER_AUTHORIZED_EDITORIAL_PASS_20261019.md)
 - [各章原始SEAL_EVIDENCE及Writer记录](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth/docs)
 - [旧冻结/候选框架完整原件](https://github.com/entropy-student/project/tree/577fa3d38ac9389d884ebf43c5bc8b7c94fa402f/cross-border-business/05-acquisition-growth)
 
