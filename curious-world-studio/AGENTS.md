@@ -1,16 +1,18 @@
-<!-- CWS_PR159_REVIEWER_PARTIAL_SAFE_EGRESS_20261019 -->
+<!-- CWS_PR159_SMALL_MEDIA_FIX_GATE_ACTIVE_20261019 -->
 # CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**：`NONE / PR159_REVIEWER_PARTIAL_SAFE_PROXY_EGRESS`  
-**STATUS**：`REVIEWER_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED / PR159_OPEN_UNMERGED`
+**CURRENT_GATE**：`CWS-PR159-CACHE-DEADLINE-SMALL-REAL-MEDIA-20261019`  
+**STATUS**：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / SINGLE_FIX_AND_CANARY_GATE`
 
-**最新正式结论**：[PR #159独立审核报告](docs/reviews/CW0005_PR159_GENERAL_SAFE_PROXY_EGRESS_INDEPENDENT_PARTIAL_20261019.md)｜`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`。真ZIP SHA `2effd016b53667d6c6dd4156bf312cf6bfb252142d86c4eb98b07a2cefadfe07`，14项/13 manifest哈希PASS、实有非空50,729B source diff；Reviewer从PR同字节重建新增安全代理模块并独立重跑11项单元测试PASS，执行方Windows 80项/6模块AST PASS有日志但Reviewer未在Owner Windows直接重跑。公网DNS/CNAME校验→数字公网IP CONNECT→原hostname TLS/SNI验证，NASA响应200但`Content-Length=87,626,655` >30MB，CWS在正文前`SAFE_RESPONSE_SIZE_LIMIT`；JPL响应301而不跟随。**没有新下载视频，也没有FFprobe/FFmpeg/SHA媒体QA，不能报通用素材下载PASS**。一般网页yt-dlp分段媒体路径仍独立未验收。
+**唯一执行文件**：[PR159两项最小修补＋NASA小文件真实Canary Gate](docs/CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_GATE_2026-10-19.md)。Owner针对已独立Review的[PR#159](https://github.com/entropy-student/project/pull/159) 明确“好的继续下一步吧”，因此此Gate**当前生效**。先完整读本Gate末尾`REVIEWER_TO_EXECUTOR_RELAY`及列出的代码片段；旧通用Fake-IP Gate/前次“CURRENT_GATE=NONE”全部历史，不得重跑。
 
-**代码审查需补两处最小问题，PR暂缓合并**：①`fetch --safe-direct`调用`cached_result`早于模式分流，未校验旧缓存的`transport`，可能以普通旧文件缓存返回`CACHED/CLI成功`但未执行安全代理路径；②正文读取仅限制socket单次等待超时，未保证整个持续滴流下载的总耗时上限。应只在下一次Owner明确授权的微型修复Canary中补这两个负例与策略；**不得凭本轮有限连接成功宣称已达到正式媒体下载Pass**。
+**确定问题与允许动作**：上轮真实ZIP和GitHub六文件独立核证公网IP固定CONNECT、原域名TLS证书连接通过，但NASA大视频`87,626,655B`超过30MB、JPL 301而拒绝，**0实际媒体下载**，正式`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`。Reviewer另发现F159-01：旧普通yt-dlp/图片文件缓存可在`fetch --safe-direct`前置命中、误报CACHED成功；F159-02：下载有socket操作超时却无真正**整个正文慢滴流总体期限**。**本轮只修这两点和最少单测**，并用NASA SVS ID 5582官方**1920×1080、标称2.5MB**直链作为**非Blender技术验证候选**（备用同页6.8MB），只有现场安全HEAD满足200、无跳转、MP4、≤30MB才可按catalog ID做一条CWS下载＋FFprobe/FFmpeg全片解码/SHA。
 
-**历史Gate边界**：旧`CWS-MEDIA-GENERAL-FAKEIP-SAFE-PROXY-EGRESS-20261019`已执行、已Review、**不可再自动启动**。PR#159 `59f427d37591d2c6c8aa67033ddc4cfe401a933a`保持OPEN/未合并。PR#158固定Blender测试夹具`PASS_FIXTURE_PROXY_COMPAT`、PR#157测试局部审、PR#156搜索PARTIAL、PR#155旧素材流程RETURN保持。不更改Clash/TUN/DNS/全局Docker/冻结视频，不允许跳过SSRF、301、额度、任意域名受信门槛。
+**代码归属与PR策略**：[PR#159](https://github.com/entropy-student/project/pull/159) 旧Head `59f427d37591d2c6c8aa67033ddc4cfe401a933a`当前尚未合并；**优先在其原隔离分支追加最小修补commit并更新同一PR**，保留原安全网络技术成果与Code Review，不要凭空开很多新PR。若新Head/branch有冲突先只读说明，不覆盖同事或本机其他工作。PR#158固定Blender技术PASS及PR#157回归历史、均未合并，禁止擅自处置。
 
-**节目仍冻结**：59.933秒内部样片技术PASS，V5.6.2 HTML冻结SHA`33aabc3ff2e48877493277eb1a86274818e3c769`。CW0005`VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`继续。下一步**尚未授权**，如Owner同意则先修两个小防线，再用官方来源≤30MB、无跳转单文件完成首次非Blender动态CWS下载及全片QA；不重搜几百链接。
+**硬约束**：必须保留`NON_PUBLIC_MEDIA_ADDRESS`、公网DNS/CNAME与实际数字IP CONNECT的约束、TLS验证、302禁止、manifest/嵌套媒体禁止、30,000,000B上限；**不改Owner的TUN、Clash、Fake-IP、DNS、系统代理/共享Docker/VPS，不登录、付费、不删除旧文件、不重下载Blender、不重复大规模素材搜索、不自动合并/发布/重渲59.93秒样片**。所有真实下载都要求新工作目录、来源/尺寸/合法内部测试标注及真实视频可供Reviewer接收的受控附件；无媒体必须诚实`PARTIAL`，不可模拟FFmpeg/SHA成功。
+
+**冻结状态持续**：V5.6.2 HTML冻结、现59.933秒视频技术PASS；旧PR#155素材流程RETURN、PR#156搜索PARTIAL、PR#158仅官方固定夹具PASS；CW0005`VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/RIGHTS_PARTIAL/NO_PUBLISH/VOICE_BY_EAR_UNVERIFIED`全部保持。**Executor完成仅交PR和脱敏ZIP独立Reviewer，不自行合并。**
 
 ---
 
