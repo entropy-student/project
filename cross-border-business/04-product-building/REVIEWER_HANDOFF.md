@@ -38,7 +38,7 @@
   5. C05 补发不强制0元子单、无条件二次扣Available或固定营业外/质保会计科目；按平台能力、占用事实、合同及承运服务判断；P.O.Box不统一禁用。
   6. C06 PCI DSS 3.3.1授权后禁存SAD、3.4.1 PAN显示掩码、3.5.1 PAN存储保护分别解释，哈希/截断/令牌/加密依适用标准，税务记录保留期按地区和用途，3–7年仅教学假设。
   7. C07 有偿非有形数字内容与数字服务/专业服务撤回权边界、持久介质不限邮件、瑕疵救济；5H2+14H3=19个子题，自检及尾表据此修正。
-- 正式4.7正文原创建commit `494056aa49c6e830dfbe2a57c8d52a2f007ef1bf`，末次SQL代码围栏与去重分支修正commit `27c09ee4f219349aba1d58f26ea28daea30e190e`，**最终正式blob SHA `ec11dc81a7ccdecd66ce0a64882fa25ba275183f`**；冻题5/14完全一致、14个Markdown代码围栏成对、七组技术检查PASS。[正式封板审计](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)。**未实际运行Stripe支付、3PL、数据库并发或法定流程实测**。
+- 正式4.7正文原创建commit `494056aa49c6e830dfbe2a57c8d52a2f007ef1bf`，SQL代码围栏与去重分支修正commit `27c09ee4f219349aba1d58f26ea28daea30e190e`，补发Mermaid同步修正commit `cbb7fec1393583f2c36d8a1e269c1ddf69356333`，**最终正式blob SHA `986ef28cd18e422ddd324090cb4cf8b219872974`**；冻题5/14完全一致、14个Markdown代码围栏成对、七组技术检查PASS。[正式封板审计](docs/CHAPTER7_SEAL_EVIDENCE_20261019.md)。**未实际运行Stripe支付、3PL、数据库并发或法定流程实测**。
 - 4.7的V1/R2 Reviewer RETURN记录在main仅为真实历史审稿，不再当前任务；完成后的4.7 Writer原Gate/离线ZIP登记退出main当前工作树，Git版本历史保留。
 
 ## 三、现在只做4.8独立Writer首稿
