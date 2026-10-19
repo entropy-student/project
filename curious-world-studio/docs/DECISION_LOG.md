@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_GENERIC_PROXY_MEDIA_NEXT_OWNER_AUTH_20261019 -->
+## 2026-10-19｜Owner授权一般候选素材网址的TUN/Fake-IP安全代理下载修复
+
+在[PR#158固定Blender测试的独立PASS](reviews/CW0005_PR158_TUN_FAKEIP_FIXTURE_PROXY_COMPAT_INDEPENDENT_PASS_20261019.md)后，Owner明确“我同意，继续吧”，批准下一轮通过[一个联合Gate](CWS_MEDIA_GENERAL_FAKEIP_SAFE_PROXY_EGRESS_GATE_2026-10-19.md)从**固定官方夹具**向**非硬编码catalog实际候选网址**扩展。PR#158仍Open未合并，不得把受理结果冒充已在main的正式代码，执行者必须识别真实SHA并在新隔离分支清晰复用，原PR不擅merge。对未知URL，重点不是关闭Fake-IP拦截，而是证明：输入合法、目标IP全部公网、实际HTTP CONNECT目的地被绑定到已经校验的IP并对原域名验证TLS SNI/证书、重定向及其嵌套媒体同等拦截/校验；DoH一次解析公共IP或能握手loopback代理不足以代替实际代理出口防SSRF。如果现成Clash HTTP代理不支持此类绑定，精确`RETURN_PROXY_EGRESS_PINNING_UNAVAILABLE`并保存证据，不扩权加特权代理或改TUN/DNS。先支持已可审动态视频直链；只有验证所有yt-dlp派生子请求才授复杂视频页通过。旧目录只用2个不同来源小样本，最多1条非Blender实际测试媒体≤30MB及FFprobe/FFmpeg/SHA，阻塞就真实PARTIAL/RETURN；无大规模搜索/重做Blender/关闭SSRF/更改网络/正式制片。CW0005旧故事视觉HOLD、许可风险、G1/G2/发布边界保留。现行Gate为`CWS-MEDIA-GENERAL-FAKEIP-SAFE-PROXY-EGRESS-20261019`，Owner只需把新提示词转交Codex。
+
+
 <!-- CWS_PR158_FIXTURE_PASS_ACCEPTED_20261019 -->
 ## 2026-10-19｜PR #158受限Clash/Fake-IP代理下载兼容性通过独立Review
 
