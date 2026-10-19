@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_G7_FINAL_PASS_SEALED_G8_OWNER_PENDING / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH9_SEALED_G5_PENDING / 05_ALL6_G7_EDITORIAL_PASS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_CLOSED_G8_FINAL_PASS / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH9_SEALED_G5_PENDING / 05_ALL6_G7_EDITORIAL_PASS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 **统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
@@ -15,7 +15,7 @@
 
 | 顺序 | 板块 | 覆盖内容 | 状态及入口 |
 |---|---|---|---|
-| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [核心冻结及候选框架](01-opportunity-market/README.md) · **核心1/一级8/二级34/三级83已FROZEN；八章Owner授权G5/G6最小修订再封板；G7语言润色Owner授权总控修正并正式PASS封板；无活动Writer Gate；HTML未启动，BOARD_NOT_CLOSED** |
+| 01 | **机会挖掘与市场判断** | 需求与痛点、市场/用户、竞争与定价、商业模式、机会验证 | [第一部分11份唯一正式资料](01-opportunity-market/README.md) · **CLOSED / G8_FINAL_PASS**；核心1/一级8/二级34/三级83冻结，八章正文封板，HTML未启动 |
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [八章唯一正式正文及冻结框架](02-network-environment/README.md) · **8/44/93冻结问题不变；第①–⑧章语言与连贯性R1定向修订复核PASS，最终封板，HTML未启动** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.9九章全部Owner正式封板；后续SOP G5–G8待开展，未CLOSE** |
@@ -24,22 +24,9 @@
 ## 第一、第四、第五板块的框架撰写规范
 
 - [通用问题设计与审核标准](docs/FRAMEWORK_QUESTION_DESIGN_STANDARD_V1_20261018.md)：适用于①④⑤的独立候选框架；不规定数量，也不触及②③冻结成果。
-- **[① 第①章正式封板正文](01-opportunity-market/docs/CHAPTER1_FINAL_SEALED.md)**：4二级/9三级，Owner特别授权Reviewer最小修订并封板；[证据](01-opportunity-market/docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
-- **[① 第②章正式封板正文](01-opportunity-market/docs/CHAPTER2_FINAL_SEALED.md)**：4二级/8三级，Owner授权Reviewer定向修订并封板；[封板证据](01-opportunity-market/docs/CHAPTER2_SEAL_EVIDENCE_20261018.md)。
-- **[① 第③章正式封板正文](01-opportunity-market/docs/CHAPTER3_FINAL_SEALED.md)**：4二级/9三级，Owner授权最小修订并封板；[正式核验记录](01-opportunity-market/docs/CHAPTER3_FINAL_RESEARCH_RECORD.md)及[封板证据](01-opportunity-market/docs/CHAPTER3_SEAL_EVIDENCE_20261018.md)。
-- **[① 第④章正式封板正文](01-opportunity-market/docs/CHAPTER4_FINAL_SEALED.md)**：5二级/11三级，Owner授权Reviewer最小修订后封板；[封板证据](01-opportunity-market/docs/CHAPTER4_SEAL_EVIDENCE_20261018.md)。
-- **[① 第⑤章正式G7 PASS正文](01-opportunity-market/docs/CHAPTER5_FINAL_SEALED.md)**：5二级/15三级；正式八章G7版本已封板，详见[第一板块G7封板证据](01-opportunity-market/docs/G7_OWNER_REVIEWER_FINAL_PASS_20261019.md)。旧独立Writer Gate已失效。
-- [① 当前唯一Reviewer交接](01-opportunity-market/REVIEWER_HANDOFF.md)：Gate、工作包核验、返修流程、停点。
-- **[① 唯一正式完整冻结框架（1/8/34/83）](01-opportunity-market/docs/FROZEN_FRAMEWORK_V1_20261018.md)**：完整问题树，8.2不另设三级，Owner已PASS。
-- [① 历史核心及一二级冻结快照](01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md)：保留原始8/34批准记录。
-- [① 三级综合修订V2原始稿（83题）](01-opportunity-market/FRAMEWORK_L3_INTEGRATED_V2_20261018.md)：已被Owner批准，旧稿原始待审标记仅属历史版本；正式版本以上述完整冻结框架为准。
-- [① 综合V2自检报告](01-opportunity-market/docs/L3_INTEGRATED_V2_SELF_REVIEW_20261018.md)：检查独立必要性、知识覆盖、编号及跨板块边界。
-- [① 历史三级候选V1（99题）](01-opportunity-market/FRAMEWORK_L3_CANDIDATE_20261018.md)：已复查RETURN，保留历史比对。
-- [① 三级V1后续复查](01-opportunity-market/docs/L3_AUTHOR_RECHECK_RETURN_STRUCTURE_20261018.md)：31/34父题恰好3题，内容RETURN。
-- [① 原三级自检报告](01-opportunity-market/docs/L3_SELF_REVIEW_20261018.md)：34/34二级覆盖、99题归属核对和跨板块审查。
-- [① 历史离线独立Agent任务书](docs/01_OPPORTUNITY_FRAMEWORK_AGENT_BRIEF_20261018.md)：历史参考，L1/L2征稿任务已结束。
-- [① 已淘汰的历史7/32候选](01-opportunity-market/FRAMEWORK_L1_L2_CANDIDATE_20261018.md)：保留用于审查回溯；不得替代已冻结的8/34。
-- [① 决策与交接记录](01-opportunity-market/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：版本与Owner批准轨迹。
+- **[① 第一部分唯一导航（G8 CLOSE）](01-opportunity-market/README.md)**：11份正式文件，八章最终封板。
+- **[① 唯一冻结问题框架（1/8/34/83）](01-opportunity-market/docs/FROZEN_FRAMEWORK_V1_20261018.md)**：标题与层级全部保留。
+- **[① 唯一Reviewer交接、原始SHA256与历史审计](01-opportunity-market/REVIEWER_HANDOFF.md)**：含28份已清退过程文件的不可变Git恢复入口。
 - [④ 产品搭建 · 离线Agent任务书（历史参考）](docs/04_PRODUCT_FRAMEWORK_AGENT_BRIEF_20261018.md)
 - **[④ 唯一现行V2冻结框架1/9/48/117](04-product-building/docs/FROZEN_FRAMEWORK_V2_20261018.md)**：Owner授权Reviewer修订并通过QA后落库。
 - **[④ 第4.1章正式封板正文](04-product-building/docs/CHAPTER1_FINAL_SEALED.md)**：4/10题，Writer R2经Owner授权Reviewer定向修正B01–B06后封板；[封板证据](04-product-building/docs/CHAPTER1_SEAL_EVIDENCE_20261018.md)。
@@ -80,7 +67,7 @@
 - **[⑤ 获客与用户增长｜唯一正式导航（六章G7 PASS）](05-acquisition-growth/README.md)**：1/6/35/78冻结；六章正文、共用附录及术语索引均保留；BOARD_NOT_CLOSED。
 - **[⑤ 唯一项目交接与Owner决定、G7验收、历史档案入口](05-acquisition-growth/REVIEWER_HANDOFF.md)**：当前恰好11份正式文件；45份历史过程文件从main清退，固定Git快照可恢复。
 
-**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章G7语言润色正式PASS再封板（8/8），无活动Writer Gate；G8仅待Owner另行安排。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级已Owner授权Reviewer基于R2直修正式封板；后续G5–G8未启动；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
+**状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章Owner授权G8最终验收PASS并CLOSED（8/8、目录11份），无活动Writer Gate；HTML另行授权。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级已Owner授权Reviewer基于R2直修正式封板；后续G5–G8未启动；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
 
 - **[② 第⑦章《故障与恢复》正式封板正文](02-network-environment/docs/CHAPTER7_FINAL_SEALED.md)**：Owner特别授权Reviewer基于Writer R2最小修订并封板，冻结5/11原题不变；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER7_SEAL_EVIDENCE_20261018.md)。
 - **[② 第⑧章《成本与升级》正式封板正文](02-network-environment/docs/CHAPTER8_FINAL_SEALED.md)**：冻结5H2/11H3不变，Owner授权Reviewer在Writer R2上直修九组问题后正式封板，**不是Writer R3**；[封板历史证据](https://github.com/entropy-student/project/blob/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment/docs/CHAPTER8_SEAL_EVIDENCE_20261019.md)。第二板块全8章已封板，HTML待Owner另行决策。
@@ -103,7 +90,7 @@
 1. **整体结构由本文件导航**，各板块留在各自目录；不跨板块复制正文。
 2. 第二板块8/44/93正式/暂时冻结框架、第三板块CLOSED/FROZEN保持原状。
 3. 第三板块的已有正式文件、路径及历史提交禁止本任务编辑、重命名、删除。
-4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；八章正文已再封板，G7软性审查包已发布。
+4. 第一板块1/8/34/83问题树完整冻结，八章G8最终PASS，目录清理为11份并正式CLOSED；历史记录由唯一交接的固定Git快照恢复。
 5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Owner授权Reviewer在R2上直修正式封板，第4.8章Owner授权Reviewer以R2全文直修正式封板；第4.9章Owner授权Reviewer直修R2正式封板；G5–G8待执行；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review与G7定点复查已经正式PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
 
-**当前下一步：** ①第①至⑧章全部正式封板（8/8），唯一Reviewer交接已记录第⑧章最终修订证据；无活动Writer Gate、HTML未启动，等待Owner决定下一步；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Owner授权Reviewer直修R2正式封板，已入唯一正文和封板证据；九章封板完成，G5深广度、G6独立盲审、G7软性审核、G8最终验收与CLOSE待Owner推进；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。
+**当前下一步：** ①G8最终PASS、知识正文CLOSED，正式11文件、无活动Gate、HTML未启动（另行授权）；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Owner授权Reviewer直修R2正式封板，已入唯一正文和封板证据；九章封板完成，G5深广度、G6独立盲审、G7软性审核、G8最终验收与CLOSE待Owner推进；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。

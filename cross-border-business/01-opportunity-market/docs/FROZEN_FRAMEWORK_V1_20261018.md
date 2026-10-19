@@ -10,8 +10,8 @@
 
 ## 一级、二级、三级完整问题树（Owner正式冻结）
 
-> 以下一、二级的原句、排序和父题归属保持与先前 [8/34阶段冻结快照](../FROZEN_FRAMEWORK_L1_L2_20261018.md) 完全一致。  
-> 三级采用2026-10-18 Owner明确批准的 [综合修订V2](../FRAMEWORK_L3_INTEGRATED_V2_20261018.md) 83题；问句、编号、顺序及父二级归属正式冻结。  
+> 以下一、二级的原句、排序和父题归属保持与先前 [8/34阶段冻结快照](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md) 完全一致。  
+> 三级采用2026-10-18 Owner明确批准的 [综合修订V2](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/FRAMEWORK_L3_INTEGRATED_V2_20261018.md) 83题；问句、编号、顺序及父二级归属正式冻结。  
 > **8.2不设三级，直接作为完整二级章节撰写**：这是已批准的V2特例，不视为遗漏或待补题。最后一列为后续正文的知识覆盖提示，并非被冻结的行业事实或法律结论。
 
 | 冻结一级问题 | 冻结二级编号及原文 | 三级编号（冻结） | 三级问题（正式冻结） | 后续知识范围与主责 |
@@ -130,7 +130,7 @@
 
 ## 冻结依据和追溯
 
-- [先前核心、一二级冻结文件](../FROZEN_FRAMEWORK_L1_L2_20261018.md)——保留历史有效批准事实；
-- [83题综合修订V2原始候选](../FRAMEWORK_L3_INTEGRATED_V2_20261018.md)——现批准原稿，保留原文件作为来源；
-- [V2自检报告](L3_INTEGRATED_V2_SELF_REVIEW_20261018.md)——编辑审查记录，不取代Owner PASS；
-- [第一板块交接与决策记录](FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
+- [先前核心、一二级冻结文件](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/FROZEN_FRAMEWORK_L1_L2_20261018.md)——保留历史有效批准事实；
+- [83题综合修订V2原始候选](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/FRAMEWORK_L3_INTEGRATED_V2_20261018.md)——现批准原稿，保留原文件作为来源；
+- [V2自检报告](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/docs/L3_INTEGRATED_V2_SELF_REVIEW_20261018.md)——编辑审查记录，不取代Owner PASS；
+- [第一板块交接与决策记录](https://github.com/entropy-student/project/blob/6e75a33380f4a130703282c951857c74c174fc15/cross-border-business/01-opportunity-market/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)。
