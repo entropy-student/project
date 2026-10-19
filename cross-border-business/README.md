@@ -77,8 +77,7 @@
 - [④ 二级复核PASS与三级自检](04-product-building/docs/L2_REVIEW_PASS_AND_L3_SELF_REVIEW_20261018.md)：复核与自检证据。
 - [④ 原Writer阶段交接（历史）](04-product-building/docs/FRAMEWORK_DECISION_AND_HANDOFF_20261018.md)：旧阶段事实留存，不作为当前权威。
 - **[⑤ 获客与用户增长｜唯一正式导航（六章G7 PASS）](05-acquisition-growth/README.md)**：1/6/35/78冻结；六章正文、共用附录及术语索引均保留；BOARD_NOT_CLOSED。
-- **[⑤ 唯一项目交接与Owner决定、G7验收、历史档案入口](05-acquisition-growth/REVIEWER_HANDOFF.md)**：11份正式文件目标；历史流程记录由固定Git快照追溯。
-- [⑤ 获客与用户增长 · 离线Agent任务书](docs/05_GROWTH_FRAMEWORK_AGENT_BRIEF_20261018.md)
+- **[⑤ 唯一项目交接与Owner决定、G7验收、历史档案入口](05-acquisition-growth/REVIEWER_HANDOFF.md)**：当前恰好11份正式文件；45份历史过程文件从main清退，固定Git快照可恢复。
 
 **状态优先级：** ①核心问句、8个一级、34个二级、83个三级均已由Owner正式PASS/FROZEN（8.2直接成节）；①第①至⑧章正式封板（8/8），无活动Writer Gate，等待Owner下一步。②③保持原有冻结与封板；④V2核心1/一级9/二级48/三级117已FROZEN，4.1–4.3正文均已正式封板，第4.4章6二级/13三级已正式封板，第4.5章5二级/12三级正式封板、第4.6章6二级/16三级正式封板，第4.7章5二级/14三级Owner授权直修正式封板，第4.8章5二级/14三级Owner授权Reviewer修订R2正式封板；第4.9章8二级/17三级Writer R2已交并独立复审RETURN、R3待交；⑤正式1/6/35/78问题树及六章最新Owner最小补强版本均冻结；八组已接受内容T1—T8完成实操/来源整理，R30/G7语言与连贯性审查已由Owner授权Reviewer直修并PASS；第五板块行政NOT_CLOSED。
 
@@ -104,6 +103,6 @@
 2. 第二板块8/44/93正式/暂时冻结框架、第三板块CLOSED/FROZEN保持原状。
 3. 第三板块的已有正式文件、路径及历史提交禁止本任务编辑、重命名、删除。
 4. 第一板块正式冻结核心1/一级8/二级34/三级83的全问题树；八章正文已再封板，G7软性审查包已发布。
-5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Owner授权Reviewer在R2上直修正式封板，第4.8章Owner授权Reviewer以R2全文直修正式封板；第4.9章Writer R2独立审核RETURN、R3待交；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review属于下一步，不能预先宣称PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
+5. ①离线资料无需仓库权限；④以V2正式1/9/48/117冻结为准，第4.1章Writer R2+Owner授权Reviewer定向修复为唯一封板正文；旧框架和旧代写初稿均属历史；第4.2章Writer R2由Owner特许Reviewer定向修订并正式封板，4.3章已获Owner授权Reviewer基于R2定向修订并正式封板，4.4章已Owner授权Reviewer直修封板，第4.5章Writer R2由Owner授权Reviewer定向修订并封板，第4.6章已Owner授权Reviewer直接修R2正式封板，第4.7章Owner授权Reviewer在R2上直修正式封板，第4.8章Owner授权Reviewer以R2全文直修正式封板；第4.9章Writer R2独立审核RETURN、R3待交；⑤六章OWNER_AUGMENTED_FINAL_SEALED，三处事实纠偏与T2—T7共用实践及T8动态来源全部完成，题树1/6/35/78不变。R30独立软性Review与G7定点复查已经正式PASS；Owner尚未决定BOARD_CLOSED；不新开第七章。其它四个业务板块不受影响。
 
 **当前下一步：** ①第①至⑧章全部正式封板（8/8），唯一Reviewer交接已记录第⑧章最终修订证据；无活动Writer Gate、HTML未启动，等待Owner决定下一步；②第①至⑧章均已正式封板，HTML未启动、等待Owner新决定；③维持封板；④V2框架及第4.1章正文正式封板；第4.2章4/10已由Owner授权Reviewer直修正式封板；第4.3章5/11已正式封板；第4.4章6/13已Owner正式封板；第4.5章5/12正式封板；第4.6章6/16已正式封板；第4.7章5/14已Owner正式封板；第4.8章5/14 Owner授权Reviewer直修R2正式封板，已落唯一正文与审计；第4.9章8/17 Writer R2独立复审RETURN，已向Owner提供完整无损R3定向返修ZIP与提示词，等待完整R3交付；⑤六章G7润色已完成并PASS；等待Owner决定G8/HTML及行政CLOSE。
