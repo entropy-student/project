@@ -33,4 +33,4 @@
 
 - 保留**一份唯一正式冻结问题树**、每章已封板正文、有效当前Gate、唯一交接与必要证据；废弃Gate及离线ZIP用Git历史追溯，不让其与现行正式正文并列。
 - 每次发离线包须可解压、包含完整冻结题目和本章问题、可复制提示词、交付规定、必要边界与文件SHA256；独立Writer无须访问仓库。
-- 第①②③④⑤章均经Owner逐章明确授权，以独立Writer候选为基线由Reviewer定向修订后正式封板；当前第⑥章`GATE_RELEASED / WRITER_PENDING / CHAPTER_TEXT_NOT_STARTED`。前五章Owner特例不替代后续章节独立Writer的首稿责任。
+- 第①至⑥章均经Owner逐章明确授权，以独立Writer候选为基线由Reviewer仅定向修订后封板；当前第⑦章`GATE_RELEASED / WRITER_PENDING / CHAPTER_TEXT_NOT_STARTED`。前六章的Owner特例不改变后续独立Writer首稿责任。
