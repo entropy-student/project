@@ -1,10 +1,10 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接（2026-10-19）
 
-> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_TO_CH5_FINAL_SEALED / CH6_WRITER_GATE_RELEASED**  
+> **PROJECT_STATUS：FRAMEWORK_V2_FROZEN / CH1_TO_CH5_FINAL_SEALED / CH6_V1_RETURN_R2_WRITER_PENDING**  
 > **冻结：** 核心1／一级9／二级48／三级117（全部题目不可改）  
-> **CURRENT_GATE：CB04-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **CURRENT_STOP：CH6_WRITER_PENDING / NO_CH6_BODY / NO_HTML**  
-> **OWNER_ACTION_REQUIRED：** 从本轮对话下载4.6完整离线ZIP并把提示词交独立Writer。Writer返回两份完整Markdown及ZIP后，再交独立Reviewer。
+> **CURRENT_GATE：CH6-WRITER-V1-REVIEW-RETURN-R2-REPAIR-20261019**  
+> **CURRENT_STOP：CH6_V1_RETURN / R2_WRITER_PENDING / NO_SEALED_CH6_BODY / NO_HTML**  
+> **OWNER_ACTION_REQUIRED：** 从本轮对话下载4.6 Writer V1独立Review的**R2完整返修ZIP**并连同Writer话术交独立Writer。Writer返回完整R2正文、R01–R09逐项核验记录和ZIP后，再交独立Reviewer。
 
 ## 先读：唯一有效正文和 Gate
 
@@ -16,7 +16,7 @@
 | 4.3正式正文 | [CHAPTER3_FINAL_SEALED](docs/CHAPTER3_FINAL_SEALED.md)／[封板证据](docs/CHAPTER3_SEAL_EVIDENCE_20261018.md) | 5/11；4.3.4直接成节 |
 | 4.4正式正文 | [CHAPTER4_FINAL_SEALED](docs/CHAPTER4_FINAL_SEALED.md)／[封板证据](docs/CHAPTER4_SEAL_EVIDENCE_20261019.md) | 6/13，只读 |
 | **4.5正式正文** | **[CHAPTER5_FINAL_SEALED](docs/CHAPTER5_FINAL_SEALED.md)**／[封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md) | **5/12，Owner已批准封板** |
-| **4.6当前独立Writer Gate** | **[CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)** | **6二级/16三级，Writer首稿待交** |
+| **4.6当前独立Writer Gate** | **[CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)** | **6二级/16三级，Writer V1已交且Review RETURN，R2待返修** |
 | **4.6完整离线包与SHA** | [CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md](docs/CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md) | **8个UTF-8文件，ZIP 11,132 bytes，SHA256 `893d3949846d90ff5a127676daa14f8913c463b184106018582b177852e1781d`**；二进制由Owner下载，不在GitHub |
 | 长期审核制度 | [第二板块Writer→Reviewer→Owner流程](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md) | 独立Writer写全稿→Reviewer冷审→Owner决定封板 |
 | 项目导航 | [第四部分README](README.md)／[五板块总目录](../README.md) | 进度与其它板块边界 |
@@ -35,7 +35,15 @@
    - **C04** 200+200+100渠道配额的“100%超卖防护”绝对化→说明各渠道真实限额、库存转配先撤后增、线下仓损与API延迟等成立边界。
    - **C05** 审计普通日志存完整住址Before/After、全球30–90天删除及一年哈希的伪普适规则、PCI品牌末四位“唯一合法展示”→最小化日志、受控原始引用和按法域/用途决定留存。
    - **正式4.5全文创建Commit `57a9a192b178d7f3fc8c6647df3db07699e591e6`**，GitHub正式blob SHA `d370401cf78c27984350bfaaa9b39b5534ac2636`。独立回读**5/5二级、12/12三级**与V2完全一致，五组关键探针PASS。[详细封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)。**没有Writer R3交稿**，之前准备的R3 ZIP不是Writer R3候选，更不是当前任务。
-7. **现在4.6**：仅发布独立Writer Gate＋完整8文件ZIP，无Writer第六章候选正文；4.7–4.9和HTML均尚未启动。已完成的4.5 Writer首稿Gate与旧ZIP登记退出main当前目录，保留Git历史；Writer V1/R2 Reviewer RETURN记录留在main并显著标“历史”，不是当前Gate。
+7. **现在4.6**：Writer V1已交并由Reviewer独立审为RETURN，完整R2返修包已准备；4.7–4.9和HTML均尚未启动。已完成的4.5 Writer首稿Gate与旧ZIP登记退出main当前目录，保留Git历史；Writer V1/R2 Reviewer RETURN记录留在main并显著标“历史”，不是当前Gate。
+
+## 第4.6章 Writer V1 独立Review（当前阶段）
+
+- **Writer V1确已交稿**，ZIP `第四部分_第六章_独立Writer交付_V1.zip` 37,653 bytes，SHA256 `35d60b4b0034f42c89f8f703bd01cd57fdc8049f6b5f4d60605cad6d932b7c3e`；正文57,327 bytes，SHA256 `227c0ca676594abf51faa8a23cbddacd5b8c4018c67c34c625a49c10883548cc`；核验19,883 bytes，SHA256 `b35d7e03d3519aa39a29bc21cd7f0c74bc5c2fbed202d3e6be47e0f3f1d2ffcc`，ZIP CRC PASS。
+- **正式冻题一级1/1、二级6/6、三级16/16原文、同序、同级PASS**；六大知识领域均有完整教学主体。
+- **独立Reviewer结论：`RETURN_CH6_V1_DELIVERY_LEGAL_TECHNICAL_AND_EVIDENCE_ERRORS`**，R01–R09九组定向阻断：R01固定AQL/质检强制；R02 IATA PI967锂电标记例外、邮政/目的国标签；R03实物延期FTC与3PL责任；R04 S3直连/CloudFront签名、日志/Range假保证；R05签名误作解密、Stripe异步与重复订阅续期；R06公开邮箱水印及隐私/证据；R07定制B2C/B2B服务法定沉默验收伪规则；R08数据库ACID与外部Redis/SQS等同、200/重试模型矛盾；R09自动化阈值与核验自检过度绝对化。
+- **[第4.6章V1独立审核记录](docs/CHAPTER6_WRITER_V1_REVIEW_RETURN_20261019.md)**。本轮Owner对话交付**R2完整离线包**：`第四部分_第六章_Writer_V1_R2完整定向返修包_20261019.zip`，**53,072 bytes**，SHA256 `34d0bcbe01115aea27470f49d182a355df5da46542b0792a47cdd821082204ea`；8份UTF-8 Markdown，含**Writer原完整正文与原自检原字节**、Reviewer全报告、全部冻题和R2定向指令；CRC与逐文件SHA PASS。ZIP二进制**未上传GitHub**。
+- **R2 Writer尚未交稿，4.6没有正式封板正文**；4.1–4.5保持原封板。**不启动4.7或HTML**。原第六章首稿Gate仅作为本章角色和结构来源，现行Writer任务是依据完整R2包返修，**不是再写新的V1**。
 
 ## 4.6冻结问题与Writer的独立权限
 
@@ -55,13 +63,13 @@
 ## 当前执行与治理面板
 
 - **PROJECT_GOAL：** 产品怎么做、怎么交付？
-- **PROJECT_STAGE：** 1/9/48/117冻结；4.1–4.5五章正式全文封板；4.6独立Writer完整首稿待交；4.7–4.9/HTML未启动。
+- **PROJECT_STAGE：** 1/9/48/117冻结；4.1–4.5五章正式全文封板；4.6 Writer V1独立Review RETURN，R2返修待交；4.7–4.9/HTML未启动。
 - **SYSTEM_MAP：** GitHub main存正式问题树/封板正文/审核证据/Gate/交接；Owner对话交独立Writer ZIP；无真实业务系统或客户数据改动。
-- **CURRENT_ACCEPTED_STATE：** 5份正式教材，5组封板证据；4.6无全文。
+- **CURRENT_ACCEPTED_STATE：** 5份正式教材，5组封板证据；4.6尚无**正式封板**全文。
 - **CURRENT_GATE：** `CB04-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019`。
 - **CURRENT_ROLLBACK_STATUS：** Git版本可回滚，历史RETURN和过期Gate保留提交记录。
-- **UNRESOLVED：** 4.6 Writer候选尚无，具体仓配/收款/文件权限未实际测试。
-- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner将4.6离线ZIP和提示词给独立Writer；Writer交全章Markdown、完整事实核验/自检Markdown与ZIP后`STOP_AT_REVIEWER`→Reviewer独立Review（RETURN同轮自包含返修ZIP＋转交指令）→Owner决定封板。
-- **MANDATORY_STOP：** `CH6_WRITER_PENDING`。Reviewer不得代写第4.6章、启动4.7或HTML。
+- **UNRESOLVED：** 4.6 Writer V1已有候选但审核RETURN、R2未交，具体仓配/收款/文件权限未实际测试。
+- **NEXT_STEP / OWNER_ACTION_REQUIRED：** Owner将4.6完整R2返修ZIP和提示词给独立Writer；Writer基于V1完整稿交完整R2正文、R01–R09核验Markdown与ZIP后`STOP_AT_REVIEWER`→Reviewer独立Review（RETURN同轮自包含返修ZIP＋转交指令）→Owner决定封板。
+- **MANDATORY_STOP：** `CH6_R2_WRITER_PENDING`。Reviewer不得代写第4.6章、启动4.7或HTML。
 
 [返回第四部分README](README.md)
