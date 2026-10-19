@@ -6,9 +6,17 @@
 > **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
 > **CHAPTER4：《找客户到底划不划算？》FINAL_SEALED（6二级/12三级）**  
 > **CHAPTER5：《怎么让老客户再买、带来新客？》FINAL_SEALED（5二级/11三级）**  
-> **CHAPTER6：《有效的获客方法怎么做大？》INDEPENDENT_WRITER_GATE_RELEASED / WRITER_NOT_STARTED（5二级/11三级）**  
-> **CURRENT_GATE：CB05-CH6-INDEPENDENT-OFFLINE-FIRST-DRAFT-20261019**  
-> **OWNER_ACTION_REQUIRED：转发第六章14文件离线Writer完整ZIP和提示词；回收Writer第六章正文/事实核验两Markdown及ZIP交Reviewer。**
+> **CHAPTER6：《有效的获客方法怎么做大？》WRITER_R1_DELIVERED / STRUCTURE_PASS_5_11 / REVIEW_RETURN / R2_COMPLETE_PACKET_READY / NOT_SEALED**  
+> **CURRENT_GATE：CB05-CH6-WRITER-R2-DIRECTED-REPAIR-20261019**  
+> **OWNER_ACTION_REQUIRED：转发第六章R2完整定向返修ZIP与提示词；回收Writer R2两份完整Markdown及ZIP交Reviewer。**
+
+## 当前最新：第六章Writer R1独立审核RETURN与R2离线返修包（2026-10-19）
+
+- **[最新独立Reviewer R1报告：RETURN](docs/CHAPTER6_WRITER_R1_REVIEW_RETURN_20261019.md)**。原题H1×1/H2×5/H3×11逐字同序层级PASS，10组代码围栏成对，SOP/实验/自动化/扩量/渠道风险覆盖完整。但**B01–B08八项必修、N01–N03三项小修**：统计检验硬时限和20%胜出线；获客图表与利润口径矛盾；CAN-SPAM/PECR营销资格误统一；Visa VAMP旧0.9–1%与PayPal储备金例子泛化；自检五板块错名；平台站外导流/第一方名单风险；无来源的转化提升/客服资金阈值。
+- 原始Writer R1 ZIP：`第五部分_第六章_独立Writer交付.zip`，**32,892字节**、SHA256 `428af0b96c86705cfa02cb23ca38e381f4f42cae2d3a86986d6843cd391ec014`，CRC正确。Writer完整正文**38,872字节/405行**（SHA256 `34574164e0147d5d0487cd7b6d543fb76778a6e867377790db711607ec6a05f5`），完整核验**28,000字节/184行**（SHA256 `857f31153502744816f7e83471d9df70fc265589d53961ef4a586996ae68db68`）。
+- **已交Owner完整R2自包含修复包**：`第五部分_第六章_R1独立审核与R2完整返修包_20261019.zip`，**46,370字节**、SHA256 `80f1b7d2afa10d734895ae139116663ebfb3282503335131a0409eb2ae45e06f`；7份Markdown，包括上一版**405行全文和184行原核验完整原件**、Reviewer13,630字节详细报告、精确R2任务、官方来源、可复制转交话术及SHA256 Manifest，CRC/逐字节一致性均PASS。**ZIP二进制仅对话交Owner，GitHub仅存指针及审查记录**。
+- **现在唯一下一步**：Owner转发该R2 ZIP与提示词→没有GitHub权限的独立Writer定向修B01–B08/N01–N03、交完整R2正文/事实核验ZIP并`STOP_AT_REVIEWER`→Reviewer复核→Owner决定是否封板第六章。**第六章没有正式正文、第五板块不能CLOSED。** 第一至五章正式封板正文与V2冻结框架全部不变。
+- 本交接以下“第六章Writer首稿尚未交”等文字只描述**历史Gate发布时状态**，不能据此再次发首稿包或跳过R1审核结果。
 
 ## 一、现行唯一权威及正式文件
 
@@ -42,4 +50,4 @@
 - 其余①机会挖掘、②网络环境、③支付税务经营主体（CLOSED）、④产品搭建各板块的正式成果**不修改**。不访问生产网站、服务器、营销/支付/银行/客户账号。
 - 全部提交GitHub `main`可追溯；旧Writer R1/R2审稿与离线包是历史证据，不能替代现行正式封板正文。
 
-**NEXT_STEP：** Owner转交第六章14文件完整离线ZIP与提示词 → Writer交全文和事实核验ZIP → Reviewer独立Review → Owner批准封板第⑥章与否。
+**NEXT_STEP：** Owner转交第六章R2完整返修ZIP和提示词 → Writer按R1正文最小修订B01–B08及N01–N03，返回完整R2正文与核验ZIP → Reviewer复核 → Owner批准是否封板第六章。
