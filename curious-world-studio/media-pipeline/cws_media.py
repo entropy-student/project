@@ -46,13 +46,18 @@ def emit(command: str, *, ok: bool, code: str, data=None, warnings=None) -> None
 
 
 def failure_code(exc: Exception) -> str:
+    if isinstance(exc, pipeline.safe_proxy.SafeProxyError):
+        return exc.code
     if isinstance(exc, HTTPError):
         return "HTTP_" + str(exc.code)
     if isinstance(exc, URLError):
         return "NETWORK_ERROR"
     if isinstance(exc, ValueError):
         known = {"NON_PUBLIC_MEDIA_ADDRESS", "MEDIA_HOST_DNS_UNRESOLVED", "LOCAL_NETWORK_MEDIA_URL",
-                 "NOT_SINGLE_VOD", "BELOW_MINIMUM_RESOLUTION", "INVALID_REDIRECT_URL"}
+                 "NOT_SINGLE_VOD", "BELOW_MINIMUM_RESOLUTION", "INVALID_REDIRECT_URL",
+                 "SAFE_DIRECT_REQUIRES_ELIGIBLE_VIDEO_ID", "SAFE_DIRECT_FILE_CAP_EXCEEDED",
+                 "SAFE_DIRECT_TOTAL_CAP_EXCEEDED", "SAFE_DIRECT_TIMEOUT_OUT_OF_RANGE",
+                 "SAFE_DIRECT_DIMENSIONS_REQUIRED", "SAFE_DIRECT_NOT_LANDSCAPE"}
         return str(exc) if str(exc) in known else "VALUE_ERROR"
     if isinstance(exc, subprocess.TimeoutExpired):
         return "TIMEOUT"
@@ -324,6 +329,8 @@ def build_parser() -> JsonArgumentParser:
     f.add_argument("--max-bytes", type=int, default=pipeline.DEFAULT_FILE_BYTES)
     f.add_argument("--max-total-bytes", type=int, default=pipeline.DEFAULT_TOTAL_BYTES)
     f.add_argument("--timeout", type=int, default=180)
+    f.add_argument("--safe-direct", action="store_true",
+                   help="Fetch one indexed HTTPS MP4/WebM via public-IP-pinned loopback CONNECT; redirects/manifests are refused")
     gallery_parser = sub.add_parser("gallery")
     gallery_parser.add_argument("--json", action="store_true", help="JSON is always emitted")
     return p
@@ -390,6 +397,8 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
         ids = list(dict.fromkeys(args.ids))
         if not 1 <= len(ids) <= MAX_IDS:
             raise CliError("INVALID_ID_COUNT", f"provide 1 to {MAX_IDS} explicit IDs")
+        if args.safe_direct and len(ids) != 1:
+            raise CliError("SAFE_DIRECT_REQUIRES_ONE_ID", "safe-direct accepts exactly one selected catalog ID")
         if not 0 < args.max_bytes <= pipeline.HARD_FILE_BYTES or not 0 < args.max_total_bytes <= pipeline.HARD_TOTAL_BYTES:
             raise CliError("INVALID_BUDGET", "requested size budget exceeds the pipeline hard limit")
         catalog = pipeline.Catalog(workdir)
@@ -404,11 +413,20 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
                 results.append(cached)
                 continue
             try:
+                if args.safe_direct and item.get("kind") != "video":
+                    raise ValueError("SAFE_DIRECT_REQUIRES_ELIGIBLE_VIDEO_ID")
                 if item.get("kind") == "image":
                     result = pipeline.download_image_one(catalog, key, args.ffprobe, args.ffmpeg,
                                                          min(args.max_bytes, pipeline.DEFAULT_IMAGE_BYTES),
                                                          min(args.timeout, 30), proxy)
                     success = result.get("status") == "IMAGE_DECODE_PASS"
+                elif args.safe_direct:
+                    result = pipeline.download_safe_direct_candidate(
+                        catalog, key, proxy, args.ffprobe, args.ffmpeg,
+                        min(args.max_bytes, pipeline.SAFE_DIRECT_MAX_FILE_BYTES),
+                        min(args.max_total_bytes, pipeline.SAFE_DIRECT_MAX_TOTAL_BYTES),
+                        min(args.timeout, 60))
+                    success = result.get("status") == "FULL_DECODE_PASS"
                 else:
                     if item.get("status") != "READY_TO_DOWNLOAD":
                         result = pipeline.probe_one(catalog, key, args.ytdlp, min(args.timeout, 60), proxy, args.ffprobe)

@@ -126,6 +126,38 @@ class CliTests(unittest.TestCase):
         with self.assertRaises(cws.CliError):
             cws.build_parser().parse_args(["fetch"])
 
+    def test_safe_direct_requires_one_selected_id_and_routes_around_ytdlp_probe(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp) / "curious-world-studio"
+            workdir = root / ".local" / "safe-direct"
+            workdir.mkdir(parents=True)
+            candidate = {"id": "video-test", "kind": "video", "url": "https://media.example/a.mp4",
+                         "title": "fixture", "site": "media.example", "status": "ELIGIBLE"}
+            (workdir / "index.json").write_text(json.dumps({"items": {"video-test": candidate}, "queries": [], "events": []}))
+            with mock.patch.object(cws.pipeline, "CWS_ROOT", root), \
+                 mock.patch.object(cws.pipeline, "download_safe_direct_candidate",
+                                   return_value={"status": "FULL_DECODE_PASS", "local_file": "downloads/video.mp4",
+                                                 "qa": {"status": "FULL_DECODE_PASS"}}) as direct, \
+                 mock.patch.object(cws.pipeline, "probe_one") as probe, \
+                 mock.patch.object(cws, "cached_result", return_value=None), \
+                 mock.patch("sys.stdout", new_callable=io.StringIO) as output:
+                code = cws.main(["--workdir", str(workdir), "--proxy", "http://127.0.0.1:12345",
+                                 "fetch", "--ids", "video-test", "--safe-direct"])
+            result = json.loads(output.getvalue())
+            self.assertEqual(code, 0)
+            self.assertTrue(result["ok"])
+            direct.assert_called_once()
+            probe.assert_not_called()
+            with mock.patch.object(cws.pipeline, "CWS_ROOT", root), \
+                 self.assertRaises(cws.CliError) as raised:
+                cws.dispatch(cws.build_parser().parse_args(["--workdir", str(workdir), "fetch",
+                                                           "--ids", "a", "b", "--safe-direct"]))
+            self.assertEqual(raised.exception.code, "SAFE_DIRECT_REQUIRES_ONE_ID")
+
+    def test_safe_proxy_error_uses_machine_readable_code(self):
+        error = cws.pipeline.safe_proxy.SafeProxyError("SAFE_DNS_NON_PUBLIC_ADDRESS")
+        self.assertEqual(cws.failure_code(error), "SAFE_DNS_NON_PUBLIC_ADDRESS")
+
     def test_json_flag_is_accepted_after_each_command(self):
         commands = (["doctor", "--json"], ["discover", "--query", "x", "--json"],
                     ["catalog", "--json"], ["fetch", "--ids", "video-x", "--json"], ["gallery", "--json"])
