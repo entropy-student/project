@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR157_REVIEWED_MEDIA_E2E_PARTIAL_20261019 -->
+## 2026-10-19｜PR#157真实审阅：Fake-IP安全拒绝通过，但媒体Canary仍未形成
+
+Owner交付PR#157 `db044a53ac4222ffc73b47e5cbdaaa89b53c4c72`及真实ZIP SHA `48cf3d7fd01a8be4bb20e9f29a872fd373ab4b6c5ee1552d4c223597c842721f`。Reviewer逐项核实ZIP的28个SHA、6条搜索运行统计414记录、目录274候选（视频146/图片128）、历史身份重合54/新增220，并审阅PR仅改8行单测，验证混合保留Fake-IP+公网IP时原`_validate_public_url`必须拒绝。Runner日志60基线/61分支测试PASS；安全实现没改，技术局部负例可接受，但**不能把“能够拒绝不可信DNS”说成“已解决代理Fake-IP后可安全下载”**。执行方本机DNS及Host状态以脱敏报告为准，非Reviewer本机实测；所有274候选许可UNKNOWN、只有1页部分观看无可信时码、没有真实视频下载/FFmpeg QA。正式`PARTIAL_SAFE_ADDRESS_GUARD / RIGHTS_UNKNOWN / END_TO_END_MEDIA_CANARY_NOT_PASS`。独立[Review报告](reviews/CW0005_PR157_INDEPENDENT_MEDIA_E2E_REVIEW_PARTIAL_20261019.md)已写入main，[PR#157](https://github.com/entropy-student/project/pull/157)继续Open未合并，不以局部测试PASS擅自解锁完整流程。执行Gate结束，`CURRENT_GATE=NONE`；未来停止泛化414条搜源数竞赛，先验证已有Pexels/Pixabay等许可明确的原始素材提供方和目标动作，再在不削弱端点私网/重定向保护的真实可用路径中实现1个小型合法下载Canary；旧PR#155历史流程RETURN与正式素材权利/Story-Fit HOLD不变。
+
+
 <!-- CWS_OWNER_E2E_MEDIA_REPAIR_AUTH_20261019 -->
 ## 2026-10-19｜Owner预留内存并授权一次完成MEDIA安全阻塞修复与真实素材Canary
 
