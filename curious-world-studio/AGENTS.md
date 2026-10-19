@@ -1,21 +1,22 @@
-<!-- CWS_CURRENT_EXECUTION_ENTRY_SINGLE_AUTHORITY_20261018 -->
-# CWS 当前唯一执行入口｜2026-10-18
+<!-- CWS_CURRENT_EXECUTION_ENTRY_SINGLE_AUTHORITY_20261019 -->
+# CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**: `NONE / REVIEWER_STOP_AFTER_PR156_PARTIAL_SEARCH`  
-**STATUS**: `PR156_EVIDENCE_MERGED / NEW_EXECUTOR_GATE_NOT_AUTHORIZED`
+**CURRENT_GATE**: `CWS-MEDIA-END-TO-END-BLOCKER-REPAIR-REAL-ASSET-CANARY-20261019`  
+**STATUS**: `OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / SINGLE_COMBINED_GATE`
 
-**当前结果**：Owner上传的[PR#156](https://github.com/entropy-student/project/pull/156)真实ZIP经独立Reviewer核全部34条内部SHA及GitHub九份blob、95条原始搜索记录→87个去重页面URL；只有一组语义发出查询，SearXNG上游部分失败，第二组因内存小于1664MiB停线；4候选没有有效格式验证/实际动作视频画面/合法复用许可；下载0条正确。**正式`PARTIAL_SEARCH`，不是媒体流程PASS；历史PR#155`RETURN_PROCESS_COMPLIANCE`仍然有效。** 原始[PR156 Reviewer报告](docs/reviews/CW0005_PR156_INDEPENDENT_MEDIA_PROCESS_REVIEW_PARTIAL_2026-10-18.md)及[本轮执行Gate（已执行，禁止重跑）](docs/CWS_CW0005_MEDIA_PROVENANCE_AND_BOUNDED_MULTISOURCE_VALIDATION_GATE_2026-10-18.md)。
+**唯一Gate及Codex入口**：[MEDIA阻塞诊断＋最小安全修复＋真实合法新素材Canary](docs/CWS_MEDIA_END_TO_END_BLOCKER_REPAIR_AND_REAL_ASSET_CANARY_GATE_2026-10-19.md)的`REVIEWER_TO_EXECUTOR_RELAY`。Owner 2026-10-19已确认内存预留并批准“继续推进，最好本轮一次性解决”；**无需再单独申请诊断、修复、检索、合规下载的逐步许可**。此时未向本机Codex发送提示词，历史PR#155/#156均已Review，不得再启动旧Gate。
 
-**证据归档**：PR#156仅九份可验证的脱敏报告，已squash merge为`890d52b1c5b767bffa6677eeffafe8be96de5cbb`，合并只表示正式保存`PARTIAL_SEARCH`执行事实，**不等于授权素材再下载/出版或视觉Story-Fit PASS**；PR#155仍Open不合并。
+**前次已验收真相**：PR#156实检ZIP及Git全部一致，搜索SearXNG84条（上游PARTIAL）＋4get11条，95原始→87去重**网页链接**，没有任何真实动作预览、合规许可视频下载。第二语义因685/794MiB低于固定1664MiB保护失败；四URL格式探测仅底层ValueError，是否代理Fake-IP/非全球地址尚**UNVERIFIED**；Windows本机`media_pipeline.py`与main不一致，还使用临时harness，标准源码路径未证明可复现。旧PR#155素材流程仍`RETURN_PROCESS_COMPLIANCE`，PR#156证据归档`PARTIAL_SEARCH`，既有短视频技术PASS仍接受。完整[PR#156独立审核](docs/reviews/CW0005_PR156_INDEPENDENT_MEDIA_PROCESS_REVIEW_PARTIAL_2026-10-18.md)。
 
-**当前禁止**：无新Gate时不再执行旧搜索、重复启动Docker、降低1664MiB内存门槛、绕过`NON_PUBLIC_MEDIA_ADDRESS`、生图/渲染新MP4、修改冻结V5.6.2、改别的项目网络/Docker、付费、公开发布。旧两条59.93秒作品、三张AI图、五条已用历史实拍都保留且各自沿用原指纹、项目级视频源禁复用。
+**本轮允许**：先真实Windows本机检查可用内存、精确DNS/代理错误类别、代码导入路径与差异，在干净隔离worktree里必要时做**最小MEDIA模块修补及负例测试**；优先可信已许可的Pexels/Pixabay/OpenMontage、机构、Wikimedia等免费原站而非反复抽签YouTube；用最多2组S01关键词做多源候选发现→去重→实际播放预览→合法许可→格式验收，只有至少一个内容相关/未用/取得合适权利候选时才最多下载**1条≤80MB**并全片解码+SHA，创建独立PR+脱敏ZIP停Reviewer。保留前轮87链接索引，真实内存门槛1664MiB不变；有安全不明就停线而非虚假PASS。
 
-**NEXT_STEP（建议，尚未派发）**：由Reviewer先界定一轮小型**纯只读**Owner Windows诊断：原始四个`ValueError`的精确错误code与DNS地址类别/代理Fake-IP；正常CWS源码导入路径和临时harness来源；Docker Desktop/Compose各自占用及本次资源余量；现有可免Docker复用的OpenMontage候选。**不得白名单绕过私网保护或再次盲重试**。下一轮新Gate需Review后单独有效授权。
+**本轮禁止**：跳过或削弱`NON_PUBLIC_MEDIA_ADDRESS`/重定向等私网防护，改Clash/TUN/DNS/代理或其它项目Docker，减内存门槛/盲重复低内存尝试，沿用本机旧源码+临时harness，下载无许可素材，强制凑下载数，重渲59.93秒样片/变更V5.6.2冻结HTML、额外AI图/TTS、付费、发布、合并PR、删除旧媒体或覆盖现有本机工作树。
 
-**固定限制**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`。本文件下方稳定功能说明中的历史任务提法均不生成新执行权；Executor未来只从更新后的`CURRENT_GATE`和`REVIEWER_TO_EXECUTOR_RELAY`启动。
+**持续状态**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`；**新流程即使通过，也不能倒推前次历史流程PASS**。
 
-**项目级图片准则**：[AI静态图优先复用/快速保存/最多2并发/QA指南](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)；本次不启动生图。
+**Codex读取边界**：只读本Gate及其中明确引的最小核心素材规范/代码；不要全面重扫项目文档与Governance，也不要重复已PASS视频技术。过去执行历史仍在`docs/DECISION_LOG.md`及具体Reviewer报告。项目级[生图强制效率规则](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)继续有效，但**本轮禁止AI图生成/编辑**。
 
+---
 
 # Curious World Studio｜Agent / Codex 唯一入口
 
@@ -29,7 +30,7 @@
 - **视觉**：A简短Mac Tiger Aqua桌面→B满屏QuickTime 7银灰播放器，单行字幕；以[STYLE_LOCK](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)为规范，HTML原型不等于成片。
 - **素材**：以[3+1正式合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)为最高来源/权利规则，MEDIA技术默认排除大陆平台、竖屏及方形、显示比例≥4:3，优先1080p，未知先有限探测；严格区分`LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED`。
 - **MEDIA当前运行选择**：Windows已有Docker Desktop/WSL2；SearXNG+4get Compose本机按需启停，CWS Python/yt-dlp/FFmpeg本机执行；不部署VPS、不开公网、不需要后台24h常驻。不操作共享Docker项目、VPN/Clash、全局代理、OpenMontage。
-- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；当前只执行顶部限定的媒体来源流程验证，不触发视频制作。
+- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；当前只执行顶部限定的MEDIA安全诊断/最小兼容修复/来源素材小型真实流程，不触发正式视频制作。
 
 ## 完整内容制作｜长期文案工作流
 
