@@ -5,12 +5,21 @@
 > **CHAPTER2：《我该怎么找到客户？》FINAL_SEALED（9二级/22三级，2.2无三级）**  
 > **CHAPTER3：《客户来了，怎么让他下单？》FINAL_SEALED（6二级/14三级）**  
 > **CHAPTER4：《找客户到底划不划算？》FINAL_SEALED（6二级/12三级）**  
-> **CHAPTER5：《怎么让老客户再买、带来新客？》WRITER_R1_DELIVERED / STRUCTURE_PASS_5_11 / REVIEW_RETURN / R2_FULL_REPAIR_PACKET_READY / NOT_SEALED**  
+> **CHAPTER5：《怎么让老客户再买、带来新客？》WRITER_R2_DELIVERED / FROZEN_5_11_PRESENT / EXTRA_H2 / REVIEW_RETURN / R3_MINIMAL_REPAIR_PACKET_READY / NOT_SEALED**  
 > **CHAPTER6：BODY_NOT_STARTED**  
-> **CURRENT_GATE：CB05-CH5-WRITER-R2-DIRECTED-REPAIR-20261019**  
-> **OWNER_ACTION_REQUIRED：转发第五章Writer R2完整返修ZIP与直接提示词；回收R2全章正文及完整事实核验ZIP交Reviewer复核。**
+> **CURRENT_GATE：CB05-CH5-WRITER-R3-MINIMAL_REPAIR-20261019**  
+> **OWNER_ACTION_REQUIRED：转发第五章Writer R3完整最小返修ZIP与提示词；回收R3全章正文及事实核验ZIP交Reviewer复核。**
 
-## 最新执行节点｜第五章Writer R1 Review RETURN（2026-10-19）
+## 最新：第五章Writer R2独立Reviewer审核RETURN与R3最小返修（2026-10-19）
+
+- **[第五章R2独立Reviewer报告（当前RETURN）](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)**：正式冻结5二级/11三级原问句逐字同序存在；原“引言”已降级，但正文L414还新增未冻结的清单H2（实际6H2）。上一轮FTC Click-to-Cancel失效、ICO soft opt-in、推荐奖励数值前后一致等已实质修复。
+- **6组实质残留**：B01又写Visa争议0.9–1%会永久封号，B02按满意高光筛选公开评价邀请违反FTC建议和Trustpilot/Google政策，B03未来$20储值券被误当已实现现金净毛利/必然负债，B04核验将正式五板块名称及SMTP责任写错，B05多余H2，B06 GDPR删除权无条件化。**N01–N03**顺手修正平台评价与成单转介混同、Day43自动营销发送许可、教学流失饼图无就地假设及高复购断言。
+- Writer R2原ZIP `第五部分_第五章_Writer_R2完整交付.zip`，**39,985字节**，SHA256 `fe244e4a1a2d6d4f29225050ca21b8fe3eb1e91c8fcca6e2f8f1428f837b81b7`；**423行/45,154字节全文**SHA256 `218517e2912b21b2d290425d3643448c0ee78f72b3430c604c432c02685c8b29`；**210行/40,703字节核验**SHA256 `59686ff4c66219651069f1bbe8741fafda0a32abd19432d83688b01282dfbf6c`，CRC通过。
+- 完整R3定向离线ZIP `第五部分_第五章_R2独立审核与R3最小返修包_20261019.zip`，**52,253字节**，SHA256 `85bca6b385635d022f253fa645038555393d3f9e0ae220f35e9c3757388e7815`，7份Markdown，含**完整R2全文、完整核验**与本轮Reviewer详报、返修指令、官方来源、转交话术和Manifest；CRC及字节一致性验证通过。ZIP**仅本轮对话交Owner，不声称GitHub存ZIP二进制**。
+- **唯一当前下一步**：Owner转发完整R3包＋可复制话术，独立Writer基于R2正文定向修B01–B06及N01–N03、回交完整R3正文/核验ZIP，`STOP_AT_REVIEWER` → Reviewer复查 → Owner决定封板。**第五章没有正式封板正文，第六章未开始，正式1/6/35/78问题树与前四章正式全文全部保持不变**。
+- 以下R1 RETURN是**历史记录**，不能再认为Writer R2未交。
+
+## 历史：第五章Writer R1 Review RETURN（2026-10-19）
 
 - **[第五章R1独立Review：RETURN](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)**。冻结5个二级/11个三级全部逐字同序PASS，正文知识主体具实操性；但仍有**B01–B08八项实质阻断、N01–N03三项顺手修订**。最重要的是：美国FTC2024 Click-to-Cancel修订于2025-07-08被法院撤销、2026-02恢复旧版；FTC Part465并未直接全面禁止所有只向满意客户征评行为；Google Maps/Amazon禁评价奖励比部分FTC情形更严；UK PECR/EU GDPR/CAN-SPAM须区分营销目的。**第⑤章NOT_SEALED，第⑥章未启动**。
 - Writer R1原ZIP：`第五部分_第五章_独立Writer交付.zip`，**30,895字节**，SHA256 `c63b66a78bc94e07fa5d540f03a5e70efbac1c24ba103a427d72984a19536e84`，CRC PASS。原正文**35,861字节/384行**，SHA256 `f484d11f6f53cb8396717541317df0b405c083ed220aea4e2479403faaf1faa7`；原核验**27,298字节/173行**，SHA256 `9d7c9a8e6d9300647b94dc06de73a958568224c10aab89ce6b5561569ae1ecc5`。
@@ -61,4 +70,4 @@
 - 未操作真实客户数据、付费营销、支付/银行或服务器账户；未改任何在线产品、代码或HTML。Markdown更改均有Git历史。
 - 历史任何Writer R1/R2的RETURN、原稿ZIP与最初Gate仅供审计；新Reviewer以本文件和明确的新Gate为当前唯一执行节点。
 
-**NEXT_STEP：** Owner转发第五章R2完整定向返修ZIP与提示词 → Writer在R1全文上修复B01–B08及N01–N03并交完整R2正文/核验ZIP → Reviewer独立复核 → Owner决定是否封板。
+**NEXT_STEP：** Owner转发第五章R3最小返修ZIP与提示词 → Writer在R2完整全文上修复B01–B06/N01–N03，交完整R3正文/核验ZIP → Reviewer独立复核 → Owner决定是否封板。
