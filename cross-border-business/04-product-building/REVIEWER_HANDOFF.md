@@ -11,6 +11,7 @@
 - **当前唯一最新封板审计：** [G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md](docs/G5_G6_OWNER_AUTHORIZED_A_B_RESEAL_EVIDENCE_20261019.md)，保留全部原作者与旧封板审核作为真实历史版本。修改范围仅限A组R01–R07、R12及官方冲突核证后的R22；B组R08–R11、R13、R17；C组除已有轻量交叉内容外均暂缓。**不解冻9/48/117题树，不新增第十章。**
 - **当前九章唯一正式正文：** [CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md)至[CHAPTER9_FINAL_SEALED.md](docs/CHAPTER9_FINAL_SEALED.md)；最新Git Blob指纹在上述统一封板证据中。原各章seal evidence历史哈希不能替代最新指纹。
 - **核验结果：** 9/48/117原文原编号同层同序**全部PASS**；63张Mermaid围栏加原代码围栏通过静态配对；第4.6章更正Range无条件“必须”、对CN22/CN23新旧官方口径冲突采取按运营商条件核证。**未执行真实支付、物流、产品安全与编译渲染测试**；所有\`NOT_RUN\`保持真实状态。
+- **本轮G7已验证的独立Reviewer工作包：** [G7_EDITORIAL_OFFLINE_PACKET_MANIFEST_V1_20261019.md](docs/G7_EDITORIAL_OFFLINE_PACKET_MANIFEST_V1_20261019.md)；ZIP 39,580 bytes SHA256 `6b08fe47a3b5e3c084419de4c35c4ce967e258dd5f9c3ec17c27d95f4eac4475`，10份成员CRC及清单SHA校验PASS。ZIP包含G5/G6全文、Gate、提示词和固定GitHub正文下载核验脚本；九章完整正文需通过固定commit `93020c7f9c2bc8646520760ac45edf96e21ede2e`自行取得，**不在ZIP内**。 
 - **下一步唯一当前G7只读审核Gate：** [G7_EDITORIAL_INDEPENDENT_REVIEW_GATE_V1_20261019.md](docs/G7_EDITORIAL_INDEPENDENT_REVIEW_GATE_V1_20261019.md)。仅审九章连贯性、自然度、术语解释、读者路径、图文顺序和重复表达，**不得改核心内容与GitHub、不得重新封板或制作HTML**。Agent需返回一份完整Markdown审稿报告并`STOP_AT_OWNER_REVIEW`。本板块未CLOSE。
 
 ## 已结束的历史节点（仅供溯源，不作为当前执行Gate）
