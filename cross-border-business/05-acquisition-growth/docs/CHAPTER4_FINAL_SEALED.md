@@ -1,3 +1,4 @@
+> **状态**：`G7_EDITORIAL_PASS / OWNER_AUTHORIZED_FINAL_POLISH / 2026-10-19`
 # 找客户到底划不划算？
 
 > **适用读者**：中国大陆个人开发者、跨境独立站初创经营者、Micro-SaaS 创作者、小微外贸制造与定制出海商家  
@@ -6,7 +7,7 @@
 
 ---
 
-## 引言：为什么销售额节节攀升，口袋里的钱却越来越少？
+**【导言】为什么销售额节节攀升，口袋里的钱却越来越少？**
 
 在跨境出海与数字出海的真实世界中，许多初创者最刻骨铭心的挫折往往不是“完全卖不出去”，而是“明明每天都在出单，月底一算账却发现净亏损越来越大”。
 
@@ -112,6 +113,9 @@ mindmap
 > **口径边界与同期法局限**：
 > 1. **简化同期法（Blended Concurrent Ratio）**：以本周数据为例，若用当周支出除以当周新客（$\$480 \div 12 = \$40$），属于即时同期比率。该算法仅适用于“即看即买”的短周期实物零售；对于 B2B 外贸与 SaaS 工具，当周支出主要在为未来蓄水，而当周成单来自前期线索，必须采用**同群追踪法（Cohort Tracking）**，严防同期错配导致的误判。
 > 2. **客户数与订单数的区隔**：若某客户当周下了 2 笔订单，新客户数为 1，订单数为 2。单订单贡献毛利与单客户总贡献必须分别核算，不可混为一谈。
+
+> **实操指引｜T3**：最小事件字典、订单去重键与获客指标台账。见 [共用经营实操附录 T3](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
 
 ---
 
@@ -266,6 +270,9 @@ flowchart TD
   - 在评估“这个渠道到底值不值得做大”时，必须强制计入工时成本。
   - *【决策边界】*：如果一个渠道在计入自我工时折算后，算出来的真实 CAC 高达 $\$150$，而产品单笔利润只有 $\$30$、且没有复购，那么这个渠道在商业逻辑上就是**完全不成立的死路**。它只是在靠创始人的无偿劳作勉强维持“有单出的虚假繁荣”，一旦创始人精力耗尽，业务将立刻崩塌。
 
+> **实操指引｜T3**：历史全口径 CAC 与新增动作可避免成本的两本账。见 [共用经营实操附录 T3](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
+
 ---
 
 ## 4.4 订单增加，为什么还可能亏钱？
@@ -400,6 +407,9 @@ gantt
 - **数字产品与 SaaS：将真实回本周期严格匹配自身的现金跑道（Cash Runway）**：
   - 软件产品边际成本低，允许利用后续月份收回投入，但回本周期必须小于自身的现金安全垫。若账面流动资金仅够支撑 4 个月，回本周期长达 8 个月的渠道就属于危及企业生存的高危渠道。
 
+> **实操指引｜T3**：小样本下复购、续费与同群留存观察表。见 [共用经营实操附录 T3](https://github.com/entropy-student/project/blob/main/cross-border-business/05-acquisition-growth/docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) 对应小节。
+
+
 ---
 
 ## 4.6 数据太少，该继续还是停？
@@ -459,7 +469,7 @@ flowchart TD
 
 ---
 
-## 本章自检与落地行动清单
+**【本章自检与落地行动清单】**
 
 在决定下一个获客动作、评估当期账目或面对纠结的测试数据时，请对照以下六项标准进行清醒自查：
 
@@ -471,7 +481,7 @@ flowchart TD
 6. [ ] **小样本决策设立理性护栏**：在样本量仅有几十到上百个点击时，我是否时刻警惕“小数定律”的二项分布随机噪声？在启动测试前，我是否提前设定了自定义的最大试验预算上限？我是否懂得结合产品品类特征，通过微观行为线索与定性真实咨询客观研判继续还是调整？
 
 
-## 补充核验：数字和会计口径（Reviewer终审）
+**【补充核验：数字和会计口径说明】**
 
 - **Visa VAMP**：官方核验 [Visa Acquirer Monitoring Program Fact Sheet（脚注含2026-04-01修订）](https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf)。指标、地区和最低事件数必须一起核验，不使用统一拒付率红线。
 - **折扣与收入**：参照 [IFRS Foundation—IFRS 15](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-15-revenue-from-contracts-with-customers/) 的交易价格原则；本章只说明教学管理口径，实际法定财务/税务处理须依适用准则和经营主体确定。
