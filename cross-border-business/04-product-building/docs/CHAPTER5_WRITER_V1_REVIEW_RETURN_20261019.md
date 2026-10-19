@@ -44,3 +44,12 @@
 - ZIP二进制仅在Owner对话中生成下载，**未作为文件上传GitHub**；**第五章没有正式封板正文**，待采纳Writer V1稿未上传为正式文章。
 
 **下一步：** Owner把R2完整ZIP及话术转给无GitHub权限Writer→Writer基于V1全文定向修B01–B08，交**完整**R2正文、逐项事实核验、自检和ZIP后`STOP_AT_REVIEWER`→Reviewer复审；Owner最后决定是否封板。未经Owner批准不启动4.6或HTML，不动已封板4.1–4.4和V2框架。
+
+## 补充校验包登记（2026-10-19，同一Writer原始V1，不改变审核结论）
+
+本次Reviewer再度对Owner上传的**相同原始ZIP SHA256 `aa08f6442d28417468c8853043fe387b15d46b658bacaf875eb52191131c5f91`**进行解压、标题逐字/同序核验，并制作**另一个独立离线返修包快照**。本段明确区分两个包，不把原先登记的ZIP SHA覆写成新的ZIP SHA。
+
+- 本次独立报告：`第四部分_第五章_Writer_V1_独立Reviewer审核报告_20261019.md`，**8,806 bytes**，SHA256 `662c074def5a1d83368ef8050606e8a983b3dc1b2495054180931b09205abe81`。
+- 本次独立ZIP：`第四部分_第五章_Writer_V1_R2完整定向返修包_20261019.zip`，**35,942 bytes**，SHA256 `6b3eec39cdaba4355e12a863516b7158cad7494a289ba8b9fd6bf34c38981b3d`，**8份UTF-8 Markdown，CRC PASS，含Writer原V1全文和原核验记录原字节、Reviewer报告、R2指令、5/12完整冻题、官方核验资料和SHA256清单**。
+- 本ZIP**仅在Owner本次对话下载**；未将ZIP二进制上传GitHub，不改变正文状态，也不意味着存在Writer R2交稿。
+- 原先报告登记的**42,672 bytes / `7d1120e4...`**是另一独立审稿版ZIP；两个ZIP都以同一个Writer V1稿为原始基线，但**不应互称为完全相同的二进制文件**。现阶段Owner可选用本次对话附带的35,942 bytes包转交Writer。
