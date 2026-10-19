@@ -1,18 +1,18 @@
-<!-- CWS_TUN_FAKEIP_FIXTURE_GATE_ACTIVE_20261019 -->
+<!-- CWS_PR158_FIXTURE_PROXY_INDEPENDENT_PASS_20261019 -->
 # CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**：`CWS-MEDIA-TUN-FAKEIP-PROXY-COMPAT-20261019`  
-**STATUS**：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / ONE_ROUND`
+**CURRENT_GATE**：`NONE / PR158_INDEPENDENT_FIXTURE_ONLY_PASS`  
+**STATUS**：`REVIEWER_COMPLETE / NEW_EXECUTOR_GATE_NOT_AUTHORIZED`
 
-**唯一执行文档**：[TUN/Fake-IP与CWS MEDIA代理兼容修复Gate](docs/CWS_MEDIA_TUN_FAKEIP_PROXY_COMPATIBILITY_REPAIR_GATE_2026-10-19.md)；Owner已明确同意沿此路线按Governance推进。Executor只读本Gate的`REVIEWER_TO_EXECUTOR_RELAY`要求的具体源码、测试及两份历史证据，不再反复扫描全仓或执行此前10月19日已结束的媒体搜索Gate。
+**独立接受事实**：[PR #158固定Blender夹具代理兼容的完整Reviewer报告](docs/reviews/CW0005_PR158_TUN_FAKEIP_FIXTURE_PROXY_COMPAT_INDEPENDENT_PASS_20261019.md)。Owner实传ZIP`d77fe84d82bfcb64567f1822de5426b74609181ee47943c9a22b99a0297e89f5`，22成员/21 SHA全部吻合；Reviewer独立全片解码真实MP4（4,372,373B，52.208秒、H.264/AAC、854×480、1253真实帧，SHA`b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`）。CWS的**固定官方HTTPS/本机显式HTTP CONNECT代理夹具**真可下载＋QA；PR修改3个项目媒体文件，Windows基线60与候选67测试日志通过，通用`NON_PUBLIC_MEDIA_ADDRESS`私网/混合Fake-IP保护未被关闭，非法代理/URL/恶意跳转/超限测试拒绝成功。
 
-**目的**：在Owner当前TUN+Fake-IP设置完全不变时，修复CWS自身“本地DNS虚拟IP导致下载请求前被拒”与**显式本地代理**的兼容性。优先复用2026-10-11实际成功的Clash HTTP代理+yt-dlp及约4.37MB Blender/Sintel测试MP4，**不再广泛搜索SearXNG/4get、不需要把274条候选逐个做版权审核，也不得把正式素材许可与本轮技术下载混淆**。不得把历史7897或10808端口硬编码为当前有效端口；现场读回协议与端口、检测SOCKS和HTTP错误配置。
+**严格限定**：`PASS_FIXTURE_PROXY_COMPAT` **不是**`PASS_GENERIC_MEDIA_DOWNLOADER`。新增命令只接受硬编码官方Blender源；随意候选URL在Fake-IP环境下仍可能被阻断，普通媒体抓取、版权/StoryFit/发布均未解锁。独立yt-dlp本轮只有元数据，无可用格式；真正MP4来自CWS新增的**固定夹具命令**。ZIP`source-diff.patch`为空，但Reviewer直接审完GitHub PR源码差异，标为非阻塞包装瑕疵而非下载失败。
 
-**授权边界**：在最新main干净隔离分支，可最小修改`curious-world-studio/media-pipeline/`源码及必要负例测试；一条官方Blender已知URL受限下载总新增媒体≤10MB、FFprobe/FFmpeg/SHA+脱敏ZIP、独立PR后停Reviewer。正常网络直接模式的`NON_PUBLIC_MEDIA_ADDRESS`必须原样保护；代理模式只能针对**固定可信测试夹具**受控通过域名+明示代理，并持续禁止可疑重定向/私网/保留地址/不受控URL。**yt-dlp独立成功≠CWS项目完整技术PASS；一次官方测试URL成功亦≠任意来源下载安全已通过。**
+**Git边界**：[PR #158](https://github.com/entropy-student/project/pull/158)仍OPEN、未合并，本轮Gate明确不能由Executor/Reviewer擅自合并；旧[PR #157](https://github.com/entropy-student/project/pull/157)混合DNS测试仍未合并且已在PR#158候选分支有等价覆盖。原TUN/Fake-IP修复Gate**已执行、已Review、不可重新派发**。
 
-**禁止**：修改TUN/Fake-IP/Clash/VPN/DNS/全局代理；放行任意域名、私网/虚拟IP或HTTP任意代理；绕开SSRF防线；扩大搜索/下载不确定第三方视频；本机历史worktree清理/重置；修改共享Docker或其它项目；重新生图/TTS/渲染59.93秒片；合并任何PR/公开发布。没有已证明安全的实现时`PARTIAL/RETURN`，绝不能为通过而降保护。
+**正式项目限制仍生效**：PR#155取材流程历史`RETURN_PROCESS_COMPLIANCE`、PR#156`PARTIAL_SEARCH`、`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`。之前59.933秒样片技术PASS、V5.6.2视觉壳冻结不变。
 
-**接受现状**：PR#157`PARTIAL_SAFE_ADDRESS_GUARD / RIGHTS_UNKNOWN`且仅8行混合Fake-IP拒绝负例测试受理（[报告](docs/reviews/CW0005_PR157_INDEPENDENT_MEDIA_E2E_REVIEW_PARTIAL_20261019.md)），PR仍Open未合并；前期59.93秒MP4技术PASS及V5.6.2 HTML冻结未变。`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`保持。此前所有`CURRENT_GATE`文字为历史，顶部此条唯一生效。
+**下一步建议（未授权）**：若Owner要求真实任意素材下载，另做**代理路径下未知URL与重定向/代理实际目的地址安全验证**的最小工程Gate；已有固定Blender成功路径不可重复验收，也不再重跑274链接/大范围搜索。不关闭VPN/TUN或改Clash/DNS。
 
 ---
 
@@ -28,7 +28,7 @@
 - **视觉**：A简短Mac Tiger Aqua桌面→B满屏QuickTime 7银灰播放器，单行字幕；以[STYLE_LOCK](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)为规范，HTML原型不等于成片。
 - **素材**：以[3+1正式合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)为最高来源/权利规则，MEDIA技术默认排除大陆平台、竖屏及方形、显示比例≥4:3，优先1080p，未知先有限探测；严格区分`LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED`。
 - **MEDIA当前运行选择**：Windows已有Docker Desktop/WSL2；SearXNG+4get Compose本机按需启停，CWS Python/yt-dlp/FFmpeg本机执行；不部署VPS、不开公网、不需要后台24h常驻。不操作共享Docker项目、VPN/Clash、全局代理、OpenMontage。
-- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；当前只执行顶部Gate限定的CWS与代理网络兼容性修复，不触发正式视频制作。
+- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；本轮执行Gate以顶部为准；当前没有授权新Executor动作，也不触发正式视频制作。
 
 ## 完整内容制作｜长期文案工作流
 
