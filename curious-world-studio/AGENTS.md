@@ -1,18 +1,20 @@
-<!-- CWS_PR158_FIXTURE_PROXY_INDEPENDENT_PASS_20261019 -->
+<!-- CWS_GENERIC_FAKEIP_PROXY_GATE_OWNER_AUTH_20261019 -->
 # CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**：`NONE / PR158_INDEPENDENT_FIXTURE_ONLY_PASS`  
-**STATUS**：`REVIEWER_COMPLETE / NEW_EXECUTOR_GATE_NOT_AUTHORIZED`
+**CURRENT_GATE**：`CWS-MEDIA-GENERAL-FAKEIP-SAFE-PROXY-EGRESS-20261019`  
+**STATUS**：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / SINGLE_BOUNDED_GATE`
 
-**独立接受事实**：[PR #158固定Blender夹具代理兼容的完整Reviewer报告](docs/reviews/CW0005_PR158_TUN_FAKEIP_FIXTURE_PROXY_COMPAT_INDEPENDENT_PASS_20261019.md)。Owner实传ZIP`d77fe84d82bfcb64567f1822de5426b74609181ee47943c9a22b99a0297e89f5`，22成员/21 SHA全部吻合；Reviewer独立全片解码真实MP4（4,372,373B，52.208秒、H.264/AAC、854×480、1253真实帧，SHA`b670602fa00934ca27c4351bb0efe7ea7a07fae57284e44226025eeed7c51254`）。CWS的**固定官方HTTPS/本机显式HTTP CONNECT代理夹具**真可下载＋QA；PR修改3个项目媒体文件，Windows基线60与候选67测试日志通过，通用`NON_PUBLIC_MEDIA_ADDRESS`私网/混合Fake-IP保护未被关闭，非法代理/URL/恶意跳转/超限测试拒绝成功。
+**唯一执行Gate**：[一般素材网址的Fake-IP安全代理出口与动态下载验证](docs/CWS_MEDIA_GENERAL_FAKEIP_SAFE_PROXY_EGRESS_GATE_2026-10-19.md)。Owner在PR#158仅固定Blender夹具技术PASS后明确“我同意，继续吧”，正式授权**通用候选网址安全校验/条件式最小代码修复/有界动态视频下载Canary**。Codex仅依本Gate `REVIEWER_TO_EXECUTOR_RELAY`列出的具体文件启动；先前TUN固定夹具Gate已执行Review封板，**不能重跑**。
 
-**严格限定**：`PASS_FIXTURE_PROXY_COMPAT` **不是**`PASS_GENERIC_MEDIA_DOWNLOADER`。新增命令只接受硬编码官方Blender源；随意候选URL在Fake-IP环境下仍可能被阻断，普通媒体抓取、版权/StoryFit/发布均未解锁。独立yt-dlp本轮只有元数据，无可用格式；真正MP4来自CWS新增的**固定夹具命令**。ZIP`source-diff.patch`为空，但Reviewer直接审完GitHub PR源码差异，标为非阻塞包装瑕疵而非下载失败。
+**已证明的能力**：[PR #158](https://github.com/entropy-student/project/pull/158) 仅受限固定Blender官方测试片`PASS_FIXTURE_PROXY_COMPAT`，真实ZIP/下载MP4/FFprobe/FFmpeg已由Reviewer复核；但它**尚未合并main**。旧[PR #157](https://github.com/entropy-student/project/pull/157)也仍未合并。新隔离代码必须辨认实际main源码与PR#158候选Head `ff613307e1ee67846786c00e42fa0a48719fcc52`，必要时清晰移植接受的测试夹具实现，**不得因Reviewer审过就认为代码已在main**；也不得让Codex擅自合并旧PR。
 
-**Git边界**：[PR #158](https://github.com/entropy-student/project/pull/158)仍OPEN、未合并，本轮Gate明确不能由Executor/Reviewer擅自合并；旧[PR #157](https://github.com/entropy-student/project/pull/157)混合DNS测试仍未合并且已在PR#158候选分支有等价覆盖。原TUN/Fake-IP修复Gate**已执行、已Review、不可重新派发**。
+**本轮唯一焦点**：Windows真机保留TUN/Fake-IP、Clash与系统DNS/代理配置不变，借真实已验证的本机回环HTTP CONNECT代理让**从catalog动态选出的非硬编码、非Blender新素材直链/可支持页面**经安全公网目的IP绑定、TLS原域名验证、防恶意跳转与嵌套URL检查后受限探测，安全允许才下载最多**1份≤30MB**，FFprobe/FFmpeg全解码/SHA、负例测试、独立PR+脱敏ZIP交Reviewer。选自**已有**274目录或受控免费原始源，最多2个不同来源做小对照，不重启Docker/SearXNG/4get、不增加几百条搜索结果。
 
-**正式项目限制仍生效**：PR#155取材流程历史`RETURN_PROCESS_COMPLIANCE`、PR#156`PARTIAL_SEARCH`、`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`。之前59.933秒样片技术PASS、V5.6.2视觉壳冻结不变。
+**核心安全硬边界**：原一般`_validate_public_url`非公网/混合Fake-IP拒绝仍有效。**若代理不能将真实CONNECT目的地锁定到已验证公网IP并保留原Host/SNI/TLS证书，不能仅因HTTP CONNECT正常或DoH回答公网就跳过安全校验**，应`RETURN_PROXY_EGRESS_PINNING_UNAVAILABLE`；未知yt-dlp页面的跳转/manifest/CDN子URL若不可逐跳验证，只声明动态安全直链`PARTIAL_EXTRACTOR_UNVERIFIED`，不可宣称全站通用成功。绝不修改Clash/TUN/DNS/系统代理、添加特权常驻服务、关闭安全防护、付费、登录、修改别的Docker/VPS/项目、清理旧原片/重做Blender或59.93秒正式样片。
 
-**下一步建议（未授权）**：若Owner要求真实任意素材下载，另做**代理路径下未知URL与重定向/代理实际目的地址安全验证**的最小工程Gate；已有固定Blender成功路径不可重复验收，也不再重跑274链接/大范围搜索。不关闭VPN/TUN或改Clash/DNS。
+**历史接受状态**：固定Blender夹具PASS；旧PR#155素材流程`RETURN_PROCESS_COMPLIANCE`、PR#156`PARTIAL_SEARCH`、PR#157安全负例独立受理但未合并；V5.6.2冻结HTML、CW0005 59.93秒样片技术PASS保持。`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`继续。不能倒推正式制片/版权/发布权限。
+
+**读写规则**：项目治理 v0.2.7由Reviewer解析；Executor无需反复全仓回读。所有正式代码只进隔离新PR，不能自行merge；当前Gate内连续完成安全前置合格的步骤，无须逐步请求Owner批准，风险边界不合则精准PARTIAL/RETURN。
 
 ---
 
@@ -28,7 +30,7 @@
 - **视觉**：A简短Mac Tiger Aqua桌面→B满屏QuickTime 7银灰播放器，单行字幕；以[STYLE_LOCK](visual/retro-mac-v1.2/docs/STYLE_LOCK.md)为规范，HTML原型不等于成片。
 - **素材**：以[3+1正式合同](docs/VIDEO_ASSET_POLICY_3_PLUS_1_2026-10-11.md)为最高来源/权利规则，MEDIA技术默认排除大陆平台、竖屏及方形、显示比例≥4:3，优先1080p，未知先有限探测；严格区分`LINK_FOUND / CONTENT_VERIFIED / REUSE_RIGHTS_VERIFIED`。
 - **MEDIA当前运行选择**：Windows已有Docker Desktop/WSL2；SearXNG+4get Compose本机按需启停，CWS Python/yt-dlp/FFmpeg本机执行；不部署VPS、不开公网、不需要后台24h常驻。不操作共享Docker项目、VPN/Clash、全局代理、OpenMontage。
-- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；本轮执行Gate以顶部为准；当前没有授权新Executor动作，也不触发正式视频制作。
+- **制作边界**：MEDIA工具PASS/样片59.93秒技术PASS不能解除`G1_NOT_PASS/G2_NOT_AUTHORIZED/NO_PUBLISH`，旧PROD-R3授权已完成并不可重跑；本轮执行Gate以顶部为准；现行授权仅取顶部唯一Gate；无正式视频制作授权。
 
 ## 完整内容制作｜长期文案工作流
 
