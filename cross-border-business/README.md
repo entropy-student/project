@@ -3,6 +3,8 @@
 > **PROJECT_STATUS：STRUCTURE_READY / 01_CH1_TO_CH7_SEALED_CH8_WRITER_RELEASED / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH6_SEALED_CH7_WRITER_RELEASED / 05_FRAMEWORK_V2_FROZEN_ALL6_CHAPTERS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
+**统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
+
 ## 项目目标
 
 建立面向中国大陆个人开发者、独立站经营者与跨境卖家的完整跨境业务知识及实践框架：**判断机会 → 搭建可靠网络环境 → 经营主体、支付与财税合规 → 设计和交付产品 → 获客与增长**。
