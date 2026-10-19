@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR159_SMALL_CANARY_OWNER_AUTH_20261019 -->
+## 2026-10-19｜Owner授权PR159最小收尾及小文件真实下载验收
+
+Owner在[PR#159独立PARTIAL审核](reviews/CW0005_PR159_GENERAL_SAFE_PROXY_EGRESS_INDEPENDENT_PARTIAL_20261019.md)后明确“好的继续下一步吧”，批准[唯一小返修Gate](CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_GATE_2026-10-19.md)。保持PR#159的公网IP CONNECT＋原Host/TLS技术成果与测试，**仅修缓存来源误报F159-01、下载总墙钟超时F159-02**及其真实CLI/缓速流负例，不得把PR再变成大型下载重构。Reviewer已额外查明NASA SVS [官方页面5582](https://svs.gsfc.nasa.gov/5582)有1920×1080**标称2.5MB**及6.8MB直链MP4；这只是官方标签与技术测试素材候选，不是本机可达性的PASS。执行者必须先走原公共IP绑定HTTPS安全HEAD确认200/无跳转/≤30MB，才以新workdir catalog ID走CWS safe-direct最多获取一条**非Blender**实际视频，FFprobe/FFmpeg整片解码及SHA供独立Reviewer复查，失败不越权增尺寸/跟301或改Clash/TUN。**优先向原PR#159追加commit，不合并、不开一堆新PR；上传真实ZIP/媒体附件供审阅**，不复制媒体入公开Git仓库。旧`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`历史保留、Owner正式视频/版权/G1/G2/发布HOLD不变。当前`OWNER_AUTHORIZED/EXECUTOR_NOT_DISPATCHED`。
+
+
 <!-- CWS_PR159_INDEPENDENT_PARTIAL_REVIEW_20261019 -->
 ## 2026-10-19｜PR#159一般素材公网IP固定代理连接部分验收，不合并
 
