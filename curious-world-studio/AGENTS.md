@@ -1,20 +1,18 @@
-<!-- CWS_CURRENT_EXECUTION_ENTRY_SINGLE_AUTHORITY_20261019 -->
+<!-- CWS_PR157_REVIEWER_COMPLETE_20261019 -->
 # CWS 当前唯一执行入口｜2026-10-19
 
-**CURRENT_GATE**: `CWS-MEDIA-END-TO-END-BLOCKER-REPAIR-REAL-ASSET-CANARY-20261019`  
-**STATUS**: `OWNER_AUTHORIZED / EXECUTOR_NOT_STARTED / SINGLE_COMBINED_GATE`
+**CURRENT_GATE**：`NONE / PR157_REVIEWED_PARTIAL_SAFE_ADDRESS_GUARD`  
+**STATUS**：`REVIEWER_COMPLETE / NEXT_EXECUTOR_NOT_DISPATCHED`
 
-**唯一Gate及Codex入口**：[MEDIA阻塞诊断＋最小安全修复＋真实合法新素材Canary](docs/CWS_MEDIA_END_TO_END_BLOCKER_REPAIR_AND_REAL_ASSET_CANARY_GATE_2026-10-19.md)的`REVIEWER_TO_EXECUTOR_RELAY`。Owner 2026-10-19已确认内存预留并批准“继续推进，最好本轮一次性解决”；**无需再单独申请诊断、修复、检索、合规下载的逐步许可**。此时未向本机Codex发送提示词，历史PR#155/#156均已Review，不得再启动旧Gate。
+**本轮独立裁决**：[PR#157真实ZIP和代码审核](docs/reviews/CW0005_PR157_INDEPENDENT_MEDIA_E2E_REVIEW_PARTIAL_20261019.md)，正式`PARTIAL_SAFE_ADDRESS_GUARD / RIGHTS_UNKNOWN / END_TO_END_MEDIA_CANARY_NOT_PASS`。旧`CWS-MEDIA-END-TO-END-BLOCKER-REPAIR-REAL-ASSET-CANARY-20261019`任务**已经执行并在Reviewer结束，不可再根据旧Gate授权重跑**。
 
-**前次已验收真相**：PR#156实检ZIP及Git全部一致，搜索SearXNG84条（上游PARTIAL）＋4get11条，95原始→87去重**网页链接**，没有任何真实动作预览、合规许可视频下载。第二语义因685/794MiB低于固定1664MiB保护失败；四URL格式探测仅底层ValueError，是否代理Fake-IP/非全球地址尚**UNVERIFIED**；Windows本机`media_pipeline.py`与main不一致，还使用临时harness，标准源码路径未证明可复现。旧PR#155素材流程仍`RETURN_PROCESS_COMPLIANCE`，PR#156证据归档`PARTIAL_SEARCH`，既有短视频技术PASS仍接受。完整[PR#156独立审核](docs/reviews/CW0005_PR156_INDEPENDENT_MEDIA_PROCESS_REVIEW_PARTIAL_2026-10-18.md)。
+**可保留成果**：ZIP 29成员/28条SHA校验PASS；本轮414原始记录，274个独立页面（146视频/128图片，54条与历史URL身份重合、220条新页面），内存有余、既有源码与main一致；PR#157只新增8行`198.18.0.1 + 公网IP`混合DNS必须被`NON_PUBLIC_MEDIA_ADDRESS`拒绝的安全负例，基线60/分支61测试的日志记录PASS。上述不等于274段真实合法视频。
 
-**本轮允许**：先真实Windows本机检查可用内存、精确DNS/代理错误类别、代码导入路径与差异，在干净隔离worktree里必要时做**最小MEDIA模块修补及负例测试**；优先可信已许可的Pexels/Pixabay/OpenMontage、机构、Wikimedia等免费原站而非反复抽签YouTube；用最多2组S01关键词做多源候选发现→去重→实际播放预览→合法许可→格式验收，只有至少一个内容相关/未用/取得合适权利候选时才最多下载**1条≤80MB**并全片解码+SHA，创建独立PR+脱敏ZIP停Reviewer。保留前轮87链接索引，真实内存门槛1664MiB不变；有安全不明就停线而非虚假PASS。
+**仍受阻**：1条YouTube素材只有Executor文字描述的部分视觉观察（时码不可核）、其他273页未实看，274条资产复用许可全部`UNKNOWN`；无合法视频下载、无新源FFprobe/FFmpeg/SHA；Fake-IP环境下安全访问通道**未修复**，生产校验器正确拒绝非公有地址。PR#157保持`Open / NOT_MERGED`，**新负例测试可局部接受但不得把PR或媒体流程宣称完整PASS**。
 
-**本轮禁止**：跳过或削弱`NON_PUBLIC_MEDIA_ADDRESS`/重定向等私网防护，改Clash/TUN/DNS/代理或其它项目Docker，减内存门槛/盲重复低内存尝试，沿用本机旧源码+临时harness，下载无许可素材，强制凑下载数，重渲59.93秒样片/变更V5.6.2冻结HTML、额外AI图/TTS、付费、发布、合并PR、删除旧媒体或覆盖现有本机工作树。
+**下一步建议（尚未授权，不可自动执行）**：停止继续凑数式通用多站URL搜集，先在已有OpenMontage/Pexels/Pixabay等许可明确的原始提供方找到真实合适、作品身份未用的S01片段，核画面、权利和可追溯资源；仅在受支持的端点校验能同等安全覆盖最终目的地及跳转时做有界下载+完整解码，绝不关闭`NON_PUBLIC_MEDIA_ADDRESS`或改Clash/TUN/DNS/系统代理。下一个Gate须Owner明确启动。
 
-**持续状态**：`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`；**新流程即使通过，也不能倒推前次历史流程PASS**。
-
-**Codex读取边界**：只读本Gate及其中明确引的最小核心素材规范/代码；不要全面重扫项目文档与Governance，也不要重复已PASS视频技术。过去执行历史仍在`docs/DECISION_LOG.md`及具体Reviewer报告。项目级[生图强制效率规则](docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md)继续有效，但**本轮禁止AI图生成/编辑**。
+**项目冻结状态**：原59.93秒样片技术PASS、V5.6.2模板冻结不变；历史PR#155`RETURN_PROCESS_COMPLIANCE`、PR#156`PARTIAL_SEARCH`，`CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / RIGHTS_PARTIAL / NO_PUBLISH / VOICE_BY_EAR_UNVERIFIED`继续有效。旧Gate全文与前期结果仍保留在`docs/DECISION_LOG.md`、Reviewer报告及Git历史，不构成新执行权限。
 
 ---
 
