@@ -1,6 +1,6 @@
 # 跨境业务｜五板块总项目库
 
-> **PROJECT_STATUS：STRUCTURE_READY / 01_ALL8_SEALED_WAIT_OWNER / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH8_SEALED_CH9_WRITER_V1_PENDING / 05_ALL6_OWNER_AUGMENTED_SEALED_SOFT_REVIEW_RELEASED_BOARD_CLOSE_PENDING**（2026-10-19）  
+> **PROJECT_STATUS：STRUCTURE_READY / 01_ALL8_SEALED_WAIT_OWNER / 02_CH1_CH8_SEALED / 03_CLOSED / 04_FRAMEWORK_V2_FROZEN_CH1_TO_CH8_SEALED_CH9_WRITER_V1_PENDING / 05_ALL6_G7_EDITORIAL_PASS_SEALED_BOARD_CLOSE_PENDING**（2026-10-19）  
 > **唯一导航入口：本文件**｜**当前执行 Gate：NONE**｜**HTML：不在本轮范围**
 
 **统一操作说明：** [《项目标准生产、审核与封板规范（SOP）》](PROJECT_WORKFLOW_SOP.md)——此后五个板块按统一八阶段顺序推进；既有冻结内容不自动解冻。
@@ -19,7 +19,7 @@
 | 02 | **网络环境搭建** | 跨境网站/账号所需网络连接、稳定性、设备与访问环境、运维和合规边界 | [八章唯一正式正文及冻结框架](02-network-environment/README.md) · **8/44/93冻结问题不变；第①–⑧章语言与连贯性R1定向修订复核PASS，最终封板，HTML未启动** |
 | 03 | **支付、税务与经营主体** | 合法经营主体、支付方案、交易接入、结算提现、退款拒付、财税合规 | [封板板块](03-payment-tax-entity/README.md) · **FROZEN（禁止修改）** |
 | 04 | **产品搭建** | 选型、建站/应用、用户体验、订单与自动履约、质量和服务交付 | [正式框架与逐章正文](04-product-building/README.md) · **1/9/48/117 FROZEN；4.1–4.8八章正式封板；4.9独立Writer V1 Gate已发布、首稿待交** |
-| 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [第五部分六章Owner补强冻结版](05-acquisition-growth/README.md) · **1/6/35/78原题全冻结，六章正式正文Owner批准最小纠偏，T2—T7经营实践共用附录已完成，T8来源治理已落库；独立软性Reviewer Gate/工作包已发布，BOARD_NOT_CLOSED** |
+| 05 | **获客与用户增长** | 自然/主动/付费获客、成交、复购、效果评估与增长复制 | [第五部分六章G7软性润色正式PASS版](05-acquisition-growth/README.md) · **1/6/35/78原题全冻结，六章Owner授权G7软性润色与定点修复正式PASS并停止本轮内容返修；T2—T7实操附录、T8术语来源索引均保留；BOARD_NOT_CLOSED（G8/HTML/CLOSE尚未启动）** |
 
 ## 第一、第四、第五板块的框架撰写规范
 
