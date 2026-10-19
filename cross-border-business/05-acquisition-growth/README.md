@@ -1,65 +1,44 @@
 # 05｜获客与用户增长
 
-> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_WRITER_R2_REVIEW_RETURN / R3_MINIMAL_REPAIR_PACKET_READY**  
-> **唯一核心冻结问题：怎么才能持续有客户下单？**
+> **CURRENT_STATE（2026-10-19）：FRAMEWORK_OWNER_FROZEN_V2_1_6_35_78 / CHAPTER1_FINAL_SEALED / CHAPTER2_FINAL_SEALED / CHAPTER3_FINAL_SEALED / CHAPTER4_FINAL_SEALED / CHAPTER5_FINAL_SEALED / CHAPTER6_WRITER_GATE_RELEASED / WRITER_NOT_STARTED**  
+> **核心冻结问题：怎么才能持续有客户下单？**
 
-## 最新正式进度
+## 六章进度与唯一正式文件
 
-| 章节与成果 | 正式题数 | 当前状态 | 权威文档 |
+| 章 | 原冻结题目数量 | 现行状态 | 正式文件 |
 |---|---:|---|---|
-| 全部第五板块 | 核心1/一级6/二级35/三级78 | **OWNER_FROZEN V2**；2.2直接成节 | **[正式冻结完整题树](docs/FROZEN_FRAMEWORK_V2_20261018.md)** |
-| ①《我的客户在哪里？》 | 二级4/三级8 | **FINAL_SEALED** | [第一章唯一正式正文](docs/CHAPTER1_FINAL_SEALED.md) |
-| ②《我该怎么找到客户？》 | 二级9/三级22 | **FINAL_SEALED** | [第二章唯一正式正文](docs/CHAPTER2_FINAL_SEALED.md) |
-| ③《客户来了，怎么让他下单？》 | 二级6/三级14 | **FINAL_SEALED** | [第三章唯一正式正文](docs/CHAPTER3_FINAL_SEALED.md) |
-| ④《找客户到底划不划算？》 | 二级6/三级12 | **FINAL_SEALED** | **[第四章唯一正式正文](docs/CHAPTER4_FINAL_SEALED.md)** |
-| ⑤《怎么让老客户再买、带来新客？》 | 二级5/三级11 | **WRITER_R2_REVIEW_RETURN / NOT_SEALED**（原题完整，但多余清单H2） | **[最新R2独立审核报告](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)** |
-| ⑥《有效的获客方法怎么做大？》 | 二级5/三级11 | 仅冻结问题，正文NOT_STARTED | [完整题树](docs/FROZEN_FRAMEWORK_V2_20261018.md) |
+| 全板块唯一问题框架 | 核心1/一级6/二级35/三级78 | **OWNER_FROZEN V2**；2.2直接成节 | **[完整正式框架](docs/FROZEN_FRAMEWORK_V2_20261018.md)** |
+| ①《我的客户在哪里？》 | 二级4/三级8 | **FINAL_SEALED** | [第一章唯一正文](docs/CHAPTER1_FINAL_SEALED.md) |
+| ②《我该怎么找到客户？》 | 二级9/三级22 | **FINAL_SEALED** | [第二章唯一正文](docs/CHAPTER2_FINAL_SEALED.md) |
+| ③《客户来了，怎么让他下单？》 | 二级6/三级14 | **FINAL_SEALED** | [第三章唯一正文](docs/CHAPTER3_FINAL_SEALED.md) |
+| ④《找客户到底划不划算？》 | 二级6/三级12 | **FINAL_SEALED** | [第四章唯一正文](docs/CHAPTER4_FINAL_SEALED.md) |
+| ⑤《怎么让老客户再买、带来新客？》 | 二级5/三级11 | **FINAL_SEALED** | **[第五章唯一正式正文](docs/CHAPTER5_FINAL_SEALED.md)** |
+| ⑥《有效的获客方法怎么做大？》 | 二级5/三级11 | **WRITER_GATE_RELEASED / WRITER_NOT_STARTED** | **[第六章独立Writer Gate](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)** |
 
-**当前正式封板进度4/6章；第五章Writer R1已完整交付、独立Review RETURN，尚未封板。**
+**当前：五章正式封板，最后第六章独立Writer首稿已启动但尚无正文。第五部分整体仍不CLOSED。**
 
-## 第四章为何已正式封板
+## 第五章R2直修后为何封板
 
-第四章Writer R1曾经[独立Review RETURN](docs/CHAPTER4_WRITER_R1_REVIEW_RETURN_20261019.md)，Writer R2已做实质返修，但[独立R2 Review](docs/CHAPTER4_WRITER_R2_REVIEW_RETURN_20261019.md)发现残留**B01—B03＋N01—N03**。
+- [Writer R1独立审核历史RETURN](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)、[Writer R2独立审核历史RETURN](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)都真实留存。后者确认R1多数问题已修复，但仍有**B01–B06必修与N01–N03小修**。
+- **Owner在2026-10-19明确授权Reviewer直接最小修正、封板入库并开启第六章。** 正式正文严格保留5二级/11三级原题，Mermaid/经营案例/原数学主体，删除多余H2。
+- 修复Visa VAMP旧“0.9–1%必然永久封控”断言；公开评价邀请按真实使用节点公平触达，不按正面情绪筛选；储值金奖励以当前$42贡献及未来$20预留后的$22剩余空间分开，避免当成已实现现金净利润或当然法定负债；GDPR删除权依法有例外；区分成交推荐佣金与奖励评价；营销补货需实际许可，流失饼图明确示意假设。
+- **[第五章Owner授权最小修订封板证据](docs/CHAPTER5_SEAL_EVIDENCE_20261019.md)**：Owner授权、Writer原稿指纹、修改矩阵、官方来源与最终正式全文SHA；**并不存在独立Writer R3交稿**，上轮R3包已经成为历史。
+- 第一到四章唯一封板正文仍原样不变。完整V2问题树没有解冻或变更。
 
-**Owner于2026-10-19再次明确授权**Reviewer直接在Writer R2全稿上最小修复、正式冻结并写入项目库、启动下个一级问题。因此，Reviewer完成以下工作：
-- 核对Visa VAMP官方2026-04-01阈值修订，不再称全球“0.9–1%拒付率必入监控”；阐明欺诈＋争议事件数与月度交易笔数及地区/事件数条件。
-- 讲清“$100标价、$10折扣、$90实收”，营销管理展示不得取代适用财务准则的交易价格及收入确认。
-- 将`$36.74−$42=−$5.26`统一称为扣**本例广告CPA**后的阶段性贡献差额，未包含全口径获客或所有经营成本，不是必然已实现的净利润/现金亏损。
-- 顺手修LTV订阅公式、按月收款是第7次结算而非第6.6个月到账、8周/停留5秒/扩量绝对规则，保留原案例、图示与数学主体。
+## 当前唯一任务：第六章独立Writer完整首稿
 
-**[第四章封板审计记录](docs/CHAPTER4_SEAL_EVIDENCE_20261019.md)**包含Owner授权、原R2和最终文件SHA、逐项修复及Visa/IFRS来源。**本轮没有独立Writer R3交稿**；此前已准备的R3修复ZIP不再是最新执行要求。历史R1/R2 RETURN标签不能覆盖正式`CHAPTER4_FINAL_SEALED`。
+- **[第六章正式Writer Gate（5/11题）](docs/CHAPTER6_INDEPENDENT_WRITER_GATE_V1_20261019.md)**：聚焦可复制的获客SOP、小实验与因果验证、合规自动化/外包、扩量产能、第二渠道与平台依赖风险；不重复第二章冷启动执行与第四章CAC/LTV经济性公式细节。
+- **[14文件离线ZIP清单与SHA256](docs/CHAPTER6_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**：`第五部分_第六章_有效获客方法怎么做大_独立Writer首稿工作包_V1_20261019.zip`，**135,448字节**，SHA256 `5781acffff858247ae3a873487c40b99d8affd1d273dfce48361103a47986545`，已CRC及逐文件校验；**ZIP二进制仅在Owner对话中交付**，不是GitHub附件。
+- 离线ZIP完整包含第五部分V2冻结题树、全部第⑥章5个二级/11个三级原问句、正确五板块边界、独立Writer合同、来源/实验/数据与营销合规规范、交付约定、**前五章正式全文（仅可选只读参考）**、Writer可复制提示词及SHA256索引。
+- **Writer无需GitHub权限**，自行决定篇幅/案例/图表与研究；以真实官方来源及准确数学解决题目，提交**第六章全量Markdown正文+完整事实核验Markdown+ZIP**即`STOP_AT_REVIEWER`。无权自称PASS或封板，不启动HTML或实际广告自动化。
+- **独立Reviewer**核第六章5/11、实操/复测/实验因果、指标、来源合规；若RETURN，同轮给上一版全文与核验＋Reviewer报告/修复任务/官方依据＋SHA256组成的**完整ZIP**和可直接复制提示词。**Owner单独决定第六章封板**，不得自动沿用第五章授权。
 
-**第一二三章各自正式正文与V2正式题树保持原样，不允许任何后续Writer擅自解冻。**
+## 一致性与长期恢复
 
-## 第五章Writer R2独立审核（当前最新）
+- **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**为本板块最新恢复入口，记录五章封板与第六章Gate、完整来源及ZIP指纹。
+- 五板块①机会市场、②网络环境、③支付税务经营主体（CLOSED）、④产品搭建各有独立权威，**本轮不修改**；第五部分的旧候选框架与早期Review只作历史存档。
+- 任何HTML合成、真实营销/支付、网站/服务器修改本轮均不执行。全板块正式框架1/6/35/78及前五章正文需要Owner批准才能解冻。
 
-- **[完整R2 Reviewer审核：RETURN](docs/CHAPTER5_WRITER_R2_REVIEW_RETURN_20261019.md)**：冻结5/11原题逐字、同序存在，但正文多余“本章自检”H2，实际为6H2；R1绝大多数法律事实错误已修，仍有Visa 0.9–1%风险硬线复发、按满意客户筛选公开索评、储值金未来兑现被称为已实现现金毛利、正式五板块被误命名、数据删除权无条件化，另三项顺手修正。第⑤章**未封板**。
-- R3完整离线ZIP：`第五部分_第五章_R2独立审核与R3最小返修包_20261019.zip`，**52,253字节**，SHA256 `85bca6b385635d022f253fa645038555393d3f9e0ae220f35e9c3757388e7815`，包含R2 **423行原始正文+210行完整事实核验**及本轮Reviewer报告、精确修复任务、官方资料、传递话术和SHA256清单，ZIP CRC与文件字节一致性验证通过。二进制只在本轮对话交Owner，**未存GitHub**。
-- Owner只需转发该包与提示词，Writer完成R3定向修订并交完整正文/核验ZIP，`STOP_AT_REVIEWER`；Reviewer独立复核，Owner决定是否封板。冻结题树与前四章正式全文保持不变，第⑥章不得提前启动。
+**NEXT_STEP：** Owner转发第六章14文件完整ZIP与提示词给独立Writer → Writer回完整正文和核验ZIP → Reviewer独立审 → Owner决定封板第六章与第五部分后续状态。
 
-## 第五章Writer R1独立审核（历史）
-
-- **[第五章完整R1独立Review：RETURN](docs/CHAPTER5_WRITER_R1_REVIEW_RETURN_20261019.md)**。冻结**5二级/11三级原题全部PASS**；正文涵盖不同产品复购、服务沟通、续费增购、评价转介绍与退出。8组实质缺陷：2024 FTC Click-to-Cancel现行状态错误，FTC 2024评价规则禁止范围过宽，Google Maps/Amazon评价奖励平台红线遗漏，营销邮件/服务邮件法律区分混用，自检补货/推荐数字不对应正文、五板块架构被错误更名，未经证据的产品承诺、取消与数据保留要求。另有N01–N03三项措辞/经营口径小修。**不能封板，保留主体定向返修**。
-- **本轮完整R2离线修复ZIP**：`第五部分_第五章_R1独立审核与R2完整返修包_20261019.zip`，**43,329字节**，SHA256 `b9854639f3c5cb4e6f61b6d0ff4d37e0bed1b297ea2e84f42cc9c06a1ffd2caf`，7份文件，ZIP CRC及原文逐字节一致。包含Writer R1**完整384行正文＋173行核验**、Reviewer全文、R2任务/核验资料、提示词/Manifest；ZIP二进制只在Owner对话，不在GitHub。
-- **当前下一步**：Owner将R2包和话术交离线Writer，Writer回完整R2稿/核验/ZIP供Reviewer复核。第①—④章正式封板正文与正式V2冻结框架持续保持不变；第⑥章没有启动。
-- 下文第五章**首稿Gate发布时**的“Writer尚未交稿”已是历史状态，仅供追溯原始任务与资料，不再作为当前停点。
-
-## 第五章独立Writer首稿Gate（历史）
-
-- 章节唯一原标题：**《怎么让老客户再买、带来新客？》**，**5二级/11三级**原题不变。内容涵盖不同商品的续费/补货/非复购价值，买后合法联系，增购与提醒，客户真实评价/介绍、激励披露和尊重取消。
-- **[第五章Writer Gate](docs/CHAPTER5_INDEPENDENT_WRITER_GATE_V1_20261019.md)**、**[离线工作包Manifest及SHA256](docs/CHAPTER5_WRITER_OFFLINE_PACKET_MANIFEST_V1_20261019.md)**已经提交GitHub `main`。
-- 自包含Writer ZIP由本轮对话提供Owner：`第五部分_第五章_老客复购与转介绍_独立Writer首稿工作包_V1_20261019.zip`，**112,598字节**、SHA256 `360d928f534ef0fada736aee614b071881f37c52b07885bd0869cc889e6386e7`，13份UTF-8 Markdown，`testzip()==None`、全部文件字节校验通过。包含完整V2离线冻结树、第五章全部题、五板块边界、事实与法规来源、独立流程合同、四章正式封板全文（可选参考，Git blob校验）、Writer提示词及Manifest。**ZIP二进制不在GitHub**。
-- 独立Writer没有GitHub权限，自由决定篇幅、案例、工具和图表；不得将营销邮件与服务通知混为一谈或把评价激励写成统一豁免。以官方当期来源核实英国PECR、GDPR、美国FTC及具体平台规则。
-- 交付：**完整第五章中文正文Markdown＋完整事实来源/逐题自检Markdown＋ZIP**，`STOP_AT_REVIEWER`，不自行宣布PASS、不封板、不写第⑥章、不做HTML。
-- 独立Reviewer按[长期Writer→Reviewer→Owner合同](../02-network-environment/docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md)核5/11、知识广深、真实操作、法规/来源、反例与跨章边界。如RETURN，**同轮交完整上一版正文＋核验＋Reviewer详细报告和返修指令的完整ZIP及可复制话术**；Owner最后决定是否封板。
-
-## 当前状态与项目边界
-
-- **[唯一当前Reviewer交接](REVIEWER_HANDOFF.md)**：主恢复入口，记载四章封板证据、第五章Writer Gate、最新文件指纹和下一步。
-- ①机会/市场、②网络环境、③支付税务经营主体（CLOSED）、④产品搭建的正式内容**本轮不修改**；第五板块冻结问题树也不动。
-- 旧9/45题、102三级和V2批准前候选为历史，正式唯一题树是`docs/FROZEN_FRAMEWORK_V2_20261018.md`。
-- 本轮没有真实营销、客户资料、广告/支付/服务器操作，也没有建站代码或正式HTML更改。
-
-**NEXT_STEP：** Owner转交第五章R3完整最小返修ZIP及可复制提示词 → Writer据R2完整全文修B01–B06/N01–N03并交R3全文/核验ZIP → 独立Reviewer复核 → Owner决定是否封板。
-
-[返回五板块总项目库](../README.md)
+[返回五板块总库](../README.md)
