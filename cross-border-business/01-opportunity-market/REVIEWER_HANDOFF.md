@@ -29,3 +29,6 @@
 Owner明确接受合并建议并授权最小修正；现行8章已进行局部事实更正、指标口径统一与最少实操卡补强，1/8/34/83原题及8.2直接成节全部不变。**本轮版本指纹和27项逐条处理证据**： [G5/G6最小修订再封板记录](docs/G5_G6_OWNER_MINIMAL_RESEAL_20261019.md)。先前第8章Writer R2与旧封板文件SHA均是**历史版本证据**，不能作为当前正式字节版本。
 
 **当前目标：G7全书软性连贯性/可读性独立审查**。独立Agent不得修改GitHub，只交Markdown报告与（如Owner允许）完整润色候选；即使Agent自评PASS，也须总控对比本轮固定Commit并由Owner决定是否采纳。**CURRENT_WRITER_GATE: NONE / HTML: NOT_STARTED / BOARD_CLOSED: NO**。本次静态结构通过不等于Python新反例或现实法律/交易全面重验。
+
+
+**G7 有效软性审查 Gate：** [G7_INDEPENDENT_SOFT_POLISH_GATE_20261019.md](docs/G7_INDEPENDENT_SOFT_POLISH_GATE_20261019.md)；[完整离线工作包（独立下载分支 ZIP）](https://github.com/entropy-student/project/archive/refs/heads/cb01-g7-soft-polish-packet-20261019.zip)。该分支只用于下载工作包，**不可合并至main**；现行main八章全文才是权威正式正文。外部Agent交回的是完整候选，必须先独立复核、再经Owner决定。
