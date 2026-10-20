@@ -1,13 +1,14 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G5跨章总控复核待执行，BOARD_NOT_CLOSED。**
+> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6按Owner采纳清单修订并重新封板完成；G7独立语言编辑工作包就绪、等待候选；BOARD_NOT_CLOSED。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
 ## 现行唯一权威文档
 
 - **[完整正式冻结框架（核心1＋一级10＋二级52＋三级113）](docs/FROZEN_FRAMEWORK_V1_20261020.md)**
+- [跨章实操路径与证据底稿（G6新增、非冻结附录）](PRACTICAL_PATHS_APPENDIX.md)
 - **[唯一Reviewer交接（Owner决策、冻结证据、历史保护、下一Gate）](REVIEWER_HANDOFF.md)**
 - [全库唯一项目SOP](../PROJECT_WORKFLOW_SOP.md)
 

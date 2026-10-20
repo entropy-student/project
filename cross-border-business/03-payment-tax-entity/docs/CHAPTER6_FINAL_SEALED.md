@@ -85,7 +85,7 @@ flowchart TD
     E -- "是 (按合同比例或固定金额扣留)" --> F["预留金账户 (Rolling / Fixed Reserve)"]
     E -- "否 (无风控拦截)" --> G["可提现余额 (Available Balance)"]
     D -->|"到达出款周期"| E
-    F -->|"锁定期满 (如 90-180 天) 无拒付"| G
+    F -->|"达到合同释放条件并通过风控复核（非自动）"| G
     G -->|"发起出款 (Payout)"| H["银行清算轨道 (ACH / SEPA / SWIFT)"]
     H --> I["商业银行入账存款 (Bank Credited)"]
 ```

@@ -223,6 +223,10 @@
 
 ---
 
+> **异步支付履约边界：** ACH、SEPA等银行扣款产品可能先进入`processing`，清算成功、出款可用与付款人合法追索期均是不同层次。服务端先按网关实际对象验证订单ID、金额、币种、商户归属及收款状态，再根据商品可追回性决定是否即时发放、限制试用权益或等待特定确认；即使`succeeded`也不代表长期不存在合法银行退回与纠纷风险。拒付/退款事件须走第7章的撤销/追缴及幂等处理，不从付款页面或Webhook单一字段推断最终银行入账。参考：[Stripe SEPA支付](https://docs.stripe.com/payments/sepa-debit)、[Stripe ACH支付](https://docs.stripe.com/payments/ach-direct-debit)。
+
+---
+
 ## 5.3 怎么让付款结果和订单、交付对得上？
 
 ### 5.3.1 支付Webhook怎么通知订单系统，为什么要核验消息来源？
