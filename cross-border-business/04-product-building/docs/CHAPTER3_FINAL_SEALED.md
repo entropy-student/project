@@ -33,7 +33,12 @@ flowchart LR
   PSP -->|"Webhook付款事件通知"| S
 ```
 
-**前端**是客户看到并填写的部分；**后端**负责可信地检查订单与权限。**API**是程序交换信息的接口，**REST API**是常见接口形式；通过API主动查询称为**请求/响应**，外部服务主动通知发生了什么称为**Webhook**，通知可能重复或迟到。**数据库**保存记录，**对象存储**常存照片/成品文件。**CMS**管理网站内容，**插件**扩展功能，**主题**主要管理外观，**SaaS**由供应商托管软件，**自托管**则要自己负责相应运行维护。**测试环境**用于隔离验证，**日志**帮助排障，但不能独自证明已真实交付。
+按一笔订单的顺序认识技术词：
+
+1. **客户看见**：浏览器页面、表单是**前端**；**CMS**管理网站内容，**主题**控制展示外观，**插件**扩展现成功能。
+2. **订单核实**：可信**后端**检查订单与权限，**数据库**保存订单和授权记录；程序间按约定交换信息叫**API**，**REST API**是常见的一种接口设计。
+3. **外部服务反馈**：商家主动通过API查询属于**请求与响应**；支付商主动推送事件叫**Webhook**，可能延迟、重复或乱序，收到事件不直接等于已付款。
+4. **制作与交付**：照片或PDF可保存在受控**对象存储**并按订单授权；**SaaS**由供应商托管，**自托管**由商家负责运行维护；**测试环境**用于模拟验证，**日志**协助排障，但不能代替客户实际取得成品的证据。
 
 **哪些需要自己做？** 能由平台安全承接订单与交付时不必自建后端、数据库或Webhook接收器；只有平台、适用插件、受控人工方式都不能满足关键需求时，再评估局部自研。参考[MDN客户端/服务器基础](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)。
 
@@ -98,9 +103,16 @@ flowchart LR
 
 #### 两条可复现的入门路线（R03/R08）
 
-**路线A：Shopify等托管店铺。** 按[官方新店清单](https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/new-to-shopify-checklists/general-checklist)检查所在地、业务和服务商准入→创建未公开测试商品→在所选支付服务商实际支持时启用测试方式→使用测试买家下单→核对后台订单、金额、可信支付状态和交付入口→测未付不可领取。若产品需要上传照片但平台不能安全实现，可先规划受控人工补件，不能假定平台已集成所需插件。
+**路线A：Shopify等托管店铺。** 先按[官方新店清单](https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/new-to-shopify-checklists/general-checklist)核验卖家主体、地区、商品与支付资格。**Draft商品不能销售；Unlisted商品可通过直接网址购买，不是私人测试空间**；有支付入口的测试商品须放在受控的隔离商店/访问环境，避免真实客户误购。选择官方支持的[测试支付方式](https://help.shopify.com/en/manual/checkout-settings/test-orders/payments-test-mode)，在当前平台规定的付费套餐等前提下模拟成功与失败交易，核对订单及交付。Shopify Test payment gateway不适用于POS和订阅商品；**开启支付测试模式时可能阻止真实卡付款**，测试完要关闭并复查实际支付配置。需要按客户上传照片制作PDF时，还须另核实订单附件/扩展和安全交付功能，不能默认普通商品页面已经支持。
 
-**路线B：WordPress + WooCommerce。** 在隔离网站按[WooCommerce安装设置向导](https://woocommerce.com/document/woocommerce-setup-wizard/)完成基本设置→建立虚拟/可下载测试商品→在`WooCommerce > Settings > Payments`确认测试网关能力→以非管理员测试账户按网关沙盒说明提交订单→在`WooCommerce > Orders`核对支付与订单→以买家身份实测PDF能打开、他人不能领取，并清理测试单。参考[官方测试订单指南](https://woocommerce.com/document/managing-orders/testing-orders/)。
+**路线B：WordPress + WooCommerce。** 在独立测试站按[官方设置向导](https://woocommerce.com/document/woocommerce-setup-wizard/)配置→建立测试商品→检查`WooCommerce > Settings > Payments`及网关测试模式→用非管理员测试买家下单→在`WooCommerce > Orders`核实付款和订单→验证领取及无权访问。**这里必须区分：**
+
+- **所有人购买同一份预置文件**：适用`Virtual`/`Downloadable`及商品级文件、权限设置，按[WooCommerce官方数字下载说明](https://woocommerce.com/document/digital-downloadable-product-handling/)测试。
+- **每单按客户照片定制一份PDF**（`DEMO-PDF-001`）：商品应先承接**定制服务订单**，不是先在商品下载栏配置一个所有买家都会领到的专属PDF。最小可行方法：订单及测试付款核对→经该订单授权的补件通道收三张照片→人工按订单制作和校对成品→通过经验证的订单专属附件权限工具，或经过身份核实、留痕的受控人工方式交付→用本买家和另一无权测试买家分别验证。若所用平台/扩展不支持订单专属附件，**记`NOT_RUN`或`FAIL`而不是假称完成**。注意修改商品级已有下载文件可能影响既有订单的文件链接；请先评估权限和历史订单风险，避免用商品层文件替换个别买家成果。
+
+参考[官方订单测试说明](https://woocommerce.com/document/managing-orders/testing-orders/)。插件是否收费、许可证、平台兼容、实际上传安全与订单隔离须逐一验证，不预设存在免费的可用实现。
+
+**贯穿记录**：本章两条路线测试所得的订单ID、官方测试付款对象、照片附件ID、成品版本与授权凭据，统一填写在4.8的`DEMO-PDF-001`订单记录卡；这张卡是跨章唯一执行索引。
 
 **判定分层**：本地预览只证明页面可看，隔离测试只证明模拟链路；部署可访问、测试网关付款成功、生产真实付款及实际客户取得成果是不同证据。官方提示WooCommerce测试订单可能触发邮件或外部插件副作用，**优先在Staging而非生产站测试**。没有合法网关资格或可信状态时停止放行，不得用线下付款选项产生的订单冒充卡支付测试成功；所有未执行节点保持`NOT_RUN`。
 
