@@ -23,13 +23,13 @@
 
 #### 1. 基础概念与底层技术原理
 
-在跨境线上收银台中，“手机钱包”（Mobile Wallets / Digital Wallets，主要以 Apple Pay、Google Pay 等为代表）并不是一种独立的银行或新型货币，而是建立在现代卡组织（Visa、Mastercard、Amex 等）“代币化体系”（Network Tokenization）之上的安全支付承载与快速结账工具。
+在跨境线上收银台中，“手机钱包”（Mobile Wallets / Digital Wallets，如 Apple Pay、Google Pay）不是独立的银行或新型货币，而是让买家使用已保存的支付凭据快速、安全结账的工具。其凭据和认证机制因钱包产品、终端、卡网络与收单集成形态而异，**不能将所有钱包支付都当作设备网络代币交易**。
 
 理解手机钱包，必须厘清其底层运作机制与传统“网页直接填写银行卡号”的本质区别：
-- **凭据代币化（Tokenization）与安全元件（Secure Element）**：
-  当买家将其物理银行卡绑定至 Apple Pay 或 Google Pay 时，卡组织与发卡行不会将真实的卡号（Funding Primary Account Number, FPAN）暴露给设备或商户，而是生成一个独一无二的设备账号/网络代币（Device Account Number / Network Token / DPAN）。该代币被加密存储在手机硬件级安全芯片（如 iPhone 的 Secure Element）或云端安全环境中。
-- **本地硬件生物识别鉴权（Biometric Authentication）**：
-  买家在结账时，无需在商户网页上手动输入 16 位卡号、到期月份/年份以及背面的 3 位 CVC/CVV 安全码，而是直接通过终端设备的指纹识别（Touch ID）、面容识别（Face ID）或锁屏密码完成本地鉴权。设备在本地完成私钥签名后，将动态加密凭证（Cryptogram）传递给收单网关进行扣款授权。
+- **支付凭据及代币化（Tokenization）**：
+  Apple Pay 的适用银行卡交易通常使用设备账号/网络代币并配合交易动态密码，真实主卡号（FPAN）不会以普通明文卡号直接提供给商户。Google Pay Web API 则明确区分 `PAN_ONLY`（加密传递的卡片凭据，**并非必然为设备网络代币或附有设备动态密码**）与 `CRYPTOGRAM_3DS`（包含设备代币交易动态密码）；不可把 Apple Pay 的 Secure Element 机制照搬为所有 Google Pay 交易的统一机制。
+- **买家鉴权与收单风控（Authentication）**：
+  钱包可能通过设备解锁、系统认证或其他适用步骤减少买家输入，但具体付款是否还需额外3DS挑战及责任转移，取决于凭据类型、法域、发卡行与收单机构。Google Pay 的 `PAN_ONLY` 流程仍可能需要收单机构执行3DS及风险检查，不能声称所有钱包付款都产生设备动态加密凭证。依据：[Google Pay 官方凭据格式](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography)、[Google Pay SCA 指引](https://developers.google.com/pay/api/web/guides/resources/sca)。
 - **快速填充地址与联系方式（Express Checkout）**：
   手机钱包能够将买家预存在操作系统中的默认配送地址、账单地址、联络电话及电子邮箱，通过标准 API 一键安全传递给商户结账系统，将原本需要手动填写的十余个表单项压缩为一次生物识别点击。
 
