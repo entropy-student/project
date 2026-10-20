@@ -1,24 +1,28 @@
 # 03｜支付、税务与经营主体
 
-> **STATUS：2026-10-20 Owner正式批准并冻结唯一核心1 + 一级10 + 二级52；三级候选设计已启动、尚未审批。**  
-> **CURRENT_GATE：G1_L3_DESIGN / STOP_AT_OWNER_REVIEW；完整问题树未冻结，G2新正文尚未开始。**
+> **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
+> **CURRENT_GATE：G2_CHAPTER1_KICKOFF；第1章正文待Writer完整首稿，尚未审核/封板，其余9章尚未开始。**
 
-**唯一核心问题（正式冻结）：做跨境生意，钱怎么收、税怎么交？**
+**唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
-## 第三板块唯一现行资料
+## 现行唯一权威文档
 
-- **[核心、10个一级、52个二级问题全部冻结原文](docs/FRAMEWORK_CORE_L1_L2_FROZEN_20261020.md)**（三级未冻结）
-- **[唯一Reviewer交接：Owner决策、历史资料保护、知识边界及下一Gate](REVIEWER_HANDOFF.md)**
-- [全库唯一项目工作SOP](../PROJECT_WORKFLOW_SOP.md)
+- **[完整正式冻结框架（核心1＋一级10＋二级52＋三级113）](docs/FROZEN_FRAMEWORK_V1_20261020.md)**
+- **[唯一Reviewer交接（Owner决策、冻结证据、历史保护、下一Gate）](REVIEWER_HANDOFF.md)**
+- [全库唯一项目SOP](../PROJECT_WORKFLOW_SOP.md)
 
-**十章教学顺序：** ①经营主体 → ②收款选型 → ③开户接入 → ④顾客付款 → ⑤支付确认 → ⑥银行到账 → ⑦退款与资金风险 → ⑧经营账务 → ⑨中国税务 → ⑩海外税务。实际记账、税务及风控义务不因其安排在后面而延后产生。
+**阅读阶段**：①–③经营主体和收款准备 → ④–⑤顾客付款和可靠确认 → ⑥–⑦到账及风险 → ⑧–⑩财务、中国和海外税务。阅读顺序不是法律义务实际产生的时间顺序。
 
-## 原独立《现代商业支付系统》（仍CLOSED，禁止覆盖）
+### 当前正文工作
+
+第1章 **《做跨境生意，我需要注册公司吗？》** 是当前唯一启动的一级章，已冻结6个二级及15个三级，下一步为独立Writer G2完整章写作。G3审稿/G4章节Owner审批还没有完成；不能把框架冻结等同正文冻结。
+
+## 原独立支付知识指南（仍CLOSED/只读）
 
 - [原项目唯一交接](../../modern-commercial-payment-guide/REVIEWER_HANDOFF.md)
-- [原V6正式冻结问题树（7/29/42）](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
-- [原七章最终正文所在目录](../../modern-commercial-payment-guide/docs/)
+- [原V6完整冻结问题树（7一级、29二级、42三级）](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
+- [原七章正式正文](../../modern-commercial-payment-guide/docs/)
 
-**下一步：** 独立Writer无需GitHub权限，按已冻结的全部问题设计必要三级问题（允许特定二级直接成节），Reviewer再做独立对照与Owner审批。此轮未生成新第三板块正文、HTML/PDF，也没有重开旧支付项目。
+原项目文件不移动、不删除、不覆盖；新版十章需要按自己的冻结框架重新完成G2–G8。
 
 [返回五板块总导航](../README.md)
