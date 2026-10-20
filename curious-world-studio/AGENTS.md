@@ -1,4 +1,8 @@
 <!-- CWS_PR159_SAFE_DYNAMIC_DIRECT_INDEPENDENT_PASS_20261020 -->
+
+<!-- CWS_OWNER_REVIEW_REOPEN_REQUEST_20261020 -->
+> **【Owner最新审核指示｜2026-10-20，优先于下方历史PASS记录】** Owner明确要求**忽略本次当前对话上传的ZIP，不再在本对话做任何ZIP复核**，待新一位Reviewer在新对话收到Owner重新提供的ZIP后，对PR#159最新交付**从头独立完整Review**。本仓库下方`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY`、NASA媒体QA、F159-01/F159-02修复记录和F159-03 minor均是**已有历史审核主张/证据**，不能自动转为新Reviewer复核结论；**不得提前撤销，也不得直接采信为新轮PASS**。新Reviewer须现场重新验证附件实际SHA/manifest/视频/代码/负例并与[旧独立报告](docs/reviews/CW0005_PR159_SAFE_DIRECT_REAL_MEDIA_INDEPENDENT_PASS_20261020.md)逐项对比；同名ZIP不代表文件字节一致。现行执行状态保持`CURRENT_GATE=NONE / REVIEWER_RECHECK_PENDING_OWNER_NEW_CHAT_ATTACHMENT / NO_EXECUTOR_OR_MERGE_AUTHORIZATION`，PR#159仍Open未合并，全部CW0005正式制作/发布HOLD不变。**这只是Review重开请求，不是Owner授权重跑Codex或改任何生产代码。**
+
 # CWS 当前唯一执行入口｜2026-10-20
 
 **CURRENT_GATE**：`NONE / PR159_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_REVIEWED_PASS`  
