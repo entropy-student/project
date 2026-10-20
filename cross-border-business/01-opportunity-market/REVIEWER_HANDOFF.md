@@ -1,18 +1,35 @@
-# 第一部分《机会挖掘与市场判断》｜唯一项目交接（G8最终PASS）
+# 第一部分《机会挖掘与市场判断》｜唯一项目交接（历史G8 / 现行G6修订候选）
 
-> **PROJECT_STATUS：2026-10-20 G6定向修订 / PASS_CANDIDATE / STOP_AT_OWNER_RESEAL**  
+> **PROJECT_STATUS：2026-10-20 第二轮Owner授权定向修复 / CANDIDATE / STOP_AT_INDEPENDENT_REVIEW**  
 > **CLOSE范围：第一板块知识体系的Markdown正文、正式框架、独立审核与G8文档归档阶段**  
 > **FRAMEWORK：CORE1 / L1 8 / L2 34 / L3 83；8.2不设三级；FROZEN**  
-> **CURRENT_GATE：G6_MINIMAL_REVISION_REVIEW / CURRENT_WRITER_GATE：NONE / OWNER_ACTION_REQUIRED：FINAL_RESEAL**  
+> **CURRENT_GATE：G6_TARGETED_FIX_PENDING_INDEPENDENT_REVIEW / CURRENT_WRITER_GATE：NONE / OWNER_ACTION_REQUIRED：AFTER_REVIEW_DECISION**  
 > **HTML、PDF、正式出版、现实交易与运营：NOT_STARTED/NOT_VERIFIED（不属于本轮CLOSE）**
 
-## 2026-10-20｜Owner授权G6定向完善（当前状态；下方2026-10-19记载属于历史）
+## 2026-10-20｜第二轮独立复核后Owner授权最小定向修复（当前最高优先级）
+
+- **授权**：Owner在第二轮Review（14项：P0两项、P1七项、P2五项）后明确要求按最小化原则开始修改。已执行 R01、R02、R03、R04、R05、R06、R09、R12；对同一类“平台费率资格”风险顺带原位补充R14中的Shopify大型开发者例外。**R07/R08/R10/R11/R13未在本轮实施**，不认定它们已经完成，也不据此要求另增章节。
+- **实质变更**：第1章纠正“2—3星评论通常代表真实深用”；第4章区分订单CPA与新客CAC、限定国家消费印象及德国DDG §5适用客体；第5章统一净销售额/退款冲回/退货新增费用，纠正收款即时到账和区域定价概括，补Shopify官方开发者资格；第7章将CAC分母改为新增付费客户、区分PO线索与已付费、纠正单变量过度刚性；第8章将分阶段固定预算/周期及单变量原则明确为教学/归因参考。第2/3/6章本轮无需改动。
+- **定向反例复查**：600美元广告/100订单/60新客→每单广告费6美元、新客CAC10美元；60美元初始订单/预计8%退款/新增逆向成本0.736美元→毛价法与已冲回净销售额法均为54.464美元（未扣其他共同成本）；德国访客不自动触发DDG违法断言；平台结算延迟不等于到账；合规故障可与实验调整同时修复而不得做单因素因果宣称。
+- **回归边界**：冻结问题树核心1/一级8/二级34/三级83、父题及顺序均保持，8.2仍不设三级；Mermaid及代码围栏不因本轮修正变化。所有演示仍为MODEL_ASSUMPTION，不宣称真实市场交易或法定资格。
+- **当前8章Git Blob（本轮新基线，依第1至第8章）**：
+  - CHAPTER1: `64c570f35667c97db47e4fb2cc3b87e5df5b289e`
+  - CHAPTER2: `13cbfbf81b2419916ac70dba89425e0d28492ba4`
+  - CHAPTER3: `c752d06b030dbbab96c00a9744f1de47ea8408e4`
+  - CHAPTER4: `376367f4ec103e0ef7ed3e1d1b0f0304bb96d5c2`
+  - CHAPTER5: `3b46dc00fbc11355a2c81114746b5611b69071a7`
+  - CHAPTER6: `6d92c4d6e4b3cb417eecf1ad15f9cc8738c404d1`
+  - CHAPTER7: `8ff562710c4afd4641549f239c6bc577a2d3a076`
+  - CHAPTER8: `5162e0922cd7c94e1108601c970cf71eca1062e2`
+- **验收与停点**：此处仅是Owner授权的Reviewer直修和定向复算，**尚无新独立Reviewer全书差异盲审**，不等于Owner重新批准新正文 FINAL_PASS。当前设为 `CANDIDATE / STOP_AT_INDEPENDENT_REVIEW`；取得独立复核结论后才能提请Owner正式封板。2026-10-19 G8 CLOSED和2026-10-20上一轮 PASS_CANDIDATE 仅为历史状态，下列先前SHA/Blob不得误指为最新版。最终封板时按SOP另记录原字节SHA256与当前Git Blob。
+
+## 2026-10-20｜上一轮Owner授权G6定向完善（历史，已被上方第二轮修复继承）
 
 **授权范围**：Owner说“以最小化原则，开始修改”，仅采用独立报告首推的8项：A01、A02、A04、A05、A06、A09、A16、A20。其余12项本轮不扩大；冻结1核心/8一级/34二级/83三级题原文、父题、顺序及8.2无三级保持不变。README、唯一交接及八章正文因同步更新；不改变跨板块SOP/冻结框架。
 
 **本轮改动**：第1章补白话先修与30分钟免费线索练习；第2章补经同意的双语访谈示范；第4章统一净销售额/贡献/现金口径，补Google Trends操作记录；第5章修正Apple/Google Play按地区/订阅/交易性质的动态费率；第7章补安全合法交付前提和手工测试台账；八章以同一“美国某州小型餐厅排队/预约工具”虚拟案例构成同一证据页，最终第8章为TEST。**所有案例均为MODEL_ASSUMPTION；没有真实受访、广告、客户、成交或支付验收**。动态平台收费按2026-10-20官方规则核验，之后须再查。
 
-**修订后章节Git Blob**（按第1至第8章）：
+**2026-10-20上一轮G6候选Git Blob（历史，已被上方最新版取代）**（按第1至第8章）：
 - CHAPTER1: 7b79bac4597428f9010e12570d76b95a5555eed9
 - CHAPTER2: 13cbfbf81b2419916ac70dba89425e0d28492ba4
 - CHAPTER3: c752d06b030dbbab96c00a9744f1de47ea8408e4
@@ -30,11 +47,11 @@
 
 当前目录严格**11份**：本交接`REVIEWER_HANDOFF.md`、简短导航`README.md`、`docs/FROZEN_FRAMEWORK_V1_20261018.md`、`docs/CHAPTER1_FINAL_SEALED.md`至`CHAPTER8_FINAL_SEALED.md`。**上述是唯一现行正式源；不可把历史R1/R2/G7候选当作新版本。**
 
-**当前最终基线：**正式八章内容来自G7已封板Commit [30f0558](https://github.com/entropy-student/project/commit/30f0558fa4ee35f5302dd031a6308756b9dafe3b)，本次G8只对正式目录与元数据进行整理，**八章正文Git Blob与原字节SHA256未发生变化**。
+**2026-10-19历史G8封板基线（不是当前正文）：**当时正式八章内容来自G7已封板Commit [30f0558](https://github.com/entropy-student/project/commit/30f0558fa4ee35f5302dd031a6308756b9dafe3b)，本次G8只对正式目录与元数据进行整理，**八章正文Git Blob与原字节SHA256未发生变化**。
 
 **框架冻结：**唯一问题树`1核心/8一级/34二级/83三级`、同父题、逐字排序、8.2二级直接成节不设三级保持不变。框架正文2026-10-18形成时的`NOT_STARTED`、`尚未启动正文`是历史描述，以本交接的CURRENT_STATUS为准。G8只修改冻结框架**6个失效历史相对链接**，替换为固定Commit的历史URL；没有更改任何冻结问句或知识范围。
 
-## 二、正式正文指纹（经2026-10-19本轮G8对照）
+## 二、2026-10-19历史G8正式正文指纹（非本轮最新版本）
 
 | 章节 | 一级/二级/三级标题数 | Git Blob SHA-1 | 原字节 SHA-256（UTF-8） |
 |---|---:|---|---|
@@ -109,7 +126,7 @@ docs/WRITER_REVIEWER_WORKFLOW_V1_20261018.md
 - 框架草案、阶段交接、G5/G6审核与G7编辑Gate仅作来源回溯；若历史文件标注`RETURN`、`NOT_STARTED`或`WAIT_OWNER`，均是其**当时状态**，不推翻最新Owner`CLOSED`决定。
 - 历史Writer交付若仅存在于对话附件，**不保证均已进入Git历史**；上面的历史快照仅对已入Git的39份文件作保全承诺。
 
-## 五、G8最终验收边界与新Agent规则
+## 五、2026-10-19历史G8最终验收边界与新Agent规则（现行停点见文首）
 
 - **Owner决定：** 本板块八章已G7正式PASS，现又明确授权对齐第二部分的11文件目录并在回归PASS后**知识正文板块完全CLOSED**，不继续本轮修改。
 - **编辑行为：** G8仅移除现行目录中的历史过程文档、定向修复框架内6处指向已清退文件的历史URL，重写导航与唯一交接、同步五板块父导航；八章字节不变，没有调整冻结问题原文/层级/顺序。
