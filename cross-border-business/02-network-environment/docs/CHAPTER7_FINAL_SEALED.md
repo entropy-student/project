@@ -440,6 +440,28 @@ rclone copy remote_s3:backup-bucket/uploads/ /srv/restore-staging/new-uploads/
 
 ### 5.1 怎样在安全的独立环境中测试备份是否完整且能够恢复关键功能？
 
+**零成本独立恢复微实验（Python 3标准库；仅使用自动创建的临时目录与虚构数据）：**
+
+```python
+import hashlib, json, pathlib, shutil, tempfile
+with tempfile.TemporaryDirectory(prefix="cb02-restore-") as root:
+    p = pathlib.Path(root)
+    live, backup = p / "live.json", p / "backup.json"
+    demo = [{"order": "DEMO-001", "status": "test-only"}]
+    live.write_text(json.dumps(demo), encoding="utf-8")
+    original_sha = hashlib.sha256(live.read_bytes()).hexdigest()
+    shutil.copy2(live, backup)   # 为这条演示数据创建备份
+    live.unlink()                # 仅删除临时演示文件，模拟丢失
+    shutil.copy2(backup, live)   # 恢复演示文件
+    assert hashlib.sha256(live.read_bytes()).hexdigest() == original_sha
+    assert json.loads(live.read_text(encoding="utf-8")) == demo
+    print("PASS: sandbox JSON restored and checked")
+```
+
+**预期输出**：`PASS: sandbox JSON restored and checked`；若断言失败，检查备份是否生成、是否完整、是否恢复到正确目录。临时目录在程序退出后自动清理。该实验只证明**单条示例JSON记录的恢复与一致性**，不能冒充已经实际验收MySQL/PostgreSQL、文件权限、RPO/RTO或者真实业务恢复；生产数据库的隔离导入、恢复后应用访问、支付与订单对账仍须按本节后续步骤单独演练，绝不可对生产库执行上述模拟删除操作。
+
+
+
 验证备份可用性的标准方法，是**在完全脱离生产环境的独立隔离沙盒中，真正演练解密、导入并验证核心数据完整性**。
 
 #### 1. 隔离演练的安全准则
