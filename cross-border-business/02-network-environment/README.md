@@ -19,7 +19,7 @@
 - [第8章《成本与升级》正式正文](docs/CHAPTER8_FINAL_SEALED.md)
 - **[唯一项目交接：封板决定、版本指纹、历史证据入口](REVIEWER_HANDOFF.md)**
 
-八章原版于2026-10-19完成封板；2026-10-20 Owner批准对八章做最小化知识补足与过时价格更正，**新版本待独立复核、不得将历史PASS等同本次新内容PASS**；新旧版本指纹、独立Reviewer R1 返修闭环及验收记录见唯一交接。当前目录共**11份正式文件**（本README、唯一交接、冻结框架、八章正文）。原8份封板证据及Writer/Reviewer流程已从当前目录清退，但可由[精简前 Git 快照](https://github.com/entropy-student/project/tree/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment)完整追溯。
+八章原版于2026-10-19完成封板；2026-10-20 Owner先后批准基础知识补足与第二轮系统审查后的**最小充分返修**：本轮只改第②③④⑤⑧章，重点处理知识顺序、选型、Windows操作条件与云服务价格周期，①⑥⑦保留原文；**修订后的版本仍待另一位独立Reviewer复核，不得将历史PASS等同本次内容PASS**；新旧版本指纹、独立Reviewer R1 返修闭环及验收记录见唯一交接。当前目录共**11份正式文件**（本README、唯一交接、冻结框架、八章正文）。原8份封板证据及Writer/Reviewer流程已从当前目录清退，但可由[精简前 Git 快照](https://github.com/entropy-student/project/tree/ee1992838145de9da227b7171e4f069b02c8f6b2/cross-border-business/02-network-environment)完整追溯。
 
 **HTML没有制作**，本轮已按Owner新授权完成正文定向修订；下一步应对该修改版独立复核并重新确认封板，任何生产系统操作仍需另外授权。本板块封板不等于生产技术/合同/平台规则已实测。第三支付板块继续CLOSED/FROZEN，本次未修改。
 
