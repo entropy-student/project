@@ -1,8 +1,8 @@
 # 网络环境搭建｜唯一项目交接
 
-> **PROJECT_STATUS：CLOSED / EDITORIAL_FINAL_PASS / ALL_8_CHAPTERS_FINAL_SEALED（Owner批准，2026-10-19）**  
+> **PROJECT_STATUS：TARGETED_CONTENT_REVISION_DELIVERED / SELF_CHECK_PASS / INDEPENDENT_REVIEW_PENDING（Owner授权2026-10-20）**  
 > **FREEZE：8个一级 / 44个二级 / 93个三级（三级Owner暂时冻结）**  
-> **CURRENT_GATE：NONE**｜**OWNER_ACTION_REQUIRED：NONE**｜**HTML：NOT_STARTED / DEFERRED**
+> **CURRENT_GATE：G3 INDEPENDENT_REVIEW_PENDING**｜**OWNER_ACTION_REQUIRED：NONE（本轮修改已授权）**｜**HTML：NOT_STARTED / DEFERRED**
 
 ## 项目定位与最终成果
 
@@ -10,7 +10,33 @@
 
 正式结构唯一基线：[V5 冻结框架](docs/FROZEN_FRAMEWORK_V5_20261018.md)，共8/44/93；未经Owner独立授权不得改变原题、层级、顺序、数量。此前目录精简没有改写正文；2026-10-19经Owner新的明确授权执行定向内容修订、重新验收并继续封板，详见下节。
 
-## 最新｜八章语言与连贯性最小修订后最终封板（2026-10-19）
+## 最新｜2026-10-20 Owner授权最小化知识补足（独立复审待完成）
+
+**Owner授权：** 在2026-10-20独立系统性审核报告提交后，Owner明确要求“以最小化原则，开始修改吧”。本轮对现有八章原位添加非冻结解释、场景选型、简单实验及价格纠错；**未增加新章，V5 8/44/93全部正式标题及层级逐字不变**。2026-10-19 的 `CLOSED/FINAL_SEALED` 是前一版的历史状态；以下修改版是**新一轮复审候选**，不能直接冒称已由另一个独立Reviewer验收并重新封板。
+
+**已写入的范围：** R01–R11（核心知识与演练）、R12–R19（仅选读导航与安全小修）、R20–R23（恢复微实验、费用/阈值及动态信息说明）；R24–R25所要求的“不重复已充分内容、不弱化平台/法律准入”继续保留。八章具体落点：
+①前置阅读路线和API/Webhook/OAuth简释；②IP/NAT/地址属性、代理与隧道/客户端分层、SOCKS5/WireGuard/Hysteria 2/Tailscale、只读连接验收；③托管域名/邮箱最短路径；④VPS/容器/PaaS关系、统一供应商比选及本地更新/回滚；⑤平台/自建安全分流与端口可达边界；⑥性能症状定位和源站选读；⑦隔离JSON备份恢复；⑧Hetzner CX22停售、2026价表、两阶段费用重算、CPU steal判据及价格时效。
+
+**经GitHub回读的最新正文Git Blob SHA（Git SHA-1，非原字节SHA-256）：**
+
+| 章 | 2026-10-20修订后Git Blob |
+|---|---|
+| ① | `6b4f281ce7e9995327336abcb71ed5e5ee06c277` |
+| ② | `71ed9e394bddbccfe3444a461b9828814dc96d30` |
+| ③ | `ae30841160e5627e93daec7eb267b69ff8477243` |
+| ④ | `15f4432933b345bc932413131ab3db693206c776` |
+| ⑤ | `7f2a0796ef323bdaa801839e3ef70ce9226acb4a` |
+| ⑥ | `d937704d49c17ed4c997a988bb15d9d385f5e48a` |
+| ⑦ | `bd50f511e821a32ea73bf5c8681c4e0506930115` |
+| ⑧ | `a97b9ccd2b469ef910d24b08314df14631d97644` |
+
+**静态与局部动态复验：** 已从先前有效Commit `45abcb62720323a69dc7552ed5b06c5217a0d982` 和修改后 `main` 获取原文/现文，过滤代码围栏内部标题后逐字比对；各章二三级数量5/10、7/15、5/10、6/13、6/13、5/10、5/11、5/11，合计44/93；V5框架blob `f4d970cc8f45aab405396cf61f3884bc7ff9fbff` 未改变，八章代码围栏均配对，UTF-8文本结尾LF。Python 3本地HTTP `v1→v2→v1` 及临时JSON `删除→恢复→哈希/记录核对` 示例已在隔离容器内运行PASS；**尚未进行真实云端发布、DNS变更、受限制的平台操作、收费服务、生产数据操作、法律审计，也没有完成独立第三方内容Reviewer验收**。
+
+**价格资料时效：** Hetzner停售机型及2026-06-15新价表见 [官方停售](https://docs.hetzner.com/cloud/servers/deprecated-plans/) / [官方调价](https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/) / [Primary IP](https://docs.hetzner.com/cloud/servers/primary-ips/overview/)。其余多厂商价格并非2026-10-20逐条核实的报价，正文明确作为教学`SNAPSHOT`，不可直接下单。
+
+**后续 Gate：** 独立Reviewer应以修改前后固定SHA重新核技术准确性、新增实操条件、源链接与财务算式，给出`PASS_CANDIDATE`或明确`RETURN`。通过后按统一SOP再记录Owner的正式封板与README状态；不新增多份平行交接。
+
+## 历史｜八章语言与连贯性最小修订后最终封板（2026-10-19）
 
 **Owner 本轮直接授权：** 基于独立语言Writer完整润色包及Reviewer R1 的 `RETURN_EDITORIAL_SEMANTIC_CONFLICT_AND_EVIDENCE_GAPS`，由本Reviewer直接定向修复、复核；通过后提交 `main` 并正式最终封板，不再开启本轮编辑返修。**当前有效正文是本节下列八份，不是独立Writer的R1候选。**
 
@@ -18,7 +44,7 @@
 
 **R1 阻断项与建议闭环：** R1-01 第⑤章绝对封顶说法未采用，强调告警/配额无法保证硬封顶；R1-02 第⑧章禁用“任意双写割接”，保持受控停写、单一写入者、对账；R1-03 未采用“全部引用核验”无证断言；R1-04 第⑥章准确区分Shopify商户DNS-only指引与Cloudflare O2O可选技术路径；R1-05 第⑥章移动端比例保留原 `MODEL_ASSUMPTION`，不提升为行业统计；R1-06 第⑦章可复制的代码围栏复盘模板原样保留；R1-07 八章最终文件全部统一UTF-8 LF、真实字节 SHA-256 已核对；R1-08 补完整章末小结，并重新以可靠 Git Blob 原文制作正向差异。R1-09 托管商家仍应核实客户数据/插件/接口/导出及备份责任；R1-10 保留原费用口径及模型标注，没有新增悬空星号；R1-11 无重复分隔线；R1-12 结语简短、非宣传；R1-13 保留实际正文来源索引，不新增无效“见附录”导航。
 
-**最新正式版本指纹（不是早期封板的历史SHA）：**
+**2026-10-19历史封板版本指纹（非2026-10-20最新正文SHA）：**
 
 | 章节 | 最终 Git Blob SHA-1 | 最终文件原始字节 SHA-256（UTF-8/LF） |
 |---|---|---|
