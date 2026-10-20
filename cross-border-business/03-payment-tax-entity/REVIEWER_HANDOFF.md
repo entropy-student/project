@@ -60,7 +60,7 @@
 
 ## 五、当前版本指纹与不可变证据
 
-**固定内容基线：** [G8归档前最后完整审计快照 `6778aec7aa75`](https://github.com/entropy-student/project/commit/6778aec7aa7548834bb3b44ccf609ebf75d7e628)；下表的**框架、十章和附录**是本轮完全未改动的12份正文/基准，指纹按原字节UTF-8/LF SHA-256和Git Blob SHA-1分别保存；二者不可混称。README及本交接属于本轮整理文档，前者在GitHub最新`main`回读后再录入指纹；本交接不记录自身以免循环哈希。
+**固定内容基线：** [G8归档前最后完整审计快照 `6778aec7aa75`](https://github.com/entropy-student/project/commit/6778aec7aa7548834bb3b44ccf609ebf75d7e628)；下表的**框架、十章和附录**是本轮完全未改动的12份正文/基准，指纹按原字节UTF-8/LF SHA-256和Git Blob SHA-1分别保存；二者不可混称。README属本轮整理文件，已从正式整理提交后GitHub `main`回读并录入实际原字节SHA-256和Git Blob；本交接不记录自身指纹，避免循环哈希。
 
 | 相对路径（本板块） | 原字节SHA-256 | Git Blob SHA-1 |
 |---|---|---|
@@ -76,7 +76,7 @@
 | `docs/CHAPTER8_FINAL_SEALED.md` | `93bd6b5f9770d5fdebce8af037a14977b469a3cb829c90483cf3b0a8e938fb55` | `e61de30d6ab1650b21fa2023fa78896d1eb3444d` |
 | `docs/CHAPTER9_FINAL_SEALED.md` | `ee8a67d16221d236604e47e5a4685bd6cee480e14be6fa1ab899422aac905ab4` | `b0a1796ba964a2c54694c4d08f30d58f68027e81` |
 | `docs/CHAPTER10_FINAL_SEALED.md` | `b6c7a076ee9509f1c5baa0e9300a808a9e48009df1cdd201498b3002e00115a3` | `64dac56575a7c64a7fd50ab41728ff56d0ee1740` |
-| `README.md` | **以整理提交后GitHub main回读补录** | **以整理提交后GitHub main回读补录** |
+| `README.md` | `534f25c37873dca7347b7ed2de6ceb972855da7b8c2cc480dcae12fe54eb9b67` | `0bed54a5718928f8f615fcd8cd7ce3716483a211` |
 
 **可恢复的历史固定Git版本：**
 
