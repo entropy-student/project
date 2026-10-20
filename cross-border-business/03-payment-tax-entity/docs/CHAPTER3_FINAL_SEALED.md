@@ -346,6 +346,7 @@ flowchart TD
 1. **第一步：密钥与配置逻辑隔离核验（Key Isolation Check）**：
    - 彻底检查生产运行环境配置，确保生产公钥（`pk_live_...`）与私钥（`sk_live_...`）配置无误，严防测试公私钥被遗留在生产构建包中；
    - 为生产环境对应的Webhook端点配置从服务商后台或官方接口获取的签名密钥；**Stripe示例格式为`whsec_...`（并非`whsec_live_...`）**，可从Webhook端点配置读取，并按端点`livemode`/所处环境区分测试与生产；与测试凭证实行逻辑隔离、最小权限和安全保管，**不要将Secret放入前端包或代码仓库**。参见[Stripe Webhook Endpoint API](https://docs.stripe.com/api/webhook_endpoints)。
+    - **商户后台与密钥安全最低清单（通用工程建议，非统一法定程序）**：①每名操作人员使用独立账号并启用可用的双因素认证（2FA），妥善保管恢复方式，不共用管理员账号；②按职责分配订单只读、退款、出款及修改银行账户的不同权限，定期撤销离职人员权限；③能使用受限API Key时优先按服务拆分最小权限密钥，将生产密钥放在受保护的服务端密钥管理系统或安全环境变量内，禁止日志、工单和前端暴露；④发现疑似泄露时，按服务商指引及时轮换/停用有关API Key及Webhook签名密钥，核查请求日志、异常退款/出款及银行账户变更，再确认新凭据已部署且Webhook验证正常；⑤保留权限与轮换记录。不同服务商的权限模型与操作菜单各异，按当前产品核验。官方参考：[Stripe团队两步验证](https://support.stripe.com/questions/require-two-step-authentication-for-your-team)、[Stripe密钥泄露防护](https://support.stripe.com/questions/protecting-against-compromised-api-keys?locale=en-GB)。
 2. **第二步：生产 Webhook 端点存活与安全配置核验（Endpoint Health Check）**：
    - 检查生产服务器 Webhook 接收端点的公网可达性与证书链完整性（必须采用权威 CA 机构签发的有效证书）；
    - 确保 Webhook 处理服务能够根据服务商推荐规范，在合理超时时限内快速向调用方返回确认响应，耗时的下游业务逻辑交由后台异步队列处理。
