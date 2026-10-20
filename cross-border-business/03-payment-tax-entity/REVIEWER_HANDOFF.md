@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G5_CROSS_CHAPTER_REVIEW_PENDING / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：9/10章正式封板（第1、2、3、4、5、6、7、8、9章均获Owner逐章授权并按G4入库）。B线4—5章、C线6—7章章级完成；A线第3章已获Owner授权Reviewer直修G4封板，A线章级完成，D线第9章已由Owner授权Reviewer以Writer R2全文直修封板，第10章G2离线Writer工作包已启动，尚未提交首稿。全板块未CLOSE。**
+> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。下一步交唯一总控执行全板块跨章一致性复核及G5—G8，尚未CONTENT_CLOSED或BOARD_CLOSED。**
 
 ## 一、权威依据和Owner决定
 
@@ -24,7 +24,7 @@
 | 二级问题 | 52 | Owner批准、全部父题逐字原文不动 |
 | 三级问题 | 113 | Owner授权Reviewer定点修复并正式冻结；一一映射Writer101题，新增12个必要独立问法 |
 | 二级直接成节 | 4 | 5.2、7.5、8.1、10.3；原因见唯一框架 |
-| 全书正式正文 | 9/10 | CH1、CH2、CH3、CH4、CH5、CH6、CH7、CH8、CH9均获Owner授权写入main；CH3、CH10未正式封板 |
+| 全书正式正文 | 10/10 | CH1—CH10均获Owner逐章授权G4写入main；全板块G5跨章复核与后续G6/G7/G8仍未完成 |
 
 Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级父题。修复重点包括：Stripe真实生产测试与沙箱边界、个人结售汇年度便利化额度、Visa VAMP非统一1%门槛、争议费因机构而异、会计档案保管10/30年等类别、3DS有条件责任转移、疑似欺诈订单不强制立刻退款、各类税收和美国州税门槛不套统一规则、W-8与协定待遇需要真实资格。**框架只是冻结问题及知识边界，尚不是所有动态规则已完成正文级事实核验。**
 
@@ -45,7 +45,7 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 | A｜经营准备 | 1—3：主体/法律卖方、渠道选型、开户接入 | **第1、2、3章均CHAPTER_FINAL_SEALED，第3章Owner授权Reviewer基于Writer R2完整正文定向修复并静态复验，非Writer R3；A线章级内容完成** | 3 |
 | B｜完成交易 | 4—5：买家付款、服务端支付确认 | **第4章 CHAPTER4_FINAL_SEALED；第5章 CHAPTER5_FINAL_SEALED（Owner授权Reviewer基于Writer R2全文直修，静态G3复核与G4回读；非Writer R3）** | B线章级内容完成，待唯一总控全板块跨章复核 |
 | C｜资金管理 | 6—7：清算到账、退款/拒付/冻结 | **第6、7章 CHAPTER_FINAL_SEALED；第7章由Owner授权Reviewer基于Writer V2直修、静态复验并回读GitHub** | C线章级完成，待唯一总控跨章复核 |
-| D｜财务税务 | 8—10：会计利润、境内税务、境外税务 | **第8章、第9章均 CHAPTER_FINAL_SEALED**；第9章Writer V1→G3 R1 RETURN（20项）→Writer R2→G3 R2 RETURN（14项）→Owner授权Reviewer直接定向修复并G4回读；**第10章 G2_WORKPACK_READY / WRITER_V1_PENDING** | 第10章G2 Writer，D线随后待统一总控跨章复核 |
+| D｜财务税务 | 8—10：会计利润、境内税务、境外税务 | **第8、9、10章均 CHAPTER_FINAL_SEALED**；第10章Writer V1→G3 R1 RETURN（23项）→Writer R2→G3 R2 RETURN（17项）→Owner授权Reviewer直修G4并回读；D线3/3章级完成 | 交唯一总控开展第1—10章跨章事实与术语复核，不启动额外Writer |
 
 **不新增四份正式交接：** 本文件是整个第三板块唯一当前状态表。各Agent的离线ZIP、报告和工作包仅是对应Gate的证据，不能当作并行权威框架；除Owner批准G4的正式正文外，不上传过程稿至docs作为FINAL。
 
@@ -87,7 +87,9 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 
 **D线第9章（Owner授权Reviewer直修与G4封板，2026-10-20）：** Writer V1→G3 R1 `RETURN`（20项，9项P0）→Writer R2→G3 R2 `RETURN`（14项：6项P0/6项P1/2项P2）；Owner本轮明确授权D线Reviewer以Writer R2完整底稿按最小必要原则直接纠正、再次静态回归、冻结并写回正式项目库。**这不是Writer R3，也未进行真实税务申报。**唯一正式正文为 [docs/CHAPTER9_FINAL_SEALED.md](docs/CHAPTER9_FINAL_SEALED.md)，冻结L1=1、L2=5、L3=12题同序同父题PASS。重点修复：2026出口退免税5号公告第44/45/48条、出口征税11号公告第7条的70万元含税换算、合法进项抵扣模型、海关稽查条例第2/7/31条、数字服务/应用商店VAT及法律卖方条件、2026税表字段与小额零星采购1000元日次门槛、公司/个体户个税及跨章链接；原`MODEL_ASSUMPTION`与真实合规资格严格分离。出口例假设700000元应税销售额与13%税率，销项税约80530.97元、满足抵扣前提时另以65000元合法进项抵扣，增值税应缴约15530.97元。正式正文UTF-8 LF SHA-256 `bc6cadbc424345554ec30238503260e612d80a92f9e1757bd44e9863d1ddba6b`；Git Blob `2dfcc8682867b9f9744c66522229de05c82438dc`；末次正文归一化/标记更正commit [`37e7874230bf458e2358e815db415e0d32e93a12`](https://github.com/entropy-student/project/commit/37e7874230bf458e2358e815db415e0d32e93a12)。Writer R2、自检、先前R2审核报告、直修差异、静态复核与SHA256另存本轮Owner离线审计ZIP，**不把过程稿存入docs**。实际申报、退税、结汇均为`NOT_RUN`。跨章剩余待总控协调：第8/9章收入确认及销售额/现金入账边界；第6/9章收汇凭证与税务申报分工；第9/10章中国境内税收与目的地VAT/GST/所得税及双重征税抵免；不擅改其他正文。**D线下一一级问题：第10章《卖给海外客户，还要在当地交税吗？》；只开启自包含G2独立Writer完整离线工作包，Writer首稿待回；第10章不是本轮正式封板内容。**
 
-**下一批Gate：** A线第1—3章均已G4，等待全书G5—G8；**B线第4/5章均已G4，无下一章Writer Gate，待唯一总控跨章复核**；C线6—7章均已G4封板，进入总控跨章复核；D线第9章已经Owner授权G4封板，第10章G2独立Writer V1待交；各章仍需Owner逐章授权G4。
+**D线第10章（Owner授权Reviewer直接修复/G4封板，2026-10-20）：** Writer V1→G3 R1 `RETURN`（23项，P0十/P1十/P2三）→Writer R2→G3 R2 `RETURN`（17项，P0七/P1八/P2二）；Owner随后明确授权本D线Reviewer直接以Writer R2**完整正文**为底稿定向修复、静态复验、正式冻结并入库。**不是Writer R3，未进行新一轮第三方Writer自检或真实申报。**唯一正式正文：[docs/CHAPTER10_FINAL_SEALED.md](docs/CHAPTER10_FINAL_SEALED.md)。冻结L1=1/L2=6/L3=13逐字同父题同序，10.3直接成节PASS。17项闭环包括中美协定第5(3)(c)明确包含服务PE（纠正此前R1 Reviewer误判，必须由唯一总控跨章核对）、2026 EU 3欧元按关税分类项目而非件数、10万欧元电子服务地点单证豁免欧盟设立条件、美国来源服务/软件许可区分、W-8/美国忽略实体、进口VAT抵扣资格、香港FSIE非股权资产、CRS NFE分类、Form5472/平台销售税剩余义务及自动化成本案例。关键静态复算：5件同类T恤=3欧元、三件同类T恤+一表=6欧元；5州×4季×35—60美元=700—1200美元；教学方案N133/N134的相对成本比较已核对。UTF-8 LF SHA-256：`506e8cf6e2b26dd6bea80a43e68ff29e7cac163347adc71cffca92cfae6032b6`；Git Blob：`5defb3b707f79491504adaa09424e79a56e27e29`；最终正文Commit [`afbc447f849399f75e6749b0675f77c273f85031`](https://github.com/entropy-student/project/commit/afbc447f849399f75e6749b0675f77c273f85031)。完整Writer R2、自检、两轮G3审查、17项Reviewer直修记录、完整diff和SHA256存于离线审计包 `CB03_CH10_OWNER_DIRECT_FIX_G3_G4_AUDIT_20261020.zip`，不将过程稿放入docs。**银行、真实交易、VAT申报、IRS税表、退税/税额抵免均`NOT_RUN`**。跨章总控待协调：`X-D10-01`第1/3/10章服务PE及此前Reviewer错误；`X-D10-02`第8/10章关税成本和进口VAT；`X-D10-03`第9/10章版税预扣/收入来源/所得税抵免；`X-D10-04`第1/10章美国LLC/5472/W-8；`X-D10-05`第5/7/10章平台/MoR真实税务责任。**第10章为本板块最后一章，D线3/3章完成；转唯一总控，不启动第11章。**
+
+**下一批Gate：** A线第1—3章均已G4，等待全书G5—G8；**B线第4/5章均已G4，无下一章Writer Gate，待唯一总控跨章复核**；C线6—7章均已G4封板，进入总控跨章复核；D线第8/9/10章均按Owner逐章特定授权G4封板，四线10/10章级正文完成；下一步由唯一总控开展跨章复核与G5—G8阶段，不自动宣称全板块CLOSED。
 
 ## 总控专项｜第5—8章跨章一致性检查（2026-10-20）
 **仅只读比对现行第5/6/7/8章正式正文，不等于G5/G6全书审核，未执行真实系统测试，未修改任何已封板章节。** 详见本轮Owner离线审计ZIP的`03_CH05_08_CROSS_CHAPTER_INTERFACE_AUDIT.md`。
@@ -108,4 +110,4 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - 欧盟VAT/OSS/IOSS：https://vat-one-stop-shop.ec.europa.eu/
 - 美国预提税表与协定资格：https://www.irs.gov/individuals/international-taxpayers/claiming-tax-treaty-benefits
 
-**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9 FINAL_SEALED / D-CH10 G2_WORKPACK_READY；正式正文9/10；其他章仍需Owner授权G4，BOARD_NOT_CLOSED。**
+**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9/CH10 FINAL_SEALED / D_LINE_CHAPTER_CONTENT_COMPLETE；正式正文10/10；G5_CROSS_CHAPTER_REVIEW_PENDING / BOARD_NOT_CLOSED。**
