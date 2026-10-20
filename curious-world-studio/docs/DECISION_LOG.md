@@ -1,5 +1,11 @@
 # Curious World Studio｜有效决策记录
 
+<!-- CWS_PR159_NASA_SAFE_DIRECT_REVIEW_PASS_20261020 -->
+## 2026-10-20｜PR#159 动态单文件素材安全代理下载真实技术验收（Reviewer）
+
+Owner提交[PR#159](https://github.com/entropy-student/project/pull/159)新HEAD `bfddbbf86c9d5fa9a8c93513c1ea5c2d7b62dea8`和真实ZIP SHA `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`。独立Reviewer本机完整检37份manifest SHA及ZIP CRC、五文件Git blob与GitHub一致、自己FFprobe/FFmpeg全片验证NASA官方ID5582文件2,669,379B、1920×1080、60fps、23.366667秒、1402帧、SHA`5dfc7ff258428e5c09c15f809792af9f1fc285d459bdfc2c407a24351d1de1d6`，真实内容是OSIRIS-APEX动画。Windows84单测由Executor提供日志；Reviewer独立13项代理模块PASS。受限HTTPS安全代理连接证明为Executor记录的数字公共IP CONNECT与原Host TLS/SNI验证，F159-01缓存误报及F159-02慢滴流总截止已修，原非公网/重定向/manifest守卫保持。正式`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY`，**只解锁单文件非硬编码catalog网址下载技术门槛；不代表yt-dlp任意网页/多段CDN支持，也不改变视频StoryFit/权利/发布HOLD**。Reviewer同时发现非阻塞F159-03：Python3.13里超时模拟后的HTTPResponse销毁会因自定义`_DeadlineSocketReader`缺`flush`出`Exception ignored`，真实媒体QA未受影响，**建议在合并前同PR最小修复且不重跑NASA**。`CURRENT_GATE=NONE / PR159_OPEN_NOT_MERGED / NEXT_GATE_NOT_AUTHORIZED`。权威证据：[独立Review全文](reviews/CW0005_PR159_SAFE_DIRECT_REAL_MEDIA_INDEPENDENT_PASS_20261020.md)、[PR#159 GitHub审核意见](https://github.com/entropy-student/project/pull/159#pullrequestreview-5580324507)。
+
+
 <!-- CWS_PR159_SMALL_CANARY_OWNER_AUTH_20261019 -->
 ## 2026-10-19｜Owner授权PR159最小收尾及小文件真实下载验收
 
