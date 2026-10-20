@@ -1,3 +1,8 @@
+<!-- CWS_PR159_OWNER_REOPEN_REAUDIT_COMPLETED_20261020 -->
+## 2026-10-20｜Owner要求的PR#159完全独立重新审核已完成
+
+Owner新对话重新提供 `CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_20261020(1).zip`，Reviewer未以旧PASS推断而重新完整检验。ZIP SHA等于此前记录 `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`（SAME_BYTES），37/37内部SHA、CRC、五份PR Git blob、GitHub第六源码、NASA MP4实际FFprobe/FFmpeg/SHA和代表帧均重新独立复核。代理单测13项+追加3项定向反例本轮独立PASS，但Python3.13 `HTTPResponse.close()` 缺 `flush()`（F159-03）真实可复现；Windows84项与原公网CONNECT网络行为明确仍仅有Executor证据。**重新裁决 `PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED`；`MERGE_HOLD_F15903_AND_OWNER_AUTH`**，仅需同PR受控最小清理，技术Canary无需重下载；CI=NOT_REPORTED。完整报告：[Owner重传独立复审](docs/reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)。所有旧Review报告、旧Owner决策保留为历史；`CURRENT_GATE=NONE`，没有新执行/合并/正式制作权限，CW0005全部节目HOLD继续。
+
 # Curious World Studio｜有效决策记录
 
 <!-- CWS_PR159_NASA_SAFE_DIRECT_REVIEW_PASS_20261020 -->
