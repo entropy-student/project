@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G5_CROSS_CHAPTER_REVIEW_PENDING / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G5_RESEARCH_REPORT_DELIVERED_OWNER_DECISION_PENDING / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。下一步交唯一总控执行全板块跨章一致性复核及G5—G8，尚未CONTENT_CLOSED或BOARD_CLOSED。**
+> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。G5全板块研究与跨章一致性审查已形成Owner决策报告，待逐项批复；G6/G7/G8未开始，尚未CONTENT_CLOSED或BOARD_CLOSED。**
 
 ## 一、权威依据和Owner决定
 
@@ -100,6 +100,18 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - `X-5678-05` 第5章`invoice.paid`可能零金额/余额抵扣而无新增现金，第8章SaaS年费预收跨期确认为收入；三者不同口径，建议术语索引。
 - `X-5678-06/07` 第5章服务端付款确认、第6章银行到账、第7章后续拒付及依法退款决定，职责边界基本相容。
 **目前没有发现可仅凭上述局部命题断定必须立即解冻第5—8章的严重矛盾。** 两项表达/术语风险待G5/G6统一审查、Owner选择，不降低章节已经确认的G4状态。
+
+## G5全板块研究与Owner决策交接（2026-10-20；仅记录，不改封板章）
+
+**审查固定基线：** 主分支Commit `0400c982df2f9123850fe59dec5cb5faba201b08`，SOP、唯一交接、冻结框架及全部10章正式正文。十章结构核验：52/52道L2与113/113道L3**逐字、编号、父题、顺序一致**，四处二级直接成节保留；相关相对章节链接存在。没有进行支付/银行/税务实测或G6独立盲审。
+
+**完整Owner决策报告：** `CB03_G5_FULL_BOARD_OWNER_DECISION_PACK_20261020.zip`（本次Owner对话交付，含《G5全书独立审查及Owner决策矩阵》，原始固定Git Blob清单、13项定位/原文/官方证据/最小建议/复验标准、SHA256）。不在正式`docs/`增加第二份候选或修改正文。G5矩阵：**P0一项、P1九项、P2三项**，须由Owner明确选择采纳、暂缓或不采纳；不得因报告提出意见就声称已经修改章文。
+
+- **`G5-01 / P0事实错误`**：第10章§10.5.1约L389，W-8BEN-E把中美协定“无现代独立LOB章”的描述引向`No LOB article in treaty`选项；IRS Table4明确中国1986年议定书有限制享惠测试。需核对1986协议及IRS W-8BEN-E Line14b后纠正。官方原件：https://www.irs.gov/pub/irs-lbi/Tax_Treaty_Table_4.pdf ; https://www.irs.gov/pub/irs-trty/china.pdf ; https://www.irs.gov/instructions/iw8bene 。**在Owner批准前不改已封第10章。**
+- **`KEEP-PE-10.4.4`**：第10章中美税收协定第5条第3款(c)有关同一/相关项目、人员在另一国服务、任意12个月超过6个月的服务型常设机构讲解为**经官方协定证实正确**。此前“中美无服务PE”审稿判断错误，不得继续传播；不要与个人183天及远程客户订单混为一谈。
+- **`G5-02—10/P1`**：MLI不自动修改中美协定、准备金释放流程图、三种不同资金预留概念、12个月订阅的履约收入时点、境外抵免方式选后5年不变、CRS现金被动资产、MoR税务覆盖边界、ETBUS/ECI与PE、间接税抵免与会计区分。详见报告逐项矩阵。
+- **`G5-11—13/P2`**：付款确认/银行现金/营业收入术语桥接、进阶技术分层及全书双向路标；建议后续G7处理但需遵守核心事实不改。
+- **G4章文全部保持正式冻结**，当前状态仅`G5_RESEARCH_REPORT_DELIVERED / STOP_AT_OWNER_DECISION`。Owner对矩阵逐项决策后交独立全新Reviewer执行G6盲审；只有授权的G6/G5合并修订才按G3/G4复验修改原正文。此阶段不启动G7或G8，也不宣布CLOSED。
 
 ## 五、官方事实核验提示
 
