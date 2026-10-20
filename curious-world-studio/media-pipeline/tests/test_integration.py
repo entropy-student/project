@@ -115,6 +115,40 @@ class IntegrationTests(unittest.TestCase):
                                                      "ffprobe", "ffmpeg")
             self.assertFalse(list((Path(d) / "downloads").glob("*.part*")))
 
+    def test_safe_direct_total_deadline_aborts_slow_body_and_cleans_partial_file(self):
+        payload = b"\x00\x00\x00\x18ftypisom" + b"x" * 88
+        header = (b"HTTP/1.1 200 OK\r\nContent-Type: video/mp4\r\nContent-Length: 100\r\n"
+                  b"Connection: close\r\n\r\n")
+
+        class SlowTls:
+            def __init__(self):
+                self.pending = bytearray(header + payload[:16])
+                self.closed = False
+            def settimeout(self, _): pass
+            def sendall(self, _): pass
+            def recv(self, size):
+                if self.pending:
+                    value = bytes(self.pending[:size])
+                    del self.pending[:size]
+                    return value
+                time.sleep(0.02)
+                return b"x"
+            def close(self): self.closed = True
+
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            tls = SlowTls()
+            with patch.object(p.safe_proxy, "resolve_public_addresses", return_value=["93.184.216.34"]), \
+                 patch.object(p.safe_proxy, "_open_tls_tunnel", return_value=(tls, {})):
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_TOTAL_DEADLINE_EXCEEDED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg", timeout=1)
+            self.assertTrue(tls.closed)
+            self.assertFalse(list((Path(d) / "downloads").glob("*")))
+
     def test_safe_direct_qa_failure_removes_downloaded_file(self):
         class Response:
             status = 200

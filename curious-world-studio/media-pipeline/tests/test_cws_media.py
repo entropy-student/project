@@ -1,6 +1,8 @@
 import importlib.util
+import hashlib
 import io
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -153,6 +155,47 @@ class CliTests(unittest.TestCase):
                 cws.dispatch(cws.build_parser().parse_args(["--workdir", str(workdir), "fetch",
                                                            "--ids", "a", "b", "--safe-direct"]))
             self.assertEqual(raised.exception.code, "SAFE_DIRECT_REQUIRES_ONE_ID")
+
+    def test_safe_direct_cli_does_not_report_ordinary_video_or_image_cache_as_success(self):
+        local_root = cws.pipeline.CWS_ROOT / ".local"
+        local_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=local_root) as temp:
+            workdir = Path(temp)
+            media = workdir / "downloads" / "legacy.mp4"
+            media.parent.mkdir()
+            payload = b"previous ordinary download"
+            media.write_bytes(payload)
+            digest = hashlib.sha256(payload).hexdigest()
+            catalog = cws.pipeline.Catalog(workdir)
+            catalog.data["items"] = {
+                "video-legacy": {"id": "video-legacy", "kind": "video", "url": "https://media.example/a.mp4",
+                                 "status": "FULL_DECODE_PASS", "width": 1920, "height": 1080,
+                                 "local_file": "downloads/legacy.mp4", "qa": {"sha256": digest}},
+                "image-legacy": {"id": "image-legacy", "kind": "image", "url": "https://media.example/a.jpg",
+                                 "status": "IMAGE_DECODE_PASS", "local_file": "downloads/legacy.mp4",
+                                 "qa": {"sha256": digest}},
+            }
+            catalog.save()
+            normal = subprocess.run([sys.executable, str(SCRIPT), "--workdir", str(workdir), "fetch",
+                                     "--ids", "video-legacy"], capture_output=True, text=True, timeout=10)
+            self.assertEqual(normal.returncode, 0, normal.stdout + normal.stderr)
+            self.assertEqual(json.loads(normal.stdout)["data"]["results"][0]["status"], "CACHED")
+
+            direct = subprocess.run([sys.executable, str(SCRIPT), "--workdir", str(workdir), "--proxy",
+                                     "http://127.0.0.1:1", "fetch", "--ids", "video-legacy", "--safe-direct"],
+                                    capture_output=True, text=True, timeout=10)
+            self.assertNotEqual(direct.returncode, 0, direct.stdout + direct.stderr)
+            direct_result = json.loads(direct.stdout)
+            self.assertEqual(direct_result["data"]["results"][0]["code"], "SAFE_PROXY_CONNECT_FAILED")
+            self.assertEqual(direct_result["data"]["results"][0]["status"], "FAILED")
+            self.assertEqual(hashlib.sha256(media.read_bytes()).hexdigest(), digest)
+
+            image = subprocess.run([sys.executable, str(SCRIPT), "--workdir", str(workdir), "--proxy",
+                                    "http://127.0.0.1:1", "fetch", "--ids", "image-legacy", "--safe-direct"],
+                                   capture_output=True, text=True, timeout=10)
+            self.assertNotEqual(image.returncode, 0, image.stdout + image.stderr)
+            self.assertEqual(json.loads(image.stdout)["data"]["results"][0]["code"],
+                             "SAFE_DIRECT_REQUIRES_ELIGIBLE_VIDEO_ID")
 
     def test_safe_proxy_error_uses_machine_readable_code(self):
         error = cws.pipeline.safe_proxy.SafeProxyError("SAFE_DNS_NON_PUBLIC_ADDRESS")

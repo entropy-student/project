@@ -6,8 +6,10 @@ import http.client
 import ipaddress
 import json
 import re
+import select
 import socket
 import ssl
+import time
 from contextlib import contextmanager
 from urllib.parse import parse_qsl, quote, urlencode, urlsplit
 
@@ -21,6 +23,88 @@ class SafeProxyError(RuntimeError):
     def __init__(self, code: str):
         super().__init__(code)
         self.code = code
+
+
+def _remaining(deadline: float | None, fallback: float | None = None) -> float | None:
+    if deadline is None:
+        return fallback
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise SafeProxyError("SAFE_TOTAL_DEADLINE_EXCEEDED")
+    return min(remaining, fallback) if fallback is not None else remaining
+
+
+class _DeadlineSocketReader:
+    """Socket file interface whose every recv is bounded by one wall deadline."""
+
+    def __init__(self, sock, deadline: float):
+        self.sock = sock
+        self.deadline = deadline
+        self.buffer = bytearray()
+        self.eof = False
+        self.closed = False
+
+    def _receive(self) -> None:
+        if self.closed:
+            raise ValueError("I/O operation on closed response")
+        remaining = _remaining(self.deadline)
+        self.sock.settimeout(remaining)
+        try:
+            data = self.sock.recv(65_536)
+        except (TimeoutError, socket.timeout) as exc:
+            raise SafeProxyError("SAFE_TOTAL_DEADLINE_EXCEEDED") from exc
+        if time.monotonic() >= self.deadline:
+            raise SafeProxyError("SAFE_TOTAL_DEADLINE_EXCEEDED")
+        if data:
+            self.buffer.extend(data)
+        else:
+            self.eof = True
+
+    def read(self, size: int = -1) -> bytes:
+        if size == 0:
+            return b""
+        if size < 0:
+            while not self.eof:
+                self._receive()
+            size = len(self.buffer)
+        while len(self.buffer) < size and not self.eof:
+            self._receive()
+        take = min(size, len(self.buffer))
+        result = bytes(self.buffer[:take])
+        del self.buffer[:take]
+        return result
+
+    def readline(self, size: int = -1) -> bytes:
+        while True:
+            end = self.buffer.find(b"\n")
+            if end >= 0:
+                end += 1
+                if size >= 0:
+                    end = min(end, size)
+                result = bytes(self.buffer[:end])
+                del self.buffer[:end]
+                return result
+            if size >= 0 and len(self.buffer) >= size:
+                result = bytes(self.buffer[:size])
+                del self.buffer[:size]
+                return result
+            if self.eof:
+                result = bytes(self.buffer)
+                self.buffer.clear()
+                return result
+            self._receive()
+
+    def close(self) -> None:
+        self.closed = True
+        self.buffer.clear()
+
+
+class _DeadlineResponseSocket:
+    def __init__(self, sock, deadline: float):
+        self.reader = _DeadlineSocketReader(sock, deadline)
+
+    def makefile(self, _mode: str):
+        return self.reader
 
 
 def validate_https_url(url: str):
@@ -79,20 +163,22 @@ def _target_authority(address: str) -> str:
     return f"[{ip.compressed}]:443" if ip.version == 6 else f"{ip.compressed}:443"
 
 
-def _open_tls_tunnel(host: str, target_ip: str, proxy: str, timeout: float):
+def _open_tls_tunnel(host: str, target_ip: str, proxy: str, timeout: float,
+                     deadline: float | None = None):
     proxy_host, proxy_port = validate_loopback_proxy(proxy)
     address = ipaddress.ip_address(target_ip)
     if not address.is_global:
         raise SafeProxyError("SAFE_PROXY_TARGET_NOT_PUBLIC")
     raw = None
     try:
-        raw = socket.create_connection((proxy_host, proxy_port), timeout=timeout)
-        raw.settimeout(timeout)
+        raw = socket.create_connection((proxy_host, proxy_port), timeout=_remaining(deadline, timeout))
+        raw.settimeout(_remaining(deadline, timeout))
         authority = _target_authority(address.compressed)
         raw.sendall((f"CONNECT {authority} HTTP/1.1\r\nHost: {authority}\r\n"
                      "Proxy-Connection: keep-alive\r\n\r\n").encode("ascii"))
         header = bytearray()
         while not header.endswith(b"\r\n\r\n") and len(header) <= 8192:
+            raw.settimeout(_remaining(deadline, timeout))
             part = raw.recv(1)
             if not part:
                 raise SafeProxyError("SAFE_PROXY_CONNECT_CLOSED")
@@ -107,7 +193,25 @@ def _open_tls_tunnel(host: str, target_ip: str, proxy: str, timeout: float):
         context.check_hostname = True
         context.verify_mode = ssl.CERT_REQUIRED
         context.minimum_version = ssl.TLSVersion.TLSv1_2
-        tls = context.wrap_socket(raw, server_hostname=host)
+        tls = (context.wrap_socket(raw, server_hostname=host) if deadline is None else
+               context.wrap_socket(raw, server_hostname=host, do_handshake_on_connect=False))
+        if deadline is not None:
+            tls.setblocking(False)
+            while True:
+                remaining = _remaining(deadline)
+                try:
+                    tls.do_handshake()
+                    break
+                except ssl.SSLWantReadError:
+                    ready = select.select([tls], [], [], remaining)[0]
+                    if not ready:
+                        raise SafeProxyError("SAFE_TOTAL_DEADLINE_EXCEEDED")
+                except ssl.SSLWantWriteError:
+                    ready = select.select([], [tls], [], remaining)[1]
+                    if not ready:
+                        raise SafeProxyError("SAFE_TOTAL_DEADLINE_EXCEEDED")
+            tls.setblocking(True)
+            tls.settimeout(_remaining(deadline, timeout))
         cert = tls.getpeercert(binary_form=True)
         proof = {"proxy_mode": "LOOPBACK_HTTP_CONNECT", "connect_authority": authority,
                  "tls_server_hostname": host, "tls_certificate_verified": True,
@@ -128,7 +232,8 @@ def _open_tls_tunnel(host: str, target_ip: str, proxy: str, timeout: float):
         raise SafeProxyError("SAFE_PROXY_CONNECT_FAILED") from exc
 
 
-def _send_request(tls, host: str, parsed, method: str, headers: dict[str, str]):
+def _send_request(tls, host: str, parsed, method: str, headers: dict[str, str],
+                  deadline: float | None = None):
     if method not in ("GET", "HEAD"):
         raise SafeProxyError("SAFE_HTTP_METHOD_REJECTED")
     path = quote(parsed.path or "/", safe="/%:@!$&'()*+,;=-._~")
@@ -140,8 +245,10 @@ def _send_request(tls, host: str, parsed, method: str, headers: dict[str, str]):
         if key.lower() not in ("accept", "range") or any(ch in key + value for ch in "\r\n"):
             raise SafeProxyError("SAFE_HTTP_HEADER_REJECTED")
         lines.append(f"{key}: {value}")
+    if deadline is not None:
+        tls.settimeout(_remaining(deadline))
     tls.sendall(("\r\n".join(lines) + "\r\n\r\n").encode("ascii"))
-    response = http.client.HTTPResponse(tls)
+    response = http.client.HTTPResponse(_DeadlineResponseSocket(tls, deadline)) if deadline is not None else http.client.HTTPResponse(tls)
     response.begin()
     return response
 
@@ -174,12 +281,13 @@ def _read_limited(response, limit: int) -> bytes:
     return bytes(chunks)
 
 
-def _doh_query(name: str, kind: str, proxy: str, timeout: float) -> list[dict]:
+def _doh_query(name: str, kind: str, proxy: str, timeout: float,
+               deadline: float | None = None) -> list[dict]:
     query = urlencode({"name": name, "type": kind})
     parsed = urlsplit(f"https://{DOH_HOST}/dns-query?{query}")
-    tls, _proof = _open_tls_tunnel(DOH_HOST, DOH_IP, proxy, timeout)
+    tls, _proof = _open_tls_tunnel(DOH_HOST, DOH_IP, proxy, _remaining(deadline, timeout), deadline)
     try:
-        response = _send_request(tls, DOH_HOST, parsed, "GET", {"Accept": "application/dns-json"})
+        response = _send_request(tls, DOH_HOST, parsed, "GET", {"Accept": "application/dns-json"}, deadline)
         if response.status != 200:
             raise SafeProxyError("SAFE_DOH_HTTP_FAILED")
         content_type = (response.getheader("Content-Type") or "").split(";", 1)[0].lower()
@@ -197,7 +305,8 @@ def _doh_query(name: str, kind: str, proxy: str, timeout: float) -> list[dict]:
         tls.close()
 
 
-def resolve_public_addresses(host: str, proxy: str, timeout: float = 8) -> list[str]:
+def resolve_public_addresses(host: str, proxy: str, timeout: float = 8,
+                             deadline: float | None = None) -> list[str]:
     if not ipaddress.ip_address(DOH_IP).is_global:
         raise SafeProxyError("SAFE_DOH_BOOTSTRAP_INVALID")
     pending = [(host, ())]
@@ -214,7 +323,7 @@ def resolve_public_addresses(host: str, proxy: str, timeout: float = 8) -> list[
         queried.add(name)
         cnames = set()
         for kind in ("A", "AAAA"):
-            for row in _doh_query(name, kind, proxy, timeout):
+            for row in _doh_query(name, kind, proxy, _remaining(deadline, timeout), deadline):
                 if not isinstance(row, dict) or row.get("type") not in (1, 28, 5):
                     continue
                 if row["type"] == 5:
@@ -241,14 +350,17 @@ def resolve_public_addresses(host: str, proxy: str, timeout: float = 8) -> list[
 @contextmanager
 def open_response(url: str, proxy: str, method: str = "GET", headers: dict[str, str] | None = None,
                   timeout: float = 15):
+    if timeout <= 0:
+        raise SafeProxyError("SAFE_TIMEOUT_INVALID")
+    deadline = time.monotonic() + timeout
     parsed = validate_https_url(url)
     host = parsed.hostname or ""
-    addresses = resolve_public_addresses(host, proxy, timeout=min(timeout, 8))
+    addresses = resolve_public_addresses(host, proxy, timeout=min(timeout, 8), deadline=deadline)
     target_ip = addresses[0]
-    tls, proof = _open_tls_tunnel(host, target_ip, proxy, timeout)
+    tls, proof = _open_tls_tunnel(host, target_ip, proxy, _remaining(deadline, timeout), deadline)
     try:
         try:
-            response = _send_request(tls, host, parsed, method, headers or {})
+            response = _send_request(tls, host, parsed, method, headers or {}, deadline)
         except (OSError, http.client.HTTPException) as exc:
             raise SafeProxyError("SAFE_HTTP_RESPONSE_INVALID") from exc
         proof = {**proof, "verified_dns_addresses": addresses, "selected_connect_ip": target_ip}

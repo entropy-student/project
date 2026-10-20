@@ -408,7 +408,9 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
             if not item:
                 results.append({"id": key, "status": "FAILED", "code": "NOT_IN_CATALOG"})
                 continue
-            cached = cached_result(workdir, key, item)
+            # A safe-direct fetch must prove this invocation used the pinned
+            # proxy path; an older ordinary download cache is not that proof.
+            cached = None if args.safe_direct else cached_result(workdir, key, item)
             if cached is not None:
                 results.append(cached)
                 continue

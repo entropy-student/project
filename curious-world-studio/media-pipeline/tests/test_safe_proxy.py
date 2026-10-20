@@ -1,6 +1,7 @@
 import socket
 import ssl
 import sys
+import time
 import unittest
 from unittest.mock import patch
 from pathlib import Path
@@ -10,6 +11,47 @@ import safe_proxy as p
 
 
 class SafeProxyTests(unittest.TestCase):
+    def test_total_deadline_aborts_slow_http_response_body(self):
+        class SlowTls:
+            def __init__(self):
+                self.first = True
+                self.timeout = None
+                self.closed = False
+            def settimeout(self, value): self.timeout = value
+            def sendall(self, _): pass
+            def close(self): self.closed = True
+            def recv(self, _):
+                if self.first:
+                    self.first = False
+                    return b"HTTP/1.1 200 OK\r\nContent-Length: 40\r\nContent-Type: video/mp4\r\n\r\n"
+                time.sleep(0.02)
+                return b"x"
+
+        tls = SlowTls()
+        started = time.monotonic()
+        with patch.object(p, "resolve_public_addresses", return_value=["93.184.216.34"]), \
+             patch.object(p, "_open_tls_tunnel", return_value=(tls, {})):
+            with self.assertRaisesRegex(p.SafeProxyError, "SAFE_TOTAL_DEADLINE_EXCEEDED"):
+                with p.open_response("https://media.example/a.mp4", "http://127.0.0.1:12345", timeout=0.07) as (response, _):
+                    response.read(40)
+        self.assertTrue(tls.closed)
+        self.assertLess(time.monotonic() - started, 0.3)
+
+    def test_total_deadline_aborts_slow_http_status_line(self):
+        class SlowTls:
+            def settimeout(self, _): pass
+            def sendall(self, _): pass
+            def recv(self, _):
+                time.sleep(0.02)
+                return b"H"
+
+        started = time.monotonic()
+        deadline = started + 0.06
+        with self.assertRaisesRegex(p.SafeProxyError, "SAFE_TOTAL_DEADLINE_EXCEEDED"):
+            p._send_request(SlowTls(), "media.example", p.validate_https_url("https://media.example/a.mp4"),
+                            "GET", {}, deadline)
+        self.assertLess(time.monotonic() - started, 0.3)
+
     def test_url_policy_rejects_non_https_private_and_ambiguous_authorities(self):
         rejected = (
             "http://example.org/a.mp4", "https://127.0.0.1/a.mp4",
