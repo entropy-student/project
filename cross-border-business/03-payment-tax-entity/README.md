@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6按Owner采纳清单修订并重新封板完成；G7独立语言编辑工作包就绪、等待候选；BOARD_NOT_CLOSED。**
+> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6事实内容修订已封板，G7语言与连贯性已PASS；G7 Owner授权Reviewer直接修复Editor V1剩余16项并复核PASS，十章语言正式冻结；下一Gate为G8最终项目验收，BOARD_NOT_CLOSED。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -40,3 +40,5 @@
 原项目文件不移动、不删除、不覆盖；新版十章需要按自己的冻结框架重新完成G2–G8。
 
 [返回五板块总导航](../README.md)
+
+> **G7最终记录（2026-10-20）：** Editor V1经独立R1审查发现16项实质知识漂移，Owner授权Reviewer以G6原稿直接最小修复并回归验证，十章和附录正式G7 PASS；审计ZIP、SHA-256及实际差异记于本板块唯一交接。**不得再启动G7修改或推断G8已CLOSED。**
