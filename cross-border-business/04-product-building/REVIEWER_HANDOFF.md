@@ -1,7 +1,7 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接
 
-> **UPDATED：2026-10-20（Owner授权知识完善）**
-> **PROJECT_STATUS：HISTORICAL_G8_FINAL_PASS / CURRENT_MINIMAL_REVISION_PENDING_REVIEW / NOT_RESEALED**
+> **UPDATED：2026-10-20（Owner第二轮最小知识修订）**
+> **PROJECT_STATUS：HISTORICAL_G8_FINAL_PASS / R2_OWNER_AUTHORIZED_TARGETED_REPAIR / INDEPENDENT_REVIEW_PENDING / NOT_RESEALED**
 > **FREEZE：1核心 / 9一级 / 48二级 / 117三级**
 > **CURRENT_GATE：INDEPENDENT_REVIEW_THEN_OWNER_RESEAL｜HTML：NOT_STARTED**
 
@@ -28,6 +28,30 @@ Owner已授权启动上一轮独立系统性审核后的最小修订。直接修
 | 4.9 | `4b60723f11ef206bb9d140de27bd8a5384f40875` | 本轮定向修改 |
 
 这些是代码与教材文本指纹，不代表内容已被独立评审或经营流程已真实执行。
+
+## 2026-10-20｜第二轮独立审核后的Owner授权定向修订
+
+Owner明确要求依据第二轮14项独立复审建议“以最小化原则，开始修改”。本次在**不改冻结框架、原问题标题、其他板块与平台系统**的前提下，完成14项教学层面定向修订：R2-01在4.3区分“通用商品级文件下载”与“按订单生成定制PDF”，补真实操作分流；R2-02在4.8将验收拆成托管平台/受控人工/自建实现；R2-03在4.8设一张七字段贯穿订单证据卡，其他章只引用；R2-04至R2-13分别修Shopify可购买商品/测试模式、回跳订单状态、invoice.paid条件、上传阈值假设、首次技术术语、PostgreSQL恢复适用范围、上传与下载方向、许可证实施梯队、三业务差异卡和弱网测试证据；R2-14在README加一条选读路径。
+
+**此次最新九章文件Git Blob（审核分支回读；合入main后仍须再次验证）**：
+
+| 章 | 本轮定向修订版 Git Blob SHA1 | 是否变动 |
+|---|---|---|
+| 4.1 | `2c977a86e7971de51454a42910d017d25adae7b9` | 是 |
+| 4.2 | `6921145ba598b4aaa1c9096375d5ce4869ccdab2` | 否 |
+| 4.3 | `1c9e3937adbf441822e08e9c81e219b332419f06` | 是 |
+| 4.4 | `f3f9c0fbd020d8084b5d89023ccabe8383c821d0` | 是 |
+| 4.5 | `32e00b9b098de01e5e344ca4d80719d61ad64ad9` | 否 |
+| 4.6 | `36e2895c8839299b37dec2b7ead350082e2a2414` | 是 |
+| 4.7 | `51b4ac0500ce2acadf117899d5a86b9521e15d04` | 否 |
+| 4.8 | `99d5b4998a472db32a5c5fa31fd79b1d883af91d` | 是 |
+| 4.9 | `9e0192b9983a5f43400105566309e7b60c041c08` | 是 |
+
+**QA与限制**：冻结9/48/117问题标题需与修订基线逐字匹配；原图表总数、代码围栏数量及原有外链不得意外丢失。现有业务演练全部是教学设计，未使用任何真实用户付款、照片、店铺账号或生产数据；新增证据卡默认`NOT_RUN`，不以教材步骤宣称支付、授权、仓配或恢复功能已PASS。
+
+**后续Gate**：`INDEPENDENT_REVIEW_PENDING / STOP_AT_OWNER_DECISION`。静态回归合格不等于独立Reviewer事实与教学反例审查已经完成，更不等于Owner批准新一轮`FINAL_SEALED`。此前G8或第一轮静态PASS只作可追溯历史。
+
+---
 
 ## 一、目标和最终有效结果
 
