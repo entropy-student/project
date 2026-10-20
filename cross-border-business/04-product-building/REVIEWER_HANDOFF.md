@@ -1,9 +1,17 @@
 # 第四部分《产品搭建》｜唯一现行Reviewer交接
 
-> **UPDATED：2026-10-19**
-> **PROJECT_STATUS：G8_FINAL_PASS / KNOWLEDGE_TEXT_CLOSED / ALL_NINE_CHAPTERS_FINAL_SEALED**
+> **UPDATED：2026-10-20（Owner授权知识完善）**
+> **PROJECT_STATUS：HISTORICAL_G8_FINAL_PASS / CURRENT_MINIMAL_REVISION_PENDING_REVIEW / NOT_RESEALED**
 > **FREEZE：1核心 / 9一级 / 48二级 / 117三级**
-> **CURRENT_GATE：NONE｜OWNER_ACTION_REQUIRED：NONE｜HTML：NOT_STARTED**
+> **CURRENT_GATE：INDEPENDENT_REVIEW_THEN_OWNER_RESEAL｜HTML：NOT_STARTED**
+
+## 2026-10-20新一轮最小知识补强（尚待独立复核）
+
+Owner已授权启动上一轮独立系统性审核后的最小修订。直接修改现有章节中必要的非冻结解释与测试例，不增加冻结题目。涉及：4.1工具类别和GDPR单项迹象限定，4.2/4.3/4.4/4.6/4.8使用`DEMO-PDF-001`贯穿模拟订单，4.3基础技术、候选选型与两条实操入门路线，4.4订单确认与弱网性能措辞，4.6消除2%示例与强制购买扫码工具的矛盾，4.9复盘时限条件化。4.5、4.7和冻结框架正文未改。R01—R07为主，附带少量明确纠错与入门分流；P1其余扩展暂缓。
+
+**当前性质**：静态教材修订，并非产品测试或实际支付验收；新增示例一律`MODEL_ASSUMPTION` / `NOT_RUN`。须再次独立检查技术事实、全部1/9/48/117冻结题干、引用与现行Git Blob，经Owner批准后才能重新声明本轮已正式封板。下节的Blob表是2026-10-19 G8**历史基线**，不是本轮新版本指纹，最新SHA以GitHub main回读为准。旧版本由G8固定Git历史追溯。
+
+---
 
 ## 一、目标和最终有效结果
 
@@ -15,11 +23,11 @@
 
 ## 二、唯一生效文件与版本指纹
 
-正式目录总计**12个文件**：本交接、README、1份冻结框架、9份正式章节全文。只有下表是`main`的现行权威，不得把旧Gate/RETURN/旧Hash当成正文版本。
+正式目录仍为**12个文件**：本交接、README、1份冻结框架、9份正式章节全文。下表暂保留**G8历史文件指纹**用于比较，本轮最新版本以GitHub main实际文件回读为准。
 
 **冻结框架：**[FROZEN_FRAMEWORK_V2_20261018.md](docs/FROZEN_FRAMEWORK_V2_20261018.md)，当前Git Blob `9a1b13565e113b2c402089e88282db6a203e1688`；G8前Blob `0d57d19d2ecc98959d3f5e90e4cd43edf900473f`，差异仅1处历史审计链接。4.3.4无三级问题，直接作为二级章节。
 
-| 章与唯一正文 | 二级/三级 | G8后当前Git Blob SHA1 | G7正式封板原Blob SHA1 |
+| 章与唯一正文 | 二级/三级 | G8历史Git Blob SHA1 | G7历史Blob SHA1 |
 |---|---:|---|---|
 | [4.1 我该把产品做成什么形式？](docs/CHAPTER1_FINAL_SEALED.md) | 4/10 | `d929cfdaa1216cabd2bde677e47fa518cf85f441` | `143f1a149350278b0c781368c70225a5e6592086` |
 | [4.2 第一版先做哪些东西？](docs/CHAPTER2_FINAL_SEALED.md) | 4/10 | `0b277e740bec07a1a55e024e9566da2bd3310d6e` | `30c857444c1bd259f129b3893f0aa8431b393f22` |
