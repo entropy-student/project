@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH4_CH6_CH8_FINAL_SEALED / A_CH3_G2 / B_CH5_G2_WORKPACK / C_CH7_G2_WORKPACK / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH4_CH5_CH6_CH8_FINAL_SEALED / A_CH3_G2 / B_LANE_CONTENT_COMPLETE / C_CH7_G2_WORKPACK / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：5/10章正式封板（第1、2、4、6、8章，均经Owner逐章授权Reviewer直修后G4入库）。A线第2章Owner授权Reviewer直修G4封板、第3章G2离线首稿启动；B线第5章和C线第7章继续独立推进；D线第8章正式封板，第9章G2离线Writer工作包启动，第10章未启动。**
+> **正文：6/10章正式封板（第1、2、4、5、6、8章均经Owner逐章授权并G4入库）。B线第4—5章已完成章级G4；A第3章、C第7章、D第9章仍按各自G2流程推进，第10章未由本线启动。全板块尚未CLOSE。**
 
 ## 一、权威依据和Owner决定
 
@@ -24,7 +24,7 @@
 | 二级问题 | 52 | Owner批准、全部父题逐字原文不动 |
 | 三级问题 | 113 | Owner授权Reviewer定点修复并正式冻结；一一映射Writer101题，新增12个必要独立问法 |
 | 二级直接成节 | 4 | 5.2、7.5、8.1、10.3；原因见唯一框架 |
-| 全书正式正文 | 5/10 | CH1、CH2、CH4、CH6、CH8分别经Owner明确授权G4并实际入库；其他章仍需独立审核及逐章Owner批准 |
+| 全书正式正文 | 6/10 | CH1、CH2、CH4、CH5、CH6、CH8经Owner逐章授权写入main；其余仍须逐章审核及批准 |
 
 Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级父题。修复重点包括：Stripe真实生产测试与沙箱边界、个人结售汇年度便利化额度、Visa VAMP非统一1%门槛、争议费因机构而异、会计档案保管10/30年等类别、3DS有条件责任转移、疑似欺诈订单不强制立刻退款、各类税收和美国州税门槛不套统一规则、W-8与协定待遇需要真实资格。**框架只是冻结问题及知识边界，尚不是所有动态规则已完成正文级事实核验。**
 
@@ -43,7 +43,7 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 | 线 | 一级章节及主责 | 当前工作及真实证据 | 后续顺序 |
 |---|---|---|---|
 | A｜经营准备 | 1—3：主体/法律卖方、渠道选型、开户接入 | **第1章及第2章均CHAPTER_FINAL_SEALED；第2章为Owner授权Reviewer基于Writer R2完整底稿纠错；第3章G2_WORKPACK_READY / WRITER_V1_PENDING** | 3 |
-| B｜完成交易 | 4—5：买家付款、服务端支付确认 | **第4章 CHAPTER4_FINAL_SEALED（Owner授权Reviewer直修Writer R2）；第5章 G2_WORKPACK_READY / WRITER_V1_PENDING** | 第5章G2 Writer |
+| B｜完成交易 | 4—5：买家付款、服务端支付确认 | **第4章 CHAPTER4_FINAL_SEALED；第5章 CHAPTER5_FINAL_SEALED（Owner授权Reviewer基于Writer R2全文直修，静态G3复核与G4回读；非Writer R3）** | B线章级内容完成，待唯一总控全板块跨章复核 |
 | C｜资金管理 | 6—7：清算到账、退款/拒付/冻结 | **第6章 CHAPTER6_FINAL_SEALED（Owner授权Reviewer基于Writer V2全文直接定向修复并回读）；第7章 G2_WORKPACK_READY / WRITER_V1_PENDING** | 7章独立Writer首稿 |
 | D｜财务税务 | 8—10：会计利润、境内税务、境外税务 | **第8章 CHAPTER8_FINAL_SEALED**（Writer R2底稿经Owner授权Reviewer定向直修，G4回读通过）；第9章 G2_WORKPACK_READY / WRITER_V1_PENDING | 第9章G2 Writer，随后10 |
 
@@ -58,7 +58,7 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 6. 各线以一组统一的教学案例**设定**作为协作锚点（中国个人软件开发者、中国实体独立站小卖家、中国B2B服务商），每次出现未核实的假设数值须标MODEL_ASSUMPTION，不得变为真实行业数据；不硬性要求每章照搬案例。
 7. **单写入者：** 四线Writer/Reviewer只回传ZIP；GitHub main正式修改集中由总控完成，需在提交前重取main HEAD、检查目标文件Git Blob、并发差异，PR合并后回读文件及冻结题干。每章Owner明确批准后才G4封板。全书完成后仍需G5/G6/G7/G8。
 
-**启动/衔接规则：** A线第1章、B线第4章、C线第6章分别经Owner明确授权Reviewer直接修复并封板；A线第3章、B线第5章以及C线第7章进入G2。D线第8章已获Owner授权Reviewer直修G4并经GitHub回读；第9章仅开启G2首稿准备，不提前撰写或封板第9/10章；各线不代为改变彼此未获证据支持的进度。
+**启动/衔接规则：** A线第1/2章、B线第4/5章、C线第6章和D线第8章均按对应Owner特定授权封板。**B线第5章通过本轮Owner直修及G4，B线当前没有下一章Writer Gate**；A/C/D线保持其各自状态，所有跨章纠纷由唯一总控处理。
 
 ## 三、历史保护与跨板块职责
 
@@ -73,13 +73,15 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 
 **A线第2章｜G4 Owner授权直修封板补记（2026-10-20）：** Writer V1→G3 R1 `RETURN`（20项）→Writer R2→G3 R2 `RETURN`（15项）；Owner随后明确授权Reviewer以Writer R2**完整底稿**直接最小纠错、复核、正式冻结并入库。没有Writer R3交付，也没有第三轮独立Writer自检。正式正文唯一有效文件：[docs/CHAPTER2_FINAL_SEALED.md](docs/CHAPTER2_FINAL_SEALED.md)，原字节SHA-256 `30941007e8bd6c83467e89752296662766dbec526e3efab0a1d8218ba158f340`，Git Blob `5a2787b3ac81579b9b7417780d322699f605bb30`，UTF-8/LF；冻结L2=6/L3=13逐字同父题同序核验PASS，6幅Mermaid源码围栏和模型60美元→56.84美元、15美元→13.54美元复算PASS。修正实际覆盖逐产品准入与UNKNOWN、MoR责任、授权/确认、备用切换、B2B付款、Shopify额外费用、条件准备金、卖家保障、PCI迁移与公式控制字符；**官方动态费率、真实商户申请/支付/出款均未实测 `NOT_RUN`**。Writer R2原稿、自检、Reviewer R2审计报告、15项直修闭环及全量差异归档于Owner本轮独立审计ZIP，不在仓库docs存过程版本。**下一步：A线第3章（L2=4/L3=10）G2 Writer V1完整离线ZIP已制作、未收到首稿。**
 
-**B线第4章：** Writer V1→G3 R1 RETURN（22项）→Writer R2→G3 R2 RETURN（12项）→Owner于2026-10-20明确授权Reviewer从Writer R2全文直接纠错并G4封板；正式正文为 [docs/CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md)，**非Writer R3**。全文原字节SHA-256（UTF-8 LF）：`6e2711214b02c7ee9f3673e0d4fd55e4086ea4c118e034e78ae3f6c90a978259`。冻结L1=1、L2=5、L3=10题逐字/同父题/同序PASS；7天试用604800秒与金额算式PASS；12项修复、Writer R2原稿、差异及来源核验归档于本轮Owner审核ZIP（不在docs重复放过程稿）。**第5章 G2_WORKPACK_READY，Writer首稿未提交。**
+**B线第4章：** Writer V1→G3 R1 RETURN（22项）→Writer R2→G3 R2 RETURN（12项）→Owner于2026-10-20明确授权Reviewer从Writer R2全文直接纠错并G4封板；正式正文为 [docs/CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md)，**非Writer R3**。全文原字节SHA-256（UTF-8 LF）：`6e2711214b02c7ee9f3673e0d4fd55e4086ea4c118e034e78ae3f6c90a978259`。冻结L1=1、L2=5、L3=10题逐字/同父题/同序PASS；7天试用604800秒与金额算式PASS；12项修复、Writer R2原稿、差异及来源核验归档于本轮Owner审核ZIP（不在docs重复放过程稿）。**第5章已经Writer V1→G3 RETURN→Writer R2→G3 R2 RETURN，后由Owner授权Reviewer直修并G4封板；详见下方独立记录。**
+
+**B线第5章｜G4 Owner授权直修封板（2026-10-20）：** Writer V1→G3 R1 `RETURN`（19项）→Writer R2→G3 R2 `RETURN`（11项，P0六/P1四/P2一），Owner随后明确授权Reviewer直接以Writer R2**完整正文**为底稿完成定向修复、复核、正式冻结并入库。**本轮是Reviewer直修，不是Writer R3，也没有新一轮第三方独立审核。**正式正文唯一有效路径：[docs/CHAPTER5_FINAL_SEALED.md](docs/CHAPTER5_FINAL_SEALED.md)；原字节UTF-8 LF SHA-256：`221dc9a015d8ff8df89aa36546f02e55bd376fb80ea206a088cbddfff23e4fbf`；Git Blob SHA：`c9ca5129e1b51386e5e9a2b766013c6d576e5061`；首次正文写入commit：`622fdb886d9fde1a108f4c5c5b30d487846dea98`。冻结L1=1/L2=5/L3=10、5.2直接成节逐字同序归属PASS；JSON、Python围栏及退款70+70>100、折算15美元、8组逻辑反例静态核验PASS。修复Boleto/OXXO凭单、OXXO MXN货币、退款功能、processing主动补偿、退款事务持久预留、Outbox远程幂等、Refund API、首期/续费订阅状态、capture_before路径及30分钟取消边界。**真实支付、退款、仓储及银行端到端均NOT_RUN**。完整Writer R2原稿/自检、R1/R2审核报告、11项修复审计、全文差异与SHA清单随Owner本轮离线审计ZIP归档，不在docs保留过程版本。跨章协调编号：`X-B05-01`第4/5章凭单状态、`X-B05-02`第5/7章退款能力与法律义务、`X-B05-03`第5/6章支付成功不等于银行到账、`X-B05-04`第5/8章invoice.paid不等于新现金、`X-B05-05`第三/第四板块外部履约幂等；交唯一总控，不擅改其他章。**B线章级内容现已完成，等待全板块G5-G8和跨章复核，不自行开启未授权的新章。**
 
 **C线第6章：** Writer V1→G3 R1 RETURN（22项）→Writer V2→G3 R2 RETURN（12项）；Owner于2026-10-20授权本C线Reviewer在Writer V2完整底稿上直修、复核、正式冻结并写入项目库。正式唯一版本为 [docs/CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md)，**不是Writer V3**。冻结L1=1、L2=5、L3=11逐字同父题同序PASS；1000→785.50美元的MODEL_ASSUMPTION算例复算PASS；ISO 20022、外汇现行法规、9610、VAMP、账户及追踪边界等R2 12项定点修复；实际结汇/银行卡入账测试`NOT_RUN`。正文归一化UTF-8 LF SHA-256 `d9b12880dc5a78367f946fe3d634de3ede96b549e0619b9a01bd2b4871ca1322`；Git Blob `ef9097eed65fab73b9e8b76e3b2855e869f16bf1`；实际入库Commit [`2a2f15071f5f8ceefeb8f628e0db47a7f3adb39c`](https://github.com/entropy-student/project/commit/2a2f15071f5f8ceefeb8f628e0db47a7f3adb39c)。逐项修复、原版V2、自检和完整差异在Owner审核离线归档ZIP；未将其当成独立Writer V3或未经审校直接PASS。已与正式第1章卖方/MoR及第4章买家支付问题做接口核对；第5、7、8等未封板正文不可虚构交叉通过，跨章待总控后续复核。**C线下一个一级问题：第7章《遇到退款、拒付或资金冻结怎么办？》G2离线Writer工作包启动，Writer V1未交。**
 
 **D线第8章：** Writer V1→G3 R1 RETURN（21项）→Writer R2→G3 R2 RETURN（3项P0、9项P1）；Owner于2026-10-20明确授权D线Reviewer直接以Writer R2全文为底稿做最小必要修订、复核、正式封板及入库。Reviewer完成12项R2定向修复，并额外独立发现80 USD订单利润明细漏列2 USD，补充逐单技术服务成本作为`MODEL_ASSUMPTION`并重新复算。冻结L1=1/L2=5/L3=9、8.1直接成节同序同父题PASS；118 USD资金桥接、80 USD利润压力测试、100 USD保证金双轨、银行余额调节与月度现金跑道等13组算式静态PASS；法律、平台动态事实按法域/版本条件化。**唯一正式全文：** [docs/CHAPTER8_FINAL_SEALED.md](docs/CHAPTER8_FINAL_SEALED.md)，不是Writer R3；原字节UTF-8 LF SHA-256：`61b1042262a32aac36d6f7d3ad55ec79f5504458b1f79418dc365a4610d7aa98`；Git Blob：`fea889c88bd276b2abaa16727335e07d08183ffc`；正文首次入库Commit [`dca1392bc879767eea354d36fcefa2e93d203afb`](https://github.com/entropy-student/project/commit/dca1392bc879767eea354d36fcefa2e93d203afb)。完整Writer R2、自检、G3 R2报告、Reviewer全差异、修复审计及SHA-256随本轮Owner离线证据ZIP归档，**不在docs重复存过程稿**。真实收款结汇或纳税行为`NOT_RUN`；跨章接口：支付/账户主体归1/2/3/6，交易真实状态归5，争议归7，国内税务归9，海外税务归10，由唯一总控集中裁决，不因第8章通过宣称未封板其他章节已通过。**D线下一一级问题为第9章《在国内做跨境生意，要交哪些税？》，仅启动G2独立Writer完整离线工作包、Writer首稿待交；第10章未启动。**
 
-**下一批Gate：** A线第3章Writer V1→G3；B线第5章G2独立Writer V1→G3；**C线第7章G2独立Writer V1→G3**；D线第8章已G4封板、第9章G2 Writer首稿待交。第7章不因第6章封板而自动PASS，后续仍逐章Owner授权G4。
+**下一批Gate：** A线第3章Writer V1→G3；**B线第4/5章均已G4，无下一章Writer Gate，待唯一总控跨章复核**；C线第7章独立Writer V1→G3；D线第9章Writer V1→G3；各章由Owner逐章授权G4。
 
 ## 五、官方事实核验提示
 
@@ -90,4 +92,4 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - 欧盟VAT/OSS/IOSS：https://vat-one-stop-shop.ec.europa.eu/
 - 美国预提税表与协定资格：https://www.irs.gov/individuals/international-taxpayers/claiming-tax-treaty-benefits
 
-**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2 FINAL_SEALED / A-CH3 G2_WRITER_V1_PENDING；B-CH4 FINAL_SEALED / B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C-CH6 FINAL_SEALED / C-CH7 G2_WORKPACK_READY / WRITER_V1_PENDING；D-CH8 FINAL_SEALED / D-CH9 G2_WORKPACK_READY / WRITER_V1_PENDING；正式正文5/10；未授权其他章G4，BOARD_NOT_CLOSED。**
+**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2 FINAL_SEALED / A-CH3 G2_WRITER_V1_PENDING；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6 FINAL_SEALED / C-CH7 G2_WORKPACK_READY；D-CH8 FINAL_SEALED / D-CH9 G2_WORKPACK_READY；正式正文6/10；其他章仍需Owner授权G4，BOARD_NOT_CLOSED。**
