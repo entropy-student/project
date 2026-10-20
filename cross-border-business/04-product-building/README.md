@@ -1,6 +1,6 @@
 # 04｜产品搭建
 
-> **STATUS：G8_FINAL_PASS / KNOWLEDGE_TEXT_CLOSED / 9_CHAPTERS_FINAL_SEALED / CURRENT_GATE_NONE**
+> **STATUS：2026-10-20_OWNER_AUTHORIZED_MINIMAL_REVISION / REVIEW_PENDING / NOT_RESEALED**
 > **冻结框架：1核心、9一级、48二级、117三级；HTML/PDF与实际业务系统未启动。**
 
 **核心问题：产品怎么做、怎么交付？**
@@ -21,9 +21,11 @@
 
 ## 封板与历史
 
-九章知识正文经G5/G6 A+B补强与G7定向润色独立复核，已正式封板；G8仅精简项目库结构，不改变冻结问题和业务知识。当前文件树为**12份**：README、唯一交接、1份问题框架和9章唯一正式正文。
+九章知识正文此前经G5/G6 A+B补强与G7定向润色独立复核，并在G8正式封板。2026-10-20 Owner再次授权最小范围的知识完善，**新增内容尚待新一轮独立复核和Owner重新封板**；原G8结论属于历史版本。当前文件树为**12份**：README、唯一交接、1份问题框架和9章唯一正式正文。
 
 清理前的43份Writer/Reviewer/Gate/封板过程资料及旧框架版本，均通过[清理前固定Git快照](https://github.com/entropy-student/project/tree/b1335eab85c91d111541117a5e723a3894ee907a/cross-border-business/04-product-building)完整追溯；不再在main保存多份并列的封板报告。唯一交接记录完整旧文件入口及逐章指纹。
+
+**新增的教学演练尚未实际执行，仍须按`NOT_RUN`记录。**
 
 **内容封板并不等于真实支付、邮政清关、仓配、个人数据合规和恢复演练已通过。** 所有课程中的`NOT_RUN`与`MODEL_ASSUMPTION`按原义保留。HTML、PDF、发布和产品部署均需Owner另行授权。
 
