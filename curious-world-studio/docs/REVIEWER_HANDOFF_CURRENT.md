@@ -1,5 +1,25 @@
+<!-- CWS_RAPID_REUSE_GATE_ACTIVE_20261020 -->
+## CWS现行Reviewer看板（2026-10-20）
+
+| 字段 | 当前有效值 |
+|---|---|
+| PROJECT_GOAL | 真实知识研究输入→素材与视觉分镜→中文配音/字幕→Research Aqua T1–T6完整MP4→第二题可复用、独立QA；发布须单独许可 |
+| PROJECT_STAGE | 技术组件已成功出59.933秒真实样片；现进入**最小集成复用与完整成片Canary** |
+| SYSTEM_MAP | Owner Windows11/Codex、GitHub主线与隔离PR、`.local`私有媒体与QA、SearXNG/4get/yt-dlp/FFmpeg、OpenMontage/Qwen TTS、冻结V5.6.2 HTML和历史Remotion适配器；无VPS/公网部署，Docker/Clash是共享受保护环境 |
+| CURRENT_ACCEPTED_STATE | `V562_TEMPLATE_TECH_PASS`；CW0005 R2事实/文案PASS；59.933秒1080p实音画+字幕MP4完整解码PASS；PR#159单文件safe-direct scoped PASS仍未合并；**全自动完整可重复仍UNVERIFIED** |
+| CURRENT_GATE | **`CWS-RAPID-REUSE-FIRST-FULL-AND-SECOND-20261020`**；`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED`；[唯一Gate](CWS_RAPID_REUSE_FIRST_FULL_VIDEO_AND_SECOND_TOPIC_GATE_20261020.md) |
+| CRITICAL_CONSTRAINTS | `CW0005_VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/RIGHTS_PARTIAL/NO_PUBLISH`；影片只能内部，Owner视觉/听感/公开权利未批准，材料真实性和已用视频作品身份不可弱化 |
+| DEFAULT_EXECUTION_CHANNEL | Owner Windows Codex→一条隔离PR+一份脱敏ZIP/两个私有MP4→独立Reviewer→Owner最终观片。Owner只须转发一次Gate入口，无逐子步骤审批 |
+| CURRENT_ROLLBACK_STATUS | 现有main和V5.6.2冻结不改、旧59秒与`.local`不覆盖；新版本仅隔离PR/新episode目录，失败停下一写入；PR#159清理属于不同分支与Gate |
+| UNRESOLVED | 59秒生产调用链可复现性和来源/权利台账完整性；完整4–6分钟及第二题复用未证；PR#159 F159-03小清理另行处理，0 CI不等于PASS |
+| NEXT_STEP | Codex一次集中执行：真实旧生产链只读核对→条件式CW0005完整片→第一片合格才进入第二题完整片→交一次Reviewer |
+| OWNER_ACTION_REQUIRED | **转发Gate中一段`REVIEWER_TO_EXECUTOR_RELAY`给本地Codex**；没有其它当前必须人工操作；最后观片及需收费的权限另行确认 |
+| EVIDENCE_POINTERS | [Gate](CWS_RAPID_REUSE_FIRST_FULL_VIDEO_AND_SECOND_TOPIC_GATE_20261020.md)、[V5.6.2冻结](reviews/CWS_V562_OWNER_FREEZE_TECHNICAL_PASS_2026-10-18.md)、[59秒Review](reviews/CW0005_PR155_MEDIA_PROCESS_AND_VISUAL_INDEPENDENT_REVIEW_RETURN_2026-10-18.md)、[PR#159再审](reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md) |
+
+> 下方旧“下一位Reviewer现行交接”“CURRENT_GATE”等段落为历史账，不得覆盖本看板。本文件后续建议缩短历史部分，但当前Gate不做大范围历史重写。
+
 <!-- CWS_PR159_OWNER_REOPEN_REAUDIT_COMPLETED_20261020 -->
-> **【当前唯一最新Reviewer交接｜2026-10-20新审核完成】** 依据Owner新会话上传的真实ZIP、新独立源码审阅和实际媒体QA，[本轮正式报告](docs/reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)裁决`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED / MERGE_HOLD_F15903_AND_OWNER_AUTH`。实际ZIP **SAME_BYTES** sha256 `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`、38成员/37SHA与CRC全过；五份Git blob与PR#159新HEAD `bfddbbf86c9d5fa9a8c93513c1ea5c2d7b62dea8`相同，六号`media_pipeline.py`已从GitHub按旧/新HEAD读回相同blob。独立FFprobe/FFmpeg对NASA小视频完整解码，H264/1920×1080/60fps/1402帧/2669379B SHA `5dfc7ff258428e5c09c15f809792af9f1fc285d459bdfc2c407a24351d1de1d6`，轨道动画仅技术用途；Python 3.13独立13个代理单测通过+3个定向反例通过。F159-01缓存隔离/F159-02全程deadline通过受限审查；F159-03 `_DeadlineSocketReader` 缺 `flush`在异常析构和显式`HTTPResponse.close()`均实际可重现，属于代码合并前必要小清理，没发现新的SSRF绕过。**非独立项目Windows实测：** Executor称84项PASS/单次NASA safe-direct 200公网IP CONNECT+原域名TLS，经ZIP记录支持但本Reviewer不能现场抓包，首次错workdir原始日志不全；GitHub Actions/check runs/statuses均为0，CI不可称PASS。**`CURRENT_GATE=NONE / STATUS=REVIEWER_REAUDIT_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED / PR159_OPEN_UNMERGED / NO_PUBLISH`**。下一步仅在Owner另行授权后同PR小修F159-03+定向回归，审HEAD/CI后由Owner决定合并；不重跑NASA、Blender/搜索、不扩为通用yt-dlp，不改Clash/TUN/DNS或正式制作。以下旧‘待新Reviewer重新审核’段落现为历史而非当前授权。
+> **【当前唯一最新Reviewer交接｜2026-10-20新审核完成】** 依据Owner新会话上传的真实ZIP、新独立源码审阅和实际媒体QA，[本轮正式报告](reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)裁决`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED / MERGE_HOLD_F15903_AND_OWNER_AUTH`。实际ZIP **SAME_BYTES** sha256 `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`、38成员/37SHA与CRC全过；五份Git blob与PR#159新HEAD `bfddbbf86c9d5fa9a8c93513c1ea5c2d7b62dea8`相同，六号`media_pipeline.py`已从GitHub按旧/新HEAD读回相同blob。独立FFprobe/FFmpeg对NASA小视频完整解码，H264/1920×1080/60fps/1402帧/2669379B SHA `5dfc7ff258428e5c09c15f809792af9f1fc285d459bdfc2c407a24351d1de1d6`，轨道动画仅技术用途；Python 3.13独立13个代理单测通过+3个定向反例通过。F159-01缓存隔离/F159-02全程deadline通过受限审查；F159-03 `_DeadlineSocketReader` 缺 `flush`在异常析构和显式`HTTPResponse.close()`均实际可重现，属于代码合并前必要小清理，没发现新的SSRF绕过。**非独立项目Windows实测：** Executor称84项PASS/单次NASA safe-direct 200公网IP CONNECT+原域名TLS，经ZIP记录支持但本Reviewer不能现场抓包，首次错workdir原始日志不全；GitHub Actions/check runs/statuses均为0，CI不可称PASS。**`CURRENT_GATE=NONE / STATUS=REVIEWER_REAUDIT_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED / PR159_OPEN_UNMERGED / NO_PUBLISH`**。下一步仅在Owner另行授权后同PR小修F159-03+定向回归，审HEAD/CI后由Owner决定合并；不重跑NASA、Blender/搜索、不扩为通用yt-dlp，不改Clash/TUN/DNS或正式制作。以下旧‘待新Reviewer重新审核’段落现为历史而非当前授权。
 
 # CWS｜下一位Reviewer完整现行交接（更新至2026-10-19）
 
