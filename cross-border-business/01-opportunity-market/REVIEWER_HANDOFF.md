@@ -1,10 +1,28 @@
 # 第一部分《机会挖掘与市场判断》｜唯一项目交接（G8最终PASS）
 
-> **PROJECT_STATUS：CLOSED / FINAL_PASS / ALL_8_CHAPTERS_FINAL_SEALED（Owner明确批准，2026-10-19）**  
+> **PROJECT_STATUS：2026-10-20 G6定向修订 / PASS_CANDIDATE / STOP_AT_OWNER_RESEAL**  
 > **CLOSE范围：第一板块知识体系的Markdown正文、正式框架、独立审核与G8文档归档阶段**  
 > **FRAMEWORK：CORE1 / L1 8 / L2 34 / L3 83；8.2不设三级；FROZEN**  
-> **CURRENT_GATE：NONE / CURRENT_WRITER_GATE：NONE / OWNER_ACTION_REQUIRED：NONE**  
+> **CURRENT_GATE：G6_MINIMAL_REVISION_REVIEW / CURRENT_WRITER_GATE：NONE / OWNER_ACTION_REQUIRED：FINAL_RESEAL**  
 > **HTML、PDF、正式出版、现实交易与运营：NOT_STARTED/NOT_VERIFIED（不属于本轮CLOSE）**
+
+## 2026-10-20｜Owner授权G6定向完善（当前状态；下方2026-10-19记载属于历史）
+
+**授权范围**：Owner说“以最小化原则，开始修改”，仅采用独立报告首推的8项：A01、A02、A04、A05、A06、A09、A16、A20。其余12项本轮不扩大；冻结1核心/8一级/34二级/83三级题原文、父题、顺序及8.2无三级保持不变。README、唯一交接及八章正文因同步更新；不改变跨板块SOP/冻结框架。
+
+**本轮改动**：第1章补白话先修与30分钟免费线索练习；第2章补经同意的双语访谈示范；第4章统一净销售额/贡献/现金口径，补Google Trends操作记录；第5章修正Apple/Google Play按地区/订阅/交易性质的动态费率；第7章补安全合法交付前提和手工测试台账；八章以同一“美国某州小型餐厅排队/预约工具”虚拟案例构成同一证据页，最终第8章为TEST。**所有案例均为MODEL_ASSUMPTION；没有真实受访、广告、客户、成交或支付验收**。动态平台收费按2026-10-20官方规则核验，之后须再查。
+
+**修订后章节Git Blob**（按第1至第8章）：
+- CHAPTER1: 7b79bac4597428f9010e12570d76b95a5555eed9
+- CHAPTER2: 13cbfbf81b2419916ac70dba89425e0d28492ba4
+- CHAPTER3: c752d06b030dbbab96c00a9744f1de47ea8408e4
+- CHAPTER4: d037da36865c5b8d0f228ba0c5e290bb80c0a8f3
+- CHAPTER5: 01e9be1fc6a8363a96554a1a974692ffe0c52f27
+- CHAPTER6: 6d92c4d6e4b3cb417eecf1ad15f9cc8738c404d1
+- CHAPTER7: 6930720a70dc9386a04f4fc192c90535b034d421
+- CHAPTER8: ebdd1b8937aadec121027a938f77028b7182bf1d
+
+**本轮状态**：定向修改已写入GitHub `main`，单章标题与原文逐项对照及代码围栏复验需以最新版本再次执行；本状态为**PASS_CANDIDATE / STOP_AT_OWNER_RESEAL**，**不得仅凭执行方自检代替Owner最终重新封板**。下文旧Blob/SHA-256表反映2026-10-19的先前G8封板版本，并不是本轮当前版本。若获得Owner最终封板授权，应按SOP回读、记录新的原字节SHA256与Blob、同步状态。
 
 ## 一、项目定位、正式入口与停止线
 
