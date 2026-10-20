@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G5_RESEARCH_REPORT_DELIVERED_OWNER_DECISION_PENDING / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G6_OWNER_AUTHORIZED_REVISION_REVIEWED / G7_EDITOR_WORKPACK_READY / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。G5全板块研究与跨章一致性审查已形成Owner决策报告，待逐项批复；G6/G7/G8未开始，尚未CONTENT_CLOSED或BOARD_CLOSED。**
+> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。G5全书三份研究报告与独立Reviewer复审完成；Owner本轮明确批准按总控建议完成实质性定向修复并再冻结；G6静态内容复核已完成，G7语言/连贯性独立Editor工作包待交；G8未开始，尚未CONTENT_CLOSED或BOARD_CLOSED。**
 
 ## 一、权威依据和Owner决定
 
@@ -113,6 +113,34 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - **`G5-11—13/P2`**：付款确认/银行现金/营业收入术语桥接、进阶技术分层及全书双向路标；建议后续G7处理但需遵守核心事实不改。
 - **G4章文全部保持正式冻结**，当前状态仅`G5_RESEARCH_REPORT_DELIVERED / STOP_AT_OWNER_DECISION`。Owner对矩阵逐项决策后交独立全新Reviewer执行G6盲审；只有授权的G6/G5合并修订才按G3/G4复验修改原正文。此阶段不启动G7或G8，也不宣布CLOSED。
 
+## G6｜Owner批准的G5/G6综合意见已实施，G7纯文字Gate开启（2026-10-20）
+
+**Owner最新明确批准：** “按照你的建议来，完成后正式冻结这几篇文章。记得记录相关文档。然后开启下一个gate，让另一个agent帮我们review下这几章文章连贯性与语言可读性等软性信息，核心内容不动。搞一份提示词和工作包。”本轮由唯一总控Reviewer直接在10章**当前正式正文**上作针对性变更、静态独立回归并按Owner授权再封板，不得写成独立Writer新交稿，也不代表真实银行/税局/支付/海关实测。
+
+**权威版本：** 以本轮最终合并并从GitHub `main`回读的唯一`docs/CHAPTER1_FINAL_SEALED.md`—`CHAPTER10_FINAL_SEALED.md`为准；冻结框架Git Blob `332950b8579f25c255595af5b9f12766340e840f`保持不变；**一级10、二级52、三级113全部逐字同父题、同序通过**，27幅Mermaid与代码围栏完整；第三章原文不做无效扩写。
+
+### 已采纳的事实修正与系统性补充
+
+| ID / 原G5来源 | 受影响材料 | 实际处理结果 |
+|---|---|---|
+| F01 / G5-01 | 第10章10.5.1 | 核验中美1986年议定书对非个人实体享协定待遇的限制，删除从“无现代独立LOB章节”推导`No LOB article in treaty`选项的错误引导；真实Line14b按有效协议及IRS规则核定，不提供统一选项。 |
+| F02 | 第9章9.2.2 | 抵免的纳税凭证与税收居民证明分开，补居民个人合格证明、无证明时的合法替代与五年补证追溯；与10.5.2交叉链接。 |
+| F03 | 第10章10.2.3 | 非欧盟OSS为自愿集中申报方式，不等于VAT可选缴；根据真实卖方、消费地和B2B/平台角色选择本地或OSS。 |
+| F04 | 第9章9.2.1 | 区分外币主营单位依会计法可选择外币记账本位币、财务报表人民币列报与各税种法定折算。 |
+| G01、G5-02 | 第10章10.4.4 | 中美服务PE第5(3)(c)保留原正确条款；明示美国非MLI缔约方，MLI不自动引入新中美协定条款。 |
+| G03、M02 | 第1、2章 | FinCEN 2026美国BOI主体分类提醒；收款资质至银行/合规结汇六关，区分开户、收单与真正出款。 |
+| G04 | 第4、5、7章 | 银行直接借记SEPA/ACH的Mandate、延迟与授权追索窗口，避免将银行扣款误套卡式争议与立即发放不可撤销权益。 |
+| G05、G5-04/05 | 第6、8章 | 第6章Mermaid准备金释放改为**合同条件+风控核验**，非固定天数必然释放；第8章补法律卖方/平台代征/MoR会计主要责任人与总额/净额判断及SaaS非统一12月等额摊销。 |
+| G06、G5-06 | 第9、10章 | 企业境外抵免两种方式一经选择五年内不得变更，区别居民个人抵免；复核教学算例原币种与人民币单位。 |
+| G07 | 第9章 | 2026年第16号跨境电商出口退运、原状六个月、监管代码、非食品以及已退税补缴的退款/物流/税务证据闭环。 |
+| M01、G02有限、M04—M11选择性 | [PRACTICAL_PATHS_APPENDIX.md](PRACTICAL_PATHS_APPENDIX.md) | 三种大陆经营者端到端演练、合同/支付/银行/税务归属、数据库字段与检查表、SEPA/ACH、关联交易五问、税目逆例、关停与动态政策索引；全为`MODEL_ASSUMPTION`及`NOT_RUN`。 |
+
+**未采纳或明确后置：** 大幅重写10章、新增第11章、修改冻结问题原文或父子关系、把跨国集团全球最低税/Pillar Two作为个人必修、部署企业级支付编排、不核实资格就宣称某服务商已提供实测支持。纯语言润色与长段落结构优化全部交下轮G7独立Editor，不在内容Gate越权更改。
+
+**实操附录定位：** 为避免将已封板十章扩成多份重复课件，Owner此次允许在板块根目录保留**一份明确的非冻结、非第11章**的`PRACTICAL_PATHS_APPENDIX.md`。该附录是十章共用工作单；所有条款仍以各章正式正文、官方法规和实际合同为准，G8归档时再核对其长期保留安排。
+
+**审批与Gate停点：** `G6_OWNER_AUTHORIZED_CONTENT_REVISED / G6_STATIC_QA_PASS / 10_CHAPTERS_RESEALED / G7_EDITOR_WORKPACK_READY / G7_INDEPENDENT_EDITOR_PENDING / BOARD_NOT_CLOSED`。独立Editor只负责跨章过渡、重复压缩与可读性，不得改核心事实/公式/代码/法规/模型标签/冻结标题；不得修改GitHub，先返回完整候选ZIP，由总控G7复审、Owner再定最终G8。封板内容**无真实支付/出款/退运/纳税实测，NOT_RUN**。
+
 ## 五、官方事实核验提示
 
 - 支付测试服务商规则：https://docs.stripe.com/testing
@@ -122,4 +150,4 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - 欧盟VAT/OSS/IOSS：https://vat-one-stop-shop.ec.europa.eu/
 - 美国预提税表与协定资格：https://www.irs.gov/individuals/international-taxpayers/claiming-tax-treaty-benefits
 
-**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9/CH10 FINAL_SEALED / D_LINE_CHAPTER_CONTENT_COMPLETE；正式正文10/10；G5_CROSS_CHAPTER_REVIEW_PENDING / BOARD_NOT_CLOSED。**
+**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9/CH10 FINAL_SEALED / D_LINE_CHAPTER_CONTENT_COMPLETE；正式正文10/10；G6_APPROVED_CONTENT_RESEALED / G7_EDITOR_WORKPACK_READY / WRITER_EDITOR_PENDING / BOARD_NOT_CLOSED。**
