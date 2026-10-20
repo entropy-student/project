@@ -6,7 +6,7 @@
 
 ## 一、当前状态与恢复顺序
 
-本板块目标是回答“**做跨境生意，钱怎么收、税怎么交？**”，供中国大陆个人开发者、平台卖家和中小跨境业务经营者学习。**十章正式正文全部封板**，G5全书研究、G6独立复核及定向内容修订、G7语言与连贯性复验、G8事实纠偏与行政归档均完成。本轮Owner先批准“按第二板块文档架构整理”，继而明确要求“**开始，完结之后正式pass**”；依据[统一SOP](../PROJECT_WORKFLOW_SOP.md)将**知识正文阶段**记为`G8 PASS / FINAL_SEALED / BOARD_CLOSED`，且仅在真实GitHub `main`回读、证据验证PASS后生效。无新Writer/Reviewer Gate，`CURRENT_GATE: NONE`，不得自动解冻。
+本板块目标是回答“**做跨境生意，钱怎么收、税怎么交？**”，供中国大陆个人开发者、平台卖家和中小跨境业务经营者学习。**十章正式正文全部封板**，G5全书研究、G6独立复核及定向内容修订、G7语言与连贯性复验、G8事实纠偏与行政归档均完成。2026-10-20 Owner针对其后第二轮系统性Review明确授权按最小化原则修正六组必要问题，完成复核后正式PASS；本次以原冻结问题树及十章目录不变、定点纠偏方式执行，非另开G1或第11章。本轮Owner先批准“按第二板块文档架构整理”，继而明确要求“**开始，完结之后正式pass**”；依据[统一SOP](../PROJECT_WORKFLOW_SOP.md)将**知识正文阶段**记为`G8 PASS / FINAL_SEALED / BOARD_CLOSED`，且仅在真实GitHub `main`回读、证据验证PASS后生效。无新Writer/Reviewer Gate，`CURRENT_GATE: NONE`，不得自动解冻。
 
 新Agent依次阅读：①[统一SOP](../PROJECT_WORKFLOW_SOP.md)；②本交接；③[唯一正式冻结框架](docs/FROZEN_FRAMEWORK_V1_20261020.md)；④目标[章节与全文导航](README.md)。旧交接与封板报告只作历史证据，不能覆盖本文件所载状态。
 
@@ -39,6 +39,7 @@
 | G6 | 新独立Reviewer跨章核查；Owner批准按采纳矩阵对已封正文定向修订、再复验再封板；特批保留**一份跨章实操附录**。 | OWNER_AUTHORIZED_CONTENT_RESEALED |
 | G7 | 独立Editor V1提交候选，独立G7 R1`RETURN` **16项（P0×5/P1×9/P2×2）**；Owner授权Reviewer直修有问题的新主张，只保留不会篡改事实的语言改善；正文再封板。 | EDITORIAL_PASS |
 | G8 | 全新Reviewer审查固定版本发现**4项**（P1×2、P2×2），Owner授权该Reviewer定向修正第9/10章并修归档；Owner本轮授权按第二板块整理并完成后**正式PASS**。G8直修由同一Reviewer执行，**不冒称另有独立R2验收**。 | **PASS / FINAL_SEALED / BOARD_CLOSED（知识正文阶段）** |
+| G8后补充Review（二轮最小修复） | Owner于2026-10-20批准第二轮独立系统性评估中的六组定向纠偏；修复第1、2、3、4、5、8、9、10章，更新导航及本交接。核验章节改动仅限原位措辞/必要操作检查表，不触及冻结题干、编号、父子关系及G6/G7已确认事实。修订由本轮执行者静态复验，**不冒称新独立Agent再次PASS或生产实测**。 | **OWNER_APPROVED_RESEALED / BOARD_CLOSED（知识正文阶段）** |
 
 **与G8最终PASS对应的四项具体闭环：**
 
@@ -48,6 +49,19 @@
 | G8-02 P1 | 更新板块及父级README过期状态；精简唯一交接，保留本节有效版本指纹与不可变历史链接；无第二份权威交接。 | PASS |
 | G8-03 P2 | 以每组`$$…$$`成对标记统一计数为**41处**（第2章11、第5章4、第6章1、第7章1、第8章13、第9章6、第10章5），原历史G7“35”属未说明口径，不改公式本体。 | PASS |
 | G8-04 P2 | 第9章4处菜单步骤去掉多余的`$ → $`装饰符号；菜单路径及操作顺序不变。 | PASS |
+
+### 2026-10-20第二轮Review最小修复闭环（Owner专门授权）
+
+| 修复组 | 范围与实质结果 | 回归判据 |
+|---|---|---|
+| B01 主体财产 | 第1、9章统一按《民法典》第56条区分个人经营/家庭经营/无法区分，去除“个体户一律个人家庭无限连带”的误导；同步修正有限公司责任主体和第9章大陆Stripe资格暗示。 | 第1/9章责任表述一致；法律卖方、境内主体及PSP准入不混同 |
+| B02 备用收款 | 第2章2.6.2区分买家备用结账能力与资金收结汇账户；MoR到自营的卖方、订阅和间接税责任不得无缝移植。 | SaaS备用路径不再把外币收款账号当收单 |
+| B03 商户安全 | 第3章3.4.2原位增加独立账号/2FA、最小退款出款权限、受限密钥、安全存储、疑似泄漏轮换与审计清单。 | 不新增章节，不将工程措施误称统一法定程序 |
+| B04 钱包凭据 | 第4章4.1.1按Google Pay官方区分`PAN_ONLY`/`CRYPTOGRAM_3DS`，不照搬Apple Pay设备代币机制。 | 与Google Pay官方凭据/SCA说明一致 |
+| B05 支付核验 | 第5章明确四步核验是工程建议而非“法定程序”，保留验签、查单及防重边界。 | 前端跳转不触发未经服务端确认的履约 |
+| B06 收入现金与税务边界 | 第8章8.5.2按履约义务确认收入、区别PSP可出款余额与银行现金；第9章小微优惠税率补适用条件；第10章10.2.2限定仓储国VAT及Union OSS只涵盖相应欧盟境内跨境远程销售。 | 与第8章8.5.1及欧盟委员会OSS适用范围不冲突 |
+
+**第二轮复核依据与执行边界：** 《民法典》第56条；[Google Pay凭据格式](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography)、[Google Pay SCA](https://developers.google.com/pay/api/web/guides/resources/sca)、[Stripe 2FA](https://support.stripe.com/questions/require-two-step-authentication-for-your-team)、[Stripe密钥防护](https://support.stripe.com/questions/protecting-against-compromised-api-keys?locale=en-GB)、[EU OSS](https://vat-one-stop-shop.ec.europa.eu/one-stop-shop/register-oss_en)及既有会计准则条文。上一轮提出的其他扩写型建议不纳入此次修复，避免与正式内容及现有跨章附录重复。对八章正文仅实施精确字符串替换/原位补注，并以GitHub最新回读、差异清单、代码围栏及原字节哈希静态检查验收；**无真实开户、网关结算、银行操作或纳税申报**。
 
 ## 四、重点跨章结论及不能退回的修正
 
@@ -60,23 +74,23 @@
 
 ## 五、当前版本指纹与不可变证据
 
-**固定内容基线：** [G8归档前最后完整审计快照 `6778aec7aa75`](https://github.com/entropy-student/project/commit/6778aec7aa7548834bb3b44ccf609ebf75d7e628)；下表的**框架、十章和附录**是本轮完全未改动的12份正文/基准，指纹按原字节UTF-8/LF SHA-256和Git Blob SHA-1分别保存；二者不可混称。README属本轮整理文件，已从正式整理提交后GitHub `main`回读并录入实际原字节SHA-256和Git Blob；本交接不记录自身指纹，避免循环哈希。
+**本轮再封板内容基线：** [Owner授权第二轮修复后的正文及导航固定提交 `33d0793e3c8e`](https://github.com/entropy-student/project/commit/33d0793e3c8e72cdd6ec9c270a5a55430cf364d3)，其前基线为`318f44ddcd60`；本轮更新第1/2/3/4/5/8/9/10章及README共9份，**冻结框架、实操附录、第6/7章未改动**。下表为重新读取GitHub后的实际原字节UTF-8/LF SHA-256及Git Blob SHA-1，两种指纹不得混称；本交接不记录自身指纹以避免循环哈希。
 
 | 相对路径（本板块） | 原字节SHA-256 | Git Blob SHA-1 |
 |---|---|---|
 | `PRACTICAL_PATHS_APPENDIX.md` | `afaa5607bb49601b18e6d4bf466706cab187143f53ab900812744cb603d21f6c` | `80d1bb18dcfc2097ae93c3227d484584aa610d7d` |
 | `docs/FROZEN_FRAMEWORK_V1_20261020.md` | `42649959c4fcdaa7149a0838b009b011bfc04b2d5213cdd25cda88935ed527df` | `332950b8579f25c255595af5b9f12766340e840f` |
-| `docs/CHAPTER1_FINAL_SEALED.md` | `2246f7668e6fb27aa8e30fb2206e2ff74339ec210fa5ee992343ad0eb0a1d848` | `5f0f7c08c359d78d2e7ed5deb129cf8b57c360bf` |
-| `docs/CHAPTER2_FINAL_SEALED.md` | `fb0cc683ad16dbc9f6775ee91b867fd861eef50d23b1b406f086eae79317821e` | `93ce625e042e33e487f2df6a2116a79130980e31` |
-| `docs/CHAPTER3_FINAL_SEALED.md` | `4dceaaadf7ab2a3873c254ce239bb94c8a8d633011d396702f52804a65623291` | `613c58fddbe0fbe63b5c73be10285aabebea3da2` |
-| `docs/CHAPTER4_FINAL_SEALED.md` | `f5a1378ccde9cdabe6a3aa88942ec813acfae9c41737d81272637a18eadb5fd8` | `918570400bd504207592e6d75f5315f86ee504b2` |
-| `docs/CHAPTER5_FINAL_SEALED.md` | `ddea80d6b74b9b24ba121d3983710656f8509b7e9040e40b06bfb769dc3dfb7f` | `ee2cecf038585d9f3655be34f4b545b43716fa64` |
+| `docs/CHAPTER1_FINAL_SEALED.md` | `d962a7a69e65bf0783833cd55b36c2665abf3f6bfd951b268c212afe7400feb9` | `1922f0ea0ddeb83cd485822ed445197f918465d5` |
+| `docs/CHAPTER2_FINAL_SEALED.md` | `233f7dbab25c2f7ee15ca4371a7eaad71ba73dc4c557e7595c4e3d18495e287f` | `67e787e172a11e69bdb0ba232af4daf53aa4a2ec` |
+| `docs/CHAPTER3_FINAL_SEALED.md` | `b4ba473a9f3e303601ef7bbb040263a624884cc5e6a700b24ec939d22a0e2c14` | `761f21068c38f5995aed142335cb4cebc27bde8c` |
+| `docs/CHAPTER4_FINAL_SEALED.md` | `e04da75c3a7a29e06ab8fd0bab45f4940af06f5766a0a1195687191cf7e8cb8d` | `c598b6db162bde087ec0efebf3cd45567d6aac58` |
+| `docs/CHAPTER5_FINAL_SEALED.md` | `da0dce6994b312db40879975296002f8bdf8cc1b74233c1a5a12f13b354fba2b` | `f8e6b5c7d43848bb898ad63b7772f21e70b3b866` |
 | `docs/CHAPTER6_FINAL_SEALED.md` | `f9b065871cddfbf34fea5a948823a513326beb970602eeb6a9ebfe578d54e987` | `009ce04ddd7d9076bc7d58cf112c64868e2aaf20` |
 | `docs/CHAPTER7_FINAL_SEALED.md` | `45d36616f0fe6a54c796b4ad4d73ec7b5164f6472f9838428256a58c923a9bc5` | `b743600d6e5ea7fceee28c15824edd665b152b29` |
-| `docs/CHAPTER8_FINAL_SEALED.md` | `93bd6b5f9770d5fdebce8af037a14977b469a3cb829c90483cf3b0a8e938fb55` | `e61de30d6ab1650b21fa2023fa78896d1eb3444d` |
-| `docs/CHAPTER9_FINAL_SEALED.md` | `ee8a67d16221d236604e47e5a4685bd6cee480e14be6fa1ab899422aac905ab4` | `b0a1796ba964a2c54694c4d08f30d58f68027e81` |
-| `docs/CHAPTER10_FINAL_SEALED.md` | `b6c7a076ee9509f1c5baa0e9300a808a9e48009df1cdd201498b3002e00115a3` | `64dac56575a7c64a7fd50ab41728ff56d0ee1740` |
-| `README.md` | `534f25c37873dca7347b7ed2de6ceb972855da7b8c2cc480dcae12fe54eb9b67` | `0bed54a5718928f8f615fcd8cd7ce3716483a211` |
+| `docs/CHAPTER8_FINAL_SEALED.md` | `bb466691204623e9881f275be15aa691382dcb782cbf0bd1158136cf3094bb7d` | `112ce0173a0cba092d4245d0b848c925efe758ca` |
+| `docs/CHAPTER9_FINAL_SEALED.md` | `205c4483af71a49067724e56c6dbb9fa3d11f7a8f79b7a55806bb9a4eaa94db0` | `7438b1836fe0377c95d3590a5ff21cb6e67c14f8` |
+| `docs/CHAPTER10_FINAL_SEALED.md` | `17f6fe82e2c000419b63726e6e43380d8276f4c682cd09765a7a35a6e65fa542` | `664017f71b7d4c55a3e18b5921f1347eab8a05bd` |
+| `README.md` | `a23c25e46aa8043742d24a0bf2cc2278904ff2bab15aa8e33b0b2f7a0590c48f` | `a4b36ffd5dc6e35f1f9c1a3a4c304936ed92bee1` |
 
 **可恢复的历史固定Git版本：**
 
@@ -93,7 +107,7 @@
 ## 六、静态质量验收、边界与结项
 
 - **冻结复验：** 十章题干与唯一问题树逐字、同序、同父题匹配：`L1=10/10、L2=52/52、L3=113/113`；4处直接成节`5.2/7.5/8.1/10.3`，无额外正式第11章。
-- **技术复验：** 72个完整Markdown代码围栏（其中27幅Mermaid）、41处`$$…$$`公式；章节、冻结框架、实操附录**内容Git Blob与G8归档前基线完全一致**；源URL及代码不因目录整理变更。相对链接、文件存在性和正式目录唯一性检验PASS。
+- **技术复验：** 章节题干及冻结框架结构保持原样；第二轮修复差异仅限上述8章的定向段落与README，冻结框架、实操附录、第6/7章Git Blob继续匹配G8基线。修改后八章代码围栏均成对、未引入新的代码块或公式，所有变更文件的Git Blob与原字节SHA-256已经重新回读复算；全文72个代码围栏（其中27幅Mermaid）、41处`$…$`公式的**旧G8统计作为冻结基线保留**，本轮未逐一重新执行代码及公式的运行级验收。
 - **事实/生产边界：** 重点官方来源与敏感会计/税务事实已有G5—G8静态核查；**未逐个HTTP验证全部外部链接**。没有执行真实商户开户、沙箱/生产交易、结汇、退税、纳税申报、支付平台争议流程、Webhook部署或法律税务合规意见；以上为`NOT_RUN`。教学算例为`MODEL_ASSUMPTION`，动态地区/平台/合同适用条件可能是`UNKNOWN`。教材审查PASS不是生产或法律保证。
-- **Owner结项权限：** 以Owner本轮“开始……完结之后正式pass”为本次唯一明确最终批准；G8知识正文阶段完成后`CURRENT_GATE: NONE`。如需HTML、PDF、商业发行、后续新修订或生产环境实施，另立Owner授权，不自动启动。
+- **Owner结项权限：** 2026-10-20 Owner在本次第二轮系统性Review后明确要求“以最小化原则，开始修改吧。完成后本部分正式pass”，故本次属于**已获Owner批准的有限解冻与再封板**；完成静态回读后保持`CURRENT_GATE: NONE / PASS / BOARD_CLOSED（知识正文阶段）`。如需HTML、PDF、商业发行、后续新修订或生产环境实施，另立Owner授权，不自动启动。
 
