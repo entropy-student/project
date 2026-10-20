@@ -93,6 +93,8 @@
 
 `127.0.0.1`（localhost）指本机回环；`0.0.0.0:端口`表示程序可能接受多个IPv4网卡连接，但公网是否可到达仍取决于云安全组、主机防火墙及端口映射。容器的临时文件并不自动等于永久业务存储：在重建/重新部署后数据可能丢失，必须先确认持久卷、托管数据库或对象存储的责任归属。详见 [Docker端口发布](https://docs.docker.com/engine/network/port-publishing/) 与本章§5/6。
 
+**三个不买错服务器的场景：** ①仅经营平台店铺、使用商家后台：优先验证平台允许的正常连接、MFA和账号恢复，不必租VPS。②在Shopify等托管平台开独立站：先依官方域名和HTTPS向导完成测试订单，不因“独立站”二字而自建服务器。③需要长期运行自编订单同步/自动化工具：先比较PaaS是否支持定时/常驻任务、出站连接、重试和持久存储；只有确需OS级控制、特殊网络协议或经核算VPS更合适时再租机，并验证重启、日志、数据写回、回滚和费用。以上均受平台准入及合法使用条件约束。
+
 **小型VPS采购统一核对单：** 确认自己是否真需自管OS；再按合法开户与使用地区、目标客户机房、共享/专用vCPU、RAM/磁盘与IOPS、IPv4/IPv6、带宽与出站超量、备份/救援、工单SLA、退款及迁移出口对齐比较。DigitalOcean、Hetzner、Vultr、Akamai/Linode、AWS Lightsail、BandwagonHost（搬瓦工）可列入调查候选，**不是本教材实测的速度排名或默认推荐**。搬瓦工Basic与其其他套餐的线路、机房和资源条件须以当期官方说明及从真实业务网络进行的获准测试为准，不能根据“Basic/电商”等营销名称承诺延迟或合法专线资质。至少保留两份同配置、同地区、含IP/备份/税费的报价记录及测试日期。
 
 
@@ -320,15 +322,51 @@
 
 ### 3.2 上线前怎样验证页面、接口、数据保存及程序更新后都能正常工作？
 
-**最小可复制本地练习（无需购买VPS；验证启动、内容更新和回滚，随后再选择是否做PaaS演练）：**
+**第0步：无需云账号的本地HTTP/更新/回滚演练（需预装Python 3）。** 仅在自己新建的空测试目录内执行，Windows PowerShell 5.1/7使用`curl.exe`以避免`curl`别名问题。
 
-在空测试目录创建文件`index.html`，内容为`v1-ok`。电脑已有Python 3时，在该目录执行`python3 -m http.server 8000 --bind 127.0.0.1`（Windows PowerShell可用`py -3 -m http.server 8000 --bind 127.0.0.1`）。另开终端执行`curl -fsS http://127.0.0.1:8000/`，**预期正文为`v1-ok`**。将文件备份为`index.v1.bak`，把`index.html`改成`v2-ok`，再次请求应看见`v2-ok`；模拟“更新失败”时把备份复制回来，刷新应恢复`v1-ok`。按Ctrl+C终止演示服务，删除本轮测试目录。遇到连接拒绝应查服务进程和端口占用；返回内容不对则查终端工作目录、文件名及是否访问了`/`。
+Windows（**终端A**，保持服务运行；`py -3`不存在时使用已安装的`python`）：
 
-**练习边界：** 这是隔离的静态本地进程实验，尚未模拟数据库/持久化，更不是生产部署PASS。之后如选择托管PaaS，才按本章已有Render六步沙盒路线，把同一应用扩展为`/health`健康端点：核对平台要求的监听端口与绑定地址、构建启动命令、环境变量/密钥、隔离测试数据的重启持久性、一次可回退更新、后台日志和资源删除。各项未经真实运行应记录`NOT_TESTED_CLOUD`，而不是声称已经完成云端验收。
+```powershell
+New-Item -ItemType Directory -Force cb02-demo | Out-Null
+Set-Location cb02-demo
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) 'index.html'), 'v1-ok')
+py -3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Windows（**终端B**，先进入**同一**`cb02-demo`目录）：
+
+```powershell
+curl.exe -fsS http://127.0.0.1:8000/                 # v1-ok
+Copy-Item index.html index.v1.bak
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) 'index.html'), 'v2-ok')
+curl.exe -fsS http://127.0.0.1:8000/                 # v2-ok
+Copy-Item index.v1.bak index.html
+curl.exe -fsS http://127.0.0.1:8000/                 # v1-ok
+```
+
+macOS/Linux（**终端A**）：
+
+```bash
+mkdir -p cb02-demo && cd cb02-demo
+printf 'v1-ok' > index.html
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+macOS/Linux（**终端B**，进入同一`cb02-demo`目录）：
+
+```bash
+curl -fsS http://127.0.0.1:8000/  # v1-ok
+cp index.html index.v1.bak
+printf 'v2-ok' > index.html
+curl -fsS http://127.0.0.1:8000/  # v2-ok
+cp index.v1.bak index.html
+curl -fsS http://127.0.0.1:8000/  # v1-ok
+```
+
+**预期/排查/清理**：依次输出v1→v2→v1；连接拒绝先核测试服务是否还在，端口冲突先停止自己启动的进程，内容不对检查终端B的工作目录。最后终端A按Ctrl+C，确认目录是本次专门创建的`cb02-demo`，再手动删除。实验只验证**本机静态页面和HTTP服务**，未验证云端部署、数据持久化及生产可用性。
 
 
-
-**从零贯通的轻量托管应用示例（先沙盒，不访问生产）：** 以一个已有代码仓库的简单Web应用为例：①准备最小启动命令、运行时版本、`/health`（不暴露用户数据）和隔离的测试数据库；②选择支持从Git部署的托管PaaS，按文档设置构建命令、启动命令和非明文密钥；③部署后从目标地区访问临时URL，`curl -fsS https://staging.example.com/health`（示例占位域名，实际需替换） 返回成功仅代表健康端点可访问；④在测试环境建立一条非客户数据并重启服务确认持久化，独立验证定时任务与失败告警；⑤绑定已拥有的域名并核对TLS/邮件配置（可选）；⑥推送一处可回滚的无害页面修改，记录版本SHA、先前制品及数据库模式兼容性，做功能烟测，不通过则切回旧版本并对照业务日志。平台默认免费层可能休眠或禁商用；不应将此流程视为所有商户上线所必需的VPS运维。可对照 Render 官方部署文档：https://render.com/docs/deploys 。
+**从零贯通的轻量托管应用示例（先沙盒，不访问生产）：** 以一个已有代码仓库的简单Web应用为例：①准备最小启动命令、运行时版本、`/health`（不暴露用户数据）和隔离的测试数据库；②选择支持从Git部署的托管PaaS，按文档设置构建命令、启动命令和非明文密钥；③部署后从目标地区访问临时URL，Windows使用`curl.exe -fsS https://staging.example.com/health`，macOS/Linux使用`curl -fsS https://staging.example.com/health`（示例占位域名，实际需替换） 返回成功仅代表健康端点可访问；④在测试环境建立一条非客户数据并重启服务确认持久化，独立验证定时任务与失败告警；⑤绑定已拥有的域名并核对TLS/邮件配置（可选）；⑥推送一处可回滚的无害页面修改，记录版本SHA、先前制品及数据库模式兼容性，做功能烟测，不通过则切回旧版本并对照业务日志。平台默认免费层可能休眠或禁商用；不应将此流程视为所有商户上线所必需的VPS运维。可对照 Render 官方部署文档：https://render.com/docs/deploys 。
 
 系统上线前，必须通过有梯度的验证手段进行检查，排查潜在的功能失效与配置疏漏：
 
