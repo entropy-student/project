@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH4 OWNER_AUTHORIZED_FINAL_SEALED；A-CH2 G2；B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C/D独立推进；正式封板2/10章。**
+> **CURRENT_GATE：CH1/CH4/CH6 OWNER_AUTHORIZED_FINAL_SEALED；A-CH2 G2；B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C-CH7 G2_WORKPACK_READY / WRITER_V1_PENDING；D线独立推进；正式封板3/10章。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -15,12 +15,13 @@
 
 ### 当前正文工作
 
-**Owner批准四线并行：** A线第1—3章（第1章已封板，第2章G2）；B线第4—5章（第4章已封板，第5章G2离线工作包准备完成，首稿待交）；C线第6—7章与D线第8—10章按各线现行Gate推进。唯一总控协调跨章和Git正式入库，各章G4仍需Owner逐章批准。工作包和过程稿不作为平行正式正文写入docs。
+**Owner批准四线并行：** A线第1—3章（第1章已封板，第2章G2）；B线第4—5章（第4章已封板，第5章G2离线工作包准备完成，首稿待交）；C线第6章经Owner授权Reviewer从Writer V2完整正文直修并经G3/G4复验封板，现开启第7章G2独立Writer工作包；D线第8—10章仍按其现行Gate推进。唯一总控协调跨章和Git正式入库，各章G4仍需Owner逐章批准。工作包和过程稿不作为平行正式正文写入docs。
 
 ## 正式章节正文
 
 - [第1章｜做跨境生意，我需要注册公司吗？](docs/CHAPTER1_FINAL_SEALED.md)
 - [第4章｜怎么让海外客户顺利付款？](docs/CHAPTER4_FINAL_SEALED.md)（Owner授权Reviewer自Writer R2直修封板）
+- [第6章｜客户付的钱，怎么进我的银行账户？](docs/CHAPTER6_FINAL_SEALED.md)（Owner授权Reviewer自Writer V2完整原稿直修，冻结1/5/11题，静态复核通过；真实银行操作`NOT_RUN`）
 
 ## 原独立支付知识指南（仍CLOSED/只读）
 
