@@ -1,7 +1,12 @@
+<!-- CWS_RAPID_REUSE_OWNER_AUTHORIZED_20261020 -->
+## 2026-10-20｜Owner同意按Governance加速，以最少Gate验证现有自动制片复用
+
+Owner接受Reviewer再次核实的技术现状，但明确不满意3轮/4–9个工作日的未实证预估，并要求“按照项目管理规范去推进”。Reviewer依据Governance §5将**同一Owner Windows本机、同一CWS内容生产目标与新隔离目录**的只读旧59.933秒生产链复现核对、必要最小桥接、CW0005第一条完整内部影片、第二个不同选题同链验证合并为**一条有条件连续执行Gate**：`CWS-RAPID-REUSE-FIRST-FULL-AND-SECOND-20261020`，[正文](CWS_RAPID_REUSE_FIRST_FULL_VIDEO_AND_SECOND_TOPIC_GATE_20261020.md)。单轮新正式成片最多两条；第一条前置失败即停，不把未知输入猜成可复用；所有内部视频仅供Reviewer/Owner，不解除`NO_PUBLISH`或`RIGHTS_PARTIAL`，不允许付费/重开发工具/改冻结V5.6.2/合并PR。**耗时由执行者记录实际盘点/内容/素材/音频/渲染/QA分段，审核后再估余量，拒绝没有证据的天数承诺。** PR#159 F159-03保留独立回滚/PR Gate，不阻塞现有可用素材链。现状态：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / NO_EXECUTION_EVIDENCE_YET`；本次仅写入执行边界，并未运行Owner本地Codex、生成新视频或对外发布。
+
 <!-- CWS_PR159_OWNER_REOPEN_REAUDIT_COMPLETED_20261020 -->
 ## 2026-10-20｜Owner要求的PR#159完全独立重新审核已完成
 
-Owner新对话重新提供 `CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_20261020(1).zip`，Reviewer未以旧PASS推断而重新完整检验。ZIP SHA等于此前记录 `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`（SAME_BYTES），37/37内部SHA、CRC、五份PR Git blob、GitHub第六源码、NASA MP4实际FFprobe/FFmpeg/SHA和代表帧均重新独立复核。代理单测13项+追加3项定向反例本轮独立PASS，但Python3.13 `HTTPResponse.close()` 缺 `flush()`（F159-03）真实可复现；Windows84项与原公网CONNECT网络行为明确仍仅有Executor证据。**重新裁决 `PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED`；`MERGE_HOLD_F15903_AND_OWNER_AUTH`**，仅需同PR受控最小清理，技术Canary无需重下载；CI=NOT_REPORTED。完整报告：[Owner重传独立复审](docs/reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)。所有旧Review报告、旧Owner决策保留为历史；`CURRENT_GATE=NONE`，没有新执行/合并/正式制作权限，CW0005全部节目HOLD继续。
+Owner新对话重新提供 `CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_20261020(1).zip`，Reviewer未以旧PASS推断而重新完整检验。ZIP SHA等于此前记录 `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`（SAME_BYTES），37/37内部SHA、CRC、五份PR Git blob、GitHub第六源码、NASA MP4实际FFprobe/FFmpeg/SHA和代表帧均重新独立复核。代理单测13项+追加3项定向反例本轮独立PASS，但Python3.13 `HTTPResponse.close()` 缺 `flush()`（F159-03）真实可复现；Windows84项与原公网CONNECT网络行为明确仍仅有Executor证据。**重新裁决 `PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED`；`MERGE_HOLD_F15903_AND_OWNER_AUTH`**，仅需同PR受控最小清理，技术Canary无需重下载；CI=NOT_REPORTED。完整报告：[Owner重传独立复审](reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)。所有旧Review报告、旧Owner决策保留为历史；`CURRENT_GATE=NONE`，没有新执行/合并/正式制作权限，CW0005全部节目HOLD继续。
 
 # Curious World Studio｜有效决策记录
 
