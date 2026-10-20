@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_OWNER_AUTHORIZED_FINAL_SEALED / A_CH2_G2_START / FOUR_LANE_G2_G3 / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH4_FINAL_SEALED / A_CH2_G2 / B_CH5_G2_WORKPACK / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：第1章已由Owner授权Reviewer在Writer R2完整底稿上直接定向修复并复核，通过后按G4入库封板；当前正式正文1/10章。A线启动第2章G2独立Writer，B/C/D第4/6/8章仍待首稿。**
+> **正文：2/10章已正式封板：第1章和第4章分别经Owner授权Reviewer在Writer R2完整稿上直修、复核并按G4写回；A线第2章G2，B线第5章G2工作包已启动，C/D各线独立推进。**
 
 ## 一、权威依据和Owner决定
 
@@ -24,7 +24,7 @@
 | 二级问题 | 52 | Owner批准、全部父题逐字原文不动 |
 | 三级问题 | 113 | Owner授权Reviewer定点修复并正式冻结；一一映射Writer101题，新增12个必要独立问法 |
 | 二级直接成节 | 4 | 5.2、7.5、8.1、10.3；原因见唯一框架 |
-| 全书正式正文 | 0/10 | 没有把框架PASS冒充章节完成 |
+| 全书正式正文 | 2/10 | CH1与CH4分别获Owner授权G4；其余章仍需独立审核与逐章Owner授权 |
 
 Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级父题。修复重点包括：Stripe真实生产测试与沙箱边界、个人结售汇年度便利化额度、Visa VAMP非统一1%门槛、争议费因机构而异、会计档案保管10/30年等类别、3DS有条件责任转移、疑似欺诈订单不强制立刻退款、各类税收和美国州税门槛不套统一规则、W-8与协定待遇需要真实资格。**框架只是冻结问题及知识边界，尚不是所有动态规则已完成正文级事实核验。**
 
@@ -43,7 +43,7 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 | 线 | 一级章节及主责 | 当前工作及真实证据 | 后续顺序 |
 |---|---|---|---|
 | A｜经营准备 | 1—3：主体/法律卖方、渠道选型、开户接入 | **第1章CHAPTER1_FINAL_SEALED（Owner授权Reviewer直修；基于Writer R2），第2章G2_WORKPACK_READY / WRITER_V1_PENDING** | 3 |
-| B｜完成交易 | 4—5：买家付款、服务端支付确认 | 第4章 G2_WORKPACK_READY / WRITER_V1_PENDING | 5 |
+| B｜完成交易 | 4—5：买家付款、服务端支付确认 | **第4章 CHAPTER4_FINAL_SEALED（Owner授权Reviewer直修Writer R2）；第5章 G2_WORKPACK_READY / WRITER_V1_PENDING** | 第5章G2 Writer |
 | C｜资金管理 | 6—7：清算到账、退款/拒付/冻结 | 第6章 G2_WORKPACK_READY / WRITER_V1_PENDING | 7 |
 | D｜财务税务 | 8—10：会计利润、境内税务、境外税务 | 第8章 G2_WORKPACK_READY / WRITER_V1_PENDING | 9→10 |
 
@@ -58,7 +58,7 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 6. 各线以一组统一的教学案例**设定**作为协作锚点（中国个人软件开发者、中国实体独立站小卖家、中国B2B服务商），每次出现未核实的假设数值须标MODEL_ASSUMPTION，不得变为真实行业数据；不硬性要求每章照搬案例。
 7. **单写入者：** 四线Writer/Reviewer只回传ZIP；GitHub main正式修改集中由总控完成，需在提交前重取main HEAD、检查目标文件Git Blob、并发差异，PR合并后回读文件及冻结题干。每章Owner明确批准后才G4封板。全书完成后仍需G5/G6/G7/G8。
 
-**启动/衔接规则：** A线第1章经Owner授权Reviewer直修封板，随后A线第2章Writer V1启动；B第4章V1、C第6章V1、D第8章V1继续并行。每线内部按既定章序推进；其上一章达到G3 PASS_CANDIDATE且总控记录跨章未决条件后，可为同线下一章准备工作包，但下一章不能引用未G4封板内容为已通过结论。Writer的提交、分线审核、Owner封板均要逐章记录真实状态，不得把已生成工作包等同完成首稿。
+**启动/衔接规则：** A线第1章和B线第4章分别经Owner授权Reviewer直修封板，A线第2章及B线第5章进入G2；C/D各线保持现行Gate，B线不代为更新其实际交付。
 
 ## 三、历史保护与跨板块职责
 
@@ -70,9 +70,11 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 
 **A线第1章**含冻结6个二级、15个三级。Writer V1→G3 RETURN R1（18项）→Writer R2→G3 RETURN R2（14项），Owner已直接授权Reviewer基于Writer R2整篇改正并G4封板。最终正式正文为 [docs/CHAPTER1_FINAL_SEALED.md](docs/CHAPTER1_FINAL_SEALED.md)，不是Writer R3；Reviewer纠错闭环、差异及来源自检在Owner本轮独立审计ZIP，原字节SHA-256：`3fc7ff2b60213b726e7ccf91ec7dced127eb1c38907a1ae3305156707e03cbd5`（UTF-8 LF）；正式Git Blob以main回读为准。**A线现启动第2章《海外客户的钱，我该怎么收？》G2首稿**，第3章未开始。
 
-**B/C/D线第4/6/8章**独立Writer完整工作包已在Owner会话交付，Writer V1尚未返回。四线只依据正式冻结原文独立研究，交付完整Markdown正文、独立来源和逐题自检、完整ZIP和SHA256；旧独立支付教材只作为可选只读参考，不能沿用旧的法律或渠道规则冒充当前真相。
+**B线第4章：** Writer V1→G3 R1 RETURN（22项）→Writer R2→G3 R2 RETURN（12项）→Owner于2026-10-20明确授权Reviewer从Writer R2全文直接纠错并G4封板；正式正文为 [docs/CHAPTER4_FINAL_SEALED.md](docs/CHAPTER4_FINAL_SEALED.md)，**非Writer R3**。全文原字节SHA-256（UTF-8 LF）：`6e2711214b02c7ee9f3673e0d4fd55e4086ea4c118e034e78ae3f6c90a978259`。冻结L1=1、L2=5、L3=10题逐字/同父题/同序PASS；7天试用604800秒与金额算式PASS；12项修复、Writer R2原稿、差异及来源核验归档于本轮Owner审核ZIP（不在docs重复放过程稿）。**第5章 G2_WORKPACK_READY，Writer首稿未提交。**
 
-**下一批Gate：** A线第2章Writer V1→G3；B线第4章Writer V1→G3；C线第6章Writer V1→G3；D线第8章Writer V1→G3。逐章通过分线审核与总控跨章检查后再请求Owner独立G4审批。每线后续章按既定顺序推进，不直接写下一章或制作HTML/PDF，不操作真实支付或税务。
+**C/D线第6/8章**具体Writer交付以各线现行记录为准，本轮不擅改其他线正文或状态。
+
+**下一批Gate：** A线第2章Writer V1→G3；B线第5章G2独立Writer V1→G3；C/D各线独立推进，后续G4仍逐章Owner批准。
 
 ## 五、官方事实核验提示
 
@@ -83,4 +85,4 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - 欧盟VAT/OSS/IOSS：https://vat-one-stop-shop.ec.europa.eu/
 - 美国预提税表与协定资格：https://www.irs.gov/individuals/international-taxpayers/claiming-tax-treaty-benefits
 
-**停点：G1 FRAMEWORK_FROZEN；A-CH1 FINAL_SEALED，A-CH2 G2_WRITER_V1_PENDING；B-CH4 / C-CH6 / D-CH8 WRITER_V1_PENDING；正式正文1/10。四线已授权，后续章G4仍逐章需Owner授权。**
+**停点：G1 FRAMEWORK_FROZEN；A-CH1 FINAL_SEALED / A-CH2 G2_WRITER_PENDING；B-CH4 FINAL_SEALED / B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C/D独立推进；正式正文2/10；未授权其他章G4。**
