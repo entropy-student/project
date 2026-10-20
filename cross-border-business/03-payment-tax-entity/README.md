@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH4/CH6/CH8 OWNER_AUTHORIZED_FINAL_SEALED；A-CH2 G2；B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C-CH7 G2_WORKPACK_READY / WRITER_V1_PENDING；D-CH9 G2_WORKPACK_READY / WRITER_V1_PENDING；正式封板4/10章。**
+> **CURRENT_GATE：CH1/CH2/CH4/CH6/CH8 OWNER_AUTHORIZED_FINAL_SEALED；A-CH3 G2；B-CH5 G2_WORKPACK_READY / WRITER_V1_PENDING；C-CH7 G2_WORKPACK_READY / WRITER_V1_PENDING；D-CH9 G2_WORKPACK_READY / WRITER_V1_PENDING；正式封板5/10章。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -15,11 +15,11 @@
 
 ### 当前正文工作
 
-**Owner批准四线并行：** A线第1—3章（第1章已封板，第2章G2）；B线第4—5章（第4章已封板，第5章G2离线工作包准备完成，首稿待交）；C线第6章经Owner授权Reviewer从Writer V2完整正文直修并经G3/G4复验封板，现开启第7章G2独立Writer工作包；D线第8章经Owner授权从Writer R2全文最小直修并G4封板，第9章仅启动G2独立Writer完整离线工作包（首稿待交），第10章尚未启动。唯一总控协调跨章和Git正式入库，各章G4仍需Owner逐章批准。工作包和过程稿不作为平行正式正文写入docs。
+**Owner批准四线并行：** A线第1—3章（第1、2章已正式封板；第3章G2完整离线Writer工作包准备完成，V1首稿待交）；B线第4—5章（第4章已封板，第5章G2离线工作包准备完成，首稿待交）；C线第6章经Owner授权Reviewer从Writer V2完整正文直修并经G3/G4复验封板，现开启第7章G2独立Writer工作包；D线第8章经Owner授权从Writer R2全文最小直修并G4封板，第9章仅启动G2独立Writer完整离线工作包（首稿待交），第10章尚未启动。唯一总控协调跨章和Git正式入库，各章G4仍需Owner逐章批准。工作包和过程稿不作为平行正式正文写入docs。
 
 ## 正式章节正文
 
-- [第1章｜做跨境生意，我需要注册公司吗？](docs/CHAPTER1_FINAL_SEALED.md)
+- [第1章｜做跨境生意，我需要注册公司吗？](docs/CHAPTER1_FINAL_SEALED.md)\n- [第2章｜海外客户的钱，我该怎么收？](docs/CHAPTER2_FINAL_SEALED.md)（Owner授权Reviewer基于Writer R2完整正文定向修复并经G4入库；动态产品资格按当期核实）
 - [第4章｜怎么让海外客户顺利付款？](docs/CHAPTER4_FINAL_SEALED.md)（Owner授权Reviewer自Writer R2直修封板）
 - [第6章｜客户付的钱，怎么进我的银行账户？](docs/CHAPTER6_FINAL_SEALED.md)（Owner授权Reviewer自Writer V2完整原稿直修，冻结1/5/11题，静态复核通过；真实银行操作`NOT_RUN`）
 - [第8章｜这门生意到底赚了多少钱？](docs/CHAPTER8_FINAL_SEALED.md)（Owner授权Reviewer在Writer R2全文上直接修复，冻结1/5/9题且8.1直接成节，13组算式静态复核通过；真实支付/报税`NOT_RUN`）
