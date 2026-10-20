@@ -1,18 +1,16 @@
-<!-- CWS_PR159_SMALL_MEDIA_FIX_GATE_ACTIVE_20261019 -->
-# CWS 当前唯一执行入口｜2026-10-19
+<!-- CWS_PR159_SAFE_DYNAMIC_DIRECT_INDEPENDENT_PASS_20261020 -->
+# CWS 当前唯一执行入口｜2026-10-20
 
-**CURRENT_GATE**：`CWS-PR159-CACHE-DEADLINE-SMALL-REAL-MEDIA-20261019`  
-**STATUS**：`OWNER_AUTHORIZED / EXECUTOR_NOT_DISPATCHED / SINGLE_FIX_AND_CANARY_GATE`
+**CURRENT_GATE**：`NONE / PR159_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_REVIEWED_PASS`  
+**STATUS**：`REVIEWER_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED / PR159_OPEN_UNMERGED`
 
-**唯一执行文件**：[PR159两项最小修补＋NASA小文件真实Canary Gate](docs/CWS_PR159_CACHE_DEADLINE_REAL_SMALL_MEDIA_CANARY_GATE_2026-10-19.md)。Owner针对已独立Review的[PR#159](https://github.com/entropy-student/project/pull/159) 明确“好的继续下一步吧”，因此此Gate**当前生效**。先完整读本Gate末尾`REVIEWER_TO_EXECUTOR_RELAY`及列出的代码片段；旧通用Fake-IP Gate/前次“CURRENT_GATE=NONE”全部历史，不得重跑。
+**最新正式Reviewer结论**：[PR#159真实NASA小文件+安全代理下载独立审核报告](docs/reviews/CW0005_PR159_SAFE_DIRECT_REAL_MEDIA_INDEPENDENT_PASS_20261020.md)：`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY`仅限CWS对**catalog动态ID的HTTPS单文件MP4/WebM直链**，绝非`PASS_GENERIC_YTDLP_EXTRACTOR`。Owner本轮上传ZIP SHA`dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5`（38文件/37条SHA全部匹配）；Reviewer独立复检真实NASA 5582 MP4 2,669,379B、H.264、1920×1080、60fps、23.366667秒、1402帧、FFmpeg全片解码exit0、SHA`5dfc7ff258428e5c09c15f809792af9f1fc285d459bdfc2c407a24351d1de1d6`。新PR Head `bfddbbf86c9d5fa9a8c93513c1ea5c2d7b62dea8`，五个ZIP源码/单测快照逐一Git blob与GitHub HEAD一致，Windows 84项PASS为Executor日志，Reviewer另独立运行13项代理单测PASS。源码修正此前F159-01旧缓存误报及F159-02全下载deadline，且公网IP固定CONNECT、原TLS域名验证与禁止私网/跳转/嵌套URL守卫继续有效。
 
-**确定问题与允许动作**：上轮真实ZIP和GitHub六文件独立核证公网IP固定CONNECT、原域名TLS证书连接通过，但NASA大视频`87,626,655B`超过30MB、JPL 301而拒绝，**0实际媒体下载**，正式`PARTIAL_SAFE_PROXY_EGRESS_VERIFIED_NO_MEDIA_CANARY`。Reviewer另发现F159-01：旧普通yt-dlp/图片文件缓存可在`fetch --safe-direct`前置命中、误报CACHED成功；F159-02：下载有socket操作超时却无真正**整个正文慢滴流总体期限**。**本轮只修这两点和最少单测**，并用NASA SVS ID 5582官方**1920×1080、标称2.5MB**直链作为**非Blender技术验证候选**（备用同页6.8MB），只有现场安全HEAD满足200、无跳转、MP4、≤30MB才可按catalog ID做一条CWS下载＋FFprobe/FFmpeg全片解码/SHA。
+**一个非阻塞小问题**：独立Python 3.13的2条deadline超时模拟测试清理`HTTPResponse`时出现`Exception ignored: _DeadlineSocketReader 缺flush()`（F159-03），不影响本次视频真实下载、解码或SSRF安全判定。**合并前建议在PR#159同一分支小修HTTPResponse文件接口及显式close测试**，不需要另下载NASA/Blender或重开完整网络Gate；此处只表示本轮技术Gate PASS，不表示PR现可不复核直接合并。**PR #159仍Open/未合并，Reviewer没有发新Executor授权**。
 
-**代码归属与PR策略**：[PR#159](https://github.com/entropy-student/project/pull/159) 旧Head `59f427d37591d2c6c8aa67033ddc4cfe401a933a`当前尚未合并；**优先在其原隔离分支追加最小修补commit并更新同一PR**，保留原安全网络技术成果与Code Review，不要凭空开很多新PR。若新Head/branch有冲突先只读说明，不覆盖同事或本机其他工作。PR#158固定Blender技术PASS及PR#157回归历史、均未合并，禁止擅自处置。
+**过期Gate**：上一`CWS-PR159-CACHE-DEADLINE-SMALL-REAL-MEDIA-20261019`已经执行、交付、独立Review并正式关闭；不得据旧文件中的Owner授权再次启动。历史PR#157安全负例、PR#158固定Blender夹具PASS、PR#156素材索引PARTIAL、PR#155早期流程RETURN都维持独立档案。
 
-**硬约束**：必须保留`NON_PUBLIC_MEDIA_ADDRESS`、公网DNS/CNAME与实际数字IP CONNECT的约束、TLS验证、302禁止、manifest/嵌套媒体禁止、30,000,000B上限；**不改Owner的TUN、Clash、Fake-IP、DNS、系统代理/共享Docker/VPS，不登录、付费、不删除旧文件、不重下载Blender、不重复大规模素材搜索、不自动合并/发布/重渲59.93秒样片**。所有真实下载都要求新工作目录、来源/尺寸/合法内部测试标注及真实视频可供Reviewer接收的受控附件；无媒体必须诚实`PARTIAL`，不可模拟FFmpeg/SHA成功。
-
-**冻结状态持续**：V5.6.2 HTML冻结、现59.933秒视频技术PASS；旧PR#155素材流程RETURN、PR#156搜索PARTIAL、PR#158仅官方固定夹具PASS；CW0005`VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/RIGHTS_PARTIAL/NO_PUBLISH/VOICE_BY_EAR_UNVERIFIED`全部保持。**Executor完成仅交PR和脱敏ZIP独立Reviewer，不自行合并。**
+**正式业务约束**：NASA轨道动画仅`UNKNOWN_TEST_ONLY`技术素材，不能入CW0005爆米花节目；历史59.933秒样片技术PASS/V5.6.2 HTML冻结原样；`CW0005_VISUAL_STORYFIT_HOLD/G1_NOT_PASS/G2_NOT_AUTHORIZED/R4_NOT_AUTHORIZED/RIGHTS_PARTIAL/NO_PUBLISH/VOICE_BY_EAR_UNVERIFIED`持续生效。任意yt-dlp网页及分段/重定向路径**未验收**，不关Clash/TUN/Fake-IP/DNS/系统代理保护。
 
 ---
 
