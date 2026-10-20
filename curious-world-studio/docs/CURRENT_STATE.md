@@ -1,3 +1,6 @@
+<!-- CWS_PR159_OWNER_REOPEN_REAUDIT_COMPLETED_20261020 -->
+> **【2026-10-20最新当前状态：Owner重传ZIP后独立复审完成】** 本Reviewer已实际读取重传ZIP，实测整包SHA `dd2875f7adf2ce3f41cf948267b54c27ab5bd11824691058d68d22b78b1f0ae5` = 历史SHA，判定`SAME_BYTES`、38成员/37SHA+CRC全匹配；五份ZIP源码/测试blob与PR Head吻合，第六份`media_pipeline.py`在GitHub旧/新Head相同；NASA MP4本体独立FFprobe/FFmpeg全解码exit0，H264 1920×1080@60fps/1402帧/23.366667s/2669379B/SHA `5dfc7ff258428e5c09c15f809792af9f1fc285d459bdfc2c407a24351d1de1d6`。独立重跑代理13项PASS（2次F159-03清理异常）+额外3项安全/慢滴流/显式close反例PASS。**新结论：`PASS_SAFE_DYNAMIC_DIRECT_MEDIA_CANARY_SCOPED`（仅受限HTTPS单文件），`MERGE_HOLD_F15903_AND_OWNER_AUTH`**；F159-01/02受理修复、F159-03需在合并前做最小文件接口/close修正。Windows 84 tests为Executor证据、真实代理CONNECT为Executor脱敏证据、原始首次错workdir日志不全均明确标UNKNOWN/证据层次；GitHub CI=NOT_REPORTED。完整[新独立报告](docs/reviews/CW0005_PR159_REOPEN_INDEPENDENT_REAUDIT_PASS_SCOPED_MERGE_HOLD_20261020.md)。**`CURRENT_GATE=NONE / REAUDIT_COMPLETE / NEXT_EXECUTOR_NOT_AUTHORIZED`**；PR#159仍Open、未合并，PR#157/#158亦未合并，未经Owner新授权不得重跑旧Gate/改源码/合并。所有CW0005 StoryFit、G1/G2/R4、RIGHTS_PARTIAL、NO_PUBLISH、VOICE_BY_EAR_UNVERIFIED原封保留；历史Reviewer PASS报告仍是历史资料，不能覆盖新报告。下面旧“REVIEW_REOPEN_PENDING”横幅已经过期。
+
 # Curious World Studio｜唯一当前状态（更新至2026-10-19）
 
 <!-- CWS_OWNER_REVIEW_REOPEN_REQUEST_20261020 -->
