@@ -345,7 +345,7 @@ flowchart TD
 1. **购买前上传（Pre-Payment）：适用于高标准化、强依赖视觉确认的轻定制**：
    - *典型场景*：个性化手机壳定制、宠物项圈激光刻字、简单头像抱枕印刷；
    - *交互要件*：提供清晰的实时打样参考（如简单的 2D 切片贴合；复杂的 3D 实时渲染属于可选增强体验）。买家上传照片后，系统能预览裁剪范围，确认效果满意后加入购物车；
-   - *技术治理*：对未最终下单的临时上传文件设置云存储生命周期策略（TTL），自动清理 24 小时未结账的垃圾素材。
+   - *技术治理*：对未最终下单的临时上传文件设置云存储生命周期策略（TTL），按合理的保留告知、客户更正窗口与存储风险清理未结账素材；例如24小时只是教学假设`[MODEL_ASSUMPTION]`，不是所有业务的强制时限。
 2. **付款后收集（Post-Payment）：适用于深度定制、专业协作与大体量文件**：
    - *典型场景*：海外独立站品牌整站建站需求表单、工业级 3D 打印切片文件（动辄数百 MB）、跨境商标注册全套证明材料；
    - *交互要件*：支付成功后，在 Thank-You 页面以高优先级大卡片呈现“*Next Step: Submit Your Project Assets*”；同时向其邮箱自动触发一封带专属安全令牌的链接（Tokenized Upload Link）；
@@ -382,7 +382,7 @@ flowchart TD
 
 在文件尚未真正耗费带宽上传至服务器之前，通过前端 HTML5 File API 实施即时阻断并给出极具指导性的错误信息：
 - **文件格式白名单**：明确限定仅接收特定扩展名（如 `.jpg, .png, .pdf, .ai`），严禁允许 `.exe, .bat, .sh, .php, .js` 等危险可执行文件被选中；
-- **容量上限与下限保护**：例如限定单文件上限为 50MB（避免超大文件拉垮前端会话），下限不得小于 50KB（过滤无效损坏文件）。若超限，即时提示：“*File size is 75MB, which exceeds our 50MB limit. Please compress your PDF or upload via cloud link.*”；
+- **容量上限与下限保护**：例如按实际格式、清晰度、性能和服务限制选择50MB上限及50KB提示阈值`[MODEL_ASSUMPTION]`；有效的小图片可能低于50KB，文件大小不能替代服务端格式、完整性及恶意内容检查。若超限，即时提示：“*File size is 75MB, which exceeds our 50MB limit. Please compress your PDF or upload via cloud link.*”；
 - **图像像素与分辨率预判**：前端通过 `Image()` 对象在内存中读取宽度和高度。若打印物理尺寸要求较高（如建议 300 DPI），而买家上传的图片分辨率偏低，系统应当弹出醒目的黄色建议标语：“*Low resolution warning: Your image resolution appears low. Printing may appear blurry. For crisp results, high-resolution original artwork is recommended.*”，由买家自行确认是否坚持使用或替换高清图。
 
 #### 2. 服务端真实安全防御与隔离管线（Server-side Defense Pipeline）
@@ -421,29 +421,28 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    PayEvent["支付网关返回扣款成功 (Webhook)"] --> SyncServer["商家核心服务端确认付款事实"]
-    
-    SyncServer --> UpdateOrder["更新订单为已支付待履约状态"]
-    SyncServer --> SendEmail["触发事务性邮件发送<br>(订单确认/合同确认凭据)"]
-    
-    UpdateOrder --> TYP["订单完成页 (Thank-You Page)<br>展示收据明细与明确时间轴"]
-    
-    TYP --> ShowA["实物商品: 订单号 + 物流预计时间轴 + 常见问题"]
-    TYP --> ShowB["数字商品: 受控即时下载入口 / 安全密钥向导"]
-    TYP --> ShowC["SaaS服务: 初始配置向导 / 邀请链接"]
+    Return["客户提交结账并回跳/查询"] --> Verify["可信服务端核实付款和订单事实"]
+    Verify --> Status{"当前真实状态？"}
+    Status -->|"付款失败或未付"| Failed["未完成：重试/联系客服，不授予付费权益"]
+    Status -->|"异步处理中或尚未核实"| Pending["待确认：订单号与查询入口，不显示已付款"]
+    Status -->|"已核实且具备履约资格"| Paid["已确认付款：进入履约"]
+    Paid --> Notify["事务通知和受控订单查询"]
+    Paid --> TYP["已确认订单页：明细及下一步"]
+    TYP --> ShowA["实物：物流与预计步骤"]
+    TYP --> ShowB["数字商品：安全下载或定制制作进度"]
+    TYP --> ShowC["SaaS：受控授权和配置"]
 ```
-
 #### 1. 卓越的订单确认落地页（The High-Trust Thank You Page）
 
-当买家完成扣款跳回网站时，页面首屏必须毫无歧义地展示以下关键事实：
-- **显眼的视觉确认**：巨大的绿色成功勾选图标搭配大标题：“*Thank you, [First Name]! Your order is confirmed.*”；
+客户从支付页面回跳时，应先依据**可信服务端实际付款和订单状态**分流：**未付款/失败**提示重试或支持方式；**异步待确认/状态未知**显示订单已受理、付款待核实和后续查询入口；仅**已经核实支付且可履约**才展示已付款与交付承诺。合法免费试用或非付款合同按其独立资格展示，不伪造付款成功。页面首屏应展示下列与真实状态相符的信息：
+- **状态一致的视觉确认**：仅已核实成功付款时显示绿色成功标志和“*Your payment is confirmed.*”；待确认用中性进度提示，失败用明确的重试入口，绝不能用视觉成功符号冒充付款事实；
 - **系统全局唯一订单号**：如 `Order #US-20261019-8821`（支持一键点击复制），买家后续与客服沟通以此为凭据；
 - **详尽的收据明细清单（Itemized Receipt）**：
   - 购买商品、变体规格及数量；
   - 账单与小计拆解：商品原价、折扣码扣减明细、运费、消费税（Sales Tax / VAT）、实付总额（货币符号及币种清晰，如 `Total Paid: $59.00 USD`）；
   - 收件人地址与选用的配送方式；
-- **明确的“下一步预期时间轴（What Happens Next Timeline）”**：
-  - 第一步：*Order Confirmed (Completed)*；
+- **明确的“下一步预期时间轴（What Happens Next Timeline）”**（按已确认的状态展示）：
+  - 第一步：*Payment Confirmed*；
   - 第二步：*Fulfillment in Progress (Estimated dispatch: within 48 hours)*；
   - 第三步：*Shipping Tracking (We will email your tracking link once dispatched)*。
 - **数字产品/虚拟授权的安全交付呈现**：
