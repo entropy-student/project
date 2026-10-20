@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH2/CH4/CH5/CH6/CH8 OWNER_AUTHORIZED_FINAL_SEALED；B线第4—5章章级完成、待全板块跨章复核；A-CH3 G2；C-CH7 G2；D-CH9 G2；正式封板6/10章，BOARD_NOT_CLOSED。**
+> **CURRENT_GATE：CH1/CH2/CH4/CH5/CH6/CH7/CH8 OWNER_AUTHORIZED_FINAL_SEALED；A-CH3 G2；B线和C线章级G4已完成、待唯一总控跨章复核；D-CH9 G2；正式封板7/10章，BOARD_NOT_CLOSED。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -15,7 +15,7 @@
 
 ### 当前正文工作
 
-**Owner批准四线并行：** A线第1—3章（第1/2章封板，第3章G2）；B线第4—5章（**两章均由Owner分别授权Reviewer直修并G4正式封板**，已无同线下一章）；C线第6—7章（第6章封板、第7章G2）；D线第8—10章（第8章封板、第9章G2、第10章仍待后续Gate）。唯一总控协调跨章和Git正式入库，未完成章节仍需Owner逐章批准。过程稿和审核ZIP不并列放在docs。
+**Owner批准四线并行：** A线第1—3章（第1/2章封板，第3章G2）；B线第4—5章（**两章均由Owner分别授权Reviewer直修并G4正式封板**，已无同线下一章）；C线第6—7章（**两章已分别经Owner授权Reviewer直修并G4正式封板**）；D线第8—10章（第8章封板、第9章G2、第10章仍待后续Gate）。唯一总控协调跨章和Git正式入库，未完成章节仍需Owner逐章批准。过程稿和审核ZIP不并列放在docs。
 
 ## 正式章节正文
 
@@ -24,6 +24,7 @@
 - [第4章｜怎么让海外客户顺利付款？](docs/CHAPTER4_FINAL_SEALED.md)（Owner授权Reviewer自Writer R2直修封板）
 - [第5章｜客户付了钱，我怎么确认收款成功？](docs/CHAPTER5_FINAL_SEALED.md)（Owner授权Reviewer基于Writer R2全文直修；冻结1/5/10题；静态QA通过，真实支付/仓储`NOT_RUN`）
 - [第6章｜客户付的钱，怎么进我的银行账户？](docs/CHAPTER6_FINAL_SEALED.md)（Owner授权Reviewer自Writer V2完整原稿直修，冻结1/5/11题，静态复核通过；真实银行操作`NOT_RUN`）
+- [第7章｜遇到退款、拒付或资金冻结怎么办？](docs/CHAPTER7_FINAL_SEALED.md)（Owner授权Reviewer基于Writer V2全文直修；冻结1/5/10题，7.5直接成节；真实交易与争议NOT_RUN）
 - [第8章｜这门生意到底赚了多少钱？](docs/CHAPTER8_FINAL_SEALED.md)（Owner授权Reviewer在Writer R2全文上直接修复，冻结1/5/9题且8.1直接成节，13组算式静态复核通过；真实支付/报税`NOT_RUN`）
 
 ## 原独立支付知识指南（仍CLOSED/只读）
