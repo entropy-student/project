@@ -1,6 +1,6 @@
 # 跨境业务知识库｜总导航
 
-> **知识正文状态（第三板块2026-10-20更新，其余依各自交接）：** ①G8/CLOSED · ②FINAL_SEALED/CLOSED · ③G1完整框架冻结、G2第1章启动 · ④G8/CLOSED · ⑤G7/PASS、G8/CLOSE待Owner授权。  
+> **知识正文状态（第三板块2026-10-20更新，其余依各自交接）：** ①G8/CLOSED · ②FINAL_SEALED/CLOSED · ③G1框架冻结、G2/G3四线并行 · ④G8/CLOSED · ⑤G7/PASS、G8/CLOSE待Owner授权。  
 > **范围：** 本页是五板块知识与文档的入口，不代表HTML/PDF已制作、业务实际运行或动态政策已完成生产验收。  
 > **当前执行Gate：** 以每个板块的 `REVIEWER_HANDOFF.md` 为准；不得因为本页的状态描述自动解冻或启动新任务。
 
@@ -12,11 +12,11 @@
 |---|---|---|---|---|
 | ① 机会挖掘与市场判断 | 什么跨境生意值得做？ | 8章；冻结框架核心1/一级8/二级34/三级83 | **G8 PASS / CLOSED** | [第一板块：正文、框架、唯一交接](01-opportunity-market/README.md) |
 | ② 网络环境搭建 | 如何搭建靠谱的跨境经营环境？ | 8章；冻结框架一级8/二级44/三级93 | **最终编辑PASS / CLOSED** | [第二板块：正文、框架、唯一交接](02-network-environment/README.md) |
-| ③ 支付、税务与经营主体 | 做跨境生意，钱怎么收、税怎么交？ | **新版核心1/一级10/二级52/三级113正式冻结**；二级直接成节4处。另有旧支付指南七章只读CLOSED | **新板块G1_FRAMEWORK_FROZEN / G2_CHAPTER1_STARTED / NOT_CLOSED**；旧子项目独立CLOSED | [第三板块：唯一完整冻结框架、唯一交接](03-payment-tax-entity/README.md) · [原七章](../modern-commercial-payment-guide/docs/) |
+| ③ 支付、税务与经营主体 | 做跨境生意，钱怎么收、税怎么交？ | **新版核心1/一级10/二级52/三级113正式冻结**；二级直接成节4处。另有旧支付指南七章只读CLOSED | **新板块G1_FRAMEWORK_FROZEN / FOUR_LANE_G2_G3_AUTHORIZED / NOT_CLOSED**；旧子项目独立CLOSED | [第三板块：唯一完整冻结框架、唯一交接](03-payment-tax-entity/README.md) · [原七章](../modern-commercial-payment-guide/docs/) |
 | ④ 产品搭建 | 产品怎么做、怎么交付？ | 9章；冻结框架核心1/一级9/二级48/三级117 | **G8 PASS / CLOSED** | [第四板块：正文、框架、唯一交接](04-product-building/README.md) |
 | ⑤ 获客与用户增长 | 怎么才能持续有客户下单？ | 6章＋1份经营实操附录＋1份术语/来源索引；冻结框架核心1/一级6/二级35/三级78 | **G7 PASS；G8/行政CLOSE尚未执行** | [第五板块：正文、附录、框架、唯一交接](05-acquisition-growth/README.md) |
 
-**严格区分状态：** 各章 `FINAL_SEALED`、本板块 `CONTENT_COMPLETE` 和 `BOARD_CLOSED` 不是同一件事。第五板块虽然六章均封板，但不得写成已经G8/CLOSED。第三板块Owner已授权完成并冻结新版完整问题框架（核心1/一级10/二级52/三级113）；新正文未完成，已启动第1章G2写作准备。原独立支付指南仍单独封板且不得直接覆盖。
+**严格区分状态：** 各章 `FINAL_SEALED`、本板块 `CONTENT_COMPLETE` 和 `BOARD_CLOSED` 不是同一件事。第五板块虽然六章均封板，但不得写成已经G8/CLOSED。第三板块Owner已授权完成并冻结新版完整问题框架（核心1/一级10/二级52/三级113）；新正文未完成，已获Owner批准四线并行；第1章G3 R1 RETURN待R2，第4/6/8章首稿待Writer；尚未封板新章。原独立支付指南仍单独封板且不得直接覆盖。
 
 ## 二、以后怎么查看、学习或交给 Agent
 
@@ -31,14 +31,14 @@
 
 - **唯一规则入口：** `PROJECT_WORKFLOW_SOP.md`。各板块的 `README.md` 仅导航、`REVIEWER_HANDOFF.md` 负责真实状态与审计，`docs/FROZEN_FRAMEWORK_*.md` 和 `CHAPTERN_FINAL_SEALED.md` 分别是唯一冻结框架与正式正文。
 - **第五板块下一步：** 现状为 `G7_EDITORIAL_PASS / BOARD_NOT_CLOSED`。Owner日后如授权，才开展G8最终归档与行政CLOSE；不自动重做六章润色，不新开第七章。
-- **第三板块：** 新版完整问题框架已正式冻结（1/10/52/113，4处直接成节）；G2第1章启动，10章新版正文尚未完成。旧独立支付指南保持CLOSED。其余板块按各自交接文件的最新状态执行；第五板块的附录与来源索引应保留。
+- **第三板块：** 新版完整问题框架已正式冻结（1/10/52/113，4处直接成节）；四线G2/G3并行启动，当前第1章R2以及第4/6/8章V1待交，10章新版正文尚未完成。旧独立支付指南保持CLOSED。其余板块按各自交接文件的最新状态执行；第五板块的附录与来源索引应保留。
 - **格式与发布：** 五板块HTML、PDF或线上公开阅读平台均不属于这次文档整理；除另有Owner批准，不制作、不宣称完成。
 - **历史资料：** 原父项目 `docs/` 的四份旧框架征稿任务书/参考标准已从当前 `main` 目录归档清理，完整原件仍在[整理前固定 Git 快照](https://github.com/entropy-student/project/tree/d907b59632e7abd98f33dafce26071656cc6a131/cross-border-business/docs)。其后续职责由本SOP、每个板块冻结框架和唯一交接承担。
 
 ## 四、项目文件边界
 
 - **父目录 `cross-border-business/`：** 本README、唯一SOP、五个板块子目录。
-- **每个正式板块：** README、唯一交接与唯一正式框架、正式正文（若已完成）。③已有唯一正式完整冻结框架，当前启动第1章G2正文写作；原独立支付指南留在旧路径且不改动。
+- **每个正式板块：** README、唯一交接与唯一正式框架、正式正文（若已完成）。③已有唯一正式完整冻结框架，当前由Owner授权四线并行G2/G3；原独立支付指南留在旧路径且不改动。
 - **历史证据：** 保留在固定Git Commit，不在当前根目录保留多套并行的候选或旧版工作指南。
 
 重要：学习资料和文稿审核通过不等于真实服务部署、平台资格、交易链路、法律合规或经营结果已获验证。
