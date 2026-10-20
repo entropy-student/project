@@ -250,7 +250,7 @@
 许多跨境卖家的服务器本身防护严密，但由于运营人员个人电脑中招，导致浏览器中保存的登录会话 Cookie、后台访问权限及本地 SSH 私钥被攻击者窃取。
 
 本地终端设备应落实三项基础防线：
-1. **全盘硬件加密（Full Disk Encryption）**：Windows 设备建议启用 **BitLocker**，macOS 设备建议启用 **FileVault**。全盘加密确保设备在通勤途中遭遇物理遗失或盗窃时，外部人员在未获取开机口令的情况下无法直接挂载读取硬盘中的原始文件；
+1. **磁盘加密（Full Disk / Device Encryption）**：Windows **Pro/Enterprise/Education** 可按设备条件管理完整的 **BitLocker Drive Encryption**；Windows **Home 不提供同一BitLocker管理入口**，但在硬件与系统条件满足时可在“设置→隐私和安全性→设备加密”使用 **Device Encryption**，如无该菜单先核查设备支持状况而非照搬专业版教程。macOS 可按系统设置启用 **FileVault**。开启前备份并妥善保管恢复密钥，确认系统登录与恢复流程，再在保护范围内存储敏感文件；加密主要降低设备丢失后的离线读取风险，不能防止已登录会话中的恶意软件或账号盗用。来源：[Microsoft BitLocker](https://support.microsoft.com/en-us/windows/security/encryption/bitlocker-drive-encryption)、[Device Encryption](https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows)。
 2. **严防盗版破解工具内置木马**：严格禁止在工作电脑上安装来源不明的“破解版选品软件”、“破解版跨境工具”或非官方发布的工具脚本。此类程序常被恶意捆绑信息窃取木马，用于窃取本地凭据与浏览器缓存；
 3. **操作系统与浏览器保持安全修补**：开启操作系统与主流工作浏览器的自动安全更新，及时修复底层高危安全漏洞。
 
