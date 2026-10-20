@@ -1,24 +1,22 @@
 # 03｜支付、税务与经营主体
 
-> **STATUS：FROZEN — 禁止修改。**  
-> 本板块已接入一个正式封板子项目，不启动新写作、Review、HTML 或文档迁移。
+> **G1结构重构工作分支｜候选待独立审核｜尚未冻结（2026-10-20）**
+> **原《现代商业支付系统》保持其独立CLOSED历史封板，七章原文及路径未动。**
 
-## 已封板子项目：《现代商业支付系统》
+**候选核心问题：** 中国大陆个人开发者和中小跨境经营者，怎样选对经营身份与收款方式，安全收款、合法结算、算清账目，并识别境内外税务义务？
 
-**正式内容位于原路径，不移动、不复制。**
+## 本轮G1资料
 
-- [子项目唯一交接（CLOSED）](../../modern-commercial-payment-guide/REVIEWER_HANDOFF.md)
-- [冻结的 V6 结构](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
-- [全部正式正文所在目录](../../modern-commercial-payment-guide/docs/)
-- [七章最终 Markdown ZIP](https://github.com/entropy-student/project/archive/refs/heads/payment-guide-seven-sealed-chapters-20261017.zip)
+- [完整问题树候选：核心1／一级10／二级49／三级98，尚未冻结](docs/G1_FRAMEWORK_CANDIDATE_20261020.md)
+- [唯一Reviewer交接：历史基线、Owner权限、阻断与下一步](REVIEWER_HANDOFF.md)
+- [跨境知识体系唯一工作SOP](../PROJECT_WORKFLOW_SOP.md)
 
-这份子项目覆盖商家收款方案、经营主体、账户开通、顾客付款、支付处理、结算/提现、退款/争议、财税与合规等知识，**七章正式封板、HTML 未制作**。
+## 可复用但禁止直接覆盖的独立已封板教材
 
-## 冻结约束
+- [原《现代商业支付系统》唯一交接（历史CLOSED）](../../modern-commercial-payment-guide/REVIEWER_HANDOFF.md)
+- [原V6冻结问题框架（7／29／42）](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
+- [原七章唯一正式正文存放目录](../../modern-commercial-payment-guide/docs/)
 
-1. 本板块及上述子项目资料只读；禁止自动编辑、重排、重命名、删除、迁移或重建第二套正文。
-2. 在父项目新增其他四板块时，不得触碰这些文件的内容、SHA、路径或已封板决定。
-3. 未经 Owner 另行明确批准，不追加税务或经营主体专题，不解除 CLOSED/FROZEN。
-4. 本文件只是**父项目中的逻辑子项目入口**，不是已经将旧版九份资料物理迁移到了本目录。
+**当前仅完成G1候选设计。** 需依照SOP执行独立Reviewer审查和Owner冻结决定，之后才能依次启动G2独立Writer、G3审查、G4逐章封板、G5/G6深度复审、G7语言优化和G8归档CLOSE。不声明HTML/PDF或真实经营操作完成。
 
-[返回五板块总项目库](../README.md)
+[返回五板块总导航](../README.md)
