@@ -6,18 +6,41 @@
 
 ## 项目定位与最终成果
 
-面向中国大陆个人开发者、独立站经营者与中小跨境卖家，回答“**如何搭建靠谱的跨境经营环境？**”。第二板块已完成八章正式 Markdown 知识正文；**本板块 CLOSED 仅代表知识正文阶段封板，不代表全部五板块已关闭，也不代表 HTML 已制作或真实生产环境已验证。**
+面向中国大陆个人开发者、独立站经营者与中小跨境卖家，回答“**如何搭建靠谱的跨境经营环境？**”。第二板块已完成八章正式 Markdown 知识正文；**历史 CLOSED 仅代表前一轮知识正文阶段封板，不代表全部五板块已关闭，也不代表 HTML 已制作或真实生产环境已验证。**
 
 正式结构唯一基线：[V5 冻结框架](docs/FROZEN_FRAMEWORK_V5_20261018.md)，共8/44/93；未经Owner独立授权不得改变原题、层级、顺序、数量。此前目录精简没有改写正文；2026-10-19经Owner新的明确授权执行定向内容修订、重新验收并继续封板，详见下节。
 
-## 最新｜2026-10-20 Owner授权最小化知识补足（独立复审待完成）
+## 最新｜2026-10-20 第二轮RETURN后的Owner授权最小充分返修（待外部独立复审）
+
+**Owner指令：** 阅读《第二轮系统性复审》（基线commit `31146ab01c0e296a34ea89852baee169bddf5345`，结论`RETURN_TARGETED_COHERENCE_AND_DYNAMIC_FACTS`）后明确要求“以最小化原则，开始修改吧”。仅执行报告R2-01至R2-11中有证据的原位返修；R2-12过度导航重写**不予扩展**，避免重复内容。未新增文件、章题、问题题目或跨板块内容。新版本是**本人静态自检后的候选，不等于第三方独立Reviewer PASS**；先前2026-10-19的`FINAL_SEALED`及第一次2026-10-20的指纹均仅是历史快照。
+
+**修改落点：** 第②章将“IP/NAT/端口”移到网络三阶段表之前；把单次TLS/HTTP错误诊断改为多种可能性，加入面向SSH/远程桌面/应用代理/企业组网的需求→否决条件→验证点，并明确Tailscale Subnet Router和Exit Node的区别。第③章修正HSTS Preload退出不能即时生效的边界。第④章补齐Windows PowerShell 5.1/7需使用`curl.exe`、Windows及macOS/Linux双终端步骤、三个业务选择例子。第⑤章区分Windows Home设备加密与Pro/Enterprise/Education BitLocker。第⑧章按2026-10-20 Cloudflare Registrar价目表修正.com年费为`$10.46`（TCO约`$0.87/月`）；Cloudflare Pro/Business**按直接月付**`$25/$250`计入模型（年付折算`$20/$200`单独解释）；核准三方案基础现金小计`$76.87–111.87/$8.96–23.96/$7.87–67.87`及阶段一`$146.87/$8.99`、阶段二自建`$205.75`、阶段三自建`$518`（叠加模拟营销`$800`为`$1,318`）。原CX22的20TB流量包**不得照搬新CX23**。多数其他供应商旧报价仍作历史`SNAPSHOT`，非实时可购合同。
+
+**本轮官方依据（含核验日）：** [Cloudflare Registrar](https://pricing.registrar.cloudflare.com/) / [Cloudflare Pro与Business](https://www.cloudflare.com/plans/) / [Microsoft设备加密](https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows) / [Microsoft BitLocker](https://support.microsoft.com/en-us/windows/security/encryption/bitlocker-drive-encryption) / [HSTS Preload](https://hstspreload.org/) / [Tailscale Subnet Router](https://tailscale.com/docs/features/subnet-routers) / [Tailscale Exit Node](https://tailscale.com/docs/features/exit-nodes)。**2026-10-20**网页快照不能自动用于以后采购。
+
+**修订后八章Git Blob SHA-1（按GitHub回读；不是原字节SHA-256）：**
+
+| 章 | 本轮最新正文Blob |
+|---|---|
+| ① | `6b4f281ce7e9995327336abcb71ed5e5ee06c277` |
+| ② | `fbe6856d2d1fb80eca1a2c486bfd623e8438ff48` |
+| ③ | `79373dce5f5a9c4364c6bf760ec75214f154b26a` |
+| ④ | `082446fbb22e175932bee4eba6e002d88e1ec209` |
+| ⑤ | `030dc74b7370eb203b1a64c1007945484e26a7f2` |
+| ⑥ | `d937704d49c17ed4c997a988bb15d9d385f5e48a` |
+| ⑦ | `bd50f511e821a32ea73bf5c8681c4e0506930115` |
+| ⑧ | `7d297494b36d9a3c43362f73b18da92d1801e4f6` |
+
+**自检及边界：** 与第二轮前基线逐字比对，8章的44个二级、93个三级问题仍原字原序；V5框架未变。第⑧章更改的现金流条目与关联CPO按计算核验。macOS/Linux命令路径的隔离本地HTTP三状态`v1→v2→v1`已在容器复现；**Windows PowerShell 5.1/7未在相应Windows实机运行**，不能认定Windows实验完全验收。第⑦章JSON实验沿用先前隔离验证，本轮未接触云账户、生产环境、DNS、支付或数据恢复。下一步独立Reviewer应检查更新差异、计费周期、代码运行条件及段落衔接；Owner决定最终封板前，维持`G3 INDEPENDENT_REVIEW_PENDING`。
+
+## 历史｜2026-10-20 第一轮Owner授权最小化知识补足（独立复审待完成）
 
 **Owner授权：** 在2026-10-20独立系统性审核报告提交后，Owner明确要求“以最小化原则，开始修改吧”。本轮对现有八章原位添加非冻结解释、场景选型、简单实验及价格纠错；**未增加新章，V5 8/44/93全部正式标题及层级逐字不变**。2026-10-19 的 `CLOSED/FINAL_SEALED` 是前一版的历史状态；以下修改版是**新一轮复审候选**，不能直接冒称已由另一个独立Reviewer验收并重新封板。
 
 **已写入的范围：** R01–R11（核心知识与演练）、R12–R19（仅选读导航与安全小修）、R20–R23（恢复微实验、费用/阈值及动态信息说明）；R24–R25所要求的“不重复已充分内容、不弱化平台/法律准入”继续保留。八章具体落点：
 ①前置阅读路线和API/Webhook/OAuth简释；②IP/NAT/地址属性、代理与隧道/客户端分层、SOCKS5/WireGuard/Hysteria 2/Tailscale、只读连接验收；③托管域名/邮箱最短路径；④VPS/容器/PaaS关系、统一供应商比选及本地更新/回滚；⑤平台/自建安全分流与端口可达边界；⑥性能症状定位和源站选读；⑦隔离JSON备份恢复；⑧Hetzner CX22停售、2026价表、两阶段费用重算、CPU steal判据及价格时效。
 
-**经GitHub回读的最新正文Git Blob SHA（Git SHA-1，非原字节SHA-256）：**
+**第一轮2026-10-20修订候选Git Blob SHA（历史记录；非本轮最新）：**
 
 | 章 | 2026-10-20修订后Git Blob |
 |---|---|
