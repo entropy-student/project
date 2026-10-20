@@ -41,3 +41,18 @@
 **信息分类标签：**【法规硬规则】只针对明确适用的法域和身份；【平台明示】指有可核实官方页面但需账户资格；【商业经验】可借鉴但不能保证效果；【MODEL_ASSUMPTION】仅教学模型；【UNKNOWN】证据尚不足。此分类用于关键或动态事实，不需要机械给每一句话贴标签。
 
 **维护建议：** 未来变更时先记：来源→最后核验日期→法域/平台/资格→受影响章节→证据更新前后差异→是否要求Owner解冻正文。这里只是可追踪索引，并不触发自动修改。
+## 三、2026-10-20最小实操补强核验（R01–R17）
+
+本节**仅补充新修订关联来源**，不以本次核验日期替换原章节2026-10-18或来源索引2026-10-19的历史核验日期。平台菜单、字段、权限及政策可能变化；经营者执行前须按主体/地区/套餐再次查当前规则。
+
+| 补强主题 | 官方来源 | 已核的事实边界、适用对象及重新查验条件 |
+|---|---|---|
+| SEO索引/工具 | https://support.google.com/webmasters/answer/9012289 / https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview | URL检查有索引诊断；提交URL/sitemap不承诺展示或排名。站点属性/网址变更时核 |
+| 广告主次转化 | https://support.google.com/google-ads/answer/11461796 | 标准目标中的Primary通常用于出价；**自定义目标中的Secondary也可能用于出价**。更换目标/出价策略时核 |
+| 真实搜索词与关键词 | https://support.google.com/google-ads/answer/2472708 | 搜索词不是后台设置的关键词；出于隐私限制某些低量查询不会逐条显示。匹配方式/产品变更时核 |
+| GA4 DebugView与电商 | https://support.google.com/analytics/answer/7201382 / https://developers.google.com/analytics/devguides/collection/ga4/ecommerce | 需启用调试；未授予Analytics cookies同意时可能看不到相应事件。埋点/Consent Mode/订单流程变更时核 |
+| Shopify营销口径 | https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/default-reports/marketing-reports | 某些Orders指标计入待付款、未付款及取消订单；2026-09渠道绩效报告扩大流量范围，不可假定旧时期可直接同比。变更报告时核 |
+| Chrome Web Store指标 | https://developer.chrome.com/docs/webstore/metrics | impressions、安装/卸载与用户活跃不同；Users指标为安装，不证明实际使用。商店控制台变更时核 |
+| 英国B2B营销动态 | https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/ | **ICO页面当前提示因Data (Use and Access) Act修订而处于审查中**；法人订户和sole traders等个人订户所适用的PECR邮件营销规则不同，UK GDPR在处理联系人个人数据时仍需单独核。开发信名单上线前复核修订和业务条件 |
+
+**维护触发**：当某条以上平台规则发生变化时，先更新证据/本索引，并记录需要调整的章节与Owner授权；不据此自动重开六章已冻结正文。
