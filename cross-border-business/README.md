@@ -1,6 +1,6 @@
 # 跨境业务知识库｜总导航
 
-> **知识正文状态（第三板块2026-10-20更新，其余依各自交接）：** ①G8/CLOSED · ②FINAL_SEALED/CLOSED · ③G1框架冻结、已封第1/2/4/6/8章、四线并行 · ④G8/CLOSED · ⑤G7/PASS、G8/CLOSE待Owner授权。  
+> **知识正文状态（第三板块2026-10-20更新，其余依各自交接）：** ①G8/CLOSED · ②FINAL_SEALED/CLOSED · ③G1框架冻结、已核实G4第1—8章、A/B/C线已完成，D线独立推进 · ④G8/CLOSED · ⑤G7/PASS、G8/CLOSE待Owner授权。  
 > **范围：** 本页是五板块知识与文档的入口，不代表HTML/PDF已制作、业务实际运行或动态政策已完成生产验收。  
 > **当前执行Gate：** 以每个板块的 `REVIEWER_HANDOFF.md` 为准；不得因为本页的状态描述自动解冻或启动新任务。
 
@@ -12,11 +12,11 @@
 |---|---|---|---|---|
 | ① 机会挖掘与市场判断 | 什么跨境生意值得做？ | 8章；冻结框架核心1/一级8/二级34/三级83 | **G8 PASS / CLOSED** | [第一板块：正文、框架、唯一交接](01-opportunity-market/README.md) |
 | ② 网络环境搭建 | 如何搭建靠谱的跨境经营环境？ | 8章；冻结框架一级8/二级44/三级93 | **最终编辑PASS / CLOSED** | [第二板块：正文、框架、唯一交接](02-network-environment/README.md) |
-| ③ 支付、税务与经营主体 | 做跨境生意，钱怎么收、税怎么交？ | **新版核心1/一级10/二级52/三级113正式冻结**；二级直接成节4处。另有旧支付指南七章只读CLOSED | **新板块G1_FRAMEWORK_FROZEN / CH1_CH2_CH4_CH6_CH8_FINAL_SEALED / A_LINE_CONTENT_COMPLETE / B_CH5_G2 / C_CH7_G2 / D_CH9_G2 / NOT_CLOSED**；旧子项目独立CLOSED | [第三板块：唯一完整冻结框架、唯一交接](03-payment-tax-entity/README.md) · [原七章](../modern-commercial-payment-guide/docs/) |
+| ③ 支付、税务与经营主体 | 做跨境生意，钱怎么收、税怎么交？ | **新版核心1/一级10/二级52/三级113正式冻结**；二级直接成节4处。另有旧支付指南七章只读CLOSED | **新板块G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_FINAL_SEALED / A_B_C_LINES_CONTENT_COMPLETE / D_CH9_G4_METADATA_PENDING / NOT_CLOSED**；旧子项目独立CLOSED | [第三板块：唯一完整冻结框架、唯一交接](03-payment-tax-entity/README.md) · [原七章](../modern-commercial-payment-guide/docs/) |
 | ④ 产品搭建 | 产品怎么做、怎么交付？ | 9章；冻结框架核心1/一级9/二级48/三级117 | **G8 PASS / CLOSED** | [第四板块：正文、框架、唯一交接](04-product-building/README.md) |
 | ⑤ 获客与用户增长 | 怎么才能持续有客户下单？ | 6章＋1份经营实操附录＋1份术语/来源索引；冻结框架核心1/一级6/二级35/三级78 | **G7 PASS；G8/行政CLOSE尚未执行** | [第五板块：正文、附录、框架、唯一交接](05-acquisition-growth/README.md) |
 
-**严格区分状态：** 各章 `FINAL_SEALED`、本板块 `CONTENT_COMPLETE` 和 `BOARD_CLOSED` 不是同一件事。第五板块虽然六章均封板，但不得写成已经G8/CLOSED。第三板块Owner已授权完成并冻结新版完整问题框架（核心1/一级10/二级52/三级113）；新正文未完成，已获Owner批准四线并行；第1/2/4/6/8章均已获Owner逐章授权Reviewer在Writer完整底稿上定向直修并G4封板；A线已完成第1—3章、B线第5章、C线第7章、D线第9章进入G2，均不因此视为Writer正文已完成。原独立支付指南仍单独封板且不得直接覆盖。
+**严格区分状态：** 各章 `FINAL_SEALED`、本板块 `CONTENT_COMPLETE` 和 `BOARD_CLOSED` 不是同一件事。第五板块虽然六章均封板，但不得写成已经G8/CLOSED。第三板块Owner已授权完成并冻结新版完整问题框架（核心1/一级10/二级52/三级113）；新正文未完成，已获Owner批准四线并行；第1/2/4/6/8章均已获Owner逐章授权Reviewer在Writer完整底稿上定向直修并G4封板；A/B/C三线已完成，第9章文件已出现但D线G4交接待核进入G2，均不因此视为Writer正文已完成。原独立支付指南仍单独封板且不得直接覆盖。
 
 ## 二、以后怎么查看、学习或交给 Agent
 
@@ -38,7 +38,9 @@
 ## 四、项目文件边界
 
 - **父目录 `cross-border-business/`：** 本README、唯一SOP、五个板块子目录。
-- **每个正式板块：** README、唯一交接与唯一正式框架、正式正文（若已完成）。③已有唯一正式完整冻结框架，当前由Owner授权四线并行G2/G3；原独立支付指南留在旧路径且不改动。
+- **每个正式板块：** README、唯一交接与唯一正式框架、正式正文（若已完成）。③已有唯一正式完整冻结框架，当前A/B/C三线章节已封板、D线继续核实；Owner授权四线并行G2/G3；原独立支付指南留在旧路径且不改动。
 - **历史证据：** 保留在固定Git Commit，不在当前根目录保留多套并行的候选或旧版工作指南。
 
 重要：学习资料和文稿审核通过不等于真实服务部署、平台资格、交易链路、法律合规或经营结果已获验证。
+
+> **2026-10-20同步提示：** 最新`main`出现第9章正式命名文件，但D线的Owner授权及G4复核元数据尚未同步到第三板块唯一交接；总导航只将第1—8章记作本轮可核实G4。第9章的最终状态由D线按SOP回读更新，不能仅凭文件名断言阶段CLOSE。
