@@ -1,9 +1,9 @@
 # 第三板块《支付、税务与经营主体》｜唯一现行 Reviewer 交接
 
 > **UPDATED：2026-10-20｜Owner正式批准第三板块四线并行推进及唯一总控**
-> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G6_OWNER_AUTHORIZED_REVISION_REVIEWED / G7_EDITOR_WORKPACK_READY / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
+> **STATUS：G1_FRAMEWORK_FROZEN / CH1_CH2_CH3_CH4_CH5_CH6_CH7_CH8_CH9_CH10_FINAL_SEALED / ALL_FOUR_LANES_CHAPTER_CONTENT_COMPLETE / G6_OWNER_AUTHORIZED_REVISION_REVIEWED / G7_EDITORIAL_PASS_OWNER_DIRECT_FIX / G8_FINAL_ARCHIVE_PENDING_OWNER / B_LANE_CONTENT_COMPLETE / C_LANE_CONTENT_COMPLETE / BOARD_NOT_CLOSED**
 > **冻结：唯一核心1 / 一级10 / 二级52 / 三级113；二级直接成节4处。**
-> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。G5全书三份研究报告与独立Reviewer复审完成；Owner本轮明确批准按总控建议完成实质性定向修复并再冻结；G6静态内容复核已完成，G7语言/连贯性独立Editor工作包待交；G8未开始，尚未CONTENT_CLOSED或BOARD_CLOSED。**
+> **正文：10/10章均获Owner逐章授权Reviewer基于完整Writer底稿定向修复并按G4正式封板入库；A线1—3章、B线4—5章、C线6—7章、D线8—10章全部章级正文完成。G5全书三份研究报告与独立Reviewer复审完成；Owner本轮明确批准按总控建议完成实质性定向修复并再冻结；G6静态内容复核已完成，G7 Editor V1已独立审查并由Owner明确授权Reviewer直修16项、复验PASS、原文再封板；G8未开始，尚未CONTENT_CLOSED或BOARD_CLOSED。**
 
 ## 一、权威依据和Owner决定
 
@@ -141,6 +141,18 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 
 **审批与Gate停点：** `G6_OWNER_AUTHORIZED_CONTENT_REVISED / G6_STATIC_QA_PASS / 10_CHAPTERS_RESEALED / G7_EDITOR_WORKPACK_READY / G7_INDEPENDENT_EDITOR_PENDING / BOARD_NOT_CLOSED`。独立Editor只负责跨章过渡、重复压缩与可读性，不得改核心事实/公式/代码/法规/模型标签/冻结标题；不得修改GitHub，先返回完整候选ZIP，由总控G7复审、Owner再定最终G8。封板内容**无真实支付/出款/退运/纳税实测，NOT_RUN**。
 
+## G7｜Owner授权Reviewer直修、独立复验并正式再封板（2026-10-20）
+
+**审批与身份边界：** 独立Editor提交`CB03_G7_EDITOR_DELIVERY_20261020.zip`完整10章候选和附录；G7独立R1审核`RETURN`，共有**16项（P0五/P1九/P2二）**。Owner在本轮明确要求Reviewer直接修复、复查、通过后不再做额外修改。**本轮由Reviewer以G6固定正文与Editor V1全文为依据直修，不存在Editor R2交付，也不冒称新一轮独立G6事实审查或外部交易测试。**
+
+**结果：G7 PASS / 内容与编辑均正式再封板；第1—10章继续`CHAPTER_FINAL_SEALED`。** 经逐条审查仅保留不改变含义的语言过渡和纯文档状态修正，撤回Editor V1新增的16位卡号、Webhook“加密签名且权威即最终”、卡组织“法定”争议程序、退款“无条件”、支付机构余额“托管账户”、MoR法定身份及主体准入等越权表述。第9章删除“第10章尚未开始”的过时文字、第8/10章亦清理了旧Gate编辑注记；跨章实操附录后一个“七”更正为“八”。**第1、2、3、5、7章正文与G6固定版原字节一致，不为凑修改而改写。**
+
+**全文静态复验：** 10章冻结题目`52 L2 + 113 L3`逐字、编号、父题与顺序一致；4处L2直接成节保留；11份（10章+实操附录）正式稿与G6基线对照，**72个完整代码围栏块、27幅Mermaid图、35个块公式、所有原来源URL、`MODEL_ASSUMPTION/UNKNOWN/NOT_RUN`标记和代码内容**均严格保持；ZIP原字节SHA-256与Git Blob均归档。G7完成的是**编辑不变性静态校验**，不是支付、银行或税务生产实测。
+
+**实际更新的正式内容：** 第4、6、8、9、10章及`PRACTICAL_PATHS_APPENDIX.md`共6份；再维护本唯一交接、本板块README和父级README。G7完整直修/逐项16条闭环及Diff证据：`CB03_G7_OWNER_DIRECT_FIX_FINAL_SEAL_EVIDENCE_20261020.zip`（Owner对话独立留档，不并列上传多套正式稿至docs）。以本次GitHub合并后`main`回读的实际Commit和Git Blob为准。
+
+**当前停点：** `10/10_CHAPTER_FINAL_SEALED / G7_EDITORIAL_PASS_OWNER_DIRECT_FIX / G8_FINAL_ARCHIVE_PENDING_OWNER / BOARD_NOT_CLOSED`。正式教材文字层面按Owner决定不再开启G7修改；G8仅执行最终归档与关闭检查，**未经Owner特别批准不因G8发起内容改写或宣称CLOSE**。HTML、PDF、真实商户测试、税务申报均不属本轮。
+
 ## 五、官方事实核验提示
 
 - 支付测试服务商规则：https://docs.stripe.com/testing
@@ -150,4 +162,4 @@ Writer的101题以原顺序进入定点修复，新补12题均有已冻结二级
 - 欧盟VAT/OSS/IOSS：https://vat-one-stop-shop.ec.europa.eu/
 - 美国预提税表与协定资格：https://www.irs.gov/individuals/international-taxpayers/claiming-tax-treaty-benefits
 
-**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9/CH10 FINAL_SEALED / D_LINE_CHAPTER_CONTENT_COMPLETE；正式正文10/10；G6_APPROVED_CONTENT_RESEALED / G7_EDITOR_WORKPACK_READY / WRITER_EDITOR_PENDING / BOARD_NOT_CLOSED。**
+**停点：G1 FRAMEWORK_FROZEN；A-CH1/CH2/CH3 FINAL_SEALED / A_LINE_CHAPTER_CONTENT_COMPLETE；B-CH4/CH5 FINAL_SEALED / B_LINE_CHAPTER_CONTENT_COMPLETE；C-CH6/CH7 FINAL_SEALED / C_LINE_CHAPTER_CONTENT_COMPLETE；D-CH8/CH9/CH10 FINAL_SEALED / D_LINE_CHAPTER_CONTENT_COMPLETE；正式正文10/10；G6_APPROVED_CONTENT_RESEALED / G7_EDITORIAL_PASS_OWNER_DIRECT_FIX / G8_FINAL_ARCHIVE_PENDING_OWNER / BOARD_NOT_CLOSED。**

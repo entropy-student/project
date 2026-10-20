@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6按Owner采纳清单修订并重新封板完成；G7独立语言编辑工作包就绪、等待候选；BOARD_NOT_CLOSED。**
+> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6按Owner采纳清单修订并重新封板完成；G7独立复审后由Owner授权Reviewer直修全部16项、回归PASS且正式再封板；G8行政归档与CLOSE待Owner授权；BOARD_NOT_CLOSED。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -16,7 +16,7 @@
 
 ### 当前正文工作
 
-**Owner批准四线并行：** A线第1—3章（三章均Owner授权Reviewer直修G4正式封板，A线章级完成）；B线第4—5章（**两章均由Owner分别授权Reviewer直修并G4正式封板**，已无同线下一章）；C线第6—7章（**两章已分别经Owner授权Reviewer直修并G4正式封板**）；D线第8—10章（三章均经Owner分别授权Reviewer直修并G4正式封板，D线章级完成）；第10章是该板块最后一章，不再开启第11章。唯一总控协调跨章和Git正式入库，未完成章节仍需Owner逐章批准。过程稿和审核ZIP不并列放在docs。
+**Owner批准四线并行：** A线第1—3章（三章均Owner授权Reviewer直修G4正式封板，A线章级完成）；B线第4—5章（**两章均由Owner分别授权Reviewer直修并G4正式封板**，已无同线下一章）；C线第6—7章（**两章已分别经Owner授权Reviewer直修并G4正式封板**）；D线第8—10章（三章均经Owner分别授权Reviewer直修并G4正式封板，D线章级完成）；第10章是该板块最后一章，不再开启第11章。唯一总控负责跨章复审及Git正式入库；目前10章均已正式封板。过程稿和审核ZIP不并列放在docs。
 
 ## 正式章节正文
 
@@ -37,6 +37,6 @@
 - [原V6完整冻结问题树（7一级、29二级、42三级）](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
 - [原七章正式正文](../../modern-commercial-payment-guide/docs/)
 
-原项目文件不移动、不删除、不覆盖；新版十章需要按自己的冻结框架重新完成G2–G8。
+原项目文件不移动、不删除、不覆盖。新版十章的G2—G7已完成，G8最终归档及BOARD_CLOSED仍需Owner授权。
 
 [返回五板块总导航](../README.md)
