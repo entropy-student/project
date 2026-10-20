@@ -1,7 +1,7 @@
 # 03｜支付、税务与经营主体
 
 > **STATUS：2026-10-20 G1完整问题框架经Owner授权正式冻结；唯一核心1、一级10、二级52、三级113；4项二级直接成节。**  
-> **CURRENT_GATE：CH1/CH2/CH3/CH4/CH5/CH6/CH7/CH8/CH9/CH10 OWNER_AUTHORIZED_FINAL_SEALED；A_LINE_CONTENT_COMPLETE；B线和C线章级G4已完成、待唯一总控跨章复核；D_LINE_CONTENT_COMPLETE；正式封板10/10章；G6按Owner采纳清单修订并重新封板完成；G7独立复审后由Owner授权Reviewer直修全部16项、回归PASS且正式再封板；G8行政归档与CLOSE待Owner授权；BOARD_NOT_CLOSED。**
+> **CURRENT_GATE：第1—10章全部 `CHAPTER_FINAL_SEALED`；四线章级内容完成、G5/G6/G7跨章及语言审查已完成；G8四项定向修复与静态归档复验已完成，`G8_PASS_CANDIDATE / STOP_AT_OWNER_FINAL_APPROVAL`；`BOARD_NOT_CLOSED`。**
 
 **唯一核心问题：做跨境生意，钱怎么收、税怎么交？**
 
@@ -37,6 +37,6 @@
 - [原V6完整冻结问题树（7一级、29二级、42三级）](../../modern-commercial-payment-guide/docs/FROZEN_FRAMEWORK_V6_20261016.md)
 - [原七章正式正文](../../modern-commercial-payment-guide/docs/)
 
-原项目文件不移动、不删除、不覆盖。新版十章的G2—G7已完成，G8最终归档及BOARD_CLOSED仍需Owner授权。
+原项目文件不移动、不删除、不覆盖。新版十章G2—G7已完成，G8定向修订与归档审核现为`PASS_CANDIDATE`，**仍须Owner另行批准并完成最终Git回读后才能标记`BOARD_CLOSED`**。
 
 [返回五板块总导航](../README.md)
