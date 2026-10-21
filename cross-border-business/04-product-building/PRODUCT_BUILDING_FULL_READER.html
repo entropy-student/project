@@ -6227,6 +6227,7 @@ $$\text{TCO} = \text{基础设施/月租} + \text{支付处理费} + \text{插�
  $("#search-trigger").addEventListener("click",openSearch);$("#search-close").addEventListener("click",closeSearch);
  $("#search-overlay").addEventListener("click",e=>{if(e.target.id==="search-overlay")closeSearch()});
  document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openSearch()}if(e.key==="Escape"){closeSearch();$("#sidebar").classList.remove("open")}if(e.altKey&&e.key==="ArrowRight"){e.preventDefault();activate(Math.min(active+1,8))}if(e.altKey&&e.key==="ArrowLeft"){e.preventDefault();activate(Math.max(active-1,0))}});
+ pages.forEach(page=>{page.querySelectorAll(".markdown-body table").forEach(table=>{if(table.parentElement.classList.contains("table-scroll"))return;const wrapper=document.createElement("div");wrapper.className="table-scroll";table.parentNode.insertBefore(wrapper,table);wrapper.appendChild(table)})});
  pages.forEach((page,i)=>{let blocks=Array.from(page.querySelectorAll(".markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body p,.markdown-body li,.markdown-body td"));
     blocks.forEach((el,j)=>{if(el.closest("pre,.diagram-card"))return;const tx=(el.textContent||"").replace(/\s+/g," ").trim();if(tx.length<12)return;
       if(!el.id)el.id="c"+(i+1)+"-t"+j;searchIndex.push({chapter:i,id:el.id,text:tx})})});
