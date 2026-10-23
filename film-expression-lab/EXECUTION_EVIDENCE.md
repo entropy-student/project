@@ -1,0 +1,67 @@
+# 执行证据
+
+本文件只追加，修正需注明被修正项；工具输出存在不等于业务链验收。
+
+## E001 2026-10-23 G0 Discovery
+
+AUTHORIZED_GATE: FEL-G0-20261023；Owner 要求立项规划、核对本地工具与准备下一轮。
+PREFLIGHT_FACTS: DIRECT_READBACK。本机 Windows PowerShell 7.6.5，身份由 whoami 核对为当前 34707 用户；cwd/Git root 为 C:/Users/34707/Documents/ChatGPT/兴趣视频，branch codex/payment-v14-g1r，HEAD 19769028c9d5216215d51b642a76c4afc4c62394。已有其他支付项目/归档及未跟踪文件。
+ACTUAL_CHANGES: G0 无目标源码写入；只读 GitHub/本地文件/配置布尔值及公开搜索。
+OBJECTIVE_READBACK: GitHub 插件读取 v0.2.7 Governance；main commit 16e33384dc569629a1527d1c9ec0060823af09ce，VNEXT blob 3917c88a7f36df7a53758b3879a92703d659ef9d。规则不在本地持久复制。
+VALIDATION: Node v24.19.0；FFmpeg 9.0；OpenMontage venv 的 requests/dotenv/Pillow 可导入，faster_whisper/whisperx 不存在；.env 文件及两项百炼配置非空，仅布尔值输出；原始 TTS 实现已读，确认环境变量与签名 URL 文件行为。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: TOOLCHAIN.md 保存工具路径/界限；PROJECT_CHARTER.md 保存确认目标；发现过程工具输出在本聊天，可由上述命令复核；不是供应商生成成功证据。
+ANOMALIES: agent-reach 在 PATH 不可见，但已找到 venv module 并运行 help/doctor。初始 `npx --no-install hyperframes --version` 失败，原文 `npx canceled due to missing packages and no YES option: ["hyperframes@0.8.186"]`。误查的 core/references/brief-format.md 与 brief-contract.md 不存在，随后在 hyperframes/references 定位到正确文件；属于查找失败，不是目标源码损坏。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 0 次 TTS/ASR/图像生成，0 次媒体上传/部署；Exa 一次有界检索返回 Bordwell 官方资料；Crossref GET /works 返回 200、两条带 DOI 的书目（10.24114/gr.v11i2.37425、10.7312/siko19592-005）。书目不是已读全文。
+ROLLBACK_EFFECT: 只读，无源片/生产数据改变。
+EXECUTOR_RESULT: PASS_CANDIDATE（发现范围）。
+REVIEWER_DECISION: PASS；当前 Reviewer 已检查上述返回，接受为本轮准备的事实基线。
+
+## E002 2026-10-23 G1 本地准备
+
+AUTHORIZED_GATE: FEL-G1-20261023；仅本地规划/工具准备，不进入正式媒体制作。
+PREFLIGHT_FACTS: 新目录 film-expression-lab，与父仓库无关工作隔离。Windows 本地路径创建后 Get-Item 回读成功；不修改父分支、系统网络、OpenMontage 或用户凭据。
+ACTUAL_CHANGES: 新建章程、工具清单、研究/制作/验收手册、三份 Gate、决策记录、执行提示词、项目入口、TTS 内存适配及合同测试。通过固定版本 npx 下载/运行 hyperframes 0.8.186，仅 npm 常规缓存及运行日志。
+OBJECTIVE_READBACK: `npx --yes hyperframes@0.8.186 --version` 返回 0.8.186；doctor JSON 中 Node/FFmpeg/FFprobe/Chrome 检查成功。Chrome 路径指向既有 hyperframes 缓存，不宣称本轮新装。
+VALIDATION: `python -m unittest discover -s scripts -p test_bailian_voice.py` 实际运行 4 项离线测试全部通过；覆盖缺失授权无网络请求、超时不重试/不重放、下载失败无签名链接落盘、模拟成功保存 WAV。未调用真实 TTS，不证明真实 API/音色或价格可用。
+ANOMALIES: doctor 的 JSON `ok=false`，虽然命令退出码为 0。关键原因是可用内存仅 1.6GB/总15.3GB；可选 whisper-cpp/MusicGen 未安装。不能写成 doctor 全通过。render help 已确认 `--low-memory-mode` 固定单 worker，下一轮强制使用并先小段试渲染。总内存自动策略不会代替当前可用内存判断。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: preparation-validation.json 保存文件/hash、测试输出与检查结果；实际文件即审阅对象。CLI/doctor 本轮结果写在本文，未存原始 Provider 日志或敏感配置。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 固定 CLI 的 npm 缓存新增；未计量缓存增量，UNKNOWN。没有 TTS/ASR/付费素材/图像请求、没有影视片源/成片/公网服务、无业务数据变化。
+ROLLBACK_EFFECT: 全部新增项目文件可停止使用；保留父工作区和输入不变，不自动清缓存/删除目录；云端生成不存在，无费用回滚问题。
+EXECUTOR_RESULT: PASS_CANDIDATE（规划准备限定范围）。
+REVIEWER_DECISION: 待本轮最终回读；只有准备包可 PASS，生产全链保持 UNVERIFIED。
+
+## E003 版本检查
+
+Agent Reach `check-update` 成功，本机 v1.5.0，工具报告新版 v1.6.0。本轮没有更新；不影响已实测 Exa/Crossref 入口。该更新不属于测试视频必要前提。
+
+## E004 Reviewer 最终核对
+
+E002 的待审状态由本项新证据取代，保留原始记录。当前 Reviewer 回读 13 项必需文件并生成 preparation-validation.json；4 项离线合同测试复跑通过，准备包满足 G1 的范围与停止边界，判定 G1 PASS。真实 TTS/影视渲染/完整音画人工验收仍 UNVERIFIED，G2 保持 CANDIDATE。G2 已补入低内存单 worker、小段试渲染以及 JSON/退出码双检要求。当前无 Owner 需当场批准的动作；下一轮提示词的预算文字在被实际发送前不构成付费授权。
+
+## E005 2026-10-23 Agent Reach 更新与频道运营草案
+
+AUTHORIZED_GATE: FEL-G1B-20261023；用户明确要求更新与品牌/运营思考，未授权发布或付费生成。
+PREFLIGHT_FACTS: 当前Git root/branch/HEAD与G0一致，父仓库无关未跟踪文件保留。GitHub插件重新读取当前Governance通用/触发表/B/C/F，12/13；无SSH、VPS、付费Provider与图像生成。头像采用简单原创SVG/几何绘制，符合imagegen技能的代码原生图形例外。
+ACTUAL_CHANGES: uv tool install --force 官方GitHub release ZIP，安装1.6.0；官方setup刷新用户技能及Claude/OpenClaw/Gemini副本；更新用户PATH；只从 .agent-reach-venv 卸载旧Agent Reach包，保留共享venv；独立bili.exe与 .agent-reach/venv 经Test-Path仍存在。新增本项目运营方案、品牌文案、SVG/PNG及绘制源。
+OBJECTIVE_READBACK: 新入口 version JSON ok=true、version1.6.0、install_method=uv；web search ok=true、backend=exa，返回Bordwell官网/加州大学出版社两条结果；doctor --text读回B站needs_setup、web已接入待独立check状态；以真实search结果证明搜索，不用doctor替代。
+VALIDATION: 官网update指引要求从install第0步迁移；先备份旧技能至 .agent-reach/tools/upgrade-backup-20261023-01。已检查legacy.find仅列 .agent-reach-venv、remove代码仅pip卸载该包；非pipx整目录删除。setup实际old_copies.removed与之吻合。Human Writing应用于简介，check_prose退出0、禁用项0；静态视觉大图及48px头像已查看，片头末帧观察点避开文字后重新输出。
+ANOMALIES: setup顶层ok=true但默认4/5；B站错误原文 `bili-cli:pip_packages failed: ERROR: No matching distribution found for bilibili-cli==0.6.2`。setup --help不受支持返回BAD_INPUT；有界诊断uv pip index不支持该子命令，没有改变依赖。此后遵守新版维护规则停止，不反复setup/切源/修上游；主程序升级和B站依赖完整性分别判定。原始安装报告已按原文展示/保存，报告不是逐平台功能实测。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: AGENT_REACH_INSTALL_REPORT_20261023.md为官方原始报告；round2-validation.json为本轮文件与品牌产物检查；OPERATING_PLAN.md为策略草案，brand/为可审阅候选，不是正式动画。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: Win32_OperatingSystem瞬时TotalVisibleMemorySize=16020952KB、FreePhysicalMemory=1518824KB。uv安装16个包，0次TTS/图像生成/付费ASR，0个新增公开站点，无登录动作。未对新程序作全渠道内存峰值benchmark，预算建议不当作实测需求。
+ROLLBACK_EFFECT: 旧技能有非秘密备份； .agent-reach/venv保留可核对旧包；配置未复制到项目或输出。新增品牌和运营文件独立可弃用，无原片/业务数据变化。
+EXECUTOR_RESULT: 主程序/实测web与品牌草案 PASS_CANDIDATE；B站默认依赖 PARTIAL。
+REVIEWER_DECISION: 已检查版本/setup/search/代码边界/视觉与文案结果，接受主程序升级及草案，B站保持PARTIAL。G2仍待源片与授权，不被本轮替代。
+
+## E006 2026-10-23 Owner纠正拉片形式
+
+AUTHORIZED_GATE: FEL-G1C-FORMAT-20261023，完整Gate在FORMAT_REVISION_20261023.md；Owner要求解释内存/片长/样式并改为含拉片的名称、新视觉方向。
+PREFLIGHT_FACTS: GitHub插件重新读取v0.2.7通用/触发表/B/C/12/13；当前Handoff/G2/提示词/章程已读。本轮无运行时安装、付费/秘密/图像生成/媒体写入。
+ACTUAL_CHANGES: 取消默认90至180秒测试，加入完整所选场景原速播放覆盖/顺序验收；保留原TTS预算；旧品牌标为否决；新增四类视觉与含拉片名称候选、两分钟源片展开五分钟的假想时间线。
+OBJECTIVE_READBACK: 章程/Gate/提示词/RUNBOOK与运营当前段落一致，不再以短影评/大量裁源作为默认。历史证据/旧品牌文件不删除或回写成新事实。
+VALIDATION: 文本回读与源区间编排检查见format-revision-validation.json；假想首次原速区间[0,35)、[35,80)、[80,120)连续覆盖120秒，回放和解读相加得到300秒。不是实际影片分析或渲染证据。
+ANOMALIES: 先前由Reviewer自行设定的90秒方向偏离Owner原本需求；6至8GiB预算不等于实际最低内存，已澄清。不用技术工具的限制倒推节目长度。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: FORMAT_REVISION_20261023.md为新当前格式；format-revision-validation.json为回读；新名称/视觉只有方向规格，无新动画/头像定稿。
+ROLLBACK_EFFECT: 可逆文档修订，源片/其他项目/工具/凭据不变。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 无渲染、无供应商调用、无新增发布。
+EXECUTOR_RESULT: PASS_CANDIDATE（格式修订限定范围）。
+REVIEWER_DECISION: 接受Owner纠正并完成文档对齐，格式修订PASS；G2仍待实片，实际成片质量UNVERIFIED。

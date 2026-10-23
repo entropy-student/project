@@ -1,0 +1,36 @@
+{
+  "scope": "format_revision_only",
+  "source_coverage_example_seconds": 120,
+  "output_example_seconds": 300,
+  "real_renders": 0,
+  "files": [
+    {
+      "path": "PROJECT_CHARTER.md",
+      "sha256": "f4d66fca61c534c28842e7cb117cb35b094e424befa2aa78b1f4e8b1228b8d67"
+    },
+    {
+      "path": "EXECUTOR_PROMPT.md",
+      "sha256": "d1bd32e6e76cd2643405fda5a89db88ab934ed0f660a3672bedb2c863e8cb6c3"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "af247b489263ff6fd886bc7cc8d74bae4422d56dd8d25cb87d1f1a04596e461b"
+    },
+    {
+      "path": "gates/G2_TEST_VIDEO.md",
+      "sha256": "9d2e91dc9161a28cc49d1751103e630dc2ef7d6da26e0fdbb6e57ebf7e69e570"
+    },
+    {
+      "path": "FORMAT_REVISION_20261023.md",
+      "sha256": "3187563f5713dca24927cfc80972bcd3ecf15b13b6813db3fff6de359d25e898"
+    },
+    {
+      "path": "REVIEWER_HANDOFF.md",
+      "sha256": "b0fcc3775fe3ad61c9a11a16329e1a7a308042ae7755cf431c67cff32e2dc553"
+    },
+    {
+      "path": "OPERATING_PLAN.md",
+      "sha256": "f352133ced350ee8c8d627007fd6466f41ae9b3365d698278408edd9be656740"
+    }
+  ]
+}

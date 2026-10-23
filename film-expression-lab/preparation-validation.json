@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-23",
+  "scope": "preparation_only",
+  "required_files_read_back": 13,
+  "offline_contract_tests_exit": 0,
+  "offline_contract_tests": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.050s\n\nOK",
+  "hyperframes_version": "0.8.186",
+  "doctor_overall_ok": false,
+  "available_memory_gb_at_probe": 1.6,
+  "real_tts_calls": 0,
+  "real_video_renders": 0,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "8acb67929ac570ff9f941050b87986883a8a50743ea84a04019d5e6acd2e0daf",
+      "bytes": 1831
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "sha256": "d144689ec0cf891ee066911f6c1c7813b1be53945af6ca99520ee615f64b092e",
+      "bytes": 3301
+    },
+    {
+      "path": "TOOLCHAIN.md",
+      "sha256": "17acf12fa32645566990bd60fbf4dc9e7d2072ad7521b10f75e8fe7f839b62ed",
+      "bytes": 5034
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "8bdedd2ad2d072ca8de5609548a99cedf39eea91bd7d04f505645401e8e764a6",
+      "bytes": 6434
+    },
+    {
+      "path": "EXECUTOR_PROMPT.md",
+      "sha256": "da1a26860b90a59359bc7878b3468d2df54949eeb6e433150d1f36990cf9c417",
+      "bytes": 2048
+    },
+    {
+      "path": "DECISION_LOG.md",
+      "sha256": "172ee78f81dff851104c39ebcdd66f22d8eca93fccdf11494021a5464c2d31b2",
+      "bytes": 1732
+    },
+    {
+      "path": "REVIEWER_HANDOFF.md",
+      "sha256": "cd5957fa88e7baa93d07dffa20c50cbbc3fb4eb22190745dc494fb1ee86363df",
+      "bytes": 3345
+    },
+    {
+      "path": "EXECUTION_EVIDENCE.md",
+      "sha256": "aeee710218ab821653dd6e58a325e2984697e0a17a9818f4b218fca6696f5fd4",
+      "bytes": 5349
+    },
+    {
+      "path": "gates/G0_DISCOVERY.md",
+      "sha256": "12248ea660dc555ff522e40b7015775a547de59b4e4aa4115deede11c5813788",
+      "bytes": 1673
+    },
+    {
+      "path": "gates/G1_PREPARATION.md",
+      "sha256": "7b607122c379fa39e781050bd8b6fd47ba74b4b446883ba3f7cd3a2f87be4c33",
+      "bytes": 1661
+    },
+    {
+      "path": "gates/G2_TEST_VIDEO.md",
+      "sha256": "cc4361b012e761fa7a0eae99e4e76e985e24f4e25a1c45f4f72cd78a2d1d0823",
+      "bytes": 5780
+    },
+    {
+      "path": "scripts/bailian_voice.py",
+      "sha256": "3807390563b5100616bb14cb780631e79e195ba782538a9b57168463e51ef6f6",
+      "bytes": 5017
+    },
+    {
+      "path": "scripts/test_bailian_voice.py",
+      "sha256": "f1f5e1138144464fa8b29d8c08186b7e922d67112980e9abd9d2f4716556a5c4",
+      "bytes": 2987
+    }
+  ],
+  "reviewer_decision": "PASS_PREPARATION_ONLY"
+}

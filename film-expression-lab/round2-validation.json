@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-23",
+  "agent_reach_version": "1.6.0",
+  "setup_default_channels": "4/5",
+  "web_search_actual": "PASS",
+  "bilibili_dependency": "PARTIAL_UPSTREAM_BROKEN",
+  "files": [
+    {
+      "path": "OPERATING_PLAN.md",
+      "sha256": "11b6047fabf5eafa99c619561ca617314a8be01e44ef0ea5b3f680f388d2aa1c"
+    },
+    {
+      "path": "AGENT_REACH_INSTALL_REPORT_20261023.md",
+      "sha256": "bcd8a97569dd50999d8678141b604e040e357f67942f0cac74d23e27dcb3327f"
+    },
+    {
+      "path": "REVIEWER_HANDOFF.md",
+      "sha256": "cfad5e516f9082c5344af6700bbbbf485220b301f5b3c605c0037645a255a670"
+    },
+    {
+      "path": "TOOLCHAIN.md",
+      "sha256": "eadccd878b3c475f2f86243e29001c90954dab396453d0bccdea8890390d3801"
+    },
+    {
+      "path": "brand/channel-copy.txt",
+      "sha256": "28494c9f329e46b64323498262344917d07171142cd0699d344aa503cd79c0b9"
+    },
+    {
+      "path": "brand/avatar-concept.svg",
+      "sha256": "7919a1f27d663a607f866fe359577d415e57c3e24870b87ff064cf75c66ddcf8"
+    },
+    {
+      "path": "brand/avatar-concept.png",
+      "sha256": "0c676e77b525087f150b97881216aa1a419ec7e4ce722a842c6db71e3e10d98e"
+    },
+    {
+      "path": "brand/avatar-48.png",
+      "sha256": "f68a96534ef2839dfafbe949283df6d5964a1b0766112158884e2a3b6e9ea541"
+    },
+    {
+      "path": "brand/brand-direction.png",
+      "sha256": "c83ec1ac52838ce21d484cec20e38b468415adf76e11510322e78f31d0fde3d7"
+    },
+    {
+      "path": "brand/render_brand_concept.py",
+      "sha256": "f1984a5f94526aa43707215706b8c0f37e55e8b79fa34564e994716b48f257a1"
+    },
+    {
+      "path": "gates/G1B_CHANNEL_AND_TOOL_UPDATE.md",
+      "sha256": "4c033f7d529e65c117d3120fae6bc8185d0c4b9761c9acb4539452b0bafa602b"
+    }
+  ],
+  "images": {
+    "brand/avatar-concept.png": [
+      1024,
+      1024
+    ],
+    "brand/avatar-48.png": [
+      48,
+      48
+    ],
+    "brand/brand-direction.png": [
+      1600,
+      1050
+    ]
+  },
+  "paid_generation_calls": 0
+}
