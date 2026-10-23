@@ -119,3 +119,16 @@
 - DIRECT_GITHUB_READBACK：`entropy-student/spike.skill/main` @ `16e33384dc569629a1527d1c9ec0060823af09ce`；`comic-narrative/part4_5/ASSET_REUSE_LIBRARY.md`区分完整图片直接复用、旧图单一状态编辑、仅做参考及新图生成；`comic-narrative/tools/imagegen-fast-path/README.md`及R2R1V验收证据确认并发2、output_hint解析/直接保存、SHA/尺寸/QA、Native像素差异不单独失败。
 - ACTUAL_CHANGE：新增`docs/AI_IMAGE_GENERATION_EFFICIENCY_REUSE_GUIDE_2026-10-16.md`，并在现行裁决登记、Handoff和CURRENT_STATE中引用。该技巧是其他项目已验收能力的**移植参考**，CWS未验证其适配，不得称Token计费实测最低。
 - SCOPE/ROLLBACK：仅CWS项目文档，原有文案/历史13×6表/视频媒体/Remotion代码/AI生成资源与其他项目不修改；文档可经Git版本回滚，历史证据保持追加。
+
+## EVIDENCE 2026-10-18｜CW0005 已有视觉素材只读盘点（候选记录）
+
+- AUTHORIZED_GATE：`CWS-CW0005-EXISTING-VISUAL-ASSET-AUDIT-20261018`；限Owner Windows本机既有素材、索引与预览只读盘点，以及隔离PR中的脱敏文字报告；没有媒体获取/渲染/源码修补/Main合并授权。
+- PREFLIGHT_FACTS：GitHub main基线 `785ed27d0a94624b2ae69ae4f51d42fcf43f386f`；本机确认Windows 11与正确仓库remote。现存本地旧工作树有2项已修改tracked文件及5个untracked条目；本轮未触碰，忽略目录和旧包保持原状。
+- ACTUAL_CHANGES：只在从该main SHA派生的隔离分支新增脱敏报告 `docs/reviews/CW0005_EXISTING_VISUAL_ASSET_AUDIT_EXECUTOR_2026-10-18.md`，并追加本候选记录；没有修改冻结HTML、业务代码、R2稿、CURRENT_STATE、Reviewer handoff或素材文件。
+- OBJECTIVE_READBACK：本机R2修订包SHA与main记录相符；R6报告列出的Pexels #854959、Pixabay #2793六张既存抽帧文件SHA复核相符并目视查看；两原视频仍按R3既用素材禁入未来新片。现存PeerTube目录项文件SHA与catalog匹配，FFprobe复读为VP9 1920×1080 30000/1001 52.78s、含Opus音轨；现存Commons图SHA与catalog相符且实际打开，内容为彩色玉米穗。完整来源/观察/限制见该PR报告，所有本机绝对路径已省略。
+- VALIDATION：逐镜映射覆盖S01–S10；Figure 1/3a/6的本机图像/PDF均未找到，故内容像素与figure-level权利仍UNKNOWN。库存素材为代表帧级内容核验、rights PARTIAL并已用于R3；不得声称Reviewer直接看过本机画面。仅 `PASS_CANDIDATE`（盘点交付），不代表Story-Fit或制作Gate通过。
+- ANOMALIES：本地media-operations catalog有15条视频记录和70条图片记录，但仅2条有本地文件；它们不可作为85个可用实物。另一条视频的现存预览为Reddit文字截图，Commons图为玉米穗，两者不支持核心动作；旧R3因重复库存镜头/文字卡已被Owner视觉RETURN。
+- EVIDENCE_ARTIFACTS_AND_PURPOSE：R2修订ZIP SHA256 `e547e48cd107b7a05e47aae466fc9efbd84f8a381f9065a0bb8213cd0dc5c6dc`；R6L/R7L ZIP `81591798ede2c838bbc8cc31c8b5fb22edbd5f497d90e7142cfcae141e78c4f8`；R3修订ZIP `84ddaac6b21279a1a77a46a5a85f71e5528b7d5f0a21274918aeb9bf07c919e0`. 本机原片/帧未上传Git。
+- ROLLBACK_EFFECT：未合并PR及隔离分支可整体关闭/回滚；不需改动Owner本机数据。
+- RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT：无新媒体下载、付费、图像生成、视频渲染、系统配置变更。
+- EXECUTOR_RESULT：`PASS_CANDIDATE`（仅本地素材盘点范围）；正式 `CW0005_VISUAL_STORYFIT_HOLD / G1_NOT_PASS / G2_NOT_AUTHORIZED / R4_NOT_AUTHORIZED / NO_PUBLISH / RIGHTS_PARTIAL`保持。
