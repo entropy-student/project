@@ -1,5 +1,7 @@
 # G2 单段影视测试
 
+> **2026-10-23 路线整合说明：** 本文件是三 Gate 路线中 **S2 单段真实试产** 的唯一详细执行合同，先在 `style/STYLE_REVIEW.md` 完成 S1 风格选择后激活；执行技术与安全条款保持有效。参见 `gates/THREE_GATE_PLAN.md`。
+
 GATE_ID: FEL-G2-TEST-001
 STATUS: CANDIDATE，Owner 提供可访问片源及本轮有界执行授权、Reviewer 核对前置事实后才激活。
 OBJECTIVE: 从一段用户片源制作有证据、有中文旁白、能正常播放的合格测试视频。

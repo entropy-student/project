@@ -79,3 +79,13 @@ ROLLBACK_EFFECT: 不覆盖原项目目录，无本地分支变更；如需撤回
 RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 新增33项归档文件及后续非秘密回执；0个PR，0次部署/TTS/媒体发布；本地文件与缓存保留。
 EXECUTOR_RESULT: PASS_CANDIDATE（归档与交接限定范围）。
 REVIEWER_DECISION: 初始main归档已验证PASS；本条及回执补充后再读main/ref及变更文件，才能结束本轮。影视视频/品牌定稿不在本PASS内。
+
+## E008 2026-10-23 S1 风格候选制作（写前记录）
+
+AUTHORIZED_GATE: FEL-S1-STYLE-20261023；Owner 要求后续压缩为风格定稿→单段测试→最终成品，不拆过多 Gate。
+PREFLIGHT_FACTS: DIRECT_READBACK。GitHub canonical Governance v0.2.7 universal/11 trigger/12/13 已读取；项目 main head 为 8030270c82a05f4b36e32181feaa0dad5fef62c7，root tree 为 3d6db8304cdd85020a6bb84a154abf94a0e63b6a。原项目 G0/G1/G1C/G1D 状态和 Owner 形式纠正已核对。本轮专项触发均未命中实际执行：无宿主机/SSH/Secret、部署、真实自动化动作、付费 Provider、结项或 Codex 图像生成；HTML 用 CSS 抽象占位。
+ACTUAL_CHANGES: S1 两套风格（A资料馆、B导演批注）离线预览 + 设计候选 + 三 Gate 方案，范围仅 film-expression-lab；更新 README/WEB_HANDOFF/Handoff/G2 的路由说明。
+VALIDATION: 风格从旧灰框方案独立重新设计；正片无包装/暂停单点解读/回放撤标/源完整覆盖的规则分别核查；没有真实影视素材，也没有真实渲染。GitHub 最终提交 SHA 和读回验证由后续 E009 追加，不在此项提前声称完成。
+ANOMALIES: 正式人声/影片内容版权与视频实际播放均不在本轮范围；当前正式名称、风格选择是 Owner 决策。
+ROLLBACK_EFFECT: 纯本项目文本/HTML变更，可用正常前向回退提交；不改生产媒体、凭据或其他父仓库目录。
+EXECUTOR_RESULT: S1候选稿由Reviewer直接制作；风格最终定稿等Owner选择，非 S1 终局 PASS。

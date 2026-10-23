@@ -6,13 +6,15 @@
 
 ## 入口
 
-**网页端继续讨论请先读 `WEB_HANDOFF.md`。** 当前目标仓库为Owner确认的 `entropy-student/project/main`，项目路径为 `film-expression-lab/`。用户已纠正为顺序展开的陪伴式拉片；取消90至180秒目标；名称必须含“拉片”；旧品牌/视觉已否决。具体已定和待议事项以交接入口为准。
+**最新执行路线先读 `gates/THREE_GATE_PLAN.md` 与 `style/STYLE_REVIEW.md`。** 网页端历史需求继续参阅 `WEB_HANDOFF.md`。 当前目标仓库为Owner确认的 `entropy-student/project/main`，项目路径为 `film-expression-lab/`。用户已纠正为顺序展开的陪伴式拉片；取消90至180秒目标；名称必须含“拉片”；旧品牌/视觉已否决。具体已定和待议事项以交接入口为准。
 
 已读回的完整初始归档提交为 `51864905f07f1eebd390070ca182b109e8ed2fa7`，33个文件。`REMOTE_PACKAGE_MANIFEST.json`对应这份初始快照，后续交接状态/回执修订以各自Git提交为准，不把历史hash误当最新文件hash。核验事实见 `REMOTE_PUBLICATION_RECEIPT.json`。网页端后续以仓库main为项目文档入口，不假设Owner本地路径可访问。
 
 - `REVIEWER_HANDOFF.md` 是 Reviewer 当前状态入口。
 - `EXECUTOR_PROMPT.md` 是交给执行 agent 的完整启动提示词。
-- `gates/G2_TEST_VIDEO.md` 是下一轮执行边界，当前为 CANDIDATE，须由 Reviewer 在收到片源及调用授权后激活。
+- `gates/THREE_GATE_PLAN.md` 定义 Owner 新确认的精简 S1 风格 → S2 试产 → S3 成片三 Gate；当前 S1 候选供 Owner 选择。
+- `style/style-preview.html` 是无需联网、可切换 A/B 及四种观看状态的设计预览。
+- `gates/G2_TEST_VIDEO.md` 作为 S2 的详细执行边界，仍为 CANDIDATE，须由 Reviewer 在收到片源及调用授权后激活。
 - `PROJECT_CHARTER.md` 定义频道定位、范围、分阶段目标。
 - `TOOLCHAIN.md` 记录本机工具实测与限制。
 - `RUNBOOK.md` 定义研究、写作、剪辑、质量验收与交付。
