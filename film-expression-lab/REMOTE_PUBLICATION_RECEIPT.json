@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-23",
+  "repository": "entropy-student/project",
+  "branch": "main",
+  "prefix": "film-expression-lab/",
+  "archive_commit": "51864905f07f1eebd390070ca182b109e8ed2fa7",
+  "previous_main": "8d70e4bc12f0a658eede2243f2465f9a1f3397bf",
+  "archive_tree": "4bf2420744e39585ffd206f43d6065bf13ad9e78",
+  "project_tree": "b4e45e1c3e15cdb76fcef7c481e95ed1443304f4",
+  "remote_files": 33,
+  "manifest_files_verified": 32,
+  "manifest_included_separately": true,
+  "unrelated_root_entries_unchanged": 27,
+  "main_read_back": "51864905f07f1eebd390070ca182b109e8ed2fa7",
+  "verification": "PASS_ARCHIVE_AND_HANDOFF_ONLY",
+  "real_tts_calls": 0,
+  "real_video_renders": 0,
+  "notes": [
+    "Manifest describes the first archive commit; later handoff/receipt amendments are tracked by their subsequent commits.",
+    "Old brand assets are retained as rejected historical evidence.",
+    "No credentials, film source files, Python caches, unrelated project content, or global skill copies were uploaded."
+  ]
+}

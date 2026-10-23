@@ -65,3 +65,17 @@ ROLLBACK_EFFECT: 可逆文档修订，源片/其他项目/工具/凭据不变。
 RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 无渲染、无供应商调用、无新增发布。
 EXECUTOR_RESULT: PASS_CANDIDATE（格式修订限定范围）。
 REVIEWER_DECISION: 接受Owner纠正并完成文档对齐，格式修订PASS；G2仍待实片，实际成片质量UNVERIFIED。
+
+## E007 2026-10-23 main归档与网页端交接
+
+AUTHORIZED_GATE: FEL-G1D-REMOTE-HANDOFF-20261023。Owner明确选择“提交到entropy-student/project/main的film-expression-lab/”。
+PREFLIGHT_FACTS: 本地无origin，先通过GitHub插件列可见仓库并向Owner澄清，确认后读取目标main/root。base commit 8d70e4bc12f0a658eede2243f2465f9a1f3397bf，base tree e5c87164c38ea8cda0458e0f8030fc8a2dcab481。远端没有同名目录；新tree只加本目录，不从本地支付分支推送。
+ACTUAL_CHANGES: 上传30项文本与3项PNG，包括WEB_HANDOFF、34条需求覆盖清单、章程/执行/Gate/证据/工具/运营、TTS适配/测试和被否决历史品牌。无凭据、原片、全局技能源码或pycache。
+OBJECTIVE_READBACK: archive commit 51864905f07f1eebd390070ca182b109e8ed2fa7，root tree 4bf2420744e39585ffd206f43d6065bf13ad9e78。插件update_ref采用force=false和expected_sha原main，随后main读取确为该commit。
+VALIDATION: 远端新root对比base仅新增film-expression-lab，27个原root条目sha不变。目标子tree递归读取未截断，33个文件；清单中32项文件Git blob ID逐项匹配，manifest另存一项；WEB_HANDOFF头22行实际回读确认已定/纠正/待议口径。回执补充提交不改原归档清单的历史含义。
+ANOMALIES: 本地读取大文本最初因Python默认输出编码导致JSON提取失败；分类为证据提取失败，改为显式UTF-8后读回成功，未重放远端写操作。没有GitHub插件失败或浏览器替代。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: REMOTE_PACKAGE_MANIFEST.json为归档文件字节/Git blob清单；REMOTE_PUBLICATION_RECEIPT.json为远端实际核验结果；DISCUSSION_COVERAGE_CHECKLIST.md覆盖34项对话诉求；WEB_HANDOFF为网页端入口。
+ROLLBACK_EFFECT: 不覆盖原项目目录，无本地分支变更；如需撤回归档另提交只移除新增目录的正常commit，不force reset共享main。无生产服务或付费生成。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 新增33项归档文件及后续非秘密回执；0个PR，0次部署/TTS/媒体发布；本地文件与缓存保留。
+EXECUTOR_RESULT: PASS_CANDIDATE（归档与交接限定范围）。
+REVIEWER_DECISION: 初始main归档已验证PASS；本条及回执补充后再读main/ref及变更文件，才能结束本轮。影视视频/品牌定稿不在本PASS内。
