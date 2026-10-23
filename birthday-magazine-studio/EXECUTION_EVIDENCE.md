@@ -683,3 +683,76 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 1. Decide whether to reject or replace Vanquish Upload Files for guest orders because its issued secure file link returned HTTP 200 when replayed from an unrelated guest context.
 2. Decide whether to reject or replace Vanquish Attach Me for guest private delivery because its issued attachment link also returned HTTP 200 when replayed from an unrelated guest context, despite the raw storage URL returning HTTP 403.
 3. Keep this Gate at Reviewer. Do not start G2A2 until the Reviewer resolves the two guest-link access-control failures.
+
+## G3CR2R3 — Blocksy Wedding import + WooCommerce compatibility canary
+
+**Gate:** G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY
+**Execution state:** PASS_CANDIDATE_G3CR2R3_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY — Reviewer decision pending; no Reviewer PASS is asserted.
+**Branch:** codex/birthday-magazine-g3cr2r3-wedding-woocommerce-canary
+**Baseline at execution start:** 7111910a0fb5e2e4fcfd33a3d9a53618efb4517e.
+**Submission base after latest-main synchronization:** 5d3e0b488e63982c91a79146d2bc720037d5caba.
+**Stop point:** STOP_AT_REVIEWER=YES. Full G3C productization was not started.
+
+### Runtime and imported starter
+
+A fresh isolated Compose project, birthday-magazine-g3cr2r3, ran on loopback port 8187 with project-specific database/files volumes and network. Runtime versions were WordPress 7.1.1, PHP 8.3.33, MariaDB 11.4.7, Docker client/server 29.7.2 and Compose 5.4.0. Image digests and source package hashes are retained in poc/g3cr2r3/artifacts/reports/runtime-install.json.
+
+Blocksy 2.1.57 and Blocksy Companion 2.1.57 were installed from WordPress.org packages and activated. The current Blocksy dashboard importer was used:
+
+Blocksy > Starter Sites > Wedding > Import > choose Gutenberg > Next > Next > Install
+
+The importer reported “Starter Site Imported Successfully”. Its Gutenberg wizard requested and installed only these free WordPress.org dependencies:
+
+| Plugin | Version | License | Source | SHA-256 |
+|---|---:|---|---|---|
+| Simply Gallery Block & Lightbox (simply-gallery-block) | 3.4.3 | GPL-2.0 | https://downloads.wordpress.org/plugin/simply-gallery-block.3.4.3.zip | 032d2d60623e57c1a9505ef86d11623049eb400d7521a054d255e6bca195b6e6 |
+| Stackable – Gutenberg Blocks (stackable-ultimate-gutenberg-blocks) | 3.20.2 | GPL-3.0 | https://downloads.wordpress.org/plugin/stackable-ultimate-gutenberg-blocks.3.20.2.zip | 89a3dcf7989fcc742424b8f1c005fffc4a6e5e1e9932293f4f0bf6c355e96de1 |
+| WPForms – Contact Form (wpforms-lite) | 2.0.2.1 | GPL-2.0-or-later | https://downloads.wordpress.org/plugin/wpforms-lite.2.0.2.1.zip | 29eb30095dcd818037780781b2eb3e9b5aa1df6bc15e61470119c192a1725e19 |
+
+The actual active plugin read-back is in poc/g3cr2r3/artifacts/reports/final-runtime-readback.json. Elementor and HT Slider were not installed; no paid component was required. The imported homepage is published WordPress page 858, has Gutenberg block markup (31 parsed top-level blocks), no Elementor metadata, and opened in the Gutenberg editor. Thus WEDDING_HOME_GUTENBERG_EDITABLE=YES.
+
+Theme and Companion package SHA-256 values, respectively, are 077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d and f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072. Both are GPL-2.0-or-later and came from the WordPress.org download service. Package sources, sizes, runtime image digests and exact plugin inventory are also in runtime-install.json and import-readback.json.
+
+### WooCommerce and account/workspace compatibility
+
+WooCommerce 11.1.2 was installed from the official WordPress.org package (GPL-3.0-or-later; SHA-256 9de9350a1cf5671b9960afb3151f40f7980e223217a441bf2ea5921b5fce8e9e). The synthetic simple product was virtual, USD 39.99, and did not require shipping. Native WooCommerce pages were used: product 880, Cart 872, Checkout 873 and My Account 874.
+
+| Check | Result |
+|---|---|
+| Product desktop and 375px | PASS; $39.99 and Add to Cart visible and usable; no horizontal overflow |
+| Native Cart | PASS; add, quantity update (subtotal changed to $79.98 desktop / $119.97 mobile), and remove worked |
+| Checkout | PASS; required fields worked; guest checkout disabled; account creation enabled |
+| Local order | Synthetic order 883, USD 39.99, on-hold and unpaid; account was created during checkout |
+| Payment | Only WooCommerce core cheque/local test gateway was enabled, titled “Local test only — no payment”; no PayPal was present; no payment action or real money |
+| My Account | PASS; page loaded and login controls were available |
+| Private workspace | PASS; owner Buyer A HTTP 200, unrelated Buyer B HTTP 403, guest HTTP 403 |
+
+This was a local unpaid checkout canary and did not authorize or settle any payment. The G3A workspace plugin (bms-g3a-commerce-loop 0.1.0) was mounted read-only and reused without implementation changes. Generation was disabled; generation job counter, matching scheduled actions, matching cron, and model-call counter all read zero.
+
+The final active plugin set was: Blocksy Companion 2.1.57; G3A commerce/workspace 0.1.0; Simply Gallery 3.4.3; Stackable 3.20.2; WooCommerce 11.1.2; WPForms Lite 2.0.2.1. The forbidden-plugin scan returned an empty list.
+
+### Browser/network and visual evidence
+
+Desktop and 375px checks recorded no browser page errors or console errors. Observed external hosts were fonts.googleapis.com, fonts.gstatic.com, and startersites.io for public fonts/starter imagery. No payment or AI/model endpoint was called. Two imported theme logo SVG paths (logo-dark.svg, footer-logo.svg) returned local 404s; this did not block the imported homepage or tested commerce controls and is retained as a minor starter-import limitation. No visual redesign or Good Issue integration was attempted.
+
+Committed synthetic/public-demo screenshots:
+
+- poc/g3cr2r3/artifacts/screenshots/wedding-home-desktop.png
+- poc/g3cr2r3/artifacts/screenshots/wedding-home-mobile-375.png
+- poc/g3cr2r3/artifacts/screenshots/woo-product-desktop.png
+- poc/g3cr2r3/artifacts/screenshots/woo-product-mobile-375.png
+- poc/g3cr2r3/artifacts/screenshots/woo-cart.png
+- poc/g3cr2r3/artifacts/screenshots/woo-checkout.png
+- poc/g3cr2r3/artifacts/screenshots/woo-my-account.png
+
+Screenshot sizes and SHA-256 checksums are in poc/g3cr2r3/artifacts/reports/evidence-manifest.json. All test account/order data is synthetic.
+
+### Cleanup, scope and final disposition
+
+After evidence capture, the exact project-scoped Compose teardown removed this Gate's containers, volumes and network. The exact ignored temporary directory poc/g3cr2r3/.tmp/ was removed after path/reparse-point/ignore checks. Read-back reports target resources 0/0/0 and temporary files 0. Docker inventory before and after had identical counts and fingerprints: containers 32 / 8E1FA69F9ADCAB7C17CAF5CF750AE0E9221189C2C2D6658B6E8FFFC359F3A8AD; volumes 78 / 656EE2DCEF3C4D99314FB8F2B42E8821E522BC93B6E8A27D81DB991517D9C701; networks 17 / 41DF5CE698646B8E44E66A8BBB05337ABB5618DA2E91B9527D9BACC8F5301414. No global prune was run. See cleanup-readback.json, resources-before.json and runtime-health.json.
+
+Forbidden action counts: Elementor 0; HT Slider 0; PayPal 0; real money 0; model calls 0; production deployment 0; shared infrastructure mutations 0; paid purchases 0; global Docker prune 0. FULL_G3C_IMPLEMENTATION=NOT_STARTED. The evidence is a candidate for Reviewer assessment and does not authorize G4.
+
+### GitHub submission
+
+The complete execution artifact commit 553e54deb734c00c75368fad6d0772ca9d4ddeee is on codex/birthday-magazine-g3cr2r3-wedding-woocommerce-canary. PR #63 is open against main and remains unmerged: https://github.com/entropy-student/project/pull/63. The latest-main submission base is 5d3e0b488e63982c91a79146d2bc720037d5caba.
