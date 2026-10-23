@@ -100,3 +100,13 @@ VALIDATION: HEAD匹配、路径隔离、候选声明、style HTML 预设四状�
 ANOMALIES: 未能在 Reviewer 本次环境获得本机 GUI 的真实浏览器打开记录；设计待 Owner 选择。无实际影片/配音/渲染/公开发布。
 ROLLBACK_EFFECT: 本项目文件的普通反向提交可以回滚；未改共享仓库的非目标文件，未强制改写历史。
 REVIEWER_DECISION: S1 候选稿制作及 GitHub 归档 PASS；**S1 风格定稿仍 IN_PROGRESS，待 Owner 选 A/B**；S2 尚未激活。
+
+## E010 2026-10-23 S1 旧章程路线对齐
+
+AUTHORIZED_GATE: FEL-S1-STYLE-20261023，当前三Gate文档归一化修正，不扩张执行范围。
+PREFLIGHT_FACTS: 远端 S1 候选及 E009 已回读；发现 PROJECT_CHARTER.md 的旧 G0→G6 路线仍可能让后续 Agent 错误拆 Gate。
+ACTUAL_CHANGES: 仅更新 PROJECT_CHARTER.md 的“路线与出口”，保留长期交互页、稳定栏目为产品愿景，后续执行统一收敛为 S1风格→S2试产→S3成品。
+OBJECTIVE_READBACK: 远端 commit 0f3d33cf97b181f73bdb827c7c5b90b7c1d72755 为 GitHub main；新 PROJECT_CHARTER.md blob 0954b8bdeb3dd786172c176468a46284d8bbac70，精确存在三个 Gate 路线，不再含旧“G3 根据真实测试修订模板”顺序。
+VALIDATION: main ref 与目标commit一致，文件直接回读通过，未改代码/工具/其他项目；样板浏览器实际渲染与视频试产未在本轮测试。
+ROLLBACK_EFFECT: 可通过项目范围普通前向修正撤销；无主机/媒体/Provider变更。
+REVIEWER_DECISION: S1 设计候选制作及项目文档对齐完成，等待 Owner 确认风格；不宣布整阶段风格定稿。
