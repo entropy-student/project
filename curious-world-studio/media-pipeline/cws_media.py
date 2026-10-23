@@ -52,7 +52,10 @@ def failure_code(exc: Exception) -> str:
         return "NETWORK_ERROR"
     if isinstance(exc, ValueError):
         known = {"NON_PUBLIC_MEDIA_ADDRESS", "MEDIA_HOST_DNS_UNRESOLVED", "LOCAL_NETWORK_MEDIA_URL",
-                 "NOT_SINGLE_VOD", "BELOW_MINIMUM_RESOLUTION", "INVALID_REDIRECT_URL"}
+                 "NOT_SINGLE_VOD", "BELOW_MINIMUM_RESOLUTION", "INVALID_REDIRECT_URL",
+                 "FIXTURE_PROXY_REQUIRED", "FIXTURE_PROXY_MUST_BE_LOOPBACK_HTTP",
+                 "FIXTURE_SIZE_CAP_EXCEEDED", "FIXTURE_TIMEOUT_OUT_OF_RANGE",
+                 "FIXTURE_OUTPUT_ALREADY_EXISTS"}
         return str(exc) if str(exc) in known else "VALUE_ERROR"
     if isinstance(exc, subprocess.TimeoutExpired):
         return "TIMEOUT"
@@ -324,6 +327,9 @@ def build_parser() -> JsonArgumentParser:
     f.add_argument("--max-bytes", type=int, default=pipeline.DEFAULT_FILE_BYTES)
     f.add_argument("--max-total-bytes", type=int, default=pipeline.DEFAULT_TOTAL_BYTES)
     f.add_argument("--timeout", type=int, default=180)
+    fixture = sub.add_parser("canary-blender-fixture")
+    fixture.add_argument("--max-bytes", type=int, default=pipeline.MAX_TRUSTED_FIXTURE_BYTES)
+    fixture.add_argument("--timeout", type=int, default=30)
     gallery_parser = sub.add_parser("gallery")
     gallery_parser.add_argument("--json", action="store_true", help="JSON is always emitted")
     return p
@@ -336,6 +342,13 @@ def dispatch(args) -> tuple[bool, str, dict, list[str], int]:
         proxy = pipeline._validated_proxy(args.proxy)
     except ValueError as exc:
         raise CliError("INVALID_CONFIGURATION", str(exc)) from exc
+    if command == "canary-blender-fixture":
+        try:
+            result = pipeline.download_trusted_blender_fixture(
+                workdir, proxy, args.max_bytes, args.timeout, args.ffprobe, args.ffmpeg)
+            return True, "FIXTURE_ONLY_NOT_GENERIC_SOURCE_APPROVAL", {"result": result}, [], 0
+        except (RuntimeError, ValueError, OSError, subprocess.TimeoutExpired) as exc:
+            return False, failure_code(exc), {"error_type": type(exc).__name__}, [], 1
     if command == "doctor":
         memory, disk = free_memory_mb(), free_disk_mb(ROOT)
         tools = {"ytdlp": tool_status(args.ytdlp, ["--version"]),

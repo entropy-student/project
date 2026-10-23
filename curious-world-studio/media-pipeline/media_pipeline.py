@@ -30,6 +30,8 @@ DEFAULT_TOTAL_BYTES = 250_000_000
 HARD_FILE_BYTES = 80_000_000
 HARD_TOTAL_BYTES = 2_000_000_000
 DEFAULT_IMAGE_BYTES = 15_000_000
+TRUSTED_BLENDER_FIXTURE_URL = "https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+MAX_TRUSTED_FIXTURE_BYTES = 10_000_000
 REDACT = re.compile(r"(?i)(token|signature|secret|password|cookie|authorization|auth|key|credential|x-amz)")
 CWS_ROOT = Path(__file__).resolve().parents[1]
 
@@ -168,6 +170,87 @@ def _validated_proxy(proxy: str | None) -> str | None:
     except ValueError as exc:
         raise ValueError("Proxy port is invalid") from exc
     return proxy.rstrip("/")
+
+
+def _validated_fixture_proxy(proxy: str | None) -> str:
+    """Accept only an explicit loopback HTTP proxy for the fixed Blender canary."""
+    if not proxy:
+        raise ValueError("FIXTURE_PROXY_REQUIRED")
+    parsed = urlsplit(proxy)
+    if (parsed.scheme != "http" or not parsed.hostname or parsed.username or parsed.password
+            or parsed.path not in ("", "/") or parsed.query or parsed.fragment):
+        raise ValueError("FIXTURE_PROXY_MUST_BE_LOOPBACK_HTTP")
+    try:
+        address = ipaddress.ip_address(parsed.hostname)
+        port = parsed.port
+    except ValueError as exc:
+        raise ValueError("FIXTURE_PROXY_MUST_BE_LOOPBACK_HTTP") from exc
+    if not address.is_loopback or port is None:
+        raise ValueError("FIXTURE_PROXY_MUST_BE_LOOPBACK_HTTP")
+    host = f"[{address.compressed}]" if address.version == 6 else address.compressed
+    return f"http://{host}:{port}"
+
+
+class _RejectFixtureRedirectHandler(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise RuntimeError("FIXTURE_REDIRECT_REFUSED")
+
+
+def download_trusted_blender_fixture(workdir: Path, proxy: str | None,
+                                     max_bytes: int = MAX_TRUSTED_FIXTURE_BYTES,
+                                     timeout: int = 30, ffprobe: str = "ffprobe",
+                                     ffmpeg: str = "ffmpeg") -> dict:
+    """Download and QA one fixed official test MP4 through an explicit loopback proxy.
+
+    This deliberately does not accept a caller-supplied URL and is not a generic
+    source approval or a bypass for candidate URL validation.
+    """
+    target_dir = ensure_local_workdir(workdir)
+    if not 0 < max_bytes <= MAX_TRUSTED_FIXTURE_BYTES:
+        raise ValueError("FIXTURE_SIZE_CAP_EXCEEDED")
+    if not 1 <= timeout <= 60:
+        raise ValueError("FIXTURE_TIMEOUT_OUT_OF_RANGE")
+    proxy = _validated_fixture_proxy(proxy)
+    output = target_dir / "downloads" / "sintel_trailer-480p.mp4"
+    if output.exists():
+        raise ValueError("FIXTURE_OUTPUT_ALREADY_EXISTS")
+
+    opener = build_opener(ProxyHandler({"http": proxy, "https": proxy}),
+                          _RejectFixtureRedirectHandler())
+    request = Request(TRUSTED_BLENDER_FIXTURE_URL,
+                      headers={"User-Agent": "CWS-MEDIA-FIXTURE-CANARY/1"})
+    with opener.open(request, timeout=timeout) as response:
+        if response.status != 200 or response.geturl() != TRUSTED_BLENDER_FIXTURE_URL:
+            raise RuntimeError("FIXTURE_RESPONSE_NOT_EXACT_200")
+        if response.headers.get_content_type().lower() != "video/mp4":
+            raise RuntimeError("FIXTURE_CONTENT_TYPE_REJECTED")
+        declared = response.headers.get("Content-Length")
+        if declared is not None:
+            if not declared.isdigit():
+                raise RuntimeError("FIXTURE_INVALID_CONTENT_LENGTH")
+            if int(declared) > max_bytes:
+                raise RuntimeError("RESPONSE_SIZE_LIMIT")
+        data = response.read(max_bytes + 1)
+    if len(data) > max_bytes:
+        raise RuntimeError("RESPONSE_SIZE_LIMIT")
+    if declared is not None and len(data) != int(declared):
+        raise RuntimeError("FIXTURE_TRUNCATED_RESPONSE")
+    if len(data) < 12 or data[4:8] != b"ftyp":
+        raise RuntimeError("FIXTURE_NOT_MP4")
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("xb") as media_file:
+        media_file.write(data)
+    try:
+        qa = qa_media(output, ffprobe, ffmpeg, timeout=max(timeout, 30), local_only=True)
+    except Exception:
+        output.unlink(missing_ok=True)
+        raise
+    return {"status": "FIXTURE_ONLY_NOT_GENERIC_SOURCE_APPROVAL",
+            "source_url": TRUSTED_BLENDER_FIXTURE_URL,
+            "proxy_mode": "EXPLICIT_LOOPBACK_HTTP_CONNECT",
+            "content_type": "video/mp4", "download_bytes": len(data),
+            "local_file": output.relative_to(target_dir).as_posix(), "qa": qa}
 
 
 def _is_loopback(host: str) -> bool:
@@ -530,8 +613,9 @@ def probe_one(catalog: Catalog, key: str, ytdlp: str, timeout=60, proxy: str | N
     return item
 
 
-def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
-    p = run([ffprobe, "-v", "error", "-show_streams", "-show_format", "-of", "json", str(path)], timeout)
+def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180, local_only=False) -> dict:
+    local_protocols = ["-protocol_whitelist", "file"] if local_only else []
+    p = run([ffprobe, "-v", "error", *local_protocols, "-show_streams", "-show_format", "-of", "json", str(path)], timeout)
     if p.returncode:
         raise RuntimeError("FFPROBE_FAILED")
     meta = json.loads(p.stdout)
@@ -545,7 +629,7 @@ def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
     if o["display_height"] < 360:
         raise RuntimeError("BELOW_MINIMUM_RESOLUTION")
     decode_started = time.monotonic()
-    p = run([ffmpeg, "-nostdin", "-nostats", "-v", "error", "-xerror", "-i", str(path),
+    p = run([ffmpeg, "-nostdin", "-nostats", "-v", "error", "-xerror", *local_protocols, "-i", str(path),
              "-progress", "pipe:1", "-f", "null", "NUL" if os.name == "nt" else "/dev/null"], timeout)
     if p.returncode or p.stderr.strip():
         raise RuntimeError("FULL_DECODE_FAILED")
@@ -558,6 +642,7 @@ def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
             h.update(block)
     preview = catalog_preview_path(path)
     frame_cmd = [ffmpeg, "-nostdin", "-v", "error", "-y"]
+    frame_cmd.extend(local_protocols)
     duration = float(meta.get("format", {}).get("duration") or 0)
     frame_cmd.extend(["-ss", str(max(0, duration / 2)), "-i", str(path), "-frames:v", "1",
                       "-vf", "scale=1280:-2", str(preview)])

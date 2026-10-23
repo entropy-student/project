@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import media_pipeline as p
 import media_filter as f
+import cws_media as cli
 
 class IntegrationTests(unittest.TestCase):
     def test_cli_workdir_must_be_under_cws_local(self):
@@ -168,6 +169,139 @@ class IntegrationTests(unittest.TestCase):
         with patch.object(p.socket,'getaddrinfo',return_value=private):
             with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
                 p._validate_public_url('https://rebound.example.test/v.mp4')
+
+    def test_private_loopback_and_reserved_ip_literals_remain_rejected(self):
+        for url in ('https://127.0.0.1/video.mp4','https://192.168.1.1/video.mp4',
+                    'https://198.18.0.1/video.mp4','https://[::1]/video.mp4',
+                    'https://[fc00::1]/video.mp4'):
+            with self.subTest(url=url),self.assertRaises(ValueError):
+                p._validate_public_url(url)
+
+    def test_pr157_mixed_fake_ip_dns_stays_rejected_in_probe_path(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=p.Catalog(Path(d));c.add(p.parse_results('searxng','video',{'results':[{'url':p.TRUSTED_BLENDER_FIXTURE_URL}]}))
+            key=next(iter(c.data['items']))
+            mixed=[(p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('198.18.0.1',443)),
+                   (p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('93.184.216.34',443))]
+            with patch.object(p.socket,'getaddrinfo',return_value=mixed),patch.object(p,'run') as runner:
+                with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
+                    p.probe_one(c,key,'yt-dlp',proxy='http://127.0.0.1:12345')
+            runner.assert_not_called()
+
+    def test_trusted_blender_fixture_proxy_path_is_fixed_and_bounded(self):
+        class Headers(dict):
+            def get_content_type(self): return self['Content-Type'].split(';',1)[0]
+        class Response:
+            status=200
+            def __init__(self,data):
+                self.data=data;self.headers=Headers({'Content-Type':'video/mp4','Content-Length':str(len(data))})
+            def geturl(self): return p.TRUSTED_BLENDER_FIXTURE_URL
+            def read(self,size): return self.data[:size]
+            def __enter__(self): return self
+            def __exit__(self,*_): return False
+        class Opener:
+            def __init__(self,data): self.response=Response(data);self.request=None;self.timeout=None
+            def open(self,request,timeout): self.request=request;self.timeout=timeout;return self.response
+        data=b'\x00\x00\x00\x18ftypisom'+b'fixture-bytes'
+        opener=Opener(data)
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)), \
+             patch.object(p,'build_opener',return_value=opener) as build, \
+             patch.object(p,'qa_media',return_value={'status':'FULL_DECODE_PASS','sha256':'fixture-sha'}) as qa:
+            workdir=Path(d)/'.local'/'fixture-test'
+            result=p.download_trusted_blender_fixture(workdir,'http://127.0.0.1:12345')
+            self.assertEqual(result['status'],'FIXTURE_ONLY_NOT_GENERIC_SOURCE_APPROVAL')
+            self.assertEqual(result['download_bytes'],len(data))
+            self.assertEqual(result['local_file'],'downloads/sintel_trailer-480p.mp4')
+            self.assertEqual(opener.request.full_url,p.TRUSTED_BLENDER_FIXTURE_URL)
+            self.assertEqual(opener.timeout,30)
+            proxy_handler=next(h for h in build.call_args.args if isinstance(h,p.ProxyHandler))
+            self.assertEqual(proxy_handler.proxies,{'http':'http://127.0.0.1:12345','https':'http://127.0.0.1:12345'})
+            self.assertTrue(any(isinstance(h,p._RejectFixtureRedirectHandler) for h in build.call_args.args))
+            self.assertTrue(qa.call_args.kwargs['local_only'])
+
+    def test_trusted_blender_fixture_rejects_invalid_proxy_and_caps_before_request(self):
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)),patch.object(p,'build_opener') as build:
+            workdir=Path(d)/'.local'/'fixture-test'
+            for proxy in ('socks5://127.0.0.1:12345','http://192.168.1.2:12345',
+                          'http://127.0.0.1','http://127.0.0.1:12345/path',
+                          'http://user:pass@127.0.0.1:12345'):
+                with self.assertRaises(ValueError):
+                    p.download_trusted_blender_fixture(workdir,proxy)
+            with self.assertRaisesRegex(ValueError,'FIXTURE_SIZE_CAP_EXCEEDED'):
+                p.download_trusted_blender_fixture(workdir,'http://127.0.0.1:12345',p.MAX_TRUSTED_FIXTURE_BYTES+1)
+            build.assert_not_called()
+
+    def test_trusted_blender_fixture_redirects_and_nested_manifests_are_refused(self):
+        request=p.Request(p.TRUSTED_BLENDER_FIXTURE_URL)
+        handler=p._RejectFixtureRedirectHandler()
+        for target in ('http://127.0.0.1/private','http://192.168.1.1/private',
+                       'http://198.18.0.1/private','https://example.net/master.m3u8'):
+            with self.assertRaisesRegex(RuntimeError,'FIXTURE_REDIRECT_REFUSED'):
+                handler.redirect_request(request,None,302,'Found',{},target)
+        payload=b'#EXTM3U\nhttps://example.net/a.ts'
+        class Headers(dict):
+            def get_content_type(self): return self['Content-Type']
+        class Response:
+            status=200
+            headers=Headers({'Content-Type':'video/mp4','Content-Length':str(len(payload))})
+            def geturl(self): return p.TRUSTED_BLENDER_FIXTURE_URL
+            def read(self,size): return payload[:size]
+            def __enter__(self): return self
+            def __exit__(self,*_): return False
+        class Opener:
+            def open(self,*_,**__): return Response()
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)), \
+             patch.object(p,'build_opener',return_value=Opener()),patch.object(p,'qa_media') as qa:
+            with self.assertRaisesRegex(RuntimeError,'FIXTURE_NOT_MP4'):
+                p.download_trusted_blender_fixture(Path(d)/'.local'/'fixture-test','http://127.0.0.1:12345')
+            qa.assert_not_called()
+
+    def test_trusted_blender_fixture_response_size_and_timeout_fail_closed(self):
+        class Headers(dict):
+            def get_content_type(self): return self['Content-Type']
+        class OversizedResponse:
+            status=200
+            headers=Headers({'Content-Type':'video/mp4'})
+            def geturl(self): return p.TRUSTED_BLENDER_FIXTURE_URL
+            def read(self,size):
+                self.requested_size=size
+                return b'\x00\x00\x00\x18ftypisom'+b'x'*100
+            def __enter__(self): return self
+            def __exit__(self,*_): return False
+        class OversizedOpener:
+            def __init__(self): self.response=OversizedResponse()
+            def open(self,*_,**__): return self.response
+        oversized=OversizedOpener()
+        class TimeoutOpener:
+            def open(self,*_,**__): raise TimeoutError('bounded test timeout')
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)), \
+             patch.object(p,'build_opener',return_value=oversized):
+            workdir=Path(d)/'.local'/'fixture-test'
+            with self.assertRaisesRegex(RuntimeError,'RESPONSE_SIZE_LIMIT'):
+                p.download_trusted_blender_fixture(workdir,'http://127.0.0.1:12345',64)
+            self.assertEqual(oversized.response.requested_size,65)
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)), \
+             patch.object(p,'build_opener',return_value=TimeoutOpener()):
+            workdir=Path(d)/'.local'/'fixture-test'
+            with self.assertRaises(TimeoutError):
+                p.download_trusted_blender_fixture(workdir,'http://127.0.0.1:12345',timeout=3)
+            self.assertFalse((workdir/'downloads').exists())
+
+    def test_fixture_canary_cli_emits_machine_readable_fixture_only_result(self):
+        self.assertTrue(p.TRUSTED_BLENDER_FIXTURE_URL.startswith('https://'))
+        with self.assertRaisesRegex(cli.CliError,'unrecognized arguments'):
+            cli.build_parser().parse_args(['canary-blender-fixture','http://example.org/video.mp4'])
+        with tempfile.TemporaryDirectory() as d,patch.object(p,'CWS_ROOT',Path(d)), \
+             patch.object(p,'download_trusted_blender_fixture',return_value={'status':'FIXTURE_ONLY_NOT_GENERIC_SOURCE_APPROVAL'}) as download:
+            from contextlib import redirect_stdout
+            from io import StringIO
+            out=StringIO()
+            with redirect_stdout(out):
+                status=cli.main(['--workdir',str(Path(d)/'.local'/'cli-test'),
+                                 '--proxy','http://127.0.0.1:12345','canary-blender-fixture'])
+            self.assertEqual(status,0)
+            self.assertIn('FIXTURE_ONLY_NOT_GENERIC_SOURCE_APPROVAL',out.getvalue())
+            download.assert_called_once()
 
     def test_probe_rejects_private_dns_before_ytdlp(self):
         with tempfile.TemporaryDirectory() as d:
