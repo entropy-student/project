@@ -123,3 +123,15 @@ EVIDENCE_ARTIFACTS_AND_PURPOSE: D010为决策记录，当前Handoff与S2 Gate为
 ROLLBACK_EFFECT: 仅本项目文档/视觉预览标签可逆；不变更运行系统或其他项目。
 RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 0次配音、视频渲染/上传、公开发布；GitHub仅改动项目文档。
 EXECUTOR_RESULT: Reviewer直接同步Owner决策，风格定稿仍待Owner选择。
+
+## E012 2026-10-23 Owner决定GitHub读回核验
+
+AUTHORIZED_GATE: FEL-S1-STYLE-20261023，跟进E011持久化核验。
+PREFLIGHT_FACTS: 正式项目仓库entropy-student/project，main在提交前为6c1de31a3b0e3354babfbdc5215f7405243059bf，本轮只更新film-expression-lab目录，无本机Secret/运行服务调用。
+ACTUAL_CHANGES: 提交6dd2aa444b8f118f31e03699b63a5a9a88be1d61包含14个项目文档/离线预览文件。本次再补TOOLCHAIN.md标题中的正式频道名称与本核验回执，其他目录不变。
+OBJECTIVE_READBACK: GitHub main首轮提交读回为6dd2aa444b8f118f31e03699b63a5a9a88be1d61，commit清单14项全部在film-expression-lab/；README、Handoff、D010、G2、三Gate、风格候选、执行提示词、TOOLCHAIN及WEB_HANDOFF共9个关键文件按commit直接读回。Handoff显示频道名已确认；G2明确doctor单独内存告警不得RETURN；风格候选仍等待Owner选择。
+VALIDATION: 原风格A/B、头像、封面、片头片尾等没有被Owner确认；3GB仅OWNER_REPORTED估算不作已验证最低要求。新改TOOLCHAIN及E012的最终GitHub读回在提交后验证。
+ANOMALIES: TOOLCHAIN属于工具文件，初轮验收时不包含频道名称；本补丁标题补齐，非能力变化。S2真实渲染未验证。
+ROLLBACK_EFFECT: 文档范围内可恢复，未修改父项目或运行环境。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 0次真实渲染、TTS付费调用、账号操作或公开上传。
+REVIEWER_DECISION: 已确认本轮名称与资源策略记录有效；S1风格仍IN_PROGRESS，S2未激活。
