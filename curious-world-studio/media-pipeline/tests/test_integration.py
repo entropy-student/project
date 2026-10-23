@@ -169,6 +169,14 @@ class IntegrationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
                 p._validate_public_url('https://rebound.example.test/v.mp4')
 
+    def test_dns_fake_ip_in_mixed_answer_set_is_rejected(self):
+        fake_and_public=[
+            (p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('198.18.0.1',443)),
+            (p.socket.AF_INET,p.socket.SOCK_STREAM,6,'',('93.184.216.34',443)),
+        ]
+        with patch.object(p.socket,'getaddrinfo',return_value=fake_and_public):
+            with self.assertRaisesRegex(ValueError,'NON_PUBLIC_MEDIA_ADDRESS'):
+                p._validate_public_url('https://rebound.example.test/v.mp4')
     def test_probe_rejects_private_dns_before_ytdlp(self):
         with tempfile.TemporaryDirectory() as d:
             c=p.Catalog(Path(d))
