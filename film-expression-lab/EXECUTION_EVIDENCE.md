@@ -89,3 +89,14 @@ VALIDATION: 风格从旧灰框方案独立重新设计；正片无包装/暂停�
 ANOMALIES: 正式人声/影片内容版权与视频实际播放均不在本轮范围；当前正式名称、风格选择是 Owner 决策。
 ROLLBACK_EFFECT: 纯本项目文本/HTML变更，可用正常前向回退提交；不改生产媒体、凭据或其他父仓库目录。
 EXECUTOR_RESULT: S1候选稿由Reviewer直接制作；风格最终定稿等Owner选择，非 S1 终局 PASS。
+
+## E009 2026-10-23 S1 候选远端验收回执
+
+AUTHORIZED_GATE: FEL-S1-STYLE-20261023（仅候选制作与归档）。
+PREFLIGHT_FACTS: base commit 8030270c82a05f4b36e32181feaa0dad5fef62c7；提交新 tree 0433d2a78c95d3a972f83edf743b0015a1df4686；非强制 fast-forward，expected_sha 与原 main 一致。
+ACTUAL_CHANGES: Git commit 043773d0b12aedadf17bd7e8a8c68a5a313dad71；仅 film-expression-lab/ 下8项文本/HTML路径变更：EXECUTION_EVIDENCE.md、README.md、REVIEWER_HANDOFF.md、WEB_HANDOFF.md、gates/G2_TEST_VIDEO.md、gates/THREE_GATE_PLAN.md、style/STYLE_REVIEW.md、style/style-preview.html。
+OBJECTIVE_READBACK: main ref 回读为 043773d0b12aedadf17bd7e8a8c68a5a313dad71；API commit 文件清单准确8项且全部在当前项目路径；五个关键文件按 commit SHA 读回，HTML 9646字节、风格候选1960字节、三Gate方案2416字节、Handoff及Evidence均存在。
+VALIDATION: HEAD匹配、路径隔离、候选声明、style HTML 预设四状态、三Gate最终阶段、Handoff当前 Gate 与 E008 记录，八项远端检查全部为 true。HTML 仅静态源码与控件检查；浏览器渲染/画面听审仍 UNVERIFIED，不以此冒称真实观感 PASS。
+ANOMALIES: 未能在 Reviewer 本次环境获得本机 GUI 的真实浏览器打开记录；设计待 Owner 选择。无实际影片/配音/渲染/公开发布。
+ROLLBACK_EFFECT: 本项目文件的普通反向提交可以回滚；未改共享仓库的非目标文件，未强制改写历史。
+REVIEWER_DECISION: S1 候选稿制作及 GitHub 归档 PASS；**S1 风格定稿仍 IN_PROGRESS，待 Owner 选 A/B**；S2 尚未激活。
