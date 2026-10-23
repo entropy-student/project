@@ -5,7 +5,7 @@
 GATE_ID: FEL-G2-TEST-001
 STATUS: CANDIDATE，Owner 提供可访问片源及本轮有界执行授权、Reviewer 核对前置事实后才激活。
 OBJECTIVE: 从一段用户片源制作有证据、有中文旁白、能正常播放的合格测试视频。
-CURRENT_FORMAT: Owner本轮纠正为顺序展开的陪伴式拉片。保留所选分析场景完整原速播放，在有意义的位置暂停/回看后继续；取消90至180秒目标，不大幅裁片做短影评。新品牌未确认，不用旧版名称/灰色图标。
+CURRENT_FORMAT: 频道名称已定“小克拉片”；视觉/头像/片头片尾未定。保持顺序展开的陪伴式拉片，保留所选分析场景完整原速播放，暂停/回看后继续；不设90至180秒目标，不大幅裁片做短影评或沿用旧灰框视觉。
 MAX_ENDPOINT_THIS_ROUND: 一个 episode 的本地视频和审阅包，最多到 PASS_CANDIDATE；不自动进入完整一期或交互网站。
 MANDATORY_REVIEW_STOP: 提交 completion.md 与实际媒体证据后停止，Reviewer 决定 PASS/RETURN。
 TARGET_AND_SCOPE: 源文件只读；项目 episodes/<唯一run-id>/；项目已有 scripts；固定 HyperFrames npm 缓存。不得写其他项目、OpenMontage、用户技能或全局网络配置。
@@ -18,7 +18,7 @@ APPLICABLE_CRITICAL_CONSTRAINTS: Human Writing 强制调用；片源不能公开
 PREFLIGHT:
 1. 确认输入可读且是明确指定素材；ffprobe、SHA256、片段版本；输出目录唯一，不覆盖旧 run。
 2. 确认与本机相同的用户/路径、Python/FFmpeg/Node 和已核验 CLI 可用。只读取 gate、RUNBOOK、TOOLCHAIN 及本任务涉及源码/技能。
-   当前 doctor 报告可用内存偏低。渲染强制 `--low-memory-mode`，先用同一项目做 3 至 5 秒小段试渲染；退出码和 doctor JSON 都要检查，不把 exit=0 当作全部通过。不擅自关闭其他程序，也不静默降低分辨率或换框架。
+   Owner预估约3GB运行内存足够，明确**内存不作为阻断推进的先决条件**；3GB尚未实测且非硬上限。历史doctor内存告警/6–8GiB保守预算不得单独触发RETURN。渲染仍使用 `--low-memory-mode` 单worker，先做3–5秒小段真实试渲染并记录实际峰值；同时核对退出码与doctor JSON，对仅内存预警记录后继续，其他实质失败按原规则处置。实际OOM/崩溃或渲染失败时再据证据诊断，不自动关闭其他程序、不静默降分辨率或换框架。
 3. 使用项目适配脚本 scripts/bailian_voice.py，不使用旧入口的凭据环境变量或签名 URL recovery 文件。离线合同测试必须通过；顺序调用，禁止并行和自动重试。
 4. 真实生成必须有本次 Owner 的明确调用授权。建议上限最多 4 次、总计 1200 字、单次不超过 600 字、总费用不超过人民币 1 元；这是待 Owner 随执行提示词授权的边界，并非本轮已获付费授权。
 5. 发起前核验当前确切模型价格/免费额度及账户/地域适用性，保存非秘密依据。不能用同系列其他模型价格替代；未知则 RETURN_TTS_AUTH_OR_QUOTA，不能私自生成或换成本地声音。

@@ -1,12 +1,12 @@
-# 影视隐藏表达研究频道
+# 小克拉片
 
-工作名 Film Expression Lab，不代表已确定频道品牌。立项日期 2026-10-23，时区 Asia/Singapore。
+**正式频道名：小克拉片（Owner已确认）。** 内部项目与目录名称 Film Expression Lab / film-expression-lab 保持不变。立项日期 2026-10-23，时区 Asia/Singapore。
 
 本项目服务于看过作品、希望重看并发现新理解的普通观众。用户下一轮提供一段影视片段，执行 agent 根据一段提示词制作可审阅的测试视频。当前没有测试片源，不宣称视频生产链已验收。
 
 ## 入口
 
-**最新执行路线先读 `gates/THREE_GATE_PLAN.md` 与 `style/STYLE_REVIEW.md`。** 网页端历史需求继续参阅 `WEB_HANDOFF.md`。 当前目标仓库为Owner确认的 `entropy-student/project/main`，项目路径为 `film-expression-lab/`。用户已纠正为顺序展开的陪伴式拉片；取消90至180秒目标；名称必须含“拉片”；旧品牌/视觉已否决。具体已定和待议事项以交接入口为准。
+**最新执行路线先读 `gates/THREE_GATE_PLAN.md` 与 `style/STYLE_REVIEW.md`。** 网页端历史需求继续参阅 `WEB_HANDOFF.md`。 当前目标仓库为Owner确认的 `entropy-student/project/main`，项目路径为 `film-expression-lab/`。用户已纠正为顺序展开的陪伴式拉片；取消90至180秒目标；频道名已确定为“小克拉片”；旧品牌/视觉已否决。具体已定和待议事项以交接入口为准。
 
 已读回的完整初始归档提交为 `51864905f07f1eebd390070ca182b109e8ed2fa7`，33个文件。`REMOTE_PACKAGE_MANIFEST.json`对应这份初始快照，后续交接状态/回执修订以各自Git提交为准，不把历史hash误当最新文件hash。核验事实见 `REMOTE_PUBLICATION_RECEIPT.json`。网页端后续以仓库main为项目文档入口，不假设Owner本地路径可访问。
 

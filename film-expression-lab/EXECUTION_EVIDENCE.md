@@ -110,3 +110,16 @@ OBJECTIVE_READBACK: 远端 commit 0f3d33cf97b181f73bdb827c7c5b90b7c1d72755 为 G
 VALIDATION: main ref 与目标commit一致，文件直接回读通过，未改代码/工具/其他项目；样板浏览器实际渲染与视频试产未在本轮测试。
 ROLLBACK_EFFECT: 可通过项目范围普通前向修正撤销；无主机/媒体/Provider变更。
 REVIEWER_DECISION: S1 设计候选制作及项目文档对齐完成，等待 Owner 确认风格；不宣布整阶段风格定稿。
+
+## E011 2026-10-23 Owner正式命名与内存判断同步
+
+AUTHORIZED_GATE: FEL-S1-STYLE-20261023中的有界Owner决定记录，不完成S1风格选择。
+PREFLIGHT_FACTS: OWNER_REPORTED。Owner决定频道名称小克拉片、3GB为预计可用内存、内存不应阻断推进。GitHub main基线6c1de31a3b0e3354babfbdc5215f7405243059bf、tree 0442134853df1b47f3f169dcd7d512309190f64e；Reviewer已读取治理v0.2.7通用、全部专项触发器与12/13、当前Gate/Handoff/Evidence；本轮仅文档及HTML标题变更，非本机/Provider/Secret操作；资源专项11C和主机边界11B已读取，无其他专项实际触发。
+ACTUAL_CHANGES: 统一章程、Handoff、三个阶段路线、S2 Gate、工具、品牌候选、网页交接、运营说明、执行提示词、README、旧格式修订的最新注释、HTML样板标题；追加DECISION_LOG D010。保留旧设计/既有Evidence历史，不替Owner选风格。
+OBJECTIVE_READBACK: 远端commit/ref验证留待本轮E012追加，本条不宣称读回成功。
+VALIDATION: 名称归为Owner已确认；视觉CANDIDATE未定；3GB是OWNER_REPORTED/UNVERIFIED，不作为硬上限、实测性能或豁免费用/权限/Secret审查；doctor单独内存警告不触发停工但真实OOM需定向处理。未做实际影视渲染。
+ANOMALIES: 实际3GB峰值表现未知；无影视片源。
+EVIDENCE_ARTIFACTS_AND_PURPOSE: D010为决策记录，当前Handoff与S2 Gate为操作入口，E011保存本轮变更事实。
+ROLLBACK_EFFECT: 仅本项目文档/视觉预览标签可逆；不变更运行系统或其他项目。
+RESOURCE_OR_BUSINESS_DELTA_WHEN_RELEVANT: 0次配音、视频渲染/上传、公开发布；GitHub仅改动项目文档。
+EXECUTOR_RESULT: Reviewer直接同步Owner决策，风格定稿仍待Owner选择。

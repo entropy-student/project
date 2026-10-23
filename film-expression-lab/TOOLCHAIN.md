@@ -18,7 +18,7 @@
 | 视频制作技能 | `C:/Users/34707/.codex/skills/hyperframes/SKILL.md` 及 general-video、core、media-use | 已读取入口；流程参考文档在 hyperframes/references，不在 core/references |
 | 中文文案 | `C:/Users/34707/.agents/skills/human-writing/SKILL.md` | 强制调用；已读主文件及 formats/reality，实际文案初稿后读 revision 并运行写作检查 |
 
-G1 后续读回：HyperFrames 0.8.186 已通过固定版本下载及版本命令，doctor 的浏览器/编码工具可用；JSON 总结果为 false，主要资源风险为可用内存 1.6GB。`--low-memory-mode` 是已从本版本 render help 确认的单 worker 模式。尚未完成真实影视渲染，不能称渲染链 PASS。general-video 安装更新命令的 `--dir` 只限制删除检测，不能误当安装隔离目录。
+G1历史读回：HyperFrames 0.8.186 已通过固定版本下载及版本命令，doctor的浏览器/编码工具可用；JSON当时总结果false，包含可用内存1.6GB资源告警。**Owner于2026-10-23估计约3GB内存可用，明确内存不构成工作暂停条件**：这是OWNER_REPORTED估计，未有真实视频渲染峰值证明。过去6–8GiB保守建议/doctor内存告警不应独立阻塞S2；用已验证单worker的 `--low-memory-mode` 做真实小段渲染记录峰值，发生实际OOM才具体诊断。general-video 安装更新命令的 `--dir` 只限制删除检测，不能误当安装隔离目录。
 
 ## 保留的限制
 

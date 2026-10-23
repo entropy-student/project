@@ -1,7 +1,7 @@
-# Film Expression Lab — 三 Gate 精简执行路线
+# 小克拉片 — 三 Gate 精简执行路线
 状态：ACTIVE PLAN · 2026-10-23 · 治理：当前 GitHub canonical VNEXT.md
 
-已接受的 G0/G1/G1B/G1C/G1D **不重跑**。Owner 本轮明确指定未来最多三大阶段（以实际风险必要检查点为限）。
+已接受的 G0/G1/G1B/G1C/G1D **不重跑**。Owner已定频道名**小克拉片**，视觉仍待定。Owner预估约3GB运行内存足够，不因历史6–8GiB预算阻断推进；此为未实测参考值。三大阶段保持不变。
 
 ## S1 · FEL-S1-STYLE · 风格定稿（当前）
 GATE_ID: FEL-S1-STYLE-20261023
@@ -14,14 +14,14 @@ PREFLIGHT: 核对 main/repo/path、读取 Governance universal + trigger scan + 
 REQUIRED_EVIDENCE: 设计对比、原速观看状态、暂停标注状态、回看状态、离线响应式预览可静态审查；改动路径/分支 SHA、读回。
 ACCEPTANCE_CRITERIA: S1 的「候选方案制作」经 Reviewer 读回可 PASS；「风格定稿」只能在 Owner 选择后 PASS。两者不可混淆；不把设计示意当成试产通过。
 ROLLBACK_STATUS_OR_PLAN: 本次仅新增样板/项目文档；反向提交即可撤销，不删除既有历史设计或父仓库内容。
-OWNER_ONLY_ACTIONS: 风格最后选择、正式名称；试片付费/API/上传/发布另审。
+OWNER_ONLY_ACTIONS: 风格选择仍待Owner决定；正式名称已定小克拉片；试片付费/API/上传/发布仍另审。
 REVIEWER_TO_EXECUTOR_RELAY: 当前 Reviewer 负责设计稿与记录；不派 Executor、不要求本机路径。以后 S2 的 Executor 从已冻结 S2 relay 起步。
 EXECUTOR_TO_REVIEWER_RELAY: N/A（S1 无执行 Agent；Reviewer 直接提交候选与静态 QA）。
 
 ## S2 · FEL-S2-TEST · 单段真实试产（S1 后）
 现有 `gates/G2_TEST_VIDEO.md` 作为 S2 **唯一详细执行 Gate**，不另拆预处理、配音、剪辑、字幕、QA 等小 Gate。经 Reviewer 激活后仍以该文件最新合同及本精简路线为边界。
 目标：一段 Owner 指定影视场景 → 一条真实可看的顺序陪伴式拉片视频 + 文本/来源/claims/timeline/render/QA 证据；Executor 最多到 PASS_CANDIDATE，Reviewer 独立查证。
-Preflight 集中在 S2 内：可读素材、确定源 SHA、运行时/低内存小段试渲染、Human Writing、云 TTS 本次授权与确切价格额度；若无法证明关键前提就准确 RETURN，不擅自扩张工具安装范围或付费。
+Preflight 集中在 S2 内：可读素材、确定源SHA、运行时/低内存小段试渲染、Human Writing、云TTS本次授权与确切价格额度。Owner估计约3GB内存足够（未实测且非硬上限），**内存警告/旧6–8GiB建议不能独立触发RETURN或暂停**；真实OOM、崩溃或视频渲染失败才有界诊断。其他Secret、费用、来源等硬前提仍精确RETURN，不扩大授权。
 最大终点：一段完整测试节目与其审阅包，**不公开发布**。验收门槛沿用 `RUNBOOK.md` 八项硬门槛，源片 first-pass 完整原序、完整可听看测试、评分目标 ≥80。若测试失败，仅限 S2 内针对具体根因修复，明显变更授权/风险边界才回 Owner。
 回滚：输入只读、每次新 episodes/<run-id>，TTS 请求不自动重试，不覆盖已接受音频；完整输出与证据可保留。
 
@@ -35,4 +35,4 @@ GATE_ID: FEL-S3-FINAL
 ## 明确不新拆 Gate 的事项
 命名/头像设计、独立字幕制作、TTS 适配、研究工具、视频剪辑、封面制作、QA、低内存试段都纳入各自所处 S1/S2/S3。**只有发生不能共享授权、回滚或安全边界的真实风险时才新设单独 Gate**（例如公网上线、凭据轮换、VPS 共用基础设施变更）；普通返工留在当前 Gate。
 
-已冻结：顺序陪伴式拉片、真实证据解释、不大量裁原片、不设固定90–180秒、旧品牌不采用、Human Writing、无自动公开上传、G2 前置事实必须真实验证。
+已冻结：频道名称小克拉片、内存非预先阻塞且3GB仅Owner未测估计、顺序陪伴式拉片、真实证据解释、不大量裁原片、不设固定90–180秒、旧品牌不采用、Human Writing、无自动公开上传、G2 前置事实必须真实验证。
