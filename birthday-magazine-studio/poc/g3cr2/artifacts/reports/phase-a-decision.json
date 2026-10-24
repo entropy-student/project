@@ -1,0 +1,16 @@
+{
+  "capturedAtUtc": "2026-09-30T06:45:05Z",
+  "gate": "G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE",
+  "result": "RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE",
+  "reason": "The exact Blocksy Wedding:gutenberg fetch_single_demo call returned Boolean false; no builder-specific dependency fields were available.",
+  "weddingGutenbergMetadata": "UNAVAILABLE",
+  "elementorRequired": "UNKNOWN",
+  "htSliderRequired": "UNKNOWN",
+  "paidDependenciesRequired": "UNKNOWN",
+  "elementorInstalled": false,
+  "htSliderInstalled": false,
+  "starterImport": "NOT_RUN",
+  "woocommerceCanary": "NOT_RUN",
+  "stopBeforeImport": true,
+  "nextAction": "Reviewer review; do not infer dependencies from the merged catalog or import without a successful exact-variant metadata read-back."
+}

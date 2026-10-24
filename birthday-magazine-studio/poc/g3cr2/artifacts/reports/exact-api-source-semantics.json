@@ -1,0 +1,22 @@
+{
+  "capturedAtUtc": "2026-09-30T06:45:00Z",
+  "package": "Blocksy Companion 2.1.57",
+  "sourceFile": "/var/www/html/wp-content/plugins/blocksy-companion/framework/features/demo-install.php",
+  "sourceFileSha256": "783b3501ad7673c622e441cac95dc2fe2f7d1dba36a6b980fbdfba9304eef5ff",
+  "method": "DemoInstall::fetch_single_demo",
+  "observedSemantics": [
+    "Constructs route=get_single with demo=<name>:<builder> and the supplied field.",
+    "Calls blocksy_companion_request_remote_url for the remote importer metadata.",
+    "JSON-decodes the response body and returns false when the decoded body is falsy.",
+    "A false result therefore does not distinguish missing catalog data from an empty/invalid response."
+  ],
+  "exactCall": {
+    "demo": "Wedding",
+    "builder": "gutenberg",
+    "field": "all"
+  },
+  "readOnly": true,
+  "queryInvocations": 2,
+  "result": false,
+  "noImportOrInstallSideEffect": true
+}
