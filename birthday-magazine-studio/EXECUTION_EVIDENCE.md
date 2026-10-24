@@ -1,3 +1,83 @@
+# G3CR2 Blocksy Wedding WooCommerce canary — Owner retry closeout
+
+## Current result — Phase A dependency ambiguity
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+LATEST_MAIN_SYNCED_BEFORE_SUBMISSION=f6d733811df0793cf6dd181f6482415e43d5bedc
+PR=#60 https://github.com/entropy-student/project/pull/60
+DOCKER_ENGINE=29.7.2
+WORDPRESS=7.1.1
+MARIADB=11.4.7
+BLOCKSY=2.1.57
+BLOCKSY_COMPANION=2.1.57
+WEDDING_CATALOG=PASS
+WEDDING_GUTENBERG_VARIANT=VISIBLE
+GUTENBERG_DEPENDENCY_MAPPING=AMBIGUOUS
+WEDDING_GUTENBERG_IMPORT=NOT_RUN
+WOOCOMMERCE_CANARY=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PLUGIN_PURCHASES=0
+CLEANUP=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The earlier `RETURN_PREFLIGHT_DRIFT` from when Docker Engine was unavailable remains below as attempt history. On the Owner retry, Docker 29.7.2 and Compose 5.4.0 were reachable; G3CR2 started with no existing project resources and a clean pair of localhost ports. A new isolated stack used WordPress 7.1.1 / PHP 8.3.33, MariaDB 11.4.7, and Mailpit 1.31.2. Blocksy Theme 2.1.57 and Blocksy Companion 2.1.57 were installed and active. The theme license header is GNU GPL v2 or later; Companion is GPLv2 or later.
+
+Before submission, GitHub `main` was fetched through `f6d733811df0793cf6dd181f6482415e43d5bedc`. The commits since the original G3CR2 baseline were Mini Craft-only; `birthday-magazine-studio/` had no changes in that range. The execution branch is synchronized to this latest `main` before push.
+
+Both packages were resolved through the official WordPress.org API and downloaded from `downloads.wordpress.org`. The direct official package installation succeeded after WP-CLI's repository auto-download returned “A valid URL was not provided.” Package evidence: Blocksy SHA-256 `077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d`; Companion SHA-256 `f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072`. No paid package or account was used.
+
+The read-only importer command `wp blocksy demo list --format=json` returned a Wedding entry with `builder="gutenberg, elementor"` and a single undifferentiated plugin field: `simply-gallery-block, stackable-ultimate-gutenberg-blocks, wpforms-lite, elementor, ht-slider-for-elementor`. The catalog has no builder-specific dependency map, so it does not establish whether Elementor or HT Slider belongs to the Gutenberg variant. All five slugs had a free base package in the official WordPress.org plugin directory at read-back time (versions and package URLs are in `dependency-boundary.json`); no paid-only dependency was proven, but the exact Gutenberg required set remains unresolved. This meets the Gate's `RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS` condition. No Starter Site was imported and Elementor was not installed.
+
+Phase B, WooCommerce 11.1.2 product/cart/checkout/account checks, and private-workspace regression were not run after the Phase A return. Consequently no Wedding/WooCommerce screenshots are claimed. No WooCommerce package/product/order, PayPal, model, payment, public tunnel, or shared infrastructure change occurred. The G3A plugin sources were mounted read-only and the historical G3A/G3B files were not modified.
+
+Cleanup removed the project-scoped four containers, two volumes, and network using `docker compose -p birthday-magazine-g3cr2 ... down --volumes --remove-orphans`. The exact ignored `poc/g3cr2/.tmp/` directory containing two ZIPs and one local synthetic runtime credential file was removed after path/reparse/ignore/content guards. Post-cleanup read-back: project containers/volumes/networks `0/0/0`; ports 8167/8168 no listeners; temporary directory absent. Unrelated resource counts were unchanged (32 containers, 78 volumes, 14 non-default networks), and the stable pre/post fingerprint matched. No global prune was used. Detailed records: `poc/g3cr2/artifacts/reports/`.
+
+## Earlier attempt — Docker unavailable (historical)
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_PREFLIGHT_DRIFT
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+INITIAL_EVIDENCE_COMMIT=7a7f4c35b5c4f4f61ef92653a44c7854ff060349
+PR=#60 https://github.com/entropy-student/project/pull/60
+DOCKER_CLIENT=29.7.2
+DOCKER_ENGINE=UNAVAILABLE
+PHASE_A_CATALOG=NOT_RUN
+PHASE_B_IMPORT=NOT_RUN
+PHASE_C_WOOCOMMERCE=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PLUGIN_PURCHASES=0
+ELEMENTOR_INSTALL=0
+GLOBAL_DOCKER_PRUNE=0
+CLEANUP=NOT_REQUIRED_NO_RUNTIME_CREATED
+STOP_AT_REVIEWER=YES
+```
+
+The current GitHub `main` was synced to `0b12d7d574d62120a5d714cddeeb349f045a39cc`, and a clean dedicated G3CR2 branch/worktree was created from that baseline. Read-only Docker preflight found Docker CLI 29.7.2 and Compose CLI 5.4.0, but no reachable Docker Engine: requests to the Docker API failed because the Docker Desktop Linux Engine named pipe was unavailable. The assigned loopback ports 8167 and 8168 had no listener.
+
+The host Docker daemon is shared with other project resources. Starting Docker Desktop or its service would cross the Gate's `SHARED_INFRA_MUTATIONS=0` boundary, so no daemon start was attempted. Because the Engine was unreachable, the current Docker-side counts for G3CR2 containers/volumes/networks are `UNKNOWN`, not zero. No G3CR2 container, volume, network, database, or WordPress state was created by this run.
+
+The preflight return occurred before any official package download or installation. Blocksy and Blocksy Companion versions, Wedding/Gutenberg catalog visibility, exact importer dependency list, paid/free dependency classification, and the WooCommerce canary all remain `NOT_RUN` / `UNKNOWN`; this evidence makes no claim that Wedding is unavailable or that any plugin is required. No Elementor or other plugin was installed. No checkout, order, payment, model, screenshot, or private-workspace test was performed. The precise read-back is [preflight.json](poc/g3cr2/artifacts/reports/preflight.json).
+
+No G3A/G3B historical source or runtime was changed. `poc/g3cr2/` contains only this preflight record and return note; it does not contain a Compose runtime yet. Cleanup was not needed because no runtime was started. Reviewer may decide whether to reopen/continue after Docker Engine availability is established; this return does not authorize starting shared Docker infrastructure. G3C visual implementation and G4 remain out of scope.
+
+---
+
 # G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
 **Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`

@@ -1,0 +1,15 @@
+﻿{
+    "capturedAtUtc":  "2026-09-30T05:09:30.7203028Z",
+    "gate":  "G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY",
+    "engineVersion":  "29.7.2",
+    "query":  "wp blocksy demo list --format=json",
+    "readOnly":  true,
+    "wedding":  {
+                    "name":  "Wedding",
+                    "builder":  "gutenberg, elementor",
+                    "categories":  "Blog, Business, Portfolio",
+                    "plugins":  "simply-gallery-block, stackable-ultimate-gutenberg-blocks, wpforms-lite, elementor, ht-slider-for-elementor"
+                },
+    "weddingBuilderSpecificDependencyMap":  false,
+    "decision":  "RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS"
+}

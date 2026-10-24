@@ -1,0 +1,9 @@
+{
+  "capturedAtUtc": "2026-09-30T05:12:18.8758673Z",
+  "capturePoint": "immediately before project-scoped G3CR2 teardown",
+  "containerCount": 32,
+  "volumeCount": 78,
+  "nonDefaultNetworkCount": 14,
+  "fingerprintInput": "container ID|name|image; volume name; non-default network ID|name",
+  "sha256": "dd064c7d3d60ceb39665344028db61c69a60054f6a64f5103716295b341bdc66"
+}
