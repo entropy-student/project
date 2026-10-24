@@ -1,0 +1,86 @@
+{
+  "gate": "G3C_UI_UX_PRODUCTIZATION",
+  "startedAtUtc": "2026-09-29T11:54:59.839Z",
+  "wordpressImage": "wordpress:7.1.1-php8.3-apache",
+  "mariadbImage": "mariadb:11.4.7",
+  "mailpitImage": "axllent/mailpit:v1.31.2",
+  "components": {
+    "woocommercePackage": {
+      "version": "11.1.2",
+      "source": "https://downloads.wordpress.org/plugin/woocommerce.11.1.2.zip",
+      "license": "GPL-3.0-or-later",
+      "sha256": "9de9350a1cf5671b9960afb3151f40f7980e223217a441bf2ea5921b5fce8e9e"
+    },
+    "astra": {
+      "version": "4.13.11",
+      "source": "https://downloads.wordpress.org/theme/astra.4.13.11.zip",
+      "license": "GPL-2.0-or-later",
+      "sha256": "d5af1b30c58584aa1370067211992060d0c621f062f7291fa381d02cb7dacbb6",
+      "freeBoundary": "official WordPress.org free theme; commercial Astra Pro not used"
+    },
+    "starterTemplates": {
+      "version": "4.7.7",
+      "source": "https://downloads.wordpress.org/plugin/astra-sites.4.7.7.zip",
+      "license": "GPL-2.0-or-later",
+      "sha256": "4954aea052dac10d7a45857fd620783666419a2e00ee1471ecb8bdf3095e48c4",
+      "freeBoundary": "official WordPress.org plugin; free Gutenberg template import, no paid component"
+    },
+    "goodIssuePreview": {
+      "version": "0.2.0",
+      "source": "G2A1 poc/g2a1/preview-plugin copied into G3C and adapted; browser-local preview retained",
+      "license": "GPL-2.0-or-later"
+    },
+    "commerceWorkspace": {
+      "version": "0.1.0",
+      "source": "G3A poc/g3a/commerce-workspace-plugin copied into G3C; namespace adapted; generation disabled",
+      "license": "GPL-2.0-or-later"
+    }
+  },
+  "wordpress": "7.1.1",
+  "phpCli": "8.3.33",
+  "woocommerce": "11.1.2",
+  "mailpit": "1.31.2",
+  "mariadbServer": "11.4.7-MariaDB-ubu2404",
+  "pages": {
+    "shop": 6,
+    "cart": 7,
+    "checkout": 8,
+    "account": 9
+  },
+  "product": {
+    "id": 11,
+    "name": "Birthday Magazine — G3C Synthetic Preview",
+    "type": "simple",
+    "price": "39.99",
+    "regularPrice": "39.99",
+    "virtual": true,
+    "downloadable": false,
+    "manageStock": false,
+    "taxStatus": "none",
+    "needsShipping": false,
+    "currency": "USD"
+  },
+  "settings": {
+    "guestCheckout": "no",
+    "checkoutAccountCreation": "yes",
+    "separateMyAccountRegistration": "no",
+    "localOnly": true,
+    "generationEnabled": false,
+    "installedPaymentPlugins": []
+  },
+  "urls": {
+    "home": "http://127.0.0.1:8147",
+    "product": "http://127.0.0.1:8147/product/birthday-magazine-g3c-synthetic-preview/",
+    "shop": "6"
+  },
+  "completedAtUtc": "2026-09-29T11:56:35.836Z",
+  "initialWpCliFlagReadback": {
+    "localOnly": false,
+    "generationEnabled": null,
+    "cause": "WORDPRESS_CONFIG_EXTRA was not provided to the wpcli service"
+  },
+  "finalReadBack": {
+    "capturedAtUtc": "2026-09-29T12:40:32.173Z",
+    "source": "artifacts/reports/runtime-final-readback.json"
+  }
+}
