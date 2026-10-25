@@ -8,7 +8,7 @@
 
 [中文](./README.md)
 
-![Projects](https://img.shields.io/badge/projects-15-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-17-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-Chinese%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -29,6 +29,12 @@
 | **VPN Network Optimization** | Self-hosted VPN stability, tail latency, comparative validation, deployment and rollback | [Handoff](./vpn-network-optimization/REVIEWER_HANDOFF.md) |
 | **Dujiao-Next** | Commerce runtime for products, orders, payments, and fulfillment | [Handoff](./dujiao-next/REVIEWER_HANDOFF.md) |
 | **Xianyu** | Xianyu virtual-product demand catalog research (legacy runtime preserved) | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
+
+### Personal sites and publishing
+
+| Project | Purpose | Current-state entry |
+|---|---|---|
+| **SPW Journal (Halo)** | Halo personal blog, local Docker deployment, SPW theme, and Markdown draft workflow | [Handoff](./halo-spw-journal/REVIEWER_HANDOFF.md) |
 
 ### Product and commerce projects
 

@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-16-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-19-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -29,6 +29,12 @@
 | **VPN Network Optimization** | 自建 VPN 稳定性、尾延迟、对照测试与可迁移部署/回滚 | [Handoff](./vpn-network-optimization/REVIEWER_HANDOFF.md) |
 | **Dujiao-Next** | 商城运行时、商品/订单/支付/履约相关能力 | [Handoff](./dujiao-next/REVIEWER_HANDOFF.md) |
 | **Xianyu** | 闲鱼虚拟商品需求目录研究（历史 runtime 保留） | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
+
+### 个人站点与内容发布
+
+| 项目 | 主要用途 | 当前状态入口 |
+|---|---|---|
+| **SPW Journal (Halo)** | Halo 个人博客、本地 Docker 部署、SPW 主题与图文草稿工作流 | [交接记录](./halo-spw-journal/REVIEWER_HANDOFF.md) |
 
 ### 产品与商业项目
 
