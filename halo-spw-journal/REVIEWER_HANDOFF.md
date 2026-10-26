@@ -34,7 +34,7 @@
 
 ## CURRENT_GATE
 
-MAP-MOBILE-OUTLINE-20261026：PASS_CANDIDATE，详见 CURRENT_GATE.md；修复静态导出器漏收 new URL(..., import.meta.url) 资源的问题，并部署地图 GeoJSON。上一 Gate GOV-DOC-CLOSEOUT-20261026 的归档/清理仍为历史 PASS，不重放。
+MAP-MOBILE-OUTLINE-20261026：PASS，详见 CURRENT_GATE.md；修复静态导出器漏收 new URL(..., import.meta.url) 资源的问题，并部署地图 GeoJSON。上一 Gate GOV-DOC-CLOSEOUT-20261026 的归档/清理仍为历史 PASS，不重放。
 
 ## CRITICAL_CONSTRAINTS
 
