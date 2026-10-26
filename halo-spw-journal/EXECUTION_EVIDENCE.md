@@ -46,3 +46,25 @@ ANOMALIES：上一轮“已恢复本地服务”为历史事实，现场已全�
 EVIDENCE_ARTIFACTS_AND_PURPOSE：verification/governance-20261026/preflight.json（本机前检与文档快照）；docs/ARCHIVE.md（精确候选与远端 blob）；docs/RECOVERY.md（恢复边界）；GitHub fetch_file 的逐份 read-back（归档基线）。
 
 EXECUTOR_RESULT：前检与 Discovery 已接受；文档更新与删除尚未完成，IN_PROGRESS；最终事实另行追加，不改写上述历史。
+
+## 2026-10-26 · GOV-DOC-CLOSEOUT 执行与 Review
+
+AUTHORIZED_GATE：GOV-DOC-CLOSEOUT-20261026；只允许项目文档治理、GitHub 项目子目录归档及六文件删除，未扩展至运行、业务数据、Secret 或共享设施。
+
+ACTUAL_CHANGES：创建 AGENTS、CURRENT_GATE、DECISION_LOG、RECOVERY 入口/记录，规范化 README、REVIEWER_HANDOFF、ARCHIVE、DEVELOPMENT；EXECUTION_EVIDENCE 保留 canonical 历史并只追加。九份记录上传到 entropy-student/project 的 main:halo-spw-journal，逐份 fetch_file 全文回读一致后才进入删除。
+
+OBJECTIVE_READBACK：六份历史说明/提示词从已读取 GitHub 内容实际重建到 verification/governance-20261026/reconstructed-design，与原文件 SHA256 及 Git blob 全部一致；来源说明和法律声明不在删除白名单。删除前再次检查精确路径、普通文件/非重解析点、源 hash、重建 hash 和根目录边界。Remove-Item 仅作用于六个叶文件，无递归删除。
+
+VALIDATION：DIRECT_READBACK 清理结果 DeletedCount=6、DeletedBytes=24671、RemainingTargets=0；14 个保护路径存在；OtherProjectGitStateUnchanged=true；RuntimeUnchanged=true，三个容器 ID 与 exited 状态一致。BEHAVIORALLY_VERIFIED 复测公网首页/文章/搜索索引为 200，/console/ 为 404。九份现行文档的本地相对链接检查无缺失。
+
+ANOMALIES：NONE（本 Gate 内）；不把源站已停止当作故障或擅自启动。完整站点异机恢复、Secret 独立故障域恢复、旧缺失页面和第三方授权范围仍按 Handoff 标为 PARTIAL/UNKNOWN，未在本轮宣称已解决。
+
+EVIDENCE_ARTIFACTS_AND_PURPOSE：verification/governance-20261026/reconstruction.json（6 文件重建验证）、cleanup-allowlist.json（精确白名单）、cleanup-result.json（实际删除计数与非目标 read-back）、postcheck.json（公网与文档链接检查）；docs/ARCHIVE.md 记录每个远端 blob 与固定归档 commit。原始报告和恢复资料留本机，不上传到 GitHub。
+
+ROLLBACK_EFFECT：删除目标均可从固定 canonical archive 重建；修改前 8 文档快照保留；保留现行源码、组件、图片、文章、数据库、附件、keys、认证资料、所有旧快照和未知用途 .hallmark。未声称本轮验证了全站数据恢复。
+
+RESOURCE_OR_BUSINESS_DELTA：六份旧工作文档逻辑大小减少 24,671 字节；没有 Docker/Pages/DNS/Tunnel/账户权限/文章状态/支付或业务数据变更。新治理文档和验收恢复证据单独保留；该数字不是净磁盘空间回收声明。
+
+EXECUTOR_RESULT：PASS_CANDIDATE。
+
+REVIEWER_REVIEW：已实际检查 canonical 全文回读、重建哈希、精确清理报告、保护路径、容器/同级状态和公网正负证据；所需项均 AVAILABLE、REVIEWABLE、INSPECTED 并满足本 Gate 验收。决议 PASS；最终 Handoff/Gate/Evidence 持久化回读成功后关闭本轮；下一 Gate 为 NONE。
