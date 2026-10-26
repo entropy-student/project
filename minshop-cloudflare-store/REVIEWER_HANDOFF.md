@@ -9,7 +9,7 @@
 **本项目在网站测试时优先使用。** 在无 VPS、电脑无需常开的前提下，以 Cloudflare 免费额度为目标，最小化改动 Minshop 前端/商品/Stripe 配置，优先验收「展示→支付→签名 Webhook→订单→数字文件授权下载→退款后撤权」；通过有界测试后再决定是否正式使用。
 
 ## PROJECT_STAGE
-`G0_PROJECT_RECORD_REGISTRATION_PENDING_REMOTE_READBACK / RUNTIME_NOT_DEPLOYED / STRIPE_NOT_TESTED / G1_PENDING`。当前属于文档研究与项目库建档；不是商店可用证明。
+`G0_PASS_DOCUMENTATION_ONLY / RUNTIME_NOT_DEPLOYED / STRIPE_NOT_TESTED / G1_READONLY_NOT_EXECUTED`。当前属于文档研究与项目库建档；不是商店可用证明。
 
 ## SYSTEM_MAP
 - **源码**：上游 `ddyy/minshop`，MIT；原生 Astro SSR + Cloudflare Workers。
@@ -24,7 +24,7 @@
 
 ## CURRENT_ACCEPTED_STATE
 - **OWNER_DECISION**：选择 Minshop 为网站前期测试的优先项目；不意味着已批准真实收费或产生付费资源。
-- **DIRECT_READBACK**：已查阅上游 README、`CUSTOMIZING.md`、Cloudflare 官方 Worker/D1/R2 额度说明；记录见 [研究报告](./docs/FREE_DEPLOYMENT_AND_CUSTOMIZATION.md)。
+- **DIRECT_READBACK**：已查阅上游 README、`CUSTOMIZING.md`、Cloudflare 官方 Worker/D1/R2 额度说明；记录见 [研究报告](./docs/FREE_DEPLOYMENT_AND_CUSTOMIZATION.md)。项目登记 PR [#172](https://github.com/entropy-student/project/pull/172) 已合并（`cf6996f7ab4d0c8de62f458f41f0f7f635acd240`）；Reviewer 已在 GitHub `main` 重新读取 5 份项目文档及中英文根目录导航，7/7 路径存在，G0 仅为 **文档归档 PASS**，不包含部署/支付验收。
 - **RUNTIME_TRUTH**：本项目 Cloudflare 账户状态、资源数量、实际线上网站、Stripe 事件、订单与交付全部 `UNKNOWN/NOT_DEPLOYED_BY_THIS_ROUND`。不能把上游演示站当成用户自己的实例。
 - **FREE_TIER**：免费账户 D1 最多 10 个数据库；一个独立店通常使用一个 D1，**约 10 店只是理论结构上限**，还受整个账户共享请求、CPU、D1、R2 容量限制。规划先 1 店验证，再考虑 3–5 店；非运行承诺。
 
