@@ -40,6 +40,7 @@
 
 | Project | 主要用途 | 当前状态入口 |
 |---|---|---|
+| **Minshop Cloudflare Store｜网站测试优先** | 免费额度内先验证 Stripe TEST 支付→订单→数字文件交付→退款撤权；无 VPS/电脑常开 | [Handoff](./minshop-cloudflare-store/REVIEWER_HANDOFF.md) |
 | **Cross-border Business Library｜跨境业务总项目库** | 五板块：市场机会／网络环境／支付税务经营主体（冻结）／产品搭建／获客增长 | [五板块入口](./cross-border-business/README.md) |
 | **SaaS System Lab｜通用 SaaS 系统实验** | 串行验证 Velobase → Open SaaS → Wave；优先快速使用、Stripe、免费裂变及前后台 | [Handoff](./saas-system/REVIEWER_HANDOFF.md) |
 | **Google Trends Market Radar** | 海外 Google 搜索趋势、数据质量校准与商业机会发现 | [Handoff](./google-trends-market-radar/REVIEWER_HANDOFF.md) |
