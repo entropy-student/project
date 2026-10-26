@@ -34,7 +34,7 @@
 
 ## CURRENT_GATE
 
-`GOV-DOC-CLOSEOUT-20261026`：IN_PROGRESS，详见 CURRENT_GATE.md；限定为文档整理、归档及 6 份旧设计文本的精确清理。
+`GOV-DOC-CLOSEOUT-20261026`：PASS，详见 CURRENT_GATE.md；文档归档与六文件精确清理已完成。下一 Gate 为 NONE，等待用户的新任务；不能重放这个已完成 Gate。
 
 ## CRITICAL_CONSTRAINTS
 
