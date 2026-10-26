@@ -42,7 +42,7 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 **推荐顺序**：研究需求 → 确保技术可抓取/可索引 → 建立对应页面 → 积累真实外部信任 → 测量并迭代。技术先修复阻断项；关键词研究和内容制作应彼此配合，不是“技术做完后才能研究用户”。
 
 **① 与 ③ 为什么像重复？**  
-① 回答“用户搜什么”：例如 \`personalized birthday magazine\`；③ 回答“你的哪个页面怎样满足它”：展示模板、上传照片流程、价格、成品、FAQ、制作入口。前者决定**值得争取的需求**；后者决定**交付怎样的搜索结果页面**。
+① 回答“用户搜什么”：例如 `personalized birthday magazine`；③ 回答“你的哪个页面怎样满足它”：展示模板、上传照片流程、价格、成品、FAQ、制作入口。前者决定**值得争取的需求**；后者决定**交付怎样的搜索结果页面**。
 
 ### 1.1 SEO 与 SEM/PPC
 
@@ -64,13 +64,13 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 
 | 场景 | 用户看到的现象 | 为什么发生 | 怎么排查、解决 |
 |---|---|---|---|
-| 1. 网站“把 Google 拦在外面” | 网页正常对用户显示，搜索却长期没记录 | 页面带 \`noindex\`，需要登录，或访问策略挡住 Googlebot | 在 GSC URL 检查查看索引原因；确认页面公开可访问；核查 noindex、HTTP 状态、防火墙/Cloudflare；\`robots.txt\` 主要管理抓取权限，**不是可靠的去索引指令** |
+| 1. 网站“把 Google 拦在外面” | 网页正常对用户显示，搜索却长期没记录 | 页面带 `noindex`，需要登录，或访问策略挡住 Googlebot | 在 GSC URL 检查查看索引原因；确认页面公开可访问；核查 noindex、HTTP 状态、防火墙/Cloudflare；`robots.txt` 主要管理抓取权限，**不是可靠的去索引指令** |
 | 2. 人能看见，爬虫看不全 | API 单页应用在浏览器内容丰富，但抓取/render 后主要文本缺失 | 主要内容依赖客户端 JS、脚本失败、请求受阻或只在交互后加载 | 在 GSC 看渲染后的 HTML；为重要内容提供可抓取 URL、服务端渲染 SSR 或静态预渲染 SSG；允许必要的 JS/CSS 资源 |
-| 3. 新页面是“孤岛” | 新增 30 篇文章，只有部分被发现 | 站内无入口/内链，URL 无外部引用，没有有效 Sitemap | 添加导航/上下文内链，生成并提交 \`sitemap.xml\`；检查目标 URL 能访问；**提交 Sitemap 不保证收录或排名** |
+| 3. 新页面是“孤岛” | 新增 30 篇文章，只有部分被发现 | 站内无入口/内链，URL 无外部引用，没有有效 Sitemap | 添加导航/上下文内链，生成并提交 `sitemap.xml`；检查目标 URL 能访问；**提交 Sitemap 不保证收录或排名** |
 | 4. 抓取时网站故障 | 浏览器偶尔正常，Google 记录 5xx 或抓取错误 | 服务器不稳定、CDN/防火墙误拦截、错误跳转、DNS/TLS 等 | 修复 5xx/重定向链，检查服务器和 CDN 日志、可用性，并在修复后复查 URL |
-| 5. 重复内容/首选 URL 混乱 | 多个网址显示近似页面，Google 选择了另一个版本 | HTTP/HTTPS、参数页、分页、重复落地页和 Canonical 冲突 | 统一导航链接和必要的重定向，设置正确 \`rel=canonical\`，检查 GSC 选择的规范页 |
+| 5. 重复内容/首选 URL 混乱 | 多个网址显示近似页面，Google 选择了另一个版本 | HTTP/HTTPS、参数页、分页、重复落地页和 Canonical 冲突 | 统一导航链接和必要的重定向，设置正确 `rel=canonical`，检查 GSC 选择的规范页 |
 
-技术检查项：\`title\`、\`meta description\`、\`robots.txt\`、\`noindex\`、\`sitemap.xml\`、Canonical、可抓取站内链接、HTML/JS 渲染、HTTP 响应、Schema.org 结构化数据、移动端体验和 Core Web Vitals。标题与摘要是搜索结果呈现的**候选信号**，搜索引擎可自行改写；速度也不是排名的单一决定因素。
+技术检查项：`title`、`meta description`、`robots.txt`、`noindex`、`sitemap.xml`、Canonical、可抓取站内链接、HTML/JS 渲染、HTTP 响应、Schema.org 结构化数据、移动端体验和 Core Web Vitals。标题与摘要是搜索结果呈现的**候选信号**，搜索引擎可自行改写；速度也不是排名的单一决定因素。
 
 **一个重要澄清**：所谓“静态部署”不等于网页不能有动画。静态 HTML/CSS/JS 依然可以有丰富动效；SEO 关注搜索系统能否读到关键内容。Cloudflare 托管静态前端和做好 SEO 不冲突。
 
@@ -86,9 +86,9 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 
 | 具体场景 | 错误示范 | 真正的问题 | 如何解决 |
 |---|---|---|---|
-| 1. 名称不符合用户语言 | 页面只有 \`Welcome to Birthday Studio\`；用户搜 \`create personalized birthday magazine\` | 用户和搜索系统无法清晰判断页面在提供什么 | 用描述性标题、清晰正文、产品能力和价格，让页面直答搜索意图 |
+| 1. 名称不符合用户语言 | 页面只有 `Welcome to Birthday Studio`；用户搜 `create personalized birthday magazine` | 用户和搜索系统无法清晰判断页面在提供什么 | 用描述性标题、清晰正文、产品能力和价格，让页面直答搜索意图 |
 | 2. 内容只是宣传 | 用户搜“如何在线制作生日杂志”，页面却只有“我们是最好的服务” | 没有回答做法、样品、时间、成本、限制 | 提供制作步骤、截图、实例、模板、预览、定价及 FAQ |
-| 3. 大词竞争过强 | 新站只有一篇泛泛的 \`Best Birthday Gifts\` | 知名媒体和成熟电商已有大量高质量候选页 | 先做更具体的长尾需求，如“送男友的个性化生日杂志”，用真实产品特色竞争 |
+| 3. 大词竞争过强 | 新站只有一篇泛泛的 `Best Birthday Gifts` | 知名媒体和成熟电商已有大量高质量候选页 | 先做更具体的长尾需求，如“送男友的个性化生日杂志”，用真实产品特色竞争 |
 | 4. 页面类型错配 | 用户想“马上购买”，进来却是万字理论文章 | 信息需求与交易意图混淆 | 比选/教程给文章页；价格、规格、试用、支付入口给产品页 |
 | 5. 批量同质化内容 | AI 一次生成数十篇换词文章，内容相似、无实测 | 缺少原创经验和新增价值，可能不符合搜索质量要求 | 少而精：真实研究、测试、案例与清晰的目标用户场景 |
 
@@ -109,14 +109,14 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 
 | 开源项目 | 主要问题 | 怎么解决 + 额外能力 | 免费范围 | 可能付费/限制 | 怎么用 |
 |---|---|---|---|---|---|
-| [Unlighthouse](https://github.com/harlan-zw/unlighthouse) | 网站有多少 SEO/性能问题不知道 | 自动枚举/抽样网页，调用 Lighthouse，汇总 SEO、性能、可访问性报告 | MIT；本地 CLI 免费 | 运行机器/浏览器资源；本体不提供“付费才能修复”的功能 | Windows 安装 Node.js 后运行 \`npx unlighthouse --site https://example.com\`；把报告交 Codex 定向修复 |
+| [Unlighthouse](https://github.com/harlan-zw/unlighthouse) | 网站有多少 SEO/性能问题不知道 | 自动枚举/抽样网页，调用 Lighthouse，汇总 SEO、性能、可访问性报告 | MIT；本地 CLI 免费 | 运行机器/浏览器资源；本体不提供“付费才能修复”的功能 | Windows 安装 Node.js 后运行 `npx unlighthouse --site https://example.com`；把报告交 Codex 定向修复 |
 | [The SEO Framework](https://wordpress.org/plugins/autodescription/) | WordPress 各页面 SEO 配置繁琐 | 自动标题、描述、Canonical、Robots、Sitemap、基本 Schema/分享标签；支持 WooCommerce | WordPress 免费插件及免费扩展 | Focus、Monitor、Local 等部分扩展要付费；2026-10-26 官网 Pro 价格 **$7/月按年付、2 站点** | WP 后台安装启用 → 检查全局设置 → 产品/文章页按需覆写 |
 | [Yoast SEO](https://github.com/Yoast/wordpress-seo) | WP 内容如何围绕目标查询编辑 | 编辑器关键词、可读性建议、标题/摘要、Sitemap、Schema | 核心插件免费开源 | 多目标词、内部链接建议、重定向、部分 AI 辅助等 Premium；2026-10-26 官网标 **$118.80/年（未税）/站点** | WP 后台启用 → 为文章指定目标词 → 按分析建议人工修改 |
 | [SerpBear](https://github.com/towfiqi/serpbear) | 关键词在 Google 的位置如何变化 | 定期调用搜索结果抓取 API 或自有代理，监测排名、历史曲线、通知；可接 GSC、Google Ads 研究 | 应用代码开源，可 Docker/本地自建 | **取 Google SERP 数据不保证免费**；抓取 API、代理可能收费。官方文档示例含部分第三方免费额度，额度会变 | 部署 → 添加域名/国家/关键词 → 选抓取服务 → 定期复查 |
 | [sitespeed.io](https://github.com/sitespeedio/sitespeed.io) | 网站慢在哪里？ | 真实浏览器测试、Core Web Vitals、加载录像、HAR 瀑布图、长期性能监控 | 免费开源，本地/Docker 可用 | 持续监控时的计算、数据存储或第三方服务成本 | Docker 或 Node 运行 → 阅读 HTML 报告 → 修复慢资源 |
-| [Lychee](https://github.com/lycheeverse/lychee) | 网页/Markdown 中隐藏很多 404 或失效链接 | 批量检查链接和邮箱地址，支持报告、GitHub Actions、Docker | 免费开源 | CI 运行资源与托管平台额度；特殊网站可能阻止检测 | \`docker run --rm lycheeverse/lychee https://example.com\` 或扫描项目目录 |
-| [Nuxt SEO](https://github.com/harlan-zw/nuxt-seo) | Nuxt 网站每项 SEO 都要手写 | 集成 Robots、Sitemap、Schema.org、Meta、OG 图片、链接检查等 | MIT，Nuxt 模块免费 | 独立 Nuxt SEO Pro 监测服务官网标 **$59/月起、5个站点**，查看实时销售状态/候补；不影响免费模块 | **仅 Nuxt 技术栈**：\`npx nuxt module add seo\` |
-| [Halo Sitemap](https://github.com/halo-dev/plugin-sitemap) | Halo 网站缺少 Sitemap | 自动提供 \`/sitemap.xml\`，便于搜索引擎发现 URL | GPL-3.0，官方免费插件 | 不包括完整 SEO 审计和内容优化；当前插件要求 Halo ≥2.22.7 | Halo 应用市场装 Sitemap → 访问 sitemap 地址 → 可提交到 GSC |
+| [Lychee](https://github.com/lycheeverse/lychee) | 网页/Markdown 中隐藏很多 404 或失效链接 | 批量检查链接和邮箱地址，支持报告、GitHub Actions、Docker | 免费开源 | CI 运行资源与托管平台额度；特殊网站可能阻止检测 | `docker run --rm lycheeverse/lychee https://example.com` 或扫描项目目录 |
+| [Nuxt SEO](https://github.com/harlan-zw/nuxt-seo) | Nuxt 网站每项 SEO 都要手写 | 集成 Robots、Sitemap、Schema.org、Meta、OG 图片、链接检查等 | MIT，Nuxt 模块免费 | 独立 Nuxt SEO Pro 监测服务官网标 **$59/月起、5个站点**，查看实时销售状态/候补；不影响免费模块 | **仅 Nuxt 技术栈**：`npx nuxt module add seo` |
+| [Halo Sitemap](https://github.com/halo-dev/plugin-sitemap) | Halo 网站缺少 Sitemap | 自动提供 `/sitemap.xml`，便于搜索引擎发现 URL | GPL-3.0，官方免费插件 | 不包括完整 SEO 审计和内容优化；当前插件要求 Halo ≥2.22.7 | Halo 应用市场装 Sitemap → 访问 sitemap 地址 → 可提交到 GSC |
 
 ### 4.1 两个易混淆点
 
@@ -140,7 +140,7 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 
 ### 5.1 Unlighthouse：在 Windows 本地扫描
 
-1. 安装满足项目要求的 Node.js（核验时要求 **≥22.18.0**）；确保可运行 \`node -v\` / \`npx -v\`。
+1. 安装满足项目要求的 Node.js（核验时要求 **≥22.18.0**）；确保可运行 `node -v` / `npx -v`。
 2. 打开 PowerShell：
    
        npx unlighthouse --site https://example.com
@@ -156,7 +156,7 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 1. 登录 [Search Console](https://search.google.com/search-console)；添加站点/域名资源。
 2. 按流程进行域名所有权验证（例如在 Cloudflare DNS 中增加 Google 要求的 TXT 记录；验证后保留记录）。
 3. 在 URL 检查工具逐个查首页、核心产品页、重要文章：被抓取？被索引？规范页面是谁？是否有错误？
-4. 有 Sitemap 时在对应功能提交地址（如 \`https://example.com/sitemap.xml\`）；查看状态，**提交不等于一定会索引**。
+4. 有 Sitemap 时在对应功能提交地址（如 `https://example.com/sitemap.xml`）；查看状态，**提交不等于一定会索引**。
 5. 使用效果报告按查询、页面、国家、时间查看展示、点击、CTR、平均排名；刚建站没有数据时先确认索引与时间窗。
 
 **使用方式**：直接网页使用，不安装、不部署、不买服务器。它报告的是网站自身已经出现在搜索中的查询，不能作为“所有潜在关键词需求”的完整列表。
@@ -187,7 +187,7 @@ SEO 不等于购买搜索广告：自然搜索通常不向搜索引擎支付每�
 
 ## 7. 建议的可复用 SEO 工作流与最小验收
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     A["搜索需求/购买意图"] --> B["为需求安排产品页/内容页"]
     B --> C["技术 SEO 可访问、可索引"]
@@ -198,7 +198,7 @@ flowchart LR
     D --> G["Umami 站内访问/事件"]
     G --> H["订单/支付真实结果"]
     H --> A
-\`\`\`
+```
 
 **最低可交付证据**：
 - 页面 URL、核验日期、目标国家/语言、目标查询、页面类型；
