@@ -32,3 +32,17 @@
 这证明公开阅读、图片、静态搜索和主题交互不依赖本地容器。Halo 后台、评论提交和实时统计属于服务端能力，未声称它们在纯静态站中运行。更新方式见 `docs/STATIC-SITE.md`。
 
 收尾将本机 Halo 外部地址恢复为 `http://localhost:8090/`，再次完成全站导出与部署（`c53f05b7.spw-journal-static.pages.dev`）。本机预览地址与公网静态域名分开，导出 HTML 未保留本机 8090 地址。
+
+## 2026-10-26 · GOV-DOC-DISCOVERY / CLOSEOUT 前检
+
+AUTHORIZED_GATE：Owner 请求按 GitHub vps-project-governance 整理本项目、归档后清理无效文档。规范本轮读取为 v0.2.7，commit 16e33384dc569629a1527d1c9ec0060823af09ce；VNEXT blob 3917c88a7f36df7a53758b3879a92703d659ef9d，已固定版本回读一致。没有更改治理仓库。
+
+PREFLIGHT_FACTS：DIRECT_READBACK 确认 Windows 项目路径、PowerShell 7.6.5、共享 Git master 无 HEAD（128），本项目未跟踪但无项目提交可推送。既有 GitHub 项目档案基线为 b010874a225eeb1db95219987bb5082b470341a2。8 份现行文档已复制到 backups/docs-governance-20261026 并哈希一致。7 份历史设计文本逐一与远端 blob 和全文一致；其中来源说明仍被引用，保留，只允许清理余下 6 份。
+
+OBJECTIVE_READBACK：DIRECT_READBACK 三容器 exited，数据、附件、源码、组件、文章、备份与凭据文件位置存在。BEHAVIORALLY_VERIFIED 本机 8090 offline；公网首页、文章、搜索索引 200，/console/ 404。本轮不启动容器、不部署网站。
+
+ANOMALIES：上一轮“已恢复本地服务”为历史事实，现场已全部停止，记录更新而不猜测原因。现有本地 .8 主题包存在；旧 Rollback-Transparent 期望 .5，完整异机数据/Secret 恢复未验证。UNKNOWN 不计为恢复 PASS。
+
+EVIDENCE_ARTIFACTS_AND_PURPOSE：verification/governance-20261026/preflight.json（本机前检与文档快照）；docs/ARCHIVE.md（精确候选与远端 blob）；docs/RECOVERY.md（恢复边界）；GitHub fetch_file 的逐份 read-back（归档基线）。
+
+EXECUTOR_RESULT：前检与 Discovery 已接受；文档更新与删除尚未完成，IN_PROGRESS；最终事实另行追加，不改写上述历史。
