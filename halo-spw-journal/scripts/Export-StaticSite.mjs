@@ -129,6 +129,9 @@ function collectAssetReferences(body, contentType, assetUrl) {
     for (const match of text.matchAll(/(?:\bfrom\s*|\bimport\s*(?:\(\s*)?)["']([^"']+)["']/gi)) {
       if (/^(?:\.{1,2}\/|\/|https?:\/\/)/.test(match[1])) addAsset(match[1], assetUrl);
     }
+    for (const match of text.matchAll(/\bnew\s+URL\(\s*["']([^"']+)["']\s*,\s*import\.meta\.url\s*\)/gi)) {
+      addAsset(match[1], assetUrl);
+    }
   } else if (/xml/i.test(contentType) || assetUrl.pathname.endsWith('.xml')) {
     for (const match of text.matchAll(/<loc>(.*?)<\/loc>/gi)) addPage(match[1].trim(), assetUrl);
   }
@@ -283,3 +286,4 @@ await writeFile(path.join(output, '404.html'), `<!doctype html><html lang="zh-CN
 
 console.log(`静态站生成完成：${pageCount} 个页面，${queuedAssets.size} 个资源，${searchItems.length} 篇文章已加入搜索索引。`);
 if (missing.length) console.log(`源站不存在或未能读取的链接（不会阻止生成）：${[...new Set(missing)].join(', ')}`);
+
