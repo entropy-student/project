@@ -2,7 +2,7 @@
 
 ## GATE_ID
 
-MAP-MOBILE-OUTLINE-20261026 — PASS_CANDIDATE
+MAP-MOBILE-OUTLINE-20261026 — PASS
 
 ## OBJECTIVE
 
@@ -45,7 +45,7 @@ journey.bundle.js 通过 new URL("./countries.json", import.meta.url) 读取国�
 2. GeoJSON 线上 HTTP 200、JSON 可读且含 180 个 feature：PASS。
 3. 地图组件在正式站浏览器中恢复陆地/国家轮廓；移动端问题根因为同一 fetch 404，资源现已可达，且移动断点没有隐藏地图画布：PASS。真实手机截图未单独采集。
 4. 首页、文章、搜索和 /console/ 边界维持预期：PASS。
-5. 本次部署范围只增加一个资源；项目记录完成远端回读后关闭：PASS_CANDIDATE。
+5. 本次部署范围只增加一个资源；项目记录已完成远端 read-back：PASS。
 
 ## ROLLBACK_STATUS_OR_PLAN
 
@@ -53,10 +53,10 @@ Cloudflare 中保留原成功部署 c53f05b7-8132-4c8d-8e13-eac6db0bdd85，可�
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-结果：PASS_CANDIDATE。
+结果：PASS。
 改动：静态导出器追踪 import.meta URL 资源，Pages 静态树新增地图 GeoJSON 1 个文件。
 验证：Node 语法检查通过；实际 bundle 依赖匹配；线上资源 200、180 features、SHA 一致；首页/文章/搜索 200、后台 404；线上浏览器可见国家轮廓。
 限制：没有真实手机设备/viewport 截图；地图数据请求对所有屏幕宽度共用，移动 CSS 未禁用地图画布。
 回滚：Pages previous deployment 保留；本地源快照保留。
-请 Reviewer：核验本地与远端 Handoff / Gate / Evidence 回读，再将 Gate 关闭。
+REVIEWER_REVIEW：已检查远端 Gate、Handoff、Evidence、Static-Site 文档及导出器镜像的全文回读，与本地一致；验收项均通过。真实手机截图限制已记录。决议 PASS，关闭本 Gate。
 
