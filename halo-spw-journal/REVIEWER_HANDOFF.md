@@ -1,23 +1,75 @@
-# SPW Journal · 当前交接记录
+# SPW Journal · Reviewer 当前状态
 
-状态日期：2026-10-26
+状态日期：2026-10-26。现场核对时间：2026-10-26T07:14Z。
 
-## 当前状态
+## PROJECT_GOAL
 
-- 本机 Halo 2.27.1 与 PostgreSQL 16 通过 Docker Compose 运行，网页入口为 http://localhost:8090/。
-- 当前启用 SPW 放映室主题 2.2.0-spw.8。原版 Halo Fuwari 主题仍留在实例中供回退使用。
-- 首页包含 Hello、五词/SPIKE 字符场、上海/深圳地球和博客内容；Starflow 延续到公开子页面。
-- Halo 官方 CLI 已安装并配置本地 profile。个人访问令牌保存在操作系统凭据存储，不在项目文档或脚本中。
-- CLI 图文草稿上传流程已端到端验证，文章保持草稿且图片可访问。
+以 SPW/spike 个人网站展示文章与作品；Windows 本地 Halo 编辑，Cloudflare Pages 提供关机后仍可访问的公开静态前台。
 
-## 下一步
+## PROJECT_STAGE
 
-公网 `https://spikersun.com/` 已改为 Cloudflare Pages 静态站，项目 `spw-journal-static`，生产分支 `main`。Halo 与 PostgreSQL 继续只在本机 Docker 中运行；用户明确暂不使用 VPS。已停止本地 Halo/数据库并验证公网阅读、图片、搜索与 Starflow 仍可用。再次更新公网：在本地 Halo 发布内容，然后双击 `Publish-Website.cmd`；实现、验收与能力边界见 `docs/STATIC-SITE.md`。不要重新把根域名接回 Tunnel，也不要把商城部署到此域名。
+`ACTIVE_MAINTENANCE`；本轮为文档治理和有限清理，不是运行环境退役。
 
-用户可开始在 Halo 后台编写文章和页面。日常操作见 docs/OPERATIONS.md；需要修改主题时从根目录 DESIGN.md 与 docs/DEVELOPMENT.md 开始。
+## SYSTEM_MAP
 
-发布文章前需有明确的发布指示；项目里的 Markdown 上传脚本仅创建或更新草稿。
+| 层 | 当前事实 |
+|---|---|
+| 本地编辑源 | Windows `halo-fuwari/`，Halo 2.27.1、PostgreSQL 16，Compose 项目 `halo-fuwari-local` |
+| 本地入口 | `http://localhost:8090/`、`/console/`；宿主绑定 127.0.0.1:8090；本机外部地址使用 localhost |
+| 主题 | 当前源码和保留包为 SPW 放映室 2.2.0-spw.8；Hello、五词、上海/深圳地球、SPIKE 星流；当前容器关闭，未重新验证后台启用主题 |
+| 公开站 | `https://spikersun.com/`；Cloudflare Pages 项目 `spw-journal-static`，生产分支 main；静态阅读、图片、浏览器搜索和主题交互 |
+| 更新路径 | 本地 Halo 发布内容 → `Publish-Website.cmd` → 导出公开内容 → Wrangler 部署；草稿不导出 |
+| 数据 | `db/` → PostgreSQL 数据；`halo2/` → Halo 状态；`halo2/attachments/` → 附件；源码/组件/文章本地文件分别在 source/components/content |
+| 认证 | Halo 登录与 CLI profile、Wrangler OAuth；仅记录存储位置，详见 RECOVERY；不把凭据放进文档 |
+| 共享边界 | 同级其他项目不属于本项目；cloudflared 为旧接入组件，历史上还承载 magazine 子域名，当前路由未从控制台重读，本轮不改/删 |
+| 运行角色 | 前台浏览器动效，无新增后台 worker 或 scheduler；未配置本轮自动发布任务 |
 
-## 范围与边界
+## CURRENT_ACCEPTED_STATE
 
-本文档归档的是 Halo/SPW 项目说明，不包含运行数据。数据库、附件、管理员资料、环境变量、备份和浏览器截图继续保留在本机，不上传到公开项目库。
+- `BEHAVIORALLY_VERIFIED`：现场访问公网首页、已发布文章、搜索索引为 200，公网 /console/ 为 404。
+- `DIRECT_READBACK`：Halo、PostgreSQL、cloudflared 三个既有容器均 exited；本机 8090 无法连接。保留停止状态，未启动或重建容器。
+- `DIRECT_READBACK`：数据库、附件目录、源码、组件、文章和本地恢复资料存在。
+- `ACCEPTED_HISTORICAL_EVIDENCE`：上一轮停源站逐项检查 663 个公开文件、图片、搜索和星流通过；不冒充本轮全量重测。
+- GitHub 文档与辅助发布脚本在 `entropy-student/project/main/halo-spw-journal/`；原始文章数据、完整主题源码与私有恢复材料仍在本地。
+
+## CURRENT_GATE
+
+`GOV-DOC-CLOSEOUT-20261026`：IN_PROGRESS，详见 CURRENT_GATE.md；限定为文档整理、归档及 6 份旧设计文本的精确清理。
+
+## CRITICAL_CONSTRAINTS
+
+保持本地 Halo + 公网静态站；暂不迁移 VPS；商城不部署到此域名；不修改后台/业务数据；不改共享 Git 拓扑、Docker 或 Tunnel；内容发布需用户明确指示；现行设计以 DESIGN.md 为准。
+
+## DEFAULT_EXECUTION_CHANNEL
+
+本地项目操作使用 Windows PowerShell 7（本轮验证 7.6.5）+ 项目限定路径；GitHub 使用会话插件；Cloudflare 发布沿用现有 Wrangler 脚本。本轮不部署、不登录、不创建凭据。
+
+## CURRENT_ROLLBACK_STATUS
+
+- 文档恢复：PASS，8 份修改前文档已复制并逐一校验到 `backups/docs-governance-20261026/`；旧设计文本从已固定的 GitHub 版本重建校验后方可删除。
+- 完整站点灾难恢复：PARTIAL；主题 .8 包和本地快照存在，但本轮没有做数据库恢复、异机还原或异机 Secret 恢复验证。详见 docs/RECOVERY.md，不能把文档归档当作完整备份。
+
+## UNRESOLVED
+
+1. /about、/user-agreement、/privacy-policy 在上一轮导出时为源站 404；本轮不新增内容。静态站地图已排除。
+2. 完整源码与运行数据不在文档库；异机数据/Secret 恢复能力 UNKNOWN，后续需独立恢复 Gate。
+3. cloudflared 其他子域名的当前控制面配置未重读；保留不动。
+4. Ansyn 来源记录保留了当时未见根 LICENSE 的事实；授权范围未在本轮确认，不能从公开可读推断额外授权。
+
+## NEXT_STEP
+
+本轮完成后，用户继续在 Halo 写作并按需运行一键静态发布。后续 Agent 重新加载当前 GitHub Governance，再从本页和新 Gate 开始；不要自动重播历史部署、授权或清理动作。
+
+## OWNER_ACTION_REQUIRED
+
+NONE。
+
+## EVIDENCE_POINTERS
+
+- EXECUTION_EVIDENCE.md：历史验收与本轮限定 Discovery/归档/清理事实。
+- CURRENT_GATE.md：当前边界、relay 和验收要求。
+- DECISION_LOG.md：架构与本轮清理选择的依据。
+- docs/ARCHIVE.md：删除白名单、固定归档版本与恢复方法。
+- docs/RECOVERY.md：存储、认证和恢复能力边界。
+
+治理引用：GitHub main 的 vps-project-governance v0.2.7，本轮读取 commit `16e33384dc569629a1527d1c9ec0060823af09ce`、VNEXT blob `3917c88a7f36df7a53758b3879a92703d659ef9d`。这是本轮读取证据，不是下一轮版本锁定。
