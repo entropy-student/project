@@ -16,6 +16,15 @@ const exportedPages = new Set();
 const missing = [];
 const missingAssets = [];
 
+async function fetchHalo(url) {
+  // Halo 的健康检查可能早于插件初始化完成，短暂 5xx 先重试再决定终止。
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const response = await fetch(url);
+    if (response.status < 500 || attempt === 3) return response;
+    await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+  }
+}
+
 function localUrl(raw, base) {
   let url;
   try { url = new URL(raw, base); } catch { return null; }
@@ -203,7 +212,7 @@ while (pageQueue.length) {
   writtenPages.add(routeKey);
   const targetUrl = new URL(`${requested.pathname}${requested.search}`, origin);
   let response;
-  try { response = await fetch(targetUrl); }
+  try { response = await fetchHalo(targetUrl); }
   catch (error) { throw new Error(`Cannot read Halo page ${targetUrl.pathname}: ${error.message}`); }
   if (response.status === 404) { missing.push(requested.pathname); continue; }
   if (!response.ok) throw new Error(`Halo returned HTTP ${response.status} for ${requested.pathname}`);
@@ -236,7 +245,7 @@ for (let offset = 0; offset < assets.length;) {
     const destination = filePath(assetUrl);
     if (await readFile(destination).then(() => true).catch(() => false)) return;
     try {
-      const response = await fetch(new URL(`${assetUrl.pathname}${assetUrl.search}`, origin));
+      const response = await fetchHalo(new URL(`${assetUrl.pathname}${assetUrl.search}`, origin));
       if (!response.ok) { missingAssets.push(`${assetUrl.pathname} (HTTP ${response.status})`); return; }
       const body = Buffer.from(await response.arrayBuffer());
       await mkdir(path.dirname(destination), { recursive: true });
