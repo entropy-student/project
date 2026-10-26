@@ -33,6 +33,10 @@
 
 ## 回滚
 
+当前恢复能力以 [RECOVERY.md](RECOVERY.md) 为准。本轮读取确认 Rollback-Transparent.ps1 的目标是历史 .5 主题，不能把它当作当前 .8 的完整回退；本机数据和凭据的恢复也未经本轮演练。
+
+当前恢复能力以 [RECOVERY.md](RECOVERY.md) 为准。本轮读取确认 Rollback-Transparent.ps1 的目标是历史 .5 主题，不能把它当作当前 .8 的完整回退；本机数据和凭据的恢复也未经本轮演练。
+
 最近一次透明阅读与子页面更新可用：
 
     pwsh -NoProfile -File scripts/Rollback-Transparent.ps1
