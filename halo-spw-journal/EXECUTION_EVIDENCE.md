@@ -86,5 +86,7 @@ ROLLBACK：前一生产部署 c53f05b7-8132-4c8d-8e13-eac6db0bdd85 仍保留。�
 
 EVIDENCE_ARTIFACTS：verification/mobile-map-20261026/preflight.json 记录旧版本和缺失情况；asset-repair.json 记录新增唯一文件及哈希。浏览器可视检查在当前执行轮次工具观测中完成；未另存含站点内容的截图。
 
-EXECUTOR_RESULT：PASS_CANDIDATE。待项目档案 Gate / Evidence / Handoff 回读后关闭。
+EXECUTOR_RESULT：PASS_CANDIDATE。
+
+REVIEWER_REVIEW：项目档案 Gate、Handoff、Evidence、Static-Site 与导出器镜像均已通过 GitHub read-back，内容与本地一致；线上资源、主要路由、视觉结果与部署边界已核验。已记录未做手机实机截图的限制。决议 PASS，关闭本 Gate。
 
