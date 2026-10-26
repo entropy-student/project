@@ -2,7 +2,7 @@
 
 > **PROJECT_STATUS：SECOND_REVIEW_OWNER_AUTHORIZED_MINIMALLY_SUFFICIENT_REVISION_SELF_CHECK（2026-10-20）/ G7_EDITORIAL_HISTORY_PASS / CORE_1_6_35_78_FROZEN / BOARD_NOT_CLOSED**  
 > **CURRENT_GATE：NONE（第二轮11项定向修订已执行；G8未获单独授权）**｜**HTML：NOT_STARTED**  
-> **清理规则：** 当前main仅保留11份正式文件；45份历史过程文件已从当前目录清退，通过固定Git快照追溯，旧版不得作为现行执行要求。
+> **清理规则：** 当前main保留11份正式课程文件，并按Owner 2026-10-26新指令新增1份SEO独立学习归档；45份历史过程文件已从当前目录清退，通过固定Git快照追溯，旧版不得作为现行执行要求。
 
 ## 一、项目定位、当前结论和权限
 
@@ -12,7 +12,7 @@
 
 **权限顺序：** Owner最新针对性决定 > 正式冻结题树及正文 > [项目唯一通用SOP](../PROJECT_WORKFLOW_SOP.md) > 历史Gate和候选记录。未经Owner新授权，不得修改冻结题干、顺序、归属、内容/模型，不得发起新的Writer任务或实际营销/付款/系统操作。
 
-## 二、唯一有效文件（当前目录共11份）
+## 二、唯一有效正式课程文件（11份；另有非冻结专题归档）
 
 | 文件 | 唯一作用 |
 |---|---|
@@ -27,6 +27,8 @@
 | [docs/CHAPTER6_FINAL_SEALED.md](docs/CHAPTER6_FINAL_SEALED.md) | 第6章《有效的获客方法怎么做大？》（5/11） |
 | [docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md](docs/APPENDIX_OWNER_APPROVED_GROWTH_PRACTICE_V1_20261019.md) | 共用经营实操附录T2–T7（三类贯穿案例、表格与执行卡） |
 | [docs/SOURCE_REGISTER_AND_TERMS_20261019.md](docs/SOURCE_REGISTER_AND_TERMS_20261019.md) | 统一指标口径、动态法律/平台官方来源索引 |
+
+**独立专题（不属于上述11份正式课程文件）**：[docs/SEO_PRACTICAL_GUIDE_AND_TOOL_SELECTION_20261026.md](docs/SEO_PRACTICAL_GUIDE_AND_TOOL_SELECTION_20261026.md)；按2026-10-26 Owner 要求记录SEO讨论，保留三项已选工具、尚未选定的内容SEO与外部信任工具、八项候选、使用/费用边界。不得把专题归档当成已冻结的新章或G8结项。
 
 **不额外建第七章、不建平行“最终版”、不为审计另设独立过程文件。** 上述正文仍是知识主体；共用附录与术语索引有独立复用价值，因此保留为正式文档。
 
@@ -135,3 +137,9 @@ Owner后续授权：独立Agent先审读并交六章完整润色候选，主Revi
 **形式复核门槛**：本轮必须逐字核对每章二/三级冻结问句、六章篇章顺序、原URL及代码围栏；旧附录T2–T8与全部11份正式文件原路径保留；任何新参考数字都标教学假设或业务自定。技术与账户侧**没有**进行真实广告、GA4/支付后台实测、平台资格开通、客户发信或营销活动，因此只能给出文档层面的SELF_CHECK状态。
 
 **下一阶段**：Owner可另行安排独立Reviewer进行跨章内容和教学一致性验收；**G8、HTML、行政CLOSE仍未授权**。后续Agent以此轮实际commit为现行证据，历史2026-10-19 G7与2026-10-20第一轮仅供追溯，不要当作本轮新增材料独立PASS。
+
+## 九、2026-10-26 Owner 新增 SEO 专题独立归档（现行增量）
+
+**本轮Owner指令**：将双方关于 SEO 的讨论单独整理成文档，放入跨境业务知识库，尽可能完整保留。现已在第五板块 `docs/` 创建 [SEO专题知识与免费工具选型](docs/SEO_PRACTICAL_GUIDE_AND_TOOL_SELECTION_20261026.md)，并在本板块README添加导航。文档包括概念及五模块、技术/内容SEO案例、八种开源项目及付费边界、保留的 Unlighthouse / Google Search Console / Umami、云端或本地使用方式、网站类型适配、工作流、经济模型、AI搜索与未解决问题。
+
+**权限与状态**：这是课程之外的 `NON_FROZEN_SUPPLEMENT` 学习归档，不修改六章封板正文、冻结题树或共用SOP；仍为 `BOARD_NOT_CLOSED / CURRENT_GATE_NONE`，不触发新一轮G8，也不宣称实际网站已经获得搜索效果。当前材料构成：原有11份正式课程文件 + 1份新增SEO专题归档。
