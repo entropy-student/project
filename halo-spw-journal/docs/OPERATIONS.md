@@ -24,13 +24,14 @@
 也可以使用 Halo CLI 批量导入 Markdown。当前项目的上传脚本会：
 
 1. 要求文章 YAML 中明确设置 halo.publish: false。
-2. 上传 Markdown 引用的本地图片，并替换成 Halo 附件链接。
+2. 上传 Markdown 正文引用的本地图片和 `cover` 字段指定的本地封面，并替换成 Halo 附件链接。
 3. 将文章导入为草稿；已有脚本跟踪标记时更新原草稿。
 
 示例 Markdown：
 
     ---
     title: 我的文章
+    cover: assets/cover.png
     halo:
       publish: false
     ---
@@ -61,3 +62,13 @@
 完整迁移本地 Compose 实例时，先停止服务，再安全复制项目数据卷、配置文件和数据库。不要在数据库运行时直接复制数据库文件。保留数据库密码、Halo 版本和 PostgreSQL 主版本，并在目标服务器设置正确的站点外部地址、反向代理与 HTTPS。
 
 .env、db/、halo2/、附件和备份含有私密运行数据，不能上传到公开 GitHub。新建空实例应从 .env.example 生成自己的配置并设置随机数据库密码，不要复制本机访问凭据。
+
+## 更新公开静态网站
+
+最简单的入口：Halo 中发布文章后，双击项目根目录 `Publish-Website.cmd`，看到“更新成功”后刷新公网检查，即可关闭 Docker 或电脑。
+
+Halo 只在本机运行；公开前台由 Cloudflare Pages 托管。文章在 Halo 中发布后，在项目目录运行：
+
+    pwsh -NoProfile -File .\scripts\Publish-StaticSite.ps1
+
+脚本会在需要时启动 Halo 和数据库，生成公开页面及图片，并部署到 `spw-journal-static`。部署成功后电脑可以关机。首次使用 Wrangler 需先完成一次 `npx --yes wrangler@4 login`。静态站保留公开阅读、页面导航、主题交互及本地搜索；Halo 后台、评论写入、访问统计等 Halo 服务端功能在本机 Halo 关闭时不可用。详见 [STATIC-SITE.md](STATIC-SITE.md)。
