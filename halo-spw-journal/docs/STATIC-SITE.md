@@ -66,7 +66,8 @@ Pages 项目名必须为 `spw-journal-static`。首次部署前需要使用 Clou
 
 ## 相关文件
 
-- `scripts/Export-StaticSite.mjs`：从本机 Halo 导出公开页面和依赖资源，并生成静态搜索索引。
+- scripts/Export-StaticSite.mjs：从本机 Halo 导出公开页面和依赖资源，并生成静态搜索索引；追踪 JS import 与 new URL(..., import.meta.url) 资源。
 - `scripts/Publish-StaticSite.ps1`：一键检查/启动 Halo、生成静态站并部署到 Cloudflare Pages。
 - `Publish-Website.cmd`：Windows 双击入口，结束后保留结果窗口。
 - `docs/OPERATIONS.md`：Halo 启停、写作、图片、页面管理及迁移说明。
+
