@@ -7,6 +7,7 @@
 - Halo 和 PostgreSQL 保留在这台电脑的 Docker Compose 项目中，Halo 后台入口为 `http://localhost:8090/console/`。
 - 公开前台由 Cloudflare Pages 提供，项目名为 `spw-journal-static`，正式域名为 `https://spikersun.com/`。
 - 本机 Halo 是文章与页面的编辑源；Cloudflare Pages 保存最近一次生成的静态发布版本。两者分开运行，所以电脑和 Docker 关闭后，最近一次部署的公开页面仍可访问。
+- 本机私有 `.env` 中 `HALO_EXTERNAL_URL` 使用 `http://localhost:8090/`，保证后台预览与新上传图片使用本机地址。导出时会转换为 `https://spikersun.com/`，不要再把本机 Halo 的外部地址改回公网静态域名。
 - Cloudflare Pages 通过全球边缘网络提供静态资源。无需另加一层 CDN 缓存规则；不要给 HTML 设置长时间强缓存，否则新文章可能迟迟不更新。
 
 ## 发布文章后的最简单流程
@@ -44,7 +45,7 @@ Pages 项目名必须为 `spw-journal-static`。首次部署前需要使用 Clou
 
 ## 已完成的实际验收
 
-- Wrangler 完成账号授权，正式部署成功。最终版本包含 664 个文件，当前部署为 `e41dfe9b.spw-journal-static.pages.dev`。
+- Wrangler 完成账号授权，正式部署成功。验收版本包含 664 个文件，对应部署为 `e41dfe9b.spw-journal-static.pages.dev`；后续运行发布脚本会创建新的部署版本。
 - 单独停止本项目 Halo 与 PostgreSQL，确认 `127.0.0.1:8090` 无法连接；未关闭整个 Docker Desktop，以免影响其他项目。
 - 在上述停止状态下，正式域名的首页、归档、文章、分类、标签、RSS、站点地图和搜索索引均返回 HTTP 200。
 - 最终版本逐项检查 663 个公开文件，失败数为 0；`/console/`、`/login` 和服务端搜索 API 返回 404，公开域名不再暴露本机后台。
