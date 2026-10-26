@@ -20,7 +20,7 @@
 
 ## 2026-10-26 · 静态前台独立运行验收
 
-- 正式域名：https://spikersun.com/；Cloudflare Pages 项目：`spw-journal-static`；生产分支：`main`；最终部署：`e41dfe9b.spw-journal-static.pages.dev`。
+- 正式域名：https://spikersun.com/；Cloudflare Pages 项目：`spw-journal-static`；生产分支：`main`；停机验收部署：`e41dfe9b.spw-journal-static.pages.dev`。
 - 发布脚本成功部署 664 个文件。验证时停止本项目 Halo 与 PostgreSQL，确认本机 8090 连接失败，没有停止其他项目或整个 Docker Desktop。
 - 停止源站时逐项检查 663 个公开文件，全部成功；自定义 404 页面另行保留，不计入成功文件数。
 - 首页、归档、文章、分类、标签、RSS、站点地图与搜索索引可访问；浏览器搜索“个人网站”后进入文章成功，5 张页面图片（含头像）均正常加载，Starflow 画布与设置面板可用，浏览器未发现脚本错误。
@@ -30,3 +30,5 @@
 - 本机详细报告：`verification/static-site/live-report.json`；截图：`verification/static-site/article-halo-stopped-final.png`。这些含实际文章内容的文件不上传到 GitHub。
 
 这证明公开阅读、图片、静态搜索和主题交互不依赖本地容器。Halo 后台、评论提交和实时统计属于服务端能力，未声称它们在纯静态站中运行。更新方式见 `docs/STATIC-SITE.md`。
+
+收尾将本机 Halo 外部地址恢复为 `http://localhost:8090/`，再次完成全站导出与部署（`c53f05b7.spw-journal-static.pages.dev`）。本机预览地址与公网静态域名分开，导出 HTML 未保留本机 8090 地址。
