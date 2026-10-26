@@ -21,7 +21,7 @@ Gate：GOV-DOC-CLOSEOUT-20261026；分类均为 RECONSTRUCTIBLE_ARCHIVED_DOC。�
 | `design/concepts-20261025/prompt-v2.txt` | 6057 | `9bec2a752098fa01aa9da9f064b1c8c0d17e53df` |
 | `design/concepts-20261025/prompts-v2-single.txt` | 7251 | `c09870944e223eff883cbcad217270486001aeff` |
 
-状态：ARCHIVE_VERIFIED_CLEANUP_PENDING。
+状态：CLEANUP_COMPLETE / PASS。2026-10-26T07:29:27Z 实际删除六个白名单文件，逻辑字节 24,671，原路径残留为 0。十四个保护路径仍存在，容器身份/停止状态及同级 Git 状态未变；公网首页、文章、搜索索引仍为 200，/console/ 为 404。
 
 固定归档 commit：`b010874a225eeb1db95219987bb5082b470341a2`。每个 `design/<相对路径>` 对应远端 `halo-spw-journal/docs/archive/design/<相对路径>`。本轮已比对 Git blob 和全文，并在 verification/governance-20261026/reconstructed-design 下实际重建，六文件字节哈希均一致。总逻辑大小 24,671 字节。
 
