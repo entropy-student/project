@@ -68,3 +68,23 @@ RESOURCE_OR_BUSINESS_DELTA：六份旧工作文档逻辑大小减少 24,671 字�
 EXECUTOR_RESULT：PASS_CANDIDATE。
 
 REVIEWER_REVIEW：已实际检查 canonical 全文回读、重建哈希、精确清理报告、保护路径、容器/同级状态和公网正负证据；所需项均 AVAILABLE、REVIEWABLE、INSPECTED 并满足本 Gate 验收。决议 PASS；最终 Handoff/Gate/Evidence 持久化回读成功后关闭本轮；下一 Gate 为 NONE。
+
+
+## 2026-10-26 · MAP-MOBILE-OUTLINE-20261026 执行与核验
+
+AUTHORIZED_GATE：用户请求只修复手机端地图轮廓并更新现有 Cloudflare Pages。目标仅限 Halo/SPW 的静态资源导出与发布；未触碰其他项目、地图算法、页面内容、文章、Halo 数据、Docker 配置、Tunnel、DNS 或 Cloudflare 账号设置。
+
+ROOT_CAUSE：公开站及 dist-static 均缺少 /themes/theme-spw-cinema/assets/journey/countries.json。线上旧响应为 404。journey.bundle.js 中使用 new URL("./countries.json", import.meta.url)，原静态导出器只追踪 JS import，漏掉该模块资源，组件于是显示“地图轮廓暂不可用”。
+
+ACTUAL_CHANGES：scripts/Export-StaticSite.mjs 增加 JS new URL(..., import.meta.url) 依赖识别。当前生产静态包只新增 themes/theme-spw-cinema/assets/journey/countries.json；155,939 bytes、180 features、SHA-256 EC1EAF26E0B7A11462F63E01048042638A4F75E47BED997A05F8368CD80F5E42。其余 664 个静态文件被 Wrangler 复用。HTML 基线与当前不可变部署 c53f05b7.spw-journal-static.pages.dev 一致，避免用停机的本机 Halo 重建站点。
+
+VALIDATION：node --check scripts/Export-StaticSite.mjs 通过；实际 journey.bundle.js 的依赖匹配 ./countries.json；地图源文件 JSON 解析为 180 features；本地与组件国家数据 SHA 一致。Wrangler 部署成功，新生产部署 2563e60a-c642-4f61-8007-b248b733c2c3，URL https://2563e60a.spw-journal-static.pages.dev，上传 1 文件 / 复用 664 文件。正式站首页、文章 /archives/why-personal-website-in-2026、search-index.json、countries.json 均为 200；console 为 404。线上浏览器画面进入地图场景后显示国家轮廓、海岸线和经纬线。用户提供的手机截图显示的是此资源缺失提示；国家数据 fetch 不受屏幕尺寸影响，CSS 移动断点没有隐藏地图画布。
+
+LIMITATION：本轮浏览器截图是 1280×720 桌面视口，未在真实手机或移动设备模拟器中单独截图；不声称完成实机验收。现场 Docker engine 不可用，未启动 Halo / Docker；部署仅基于经过不可变预览核对的既有静态包。
+
+ROLLBACK：前一生产部署 c53f05b7-8132-4c8d-8e13-eac6db0bdd85 仍保留。修改前导出器快照 verification/mobile-map-20261026/Export-StaticSite.before.mjs 的 SHA-256 为 3D3276CDE859AB877B415927811B2A38C3441B824DDE3D8AE5F68B2DD40264BB。未改数据库、附件或 Secret。
+
+EVIDENCE_ARTIFACTS：verification/mobile-map-20261026/preflight.json 记录旧版本和缺失情况；asset-repair.json 记录新增唯一文件及哈希。浏览器可视检查在当前执行轮次工具观测中完成；未另存含站点内容的截图。
+
+EXECUTOR_RESULT：PASS_CANDIDATE。待项目档案 Gate / Evidence / Handoff 回读后关闭。
+
