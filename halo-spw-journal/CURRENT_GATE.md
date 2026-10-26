@@ -6,7 +6,7 @@
 
 ## GATE_ID
 
-`GOV-DOC-CLOSEOUT-20261026` — IN_PROGRESS。
+`GOV-DOC-CLOSEOUT-20261026` — PASS（Reviewer 已核对实际执行与归档证据）。这是已完成 Gate，不是可重复运行的清理授权。
 
 ## OBJECTIVE
 
@@ -60,10 +60,10 @@ NONE：用户已授权本项目文档归档和无效文档清理。本 Gate 不�
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-结果：待执行。
-改动：限定文档治理与六文件清理。
-验证：验收完成后写入 EXECUTION_EVIDENCE。
+结果：PASS_CANDIDATE；随后 Reviewer 接受为 PASS。
+改动：归档九份现行项目记录，删除六份已固定归档的旧设计文本，共 24,671 字节。
+验证：远端九文件全文回读、六文件实际重建与哈希一致、删除后零残留、十四个保护路径存在、容器/同级 Git 状态未变、公网正负检查及文档链接检查均通过；详见 EXECUTION_EVIDENCE。
 问题：NONE。
-回滚：已存在文档快照，候选需先重建校验。
-请 Reviewer 检查：archive barrier 与最终清理 read-back。
+回滚：修改前八份文档快照保留；六份文本的固定远端版本和已验证重建保留。
+请 Reviewer 检查：已实际检查 archive barrier、cleanup-result.json、postcheck.json 与 canonical 记录；本轮文档范围满足验收，全站灾难恢复仍为 PARTIAL。
 Owner 转交：NONE。
