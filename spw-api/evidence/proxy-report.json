@@ -1,0 +1,226 @@
+{
+  "verifiedAtUtc": "2026-10-27T08:13:40.0564434Z",
+  "frontend": "http://127.0.0.1:3000",
+  "backend": "http://127.0.0.1:3001",
+  "mode": "Anonymous requests only; POST bodies are empty JSON; redirects and cookies disabled",
+  "comparison": "Status, complete content type, normalized JSON or exact trimmed body SHA-256; request IDs removed",
+  "frontendIndex": {
+    "status": 200,
+    "contentType": "text/html",
+    "bodySha256": "2f3e9f103f606520050c817eaa99656c88f40dd5ee78254b10d4f5f56310d6eb"
+  },
+  "startupError": null,
+  "passed": true,
+  "total": 13,
+  "failed": 0,
+  "cases": [
+    {
+      "method": "GET",
+      "path": "/api/status",
+      "passed": true,
+      "backend": {
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "a2b037280d0117f542da5787b104b34482f68ed1e9fc5da72e8b3b3cbf8dd35c"
+      },
+      "frontend": {
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "a2b037280d0117f542da5787b104b34482f68ed1e9fc5da72e8b3b3cbf8dd35c"
+      },
+      "differences": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/setup",
+      "passed": true,
+      "backend": {
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "fd1aceae01b94ff17222d77118e1462f6d88513d706be7d80ddf52a0f98e7c49"
+      },
+      "frontend": {
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "fd1aceae01b94ff17222d77118e1462f6d88513d706be7d80ddf52a0f98e7c49"
+      },
+      "differences": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/self",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "9d921d0d0830b398a5a7eac08099a3fb71e6a9c5270f08b7fcf8f6fdba9294bf"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "9d921d0d0830b398a5a7eac08099a3fb71e6a9c5270f08b7fcf8f6fdba9294bf"
+      },
+      "differences": []
+    },
+    {
+      "method": "GET",
+      "path": "/v1/models",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1beta/models/spw-verification:generateContent",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/mj/submit/imagine",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/spw-verification/mj/submit/imagine",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/pg/chat/completions",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "9d921d0d0830b398a5a7eac08099a3fb71e6a9c5270f08b7fcf8f6fdba9294bf"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "9d921d0d0830b398a5a7eac08099a3fb71e6a9c5270f08b7fcf8f6fdba9294bf"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/kling/v1/videos/text2video",
+      "passed": true,
+      "backend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "frontend": {
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "bodySha256": "47d7504c11f873dc4db64898c9741c81d3a9cc9a293b7506ad4b4a94f98dca48"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/keys",
+      "passed": true,
+      "backend": {
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "bodySha256": "fcd547644c80ac5a96e71856d64f408d22b3f9687d964fb39f0c816490f2f591"
+      },
+      "frontend": {
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "bodySha256": "fcd547644c80ac5a96e71856d64f408d22b3f9687d964fb39f0c816490f2f591"
+      },
+      "differences": []
+    },
+    {
+      "method": "POST",
+      "path": "/pricing",
+      "passed": true,
+      "backend": {
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "bodySha256": "fcd547644c80ac5a96e71856d64f408d22b3f9687d964fb39f0c816490f2f591"
+      },
+      "frontend": {
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "bodySha256": "fcd547644c80ac5a96e71856d64f408d22b3f9687d964fb39f0c816490f2f591"
+      },
+      "differences": []
+    }
+  ]
+}

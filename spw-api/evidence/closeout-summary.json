@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-27",
+  "stage": "LOCAL_FRONTEND_PASS_ARCHIVE_CANDIDATE",
+  "frontend_image": "sha256:bd0137f2d8e1fe0fadce6bd0efa11d52faf4b54f8505863d09df1160f1a089a6",
+  "backend_digest": "sha256:abf1f675efa1847b90c049c03766e2daaf62a78998aae3625cf34b6a045b1b97",
+  "tests": {
+    "files": 3,
+    "passed": 16,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "production_build": "passed",
+  "proxy": {
+    "passed": 13,
+    "total": 13
+  },
+  "contrast": {
+    "modes": 20,
+    "minimum": 11.63,
+    "passed": true
+  },
+  "viewports": [
+    1440,
+    320
+  ],
+  "css": {
+    "fail": 0,
+    "warn": 0,
+    "spacing_advisories": 2
+  },
+  "reconstruction": {
+    "passed": true,
+    "baseline": "7d8b91268dab69d7150f345c448b5e250163146a",
+    "overlay_files": 82,
+    "frontend_files_compared": 1466,
+    "source_overlay_sha256": "ea3c650c8e83e7be3bd36340ac3c39c46155c2bcc255e9d4961f0b85a2baf2e3",
+    "method": "Fresh tree from exact local upstream Git objects plus complete archive overlay; SHA-256 compared against every current frontend source file."
+  },
+  "rollback_image": "spw-api-frontend:pre-closeout-20261027",
+  "data_or_secret_archived": false,
+  "online_deployment": "DEFERRED_NOT_PASS",
+  "payments": "DEFERRED_NOT_PASS",
+  "local_runtime_deleted": false
+}

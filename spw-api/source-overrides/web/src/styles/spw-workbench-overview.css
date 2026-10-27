@@ -1,0 +1,242 @@
+/* Hallmark · SPW Glacier Workbench · screen: overview ledger and real usage canvas */
+/* Critique: a theme-aware balance ledger and a wide analytic surface preserve the hierarchy without sacrificing readable status text. */
+.spw-overview-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.spw-overview-summary {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 2fr);
+  align-items: stretch;
+  gap: 20px;
+}
+.spw-credit-ledger {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 22px;
+  overflow: clip;
+  background: color-mix(in srgb, var(--primary) 4%, var(--card));
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+.spw-credit-watermark {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  width: 220px;
+  right: -76px;
+  top: 100px;
+  opacity: 0.035;
+  transform: rotate(-12deg);
+}
+.spw-credit-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--foreground);
+}
+.spw-credit-health {
+  --spw-credit-health-tone: var(--success);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--spw-credit-health-tone) 8%, var(--card));
+  color: var(--foreground);
+  font-size: 12px;
+}
+.spw-credit-health.text-warning {
+  --spw-credit-health-tone: var(--warning);
+}
+.spw-credit-health.text-destructive {
+  --spw-credit-health-tone: var(--destructive);
+}
+.spw-credit-health svg {
+  color: var(--spw-credit-health-tone);
+}
+.spw-credit-value {
+  margin-top: 32px;
+  margin-bottom: 40px;
+  font-size: clamp(32px, 3.2vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.spw-credit-facts {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.spw-credit-facts > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.spw-credit-facts dt {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--foreground);
+  font-size: 12px;
+}
+.spw-credit-facts dt svg {
+  width: 14px;
+  height: 14px;
+}
+.spw-credit-facts dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.spw-credit-ledger [data-slot='button'].spw-credit-action {
+  margin-top: auto;
+  min-height: 44px;
+  padding-inline: 16px;
+  justify-content: space-between;
+  background: var(--foreground);
+  color: var(--card);
+}
+.spw-usage-canvas {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 24px;
+}
+.spw-overview-trend {
+  min-width: 0;
+  gap: 20px;
+}
+.spw-overview-trend-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.spw-overview-trend-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.spw-overview-trend-header > div > span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.spw-overview-chart {
+  height: 220px;
+  width: 100%;
+  aspect-ratio: auto;
+}
+.spw-overview-trend [data-slot='tabs-trigger'] {
+  isolation: isolate;
+  padding-inline: 12px;
+  background: transparent;
+}
+.spw-overview-metric-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--card);
+}
+.spw-overview-chart-state {
+  min-height: 220px;
+  padding: 20px 0;
+}
+.spw-overview-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.spw-overview-metrics > div + div {
+  padding-left: 20px;
+  border-left: 1px solid var(--border);
+}
+.spw-overview-metrics .group {
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .spw-overview-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .spw-credit-ledger {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 16px 28px;
+  }
+  .spw-credit-heading {
+    grid-column: 1 / -1;
+  }
+  .spw-credit-value {
+    margin: 0;
+    align-self: center;
+  }
+  .spw-credit-facts {
+    gap: 12px;
+    margin: 0;
+  }
+  .spw-credit-facts > div {
+    padding-top: 12px;
+  }
+  .spw-credit-ledger [data-slot='button'].spw-credit-action {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .spw-overview-workspace {
+    gap: 20px;
+  }
+  .spw-credit-ledger {
+    padding: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .spw-credit-value {
+    font-size: 40px;
+  }
+  .spw-credit-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .spw-usage-canvas {
+    padding: 20px 16px;
+  }
+  .spw-overview-metrics {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .spw-overview-metrics > div + div {
+    padding: 16px 0 0;
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spw-overview-workspace * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

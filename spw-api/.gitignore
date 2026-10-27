@@ -1,0 +1,8 @@
+source/
+.env
+credentials.txt
+data/
+logs/
+backups/
+verification/
+node_modules/

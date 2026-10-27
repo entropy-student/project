@@ -1,0 +1,12 @@
+.git
+.env
+credentials.txt
+data/
+logs/
+backups/
+verification/
+.hallmark/
+source/.git/
+source/web/node_modules/
+source/web/dist/
+source/web/.tanstack/

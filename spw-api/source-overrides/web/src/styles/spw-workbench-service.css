@@ -1,0 +1,210 @@
+/* SPW workbench: a quiet catalog and a dedicated funding workspace. */
+:root {
+  --spw-service-deep: var(--spw-dark-paper);
+  --spw-service-on-deep: var(--spw-dark-ink);
+  --spw-service-glint: var(--spw-dark-focus);
+}
+.spw-catalog-header {
+  position: relative;
+  isolation: isolate;
+  padding: 36px 32px;
+  overflow: clip;
+  border-radius: 20px;
+  background: linear-gradient(115deg, var(--spw-ice), var(--spw-paper));
+}
+.spw-catalog-header::before {
+  content: '';
+  position: absolute;
+  inset: -80px 20% -80px 45%;
+  z-index: -1;
+  transform: rotate(26deg);
+  border-inline: 1px solid var(--spw-line);
+  background: color-mix(in srgb, var(--spw-white) 32%, transparent);
+  pointer-events: none;
+}
+.spw-catalog-filters {
+  min-width: 0;
+  padding: 8px 16px 16px 0;
+  border-right: 1px solid var(--border);
+}
+.spw-catalog-filter-option {
+  justify-content: flex-start;
+  border-color: transparent;
+  background: transparent;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+.spw-catalog-filter-option > span:last-child:not(:first-child) {
+  margin-left: auto;
+}
+.spw-catalog-filter-option[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  box-shadow: inset 2px 0 0 var(--ring);
+}
+.spw-model-card {
+  position: relative;
+  overflow: clip;
+  border-radius: 16px;
+  padding-top: 0;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+.spw-model-card:hover,
+.spw-model-card:focus-within {
+  border-color: var(--ring);
+  box-shadow: var(--spw-shadow);
+}
+.spw-model-card-identity {
+  padding-top: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(150deg, var(--muted), var(--card));
+}
+.spw-model-vendor {
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.spw-model-price {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.spw-model-price > div span.font-semibold,
+.spw-model-price > div span.font-mono {
+  letter-spacing: -0.02em;
+}
+.spw-model-card-footer [data-slot='button'] {
+  margin-left: auto;
+}
+.spw-model-detail-sheet {
+  border-left: 1px solid var(--border);
+  background: var(--background);
+}
+.spw-model-details > header {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--muted);
+}
+.spw-model-details > header h1 {
+  overflow-wrap: anywhere;
+}
+.spw-model-detail-tabs {
+  border-radius: 0;
+  background: transparent;
+}
+.spw-wallet-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+.spw-wallet-account,
+.spw-wallet-funding,
+.spw-wallet-rewards {
+  min-width: 0;
+}
+.spw-wallet-summary {
+  gap: 12px;
+}
+.spw-wallet-balance {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: clip;
+  border-radius: 20px;
+  padding: 28px;
+  background: var(--spw-service-deep);
+  color: var(--spw-service-on-deep);
+}
+.spw-wallet-balance::before,
+.spw-wallet-balance::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -60px;
+  z-index: -1;
+  width: 220px;
+  height: 280px;
+  transform: rotate(30deg);
+  border: 1px solid
+    color-mix(in srgb, var(--spw-service-glint) 30%, transparent);
+  background: color-mix(in srgb, var(--spw-service-glint) 6%, transparent);
+  pointer-events: none;
+}
+.spw-wallet-balance::after {
+  right: -115px;
+  transform: rotate(30deg) translateX(28px);
+}
+.spw-wallet-balance .spw-wallet-stat-label,
+.spw-wallet-balance .spw-wallet-stat-description {
+  color: color-mix(in srgb, var(--spw-service-on-deep) 80%, transparent);
+}
+.spw-wallet-stat {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+.spw-wallet-stat-label,
+.spw-wallet-stat-description {
+  color: var(--muted-foreground);
+}
+.spw-wallet-stat-value {
+  color: inherit;
+}
+.spw-wallet-recharge {
+  border-radius: 20px;
+}
+.spw-wallet-recharge-header {
+  background: var(--muted);
+}
+.spw-wallet-recharge [aria-pressed] {
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+.spw-wallet-recharge [aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--ring);
+}
+.spw-wallet-recharge [aria-pressed]:hover {
+  transform: translateY(-2px);
+}
+@media (min-width: 1280px) {
+  .spw-wallet-workspace {
+    grid-template-columns: minmax(270px, 0.8fr) minmax(0, 1.7fr);
+  }
+  .spw-wallet-account {
+    position: sticky;
+    top: 0;
+  }
+  .spw-wallet-rewards {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .spw-catalog-header {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  .spw-wallet-balance {
+    min-height: 240px;
+    padding: 24px;
+  }
+  .spw-model-details > header {
+    padding: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spw-catalog *,
+  .spw-model-details *,
+  .spw-wallet-workspace * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,51 @@
+name: new-api-local
+services:
+  new-api:
+    image: calciumion/new-api@sha256:abf1f675efa1847b90c049c03766e2daaf62a78998aae3625cf34b6a045b1b97
+    container_name: new-api-local
+    restart: unless-stopped
+    command: ["--log-dir", "/app/logs"]
+    ports:
+      - "127.0.0.1:3001:3000"
+    volumes:
+      - ./data:/data
+      - ./logs:/app/logs
+    environment:
+      TZ: Asia/Singapore
+      DEFAULT_LANGUAGE: zh-CN
+      SESSION_SECRET: ${SESSION_SECRET:?SESSION_SECRET must be set}
+      TRUSTED_PROXIES: none
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:3000/api/status | grep -q '\"success\":true'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+  frontend:
+    image: spw-api-frontend:glacier
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: spw-api-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:80"
+    depends_on:
+      new-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/api/status | grep -q '\"success\":true'"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
