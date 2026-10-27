@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "stage": "LOCAL_FRONTEND_PASS_ARCHIVE_CANDIDATE",
+  "stage": "LOCAL_FRONTEND_PASS_ARCHIVE_PASS_OWNER_REQUESTED_HOLD",
   "frontend_image": "sha256:bd0137f2d8e1fe0fadce6bd0efa11d52faf4b54f8505863d09df1160f1a089a6",
   "backend_digest": "sha256:abf1f675efa1847b90c049c03766e2daaf62a78998aae3625cf34b6a045b1b97",
   "tests": {
@@ -40,5 +40,14 @@
   "data_or_secret_archived": false,
   "online_deployment": "DEFERRED_NOT_PASS",
   "payments": "DEFERRED_NOT_PASS",
-  "local_runtime_deleted": false
+  "local_runtime_deleted": false,
+  "github_archive": {
+    "repository": "entropy-student/project",
+    "path": "spw-api/",
+    "snapshot_commit": "b97731f0c675cc95e0377cee10339eee3fb5e5b3",
+    "snapshot_project_tree": "100b8326e28d71ad4535947becca45665b48121c",
+    "tree_readback_match": true,
+    "handoff_and_manifest_content_match": true,
+    "other_project_roots_unchanged": true
+  }
 }

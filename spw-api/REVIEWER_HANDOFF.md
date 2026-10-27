@@ -10,7 +10,7 @@ CANONICAL_PROJECT=entropy-student/project:spw-api/
 
 ## PROJECT_STAGE
 
-LOCAL_FRONTEND_PASS / ARCHIVE_READBACK_PENDING / OWNER_REQUESTED_HOLD。本地前端阶段收尾，线上经营与支付未验收。
+LOCAL_FRONTEND_PASS / ARCHIVE_PASS / OWNER_REQUESTED_HOLD。本地前端阶段收尾，线上经营与支付未验收。
 
 ## SYSTEM_MAP
 
@@ -32,7 +32,7 @@ LOCAL_FRONTEND_PASS / ARCHIVE_READBACK_PENDING / OWNER_REQUESTED_HOLD。本地�
 
 ## CURRENT_GATE
 
-G-CLOSEOUT-20261027；本地修复已通过，待 GitHub 归档回读后结束。见 docs/GATE_CLOSEOUT_20261027.md。
+NONE。G-CLOSEOUT-20261027 已通过本地修复及 GitHub 归档回读，停止于本地前端阶段；见 docs/GATE_CLOSEOUT_20261027.md。
 
 ## CRITICAL_CONSTRAINTS
 
@@ -63,6 +63,10 @@ G-CLOSEOUT-20261027；本地修复已通过，待 GitHub 归档回读后结束�
 ## OWNER_ACTION_REQUIRED
 
 NONE。本轮不需要新增账号、支付、服务器或凭据操作。
+
+## ARCHIVE_READBACK
+
+首个完整归档提交 b97731f0c675cc95e0377cee10339eee3fb5e5b3；项目子树 100b8326e28d71ad4535947becca45665b48121c 与本地对全部107文件计算的 Git tree SHA 一致。REVIEWER_HANDOFF 与 SOURCE_MANIFEST 已逐字回读；其它项目根子树 SHA 保持不变。源码重建1466文件零差异。后续仅追加收尾状态，不改变已验证源码或运行镜像。
 
 ## EVIDENCE_POINTERS
 

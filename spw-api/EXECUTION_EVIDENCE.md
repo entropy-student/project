@@ -17,3 +17,10 @@
 ## 历史证据边界
 
 上一轮 Workbench 合并回归 20 文件/201 项，之前整站回归 39 文件/628 项；它们为历史检查，不与本轮 16 项相加。归档内保留原报告的脱敏摘要以供续作，详细原始测试日志仍在本机 verification/。
+
+## GitHub 归档正式验收（2026-10-27）
+
+- DIRECT_READBACK：通过 GitHub 插件提交至 entropy-student/project main:spw-api/，完整快照 commit b97731f0c675cc95e0377cee10339eee3fb5e5b3。项目子树 SHA 100b8326e28d71ad4535947becca45665b48121c 与本地独立计算完全一致，证明107个归档文件内容与路径一致；Handoff 与 SOURCE_MANIFEST 又逐字回读。其它项目根目录 SHA 全部保持不变，仅增加 spw-api 及根 README 导航行。
+- RECONSTRUCTION：固定上游＋82个覆盖文件，在独立验证目录检查1466个前端文件摘要，零差异。已知本机 Secret 值不在归档；没有凭据/DB/业务日志/恢复备份路径。
+- REVIEWER_DECISION：PASS，仅覆盖本地前端与非敏感可重建归档。线上部署、支付、真实渠道及异机数据恢复保持 DEFERRED_NOT_PASS。
+- CLOSEOUT：保留本机运行、源码、持久数据、凭据与所有恢复材料；删除计数0，真实交易0，新增账号0。下一步仅在 Owner 后续新指令时另开 Gate。
