@@ -58,8 +58,8 @@
     },
     {
       "path": "evidence/closeout-summary.json",
-      "bytes": 1701,
-      "sha256": "0f4166436c2e8f4e5177df1521c37300769a5cddcb657d38b8bed9f32b62eeb2"
+      "bytes": 1648,
+      "sha256": "9ce661ba8a078df4ab044b2346db074300694ad8fcf05b3f03641f43ff850ebf"
     },
     {
       "path": "evidence/closeout-theme-samples.json",
@@ -73,8 +73,8 @@
     },
     {
       "path": "EXECUTION_EVIDENCE.md",
-      "bytes": 4246,
-      "sha256": "3c453fb385aaa518e27cee29d42e6031695aa0ad3de1bdf2f2dd1cfb05a86540"
+      "bytes": 4672,
+      "sha256": "bab01bb49f54ebd020c544d3fbd1e1d463034e04863310c51940ed8603dae468"
     },
     {
       "path": "licenses/LICENSE",
@@ -103,8 +103,8 @@
     },
     {
       "path": "REVIEWER_HANDOFF.md",
-      "bytes": 5932,
-      "sha256": "c7395f0723e1c85296563b5c0c42bf678e5a8e373e0926b5cf54077a3d840f63"
+      "bytes": 5859,
+      "sha256": "13d9c6f72518a5d47a99b497b1b84657f2e19171bad8438e2b58f42dc4a66145"
     },
     {
       "path": "scripts/reconstruct.ps1",
