@@ -42,3 +42,9 @@
 - `ROLLBACK_EFFECT`：只在独立未合并分支添加/修改项目 Markdown；可 Git revert/关闭 Draft PR，无主分支或外部系统变化。
 - `OWNER_ACTION_REQUIRED`：NONE；未购买设备、未生成媒体、未发布。
 - `REVIEW_LINKS`：G1 报告与唯一 Handoff 均需 GitHub 读回，实际回读结果附后。
+
+### G1 Reviewer durable read-back / 2026-10-28
+
+- `OBJECTIVE_READBACK`：直接在当前项目分支取回 `docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md` 全文与新提交内容一致；取回唯一 `REVIEWER_HANDOFF.md` 全文与新提交内容一致；Evidence 含本轮接受结果。
+- `SCOPE_READBACK`：Draft PR #176 变更路径仅仓库根 `README.md` 与 `macmini-video-pipeline-pilot/**`，无其他项目改动。
+- `FINAL_GATE`：`PASS_G1_CONTENT_DISCOVERY`，新 Gate 为 `G2_NARRATIVE_AND_SCRIPT`。研究结论属于有限证据之下的编辑判断，不是实机测试或市场代表性证明。
