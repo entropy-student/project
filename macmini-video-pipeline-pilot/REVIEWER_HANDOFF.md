@@ -21,9 +21,9 @@
 
 ## 2. PROJECT_STAGE / 当前阶段
 
-- `G0_PROJECT_INIT = PASS_CANDIDATE`（本次建档，需 Reviewer 核对 GitHub 回读后正式 PASS）。
-- `CURRENT_GATE = G0_PROJECT_INIT`；`NEXT_GATE = G1_CONTENT_DISCOVERY`，**尚未授权进入 G1 的实际研究/创作**。
-- `PROJECT_STAGE = INIT_AND_GOVERNANCE_ADAPTATION`
+- `G0_PROJECT_INIT = PASS`（2026-10-28 Reviewer 回读与文件范围审核通过；仅代表 G0 建档）。
+- `CURRENT_GATE = G1_CONTENT_DISCOVERY`；`NEXT_GATE = G2_NARRATIVE_AND_SCRIPT`，**尚未授权进入 G1 的实际研究/创作**。
+- `PROJECT_STAGE = CONTENT_RESEARCH_READY`
 - `CURRENT_ACCEPTED_STATE`：Owner 已同意独立立项、唯一交接、复用 VPS 项目管理规范；首期方向是研究型消费决策调查。现有五分钟样稿仅作叙事示例，非已审稿、实测或冻结成片。
 - `OWNER_ACTION_REQUIRED = NONE`（当前建档轮）；对外发布/付费采购/借测等后续单独确认。
 
@@ -31,7 +31,7 @@
 
 | Gate | 任务 | 验收边界 | 初始状态 |
 |---|---|---|---|
-| G0 | 独立立项、治理适配、唯一交接建立 | GitHub 项目目录/导航/基线材料可回读，未改其他项目与 Governance | PASS_CANDIDATE |
+| G0 | 独立立项、治理适配、唯一交接建立 | GitHub 项目目录/导航/基线材料可回读，未改其他项目与 Governance | PASS |
 | G1 | 内容发现与证据核验 | 有价值的核心发现、反证、来源清单与精确的主要观众问题 | NEXT |
 | G2 | 叙事与完整文案 | 有证据支持的可朗读中文口播，结构推进和结论不过界 | PENDING |
 | G3 | 视听导演与素材任务书 | 双栏 AV 脚本，明确实拍/录屏/图表/动效及责任、证据缺口 | PENDING |
@@ -80,7 +80,7 @@ User topic/goal
 
 ## 5. CURRENT_GATE / G0 项目建档
 
-- `GATE_ID`：G0_PROJECT_INIT。
+- `GATE_ID`：G0_PROJECT_INIT（已完成，保留边界供复核）。
 - `OBJECTIVE`：创建独立试点项目、唯一交接状态和写作基线参考；建立可审查的完整路线。
 - `MAX_ENDPOINT_THIS_ROUND`：GitHub 新分支 + Draft PR 中的新目录、项目 README、Handoff、Evidence、v0.2 写作材料；仓库根 README 只新增导航。
 - `MANDATORY_REVIEW_STOP`：建档回读并核对后 STOP；不开始 G1 调研、写正式文案、生成视频或公开发布。
@@ -103,6 +103,12 @@ G1_CONTENT_DISCOVERY：
 - **边界**：本 Gate 停止在研究与选题判断，不产出正式长口播、完整分镜、视频或发布。
 - **阻断条件**：核心机型/价格无法核实、关键购买场景不可比较、无法形成一条有足够证据的主要发现，标为 RETURN/UNKNOWN 并提出最低成本验证方法。
 - **Owner 介入**：默认 NONE；只有真实性命题必须使用本人经历且无法由资料判断时才集中提问。
+
+### G0 审查结论（2026-10-28）
+
+- `REVIEWER_RESULT = PASS_G0_PROJECT_INIT`；已核对 GitHub 仓库回读、v0.2 参考全文一致、根 README 导航及 Draft PR 文件范围，未修改其他项目。
+- `G0_EVIDENCE = PR #176`：[建档 PR](https://github.com/entropy-student/project/pull/176)；此 PR 未合并，main 尚无项目新目录。
+- `G1_NOT_EXECUTED`：下一轮从 G1 研究开始，执行结束交回 Reviewer 审核；不要因 G0 PASS 推断内容/成片 PASS。
 
 ## 7. UNRESOLVED / 尚未验证
 
@@ -127,3 +133,4 @@ G1_CONTENT_DISCOVERY：
 - 2026-10-28：第一期研究型消费决策调查；「7000元」为暂定叙事锚点，价格和购买价值不能当既定事实。
 - 2026-10-28：将 v0.2 写作规范作为候选输入；不提前封装成 Skill；先用真实作品验证。
 - 2026-10-28：与 PR #174 现有文章候选试验隔离，保留其为历史参考，不混合交接状态。
+- 2026-10-28：G0 Reviewer 检查 GitHub 文件回读和 PR #176 变更范围通过；G1 尚未开始。
