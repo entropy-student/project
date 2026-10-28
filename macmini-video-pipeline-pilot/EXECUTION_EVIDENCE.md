@@ -63,3 +63,17 @@
 - `RESOURCE_OR_BUSINESS_DELTA`：NONE。
 - `OWNER_ACTION_REQUIRED`：NONE。
 - `REVIEW_LINK`：https://github.com/entropy-student/project/blob/project/macmini-video-pipeline-pilot-20261028/macmini-video-pipeline-pilot/docs/G2_NARRATIVE_AND_SCRIPT.md
+
+## G3 AV DIRECTOR / 2026-10-28
+
+- `AUTHORIZED_GATE`：G3_AV_DIRECTOR_AND_ASSET_TASKS；Owner 已授权“进行下一步”且此前唯一 Handoff 的 CURRENT_GATE 为 G3，停止点是设计/QA，不进入视频生成。
+- `PREFLIGHT_FACTS`：通过 GitHub 回读唯一 Handoff、G2 全文、G1 研究、v0.2 视听写作候选，核对现行 VPS Governance v0.2.7 通用规则及 11A–11G 专项触发器；本轮仅新建/修改项目 Markdown，无服务器/部署/数据/登录/Provider/生图等专项。
+- `DIRECT_READBACK_OFFICIAL`：2026-10-28 直接回看 Apple 中国 M6 2026 发布新闻稿（2026-08-25）与 M4 2024 发布新闻稿（2024-10-29）、Apple 支持 Mac mini 功耗文档（M6 16GB/256GB 闲置 4W）及 Cloudflare Pages 公开限制文档。G3 使用这些作**视觉凭据来源**，不是实际截图文件或产品使用许可证已经获得。
+- `ACTUAL_CHANGES`：新增 `docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md`；覆盖 G2 七段的 **AV01–AV14** 语义节拍、R/X/O 编号素材任务、一个可合并的人类实拍任务及替代方案、2 套核心视觉样式与 G4 可执行小样计划。G2 已接受稿未修改；当前剪辑资产未制作。
+- `PRECHECK`：AV01–AV14 锚点以 G2 文本逐条字符串匹配检查，14/14 均对应当前脚本；原稿未被外部文件反向篡改。G3 文件经 GitHub 创建并全文回读一致。
+- `REVIEWER_CONTENT_CHECK`：3 类任务/3 种成本目标有独立画面解释；AV05 功能分流、AV11 访问链是重点而非字幕装饰；截图证据与推理动画分离；4W 标注“闲置”，网络中断标注“假设”；个人实拍 O01/O02 可选，不编造设备拥有权/故障/跑分。
+- `REVIEWER_DECISION`：`PASS_G3_AV_DIRECTOR_AND_ASSET_TASKS`（**仅证明可执行的视觉导演设计，尚无动效渲染/字幕时轴/媒体 QA**）。
+- `ANOMALIES`：Apple/Cloudflare 截图的可公开复用与归属权限尚未审计；本地循环小人/模板/渲染器是否真实可访问 UNKNOWN；朗读试听与视觉可懂程度 UNVERIFIED。G4 首个小样将验证 AV10–AV12。
+- `ROLLBACK_EFFECT`：在 `project/macmini-video-pipeline-pilot-20261028` 未合并分支内，仅新增本项目文档与常规 Evidence/Handoff 状态变更；可 Git 回滚，不触及用户本机、服务器或外部视频发布。
+- `OWNER_ACTION_REQUIRED`：NONE；G4 才决定是否需要 Owner 合并拍摄一段已有电脑工作台，不要求此时拍摄。
+- `VALIDATION_STOP`：本轮在 G3 设计 Gate 停止，不用 G3 PASS 假装已经有可播放 HTML/MP4。
