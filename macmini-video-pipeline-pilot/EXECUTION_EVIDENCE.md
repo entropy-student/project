@@ -28,3 +28,17 @@
 - `READBACK`：Handoff 已读取、候选写作规范 v0.2 文件与上传草案逐字一致、根导航链接存在。
 - `REVIEWER_DECISION`：`PASS_G0_PROJECT_INIT`；此 PASS 只涵盖项目建档和隔离范围，不涵盖研究、文案或视频。
 - `NEXT`：G1_CONTENT_DISCOVERY，后续执行必须先核对当前 Gate/新的证据；本轮强制停止。
+
+## G1 CONTENT DISCOVERY / 2026-10-28
+
+- `AUTHORIZED_GATE`：G1_CONTENT_DISCOVERY。Owner 上轮「继续下一步」；当前 Handoff 标明 G1。
+- `PREFLIGHT_FACTS`：GitHub 直接读取 v0.2.7 / VNEXT 通用条款、11 专项触发器扫描；G1 纯公开研究及项目 Markdown 修改，无服务器/Secret/部署/浏览器登录/生图/付费/删除/外部发布专项命中。直接读取本分支唯一 Handoff、历史 Evidence、v0.2 写作规范；确认 G1 待执行。
+- `DATA_PROVENANCE`：Apple 中国 2024/2026 新闻稿、苹果官网商品和功耗支持、TrendForce 2026-09-30 新闻稿、Cloudflare/Docker 官方文档；Tom's Hardware/Ars/WIRED/Macworld 独立评论；六条 B站视频页面与四条 Reddit 讨论（sample only）。所有使用过的网址与关键声明在 G1 文档第 1/2/9 节逐项记录。
+- `ACTUAL_CHANGES`：新增 `macmini-video-pipeline-pilot/docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md` 研究与编辑决策；Reviewer 更新 `REVIEWER_HANDOFF.md` 为 G1 PASS/G2 NEXT，并在本 Evidence 追加事实。
+- `VALIDATION`：6999 与 4499 出自两个 Apple 官方不同年份上市信息；价差 2500/+55.6% 为简单计算；Apple 报告 M6 特定配置闲置 4W；代表样本对涨价、AI服务器/替代做过覆盖，但不推断全站偏好。
+- `ANOMALIES_AND_LIMITATIONS`：中文 B站评论逐条采样、二手国内实际成交价/统一的 VPS 档位与生命周期对比、用户实机/流媒体访问稳定性尚不可核实；报告显式 UNKNOWN，G2 禁止填假数据或购买经历。
+- `EDITORIAL_RESULT`：主发现 F2（拆分工作站 / 本地 AI Agent / 公网网站任务）；F1 涨价作开场、F3 低功耗与公网可靠性区别作反转；传统实机评测因无设备不选。
+- `REVIEWER_DECISION`：`PASS_G1_CONTENT_DISCOVERY`，仅认定所列**有界证据**足够支撑研究型消费调查的 G2 写作，不代表受众数据完整、当前二手价实测或视频已完成。
+- `ROLLBACK_EFFECT`：只在独立未合并分支添加/修改项目 Markdown；可 Git revert/关闭 Draft PR，无主分支或外部系统变化。
+- `OWNER_ACTION_REQUIRED`：NONE；未购买设备、未生成媒体、未发布。
+- `REVIEW_LINKS`：G1 报告与唯一 Handoff 均需 GitHub 读回，实际回读结果附后。
