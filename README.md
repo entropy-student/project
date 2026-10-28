@@ -36,7 +36,7 @@
 |---|---|---|
 | **SPW Journal (Halo)** | Halo 个人博客、本地 Docker 部署、SPW 主题与图文草稿工作流 | [交接记录](./halo-spw-journal/REVIEWER_HANDOFF.md) |
 | **Meadow 页面还原** | 录屏参考的交互式草地页面、昼夜与光点动效 | [交接记录](./meadow-landing-recreation/REVIEWER_HANDOFF.md) |
-| **Mac mini 实操指南** | Mac mini 图文实操、封面打磨与移动端成品验证 | [Handoff](./macmini-practical-guide/REVIEWER_HANDOFF.md) |
+| **实操型视频文案实验（Mac mini 首期）** | 调研可复用的视频叙事结构、口播文案与对应配画面方案；HTML 仅供审稿 | [Handoff](./macmini-practical-guide/REVIEWER_HANDOFF.md) |
 
 ### 产品与商业项目
 
