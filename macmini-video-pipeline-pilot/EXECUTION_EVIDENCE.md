@@ -48,3 +48,18 @@
 - `OBJECTIVE_READBACK`：直接在当前项目分支取回 `docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md` 全文与新提交内容一致；取回唯一 `REVIEWER_HANDOFF.md` 全文与新提交内容一致；Evidence 含本轮接受结果。
 - `SCOPE_READBACK`：Draft PR #176 变更路径仅仓库根 `README.md` 与 `macmini-video-pipeline-pilot/**`，无其他项目改动。
 - `FINAL_GATE`：`PASS_G1_CONTENT_DISCOVERY`，新 Gate 为 `G2_NARRATIVE_AND_SCRIPT`。研究结论属于有限证据之下的编辑判断，不是实机测试或市场代表性证明。
+
+## G2 NARRATIVE + COMPLETE VOICEOVER / 2026-10-28
+
+- `AUTHORIZED_GATE`：G2_NARRATIVE_AND_SCRIPT。Owner 已指示继续下一步，唯一 Handoff 原 Gate 为 G2。
+- `PREFLIGHT_FACTS`：从 GitHub 读取本分支当前 Handoff、G1 报告、v0.2 候选写作规范与现行 VPS Governance 通用段落并扫描 11A–G；本 Gate 仅创作文本/修改项目 Markdown，不触发主机部署、Secret、付费、浏览器登录、删除、Codex 生图专项。
+- `FACT_RECHECK`：2026-10-28 重新核对 Apple 中国 2024-10-29 M4 历史发布起价 ¥4,499；Apple 中国 2026-08-25 M6 发布起价 ¥6,999；Apple 支持功耗表 M6 16/256 闲置 4W；Cloudflare Pages Free 静态网站部署/限制。可访问官方源及 G2 文末精确链接；没有拿二手价/实机数据冒充事实。
+- `ACTUAL_CHANGES`：新增 `docs/G2_NARRATIVE_AND_SCRIPT.md`：七段完整中文口播、内容决策卡、语义节拍表、可核对事实表、证据限制和 G3 需补之处；更新唯一 Handoff 为 G2 PASS / G3 NEXT。
+- `OBJECTIVE_READBACK`：GitHub 直接取回 G2 文本与创建内容一致；Handoff/Evidence 最终写回后另回读。
+- `CONTENT_REVIEW`：文本涵盖价格事实与不同世代边界、现有电脑/本地 AI/公网网站三种不同需求、4W“闲置非负载”的限制、最强反方（macOS、本地数据/本地模型等）、适用条件与非亲测身份。没有虚构已购、开箱、长期使用、跑分或模拟家庭故障。七段在逻辑上互相推进；仍须通过后续音画测试验证真实观看节奏。
+- `REVIEWER_DECISION`：`PASS_G2_NARRATIVE_AND_SCRIPT`：**仅在文字、叙事逻辑与所列证据范围内通过**，不等于已试听、素材权益合格或已完成视频。
+- `ANOMALIES`：本人最终口吻/具体场景是否符合 Owner 的真实体验待 G3/G4 核对；本地设备、素材、剪辑器、配音与真实时长 UNKNOWN；无当前二手/主机/云的同用途实时价，因此避免定量 TCO 结论。
+- `ROLLBACK_EFFECT`：文档只落在 Draft PR #176 的独立项目目录；可 Git revert，未触及主分支、服务器、真实用户数据、硬件采购或对外发布。
+- `RESOURCE_OR_BUSINESS_DELTA`：NONE。
+- `OWNER_ACTION_REQUIRED`：NONE。
+- `REVIEW_LINK`：https://github.com/entropy-student/project/blob/project/macmini-video-pipeline-pilot-20261028/macmini-video-pipeline-pilot/docs/G2_NARRATIVE_AND_SCRIPT.md
