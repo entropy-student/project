@@ -1,119 +1,111 @@
 # Mac mini Video Pipeline Pilot — REVIEWER HANDOFF
 
-> **唯一当前项目状态** · 2026-10-28 · G2 文本审查接受  
-> 治理：[VPS Project Governance v0.2.7](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md) 通用 Gate / Evidence / Reviewer 机制，VPS 运维部分不适用。  
-> 工作区：`entropy-student/project` · 分支 `project/macmini-video-pipeline-pilot-20261028` · [Draft PR #176](https://github.com/entropy-student/project/pull/176)（**尚未合并**）。  
-> 历史执行记录见 `EXECUTION_EVIDENCE.md`；研究和稿件细节各见 `docs/`，本文件不复制长篇全文。
+> **唯一当前项目状态** · 2026-10-28 · **G3 设计审查 PASS / G4 小样 NEXT**  
+> 治理：[VPS Project Governance v0.2.7](https://github.com/entropy-student/spike.skill/blob/main/vps-project-governance/VNEXT.md) 通用部分；VPS 运维条款不适用。  
+> GitHub：`entropy-student/project` · 分支 `project/macmini-video-pipeline-pilot-20261028` · [Draft PR #176](https://github.com/entropy-student/project/pull/176)（未合并）。  
+> **动态状态只写这里**；执行事实去 Evidence，研究/文案/分镜正文去 docs。
 
 ## PROJECT_GOAL
-- **第一目标**：做出一部有真实研究、有视听设计、16:9、可供 B 站发布的 Mac mini 消费决策视频。
-- **第二目标**：用该作品验证低成本、AI 主导「选题→研究→文案→导演→补真实素材→成片→验收」的可复用流程。
-- 发布/购买设备/付费/安装新系统由 Owner 另行决定；本项目的文本 PASS 不是作品 PASS。
+- **第一目标**：完成一期有真实研究、有视听设计、16:9、可供 B 站发布的 Mac mini 消费决策视频。
+- **第二目标**：验证 AI 主动策划「选题→研究→文案→视觉导演→素材补全→成片→验收」的低成本可复用方法。
+- 发布/购买设备/付费/安装系统由 Owner 另行决定。各 Gate 的设计/文本 PASS 不代表 VIDEO_PASS。
 
 ## PROJECT_STAGE / CURRENT_ACCEPTED_STATE
-- `G0_PROJECT_INIT = PASS`：独立目录、唯一交接、PR #176 与治理适配回读已通过。
-- `G1_CONTENT_DISCOVERY = PASS`：限定资料范围内研究与「三种需求分流」主发现已接受；详情 [G1 报告](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)。
-- `G2_NARRATIVE_AND_SCRIPT = PASS`：完整口播 V1 + 七段叙事功能 + 文案事实来源 + 视听职责 + 反方与待验证素材已保存/Reviewer 文字审查。详见 [G2 全文](./docs/G2_NARRATIVE_AND_SCRIPT.md)。
-- **PASS 范围**：正文有连贯叙事，官方价格、闲置功耗、静态网站托管等关键主张有已核对公开资料支撑；没有明显虚构购买/测试经历。
-- **未通过范围**：还没有真人试听、真实镜头、美术、素材许可、国产二手/小主机与 VPS 同工况价格、实机跑分或最终成片；G2 PASS 不代表这些已完成。
-- `PROJECT_STAGE = SCRIPT_ACCEPTED / DIRECTOR_READY`
-- `CURRENT_GATE = G3_AV_DIRECTOR_AND_ASSET_TASKS`
-- `NEXT_STEP = G3`：围绕 V1 做视听双栏分镜（语义镜头而非逐句配图）、优先级明确的素材任务书和 1–2 段低成本动效验证方案；G3 自己停止，不越权制作整片。
-- `OWNER_ACTION_REQUIRED = NONE`（目前）；G3 可列出需要的本人桌面拍摄任务，尚不要求立即拍。
-- `DEFAULT_EXECUTION_CHANNEL = ChatGPT Reviewer + GitHub 项目分支`（文本/研究）；本地媒体执行渠道 `UNKNOWN`，后续 G4 查明。
-- `CURRENT_ROLLBACK_STATUS = 文档仅在未合并 Draft PR，Git 可回退；无真实服务/用户数据/商业变更`。
+- `G0_PROJECT_INIT = PASS`：独立立项与治理/唯一 Handoff。
+- `G1_CONTENT_DISCOVERY = PASS`：有限范围内的选题研究；主发现三种需求对应不同价值标准。详见 [G1](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)。
+- `G2_NARRATIVE_AND_SCRIPT = PASS`：完整中文口播 V1（七段）与文本层面事实审查。详见 [G2](./docs/G2_NARRATIVE_AND_SCRIPT.md)。
+- `G3_AV_DIRECTOR_AND_ASSET_TASKS = PASS`：14 个**语义视听节拍**、证据与自制图形的角色分配、素材任务/替代方案、两种最小动效小样计划。详见 [G3](./docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md)。
+- **当前 G3 通过范围**：设计覆盖全文、与 G2 声音锚点对应、关键来源/展示目标/责任和失效替代明确；允许进入 G4 实物小样制作。
+- **未验证范围**：尚无真正动效/HTML/MP4、未试听配音、未拿到可用的解说小人/桌面素材、素材权利仍待审核。不能把“已规划”写成“画面已能运行”。
+- `PROJECT_STAGE = AV_DESIGN_ACCEPTED / PROTOTYPE_PENDING`
+- `CURRENT_GATE = G4_ASSET_AND_VISUAL_PROTOTYPE`
+- `NEXT_STEP = G4`：真实生成并审看 **AV10→AV11→AV12** 的低成本**可打开小样**；有条件再测 AV04→AV05 三任务分流，带截图/可检验媒体文件及事实/视觉 QA，不批量生产整片。
+- `OWNER_ACTION_REQUIRED = NONE`：首个小样只用可自行制作的图形/资料，不必 Owner 买机或拍摄。
+- `DEFAULT_EXECUTION_CHANNEL = ChatGPT Reviewer + GitHub 项目分支（研究/设计文档）`；可用媒体执行通道需要 G4 在实际工具环境读回核实。
+- `CURRENT_ROLLBACK_STATUS = 未合并 Draft PR 仅文档，Git 可回退，无外部业务、服务或媒体发布变更`。
 
 ### 项目进度
-
-| Gate | 目标 | 状态 |
+| Gate | 目标 | 当前状态 |
 |---|---|---|
-| G0 | 立项、唯一交接与治理适配 | PASS |
-| G1 | 研究、反证、受众问题与内容决定 | PASS |
-| G2 | 叙事设计、完整中文口播与事实自审 | PASS |
-| G3 | 视听双栏导演、反向补素材任务、视觉验证计划 | NEXT |
-| G4 | 素材补全、动效/镜头小样验证 | PENDING |
-| G5 | MP4/音频/字幕/封面、事实与视听 QA | PENDING |
-| G6 | Owner 验收、项目复盘与流程复用判断 | PENDING |
+| G0 | 立项、隔离、唯一交接 | PASS |
+| G1 | 研究、反证与选题判断 | PASS |
+| G2 | 叙事与完整中文口播 | PASS |
+| G3 | 视听导演、反向素材任务、动效方案 | PASS |
+| G4 | 真正素材补全与关键视觉小样 | NEXT |
+| G5 | MP4 / 配音 / 字幕 / 封面与作品 QA | PENDING |
+| G6 | Owner 验收及可复用流程复盘 | PENDING |
 
-## CURRENT EDITORIAL DECISIONS / 现行内容判断
+## CURRENT EDITORIAL / DIRECTOR DECISIONS
+- **选题**：《一个普通人，真的需要花 7000 块买 Mac mini 吗？》。严谨的价格画面用「¥6,999 起」，两代官方历史发布价格别当现有成交价格，发布前再核价。
+- **观众承诺**：帮已有电脑、对 Mac mini/AI/个人网站动心的普通人辨认自己究竟需要什么，而非给无实机根据的性能测评。
+- **核心发现 F2**：Mac 主力工作站、本地 AI/常开任务、公网网站的采购目标不同。F1：2024 M4 4499 → 2026 M6 6999 仅做跨代历史价开场。F3：Apple M6 官方 **4W 闲置** ≠ 本机实际负载耗电 ≠ 网站公网可用。
+- **脚本冻结基线**：[G2 口播 V1](./docs/G2_NARRATIVE_AND_SCRIPT.md)；导演在 G3 未重写已接受的全文。G4 允许仅因实际试听/画面证据对冗余第一人称语句做最小局部修订并留痕。
+- **画面主方法**：证据（真实官网资料）、解释（自制图形与路径）、情境（本人已有电脑，仅在拥有真实画面时）、节奏（文字与切换）四种职责分开；不从“一句对应一张图”推导制作。
+- **两次关键视觉**：AV05 中心小电脑分成三类具体任务；AV11 以访问链显示“设备开机但假设网络断开”，不伪装实测故障。
+- **形式**：16:9 主画面 + 清楚底部字幕 + 可隐藏的角落解说小人 + 可选左上角镜头计数；保持证据区可读优先。实际风格模板/角色循环视频仍待 G4 找到真实文件；不把无文件阻断为期望。
+- **不强制展示 AI 聊天**；AI 是幕后调查、导演与素材计划工具。
+- **Owner 一次性材料**：若后续需要个人感，由 G4/G5 精确提出「已有桌面 8–15 秒 + 脱敏网站画面」可选合并任务；拿不到可用不冒充实拍的自制情境。
 
-1. **候选标题**：《一个普通人，真的需要花 7000 块买 Mac mini 吗？》，正式价格画面写“¥6,999 起”；发布前复核。备用：《Mac mini 能当服务器，所以我就该买一台？》。
-2. **承诺**：帮普通人分清「需要 Mac 工作站」「需要本地 AI/自动化运行环境」「需要稳定公网网站」三种采购目标。
-3. **主发现 F2**：这三件事不是同一张账单，价格和硬件参数不能直接跨用途比较；F1（2024 M4 ¥4499 → 2026 M6 ¥6999）仅开场冲突；F3（闲置 4 W ≠ 服务稳定）为关键转折。
-4. **完整文本**：[G2 口播全文 V1](./docs/G2_NARRATIVE_AND_SCRIPT.md)。结构 A心动/价格→B「都能做」陷阱→C日常工作站→D本地AI与云端调用→E公网服务反转→F有条件购买标准→G个人收束。
-5. **风格**：普通消费者第一人称，具体工作需求驱动，少量自然轻松口吻；不能假装买了机器/做过长期测试。
-6. **创作方法**：声画共同叙事；AI 协助研究不等于要在镜头里展示对话；画面必须承担证据/解释/情境/节奏职责。
-7. **反方保留**：macOS 特定软件、本地模型与本地数据需求，可能构成购买 Mac mini 的正当理由；不做「任何人都不该买」结论。
-8. **条件**：Mac mini 不是唯一可行硬件；Cloudflare Pages 的静态托管也不等于后台数据库/任务的通用免费替代。
-
-## SYSTEM_MAP / 项目资产
-
-```text
-Owner goal + topic
-→ G1 Evidence / editorial decision           PASS
-→ G2 narrative + complete narration          PASS
-→ G3 AV Director / evidence-backed beats      NEXT
-→ G4 Owner material tasks + visual prototype PENDING
-→ G5 Voice + edit + render + QA               PENDING
-→ G6 Owner acceptance + workflow reflection   PENDING
+## SYSTEM_MAP / 文件与依赖
 ```
-
-- 唯一当前状态：`REVIEWER_HANDOFF.md`，不得新建并行 state 文件。
-- 验证事实：`EXECUTION_EVIDENCE.md` 追加记录，不能覆盖既有 G0/G1。
-- [G1 研究资料](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)；[G2 脚本 V1](./docs/G2_NARRATIVE_AND_SCRIPT.md)。
-- [写作规范 v0.2 候选](./docs/WRITING_STANDARD_DRAFT_v0.2.md) 未正式安装 Skill。
-- 邻近 `ai-story-showrunner/`、`visual-narrative-animation-lab/`、旧 Mac mini 文章 PR #174 是只读参考；不改其主状态。
-- 当前用户本地媒体工作路径、可用角色/循环小人及渲染软件：`UNKNOWN`；G4 必须确认，不凭聊天推断文件可访问。
-- 无部署、付款、Secret、用户真实数据处理或公开发布。
+Owner topic → G1 sources/editorial PASS → G2 spoken script PASS
+→ G3 14 semantic AV beats/asset planning PASS
+→ G4 working visual demo(s) NEXT → G5 finished video QA
+→ G6 Owner acceptance / workflow retrospective
+```
+- 唯一状态 `REVIEWER_HANDOFF.md`；执行证据 `EXECUTION_EVIDENCE.md`。
+- [G1 研究](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)；[G2 脚本](./docs/G2_NARRATIVE_AND_SCRIPT.md)；[G3 视听导演](./docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md)；[v0.2 写作候选](./docs/WRITING_STANDARD_DRAFT_v0.2.md)。
+- `ai-story-showrunner/` / `visual-narrative-animation-lab/` / PR #174 是**只读参考**，不修改其状态或共享资产。
+- 真实媒体执行环境、角色视频文件、素材授权：`UNKNOWN`；没有真实视频生成、外部登录/付费、发布、Mac 实机验证。
 
 ## CRITICAL_CONSTRAINTS
+1. 不制造作者已买设备/实测/已开通服务/经历宕机的画面或语句。
+2. 每个核心主张有明确证据级别；截图/价格/功耗标注机型/日期；4W 只指官方闲置状态。
+3. 重要画面表达因果/证据，禁止整片退化成逐句PPT；视觉演示优先于对模板软件的无止境搜索。
+4. 所有未经授权的产品照片/官网截图/音视频的公开复用状态标为 UNKNOWN；与阅读事实来源不同，发布前清理或替代。
+5. 没有用户实拍时不删核心推理；自制结构示意可不使用虚假体验画面。
+6. 不为视频实验默认买 Mac mini、调用昂贵视频生成或安装一套新复杂系统。
+7. 本项目隔离：不改 Governance、邻近项目、main、PR #174；不合并 PR，不自动发布。
+8. 每 Gate 要 Evidence → Reviewer 复核 → 唯一 Handoff 更新 → GitHub 回读，未取得实际样例不得标媒体 PASS。
 
-- 研究型消费决策而非已有设备亲测；任何本人口述经历需真实，未知为 UNKNOWN。
-- 实操/观点/测评是**观众承诺**，不是互斥镜头语法；不要每轮重新投票。
-- 每个会改变购买判断的事实要有证据；原厂营销不能代替独立实测；旧发布价不能算现在二手价。
-- 画面不可只装饰文字：应优先使用来源可查的产品截图、真实录屏、逻辑图和可审查的计算；AI 情境图不能冒充实机/界面证据。
-- 缺关键画面主动反向规划补素材任务，不因 Owner 未给素材而自动阉割表达；缺真实证据不编造效果。
-- 控制预算：复用已有视频模板/解说小人，确认资源后才调用；不默认购买硬件、高价生成或变更本机设置。
-- 不改 Governance、不合并 PR、不动其他项目、不公开发布；实际素材权益在 G3/G4 核查。
-- 任何 Gate 验收必须 Evidence 可查 + Reviewer 检查 + Handoff 持久化 + GitHub 回读；不能用本轮口头陈述代替。
-
-## CURRENT_GATE / G3_AV_DIRECTOR_AND_ASSET_TASKS
-
-- `GATE_ID`：G3_AV_DIRECTOR_AND_ASSET_TASKS。
-- `OBJECTIVE`：把 G2 通过的脚本变成可拍/可做的视听创作包，允许声画之间的局部必要修改，但不重新发明选题或未证实的购买结论。
-- `MAX_ENDPOINT_THIS_ROUND`：`docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md`（双栏视听节拍、媒体表达选择、需要补的素材任务与验收要求、少量动效小样计划），必要时对 G2 草稿做有证据的局部修订，更新本 Handoff 与 Evidence。
-- `MANDATORY_REVIEW_STOP`：完成 G3 设计/QA 即 STOP；不在 G3 自动启动视频生成/大批量生图或发布。
-- `TARGET_AND_SCOPE`：仅本项目 G3 文档、必要的 G2 局部修订、Handoff、Evidence。
-- `APPLICABLE_CRITICAL_CONSTRAINTS`：证据分层、不给业余消费者臆造真实经历；画面有证据/解释职责；低成本；Owner 实拍任务合并。
-- `PREFLIGHT`：读取当前 Handoff/G2/G1 指向的证据、v0.2 视听规范；视听类型选择必须有表达理由。
-- `REQUIRED_EVIDENCE`：覆盖全段的 AV 双栏节拍、与 G2 对照、主要来源/使用权待核项、素材缺口的精确需求（谁拍、拍什么、拍到何种状态）、至少一个关键转折动效的可实现方式及首个小样验收方法。
-- `ACCEPTANCE_CRITERIA`：画面承担实质任务；不做逐句配图；关键数字能追溯；必须补拍的实拍/录屏与替代策略明确；没有过度复杂的动画；G4 可直接接着做低成本小样。
-- `ROLLBACK_STATUS_OR_PLAN`：文档隔离未合并分支，Git 回退无媒体/本机影响。
-- `OWNER_ONLY_ACTIONS`：本轮仍不需购买/拍摄/发布；如遇真实个人身份关键主张才集中询问。
-- `REVIEWER_TO_EXECUTOR_RELAY`：只读取本 Handoff、G2 文档第 2/3/4/6 节、G1 第 1/3/4/7 节及 v0.2 的「声音与画面共同设计」「主动补素材任务书」；不用广泛检索历史；输出双栏视听脚本与素材任务，不生成批量媒体。
-- `EXECUTOR_TO_REVIEWER_RELAY`：G3 设计稿 + 文件回读 + 未解决素材/权益/媒体环境问题；Executor 仅报 PASS_CANDIDATE，Reviewer 决定正式结果。
+## CURRENT_GATE / G4_ASSET_AND_VISUAL_PROTOTYPE
+- `GATE_ID`：G4_ASSET_AND_VISUAL_PROTOTYPE。
+- `OBJECTIVE`：把 G3 的关键视觉概念做成**真实可视化/可播放的最低成本小样**，用实际画面而非描述验证是否理解、是否好看、是否容易实现。
+- `MAX_ENDPOINT_THIS_ROUND`：**优先完成 AV10–AV12 结构动效**，含可打开本地 HTML/等效可播放样例、2–3 张 16:9 截图、静态替代状态及可复现启动说明；首个小样确实合格时，可补 AV04–AV05 视觉分流小样，但不制作整期。
+- `MANDATORY_REVIEW_STOP`：审查首轮小样的真实性、可读性、可实现性并更新 Handoff/Evidence 后停止；禁止越到 G5 的配音/全片渲染/发布。
+- `TARGET_AND_SCOPE`：仅 `macmini-video-pipeline-pilot/` 的 G4 原型、相应文档/Evidence/Handoff；外部原始素材需有来源和权限记录。
+- `APPLICABLE_CRITICAL_CONSTRAINTS`：不虚构故障、不冒充 Apple 画面、版权审查、低成本、以真实文件可读回为准。
+- `PREFLIGHT`：确认实际执行环境/可用浏览器与文件来源；从 [G3 第 4 节](./docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md) 的 S0–S4 工作；验明可截图/渲染、不能仅凭描述 PASS。
+- `REQUIRED_EVIDENCE`：真实 HTML/等价媒体及生成过程、截图文件/预览确认、无声可读性检查、证据标注/素材授权字段、与静态替代对照、缺口/返工和所用工具清单。
+- `ACCEPTANCE_CRITERIA`：AV10-12 的「4W 闲置 ≠ 公网稳定在线」通过静音画面能懂；节点/条件顺序真实，不暗示真实网络故障、数字出处可查；不溢出字幕/主画面；源码与实际截图对应；低成本可复用。
+- `ROLLBACK_STATUS_OR_PLAN`：原型仅在项目分支/工作目录，回滚删除新增原型资产，不触及其他项目/运行服务；任何本地全局安装需另行评估，不自动进行。
+- `OWNER_ONLY_ACTIONS`：不买机器、不需要个人实拍；若后续只能使用无法自动获取的本机循环解说小人，先使用不带角色的临时样例。
+- `REVIEWER_TO_EXECUTOR_RELAY`：首先读取本 Handoff 的 G4 定义及 G3 文档第 4/5/7 节与 G2 的 E 段，依据 Apple 官方功耗行和 Cloudflare Pages 限制生成 16:9 的 S0–S4 小样；先验证真实可打开、截图正确；只做一个实质小样，不搜索全仓库/不安装 AE/不调用视频生成。
+- `EXECUTOR_TO_REVIEWER_RELAY`：提供原型文件/截图/复现说明、直观可理解性和错误/来源审查，输出 PASS_CANDIDATE/RETURN；由 Reviewer 决定正式 PASS。
 
 ## UNRESOLVED
-- V1 是否朗读自然、每部分所需时长与听感；实际语音输出/试听尚未发生（G4/G5）。
-- 本人是否认可最终口播中的第一人称态度，真实工作站画面与素材仍需核对（G3/G4）。
-- 当前中国二手 M4 与 x86 主机同工况可比报价、具体 VPS 生命周期总成本：UNKNOWN（不要写精确省钱数）。
-- 当前本地视频模板、解说小人、渲染器/剪辑环境、素材原始授权及可用性：UNKNOWN（G3/G4）。
-- 公网服务、本地 AI、月电量/可靠性没有实机实验，不能写成亲测。
-- B 站评论需求频率与视频流量因果仍 UNKNOWN，不影响以候选叙事做下一 Gate，但不能宣称已被市场验证。
-- 此流程能否对实操/测评不同主题复用：只有真正成片和后续复测才能回答。
+- 实际渲染环境/浏览器与用户本地解说小人、现有模板文件是否可用：UNKNOWN。
+- G3 为设计 PASS，未有动画、截图、配音/MP4/实际字幕/声音节奏 QA：G4/G5 才测。
+- Apple/Cloudflare 相关截图在最终 B 站视频中可用的版权与归属边界：未审计；可用自绘来源卡替代。
+- 无 Mac mini 实机/长期 AI 或网站稳定性验证；不能宣称亲测。
+- B站评论真实受众频次、竞争热度因果、统一报价/TCO：UNKNOWN；不追加无数据的量化结论。
+- G2 一些感受/第一人称表达的 Owner 真实性认定仍待需要时核对；不因用户此轮未表态就默认同意亲历细节。
+- 是否有吸引观众的真实视觉节奏、跨类型流程复用能力：真实小样和作品完成后验证。
 
 ## NEXT_STEP
-**G3**：将 G2 脚本转换为视听双栏导演稿；反向明确哪些素材必须由 Owner 实拍、哪些可以现有录屏/公开资料/信息图完成，设计一个关键转折（闲置 4 W ≠ 互联网可靠访问）的低成本视觉呈现。**不立即要求 Owner 自己规划镜头。**
+执行 **G4 首个可运行视觉小样**：围绕 G3 的 AV10→AV11→AV12，制作“4W 闲置”和访问路径分离的 16:9 HTML 动效，导出截图/静态备选与复现说明，**先证明画面能解释信息**，再决定是否制作整期，避免反复陷入更多文字方案。
 
 ## OWNER_ACTION_REQUIRED
-`NONE`
+`NONE`。首轮 G4 不要求任何用户出镜、购买或安装工具。
 
 ## EVIDENCE_POINTERS
-- [G1 研究与编辑决策](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)
-- [G2 完整口播与自审](./docs/G2_NARRATIVE_AND_SCRIPT.md)
-- [执行证据（G0/G1/G2）](./EXECUTION_EVIDENCE.md)
-- [v0.2 写作/视听草案](./docs/WRITING_STANDARD_DRAFT_v0.2.md)
-- [项目 Draft PR](https://github.com/entropy-student/project/pull/176)
+- [G1 内容研究](./docs/G1_RESEARCH_AND_EDITORIAL_DECISION.md)
+- [G2 连续口播](./docs/G2_NARRATIVE_AND_SCRIPT.md)
+- [G3 双栏导演与素材任务](./docs/G3_AV_DIRECTOR_AND_ASSET_TASKS.md)
+- [执行证据 G0–G3](./EXECUTION_EVIDENCE.md)
+- [写作/视听规范候选 v0.2](./docs/WRITING_STANDARD_DRAFT_v0.2.md)
+- [Draft PR #176](https://github.com/entropy-student/project/pull/176)
 
-## DECISION_LOG / 新变更
-- 2026-10-28 G2：确认一篇以「我为什么动心 → 我把三种需求混在一起 → 发现省电不等于公网可用 → 分条件做决定」为主线的完整 V1 文本；没有新实机测试，也没有自动升级写作 Skill；下一 Gate 是导演/素材规划。
+## DECISION_LOG（最小化）
+- 2026-10-28 G2：研究型消费决策文字 V1 通过，未试听也未证实可拍。
+- 2026-10-28 G3：保留 G2 口播基线，确立两次重点视觉表达；`AV05` 三需求分流、`AV11` 访问链因果；Owner 实拍/角落角色可选不阻断 G4 首测；下一轮先做真正可打开的 P2 小样。 
