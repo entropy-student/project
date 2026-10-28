@@ -15,8 +15,16 @@
 ## CHANGES_AND_RESULTS
 
 - `ACTUAL_CHANGES`：创建分支/目录/README/唯一 Handoff/本 Evidence/写作 v0.2 候选参考；根 README 新增导航。最终 GitHub PR 与 read-back 见后续记录。
-- `RESULT`：`PASS_CANDIDATE` 直到 Reviewer 完成 PR + 文件实际回读；不等于 PASS。
+- `RESULT`：`PASS` 直到 Reviewer 完成 PR + 文件实际回读；不等于 PASS。
 - `VALIDATION`：本 Gate 仅验证文档与仓库变更，不进行作品研究、设备测试、文案交付、视频生成和发布。
 - `ANOMALIES`：无已知仓库污染；视频工具/素材状态仍为 UNKNOWN。
 - `ROLLBACK`：关闭未合并 PR / 删除本次分支；主分支及其他项目无改变。
 - `RESOURCE_OR_BUSINESS_DELTA`：无部署、支付、采购和公开发布；仅 Git 文档文件。
+
+## G0 REVIEWER READ-BACK / 2026-10-28
+
+- `PR`：https://github.com/entropy-student/project/pull/176，Draft；未合并。
+- `CHANGED_PATHS`：`README.md`, `macmini-video-pipeline-pilot/EXECUTION_EVIDENCE.md`, `macmini-video-pipeline-pilot/README.md`, `macmini-video-pipeline-pilot/REVIEWER_HANDOFF.md`, `macmini-video-pipeline-pilot/docs/WRITING_STANDARD_DRAFT_v0.2.md`。
+- `READBACK`：Handoff 已读取、候选写作规范 v0.2 文件与上传草案逐字一致、根导航链接存在。
+- `REVIEWER_DECISION`：`PASS_G0_PROJECT_INIT`；此 PASS 只涵盖项目建档和隔离范围，不涵盖研究、文案或视频。
+- `NEXT`：G1_CONTENT_DISCOVERY，后续执行必须先核对当前 Gate/新的证据；本轮强制停止。
