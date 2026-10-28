@@ -77,3 +77,21 @@
 - `ROLLBACK_EFFECT`：在 `project/macmini-video-pipeline-pilot-20261028` 未合并分支内，仅新增本项目文档与常规 Evidence/Handoff 状态变更；可 Git 回滚，不触及用户本机、服务器或外部视频发布。
 - `OWNER_ACTION_REQUIRED`：NONE；G4 才决定是否需要 Owner 合并拍摄一段已有电脑工作台，不要求此时拍摄。
 - `VALIDATION_STOP`：本轮在 G3 设计 Gate 停止，不用 G3 PASS 假装已经有可播放 HTML/MP4。
+
+## G4A REAL VISUAL PROTOTYPE / 2026-10-28
+
+- `AUTHORIZED_GATE`：G4_ASSET_AND_VISUAL_PROTOTYPE 的首个实际小样（G3 P2 AV10–12），Owner 上轮明确“开始吧”。
+- `PREFLIGHT`：读 GitHub 唯一 Handoff、G3 P2 第 4/5/7 节、G2 E 段、Governance v0.2.7 通用部分与 11A–11G 触发器；此轮仅项目文档/HTML 图形及沙箱媒体，不命中部署/Secret/付费/生图等专项。
+- `FACT_SOURCES`：Apple 中国支持 https://support.apple.com/zh-cn/103253 （M6 16GB/256GB 4 W **idle**）及 Cloudflare Pages https://developers.cloudflare.com/pages/platform/limits/ 于 2026-10-28 再读；本轮无 Apple/Cloudflare 原始图像再利用，仅引用事实/名称。
+- `CHANGES`：新增项目 `prototype/g4_network_availability.html` 自包含五状态动态 HTML、`prototype/README.md` 运行说明、`docs/G4A_PROTOTYPE_QA.md` 实测记录；更新唯一 Handoff 为 G4A PASS / G4 PARTIAL；未修改上游 G2/G3。
+- `EXECUTOR_REAL_RUN`：容器实际有 /usr/bin/chromium 和 /usr/bin/ffmpeg、Python Playwright。首次本机 file:// 页面导航被管理员沙箱阻断；后用 `page.set_content` 加载同一源内容，S0–S4 均成功运行；JS `pageerror=[]`。
+- `ACTUAL_SCREENSHOTS`：Playwright 对 S0(1.2s)、S1(5.4s)、S2(9.7s)、S3(13.8s)、S4(17.5s) 生成 5 张 1600×900 PNG；另 1280×720 自适配尺寸检查通过。
+- `REAL_MP4`：采集 240 帧浏览器 JPEG，来源是真实计时的动态页面；FFmpeg 转码 H264 1600×900 / 30fps（12fps 原始帧，后续重复帧补帧），最终 20.0 秒，711008 bytes，无音轨。MP4 实际提取 S3、S4 关键帧复核。
+- `LAYOUT_ITERATION`：第一轮 S3 在托管替代路径显示时，底部标题与原主结论重叠；经调整隐藏原主结论层、保留托管路径；二次录屏帧检验证明未再遮挡。
+- `BROWSER_QA`：无 JS 异常；5 个状态、4W 闲置与假设标签、网页访问链、托管边界均可见；“无声观众能理解”只有 Reviewer 编辑判断，真实被试未做。
+- `QA_LIMITS`：尚未真实 Mac/断网/电费实测；无音频、TTS、右下解说小人、成片字幕/封面；原始二进制 PNG/MP4/ZIP 当前**仅在沙箱会话**，GitHub 已持久化源 HTML 与可重建步骤，媒体没有上传到 GitHub，新的 Reviewer 不应假定可直接访问旧沙箱路径。
+- `ARTIFACTS`：repo code `macmini-video-pipeline-pilot/prototype/g4_network_availability.html`；QA `docs/G4A_PROTOTYPE_QA.md`；现场媒体 `/mnt/data/macmini_g4/{index.html,macmini_g4_visual_prototype.mp4,g4_static_fallback.png,screenshots/S0-S4.png}`；ZIP `/mnt/data/macmini_g4_deliverables.zip`（当前会话真实已生成并验证）。HTML SHA256 prefix c98bcce8678fe17f，MP4 prefix bb98b7c355014057。
+- `RESULT`：`PASS_G4A_P2_NETWORK_AVAILABILITY_PROTOTYPE`；仅表示**技术执行、基础静音画面自审与证据边界**通过，整项 G4 仍 `PARTIAL / IN_PROGRESS`；下一个 G4B P1 视觉小样并进行资产可持续归档。
+- `ROLLBACK`：独立 Draft PR #176 Git 文件/沙箱临时媒体，无主分支、用户 Windows、VPS、付费资源或公开平台影响；可 Git 回退。
+- `OWNER_ACTION_REQUIRED`：NONE。
+- `VERIFICATION_TODO`：GitHub Handoff/Evidence 直接回读、PR 仅本项目路径的审查结果补记。
