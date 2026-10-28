@@ -1,25 +1,27 @@
 # REVIEWER_HANDOFF — CURRENT TRUTH
 PROJECT_GOAL: Reproducible low-cost 16:9 narrated explainer videos from a structured script and actual assets.
-PROJECT_STAGE: V6_LOCAL_BROWSER_VERIFIED / REPOSITORY_DOCS_PR_ONLY / PRODUCTION_NOT_READY
+PROJECT_STAGE: V6_LOCAL_BROWSER_VERIFIED / STORYBOARD_SPEC_CANDIDATE / PRODUCTION_NOT_READY
 SYSTEM_MAP: HTML/CSS/JS browser preview with 6 fixed demo scenes + optional uploaded scene 7, CSS animations, setInterval auto paging, 1920x1080 canvas, 1600x900 content stage, VP9 transparent presenter, no backend/database/network/Secrets or MP4 renderer.
-CURRENT_ACCEPTED_STATE: Local 2026-10-28 Chromium test passed 6 scene hard-cuts/animations, video pause/resume, custom media, 75/120/150/170% caption safety and default 120% presenter; full evidence in offline private work package. This draft GitHub PR is not main.
-CURRENT_GATE: G1_DATA_DRIVEN_RENDER_POC; 3 scenes only, json input, voice/SRT, frame-based renderer, 1920x1080 30fps H.264/AAC MP4.
+CURRENT_ACCEPTED_STATE: V6 browser baseline verified locally (private ZIP). Storyboard v1.0 spec candidate, reviewer rubric, historic A vs reviewer B method comparison documented in draft PR. No independent double-agent result or MP4 production; draft PR not merged to main.
+CURRENT_GATE: G0_STORYBOARD_PLAN_VALIDATION. Prior three-scene render Gate G1 is deferred.
 CRITICAL_CONSTRAINTS: Black/silver-green layout, scene/REC, white centered caption safety, real transparent WebM 120%, zero crossfade, distinct scene animation, Windows CPU-first, no unnecessary costs, no public upload of presenter video.
 DEFAULT_EXECUTION_CHANNEL: Owner local Windows Codex; independent Git branch PR; technical environment UNKNOWN pending Executor readback.
 CURRENT_ROLLBACK_STATUS: V5 ZIP and V6 offline work package retained; new renderer must not overwrite V6.
-UNRESOLVED: No MP4 renderer, audio/SRT, arbitrary scene input, 52-scene performance, Windows CPU render benchmark, external asset rights.
-NEXT_STEP: Code executor follows prompts/03_CODEX_EXECUTOR_GATE_G1.md after obtaining and validating offline work package. Stop at Reviewer.
-OWNER_ACTION_REQUIRED: Only before public/private media publication or paid service; otherwise NONE.
-EVIDENCE_POINTERS: offline work package evidence/v6_full_frame.png, tests/smoke_test.py, ASSET_HASHES.sha256; EXECUTION_EVIDENCE.md.
-GATE_ID: G1_DATA_DRIVEN_RENDER_POC
-OBJECTIVE: Prove three real scenes with audio, subtitle, own motion, hard cuts and deterministic MP4 output.
-MAX_ENDPOINT_THIS_ROUND: Local 3-scene proof + tests/evidence + PR; no 52-scene automation or publication.
+UNRESOLVED: Independent blind multi-agent storyboard experiment unperformed; factual claims, exact Mac commands and asset licensing unverified; MP4 pipeline, voice/SRT and performance not implemented.
+NEXT_STEP: G0 Executor(s) submit independent P1 Chapter/Beat/Scene plans from same private Mac mini original; reviewer applies docs/STORYBOARD_REVIEW_RUBRIC.md and stops. No image/video creation or render.
+OWNER_ACTION_REQUIRED: If running via Codex, user provides private existing original locally; do not publish full original or presenter WebM. Otherwise NONE for reviewer docs.
+EVIDENCE_POINTERS: Offline private V6 ZIP browser evidence; docs/STORYBOARD_METHOD_COMPARISON_20261028.md; docs/STORYBOARD_PLANNING_STANDARD_v1_0.md; docs/STORYBOARD_REVIEW_RUBRIC.md; EXECUTION_EVIDENCE.md.
+GATE_ID: G0_STORYBOARD_PLAN_VALIDATION
+OBJECTIVE: Test whether independent planners can turn same Owner Mac mini script into useful traceable production-ready storyboard P1.
+MAX_ENDPOINT_THIS_ROUND: Two isolated P1 proposals, evidence and Reviewer comparison; no P2, assets, images, coding or MP4.
 MANDATORY_REVIEW_STOP: YES
-TARGET_AND_SCOPE: explainer-video-template only.
-PREFLIGHT: Source package SHA, worktree/branch, local CPU/Node/FFmpeg/permissions.
-REQUIRED_EVIDENCE: Source/storyboard/voice/SRT, command logs, ffprobe, timestamps, cut-boundary frames, alpha/composition QA, reproducibility, runtime cost.
-ACCEPTANCE_CRITERIA: Offline package docs/ACCEPTANCE.md G1 list, and docs/READINESS_GAPS.md.
-ROLLBACK_STATUS_OR_PLAN: V6 source and WebM remain untouched; new candidate in isolated directory/branch.
-OWNER_ONLY_ACTIONS: Public publishing, private asset upload, external paid API, other-project changes.
-REVIEWER_TO_EXECUTOR_RELAY: prompts/03_CODEX_EXECUTOR_GATE_G1.md
-EXECUTOR_TO_REVIEWER_RELAY: Result/change/validation/issues/rollback/reviewer action/owner relay.
+TARGET_AND_SCOPE: explainer-video-template planning docs and private input only; no other projects.
+APPLICABLE_CRITICAL_CONSTRAINTS: Exact source, no arbitrary 52 target, 3-level chapter/beat/scene, V6 shell unchanged, evidence vs simulation flagged, only Reviewer accepts.
+PREFLIGHT: Match input SHA/source revision across agents, isolate outputs so no access to old 52-scene example during planning, confirm only allowed read/write paths.
+REQUIRED_EVIDENCE: Both independent P1 plans, exact source coverage maps, source and spec hashes, asset gaps, rubric with concrete references and Reviewer verdict.
+ACCEPTANCE_CRITERIA: All storyboard hard checks pass; missing independent work is PARTIAL not PASS.
+ROLLBACK_STATUS_OR_PLAN: Draft docs-only PR can be reverted; V6 private source and media unchanged.
+OWNER_ONLY_ACTIONS: New public publication/media release or costs require separate authorization.
+REVIEWER_TO_EXECUTOR_RELAY: prompts/01_STORYBOARD_PLANNER_G0.md
+EXECUTOR_TO_REVIEWER_RELAY: RESULT; changes; validation; problems; rollback; reviewer checks; owner relay.
+DEFERRED_GATE: G1_DATA_DRIVEN_RENDER_POC; old relay at prompts/03_CODEX_EXECUTOR_GATE_G1.md must not be run until authorized.
