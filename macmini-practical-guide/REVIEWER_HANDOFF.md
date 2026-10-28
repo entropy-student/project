@@ -1,66 +1,65 @@
-# 实操型视频文案实验 · REVIEWER HANDOFF
-记录日期：2026-10-28
-Governance：VPS Project Governance v0.2.7 / ACTIVE_PROVISIONAL；本轮 GitHub read-back blob `3917c88a7f36df7a53758b3879a92703d659ef9d`。不创建新的治理规范。
+# 自媒体文案创作系统｜REVIEWER HANDOFF
+记录日期：2026-10-28｜治理：VPS Project Governance v0.2.7 / ACTIVE_PROVISIONAL（本轮核对其 GitHub 主分支 VNEXT，blob 3917c88a7f36df7a53758b3879a92703d659ef9d）
 
 ## PROJECT_GOAL
-**规划、试验并逐步沉淀一套实操型自媒体视频的叙事文案与对应配画面方法**：如何用情境引入、具体问题、研究/操作/验证过程、可信证据和结果构成值得观看的内容；同时逐单元说明观众要看什么、素材在哪里获得或怎么制作。Mac mini 是第一期试验题材，不是项目的永久选题边界。Human Writing Skill + 精简语料库是候选风格方法，尚待比较验证，而非已冻结方案。
+交付一套可复用的**自媒体文案写作方法与统一提示词**：每次输入「三类之一 + 具体选题 + 可选资料/作者观点」，由 AI 完成必要研究、信息筛选、叙事组织、事实核查与自然中文成文，以**一个独立 HTML** 供 Owner 阅读。写作仅限 **实操、测评、观点** 三类。输出质量优先，不牺牲信息与事实准确性来追求操作最少。
 
 ## PROJECT_STAGE
-`RESEARCH_PLAN_READY / G1_DRAFT_PENDING`。G0 的 ZIP 清单校验作为历史源发现有效，但最初「静态 HTML 教程建设项目」定位已由 Owner 2026-10-28 指令纠正，不再用于确定交付边界。**当前研究方案是 CANDIDATE，不是已经得到观众或 Owner 对格式的最终验证。**
+`WRITING_STANDARD_V0.1_CANDIDATE / OWNER_REVIEW`：规范 v0.1、统一提示词 v0.1 与 Skill 推荐清单已在 Draft PR 形成；**没有启动 Codex 首稿**，没有证明提示词能稳定达到三类质量要求。
 
 ## SYSTEM_MAP
-| 项目 | 当前已知情况 |
+| 层 | 当前状态 |
 |---|---|
-| 创作产物 | 自媒体实操视频的**口播脚本 + 语义单元配画面/素材计划** |
-| 首期题材 | Mac mini 到手后如何少花不必要的配件费、完成开机和必要设置 |
-| 原始输入 | Owner 上传 `Macmini实操指南.zip`，4 文件：原 HTML、封面 PNG、Apple 示意图 PNG、打磨记录 MD；只作为参考 |
-| 风格输入 | Human Writing Skill 与用户语料的使用可行性待 Codex 实际检查；不得虚构已经有效 |
-| 首轮审稿输出 | **一个独立 HTML**：封面概念、完整口播、对应画面与素材缺口；HTML 不是产品 |
-| 运行环境 | 无后台/数据库/Docker/VPS/域名/部署要求；不需要移动端适配或 HTML 设计专项 |
-| 网络/来源 | 影响事实准确性的官方资源需要有来源；不能把别人素材视为自由转载 |
-| 视频制作 | 本轮不剪片、不配音、不生图、不生成最终封面；交付可供后续制作的脚本和镜头需求 |
-| 共享资源 | GitHub `entropy-student/project` 项目专属目录，不动其他项目 |
+| 主题类型 | 实操（研究/验证/创造/教程均可）、测评（比较与证据）、观点（有依据的判断），用户已明确限定 |
+| 工作流 | Owner 输入题材 → 模型内部研究/构思/核对 → 完整可口播中文文案 → 单 HTML 阅读 → Reviewer 反馈 → 定向修订 |
+| 第一篇候选 | Mac mini 实操；现有 `Macmini实操指南.zip` 只是历史输入资料，不是冻结模板 |
+| 写作规范 | `docs/WRITING_STANDARD_V0.1.md`，CANDIDATE |
+| 统一 Prompt | `docs/UNIFIED_PROMPT_V0.1.md`，CANDIDATE；不启动创作 |
+| Skills | `docs/SKILL_SELECTION_V0.1.md`；建议最多「1 主类型 Skill + 1 中文表达 Skill」，事实重要时核查；并未证明 Codex 已安装 |
+| 语料 | 用户可选提供的个人表达材料；可用性 UNKNOWN，不擅自构建 persona |
+| 成品边界 | 单文件 HTML，完整连续文案为主体；图像非强制，不做分镜、配图矩阵、移动端、网页产品、视频、配音或发布 |
+| 运行/数据/网络 | 当前只是 GitHub 文档 + Owner 保留的 ZIP；无后端、数据库、Docker、VPS、生产域名；内容研究会引用公开资料但不保存密钥 |
+| 共享基础设施 | 不涉及，不做其他项目更改 |
 
 ## CURRENT_ACCEPTED_STATE
-- `OWNER_EXPLICIT`：用户希望先由 Reviewer 调研、提出适合实操型视频的写作格式，再向 Codex 下发首轮文案创作提示词；最终根据样稿反馈修订方法。
-- `OWNER_EXPLICIT`：没有选定最终视频叙事/格式/配图方式；HTML 单文件仅供自己审阅，不要求移动端或单独打磨页面。
-- `DIRECT_READBACK`：原 HTML 是 6 个操作章节的图文教程，18 个正文 p，2 个 figure，**不是已验收的视频脚本**。
-- `REVIEWER_RESEARCH / CANDIDATE`：首轮建议测试「问题驱动的探索式叙事」，对比清单式和过程纪录式；证据与适用范围详见 `docs/RESEARCH_SCRIPT_FORMAT.md`。
-- `DIRECT_READBACK`：原 ZIP 4 个成员 CRC 通过、源哈希见 `docs/SOURCE_MANIFEST.md`；男主形象参考图不在 ZIP。
-- `UNVERIFIED`：该叙事结构对目标观众的真实吸引力；Human Writing + 语料是否提升个人风格；Mac mini 实机步骤、素材权利和最终画面表现。
+- `OWNER_EXPLICIT`：文章仅三类「实操、测评、观点」；以一段提示词生成完整文案、单 HTML 自己看；先把方法想清楚、少量试错再正式定稿。
+- `OWNER_EXPLICIT`：希望参考优秀创作者的叙事规律，不是照抄；允许参考相关写作 Skill，但明确列名。
+- `REVIEWER_RESEARCH`：已核读多个开源写作 Skill 的 SKILL.md；适配/不适配见 `SKILL_SELECTION_V0.1.md`。Skill 不等于效果验证。
+- `REVIEWER_DRAFT`：`WRITING_STANDARD_V0.1.md` 和 `UNIFIED_PROMPT_V0.1.md` 已作为 CANDIDATE 交付，格式不冻结。
+- `HISTORICAL_SOURCE`：原 ZIP 4 件 CRC/哈希由 G0 核验（详 `SOURCE_MANIFEST.md`），但不应以原 HTML 六章当新的自媒体文案结构。
+- `NOT_TESTED`：Mac mini 新稿、三个类型样稿效果、Human Writing + 语料的作用、独立 HTML 实际生成与浏览器可读性。
 
 ## CURRENT_GATE
-`G1_VIDEO_SCRIPT_AND_VISUAL_BEATS_PILOT_20261028`：`docs/G1_SCRIPT_PILOT_GATE.md`。这是**下一轮 Codex 的唯一 Gate**；旧 `docs/G1_SOURCE_IMPORT_GATE.md` 已在运行前被 Owner 要求纠偏，状态 `SUPERSEDED / DO_NOT_EXECUTE`。
+`STANDARD_V0.1_OWNER_REVIEW_STOP`：当前完成研究与候选规范/提示词文档，等待 Owner 评审范围和质量要求；**不授权 Codex 起草正文**。旧 `G1_SCRIPT_PILOT_GATE.md`（要求配画面/封面、2 个开头）已被 Owner 后续决策覆盖，标记 `SUPERSEDED / DO_NOT_EXECUTE`。
 
 ## CRITICAL_CONSTRAINTS
-- 不把原 HTML 六章目录、4:3 封面方向或「逐步讲解」变成视频脚本的硬规定；任何视觉封面设定仍是素材参考、不是首轮必达目标。
-- 第一轮先要一个**能够口播的视频文案**，连带每个主要信息单元的画面方案、实际素材/缺口；不只交提纲、网页或普通文章。
-- 不编造本人已经拥有/使用/测试 Mac mini；官方资料、推测与实操必须分开。
-- HTML 只需一个可独立打开的文件供审稿，避免额外移动端/HTML 美术/前后端/部署迭代。
-- Human Writing Skill 与语料作为可验证选项；不强称一定有效；表达自然，不堆梗。
-- 原始 ZIP 和旧文件保留不改；不公开发布、乱转第三方素材、不修改其他项目或共享服务。
+- 三类为唯一范围；任何固定六段式、三秒钩子、强制对立冲突或结尾 CTA 都不作为硬性要求。
+- 内容策划、信息核验与叙事先于口语润色；重要事实可查，不能编造本人经历/实测/私有观点。
+- 统一 prompt 操作简单；模型内部可做充分研究，给 Owner 只交完整稿而非中间大纲。
+- Human Writing 和自有语料只用真实可读版本；引用 Skill 的原则不能覆盖 Owner 的风格和事实要求。
+- HTML 只作读稿载体，无移动端与设计专项；不要求强制配图、分镜表、视频或发布。
+- 原 ZIP 不修改；GitHub 本轮只修改治理文档及根 README 入口；不做生产/共享服务改动。
 
 ## DEFAULT_EXECUTION_CHANNEL
-下一轮由 Codex 在真实可读的**本地**工作区使用 Owner 提供的 ZIP 或工作包生成草稿；GitHub 专用工作分支用于文本治理与必要 evidence。Codex 的本地实际路径尚未 verified。
+Reviewer 使用 GitHub connector 更新 `entropy-student/project` 的隔离 Draft PR；后续若 Owner 授权，Codex 在可读的本地输入工作区按新 Gate 执行；实际 Codex 本地路径 UNKNOWN。
 
 ## CURRENT_ROLLBACK_STATUS
-当前仅方案/项目治理变更，Draft PR 可回退；原 ZIP 仍是内容基线。无生产发布、生产回滚或业务数据迁移。
+仅 GitHub 文档候选修改，可通过 Draft PR 分支撤销；原 ZIP 不变。无生产数据和上线状态。
 
 ## UNRESOLVED
-- 第一版叙事与配图是否符合审美需要等 Codex 样稿，尚不作 PASS。
-- Human Writing Skill/精简语料库是否可供 Codex 当前会话读取，以及实际效果，尚不明确。
-- 实机资料与可公开复用素材仍要在内容中逐项区分；本轮不强制解决最终版权与封面设计。
-- 单文件 HTML 本地打开未执行，属于下一 Gate 检查。
+- 写作规范与 prompt 的叙事适配仍未从真实作品验证。
+- 三类型各至少一次合格代表样稿后方能说已覆盖三类型；单篇 Mac mini 不证明全部。
+- Skill 可用性、个人语料入口、HTML 阅读体验待后续试验；如发生事实不足，允许缩题，不编造。
+- 参考作者文章中有一篇仅核验到开头，不能宣称三篇全文均已分析。
 
 ## NEXT_STEP
-把 `docs/G1_SCRIPT_PILOT_GATE.md` 末尾的自包含提示词交给 Codex；Codex 输出**两种开场、一版完整口播、相应画面/素材计划，以及单文件 HTML**。Reviewer 逐项审稿并据此只修改真正影响内容质量的格式/提示词问题，不启动网站工程。
+Owner 审阅 `docs/WRITING_STANDARD_V0.1.md`、`docs/SKILL_SELECTION_V0.1.md`、`docs/UNIFIED_PROMPT_V0.1.md`；确认后 Reviewer 规划一个有界 Codex 首稿 Gate，先用 Mac mini 试实操；根据一次真实成稿发现关键偏差，再最小幅度修订。之后以测评/观点代表稿验证可迁移性。
 
 ## OWNER_ACTION_REQUIRED
-启动 Codex 下一轮时提供可读取的原 ZIP/工作包路径；如果要比较私人语料风格，再提供允许使用的精简语料。**当前无部署、付费或发布操作。**
+当前仅需审阅候选规范与提示词；无需部署、安装全部 Skill、启动 Codex 或提供额外素材。
 
 ## EVIDENCE_POINTERS
-- `docs/RESEARCH_SCRIPT_FORMAT.md`：Reviewer 调研、结构对照、首轮叙事假设与配图规格。
-- `docs/G1_SCRIPT_PILOT_GATE.md`：下一轮 Codex Gate 与可复制提示词。
-- `docs/SOURCE_MANIFEST.md`：历史原包清单，仅用于定位原素材，不再是主线验收重点。
-- `DECISION_LOG.md`：Owner 纠偏及范围修订。
-- `EXECUTION_EVIDENCE.md`：G0 原包证据与本轮研究范围修订。
+- `docs/WRITING_STANDARD_V0.1.md` / `docs/UNIFIED_PROMPT_V0.1.md` / `docs/SKILL_SELECTION_V0.1.md`
+- `DECISION_LOG.md`：三类范围与旧 Gate 被覆盖的原因。
+- `EXECUTION_EVIDENCE.md`：本轮调研与 GitHub 回读。
+- `docs/RESEARCH_SCRIPT_FORMAT.md`：上一轮研究背景，只作非规范参考。
