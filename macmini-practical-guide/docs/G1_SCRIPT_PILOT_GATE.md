@@ -1,3 +1,9 @@
+# SUPERSEDED / DO_NOT_EXECUTE — 2026-10-28
+
+**这份旧 Gate 已在执行前被 Owner 的最新范围决策覆盖。** 当前仅确定三类自媒体写作（实操、测评、观点）、一段提示词、完整文案与单文件 HTML。配画面矩阵、分镜、封面构图和两种开头不再是首稿必交内容。请以 `REVIEWER_HANDOFF.md` 的 `STANDARD_V0.1_OWNER_REVIEW_STOP` 为当前 Gate；Owner 未批准创作前不执行此旧 Gate。
+
+---
+
 # G1：Mac mini 视频文案 + 声画规划首轮试验（待 Codex 执行）
 
 > GATE_ID: `G1_VIDEO_SCRIPT_AND_VISUAL_BEATS_PILOT_20261028`
