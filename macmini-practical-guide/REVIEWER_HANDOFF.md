@@ -5,7 +5,7 @@
 交付一套可复用的**自媒体文案写作方法与统一提示词**：每次输入「三类之一 + 具体选题 + 可选资料/作者观点」，由 AI 完成必要研究、信息筛选、叙事组织、事实核查与自然中文成文，以**一个独立 HTML** 供 Owner 阅读。写作仅限 **实操、测评、观点** 三类。输出质量优先，不牺牲信息与事实准确性来追求操作最少。
 
 ## PROJECT_STAGE
-`WRITING_STANDARD_V0.1_CANDIDATE / OWNER_REVIEW`：规范 v0.1、统一提示词 v0.1 与 Skill 推荐清单已在 Draft PR 形成；**没有启动 Codex 首稿**，没有证明提示词能稳定达到三类质量要求。
+`G2_MACMINI_FIRST_DRAFT_READY / OWNER_CONTENT_REVIEW`：规范 v0.1、统一提示词 v0.1 与 Skill 推荐清单已在 Draft PR 形成。**Mac mini 实操首稿已在本会话直接完成并交给 Owner 审阅**；未调用 Codex，也尚未证明跨三类稳定有效。
 
 ## SYSTEM_MAP
 | 层 | 当前状态 |
@@ -30,7 +30,7 @@
 - `NOT_TESTED`：Mac mini 新稿、三个类型样稿效果、Human Writing + 语料的作用、独立 HTML 实际生成与浏览器可读性。
 
 ## CURRENT_GATE
-`STANDARD_V0.1_OWNER_REVIEW_STOP`：当前完成研究与候选规范/提示词文档，等待 Owner 评审范围和质量要求；**不授权 Codex 起草正文**。旧 `G1_SCRIPT_PILOT_GATE.md`（要求配画面/封面、2 个开头）已被 Owner 后续决策覆盖，标记 `SUPERSEDED / DO_NOT_EXECUTE`。
+`G2_MACMINI_SCRIPT_FIRST_DRAFT_20261028`：首稿已在会话中完成，`docs/G2_MACMINI_FIRST_DRAFT_GATE.md` 为本轮 Gate；下一步仅等待 Owner 阅读反馈；**不自主进入第二次改写**。旧 `G1_SCRIPT_PILOT_GATE.md`（要求配画面/封面、2 个开头）已被 Owner 后续决策覆盖，标记 `SUPERSEDED / DO_NOT_EXECUTE`。
 
 ## CRITICAL_CONSTRAINTS
 - 三类为唯一范围；任何固定六段式、三秒钩子、强制对立冲突或结尾 CTA 都不作为硬性要求。
@@ -56,7 +56,7 @@ Reviewer 使用 GitHub connector 更新 `entropy-student/project` 的隔离 Draf
 Owner 审阅 `docs/WRITING_STANDARD_V0.1.md`、`docs/SKILL_SELECTION_V0.1.md`、`docs/UNIFIED_PROMPT_V0.1.md`；确认后 Reviewer 规划一个有界 Codex 首稿 Gate，先用 Mac mini 试实操；根据一次真实成稿发现关键偏差，再最小幅度修订。之后以测评/观点代表稿验证可迁移性。
 
 ## OWNER_ACTION_REQUIRED
-当前仅需审阅候选规范与提示词；无需部署、安装全部 Skill、启动 Codex 或提供额外素材。
+阅读首轮 HTML 文案并反馈最影响阅读的一到三处问题；无需部署、安装全部 Skill 或发布。
 
 ## EVIDENCE_POINTERS
 - `docs/WRITING_STANDARD_V0.1.md` / `docs/UNIFIED_PROMPT_V0.1.md` / `docs/SKILL_SELECTION_V0.1.md`
