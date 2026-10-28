@@ -36,6 +36,7 @@
 |---|---|---|
 | **SPW Journal (Halo)** | Halo 个人博客、本地 Docker 部署、SPW 主题与图文草稿工作流 | [交接记录](./halo-spw-journal/REVIEWER_HANDOFF.md) |
 | **Meadow 页面还原** | 录屏参考的交互式草地页面、昼夜与光点动效 | [交接记录](./meadow-landing-recreation/REVIEWER_HANDOFF.md) |
+| **Mac mini Video Pipeline Pilot** | Mac mini 一期视频：选题研究→文案→双栏分镜→素材→成片；验证可复用 AI 创作流程 | [唯一交接](./macmini-video-pipeline-pilot/REVIEWER_HANDOFF.md) |
 
 ### 产品与商业项目
 
