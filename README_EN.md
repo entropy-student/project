@@ -35,6 +35,7 @@
 | Project | Purpose | Current-state entry |
 |---|---|---|
 | **SPW Journal (Halo)** | Halo personal blog, local Docker deployment, SPW theme, and Markdown draft workflow | [Handoff](./halo-spw-journal/REVIEWER_HANDOFF.md) |
+| **Meadow Landing Recreation** | Video-referenced interactive meadow page with day/night and light effects | [Handoff](./meadow-landing-recreation/REVIEWER_HANDOFF.md) |
 
 ### Product and commerce projects
 

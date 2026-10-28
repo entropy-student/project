@@ -1,0 +1,7 @@
+{
+  "name": "meadow-recreation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Meadow landing page reconstructed from the supplied video",
+  "scripts": { "start": "node serve.mjs", "check": "node --check dist/app.js" }
+}

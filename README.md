@@ -35,6 +35,7 @@
 | 项目 | 主要用途 | 当前状态入口 |
 |---|---|---|
 | **SPW Journal (Halo)** | Halo 个人博客、本地 Docker 部署、SPW 主题与图文草稿工作流 | [交接记录](./halo-spw-journal/REVIEWER_HANDOFF.md) |
+| **Meadow 页面还原** | 录屏参考的交互式草地页面、昼夜与光点动效 | [交接记录](./meadow-landing-recreation/REVIEWER_HANDOFF.md) |
 
 ### 产品与商业项目
 

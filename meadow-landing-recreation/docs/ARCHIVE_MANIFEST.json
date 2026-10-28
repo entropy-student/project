@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "scope": "Project source, reference frames, original video parts, and verification assets; handoff and append-only execution evidence are recorded separately.",
+  "source_video_sha256": "959073ef90a2b6fe425cfa60aa3d0c8b57c8658aaf7a1b66e0590a6a964cff35",
+  "files": [
+    {
+      "path": "dist/app.js",
+      "bytes": 8529,
+      "sha256": "b09a8268b7d1b44ab62c3902d4d2c6a972855c2272d4e0da26277ee44c3eaf22"
+    },
+    {
+      "path": "dist/assets/scene-day.svg",
+      "bytes": 1400495,
+      "sha256": "09def4f3eec9129e3601a7365ce94a12efc0d087b773aeb7a804430aee4f454f"
+    },
+    {
+      "path": "dist/assets/scene-mobile-day.svg",
+      "bytes": 1400291,
+      "sha256": "f46d3866a55dc912c2254806e8675b784eb414c67c7ed9f52bbc7ad8a0b1469a"
+    },
+    {
+      "path": "dist/assets/scene-mobile-night.svg",
+      "bytes": 1363167,
+      "sha256": "41f0de8bbbebb8ce3d52dcd58cdb058a253578bc482db9fa829414b6d4026fdf"
+    },
+    {
+      "path": "dist/assets/scene-night.svg",
+      "bytes": 1362313,
+      "sha256": "d9518cc2a53fbddbbcc8a0b74803d3542f81a4711ca8529f869c735bc2e3ed35"
+    },
+    {
+      "path": "dist/assets/wordmark-day.svg",
+      "bytes": 14259,
+      "sha256": "72131fef1871b6d7d9d241fc9bd699c0b76690ce1e6d6a19ec2d6b4f5c66ca0b"
+    },
+    {
+      "path": "dist/assets/wordmark-night.svg",
+      "bytes": 15610,
+      "sha256": "6e9d91016d1b60f945832d699b7d27c3dcfa614cc7d4f7ebd79248172380b6dc"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 4647,
+      "sha256": "5a664e7eea0af26b9b399aceec0f0abcfbc511a67c957fddc4ea742a69a356b0"
+    },
+    {
+      "path": "dist/style.css",
+      "bytes": 5969,
+      "sha256": "ba46cc4f38b0d8f62a1f7f038482b7c81ae7c4e439f1c20148fddc4c8fec6fa2"
+    },
+    {
+      "path": "docs/ASSET_PROVENANCE.md",
+      "bytes": 1302,
+      "sha256": "580508903c5d51623862a4efb351c4895448ca605c9fd34b9716897d30603a2a"
+    },
+    {
+      "path": "package.json",
+      "bytes": 234,
+      "sha256": "b1403d757c94ee7297f4332f7487cb0da599769cc23113d7735b5815136ce757"
+    },
+    {
+      "path": "qa/fullbleed-desktop.png",
+      "bytes": 210491,
+      "sha256": "2f7a683d8052922e664ccfe777224779adeced3b3654c23313ce0235e247695c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1794,
+      "sha256": "ed2bc5199c175bb1277006acd6dbe9ebecf70680b1b3fcbd25529a7680beb608"
+    },
+    {
+      "path": "reference/day-9.png",
+      "bytes": 1451677,
+      "sha256": "86c007ba0c3ae047946a9c635a6af10385ab9c0c676090df339b2b142315cdef"
+    },
+    {
+      "path": "reference/day.png",
+      "bytes": 1211347,
+      "sha256": "898883fc1d8799dc3577f71f8bb7dbce5a05d12e85ff3e59e8f9fb67deb31cdb"
+    },
+    {
+      "path": "reference/night-5.9.png",
+      "bytes": 1560895,
+      "sha256": "685a15b9c510d3d1ca174176442b6a405eb6ba55493f3022d67756eafa1b3596"
+    },
+    {
+      "path": "reference/night-full.png",
+      "bytes": 1391628,
+      "sha256": "f6d4fe9cb1059f323b7d2ac5b946830d020837bf30ecba2528d5e05ad7bd7fba"
+    },
+    {
+      "path": "reference/reset-7.png",
+      "bytes": 323361,
+      "sha256": "d8e24f3d0b63ce7ee66fccf35bdd927fa381cd65e14d745cbd7876ad0adf4182"
+    },
+    {
+      "path": "reference/video-parts/part-001.bin",
+      "bytes": 5242880,
+      "sha256": "a5c4f5a5ff69173e436c09d8f40afb8bdc22d39f7cb2b5c300f96af5e173336a"
+    },
+    {
+      "path": "reference/video-parts/part-002.bin",
+      "bytes": 5242880,
+      "sha256": "90d49f03bc92d52f9f270bc171f37241f0371a21ac0713453fb5a05a0eebc45e"
+    },
+    {
+      "path": "reference/video-parts/part-003.bin",
+      "bytes": 5242880,
+      "sha256": "453babcefdef909cc3ddf21b2444ca363a7be2376cddeed66862c668543af1a6"
+    },
+    {
+      "path": "reference/video-parts/part-004.bin",
+      "bytes": 5242880,
+      "sha256": "cc4b3f2e6b58b077e68597ec53c52b399a79b394855796bb2f47caf940cb068e"
+    },
+    {
+      "path": "reference/video-parts/part-005.bin",
+      "bytes": 5242880,
+      "sha256": "686f086b5eeaedacd8d5f7377e6fcc5ab274a036f690bf238cb0bc138c998554"
+    },
+    {
+      "path": "reference/video-parts/part-006.bin",
+      "bytes": 5242880,
+      "sha256": "2f2c4c7f40bdff449b863c4be3bad9e08f8863386503ab5b4dff79cb8b242552"
+    },
+    {
+      "path": "reference/video-parts/part-007.bin",
+      "bytes": 5242880,
+      "sha256": "a6de5c7864bee1452cbdb1022596f584cb6688776a30b4731385b8a80b8a92cc"
+    },
+    {
+      "path": "reference/video-parts/part-008.bin",
+      "bytes": 81970,
+      "sha256": "a12db8968d0c7ec688bb54984f9b054e3bc2d9c6914120f69961b351f2ff901e"
+    },
+    {
+      "path": "scripts/build-scenes.py",
+      "bytes": 8488,
+      "sha256": "c376c8886e748fdf34be5b9a7ce801946955091f5ef859cdd338a015c94e633e"
+    },
+    {
+      "path": "scripts/restore-reference-video.py",
+      "bytes": 1058,
+      "sha256": "f00b25c58c41fe4ad2e5a217275ed3a941241827ff1047c579342a758a9fb3d8"
+    },
+    {
+      "path": "scripts/verify-archive.py",
+      "bytes": 597,
+      "sha256": "640d91b192e02adf28e19ae3bece8d7d0a0cac14f7f509c276c614c413ea1c72"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 869,
+      "sha256": "325572ad97b31dad4a533a9053bb484a1520cb3bbe0f0d4ba7672c93ef3868f4"
+    }
+  ]
+}
