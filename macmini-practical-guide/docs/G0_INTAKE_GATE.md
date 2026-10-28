@@ -1,0 +1,15 @@
+# G0 — 源包只读发现与项目接管（Reviewer）
+- GATE_ID: `G0_READONLY_SOURCE_INTAKE_20261028`
+- OBJECTIVE: 确认用户给出的究竟是什么项目、包含什么、有什么未解决问题；在独立项目目录写下唯一当前 Handoff。
+- MAX_ENDPOINT_THIS_ROUND: 本地只读解压/校验 + GitHub 独立目录治理记录；不导入二进制素材、不改文章/封面。
+- MANDATORY_REVIEW_STOP: 原包清单与 GitHub 文档回读核验后停下。
+- TARGET_AND_SCOPE: Owner 上传的 `Macmini实操指南.zip` 与 `entropy-student/project/macmini-practical-guide/`。
+- APPLICABLE_CRITICAL_CONSTRAINTS: 不改原始成品、不公开发布、不修改 Shared VPS/其他项目、不泄漏 Secret。
+- PREFLIGHT: 验证上传 ZIP 可读、内容完整；核查现行 Governance 与现有项目库根 README；确认未找到同名项目。
+- REQUIRED_EVIDENCE: ZIP CRC、成员名/字节数/SHA256、图像尺寸、HTML 相对资源引用、历史反馈差距与 GitHub 当前文档回读。
+- ACCEPTANCE_CRITERIA: 明确分类为图文静态项目；全部 4 项被识别；已记录 `UNKNOWN`；规范 Gate 与 Handoff 可由下一 Reviewer 单页继续。
+- ROLLBACK_STATUS_OR_PLAN: 不修改本地源；仓库文档变更可以回滚分支/PR。
+- OWNER_ONLY_ACTIONS: 发布、不可逆删除、素材版权授权、生产部署、变更治理规范。
+- REVIEWER_TO_EXECUTOR_RELAY: 本 Gate 无 Executor，Reviewer 只读完成。
+- EXECUTOR_TO_REVIEWER_RELAY: NOT_APPLICABLE。
+- REVIEWER_RESULT: `PASS`（只读识别与项目接管文档完成；不是内容验收）。
