@@ -33,3 +33,21 @@
 - VALIDATION：本轮仅方法设计；**未执行 Codex、未生成文案、未生成 HTML、未测试三类作品、未安装 Skill、未修改源 ZIP 或发布内容**。
 - ROLLBACK_EFFECT：Draft PR 文档可回退；无生产系统影响。
 - REVIEWER_RESULT：`WRITING_STANDARD_V0.1_CANDIDATE`，在 Owner 评审前不定义为正式通过。
+
+## 2026-10-28 · G2 Mac mini 完整视频稿首轮试验（本会话执行）
+- AUTHORIZED_GATE：Owner 「暂时我没有问题，开始吧」承接上一轮已确认的 Codex 首稿阶段；由于本轮会话**没有 Codex 执行工具**，直接生成稿件并在记录中明确执行渠道差异。
+- PREFLIGHT：读取 Owner 2026-10-28 原 ZIP 中 HTML 与历史反馈；读取 v0.1 项目规范/统一提示词与 GitHub human-writing 的 SKILL.md/reality/formats/forum-prose/revision；从 Apple 官方页面独立核对 2024 M4/M4 Pro 接口、首次设置、迁移、快捷键、声音与时间机器；未假冒自有实机经历。
+- ACTUAL_CHANGES：新增独立 HTML 审稿文件 `Macmini_实操文案_首轮审稿.html` 于本轮会话工作区，**没有**修改 ZIP 原件、没有把草稿公开推送到 GitHub、没有网站/移动端/视频/配图工作。
+- OBJECTIVE_READBACK：首稿标题「Mac mini 到手第一天，先别急着买扩展坞」；17 段、正文 2145 个字符；HTML 9142 字节；SHA256 `7dcdd02c7d44d15fd765daa08158cf653ae2051e72ed2318e4e4a7769a397210`；7 条 Apple 官方链接；无 JavaScript、图片或远程运行依赖；BeautifulSoup 结构/引用检查通过。
+- FACT_SOURCE_POINTERS：
+  1. https://support.apple.com/zh-cn/121555 （2024 款前后端口、雷雳 M4/M4 Pro）
+  2. https://support.apple.com/zh-cn/109523 （连接显示器使用后方接口）
+  3. https://support.apple.com/zh-cn/guide/mac-mini/apd5bdcf1655/mac （初次连线、设置）
+  4. https://support.apple.com/zh-cn/102565 （Windows 迁移助理）
+  5. https://support.apple.com/zh-cn/102650 （键盘快捷键）
+  6. https://support.apple.com/zh-cn/guide/mac-help/mchlp2256/27/mac/27 （输出设备）
+  7. https://support.apple.com/zh-cn/104984 （Time Machine）。
+- REVIEWER_FIRST_READ：围绕减少第一次开机时的无效配件购买，从正面 USB-C 与背面显示输出的区别引到亮屏排错，再进入 Windows 迁移、常用设置和备份，逻辑比原六章罗列集中；稿件有可朗读正文、具体结论与适用机型范围。
+- REVIEWER_UNRESOLVED：尚无实体设备端到端验证；浏览器实际视觉截图因 headless Chromium 进程超时未取得（HTML 静态核验已通过）；风格是否像 Owner 的个人声音、是否符合「好的自媒体文案」仍必须由 Owner 阅读反馈；单篇实操试稿不能证明测评/观点型通用效果。
+- ROLLBACK_EFFECT：仅新增独立文件和 GitHub 项目内治理文档，无在线系统影响。
+- RESULT：`ARTIFACT_READY / OWNER_REVIEW_PENDING`；文案质量 `UNVERIFIED_BY_OWNER`，不称 `PASS`。
