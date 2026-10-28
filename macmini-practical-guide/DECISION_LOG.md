@@ -28,3 +28,11 @@
 - Reviewer 先调查优秀视频结构并提出可修改的框架，给 Codex 一个有界的首轮文案 + 声画方案提示词；等样稿出来才确认修改点。
 - 取消尚未执行的旧 `G1_SOURCE_IMPORT_AND_RIGHTS_RECONCILIATION_20261028`；下一 Gate 改为 `G1_VIDEO_SCRIPT_AND_VISUAL_BEATS_PILOT_20261028`。旧 G1 不转为历史 PASS。
 - 当前研究方案状态 `CANDIDATE`，不是 Owner 冻结的通用模板。
+
+## 2026-10-28 · D-006：三类自媒体文案与统一提示词（最新 Owner 决策）
+- 未来所有文案只写 `实操/测评/观点` 三类，单篇指定主类型；Mac mini 仅第一期实操样本。
+- 希望输入一段通用提示词即可生成完整文案，输出一个离线 HTML 方便阅读，无手机/网站开发任务。
+- Reviewer 先制定自媒体文案规范、列出推荐写作 Skill 及适用边界、设计统一提示词；还不到启动 Codex 写第一版的阶段。
+- 按主题自适应选择叙事结构，不强制情境/冲突/反转/三秒 Hook 或配图矩阵。内容价值、证据、逻辑优先，Human Writing + 精简语料仅作为风格方法试验。
+- `docs/WRITING_STANDARD_V0.1.md` / `docs/SKILL_SELECTION_V0.1.md` / `docs/UNIFIED_PROMPT_V0.1.md` 是 `CANDIDATE`，不是已检验最终规则。
+- 原先 `G1_SCRIPT_PILOT_GATE.md` 在真正执行前标记 `SUPERSEDED / DO_NOT_EXECUTE`；无产物需要回滚。
