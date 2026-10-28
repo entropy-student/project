@@ -16,3 +16,10 @@ STATE: G0_SPEC_CANDIDATE; freeze and G1 reactivation require Reviewer judgment a
 ## 2026-10-28 — Script fidelity and evidence discipline
 DECISION: Default verbatim script; distinguish voiceover from headlines, code, stage directions; price/technical claims and risky operations must be verified. Never present synthetic imagery as proof.
 STATUS: RULE_CANDIDATE pending G0.
+
+## 2026-10-28 — Owner HOLD / V6 baseline preserved
+SOURCE: Owner explicitly requested '暂时hold一下，视频模版保留封存，具体如何划分分镜进一步制作视频再讨论后续。'
+DECISION: Set project ON_HOLD. Preserve V6 private offline HTML/WebM work package and existing storyboard candidate/methodology notes. No new storyboard planning, Agent tests, coding, production, rendering, PR merge, or release while paused.
+GATES: G0_STORYBOARD_PLAN_VALIDATION and G1_DATA_DRIVEN_RENDER_POC both SUSPENDED; old relay prompts no longer authorize action. Resume only after new explicit Owner instruction and Reviewer reconciliation.
+SCOPE: Documentation of hold only; project software, media, and draft PR remain unchanged.
+STATUS: ACTIVE_HOLD, not decommissioned.
