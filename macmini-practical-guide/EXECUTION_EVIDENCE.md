@@ -14,3 +14,12 @@
 - REVIEWER_DECISION：`G0 PASS` 仅限“已发现/记录当前证据”；非文章、版权、视觉或发布验收。
 
 > 后续 Executor 请只追加本轮事实，不改写 G0 已读证据。
+
+## 2026-10-28 · Reviewer 目标漂移调和与研究（no Executor execution）
+- AUTHORIZED_BOUNDARY: Owner 明确要求先修正目标、由 Reviewer 调研并规划，然后再交 Codex 制作一版视频脚本。
+- ACCEPTED_CHANGE: 项目由「Mac mini 静态图文/HTML 打磨」纠偏为「实操视频叙事+画面规划试验」；原 G0 的 ZIP 读回证据仍然有效，旧项目目标和旧 G1 已被 supersede。
+- DIRECT_READBACK: 原 HTML 分 6 章、18 段 p、2 个 figure；原 ZIP 为用户的历史内容基础，不是口播/分镜验收产物。
+- RESEARCH_EVIDENCE: YouTube 官方留存指标、B 站官方课程索引、密歇根/马萨诸塞/哥伦比亚大学叙事建议、Mayer 多媒体学习综述与 Vanderbilt 分镜流程；出处和适用限制写入 `docs/RESEARCH_SCRIPT_FORMAT.md`。
+- ACTUAL_CHANGES: 更新 `REVIEWER_HANDOFF.md`、`README.md`、`DECISION_LOG.md`、项目库导航；新增 `docs/RESEARCH_SCRIPT_FORMAT.md` 与 `docs/G1_SCRIPT_PILOT_GATE.md`，旧 Source Import Gate 标明 `SUPERSEDED`。
+- UNVERIFIED: 尚无 Codex 首轮文案、HTML、配图方案、实际 Human Writing/语料效果与视频观众数据。没有执行原文、图像、部署、公开发布或自媒体视频制作。
+- NEXT_STOP: GitHub 本轮文档 read-back 后，向 Owner 提供新 G1 Codex relay，等待其真实执行；下一步只有一个 Gate。
