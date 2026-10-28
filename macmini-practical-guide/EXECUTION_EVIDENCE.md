@@ -23,3 +23,13 @@
 - ACTUAL_CHANGES: 更新 `REVIEWER_HANDOFF.md`、`README.md`、`DECISION_LOG.md`、项目库导航；新增 `docs/RESEARCH_SCRIPT_FORMAT.md` 与 `docs/G1_SCRIPT_PILOT_GATE.md`，旧 Source Import Gate 标明 `SUPERSEDED`。
 - UNVERIFIED: 尚无 Codex 首轮文案、HTML、配图方案、实际 Human Writing/语料效果与视频观众数据。没有执行原文、图像、部署、公开发布或自媒体视频制作。
 - NEXT_STOP: GitHub 本轮文档 read-back 后，向 Owner 提供新 G1 Codex relay，等待其真实执行；下一步只有一个 Gate。
+
+## 2026-10-28 · Reviewer 规划轮｜三类文案 v0.1
+- AUTHORIZED_GATE：Owner 要求根据先前调研开始制定写作规范与统一提示词，并新增唯一文案类型范围「实操、测评、观点」。
+- PREFLIGHT：核对 GitHub Governance v0.2.7 当前 VNEXT、现有 Handoff、旧 G1 与项目 README；本轮不触发 Shared VPS、SSH、Deployment、Automation/Payment、Closeout 或 Image Generation 专项。
+- SOURCE_RESEARCH：直接核查公开 SKILL.md，Human Writing (KKKKhazix)、educational-content-and-how-to、evidence-based-reviews、contrarian-and-opinion、content-research-and-sourcing、Humanizer-zh；对营销化强制 Hook/CTA、硬性句式禁令和无核验传播统计做排除说明。
+- ACTUAL_CHANGES：新增规范/提示词/Skill 选型 3 文档，更新当前 Handoff、项目 README、根 README 导航，追加 Decision Log；废止原 G1 视频 + 配图试稿执行入口。
+- OBJECTIVE_READBACK：GitHub 文件与 Draft PR 的最新可读状态以本轮随后的回读校验为准。
+- VALIDATION：本轮仅方法设计；**未执行 Codex、未生成文案、未生成 HTML、未测试三类作品、未安装 Skill、未修改源 ZIP 或发布内容**。
+- ROLLBACK_EFFECT：Draft PR 文档可回退；无生产系统影响。
+- REVIEWER_RESULT：`WRITING_STANDARD_V0.1_CANDIDATE`，在 Owner 评审前不定义为正式通过。
