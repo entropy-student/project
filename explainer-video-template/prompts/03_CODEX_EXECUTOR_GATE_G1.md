@@ -1,0 +1,7 @@
+# Codex Executor Relay G1
+Role: Executor only; ChatGPT is Reviewer. Implement only G1 and stop at Reviewer.
+First locate Owner's full V6 offline ZIP and verify index.html SHA256 f4433e619d7fa8aaf6fabbd01fd214c605d402334a0bf229b326471a35cb2dc9 and presenter.webm SHA256 02674f325c1cf10720836fcdcbca1f94a2c38dd7829b4036246691ef1d8a8f28. If missing, RETURN_SOURCE_BASELINE_UNAVAILABLE, do not reconstruct from screenshots.
+Read REVIEWER_HANDOFF current G1 and offline docs/SCENE_CONTRACT.md, docs/ACCEPTANCE.md, docs/PRODUCTION_PIPELINE.md, index.html and samples/storyboard.example.json. Fresh worktree/source preflight.
+Build a data-driven, deterministic frame-based three-scene render pipeline, prefer Remotion if CPU and dependencies permit. Preserve V6 layout, SCENE/REC, 120% transparent presenter, centered white captions safe from presenter and zero-frame hard cuts. Each scene has its own animation. Ingest storyboard JSON, voice WAV/SRT and supplied screenshot/recording media. Output reproducible 1920x1080 30fps H.264/AAC MP4, ffprobe JSON, manifest, frame hashes, key boundary frames, regression QA, runtime and memory costs.
+Never use the preview setInterval to claim deterministic MP4. Do not fabricate real verification. No paid APIs or public upload of private WebM. Only edit project-owned paths. Submit code/evidence PR, append EXECUTION_EVIDENCE, update EXECUTOR_HANDOFF. Do not edit REVIEWER_HANDOFF. STOP_AT_REVIEWER.
+Completion format: 结果(PASS_CANDIDATE/RETURN_*), 改动, 验证, 问题, 回滚, 请Reviewer检查, Owner转交.
