@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import html
+import http.client
 import ipaddress
 import json
 import os
@@ -23,6 +24,7 @@ from urllib.request import ProxyHandler, Request, build_opener, HTTPRedirectHand
 from urllib.error import HTTPError, URLError
 
 from media_filter import assess_candidate, assess_orientation, is_mainland_video_platform, normalize_host
+import safe_proxy
 
 TIMEOUT = 60
 DEFAULT_FILE_BYTES = 60_000_000
@@ -30,6 +32,8 @@ DEFAULT_TOTAL_BYTES = 250_000_000
 HARD_FILE_BYTES = 80_000_000
 HARD_TOTAL_BYTES = 2_000_000_000
 DEFAULT_IMAGE_BYTES = 15_000_000
+SAFE_DIRECT_MAX_FILE_BYTES = 30_000_000
+SAFE_DIRECT_MAX_TOTAL_BYTES = 60_000_000
 REDACT = re.compile(r"(?i)(token|signature|secret|password|cookie|authorization|auth|key|credential|x-amz)")
 CWS_ROOT = Path(__file__).resolve().parents[1]
 
@@ -99,6 +103,17 @@ def parse_results(engine: str, kind: str, payload: dict) -> list[dict]:
                             break
                         except ValueError:
                             pass
+        else:
+            for field in ("width", "height"):
+                value = row.get(field)
+                if isinstance(value, int) and 0 < value <= 100_000:
+                    row_out[field] = value
+            resolution = row.get("resolution")
+            if isinstance(resolution, str):
+                match = re.fullmatch(r"\s*(\d{2,5})\s*[x×]\s*(\d{2,5})\s*", resolution, re.I)
+                if match:
+                    row_out.setdefault("width", int(match.group(1)))
+                    row_out.setdefault("height", int(match.group(2)))
         parsed.append(row_out)
     return parsed
 
@@ -530,8 +545,9 @@ def probe_one(catalog: Catalog, key: str, ytdlp: str, timeout=60, proxy: str | N
     return item
 
 
-def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
-    p = run([ffprobe, "-v", "error", "-show_streams", "-show_format", "-of", "json", str(path)], timeout)
+def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180, local_only=False) -> dict:
+    local_protocols = ["-protocol_whitelist", "file"] if local_only else []
+    p = run([ffprobe, "-v", "error", *local_protocols, "-show_streams", "-show_format", "-of", "json", str(path)], timeout)
     if p.returncode:
         raise RuntimeError("FFPROBE_FAILED")
     meta = json.loads(p.stdout)
@@ -545,7 +561,7 @@ def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
     if o["display_height"] < 360:
         raise RuntimeError("BELOW_MINIMUM_RESOLUTION")
     decode_started = time.monotonic()
-    p = run([ffmpeg, "-nostdin", "-nostats", "-v", "error", "-xerror", "-i", str(path),
+    p = run([ffmpeg, "-nostdin", "-nostats", "-v", "error", "-xerror", *local_protocols, "-i", str(path),
              "-progress", "pipe:1", "-f", "null", "NUL" if os.name == "nt" else "/dev/null"], timeout)
     if p.returncode or p.stderr.strip():
         raise RuntimeError("FULL_DECODE_FAILED")
@@ -558,6 +574,7 @@ def qa_media(path: Path, ffprobe: str, ffmpeg: str, timeout=180) -> dict:
             h.update(block)
     preview = catalog_preview_path(path)
     frame_cmd = [ffmpeg, "-nostdin", "-v", "error", "-y"]
+    frame_cmd.extend(local_protocols)
     duration = float(meta.get("format", {}).get("duration") or 0)
     frame_cmd.extend(["-ss", str(max(0, duration / 2)), "-i", str(path), "-frames:v", "1",
                       "-vf", "scale=1280:-2", str(preview)])
@@ -580,6 +597,131 @@ def catalog_preview_path(path: Path) -> Path:
     previews = path.parent.parent / "previews"
     previews.mkdir(parents=True, exist_ok=True)
     return previews / (path.stem + ".jpg")
+
+
+def download_safe_direct_candidate(catalog: Catalog, key: str, proxy: str | None,
+                                   ffprobe: str, ffmpeg: str,
+                                   max_bytes: int = SAFE_DIRECT_MAX_FILE_BYTES,
+                                   max_total_bytes: int = SAFE_DIRECT_MAX_TOTAL_BYTES,
+                                   timeout: int = 45):
+    """Fetch one indexed direct MP4/WebM using pinned IP CONNECT and verified TLS."""
+    item = catalog.data["items"][key]
+    if item.get("kind") != "video" or item.get("status") == "EXCLUDED":
+        raise ValueError("SAFE_DIRECT_REQUIRES_ELIGIBLE_VIDEO_ID")
+    if not filter_record(item)["filter"]["eligible"]:
+        raise ValueError("SAFE_DIRECT_REQUIRES_ELIGIBLE_VIDEO_ID")
+    if not proxy:
+        raise safe_proxy.SafeProxyError("SAFE_PROXY_REQUIRED")
+    if not 0 < max_bytes <= SAFE_DIRECT_MAX_FILE_BYTES:
+        raise ValueError("SAFE_DIRECT_FILE_CAP_EXCEEDED")
+    if not 0 < max_total_bytes <= SAFE_DIRECT_MAX_TOTAL_BYTES:
+        raise ValueError("SAFE_DIRECT_TOTAL_CAP_EXCEEDED")
+    if not 1 <= timeout <= 60:
+        raise ValueError("SAFE_DIRECT_TIMEOUT_OUT_OF_RANGE")
+    width, height = item.get("width"), item.get("height")
+    if not isinstance(width, int) or not isinstance(height, int):
+        raise ValueError("SAFE_DIRECT_DIMENSIONS_REQUIRED")
+    orientation = assess_orientation(width, height, item.get("sar", "1:1"), item.get("rotation", 0))
+    if orientation["queue_status"] != "ACCEPT_LANDSCAPE":
+        raise ValueError("SAFE_DIRECT_NOT_LANDSCAPE")
+
+    out = catalog.workdir / "downloads"
+    out.mkdir(parents=True, exist_ok=True)
+    used = sum(path.stat().st_size for path in out.iterdir() if path.is_file())
+    if used >= max_total_bytes:
+        raise ValueError("SAFE_DIRECT_TOTAL_CAP_EXCEEDED")
+    cap = min(max_bytes, max_total_bytes - used)
+    temp = None
+    dest = None
+    created_dest = False
+    elapsed = time.monotonic()
+    try:
+        with safe_proxy.open_response(item["url"], proxy, "GET", {"Accept": "video/mp4, video/webm"}, timeout) as (response, proof):
+            if 300 <= response.status < 400:
+                raise safe_proxy.SafeProxyError("SAFE_REDIRECT_REFUSED")
+            if response.status != 200:
+                raise safe_proxy.SafeProxyError("SAFE_MEDIA_HTTP_STATUS_" + str(response.status))
+            content_type = (response.getheader("Content-Type") or "").split(";", 1)[0].lower()
+            extensions = {"video/mp4": ".mp4", "video/webm": ".webm"}
+            extension = extensions.get(content_type)
+            if not extension:
+                raise safe_proxy.SafeProxyError("SAFE_DIRECT_MEDIA_TYPE_REJECTED")
+            content_encoding = (response.getheader("Content-Encoding") or "identity").lower()
+            if content_encoding not in ("", "identity"):
+                raise safe_proxy.SafeProxyError("SAFE_CONTENT_ENCODING_REJECTED")
+            length = response.getheader("Content-Length")
+            if length is not None:
+                if not length.isdigit():
+                    raise safe_proxy.SafeProxyError("SAFE_CONTENT_LENGTH_INVALID")
+                if int(length) > cap:
+                    raise safe_proxy.SafeProxyError("SAFE_RESPONSE_SIZE_LIMIT")
+            dest = out / (key + extension)
+            if dest.exists():
+                raise safe_proxy.SafeProxyError("SAFE_OUTPUT_ALREADY_EXISTS")
+            temp = out / (key + ".part" + extension)
+            if temp.exists():
+                raise safe_proxy.SafeProxyError("SAFE_OUTPUT_ALREADY_EXISTS")
+            total = 0
+            signature = bytearray()
+            with temp.open("xb") as media_file:
+                try:
+                    first = response.read(min(16, cap + 1))
+                except TimeoutError as exc:
+                    raise safe_proxy.SafeProxyError("SAFE_MEDIA_TIMEOUT") from exc
+                except http.client.IncompleteRead as exc:
+                    raise safe_proxy.SafeProxyError("SAFE_RESPONSE_TRUNCATED") from exc
+                except OSError as exc:
+                    raise safe_proxy.SafeProxyError("SAFE_MEDIA_RESPONSE_READ_FAILED") from exc
+                if not first:
+                    raise safe_proxy.SafeProxyError("SAFE_MEDIA_EMPTY")
+                signature.extend(first)
+                media_file.write(first)
+                total += len(first)
+                if (content_type == "video/mp4" and (len(signature) < 8 or signature[4:8] != b"ftyp")):
+                    raise safe_proxy.SafeProxyError("SAFE_MEDIA_CONTAINER_REJECTED")
+                if content_type == "video/webm" and not signature.startswith(b"\x1a\x45\xdf\xa3"):
+                    raise safe_proxy.SafeProxyError("SAFE_MEDIA_CONTAINER_REJECTED")
+                while True:
+                    try:
+                        block = response.read(min(65_536, cap + 1 - total))
+                    except TimeoutError as exc:
+                        raise safe_proxy.SafeProxyError("SAFE_MEDIA_TIMEOUT") from exc
+                    except http.client.IncompleteRead as exc:
+                        raise safe_proxy.SafeProxyError("SAFE_RESPONSE_TRUNCATED") from exc
+                    except OSError as exc:
+                        raise safe_proxy.SafeProxyError("SAFE_MEDIA_RESPONSE_READ_FAILED") from exc
+                    if not block:
+                        break
+                    total += len(block)
+                    if total > cap:
+                        raise safe_proxy.SafeProxyError("SAFE_RESPONSE_SIZE_LIMIT")
+                    media_file.write(block)
+            if length is not None and total != int(length):
+                raise safe_proxy.SafeProxyError("SAFE_RESPONSE_TRUNCATED")
+            os.replace(temp, dest)
+            temp = None
+            created_dest = True
+        qa = qa_media(dest, ffprobe, ffmpeg, timeout=max(timeout, 30), local_only=True)
+        if qa["display_width"] != width or qa["display_height"] != height:
+            dest.unlink(missing_ok=True)
+            created_dest = False
+            raise safe_proxy.SafeProxyError("SAFE_DIRECT_SOURCE_DIMENSION_MISMATCH")
+    except Exception:
+        if temp is not None:
+            temp.unlink(missing_ok=True)
+        if created_dest and dest is not None:
+            dest.unlink(missing_ok=True)
+        raise
+    item.update({"status": "FULL_DECODE_PASS", "qa": qa,
+                 "local_file": dest.relative_to(catalog.workdir).as_posix(),
+                 "reuse_rights": item.get("reuse_rights", "UNKNOWN_TEST_ONLY"),
+                 "download_bytes": dest.stat().st_size,
+                 "download_elapsed_ms": round((time.monotonic() - elapsed) * 1000),
+                 "transport": "SAFE_DYNAMIC_DIRECT_MEDIA",
+                 "safe_proxy_proof": proof,
+                 "nested_media": "NOT_REQUESTED", "redirects": "REFUSED"})
+    catalog.save()
+    return item
 
 
 def download_one(catalog: Catalog, key: str, ytdlp: str, ffprobe: str, ffmpeg: str,

@@ -4,6 +4,7 @@ import os
 import tempfile
 import time
 import unittest
+from contextlib import nullcontext
 from pathlib import Path
 from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +13,188 @@ import media_pipeline as p
 import media_filter as f
 
 class IntegrationTests(unittest.TestCase):
+    def test_safe_direct_requires_catalog_dimensions_before_network(self):
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE"}
+            with patch.object(p.safe_proxy, "open_response") as request:
+                with self.assertRaisesRegex(ValueError, "SAFE_DIRECT_DIMENSIONS_REQUIRED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg")
+                request.assert_not_called()
+
+    def test_safe_direct_refuses_redirect_and_nested_manifest_before_write(self):
+        class Response:
+            status = 302
+            def getheader(self, key):
+                return {"Location": "http://169.254.169.254/latest/meta-data/",
+                        "Content-Type": "application/vnd.apple.mpegurl"}.get(key)
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/master.m3u8", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            with patch.object(p.safe_proxy, "open_response", return_value=nullcontext((Response(), {"tls_certificate_verified": True}))) as request:
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_REDIRECT_REFUSED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg")
+                request.assert_called_once()
+            self.assertFalse(list((Path(d) / "downloads").glob("*")))
+
+    def test_safe_direct_download_is_bounded_catalog_selected_and_qaed_locally(self):
+        class Response:
+            status = 200
+            def __init__(self, data): self.data = data
+            def getheader(self, key):
+                return {"Content-Type": "video/mp4", "Content-Length": str(len(self.data)),
+                        "Content-Encoding": "identity"}.get(key)
+            def read(self, size):
+                value = self.data[:size]; self.data = self.data[size:]; return value
+        payload = b"\x00\x00\x00\x18ftypisom" + b"media-bytes"
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080, "reuse_rights": "TEST_ONLY"}
+            qa = {"sha256": "0" * 64, "file_bytes": len(payload), "display_width": 1920,
+                  "display_height": 1080, "status": "FULL_DECODE_PASS"}
+            with patch.object(p.safe_proxy, "open_response",
+                              return_value=nullcontext((Response(payload), {"connect_authority": "93.184.216.34:443"}))) as request, \
+                 patch.object(p, "qa_media", return_value=qa) as qa_call:
+                result = p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                          "ffprobe", "ffmpeg")
+            self.assertEqual(request.call_args.args[0], "https://media.example/video.mp4")
+            self.assertEqual(qa_call.call_args.args[0].read_bytes(), payload)
+            self.assertEqual(result["transport"], "SAFE_DYNAMIC_DIRECT_MEDIA")
+            self.assertEqual(result["status"], "FULL_DECODE_PASS")
+            self.assertEqual(result["safe_proxy_proof"]["connect_authority"], "93.184.216.34:443")
+            self.assertTrue(qa_call.call_args.kwargs["local_only"])
+            self.assertFalse(list((Path(d) / "downloads").glob("*.part*")))
+
+    def test_safe_direct_size_cap_and_unknown_manifest_body_fail_closed(self):
+        class Response:
+            status = 200
+            def __init__(self, data, content_type="video/mp4"):
+                self.data = data; self.content_type = content_type
+            def getheader(self, key):
+                return {"Content-Type": self.content_type, "Content-Length": str(len(self.data))}.get(key)
+            def read(self, size):
+                value = self.data[:size]; self.data = self.data[size:]; return value
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            oversized = b"\x00\x00\x00\x18ftypisom" + b"x" * 64
+            with patch.object(p.safe_proxy, "open_response", return_value=nullcontext((Response(oversized), {}))):
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_RESPONSE_SIZE_LIMIT"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg", max_bytes=32)
+            manifest = b"#EXTM3U\nhttps://internal.example/segment.ts"
+            with patch.object(p.safe_proxy, "open_response", return_value=nullcontext((Response(manifest), {}))):
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_MEDIA_CONTAINER_REJECTED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg")
+            self.assertFalse(list((Path(d) / "downloads").glob("*.part*")))
+
+    def test_safe_direct_response_timeout_cleans_partial_file(self):
+        class Response:
+            status = 200
+            def getheader(self, key):
+                return {"Content-Type": "video/mp4"}.get(key)
+            def read(self, _): raise TimeoutError("bounded read timeout")
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            with patch.object(p.safe_proxy, "open_response", return_value=nullcontext((Response(), {}))):
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_MEDIA_TIMEOUT"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg")
+            self.assertFalse(list((Path(d) / "downloads").glob("*.part*")))
+
+    def test_safe_direct_total_deadline_aborts_slow_body_and_cleans_partial_file(self):
+        payload = b"\x00\x00\x00\x18ftypisom" + b"x" * 88
+        header = (b"HTTP/1.1 200 OK\r\nContent-Type: video/mp4\r\nContent-Length: 100\r\n"
+                  b"Connection: close\r\n\r\n")
+
+        class SlowTls:
+            def __init__(self):
+                self.pending = bytearray(header + payload[:16])
+                self.closed = False
+            def settimeout(self, _): pass
+            def sendall(self, _): pass
+            def recv(self, size):
+                if self.pending:
+                    value = bytes(self.pending[:size])
+                    del self.pending[:size]
+                    return value
+                time.sleep(0.02)
+                return b"x"
+            def close(self): self.closed = True
+
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            tls = SlowTls()
+            with patch.object(p.safe_proxy, "resolve_public_addresses", return_value=["93.184.216.34"]), \
+                 patch.object(p.safe_proxy, "_open_tls_tunnel", return_value=(tls, {})):
+                with self.assertRaisesRegex(p.safe_proxy.SafeProxyError, "SAFE_TOTAL_DEADLINE_EXCEEDED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg", timeout=1)
+            self.assertTrue(tls.closed)
+            self.assertFalse(list((Path(d) / "downloads").glob("*")))
+
+    def test_safe_direct_qa_failure_removes_downloaded_file(self):
+        class Response:
+            status = 200
+            data = b"\x00\x00\x00\x18ftypisommedia"
+            def getheader(self, key):
+                return {"Content-Type": "video/mp4", "Content-Length": str(len(self.data))}.get(key)
+            def read(self, size):
+                value = self.data[:size]; self.data = self.data[size:]; return value
+        with tempfile.TemporaryDirectory() as d:
+            catalog = p.Catalog(Path(d))
+            catalog.data["items"]["video-test"] = {"id": "video-test", "kind": "video",
+                "url": "https://media.example/video.mp4", "status": "ELIGIBLE",
+                "width": 1920, "height": 1080}
+            with patch.object(p.safe_proxy, "open_response",
+                              return_value=nullcontext((Response(), {}))), \
+                 patch.object(p, "qa_media", side_effect=RuntimeError("FFPROBE_FAILED")):
+                with self.assertRaisesRegex(RuntimeError, "FFPROBE_FAILED"):
+                    p.download_safe_direct_candidate(catalog, "video-test", "http://127.0.0.1:12345",
+                                                     "ffprobe", "ffmpeg")
+            self.assertFalse(list((Path(d) / "downloads").glob("*")))
+
+    def test_safe_direct_media_qa_whitelists_local_file_protocols(self):
+        with tempfile.TemporaryDirectory() as d:
+            source = Path(d) / "downloads" / "media.mp4"
+            source.parent.mkdir()
+            source.write_bytes(b"fixture")
+            commands = []
+            def fake_run(command, _timeout, _proxy=None):
+                commands.append(command)
+                if command[0] == "ffprobe":
+                    payload = json.dumps({"streams": [{"codec_type": "video", "width": 1920,
+                        "height": 1080, "sample_aspect_ratio": "1:1", "avg_frame_rate": "30/1"}],
+                        "format": {"duration": "1.0"}})
+                    return type("P", (), {"returncode": 0, "stdout": payload, "stderr": ""})()
+                if "-frames:v" in command:
+                    Path(command[-1]).write_bytes(b"jpg")
+                    return type("P", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+                return type("P", (), {"returncode": 0, "stdout": "frame=30\n", "stderr": ""})()
+            with patch.object(p, "run", side_effect=fake_run):
+                result = p.qa_media(source, "ffprobe", "ffmpeg", local_only=True)
+            self.assertEqual(result["status"], "FULL_DECODE_PASS")
+            self.assertEqual(len(commands), 3)
+            for command in commands:
+                index = command.index("-protocol_whitelist")
+                self.assertEqual(command[index + 1], "file")
+
     def test_cli_workdir_must_be_under_cws_local(self):
         accepted = p.ensure_local_workdir(p.CWS_ROOT / '.local' / 'media-pipeline')
         self.assertEqual(accepted, (p.CWS_ROOT / '.local' / 'media-pipeline').resolve())
